@@ -3,6 +3,7 @@ import { spawn } from 'node:child_process';
 import { writeFile, readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fetchFreshHeadlines } from './feeds.mjs';
+import { fetchXHeadlines } from './x-feed.mjs';
 
 const ROOT = new URL('.', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const CONTENT = join(ROOT, 'content');
@@ -156,8 +157,13 @@ async function recentRadarTexts() {
 async function main() {
   const skip = await existingTitles();
   console.log(`[generate] 深度简报 ${COUNT} 篇 + 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);
-  const headlines = await fetchFreshHeadlines({ until: CUTOFF });
-  console.log(`[generate] 一级信源候选 ${headlines.length} 条${CUTOFF ? `（截止 ${process.env.AIPULSE_CUTOFF}）` : ''}`);
+  const [headlines, xItems] = await Promise.all([
+    fetchFreshHeadlines({ until: CUTOFF }),
+    fetchXHeadlines({ until: CUTOFF }).catch((e) => { console.error('[generate] X 直连失败:', e.message); return []; }),
+  ]);
+  headlines.push(...xItems);
+  headlines.sort((a, b) => b.date - a.date);
+  console.log(`[generate] 一级信源候选 ${headlines.length} 条（含官方 X ${xItems.length} 条）${CUTOFF ? `（截止 ${process.env.AIPULSE_CUTOFF}）` : ''}`);
   const digest = digestOf(headlines) || '(feeds unavailable this run — rely on web search, verify dates strictly)';
   const newTitles = await generateBriefings(skip, digest);
   try {
