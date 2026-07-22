@@ -34,7 +34,7 @@ const T = {
     whatH: 'What is AI Focus Bulletin?',
     what: 'AI Focus Bulletin is an autonomous AI newsroom: an AI editor searches global news every day, reads the primary sources, and writes original, source-linked briefings on artificial intelligence — covering new models, research breakthroughs, policy and regulation, funding, and open-source releases worldwide.',
     howH: 'How are briefings produced?',
-    how: 'A daily pipeline researches the most significant AI stories from the past 24 hours, writes each briefing from scratch with citations to primary sources, and publishes automatically in English and Chinese. Every page lists its sources so readers can verify every claim. There are no ads, trackers, or paywalls.',
+    how: 'The pipeline runs twice a day (07:00 and 19:00 Beijing time). It gathers timestamped candidates from 17 first-tier RSS feeds and 29 official X accounts of AI labs via API, then an AI editor selects the most significant stories, verifies sources and publication dates, and writes each deep briefing plus the Daily Radar from scratch in English and Chinese. Every page lists its sources so readers can verify every claim. There are no ads, trackers, or paywalls.',
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
     featured: "★ Editor's pick", radar: 'Daily Radar', radarLede: 'Quick hits from across the AI world in the last 24 hours.',
     radarArchive: 'Radar archive', related: 'Related briefings', catTitle: (n) => `${n} — Category`, allCats: 'Browse by topic',
@@ -51,7 +51,7 @@ const T = {
     whatH: '什么是 AI专注速报？',
     what: 'AI专注速报（AI Focus Bulletin）是一个自主运行的 AI 编辑部：AI 编辑每天检索全球新闻、阅读原始信源，并撰写原创的、附信源的人工智能简报——覆盖全球的新模型、研究突破、政策监管、融资与开源发布。',
     howH: '简报如何产出？',
-    how: '每日流水线检索过去 24 小时最重要的 AI 新闻，逐篇原创撰写并标注原始信源，以中英双语自动发布。每个页面都列出信源，读者可以核验每一条信息。没有广告、追踪器和付费墙。',
+    how: '流水线每天运行两次（北京时间 7:00 与 19:00）：先从 17 个一级 RSS 信源和 29 个 AI 实验室官方 X 账号（API 直连）获取带真实时间戳的候选新闻，AI 编辑再遴选最重要的故事、核验信源与发布日期，以中英双语原创撰写深度简报与「每日雷达」快讯并自动发布。每个页面都列出信源，读者可以核验每一条信息。没有广告、追踪器和付费墙。',
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
     featured: '★ 编辑推荐', radar: '每日雷达', radarLede: '过去 24 小时 AI 圈的一句话快讯。',
     radarArchive: '雷达存档', related: '相关简报', catTitle: (n) => `${n} · 分类`, allCats: '按主题浏览',
@@ -287,7 +287,7 @@ ${rest.length > 20 ? `<p class="more-link"><a href="${urlFor(lang, 'archive.html
     <li><strong>更正：</strong>每日审校发现的事实错误会就地更正。</li>
   </ul>
   <h2>运作方式</h2>
-  <p>定时流水线每日运行：检索全球新闻 → 遴选最重要的报道 → 撰写附引用的简报 → 重建并发布本站。技术栈公开、简单、快速：无追踪器、无广告、无 Cookie。</p>
+  <p>定时流水线每天运行两次（北京时间 7:00 与 19:00）：从 17 个一级 RSS 信源和 29 个 AI 实验室官方 X 账号（API 直连）获取带真实时间戳的候选 → AI 编辑遴选并核验信源与发布日期 → 以中英双语原创撰写深度简报与「每日雷达」→ 重建并发布本站，同时通过 IndexNow 通知搜索引擎。全部历史内容永久留存于<a href="${urlFor(lang, "archive.html")}">存档</a>。技术栈公开、简单、快速：无追踪器、无广告、无 Cookie。</p>
 </article>` : `
 <article class="article">
   <h1>About AI Focus Bulletin</h1>
@@ -301,7 +301,7 @@ ${rest.length > 20 ? `<p class="more-link"><a href="${urlFor(lang, 'archive.html
     <li><strong>Corrections:</strong> factual errors are corrected in place once detected by the daily review pass.</li>
   </ul>
   <h2>How it works</h2>
-  <p>A scheduled pipeline runs daily: search global news → select the most significant stories → write briefings with citations → rebuild and publish this static site. The stack is open, simple, and fast: no trackers, no ads, no cookies.</p>
+  <p>The pipeline runs twice a day (07:00 and 19:00 Beijing time): timestamped candidates flow in from 17 first-tier RSS feeds and 29 official X accounts of AI labs via API → an AI editor selects stories and verifies sources and publication dates → deep briefings and the Daily Radar are written from scratch in English and Chinese → the site is rebuilt, published, and submitted to search engines via IndexNow. Everything ever published is kept permanently in the <a href="${urlFor(lang, "archive.html")}">archive</a>. The stack is open, simple, and fast: no trackers, no ads, no cookies.</p>
 </article>`;
   await writeFile(join(dir, 'about.html'), page({
     lang,
