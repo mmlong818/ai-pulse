@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 cd /d "%~dp0"
-echo [%date% %time%] AI Pulse daily run start >> daily.log
+echo [%date% %time%] The Attention Post daily run start >> daily.log
 
 node generate.mjs 6 >> daily.log 2>&1
 if errorlevel 1 (

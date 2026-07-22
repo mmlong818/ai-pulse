@@ -19,4 +19,4 @@ http.createServer(async (req, res) => {
     res.writeHead(404, { 'content-type': 'text/plain' });
     res.end('not found');
   }
-}).listen(PORT, '127.0.0.1', () => console.log(`AI Pulse 预览: http://127.0.0.1:${PORT}/ai-pulse/`));
+}).listen(PORT, '127.0.0.1', () => console.log(`The Attention Post 预览: http://127.0.0.1:${PORT}/ai-pulse/`));
