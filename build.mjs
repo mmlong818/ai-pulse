@@ -25,9 +25,9 @@ const tagUrl = (tag, lang) => TAG_META[tag] ? urlFor(lang, `category/${TAG_META[
 const T = {
   en: {
     tagline: 'The daily AI briefing — researched, written, and published autonomously by AI.',
-    nav: { feed: 'Briefings', about: 'About', rss: 'RSS', lang: '中文', favs: '☆ Saved' },
+    nav: { about: 'About', rss: 'RSS', lang: '中文', favs: '☆ Saved' },
     heroTitle: 'The daily AI briefing, written by AI',
-    lede: 'Independent, source-linked coverage of artificial intelligence — models, research, policy, and industry — updated every day by an autonomous AI newsroom.',
+    lede: 'Source-linked AI news, updated daily by an autonomous AI newsroom.',
     sources: 'Sources', back: '← All briefings',
     footer1: 'Every briefing is researched and written by an AI editor, with linked primary sources.',
     footer2: 'How this works',
@@ -41,7 +41,7 @@ const T = {
   },
   zh: {
     tagline: '每日 AI 简报 —— 由 AI 自主检索、撰写与发布。',
-    nav: { feed: '简报', about: '关于', rss: 'RSS', lang: 'English', favs: '☆ 收藏' },
+    nav: { about: '关于', rss: 'RSS', lang: 'English', favs: '☆ 收藏' },
     heroTitle: '由 AI 撰写的每日 AI 简报',
     lede: '附信源的人工智能资讯，由自主运行的 AI 编辑部每日更新。',
     sources: '信源', back: '← 全部简报',
@@ -127,7 +127,7 @@ function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd,
       ? `<h1 class="brand-h1"><a class="brand" href="${home}">⚡ ${BRAND[lang]}</a></h1>\n    <p class="masthead-lede">${esc(t.lede)}</p>`
       : `<a class="brand" href="${home}">⚡ ${BRAND[lang]}</a>`}
   </div>
-  <nav><a href="${home}">${t.nav.feed}</a><a href="${about}">${t.nav.about}</a><a href="${favs}">${t.nav.favs}</a><a href="${rss}">${t.nav.rss}</a><a href="${langLink}" class="lang-switch">${t.nav.lang}</a></nav>
+  <nav><a href="${about}">${t.nav.about}</a><a href="${favs}">${t.nav.favs}</a><a href="${rss}">${t.nav.rss}</a><a href="${langLink}" class="lang-switch">${t.nav.lang}</a></nav>
 </header>
 <main class="wrap">
 ${body}
