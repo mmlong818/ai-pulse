@@ -1,4 +1,4 @@
-// The Attention Post（注意力邮报）静态站构建器（中英双语）：content/*.json → docs/
+// AI专注速报（AI Focus Bulletin）静态站构建器（中英双语）：content/*.json → docs/
 import { readdir, readFile, writeFile, mkdir, cp } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
@@ -7,8 +7,8 @@ const ROOT = new URL('.', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$
 const CONTENT = join(ROOT, 'content');
 const SITE = join(ROOT, 'docs');
 const BASE = process.env.AIPULSE_BASE || 'https://mmlong818.github.io/ai-pulse';
-const SITE_NAME = 'The Attention Post';
-const BRAND = { en: 'The Attention Post', zh: '注意力邮报' };
+const SITE_NAME = 'AI Focus Bulletin';
+const BRAND = { en: 'AI Focus Bulletin', zh: 'AI专注速报' };
 
 const TAG_META = {
   'Models': { slug: 'models', zh: '模型' },
@@ -31,8 +31,8 @@ const T = {
     sources: 'Sources', back: '← All briefings',
     footer1: 'Every briefing is researched and written by an AI editor, with linked primary sources.',
     footer2: 'How this works',
-    whatH: 'What is The Attention Post?',
-    what: 'The Attention Post is an autonomous AI newsroom: an AI editor searches global news every day, reads the primary sources, and writes original, source-linked briefings on artificial intelligence — covering new models, research breakthroughs, policy and regulation, funding, and open-source releases worldwide.',
+    whatH: 'What is AI Focus Bulletin?',
+    what: 'AI Focus Bulletin is an autonomous AI newsroom: an AI editor searches global news every day, reads the primary sources, and writes original, source-linked briefings on artificial intelligence — covering new models, research breakthroughs, policy and regulation, funding, and open-source releases worldwide.',
     howH: 'How are briefings produced?',
     how: 'A daily pipeline researches the most significant AI stories from the past 24 hours, writes each briefing from scratch with citations to primary sources, and publishes automatically in English and Chinese. Every page lists its sources so readers can verify every claim. There are no ads, trackers, or paywalls.',
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
@@ -47,8 +47,8 @@ const T = {
     sources: '信源', back: '← 全部简报',
     footer1: '每篇简报均由 AI 编辑检索并撰写，附原始信源链接。',
     footer2: '了解运作方式',
-    whatH: '什么是注意力邮报？',
-    what: '注意力邮报（The Attention Post）是一个自主运行的 AI 编辑部：AI 编辑每天检索全球新闻、阅读原始信源，并撰写原创的、附信源的人工智能简报——覆盖全球的新模型、研究突破、政策监管、融资与开源发布。',
+    whatH: '什么是 AI专注速报？',
+    what: 'AI专注速报（AI Focus Bulletin）是一个自主运行的 AI 编辑部：AI 编辑每天检索全球新闻、阅读原始信源，并撰写原创的、附信源的人工智能简报——覆盖全球的新模型、研究突破、政策监管、融资与开源发布。',
     howH: '简报如何产出？',
     how: '每日流水线检索过去 24 小时最重要的 AI 新闻，逐篇原创撰写并标注原始信源，以中英双语自动发布。每个页面都列出信源，读者可以核验每一条信息。没有广告、追踪器和付费墙。',
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
@@ -115,14 +115,14 @@ function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd,
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${BASE}/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗞</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <link rel="alternate" type="application/rss+xml" title="${SITE_NAME} RSS" href="${rss}">
 <link rel="stylesheet" href="${BASE}/assets/style.css">
 <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 </head>
 <body data-slug="${esc(slug)}" data-lang="${lang}">
 <header class="masthead">
-  <a class="brand" href="${home}">🗞 ${BRAND[lang]}</a>
+  <a class="brand" href="${home}">⚡ ${BRAND[lang]}</a>
   <nav><a href="${home}">${t.nav.feed}</a><a href="${about}">${t.nav.about}</a><a href="${favs}">${t.nav.favs}</a><a href="${rss}">${t.nav.rss}</a><a href="${langLink}" class="lang-switch">${t.nav.lang}</a></nav>
 </header>
 <main class="wrap">
@@ -208,7 +208,7 @@ ${rest.map((a) => articleCard(a, lang)).join('\n')}
   const latest = list[0];
   await writeFile(join(dir, 'index.html'), page({
     lang,
-    title: lang === 'zh' ? '注意力邮报 — 由 AI 撰写的每日 AI 简报' : 'The Attention Post — Daily AI Briefings, Written by AI',
+    title: lang === 'zh' ? 'AI专注速报 — 由 AI 撰写的每日 AI 简报' : 'AI Focus Bulletin — Daily AI Briefings, Written by AI',
     description: (lang === 'zh'
       ? `AI 每日自主采编的中英双语 AI 资讯简报：模型、研究、政策与产业，每篇附原始信源。${latest ? `最新：${langOf(latest, 'zh').title}` : ''}`
       : `Daily, source-linked briefings on AI models, research, policy, and industry, researched and written autonomously by an AI newsroom.${latest ? ` Latest: ${latest.title}` : ''}`).slice(0, 158),
@@ -268,9 +268,9 @@ ${rest.map((a) => articleCard(a, lang)).join('\n')}
   // About
   const aboutBody = lang === 'zh' ? `
 <article class="article">
-  <h1>关于注意力邮报</h1>
+  <h1>关于 AI专注速报</h1>
   <p class="standfirst">${esc(t.tagline)}</p>
-  <p>注意力邮报（The Attention Post）是一个自主发布实验——名字致敬那篇奠定当代 AI 的论文《Attention Is All You Need》。每天，AI 编辑检索全球人工智能领域最重要的进展，阅读原始信源，并以中英双语撰写原创简报——编辑环节没有人类介入。</p>
+  <p>AI专注速报（AI Focus Bulletin）是一个自主发布实验。每天，AI 编辑检索全球人工智能领域最重要的进展，阅读原始信源，并以中英双语撰写原创简报——编辑环节没有人类介入。</p>
   <h2>编辑原则</h2>
   <ul>
     <li><strong>附信源：</strong>每篇简报列出原始信源，一切可自行核验。</li>
@@ -282,9 +282,9 @@ ${rest.map((a) => articleCard(a, lang)).join('\n')}
   <p>定时流水线每日运行：检索全球新闻 → 遴选最重要的报道 → 撰写附引用的简报 → 重建并发布本站。技术栈公开、简单、快速：无追踪器、无广告、无 Cookie。</p>
 </article>` : `
 <article class="article">
-  <h1>About The Attention Post</h1>
+  <h1>About AI Focus Bulletin</h1>
   <p class="standfirst">${esc(t.tagline)}</p>
-  <p>The Attention Post — named after the paper that started it all, “Attention Is All You Need” — is an experiment in autonomous publishing. Every day, an AI editor searches the web for the most significant developments in artificial intelligence, reads the primary sources, and writes original briefings in English and Chinese — no human in the editorial loop.</p>
+  <p>AI Focus Bulletin is an experiment in autonomous publishing. Every day, an AI editor searches the web for the most significant developments in artificial intelligence, reads the primary sources, and writes original briefings in English and Chinese — no human in the editorial loop.</p>
   <h2>Editorial principles</h2>
   <ul>
     <li><strong>Source-linked:</strong> every briefing cites its primary sources, so you can verify everything yourself.</li>
@@ -297,13 +297,13 @@ ${rest.map((a) => articleCard(a, lang)).join('\n')}
 </article>`;
   await writeFile(join(dir, 'about.html'), page({
     lang,
-    title: lang === 'zh' ? '关于 — 注意力邮报：自主运行的 AI 编辑部' : `About — ${SITE_NAME}: an Autonomous AI Newsroom`,
+    title: lang === 'zh' ? '关于 — AI专注速报：自主运行的 AI 编辑部' : `About — ${SITE_NAME}: an Autonomous AI Newsroom`,
     description: lang === 'zh'
-      ? '注意力邮报（The Attention Post）是自主运行的 AI 编辑部：AI 编辑每日检索、撰写并以中英双语发布附信源的人工智能简报。'
-      : 'The Attention Post is an autonomous AI newsroom: an AI editor researches, writes, and publishes daily source-linked briefings on artificial intelligence.',
+      ? 'AI专注速报（AI Focus Bulletin）是自主运行的 AI 编辑部：AI 编辑每日检索、撰写并以中英双语发布附信源的人工智能简报。'
+      : 'AI Focus Bulletin is an autonomous AI newsroom: an AI editor researches, writes, and publishes daily source-linked briefings on artificial intelligence.',
     canonical: urlFor(lang, 'about.html'),
     altEn: `${BASE}/about.html`, altZh: `${BASE}/zh/about.html`,
-    jsonLd: { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About The Attention Post', url: urlFor(lang, 'about.html') },
+    jsonLd: { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About AI Focus Bulletin', url: urlFor(lang, 'about.html') },
     body: aboutBody,
   }));
 
@@ -315,8 +315,8 @@ ${rest.map((a) => articleCard(a, lang)).join('\n')}
       lang,
       title: `${tagLabel(tag, lang)} — ${SITE_NAME}`,
       description: lang === 'zh'
-        ? `注意力邮报「${meta.zh}」分类下的全部简报（${catList.length} 篇），AI 每日采编，附原始信源。`
-        : `All Attention Post briefings in the ${tag} category (${catList.length}), researched daily by an AI newsroom with linked sources.`,
+        ? `AI专注速报「${meta.zh}」分类下的全部简报（${catList.length} 篇），AI 每日采编，附原始信源。`
+        : `All AI Focus Bulletin briefings in the ${tag} category (${catList.length}), researched daily by an AI newsroom with linked sources.`,
       canonical: urlFor(lang, `category/${meta.slug}.html`),
       altEn: `${BASE}/category/${meta.slug}.html`, altZh: `${BASE}/zh/category/${meta.slug}.html`,
       jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: tagLabel(tag, lang), url: urlFor(lang, `category/${meta.slug}.html`) },
@@ -350,8 +350,8 @@ ${radars.length > 1 ? `<section class="about-strip"><h2>${t.radarArchive}</h2><u
   // 收藏页（内容由 pulse.js 从 localStorage 渲染）
   await writeFile(join(dir, 'favorites.html'), page({
     lang,
-    title: lang === 'zh' ? '我的收藏 — 注意力邮报' : `Saved briefings — ${SITE_NAME}`,
-    description: lang === 'zh' ? '你在本设备上收藏的注意力邮报简报（仅存于浏览器本地）。' : 'Briefings you saved on this device (stored locally in your browser only).',
+    title: lang === 'zh' ? '我的收藏 — AI专注速报' : `Saved briefings — ${SITE_NAME}`,
+    description: lang === 'zh' ? '你在本设备上收藏的 AI专注速报简报（仅存于浏览器本地）。' : 'Briefings you saved on this device (stored locally in your browser only).',
     canonical: urlFor(lang, 'favorites.html'),
     altEn: `${BASE}/favorites.html`, altZh: `${BASE}/zh/favorites.html`,
     jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: lang === 'zh' ? '我的收藏' : 'Saved briefings', url: urlFor(lang, 'favorites.html') },
