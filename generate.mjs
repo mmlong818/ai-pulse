@@ -31,8 +31,11 @@ function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
 const parseJson = (raw, open, close) => JSON.parse(raw.slice(raw.indexOf(open), raw.lastIndexOf(close) + 1));
 
 const SOURCE_GUIDE = `SOURCE POLICY:
-1. START from the CANDIDATE HEADLINES below — they come from first-tier feeds and their timestamps are already verified. Prefer them.
-2. Use web search to (a) enrich selected stories with primary sources and detail, and (b) catch major stories the feeds missed — especially labs without feeds (Anthropic, Mistral, xAI, DeepSeek, Alibaba/Qwen, Moonshot, Zhipu), significant X (Twitter) announcements/threads (cite the original X post URL), arXiv papers, and Asia coverage (SCMP, Nikkei, 36氪).
+1. START from the CANDIDATE HEADLINES below — they come from first-tier feeds and their timestamps are already verified. Prefer them. (Some feeds carry general tech news — pick AI stories only.)
+2. Use web search to (a) enrich selected stories with primary sources and detail, and (b) catch major stories the feeds missed:
+   - Labs/pages without feeds: Anthropic news & research, xAI news, Mistral, DeepSeek, Alibaba/Qwen, Moonshot, Zhipu, ByteDance Seed, Cursor blog, Hugging Face daily papers (huggingface.co/papers)
+   - High-signal X (Twitter) watchlist — search for fresh posts from: @testingcatalog @rohanpaul_ai @emollick @kimmonismus @berryxia @OpenRouter @omarsar0 @dotey @xiaohu @op7418 @AYi_AInotes @shao__meng @SemiAnalysis_ @sama @OpenAI @AIatMeta — when a story broke on X, cite the original X post URL.
+   - arXiv papers and Asia coverage (SCMP, Nikkei, 36氪)
 3. Prefer primary sources (the lab's own post/paper/X thread) over secondhand reporting when available.`;
 
 const digestOf = (headlines) => headlines

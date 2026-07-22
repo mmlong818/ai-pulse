@@ -11,7 +11,12 @@ const FEEDS = [
   { name: 'Ars Technica AI', url: 'https://arstechnica.com/ai/feed/', tier: 'media' },
   { name: 'The Decoder', url: 'https://the-decoder.com/feed/', tier: 'media' },
   { name: '机器之心', url: 'https://www.jiqizhixin.com/rss', tier: 'media' },
+  { name: 'IT之家', url: 'https://www.ithome.com/rss/', tier: 'media' },
+  { name: 'MarkTechPost', url: 'https://www.marktechpost.com/feed/', tier: 'media' },
+  { name: 'Apple ML Research', url: 'https://machinelearning.apple.com/rss.xml', tier: 'official' },
+  { name: 'Hacker News 热门', url: 'https://hnrss.org/frontpage?points=100', tier: 'community' },
   { name: 'Simon Willison', url: 'https://simonwillison.net/atom/everything/', tier: 'expert' },
+  { name: 'Lilian Weng', url: 'https://lilianweng.github.io/index.xml', tier: 'expert' },
 ];
 
 const pick = (xml, ...res) => {
