@@ -42,7 +42,9 @@ const SOURCE_GUIDE = `SOURCE POLICY:
    - Labs/pages without feeds: Anthropic news & research, xAI news, Mistral, DeepSeek, Alibaba/Qwen, Moonshot, Zhipu, ByteDance Seed, Cursor blog, Hugging Face daily papers (huggingface.co/papers)
    - X (Twitter) watchlist — search for fresh posts; when a story broke on X, cite the original X post URL:
      · First-party (official announcements): @OpenAI @AnthropicAI @GoogleDeepMind @AIatMeta @xai @MistralAI @deepseek_ai @Alibaba_Qwen @ZhipuAI @huggingface @perplexity_ai @cursor_ai @LangChainAI @OpenRouter
-     · High-signal commentators: @testingcatalog @rohanpaul_ai @emollick @kimmonismus @berryxia @omarsar0 @dotey @xiaohu @op7418 @AYi_AInotes @shao__meng @SemiAnalysis_ @sama
+     · Lab leaders & researchers: @sama @gdb @DarioAmodei @demishassabis @karpathy @DrJimFan @ClementDelangue @OfficialLoganK @bcherny @AndrewYNg @ylecun @drfeifei
+     · High-signal commentators: @testingcatalog @rohanpaul_ai @emollick @kimmonismus @berryxia @omarsar0 @rowancheung @ArtificialAnlys @steipete @LinusEkenstam @SemiAnalysis_
+     · Chinese-sphere: @dotey @xiaohu @op7418 @AYi_AInotes @shao__meng @oran_ge @FinanceYF5 @recatm
    - arXiv papers and Asia coverage (SCMP, Nikkei, 36氪)
 3. Prefer primary sources (the lab's own post/paper/X thread) over secondhand reporting when available.`;
 

@@ -6,11 +6,13 @@ import { join } from 'node:path';
 const ROOT = new URL('.', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const ID_CACHE = join(ROOT, 'x-ids.json');
 
-// 官方池 core 账号（第一方发布源头）
+// 官方池 core 账号（第一方发布源头）+ 用户 2026-07-22 从关注列表挑选的官方/产品号
 const HANDLES = [
   'OpenAI', 'AnthropicAI', 'GoogleDeepMind', 'GoogleAI', 'AIatMeta', 'xai',
   'MistralAI', 'deepseek_ai', 'Alibaba_Qwen', 'ZhipuAI', 'huggingface',
   'perplexity_ai', 'cursor_ai', 'LangChainAI',
+  'claudeai', 'OpenAIDevs', 'Kimi_Moonshot', 'Zai_org', 'arena',
+  'midjourney', 'Kling_ai', 'runwayml', 'ManusAI',
 ];
 
 function getToken() {
