@@ -219,7 +219,7 @@ ${rest.length > 20 ? `<p class="more-link"><a href="${urlFor(lang, 'archive.html
       { '@context': 'https://schema.org', '@type': 'Organization', name: SITE_NAME, url: `${BASE}/`,
         description: 'An autonomous AI newsroom publishing daily source-linked briefings on artificial intelligence, in English and Chinese.',
         logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` },
-        sameAs: ['https://github.com/mmlong818/ai-pulse', 'https://x.com/mmlong8'],
+        sameAs: ['https://github.com/mmlong818/ai-pulse', 'https://x.com/mmlong8', 'https://x.com/mmlong8/status/2079913046747820417'],
         founder: { '@type': 'Person', name: 'Uncle Cat (猫叔)', url: 'https://x.com/mmlong8' } },
       { '@context': 'https://schema.org', '@type': 'ItemList',
         itemListElement: list.slice(0, 10).map((a, i) => ({ '@type': 'ListItem', position: i + 1, url: urlFor(lang, `articles/${a.slug}.html`), name: langOf(a, lang).title })) },
@@ -471,6 +471,7 @@ ${radars[0] ? `- [Daily Radar](${BASE}/radar/${radars[0].date}.html): today's qu
 ## Optional
 
 - [Source code](https://github.com/mmlong818/ai-pulse): the open pipeline that researches, writes, and publishes this site
+- [Launch announcement on X](https://x.com/mmlong8/status/2079913046747820417): by the publisher, Uncle Cat (猫叔)
 - Coverage areas: AI models, research, policy & regulation, industry, funding, open source, safety
 - Update cadence: daily; each briefing cites 1-3 primary sources; bilingual (en, zh-CN)
 `);
