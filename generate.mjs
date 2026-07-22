@@ -34,7 +34,9 @@ const SOURCE_GUIDE = `SOURCE POLICY:
 1. START from the CANDIDATE HEADLINES below — they come from first-tier feeds and their timestamps are already verified. Prefer them. (Some feeds carry general tech news — pick AI stories only.)
 2. Use web search to (a) enrich selected stories with primary sources and detail, and (b) catch major stories the feeds missed:
    - Labs/pages without feeds: Anthropic news & research, xAI news, Mistral, DeepSeek, Alibaba/Qwen, Moonshot, Zhipu, ByteDance Seed, Cursor blog, Hugging Face daily papers (huggingface.co/papers)
-   - High-signal X (Twitter) watchlist — search for fresh posts from: @testingcatalog @rohanpaul_ai @emollick @kimmonismus @berryxia @OpenRouter @omarsar0 @dotey @xiaohu @op7418 @AYi_AInotes @shao__meng @SemiAnalysis_ @sama @OpenAI @AIatMeta — when a story broke on X, cite the original X post URL.
+   - X (Twitter) watchlist — search for fresh posts; when a story broke on X, cite the original X post URL:
+     · First-party (official announcements): @OpenAI @AnthropicAI @GoogleDeepMind @AIatMeta @xai @MistralAI @deepseek_ai @Alibaba_Qwen @ZhipuAI @huggingface @perplexity_ai @cursor_ai @LangChainAI @OpenRouter
+     · High-signal commentators: @testingcatalog @rohanpaul_ai @emollick @kimmonismus @berryxia @omarsar0 @dotey @xiaohu @op7418 @AYi_AInotes @shao__meng @SemiAnalysis_ @sama
    - arXiv papers and Asia coverage (SCMP, Nikkei, 36氪)
 3. Prefer primary sources (the lab's own post/paper/X thread) over secondhand reporting when available.`;
 
