@@ -203,13 +203,7 @@ ${latestRadar ? radarSection(latestRadar, lang) : ''}
 <section class="feed">
 ${rest.slice(0, 20).map((a) => articleCard(a, lang)).join('\n')}
 </section>
-${rest.length > 20 ? `<p class="more-link"><a href="${urlFor(lang, 'archive.html')}">${t.moreLink(list.length)}</a></p>` : ''}
-<section class="about-strip">
-  <h2>${t.whatH}</h2>
-  <p>${esc(t.what)}</p>
-  <h2>${t.howH}</h2>
-  <p>${esc(t.how)}</p>
-</section>`;
+${rest.length > 20 ? `<p class="more-link"><a href="${urlFor(lang, 'archive.html')}">${t.moreLink(list.length)}</a></p>` : ''}`;
   const latest = list[0];
   await writeFile(join(dir, 'index.html'), page({
     lang,
