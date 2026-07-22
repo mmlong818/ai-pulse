@@ -115,7 +115,7 @@ function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd,
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:image" content="${BASE}/assets/og.png">
+<meta property="og:image" content="${BASE}/assets/${lang === 'zh' ? 'og.png' : 'og-en.png'}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <link rel="alternate" type="application/rss+xml" title="${SITE_NAME} RSS" href="${rss}">
