@@ -13,6 +13,8 @@ const HANDLES = [
   'perplexity_ai', 'cursor_ai', 'LangChainAI',
   'claudeai', 'OpenAIDevs', 'Kimi_Moonshot', 'Zai_org', 'arena',
   'midjourney', 'Kling_ai', 'runwayml', 'ManusAI',
+  // 国产模型厂商补全（2026-07-22 已验证官号）
+  'MiniMax_AI', 'Hailuo_AI', 'TencentHunyuan', 'dreamina_ai', 'StepFun_ai', 'PixVerse_',
 ];
 
 function getToken() {

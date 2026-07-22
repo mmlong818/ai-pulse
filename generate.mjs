@@ -41,7 +41,7 @@ const parseJson = (raw, open, close) => JSON.parse(raw.slice(raw.indexOf(open), 
 const SOURCE_GUIDE = `SOURCE POLICY:
 1. START from the CANDIDATE HEADLINES below — they come from first-tier feeds and their timestamps are already verified. Prefer them. (Some feeds carry general tech news — pick AI stories only.)
 2. Use web search to (a) enrich selected stories with primary sources and detail, and (b) catch major stories the feeds missed:
-   - Labs/pages without feeds: Anthropic news & research, xAI news, Mistral, DeepSeek, Alibaba/Qwen, Moonshot, Zhipu, ByteDance Seed, Cursor blog, Hugging Face daily papers (huggingface.co/papers)
+   - Labs/pages without feeds: Anthropic news & research, xAI news, Mistral, DeepSeek, Alibaba/Qwen, Moonshot, Zhipu, MiniMax, ByteDance Seed (Seedance/Seedream/豆包), Tencent Hunyuan, StepFun 阶跃星辰, Vidu 生数科技, Baidu ERNIE 文心, 01.AI, Cursor blog, Hugging Face daily papers (huggingface.co/papers)
    - X (Twitter) watchlist — search for fresh posts; when a story broke on X, cite the original X post URL:
      · First-party (official announcements): @OpenAI @AnthropicAI @GoogleDeepMind @AIatMeta @xai @MistralAI @deepseek_ai @Alibaba_Qwen @ZhipuAI @huggingface @perplexity_ai @cursor_ai @LangChainAI @OpenRouter
      · Lab leaders & researchers: @sama @gdb @DarioAmodei @demishassabis @karpathy @DrJimFan @ClementDelangue @OfficialLoganK @bcherny @AndrewYNg @ylecun @drfeifei
