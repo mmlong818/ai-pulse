@@ -19,4 +19,5 @@ git add -A >> daily.log 2>&1
 git commit -m "daily: auto briefing %date%" >> daily.log 2>&1
 git push origin main >> daily.log 2>&1
 node submit-indexnow.mjs >> daily.log 2>&1
+node post-x.mjs daily >> daily.log 2>&1
 echo [%date% %time%] published >> daily.log
