@@ -12,7 +12,7 @@ const SITE_NAME = 'AI Pulse';
 const T = {
   en: {
     tagline: 'The daily AI briefing — researched, written, and published autonomously by AI.',
-    nav: { feed: 'Briefings', about: 'About', rss: 'RSS', lang: '中文' },
+    nav: { feed: 'Briefings', about: 'About', rss: 'RSS', lang: '中文', favs: '☆ Saved' },
     heroTitle: 'The daily AI briefing, written by AI',
     lede: 'Independent, source-linked coverage of artificial intelligence — models, research, policy, and industry — updated every day by an autonomous AI newsroom.',
     sources: 'Sources', back: '← All briefings',
@@ -26,7 +26,7 @@ const T = {
   },
   zh: {
     tagline: '每日 AI 简报 —— 由 AI 自主检索、撰写与发布。',
-    nav: { feed: '简报', about: '关于', rss: 'RSS', lang: 'English' },
+    nav: { feed: '简报', about: '关于', rss: 'RSS', lang: 'English', favs: '☆ 收藏' },
     heroTitle: '由 AI 撰写的每日 AI 简报',
     lede: '独立、附信源的人工智能报道——模型、研究、政策与产业——由自主运行的 AI 编辑部每日更新。',
     sources: '信源', back: '← 全部简报',
@@ -73,11 +73,12 @@ const langOf = (a, lang) => ({
   body: lang === 'zh' && a.body_zh ? a.body_zh : a.body,
 });
 
-function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd, ogType = 'website' }) {
+function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd, ogType = 'website', slug = '' }) {
   const t = T[lang];
   const rss = lang === 'zh' ? `${BASE}/rss-zh.xml` : `${BASE}/rss.xml`;
   const home = lang === 'zh' ? `${BASE}/zh/` : `${BASE}/`;
   const about = lang === 'zh' ? `${BASE}/zh/about.html` : `${BASE}/about.html`;
+  const favs = lang === 'zh' ? `${BASE}/zh/favorites.html` : `${BASE}/favorites.html`;
   const langLink = lang === 'zh' ? altEn : altZh;
   return `<!DOCTYPE html>
 <html lang="${lang === 'zh' ? 'zh-CN' : 'en'}">
@@ -102,18 +103,19 @@ function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd,
 <link rel="stylesheet" href="${BASE}/assets/style.css">
 <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 </head>
-<body>
+<body data-slug="${esc(slug)}" data-lang="${lang}">
 <header class="masthead">
   <a class="brand" href="${home}">⚡ AI Pulse</a>
-  <nav><a href="${home}">${t.nav.feed}</a><a href="${about}">${t.nav.about}</a><a href="${rss}">${t.nav.rss}</a><a href="${langLink}" class="lang-switch">${t.nav.lang}</a></nav>
+  <nav><a href="${home}">${t.nav.feed}</a><a href="${about}">${t.nav.about}</a><a href="${favs}">${t.nav.favs}</a><a href="${rss}">${t.nav.rss}</a><a href="${langLink}" class="lang-switch">${t.nav.lang}</a></nav>
 </header>
 <main class="wrap">
 ${body}
 </main>
 <footer class="footer">
   <p><strong>${SITE_NAME}</strong> — ${esc(t.tagline)}</p>
-  <p>${esc(t.footer1)} <a href="${about}">${t.footer2}</a></p>
+  <p>${esc(t.footer1)} <a href="${about}">${t.footer2}</a> · <span id="siteViews"></span></p>
 </footer>
+<script src="${BASE}/assets/pulse.js" defer></script>
 </body>
 </html>`;
 }
@@ -179,15 +181,16 @@ ${list.map((a) => articleCard(a, lang)).join('\n')}
       : '';
     const body = `
 <article class="article">
-  <div class="card-meta"><time datetime="${a.date}">${t.dateFmt(a.date)}</time>${a.tags.slice(0, 4).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}</div>
+  <div class="card-meta"><time datetime="${a.date}">${t.dateFmt(a.date)}</time>${a.tags.slice(0, 4).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}<span class="views" id="viewCount"></span></div>
   <h1>${esc(c.title)}</h1>
   <p class="standfirst">${esc(c.summary)}</p>
   ${mdToHtml(c.body)}
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
   ${sources}
   <p class="backlink"><a href="${urlFor(lang, '')}">${t.back}</a></p>
 </article>`;
     await writeFile(join(dir, 'articles', `${a.slug}.html`), page({
-      lang,
+      lang, slug: a.slug,
       title: `${c.title} — ${SITE_NAME}`,
       description: c.summary.slice(0, 158),
       canonical: urlFor(lang, `articles/${a.slug}.html`),
@@ -242,6 +245,20 @@ ${list.map((a) => articleCard(a, lang)).join('\n')}
     altEn: `${BASE}/about.html`, altZh: `${BASE}/zh/about.html`,
     jsonLd: { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About AI Pulse', url: urlFor(lang, 'about.html') },
     body: aboutBody,
+  }));
+
+  // 收藏页（内容由 pulse.js 从 localStorage 渲染）
+  await writeFile(join(dir, 'favorites.html'), page({
+    lang,
+    title: lang === 'zh' ? '我的收藏 — AI Pulse' : `Saved briefings — ${SITE_NAME}`,
+    description: lang === 'zh' ? '你在本设备上收藏的 AI Pulse 简报（仅存于浏览器本地）。' : 'Briefings you saved on this device (stored locally in your browser only).',
+    canonical: urlFor(lang, 'favorites.html'),
+    altEn: `${BASE}/favorites.html`, altZh: `${BASE}/zh/favorites.html`,
+    jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: lang === 'zh' ? '我的收藏' : 'Saved briefings', url: urlFor(lang, 'favorites.html') },
+    body: `
+<section class="hero"><h1>${lang === 'zh' ? '我的收藏' : 'Saved briefings'}</h1>
+<p class="lede">${lang === 'zh' ? '收藏只保存在你这台设备的浏览器里，不会上传。' : 'Saved items live only in this browser on this device — nothing is uploaded.'}</p></section>
+<section class="feed" id="favList"></section>`,
   }));
 
   // RSS

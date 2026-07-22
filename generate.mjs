@@ -37,6 +37,13 @@ async function main() {
 
 TASK: Use web search to find the ${COUNT} most significant AI news stories from the last 24-48 hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original English briefing for each.
 
+SOURCE COVERAGE — cast a wide net, do multiple searches across source types:
+- Official lab/company blogs and release notes (OpenAI, Anthropic, Google DeepMind, Meta, xAI, Mistral, DeepSeek, Alibaba/Qwen, Moonshot, Zhipu...)
+- X (Twitter): search for significant announcements or research threads that broke on X (e.g. queries like "announcement site:x.com" or news coverage quoting X posts by labs and prominent researchers). When a story originated on X, include the original X post URL among the sources.
+- arXiv and research venues for notable papers
+- International outlets across regions: US/EU tech press, Reuters/FT, Asia (SCMP, Nikkei, 36氪, 机器之心), etc.
+Prefer primary sources (the lab's own post/paper/X thread) over secondhand reporting when available.
+
 RULES:
 - ORIGINAL writing only. Never copy sentences from sources. Summarize and analyze in your own words.
 - Each briefing: 250-450 words, neutral news-agency tone, explain why it matters in the last paragraph.
