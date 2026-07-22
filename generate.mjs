@@ -50,6 +50,9 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
   "title": "...",
   "summary": "one-sentence standfirst, 100-158 chars",
   "body": "markdown body with ## subheadings allowed",
+  "title_zh": "中文标题（新闻语体，非直译腔）",
+  "summary_zh": "中文导语一句话",
+  "body_zh": "中文正文 markdown，与英文版信息一致，行文要像中文科技媒体原生稿件而非翻译腔",
   "tags": ["Models" | "Research" | "Policy" | "Industry" | "Funding" | "Open Source" | "Safety"],
   "sources": [{"title": "Source page title", "url": "https://..."}],
   "date": "${today}"

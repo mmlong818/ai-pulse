@@ -1,4 +1,4 @@
-// AI Pulse 静态站构建器：content/*.json → site/
+// AI Pulse 静态站构建器（中英双语）：content/*.json → docs/
 import { readdir, readFile, writeFile, mkdir, cp } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
@@ -8,7 +8,37 @@ const CONTENT = join(ROOT, 'content');
 const SITE = join(ROOT, 'docs');
 const BASE = process.env.AIPULSE_BASE || 'https://mmlong818.github.io/ai-pulse';
 const SITE_NAME = 'AI Pulse';
-const TAGLINE = 'The daily AI briefing — researched, written, and published autonomously by AI.';
+
+const T = {
+  en: {
+    tagline: 'The daily AI briefing — researched, written, and published autonomously by AI.',
+    nav: { feed: 'Briefings', about: 'About', rss: 'RSS', lang: '中文' },
+    heroTitle: 'The daily AI briefing, written by AI',
+    lede: 'Independent, source-linked coverage of artificial intelligence — models, research, policy, and industry — updated every day by an autonomous AI newsroom.',
+    sources: 'Sources', back: '← All briefings',
+    footer1: 'Every briefing is researched and written by an AI editor, with linked primary sources.',
+    footer2: 'How this works',
+    whatH: 'What is AI Pulse?',
+    what: 'AI Pulse is an autonomous AI newsroom: an AI editor searches global news every day, reads the primary sources, and writes original, source-linked briefings on artificial intelligence — covering new models, research breakthroughs, policy and regulation, funding, and open-source releases worldwide.',
+    howH: 'How are briefings produced?',
+    how: 'A daily pipeline researches the most significant AI stories from the past 24 hours, writes each briefing from scratch with citations to primary sources, and publishes automatically in English and Chinese. Every page lists its sources so readers can verify every claim. There are no ads, trackers, or paywalls.',
+    dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
+  },
+  zh: {
+    tagline: '每日 AI 简报 —— 由 AI 自主检索、撰写与发布。',
+    nav: { feed: '简报', about: '关于', rss: 'RSS', lang: 'English' },
+    heroTitle: '由 AI 撰写的每日 AI 简报',
+    lede: '独立、附信源的人工智能报道——模型、研究、政策与产业——由自主运行的 AI 编辑部每日更新。',
+    sources: '信源', back: '← 全部简报',
+    footer1: '每篇简报均由 AI 编辑检索并撰写，附原始信源链接。',
+    footer2: '了解运作方式',
+    whatH: '什么是 AI Pulse？',
+    what: 'AI Pulse 是一个自主运行的 AI 编辑部：AI 编辑每天检索全球新闻、阅读原始信源，并撰写原创的、附信源的人工智能简报——覆盖全球的新模型、研究突破、政策监管、融资与开源发布。',
+    howH: '简报如何产出？',
+    how: '每日流水线检索过去 24 小时最重要的 AI 新闻，逐篇原创撰写并标注原始信源，以中英双语自动发布。每个页面都列出信源，读者可以核验每一条信息。没有广告、追踪器和付费墙。',
+    dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
+  },
+};
 
 const esc = (s = '') => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -36,17 +66,30 @@ const inline = (s) => s
   .replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g, '<a href="$2" rel="noopener" target="_blank">$1</a>')
   .replace(/`(.+?)`/g, '<code>$1</code>');
 
-const fmtDate = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+// 每篇文章的双语字段访问器
+const langOf = (a, lang) => ({
+  title: lang === 'zh' && a.title_zh ? a.title_zh : a.title,
+  summary: lang === 'zh' && a.summary_zh ? a.summary_zh : a.summary,
+  body: lang === 'zh' && a.body_zh ? a.body_zh : a.body,
+});
 
-function page({ title, description, canonical, body, jsonLd, ogType = 'website' }) {
+function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd, ogType = 'website' }) {
+  const t = T[lang];
+  const rss = lang === 'zh' ? `${BASE}/rss-zh.xml` : `${BASE}/rss.xml`;
+  const home = lang === 'zh' ? `${BASE}/zh/` : `${BASE}/`;
+  const about = lang === 'zh' ? `${BASE}/zh/about.html` : `${BASE}/about.html`;
+  const langLink = lang === 'zh' ? altEn : altZh;
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="${lang === 'zh' ? 'zh-CN' : 'en'}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${canonical}">
+<link rel="alternate" hreflang="en" href="${altEn}">
+<link rel="alternate" hreflang="zh" href="${altZh}">
+<link rel="alternate" hreflang="x-default" href="${altEn}">
 <meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="${SITE_NAME}">
 <meta property="og:title" content="${esc(title)}">
@@ -55,123 +98,130 @@ function page({ title, description, canonical, body, jsonLd, ogType = 'website' 
 <meta property="og:image" content="${BASE}/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-<link rel="alternate" type="application/rss+xml" title="${SITE_NAME} RSS" href="${BASE}/rss.xml">
+<link rel="alternate" type="application/rss+xml" title="${SITE_NAME} RSS" href="${rss}">
 <link rel="stylesheet" href="${BASE}/assets/style.css">
 <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 </head>
 <body>
 <header class="masthead">
-  <a class="brand" href="${BASE}/">⚡ AI Pulse</a>
-  <nav><a href="${BASE}/">Briefings</a><a href="${BASE}/about.html">About</a><a href="${BASE}/rss.xml">RSS</a></nav>
+  <a class="brand" href="${home}">⚡ AI Pulse</a>
+  <nav><a href="${home}">${t.nav.feed}</a><a href="${about}">${t.nav.about}</a><a href="${rss}">${t.nav.rss}</a><a href="${langLink}" class="lang-switch">${t.nav.lang}</a></nav>
 </header>
 <main class="wrap">
 ${body}
 </main>
 <footer class="footer">
-  <p><strong>${SITE_NAME}</strong> — ${esc(TAGLINE)}</p>
-  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="${BASE}/about.html">How this works</a></p>
+  <p><strong>${SITE_NAME}</strong> — ${esc(t.tagline)}</p>
+  <p>${esc(t.footer1)} <a href="${about}">${t.footer2}</a></p>
 </footer>
 </body>
 </html>`;
 }
 
-function articleCard(a) {
+const urlFor = (lang, path) => lang === 'zh' ? `${BASE}/zh/${path}` : `${BASE}/${path}`;
+
+function articleCard(a, lang) {
+  const t = T[lang], c = langOf(a, lang);
   return `<article class="card">
-  <div class="card-meta"><time datetime="${a.date}">${fmtDate(a.date)}</time>${a.tags.slice(0, 3).map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</div>
-  <h2><a href="${BASE}/articles/${a.slug}.html">${esc(a.title)}</a></h2>
-  <p>${esc(a.summary)}</p>
+  <div class="card-meta"><time datetime="${a.date}">${t.dateFmt(a.date)}</time>${a.tags.slice(0, 3).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}</div>
+  <h2><a href="${urlFor(lang, `articles/${a.slug}.html`)}">${esc(c.title)}</a></h2>
+  <p>${esc(c.summary)}</p>
 </article>`;
 }
 
-async function build() {
-  const files = (await readdir(CONTENT)).filter((f) => f.endsWith('.json'));
-  const articles = [];
-  for (const f of files) articles.push(JSON.parse(await readFile(join(CONTENT, f), 'utf8')));
-  articles.sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
+async function buildLang(articles, lang) {
+  const t = T[lang];
+  const dir = lang === 'zh' ? join(SITE, 'zh') : SITE;
+  await mkdir(join(dir, 'articles'), { recursive: true });
+  const list = lang === 'zh' ? articles.filter((a) => a.body_zh) : articles;
 
-  await mkdir(join(SITE, 'articles'), { recursive: true });
-  await mkdir(join(SITE, 'assets'), { recursive: true });
-  if (existsSync(join(ROOT, 'assets'))) await cp(join(ROOT, 'assets'), join(SITE, 'assets'), { recursive: true });
-
-  // ---- 首页 ----
-  const latest = articles[0];
+  // 首页
   const indexBody = `
 <section class="hero">
-  <h1>The daily AI briefing, written by AI</h1>
-  <p class="lede">Independent, source-linked coverage of artificial intelligence — models, research, policy, and industry — updated every day by an autonomous AI newsroom.</p>
+  <h1>${t.heroTitle}</h1>
+  <p class="lede">${esc(t.lede)}</p>
 </section>
 <section class="feed">
-${articles.map(articleCard).join('\n')}
+${list.map((a) => articleCard(a, lang)).join('\n')}
 </section>
 <section class="about-strip">
-  <h2>What is AI Pulse?</h2>
-  <p>AI Pulse is an autonomous AI newsroom: an AI editor searches global news every day, reads the primary sources, and writes original, source-linked briefings on artificial intelligence — covering new models, research breakthroughs, policy and regulation, funding, and open-source releases worldwide.</p>
-  <h2>How are briefings produced?</h2>
-  <p>A daily pipeline researches the most significant AI stories from the past 24 hours, writes each briefing from scratch with citations to primary sources, and publishes automatically. Every page lists its sources so readers can verify every claim. There are no ads, trackers, or paywalls.</p>
+  <h2>${t.whatH}</h2>
+  <p>${esc(t.what)}</p>
+  <h2>${t.howH}</h2>
+  <p>${esc(t.how)}</p>
 </section>`;
-  await writeFile(join(SITE, 'index.html'), page({
-    title: `AI Pulse — Daily AI News Briefings, Written by AI`,
-    description: `Daily, source-linked briefings on AI models, research, policy, and industry, researched and written autonomously by an AI newsroom.${latest ? ` Latest: ${latest.title}` : ''}`.slice(0, 158),
-    canonical: `${BASE}/`,
+  const latest = list[0];
+  await writeFile(join(dir, 'index.html'), page({
+    lang,
+    title: lang === 'zh' ? 'AI Pulse — 由 AI 撰写的每日 AI 简报' : 'AI Pulse — Daily AI News Briefings, Written by AI',
+    description: (lang === 'zh'
+      ? `AI 每日自主采编的中英双语 AI 资讯简报：模型、研究、政策与产业，每篇附原始信源。${latest ? `最新：${langOf(latest, 'zh').title}` : ''}`
+      : `Daily, source-linked briefings on AI models, research, policy, and industry, researched and written autonomously by an AI newsroom.${latest ? ` Latest: ${latest.title}` : ''}`).slice(0, 158),
+    canonical: urlFor(lang, ''),
+    altEn: `${BASE}/`, altZh: `${BASE}/zh/`,
     jsonLd: [
-      {
-        '@context': 'https://schema.org', '@type': 'WebSite',
-        name: SITE_NAME, url: `${BASE}/`, description: TAGLINE,
-        publisher: { '@type': 'Organization', name: SITE_NAME, url: `${BASE}/`, logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` } },
-      },
-      {
-        '@context': 'https://schema.org', '@type': 'Organization',
-        name: SITE_NAME, url: `${BASE}/`,
-        description: 'An autonomous AI newsroom publishing daily source-linked briefings on artificial intelligence.',
-        logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` },
-        sameAs: ['https://github.com/mmlong818/ai-pulse'],
-      },
-      {
-        '@context': 'https://schema.org', '@type': 'ItemList',
-        itemListElement: articles.slice(0, 10).map((a, i) => ({
-          '@type': 'ListItem', position: i + 1, url: `${BASE}/articles/${a.slug}.html`, name: a.title,
-        })),
-      },
+      { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, url: urlFor(lang, ''), description: t.tagline, inLanguage: lang === 'zh' ? 'zh-CN' : 'en',
+        publisher: { '@type': 'Organization', name: SITE_NAME, url: `${BASE}/`, logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` } } },
+      { '@context': 'https://schema.org', '@type': 'Organization', name: SITE_NAME, url: `${BASE}/`,
+        description: 'An autonomous AI newsroom publishing daily source-linked briefings on artificial intelligence, in English and Chinese.',
+        logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` }, sameAs: ['https://github.com/mmlong818/ai-pulse'] },
+      { '@context': 'https://schema.org', '@type': 'ItemList',
+        itemListElement: list.slice(0, 10).map((a, i) => ({ '@type': 'ListItem', position: i + 1, url: urlFor(lang, `articles/${a.slug}.html`), name: langOf(a, lang).title })) },
     ],
     body: indexBody,
   }));
 
-  // ---- 文章页 ----
-  for (const a of articles) {
+  // 文章页
+  for (const a of list) {
+    const c = langOf(a, lang);
     const sources = a.sources?.length
-      ? `<section class="sources"><h3>Sources</h3><ul>${a.sources.map((s) => `<li><a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.title)}</a></li>`).join('')}</ul></section>`
+      ? `<section class="sources"><h3>${t.sources}</h3><ul>${a.sources.map((s) => `<li><a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.title)}</a></li>`).join('')}</ul></section>`
       : '';
     const body = `
 <article class="article">
-  <div class="card-meta"><time datetime="${a.date}">${fmtDate(a.date)}</time>${a.tags.slice(0, 4).map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</div>
-  <h1>${esc(a.title)}</h1>
-  <p class="standfirst">${esc(a.summary)}</p>
-  ${mdToHtml(a.body)}
+  <div class="card-meta"><time datetime="${a.date}">${t.dateFmt(a.date)}</time>${a.tags.slice(0, 4).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}</div>
+  <h1>${esc(c.title)}</h1>
+  <p class="standfirst">${esc(c.summary)}</p>
+  ${mdToHtml(c.body)}
   ${sources}
-  <p class="backlink"><a href="${BASE}/">← All briefings</a></p>
+  <p class="backlink"><a href="${urlFor(lang, '')}">${t.back}</a></p>
 </article>`;
-    await writeFile(join(SITE, 'articles', `${a.slug}.html`), page({
-      title: `${a.title} — ${SITE_NAME}`,
-      description: a.summary.slice(0, 158),
-      canonical: `${BASE}/articles/${a.slug}.html`,
+    await writeFile(join(dir, 'articles', `${a.slug}.html`), page({
+      lang,
+      title: `${c.title} — ${SITE_NAME}`,
+      description: c.summary.slice(0, 158),
+      canonical: urlFor(lang, `articles/${a.slug}.html`),
+      altEn: `${BASE}/articles/${a.slug}.html`, altZh: `${BASE}/zh/articles/${a.slug}.html`,
       ogType: 'article',
-      jsonLd: {
-        '@context': 'https://schema.org', '@type': 'NewsArticle',
-        headline: a.title, description: a.summary, datePublished: a.date,
+      jsonLd: { '@context': 'https://schema.org', '@type': 'NewsArticle',
+        headline: c.title, description: c.summary, datePublished: a.date, inLanguage: lang === 'zh' ? 'zh-CN' : 'en',
         author: { '@type': 'Organization', name: `${SITE_NAME} AI Newsroom` },
         publisher: { '@type': 'Organization', name: SITE_NAME, logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` } },
-        mainEntityOfPage: `${BASE}/articles/${a.slug}.html`,
-      },
+        mainEntityOfPage: urlFor(lang, `articles/${a.slug}.html`) },
       body,
     }));
   }
 
-  // ---- About ----
-  const aboutBody = `
+  // About
+  const aboutBody = lang === 'zh' ? `
+<article class="article">
+  <h1>关于 AI Pulse</h1>
+  <p class="standfirst">${esc(t.tagline)}</p>
+  <p>AI Pulse 是一个自主发布实验。每天，AI 编辑检索全球人工智能领域最重要的进展，阅读原始信源，并以中英双语撰写原创简报——编辑环节没有人类介入。</p>
+  <h2>编辑原则</h2>
+  <ul>
+    <li><strong>附信源：</strong>每篇简报列出原始信源，一切可自行核验。</li>
+    <li><strong>原创撰写：</strong>所有简报从零写成，绝不复制来源文章。</li>
+    <li><strong>透明：</strong>本站由 AI 运营，并在每个页面清晰标注。</li>
+    <li><strong>更正：</strong>每日审校发现的事实错误会就地更正。</li>
+  </ul>
+  <h2>运作方式</h2>
+  <p>定时流水线每日运行：检索全球新闻 → 遴选最重要的报道 → 撰写附引用的简报 → 重建并发布本站。技术栈公开、简单、快速：无追踪器、无广告、无 Cookie。</p>
+</article>` : `
 <article class="article">
   <h1>About AI Pulse</h1>
-  <p class="standfirst">${esc(TAGLINE)}</p>
-  <p>AI Pulse is an experiment in autonomous publishing. Every day, an AI editor searches the web for the most significant developments in artificial intelligence, reads the primary sources, and writes original briefings — no human in the editorial loop.</p>
+  <p class="standfirst">${esc(t.tagline)}</p>
+  <p>AI Pulse is an experiment in autonomous publishing. Every day, an AI editor searches the web for the most significant developments in artificial intelligence, reads the primary sources, and writes original briefings in English and Chinese — no human in the editorial loop.</p>
   <h2>Editorial principles</h2>
   <ul>
     <li><strong>Source-linked:</strong> every briefing cites its primary sources, so you can verify everything yourself.</li>
@@ -182,32 +232,59 @@ ${articles.map(articleCard).join('\n')}
   <h2>How it works</h2>
   <p>A scheduled pipeline runs daily: search global news → select the most significant stories → write briefings with citations → rebuild and publish this static site. The stack is open, simple, and fast: no trackers, no ads, no cookies.</p>
 </article>`;
-  await writeFile(join(SITE, 'about.html'), page({
-    title: `About — ${SITE_NAME}: an Autonomous AI Newsroom`,
-    description: 'AI Pulse is an autonomous AI newsroom: an AI editor researches, writes, and publishes daily source-linked briefings on artificial intelligence.',
-    canonical: `${BASE}/about.html`,
-    jsonLd: { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About AI Pulse', url: `${BASE}/about.html` },
+  await writeFile(join(dir, 'about.html'), page({
+    lang,
+    title: lang === 'zh' ? '关于 — AI Pulse：自主运行的 AI 编辑部' : `About — ${SITE_NAME}: an Autonomous AI Newsroom`,
+    description: lang === 'zh'
+      ? 'AI Pulse 是自主运行的 AI 编辑部：AI 编辑每日检索、撰写并以中英双语发布附信源的人工智能简报。'
+      : 'AI Pulse is an autonomous AI newsroom: an AI editor researches, writes, and publishes daily source-linked briefings on artificial intelligence.',
+    canonical: urlFor(lang, 'about.html'),
+    altEn: `${BASE}/about.html`, altZh: `${BASE}/zh/about.html`,
+    jsonLd: { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About AI Pulse', url: urlFor(lang, 'about.html') },
     body: aboutBody,
   }));
 
-  // ---- RSS / sitemap / robots / llms.txt ----
-  const rssItems = articles.slice(0, 20).map((a) => `  <item>
-    <title>${esc(a.title)}</title>
-    <link>${BASE}/articles/${a.slug}.html</link>
-    <guid>${BASE}/articles/${a.slug}.html</guid>
+  // RSS
+  const rssItems = list.slice(0, 20).map((a) => {
+    const c = langOf(a, lang);
+    return `  <item>
+    <title>${esc(c.title)}</title>
+    <link>${urlFor(lang, `articles/${a.slug}.html`)}</link>
+    <guid>${urlFor(lang, `articles/${a.slug}.html`)}</guid>
     <pubDate>${new Date(a.date + 'T08:00:00Z').toUTCString()}</pubDate>
-    <description>${esc(a.summary)}</description>
-  </item>`).join('\n');
-  await writeFile(join(SITE, 'rss.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+    <description>${esc(c.summary)}</description>
+  </item>`;
+  }).join('\n');
+  await writeFile(join(SITE, lang === 'zh' ? 'rss-zh.xml' : 'rss.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"><channel>
-  <title>${SITE_NAME}</title>
-  <link>${BASE}/</link>
-  <description>${esc(TAGLINE)}</description>
-  <language>en</language>
+  <title>${SITE_NAME}${lang === 'zh' ? '（中文）' : ''}</title>
+  <link>${urlFor(lang, '')}</link>
+  <description>${esc(t.tagline)}</description>
+  <language>${lang === 'zh' ? 'zh-cn' : 'en'}</language>
 ${rssItems}
 </channel></rss>`);
 
-  const urls = [`${BASE}/`, `${BASE}/about.html`, ...articles.map((a) => `${BASE}/articles/${a.slug}.html`)];
+  return list;
+}
+
+async function build() {
+  const files = (await readdir(CONTENT)).filter((f) => f.endsWith('.json'));
+  const articles = [];
+  for (const f of files) articles.push(JSON.parse(await readFile(join(CONTENT, f), 'utf8')));
+  articles.sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
+
+  await mkdir(join(SITE, 'assets'), { recursive: true });
+  if (existsSync(join(ROOT, 'assets'))) await cp(join(ROOT, 'assets'), join(SITE, 'assets'), { recursive: true });
+
+  const en = await buildLang(articles, 'en');
+  const zh = await buildLang(articles, 'zh');
+
+  // sitemap（双语 + hreflang 由页面承担）
+  const urls = [
+    `${BASE}/`, `${BASE}/about.html`, `${BASE}/zh/`, `${BASE}/zh/about.html`,
+    ...en.map((a) => `${BASE}/articles/${a.slug}.html`),
+    ...zh.map((a) => `${BASE}/zh/articles/${a.slug}.html`),
+  ];
   await writeFile(join(SITE, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}
@@ -220,7 +297,7 @@ Sitemap: ${BASE}/sitemap.xml`);
 
   await writeFile(join(SITE, 'llms.txt'), `# ${SITE_NAME}
 
-> ${TAGLINE} Original, source-linked daily briefings on AI models, research, policy, and industry. Free to read; no ads, trackers, or paywalls.
+> ${T.en.tagline} Original, source-linked daily briefings on AI models, research, policy, and industry — published in English and Chinese. Free to read; no ads, trackers, or paywalls.
 
 ## Latest briefings
 
@@ -228,19 +305,20 @@ ${articles.slice(0, 15).map((a) => `- [${a.title}](${BASE}/articles/${a.slug}.ht
 
 ## Pages
 
-- [All briefings](${BASE}/): the full feed
+- [All briefings (English)](${BASE}/): the full feed
+- [全部简报（中文）](${BASE}/zh/): Chinese edition
 - [About](${BASE}/about.html): editorial principles and how the autonomous newsroom works
-- [RSS](${BASE}/rss.xml): machine-readable feed
+- [RSS English](${BASE}/rss.xml) / [RSS 中文](${BASE}/rss-zh.xml): machine-readable feeds
 
 ## Optional
 
 - [Source code](https://github.com/mmlong818/ai-pulse): the open pipeline that researches, writes, and publishes this site
 - Coverage areas: AI models, research, policy & regulation, industry, funding, open source, safety
-- Update cadence: daily; each briefing cites 1-3 primary sources
+- Update cadence: daily; each briefing cites 1-3 primary sources; bilingual (en, zh-CN)
 `);
 
   await writeFile(join(SITE, '.nojekyll'), '');
-  console.log(`构建完成: ${articles.length} 篇文章, ${urls.length} 个页面`);
+  console.log(`构建完成: EN ${en.length} 篇 / ZH ${zh.length} 篇, ${urls.length} 个页面`);
 }
 
 build();
