@@ -2,6 +2,7 @@
 import { spawn } from 'node:child_process';
 import { writeFile, readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
+import { fetchFreshHeadlines } from './feeds.mjs';
 
 const ROOT = new URL('.', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const CONTENT = join(ROOT, 'content');
@@ -29,12 +30,14 @@ function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
 
 const parseJson = (raw, open, close) => JSON.parse(raw.slice(raw.indexOf(open), raw.lastIndexOf(close) + 1));
 
-const SOURCE_GUIDE = `SOURCE COVERAGE — cast a wide net, do multiple searches across source types:
-- Official lab/company blogs and release notes (OpenAI, Anthropic, Google DeepMind, Meta, xAI, Mistral, DeepSeek, Alibaba/Qwen, Moonshot, Zhipu...)
-- X (Twitter): significant announcements or research threads that broke on X; when a story originated on X, include the original X post URL among the sources.
-- arXiv and research venues for notable papers
-- International outlets across regions: US/EU tech press, Reuters/FT, Asia (SCMP, Nikkei, 36氪, 机器之心), etc.
-Prefer primary sources (the lab's own post/paper/X thread) over secondhand reporting when available.`;
+const SOURCE_GUIDE = `SOURCE POLICY:
+1. START from the CANDIDATE HEADLINES below — they come from first-tier feeds and their timestamps are already verified. Prefer them.
+2. Use web search to (a) enrich selected stories with primary sources and detail, and (b) catch major stories the feeds missed — especially labs without feeds (Anthropic, Mistral, xAI, DeepSeek, Alibaba/Qwen, Moonshot, Zhipu), significant X (Twitter) announcements/threads (cite the original X post URL), arXiv papers, and Asia coverage (SCMP, Nikkei, 36氪).
+3. Prefer primary sources (the lab's own post/paper/X thread) over secondhand reporting when available.`;
+
+const digestOf = (headlines) => headlines
+  .map((h) => `- ${h.date.toISOString().slice(0, 10)} [${h.source}] ${h.title} — ${h.link}`)
+  .join('\n');
 
 async function existingTitles() {
   const files = (await readdir(CONTENT).catch(() => [])).filter((f) => f.endsWith('.json') && !f.startsWith('radar-'));
@@ -45,12 +48,15 @@ async function existingTitles() {
   return titles;
 }
 
-async function generateBriefings(skipTitles) {
-  const prompt = `You are the sole editor of "AI Pulse", an autonomous bilingual AI news site. Today is ${today}.
+async function generateBriefings(skipTitles, digest) {
+  const prompt = `You are the sole editor of "AI Focus Bulletin" (AI专注速报), an autonomous bilingual AI news site. Today is ${today}.
 
-TASK: Use web search to find the ${COUNT} most significant AI news stories from the last 24-48 hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original briefing for each, in English AND Chinese.
+TASK: Select the ${COUNT} most significant AI news stories from the last 24-48 hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original briefing for each, in English AND Chinese.
 
 ${SOURCE_GUIDE}
+
+CANDIDATE HEADLINES (first-tier feeds, timestamps verified):
+${digest}
 
 RULES:
 - ORIGINAL writing only. Never copy sentences from sources. Summarize and analyze in your own words.
@@ -92,12 +98,15 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
   return articles.map((a) => a.title);
 }
 
-async function generateRadar(skipTitles) {
-  const prompt = `You are the news-radar editor of "AI Pulse". Today is ${today}.
+async function generateRadar(skipTitles, digest) {
+  const prompt = `You are the news-radar editor of "AI Focus Bulletin" (AI专注速报). Today is ${today}.
 
-TASK: Use web search to collect ${RADAR_COUNT} SHORT AI news items from the last 24-48 hours — the wider AI-circle chatter beyond the day's headline stories: product updates, notable open-source releases, papers, funding rounds, executive moves, benchmark results, policy tidbits, notable X threads. Global coverage.
+TASK: Collect ${RADAR_COUNT} SHORT AI news items from the last 24-48 hours — the wider AI-circle chatter beyond the day's headline stories: product updates, notable open-source releases, papers, funding rounds, executive moves, benchmark results, policy tidbits, notable X threads. Global coverage.
 
 ${SOURCE_GUIDE}
+
+CANDIDATE HEADLINES (first-tier feeds, timestamps verified):
+${digest}
 
 RULES:
 - Each item: ONE factual sentence in English (max 30 words) + native-quality Chinese version.
@@ -137,9 +146,12 @@ async function recentRadarTexts() {
 async function main() {
   const skip = await existingTitles();
   console.log(`[generate] 深度简报 ${COUNT} 篇 + 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);
-  const newTitles = await generateBriefings(skip);
+  const headlines = await fetchFreshHeadlines();
+  console.log(`[generate] 一级信源候选 ${headlines.length} 条`);
+  const digest = digestOf(headlines) || '(feeds unavailable this run — rely on web search, verify dates strictly)';
+  const newTitles = await generateBriefings(skip, digest);
   try {
-    await generateRadar([...skip.slice(-15), ...newTitles, ...(await recentRadarTexts())]);
+    await generateRadar([...skip.slice(-15), ...newTitles, ...(await recentRadarTexts())], digest);
   } catch (e) {
     console.error('[generate] 雷达失败（不影响简报发布）:', e.message);
   }
