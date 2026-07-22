@@ -133,7 +133,7 @@ function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd,
 ${body}
 </main>
 <footer class="footer">
-  <p><strong>${BRAND[lang]}</strong>${lang === 'zh' ? ' - 猫叔AI作品。' : ` — ${esc(t.tagline)}`}</p>
+  <p><strong>${BRAND[lang]}</strong>${lang === 'zh' ? ' - 猫叔AI作品。' : ' - An AI work by Maoshu (猫叔).'}</p>
   <p>${esc(t.footer1)} <a href="${about}">${t.footer2}</a> · <span id="siteViews"></span></p>
 </footer>
 <script src="${BASE}/assets/pulse.js" defer></script>
