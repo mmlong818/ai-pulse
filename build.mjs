@@ -90,7 +90,7 @@ const langOf = (a, lang) => ({
   body: lang === 'zh' && a.body_zh ? a.body_zh : a.body,
 });
 
-function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd, ogType = 'website', slug = '' }) {
+function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd, ogType = 'website', slug = '', isHome = false }) {
   const t = T[lang];
   const rss = lang === 'zh' ? `${BASE}/rss-zh.xml` : `${BASE}/rss.xml`;
   const home = lang === 'zh' ? `${BASE}/zh/` : `${BASE}/`;
@@ -122,7 +122,11 @@ function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd,
 </head>
 <body data-slug="${esc(slug)}" data-lang="${lang}">
 <header class="masthead">
-  <a class="brand" href="${home}">⚡ ${BRAND[lang]}</a>
+  <div class="brand-block">
+    ${isHome
+      ? `<h1 class="brand-h1"><a class="brand" href="${home}">⚡ ${BRAND[lang]}</a></h1>\n    <p class="masthead-lede">${esc(t.lede)}</p>`
+      : `<a class="brand" href="${home}">⚡ ${BRAND[lang]}</a>`}
+  </div>
   <nav><a href="${home}">${t.nav.feed}</a><a href="${about}">${t.nav.about}</a><a href="${favs}">${t.nav.favs}</a><a href="${rss}">${t.nav.rss}</a><a href="${langLink}" class="lang-switch">${t.nav.lang}</a></nav>
 </header>
 <main class="wrap">
@@ -189,10 +193,6 @@ async function buildLang(articles, radars, lang) {
 
   // 首页
   const indexBody = `
-<section class="hero">
-  <h1>${t.heroTitle}</h1>
-  <p class="lede">${esc(t.lede)}</p>
-</section>
 ${featured ? featuredHero(featured, lang) : ''}
 ${catBar}
 ${latestRadar ? radarSection(latestRadar, lang) : ''}
@@ -224,6 +224,7 @@ ${rest.map((a) => articleCard(a, lang)).join('\n')}
         itemListElement: list.slice(0, 10).map((a, i) => ({ '@type': 'ListItem', position: i + 1, url: urlFor(lang, `articles/${a.slug}.html`), name: langOf(a, lang).title })) },
     ],
     body: indexBody,
+    isHome: true,
   }));
 
   // 文章页
