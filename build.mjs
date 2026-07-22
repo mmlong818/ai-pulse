@@ -9,6 +9,18 @@ const SITE = join(ROOT, 'docs');
 const BASE = process.env.AIPULSE_BASE || 'https://mmlong818.github.io/ai-pulse';
 const SITE_NAME = 'AI Pulse';
 
+const TAG_META = {
+  'Models': { slug: 'models', zh: '模型' },
+  'Research': { slug: 'research', zh: '研究' },
+  'Policy': { slug: 'policy', zh: '政策' },
+  'Industry': { slug: 'industry', zh: '产业' },
+  'Funding': { slug: 'funding', zh: '融资' },
+  'Open Source': { slug: 'open-source', zh: '开源' },
+  'Safety': { slug: 'safety', zh: '安全' },
+};
+const tagLabel = (tag, lang) => (lang === 'zh' ? (TAG_META[tag]?.zh || tag) : tag);
+const tagUrl = (tag, lang) => TAG_META[tag] ? urlFor(lang, `category/${TAG_META[tag].slug}.html`) : urlFor(lang, '');
+
 const T = {
   en: {
     tagline: 'The daily AI briefing — researched, written, and published autonomously by AI.',
@@ -23,6 +35,8 @@ const T = {
     howH: 'How are briefings produced?',
     how: 'A daily pipeline researches the most significant AI stories from the past 24 hours, writes each briefing from scratch with citations to primary sources, and publishes automatically in English and Chinese. Every page lists its sources so readers can verify every claim. There are no ads, trackers, or paywalls.',
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
+    featured: "★ Editor's pick", radar: 'Daily Radar', radarLede: 'Quick hits from across the AI world in the last 24 hours.',
+    radarArchive: 'Radar archive', related: 'Related briefings', catTitle: (n) => `${n} — Category`, allCats: 'Browse by topic',
   },
   zh: {
     tagline: '每日 AI 简报 —— 由 AI 自主检索、撰写与发布。',
@@ -37,6 +51,8 @@ const T = {
     howH: '简报如何产出？',
     how: '每日流水线检索过去 24 小时最重要的 AI 新闻，逐篇原创撰写并标注原始信源，以中英双语自动发布。每个页面都列出信源，读者可以核验每一条信息。没有广告、追踪器和付费墙。',
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
+    featured: '★ 编辑推荐', radar: '每日雷达', radarLede: '过去 24 小时 AI 圈的一句话快讯。',
+    radarArchive: '雷达存档', related: '相关简报', catTitle: (n) => `${n} · 分类`, allCats: '按主题浏览',
   },
 };
 
@@ -122,20 +138,53 @@ ${body}
 
 const urlFor = (lang, path) => lang === 'zh' ? `${BASE}/zh/${path}` : `${BASE}/${path}`;
 
+const tagChips = (a, lang, n = 3) => a.tags.slice(0, n).map((x) => `<a class="tag" href="${tagUrl(x, lang)}">${esc(tagLabel(x, lang))}</a>`).join('');
+
 function articleCard(a, lang) {
   const t = T[lang], c = langOf(a, lang);
   return `<article class="card">
-  <div class="card-meta"><time datetime="${a.date}">${t.dateFmt(a.date)}</time>${a.tags.slice(0, 3).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}</div>
+  <div class="card-meta"><time datetime="${a.date}">${t.dateFmt(a.date)}</time>${tagChips(a, lang)}</div>
   <h2><a href="${urlFor(lang, `articles/${a.slug}.html`)}">${esc(c.title)}</a></h2>
   <p>${esc(c.summary)}</p>
 </article>`;
 }
 
-async function buildLang(articles, lang) {
+function featuredHero(a, lang) {
+  const t = T[lang], c = langOf(a, lang);
+  const reason = lang === 'zh' ? (a.featured_reason_zh || a.featured_reason) : a.featured_reason;
+  return `<article class="card featured-card">
+  <div class="card-meta"><span class="featured-badge">${t.featured}</span><time datetime="${a.date}">${t.dateFmt(a.date)}</time>${tagChips(a, lang)}</div>
+  <h2><a href="${urlFor(lang, `articles/${a.slug}.html`)}">${esc(c.title)}</a></h2>
+  <p>${esc(c.summary)}</p>
+  ${reason ? `<p class="featured-reason">${esc(reason)}</p>` : ''}
+</article>`;
+}
+
+function radarSection(radar, lang, { linkArchive = true } = {}) {
+  const t = T[lang];
+  const items = radar.items.map((i) => `<li><a class="tag" href="${tagUrl(i.tag, lang)}">${esc(tagLabel(i.tag, lang))}</a> ${esc(lang === 'zh' && i.text_zh ? i.text_zh : i.text)} <a class="radar-src" href="${esc(i.url)}" rel="noopener" target="_blank">${esc(i.source || 'source')} ↗</a></li>`).join('\n');
+  return `<section class="radar">
+  <div class="block-head"><h2>📡 ${t.radar} · ${t.dateFmt(radar.date)}</h2>${linkArchive ? `<a class="radar-archive-link" href="${urlFor(lang, `radar/${radar.date}.html`)}">#</a>` : ''}</div>
+  <p class="radar-lede">${esc(t.radarLede)}</p>
+  <ul class="radar-list">
+${items}
+  </ul>
+</section>`;
+}
+
+async function buildLang(articles, radars, lang) {
   const t = T[lang];
   const dir = lang === 'zh' ? join(SITE, 'zh') : SITE;
   await mkdir(join(dir, 'articles'), { recursive: true });
+  await mkdir(join(dir, 'category'), { recursive: true });
+  await mkdir(join(dir, 'radar'), { recursive: true });
   const list = lang === 'zh' ? articles.filter((a) => a.body_zh) : articles;
+
+  const featured = list.find((a) => a.featured);
+  const rest = featured ? list.filter((a) => a !== featured) : list;
+  const activeTags = Object.keys(TAG_META).filter((tag) => list.some((a) => a.tags.includes(tag)));
+  const catBar = `<nav class="cat-bar"><span>${t.allCats}:</span>${activeTags.map((tag) => `<a class="tag" href="${tagUrl(tag, lang)}">${esc(tagLabel(tag, lang))}</a>`).join('')}</nav>`;
+  const latestRadar = radars[0];
 
   // 首页
   const indexBody = `
@@ -143,8 +192,11 @@ async function buildLang(articles, lang) {
   <h1>${t.heroTitle}</h1>
   <p class="lede">${esc(t.lede)}</p>
 </section>
+${featured ? featuredHero(featured, lang) : ''}
+${catBar}
+${latestRadar ? radarSection(latestRadar, lang) : ''}
 <section class="feed">
-${list.map((a) => articleCard(a, lang)).join('\n')}
+${rest.map((a) => articleCard(a, lang)).join('\n')}
 </section>
 <section class="about-strip">
   <h2>${t.whatH}</h2>
@@ -179,14 +231,21 @@ ${list.map((a) => articleCard(a, lang)).join('\n')}
     const sources = a.sources?.length
       ? `<section class="sources"><h3>${t.sources}</h3><ul>${a.sources.map((s) => `<li><a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.title)}</a></li>`).join('')}</ul></section>`
       : '';
+    const related = rest.concat(featured ? [featured] : [])
+      .filter((b) => b.slug !== a.slug && b.tags.some((x) => a.tags.includes(x)))
+      .slice(0, 3);
+    const relatedHtml = related.length
+      ? `<section class="related"><h3>${t.related}</h3><ul>${related.map((b) => `<li><a href="${urlFor(lang, `articles/${b.slug}.html`)}">${esc(langOf(b, lang).title)}</a></li>`).join('')}</ul></section>`
+      : '';
     const body = `
 <article class="article">
-  <div class="card-meta"><time datetime="${a.date}">${t.dateFmt(a.date)}</time>${a.tags.slice(0, 4).map((x) => `<span class="tag">${esc(x)}</span>`).join('')}<span class="views" id="viewCount"></span></div>
+  <div class="card-meta"><time datetime="${a.date}">${t.dateFmt(a.date)}</time>${tagChips(a, lang, 4)}<span class="views" id="viewCount"></span></div>
   <h1>${esc(c.title)}</h1>
   <p class="standfirst">${esc(c.summary)}</p>
   ${mdToHtml(c.body)}
   <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
   ${sources}
+  ${relatedHtml}
   <p class="backlink"><a href="${urlFor(lang, '')}">${t.back}</a></p>
 </article>`;
     await writeFile(join(dir, 'articles', `${a.slug}.html`), page({
@@ -247,6 +306,46 @@ ${list.map((a) => articleCard(a, lang)).join('\n')}
     body: aboutBody,
   }));
 
+  // 分类页
+  for (const tag of activeTags) {
+    const meta = TAG_META[tag];
+    const catList = list.filter((a) => a.tags.includes(tag));
+    await writeFile(join(dir, 'category', `${meta.slug}.html`), page({
+      lang,
+      title: `${tagLabel(tag, lang)} — ${SITE_NAME}`,
+      description: lang === 'zh'
+        ? `AI Pulse「${meta.zh}」分类下的全部简报（${catList.length} 篇），AI 每日采编，附原始信源。`
+        : `All AI Pulse briefings in the ${tag} category (${catList.length}), researched daily by an AI newsroom with linked sources.`,
+      canonical: urlFor(lang, `category/${meta.slug}.html`),
+      altEn: `${BASE}/category/${meta.slug}.html`, altZh: `${BASE}/zh/category/${meta.slug}.html`,
+      jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: tagLabel(tag, lang), url: urlFor(lang, `category/${meta.slug}.html`) },
+      body: `
+<section class="hero"><h1>${t.catTitle(tagLabel(tag, lang))}</h1></section>
+${catBar}
+<section class="feed">
+${catList.map((a) => articleCard(a, lang)).join('\n')}
+</section>`,
+    }));
+  }
+
+  // 雷达存档页
+  for (const radar of radars) {
+    await writeFile(join(dir, 'radar', `${radar.date}.html`), page({
+      lang,
+      title: `${t.radar} ${radar.date} — ${SITE_NAME}`,
+      description: lang === 'zh'
+        ? `${radar.date} AI 圈一句话快讯 ${radar.items.length} 条：产品、论文、开源、融资与政策动态。`
+        : `${radar.items.length} quick AI news hits for ${radar.date}: products, papers, open source, funding, and policy.`,
+      canonical: urlFor(lang, `radar/${radar.date}.html`),
+      altEn: `${BASE}/radar/${radar.date}.html`, altZh: `${BASE}/zh/radar/${radar.date}.html`,
+      jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: `${t.radar} ${radar.date}`, url: urlFor(lang, `radar/${radar.date}.html`) },
+      body: `
+${radarSection(radar, lang, { linkArchive: false })}
+<p class="backlink"><a href="${urlFor(lang, '')}">${t.back}</a></p>
+${radars.length > 1 ? `<section class="about-strip"><h2>${t.radarArchive}</h2><ul>${radars.map((r) => `<li><a href="${urlFor(lang, `radar/${r.date}.html`)}">${r.date}</a>（${r.items.length}）</li>`).join('')}</ul></section>` : ''}`,
+    }));
+  }
+
   // 收藏页（内容由 pulse.js 从 localStorage 渲染）
   await writeFile(join(dir, 'favorites.html'), page({
     lang,
@@ -286,21 +385,34 @@ ${rssItems}
 
 async function build() {
   const files = (await readdir(CONTENT)).filter((f) => f.endsWith('.json'));
-  const articles = [];
-  for (const f of files) articles.push(JSON.parse(await readFile(join(CONTENT, f), 'utf8')));
+  const articles = [], radars = [];
+  for (const f of files) {
+    const data = JSON.parse(await readFile(join(CONTENT, f), 'utf8'));
+    if (f.startsWith('radar-')) radars.push(data);
+    else articles.push(data);
+  }
   articles.sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
+  radars.sort((a, b) => b.date.localeCompare(a.date));
+  // 只让最新一天的 featured 上首页头条位
+  const latestDate = articles[0]?.date;
+  for (const a of articles) if (a.featured && a.date !== latestDate) a.featured = false;
 
   await mkdir(join(SITE, 'assets'), { recursive: true });
   if (existsSync(join(ROOT, 'assets'))) await cp(join(ROOT, 'assets'), join(SITE, 'assets'), { recursive: true });
 
-  const en = await buildLang(articles, 'en');
-  const zh = await buildLang(articles, 'zh');
+  const en = await buildLang(articles, radars, 'en');
+  const zh = await buildLang(articles, radars, 'zh');
+
+  const catSlugs = Object.values(TAG_META).map((m) => m.slug).filter((slug) =>
+    existsSync(join(SITE, 'category', `${slug}.html`)));
 
   // sitemap（双语 + hreflang 由页面承担）
   const urls = [
     `${BASE}/`, `${BASE}/about.html`, `${BASE}/zh/`, `${BASE}/zh/about.html`,
     ...en.map((a) => `${BASE}/articles/${a.slug}.html`),
     ...zh.map((a) => `${BASE}/zh/articles/${a.slug}.html`),
+    ...catSlugs.flatMap((s) => [`${BASE}/category/${s}.html`, `${BASE}/zh/category/${s}.html`]),
+    ...radars.flatMap((r) => [`${BASE}/radar/${r.date}.html`, `${BASE}/zh/radar/${r.date}.html`]),
   ];
   await writeFile(join(SITE, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -326,6 +438,8 @@ ${articles.slice(0, 15).map((a) => `- [${a.title}](${BASE}/articles/${a.slug}.ht
 - [全部简报（中文）](${BASE}/zh/): Chinese edition
 - [About](${BASE}/about.html): editorial principles and how the autonomous newsroom works
 - [RSS English](${BASE}/rss.xml) / [RSS 中文](${BASE}/rss-zh.xml): machine-readable feeds
+${radars[0] ? `- [Daily Radar](${BASE}/radar/${radars[0].date}.html): today's quick hits across the AI world (${radars[0].items.length} items)` : ''}
+- Categories: ${catSlugs.map((s) => `[${s}](${BASE}/category/${s}.html)`).join(', ')}
 
 ## Optional
 
@@ -335,7 +449,7 @@ ${articles.slice(0, 15).map((a) => `- [${a.title}](${BASE}/articles/${a.slug}.ht
 `);
 
   await writeFile(join(SITE, '.nojekyll'), '');
-  console.log(`构建完成: EN ${en.length} 篇 / ZH ${zh.length} 篇, ${urls.length} 个页面`);
+  console.log(`构建完成: EN ${en.length} 篇 / ZH ${zh.length} 篇 / 雷达 ${radars.length} 天 / 分类 ${catSlugs.length} 个, ${urls.length} 个页面`);
 }
 
 build();

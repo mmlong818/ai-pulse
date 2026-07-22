@@ -1,14 +1,15 @@
-// AI 采编流水线：claude -p + WebSearch 采集全球 AI 新闻并撰写原创英文简报
+// AI 采编流水线：深度简报（双语）+ 每日雷达快讯（双语）
 import { spawn } from 'node:child_process';
-import { writeFile, readdir } from 'node:fs/promises';
+import { writeFile, readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const ROOT = new URL('.', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const CONTENT = join(ROOT, 'content');
-const COUNT = Number(process.argv[2] || 5);
+const COUNT = Number(process.argv[2] || 6);
+const RADAR_COUNT = 14;
 const today = new Date().toISOString().slice(0, 10);
 
-function runClaude(prompt, { timeoutMs = 900000 } = {}) {
+function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
   return new Promise((resolve, reject) => {
     const child = spawn('claude', ['-p', '--output-format', 'text', '--allowedTools', 'WebSearch,WebFetch'], {
       shell: true, windowsHide: true, timeout: timeoutMs,
@@ -26,30 +27,38 @@ function runClaude(prompt, { timeoutMs = 900000 } = {}) {
   });
 }
 
-async function main() {
-  const existing = (await readdir(CONTENT).catch(() => [])).filter((f) => f.endsWith('.json'));
-  const existingTitles = [];
-  for (const f of existing.slice(-30)) {
-    try { existingTitles.push(JSON.parse(await (await import('node:fs/promises')).readFile(join(CONTENT, f), 'utf8')).title); } catch {}
-  }
+const parseJson = (raw, open, close) => JSON.parse(raw.slice(raw.indexOf(open), raw.lastIndexOf(close) + 1));
 
-  const prompt = `You are the sole editor of "AI Pulse", an autonomous AI news site. Today is ${today}.
-
-TASK: Use web search to find the ${COUNT} most significant AI news stories from the last 24-48 hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original English briefing for each.
-
-SOURCE COVERAGE — cast a wide net, do multiple searches across source types:
+const SOURCE_GUIDE = `SOURCE COVERAGE — cast a wide net, do multiple searches across source types:
 - Official lab/company blogs and release notes (OpenAI, Anthropic, Google DeepMind, Meta, xAI, Mistral, DeepSeek, Alibaba/Qwen, Moonshot, Zhipu...)
-- X (Twitter): search for significant announcements or research threads that broke on X (e.g. queries like "announcement site:x.com" or news coverage quoting X posts by labs and prominent researchers). When a story originated on X, include the original X post URL among the sources.
+- X (Twitter): significant announcements or research threads that broke on X; when a story originated on X, include the original X post URL among the sources.
 - arXiv and research venues for notable papers
 - International outlets across regions: US/EU tech press, Reuters/FT, Asia (SCMP, Nikkei, 36氪, 机器之心), etc.
-Prefer primary sources (the lab's own post/paper/X thread) over secondhand reporting when available.
+Prefer primary sources (the lab's own post/paper/X thread) over secondhand reporting when available.`;
+
+async function existingTitles() {
+  const files = (await readdir(CONTENT).catch(() => [])).filter((f) => f.endsWith('.json') && !f.startsWith('radar-'));
+  const titles = [];
+  for (const f of files.slice(-40)) {
+    try { titles.push(JSON.parse(await readFile(join(CONTENT, f), 'utf8')).title); } catch {}
+  }
+  return titles;
+}
+
+async function generateBriefings(skipTitles) {
+  const prompt = `You are the sole editor of "AI Pulse", an autonomous bilingual AI news site. Today is ${today}.
+
+TASK: Use web search to find the ${COUNT} most significant AI news stories from the last 24-48 hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original briefing for each, in English AND Chinese.
+
+${SOURCE_GUIDE}
 
 RULES:
 - ORIGINAL writing only. Never copy sentences from sources. Summarize and analyze in your own words.
-- Each briefing: 250-450 words, neutral news-agency tone, explain why it matters in the last paragraph.
+- Each briefing: 250-450 words (EN), neutral news-agency tone, explain why it matters in the last paragraph.
 - Cite 1-3 real source URLs per story (the pages you actually found).
 - Titles: specific and factual, 45-65 characters, no clickbait.
-- Skip any story matching these already-published titles: ${existingTitles.length ? existingTitles.join(' | ') : '(none)'}
+- Mark EXACTLY ONE story as featured (the day's most consequential) and give a one-line reason in both languages.
+- Skip any story matching these already-published titles: ${skipTitles.length ? skipTitles.join(' | ') : '(none)'}
 
 OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each element:
 {
@@ -62,27 +71,63 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
   "body_zh": "中文正文 markdown，与英文版信息一致，行文要像中文科技媒体原生稿件而非翻译腔",
   "tags": ["Models" | "Research" | "Policy" | "Industry" | "Funding" | "Open Source" | "Safety"],
   "sources": [{"title": "Source page title", "url": "https://..."}],
+  "featured": false,
+  "featured_reason": "only on the featured story: one line on why it leads today",
+  "featured_reason_zh": "仅推荐条目：一句话推荐理由",
   "date": "${today}"
 }`;
-
-  console.log(`[generate] 采编 ${COUNT} 篇，日期 ${today} …`);
-  const raw = await runClaude(prompt);
-  const jsonText = raw.slice(raw.indexOf('['), raw.lastIndexOf(']') + 1);
-  const articles = JSON.parse(jsonText);
-
+  const articles = parseJson(await runClaude(prompt), '[', ']');
   let saved = 0;
   for (const a of articles) {
     if (!a.slug || !a.title || !a.body) continue;
     a.date = a.date || today;
     a.tags = a.tags || [];
     a.sources = a.sources || [];
-    const file = join(CONTENT, `${a.date}-${a.slug}.json`);
-    await writeFile(file, JSON.stringify(a, null, 2));
+    await writeFile(join(CONTENT, `${a.date}-${a.slug}.json`), JSON.stringify(a, null, 2));
     saved++;
-    console.log(`  + ${a.title}`);
+    console.log(`  + ${a.featured ? '★ ' : ''}${a.title}`);
   }
-  console.log(`[generate] 完成，保存 ${saved} 篇`);
-  if (saved === 0) process.exit(1);
+  if (saved === 0) throw new Error('简报 0 篇');
+  return articles.map((a) => a.title);
+}
+
+async function generateRadar(skipTitles) {
+  const prompt = `You are the news-radar editor of "AI Pulse". Today is ${today}.
+
+TASK: Use web search to collect ${RADAR_COUNT} SHORT AI news items from the last 24-48 hours — the wider AI-circle chatter beyond the day's headline stories: product updates, notable open-source releases, papers, funding rounds, executive moves, benchmark results, policy tidbits, notable X threads. Global coverage.
+
+${SOURCE_GUIDE}
+
+RULES:
+- Each item: ONE factual sentence in English (max 30 words) + native-quality Chinese version.
+- Every item MUST have a real source URL you actually found.
+- No overlap with these headline stories: ${skipTitles.join(' | ')}
+- Diverse: no more than 3 items on the same company.
+
+OUTPUT: ONLY a JSON object (no fence, no commentary):
+{
+  "date": "${today}",
+  "items": [
+    { "text": "...", "text_zh": "...", "url": "https://...", "source": "source site name", "tag": "Models|Research|Policy|Industry|Funding|Open Source|Safety" }
+  ]
+}`;
+  const radar = parseJson(await runClaude(prompt), '{', '}');
+  radar.items = (radar.items || []).filter((i) => i.text && i.url);
+  if (!radar.items.length) throw new Error('雷达 0 条');
+  await writeFile(join(CONTENT, `radar-${today}.json`), JSON.stringify(radar, null, 2));
+  console.log(`  + 雷达 ${radar.items.length} 条`);
+}
+
+async function main() {
+  const skip = await existingTitles();
+  console.log(`[generate] 深度简报 ${COUNT} 篇 + 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);
+  const newTitles = await generateBriefings(skip);
+  try {
+    await generateRadar([...skip.slice(-15), ...newTitles]);
+  } catch (e) {
+    console.error('[generate] 雷达失败（不影响简报发布）:', e.message);
+  }
+  console.log('[generate] 完成');
 }
 
 main().catch((e) => { console.error('[generate] 失败:', e.message); process.exit(1); });

@@ -3,7 +3,7 @@ chcp 65001 >nul
 cd /d "%~dp0"
 echo [%date% %time%] AI Pulse daily run start >> daily.log
 
-node generate.mjs 4 >> daily.log 2>&1
+node generate.mjs 6 >> daily.log 2>&1
 if errorlevel 1 (
   echo [%date% %time%] generate FAILED, skip publish >> daily.log
   exit /b 1
