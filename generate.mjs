@@ -54,6 +54,7 @@ ${SOURCE_GUIDE}
 
 RULES:
 - ORIGINAL writing only. Never copy sentences from sources. Summarize and analyze in your own words.
+- FRESHNESS: verify each story's ORIGINAL publication date on the source page (search results often resurface old news). If the story broke more than 48 hours ago, discard it and find another.
 - Each briefing: 250-450 words (EN), neutral news-agency tone, explain why it matters in the last paragraph.
 - Cite 1-3 real source URLs per story (the pages you actually found).
 - Titles: specific and factual, 45-65 characters, no clickbait.
@@ -101,21 +102,36 @@ ${SOURCE_GUIDE}
 RULES:
 - Each item: ONE factual sentence in English (max 30 words) + native-quality Chinese version.
 - Every item MUST have a real source URL you actually found.
-- No overlap with these headline stories: ${skipTitles.join(' | ')}
+- FRESHNESS IS MANDATORY: verify the ORIGINAL publication date of each item (open the source page or check the dateline; search results often resurface old news). Set "published" to that date. If you cannot confirm it is within the last 48 hours, DISCARD the item — a shorter list is better than stale items.
+- No overlap with these headline stories or recent radar items (also skip anything whose FACTS were already covered, even under a different wording): ${skipTitles.join(' | ')}
 - Diverse: no more than 3 items on the same company.
 
 OUTPUT: ONLY a JSON object (no fence, no commentary):
 {
   "date": "${today}",
   "items": [
-    { "text": "...", "text_zh": "...", "url": "https://...", "source": "source site name", "tag": "Models|Research|Policy|Industry|Funding|Open Source|Safety" }
+    { "text": "...", "text_zh": "...", "url": "https://...", "source": "source site name", "published": "YYYY-MM-DD", "tag": "Models|Research|Policy|Industry|Funding|Open Source|Safety" }
   ]
 }`;
   const radar = parseJson(await runClaude(prompt), '{', '}');
-  radar.items = (radar.items || []).filter((i) => i.text && i.url);
+  const cutoff = new Date(Date.now() - 2 * 86400000).toISOString().slice(0, 10);
+  radar.items = (radar.items || []).filter((i) => i.text && i.url)
+    .filter((i) => {
+      if (i.published && i.published < cutoff) { console.log(`  - 过滤旧闻(${i.published}): ${i.text_zh || i.text}`); return false; }
+      return true;
+    });
   if (!radar.items.length) throw new Error('雷达 0 条');
   await writeFile(join(CONTENT, `radar-${today}.json`), JSON.stringify(radar, null, 2));
   console.log(`  + 雷达 ${radar.items.length} 条`);
+}
+
+async function recentRadarTexts() {
+  const files = (await readdir(CONTENT).catch(() => [])).filter((f) => f.startsWith('radar-')).sort().slice(-2);
+  const texts = [];
+  for (const f of files) {
+    try { texts.push(...JSON.parse(await readFile(join(CONTENT, f), 'utf8')).items.map((i) => i.text)); } catch {}
+  }
+  return texts;
 }
 
 async function main() {
@@ -123,7 +139,7 @@ async function main() {
   console.log(`[generate] 深度简报 ${COUNT} 篇 + 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);
   const newTitles = await generateBriefings(skip);
   try {
-    await generateRadar([...skip.slice(-15), ...newTitles]);
+    await generateRadar([...skip.slice(-15), ...newTitles, ...(await recentRadarTexts())]);
   } catch (e) {
     console.error('[generate] 雷达失败（不影响简报发布）:', e.message);
   }
