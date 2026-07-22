@@ -38,6 +38,7 @@ const T = {
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
     featured: "★ Editor's pick", radar: 'Daily Radar', radarLede: 'Quick hits from across the AI world in the last 24 hours.',
     radarArchive: 'Radar archive', related: 'Related briefings', catTitle: (n) => `${n} — Category`, allCats: 'Browse by topic',
+    archive: 'Archive', archiveLede: 'Every briefing ever published, grouped by date.', moreLink: (n) => `View all ${n} briefings in the archive →`,
   },
   zh: {
     tagline: '每日 AI 简报 —— 由 AI 自主检索、撰写与发布。',
@@ -54,6 +55,7 @@ const T = {
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
     featured: '★ 编辑推荐', radar: '每日雷达', radarLede: '过去 24 小时 AI 圈的一句话快讯。',
     radarArchive: '雷达存档', related: '相关简报', catTitle: (n) => `${n} · 分类`, allCats: '按主题浏览',
+    archive: '存档', archiveLede: '全部历史简报，按日期分组，永久留存。', moreLink: (n) => `查看全部 ${n} 篇简报（存档）→`,
   },
 };
 
@@ -127,7 +129,7 @@ function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd,
       ? `<h1 class="brand-h1"><a class="brand" href="${home}">⚡ ${BRAND[lang]}</a></h1>\n    <p class="masthead-lede">${esc(t.lede)}</p>`
       : `<a class="brand" href="${home}">⚡ ${BRAND[lang]}</a>`}
   </div>
-  <nav><a href="${about}">${t.nav.about}</a><a href="${favs}">${t.nav.favs}</a><a href="${rss}">${t.nav.rss}</a><a href="${langLink}" class="lang-switch">${t.nav.lang}</a></nav>
+  <nav><a href="${lang === 'zh' ? `${BASE}/zh/archive.html` : `${BASE}/archive.html`}">${t.archive}</a><a href="${about}">${t.nav.about}</a><a href="${favs}">${t.nav.favs}</a><a href="${rss}">${t.nav.rss}</a><a href="${langLink}" class="lang-switch">${t.nav.lang}</a></nav>
 </header>
 <main class="wrap">
 ${body}
@@ -199,8 +201,9 @@ ${featured ? featuredHero(featured, lang) : ''}
 ${catBar}
 ${latestRadar ? radarSection(latestRadar, lang) : ''}
 <section class="feed">
-${rest.map((a) => articleCard(a, lang)).join('\n')}
+${rest.slice(0, 20).map((a) => articleCard(a, lang)).join('\n')}
 </section>
+${rest.length > 20 ? `<p class="more-link"><a href="${urlFor(lang, 'archive.html')}">${t.moreLink(list.length)}</a></p>` : ''}
 <section class="about-strip">
   <h2>${t.whatH}</h2>
   <p>${esc(t.what)}</p>
@@ -352,6 +355,29 @@ ${radars.length > 1 ? `<section class="about-strip"><h2>${t.radarArchive}</h2><u
     }));
   }
 
+  // 存档页：全部历史简报按日期分组，永久留存
+  const byDate = {};
+  for (const a of list) (byDate[a.date] ||= []).push(a);
+  const archiveBody = `
+<section class="hero"><h1>${t.archive}</h1><p class="lede">${esc(t.archiveLede)}</p></section>
+${Object.keys(byDate).sort().reverse().map((date) => `
+<section class="archive-day">
+  <h2>${t.dateFmt(date)}</h2>
+  <ul>${byDate[date].map((a) => `<li>${tagChips(a, lang, 1)} <a href="${urlFor(lang, `articles/${a.slug}.html`)}">${esc(langOf(a, lang).title)}</a></li>`).join('\n')}</ul>
+</section>`).join('\n')}
+${radars.length ? `<section class="archive-day"><h2>📡 ${t.radarArchive}</h2><ul>${radars.map((r) => `<li><a href="${urlFor(lang, `radar/${r.date}.html`)}">${t.dateFmt(r.date)}</a>（${r.items.length}）</li>`).join('')}</ul></section>` : ''}`;
+  await writeFile(join(dir, 'archive.html'), page({
+    lang,
+    title: lang === 'zh' ? `存档 — 全部简报 — ${BRAND.zh}` : `Archive — All briefings — ${SITE_NAME}`,
+    description: lang === 'zh'
+      ? `AI专注速报全部历史简报（${list.length} 篇）与每日雷达存档，按日期分组，永久留存。`
+      : `Every briefing published by ${SITE_NAME} (${list.length}) plus the Daily Radar archive, grouped by date.`,
+    canonical: urlFor(lang, 'archive.html'),
+    altEn: `${BASE}/archive.html`, altZh: `${BASE}/zh/archive.html`,
+    jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: t.archive, url: urlFor(lang, 'archive.html') },
+    body: archiveBody,
+  }));
+
   // 收藏页（内容由 pulse.js 从 localStorage 渲染）
   await writeFile(join(dir, 'favorites.html'), page({
     lang,
@@ -415,6 +441,7 @@ async function build() {
   // sitemap（双语 + hreflang 由页面承担）
   const urls = [
     `${BASE}/`, `${BASE}/about.html`, `${BASE}/zh/`, `${BASE}/zh/about.html`,
+    `${BASE}/archive.html`, `${BASE}/zh/archive.html`,
     ...en.map((a) => `${BASE}/articles/${a.slug}.html`),
     ...zh.map((a) => `${BASE}/zh/articles/${a.slug}.html`),
     ...catSlugs.flatMap((s) => [`${BASE}/category/${s}.html`, `${BASE}/zh/category/${s}.html`]),

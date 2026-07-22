@@ -145,7 +145,16 @@ OUTPUT: ONLY a JSON object (no fence, no commentary):
       return true;
     });
   if (!radar.items.length) throw new Error('雷达 0 条');
-  await writeFile(join(CONTENT, `radar-${today}.json`), JSON.stringify(radar, null, 2));
+  // 同日多班：合并进当天已有雷达（早班+晚班），按 URL/文本去重
+  const file = join(CONTENT, `radar-${today}.json`);
+  try {
+    const prev = JSON.parse(await readFile(file, 'utf8'));
+    const seen = new Set(prev.items.flatMap((i) => [i.url, i.text]));
+    const fresh = radar.items.filter((i) => !seen.has(i.url) && !seen.has(i.text));
+    radar.items = [...prev.items, ...fresh];
+    console.log(`  + 雷达并入当日已有 ${prev.items.length} 条，新增 ${fresh.length} 条`);
+  } catch {}
+  await writeFile(file, JSON.stringify(radar, null, 2));
   console.log(`  + 雷达 ${radar.items.length} 条`);
 }
 
