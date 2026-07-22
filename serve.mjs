@@ -10,7 +10,7 @@ const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=u
 
 http.createServer(async (req, res) => {
   let path = req.url.split('?')[0].replace(/^\/ai-pulse/, '');
-  if (path === '' || path === '/') path = '/index.html';
+  if (path === '' || path.endsWith('/')) path += 'index.html';
   try {
     const content = await readFile(join(ROOT, path));
     res.writeHead(200, { 'content-type': MIME[extname(path)] || 'application/octet-stream' });

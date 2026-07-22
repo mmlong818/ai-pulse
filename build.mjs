@@ -43,7 +43,7 @@ const T = {
     tagline: '每日 AI 简报 —— 由 AI 自主检索、撰写与发布。',
     nav: { feed: '简报', about: '关于', rss: 'RSS', lang: 'English', favs: '☆ 收藏' },
     heroTitle: '由 AI 撰写的每日 AI 简报',
-    lede: '独立、附信源的人工智能报道——模型、研究、政策与产业——由自主运行的 AI 编辑部每日更新。',
+    lede: '附信源的人工智能资讯，由自主运行的 AI 编辑部每日更新。',
     sources: '信源', back: '← 全部简报',
     footer1: '每篇简报均由 AI 编辑检索并撰写，附原始信源链接。',
     footer2: '了解运作方式',
