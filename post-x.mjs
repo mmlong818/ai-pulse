@@ -52,26 +52,32 @@ async function api(method, path, body) {
   return data;
 }
 
-async function composeDaily() {
+async function pickToday() {
   const files = (await readdir(CONTENT)).filter((f) => f.endsWith('.json'));
   const today = new Date().toISOString().slice(0, 10);
-  let featured = null, latest = null;
+  let featured = null, radar = null;
   for (const f of files) {
     const a = JSON.parse(await readFile(join(CONTENT, f), 'utf8'));
-    if (f.startsWith('radar-')) { if (a.date === today) latest = a; continue; }
-    if (a.date === today && a.featured) featured = a;
-  }
-  if (!featured) {
-    // 无 featured 时取当天任意一篇
-    for (const f of files) {
-      if (f.startsWith(today) && !f.includes('radar')) { featured = JSON.parse(await readFile(join(CONTENT, f), 'utf8')); break; }
-    }
+    if (f.startsWith('radar-')) { if (a.date === today) radar = a; continue; }
+    if (a.date === today && (a.featured || !featured)) featured = a.featured ? a : featured || a;
   }
   if (!featured) throw new Error('当天无内容可发');
-  const hour = new Date().getHours();
-  const edition = hour < 12 ? '早班' : '晚班';
-  const radarLine = latest ? `📡 今日雷达 ${latest.items.length} 条快讯\n` : '';
-  return `⚡ AI专注速报 · ${edition}\n\n★ ${featured.title_zh || featured.title}\n${radarLine}\n${BASE}/zh/`;
+  return { featured, radar };
+}
+
+function composeText(lang, { featured, radar }) {
+  const now = new Date();
+  const morning = now.getHours() < 12;
+  if (lang === 'zh') {
+    const dateStr = `${now.getMonth() + 1}月${now.getDate()}日`;
+    const edition = morning ? '早报' : '晚报';
+    const radarLine = radar ? `📡 今日雷达 ${radar.items.length} 条快讯\n` : '';
+    return `⚡ AI专注速报 · ${dateStr}${edition}\n\n★ ${featured.title_zh || featured.title}\n${radarLine}\n${BASE}/zh/`;
+  }
+  const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  const edition = morning ? 'Morning Edition' : 'Evening Edition';
+  const radarLine = radar ? `📡 Daily Radar: ${radar.items.length} quick hits\n` : '';
+  return `⚡ AI Focus Bulletin · ${edition}, ${dateStr}\n\n★ ${featured.title}\n${radarLine}\n${BASE}/`;
 }
 
 const [cmd, arg] = process.argv.slice(2);
@@ -84,11 +90,19 @@ if (cmd === 'verify') {
   const d = await api('POST', '/tweets', { text: arg });
   console.log('[post-x] 已发帖:', `https://x.com/i/status/${d.data.id}`);
 } else if (cmd === 'daily') {
-  const text = await composeDaily();
-  const d = await api('POST', '/tweets', { text });
-  console.log('[post-x] 已发布当期帖:', `https://x.com/i/status/${d.data.id}`);
+  const picks = await pickToday();
+  const zh = await api('POST', '/tweets', { text: composeText('zh', picks) });
+  console.log('[post-x] 中文帖已发布:', `https://x.com/i/status/${zh.data.id}`);
+  if (env('AIPULSE_POST_EN') !== '0') {
+    const gapMin = Number(env('AIPULSE_POST_GAP_MIN') || 10);
+    console.log(`[post-x] ${gapMin} 分钟后发布英文帖…`);
+    await new Promise((r) => setTimeout(r, gapMin * 60000));
+    const en = await api('POST', '/tweets', { text: composeText('en', picks) });
+    console.log('[post-x] 英文帖已发布:', `https://x.com/i/status/${en.data.id}`);
+  }
 } else if (cmd === 'preview') {
-  console.log(await composeDaily());
+  const picks = await pickToday();
+  console.log(composeText('zh', picks), '\n---\n', composeText('en', picks));
 } else {
   console.log('用法: verify | post "文本" | daily | preview');
 }
