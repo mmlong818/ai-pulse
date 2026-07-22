@@ -43,8 +43,9 @@ function parseFeed(xml, feed) {
   }).filter((i) => i.title && i.link && i.date && !isNaN(i.date));
 }
 
-export async function fetchFreshHeadlines({ hours = 48, maxPerFeed = 8 } = {}) {
-  const cutoff = Date.now() - hours * 3600000;
+export async function fetchFreshHeadlines({ hours = 48, maxPerFeed = 8, until = null } = {}) {
+  const untilMs = until ? until.getTime() : Date.now();
+  const cutoff = untilMs - hours * 3600000;
   const results = await Promise.allSettled(FEEDS.map(async (feed) => {
     const res = await fetch(feed.url, {
       headers: { 'user-agent': 'Mozilla/5.0 (AI Focus Bulletin feed reader)' },
@@ -53,7 +54,7 @@ export async function fetchFreshHeadlines({ hours = 48, maxPerFeed = 8 } = {}) {
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return parseFeed(await res.text(), feed)
-      .filter((i) => i.date.getTime() >= cutoff)
+      .filter((i) => i.date.getTime() >= cutoff && i.date.getTime() <= untilMs)
       .slice(0, maxPerFeed);
   }));
   const items = [];

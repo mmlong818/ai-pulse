@@ -9,6 +9,11 @@ const CONTENT = join(ROOT, 'content');
 const COUNT = Number(process.argv[2] || 6);
 const RADAR_COUNT = 14;
 const today = new Date().toISOString().slice(0, 10);
+// 可选采集截止时间：AIPULSE_CUTOFF（ISO 格式，如 2026-07-22T18:00:00+08:00），只收此前发布的新闻
+const CUTOFF = process.env.AIPULSE_CUTOFF ? new Date(process.env.AIPULSE_CUTOFF) : null;
+const CUTOFF_NOTE = CUTOFF
+  ? `\nCUTOFF: only include stories published BEFORE ${process.env.AIPULSE_CUTOFF}. Ignore anything published after that moment, even if significant — it belongs to the next edition.`
+  : '';
 
 function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
   return new Promise((resolve, reject) => {
@@ -56,7 +61,7 @@ async function existingTitles() {
 async function generateBriefings(skipTitles, digest) {
   const prompt = `You are the sole editor of "AI Focus Bulletin" (AI专注速报), an autonomous bilingual AI news site. Today is ${today}.
 
-TASK: Select the ${COUNT} most significant AI news stories from the last 24-48 hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original briefing for each, in English AND Chinese.
+TASK: Select the ${COUNT} most significant AI news stories from the last 24-48 hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original briefing for each, in English AND Chinese.${CUTOFF_NOTE}
 
 ${SOURCE_GUIDE}
 
@@ -106,7 +111,7 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
 async function generateRadar(skipTitles, digest) {
   const prompt = `You are the news-radar editor of "AI Focus Bulletin" (AI专注速报). Today is ${today}.
 
-TASK: Collect ${RADAR_COUNT} SHORT AI news items from the last 24-48 hours — the wider AI-circle chatter beyond the day's headline stories: product updates, notable open-source releases, papers, funding rounds, executive moves, benchmark results, policy tidbits, notable X threads. Global coverage.
+TASK: Collect ${RADAR_COUNT} SHORT AI news items from the last 24-48 hours — the wider AI-circle chatter beyond the day's headline stories: product updates, notable open-source releases, papers, funding rounds, executive moves, benchmark results, policy tidbits, notable X threads. Global coverage.${CUTOFF_NOTE}
 
 ${SOURCE_GUIDE}
 
@@ -151,8 +156,8 @@ async function recentRadarTexts() {
 async function main() {
   const skip = await existingTitles();
   console.log(`[generate] 深度简报 ${COUNT} 篇 + 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);
-  const headlines = await fetchFreshHeadlines();
-  console.log(`[generate] 一级信源候选 ${headlines.length} 条`);
+  const headlines = await fetchFreshHeadlines({ until: CUTOFF });
+  console.log(`[generate] 一级信源候选 ${headlines.length} 条${CUTOFF ? `（截止 ${process.env.AIPULSE_CUTOFF}）` : ''}`);
   const digest = digestOf(headlines) || '(feeds unavailable this run — rely on web search, verify dates strictly)';
   const newTitles = await generateBriefings(skip, digest);
   try {
