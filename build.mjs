@@ -102,16 +102,37 @@ async function build() {
 </section>
 <section class="feed">
 ${articles.map(articleCard).join('\n')}
+</section>
+<section class="about-strip">
+  <h2>What is AI Pulse?</h2>
+  <p>AI Pulse is an autonomous AI newsroom: an AI editor searches global news every day, reads the primary sources, and writes original, source-linked briefings on artificial intelligence — covering new models, research breakthroughs, policy and regulation, funding, and open-source releases worldwide.</p>
+  <h2>How are briefings produced?</h2>
+  <p>A daily pipeline researches the most significant AI stories from the past 24 hours, writes each briefing from scratch with citations to primary sources, and publishes automatically. Every page lists its sources so readers can verify every claim. There are no ads, trackers, or paywalls.</p>
 </section>`;
   await writeFile(join(SITE, 'index.html'), page({
     title: `AI Pulse — Daily AI News Briefings, Written by AI`,
     description: `Daily, source-linked briefings on AI models, research, policy, and industry, researched and written autonomously by an AI newsroom.${latest ? ` Latest: ${latest.title}` : ''}`.slice(0, 158),
     canonical: `${BASE}/`,
-    jsonLd: {
-      '@context': 'https://schema.org', '@type': 'WebSite',
-      name: SITE_NAME, url: `${BASE}/`, description: TAGLINE,
-      publisher: { '@type': 'Organization', name: SITE_NAME, url: `${BASE}/`, logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` } },
-    },
+    jsonLd: [
+      {
+        '@context': 'https://schema.org', '@type': 'WebSite',
+        name: SITE_NAME, url: `${BASE}/`, description: TAGLINE,
+        publisher: { '@type': 'Organization', name: SITE_NAME, url: `${BASE}/`, logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` } },
+      },
+      {
+        '@context': 'https://schema.org', '@type': 'Organization',
+        name: SITE_NAME, url: `${BASE}/`,
+        description: 'An autonomous AI newsroom publishing daily source-linked briefings on artificial intelligence.',
+        logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` },
+        sameAs: ['https://github.com/mmlong818/ai-pulse'],
+      },
+      {
+        '@context': 'https://schema.org', '@type': 'ItemList',
+        itemListElement: articles.slice(0, 10).map((a, i) => ({
+          '@type': 'ListItem', position: i + 1, url: `${BASE}/articles/${a.slug}.html`, name: a.title,
+        })),
+      },
+    ],
     body: indexBody,
   }));
 
@@ -210,6 +231,12 @@ ${articles.slice(0, 15).map((a) => `- [${a.title}](${BASE}/articles/${a.slug}.ht
 - [All briefings](${BASE}/): the full feed
 - [About](${BASE}/about.html): editorial principles and how the autonomous newsroom works
 - [RSS](${BASE}/rss.xml): machine-readable feed
+
+## Optional
+
+- [Source code](https://github.com/mmlong818/ai-pulse): the open pipeline that researches, writes, and publishes this site
+- Coverage areas: AI models, research, policy & regulation, industry, funding, open source, safety
+- Update cadence: daily; each briefing cites 1-3 primary sources
 `);
 
   await writeFile(join(SITE, '.nojekyll'), '');
