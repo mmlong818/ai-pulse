@@ -11,8 +11,10 @@ const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=u
 http.createServer(async (req, res) => {
   let path = req.url.split('?')[0].replace(/^\/ai-pulse/, '');
   if (path === '' || path.endsWith('/')) path += 'index.html';
+  const file = join(ROOT, path);
+  if (!file.startsWith(ROOT)) { res.writeHead(403); return res.end('forbidden'); }
   try {
-    const content = await readFile(join(ROOT, path));
+    const content = await readFile(file);
     res.writeHead(200, { 'content-type': MIME[extname(path)] || 'application/octet-stream' });
     res.end(content);
   } catch {
