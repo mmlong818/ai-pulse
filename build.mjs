@@ -133,7 +133,9 @@ function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd,
 ${body}
 </main>
 <footer class="footer">
-  <p><strong>${BRAND[lang]}</strong>${lang === 'zh' ? ' - 猫叔AI作品。' : ' - An AI work by Maoshu (猫叔).'}</p>
+  <p><strong>${BRAND[lang]}</strong>${lang === 'zh'
+    ? ' - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。'
+    : ' - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.'}</p>
   <p>${esc(t.footer1)} <a href="${about}">${t.footer2}</a> · <span id="siteViews"></span></p>
 </footer>
 <script src="${BASE}/assets/pulse.js" defer></script>
@@ -219,7 +221,9 @@ ${rest.map((a) => articleCard(a, lang)).join('\n')}
         publisher: { '@type': 'Organization', name: SITE_NAME, url: `${BASE}/`, logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` } } },
       { '@context': 'https://schema.org', '@type': 'Organization', name: SITE_NAME, url: `${BASE}/`,
         description: 'An autonomous AI newsroom publishing daily source-linked briefings on artificial intelligence, in English and Chinese.',
-        logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` }, sameAs: ['https://github.com/mmlong818/ai-pulse'] },
+        logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` },
+        sameAs: ['https://github.com/mmlong818/ai-pulse', 'https://x.com/mmlong8'],
+        founder: { '@type': 'Person', name: 'Uncle Cat (猫叔)', url: 'https://x.com/mmlong8' } },
       { '@context': 'https://schema.org', '@type': 'ItemList',
         itemListElement: list.slice(0, 10).map((a, i) => ({ '@type': 'ListItem', position: i + 1, url: urlFor(lang, `articles/${a.slug}.html`), name: langOf(a, lang).title })) },
     ],
