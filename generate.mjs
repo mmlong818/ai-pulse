@@ -8,7 +8,9 @@ import { fetchXHeadlines } from './x-feed.mjs';
 const ROOT = new URL('.', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const CONTENT = join(ROOT, 'content');
 const COUNT = Number(process.argv[2] || 6);
-const RADAR_COUNT = 14;
+const RADAR_COUNT = Number(process.env.AIPULSE_RADAR_COUNT || 14);
+const WINDOW_H = Number(process.env.AIPULSE_WINDOW_HOURS || 48); // 采集时间窗（小时）
+const SKIP_RADAR = process.env.AIPULSE_SKIP_RADAR === '1';
 const today = new Date().toISOString().slice(0, 10);
 // 可选采集截止时间：AIPULSE_CUTOFF（ISO 格式，如 2026-07-22T18:00:00+08:00），只收此前发布的新闻
 const CUTOFF = process.env.AIPULSE_CUTOFF ? new Date(process.env.AIPULSE_CUTOFF) : null;
@@ -64,7 +66,7 @@ async function existingTitles() {
 async function generateBriefings(skipTitles, digest) {
   const prompt = `You are the sole editor of "AI Focus Bulletin" (AI专注速报), an autonomous bilingual AI news site. Today is ${today}.
 
-TASK: Select the ${COUNT} most significant AI news stories from the last 24-48 hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original briefing for each, in English AND Chinese.${CUTOFF_NOTE}
+TASK: Select the ${COUNT} most significant AI news stories from the last ${WINDOW_H} hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original briefing for each, in English AND Chinese.${CUTOFF_NOTE}
 
 ${SOURCE_GUIDE}
 
@@ -73,7 +75,7 @@ ${digest}
 
 RULES:
 - ORIGINAL writing only. Never copy sentences from sources. Summarize and analyze in your own words.
-- FRESHNESS: verify each story's ORIGINAL publication date on the source page (search results often resurface old news). If the story broke more than 48 hours ago, discard it and find another.
+- FRESHNESS: verify each story's ORIGINAL publication date on the source page (search results often resurface old news). If the story broke more than ${WINDOW_H} hours ago, discard it and find another.
 - Each briefing: 250-450 words (EN), neutral news-agency tone, explain why it matters in the last paragraph.
 - Cite 1-3 real source URLs per story (the pages you actually found).
 - Titles: specific and factual, 45-65 characters, no clickbait.
@@ -114,7 +116,7 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
 async function generateRadar(skipTitles, digest) {
   const prompt = `You are the news-radar editor of "AI Focus Bulletin" (AI专注速报). Today is ${today}.
 
-TASK: Collect ${RADAR_COUNT} SHORT AI news items from the last 24-48 hours — the wider AI-circle chatter beyond the day's headline stories: product updates, notable open-source releases, papers, funding rounds, executive moves, benchmark results, policy tidbits, notable X threads. Global coverage.${CUTOFF_NOTE}
+TASK: Collect ${RADAR_COUNT} SHORT AI news items from the last ${WINDOW_H} hours — the wider AI-circle chatter beyond the day's headline stories: product updates, notable open-source releases, papers, funding rounds, executive moves, benchmark results, policy tidbits, notable X threads. Global coverage.${CUTOFF_NOTE}
 
 ${SOURCE_GUIDE}
 
@@ -124,7 +126,7 @@ ${digest}
 RULES:
 - Each item: ONE factual sentence in English (max 30 words) + native-quality Chinese version.
 - Every item MUST have a real source URL you actually found.
-- FRESHNESS IS MANDATORY: verify the ORIGINAL publication date of each item (open the source page or check the dateline; search results often resurface old news). Set "published" to that date. If you cannot confirm it is within the last 48 hours, DISCARD the item — a shorter list is better than stale items.
+- FRESHNESS IS MANDATORY: verify the ORIGINAL publication date of each item (open the source page or check the dateline; search results often resurface old news). Set "published" to that date. If you cannot confirm it is within the last ${WINDOW_H} hours, DISCARD the item — a shorter list is better than stale items.
 - No overlap with these headline stories or recent radar items (also skip anything whose FACTS were already covered, even under a different wording): ${skipTitles.join(' | ')}
 - Diverse: no more than 3 items on the same company.
 
@@ -136,7 +138,7 @@ OUTPUT: ONLY a JSON object (no fence, no commentary):
   ]
 }`;
   const radar = parseJson(await runClaude(prompt), '{', '}');
-  const cutoff = new Date(Date.now() - 2 * 86400000).toISOString().slice(0, 10);
+  const cutoff = new Date(Date.now() - Math.ceil(WINDOW_H / 24) * 86400000).toISOString().slice(0, 10);
   radar.items = (radar.items || []).filter((i) => i.text && i.url)
     .filter((i) => {
       if (i.published && i.published < cutoff) { console.log(`  - 过滤旧闻(${i.published}): ${i.text_zh || i.text}`); return false; }
@@ -160,14 +162,15 @@ async function main() {
   const skip = await existingTitles();
   console.log(`[generate] 深度简报 ${COUNT} 篇 + 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);
   const [headlines, xItems] = await Promise.all([
-    fetchFreshHeadlines({ until: CUTOFF }),
-    fetchXHeadlines({ until: CUTOFF }).catch((e) => { console.error('[generate] X 直连失败:', e.message); return []; }),
+    fetchFreshHeadlines({ until: CUTOFF, hours: WINDOW_H, maxPerFeed: WINDOW_H > 48 ? 12 : 8 }),
+    fetchXHeadlines({ until: CUTOFF, hours: WINDOW_H, perAccount: WINDOW_H > 48 ? 8 : 5 }).catch((e) => { console.error('[generate] X 直连失败:', e.message); return []; }),
   ]);
   headlines.push(...xItems);
   headlines.sort((a, b) => b.date - a.date);
   console.log(`[generate] 一级信源候选 ${headlines.length} 条（含官方 X ${xItems.length} 条）${CUTOFF ? `（截止 ${process.env.AIPULSE_CUTOFF}）` : ''}`);
   const digest = digestOf(headlines) || '(feeds unavailable this run — rely on web search, verify dates strictly)';
   const newTitles = await generateBriefings(skip, digest);
+  if (SKIP_RADAR) { console.log('[generate] 跳过雷达'); return console.log('[generate] 完成'); }
   try {
     await generateRadar([...skip.slice(-15), ...newTitles, ...(await recentRadarTexts())], digest);
   } catch (e) {

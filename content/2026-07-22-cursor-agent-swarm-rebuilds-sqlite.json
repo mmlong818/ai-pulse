@@ -1,0 +1,25 @@
+{
+  "slug": "cursor-agent-swarm-rebuilds-sqlite",
+  "title": "Cursor's agent swarm rebuilds SQLite in Rust from its manual",
+  "summary": "A hierarchy of planner and worker agents reimplemented SQLite from its 835-page manual alone, passing a held-out test suite of millions of queries for $1,339.",
+  "body": "Cursor has published one of the most striking agent-autonomy demonstrations to date: a swarm of AI agents reimplemented SQLite from scratch in Rust, working only from the database's 835-page manual — no source code, no test suites, no internet access. The resulting replica passed 100% of a held-out sqllogictest benchmark containing millions of queries with verified answers.\n\n## Planners think, workers type\n\nThe experiment, detailed in a July 20 blog post on agent swarms and model economics, hinges on hierarchical decomposition. Planner agents running frontier models break the goal into a tree of tasks; worker agents running faster, cheaper models execute the pieces. Cursor says this division fixed the failure modes that killed earlier multi-agent runs — context bloat, merge conflicts between agents, and \"split-brain\" divergence — because planners never touch implementation details and workers only see their narrow slice.\n\nThe cost data is as notable as the result. The cheapest successful configuration, pairing Claude Opus 4.8 as planner with Cursor's Composer 2.5 as workers, finished for $1,339. Running everything on GPT-5.5 produced the same outcome for $10,565 — roughly eight times more. With Grok 4.5 in both roles, the new swarm architecture reached 80% test completion within four hours, while Cursor's previous system had already spiraled before hour two. The company's takeaway: only a few moments in a large task genuinely require frontier intelligence, and cheaper models can follow a good plan.\n\n## Why it matters\n\nRebuilding a well-documented database is not the same as novel engineering, and skeptics were quick to note that SQLite's spec-and-test ecosystem makes it an unusually clean target. But the demonstration lands two real points: multi-week software projects can now be decomposed and completed by coordinated agents with minimal human input, and orchestration choices — not just model choice — drive an order-of-magnitude cost difference. For teams budgeting agentic development, the planner-worker split is quickly becoming the reference architecture.",
+  "title_zh": "Cursor 智能体集群仅凭 835 页手册用 Rust 重写 SQLite",
+  "summary_zh": "Cursor 让规划-执行两级智能体集群在无源码、无网络条件下重写 SQLite，通过数百万条查询的盲测，最低成本仅 1339 美元。",
+  "body_zh": "Cursor 交出了迄今最能说明智能体自主能力的演示之一：一群 AI 智能体仅凭 SQLite 那本 835 页的官方手册，在没有源码、没有测试用例、没有互联网的条件下，用 Rust 从零重写了这个数据库。最终的复刻版本通过了包含数百万条已验证查询的 sqllogictest 盲测，通过率 100%。\n\n## 规划者动脑，执行者动手\n\n这项实验发表于 7 月 20 日的博客《Agent swarms and the new model economics》，核心是分层拆解：规划智能体（跑前沿大模型）把目标拆成任务树，执行智能体（跑更快更便宜的模型）逐个落地。Cursor 表示，这套分工解决了此前多智能体协作的老毛病——上下文膨胀、智能体之间的合并冲突、\"脑裂\"式分歧——因为规划者从不碰实现细节，执行者只看到自己那一小块。\n\n成本数据和结果本身一样值得关注。最省钱的成功配置是 Claude Opus 4.8 当规划者、Cursor 自家 Composer 2.5 当执行者，总花费 1339 美元；全程使用 GPT-5.5 完成同样任务花了 10565 美元，差了约八倍。换用 Grok 4.5 担任两个角色时，新架构四小时内通过了 80% 的测试，而旧系统不到两小时就已失控。Cursor 的结论很直白：大型任务中真正需要前沿智能的时刻寥寥无几，剩下的活便宜模型照着计划做就行。\n\n## 为什么重要\n\n复刻一个文档完备的数据库当然不等于原创工程，也有人指出 SQLite 规范齐全、测试成熟，是个格外\"干净\"的靶子。但这次演示立住了两个事实：一是耗时数周的软件工程已经可以被智能体集群自主拆解并完成，人类介入极少；二是编排方式——而不仅仅是模型选择——能带来数量级的成本差异。对于正在给智能体开发编预算的团队来说，\"规划者-执行者\"分工正迅速成为参考架构。",
+  "tags": [
+    "Research",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Agent swarms and the new model economics · Cursor",
+      "url": "https://cursor.com/blog/agent-swarm-model-economics"
+    },
+    {
+      "title": "Cursor announcement thread on X",
+      "url": "https://x.com/cursor_ai/status/2079256614238814551"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-22"
+}

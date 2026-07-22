@@ -1,0 +1,21 @@
+{
+  "slug": "nvidia-cosmos-3-edge-robots",
+  "title": "NVIDIA ships Cosmos 3 Edge, a 4B world model for on-device robots",
+  "summary": "NVIDIA open-sourced Cosmos 3 Edge, a 4B-parameter world model that reasons and generates robot actions locally, hitting 15 Hz real-time control on Jetson Thor.",
+  "body": "NVIDIA released Cosmos 3 Edge on July 20, a 4-billion-parameter open world model designed to let robots and vision AI agents perceive, reason and act entirely on-device — no datacenter round-trip required. Weights are available on Hugging Face under the Linux Foundation's OpenMDW-1.1 license.\n\n## Two towers, one model\n\nCosmos 3 Edge pairs an autoregressive reasoning tower (with a 2B dense reasoning component) and a diffusion generation tower in a Mixture-of-Transformers design, linked through shared multimodal attention. The architecture works in both directions: given an action, it predicts the visual consequences; given observed changes, it infers the actions that caused them. Actions map into a unified representation spanning camera motion, autonomous vehicles, robot arms and humanoids, so one model covers embodiments that previously needed separate policies.\n\nThe \"edge\" designation is literal. The model runs across NVIDIA's device lineup — RTX PRO and GeForce RTX GPUs, DGX systems and Jetson modules, including the new Jetson T2000 and T3000. On Jetson Thor it generates 32 actions per inference and sustains real-time control at 15 Hz at 640×360 resolution, with video generation supported at 256p and 480p from 12 to 30 fps. NVIDIA claims the top spot on VANTAGE-Bench in the 4B class, and says developers can fine-tune locally on a GeForce RTX 3070 or better. A post-trained manipulation policy, Cosmos 3 Edge Policy (DROID), ships alongside for pick-and-place tasks.\n\n## Why it matters\n\nRobotics has been waiting for its \"small model\" moment: world models were previously too heavy to run where robots actually operate. A permissively licensed 4B model with real-time control rates puts world-model-driven autonomy within reach of hobbyist GPUs and embedded modules, not just lab clusters. It also tightens NVIDIA's grip on the physical-AI stack — the model is open, but the deployment targets are Jetson — and raises the bar for Xiaomi, Figure and the growing field of embodied-AI labs betting that data and deployment scale, not parameter count, will decide the robotics race.",
+  "title_zh": "英伟达开源 Cosmos 3 Edge：4B 世界模型让机器人本地推理",
+  "summary_zh": "英伟达开源 40 亿参数世界模型 Cosmos 3 Edge，推理与动作生成全部在端侧完成，Jetson Thor 上实现 15 Hz 实时控制。",
+  "body_zh": "英伟达 7 月 20 日发布 Cosmos 3 Edge——一个 40 亿参数的开源世界模型，让机器人和视觉 AI 智能体在端侧完成感知、推理和动作生成的全流程，不再依赖数据中心往返。权重已上架 Hugging Face，采用 Linux 基金会 OpenMDW-1.1 许可证。\n\n## 双塔合一\n\nCosmos 3 Edge 采用 Mixture-of-Transformers 设计：一座自回归推理塔（含 2B 稠密推理组件）加一座扩散生成塔，通过共享的多模态注意力层耦合。这套架构是双向的——给定动作，它能预测视觉后果；看到画面变化，它能反推背后的动作。动作被映射到统一表征，覆盖相机运动、自动驾驶、机械臂和人形机器人，过去需要分别训练策略的多种形态，现在一个模型通吃。\n\n\"Edge\"名副其实：模型可跑在英伟达全线终端设备上——RTX PRO 与 GeForce RTX 显卡、DGX 系统，以及包括新款 Jetson T2000、T3000 在内的 Jetson 模组。在 Jetson Thor 上，它单次推理生成 32 个动作，以 640×360 分辨率实现 15 Hz 实时控制；视频生成支持 256p 和 480p、12 至 30 帧。英伟达宣称其在 4B 级别拿下 VANTAGE-Bench 第一，开发者用一张 GeForce RTX 3070 就能本地微调。同步发布的还有针对抓取放置任务的后训练操作策略 Cosmos 3 Edge Policy（DROID）。\n\n## 为什么重要\n\n机器人领域一直在等自己的\"小模型时刻\"：世界模型此前太重，跑不进机器人真正工作的地方。一个许可宽松、能实时控制的 4B 模型，把世界模型驱动的自主能力拉到了消费级显卡和嵌入式模组的射程之内，不再是实验室集群的专利。这也让英伟达对物理 AI 技术栈的掌控更进一步——模型开源，但部署目标清一色是 Jetson；同时给小米、Figure 以及所有押注\"数据和部署规模而非参数量决定机器人竞赛\"的具身智能玩家抬高了标杆。",
+  "tags": [
+    "Models",
+    "Open Source"
+  ],
+  "sources": [
+    {
+      "title": "NVIDIA Releases Cosmos 3 Edge — MarkTechPost",
+      "url": "https://www.marktechpost.com/2026/07/21/nvidia-releases-cosmos-3-edge-a-4b-parameter-open-world-model-that-reasons-and-generates-robot-actions-on-device/"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-22"
+}

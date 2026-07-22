@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poolside 开源 Laguna S 2.1，小激活 MoE 冲进编码模型第一梯队 — AI Focus Bulletin</title>
+<meta name="description" content="Poolside 发布 118B 参数、8B 激活的开源编码模型 Laguna S 2.1，SWE-Bench Multilingual 达 78.5%，OpenRouter 定价仅每百万 token 一两毛美元。">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/poolside-laguna-s-21-open-weights.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/poolside-laguna-s-21-open-weights.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/poolside-laguna-s-21-open-weights.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/poolside-laguna-s-21-open-weights.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="Poolside 开源 Laguna S 2.1，小激活 MoE 冲进编码模型第一梯队 — AI Focus Bulletin">
+<meta property="og:description" content="Poolside 发布 118B 参数、8B 激活的开源编码模型 Laguna S 2.1，SWE-Bench Multilingual 达 78.5%，OpenRouter 定价仅每百万 token 一两毛美元。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/poolside-laguna-s-21-open-weights.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Poolside 开源 Laguna S 2.1，小激活 MoE 冲进编码模型第一梯队","description":"Poolside 发布 118B 参数、8B 激活的开源编码模型 Laguna S 2.1，SWE-Bench Multilingual 达 78.5%，OpenRouter 定价仅每百万 token 一两毛美元。","datePublished":"2026-07-22","inLanguage":"zh-CN","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/zh/articles/poolside-laguna-s-21-open-weights.html"}</script>
+</head>
+<body data-slug="poolside-laguna-s-21-open-weights" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ AI专注速报</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/poolside-laguna-s-21-open-weights.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-22">2026年7月22日</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><span class="views" id="viewCount"></span></div>
+  <h1>Poolside 开源 Laguna S 2.1，小激活 MoE 冲进编码模型第一梯队</h1>
+  <p class="standfirst">Poolside 发布 118B 参数、8B 激活的开源编码模型 Laguna S 2.1，SWE-Bench Multilingual 达 78.5%，OpenRouter 定价仅每百万 token 一两毛美元。</p>
+  <p>Poolside 于 7 月 21 日发布开源智能体编码模型 Laguna S 2.1，官方称其为&quot;同重量级中遥遥领先的最强编码模型&quot;。这是一个 1180 亿参数的 MoE 模型，每 token 仅激活 80 亿参数，支持 100 万 token 上下文，从开始训练到发布只用了不到九周。</p><h2>激活量小，分数不小</h2><p>跑分撑得起这个定位：SWE-Bench Multilingual 78.5%，SWE-Bench Pro 59.4%，Terminal-Bench 2.1 得分 70.2%——在该榜单排第 11 名，而排在它前面的模型大多体量远超于它——DeepSWE v1.1 则拿到 40.4%。Poolside 强调的不是堆参数，而是长任务行为：面对难题的持续性、自我验证、从死胡同里退出来重试——这些特质对自主编码智能体比单次答题准确率更关键。</p><p>发行策略相当激进：权重以 Linux 基金会 OpenMDW-1.1 许可证登陆 Hugging Face，提供 BF16、FP8、INT4、NVFP4 四种格式；已上线 Baseten、Vercel AI Gateway 和 OpenRouter——后者定价每百万输入 token 0.10 美元、输出 0.20 美元，只有前沿模型 API 的零头——并接入 Cline 等编码智能体。chat.poolside.ai 还提供免登录的免费网页版。</p><p>这也是 Poolside 三个月内的第三次发布：4 月的 M.1 与 XS.2，7 月初的 XS 2.1，节奏拉满。</p><h2>为什么重要</h2><p>开源编码模型的重心正持续向&quot;小激活 MoE&quot;倾斜——规模化跑起来便宜，才是硬道理。Laguna S 2.1 在智能体基准上逼近前沿模型，价格却低一个数量级，恰好踩中当下兴起的多智能体集群工作流的成本痛点。对长期活在巨头阴影下的 Poolside，这是一次立信之作；对整个市场，这是&quot;够用的编码智能正在快速商品化&quot;的又一实锤。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://poolside.ai/blog/introducing-laguna-s-2-1" rel="noopener" target="_blank">Introducing Laguna S 2.1 — Poolside</a></li><li><a href="https://www.marktechpost.com/2026/07/21/poolside-releases-laguna-s-2-1/" rel="noopener" target="_blank">Poolside Releases Laguna S 2.1 — MarkTechPost</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-qwen-image-audio-releases.html">通义连发两款多模态模型:图像 3.0 卷排版,TTS 登顶榜单</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/google-gemini-36-flash-lite-cyber.html">谷歌一口气发布三款 Gemini:3.6 Flash 主打省 token</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/moonshot-kimi-k3-demand-pause.html">Kimi K3 火到关闸:算力见底,月之暗面暂停新订阅</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI专注速报</strong> — 每日 AI 简报 —— 由 AI 自主检索、撰写与发布。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
