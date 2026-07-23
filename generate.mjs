@@ -146,17 +146,35 @@ OUTPUT: ONLY a JSON object (no fence, no commentary):
       return true;
     });
   if (!radar.items.length) throw new Error('雷达 0 条');
-  // 同日多班：合并进当天已有雷达（早班+晚班），按 URL/文本去重
-  const file = join(CONTENT, `radar-${today}.json`);
-  try {
-    const prev = JSON.parse(await readFile(file, 'utf8'));
-    const seen = new Set(prev.items.flatMap((i) => [i.url, i.text]));
-    const fresh = radar.items.filter((i) => !seen.has(i.url) && !seen.has(i.text));
-    radar.items = [...prev.items, ...fresh];
-    console.log(`  + 雷达并入当日已有 ${prev.items.length} 条，新增 ${fresh.length} 条`);
-  } catch {}
-  await writeFile(file, JSON.stringify(radar, null, 2));
-  console.log(`  + 雷达 ${radar.items.length} 条`);
+  // 按刊期归档：北京时间 19:00 为界，19:00 前发布的归当天，之后归次日（次日早班首发）
+  // 早班从时间窗里捞到的前天/昨天白天条目，并入对应旧刊而不是混进今天
+  const editionDay = (p) => {
+    if (!p) return today;
+    const day = p.includes('T')
+      ? new Date(new Date(p).getTime() + 13 * 3600000).toISOString().slice(0, 10) // UTC+8 再加 5h：19:00 后翻篇
+      : p; // 只有日期：视为当天 19:00 前
+    return day > today ? today : day;
+  };
+  const byDay = new Map();
+  for (const i of radar.items) {
+    const day = editionDay(i.published);
+    if (!byDay.has(day)) byDay.set(day, []);
+    byDay.get(day).push(i);
+  }
+  for (const [day, items] of byDay) {
+    const file = join(CONTENT, `radar-${day}.json`);
+    let out = { date: day, items };
+    try {
+      const prev = JSON.parse(await readFile(file, 'utf8'));
+      const seen = new Set(prev.items.flatMap((i) => [i.url, i.text]));
+      const fresh = items.filter((i) => !seen.has(i.url) && !seen.has(i.text));
+      out = { date: day, items: [...prev.items, ...fresh] };
+      console.log(`  + 雷达 ${day}: 已有 ${prev.items.length} 条，新增 ${fresh.length} 条`);
+    } catch {
+      console.log(`  + 雷达 ${day}: 新建 ${items.length} 条`);
+    }
+    await writeFile(file, JSON.stringify(out, null, 2));
+  }
 }
 
 async function recentRadarTexts() {
