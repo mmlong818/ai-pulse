@@ -1,4 +1,4 @@
-// 官方 X 账号直连信源：X API v2 按量付费（约 $0.005/条读取），每轮 39 账号 × 5 条 ≈ $1.0
+// 官方 X 账号直连信源：X API v2 按量付费（约 $0.005/条读取），每轮 51 账号 × 5 条 ≈ $1.3
 import { readFile, writeFile } from 'node:fs/promises';
 import { execSync } from 'node:child_process';
 import { join } from 'node:path';
@@ -19,6 +19,9 @@ const HANDLES = [
   'pika_labs', 'LumaLabsAI', 'ElevenLabs', 'SunoMusic', 'StabilityAI', 'bfl_ml', 'ideogram_ai',
   // Agent 领域（产品/框架，2026-07-23）
   'cognition', 'crewAIInc', 'llama_index',
+  // 2026-07-23 从情报部导航筛选的活跃账号（图像/视频/3D/设计/音乐 + 国产开源）
+  'krea_ai', 'recraftai', 'Alibaba_Wan', 'HeyGen', 'theworldlabs', 'tripoai', 'MeshyAI', 'DeemosTech',
+  'lovart_ai', 'udiomusic', 'Skywork_ai', 'intern_lm',
 ];
 
 function getToken() {

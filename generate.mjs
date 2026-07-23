@@ -43,8 +43,10 @@ const SOURCE_GUIDE = `SOURCE POLICY:
 1. START from the CANDIDATE HEADLINES below — they come from first-tier feeds and their timestamps are already verified. Prefer them. (Some feeds carry general tech news — pick AI stories only.)
 2. Use web search to (a) enrich selected stories with primary sources and detail, and (b) catch major stories the feeds missed:
    - Labs/pages without feeds: Anthropic news & research, xAI news, Mistral, DeepSeek, Alibaba/Qwen, Moonshot, Zhipu, MiniMax, ByteDance Seed (Seedance/Seedream/豆包), Tencent Hunyuan, StepFun 阶跃星辰, Vidu 生数科技, Baidu ERNIE 文心, 01.AI, Cursor blog, Hugging Face daily papers (huggingface.co/papers)
-   - AIGC (image/video/audio/music generation): Midjourney, Runway, Pika, Luma AI, Kling 可灵, Suno, ElevenLabs, Black Forest Labs (FLUX), Ideogram, ComfyUI, Stability AI
-   - AI agents (products, coding agents, frameworks & infra): Cognition (Devin), Claude Code / Claude Agent SDK, OpenAI Agents, Manus, Genspark, CrewAI, LlamaIndex, LangChain/LangGraph, MCP ecosystem
+   - AIGC (image/video/audio/music generation): Midjourney, Runway, Pika, Luma AI, Kling 可灵, Wan 通义万相, Vidu 生数科技, HeyGen, Suno, Udio, ElevenLabs, Black Forest Labs (FLUX), Ideogram, Krea, Recraft, ComfyUI, Stability AI
+   - 3D & world models: World Labs (Marble), Tripo, Meshy, Rodin/Hyper3D, Hunyuan3D
+   - AI agents (products, coding agents, frameworks & infra): Cognition (Devin), Claude Code / Claude Agent SDK, OpenAI Agents, Manus, Genspark, Lovart, CrewAI, LlamaIndex, LangChain/LangGraph, MCP ecosystem
+   - CN labs also worth checking: 讯飞星火 iFlytek Spark, 昆仑万维 Skywork 天工, 书生 InternLM (Shanghai AI Lab)
    - X (Twitter) watchlist — search for fresh posts; when a story broke on X, cite the original X post URL:
      · First-party (official announcements): @OpenAI @AnthropicAI @GoogleDeepMind @AIatMeta @xai @MistralAI @deepseek_ai @Alibaba_Qwen @ZhipuAI @huggingface @perplexity_ai @cursor_ai @LangChainAI @OpenRouter
      · Lab leaders & researchers: @sama @gdb @DarioAmodei @demishassabis @karpathy @DrJimFan @ClementDelangue @OfficialLoganK @bcherny @AndrewYNg @ylecun @drfeifei
