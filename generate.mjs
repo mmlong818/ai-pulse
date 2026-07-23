@@ -11,7 +11,8 @@ const COUNT = Number(process.argv[2] || 6);
 const RADAR_COUNT = Number(process.env.AIPULSE_RADAR_COUNT || 14);
 const WINDOW_H = Number(process.env.AIPULSE_WINDOW_HOURS || 48); // 采集时间窗（小时）
 const SKIP_RADAR = process.env.AIPULSE_SKIP_RADAR === '1';
-const today = new Date().toISOString().slice(0, 10);
+// 按北京日期归档：早班（7:00）与晚班（19:00）落到同一天的文件里
+const today = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
 // 可选采集截止时间：AIPULSE_CUTOFF（ISO 格式，如 2026-07-22T18:00:00+08:00），只收此前发布的新闻
 const CUTOFF = process.env.AIPULSE_CUTOFF ? new Date(process.env.AIPULSE_CUTOFF) : null;
 const CUTOFF_NOTE = CUTOFF
@@ -51,7 +52,7 @@ const SOURCE_GUIDE = `SOURCE POLICY:
 3. Prefer primary sources (the lab's own post/paper/X thread) over secondhand reporting when available.`;
 
 const digestOf = (headlines) => headlines
-  .map((h) => `- ${h.date.toISOString().slice(0, 10)} [${h.source}] ${h.title} — ${h.link}`)
+  .map((h) => `- ${h.date.toISOString().slice(0, 16)}Z [${h.source}] ${h.title} — ${h.link}`)
   .join('\n');
 
 async function existingTitles() {
@@ -126,7 +127,7 @@ ${digest}
 RULES:
 - Each item: ONE factual sentence in English (max 30 words) + native-quality Chinese version.
 - Every item MUST have a real source URL you actually found.
-- FRESHNESS IS MANDATORY: verify the ORIGINAL publication date of each item (open the source page or check the dateline; search results often resurface old news). Set "published" to that date. If you cannot confirm it is within the last ${WINDOW_H} hours, DISCARD the item — a shorter list is better than stale items.
+- FRESHNESS IS MANDATORY: verify the ORIGINAL publication date of each item (open the source page or check the dateline; search results often resurface old news). Set "published" to the exact UTC timestamp — when the item comes from the candidate list, COPY its timestamp verbatim; otherwise use the time shown on the source page (converted to UTC), or "YYYY-MM-DD" if only a date is available. If you cannot confirm it is within the last ${WINDOW_H} hours, DISCARD the item — a shorter list is better than stale items.
 - No overlap with these headline stories or recent radar items (also skip anything whose FACTS were already covered, even under a different wording): ${skipTitles.join(' | ')}
 - Diverse: no more than 3 items on the same company.
 
@@ -134,14 +135,14 @@ OUTPUT: ONLY a JSON object (no fence, no commentary):
 {
   "date": "${today}",
   "items": [
-    { "text": "...", "text_zh": "...", "url": "https://...", "source": "source site name", "published": "YYYY-MM-DD", "tag": "Models|Research|Policy|Industry|Funding|Open Source|Safety" }
+    { "text": "...", "text_zh": "...", "url": "https://...", "source": "source site name", "published": "2026-01-01T14:30:00Z (UTC; date-only YYYY-MM-DD if exact time unknown)", "tag": "Models|Research|Policy|Industry|Funding|Open Source|Safety" }
   ]
 }`;
   const radar = parseJson(await runClaude(prompt), '{', '}');
   const cutoff = new Date(Date.now() - Math.ceil(WINDOW_H / 24) * 86400000).toISOString().slice(0, 10);
   radar.items = (radar.items || []).filter((i) => i.text && i.url)
     .filter((i) => {
-      if (i.published && i.published < cutoff) { console.log(`  - 过滤旧闻(${i.published}): ${i.text_zh || i.text}`); return false; }
+      if (i.published && i.published.slice(0, 10) < cutoff) { console.log(`  - 过滤旧闻(${i.published}): ${i.text_zh || i.text}`); return false; }
       return true;
     });
   if (!radar.items.length) throw new Error('雷达 0 条');

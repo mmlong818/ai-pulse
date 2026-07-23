@@ -169,9 +169,34 @@ function featuredHero(a, lang) {
 </article>`;
 }
 
+// 雷达条目时间：中文页显示北京时间，英文页显示美东时间；只有日期的旧条目只显示日期
+function radarTime(published, lang) {
+  if (!published) return '';
+  const hasTime = published.includes('T');
+  const d = new Date(hasTime ? published : published + 'T00:00:00Z');
+  if (isNaN(d)) return '';
+  if (!hasTime) {
+    return lang === 'zh'
+      ? d.toLocaleDateString('zh-CN', { month: '2-digit', day: '2-digit', timeZone: 'UTC' })
+      : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+  }
+  return lang === 'zh'
+    ? d.toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false })
+    : d.toLocaleString('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true }) + ' ET';
+}
+
+const radarTs = (i, fallback) => {
+  const p = i.published || fallback;
+  return Date.parse(p.includes('T') ? p : p + 'T00:00:00Z') || 0;
+};
+
 function radarSection(radar, lang, { linkArchive = true } = {}) {
   const t = T[lang];
-  const items = radar.items.map((i) => `<li><a class="tag" href="${tagUrl(i.tag, lang)}">${esc(tagLabel(i.tag, lang))}</a> ${esc(lang === 'zh' && i.text_zh ? i.text_zh : i.text)} <a class="radar-src" href="${esc(i.url)}" rel="noopener" target="_blank">${esc(i.source || 'source')} ↗</a></li>`).join('\n');
+  const sorted = [...radar.items].sort((a, b) => radarTs(b, radar.date) - radarTs(a, radar.date));
+  const items = sorted.map((i) => {
+    const time = radarTime(i.published, lang);
+    return `<li><a class="tag" href="${tagUrl(i.tag, lang)}">${esc(tagLabel(i.tag, lang))}</a> ${esc(lang === 'zh' && i.text_zh ? i.text_zh : i.text)} <a class="radar-src" href="${esc(i.url)}" rel="noopener" target="_blank">${esc(i.source || 'source')} ↗</a>${time ? ` <time class="radar-time" datetime="${esc(i.published)}">${esc(time)}</time>` : ''}</li>`;
+  }).join('\n');
   return `<section class="radar">
   <div class="block-head"><h2>📡 ${t.radar} · ${t.dateFmt(radar.date)}</h2>${linkArchive ? `<a class="radar-archive-link" href="${urlFor(lang, `radar/${radar.date}.html`)}">#</a>` : ''}</div>
   <p class="radar-lede">${esc(t.radarLede)}</p>

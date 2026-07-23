@@ -54,7 +54,7 @@ async function api(method, path, body) {
 
 async function pickToday() {
   const files = (await readdir(CONTENT)).filter((f) => f.endsWith('.json'));
-  const today = new Date().toISOString().slice(0, 10);
+  const today = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10); // 与 generate.mjs 的北京日期归档一致
   let featured = null, radar = null;
   for (const f of files) {
     const a = JSON.parse(await readFile(join(CONTENT, f), 'utf8'));
