@@ -228,12 +228,33 @@ function radarItemLi(i, lang) {
   return `<li><a class="tag" href="${tagUrl(i.tag, lang)}">${esc(tagLabel(i.tag, lang))}</a> ${esc(lang === 'zh' && i.text_zh ? i.text_zh : i.text)} <a class="radar-src" href="${esc(i.url)}" rel="noopener" target="_blank">${esc(i.source || 'source')} ↗</a>${time ? ` <time class="radar-time" datetime="${esc(i.published)}">${esc(time)}</time>` : ''}</li>`;
 }
 
-// 单一时间线：简报卡片与雷达一句话快讯按发布时间倒序混排，连续的快讯合并进一个紧凑分组
-function timelineHtml(articles, radars, lang) {
-  const entries = [
-    ...articles.map((a) => ({ ts: Date.parse(a.published_at || a.date + 'T11:00:00Z') || 0, html: articleCard(a, lang), radar: false })),
-    ...radars.flatMap((r) => r.items.map((i) => ({ ts: radarTs(i, r.date), html: radarItemLi(i, lang), radar: true }))),
+// 班次（edition）：北京 07:00 / 19:00 为界（= UTC 前日 23:00 / 当日 11:00），以 UTC 11:00 为锚每 12 小时一个边界
+const EB_ANCHOR = 11 * 3600000, EB_HALF = 12 * 3600000;
+const floorEdition = (ms) => Math.floor((ms - EB_ANCHOR) / EB_HALF) * EB_HALF + EB_ANCHOR; // 文章：发布时刻之前最近的边界
+const ceilEdition = (ms) => Math.ceil((ms - EB_ANCHOR) / EB_HALF) * EB_HALF + EB_ANCHOR;   // 快讯：发布时刻之后最近的截稿边界
+const editionDayOf = (eb) => new Date(eb + 8 * 3600000).toISOString().slice(0, 10);        // 班次所属的北京刊期日
+const editionLabel = (eb, lang) => {
+  const d = new Date(eb);
+  if (lang === 'zh') {
+    const bj = new Date(eb + 8 * 3600000);
+    return `${bj.getUTCMonth() + 1}月${bj.getUTCDate()}日${bj.getUTCHours() === 7 ? '早报' : '晚报'}`;
+  }
+  const hour = Number(d.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
+  const dateStr = d.toLocaleDateString('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric' });
+  return `${hour < 12 ? 'Morning' : 'Evening'} edition, ${dateStr}`;
+};
+
+// 单一时间线：简报卡片与一句话快讯按发布时间倒序混排，连续的快讯合并进一个紧凑分组
+// editions: N 时只保留最近 N 个班次（首页用 2：晚报上线时早报下移，次日早报上线时保留前一晚报）
+function timelineHtml(articles, radars, lang, { editions } = {}) {
+  let entries = [
+    ...articles.map((a) => { const ts = Date.parse(a.published_at || a.date + 'T11:00:00Z') || 0; return { ts, eb: floorEdition(ts), html: articleCard(a, lang), radar: false }; }),
+    ...radars.flatMap((r) => r.items.map((i) => { const ts = radarTs(i, r.date); return { ts, eb: ceilEdition(ts), html: radarItemLi(i, lang), radar: true }; })),
   ].sort((a, b) => b.ts - a.ts);
+  if (editions) {
+    const keep = new Set([...new Set(entries.map((e) => e.eb))].sort((a, b) => b - a).slice(0, editions));
+    entries = entries.filter((e) => keep.has(e.eb));
+  }
   const out = [];
   let group = [];
   const flush = () => { if (group.length) { out.push(`<ul class="radar-list feed-radar">\n${group.join('\n')}\n</ul>`); group = []; } };
@@ -258,17 +279,13 @@ async function buildLang(articles, radars, lang) {
   const rest = featured ? list.filter((a) => a !== featured) : list;
   const activeTags = Object.keys(TAG_META).filter((tag) => list.some((a) => a.tags.includes(tag)));
   const catBar = `<nav class="cat-bar"><span>${t.allCats}:</span>${activeTags.map((tag) => `<a class="tag" href="${tagUrl(tag, lang)}">${esc(tagLabel(tag, lang))}</a>`).join('')}</nav>`;
-  const latestRadar = radars[0];
 
-  // 首页：单一时间线（简报 + 雷达快讯混排），只保留最新一刊日的内容
-  const latestDay = [list[0]?.date, latestRadar?.date].filter(Boolean).sort().pop();
-  const dayArticles = rest.filter((a) => a.date === latestDay);
-  const dayRadars = radars.filter((r) => r.date === latestDay);
+  // 首页：单一时间线（简报 + 快讯混排），始终保留最近两个班次
   const indexBody = `
 ${featured ? featuredHero(featured, lang) : ''}
 ${catBar}
 <section class="feed">
-${timelineHtml(dayArticles, dayRadars, lang)}
+${timelineHtml(rest, radars, lang, { editions: 2 })}
 </section>
 <p class="more-link"><a href="${urlFor(lang, 'archive.html')}">📚 ${t.moreLink()}</a></p>`;
   const latest = list[0];
@@ -475,17 +492,43 @@ ${calendarHtml(calEntries, lang)}
 <section class="feed" id="favList"></section>`,
   }));
 
-  // RSS
-  const rssItems = list.slice(0, 20).map((a) => {
-    const c = langOf(a, lang);
-    return `  <item>
+  // RSS：与首页同规则，保留最近两个班次（简报逐条 + 每班次一条快讯速览）
+  const rssArticleEntries = list.map((a) => ({ a, eb: floorEdition(Date.parse(a.published_at || a.date + 'T11:00:00Z') || 0) }));
+  const radarByEb = new Map();
+  for (const r of radars) for (const i of r.items) {
+    const ts = radarTs(i, r.date), eb = ceilEdition(ts);
+    if (!radarByEb.has(eb)) radarByEb.set(eb, []);
+    radarByEb.get(eb).push({ i, ts });
+  }
+  const keepEbs = [...new Set([...rssArticleEntries.map((e) => e.eb), ...radarByEb.keys()])].sort((a, b) => b - a).slice(0, 2);
+  const keepSet = new Set(keepEbs);
+  const rssItems = [
+    ...rssArticleEntries.filter((e) => keepSet.has(e.eb)).map(({ a }) => {
+      const c = langOf(a, lang);
+      return `  <item>
     <title>${esc(c.title)}</title>
     <link>${urlFor(lang, `articles/${a.slug}.html`)}</link>
     <guid>${urlFor(lang, `articles/${a.slug}.html`)}</guid>
     <pubDate>${(a.published_at ? new Date(a.published_at) : new Date(a.date + 'T08:00:00Z')).toUTCString()}</pubDate>
     <description>${esc(c.summary)}</description>
   </item>`;
-  }).join('\n');
+    }),
+    ...keepEbs.filter((eb) => radarByEb.has(eb)).map((eb) => {
+      const items = radarByEb.get(eb).sort((x, y) => y.ts - x.ts).map((e) => e.i);
+      const day = editionDayOf(eb);
+      const title = lang === 'zh'
+        ? `⚡ 一句话快讯 ${items.length} 条 · ${editionLabel(eb, 'zh')}`
+        : `⚡ ${items.length} quick hits — ${editionLabel(eb, 'en')}`;
+      const desc = items.map((i) => `· ${lang === 'zh' && i.text_zh ? i.text_zh : i.text}（${i.source || 'source'}）`).join('\n');
+      return `  <item>
+    <title>${esc(title)}</title>
+    <link>${urlFor(lang, `day/${day}.html`)}</link>
+    <guid>${urlFor(lang, `day/${day}.html`)}#e${eb}</guid>
+    <pubDate>${new Date(eb).toUTCString()}</pubDate>
+    <description>${esc(desc)}</description>
+  </item>`;
+    }),
+  ].join('\n');
   await writeFile(join(SITE, lang === 'zh' ? 'rss-zh.xml' : 'rss.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"><channel>
   <title>${SITE_NAME}${lang === 'zh' ? '（中文）' : ''}</title>
@@ -508,6 +551,10 @@ async function build() {
   }
   articles.sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
   radars.sort((a, b) => b.date.localeCompare(a.date));
+  // 简报优先：同一故事已有深度简报时，去掉对应的一句话快讯（按主源 URL 匹配）
+  const normUrl = (u) => (u || '').replace(/[?#].*$/, '').replace(/\/$/, '').toLowerCase();
+  const covered = new Set(articles.flatMap((a) => (a.sources || []).map((s) => normUrl(s.url))));
+  for (const r of radars) r.items = r.items.filter((i) => !covered.has(normUrl(i.url)));
   // 只让最新一天的 featured 上首页头条位
   const latestDate = articles[0]?.date;
   for (const a of articles) if (a.featured && a.date !== latestDate) a.featured = false;

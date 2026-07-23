@@ -1,0 +1,31 @@
+{
+  "slug": "cisco-antares-open-weight-security-models",
+  "title": "Cisco open-sources tiny Antares models to locate code flaws",
+  "summary": "Cisco's Foundation AI arm releases 350M and 1B open-weight models that trace known vulnerabilities to specific files, nearing frontier accuracy at a fraction of the cost.",
+  "body": "Cisco's Foundation AI team has released Antares, a family of small open-weight language models built for one job: vulnerability localization — connecting public advisories, CVE records, and Common Weakness Enumeration entries to the specific files in a repository where the flaw likely lives. The 350M- and 1B-parameter versions are now available on Hugging Face.\n\n## An investigator, not a scanner\n\nRather than pattern-matching over code, each Antares model works a repository the way a human security analyst would: it starts from a vulnerability description, searches for matching code patterns, reads candidate files, weighs new evidence, and backtracks when a lead runs dry. To evaluate the approach, Cisco built a 500-entry Vulnerability Localization Benchmark that forces a model to navigate unfamiliar codebases and recognize weakness patterns by category. On that benchmark, Cisco says the 1B model approaches the accuracy of frontier systems like GPT-5.5 while remaining small enough to run cheaply on local hardware — a meaningful property for security teams that cannot ship proprietary source code to external APIs.\n\nThe release extends Cisco's Foundation AI open-model program into a week thick with AI-security news, and the company is explicit about the economics: triaging a steady stream of vulnerability reports with a frontier model is expensive at scale, while a specialized 1B model makes continuous, repository-wide localization affordable.\n\n## Why it matters\n\nAntares is a data point in two live debates. First, whether small specialized models can beat frontier generalists on narrow high-value tasks — Cisco's answer is yes, by orders of magnitude on cost. Second, how defenders keep pace as AI systems find vulnerabilities faster than humans can fix them, a concern Google raised the same week with its own security-model push. Open weights matter here: security tooling that runs locally, audits transparently, and costs little to operate is far easier for enterprises and governments to adopt than a black-box API — and it hands the defensive side of the AI-security arms race a genuinely commodity-priced weapon.",
+  "title_zh": "思科开源 Antares 小模型，专攻代码库漏洞定位",
+  "summary_zh": "思科 Foundation AI 开源 350M 和 1B 两款安全小模型，能把公开漏洞情报精准映射到代码库具体文件，成本仅为前沿大模型零头。",
+  "body_zh": "思科 Foundation AI 团队发布了 Antares 系列开源权重小模型，只干一件事：漏洞定位——把公开安全通告、CVE 记录和 CWE 缺陷条目，对应到代码仓库中最可能藏有该漏洞的具体文件。350M 和 1B 参数两个版本已上架 Hugging Face。\n\n## 像调查员一样工作，而不是扫描器\n\nAntares 不做简单的代码模式匹配，而是模仿人类安全分析师的排查路径：从漏洞描述出发，检索匹配的代码模式，逐个阅读候选文件，吸收新证据，线索断了就回溯换路。为了评估效果，思科专门构建了一个 500 条目的漏洞定位基准（Vulnerability Localization Benchmark），要求模型在陌生代码库中按缺陷类别识别漏洞模式。思科称，1B 版本在该基准上的准确率已接近 GPT-5.5 等前沿系统，同时小到可以在本地硬件上低成本运行——对于不能把私有源码发给外部 API 的安全团队，这一点至关重要。\n\n思科也把经济账算得很直白：用前沿大模型持续分诊源源不断的漏洞报告，规模化之后成本高昂；而一个专精的 1B 模型能让全仓库、常态化的漏洞定位变得人人用得起。\n\n## 为什么重要\n\nAntares 给两场正在进行的争论各添了一个论据。其一，专精小模型能否在窄而高价值的任务上击败通用前沿模型——思科的答案是肯定的，且成本差出数量级。其二，当 AI 找漏洞的速度已经快过人类修漏洞的速度（谷歌同一周也就此发声并推出自家安全模型），防守方靠什么跟上？开源权重在这里是关键：能本地部署、可透明审计、运行费用低廉的安全工具，比黑盒 API 更容易被企业和政府采纳——相当于给 AI 安全军备竞赛的防守一方,发了一件平价制式武器。",
+  "tags": [
+    "Open Source",
+    "Safety",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "Introducing Antares — Cisco Blogs",
+      "url": "https://blogs.cisco.com/ai/introducing-antares-the-most-efficient-open-weight-ai-models-for-vulnerability-localization"
+    },
+    {
+      "title": "Cisco bets its small open cybersecurity models can outperform GPT-5.5 — The Decoder",
+      "url": "https://the-decoder.com/cisco-bets-its-small-open-cybersecurity-models-can-outperform-gpt-5-5-at-vulnerability-detection-for-a-fraction-of-the-cost/"
+    },
+    {
+      "title": "Cisco Foundation AI Releases Antares — MarkTechPost",
+      "url": "https://www.marktechpost.com/2026/07/21/cisco-foundation-ai-releases-antares-350m-and-1b-open-weight-models-that-localize-known-vulnerabilities-inside-real-codebases/"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-23",
+  "published_at": "2026-07-23T09:02:43.278Z"
+}

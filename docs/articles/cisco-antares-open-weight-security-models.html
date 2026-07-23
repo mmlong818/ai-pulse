@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cisco open-sources tiny Antares models to locate code flaws — AI Focus Bulletin</title>
+<meta name="description" content="Cisco's Foundation AI arm releases 350M and 1B open-weight models that trace known vulnerabilities to specific files, nearing frontier accuracy at a fraction ">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/cisco-antares-open-weight-security-models.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/cisco-antares-open-weight-security-models.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/cisco-antares-open-weight-security-models.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/cisco-antares-open-weight-security-models.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="Cisco open-sources tiny Antares models to locate code flaws — AI Focus Bulletin">
+<meta property="og:description" content="Cisco's Foundation AI arm releases 350M and 1B open-weight models that trace known vulnerabilities to specific files, nearing frontier accuracy at a fraction ">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/cisco-antares-open-weight-security-models.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Cisco open-sources tiny Antares models to locate code flaws","description":"Cisco's Foundation AI arm releases 350M and 1B open-weight models that trace known vulnerabilities to specific files, nearing frontier accuracy at a fraction of the cost.","datePublished":"2026-07-23T09:02:43.278Z","inLanguage":"en","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/articles/cisco-antares-open-weight-security-models.html"}</script>
+</head>
+<body data-slug="cisco-antares-open-weight-security-models" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ AI Focus Bulletin</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cisco-antares-open-weight-security-models.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-23">July 23, 2026</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/open-source.html">Open Source</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/safety.html">Safety</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/models.html">Models</a><span class="views" id="viewCount"></span></div>
+  <h1>Cisco open-sources tiny Antares models to locate code flaws</h1>
+  <p class="standfirst">Cisco's Foundation AI arm releases 350M and 1B open-weight models that trace known vulnerabilities to specific files, nearing frontier accuracy at a fraction of the cost.</p>
+  <p>Cisco's Foundation AI team has released Antares, a family of small open-weight language models built for one job: vulnerability localization — connecting public advisories, CVE records, and Common Weakness Enumeration entries to the specific files in a repository where the flaw likely lives. The 350M- and 1B-parameter versions are now available on Hugging Face.</p><h2>An investigator, not a scanner</h2><p>Rather than pattern-matching over code, each Antares model works a repository the way a human security analyst would: it starts from a vulnerability description, searches for matching code patterns, reads candidate files, weighs new evidence, and backtracks when a lead runs dry. To evaluate the approach, Cisco built a 500-entry Vulnerability Localization Benchmark that forces a model to navigate unfamiliar codebases and recognize weakness patterns by category. On that benchmark, Cisco says the 1B model approaches the accuracy of frontier systems like GPT-5.5 while remaining small enough to run cheaply on local hardware — a meaningful property for security teams that cannot ship proprietary source code to external APIs.</p><p>The release extends Cisco's Foundation AI open-model program into a week thick with AI-security news, and the company is explicit about the economics: triaging a steady stream of vulnerability reports with a frontier model is expensive at scale, while a specialized 1B model makes continuous, repository-wide localization affordable.</p><h2>Why it matters</h2><p>Antares is a data point in two live debates. First, whether small specialized models can beat frontier generalists on narrow high-value tasks — Cisco's answer is yes, by orders of magnitude on cost. Second, how defenders keep pace as AI systems find vulnerabilities faster than humans can fix them, a concern Google raised the same week with its own security-model push. Open weights matter here: security tooling that runs locally, audits transparently, and costs little to operate is far easier for enterprises and governments to adopt than a black-box API — and it hands the defensive side of the AI-security arms race a genuinely commodity-priced weapon.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://blogs.cisco.com/ai/introducing-antares-the-most-efficient-open-weight-ai-models-for-vulnerability-localization" rel="noopener" target="_blank">Introducing Antares — Cisco Blogs</a></li><li><a href="https://the-decoder.com/cisco-bets-its-small-open-cybersecurity-models-can-outperform-gpt-5-5-at-vulnerability-detection-for-a-fraction-of-the-cost/" rel="noopener" target="_blank">Cisco bets its small open cybersecurity models can outperform GPT-5.5 — The Decoder</a></li><li><a href="https://www.marktechpost.com/2026/07/21/cisco-foundation-ai-releases-antares-350m-and-1b-open-weight-models-that-localize-known-vulnerabilities-inside-real-codebases/" rel="noopener" target="_blank">Cisco Foundation AI Releases Antares — MarkTechPost</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/claude-security-plugin-beta.html">Anthropic ships Claude Security plugin for Claude Code in beta</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/cursor-router-per-request-model-routing.html">Cursor Router picks a model per request, cutting costs 30-50%</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/uk-aisi-frontier-models-cheat-evals.html">UK safety institute: every frontier model cheated on cyber tests</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI Focus Bulletin</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
