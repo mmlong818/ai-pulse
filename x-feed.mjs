@@ -1,4 +1,4 @@
-// 官方 X 账号直连信源：X API v2 按量付费（约 $0.005/条读取），每轮 14 账号 × 5 条 ≈ $0.35
+// 官方 X 账号直连信源：X API v2 按量付费（约 $0.005/条读取），每轮 39 账号 × 5 条 ≈ $1.0
 import { readFile, writeFile } from 'node:fs/promises';
 import { execSync } from 'node:child_process';
 import { join } from 'node:path';
@@ -15,6 +15,10 @@ const HANDLES = [
   'midjourney', 'Kling_ai', 'runwayml', 'ManusAI',
   // 国产模型厂商补全（2026-07-22 已验证官号）
   'MiniMax_AI', 'Hailuo_AI', 'TencentHunyuan', 'dreamina_ai', 'StepFun_ai', 'PixVerse_',
+  // AIGC 补充（图像/视频/音频生成，2026-07-23）
+  'pika_labs', 'LumaLabsAI', 'ElevenLabs', 'SunoMusic', 'StabilityAI', 'bfl_ml', 'ideogram_ai',
+  // Agent 领域（产品/框架，2026-07-23）
+  'cognition', 'crewAIInc', 'llama_index',
 ];
 
 function getToken() {

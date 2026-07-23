@@ -18,6 +18,8 @@ const TAG_META = {
   'Funding': { slug: 'funding', zh: '融资' },
   'Open Source': { slug: 'open-source', zh: '开源' },
   'Safety': { slug: 'safety', zh: '安全' },
+  'AIGC': { slug: 'aigc', zh: 'AIGC' },
+  'Agents': { slug: 'agents', zh: 'Agent' },
 };
 const tagLabel = (tag, lang) => (lang === 'zh' ? (TAG_META[tag]?.zh || tag) : tag);
 const tagUrl = (tag, lang) => TAG_META[tag] ? urlFor(lang, `category/${TAG_META[tag].slug}.html`) : urlFor(lang, '');
@@ -37,7 +39,7 @@ const T = {
     how: 'The pipeline runs twice a day (07:00 and 19:00 Beijing time). It gathers timestamped candidates from 17 first-tier RSS feeds and 29 official X accounts of AI labs via API, then an AI editor selects the most significant stories, verifies sources and publication dates, and writes each deep briefing plus the Daily Radar from scratch in English and Chinese. Every page lists its sources so readers can verify every claim. There are no ads, trackers, or paywalls.',
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
     featured: "★ Editor's pick", radar: 'Daily Radar', radarLede: 'Quick hits from across the AI world in the last 24 hours.',
-    radarArchive: 'Radar archive', radarCalLede: "Pick a date to see that day's quick hits.", related: 'Related briefings', catTitle: (n) => `${n} — Category`, allCats: 'Browse by topic',
+    radarArchive: 'Radar archive', radarCalLede: 'Pick a date to see everything published that day.', searchPh: 'Search briefings and quick hits…', dayLede: 'All briefings and quick hits published that day.', related: 'Related briefings', catTitle: (n) => `${n} — Category`, allCats: 'Browse by topic',
     archive: 'Archive', archiveLede: 'Every briefing ever published, grouped by date.', moreLink: () => 'View the archive →',
   },
   zh: {
@@ -54,7 +56,7 @@ const T = {
     how: '流水线每天运行两次（北京时间 7:00 与 19:00）：先从 17 个一级 RSS 信源和 29 个 AI 实验室官方 X 账号（API 直连）获取带真实时间戳的候选新闻，AI 编辑再遴选最重要的故事、核验信源与发布日期，以中英双语原创撰写深度简报与「每日雷达」快讯并自动发布。每个页面都列出信源，读者可以核验每一条信息。没有广告、追踪器和付费墙。',
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
     featured: '★ 编辑推荐', radar: '每日雷达', radarLede: '过去 24 小时 AI 圈的一句话快讯。',
-    radarArchive: '雷达存档', radarCalLede: '点击日期查看当天的雷达快讯。', related: '相关简报', catTitle: (n) => `${n} · 分类`, allCats: '按主题浏览',
+    radarArchive: '雷达存档', radarCalLede: '点击日期查看当天发布的全部内容。', searchPh: '搜索简报与快讯…', dayLede: '当天发布的全部深度简报与一句话快讯。', related: '相关简报', catTitle: (n) => `${n} · 分类`, allCats: '按主题浏览',
     archive: '存档', archiveLede: '全部历史简报，按日期分组，永久留存。', moreLink: () => '查看历史记录 →',
   },
 };
@@ -198,9 +200,9 @@ const radarTs = (i, fallback) => {
   return Date.parse(p.includes('T') ? p : p + 'T00:00:00Z') || 0;
 };
 
-// 雷达存档日历：按月网格，有雷达的日期可点击（附条数）
-function radarCalendarHtml(radars, lang) {
-  const byDate = new Map(radars.map((r) => [radarDispDate(r, lang), { href: r.date, n: r.items.length }]));
+// 存档日历：按月网格，有内容的日期可点击（附条数）；entries: [{key: 展示日期, href, n}]
+function calendarHtml(entries, lang) {
+  const byDate = new Map(entries.map((e) => [e.key, e]));
   const months = [...byDate.keys()].map((d) => d.slice(0, 7)).filter((m, i, a) => a.indexOf(m) === i).sort().reverse();
   const week = lang === 'zh' ? ['一', '二', '三', '四', '五', '六', '日'] : ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
   return months.map((m) => {
@@ -213,7 +215,7 @@ function radarCalendarHtml(radars, lang) {
       const iso = `${m}-${String(d).padStart(2, '0')}`;
       const hit = byDate.get(iso);
       cells.push(hit
-        ? `<a class="cal-cell cal-day has-radar" href="${urlFor(lang, `radar/${hit.href}.html`)}">${d}<span class="cal-count">${hit.n}</span></a>`
+        ? `<a class="cal-cell cal-day has-radar" href="${hit.href}">${d}<span class="cal-count">${hit.n}</span></a>`
         : `<span class="cal-cell cal-day">${d}</span>`);
     }
     const title = lang === 'zh' ? `${y} 年 ${mo} 月` : new Date(Date.UTC(y, mo - 1, 1)).toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' });
@@ -224,19 +226,6 @@ function radarCalendarHtml(radars, lang) {
 function radarItemLi(i, lang) {
   const time = radarTime(i.published, lang);
   return `<li><a class="tag" href="${tagUrl(i.tag, lang)}">${esc(tagLabel(i.tag, lang))}</a> ${esc(lang === 'zh' && i.text_zh ? i.text_zh : i.text)} <a class="radar-src" href="${esc(i.url)}" rel="noopener" target="_blank">${esc(i.source || 'source')} ↗</a>${time ? ` <time class="radar-time" datetime="${esc(i.published)}">${esc(time)}</time>` : ''}</li>`;
-}
-
-function radarSection(radar, lang, { linkArchive = true } = {}) {
-  const t = T[lang];
-  const sorted = [...radar.items].sort((a, b) => radarTs(b, radar.date) - radarTs(a, radar.date));
-  const items = sorted.map((i) => radarItemLi(i, lang)).join('\n');
-  return `<section class="radar">
-  <div class="block-head"><h2>📡 ${t.radar} · ${t.dateFmt(radarDispDate(radar, lang))}</h2>${linkArchive ? `<span class="radar-links"><a class="radar-archive-link" href="${urlFor(lang, `radar/${radar.date}.html`)}">#</a><a class="radar-archive-link" href="${urlFor(lang, 'radar/index.html')}">📅 ${t.radarArchive}</a></span>` : ''}</div>
-  <p class="radar-lede">${esc(t.radarLede)}</p>
-  <ul class="radar-list">
-${items}
-  </ul>
-</section>`;
 }
 
 // 单一时间线：简报卡片与雷达一句话快讯按发布时间倒序混排，连续的快讯合并进一个紧凑分组
@@ -410,60 +399,62 @@ ${catList.map((a) => articleCard(a, lang)).join('\n')}
     }));
   }
 
-  // 雷达存档页
-  for (const radar of radars) {
-    const rd = radarDispDate(radar, lang);
-    await writeFile(join(dir, 'radar', `${radar.date}.html`), page({
+  // 按天归档页（/day/YYYY-MM-DD.html）：当天全部简报 + 快讯的时间线
+  const dayMap = new Map();
+  for (const a of list) { if (!dayMap.has(a.date)) dayMap.set(a.date, { articles: [], radars: [] }); dayMap.get(a.date).articles.push(a); }
+  for (const r of radars) { if (!dayMap.has(r.date)) dayMap.set(r.date, { articles: [], radars: [] }); dayMap.get(r.date).radars.push(r); }
+  await mkdir(join(dir, 'day'), { recursive: true });
+  for (const [date, d] of dayMap) {
+    const disp = lang === 'en' ? shiftDay(date, -1) : date;
+    const nItems = d.radars.reduce((s, r) => s + r.items.length, 0);
+    await writeFile(join(dir, 'day', `${date}.html`), page({
       lang,
-      title: `${t.radar} ${rd} — ${SITE_NAME}`,
+      title: `${t.dateFmt(disp)} — ${SITE_NAME}`,
       description: lang === 'zh'
-        ? `${rd} AI 圈一句话快讯 ${radar.items.length} 条：产品、论文、开源、融资与政策动态。`
-        : `${radar.items.length} quick AI news hits for ${rd} (ET): products, papers, open source, funding, and policy.`,
-      canonical: urlFor(lang, `radar/${radar.date}.html`),
-      altEn: `${BASE}/radar/${radar.date}.html`, altZh: `${BASE}/zh/radar/${radar.date}.html`,
-      jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: `${t.radar} ${rd}`, url: urlFor(lang, `radar/${radar.date}.html`) },
+        ? `${disp} 发布的 ${d.articles.length} 篇深度简报与 ${nItems} 条一句话快讯。`
+        : `${d.articles.length} briefings and ${nItems} quick hits published on ${disp} (ET).`,
+      canonical: urlFor(lang, `day/${date}.html`),
+      altEn: `${BASE}/day/${date}.html`, altZh: `${BASE}/zh/day/${date}.html`,
+      jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: t.dateFmt(disp), url: urlFor(lang, `day/${date}.html`) },
       body: `
-${radarSection(radar, lang, { linkArchive: false })}
-<section class="about-strip"><h2>${t.radarArchive}</h2><p><a href="${urlFor(lang, 'radar/index.html')}">📅 ${lang === 'zh' ? '按日历浏览全部雷达' : 'Browse all days on the calendar'} →</a></p></section>
-<p class="backlink"><a href="${urlFor(lang, '')}">${t.back}</a></p>`,
+<section class="hero"><h1>${t.dateFmt(disp)}</h1><p class="lede">${esc(t.dayLede)}</p></section>
+<section class="feed">
+${timelineHtml(d.articles, d.radars, lang)}
+</section>
+<p class="backlink"><a href="${urlFor(lang, 'archive.html')}">📚 ${t.archive}</a> · <a href="${urlFor(lang, '')}">${t.back}</a></p>`,
     }));
   }
 
-  // 雷达存档日历（/radar/）
-  if (radars.length) {
-    await writeFile(join(dir, 'radar', 'index.html'), page({
-      lang,
-      title: `${t.radarArchive} — ${SITE_NAME}`,
-      description: lang === 'zh'
-        ? `每日雷达存档日历：${radars.length} 天的 AI 一句话快讯，点击日期查看当天内容。`
-        : `Daily Radar archive calendar: ${radars.length} days of quick AI news hits, one page per day.`,
-      canonical: urlFor(lang, 'radar/index.html'),
-      altEn: `${BASE}/radar/index.html`, altZh: `${BASE}/zh/radar/index.html`,
-      jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: t.radarArchive, url: urlFor(lang, 'radar/index.html') },
-      body: `
-<section class="hero"><h1>📡 ${t.radarArchive}</h1><p class="lede">${esc(t.radarCalLede)}</p></section>
-${radarCalendarHtml(radars, lang)}
-<p class="backlink"><a href="${urlFor(lang, '')}">${t.back}</a></p>`,
-    }));
-  }
+  // 旧 /radar/ 链接重定向到对应按天页（雷达概念已并入时间线）
+  const redirect = (to) => `<!DOCTYPE html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=${to}"><link rel="canonical" href="${to}"><a href="${to}">→</a>`;
+  for (const r of radars) await writeFile(join(dir, 'radar', `${r.date}.html`), redirect(urlFor(lang, `day/${r.date}.html`)));
+  await writeFile(join(dir, 'radar', 'index.html'), redirect(urlFor(lang, 'archive.html')));
 
-  // 存档页：全部历史简报按日期分组，永久留存
-  const byDate = {};
-  for (const a of list) (byDate[dispDate(a, lang)] ||= []).push(a);
+  // 本地搜索索引（纯前端，无服务器）
+  const searchIndex = [
+    ...list.map((a) => ({ k: 'a', t: langOf(a, lang).title, s: langOf(a, lang).summary, u: urlFor(lang, `articles/${a.slug}.html`), d: dispDate(a, lang) })),
+    ...radars.flatMap((r) => r.items.map((i) => ({ k: 'r', t: lang === 'zh' && i.text_zh ? i.text_zh : i.text, s: i.source || '', u: urlFor(lang, `day/${r.date}.html`), d: lang === 'en' ? shiftDay(r.date, -1) : r.date }))),
+  ];
+  await writeFile(join(SITE, `search-index-${lang}.json`), JSON.stringify(searchIndex));
+
+  // 存档页：搜索 + 日历
+  const calEntries = [...dayMap.entries()].map(([date, d]) => ({
+    key: lang === 'en' ? shiftDay(date, -1) : date,
+    href: urlFor(lang, `day/${date}.html`),
+    n: d.articles.length + d.radars.reduce((s, r) => s + r.items.length, 0),
+  }));
   const archiveBody = `
-<section class="hero"><h1>${t.archive}</h1><p class="lede">${esc(t.archiveLede)}</p></section>
-${Object.keys(byDate).sort().reverse().map((date) => `
-<section class="archive-day">
-  <h2>${t.dateFmt(date)}</h2>
-  <ul>${byDate[date].map((a) => `<li>${tagChips(a, lang, 1)} <a href="${urlFor(lang, `articles/${a.slug}.html`)}">${esc(langOf(a, lang).title)}</a></li>`).join('\n')}</ul>
-</section>`).join('\n')}
-${radars.length ? `<section class="archive-day"><h2>📡 ${t.radarArchive}</h2><p><a href="${urlFor(lang, 'radar/index.html')}">📅 ${lang === 'zh' ? '日历视图' : 'Calendar view'} →</a></p><ul>${radars.map((r) => `<li><a href="${urlFor(lang, `radar/${r.date}.html`)}">${t.dateFmt(radarDispDate(r, lang))}</a>（${r.items.length}）</li>`).join('')}</ul></section>` : ''}`;
+<section class="hero"><h1>${t.archive}</h1><p class="lede">${esc(t.radarCalLede)}</p></section>
+<div class="search-box"><input id="searchBox" type="search" placeholder="${esc(t.searchPh)}" data-index="${BASE}/search-index-${lang}.json"></div>
+<ul class="search-results" id="searchResults"></ul>
+${calendarHtml(calEntries, lang)}
+<script src="${BASE}/assets/search.js" defer></script>`;
   await writeFile(join(dir, 'archive.html'), page({
     lang,
-    title: lang === 'zh' ? `存档 — 全部简报 — ${BRAND.zh}` : `Archive — All briefings — ${SITE_NAME}`,
+    title: lang === 'zh' ? `存档 — ${BRAND.zh}` : `Archive — ${SITE_NAME}`,
     description: lang === 'zh'
-      ? `AI专注速报全部历史简报（${list.length} 篇）与每日雷达存档，按日期分组，永久留存。`
-      : `Every briefing published by ${SITE_NAME} (${list.length}) plus the Daily Radar archive, grouped by date.`,
+      ? `AI专注速报历史存档：按日历浏览每天发布的全部简报与快讯，支持搜索。`
+      : `${SITE_NAME} archive: browse every day's briefings and quick hits on a calendar, with search.`,
     canonical: urlFor(lang, 'archive.html'),
     altEn: `${BASE}/archive.html`, altZh: `${BASE}/zh/archive.html`,
     jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: t.archive, url: urlFor(lang, 'archive.html') },
@@ -537,8 +528,7 @@ async function build() {
     ...en.map((a) => `${BASE}/articles/${a.slug}.html`),
     ...zh.map((a) => `${BASE}/zh/articles/${a.slug}.html`),
     ...catSlugs.flatMap((s) => [`${BASE}/category/${s}.html`, `${BASE}/zh/category/${s}.html`]),
-    ...radars.flatMap((r) => [`${BASE}/radar/${r.date}.html`, `${BASE}/zh/radar/${r.date}.html`]),
-    ...(radars.length ? [`${BASE}/radar/index.html`, `${BASE}/zh/radar/index.html`] : []),
+    ...[...new Set([...articles.map((a) => a.date), ...radars.map((r) => r.date)])].flatMap((d) => [`${BASE}/day/${d}.html`, `${BASE}/zh/day/${d}.html`]),
   ];
   await writeFile(join(SITE, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -564,8 +554,7 @@ ${articles.slice(0, 15).map((a) => `- [${a.title}](${BASE}/articles/${a.slug}.ht
 - [全部简报（中文）](${BASE}/zh/): Chinese edition
 - [About](${BASE}/about.html): editorial principles and how the autonomous newsroom works
 - [RSS English](${BASE}/rss.xml) / [RSS 中文](${BASE}/rss-zh.xml): machine-readable feeds
-${radars[0] ? `- [Daily Radar](${BASE}/radar/${radars[0].date}.html): today's quick hits across the AI world (${radars[0].items.length} items)
-- [Radar archive calendar](${BASE}/radar/index.html): every past day of quick hits` : ''}
+- [Archive](${BASE}/archive.html): calendar of every day's briefings and quick hits, with search
 - Categories: ${catSlugs.map((s) => `[${s}](${BASE}/category/${s}.html)`).join(', ')}
 
 ## Optional

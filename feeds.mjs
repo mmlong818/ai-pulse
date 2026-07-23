@@ -17,6 +17,9 @@ const FEEDS = [
   { name: 'Hacker News 热门', url: 'https://hnrss.org/frontpage?points=100', tier: 'community' },
   { name: 'Simon Willison', url: 'https://simonwillison.net/atom/everything/', tier: 'expert' },
   { name: 'Lilian Weng', url: 'https://lilianweng.github.io/index.xml', tier: 'expert' },
+  // AIGC / Agent 领域补充（2026-07-23，均已实测可用）
+  { name: 'Replicate', url: 'https://replicate.com/blog/rss', tier: 'official' },
+  { name: 'Latent Space', url: 'https://www.latent.space/feed', tier: 'expert' },
 ];
 
 const pick = (xml, ...res) => {

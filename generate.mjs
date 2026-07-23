@@ -43,13 +43,16 @@ const SOURCE_GUIDE = `SOURCE POLICY:
 1. START from the CANDIDATE HEADLINES below — they come from first-tier feeds and their timestamps are already verified. Prefer them. (Some feeds carry general tech news — pick AI stories only.)
 2. Use web search to (a) enrich selected stories with primary sources and detail, and (b) catch major stories the feeds missed:
    - Labs/pages without feeds: Anthropic news & research, xAI news, Mistral, DeepSeek, Alibaba/Qwen, Moonshot, Zhipu, MiniMax, ByteDance Seed (Seedance/Seedream/豆包), Tencent Hunyuan, StepFun 阶跃星辰, Vidu 生数科技, Baidu ERNIE 文心, 01.AI, Cursor blog, Hugging Face daily papers (huggingface.co/papers)
+   - AIGC (image/video/audio/music generation): Midjourney, Runway, Pika, Luma AI, Kling 可灵, Suno, ElevenLabs, Black Forest Labs (FLUX), Ideogram, ComfyUI, Stability AI
+   - AI agents (products, coding agents, frameworks & infra): Cognition (Devin), Claude Code / Claude Agent SDK, OpenAI Agents, Manus, Genspark, CrewAI, LlamaIndex, LangChain/LangGraph, MCP ecosystem
    - X (Twitter) watchlist — search for fresh posts; when a story broke on X, cite the original X post URL:
      · First-party (official announcements): @OpenAI @AnthropicAI @GoogleDeepMind @AIatMeta @xai @MistralAI @deepseek_ai @Alibaba_Qwen @ZhipuAI @huggingface @perplexity_ai @cursor_ai @LangChainAI @OpenRouter
      · Lab leaders & researchers: @sama @gdb @DarioAmodei @demishassabis @karpathy @DrJimFan @ClementDelangue @OfficialLoganK @bcherny @AndrewYNg @ylecun @drfeifei
      · High-signal commentators: @testingcatalog @rohanpaul_ai @emollick @kimmonismus @berryxia @omarsar0 @rowancheung @ArtificialAnlys @steipete @LinusEkenstam @SemiAnalysis_
      · Chinese-sphere: @dotey @xiaohu @op7418 @AYi_AInotes @shao__meng @oran_ge @FinanceYF5 @recatm
    - arXiv papers and Asia coverage (SCMP, Nikkei, 36氪)
-3. Prefer primary sources (the lab's own post/paper/X thread) over secondhand reporting when available.`;
+3. Prefer primary sources (the lab's own post/paper/X thread) over secondhand reporting when available.
+4. COVERAGE BALANCE: beyond frontier-model news, actively look for AIGC stories (image/video/audio/music generation — new models, creator tools, notable use) and AI-agent stories (agent products, coding agents, frameworks & infra). These two areas are currently under-covered; when significance is comparable, prefer them.`;
 
 const digestOf = (headlines) => headlines
   .map((h) => `- ${h.date.toISOString().slice(0, 16)}Z [${h.source}] ${h.title} — ${h.link}`)
@@ -92,7 +95,7 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
   "title_zh": "中文标题（新闻语体，非直译腔）",
   "summary_zh": "中文导语一句话",
   "body_zh": "中文正文 markdown，与英文版信息一致，行文要像中文科技媒体原生稿件而非翻译腔",
-  "tags": ["Models" | "Research" | "Policy" | "Industry" | "Funding" | "Open Source" | "Safety"],
+  "tags": ["Models" | "Research" | "Policy" | "Industry" | "Funding" | "Open Source" | "Safety" | "AIGC" | "Agents"],
   "sources": [{"title": "Source page title", "url": "https://..."}],
   "featured": false,
   "featured_reason": "only on the featured story: one line on why it leads today",
@@ -136,7 +139,7 @@ OUTPUT: ONLY a JSON object (no fence, no commentary):
 {
   "date": "${today}",
   "items": [
-    { "text": "...", "text_zh": "...", "url": "https://...", "source": "source site name", "published": "2026-01-01T14:30:00Z (UTC; date-only YYYY-MM-DD if exact time unknown)", "tag": "Models|Research|Policy|Industry|Funding|Open Source|Safety" }
+    { "text": "...", "text_zh": "...", "url": "https://...", "source": "source site name", "published": "2026-01-01T14:30:00Z (UTC; date-only YYYY-MM-DD if exact time unknown)", "tag": "Models|Research|Policy|Industry|Funding|Open Source|Safety|AIGC|Agents" }
   ]
 }`;
   const radar = parseJson(await runClaude(prompt), '{', '}');
