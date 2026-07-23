@@ -260,7 +260,8 @@ const editionLabel = (eb, lang) => {
 
 // 单一时间线：简报卡片与一句话快讯按发布时间倒序混排，连续的快讯合并进一个紧凑分组
 // editions: N 时只保留最近 N 个班次（首页用 2：晚报上线时早报下移，次日早报上线时保留前一晚报）
-function timelineHtml(articles, radars, lang, { editions } = {}) {
+// withinH: 产品硬规则——首页只展示源头时间在 N 小时内的内容，更早的只存在于历史归档
+function timelineHtml(articles, radars, lang, { editions, withinH } = {}) {
   let entries = [
     // 排序用源头发布时间；班次归属（保留窗口）仍按本站发布时刻
     ...articles.map((a) => {
@@ -270,6 +271,10 @@ function timelineHtml(articles, radars, lang, { editions } = {}) {
     }),
     ...radars.flatMap((r) => r.items.map((i) => { const ts = radarTs(i, r.date); return { ts, eb: ceilEdition(ts), html: radarItemLi(i, lang), radar: true }; })),
   ].sort((a, b) => b.eb - a.eb || b.ts - a.ts); // 先按班次（新班次整体在上），班次内按源头时间倒序
+  if (withinH) {
+    const cutoff = Date.now() - withinH * 3600000;
+    entries = entries.filter((e) => e.ts >= cutoff);
+  }
   if (editions) {
     const keep = new Set([...new Set(entries.map((e) => e.eb))].sort((a, b) => b - a).slice(0, editions));
     entries = entries.filter((e) => keep.has(e.eb));
@@ -299,12 +304,13 @@ async function buildLang(articles, radars, lang) {
   const activeTags = Object.keys(TAG_META).filter((tag) => list.some((a) => a.tags.includes(tag)));
   const catBar = `<nav class="cat-bar"><span>${t.allCats}:</span>${activeTags.map((tag) => `<a class="tag" href="${tagUrl(tag, lang)}">${esc(tagLabel(tag, lang))}</a>`).join('')}</nav>`;
 
-  // 首页：单一时间线（简报 + 快讯混排），始终保留最近两个班次
+  // 首页：单一时间线（简报 + 快讯混排），最近两个班次 + 严格 24 小时（产品定位，不可放宽）
+  const heroFresh = featured && Date.parse(articleTs(featured) || featured.date) >= Date.now() - 24 * 3600000;
   const indexBody = `
-${featured ? featuredHero(featured, lang) : ''}
+${heroFresh ? featuredHero(featured, lang) : ''}
 ${catBar}
 <section class="feed">
-${timelineHtml(rest, radars, lang, { editions: 2 })}
+${timelineHtml(rest, radars, lang, { editions: 2, withinH: 24 })}
 </section>
 <p class="more-link"><a href="${urlFor(lang, 'archive.html')}">📚 ${t.moreLink()}</a></p>`;
   const latest = list[0];
@@ -510,11 +516,15 @@ ${calendarHtml(calEntries, lang)}
 <section class="feed" id="favList"></section>`,
   }));
 
-  // RSS：与首页同规则，保留最近两个班次（简报逐条 + 每班次一条快讯速览）
-  const rssArticleEntries = list.map((a) => ({ a, eb: floorEdition(Date.parse(a.published_at || a.date + 'T11:00:00Z') || 0) }));
+  // RSS：与首页同规则，最近两个班次 + 严格 24 小时（简报逐条 + 每班次一条快讯速览）
+  const rssCutoff = Date.now() - 24 * 3600000;
+  const rssArticleEntries = list
+    .filter((a) => Date.parse(articleTs(a) || a.date) >= rssCutoff)
+    .map((a) => ({ a, eb: floorEdition(Date.parse(a.published_at || a.date + 'T11:00:00Z') || 0) }));
   const radarByEb = new Map();
   for (const r of radars) for (const i of r.items) {
     const ts = radarTs(i, r.date), eb = ceilEdition(ts);
+    if (ts < rssCutoff) continue;
     if (!radarByEb.has(eb)) radarByEb.set(eb, []);
     radarByEb.get(eb).push({ i, ts });
   }
