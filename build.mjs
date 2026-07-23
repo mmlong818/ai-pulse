@@ -237,9 +237,10 @@ function calendarHtml(entries, lang) {
   }).join('\n');
 }
 
+// 快讯条目：电报体——时间打头，正文紧凑，与简报卡片形式区分
 function radarItemLi(i, lang) {
   const time = radarTime(i.published, lang);
-  return `<li><a class="tag" href="${tagUrl(i.tag, lang)}">${esc(tagLabel(i.tag, lang))}</a> ${esc(lang === 'zh' && i.text_zh ? i.text_zh : i.text)} <a class="radar-src" href="${esc(i.url)}" rel="noopener" target="_blank">${esc(i.source || 'source')} ↗</a>${time ? ` <time class="radar-time" datetime="${esc(i.published)}">${esc(time)}</time>` : ''}</li>`;
+  return `<li>${time ? `<time class="radar-time" datetime="${esc(i.published)}">${esc(time)}</time>` : ''}<a class="tag" href="${tagUrl(i.tag, lang)}">${esc(tagLabel(i.tag, lang))}</a> <span class="radar-text">${esc(lang === 'zh' && i.text_zh ? i.text_zh : i.text)}</span> <a class="radar-src" href="${esc(i.url)}" rel="noopener" target="_blank">${esc(i.source || 'source')} ↗</a></li>`;
 }
 
 // 班次（edition）：北京 07:00 / 19:00 为界（= UTC 前日 23:00 / 当日 11:00），以 UTC 11:00 为锚每 12 小时一个边界
@@ -281,7 +282,7 @@ function timelineHtml(articles, radars, lang, { editions, withinH } = {}) {
   }
   const out = [];
   let group = [];
-  const flush = () => { if (group.length) { out.push(`<ul class="radar-list feed-radar">\n${group.join('\n')}\n</ul>`); group = []; } };
+  const flush = () => { if (group.length) { out.push(`<ul class="radar-list feed-radar">\n<li class="feed-radar-head">⚡ ${lang === 'zh' ? '快讯' : 'Quick hits'}</li>\n${group.join('\n')}\n</ul>`); group = []; } };
   for (const e of entries) {
     if (e.radar) { group.push(e.html); continue; }
     flush();
