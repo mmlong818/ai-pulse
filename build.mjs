@@ -221,13 +221,15 @@ function radarCalendarHtml(radars, lang) {
   }).join('\n');
 }
 
+function radarItemLi(i, lang) {
+  const time = radarTime(i.published, lang);
+  return `<li><a class="tag" href="${tagUrl(i.tag, lang)}">${esc(tagLabel(i.tag, lang))}</a> ${esc(lang === 'zh' && i.text_zh ? i.text_zh : i.text)} <a class="radar-src" href="${esc(i.url)}" rel="noopener" target="_blank">${esc(i.source || 'source')} ↗</a>${time ? ` <time class="radar-time" datetime="${esc(i.published)}">${esc(time)}</time>` : ''}</li>`;
+}
+
 function radarSection(radar, lang, { linkArchive = true } = {}) {
   const t = T[lang];
   const sorted = [...radar.items].sort((a, b) => radarTs(b, radar.date) - radarTs(a, radar.date));
-  const items = sorted.map((i) => {
-    const time = radarTime(i.published, lang);
-    return `<li><a class="tag" href="${tagUrl(i.tag, lang)}">${esc(tagLabel(i.tag, lang))}</a> ${esc(lang === 'zh' && i.text_zh ? i.text_zh : i.text)} <a class="radar-src" href="${esc(i.url)}" rel="noopener" target="_blank">${esc(i.source || 'source')} ↗</a>${time ? ` <time class="radar-time" datetime="${esc(i.published)}">${esc(time)}</time>` : ''}</li>`;
-  }).join('\n');
+  const items = sorted.map((i) => radarItemLi(i, lang)).join('\n');
   return `<section class="radar">
   <div class="block-head"><h2>📡 ${t.radar} · ${t.dateFmt(radarDispDate(radar, lang))}</h2>${linkArchive ? `<span class="radar-links"><a class="radar-archive-link" href="${urlFor(lang, `radar/${radar.date}.html`)}">#</a><a class="radar-archive-link" href="${urlFor(lang, 'radar/index.html')}">📅 ${t.radarArchive}</a></span>` : ''}</div>
   <p class="radar-lede">${esc(t.radarLede)}</p>
@@ -235,6 +237,24 @@ function radarSection(radar, lang, { linkArchive = true } = {}) {
 ${items}
   </ul>
 </section>`;
+}
+
+// 单一时间线：简报卡片与雷达一句话快讯按发布时间倒序混排，连续的快讯合并进一个紧凑分组
+function timelineHtml(articles, radars, lang) {
+  const entries = [
+    ...articles.map((a) => ({ ts: Date.parse(a.published_at || a.date + 'T11:00:00Z') || 0, html: articleCard(a, lang), radar: false })),
+    ...radars.slice(0, 3).flatMap((r) => r.items.map((i) => ({ ts: radarTs(i, r.date), html: radarItemLi(i, lang), radar: true }))),
+  ].sort((a, b) => b.ts - a.ts);
+  const out = [];
+  let group = [];
+  const flush = () => { if (group.length) { out.push(`<ul class="radar-list feed-radar">\n${group.join('\n')}\n</ul>`); group = []; } };
+  for (const e of entries) {
+    if (e.radar) { group.push(e.html); continue; }
+    flush();
+    out.push(e.html);
+  }
+  flush();
+  return out.join('\n');
 }
 
 async function buildLang(articles, radars, lang) {
@@ -251,15 +271,14 @@ async function buildLang(articles, radars, lang) {
   const catBar = `<nav class="cat-bar"><span>${t.allCats}:</span>${activeTags.map((tag) => `<a class="tag" href="${tagUrl(tag, lang)}">${esc(tagLabel(tag, lang))}</a>`).join('')}</nav>`;
   const latestRadar = radars[0];
 
-  // 首页
+  // 首页：单一时间线（简报 + 雷达快讯混排）
   const indexBody = `
 ${featured ? featuredHero(featured, lang) : ''}
 ${catBar}
-${latestRadar ? radarSection(latestRadar, lang) : ''}
 <section class="feed">
-${rest.slice(0, 20).map((a) => articleCard(a, lang)).join('\n')}
+${timelineHtml(rest.slice(0, 20), radars, lang)}
 </section>
-${rest.length > 20 ? `<p class="more-link"><a href="${urlFor(lang, 'archive.html')}">${t.moreLink(list.length)}</a></p>` : ''}`;
+<p class="more-link">${latestRadar ? `<a href="${urlFor(lang, 'radar/index.html')}">📡 ${t.radarArchive} →</a>` : ''}${rest.length > 20 ? ` · <a href="${urlFor(lang, 'archive.html')}">${t.moreLink(list.length)}</a>` : ''}</p>`;
   const latest = list[0];
   await writeFile(join(dir, 'index.html'), page({
     lang,
