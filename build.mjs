@@ -243,7 +243,7 @@ ${items}
 function timelineHtml(articles, radars, lang) {
   const entries = [
     ...articles.map((a) => ({ ts: Date.parse(a.published_at || a.date + 'T11:00:00Z') || 0, html: articleCard(a, lang), radar: false })),
-    ...radars.slice(0, 3).flatMap((r) => r.items.map((i) => ({ ts: radarTs(i, r.date), html: radarItemLi(i, lang), radar: true }))),
+    ...radars.flatMap((r) => r.items.map((i) => ({ ts: radarTs(i, r.date), html: radarItemLi(i, lang), radar: true }))),
   ].sort((a, b) => b.ts - a.ts);
   const out = [];
   let group = [];
@@ -271,14 +271,17 @@ async function buildLang(articles, radars, lang) {
   const catBar = `<nav class="cat-bar"><span>${t.allCats}:</span>${activeTags.map((tag) => `<a class="tag" href="${tagUrl(tag, lang)}">${esc(tagLabel(tag, lang))}</a>`).join('')}</nav>`;
   const latestRadar = radars[0];
 
-  // 首页：单一时间线（简报 + 雷达快讯混排）
+  // 首页：单一时间线（简报 + 雷达快讯混排），只保留最新一刊日的内容
+  const latestDay = [list[0]?.date, latestRadar?.date].filter(Boolean).sort().pop();
+  const dayArticles = rest.filter((a) => a.date === latestDay);
+  const dayRadars = radars.filter((r) => r.date === latestDay);
   const indexBody = `
 ${featured ? featuredHero(featured, lang) : ''}
 ${catBar}
 <section class="feed">
-${timelineHtml(rest.slice(0, 20), radars, lang)}
+${timelineHtml(dayArticles, dayRadars, lang)}
 </section>
-<p class="more-link">${latestRadar ? `<a href="${urlFor(lang, 'radar/index.html')}">📡 ${t.radarArchive} →</a>` : ''}${rest.length > 20 ? ` · <a href="${urlFor(lang, 'archive.html')}">${t.moreLink(list.length)}</a>` : ''}</p>`;
+<p class="more-link">${latestRadar ? `<a href="${urlFor(lang, 'radar/index.html')}">📡 ${t.radarArchive} →</a> · ` : ''}<a href="${urlFor(lang, 'archive.html')}">${t.moreLink(list.length)}</a></p>`;
   const latest = list[0];
   await writeFile(join(dir, 'index.html'), page({
     lang,
