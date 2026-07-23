@@ -9,7 +9,7 @@ const ROOT = new URL('.', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$
 const CONTENT = join(ROOT, 'content');
 const COUNT = Number(process.argv[2] || 6);
 const RADAR_COUNT = Number(process.env.AIPULSE_RADAR_COUNT || 14);
-const WINDOW_H = Number(process.env.AIPULSE_WINDOW_HOURS || 48); // 采集时间窗（小时）
+const WINDOW_H = Number(process.env.AIPULSE_WINDOW_HOURS || 24); // 采集时间窗（小时），与站点「过去 24 小时」口径一致
 const SKIP_RADAR = process.env.AIPULSE_SKIP_RADAR === '1';
 // 按北京日期归档：早班（7:00）与晚班（19:00）落到同一天的文件里
 const today = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
