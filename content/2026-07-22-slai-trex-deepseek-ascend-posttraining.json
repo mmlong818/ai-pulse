@@ -1,0 +1,31 @@
+{
+  "slug": "slai-trex-deepseek-ascend-posttraining",
+  "title": "T-Rex Paper Details DeepSeek-V4 Post-Training on Ascend SuperPOD",
+  "summary": "A new paper tops Hugging Face's daily list with full-parameter post-training of trillion-parameter DeepSeek-V4 models on Huawei's Ascend SuperPOD.",
+  "body": "A 65-author paper titled \"SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD,\" posted to arXiv on July 22, climbed to the top of Hugging Face's daily papers ranking on July 23. The work documents something the AI-infrastructure world has watched for closely: full-parameter post-training of frontier-scale mixture-of-experts models — the DeepSeek-V4 family, whose largest member weighs in around 1.6 trillion parameters — carried out entirely on Huawei's Ascend NPU SuperPOD rather than Nvidia GPUs. Coverage by Tom's Hardware puts the cluster at roughly 1,000 Ascend 910C chips.\n\n## Engineering around the hard parts\nFull-parameter post-training at trillion-parameter scale stresses exactly the areas where non-Nvidia stacks have historically struggled: memory pressure, communication that cannot be hidden behind computation, and inefficient kernels. The team's answer is a hierarchical optimization framework spanning model parallelism, computation-communication orchestration, and low-level kernel execution. The reported outcome is 34.22 percent Model FLOPs Utilization with stable training — a 2.93x improvement over the open-source baseline recipe for the same hardware.\n\nThe paper pairs the systems work with a domain case study. Using continued pre-training and a 10,000-sample supervised fine-tuning set spanning four operations-research task types, the team specialized DeepSeek-V4-Flash into a solver-grounded reasoning model that reaches 71.81 percent zero-shot Pass@1 on their evaluation — 11.27 points above the base model and, by their measurement, 3.98 points above GPT-5.4-Mini.\n\n## Why it matters\nInference on Ascend chips is by now routine in China; frontier-scale training is the harder claim, and this paper is among the most detailed public accounts of it. If trillion-parameter MoE models can be post-trained at competitive efficiency on domestic silicon, US export controls lose some of their bite at precisely the stage — turning strong base models into specialized, deployable ones — where most applied AI work now happens. The community reaction, pushing the paper past everything else on Hugging Face's daily list, suggests researchers read it the same way: as evidence that the Nvidia-free training stack is maturing faster than skeptics assumed.",
+  "title_zh": "登顶 Hugging Face 日榜：DeepSeek-V4 全参数后训练跑通华为昇腾超节点",
+  "summary_zh": "65 位作者的 SLAI T-Rex 论文登顶 Hugging Face 日榜，详解在华为昇腾 SuperPOD 上对万亿参数 DeepSeek-V4 系列完成全参数后训练，全程未用英伟达硬件。",
+  "body_zh": "一篇题为《SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD》的论文 7 月 22 日提交 arXiv，次日便登顶 Hugging Face 每日论文榜。这篇由 65 位作者署名的工作，把 AI 基础设施圈盯了很久的一件事写成了公开技术报告：在华为昇腾 NPU SuperPOD（超节点）上、完全脱离英伟达 GPU，对 DeepSeek-V4 系列前沿模型完成全参数后训练——该系列最大版本约 1.6 万亿参数。据 Tom's Hardware 报道，训练集群规模约为 1000 张昇腾 910C。\n\n## 啃下最难啃的三块骨头\n万亿参数 MoE 模型的全参数后训练，恰好压在非英伟达技术栈历来最薄弱的环节上：显存压力、无法与计算重叠的通信开销、以及低效的算子执行。团队给出的方案是一套分层优化框架，贯穿模型并行策略、计算-通信编排和底层 kernel 执行三个层面。最终结果是在保持训练稳定的前提下达到 34.22% 的 MFU（模型算力利用率），较开源基线方案提升 2.93 倍。\n\n系统工作之外，论文还附带了一个领域落地案例：通过继续预训练加上覆盖四类运筹学任务的 1 万条高质量 SFT 数据，团队把 DeepSeek-V4-Flash 特化为求解器结合的推理模型，零样本 Pass@1 达到 71.81%，比基座模型高 11.27 个百分点，按其测算也比 GPT-5.4-Mini 高 3.98 个百分点。\n\n## 为什么重要\n昇腾芯片跑推理在国内已是常态，真正难的是前沿规模的训练，而这篇论文是迄今最详尽的公开记录之一。如果万亿参数 MoE 模型能在国产芯片上以有竞争力的效率完成后训练，那么美国出口管制在\"把强基座模型调教成可部署的专用模型\"这一环节——也是当下应用 AI 的主战场——的约束力就会明显打折。论文迅速登顶 Hugging Face 日榜，说明研究社区也读出了同样的信号：去英伟达化的训练栈，成熟速度超出了怀疑者的预期。",
+  "tags": [
+    "Research",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "Hugging Face Papers: SLAI T-Rex",
+      "url": "https://huggingface.co/papers/2607.20145"
+    },
+    {
+      "title": "arXiv:2607.20145 — SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD",
+      "url": "https://arxiv.org/abs/2607.20145"
+    },
+    {
+      "title": "Tom's Hardware: Huawei-led team claims it post-trained DeepSeek's 1.6-trillion-parameter model on Ascend 910C chips",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/huawei-led-team-claims-it-post-trained-deepseeks-1-6-trillion-parameter-models-on-ascend-910c-chips"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-22",
+  "published": "2026-07-22",
+  "published_at": "2026-07-23T12:41:00.895Z"
+}

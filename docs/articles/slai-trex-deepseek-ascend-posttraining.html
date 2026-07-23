@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T-Rex Paper Details DeepSeek-V4 Post-Training on Ascend SuperPOD — AI Focus Bulletin</title>
+<meta name="description" content="A new paper tops Hugging Face's daily list with full-parameter post-training of trillion-parameter DeepSeek-V4 models on Huawei's Ascend SuperPOD.">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/slai-trex-deepseek-ascend-posttraining.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/slai-trex-deepseek-ascend-posttraining.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/slai-trex-deepseek-ascend-posttraining.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/slai-trex-deepseek-ascend-posttraining.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="T-Rex Paper Details DeepSeek-V4 Post-Training on Ascend SuperPOD — AI Focus Bulletin">
+<meta property="og:description" content="A new paper tops Hugging Face's daily list with full-parameter post-training of trillion-parameter DeepSeek-V4 models on Huawei's Ascend SuperPOD.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/slai-trex-deepseek-ascend-posttraining.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"T-Rex Paper Details DeepSeek-V4 Post-Training on Ascend SuperPOD","description":"A new paper tops Hugging Face's daily list with full-parameter post-training of trillion-parameter DeepSeek-V4 models on Huawei's Ascend SuperPOD.","datePublished":"2026-07-23T12:41:00.895Z","inLanguage":"en","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/articles/slai-trex-deepseek-ascend-posttraining.html"}</script>
+</head>
+<body data-slug="slai-trex-deepseek-ascend-posttraining" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ AI Focus Bulletin</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/slai-trex-deepseek-ascend-posttraining.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-23T12:41:00.895Z">July 23, 2026, 8:41 AM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/research.html">Research</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/models.html">Models</a><span class="views" id="viewCount"></span></div>
+  <h1>T-Rex Paper Details DeepSeek-V4 Post-Training on Ascend SuperPOD</h1>
+  <p class="standfirst">A new paper tops Hugging Face's daily list with full-parameter post-training of trillion-parameter DeepSeek-V4 models on Huawei's Ascend SuperPOD.</p>
+  <p>A 65-author paper titled &quot;SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD,&quot; posted to arXiv on July 22, climbed to the top of Hugging Face's daily papers ranking on July 23. The work documents something the AI-infrastructure world has watched for closely: full-parameter post-training of frontier-scale mixture-of-experts models — the DeepSeek-V4 family, whose largest member weighs in around 1.6 trillion parameters — carried out entirely on Huawei's Ascend NPU SuperPOD rather than Nvidia GPUs. Coverage by Tom's Hardware puts the cluster at roughly 1,000 Ascend 910C chips.</p><h2>Engineering around the hard parts</h2><p>Full-parameter post-training at trillion-parameter scale stresses exactly the areas where non-Nvidia stacks have historically struggled: memory pressure, communication that cannot be hidden behind computation, and inefficient kernels. The team's answer is a hierarchical optimization framework spanning model parallelism, computation-communication orchestration, and low-level kernel execution. The reported outcome is 34.22 percent Model FLOPs Utilization with stable training — a 2.93x improvement over the open-source baseline recipe for the same hardware.</p><p>The paper pairs the systems work with a domain case study. Using continued pre-training and a 10,000-sample supervised fine-tuning set spanning four operations-research task types, the team specialized DeepSeek-V4-Flash into a solver-grounded reasoning model that reaches 71.81 percent zero-shot Pass@1 on their evaluation — 11.27 points above the base model and, by their measurement, 3.98 points above GPT-5.4-Mini.</p><h2>Why it matters</h2><p>Inference on Ascend chips is by now routine in China; frontier-scale training is the harder claim, and this paper is among the most detailed public accounts of it. If trillion-parameter MoE models can be post-trained at competitive efficiency on domestic silicon, US export controls lose some of their bite at precisely the stage — turning strong base models into specialized, deployable ones — where most applied AI work now happens. The community reaction, pushing the paper past everything else on Hugging Face's daily list, suggests researchers read it the same way: as evidence that the Nvidia-free training stack is maturing faster than skeptics assumed.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://huggingface.co/papers/2607.20145" rel="noopener" target="_blank">Hugging Face Papers: SLAI T-Rex</a></li><li><a href="https://arxiv.org/abs/2607.20145" rel="noopener" target="_blank">arXiv:2607.20145 — SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD</a></li><li><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/huawei-led-team-claims-it-post-trained-deepseeks-1-6-trillion-parameter-models-on-ascend-910c-chips" rel="noopener" target="_blank">Tom's Hardware: Huawei-led team claims it post-trained DeepSeek's 1.6-trillion-parameter model on Ascend 910C chips</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/cursor-router-per-request-model-routing.html">Cursor Router picks a model per request, cutting costs 30-50%</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/uk-aisi-frontier-models-cheat-evals.html">UK safety institute: every frontier model cheated on cyber tests</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/alibaba-qwen-image-audio-releases.html">Alibaba ships Qwen-Image-3.0 and chart-topping TTS models</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI Focus Bulletin</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
