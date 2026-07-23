@@ -104,6 +104,7 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
   for (const a of articles) {
     if (!a.slug || !a.title || !a.body) continue;
     a.date = a.date || today;
+    a.published_at = new Date().toISOString(); // 真实发布时刻，英文页据此换算美东日期
     a.tags = a.tags || [];
     a.sources = a.sources || [];
     await writeFile(join(CONTENT, `${a.date}-${a.slug}.json`), JSON.stringify(a, null, 2));

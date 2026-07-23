@@ -67,15 +67,17 @@ async function pickToday() {
 
 function composeText(lang, { featured, radar }) {
   const now = new Date();
-  const morning = now.getHours() < 12;
   if (lang === 'zh') {
+    const morning = now.getHours() < 12;
     const dateStr = `${now.getMonth() + 1}月${now.getDate()}日`;
     const edition = morning ? '早报' : '晚报';
     const radarLine = radar ? `📡 今日雷达 ${radar.items.length} 条快讯\n` : '';
     return `⚡ AI专注速报 · ${dateStr}${edition}\n\n★ ${featured.title_zh || featured.title}\n${radarLine}\n${BASE}/zh/`;
   }
-  const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-  const edition = morning ? 'Morning Edition' : 'Evening Edition';
+  // 英文帖按美东时间：北京 7:00 班 = 美东前一天晚上（Evening），北京 19:00 班 = 美东当天早上（Morning）
+  const etHour = Number(now.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
+  const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' });
+  const edition = etHour < 12 ? 'Morning Edition' : 'Evening Edition';
   const radarLine = radar ? `📡 Daily Radar: ${radar.items.length} quick hits\n` : '';
   return `⚡ AI Focus Bulletin · ${edition}, ${dateStr}\n\n★ ${featured.title}\n${radarLine}\n${BASE}/`;
 }

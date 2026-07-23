@@ -37,7 +37,7 @@ const T = {
     how: 'The pipeline runs twice a day (07:00 and 19:00 Beijing time). It gathers timestamped candidates from 17 first-tier RSS feeds and 29 official X accounts of AI labs via API, then an AI editor selects the most significant stories, verifies sources and publication dates, and writes each deep briefing plus the Daily Radar from scratch in English and Chinese. Every page lists its sources so readers can verify every claim. There are no ads, trackers, or paywalls.',
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
     featured: "★ Editor's pick", radar: 'Daily Radar', radarLede: 'Quick hits from across the AI world in the last 24 hours.',
-    radarArchive: 'Radar archive', related: 'Related briefings', catTitle: (n) => `${n} — Category`, allCats: 'Browse by topic',
+    radarArchive: 'Radar archive', radarCalLede: "Pick a date to see that day's quick hits.", related: 'Related briefings', catTitle: (n) => `${n} — Category`, allCats: 'Browse by topic',
     archive: 'Archive', archiveLede: 'Every briefing ever published, grouped by date.', moreLink: (n) => `View all ${n} briefings in the archive →`,
   },
   zh: {
@@ -54,7 +54,7 @@ const T = {
     how: '流水线每天运行两次（北京时间 7:00 与 19:00）：先从 17 个一级 RSS 信源和 29 个 AI 实验室官方 X 账号（API 直连）获取带真实时间戳的候选新闻，AI 编辑再遴选最重要的故事、核验信源与发布日期，以中英双语原创撰写深度简报与「每日雷达」快讯并自动发布。每个页面都列出信源，读者可以核验每一条信息。没有广告、追踪器和付费墙。',
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
     featured: '★ 编辑推荐', radar: '每日雷达', radarLede: '过去 24 小时 AI 圈的一句话快讯。',
-    radarArchive: '雷达存档', related: '相关简报', catTitle: (n) => `${n} · 分类`, allCats: '按主题浏览',
+    radarArchive: '雷达存档', radarCalLede: '点击日期查看当天的雷达快讯。', related: '相关简报', catTitle: (n) => `${n} · 分类`, allCats: '按主题浏览',
     archive: '存档', archiveLede: '全部历史简报，按日期分组，永久留存。', moreLink: (n) => `查看全部 ${n} 篇简报（存档）→`,
   },
 };
@@ -147,22 +147,30 @@ ${body}
 
 const urlFor = (lang, path) => lang === 'zh' ? `${BASE}/zh/${path}` : `${BASE}/${path}`;
 
+// 英文页日期遵循美东时间；中文页保持北京日期
+const shiftDay = (iso, n) => new Date(Date.parse(iso + 'T00:00:00Z') + n * 86400000).toISOString().slice(0, 10);
+const dispDate = (a, lang) => lang === 'en' && a.published_at
+  ? new Date(a.published_at).toLocaleDateString('en-CA', { timeZone: 'America/New_York' })
+  : a.date;
+// 雷达刊期：北京第 N 天的刊覆盖美东 N-1 天 07:00 → N 天 07:00，英文页标 N-1
+const radarDispDate = (radar, lang) => lang === 'en' ? shiftDay(radar.date, -1) : radar.date;
+
 const tagChips = (a, lang, n = 3) => a.tags.slice(0, n).map((x) => `<a class="tag" href="${tagUrl(x, lang)}">${esc(tagLabel(x, lang))}</a>`).join('');
 
 function articleCard(a, lang) {
-  const t = T[lang], c = langOf(a, lang);
+  const t = T[lang], c = langOf(a, lang), d = dispDate(a, lang);
   return `<article class="card">
-  <div class="card-meta"><time datetime="${a.date}">${t.dateFmt(a.date)}</time>${tagChips(a, lang)}</div>
+  <div class="card-meta"><time datetime="${d}">${t.dateFmt(d)}</time>${tagChips(a, lang)}</div>
   <h2><a href="${urlFor(lang, `articles/${a.slug}.html`)}">${esc(c.title)}</a></h2>
   <p>${esc(c.summary)}</p>
 </article>`;
 }
 
 function featuredHero(a, lang) {
-  const t = T[lang], c = langOf(a, lang);
+  const t = T[lang], c = langOf(a, lang), d = dispDate(a, lang);
   const reason = lang === 'zh' ? (a.featured_reason_zh || a.featured_reason) : a.featured_reason;
   return `<article class="card featured-card">
-  <div class="card-meta"><span class="featured-badge">${t.featured}</span><time datetime="${a.date}">${t.dateFmt(a.date)}</time>${tagChips(a, lang)}</div>
+  <div class="card-meta"><span class="featured-badge">${t.featured}</span><time datetime="${d}">${t.dateFmt(d)}</time>${tagChips(a, lang)}</div>
   <h2><a href="${urlFor(lang, `articles/${a.slug}.html`)}">${esc(c.title)}</a></h2>
   <p>${esc(c.summary)}</p>
   ${reason ? `<p class="featured-reason">${esc(reason)}</p>` : ''}
@@ -190,6 +198,29 @@ const radarTs = (i, fallback) => {
   return Date.parse(p.includes('T') ? p : p + 'T00:00:00Z') || 0;
 };
 
+// 雷达存档日历：按月网格，有雷达的日期可点击（附条数）
+function radarCalendarHtml(radars, lang) {
+  const byDate = new Map(radars.map((r) => [radarDispDate(r, lang), { href: r.date, n: r.items.length }]));
+  const months = [...byDate.keys()].map((d) => d.slice(0, 7)).filter((m, i, a) => a.indexOf(m) === i).sort().reverse();
+  const week = lang === 'zh' ? ['一', '二', '三', '四', '五', '六', '日'] : ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+  return months.map((m) => {
+    const [y, mo] = m.split('-').map(Number);
+    const days = new Date(Date.UTC(y, mo, 0)).getUTCDate();
+    const lead = (new Date(Date.UTC(y, mo - 1, 1)).getUTCDay() + 6) % 7; // 周一开头
+    const cells = [];
+    for (let i = 0; i < lead; i++) cells.push('<span class="cal-cell"></span>');
+    for (let d = 1; d <= days; d++) {
+      const iso = `${m}-${String(d).padStart(2, '0')}`;
+      const hit = byDate.get(iso);
+      cells.push(hit
+        ? `<a class="cal-cell cal-day has-radar" href="${urlFor(lang, `radar/${hit.href}.html`)}">${d}<span class="cal-count">${hit.n}</span></a>`
+        : `<span class="cal-cell cal-day">${d}</span>`);
+    }
+    const title = lang === 'zh' ? `${y} 年 ${mo} 月` : new Date(Date.UTC(y, mo - 1, 1)).toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' });
+    return `<section class="cal-month"><h2>${title}</h2><div class="cal-grid">${week.map((w) => `<span class="cal-cell cal-w">${w}</span>`).join('')}${cells.join('')}</div></section>`;
+  }).join('\n');
+}
+
 function radarSection(radar, lang, { linkArchive = true } = {}) {
   const t = T[lang];
   const sorted = [...radar.items].sort((a, b) => radarTs(b, radar.date) - radarTs(a, radar.date));
@@ -198,7 +229,7 @@ function radarSection(radar, lang, { linkArchive = true } = {}) {
     return `<li><a class="tag" href="${tagUrl(i.tag, lang)}">${esc(tagLabel(i.tag, lang))}</a> ${esc(lang === 'zh' && i.text_zh ? i.text_zh : i.text)} <a class="radar-src" href="${esc(i.url)}" rel="noopener" target="_blank">${esc(i.source || 'source')} ↗</a>${time ? ` <time class="radar-time" datetime="${esc(i.published)}">${esc(time)}</time>` : ''}</li>`;
   }).join('\n');
   return `<section class="radar">
-  <div class="block-head"><h2>📡 ${t.radar} · ${t.dateFmt(radar.date)}</h2>${linkArchive ? `<a class="radar-archive-link" href="${urlFor(lang, `radar/${radar.date}.html`)}">#</a>` : ''}</div>
+  <div class="block-head"><h2>📡 ${t.radar} · ${t.dateFmt(radarDispDate(radar, lang))}</h2>${linkArchive ? `<span class="radar-links"><a class="radar-archive-link" href="${urlFor(lang, `radar/${radar.date}.html`)}">#</a><a class="radar-archive-link" href="${urlFor(lang, 'radar/index.html')}">📅 ${t.radarArchive}</a></span>` : ''}</div>
   <p class="radar-lede">${esc(t.radarLede)}</p>
   <ul class="radar-list">
 ${items}
@@ -265,9 +296,10 @@ ${rest.length > 20 ? `<p class="more-link"><a href="${urlFor(lang, 'archive.html
     const relatedHtml = related.length
       ? `<section class="related"><h3>${t.related}</h3><ul>${related.map((b) => `<li><a href="${urlFor(lang, `articles/${b.slug}.html`)}">${esc(langOf(b, lang).title)}</a></li>`).join('')}</ul></section>`
       : '';
+    const ad = dispDate(a, lang);
     const body = `
 <article class="article">
-  <div class="card-meta"><time datetime="${a.date}">${t.dateFmt(a.date)}</time>${tagChips(a, lang, 4)}<span class="views" id="viewCount"></span></div>
+  <div class="card-meta"><time datetime="${ad}">${t.dateFmt(ad)}</time>${tagChips(a, lang, 4)}<span class="views" id="viewCount"></span></div>
   <h1>${esc(c.title)}</h1>
   <p class="standfirst">${esc(c.summary)}</p>
   ${mdToHtml(c.body)}
@@ -284,7 +316,7 @@ ${rest.length > 20 ? `<p class="more-link"><a href="${urlFor(lang, 'archive.html
       altEn: `${BASE}/articles/${a.slug}.html`, altZh: `${BASE}/zh/articles/${a.slug}.html`,
       ogType: 'article',
       jsonLd: { '@context': 'https://schema.org', '@type': 'NewsArticle',
-        headline: c.title, description: c.summary, datePublished: a.date, inLanguage: lang === 'zh' ? 'zh-CN' : 'en',
+        headline: c.title, description: c.summary, datePublished: a.published_at || a.date, inLanguage: lang === 'zh' ? 'zh-CN' : 'en',
         author: { '@type': 'Organization', name: `${SITE_NAME} AI Newsroom` },
         publisher: { '@type': 'Organization', name: SITE_NAME, logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` } },
         mainEntityOfPage: urlFor(lang, `articles/${a.slug}.html`) },
@@ -358,25 +390,44 @@ ${catList.map((a) => articleCard(a, lang)).join('\n')}
 
   // 雷达存档页
   for (const radar of radars) {
+    const rd = radarDispDate(radar, lang);
     await writeFile(join(dir, 'radar', `${radar.date}.html`), page({
       lang,
-      title: `${t.radar} ${radar.date} — ${SITE_NAME}`,
+      title: `${t.radar} ${rd} — ${SITE_NAME}`,
       description: lang === 'zh'
-        ? `${radar.date} AI 圈一句话快讯 ${radar.items.length} 条：产品、论文、开源、融资与政策动态。`
-        : `${radar.items.length} quick AI news hits for ${radar.date}: products, papers, open source, funding, and policy.`,
+        ? `${rd} AI 圈一句话快讯 ${radar.items.length} 条：产品、论文、开源、融资与政策动态。`
+        : `${radar.items.length} quick AI news hits for ${rd} (ET): products, papers, open source, funding, and policy.`,
       canonical: urlFor(lang, `radar/${radar.date}.html`),
       altEn: `${BASE}/radar/${radar.date}.html`, altZh: `${BASE}/zh/radar/${radar.date}.html`,
-      jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: `${t.radar} ${radar.date}`, url: urlFor(lang, `radar/${radar.date}.html`) },
+      jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: `${t.radar} ${rd}`, url: urlFor(lang, `radar/${radar.date}.html`) },
       body: `
 ${radarSection(radar, lang, { linkArchive: false })}
-<p class="backlink"><a href="${urlFor(lang, '')}">${t.back}</a></p>
-${radars.length > 1 ? `<section class="about-strip"><h2>${t.radarArchive}</h2><ul>${radars.map((r) => `<li><a href="${urlFor(lang, `radar/${r.date}.html`)}">${r.date}</a>（${r.items.length}）</li>`).join('')}</ul></section>` : ''}`,
+<section class="about-strip"><h2>${t.radarArchive}</h2><p><a href="${urlFor(lang, 'radar/index.html')}">📅 ${lang === 'zh' ? '按日历浏览全部雷达' : 'Browse all days on the calendar'} →</a></p></section>
+<p class="backlink"><a href="${urlFor(lang, '')}">${t.back}</a></p>`,
+    }));
+  }
+
+  // 雷达存档日历（/radar/）
+  if (radars.length) {
+    await writeFile(join(dir, 'radar', 'index.html'), page({
+      lang,
+      title: `${t.radarArchive} — ${SITE_NAME}`,
+      description: lang === 'zh'
+        ? `每日雷达存档日历：${radars.length} 天的 AI 一句话快讯，点击日期查看当天内容。`
+        : `Daily Radar archive calendar: ${radars.length} days of quick AI news hits, one page per day.`,
+      canonical: urlFor(lang, 'radar/index.html'),
+      altEn: `${BASE}/radar/index.html`, altZh: `${BASE}/zh/radar/index.html`,
+      jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: t.radarArchive, url: urlFor(lang, 'radar/index.html') },
+      body: `
+<section class="hero"><h1>📡 ${t.radarArchive}</h1><p class="lede">${esc(t.radarCalLede)}</p></section>
+${radarCalendarHtml(radars, lang)}
+<p class="backlink"><a href="${urlFor(lang, '')}">${t.back}</a></p>`,
     }));
   }
 
   // 存档页：全部历史简报按日期分组，永久留存
   const byDate = {};
-  for (const a of list) (byDate[a.date] ||= []).push(a);
+  for (const a of list) (byDate[dispDate(a, lang)] ||= []).push(a);
   const archiveBody = `
 <section class="hero"><h1>${t.archive}</h1><p class="lede">${esc(t.archiveLede)}</p></section>
 ${Object.keys(byDate).sort().reverse().map((date) => `
@@ -384,7 +435,7 @@ ${Object.keys(byDate).sort().reverse().map((date) => `
   <h2>${t.dateFmt(date)}</h2>
   <ul>${byDate[date].map((a) => `<li>${tagChips(a, lang, 1)} <a href="${urlFor(lang, `articles/${a.slug}.html`)}">${esc(langOf(a, lang).title)}</a></li>`).join('\n')}</ul>
 </section>`).join('\n')}
-${radars.length ? `<section class="archive-day"><h2>📡 ${t.radarArchive}</h2><ul>${radars.map((r) => `<li><a href="${urlFor(lang, `radar/${r.date}.html`)}">${t.dateFmt(r.date)}</a>（${r.items.length}）</li>`).join('')}</ul></section>` : ''}`;
+${radars.length ? `<section class="archive-day"><h2>📡 ${t.radarArchive}</h2><p><a href="${urlFor(lang, 'radar/index.html')}">📅 ${lang === 'zh' ? '日历视图' : 'Calendar view'} →</a></p><ul>${radars.map((r) => `<li><a href="${urlFor(lang, `radar/${r.date}.html`)}">${t.dateFmt(radarDispDate(r, lang))}</a>（${r.items.length}）</li>`).join('')}</ul></section>` : ''}`;
   await writeFile(join(dir, 'archive.html'), page({
     lang,
     title: lang === 'zh' ? `存档 — 全部简报 — ${BRAND.zh}` : `Archive — All briefings — ${SITE_NAME}`,
@@ -418,7 +469,7 @@ ${radars.length ? `<section class="archive-day"><h2>📡 ${t.radarArchive}</h2><
     <title>${esc(c.title)}</title>
     <link>${urlFor(lang, `articles/${a.slug}.html`)}</link>
     <guid>${urlFor(lang, `articles/${a.slug}.html`)}</guid>
-    <pubDate>${new Date(a.date + 'T08:00:00Z').toUTCString()}</pubDate>
+    <pubDate>${(a.published_at ? new Date(a.published_at) : new Date(a.date + 'T08:00:00Z')).toUTCString()}</pubDate>
     <description>${esc(c.summary)}</description>
   </item>`;
   }).join('\n');
@@ -465,6 +516,7 @@ async function build() {
     ...zh.map((a) => `${BASE}/zh/articles/${a.slug}.html`),
     ...catSlugs.flatMap((s) => [`${BASE}/category/${s}.html`, `${BASE}/zh/category/${s}.html`]),
     ...radars.flatMap((r) => [`${BASE}/radar/${r.date}.html`, `${BASE}/zh/radar/${r.date}.html`]),
+    ...(radars.length ? [`${BASE}/radar/index.html`, `${BASE}/zh/radar/index.html`] : []),
   ];
   await writeFile(join(SITE, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -490,7 +542,8 @@ ${articles.slice(0, 15).map((a) => `- [${a.title}](${BASE}/articles/${a.slug}.ht
 - [全部简报（中文）](${BASE}/zh/): Chinese edition
 - [About](${BASE}/about.html): editorial principles and how the autonomous newsroom works
 - [RSS English](${BASE}/rss.xml) / [RSS 中文](${BASE}/rss-zh.xml): machine-readable feeds
-${radars[0] ? `- [Daily Radar](${BASE}/radar/${radars[0].date}.html): today's quick hits across the AI world (${radars[0].items.length} items)` : ''}
+${radars[0] ? `- [Daily Radar](${BASE}/radar/${radars[0].date}.html): today's quick hits across the AI world (${radars[0].items.length} items)
+- [Radar archive calendar](${BASE}/radar/index.html): every past day of quick hits` : ''}
 - Categories: ${catSlugs.map((s) => `[${s}](${BASE}/category/${s}.html)`).join(', ')}
 
 ## Optional
