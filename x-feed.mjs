@@ -1,4 +1,5 @@
-// 官方 X 账号直连信源：X API v2 按量付费（约 $0.005/条读取），每轮 51 账号 × 5 条 ≈ $1.3
+// 官方 X 账号直连信源：X API v2 按量付费（约 $0.005/条读取）
+// 已用 start_time 服务端过滤：只为时间窗内真实发帖计费，51 账号每轮上限 $1.3，实际远低（安静账号 0 条 0 费）
 import { readFile, writeFile } from 'node:fs/promises';
 import { execSync } from 'node:child_process';
 import { join } from 'node:path';
@@ -62,8 +63,10 @@ export async function fetchXHeadlines({ hours = 48, perAccount = 5, until = null
   const cutoff = untilMs - hours * 3600000;
 
   const ids = await resolveIds(token);
+  // start_time/end_time 让服务端只返回时间窗内的帖子：没发新内容的账号返回 0 条，不产生按条读取费
+  const timeQ = `&start_time=${new Date(cutoff).toISOString()}${until ? `&end_time=${until.toISOString()}` : ''}`;
   const results = await Promise.allSettled(Object.entries(ids).map(async ([handle, id]) => {
-    const data = await api(`/users/${id}/tweets?max_results=${perAccount}&exclude=retweets,replies&tweet.fields=created_at`, token);
+    const data = await api(`/users/${id}/tweets?max_results=${perAccount}&exclude=retweets,replies&tweet.fields=created_at${timeQ}`, token);
     return (data.data || []).map((t) => ({
       source: `X @${handle}`,
       tier: 'x-official',
