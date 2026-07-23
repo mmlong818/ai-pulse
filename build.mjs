@@ -271,7 +271,7 @@ function timelineHtml(articles, radars, lang, { editions, withinH } = {}) {
       return { ts, eb: floorEdition(ebTs), html: articleCard(a, lang), radar: false };
     }),
     ...radars.flatMap((r) => r.items.map((i) => { const ts = radarTs(i, r.date); return { ts, eb: ceilEdition(ts), html: radarItemLi(i, lang), radar: true }; })),
-  ].sort((a, b) => b.eb - a.eb || b.ts - a.ts); // 先按班次（新班次整体在上），班次内按源头时间倒序
+  ].sort((a, b) => b.ts - a.ts); // 严格按源头时间倒序；班次（eb）只用于保留窗口，不参与排序
   if (withinH) {
     const cutoff = Date.now() - withinH * 3600000;
     entries = entries.filter((e) => e.ts >= cutoff);
@@ -300,7 +300,9 @@ async function buildLang(articles, radars, lang) {
   await mkdir(join(dir, 'radar'), { recursive: true });
   const list = lang === 'zh' ? articles.filter((a) => a.body_zh) : articles;
 
-  const featured = list.find((a) => a.featured);
+  // 同一刊期日早晚两班各有一个 featured，头条取本站发布时刻最新的一班
+  const featured = list.filter((a) => a.featured)
+    .sort((a, b) => (b.published_at || '').localeCompare(a.published_at || ''))[0] || null;
   const rest = featured ? list.filter((a) => a !== featured) : list;
   const activeTags = Object.keys(TAG_META).filter((tag) => list.some((a) => a.tags.includes(tag)));
   const catBar = `<nav class="cat-bar"><span>${t.allCats}:</span>${activeTags.map((tag) => `<a class="tag" href="${tagUrl(tag, lang)}">${esc(tagLabel(tag, lang))}</a>`).join('')}</nav>`;

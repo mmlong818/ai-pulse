@@ -55,31 +55,52 @@ async function api(method, path, body) {
 async function pickToday() {
   const files = (await readdir(CONTENT)).filter((f) => f.endsWith('.json'));
   const today = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10); // 与 generate.mjs 的北京日期归档一致
-  let featured = null, radar = null;
+  let radar = null, fallback = null;
+  const articles = [];
   for (const f of files) {
     const a = JSON.parse(await readFile(join(CONTENT, f), 'utf8'));
     if (f.startsWith('radar-')) { if (a.date === today) radar = a; continue; }
-    if (a.date === today && (a.featured || !featured)) featured = a.featured ? a : featured || a;
+    articles.push(a);
+    if (a.date === today && !fallback) fallback = a;
   }
+  // 当班 = 最新一次生成的时间簇（同一次 generate 写盘只差几秒；早晚两班/补采相隔数小时）
+  const maxPub = Math.max(...articles.map((a) => Date.parse(a.published_at) || 0));
+  const batch = articles.filter((a) => Date.parse(a.published_at) >= maxPub - 30 * 60000);
+  const featured = batch.find((a) => a.featured) || batch[0] || fallback;
   if (!featured) throw new Error('当天无内容可发');
-  return { featured, radar };
+  return { featured, batch, radar };
 }
 
-function composeText(lang, { featured, radar }) {
+// X 加权长度：CJK/全角/emoji 记 2，其余记 1；URL 固定折算 23
+const xLen = (s) => [...s].reduce((n, c) => n + (c.codePointAt(0) > 0x10ff ? 2 : 1), 0);
+
+function composeText(lang, { featured, batch }) {
   const now = new Date();
+  let head, star, others, url;
   if (lang === 'zh') {
-    const morning = now.getHours() < 12;
     const dateStr = `${now.getMonth() + 1}月${now.getDate()}日`;
-    const edition = morning ? '早报' : '晚报';
-    const radarLine = radar ? `⚡ 另有 ${radar.items.length} 条一句话快讯\n` : '';
-    return `⚡ AI专注速报 · ${dateStr}${edition}\n\n★ ${featured.title_zh || featured.title}\n${radarLine}\n${BASE}/zh/`;
+    head = `⚡ AI专注速报 · ${dateStr}${now.getHours() < 12 ? '早报' : '晚报'}`;
+    star = `★ ${featured.title_zh || featured.title}`;
+    others = batch.filter((a) => a.slug !== featured.slug).map((a) => `· ${a.title_zh || a.title}`);
+    url = `${BASE}/zh/`;
+  } else {
+    // 英文帖按美东时间：北京 7:00 班 = 美东前一天晚上（Evening），北京 19:00 班 = 美东当天早上（Morning）
+    const etHour = Number(now.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
+    const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' });
+    head = `⚡ AI Focus Bulletin · ${etHour < 12 ? 'Morning' : 'Evening'} Edition, ${dateStr}`;
+    star = `★ ${featured.title}`;
+    others = batch.filter((a) => a.slug !== featured.slug).map((a) => `· ${a.title}`);
+    url = `${BASE}/`;
   }
-  // 英文帖按美东时间：北京 7:00 班 = 美东前一天晚上（Evening），北京 19:00 班 = 美东当天早上（Morning）
-  const etHour = Number(now.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
-  const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' });
-  const edition = etHour < 12 ? 'Morning Edition' : 'Evening Edition';
-  const radarLine = radar ? `⚡ Plus ${radar.items.length} quick hits\n` : '';
-  return `⚡ AI Focus Bulletin · ${edition}, ${dateStr}\n\n★ ${featured.title}\n${radarLine}\n${BASE}/`;
+  // 帖子直接承载当班内容：推荐 + 尽量多的其余简报标题，装不下为止（280 加权额度，URL 记 23，留 3 余量）
+  const lines = [head, '', star];
+  let used = xLen(lines.join('\n')) + 1 + 23 + 3;
+  for (const line of others) {
+    if (used + xLen(line) + 1 > 280) break;
+    lines.push(line);
+    used += xLen(line) + 1;
+  }
+  return lines.join('\n') + '\n' + url;
 }
 
 const [cmd, arg] = process.argv.slice(2);
