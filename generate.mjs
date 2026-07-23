@@ -89,6 +89,7 @@ ${digest}
 RULES:
 - ORIGINAL writing only. Never copy sentences from sources. Summarize and analyze in your own words.
 - FRESHNESS: verify each story's ORIGINAL publication date on the source page (search results often resurface old news). If the story broke more than ${WINDOW_H} hours ago, discard it and find another.
+- SIGNIFICANCE over freshness: routine corporate moves (minor equity stakes, distribution partnerships, incremental enterprise deals, ordinary funding of non-frontier companies) do NOT merit a deep briefing even when fresh — leave them to the radar. Test: will AI-industry readers still care about this next week?
 - Each briefing: 250-450 words (EN), neutral news-agency tone, explain why it matters in the last paragraph.
 - Cite 1-3 real source URLs per story (the pages you actually found).
 - Titles: specific and factual, 45-65 characters, no clickbait.
