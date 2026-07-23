@@ -149,19 +149,23 @@ ${body}
 
 const urlFor = (lang, path) => lang === 'zh' ? `${BASE}/zh/${path}` : `${BASE}/${path}`;
 
-// 英文页日期遵循美东时间；中文页保持北京日期
+// 英文页日期遵循美东时间；中文页北京时间
 const shiftDay = (iso, n) => new Date(Date.parse(iso + 'T00:00:00Z') + n * 86400000).toISOString().slice(0, 10);
-const dispDate = (a, lang) => lang === 'en' && a.published_at
-  ? new Date(a.published_at).toLocaleDateString('en-CA', { timeZone: 'America/New_York' })
-  : a.date;
+// 简报的"最佳时间戳"：优先新闻源头发布时刻（published），其次本站发布时刻（published_at）
+const articleTs = (a) => (a.published && a.published.includes('T') ? a.published : a.published_at) || null;
+const dispDate = (a, lang) => {
+  const iso = articleTs(a);
+  if (!iso) return (a.published && !a.published.includes('T')) ? a.published : a.date;
+  return new Date(iso).toLocaleDateString('en-CA', { timeZone: lang === 'zh' ? 'Asia/Shanghai' : 'America/New_York' });
+};
 // 雷达刊期：北京第 N 天的刊覆盖美东 N-1 天 07:00 → N 天 07:00，英文页标 N-1
 const radarDispDate = (radar, lang) => lang === 'en' ? shiftDay(radar.date, -1) : radar.date;
 
-// 简报时间标注：日期 + 精确发布时刻（中文北京时间 / 英文美东时间）
+// 简报时间标注：新闻源头发布时刻，日期 + 时间（中文北京时间 / 英文美东时间）；只有日期时不显示时刻
 const articleDateTime = (a, lang) => {
-  const t = T[lang], d = dispDate(a, lang);
-  if (!a.published_at) return t.dateFmt(d);
-  const dt = new Date(a.published_at);
+  const t = T[lang], d = dispDate(a, lang), iso = articleTs(a);
+  if (!iso) return t.dateFmt(d);
+  const dt = new Date(iso);
   return lang === 'zh'
     ? `${t.dateFmt(d)} ${dt.toLocaleTimeString('zh-CN', { timeZone: 'Asia/Shanghai', hour: '2-digit', minute: '2-digit', hour12: false })}`
     : `${t.dateFmt(d)}, ${dt.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit', hour12: true })} ET`;
@@ -172,7 +176,7 @@ const tagChips = (a, lang, n = 3) => a.tags.slice(0, n).map((x) => `<a class="ta
 function articleCard(a, lang) {
   const c = langOf(a, lang);
   return `<article class="card">
-  <div class="card-meta"><time datetime="${esc(a.published_at || a.date)}">${articleDateTime(a, lang)}</time>${tagChips(a, lang)}</div>
+  <div class="card-meta"><time datetime="${esc(articleTs(a) || a.published || a.date)}">${articleDateTime(a, lang)}</time>${tagChips(a, lang)}</div>
   <h2><a href="${urlFor(lang, `articles/${a.slug}.html`)}">${esc(c.title)}</a></h2>
   <p>${esc(c.summary)}</p>
 </article>`;
@@ -182,7 +186,7 @@ function featuredHero(a, lang) {
   const t = T[lang], c = langOf(a, lang);
   const reason = lang === 'zh' ? (a.featured_reason_zh || a.featured_reason) : a.featured_reason;
   return `<article class="card featured-card">
-  <div class="card-meta"><span class="featured-badge">${t.featured}</span><time datetime="${esc(a.published_at || a.date)}">${articleDateTime(a, lang)}</time>${tagChips(a, lang)}</div>
+  <div class="card-meta"><span class="featured-badge">${t.featured}</span><time datetime="${esc(articleTs(a) || a.published || a.date)}">${articleDateTime(a, lang)}</time>${tagChips(a, lang)}</div>
   <h2><a href="${urlFor(lang, `articles/${a.slug}.html`)}">${esc(c.title)}</a></h2>
   <p>${esc(c.summary)}</p>
   ${reason ? `<p class="featured-reason">${esc(reason)}</p>` : ''}
@@ -258,7 +262,12 @@ const editionLabel = (eb, lang) => {
 // editions: N 时只保留最近 N 个班次（首页用 2：晚报上线时早报下移，次日早报上线时保留前一晚报）
 function timelineHtml(articles, radars, lang, { editions } = {}) {
   let entries = [
-    ...articles.map((a) => { const ts = Date.parse(a.published_at || a.date + 'T11:00:00Z') || 0; return { ts, eb: floorEdition(ts), html: articleCard(a, lang), radar: false }; }),
+    // 排序用源头发布时间；班次归属（保留窗口）仍按本站发布时刻
+    ...articles.map((a) => {
+      const ts = Date.parse(articleTs(a) || a.date + 'T11:00:00Z') || 0;
+      const ebTs = Date.parse(a.published_at || articleTs(a) || a.date + 'T11:00:00Z') || 0;
+      return { ts, eb: floorEdition(ebTs), html: articleCard(a, lang), radar: false };
+    }),
     ...radars.flatMap((r) => r.items.map((i) => { const ts = radarTs(i, r.date); return { ts, eb: ceilEdition(ts), html: radarItemLi(i, lang), radar: true }; })),
   ].sort((a, b) => b.ts - a.ts);
   if (editions) {
@@ -336,7 +345,7 @@ ${timelineHtml(rest, radars, lang, { editions: 2 })}
       : '';
     const body = `
 <article class="article">
-  <div class="card-meta"><time datetime="${esc(a.published_at || a.date)}">${articleDateTime(a, lang)}</time>${tagChips(a, lang, 4)}<span class="views" id="viewCount"></span></div>
+  <div class="card-meta"><time datetime="${esc(articleTs(a) || a.published || a.date)}">${articleDateTime(a, lang)}</time>${tagChips(a, lang, 4)}<span class="views" id="viewCount"></span></div>
   <h1>${esc(c.title)}</h1>
   <p class="standfirst">${esc(c.summary)}</p>
   ${mdToHtml(c.body)}

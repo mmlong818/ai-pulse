@@ -102,14 +102,20 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
   "featured": false,
   "featured_reason": "only on the featured story: one line on why it leads today",
   "featured_reason_zh": "仅推荐条目：一句话推荐理由",
-  "date": "${today}"
+  "date": "${today}",
+  "published": "the story's ORIGINAL publication moment as ISO 8601 UTC, e.g. 2026-01-01T14:30:00Z — copy from the candidate list when the story comes from it; date-only YYYY-MM-DD if the exact time cannot be found"
 }`;
   const articles = parseJson(await runClaude(prompt), '[', ']');
   let saved = 0;
   for (const a of articles) {
     if (!a.slug || !a.title || !a.body) continue;
     a.date = a.date || today;
-    a.published_at = new Date().toISOString(); // 真实发布时刻，英文页据此换算美东日期
+    a.published_at = new Date().toISOString(); // 本站发布时刻（班次归属、RSS pubDate 用）
+    // published = 新闻源头发布时刻（页面时间标注用）；异常值剔除，兜底显示本站时刻
+    if (a.published) {
+      const age = (Date.parse(a.date) - Date.parse(a.published)) / 86400000;
+      if (isNaN(age) || age > 7 || age < -1) delete a.published;
+    }
     a.tags = a.tags || [];
     a.sources = a.sources || [];
     await writeFile(join(CONTENT, `${a.date}-${a.slug}.json`), JSON.stringify(a, null, 2));
