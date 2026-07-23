@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>吴恩达开源 OpenWorker：只交付成果、不闲聊的本地桌面 Agent — AI Focus Bulletin</title>
+<meta name="description" content="吴恩达联手 Rohit Prasad 发布 MIT 协议的本地优先桌面 Agent，跨文件和 25+ 应用把任务做完再交付，数据不出本机，剑指大厂闭源&quot;AI 同事&quot;。">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/andrew-ng-openworker-desktop-agent.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/andrew-ng-openworker-desktop-agent.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/andrew-ng-openworker-desktop-agent.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/andrew-ng-openworker-desktop-agent.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="吴恩达开源 OpenWorker：只交付成果、不闲聊的本地桌面 Agent — AI Focus Bulletin">
+<meta property="og:description" content="吴恩达联手 Rohit Prasad 发布 MIT 协议的本地优先桌面 Agent，跨文件和 25+ 应用把任务做完再交付，数据不出本机，剑指大厂闭源&quot;AI 同事&quot;。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/andrew-ng-openworker-desktop-agent.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"吴恩达开源 OpenWorker：只交付成果、不闲聊的本地桌面 Agent","description":"吴恩达联手 Rohit Prasad 发布 MIT 协议的本地优先桌面 Agent，跨文件和 25+ 应用把任务做完再交付，数据不出本机，剑指大厂闭源\"AI 同事\"。","datePublished":"2026-07-23T23:14:02.573Z","inLanguage":"zh-CN","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/zh/articles/andrew-ng-openworker-desktop-agent.html"}</script>
+</head>
+<body data-slug="andrew-ng-openworker-desktop-agent" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ AI专注速报</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/andrew-ng-openworker-desktop-agent.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-23T19:31:00Z">2026年7月24日 03:31</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><span class="views" id="viewCount"></span></div>
+  <h1>吴恩达开源 OpenWorker：只交付成果、不闲聊的本地桌面 Agent</h1>
+  <p class="standfirst">吴恩达联手 Rohit Prasad 发布 MIT 协议的本地优先桌面 Agent，跨文件和 25+ 应用把任务做完再交付，数据不出本机，剑指大厂闭源&quot;AI 同事&quot;。</p>
+  <p>吴恩达发布了 OpenWorker——与 Rohit Prasad 共同打造、MIT 协议开源的桌面 Agent，在拥挤的 Agent 赛道上站位鲜明：开源、本地优先、以交付成果论英雄而不是陪聊。给它一个目标——一份成稿文档、一个清理完的收件箱、一次日历更新——它会把目标拆解成步骤，跨本地文件和 25 个以上集成（Slack、邮件、日历、MCP 服务器等）执行，在任何有后果的操作前先请示，最后交回完成品。</p><h2>架构上的本地优先</h2><p>OpenWorker 跑在用户自己的机器上——macOS 已上线，Windows 版在路上——Tauri 桌面壳搭配本地 Python Agent 服务，没有托管后端：用户自带 API key，数据只经由用户选定的模型服务商或集成离开本机。模型路由与供应商解耦，精选约 30 个模型：GPT-5.6、Claude、Gemini、DeepSeek、Mistral、Grok，经 Together/Fireworks 接入 Kimi、GLM 等开放权重模型，也可通过 Ollama 完全本地推理。项目基于吴恩达此前的多供应商库 aisuite，开放测试标签下上线数小时即近千星。</p><h2>对着谁来的</h2><p>&quot;交付完成的工作，而不是聊天&quot;这句定位，明显是冲着大厂正在推的闭源桌面&quot;AI 同事&quot;——Anthropic 的 Claude Cowork、OpenAI 的 ChatGPT Work 等。那些产品把 Agent 框架、模型和数据通路打包进一个封闭订阅；OpenWorker 把三者全部拆开：框架是开源代码，模型随便换，数据留在本地。</p><p>为什么重要：Agent 框架层正在成为今年的关键竞争层，大厂押注它将是专有的。一个来自业内最受信任的教育者、可信的开放且模型无关的替代品，恰好在这一层施加商品化压力——也给有隐私合规约束的企业一条&quot;文件永不出本机&quot;的桌面 Agent 路径。社区项目能否做出商业产品的完成度，现在成了一个带着公开仓库的实证问题。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://github.com/andrewyng/openworker" rel="noopener" target="_blank">GitHub — andrewyng/openworker</a></li><li><a href="https://x.com/AndrewYNg/status/2080333504446108104" rel="noopener" target="_blank">Andrew Ng on X — Announcing OpenWorker</a></li><li><a href="https://www.marktechpost.com/2026/07/23/andrew-ng-just-released-openworker-an-open-source-local-first-desktop-ai-coworker-that-returns-finished-deliverables-instead-of-chat/" rel="noopener" target="_blank">MarkTechPost — Andrew Ng Just Released OpenWorker</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/claude-security-plugin-beta.html">Anthropic 推出 Claude Security 插件，提交代码前先扫漏洞</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/heygen-companion-mode-agents.html">HeyGen 推出 companion mode：让 Agent 从&quot;接单&quot;变&quot;导演&quot;</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/manus-plan-mode-specs-first.html">Manus 上线 Plan Mode：先出方案再动手，粗糙想法变清晰规格</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI专注速报</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
