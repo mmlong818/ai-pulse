@@ -60,7 +60,7 @@ node generate.mjs 6   # 手动采编一班（需本机安装并登录 claude CLI
 | 变量 | 作用 |
 |------|------|
 | `X_BEARER_TOKEN` | X API token（不配则跳过 X 直连，仅用 RSS + 搜索） |
-| `AIPULSE_WINDOW_HOURS` | 采集时间窗（默认 48） |
+| `AIPULSE_WINDOW_HOURS` | 采集时间窗（默认 24） |
 | `AIPULSE_CUTOFF` | 采集截止时刻（ISO 格式） |
 | `AIPULSE_RADAR_COUNT` | 雷达条数（默认 14） |
 | `AIPULSE_SKIP_RADAR` | 设为 `1` 跳过雷达 |
