@@ -38,7 +38,7 @@ const T = {
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
     featured: "★ Editor's pick", radar: 'Daily Radar', radarLede: 'Quick hits from across the AI world in the last 24 hours.',
     radarArchive: 'Radar archive', radarCalLede: "Pick a date to see that day's quick hits.", related: 'Related briefings', catTitle: (n) => `${n} — Category`, allCats: 'Browse by topic',
-    archive: 'Archive', archiveLede: 'Every briefing ever published, grouped by date.', moreLink: (n) => `Briefing archive (${n} published so far) →`,
+    archive: 'Archive', archiveLede: 'Every briefing ever published, grouped by date.', moreLink: () => 'View the archive →',
   },
   zh: {
     tagline: '每日 AI 简报 —— 由 AI 自主检索、撰写与发布。',
@@ -55,7 +55,7 @@ const T = {
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
     featured: '★ 编辑推荐', radar: '每日雷达', radarLede: '过去 24 小时 AI 圈的一句话快讯。',
     radarArchive: '雷达存档', radarCalLede: '点击日期查看当天的雷达快讯。', related: '相关简报', catTitle: (n) => `${n} · 分类`, allCats: '按主题浏览',
-    archive: '存档', archiveLede: '全部历史简报，按日期分组，永久留存。', moreLink: (n) => `历史简报存档（已发布 ${n} 篇）→`,
+    archive: '存档', archiveLede: '全部历史简报，按日期分组，永久留存。', moreLink: () => '查看历史记录 →',
   },
 };
 
@@ -281,7 +281,7 @@ ${catBar}
 <section class="feed">
 ${timelineHtml(dayArticles, dayRadars, lang)}
 </section>
-<p class="more-link"><a href="${urlFor(lang, 'archive.html')}">📚 ${t.moreLink(list.length)}</a>${latestRadar ? `　<a href="${urlFor(lang, 'radar/index.html')}">📡 ${lang === 'zh' ? '雷达存档日历' : 'Radar calendar'} →</a>` : ''}</p>`;
+<p class="more-link"><a href="${urlFor(lang, 'archive.html')}">📚 ${t.moreLink()}</a></p>`;
   const latest = list[0];
   await writeFile(join(dir, 'index.html'), page({
     lang,
