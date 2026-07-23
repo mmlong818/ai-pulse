@@ -269,7 +269,7 @@ function timelineHtml(articles, radars, lang, { editions } = {}) {
       return { ts, eb: floorEdition(ebTs), html: articleCard(a, lang), radar: false };
     }),
     ...radars.flatMap((r) => r.items.map((i) => { const ts = radarTs(i, r.date); return { ts, eb: ceilEdition(ts), html: radarItemLi(i, lang), radar: true }; })),
-  ].sort((a, b) => b.ts - a.ts);
+  ].sort((a, b) => b.eb - a.eb || b.ts - a.ts); // 先按班次（新班次整体在上），班次内按源头时间倒序
   if (editions) {
     const keep = new Set([...new Set(entries.map((e) => e.eb))].sort((a, b) => b - a).slice(0, editions));
     entries = entries.filter((e) => keep.has(e.eb));
