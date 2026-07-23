@@ -18,6 +18,12 @@ const CUTOFF = process.env.AIPULSE_CUTOFF ? new Date(process.env.AIPULSE_CUTOFF)
 const CUTOFF_NOTE = CUTOFF
   ? `\nCUTOFF: only include stories published BEFORE ${process.env.AIPULSE_CUTOFF}. Ignore anything published after that moment, even if significant — it belongs to the next edition.`
   : '';
+// 班次编辑方针：晚班覆盖北京白天 = 美国深夜 + 欧洲上午，全球重磅天然少——
+// 主动倾斜亚洲时段动态，不够成色不硬凑（早班无此限制）
+const isEvening = new Date(Date.now() + 8 * 3600000).getUTCHours() >= 12;
+const EDITION_NOTE = isEvening
+  ? `\nEDITION FOCUS (evening edition): This edition covers Beijing daytime — US overnight and European morning, globally the quietest news half-day. PRIORITIZE fresh stories from the Asian-timezone cycle: Chinese labs (Qwen, DeepSeek, Moonshot, Zhipu, ByteDance, Tencent, StepFun…), Japan/Korea, Asian AI policy and industry, open-source releases and papers that landed during Asian daytime. Do NOT fill the quota by re-picking yesterday's US stories that merely fall inside the ${WINDOW_H}-hour window — the previous edition already covered that cycle.`
+  : '';
 
 function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
   return new Promise((resolve, reject) => {
@@ -72,7 +78,8 @@ async function existingTitles() {
 async function generateBriefings(skipTitles, digest) {
   const prompt = `You are the sole editor of "AI Focus Bulletin" (AI专注速报), an autonomous bilingual AI news site. Today is ${today}.
 
-TASK: Select the ${COUNT} most significant AI news stories from the last ${WINDOW_H} hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original briefing for each, in English AND Chinese.${CUTOFF_NOTE}
+TASK: Select UP TO ${COUNT} of the most significant AI news stories from the last ${WINDOW_H} hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original briefing for each, in English AND Chinese.
+QUALITY BAR: every briefing must genuinely merit deep coverage in THIS edition. If the news cycle is slow, write fewer — 3 strong briefings beat ${COUNT} padded ones. Never recycle a second-tier or day-old story just to hit the count.${CUTOFF_NOTE}${EDITION_NOTE}
 
 ${SOURCE_GUIDE}
 
@@ -207,7 +214,7 @@ async function recentRadarTexts() {
 
 async function main() {
   const skip = await existingTitles();
-  console.log(`[generate] 深度简报 ${COUNT} 篇 + 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);
+  console.log(`[generate] 深度简报至多 ${COUNT} 篇（${isEvening ? '晚班·亚洲时段方针' : '早班'}）+ 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);
   const [headlines, xItems] = await Promise.all([
     fetchFreshHeadlines({ until: CUTOFF, hours: WINDOW_H, maxPerFeed: WINDOW_H > 48 ? 12 : 8 }),
     fetchXHeadlines({ until: CUTOFF, hours: WINDOW_H, perAccount: WINDOW_H > 48 ? 8 : 5 }).catch((e) => { console.error('[generate] X 直连失败:', e.message); return []; }),
