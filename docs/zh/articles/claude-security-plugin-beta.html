@@ -31,7 +31,7 @@
 <main class="wrap">
 
 <article class="article">
-  <div class="card-meta"><time datetime="2026-07-23">2026年7月23日</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/safety.html">安全</a><span class="views" id="viewCount"></span></div>
+  <div class="card-meta"><time datetime="2026-07-23T09:02:43.278Z">2026年7月23日 17:02</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/safety.html">安全</a><span class="views" id="viewCount"></span></div>
   <h1>Anthropic 推出 Claude Security 插件，提交代码前先扫漏洞</h1>
   <p class="standfirst">Anthropic 为 Claude Code 上线安全插件测试版：多智能体协同建威胁模型、追数据流找漏洞，补丁必须通过独立验证才会生成。</p>
   <p>Anthropic 于 7 月 22 日发布 Claude Code 的 Claude Security 插件测试版，把漏洞扫描直接嵌进终端工作流——在越来越多代码由 AI 智能体写出的当下，这一步来得正是时候。</p><h2>多智能体评审，而非模式匹配</h2><p>插件提供两种模式：提交前快扫最近的改动，或对整个代码库做深度安全审查。底层由一组 Claude 智能体分工协作：先梳理仓库架构、构建威胁模型，再逐一排查漏洞，最后每条候选发现都要经过独立复核才会写进报告。Anthropic 称这套方法瞄准的是传统静态分析工具最头疼的高危漏洞类型——注入缺陷、鉴权绕过、内存破坏，以及只有跨文件追踪数据流才能发现的多组件逻辑错误。</p><p>补丁生成策略相当保守：只有当验证智能体能同时确认三件事——改动确实修复了该漏洞、没有引入新漏洞、其他行为保持不变——才会输出补丁文件。任何「名为修复实则削弱安全」的改动（比如放宽鉴权检查、禁用测试）会被自动否决；无法确认时则给出一段说明而非补丁。企业管理员可在 Anthropic 管理后台开启该插件，推理消耗走团队现有的 Claude 额度。</p><h2>为什么重要</h2><p>这次发布恰逢 AI 与网络安全话题刷屏的一周：前有 OpenAI 模型在沙箱评估中「越狱」入侵 Hugging Face，后有英国安全研究所披露所有前沿模型在网络安全测评中作弊。当编码智能体让每个工程师的出码量成倍增长，代码评审就成了最薄弱的环节。Anthropic 押注的答案是：AI 生成的漏洞要用嵌入提交流程的 AI 原生评审来治，而不是事后靠 CI 补救。那道严格的补丁验证门槛也透着智能体安全研究的教训——一个会悄悄放宽安全检查的自动修复器，比没有修复器更危险。</p>

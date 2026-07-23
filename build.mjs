@@ -157,22 +157,32 @@ const dispDate = (a, lang) => lang === 'en' && a.published_at
 // 雷达刊期：北京第 N 天的刊覆盖美东 N-1 天 07:00 → N 天 07:00，英文页标 N-1
 const radarDispDate = (radar, lang) => lang === 'en' ? shiftDay(radar.date, -1) : radar.date;
 
+// 简报时间标注：日期 + 精确发布时刻（中文北京时间 / 英文美东时间）
+const articleDateTime = (a, lang) => {
+  const t = T[lang], d = dispDate(a, lang);
+  if (!a.published_at) return t.dateFmt(d);
+  const dt = new Date(a.published_at);
+  return lang === 'zh'
+    ? `${t.dateFmt(d)} ${dt.toLocaleTimeString('zh-CN', { timeZone: 'Asia/Shanghai', hour: '2-digit', minute: '2-digit', hour12: false })}`
+    : `${t.dateFmt(d)}, ${dt.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit', hour12: true })} ET`;
+};
+
 const tagChips = (a, lang, n = 3) => a.tags.slice(0, n).map((x) => `<a class="tag" href="${tagUrl(x, lang)}">${esc(tagLabel(x, lang))}</a>`).join('');
 
 function articleCard(a, lang) {
-  const t = T[lang], c = langOf(a, lang), d = dispDate(a, lang);
+  const c = langOf(a, lang);
   return `<article class="card">
-  <div class="card-meta"><time datetime="${d}">${t.dateFmt(d)}</time>${tagChips(a, lang)}</div>
+  <div class="card-meta"><time datetime="${esc(a.published_at || a.date)}">${articleDateTime(a, lang)}</time>${tagChips(a, lang)}</div>
   <h2><a href="${urlFor(lang, `articles/${a.slug}.html`)}">${esc(c.title)}</a></h2>
   <p>${esc(c.summary)}</p>
 </article>`;
 }
 
 function featuredHero(a, lang) {
-  const t = T[lang], c = langOf(a, lang), d = dispDate(a, lang);
+  const t = T[lang], c = langOf(a, lang);
   const reason = lang === 'zh' ? (a.featured_reason_zh || a.featured_reason) : a.featured_reason;
   return `<article class="card featured-card">
-  <div class="card-meta"><span class="featured-badge">${t.featured}</span><time datetime="${d}">${t.dateFmt(d)}</time>${tagChips(a, lang)}</div>
+  <div class="card-meta"><span class="featured-badge">${t.featured}</span><time datetime="${esc(a.published_at || a.date)}">${articleDateTime(a, lang)}</time>${tagChips(a, lang)}</div>
   <h2><a href="${urlFor(lang, `articles/${a.slug}.html`)}">${esc(c.title)}</a></h2>
   <p>${esc(c.summary)}</p>
   ${reason ? `<p class="featured-reason">${esc(reason)}</p>` : ''}
@@ -324,10 +334,9 @@ ${timelineHtml(rest, radars, lang, { editions: 2 })}
     const relatedHtml = related.length
       ? `<section class="related"><h3>${t.related}</h3><ul>${related.map((b) => `<li><a href="${urlFor(lang, `articles/${b.slug}.html`)}">${esc(langOf(b, lang).title)}</a></li>`).join('')}</ul></section>`
       : '';
-    const ad = dispDate(a, lang);
     const body = `
 <article class="article">
-  <div class="card-meta"><time datetime="${ad}">${t.dateFmt(ad)}</time>${tagChips(a, lang, 4)}<span class="views" id="viewCount"></span></div>
+  <div class="card-meta"><time datetime="${esc(a.published_at || a.date)}">${articleDateTime(a, lang)}</time>${tagChips(a, lang, 4)}<span class="views" id="viewCount"></span></div>
   <h1>${esc(c.title)}</h1>
   <p class="standfirst">${esc(c.summary)}</p>
   ${mdToHtml(c.body)}
