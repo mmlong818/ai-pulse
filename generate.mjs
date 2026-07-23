@@ -116,6 +116,13 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
       const age = (Date.parse(a.date) - Date.parse(a.published)) / 86400000;
       if (isNaN(age) || age > 7 || age < -1) delete a.published;
     }
+    // 归档日 = 源头时间的刊期日（与快讯同规则：北京 19:00 前归当天、之后归次日），不晚于 today
+    if (a.published) {
+      const day = a.published.includes('T')
+        ? new Date(Date.parse(a.published) + 13 * 3600000).toISOString().slice(0, 10)
+        : a.published;
+      a.date = day > today ? today : day;
+    }
     a.tags = a.tags || [];
     a.sources = a.sources || [];
     await writeFile(join(CONTENT, `${a.date}-${a.slug}.json`), JSON.stringify(a, null, 2));
