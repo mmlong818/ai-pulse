@@ -1,0 +1,28 @@
+{
+  "slug": "baai-arex-self-improving-agent",
+  "title": "BAAI's AREX agent self-improves by auditing its own answers",
+  "summary": "BAAI's open AREX framework turns answer verification into new research tasks, letting a 10B-active MoE agent rival far larger frontier models on BrowseComp.",
+  "body": "The Beijing Academy of Artificial Intelligence (BAAI) released AREX, a deep-research agent framework built around recursive self-improvement, and it topped Hugging Face's daily papers chart on Thursday with the day's highest upvote count.\n\n## Exploiting the discovery-verification gap\nAREX's core insight is an asymmetry familiar from complexity theory: finding an answer that satisfies every constraint of a hard research question is expensive, but checking a proposed answer constraint-by-constraint is much cheaper. The framework runs two nested loops. An inner research loop gathers evidence and assembles provisional answers with confidence scores; an outer self-improvement loop then audits each answer against individual constraints, flags unresolved claims, and converts the gaps into targeted follow-up research problems for the next round. A learned `update_context` tool compacts the agent's interaction history into an \"improvement state\" — verified evidence, constraint status, open gaps, next steps — instead of dragging full transcripts through long sessions.\n\n## Small models, frontier results\nBAAI instantiated the framework as AREX-Base, a mixture-of-experts model with 122 billion total and 10 billion active parameters, and AREX-Turbo, a 4-billion-parameter dense model. Across BrowseComp, WideSearch, DeepSearchQA, Humanity's Last Exam, GAIA, and xbench-DeepSearch-2510, the paper reports AREX-Base substantially beats comparable-scale baselines and stays competitive with much larger frontier systems, headlined by 82.5 percent on BrowseComp — a benchmark where early frontier agents struggled to crack 50.\n\n## Why it matters\nDeep research has become the proving ground for agent architectures, and AREX makes a pointed argument: the returns now come from the harness, not the parameter count. If a 10B-active open model can audit and re-target its own work well enough to hang with frontier systems, the moat around proprietary research agents narrows — and the 'self-improving agent' pattern, which Tencent's Hyra-1.0 also pushed this week, starts to look less like a research curiosity and more like the emerging default for how serious agent systems get built.",
+  "title_zh": "智源发布 AREX:会给自己'挑错'的深度研究智能体登顶论文榜",
+  "summary_zh": "智源研究院开源 AREX 深度研究智能体框架:把答案校验拆成新研究任务递归自我改进,10B 激活参数在 BrowseComp 上比肩前沿大模型。",
+  "body_zh": "北京智源人工智能研究院(BAAI)发布了围绕'递归自我改进'构建的深度研究智能体框架 AREX,周四以当日最高热度登顶 Hugging Face 每日论文榜。\n\n## 押注'发现-验证'不对称\nAREX 的核心洞察来自复杂性理论里的经典不对称:找到一个同时满足所有约束的答案很贵,但逐条检查一个候选答案便宜得多。框架由两层嵌套循环构成:内层研究循环负责搜集证据、组装带置信度的初步答案;外层自我改进循环则对答案逐条约束审计,标记未落实的论断,并把这些缺口转化为下一轮有的放矢的研究子问题。一个习得的 `update_context` 工具会把交互历史压缩成'改进状态'——已验证证据、约束核对进度、待补缺口、下一步计划——而不是拖着完整对话记录跑长任务。\n\n## 小模型打出前沿成绩\n智源给出两个实例化版本:AREX-Base(MoE 架构,总参数 1220 亿、激活 100 亿)和 AREX-Turbo(40 亿参数稠密模型)。论文报告,在 BrowseComp、WideSearch、DeepSearchQA、Humanity's Last Exam、GAIA 和 xbench-DeepSearch-2510 上,AREX-Base 大幅领先同规模基线,并与远大于它的前沿系统打得有来有回——最亮眼的是 BrowseComp 82.5%,而早期前沿智能体在这项基准上长期难破 50。\n\n## 为什么重要\n深度研究已成智能体架构的试炼场,AREX 给出的论点相当锋利:收益现在来自'脚手架'而非参数量。如果一个激活参数仅 100 亿的开源模型,靠审计和重定向自己的工作就能追上前沿系统,专有研究智能体的护城河就在变窄——而'自我改进智能体'这一范式(本周腾讯 Hyra-1.0 也在押注)正从研究猎奇,变成严肃智能体系统的默认构建方式。",
+  "tags": [
+    "Research",
+    "Agents",
+    "Open Source"
+  ],
+  "sources": [
+    {
+      "title": "AREX: Towards a Recursively Self-Improving Agent for Deep Research — Hugging Face Papers",
+      "url": "https://huggingface.co/papers/2607.21461"
+    },
+    {
+      "title": "AREX paper — arXiv",
+      "url": "https://arxiv.org/abs/2607.21461"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-24",
+  "published": "2026-07-24",
+  "published_at": "2026-07-24T11:08:21.749Z"
+}

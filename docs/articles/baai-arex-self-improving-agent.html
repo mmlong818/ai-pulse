@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BAAI's AREX agent self-improves by auditing its own answers — AI Focus Bulletin</title>
+<meta name="description" content="BAAI's open AREX framework turns answer verification into new research tasks, letting a 10B-active MoE agent rival far larger frontier models on BrowseComp.">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/baai-arex-self-improving-agent.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/baai-arex-self-improving-agent.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/baai-arex-self-improving-agent.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/baai-arex-self-improving-agent.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="BAAI's AREX agent self-improves by auditing its own answers — AI Focus Bulletin">
+<meta property="og:description" content="BAAI's open AREX framework turns answer verification into new research tasks, letting a 10B-active MoE agent rival far larger frontier models on BrowseComp.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/baai-arex-self-improving-agent.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"BAAI's AREX agent self-improves by auditing its own answers","description":"BAAI's open AREX framework turns answer verification into new research tasks, letting a 10B-active MoE agent rival far larger frontier models on BrowseComp.","datePublished":"2026-07-24T11:08:21.749Z","inLanguage":"en","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/articles/baai-arex-self-improving-agent.html"}</script>
+</head>
+<body data-slug="baai-arex-self-improving-agent" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ AI Focus Bulletin</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/baai-arex-self-improving-agent.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-24T11:08:21.749Z">July 24, 2026, 7:08 AM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/research.html">Research</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/agents.html">Agents</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/open-source.html">Open Source</a><span class="views" id="viewCount"></span></div>
+  <h1>BAAI's AREX agent self-improves by auditing its own answers</h1>
+  <p class="standfirst">BAAI's open AREX framework turns answer verification into new research tasks, letting a 10B-active MoE agent rival far larger frontier models on BrowseComp.</p>
+  <p>The Beijing Academy of Artificial Intelligence (BAAI) released AREX, a deep-research agent framework built around recursive self-improvement, and it topped Hugging Face's daily papers chart on Thursday with the day's highest upvote count.</p><h2>Exploiting the discovery-verification gap</h2><p>AREX's core insight is an asymmetry familiar from complexity theory: finding an answer that satisfies every constraint of a hard research question is expensive, but checking a proposed answer constraint-by-constraint is much cheaper. The framework runs two nested loops. An inner research loop gathers evidence and assembles provisional answers with confidence scores; an outer self-improvement loop then audits each answer against individual constraints, flags unresolved claims, and converts the gaps into targeted follow-up research problems for the next round. A learned <code>update_context</code> tool compacts the agent's interaction history into an &quot;improvement state&quot; — verified evidence, constraint status, open gaps, next steps — instead of dragging full transcripts through long sessions.</p><h2>Small models, frontier results</h2><p>BAAI instantiated the framework as AREX-Base, a mixture-of-experts model with 122 billion total and 10 billion active parameters, and AREX-Turbo, a 4-billion-parameter dense model. Across BrowseComp, WideSearch, DeepSearchQA, Humanity's Last Exam, GAIA, and xbench-DeepSearch-2510, the paper reports AREX-Base substantially beats comparable-scale baselines and stays competitive with much larger frontier systems, headlined by 82.5 percent on BrowseComp — a benchmark where early frontier agents struggled to crack 50.</p><h2>Why it matters</h2><p>Deep research has become the proving ground for agent architectures, and AREX makes a pointed argument: the returns now come from the harness, not the parameter count. If a 10B-active open model can audit and re-target its own work well enough to hang with frontier systems, the moat around proprietary research agents narrows — and the 'self-improving agent' pattern, which Tencent's Hyra-1.0 also pushed this week, starts to look less like a research curiosity and more like the emerging default for how serious agent systems get built.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://huggingface.co/papers/2607.21461" rel="noopener" target="_blank">AREX: Towards a Recursively Self-Improving Agent for Deep Research — Hugging Face Papers</a></li><li><a href="https://arxiv.org/abs/2607.21461" rel="noopener" target="_blank">AREX paper — arXiv</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/andrew-ng-openworker-desktop-agent.html">Andrew Ng releases OpenWorker, an open-source desktop agent</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/claude-security-plugin-beta.html">Anthropic ships Claude Security plugin for Claude Code in beta</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/heygen-companion-mode-agents.html">HeyGen's companion mode lets coding agents direct video creation</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI Focus Bulletin</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
