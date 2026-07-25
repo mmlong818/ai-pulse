@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic 称 Opus 5 将提示注入成功率压至近乎为零 — AI Focus Bulletin</title>
+<meta name="description" content="Anthropic 表示，开启 Auto Mode 的 Claude Opus 5 在 129 个浏览器场景中将提示注入攻击成功率降至 0%，但该成绩依赖分层防御。">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/opus-5-prompt-injection-defense.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/opus-5-prompt-injection-defense.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/opus-5-prompt-injection-defense.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/opus-5-prompt-injection-defense.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="Anthropic 称 Opus 5 将提示注入成功率压至近乎为零 — AI Focus Bulletin">
+<meta property="og:description" content="Anthropic 表示，开启 Auto Mode 的 Claude Opus 5 在 129 个浏览器场景中将提示注入攻击成功率降至 0%，但该成绩依赖分层防御。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/opus-5-prompt-injection-defense.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Anthropic 称 Opus 5 将提示注入成功率压至近乎为零","description":"Anthropic 表示，开启 Auto Mode 的 Claude Opus 5 在 129 个浏览器场景中将提示注入攻击成功率降至 0%，但该成绩依赖分层防御。","datePublished":"2026-07-25T11:05:58.883Z","inLanguage":"zh-CN","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/zh/articles/opus-5-prompt-injection-defense.html"}</script>
+</head>
+<body data-slug="opus-5-prompt-injection-defense" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ AI专注速报</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/opus-5-prompt-injection-defense.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-25T10:43:00Z">2026年7月25日 18:43</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/safety.html">安全</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><span class="views" id="viewCount"></span></div>
+  <h1>Anthropic 称 Opus 5 将提示注入成功率压至近乎为零</h1>
+  <p class="standfirst">Anthropic 表示，开启 Auto Mode 的 Claude Opus 5 在 129 个浏览器场景中将提示注入攻击成功率降至 0%，但该成绩依赖分层防御。</p>
+  <h2>智能体最棘手的难题</h2><p>Anthropic 宣称在提示注入（prompt injection）上取得实质进展——这类攻击将恶意指令藏在网页或文档内容里，从而劫持 AI 智能体的行为。它被普遍视为部署可联网浏览、读取不可信文件的智能体时最大的安全障碍；就在去年 12 月，OpenAI 还称这一问题可能永远无法彻底解决。</p><p>据 Anthropic 的 Opus 5 系统卡数据，开启&quot;Auto Mode&quot;运行的模型在 129 个浏览器测试场景中攻击成功率为 0%。在安全公司 Gray Swan 进行的更广义提示注入基准中，Opus 5 在尝试 15 次后被攻破的比例为 2.0%，优于 Fable 5 的 2.8% 和更早的 Opus 4.8 的 5.5%。</p><h2>需要注意的前提</h2><p>这个零成功率的头条数字并非模型的固有属性。它依赖 Auto Mode 两层防御协同工作：一层是预处理扫描，用于标记隐藏指令；另一层是执行前的动作拦截，在风险操作运行前将其叫停。剥离这些防御后，Opus 5 的成功率升至 3.7%——而值得注意的是，Sonnet 5 在单独测试中表现更好，仅为 0.93%。换言之，这一提升既来自基础模型，也来自外围的防护框架。</p><h2>为何重要</h2><p>如果结果经得起独立测试，它将是前沿实验室首次在正式产品（而非研究演示）中宣称对浏览器提示注入实现近乎完整的防御。这对当前围绕计算机操作与编程智能体形成的智能体经济尤为切题——一次成功注入就可能窃取凭据或触发未授权操作。不过对防御框架的依赖也让这一说法有所保留：它表明业界的前路仍需依靠分层护栏，而非天然免疫的模型，同时也留下一个问题——面对会自适应的攻击者，这些防御能坚持多久。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://the-decoder.com/opus-5-may-have-solved-browser-based-prompt-injection-the-biggest-security-flaw-haunting-ai-agents/" rel="noopener" target="_blank">Opus 5 may have solved browser-based prompt injection</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-qoder-mobile-launch.html">阿里 Qoder 编程智能体登陆移动端</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-opus-5-launch.html">Anthropic 发布 Opus 5：性能逼近 Fable 5，价格不变</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cognition-acquires-poke.html">Cognition 收购 Poke，为 AI 智能体注入“个性”</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI专注速报</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>

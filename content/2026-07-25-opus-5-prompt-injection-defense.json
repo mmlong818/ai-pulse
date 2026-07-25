@@ -1,0 +1,24 @@
+{
+  "slug": "opus-5-prompt-injection-defense",
+  "title": "Anthropic reports near-zero prompt injection on Opus 5",
+  "summary": "Anthropic says Claude Opus 5 with Auto Mode drove browser-based prompt-injection attacks to a 0% success rate across 129 scenarios, though the result depends on layered defenses.",
+  "body": "## The hardest problem in agents\n\nAnthropic is claiming meaningful progress on prompt injection — the class of attack in which malicious instructions hidden in webpage or document content hijack an AI agent's behavior. Widely regarded as the single biggest security obstacle to deploying agents that browse the web or read untrusted files, the problem was described by OpenAI as recently as December as one that may never be fully solved.\n\nAccording to figures in Anthropic's Opus 5 system card, the model running with \"Auto Mode\" enabled recorded a 0% attack success rate across 129 browser-based test scenarios. On a broader prompt-injection benchmark run by the security firm Gray Swan, Opus 5 was compromised in 2.0% of attempts after 15 tries, ahead of Fable 5 at 2.8% and the earlier Opus 4.8 at 5.5%.\n\n## The caveats\n\nThe headline zero-percent figure is not an intrinsic property of the model. It requires both layers of Auto Mode working together: a pre-processing scan that flags hidden instructions, and an action-blocking step that halts risky operations before they execute. Stripped of those defenses, Opus 5's success rate rises to 3.7% — and, notably, Sonnet 5 performed better in isolation at 0.93%. In other words, the improvement is as much about the surrounding harness as the base model.\n\n## Why it matters\n\nIf the results hold up under independent testing, they mark the first time a frontier lab has claimed a near-complete defense against browser-based injection in a shipping product, rather than a research demo. That is directly relevant to the agent economy now forming around computer-use and coding agents, where a single successful injection can exfiltrate credentials or trigger unauthorized actions. The dependence on a defensive scaffold, however, tempers the claim: it suggests the industry's path forward runs through layered guardrails rather than a model that is inherently immune, and it leaves open how the defenses hold against adaptive attackers over time.",
+  "title_zh": "Anthropic 称 Opus 5 将提示注入成功率压至近乎为零",
+  "summary_zh": "Anthropic 表示，开启 Auto Mode 的 Claude Opus 5 在 129 个浏览器场景中将提示注入攻击成功率降至 0%，但该成绩依赖分层防御。",
+  "body_zh": "## 智能体最棘手的难题\n\nAnthropic 宣称在提示注入（prompt injection）上取得实质进展——这类攻击将恶意指令藏在网页或文档内容里，从而劫持 AI 智能体的行为。它被普遍视为部署可联网浏览、读取不可信文件的智能体时最大的安全障碍；就在去年 12 月，OpenAI 还称这一问题可能永远无法彻底解决。\n\n据 Anthropic 的 Opus 5 系统卡数据，开启\"Auto Mode\"运行的模型在 129 个浏览器测试场景中攻击成功率为 0%。在安全公司 Gray Swan 进行的更广义提示注入基准中，Opus 5 在尝试 15 次后被攻破的比例为 2.0%，优于 Fable 5 的 2.8% 和更早的 Opus 4.8 的 5.5%。\n\n## 需要注意的前提\n\n这个零成功率的头条数字并非模型的固有属性。它依赖 Auto Mode 两层防御协同工作：一层是预处理扫描，用于标记隐藏指令；另一层是执行前的动作拦截，在风险操作运行前将其叫停。剥离这些防御后，Opus 5 的成功率升至 3.7%——而值得注意的是，Sonnet 5 在单独测试中表现更好，仅为 0.93%。换言之，这一提升既来自基础模型，也来自外围的防护框架。\n\n## 为何重要\n\n如果结果经得起独立测试，它将是前沿实验室首次在正式产品（而非研究演示）中宣称对浏览器提示注入实现近乎完整的防御。这对当前围绕计算机操作与编程智能体形成的智能体经济尤为切题——一次成功注入就可能窃取凭据或触发未授权操作。不过对防御框架的依赖也让这一说法有所保留：它表明业界的前路仍需依靠分层护栏，而非天然免疫的模型，同时也留下一个问题——面对会自适应的攻击者，这些防御能坚持多久。",
+  "tags": [
+    "Safety",
+    "Agents",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "Opus 5 may have solved browser-based prompt injection",
+      "url": "https://the-decoder.com/opus-5-may-have-solved-browser-based-prompt-injection-the-biggest-security-flaw-haunting-ai-agents/"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-25",
+  "published": "2026-07-25T10:43:00Z",
+  "published_at": "2026-07-25T11:05:58.883Z"
+}
