@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>&quot;中转站&quot;调查：低价转售 AI Token 的灰色产业链浮出水面 — AI Focus Bulletin</title>
+<meta name="description" content="Vectoral 调查揭开&quot;中转站&quot;灰产：薅试用额度、劫持客服机器人、盗刷信用卡拼出低价 token 池，地域限制与反蒸馏条款形同虚设。">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/ai-token-relay-market-investigation.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/ai-token-relay-market-investigation.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/ai-token-relay-market-investigation.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/ai-token-relay-market-investigation.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="&quot;中转站&quot;调查：低价转售 AI Token 的灰色产业链浮出水面 — AI Focus Bulletin">
+<meta property="og:description" content="Vectoral 调查揭开&quot;中转站&quot;灰产：薅试用额度、劫持客服机器人、盗刷信用卡拼出低价 token 池，地域限制与反蒸馏条款形同虚设。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/ai-token-relay-market-investigation.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"\"中转站\"调查：低价转售 AI Token 的灰色产业链浮出水面","description":"Vectoral 调查揭开\"中转站\"灰产：薅试用额度、劫持客服机器人、盗刷信用卡拼出低价 token 池，地域限制与反蒸馏条款形同虚设。","datePublished":"2026-07-26T23:08:01.237Z","inLanguage":"zh-CN","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/zh/articles/ai-token-relay-market-investigation.html"}</script>
+</head>
+<body data-slug="ai-token-relay-market-investigation" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ AI专注速报</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/ai-token-relay-market-investigation.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-26T19:30:00Z">2026年7月27日 03:30</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/safety.html">安全</a><span class="views" id="viewCount"></span></div>
+  <h1>&quot;中转站&quot;调查：低价转售 AI Token 的灰色产业链浮出水面</h1>
+  <p class="standfirst">Vectoral 调查揭开&quot;中转站&quot;灰产：薅试用额度、劫持客服机器人、盗刷信用卡拼出低价 token 池，地域限制与反蒸馏条款形同虚设。</p>
+  <p>Vectoral 的 Matt Lenhard 发布了一份关于&quot;中转站&quot;（relay market）灰产的调查，Simon Willison 7 月 26 日撰文推介。所谓中转，是主要活跃在中国的一批代理服务：运营者把从各种渠道搞来的 API 凭证池化，再以远低于官方的价格转售大模型访问。</p><h2>货从哪来</h2><p>调查梳理出几条供给渠道：批量薅免费试用额度；劫持缺乏防护的客服机器人，把它们当作通往背后大模型 API 的免费跳板；部分还涉及盗刷信用卡和拒付欺诈。技术上，这条产业链跑在 one-api、new-api 等开源网关软件上，搭一个转售代理几乎是开箱即用。需求端同样结构性存在：买家要的是便宜 token、绕过地域限制的通道（美国前沿模型在中国无法官方使用），以及用于蒸馏的批量模型输出。</p><h2>一层给 API 流量&quot;洗白&quot;的中间件</h2><p>中转层的作用不止是搬运折扣 token，它还掩盖了模型的真实使用者和使用地。这直接关联到政策层面：美国财政部本周刚以涉嫌蒸馏 Anthropic Fable 模型为由发出制裁威胁，但执法的前提是 API 流量可以溯源——成熟的中转生态恰恰是击穿这个前提的基础设施。对开发者的提醒则更直接：任何无鉴权暴露在公网的 LLM 端点都不是小疏忽，而是转售团伙会主动扫描、可以规模化变现的资产。</p><p>这份调查的意义在于：大量 AI 政策与商业实践——地域限制、使用政策、按客户限流、反蒸馏条款——都默认 API 层的访问控制是有效的。而这里给出了成体系的证据：一个专业化、规模化的灰色市场早已系统性地击穿了这些控制。前沿模型&quot;官方可用范围&quot;和&quot;实际使用范围&quot;之间的差距，远比市场地图上画的要小。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://simonwillison.net/2026/Jul/26/relay-market/" rel="noopener" target="_blank">An Inside Look at the Relay Market Powering Token Resellers and Fraud — Simon Willison</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/hugging-face-demands-openai-agent-traces.html">Hugging Face CEO 喊话 OpenAI：公开失控智能体行为轨迹</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-pauses-1-5b-round.html">梁文锋纪要外泄，DeepSeek 暂停 15 亿美元融资</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/librarians-avoiding-ai-workshops-viral.html">美国图书馆&quot;避开AI&quot;课程爆满，折射被忽视的消费者AI疲劳</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI专注速报</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
