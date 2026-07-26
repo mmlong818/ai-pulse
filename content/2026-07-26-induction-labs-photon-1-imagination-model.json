@@ -1,0 +1,27 @@
+{
+  "slug": "induction-labs-photon-1-imagination-model",
+  "title": "Induction Labs' Photon-1 learns tasks from video alone",
+  "summary": "A 106B-parameter model pretrained only on screen-recording video, with no action labels, transfers to computer use, checkers and billiard physics.",
+  "body": "## The result\n\nInduction Labs has published Photon-1, a research model it describes as an \"imagination model\": a foundation model pretrained purely on raw video, with no action labels at any stage. Photon-1 is a sparse mixture-of-experts transformer with roughly 106 billion total and about 5 billion active parameters, trained on around 575 million frames — the company likens this to some 18 years of computer screen recordings drawn from about two million sessions.\n\nRather than generating pixels, the model predicts future states autoregressively in a compressed latent space. A vision encoder using finite scalar quantization packs each frame into roughly 960 discrete tokens, which Induction Labs says preserves text, layout and state changes far more compactly than conventional multimodal representations. The claim at the core of the work: predicting what happens next teaches the model to complete tasks even though it never observes an explicit action during pretraining — an \"implicit policy.\"\n\n## What it can do\n\nThe team reports Photon-1 outperforming a production model (Gemini 3.1 Flash-Lite) on internal computer-use benchmarks while using roughly 30x less pretraining compute and costing about 3x less to serve. More striking is transfer to domains absent from its screen-recording diet: the model reportedly beats language- and vision-only baselines across 20,000 tournament checkers games and predicts billiard-ball trajectories with low error against a physics engine.\n\nInduction Labs was explicit that this is a research artifact — no weights, no API, no license — accompanied by a technical writeup.\n\n## Why it matters\n\nThe dominant recipe for computer-use agents pairs vision-language models with action-labeled demonstrations, which are expensive to collect. Photon-1 is evidence that unlabeled video alone can encode a broadly useful world model, and that the learned representation generalizes beyond desktops to games and physics. If the compute-efficiency figures hold up under scrutiny, the observation-first approach could become an attractive alternative for training agents where labeled trajectories are scarce.",
+  "title_zh": "Induction Labs 的 Photon-1：仅凭视频学会做任务",
+  "summary_zh": "这个 1060 亿参数模型仅用屏幕录像视频预训练、不含任何动作标注，却能迁移到电脑操作、跳棋与台球物理。",
+  "body_zh": "## 研究结果\n\nInduction Labs 发布了 Photon-1，称其为一种\"想象模型\"：一个纯粹用原始视频预训练、任何阶段都不含动作标注的基础模型。Photon-1 是稀疏混合专家 Transformer，总参数约 1060 亿、激活参数约 50 亿，训练用了约 5.75 亿帧——公司将其类比为从约 200 万段会话中提取的约 18 年屏幕录像。\n\n模型并不生成像素，而是在压缩的隐空间中自回归地预测未来状态。采用有限标量量化（FSQ）的视觉编码器把每帧压进约 960 个离散 token，Induction Labs 称这比常规多模态表示更紧凑地保留了文本、布局与状态变化。这项工作的核心主张是：预测\"接下来会发生什么\"能教会模型完成任务，尽管它在预训练中从未见过一个显式动作——即所谓\"隐式策略\"。\n\n## 能力表现\n\n团队报告称，Photon-1 在内部电脑操作基准上优于一款生产级模型（Gemini 3.1 Flash-Lite），同时预训练算力约少 30 倍、推理成本约低 3 倍。更引人注目的是它向训练数据之外领域的迁移：在 2 万局锦标赛跳棋中据称胜过纯语言与纯视觉基线，并以较低误差预测台球轨迹、对标物理引擎。\n\nInduction Labs 明确表示这是研究成果——不放权重、不开 API、不给许可证——并附有技术说明。\n\n## 影响\n\n当前电脑操作智能体的主流配方，是把视觉语言模型与带动作标注的演示数据配对，而后者采集成本高昂。Photon-1 提供了证据：仅凭无标注视频就能编码出一个广泛可用的世界模型，且所学表示可泛化到桌面之外的游戏与物理。若其算力效率数据经得起推敲，这种\"以观察为先\"的思路，可能成为在缺乏标注轨迹场景下训练智能体的一个有吸引力的替代方案。",
+  "tags": [
+    "Research",
+    "Agents"
+  ],
+  "sources": [
+    {
+      "title": "Induction Labs Photon-1 Simulates Desktops, Plays Checkers, and Models Billiard Physics (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/07/26/induction-labs-photon-1-simulates-desktops-plays-checkers-and-models-billiard-physics-from-one-pretraining-run/"
+    },
+    {
+      "title": "Launch YC: Induction Labs — foundation models that learn from observation",
+      "url": "https://www.ycombinator.com/launches/RqL-induction-labs-foundation-models-that-learn-from-observation"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-26",
+  "published": "2026-07-26T09:14:00Z",
+  "published_at": "2026-07-26T11:07:35.726Z"
+}

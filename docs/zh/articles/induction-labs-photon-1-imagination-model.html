@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Induction Labs 的 Photon-1：仅凭视频学会做任务 — AI Focus Bulletin</title>
+<meta name="description" content="这个 1060 亿参数模型仅用屏幕录像视频预训练、不含任何动作标注，却能迁移到电脑操作、跳棋与台球物理。">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/induction-labs-photon-1-imagination-model.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/induction-labs-photon-1-imagination-model.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/induction-labs-photon-1-imagination-model.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/induction-labs-photon-1-imagination-model.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="Induction Labs 的 Photon-1：仅凭视频学会做任务 — AI Focus Bulletin">
+<meta property="og:description" content="这个 1060 亿参数模型仅用屏幕录像视频预训练、不含任何动作标注，却能迁移到电脑操作、跳棋与台球物理。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/induction-labs-photon-1-imagination-model.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Induction Labs 的 Photon-1：仅凭视频学会做任务","description":"这个 1060 亿参数模型仅用屏幕录像视频预训练、不含任何动作标注，却能迁移到电脑操作、跳棋与台球物理。","datePublished":"2026-07-26T11:07:35.726Z","inLanguage":"zh-CN","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/zh/articles/induction-labs-photon-1-imagination-model.html"}</script>
+</head>
+<body data-slug="induction-labs-photon-1-imagination-model" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ AI专注速报</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/induction-labs-photon-1-imagination-model.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-26T09:14:00Z">2026年7月26日 17:14</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><span class="views" id="viewCount"></span></div>
+  <h1>Induction Labs 的 Photon-1：仅凭视频学会做任务</h1>
+  <p class="standfirst">这个 1060 亿参数模型仅用屏幕录像视频预训练、不含任何动作标注，却能迁移到电脑操作、跳棋与台球物理。</p>
+  <h2>研究结果</h2><p>Induction Labs 发布了 Photon-1，称其为一种&quot;想象模型&quot;：一个纯粹用原始视频预训练、任何阶段都不含动作标注的基础模型。Photon-1 是稀疏混合专家 Transformer，总参数约 1060 亿、激活参数约 50 亿，训练用了约 5.75 亿帧——公司将其类比为从约 200 万段会话中提取的约 18 年屏幕录像。</p><p>模型并不生成像素，而是在压缩的隐空间中自回归地预测未来状态。采用有限标量量化（FSQ）的视觉编码器把每帧压进约 960 个离散 token，Induction Labs 称这比常规多模态表示更紧凑地保留了文本、布局与状态变化。这项工作的核心主张是：预测&quot;接下来会发生什么&quot;能教会模型完成任务，尽管它在预训练中从未见过一个显式动作——即所谓&quot;隐式策略&quot;。</p><h2>能力表现</h2><p>团队报告称，Photon-1 在内部电脑操作基准上优于一款生产级模型（Gemini 3.1 Flash-Lite），同时预训练算力约少 30 倍、推理成本约低 3 倍。更引人注目的是它向训练数据之外领域的迁移：在 2 万局锦标赛跳棋中据称胜过纯语言与纯视觉基线，并以较低误差预测台球轨迹、对标物理引擎。</p><p>Induction Labs 明确表示这是研究成果——不放权重、不开 API、不给许可证——并附有技术说明。</p><h2>影响</h2><p>当前电脑操作智能体的主流配方，是把视觉语言模型与带动作标注的演示数据配对，而后者采集成本高昂。Photon-1 提供了证据：仅凭无标注视频就能编码出一个广泛可用的世界模型，且所学表示可泛化到桌面之外的游戏与物理。若其算力效率数据经得起推敲，这种&quot;以观察为先&quot;的思路，可能成为在缺乏标注轨迹场景下训练智能体的一个有吸引力的替代方案。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://www.marktechpost.com/2026/07/26/induction-labs-photon-1-simulates-desktops-plays-checkers-and-models-billiard-physics-from-one-pretraining-run/" rel="noopener" target="_blank">Induction Labs Photon-1 Simulates Desktops, Plays Checkers, and Models Billiard Physics (MarkTechPost)</a></li><li><a href="https://www.ycombinator.com/launches/RqL-induction-labs-foundation-models-that-learn-from-observation" rel="noopener" target="_blank">Launch YC: Induction Labs — foundation models that learn from observation</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/open-dreamer-jax-dreamer4-reproduction.html">Open Dreamer开源复现Dreamer 4世界模型，完整训练配方公开</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-hugging-face-hack-reports.html">OpenAI黑入Hugging Face事件再曝细节：失控程度远超首次通报</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-qoder-mobile-launch.html">阿里 Qoder 编程智能体登陆移动端</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI专注速报</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>

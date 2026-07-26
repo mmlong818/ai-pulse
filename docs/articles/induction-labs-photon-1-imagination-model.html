@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Induction Labs' Photon-1 learns tasks from video alone — AI Focus Bulletin</title>
+<meta name="description" content="A 106B-parameter model pretrained only on screen-recording video, with no action labels, transfers to computer use, checkers and billiard physics.">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/induction-labs-photon-1-imagination-model.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/induction-labs-photon-1-imagination-model.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/induction-labs-photon-1-imagination-model.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/induction-labs-photon-1-imagination-model.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="Induction Labs' Photon-1 learns tasks from video alone — AI Focus Bulletin">
+<meta property="og:description" content="A 106B-parameter model pretrained only on screen-recording video, with no action labels, transfers to computer use, checkers and billiard physics.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/induction-labs-photon-1-imagination-model.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Induction Labs' Photon-1 learns tasks from video alone","description":"A 106B-parameter model pretrained only on screen-recording video, with no action labels, transfers to computer use, checkers and billiard physics.","datePublished":"2026-07-26T11:07:35.726Z","inLanguage":"en","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/articles/induction-labs-photon-1-imagination-model.html"}</script>
+</head>
+<body data-slug="induction-labs-photon-1-imagination-model" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ AI Focus Bulletin</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/induction-labs-photon-1-imagination-model.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-26T09:14:00Z">July 26, 2026, 5:14 AM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/research.html">Research</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/agents.html">Agents</a><span class="views" id="viewCount"></span></div>
+  <h1>Induction Labs' Photon-1 learns tasks from video alone</h1>
+  <p class="standfirst">A 106B-parameter model pretrained only on screen-recording video, with no action labels, transfers to computer use, checkers and billiard physics.</p>
+  <h2>The result</h2><p>Induction Labs has published Photon-1, a research model it describes as an &quot;imagination model&quot;: a foundation model pretrained purely on raw video, with no action labels at any stage. Photon-1 is a sparse mixture-of-experts transformer with roughly 106 billion total and about 5 billion active parameters, trained on around 575 million frames — the company likens this to some 18 years of computer screen recordings drawn from about two million sessions.</p><p>Rather than generating pixels, the model predicts future states autoregressively in a compressed latent space. A vision encoder using finite scalar quantization packs each frame into roughly 960 discrete tokens, which Induction Labs says preserves text, layout and state changes far more compactly than conventional multimodal representations. The claim at the core of the work: predicting what happens next teaches the model to complete tasks even though it never observes an explicit action during pretraining — an &quot;implicit policy.&quot;</p><h2>What it can do</h2><p>The team reports Photon-1 outperforming a production model (Gemini 3.1 Flash-Lite) on internal computer-use benchmarks while using roughly 30x less pretraining compute and costing about 3x less to serve. More striking is transfer to domains absent from its screen-recording diet: the model reportedly beats language- and vision-only baselines across 20,000 tournament checkers games and predicts billiard-ball trajectories with low error against a physics engine.</p><p>Induction Labs was explicit that this is a research artifact — no weights, no API, no license — accompanied by a technical writeup.</p><h2>Why it matters</h2><p>The dominant recipe for computer-use agents pairs vision-language models with action-labeled demonstrations, which are expensive to collect. Photon-1 is evidence that unlabeled video alone can encode a broadly useful world model, and that the learned representation generalizes beyond desktops to games and physics. If the compute-efficiency figures hold up under scrutiny, the observation-first approach could become an attractive alternative for training agents where labeled trajectories are scarce.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://www.marktechpost.com/2026/07/26/induction-labs-photon-1-simulates-desktops-plays-checkers-and-models-billiard-physics-from-one-pretraining-run/" rel="noopener" target="_blank">Induction Labs Photon-1 Simulates Desktops, Plays Checkers, and Models Billiard Physics (MarkTechPost)</a></li><li><a href="https://www.ycombinator.com/launches/RqL-induction-labs-foundation-models-that-learn-from-observation" rel="noopener" target="_blank">Launch YC: Induction Labs — foundation models that learn from observation</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/open-dreamer-jax-dreamer4-reproduction.html">Open Dreamer rebuilds Dreamer 4 in JAX with full training recipe</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/openai-hugging-face-hack-reports.html">New reports detail OpenAI's loss of control in Hugging Face hack</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/alibaba-qoder-mobile-launch.html">Alibaba's Qoder coding agent arrives on mobile</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI Focus Bulletin</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
