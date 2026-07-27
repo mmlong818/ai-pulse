@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moonshot open-sources AgentENV, the sandbox fleet behind K3 — AI Focus Bulletin</title>
+<meta name="description" content="The Kimi team and kvcache-ai released the Firecracker-based environment system used for Kimi K3's agentic RL training under an MIT licence.">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/moonshot-agentenv-open-source.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/moonshot-agentenv-open-source.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/moonshot-agentenv-open-source.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/moonshot-agentenv-open-source.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="Moonshot open-sources AgentENV, the sandbox fleet behind K3 — AI Focus Bulletin">
+<meta property="og:description" content="The Kimi team and kvcache-ai released the Firecracker-based environment system used for Kimi K3's agentic RL training under an MIT licence.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/moonshot-agentenv-open-source.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Moonshot open-sources AgentENV, the sandbox fleet behind K3","description":"The Kimi team and kvcache-ai released the Firecracker-based environment system used for Kimi K3's agentic RL training under an MIT licence.","datePublished":"2026-07-27T23:05:06.713Z","inLanguage":"en","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/articles/moonshot-agentenv-open-source.html"}</script>
+</head>
+<body data-slug="moonshot-agentenv-open-source" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ AI Focus Bulletin</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/moonshot-agentenv-open-source.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-27T20:48:00Z">July 27, 2026, 4:48 PM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/open-source.html">Open Source</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/agents.html">Agents</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/research.html">Research</a><span class="views" id="viewCount"></span></div>
+  <h1>Moonshot open-sources AgentENV, the sandbox fleet behind K3</h1>
+  <p class="standfirst">The Kimi team and kvcache-ai released the Firecracker-based environment system used for Kimi K3's agentic RL training under an MIT licence.</p>
+  <h2>The missing half of agentic RL</h2><p>Moonshot AI's Kimi team and kvcache-ai released AgentENV on July 27, the distributed sandbox system that supplied execution environments for Kimi K3's agentic reinforcement learning. It is published on GitHub under an MIT licence with documentation.</p><p>Training an agent with RL requires actually running what the model writes — millions of times, in environments that are isolated, disposable and fast enough not to starve the training loop. AgentENV builds each environment as a Firecracker microVM rather than a container, giving kernel-level isolation with its own filesystem and network namespace, on the reasoning that model-generated code is untrusted by construction. Storage uses overlaybd layered images: a shared read-only base plus a per-sandbox write layer, so thousands of sandboxes share one image without duplication. An in-guest daemon, envd, handles command execution and health reporting.</p><p>The published latencies are what make it usable as an RL substrate: boot or resume under 50ms, pause under 100ms, incremental snapshot under 100ms, and forking of up to 16 child sandboxes from a single parent. Forking matters for search-style rollouts, where many trajectories branch from a shared prefix state and re-executing the setup for each one would dominate the cost.</p><h2>Filling in around the weights</h2><p>Moonshot has now released not only K3's 2.8-trillion-parameter weights but the training infrastructure around them. That is a departure from the norm in open releases, where labs ship checkpoints and keep the RL harness — the part that is expensive to rebuild and hardest to reverse-engineer from a model card.</p><h2>Why it matters</h2><p>Environment infrastructure has quietly become the bottleneck in agent training. Groups with strong RL recipes routinely stall on sandbox throughput, and building a microVM fleet with sub-100ms fork and snapshot is months of systems work unrelated to machine learning. Handing that over under MIT lowers the entry cost for agentic RL to roughly the cost of compute — and continues a pattern in which Chinese labs compete not only on open weights but on releasing the tooling that makes those weights reproducible.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://www.marktechpost.com/2026/07/27/kimi-ai-and-kvcache-ai-open-sources-agentenv/" rel="noopener" target="_blank">Kimi AI and kvcache-ai Open Sources 'AgentENV'</a></li><li><a href="https://github.com/kvcache-ai/AgentENV" rel="noopener" target="_blank">kvcache-ai/AgentENV on GitHub</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/anthropic-open-weights-position.html">Anthropic says it never sought a ban on open-weights models</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/metr-expenditure-horizon-metric.html">METR proposes 'expenditure horizon' to price agents vs humans</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/kimi-k3-open-weights-release.html">Moonshot's 2.8T-parameter Kimi K3 weights land on Hugging Face</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI Focus Bulletin</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>

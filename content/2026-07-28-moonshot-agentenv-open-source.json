@@ -1,0 +1,28 @@
+{
+  "slug": "moonshot-agentenv-open-source",
+  "title": "Moonshot open-sources AgentENV, the sandbox fleet behind K3",
+  "summary": "The Kimi team and kvcache-ai released the Firecracker-based environment system used for Kimi K3's agentic RL training under an MIT licence.",
+  "body": "## The missing half of agentic RL\n\nMoonshot AI's Kimi team and kvcache-ai released AgentENV on July 27, the distributed sandbox system that supplied execution environments for Kimi K3's agentic reinforcement learning. It is published on GitHub under an MIT licence with documentation.\n\nTraining an agent with RL requires actually running what the model writes — millions of times, in environments that are isolated, disposable and fast enough not to starve the training loop. AgentENV builds each environment as a Firecracker microVM rather than a container, giving kernel-level isolation with its own filesystem and network namespace, on the reasoning that model-generated code is untrusted by construction. Storage uses overlaybd layered images: a shared read-only base plus a per-sandbox write layer, so thousands of sandboxes share one image without duplication. An in-guest daemon, envd, handles command execution and health reporting.\n\nThe published latencies are what make it usable as an RL substrate: boot or resume under 50ms, pause under 100ms, incremental snapshot under 100ms, and forking of up to 16 child sandboxes from a single parent. Forking matters for search-style rollouts, where many trajectories branch from a shared prefix state and re-executing the setup for each one would dominate the cost.\n\n## Filling in around the weights\n\nMoonshot has now released not only K3's 2.8-trillion-parameter weights but the training infrastructure around them. That is a departure from the norm in open releases, where labs ship checkpoints and keep the RL harness — the part that is expensive to rebuild and hardest to reverse-engineer from a model card.\n\n## Why it matters\n\nEnvironment infrastructure has quietly become the bottleneck in agent training. Groups with strong RL recipes routinely stall on sandbox throughput, and building a microVM fleet with sub-100ms fork and snapshot is months of systems work unrelated to machine learning. Handing that over under MIT lowers the entry cost for agentic RL to roughly the cost of compute — and continues a pattern in which Chinese labs compete not only on open weights but on releasing the tooling that makes those weights reproducible.",
+  "title_zh": "月之暗面开源 AgentENV：K3 背后的沙箱集群系统",
+  "summary_zh": "Kimi 团队与 kvcache-ai 以 MIT 协议开源了训练 Kimi K3 智能体强化学习所用的 Firecracker 微虚拟机环境系统。",
+  "body_zh": "## 智能体强化学习缺的另一半\n\n月之暗面 Kimi 团队与 kvcache-ai 于 7 月 27 日开源 AgentENV——为 Kimi K3 的智能体强化学习提供执行环境的分布式沙箱系统，已在 GitHub 以 MIT 协议发布并配文档。\n\n用强化学习训智能体，就得真把模型写出来的东西跑起来，跑上百万次，而且环境必须隔离、用完即弃、快到不至于把训练循环饿住。AgentENV 用 Firecracker 微虚拟机而非容器构建每个环境，提供内核级隔离与独立的文件系统和网络命名空间——前提假设很直接：模型生成的代码天然不可信。存储采用 overlaybd 分层镜像，共享只读基础层加每沙箱写入层，成千个沙箱共用一份镜像而不必复制。客户机内的 envd 守护进程负责命令执行与健康上报。\n\n真正让它能当 RL 底座用的是公布的延迟数字：启动或恢复低于 50 毫秒，暂停低于 100 毫秒，增量快照低于 100 毫秒，单个父沙箱可 fork 出最多 16 个子沙箱。fork 对搜索式 rollout 尤其关键——大量轨迹从同一前缀状态分叉，若每条都重跑一遍环境准备，成本会被这一项吃掉。\n\n## 把权重周边也补上\n\n月之暗面这次放出的不只是 K3 的 2.8 万亿参数权重，还有围绕它的训练基础设施。这与开源发布的惯例相反：多数实验室交出 checkpoint，但把 RL 训练框架留在手里——那恰恰是重建最贵、也最难从模型卡里逆推的部分。\n\n## 为何重要\n\n环境基础设施已悄然成为智能体训练的瓶颈。手握不错 RL 配方的团队常常卡在沙箱吞吐上，而搭一套 fork 与快照都在 100 毫秒以内的微虚拟机集群，是几个月与机器学习无关的系统工程。以 MIT 协议把这块交出去，等于把做智能体 RL 的门槛压到接近纯算力成本——也延续了一个趋势：中国实验室不只在开放权重上竞争，还在比谁把让权重可复现的工具链交得更彻底。",
+  "tags": [
+    "Open Source",
+    "Agents",
+    "Research"
+  ],
+  "sources": [
+    {
+      "title": "Kimi AI and kvcache-ai Open Sources 'AgentENV'",
+      "url": "https://www.marktechpost.com/2026/07/27/kimi-ai-and-kvcache-ai-open-sources-agentenv/"
+    },
+    {
+      "title": "kvcache-ai/AgentENV on GitHub",
+      "url": "https://github.com/kvcache-ai/AgentENV"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-28",
+  "published": "2026-07-27T20:48:00Z",
+  "published_at": "2026-07-27T23:05:06.713Z"
+}
