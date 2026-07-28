@@ -101,6 +101,7 @@ function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd,
   const about = lang === 'zh' ? `${BASE}/zh/about.html` : `${BASE}/about.html`;
   const favs = lang === 'zh' ? `${BASE}/zh/favorites.html` : `${BASE}/favorites.html`;
   const langLink = lang === 'zh' ? altEn : altZh;
+  const socialImage = `${BASE}/assets/${lang === 'zh' ? 'og.png' : 'og-en.png'}`;
   return `<!DOCTYPE html>
 <html lang="${lang === 'zh' ? 'zh-CN' : 'en'}">
 <head>
@@ -117,8 +118,11 @@ function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd,
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:image" content="${BASE}/assets/${lang === 'zh' ? 'og.png' : 'og-en.png'}">
+<meta property="og:image" content="${socialImage}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(description)}">
+<meta name="twitter:image" content="${socialImage}">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <link rel="alternate" type="application/rss+xml" title="${SITE_NAME} RSS" href="${rss}">
 <link rel="stylesheet" href="${BASE}/assets/style.css">
@@ -469,9 +473,30 @@ ${timelineHtml(d.articles, d.radars, lang)}
     }));
   }
 
-  // 旧 /radar/ 链接重定向到对应按天页（雷达概念已并入时间线）
+  // X 引用页：保留 /radar/YYYY-MM-DD.html 为带日期、带语言社交卡片的真实页面。
+  for (const r of radars) {
+    const disp = lang === 'en' ? shiftDay(r.date, -1) : r.date;
+    const n = r.items.length;
+    await writeFile(join(dir, 'radar', `${r.date}.html`), page({
+      lang,
+      title: lang === 'zh'
+        ? `AI专注速报 · ${t.dateFmt(disp)}快讯`
+        : `AI Focus Bulletin — Quick Hits for ${t.dateFmt(disp)}`,
+      description: lang === 'zh'
+        ? `${t.dateFmt(disp)} 的 ${n} 条 AI 快讯，附原始信源与发布时间。`
+        : `${n} AI quick hits for ${t.dateFmt(disp)}, with source links and timestamps.`,
+      canonical: urlFor(lang, `radar/${r.date}.html`),
+      altEn: `${BASE}/radar/${r.date}.html`, altZh: `${BASE}/zh/radar/${r.date}.html`,
+      jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: `${SITE_NAME} ${t.dateFmt(disp)}`, url: urlFor(lang, `radar/${r.date}.html`) },
+      body: `
+<section class="hero"><h1>${t.dateFmt(disp)}</h1><p class="lede">${esc(t.radarLede)}</p></section>
+<section class="feed">
+${timelineHtml([], [r], lang)}
+</section>
+<p class="backlink"><a href="${urlFor(lang, `day/${r.date}.html`)}">${lang === 'zh' ? '查看当天全部内容' : 'View the full day'}</a> · <a href="${urlFor(lang, 'archive.html')}">${t.archive}</a></p>`,
+    }));
+  }
   const redirect = (to) => `<!DOCTYPE html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=${to}"><link rel="canonical" href="${to}"><a href="${to}">→</a>`;
-  for (const r of radars) await writeFile(join(dir, 'radar', `${r.date}.html`), redirect(urlFor(lang, `day/${r.date}.html`)));
   await writeFile(join(dir, 'radar', 'index.html'), redirect(urlFor(lang, 'archive.html')));
 
   // 本地搜索索引（纯前端，无服务器）

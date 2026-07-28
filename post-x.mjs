@@ -74,23 +74,47 @@ async function pickToday() {
 // X 加权长度：CJK/全角/emoji 记 2，其余记 1；URL 固定折算 23
 const xLen = (s) => [...s].reduce((n, c) => n + (c.codePointAt(0) > 0x10ff ? 2 : 1), 0);
 
-function composeText(lang, { featured, batch }) {
-  const now = new Date();
+function postUrl(featured, lang) {
+  const date = featured.date || new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
+  return lang === 'zh' ? `${BASE}/zh/day/${date}.html` : `${BASE}/day/${date}.html`;
+}
+
+function editionInstant({ featured, batch }) {
+  const times = [featured, ...batch]
+    .map((a) => Date.parse(a.published_at || a.published || `${a.date}T00:00:00Z`))
+    .filter(Boolean);
+  return new Date(Math.max(...times));
+}
+
+function localParts(date, timeZone, locale) {
+  const parts = Object.fromEntries(new Intl.DateTimeFormat(locale, {
+    timeZone,
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    hour12: false,
+  }).formatToParts(date).map((p) => [p.type, p.value]));
+  return { month: Number(parts.month), day: Number(parts.day), hour: Number(parts.hour) };
+}
+
+function composeText(lang, picks) {
+  const { featured, batch } = picks;
+  const edition = editionInstant(picks);
   let head, star, others, url;
   if (lang === 'zh') {
-    const dateStr = `${now.getMonth() + 1}月${now.getDate()}日`;
-    head = `⚡ AI专注速报 · ${dateStr}${now.getHours() < 12 ? '早报' : '晚报'}`;
+    const { month, day, hour } = localParts(edition, 'Asia/Shanghai', 'zh-CN');
+    head = `⚡ AI专注速报 · ${month}月${day}日${hour < 12 ? '早报' : '晚报'}`;
     star = `★ ${featured.title_zh || featured.title}`;
     others = batch.filter((a) => a.slug !== featured.slug).map((a) => `· ${a.title_zh || a.title}`);
-    url = `${BASE}/zh/`;
+    url = postUrl(featured, 'zh');
   } else {
     // 英文帖按美东时间：北京 7:00 班 = 美东前一天晚上（Evening），北京 19:00 班 = 美东当天早上（Morning）
-    const etHour = Number(now.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
-    const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' });
+    const etHour = Number(edition.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
+    const dateStr = edition.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' });
     head = `⚡ AI Focus Bulletin · ${etHour < 12 ? 'Morning' : 'Evening'} Edition, ${dateStr}`;
     star = `★ ${featured.title}`;
     others = batch.filter((a) => a.slug !== featured.slug).map((a) => `· ${a.title}`);
-    url = `${BASE}/`;
+    url = postUrl(featured, 'en');
   }
   // 帖子直接承载当班内容：推荐 + 尽量多的其余简报标题，装不下为止（280 加权额度，URL 记 23，留 3 余量）
   const lines = [head, '', star];
