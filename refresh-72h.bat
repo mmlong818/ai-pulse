@@ -5,6 +5,12 @@ set AIPULSE_WINDOW_HOURS=72
 set AIPULSE_RADAR_COUNT=20
 echo [%date% %time%] FULL REFRESH start (72h window) >> daily.log
 
+git pull --ff-only origin main >> daily.log 2>&1
+if errorlevel 1 (
+  echo [%date% %time%] FULL REFRESH FAILED at git pull >> daily.log
+  exit /b 1
+)
+
 node generate.mjs 8 >> daily.log 2>&1
 if errorlevel 1 (
   echo [%date% %time%] FULL REFRESH FAILED at batch1 >> daily.log
@@ -29,7 +35,27 @@ if errorlevel 1 (
 )
 
 git add -A >> daily.log 2>&1
+git diff --cached --quiet >> daily.log 2>&1
+if not errorlevel 1 (
+  echo [%date% %time%] FULL REFRESH no changes, skip publish >> daily.log
+  exit /b 0
+)
+
 git commit -m "full refresh: 72h window, complete re-edition with full source system" >> daily.log 2>&1
+if errorlevel 1 (
+  echo [%date% %time%] FULL REFRESH FAILED at git commit >> daily.log
+  exit /b 1
+)
+
 git push origin main >> daily.log 2>&1
+if errorlevel 1 (
+  echo [%date% %time%] FULL REFRESH FAILED at git push >> daily.log
+  exit /b 1
+)
+
 node submit-indexnow.mjs >> daily.log 2>&1
+if errorlevel 1 (
+  echo [%date% %time%] FULL REFRESH FAILED at IndexNow >> daily.log
+  exit /b 1
+)
 echo [%date% %time%] FULL REFRESH published >> daily.log
