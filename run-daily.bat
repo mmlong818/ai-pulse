@@ -9,6 +9,12 @@ if errorlevel 1 (
   exit /b 1
 )
 
+node refresh-volatile.mjs >> daily.log 2>&1
+if errorlevel 1 (
+  echo [%date% %time%] volatile refresh FAILED, skip publish >> daily.log
+  exit /b 1
+)
+
 node build.mjs >> daily.log 2>&1
 if errorlevel 1 (
   echo [%date% %time%] build FAILED, skip publish >> daily.log

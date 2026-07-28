@@ -16,6 +16,12 @@ node generate.mjs 6 >> daily.log 2>&1
 if errorlevel 1 echo [%date% %time%] batch2 failed, continue with batch1 >> daily.log
 set AIPULSE_SKIP_RADAR=
 
+node refresh-volatile.mjs >> daily.log 2>&1
+if errorlevel 1 (
+  echo [%date% %time%] FULL REFRESH FAILED at volatile refresh >> daily.log
+  exit /b 1
+)
+
 node build.mjs >> daily.log 2>&1
 if errorlevel 1 (
   echo [%date% %time%] FULL REFRESH FAILED at build >> daily.log
