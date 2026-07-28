@@ -312,7 +312,7 @@ async function buildLang(articles, radars, lang) {
   const catBar = `<nav class="cat-bar"><span>${t.allCats}:</span>${activeTags.map((tag) => `<a class="tag" href="${tagUrl(tag, lang)}">${esc(tagLabel(tag, lang))}</a>`).join('')}</nav>`;
 
   // 首页：单一时间线（简报 + 快讯混排），最近两个班次 + 严格 24 小时（产品定位，不可放宽）
-  const heroFresh = featured && Date.parse(articleTs(featured) || featured.date) >= Date.now() - 24 * 3600000;
+  const heroFresh = featured && Date.parse(featured.published_at || articleTs(featured) || featured.date) >= Date.now() - 24 * 3600000;
   const indexBody = `
 ${heroFresh ? featuredHero(featured, lang) : ''}
 ${catBar}

@@ -81,6 +81,12 @@ async function generateBriefings(skipTitles, digest) {
 TASK: Select UP TO ${COUNT} of the most significant AI news stories from the last ${WINDOW_H} hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original briefing for each, in English AND Chinese.
 QUALITY BAR: every briefing must genuinely merit deep coverage in THIS edition. If the news cycle is slow, write fewer — 3 strong briefings beat ${COUNT} padded ones. Never recycle a second-tier or day-old story just to hit the count.${CUTOFF_NOTE}${EDITION_NOTE}
 
+HARD EDITORIAL FILTERS:
+- The actual event must have happened inside this edition window. A republished article, analysis piece, old announcement, or delayed recap with a fresh timestamp is not fresh.
+- For model/open-weight releases, count the release date from the moment the official repo, model card, weights, or download artifacts are public. A promise, preview, API launch, or "coming soon" date is not a release.
+- Court rulings, local lawsuits, single-market procedural orders, generic alliances, minor integrations, and commentary are radar-only unless they materially change global model access, regulation, deployment economics, or platform strategy.
+- The featured story must be the edition's most consequential global AI story; never feature a second-order follow-up, press-release wrapper, or merely fresh but low-impact item.
+
 ${SOURCE_GUIDE}
 
 CANDIDATE HEADLINES (first-tier feeds, timestamps verified):
@@ -90,6 +96,7 @@ RULES:
 - ORIGINAL writing only. Never copy sentences from sources. Summarize and analyze in your own words.
 - FRESHNESS: verify each story's ORIGINAL publication date on the source page (search results often resurface old news). If the story broke more than ${WINDOW_H} hours ago, discard it and find another.
 - SIGNIFICANCE over freshness: routine corporate moves (minor equity stakes, distribution partnerships, incremental enterprise deals, ordinary funding of non-frontier companies) do NOT merit a deep briefing even when fresh — leave them to the radar. Test: will AI-industry readers still care about this next week?
+- Do not elevate procedural litigation or regional policy minutiae into briefings unless it sets a cross-border precedent or changes how frontier AI products can be shipped.
 - Each briefing: 250-450 words (EN), neutral news-agency tone, explain why it matters in the last paragraph.
 - Cite 1-3 real source URLs per story (the pages you actually found).
 - Titles: specific and factual, 45-65 characters, no clickbait.
@@ -155,6 +162,8 @@ RULES:
 - Each item: ONE factual sentence in English (max 30 words) + native-quality Chinese version.
 - Every item MUST have a real source URL you actually found.
 - FRESHNESS IS MANDATORY: verify the ORIGINAL publication date of each item (open the source page or check the dateline; search results often resurface old news). Set "published" to the exact UTC timestamp — when the item comes from the candidate list, COPY its timestamp verbatim; otherwise use the time shown on the source page (converted to UTC), or "YYYY-MM-DD" if only a date is available. If you cannot confirm it is within the last ${WINDOW_H} hours, DISCARD the item — a shorter list is better than stale items.
+- For model/open-weight releases, use the date official weights or download artifacts become public, not the earlier preview, promise, or API-only date.
+- Low-impact local lawsuits, procedural court orders, and regional policy tidbits should be skipped unless they have clear global AI-industry consequences.
 - No overlap with these headline stories or recent radar items (also skip anything whose FACTS were already covered, even under a different wording): ${skipTitles.join(' | ')}
 - Diverse: no more than 3 items on the same company.
 
