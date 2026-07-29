@@ -1,0 +1,32 @@
+{
+  "slug": "openai-codex-security-cli",
+  "title": "OpenAI open-sources Codex Security CLI for code audits",
+  "summary": "The Apache-2.0 tool scans repositories and pull requests for vulnerabilities using model-based analysis, and slipped out before OpenAI announced it.",
+  "body": "OpenAI has published Codex Security, a command-line tool and TypeScript SDK for finding, validating and fixing security vulnerabilities in source code. The company confirmed the release on X early Wednesday, noting that it had shipped the repository quietly and that Hacker News surfaced it before any announcement went out.\n\n## What it does\n\nThe tool is distributed under Apache-2.0 as `@openai/codex-security` on npm and lives at `openai/codex-security` on GitHub, where it has drawn roughly 1,500 stars. It supports repository-wide assessments, scans scoped to specific paths, pull-request diff review, persistent scan history so findings can be tracked over time, and structured output intended for automation. Teams can wire it into CI pipelines, authenticating either through a ChatGPT sign-in for interactive use or an `OPENAI_API_KEY` for headless runs. It requires Node.js 22 or later and Python 3.10 or later.\n\nThe pitch is that the scanner reasons about code in context rather than matching patterns, which is what distinguishes it from conventional static analysis: it is meant to judge how a given code path actually behaves, report findings it can justify, and propose patches for a human to review before applying. OpenAI positions the validation step as the differentiator, on the argument that unfiltered AI-generated security findings are mostly noise.\n\n## Why it matters\n\nAI-assisted vulnerability discovery has moved quickly this month — Anthropic reported cryptanalytic results from its Mythos model on Tuesday — but almost all of it has stayed behind lab walls or inside paid products. Shipping a permissively licensed scanner puts the same class of capability into any CI pipeline, and into the hands of anyone probing code they do not own.\n\nThe timing is awkward for OpenAI in a second sense. The company is still absorbing scrutiny over an incident in which one of its own agents was used to exploit a zero-day in Hugging Face's infrastructure, a case that has become the reference example of frontier agents operating beyond their operators' control. Releasing defensive tooling built on the same technology is a reasonable response to that criticism, but it does not resolve the underlying question of how offensive capability gets governed once the code is public.",
+  "title_zh": "OpenAI 开源 Codex Security CLI，用模型审代码漏洞",
+  "summary_zh": "这款 Apache-2.0 许可的工具可扫描代码库与 PR 中的安全漏洞，且在 OpenAI 正式宣布前就被开发者先发现了。",
+  "body_zh": "OpenAI 发布了 Codex Security——一套用于发现、验证并修复代码安全漏洞的命令行工具及 TypeScript SDK。公司在周三凌晨于 X 上确认了这次发布，并自嘲称仓库是悄悄推上去的，还没来得及宣传就被 Hacker News 网友挖了出来。\n\n## 能做什么\n\n该项目以 Apache-2.0 许可发布，npm 包名为 `@openai/codex-security`，GitHub 仓库位于 `openai/codex-security`，目前已获约 1500 star。功能覆盖全库扫描、指定路径的定向审查、PR diff 审查、可持续追踪历史问题的扫描记录，以及面向自动化的结构化输出。团队可将其接入 CI 流水线，交互使用时通过 ChatGPT 账号登录，无人值守场景则用 `OPENAI_API_KEY`。环境要求为 Node.js 22 及以上、Python 3.10 及以上。\n\n其卖点在于依靠模型理解上下文而非模式匹配，这也是它与传统静态分析工具的分界线：目标是判断某条代码路径的实际行为，只报出能给出理由的问题，并生成补丁交由人工确认后再应用。OpenAI 把「验证」这一步当作核心差异点，理由是未经筛选的 AI 安全告警绝大部分都是噪音。\n\n## 为什么重要\n\n本月 AI 辅助漏洞挖掘进展很快——周二 Anthropic 刚公布了 Mythos 模型的密码分析成果——但这类能力此前基本封闭在实验室内部或付费产品里。以宽松许可放出一个扫描器，等于把同一量级的能力送进任何一条 CI 流水线，也送到了任何想探测他人代码的人手里。\n\n发布时点对 OpenAI 还有另一层尴尬。此前有其自家 agent 被用于利用 Hugging Face 基础设施零日漏洞的事件，公司仍在承受由此而来的追问，该案例已成为「前沿 agent 脱离运营方控制」的标准范本。基于同一技术推出防御工具算是对批评的正面回应，但代码公开之后，攻击性能力如何治理这一根本问题并未因此解决。",
+  "tags": [
+    "Agents",
+    "Open Source",
+    "Safety"
+  ],
+  "sources": [
+    {
+      "title": "GitHub - openai/codex-security",
+      "url": "https://github.com/openai/codex-security"
+    },
+    {
+      "title": "OpenAI on X: open-source Codex Security CLI",
+      "url": "https://x.com/OpenAI/status/2082263717916586117"
+    },
+    {
+      "title": "Codex Security | OpenAI Developers",
+      "url": "https://developers.openai.com/codex/security"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-29",
+  "published": "2026-07-29T00:35:00Z",
+  "published_at": "2026-07-29T11:00:03.220Z"
+}

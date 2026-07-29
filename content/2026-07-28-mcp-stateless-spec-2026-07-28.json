@@ -1,0 +1,34 @@
+{
+  "slug": "mcp-stateless-spec-2026-07-28",
+  "title": "MCP ships stateless spec, its biggest break since launch",
+  "summary": "The Model Context Protocol's 2026-07-28 revision retires protocol-level sessions, replacing the initialize handshake with self-contained requests.",
+  "body": "The Model Context Protocol published its `2026-07-28` revision as a stable release on Tuesday, completing the largest architectural change since the standard appeared in late 2024. The headline shift is that MCP is no longer stateful at the protocol layer.\n\n## What changed\n\nThe `initialize`/`initialized` handshake and the `Mcp-Session-Id` header are both retired. Each request now carries its own protocol version, client identity and capability declarations in a `_meta` field, which means a server fleet can answer any request from any instance behind an ordinary load balancer without shared session storage.\n\nRemoving persistent streams forced a replacement for server-initiated requests. The new Multi Round-Trip Requests mechanism handles the common case where a tool needs mid-call input: the server returns a result typed `input_required` alongside the questions it needs answered, and the client re-issues the call with an `inputResponses` payload. Requests also now carry `Mcp-Method` and `Mcp-Name` HTTP headers so gateways and rate limiters can route and meter traffic without parsing JSON bodies, and the four listing methods plus `resources/read` return `ttlMs` and `cacheScope` hints for caching.\n\nAuthorization was tightened in parallel, with RFC 9207 issuer validation, client credentials bound to the issuing authorization server, and Dynamic Client Registration formally deprecated in favour of Client ID Metadata Documents. Tasks graduated out of the experimental core into a named `io.modelcontextprotocol/tasks` extension. Roots, Sampling, Logging and the legacy HTTP+SSE transport are all deprecated with a stated minimum twelve-month offramp.\n\nThe TypeScript, Python, Go and C# SDKs support the revision at release; Rust is in beta. The release candidate was frozen on 21 May, giving implementers roughly ten weeks to test against production traffic before the spec was finalised.\n\n## Why it matters\n\nMCP has become the default wiring between models and external tools, and the maintainers say its SDKs now draw close to half a billion downloads a month. Making the transport stateless removes the main operational objection to running MCP servers at scale — sticky sessions — and moves the protocol from something that mostly ran locally toward something deployable as ordinary web infrastructure. The cost is a genuinely breaking migration for every existing server and client, spread across a one-year deprecation window.",
+  "title_zh": "MCP 发布无状态新规范，为史上最大一次改动",
+  "summary_zh": "MCP 2026-07-28 版规范正式定稿，取消协议层会话，用自包含请求替代 initialize 握手流程。",
+  "body_zh": "模型上下文协议（MCP）于 7 月 28 日正式发布 `2026-07-28` 版规范的稳定版，这是该标准自 2024 年底问世以来幅度最大的一次架构调整。核心变化只有一句话：MCP 在协议层不再是有状态的。\n\n## 改了什么\n\n`initialize`/`initialized` 握手流程和 `Mcp-Session-Id` 请求头双双退场。协议版本、客户端身份、能力声明等信息，现在由每个请求自己通过 `_meta` 字段携带。这意味着服务端集群可以直接挂在普通负载均衡后面，任意实例都能处理任意请求，不再需要共享会话存储。\n\n去掉常驻连接后，服务端主动发起请求的能力需要新的承载方式。规范为此引入 Multi Round-Trip Requests：当工具执行到一半需要用户补充信息时，服务端返回类型为 `input_required` 的结果并附上待确认项，客户端再带着 `inputResponses` 重新发起调用。请求还新增了 `Mcp-Method` 和 `Mcp-Name` 两个 HTTP 头，网关和限流组件不必解析 JSON 请求体即可完成路由与计量；四个 list 方法以及 `resources/read` 则开始返回 `ttlMs` 和 `cacheScope` 缓存提示。\n\n鉴权部分同步收紧：加入 RFC 9207 签发方校验，客户端凭据与签发它的授权服务器绑定，动态客户端注册（DCR）被正式标记为废弃，改为推荐 Client ID Metadata Documents。Tasks 从实验性核心毕业，成为独立扩展 `io.modelcontextprotocol/tasks`。Roots、Sampling、Logging 以及旧版 HTTP+SSE 传输全部进入废弃流程，官方承诺至少保留十二个月过渡期。\n\n发布同时，TypeScript、Python、Go、C# 四个一级 SDK 已支持新版本，Rust SDK 处于 beta。候选版早在 5 月 21 日就已冻结，给实现方留出了约十周时间用真实流量做验证。\n\n## 为什么重要\n\nMCP 已是模型接入外部工具的事实标准，官方称其 SDK 月下载量接近五亿次。传输层转向无状态，抹掉了大规模部署 MCP 服务端最主要的运维障碍——会话粘连，也让这套协议从“主要跑在本地”真正变成可以按普通 Web 服务方式部署的东西。代价是所有现存服务端和客户端都要经历一次真正的破坏性迁移，摊在一年的废弃窗口里完成。",
+  "tags": [
+    "Agents",
+    "Open Source",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "The 2026-07-28 Specification | Model Context Protocol Blog",
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28/"
+    },
+    {
+      "title": "Specification 2026-07-28 - Model Context Protocol",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28"
+    },
+    {
+      "title": "Releases · modelcontextprotocol/modelcontextprotocol",
+      "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/releases"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "MCP is the default model-to-tool interface, and making it stateless rewrites how every agent server in the ecosystem gets deployed.",
+  "featured_reason_zh": "MCP 是模型接入工具的事实标准，转向无状态将重写整个生态里每一个 agent 服务端的部署方式。",
+  "date": "2026-07-28",
+  "published": "2026-07-28",
+  "published_at": "2026-07-29T11:00:03.220Z"
+}
