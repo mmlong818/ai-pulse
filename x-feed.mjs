@@ -56,11 +56,11 @@ async function resolveIds(token) {
   return map;
 }
 
-export async function fetchXHeadlines({ hours = 48, perAccount = 5, until = null } = {}) {
+export async function fetchXHeadlines({ hours = 48, perAccount = 5, since = null, until = null } = {}) {
   const token = getToken();
   if (!token) return [];
   const untilMs = until ? until.getTime() : Date.now();
-  const cutoff = untilMs - hours * 3600000;
+  const cutoff = since ? since.getTime() : untilMs - hours * 3600000;
 
   const ids = await resolveIds(token);
   // start_time/end_time 让服务端只返回时间窗内的帖子：没发新内容的账号返回 0 条，不产生按条读取费

@@ -34,9 +34,28 @@ const editionPublishedAt = (() => {
   }
   return new Date().toISOString();
 })();
+const useEditionWindow = WINDOW_H <= 24;
+const editionEnd = useEditionWindow ? (CUTOFF || new Date(editionPublishedAt)) : CUTOFF;
+const editionStart = (() => {
+  if (!useEditionWindow) return null;
+  const date = forcedEditionDate || today;
+  if (isEvening) return new Date(`${date}T07:00:00+08:00`);
+  return new Date(new Date(`${date}T07:00:00+08:00`).getTime() - 12 * 3600000);
+})();
+const EDITION_WINDOW_NOTE = editionStart
+  ? `\nEDITION WINDOW: only include stories whose ORIGINAL publication moment is at or after ${editionStart.toISOString()} and before ${(editionEnd || new Date()).toISOString()}. For deep briefings, date-only sources are not enough — if the exact original publication time cannot be verified, leave it to the radar.`
+  : '';
 const EDITION_NOTE = isEvening
   ? `\nEDITION FOCUS (evening edition): This edition covers Beijing daytime — US overnight and European morning, globally the quietest news half-day. PRIORITIZE fresh stories from the Asian-timezone cycle: Chinese labs (Qwen, DeepSeek, Moonshot, Zhipu, ByteDance, Tencent, StepFun…), Japan/Korea, Asian AI policy and industry, open-source releases and papers that landed during Asian daytime. Do NOT fill the quota by re-picking yesterday's US stories that merely fall inside the ${WINDOW_H}-hour window — the previous edition already covered that cycle.`
   : '';
+
+function inEditionWindow(published) {
+  if (!editionStart || !published || !published.includes('T')) return !editionStart;
+  const ms = Date.parse(published);
+  if (!Number.isFinite(ms)) return false;
+  const endMs = (editionEnd || new Date()).getTime();
+  return ms >= editionStart.getTime() && ms < endMs;
+}
 
 function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
   return new Promise((resolve, reject) => {
@@ -140,7 +159,7 @@ async function generateBriefings(skipTitles, digest, coverage) {
   const prompt = `You are the sole editor of "AI Focus Bulletin" (AI专注速报), an autonomous bilingual AI news site. Today is ${today}.
 
 TASK: Select UP TO ${COUNT} of the most significant AI news stories from the last ${WINDOW_H} hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original briefing for each, in English AND Chinese.
-QUALITY BAR: every briefing must genuinely merit deep coverage in THIS edition. If the news cycle is slow, write fewer — 3 strong briefings beat ${COUNT} padded ones. Never recycle a second-tier or day-old story just to hit the count.${CUTOFF_NOTE}${EDITION_NOTE}
+QUALITY BAR: every briefing must genuinely merit deep coverage in THIS edition. If the news cycle is slow, write fewer — 3 strong briefings beat ${COUNT} padded ones. Never recycle a second-tier or day-old story just to hit the count.${CUTOFF_NOTE}${EDITION_WINDOW_NOTE}${EDITION_NOTE}
 
 HARD EDITORIAL FILTERS:
 - The actual event must have happened inside this edition window. A republished article, analysis piece, old announcement, or delayed recap with a fresh timestamp is not fresh.
@@ -210,6 +229,10 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
       console.log(`  - 跳过非本日晚报(${a.date}): ${a.title}`);
       continue;
     }
+    if (!inEditionWindow(a.published)) {
+      console.log(`  - 跳过非本班窗口(${a.published || 'no-time'}): ${a.title}`);
+      continue;
+    }
     if (sourceUrls.some((u) => coveredUrls.has(u))) {
       console.log(`  - 跳过已覆盖来源: ${a.title}`);
       continue;
@@ -226,7 +249,7 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
 async function generateRadar(skipTitles, digest) {
   const prompt = `You are the news-radar editor of "AI Focus Bulletin" (AI专注速报). Today is ${today}.
 
-TASK: Collect ${RADAR_COUNT} SHORT AI news items from the last ${WINDOW_H} hours — the wider AI-circle chatter beyond the day's headline stories: product updates, notable open-source releases, papers, funding rounds, executive moves, benchmark results, policy tidbits, notable X threads. Global coverage.${CUTOFF_NOTE}
+TASK: Collect ${RADAR_COUNT} SHORT AI news items from the last ${WINDOW_H} hours — the wider AI-circle chatter beyond the day's headline stories: product updates, notable open-source releases, papers, funding rounds, executive moves, benchmark results, policy tidbits, notable X threads. Global coverage.${CUTOFF_NOTE}${EDITION_WINDOW_NOTE}
 
 ${SOURCE_GUIDE}
 
@@ -255,6 +278,7 @@ OUTPUT: ONLY a JSON object (no fence, no commentary):
   radar.items = (radar.items || []).filter((i) => i.text && i.url)
     .filter((i) => {
       if (i.published && i.published.slice(0, 10) < cutoff) { console.log(`  - 过滤旧闻(${i.published}): ${i.text_zh || i.text}`); return false; }
+      if (editionStart && i.published?.includes('T') && !inEditionWindow(i.published)) { console.log(`  - 过滤非本班窗口(${i.published}): ${i.text_zh || i.text}`); return false; }
       return true;
     });
   if (!radar.items.length) throw new Error('雷达 0 条');
@@ -303,8 +327,8 @@ async function main() {
   const coverage = await existingCoverage();
   console.log(`[generate] 深度简报至多 ${COUNT} 篇（${isEvening ? '晚班·亚洲时段方针' : '早班'}）+ 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);
   const [headlines, xItems] = await Promise.all([
-    fetchFreshHeadlines({ until: CUTOFF, hours: WINDOW_H, maxPerFeed: WINDOW_H > 48 ? 12 : 8 }),
-    fetchXHeadlines({ until: CUTOFF, hours: WINDOW_H, perAccount: WINDOW_H > 48 ? 8 : 5 }).catch((e) => { console.error('[generate] X 直连失败:', e.message); return []; }),
+    fetchFreshHeadlines({ since: editionStart, until: editionEnd, hours: WINDOW_H, maxPerFeed: WINDOW_H > 48 ? 12 : 8 }),
+    fetchXHeadlines({ since: editionStart, until: editionEnd, hours: WINDOW_H, perAccount: WINDOW_H > 48 ? 8 : 5 }).catch((e) => { console.error('[generate] X 直连失败:', e.message); return []; }),
   ]);
   headlines.push(...xItems);
   headlines.sort((a, b) => b.date - a.date);
