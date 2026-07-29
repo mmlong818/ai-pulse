@@ -313,12 +313,14 @@ async function buildLang(articles, radars, lang) {
 
   // 首页：单一时间线（简报 + 快讯混排），完整保留最近两个班次。
   const heroFresh = featured && Date.parse(featured.published_at || articleTs(featured) || featured.date) >= Date.now() - 24 * 3600000;
-  const indexBody = `
+  const currentIssueBody = () => `
 ${heroFresh ? featuredHero(featured, lang) : ''}
 ${catBar}
 <section class="feed">
 ${timelineHtml(rest, radars, lang, { editions: 2 })}
-</section>
+</section>`;
+  const indexBody = `
+${currentIssueBody()}
 <p class="more-link"><a href="${urlFor(lang, 'archive.html')}">📚 ${t.moreLink()}</a></p>`;
   const latest = list[0];
   await writeFile(join(dir, 'index.html'), page({
@@ -451,14 +453,20 @@ ${catList.map((a) => articleCard(a, lang)).join('\n')}
   const dayMap = new Map();
   for (const a of list) { if (!dayMap.has(a.date)) dayMap.set(a.date, { articles: [], radars: [] }); dayMap.get(a.date).articles.push(a); }
   for (const r of radars) { if (!dayMap.has(r.date)) dayMap.set(r.date, { articles: [], radars: [] }); dayMap.get(r.date).radars.push(r); }
+  const latestIssueDate = featured?.date || list[0]?.date || [...dayMap.keys()].sort().at(-1);
   await mkdir(join(dir, 'day'), { recursive: true });
   for (const [date, d] of dayMap) {
     const disp = lang === 'en' ? shiftDay(date, -1) : date;
     const nItems = d.radars.reduce((s, r) => s + r.items.length, 0);
+    const isLatestIssue = date === latestIssueDate;
     await writeFile(join(dir, 'day', `${date}.html`), page({
       lang,
       title: `${t.dateFmt(disp)} — ${SITE_NAME}`,
-      description: lang === 'zh'
+      description: isLatestIssue
+        ? (lang === 'zh'
+          ? `${disp} 当前期 AI 简报与快讯，内容与首页同步，完整保留最近两个班次。`
+          : `The current AI Focus Bulletin issue for ${disp}, synchronized with the homepage and preserving the latest two editions.`)
+        : lang === 'zh'
         ? `${disp} 发布的 ${d.articles.length} 篇深度简报与 ${nItems} 条一句话快讯。`
         : `${d.articles.length} briefings and ${nItems} quick hits published on ${disp} (ET).`,
       canonical: urlFor(lang, `day/${date}.html`),
@@ -466,9 +474,9 @@ ${catList.map((a) => articleCard(a, lang)).join('\n')}
       jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: t.dateFmt(disp), url: urlFor(lang, `day/${date}.html`) },
       body: `
 <section class="hero"><h1>${t.dateFmt(disp)}</h1><p class="lede">${esc(t.dayLede)}</p></section>
-<section class="feed">
+${isLatestIssue ? currentIssueBody() : `<section class="feed">
 ${timelineHtml(d.articles, d.radars, lang)}
-</section>
+</section>`}
 <p class="backlink"><a href="${urlFor(lang, 'archive.html')}">📚 ${t.archive}</a> · <a href="${urlFor(lang, '')}">${t.back}</a></p>`,
     }));
   }
