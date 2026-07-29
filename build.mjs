@@ -265,7 +265,7 @@ const editionLabel = (eb, lang) => {
 
 // 单一时间线：简报卡片与一句话快讯按发布时间倒序混排，连续的快讯合并进一个紧凑分组
 // editions: N 时只保留最近 N 个班次（首页用 2：晚报上线时早报下移，次日早报上线时保留前一晚报）
-// withinH: 产品硬规则——首页只展示源头时间在 N 小时内的内容，更早的只存在于历史归档
+// withinH: 仅用于需要按源头时间截断的页面；首页/RSS 不使用它，避免补跑时把上一班快讯提前挤出。
 function timelineHtml(articles, radars, lang, { editions, withinH } = {}) {
   let entries = [
     // 排序用源头发布时间；班次归属（保留窗口）仍按本站发布时刻
@@ -311,13 +311,13 @@ async function buildLang(articles, radars, lang) {
   const activeTags = Object.keys(TAG_META).filter((tag) => list.some((a) => a.tags.includes(tag)));
   const catBar = `<nav class="cat-bar"><span>${t.allCats}:</span>${activeTags.map((tag) => `<a class="tag" href="${tagUrl(tag, lang)}">${esc(tagLabel(tag, lang))}</a>`).join('')}</nav>`;
 
-  // 首页：单一时间线（简报 + 快讯混排），最近两个班次 + 严格 24 小时（产品定位，不可放宽）
+  // 首页：单一时间线（简报 + 快讯混排），完整保留最近两个班次。
   const heroFresh = featured && Date.parse(featured.published_at || articleTs(featured) || featured.date) >= Date.now() - 24 * 3600000;
   const indexBody = `
 ${heroFresh ? featuredHero(featured, lang) : ''}
 ${catBar}
 <section class="feed">
-${timelineHtml(rest, radars, lang, { editions: 2, withinH: 24 })}
+${timelineHtml(rest, radars, lang, { editions: 2 })}
 </section>
 <p class="more-link"><a href="${urlFor(lang, 'archive.html')}">📚 ${t.moreLink()}</a></p>`;
   const latest = list[0];
@@ -544,15 +544,12 @@ ${calendarHtml(calEntries, lang)}
 <section class="feed" id="favList"></section>`,
   }));
 
-  // RSS：与首页同规则，最近两个班次 + 严格 24 小时（简报逐条 + 每班次一条快讯速览）
-  const rssCutoff = Date.now() - 24 * 3600000;
+  // RSS：与首页同规则，完整保留最近两个班次（简报逐条 + 每班次一条快讯速览）
   const rssArticleEntries = list
-    .filter((a) => Date.parse(articleTs(a) || a.date) >= rssCutoff)
     .map((a) => ({ a, eb: floorEdition(Date.parse(a.published_at || a.date + 'T11:00:00Z') || 0) }));
   const radarByEb = new Map();
   for (const r of radars) for (const i of r.items) {
     const ts = radarTs(i, r.date), eb = ceilEdition(ts);
-    if (ts < rssCutoff) continue;
     if (!radarByEb.has(eb)) radarByEb.set(eb, []);
     radarByEb.get(eb).push({ i, ts });
   }
