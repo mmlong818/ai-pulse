@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HiFi-UMI：只用人类演示数据训出可直接部署的机器人策略 — AI Focus Bulletin</title>
+<meta name="description" content="论文开源HiFi-UMI-2K数据集——2000小时毫米级精度的手持夹爪演示，并称训出的策略在真机上追平同域遥操作数据的表现。">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/hifi-umi-robot-free-manipulation-data.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/hifi-umi-robot-free-manipulation-data.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/hifi-umi-robot-free-manipulation-data.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/hifi-umi-robot-free-manipulation-data.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="HiFi-UMI：只用人类演示数据训出可直接部署的机器人策略 — AI Focus Bulletin">
+<meta property="og:description" content="论文开源HiFi-UMI-2K数据集——2000小时毫米级精度的手持夹爪演示，并称训出的策略在真机上追平同域遥操作数据的表现。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/hifi-umi-robot-free-manipulation-data.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HiFi-UMI：只用人类演示数据训出可直接部署的机器人策略 — AI Focus Bulletin">
+<meta name="twitter:description" content="论文开源HiFi-UMI-2K数据集——2000小时毫米级精度的手持夹爪演示，并称训出的策略在真机上追平同域遥操作数据的表现。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"HiFi-UMI：只用人类演示数据训出可直接部署的机器人策略","description":"论文开源HiFi-UMI-2K数据集——2000小时毫米级精度的手持夹爪演示，并称训出的策略在真机上追平同域遥操作数据的表现。","datePublished":"2026-07-29T11:00:00.000Z","inLanguage":"zh-CN","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/zh/articles/hifi-umi-robot-free-manipulation-data.html"}</script>
+</head>
+<body data-slug="hifi-umi-robot-free-manipulation-data" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ AI专注速报</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/hifi-umi-robot-free-manipulation-data.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-29T11:00:00.000Z">2026年7月29日 19:00</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><span class="views" id="viewCount"></span></div>
+  <h1>HiFi-UMI：只用人类演示数据训出可直接部署的机器人策略</h1>
+  <p class="standfirst">论文开源HiFi-UMI-2K数据集——2000小时毫米级精度的手持夹爪演示，并称训出的策略在真机上追平同域遥操作数据的表现。</p>
+  <h2>发生了什么</h2><p>HiFi-UMI 是今天 Hugging Face 每日论文榜的最高票条目。它提出：操作类策略完全可以用「无机器人参与」采集的人类演示数据训练，并且训完能直接部署到真机上。</p><p>这项工作延续了 Universal Manipulation Interface（UMI）路线——用手持夹爪采数据，让采集可以发生在任何地方，而不必局限于配有机械臂的实验室。此次的核心贡献在于精度。作者搭建了一套便携采集装置：头戴立体相机配合惯性传感，每只手各配两枚广角相机、覆盖约200度视场，各部件做到微秒级同步，全工作空间标定精度约3毫米。正是这种精度，让采到的6自由度轨迹可以直接当作监督信号，而不再是需要机器人端二次纠正的粗糙先验。</p><p>最关键的结果是：仅用 HiFi-UMI 演示数据做后训练的策略，可直接在真实机器人上部署，表现追平用同域遥操作数据训练的策略。团队同时开源了 HiFi-UMI-2K 数据集，包含2000小时的同步演示数据。</p><h2>为何重要</h2><p>机器人学习的瓶颈在数据，而不在架构。遥操作既是这一领域的黄金标准，也是它的卡口：每采一小时数据都要一台机器人、一名操作员和一次有人看管的会话，这也是操作类数据集规模至今比语言、视觉模型的语料小几个数量级的原因。如果这种精度的手持采集真能替代遥操作，有效演示数据的单位小时成本会急剧下降，采集也能在普通环境里、由未受训人员并行完成。</p><p>2000小时的开源数据是这一主张中更容易被立即检验的部分。该子领域的可复现性一向参差，毫米级标定的采集装置也不容易照搬重建，因此在不同机械臂和夹爪上的独立复现，才能决定这种「等价性」能走多远。但方向已经清晰，指向的正是重塑了其他所有模态的那套缩放逻辑：把数据做到足够便宜，策略自然会跟上。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://arxiv.org/abs/2607.25895" rel="noopener" target="_blank">HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone — arXiv</a></li><li><a href="https://huggingface.co/papers" rel="noopener" target="_blank">Daily Papers — Hugging Face</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/claude-mythos-cryptanalysis-hawk-aes.html">Anthropic：Claude Mythos 自主攻破 HAWK 与 7 轮 AES</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-open-sources-codex-security-cli.html">OpenAI 开源 Codex Security 命令行安全扫描工具</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-open-weights-position.html">Anthropic 表态：从未主张封禁开放权重模型</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI专注速报</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>

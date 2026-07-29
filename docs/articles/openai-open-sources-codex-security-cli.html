@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAI open-sources its Codex Security scanning CLI — AI Focus Bulletin</title>
+<meta name="description" content="The Apache-2.0 tool scans repositories, tracks findings across runs and verifies fixes, and reached the Hacker News front page before OpenAI announced it.">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/openai-open-sources-codex-security-cli.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/openai-open-sources-codex-security-cli.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-open-sources-codex-security-cli.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/openai-open-sources-codex-security-cli.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="OpenAI open-sources its Codex Security scanning CLI — AI Focus Bulletin">
+<meta property="og:description" content="The Apache-2.0 tool scans repositories, tracks findings across runs and verifies fixes, and reached the Hacker News front page before OpenAI announced it.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/openai-open-sources-codex-security-cli.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenAI open-sources its Codex Security scanning CLI — AI Focus Bulletin">
+<meta name="twitter:description" content="The Apache-2.0 tool scans repositories, tracks findings across runs and verifies fixes, and reached the Hacker News front page before OpenAI announced it.">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"OpenAI open-sources its Codex Security scanning CLI","description":"The Apache-2.0 tool scans repositories, tracks findings across runs and verifies fixes, and reached the Hacker News front page before OpenAI announced it.","datePublished":"2026-07-29T11:00:00.000Z","inLanguage":"en","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/articles/openai-open-sources-codex-security-cli.html"}</script>
+</head>
+<body data-slug="openai-open-sources-codex-security-cli" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ AI Focus Bulletin</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-open-sources-codex-security-cli.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-28T20:52:00Z">July 28, 2026, 4:52 PM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/agents.html">Agents</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/open-source.html">Open Source</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/safety.html">Safety</a><span class="views" id="viewCount"></span></div>
+  <h1>OpenAI open-sources its Codex Security scanning CLI</h1>
+  <p class="standfirst">The Apache-2.0 tool scans repositories, tracks findings across runs and verifies fixes, and reached the Hacker News front page before OpenAI announced it.</p>
+  <h2>What happened</h2><p>OpenAI has published Codex Security as an open-source command-line tool and TypeScript SDK, releasing it under the Apache-2.0 licence as the npm package <code>@openai/codex-security</code>. The company confirmed the release only after the repository was spotted and pushed onto the Hacker News front page, writing that it had &quot;quietly&quot; shipped the code. The GitHub project accumulated thousands of stars within a day.</p><p>Codex Security began in March 2026 as a hosted application-security agent. The CLI packages that workflow for local and pipeline use: it scans a repository, reviews changes on a pull request, persists findings so the same issue is not re-reported on every run, verifies whether a proposed fix actually closes the hole, and can be wired into CI/CD through environment variables. Authentication works either through a ChatGPT login or an OpenAI API key. Node.js 22 and Python 3.10 or later are required, and OpenAI labels the drop an early release.</p><p>The pitch is that model-driven review reasons about how code behaves in surrounding context rather than matching patterns, which is where conventional static analysis generates most of its false positives. The tool still calls OpenAI's hosted models, so the open licence covers the harness and the SDK, not the intelligence behind the scan.</p><h2>Why it matters</h2><p>AI-assisted security review has been the most commercially defensible agent category of 2026, with Microsoft, Anthropic and a cluster of startups shipping competing products in recent weeks. Putting the scanning harness under Apache-2.0 pressures paid AppSec vendors on the interface layer while keeping OpenAI's revenue at the inference layer — the same play open-weight labs have run against proprietary model providers, inverted.</p><p>It also arrives days after the Hugging Face intrusion involving an OpenAI agent, which handed the company an uncomfortable case study in what autonomous code-touching systems can do. Shipping a defensive agent that engineering teams can inspect line by line is a pointed response, and the CI-integration path means findings land where developers already work rather than in a separate dashboard.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://github.com/openai/codex-security" rel="noopener" target="_blank">openai/codex-security on GitHub</a></li><li><a href="https://cybersecuritynews.com/openai-open-sources-codex-security-cli/" rel="noopener" target="_blank">OpenAI Open-Sources Codex Security CLI for Finding, Validating, and Fixing Security Vulnerabilities</a></li><li><a href="https://x.com/OpenAI/status/2082263717916586117" rel="noopener" target="_blank">OpenAI on X: &quot;We quietly released the open-source Codex Security CLI&quot;</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/claude-mythos-cryptanalysis-hawk-aes.html">Claude Mythos finds new attacks on HAWK and 7-round AES</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/cyera-acquires-oasis-security-agents.html">Cyera to buy Oasis Security for $1B to police AI agents</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/gemini-managed-agents-hooks.html">Gemini API managed agents add 3.6 Flash and sandbox hooks</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI Focus Bulletin</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
