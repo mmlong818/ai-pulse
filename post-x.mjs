@@ -72,14 +72,17 @@ async function pickToday() {
   for (const f of files) {
     const a = JSON.parse(await readFile(join(CONTENT, f), 'utf8'));
     if (f.startsWith('radar-')) { if (a.date === today) radar = a; continue; }
+    if (a.date !== today) continue;
     articles.push(a);
-    if (a.date === today && !fallback) fallback = a;
+    if (!fallback) fallback = a;
   }
-  // 当班 = 最新一次生成的时间簇（同一次 generate 写盘只差几秒；早晚两班/补采相隔数小时）
-  const maxPub = Math.max(...articles.map((a) => Date.parse(a.published_at) || 0));
-  const batch = articles.filter((a) => Date.parse(a.published_at) >= maxPub - 30 * 60000);
+  if (!articles.length) throw new Error('当天无内容可发');
+  // 当班 = 一次生成的时间簇。强制指定早/晚报时，必须取对应班次，避免标题与内容错位。
+  const forced = forcedEditionInstant();
+  const anchor = forced ? forced.getTime() : Math.max(...articles.map((a) => Date.parse(a.published_at) || 0));
+  const batch = articles.filter((a) => Math.abs((Date.parse(a.published_at) || 0) - anchor) <= 30 * 60000);
+  if (!batch.length) throw new Error('指定班次无内容可发');
   const featured = batch.find((a) => a.featured) || batch[0] || fallback;
-  if (!featured) throw new Error('当天无内容可发');
   return { featured, batch, radar };
 }
 
@@ -117,7 +120,7 @@ function composeText(lang, picks) {
   let head, star, others, url;
   if (lang === 'zh') {
     const { month, day, hour } = localParts(edition, 'Asia/Shanghai', 'zh-CN');
-    head = `⚡ AI专注速报 · ${month}月${day}日${hour < 12 ? '早报' : '晚报'}`;
+    head = `⚡ AI专注速报 · ${month}月${day}日${hour < 12 ? '早报' : '晚报'}（${batch.length}条）`;
     star = `★ ${featured.title_zh || featured.title}`;
     others = batch.filter((a) => a.slug !== featured.slug).map((a) => `· ${a.title_zh || a.title}`);
     url = postUrl(featured, 'zh');
@@ -125,7 +128,7 @@ function composeText(lang, picks) {
     // 英文帖按美东时间：北京 7:00 班 = 美东前一天晚上（Evening），北京 19:00 班 = 美东当天早上（Morning）
     const etHour = Number(edition.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
     const dateStr = edition.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' });
-    head = `⚡ AI Focus Bulletin · ${etHour < 12 ? 'Morning' : 'Evening'} Edition, ${dateStr}`;
+    head = `⚡ AI Focus Bulletin · ${etHour < 12 ? 'Morning' : 'Evening'} Edition, ${dateStr} (${batch.length} items)`;
     star = `★ ${featured.title}`;
     others = batch.filter((a) => a.slug !== featured.slug).map((a) => `· ${a.title}`);
     url = postUrl(featured, 'en');
