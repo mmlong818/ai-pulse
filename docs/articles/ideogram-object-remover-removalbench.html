@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ideogram's Object Remover leads RemovalBench erasure test — AI Focus Bulletin</title>
+<meta name="description" content="Ideogram shipped a dedicated object-removal model that erases shadows and reflections too, and says it beats Nano Banana 2, FLUX Erase and GPT Image-2.">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/ideogram-object-remover-removalbench.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/ideogram-object-remover-removalbench.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/ideogram-object-remover-removalbench.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/ideogram-object-remover-removalbench.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="Ideogram's Object Remover leads RemovalBench erasure test — AI Focus Bulletin">
+<meta property="og:description" content="Ideogram shipped a dedicated object-removal model that erases shadows and reflections too, and says it beats Nano Banana 2, FLUX Erase and GPT Image-2.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/ideogram-object-remover-removalbench.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ideogram's Object Remover leads RemovalBench erasure test — AI Focus Bulletin">
+<meta name="twitter:description" content="Ideogram shipped a dedicated object-removal model that erases shadows and reflections too, and says it beats Nano Banana 2, FLUX Erase and GPT Image-2.">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Ideogram's Object Remover leads RemovalBench erasure test","description":"Ideogram shipped a dedicated object-removal model that erases shadows and reflections too, and says it beats Nano Banana 2, FLUX Erase and GPT Image-2.","datePublished":"2026-07-29T23:00:02.787Z","inLanguage":"en","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/articles/ideogram-object-remover-removalbench.html"}</script>
+</head>
+<body data-slug="ideogram-object-remover-removalbench" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ AI Focus Bulletin</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/ideogram-object-remover-removalbench.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-29T17:27:00Z">July 29, 2026, 1:27 PM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/aigc.html">AIGC</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/models.html">Models</a><span class="views" id="viewCount"></span></div>
+  <h1>Ideogram's Object Remover leads RemovalBench erasure test</h1>
+  <p class="standfirst">Ideogram shipped a dedicated object-removal model that erases shadows and reflections too, and says it beats Nano Banana 2, FLUX Erase and GPT Image-2.</p>
+  <p>Ideogram released Object Remover on Wednesday, a purpose-built erasure model that removes a selected object along with the visual evidence it leaves behind — shadows, reflections and the lighting it cast on nearby surfaces.</p><p>That second part is what distinguishes it from ordinary inpainting. Most mask-based editors reconstruct only what sits inside the selection, leaving a deleted lamp's glow or a deleted person's shadow in place, which is immediately legible as a doctored image. Ideogram says its model may deliberately update pixels outside the mask to resolve those secondary cues, while holding unrelated regions as close to the original as possible. The company demonstrated two workloads: removing bystanders, power lines and background clutter from photographs, and removing text, logos and captions, where the model reconstructs the surface underneath while preserving its texture, perspective and lighting.</p><p>On RemovalBench, Ideogram reports the strongest scores among the removal systems it measured, placing it ahead of Google's Nano Banana 2, FLUX Erase and GPT Image-2, with full-reference metrics of 26.92 PSNR, 0.811 SSIM and 0.0598 LPIPS. Those are self-reported figures against a benchmark Ideogram selected, and the comparison models are general-purpose image editors rather than dedicated erasure tools. Object Remover is available through Ideogram's web app and its API.</p><p>The commercial logic is straightforward. Erasure is the single highest-volume paid editing operation in e-commerce photography, real-estate listings and stock imagery, and it is a task where general frontier image models still underperform narrow ones. Ideogram, which open-weighted its Ideogram 4.0 image model and recently moved to serve it on AMD Instinct accelerators, is leaning on specialist quality rather than breadth.</p><p><strong>Why it matters:</strong> Clean removal of text, logos and captions is also clean removal of provenance markers and attribution — the same capability that makes a product photo shippable makes a watermarked or credited image untraceable. As tooling for erasing secondary evidence such as shadows and reflections gets good enough that forensic detection loses its easiest tells, the burden shifts onto cryptographic provenance schemes that most of the image pipeline still does not carry.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://x.com/ideogram_ai/status/2082518323351429550" rel="noopener" target="_blank">Ideogram on X: Introducing Ideogram Object Remover</a></li><li><a href="https://ideogram.ai/tools/object-remover/" rel="noopener" target="_blank">Object Remover — Ideogram</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/gpt-5-6-sol-cuts-own-serving-cost.html">OpenAI says GPT-5.6 Sol cut its own serving costs by 20%</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/lyria-3-5-flow-music-section-editing.html">Google's Lyria 3.5 adds section editing to Flow Music</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/amazon-scales-back-nova-frontier-team.html">Amazon freezes Nova line, bets on new Frontier model team</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI Focus Bulletin</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>

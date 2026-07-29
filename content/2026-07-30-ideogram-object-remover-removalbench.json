@@ -1,0 +1,27 @@
+{
+  "slug": "ideogram-object-remover-removalbench",
+  "title": "Ideogram's Object Remover leads RemovalBench erasure test",
+  "summary": "Ideogram shipped a dedicated object-removal model that erases shadows and reflections too, and says it beats Nano Banana 2, FLUX Erase and GPT Image-2.",
+  "body": "Ideogram released Object Remover on Wednesday, a purpose-built erasure model that removes a selected object along with the visual evidence it leaves behind — shadows, reflections and the lighting it cast on nearby surfaces.\n\nThat second part is what distinguishes it from ordinary inpainting. Most mask-based editors reconstruct only what sits inside the selection, leaving a deleted lamp's glow or a deleted person's shadow in place, which is immediately legible as a doctored image. Ideogram says its model may deliberately update pixels outside the mask to resolve those secondary cues, while holding unrelated regions as close to the original as possible. The company demonstrated two workloads: removing bystanders, power lines and background clutter from photographs, and removing text, logos and captions, where the model reconstructs the surface underneath while preserving its texture, perspective and lighting.\n\nOn RemovalBench, Ideogram reports the strongest scores among the removal systems it measured, placing it ahead of Google's Nano Banana 2, FLUX Erase and GPT Image-2, with full-reference metrics of 26.92 PSNR, 0.811 SSIM and 0.0598 LPIPS. Those are self-reported figures against a benchmark Ideogram selected, and the comparison models are general-purpose image editors rather than dedicated erasure tools. Object Remover is available through Ideogram's web app and its API.\n\nThe commercial logic is straightforward. Erasure is the single highest-volume paid editing operation in e-commerce photography, real-estate listings and stock imagery, and it is a task where general frontier image models still underperform narrow ones. Ideogram, which open-weighted its Ideogram 4.0 image model and recently moved to serve it on AMD Instinct accelerators, is leaning on specialist quality rather than breadth.\n\n**Why it matters:** Clean removal of text, logos and captions is also clean removal of provenance markers and attribution — the same capability that makes a product photo shippable makes a watermarked or credited image untraceable. As tooling for erasing secondary evidence such as shadows and reflections gets good enough that forensic detection loses its easiest tells, the burden shifts onto cryptographic provenance schemes that most of the image pipeline still does not carry.",
+  "body_zh": "Ideogram 于 7 月 29 日发布 Object Remover——一款专用擦除模型，在移除所选对象的同时，也一并清掉它留下的视觉痕迹：阴影、反射，以及它投在周边表面的光照。\n\n后半句才是它与普通局部重绘的分野。多数基于蒙版的编辑工具只重建选区内部，被删掉的台灯留着光晕、被删掉的人留着影子，一眼就能看出画面动过手。Ideogram 表示，其模型会有意修改蒙版之外的像素来消解这些次级线索，同时让无关区域尽可能贴近原图。官方演示了两类场景：从照片中清除路人、电线与杂物；以及清除文字、logo 与字幕——模型会重建其下方表面，并保留原有纹理、透视与光照。\n\n在 RemovalBench 上，Ideogram 称其成绩在所测擦除系统中最优，领先谷歌 Nano Banana 2、FLUX Erase 与 GPT Image-2，全参考指标为 PSNR 26.92、SSIM 0.811、LPIPS 0.0598。需要说明，这些数据由 Ideogram 自行公布、基准也由其选定，且被比较的模型多为通用图像编辑模型而非专用擦除工具。Object Remover 已在 Ideogram 网页端与 API 开放。\n\n商业逻辑相当直白：擦除是电商摄影、房产图片与图库素材中付费量最大的单项编辑操作，也恰是通用前沿图像模型仍不及垂类模型的地方。此前开放 Ideogram 4.0 权重、并转向用 AMD Instinct 加速卡承载推理的 Ideogram，选择的是以专精质量而非能力广度取胜。\n\n**为何重要：** 干净地抹掉文字、logo 与字幕，同时也意味着干净地抹掉来源标记与署名——让商品图可上架的能力，同样能让带水印或带署名的图片无从追溯。当擦除阴影、反射这类次级证据的工具好到让取证检测失去最容易抓的破绽，责任就被推给了加密式内容溯源方案，而当下多数图像生产链条并不携带这类信息。",
+  "title_zh": "Ideogram 推专用擦除模型，称居 RemovalBench 首位",
+  "summary_zh": "Ideogram 发布专用对象擦除模型，连阴影与反射一并清除，官方称在 RemovalBench 上优于 Nano Banana 2、FLUX Erase 与 GPT Image-2。",
+  "tags": [
+    "AIGC",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "Ideogram on X: Introducing Ideogram Object Remover",
+      "url": "https://x.com/ideogram_ai/status/2082518323351429550"
+    },
+    {
+      "title": "Object Remover — Ideogram",
+      "url": "https://ideogram.ai/tools/object-remover/"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-30",
+  "published": "2026-07-29T17:27:00Z",
+  "published_at": "2026-07-29T23:00:02.787Z"
+}
