@@ -1,5 +1,5 @@
 // 官方 X 账号直连信源：X API v2 按量付费（约 $0.005/条读取）
-// 已用 start_time 服务端过滤：只为时间窗内真实发帖计费，51 账号每轮上限 $1.3，实际远低（安静账号 0 条 0 费）
+// 已用 start_time 服务端过滤：只为时间窗内真实发帖计费；安静账号返回 0 条，不产生按条读取费。
 import { readFile, writeFile } from 'node:fs/promises';
 import { execSync } from 'node:child_process';
 import { join } from 'node:path';
@@ -23,6 +23,20 @@ const HANDLES = [
   // 2026-07-23 从情报部导航筛选的活跃账号（图像/视频/3D/设计/音乐 + 国产开源）
   'krea_ai', 'recraftai', 'Alibaba_Wan', 'HeyGen', 'theworldlabs', 'tripoai', 'MeshyAI', 'DeemosTech',
   'lovart_ai', 'udiomusic', 'Skywork_ai', 'intern_lm',
+  // 云厂商 / 开发者平台 / 编码工具
+  'MicrosoftAI', 'MSFTResearch', 'MicrosoftAzure', 'GoogleCloudTech', 'GoogleAIStudio', 'GeminiApp',
+  'github', 'GitHubNext', 'code', 'windsurf_ai', 'Replit', 'boltdotnew', 'v0', 'vercel', 'Sourcegraph',
+  'zedindustries', 'mem0ai', 'genspark_ai',
+  // 模型厂商 / 推理基础设施 / 开源工具链
+  'NVIDIAAI', 'nvidiadeveloper', 'awscloud', 'awsdevelopers', 'cohere', 'AI21Labs', 'RekaAILabs',
+  'SakanaAILabs', 'togethercompute', 'FireworksAI_HQ', 'GroqInc', 'ollama', 'LMStudioAI', 'replicate',
+  'baseten', 'UnslothAI', 'weights_biases', 'Gradio', 'streamlit', '01AI_Yi', 'BaichuanAI',
+  // 评测、安全与 AI 基础设施
+  'ArtificialAnlys', 'METR_Evals', 'EpochAIResearch', 'UKaisi', 'RedwoodResearch', 'GoodfireAI',
+  'farairesearch', 'qdrant_engine', 'weaviate_io', 'pinecone', 'milvusio', 'SnowflakeDB', 'databricks',
+  'MongoDB',
+  // 设计 / 创作 / 消费端 AI 产品
+  'figma', 'canva', 'AdobeFirefly', 'character_ai', 'poe_platform', 'freepik', 'Magnific_AI',
 ];
 
 function getToken() {
@@ -47,11 +61,19 @@ async function api(path, token) {
 async function resolveIds(token) {
   try {
     const cached = JSON.parse(await readFile(ID_CACHE, 'utf8'));
-    if (HANDLES.every((h) => cached[h])) return cached;
+    if (HANDLES.every((h) => cached[h] || cached[h.toLowerCase()])) {
+      return Object.fromEntries(HANDLES.map((h) => [h, cached[h] || cached[h.toLowerCase()]]));
+    }
   } catch {}
-  const data = await api(`/users/by?usernames=${HANDLES.join(',')}`, token);
+  const data = { data: [] };
+  for (let i = 0; i < HANDLES.length; i += 100) {
+    const chunk = HANDLES.slice(i, i + 100);
+    const out = await api(`/users/by?usernames=${chunk.join(',')}`, token);
+    data.data.push(...(out.data || []));
+  }
+  const requested = new Map(HANDLES.map((h) => [h.toLowerCase(), h]));
   const map = {};
-  for (const u of data.data || []) map[u.username] = u.id;
+  for (const u of data.data || []) map[requested.get(u.username.toLowerCase()) || u.username] = u.id;
   await writeFile(ID_CACHE, JSON.stringify(map, null, 2));
   return map;
 }
@@ -65,8 +87,9 @@ export async function fetchXHeadlines({ hours = 48, perAccount = 5, since = null
   const ids = await resolveIds(token);
   // start_time/end_time 让服务端只返回时间窗内的帖子：没发新内容的账号返回 0 条，不产生按条读取费
   const timeQ = `&start_time=${new Date(cutoff).toISOString()}${until ? `&end_time=${until.toISOString()}` : ''}`;
+  const maxResults = Math.max(5, Math.min(100, perAccount));
   const results = await Promise.allSettled(Object.entries(ids).map(async ([handle, id]) => {
-    const data = await api(`/users/${id}/tweets?max_results=${perAccount}&exclude=retweets,replies&tweet.fields=created_at${timeQ}`, token);
+    const data = await api(`/users/${id}/tweets?max_results=${maxResults}&exclude=retweets,replies&tweet.fields=created_at${timeQ}`, token);
     return (data.data || []).map((t) => ({
       source: `X @${handle}`,
       tier: 'x-official',

@@ -14,12 +14,26 @@ const FEEDS = [
   { name: 'IT之家', url: 'https://www.ithome.com/rss/', tier: 'media' },
   { name: 'MarkTechPost', url: 'https://www.marktechpost.com/feed/', tier: 'media' },
   { name: 'Apple ML Research', url: 'https://machinelearning.apple.com/rss.xml', tier: 'official' },
+  { name: 'NVIDIA AI', url: 'https://blogs.nvidia.com/blog/category/deep-learning/feed/', tier: 'official' },
+  { name: 'NVIDIA Developer AI', url: 'https://developer.nvidia.com/blog/category/artificial-intelligence/feed/', tier: 'official' },
+  { name: 'Microsoft Research', url: 'https://www.microsoft.com/en-us/research/feed/', tier: 'official' },
+  { name: 'AWS Machine Learning', url: 'https://aws.amazon.com/blogs/machine-learning/feed/', tier: 'official' },
+  { name: 'Google Research', url: 'https://research.google/blog/rss/', tier: 'official' },
+  { name: 'Together AI', url: 'https://www.together.ai/blog/rss.xml', tier: 'official' },
+  { name: 'Replicate Changelog', url: 'https://replicate.com/changelog/rss', tier: 'official' },
+  { name: 'arXiv cs.AI', url: 'https://export.arxiv.org/rss/cs.AI', tier: 'research' },
+  { name: 'arXiv cs.CL', url: 'https://export.arxiv.org/rss/cs.CL', tier: 'research' },
+  { name: 'arXiv cs.RO', url: 'https://export.arxiv.org/rss/cs.RO', tier: 'research' },
+  { name: 'arXiv cs.CR', url: 'https://export.arxiv.org/rss/cs.CR', tier: 'research' },
   { name: 'Hacker News 热门', url: 'https://hnrss.org/frontpage?points=100', tier: 'community' },
   { name: 'Simon Willison', url: 'https://simonwillison.net/atom/everything/', tier: 'expert' },
   { name: 'Lilian Weng', url: 'https://lilianweng.github.io/index.xml', tier: 'expert' },
   // AIGC / Agent 领域补充（2026-07-23，均已实测可用）
   { name: 'Replicate', url: 'https://replicate.com/blog/rss', tier: 'official' },
   { name: 'Latent Space', url: 'https://www.latent.space/feed', tier: 'expert' },
+  { name: 'SiliconANGLE AI', url: 'https://siliconangle.com/category/ai/feed/', tier: 'media' },
+  { name: '量子位', url: 'https://www.qbitai.com/feed', tier: 'media' },
+  { name: 'InfoQ 中文', url: 'https://www.infoq.cn/feed', tier: 'media' },
 ];
 
 const pick = (xml, ...res) => {
@@ -36,7 +50,7 @@ const clean = (s) => s
   .replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/\s+/g, ' ').trim();
 
 function parseFeed(xml, feed) {
-  const blocks = [...xml.matchAll(/<(?:item|entry)[\s>]([\s\S]*?)<\/(?:item|entry)>/g)].map((m) => m[1]);
+  const blocks = [...xml.matchAll(/<(?:item|entry)\b[^>]*>([\s\S]*?)<\/(?:item|entry)>/g)].map((m) => m[1]);
   return blocks.map((b) => {
     const title = clean(pick(b, /<title[^>]*>([\s\S]*?)<\/title>/));
     const link = pick(b, /<link[^>]*href=["']([^"']+)["']/, /<link[^>]*>([\s\S]*?)<\/link>/).replace(/<!\[CDATA\[|\]\]>/g, '').trim();

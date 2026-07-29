@@ -27,8 +27,8 @@ An AI work by [Uncle Cat (猫叔)](https://x.com/mmlong8).
 
 | 层 | 内容 | 时效保障 |
 |----|------|---------|
-| ① RSS 直连 | 17 个一级信源（OpenAI、DeepMind、Google AI、HuggingFace、TechCrunch、The Verge、MIT TR、机器之心、IT之家、HN 等） | Feed 元数据的真实时间戳，代码硬过滤 |
-| ② 官方 X 直连 | 29 个 AI 实验室/产品官方账号（Anthropic、xAI、DeepSeek、Qwen、智谱、Kimi、MiniMax、混元、即梦/Seedance、可灵等），X API v2 按量付费 | API 返回的精确发布时间 |
+| ① RSS/Atom 直连 | 30+ 个一级信源（OpenAI、DeepMind、Google AI/Research、HuggingFace、NVIDIA、AWS、Microsoft Research、arXiv、TechCrunch、The Verge、MIT TR、机器之心、IT之家、量子位、InfoQ、HN 等） | Feed 元数据的真实时间戳，代码硬过滤 |
+| ② 官方 X 直连 | 100+ 个 AI 实验室/产品官方账号（前沿模型、国产模型、AIGC、Agent、编码工具、推理基础设施、云厂商、评测与安全机构等），X API v2 按量付费 | API 返回的精确发布时间 |
 | ③ AI 定向搜索 | 31 个高信号个人账号观察名单 + 无 RSS 的官方页面 + 自由搜索兜底 | AI 必须核验原始发布日期并输出，代码二次过滤 |
 
 ## 架构 / Architecture
