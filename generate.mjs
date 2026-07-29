@@ -113,7 +113,30 @@ async function existingTitles() {
   return titles;
 }
 
-async function generateBriefings(skipTitles, digest) {
+const normalizeUrl = (url = '') => String(url).split('#')[0].split('?')[0].replace(/\/$/, '').toLowerCase();
+
+async function existingCoverage() {
+  const files = (await readdir(CONTENT).catch(() => [])).filter((f) => f.endsWith('.json')).sort().slice(-90);
+  const urls = new Set();
+  const snippets = [];
+  for (const f of files) {
+    try {
+      const item = JSON.parse(await readFile(join(CONTENT, f), 'utf8'));
+      if (f.startsWith('radar-')) {
+        for (const r of item.items || []) {
+          if (r.url) urls.add(normalizeUrl(r.url));
+          snippets.push([r.text, r.text_zh].filter(Boolean).join(' / '));
+        }
+      } else {
+        for (const s of item.sources || []) if (s.url) urls.add(normalizeUrl(s.url));
+        snippets.push([item.title, item.title_zh, item.summary_zh || item.summary].filter(Boolean).join(' / '));
+      }
+    } catch {}
+  }
+  return { urls, snippets: snippets.filter(Boolean).slice(-80) };
+}
+
+async function generateBriefings(skipTitles, digest, coverage) {
   const prompt = `You are the sole editor of "AI Focus Bulletin" (AI专注速报), an autonomous bilingual AI news site. Today is ${today}.
 
 TASK: Select UP TO ${COUNT} of the most significant AI news stories from the last ${WINDOW_H} hours (models, research, policy, industry, funding — global coverage, not US-only). Then write an original briefing for each, in English AND Chinese.
@@ -142,6 +165,7 @@ RULES:
 - Titles: specific and factual, 45-65 characters, no clickbait.
 - Mark EXACTLY ONE story as featured (the day's most consequential) and give a one-line reason in both languages.
 - Skip any story matching these already-published titles: ${skipTitles.length ? skipTitles.join(' | ') : '(none)'}
+- Also skip anything whose facts or source URLs already appeared in recent briefings or radar: ${coverage.snippets.length ? coverage.snippets.join(' | ') : '(none)'}
 
 OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each element:
 {
@@ -161,6 +185,7 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
   "published": "the story's ORIGINAL publication moment as ISO 8601 UTC, e.g. 2026-01-01T14:30:00Z — copy from the candidate list when the story comes from it; date-only YYYY-MM-DD if the exact time cannot be found"
 }`;
   const articles = await parseJson(await runClaude(prompt), '[', ']', 'briefings');
+  const coveredUrls = new Set(coverage.urls);
   let saved = 0;
   for (const a of articles) {
     if (!a.slug || !a.title || !a.body) continue;
@@ -180,6 +205,16 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
     }
     a.tags = a.tags || [];
     a.sources = a.sources || [];
+    const sourceUrls = a.sources.map((s) => normalizeUrl(s.url)).filter(Boolean);
+    if (isEvening && a.date !== today) {
+      console.log(`  - 跳过非本日晚报(${a.date}): ${a.title}`);
+      continue;
+    }
+    if (sourceUrls.some((u) => coveredUrls.has(u))) {
+      console.log(`  - 跳过已覆盖来源: ${a.title}`);
+      continue;
+    }
+    for (const u of sourceUrls) coveredUrls.add(u);
     await writeFile(join(CONTENT, `${a.date}-${a.slug}.json`), JSON.stringify(a, null, 2));
     saved++;
     console.log(`  + ${a.featured ? '★ ' : ''}${a.title}`);
@@ -265,6 +300,7 @@ async function recentRadarTexts() {
 
 async function main() {
   const skip = await existingTitles();
+  const coverage = await existingCoverage();
   console.log(`[generate] 深度简报至多 ${COUNT} 篇（${isEvening ? '晚班·亚洲时段方针' : '早班'}）+ 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);
   const [headlines, xItems] = await Promise.all([
     fetchFreshHeadlines({ until: CUTOFF, hours: WINDOW_H, maxPerFeed: WINDOW_H > 48 ? 12 : 8 }),
@@ -274,7 +310,7 @@ async function main() {
   headlines.sort((a, b) => b.date - a.date);
   console.log(`[generate] 一级信源候选 ${headlines.length} 条（含官方 X ${xItems.length} 条）${CUTOFF ? `（截止 ${process.env.AIPULSE_CUTOFF}）` : ''}`);
   const digest = digestOf(headlines) || '(feeds unavailable this run — rely on web search, verify dates strictly)';
-  const newTitles = await generateBriefings(skip, digest);
+  const newTitles = await generateBriefings(skip, digest, coverage);
   if (SKIP_RADAR) { console.log('[generate] 跳过雷达'); return console.log('[generate] 完成'); }
   try {
     await generateRadar([...skip.slice(-15), ...newTitles, ...(await recentRadarTexts())], digest);
