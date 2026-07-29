@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Mythos finds new attacks on HAWK and 7-round AES — AI Focus Bulletin</title>
+<meta name="description" content="Anthropic says its frontier model autonomously produced two publishable cryptanalysis results, cutting HAWK-256's effective security and speeding an AES attac">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/claude-mythos-cryptanalysis-hawk-aes.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/claude-mythos-cryptanalysis-hawk-aes.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/claude-mythos-cryptanalysis-hawk-aes.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/claude-mythos-cryptanalysis-hawk-aes.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="Claude Mythos finds new attacks on HAWK and 7-round AES — AI Focus Bulletin">
+<meta property="og:description" content="Anthropic says its frontier model autonomously produced two publishable cryptanalysis results, cutting HAWK-256's effective security and speeding an AES attac">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/claude-mythos-cryptanalysis-hawk-aes.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Mythos finds new attacks on HAWK and 7-round AES — AI Focus Bulletin">
+<meta name="twitter:description" content="Anthropic says its frontier model autonomously produced two publishable cryptanalysis results, cutting HAWK-256's effective security and speeding an AES attac">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Claude Mythos finds new attacks on HAWK and 7-round AES","description":"Anthropic says its frontier model autonomously produced two publishable cryptanalysis results, cutting HAWK-256's effective security and speeding an AES attack 200-800x.","datePublished":"2026-07-28T23:00:00.000Z","inLanguage":"en","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/articles/claude-mythos-cryptanalysis-hawk-aes.html"}</script>
+</head>
+<body data-slug="claude-mythos-cryptanalysis-hawk-aes" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ AI Focus Bulletin</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/claude-mythos-cryptanalysis-hawk-aes.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-28T17:16:00Z">July 28, 2026, 1:16 PM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/research.html">Research</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/safety.html">Safety</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/models.html">Models</a><span class="views" id="viewCount"></span></div>
+  <h1>Claude Mythos finds new attacks on HAWK and 7-round AES</h1>
+  <p class="standfirst">Anthropic says its frontier model autonomously produced two publishable cryptanalysis results, cutting HAWK-256's effective security and speeding an AES attack 200-800x.</p>
+  <p>Anthropic published research on 28 July claiming that a preview version of its frontier model, Claude Mythos, generated two original cryptanalysis results with minimal human direction — the strongest public evidence so far that language models can operate at expert level inside a field where wrong answers are trivially falsifiable.</p><h2>The two results</h2><p>The first targets HAWK, a lattice-based digital signature scheme submitted to NIST's post-quantum standardisation process. The model identified a nontrivial automorphism — a symmetry in the scheme's structure that prior analysis had not exploited — and used it to halve the effective key size. For the HAWK-256 parameter set, Anthropic reports that key-recovery complexity falls from roughly 2^64 to about 2^38. The work took the model around 60 hours.</p><p>The second is an improved meet-in-the-middle attack on 7-round AES, a reduced variant of the cipher whose full version uses 10 rounds. Here the model devised a fingerprinting routine it named the &quot;Möbius Bridge,&quot; which removes one enumeration guess and delivers a claimed 200-800x speedup over the previous best attack. That run consumed billions of output tokens across three days. Anthropic puts the API cost at roughly $100,000 per attack.</p><p>Anthropic worked with cryptographers at ETH Zurich, Tel Aviv University and the University of Haifa, and released both papers alongside CryptanalysisBench, a benchmark that packages cipher-breaking tasks so other groups can measure model cryptanalytic ability directly.</p><h2>Caveats</h2><p>Neither finding threatens deployed systems. HAWK is a candidate scheme, not a shipping one, and larger parameter sets remain out of reach; the 7-round AES attack is an academic exercise whose execution would still cost hundreds of millions of dollars. Both results reduce exponential work factors rather than collapsing them.</p><h2>Why it matters</h2><p>Cryptanalysis has been one of the cleanest remaining arguments that frontier models cannot yet do genuinely novel technical research — results are verifiable, and there is no benchmark to overfit. If reproducible, this narrows that argument considerably, and it cuts both ways: the same capability that lets defenders stress-test standards before adoption also lowers the cost of offensive analysis. Anthropic's framing is defensive, but the release of CryptanalysisBench guarantees the question is now measured in public.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://www.anthropic.com/research/discovering-cryptographic-weaknesses" rel="noopener" target="_blank">Discovering Cryptographic Weaknesses with Claude — Anthropic</a></li><li><a href="https://the-decoder.com/anthropic-says-its-mythos-model-found-vulnerabilities-in-cryptographic-algorithms-that-secure-the-internet/" rel="noopener" target="_blank">Anthropic says its Mythos model found vulnerabilities in cryptographic algorithms — The Decoder</a></li><li><a href="https://x.com/AnthropicAI/status/2082153311189225927" rel="noopener" target="_blank">Anthropic thread on CryptanalysisBench and both attacks</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/amazon-scales-back-nova-frontier-team.html">Amazon freezes Nova line, bets on new Frontier model team</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/gemini-managed-agents-hooks.html">Gemini API managed agents add 3.6 Flash and sandbox hooks</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/openai-transcribe-models-api.html">OpenAI ships GPT-Transcribe and GPT-Live-Transcribe APIs</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI Focus Bulletin</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>

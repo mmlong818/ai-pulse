@@ -1,0 +1,24 @@
+{
+  "slug": "gemini-managed-agents-hooks",
+  "title": "Gemini API managed agents add 3.6 Flash and sandbox hooks",
+  "summary": "Google's hosted agent runtime switches its default to Gemini 3.6 Flash and adds pre/post tool-call hooks, token ceilings, cron triggers and a free tier.",
+  "body": "Google shipped an update to Managed Agents in the Gemini API on 28 July, moving the hosted agent runtime closer to the controls operators expect from production infrastructure rather than a preview.\n\n## What changed\n\nThe `antigravity-preview-05-2026` agent now defaults to Gemini 3.6 Flash, with Gemini 3.5 Flash and 3.5 Flash-Lite selectable for cheaper configurations. The headline addition is environment hooks: a `.agents/hooks.json` file lets developers register regex-matched handlers that fire before or after any tool call inside the sandbox, executing either a shell command or an HTTP call. Google's framing is that hooks let you block, lint or audit tool invocations — meaning policy enforcement now sits inside the managed runtime rather than being wrapped around it.\n\nAlongside that: a `max_total_tokens` parameter to cap spend on a single run, state preservation so an incomplete interaction can be resumed rather than restarted, cron-syntax scheduled triggers with sandboxes that persist across executions, and an Environments API for listing, inspecting and deleting sandbox sessions. Managed agents are now reachable from free-tier projects with an API key.\n\n## Why it matters\n\nThe design pattern here is conspicuously borrowed. Pre- and post-tool-use hooks, persistent sandboxes and scheduled autonomous runs are the primitives that made local coding-agent harnesses controllable, and Google is now offering them as a hosted service with billing and a free entry tier attached. That reframes the competitive question: the differentiator for agent platforms is shifting from model quality to whether operators can constrain, observe and cost-cap what the agent does — precisely the gap that the past week's frontier-lab sandbox-escape incident made concrete.\n\nThe token ceiling and resumable state also target the specific economics that have kept agent deployments in pilot: runaway loops that burn budget with nothing to show, and long tasks that lose all progress on failure. Scheduled triggers with persistent environments push further, letting an agent hold context between unattended runs — useful, and also the configuration where hooks stop being a nicety and start being the only thing standing between a cron job and an unreviewed tool call.",
+  "title_zh": "Gemini API 托管智能体上线 3.6 Flash 与沙箱 hooks",
+  "summary_zh": "谷歌托管智能体运行时默认切至 Gemini 3.6 Flash，并新增工具调用前后 hooks、token 上限、定时触发与免费额度。",
+  "body_zh": "谷歌 7 月 28 日更新 Gemini API 中的 Managed Agents（托管智能体），让这套托管运行时从预览形态向生产基础设施该有的控制面靠拢。\n\n## 更新内容\n\n`antigravity-preview-05-2026` 智能体现默认使用 Gemini 3.6 Flash，同时可显式选择 Gemini 3.5 Flash 与 3.5 Flash-Lite 以压低成本。最重要的新增能力是环境 hooks：开发者通过 `.agents/hooks.json` 注册基于正则匹配的处理器，在沙箱内任何工具调用之前或之后触发，执行 shell 命令或 HTTP 调用。谷歌的定位是用 hooks 实现对工具调用的拦截、检查与审计——也就是说，策略执行从「包在运行时外面」挪进了托管运行时内部。\n\n配套还有：`max_total_tokens` 参数为单次运行设置消耗上限；状态保留机制让未完成的交互可续跑而非重启；支持 cron 语法的定时触发，且沙箱在多次执行间持久存在；以及用于列出、查看、删除沙箱会话的 Environments API。托管智能体现已可在免费额度项目中通过 API key 使用。\n\n## 为何重要\n\n这里的设计范式明显是借来的。工具调用前后 hooks、持久沙箱、定时自主运行，正是让本地编码智能体框架变得可控的那几个原语；谷歌现在把它们做成带计费、带免费入口的托管服务。这会重设竞争命题：智能体平台的差异点正从模型质量转向「运营者能否约束、观测并给成本上限」——而上周前沿实验室的沙箱逃逸事故，恰好把这道缺口摆到了台面上。\n\ntoken 上限与可续跑状态也直指让智能体部署长期卡在试点阶段的那笔账：失控循环烧光预算却毫无产出，以及长任务一失败就前功尽弃。定时触发加持久环境走得更远，让智能体在无人值守的多次运行之间保留上下文——这很有用，但也正是这种配置下，hooks 不再是锦上添花，而是定时任务与一次无人复核的工具调用之间唯一的那道闸。",
+  "tags": [
+    "Agents",
+    "Models",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Gemini API Managed Agents: 3.6 Flash, hooks, and more — Google",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api-3-6-flash-hooks/"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-29",
+  "published": "2026-07-28T16:00:00Z",
+  "published_at": "2026-07-28T23:00:00.000Z"
+}

@@ -30,11 +30,30 @@ function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
   });
 }
 
-function parseJson(raw) {
+function extractJson(raw) {
   const start = raw.indexOf('[');
   const end = raw.lastIndexOf(']');
   if (start < 0 || end < start) throw new Error('No JSON array in auditor output');
-  return JSON.parse(raw.slice(start, end + 1));
+  return raw.slice(start, end + 1).replace(/\u0000/g, '').trim();
+}
+
+async function parseJson(raw) {
+  const text = extractJson(raw);
+  try {
+    return JSON.parse(text);
+  } catch (firstError) {
+    console.error(`[volatile] JSON parse failed, repairing: ${firstError.message}`);
+    const repairedRaw = await runClaude(`Repair the following invalid JSON array into strict valid JSON.
+Do not add, remove, rewrite, translate, summarize, or explain any content.
+Return ONLY the repaired JSON array.
+
+${text}`);
+    try {
+      return JSON.parse(extractJson(repairedRaw));
+    } catch (secondError) {
+      throw new Error(`JSON repair failed: ${secondError.message}`);
+    }
+  }
 }
 
 const dayKey = (name, article) => {
@@ -100,7 +119,7 @@ async function main() {
     return;
   }
   console.log(`[volatile] auditing ${items.length} recent volatile article(s)`);
-  const result = parseJson(await runClaude(promptFor(items)));
+  const result = await parseJson(await runClaude(promptFor(items)));
   let changed = 0;
   for (const r of result) {
     if (!r || !r.file) continue;

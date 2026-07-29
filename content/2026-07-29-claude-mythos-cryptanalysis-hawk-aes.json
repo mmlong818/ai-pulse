@@ -1,0 +1,34 @@
+{
+  "slug": "claude-mythos-cryptanalysis-hawk-aes",
+  "title": "Claude Mythos finds new attacks on HAWK and 7-round AES",
+  "summary": "Anthropic says its frontier model autonomously produced two publishable cryptanalysis results, cutting HAWK-256's effective security and speeding an AES attack 200-800x.",
+  "body": "Anthropic published research on 28 July claiming that a preview version of its frontier model, Claude Mythos, generated two original cryptanalysis results with minimal human direction — the strongest public evidence so far that language models can operate at expert level inside a field where wrong answers are trivially falsifiable.\n\n## The two results\n\nThe first targets HAWK, a lattice-based digital signature scheme submitted to NIST's post-quantum standardisation process. The model identified a nontrivial automorphism — a symmetry in the scheme's structure that prior analysis had not exploited — and used it to halve the effective key size. For the HAWK-256 parameter set, Anthropic reports that key-recovery complexity falls from roughly 2^64 to about 2^38. The work took the model around 60 hours.\n\nThe second is an improved meet-in-the-middle attack on 7-round AES, a reduced variant of the cipher whose full version uses 10 rounds. Here the model devised a fingerprinting routine it named the \"Möbius Bridge,\" which removes one enumeration guess and delivers a claimed 200-800x speedup over the previous best attack. That run consumed billions of output tokens across three days. Anthropic puts the API cost at roughly $100,000 per attack.\n\nAnthropic worked with cryptographers at ETH Zurich, Tel Aviv University and the University of Haifa, and released both papers alongside CryptanalysisBench, a benchmark that packages cipher-breaking tasks so other groups can measure model cryptanalytic ability directly.\n\n## Caveats\n\nNeither finding threatens deployed systems. HAWK is a candidate scheme, not a shipping one, and larger parameter sets remain out of reach; the 7-round AES attack is an academic exercise whose execution would still cost hundreds of millions of dollars. Both results reduce exponential work factors rather than collapsing them.\n\n## Why it matters\n\nCryptanalysis has been one of the cleanest remaining arguments that frontier models cannot yet do genuinely novel technical research — results are verifiable, and there is no benchmark to overfit. If reproducible, this narrows that argument considerably, and it cuts both ways: the same capability that lets defenders stress-test standards before adoption also lowers the cost of offensive analysis. Anthropic's framing is defensive, but the release of CryptanalysisBench guarantees the question is now measured in public.",
+  "title_zh": "Anthropic：Claude Mythos 自主攻破 HAWK 与 7 轮 AES",
+  "summary_zh": "Anthropic 称其前沿模型在极少人工干预下产出两项原创密码分析成果，HAWK-256 有效安全强度腰斩，AES 攻击提速数百倍。",
+  "body_zh": "Anthropic 于 7 月 28 日发布研究，称其前沿模型 Claude Mythos 的预览版本在几乎没有人工指导的情况下，独立完成了两项原创密码分析工作。这是目前最有说服力的公开证据之一——在一个结论可被严格验证、无从蒙混的领域里，大模型已能做到专家水准。\n\n## 两项结果\n\n第一项针对 HAWK，这是提交至 NIST 后量子标准化流程的一种格基数字签名方案。模型发现了此前分析未利用的非平凡自同构结构，并借此将有效密钥长度直接减半。按 Anthropic 给出的数据，HAWK-256 参数集下的密钥恢复复杂度从约 2^64 降至约 2^38。这项工作耗时约 60 小时。\n\n第二项是对 7 轮 AES 的中间相遇攻击改进。完整 AES 为 10 轮，7 轮属削弱变体。模型在此自创了一种被它命名为「莫比乌斯桥」的指纹算法，省掉一次枚举猜测，相比此前最优攻击提速 200 至 800 倍。该任务跨三天、消耗数十亿输出 token。Anthropic 称单次攻击的 API 成本约 10 万美元。\n\nAnthropic 与苏黎世联邦理工、特拉维夫大学、海法大学的密码学者合作，同步公开两篇论文，并放出 CryptanalysisBench——一套把破译任务打包成可测评项的基准，便于外界直接衡量模型的密码分析能力。\n\n## 需要说清的边界\n\n两项成果都不威胁在用系统。HAWK 尚未部署，更大参数集依然安全；7 轮 AES 攻击属学术设定，真要执行仍需数亿美元量级算力。两者都只是压低了指数级工作量，而非将其瓦解。\n\n## 为何重要\n\n「前沿模型做不出真正新颖的技术研究」，密码分析一直是这一论断最干净的阵地：结果可验证，也没有基准可供刷分。若结论可复现，该论断的空间被大幅压缩，而且刀是双刃的——让防守方在标准落地前做压力测试的能力，同样降低了攻击性分析的门槛。Anthropic 的叙事落点在防御，但 CryptanalysisBench 的公开意味着这道题从此要在明面上打分。",
+  "tags": [
+    "Research",
+    "Safety",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "Discovering Cryptographic Weaknesses with Claude — Anthropic",
+      "url": "https://www.anthropic.com/research/discovering-cryptographic-weaknesses"
+    },
+    {
+      "title": "Anthropic says its Mythos model found vulnerabilities in cryptographic algorithms — The Decoder",
+      "url": "https://the-decoder.com/anthropic-says-its-mythos-model-found-vulnerabilities-in-cryptographic-algorithms-that-secure-the-internet/"
+    },
+    {
+      "title": "Anthropic thread on CryptanalysisBench and both attacks",
+      "url": "https://x.com/AnthropicAI/status/2082153311189225927"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "The first verifiable demonstration that a frontier model can produce publishable cryptanalysis, with a benchmark released so anyone can check the claim.",
+  "featured_reason_zh": "首个可验证的证据：前沿模型能产出可发表的密码分析成果，且同步开放基准供外界复核。",
+  "date": "2026-07-29",
+  "published": "2026-07-28T17:16:00Z",
+  "published_at": "2026-07-28T23:00:00.000Z"
+}

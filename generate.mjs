@@ -20,7 +20,20 @@ const CUTOFF_NOTE = CUTOFF
   : '';
 // 班次编辑方针：晚班覆盖北京白天 = 美国深夜 + 欧洲上午，全球重磅天然少——
 // 主动倾斜亚洲时段动态，不够成色不硬凑（早班无此限制）
-const isEvening = new Date(Date.now() + 8 * 3600000).getUTCHours() >= 12;
+const forcedEdition = (process.env.AIPULSE_FORCE_EDITION || process.env.AIPULSE_EDITION || '').toLowerCase();
+const forcedEditionDate = process.env.AIPULSE_EDITION_DATE || today;
+const isEvening = forcedEdition === 'evening'
+  ? true
+  : forcedEdition === 'morning'
+    ? false
+    : new Date(Date.now() + 8 * 3600000).getUTCHours() >= 12;
+const editionPublishedAt = (() => {
+  if (forcedEdition === 'morning' || forcedEdition === 'evening') {
+    const localTime = forcedEdition === 'morning' ? '07:00:00+08:00' : '19:00:00+08:00';
+    return new Date(`${forcedEditionDate}T${localTime}`).toISOString();
+  }
+  return new Date().toISOString();
+})();
 const EDITION_NOTE = isEvening
   ? `\nEDITION FOCUS (evening edition): This edition covers Beijing daytime — US overnight and European morning, globally the quietest news half-day. PRIORITIZE fresh stories from the Asian-timezone cycle: Chinese labs (Qwen, DeepSeek, Moonshot, Zhipu, ByteDance, Tencent, StepFun…), Japan/Korea, Asian AI policy and industry, open-source releases and papers that landed during Asian daytime. Do NOT fill the quota by re-picking yesterday's US stories that merely fall inside the ${WINDOW_H}-hour window — the previous edition already covered that cycle.`
   : '';
@@ -43,7 +56,32 @@ function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
   });
 }
 
-const parseJson = (raw, open, close) => JSON.parse(raw.slice(raw.indexOf(open), raw.lastIndexOf(close) + 1));
+function extractJson(raw, open, close) {
+  const start = raw.indexOf(open);
+  const end = raw.lastIndexOf(close);
+  if (start < 0 || end < start) throw new Error(`No ${open}${close} JSON block found`);
+  return raw.slice(start, end + 1).replace(/\u0000/g, '').trim();
+}
+
+async function parseJson(raw, open, close, label = 'JSON') {
+  const text = extractJson(raw, open, close);
+  try {
+    return JSON.parse(text);
+  } catch (firstError) {
+    console.error(`[generate] ${label} JSON parse failed, repairing: ${firstError.message}`);
+    const repairedRaw = await runClaude(`Repair the following invalid JSON into strict valid JSON.
+Do not add, remove, rewrite, translate, summarize, or explain any content.
+Return ONLY the repaired JSON. It must begin with "${open}" and end with "${close}".
+
+${text}`);
+    const repaired = extractJson(repairedRaw, open, close);
+    try {
+      return JSON.parse(repaired);
+    } catch (secondError) {
+      throw new Error(`${label} JSON repair failed: ${secondError.message}`);
+    }
+  }
+}
 
 const SOURCE_GUIDE = `SOURCE POLICY:
 1. START from the CANDIDATE HEADLINES below — they come from first-tier feeds and their timestamps are already verified. Prefer them. (Some feeds carry general tech news — pick AI stories only.)
@@ -122,12 +160,12 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
   "date": "${today}",
   "published": "the story's ORIGINAL publication moment as ISO 8601 UTC, e.g. 2026-01-01T14:30:00Z — copy from the candidate list when the story comes from it; date-only YYYY-MM-DD if the exact time cannot be found"
 }`;
-  const articles = parseJson(await runClaude(prompt), '[', ']');
+  const articles = await parseJson(await runClaude(prompt), '[', ']', 'briefings');
   let saved = 0;
   for (const a of articles) {
     if (!a.slug || !a.title || !a.body) continue;
     a.date = a.date || today;
-    a.published_at = new Date().toISOString(); // 本站发布时刻（班次归属、RSS pubDate 用）
+    a.published_at = editionPublishedAt; // 本站发布时刻（班次归属、RSS pubDate 用）
     // published = 新闻源头发布时刻（页面时间标注用）；异常值剔除，兜底显示本站时刻
     if (a.published) {
       const age = (Date.parse(a.date) - Date.parse(a.published)) / 86400000;
@@ -177,7 +215,7 @@ OUTPUT: ONLY a JSON object (no fence, no commentary):
     { "text": "...", "text_zh": "...", "url": "https://...", "source": "source site name", "published": "2026-01-01T14:30:00Z (UTC; date-only YYYY-MM-DD if exact time unknown)", "tag": "Models|Research|Policy|Industry|Funding|Open Source|Safety|AIGC|Agents" }
   ]
 }`;
-  const radar = parseJson(await runClaude(prompt), '{', '}');
+  const radar = await parseJson(await runClaude(prompt), '{', '}', 'radar');
   const cutoff = new Date(Date.now() - Math.ceil(WINDOW_H / 24) * 86400000).toISOString().slice(0, 10);
   radar.items = (radar.items || []).filter((i) => i.text && i.url)
     .filter((i) => {

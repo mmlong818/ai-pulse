@@ -8,6 +8,18 @@ import { join } from 'node:path';
 const ROOT = new URL('.', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const CONTENT = join(ROOT, 'content');
 const BASE = 'https://mmlong818.github.io/ai-pulse';
+const forcedEdition = (process.env.AIPULSE_FORCE_EDITION || process.env.AIPULSE_EDITION || '').toLowerCase();
+const forcedEditionDate = process.env.AIPULSE_EDITION_DATE || new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
+
+function currentBeijingDate() {
+  return forcedEdition ? forcedEditionDate : new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
+}
+
+function forcedEditionInstant() {
+  if (forcedEdition !== 'morning' && forcedEdition !== 'evening') return null;
+  const localTime = forcedEdition === 'morning' ? '07:00:00+08:00' : '19:00:00+08:00';
+  return new Date(`${forcedEditionDate}T${localTime}`);
+}
 
 function env(name) {
   if (process.env[name]) return process.env[name];
@@ -54,7 +66,7 @@ async function api(method, path, body) {
 
 async function pickToday() {
   const files = (await readdir(CONTENT)).filter((f) => f.endsWith('.json'));
-  const today = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10); // 与 generate.mjs 的北京日期归档一致
+  const today = currentBeijingDate(); // 与 generate.mjs 的北京日期归档一致
   let radar = null, fallback = null;
   const articles = [];
   for (const f of files) {
@@ -75,11 +87,13 @@ async function pickToday() {
 const xLen = (s) => [...s].reduce((n, c) => n + (c.codePointAt(0) > 0x10ff ? 2 : 1), 0);
 
 function postUrl(featured, lang) {
-  const date = featured.date || new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
+  const date = featured.date || currentBeijingDate();
   return lang === 'zh' ? `${BASE}/zh/day/${date}.html` : `${BASE}/day/${date}.html`;
 }
 
 function editionInstant({ featured, batch }) {
+  const forced = forcedEditionInstant();
+  if (forced) return forced;
   const times = [featured, ...batch]
     .map((a) => Date.parse(a.published_at || a.published || `${a.date}T00:00:00Z`))
     .filter(Boolean);
