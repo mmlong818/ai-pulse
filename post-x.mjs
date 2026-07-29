@@ -1,5 +1,5 @@
 // 自动发帖：OAuth 1.0a 签名调用 X API v2（发帖 $0.015/条，含链接 $0.20/条）
-// 用法: node post-x.mjs verify | post "文本" | daily
+// 用法: node post-x.mjs verify | post "文本" | delete <tweet_id> | daily
 import { createHmac, randomBytes } from 'node:crypto';
 import { execSync } from 'node:child_process';
 import { readdir, readFile } from 'node:fs/promises';
@@ -150,6 +150,10 @@ if (cmd === 'verify') {
 } else if (cmd === 'post') {
   const d = await api('POST', '/tweets', { text: arg });
   console.log('[post-x] 已发帖:', `https://x.com/i/status/${d.data.id}`);
+} else if (cmd === 'delete') {
+  if (!arg) throw new Error('缺少 tweet id');
+  await api('DELETE', `/tweets/${arg}`);
+  console.log('[post-x] 已删除:', `https://x.com/i/status/${arg}`);
 } else if (cmd === 'daily') {
   const picks = await pickToday();
   const zh = await api('POST', '/tweets', { text: composeText('zh', picks) });
@@ -165,5 +169,5 @@ if (cmd === 'verify') {
   const picks = await pickToday();
   console.log(composeText('zh', picks), '\n---\n', composeText('en', picks));
 } else {
-  console.log('用法: verify | post "文本" | daily | preview');
+  console.log('用法: verify | post "文本" | delete <tweet_id> | daily | preview');
 }
