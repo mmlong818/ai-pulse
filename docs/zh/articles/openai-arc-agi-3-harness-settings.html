@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAI：换评测框架后 Sol 的 ARC-AGI-3 冲到 38.3% — AI Focus Bulletin</title>
+<meta name="description" content="OpenAI 称 GPT-5.6 Sol 改用自家 Responses API、开启保留推理与上下文压缩后，ARC-AGI-3 成绩从 7.8% 跃升至 38.3%。">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-arc-agi-3-harness-settings.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/openai-arc-agi-3-harness-settings.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-arc-agi-3-harness-settings.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/openai-arc-agi-3-harness-settings.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="OpenAI：换评测框架后 Sol 的 ARC-AGI-3 冲到 38.3% — AI Focus Bulletin">
+<meta property="og:description" content="OpenAI 称 GPT-5.6 Sol 改用自家 Responses API、开启保留推理与上下文压缩后，ARC-AGI-3 成绩从 7.8% 跃升至 38.3%。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/openai-arc-agi-3-harness-settings.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenAI：换评测框架后 Sol 的 ARC-AGI-3 冲到 38.3% — AI Focus Bulletin">
+<meta name="twitter:description" content="OpenAI 称 GPT-5.6 Sol 改用自家 Responses API、开启保留推理与上下文压缩后，ARC-AGI-3 成绩从 7.8% 跃升至 38.3%。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"OpenAI：换评测框架后 Sol 的 ARC-AGI-3 冲到 38.3%","description":"OpenAI 称 GPT-5.6 Sol 改用自家 Responses API、开启保留推理与上下文压缩后，ARC-AGI-3 成绩从 7.8% 跃升至 38.3%。","datePublished":"2026-07-30T11:00:03.870Z","inLanguage":"zh-CN","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/zh/articles/openai-arc-agi-3-harness-settings.html"}</script>
+</head>
+<body data-slug="openai-arc-agi-3-harness-settings" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ AI专注速报</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/openai-arc-agi-3-harness-settings.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-29T23:57:00Z">2026年7月30日 07:57</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><span class="views" id="viewCount"></span></div>
+  <h1>OpenAI：换评测框架后 Sol 的 ARC-AGI-3 冲到 38.3%</h1>
+  <p class="standfirst">OpenAI 称 GPT-5.6 Sol 改用自家 Responses API、开启保留推理与上下文压缩后，ARC-AGI-3 成绩从 7.8% 跃升至 38.3%。</p>
+  <h2>同一个模型，换了&quot;管道&quot;</h2><p>OpenAI 公布了一组实验，主张 GPT-5.6 Sol 在 ARC-AGI-3 上的糟糕成绩，很大程度上是评测跑法造成的假象。在官方统一评测框架里，该模型只拿到 7.8%——因为每走一步后推理过程即被丢弃，上下文靠截断而非摘要来管理。改用 OpenAI 自家的 Responses API 重跑同一套题，并打开两个开关（跨步保留推理、以压缩代替截断），分数升至 38.3%，高于本周早前 Claude Opus 5 的 30.2%。OpenAI 称公开题集上的相对涨幅达 188%，并把结论推向更一般的层面：一个基准分衡量的从来不只是模型，还包括一整套不易察觉的框架与 API 选择。</p><h2>ARC Prize 划出边界</h2><p>ARC Prize 联合创始人 François Chollet 回应时区分了两类改动：为攻榜专门定制的评测框架属于违规；而所有 API 用户都能开启的通用设置则不算，前提是把设置与相应成本一并披露。他承认这会带来厂商之间的可比性问题，但认为透明报告是可接受的补救。官方榜单刻意不启用厂商专属能力，以保证每个条目跑法一致——按 OpenAI 的说法，这一设计恰恰让自家模型因标准框架用不到的能力而吃亏。</p><h2>为何值得关注</h2><p>ARC-AGI-3 考的是模型能否在没有说明的情况下上手陌生的二维小游戏，正是那种步数极长、推理连续性会不断累积收益的任务。因此仅靠配置就出现五倍量级的摆动并非细枝末节：它意味着公开的智能体分数，只有在同时注明评测框架、记忆策略与 token 开销时才具备可比性。企业若仅凭榜单差值在前沿模型间取舍，实际上比较的既是模型能力，也是集成方案。可以预见，基准维护方将被要求为每个模型报告多套配置，实验室也将被要求说明某个亮眼数字究竟由哪些 API 特性支撑。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://x.com/OpenAI/status/2082616636989952217" rel="noopener" target="_blank">OpenAI on X: ARC-AGI-3 harness experiments</a></li><li><a href="https://the-decoder.com/openai-claims-gpt-5-6-sol-beats-opus-5-on-arc-agi-3-with-its-latest-api-and-two-additional-settings/" rel="noopener" target="_blank">The Decoder: OpenAI claims GPT-5.6 Sol beats Opus 5 on ARC-AGI-3</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-wan-realtime-mode.html">通义万相上线 Realtime 模式：边打字边改画面</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/far-ai-security-leaderboard-jailbreaks.html">FAR.AI 评测：Grok 4.5 被找出 448 个通用越狱</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/gpt-5-6-sol-cuts-own-serving-cost.html">OpenAI 称 GPT-5.6 Sol 把自己的服务成本砍掉 20%</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI专注速报</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
