@@ -89,8 +89,12 @@ async function pickToday() {
 // X 加权长度：CJK/全角/emoji 记 2，其余记 1；URL 固定折算 23
 const xLen = (s) => [...s].reduce((n, c) => n + (c.codePointAt(0) > 0x10ff ? 2 : 1), 0);
 
-function postUrl(featured, lang) {
-  const date = featured.date || currentBeijingDate();
+function headlineText(text) {
+  return String(text || '').replace(/(?<![:/@])\b([A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)\.([A-Za-z]{2,})(?=\b)/g, '$1 $2');
+}
+
+function postUrl(lang) {
+  const date = currentBeijingDate();
   return lang === 'zh' ? `${BASE}/zh/day/${date}.html` : `${BASE}/day/${date}.html`;
 }
 
@@ -121,17 +125,17 @@ function composeText(lang, picks) {
   if (lang === 'zh') {
     const { month, day, hour } = localParts(edition, 'Asia/Shanghai', 'zh-CN');
     head = `⚡ AI专注速报 · ${month}月${day}日${hour < 12 ? '早报' : '晚报'}（${batch.length}条）`;
-    star = `★ ${featured.title_zh || featured.title}`;
-    others = batch.filter((a) => a.slug !== featured.slug).map((a) => `· ${a.title_zh || a.title}`);
-    url = postUrl(featured, 'zh');
+    star = `★ ${headlineText(featured.title_zh || featured.title)}`;
+    others = batch.filter((a) => a.slug !== featured.slug).map((a) => `· ${headlineText(a.title_zh || a.title)}`);
+    url = postUrl('zh');
   } else {
     // 英文帖按美东时间：北京 7:00 班 = 美东前一天晚上（Evening），北京 19:00 班 = 美东当天早上（Morning）
     const etHour = Number(edition.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
     const dateStr = edition.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' });
     head = `⚡ AI Focus Bulletin · ${etHour < 12 ? 'Morning' : 'Evening'} Edition, ${dateStr} (${batch.length} items)`;
-    star = `★ ${featured.title}`;
-    others = batch.filter((a) => a.slug !== featured.slug).map((a) => `· ${a.title}`);
-    url = postUrl(featured, 'en');
+    star = `★ ${headlineText(featured.title)}`;
+    others = batch.filter((a) => a.slug !== featured.slug).map((a) => `· ${headlineText(a.title)}`);
+    url = postUrl('en');
   }
   // 帖子直接承载当班内容：推荐 + 尽量多的其余简报标题，装不下为止（280 加权额度，URL 记 23，留 3 余量）
   const lines = [head, '', star];
