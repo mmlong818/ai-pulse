@@ -31,11 +31,13 @@ function env(name) {
 const CREDS = {
   key: env('X_API_KEY'), keySecret: env('X_API_SECRET'),
   token: env('X_ACCESS_TOKEN'), tokenSecret: env('X_ACCESS_SECRET'),
+  bearer: env('X_BEARER_TOKEN') || env('TWITTER_BEARER_TOKEN'),
 };
 
 const pct = (s) => encodeURIComponent(s).replace(/[!*'()]/g, (c) => '%' + c.charCodeAt(0).toString(16).toUpperCase());
 
 function oauthHeader(method, url) {
+  const parsed = new URL(url);
   const p = {
     oauth_consumer_key: CREDS.key,
     oauth_nonce: randomBytes(16).toString('hex'),
@@ -44,8 +46,11 @@ function oauthHeader(method, url) {
     oauth_token: CREDS.token,
     oauth_version: '1.0',
   };
-  const paramStr = Object.keys(p).sort().map((k) => `${pct(k)}=${pct(p[k])}`).join('&');
-  const baseStr = [method.toUpperCase(), pct(url), pct(paramStr)].join('&');
+  const signatureParams = { ...p };
+  for (const [key, value] of parsed.searchParams) signatureParams[key] = value;
+  const paramStr = Object.keys(signatureParams).sort().map((k) => `${pct(k)}=${pct(signatureParams[k])}`).join('&');
+  const baseUrl = `${parsed.protocol}//${parsed.host}${parsed.pathname}`;
+  const baseStr = [method.toUpperCase(), pct(baseUrl), pct(paramStr)].join('&');
   const signKey = `${pct(CREDS.keySecret)}&${pct(CREDS.tokenSecret)}`;
   p.oauth_signature = createHmac('sha1', signKey).update(baseStr).digest('base64');
   return 'OAuth ' + Object.keys(p).sort().map((k) => `${pct(k)}="${pct(p[k])}"`).join(', ');
@@ -57,6 +62,19 @@ async function api(method, path, body) {
     method,
     headers: { authorization: oauthHeader(method, url), 'content-type': 'application/json' },
     body: body ? JSON.stringify(body) : undefined,
+    signal: AbortSignal.timeout(30000),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(`X API ${res.status}: ${JSON.stringify(data).slice(0, 200)}`);
+  return data;
+}
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function readApi(path) {
+  if (!CREDS.bearer) return api('GET', path);
+  const res = await fetch(`https://api.x.com/2${path}`, {
+    headers: { authorization: `Bearer ${CREDS.bearer}` },
     signal: AbortSignal.timeout(30000),
   });
   const data = await res.json().catch(() => ({}));
@@ -96,6 +114,90 @@ function headlineText(text) {
 function postUrl(lang) {
   const date = currentBeijingDate();
   return lang === 'zh' ? `${BASE}/zh/day/${date}.html` : `${BASE}/day/${date}.html`;
+}
+
+function postCheckDelayMs() {
+  const rawMs = env('AIPULSE_X_CHECK_DELAY_MS');
+  if (rawMs) return Math.max(0, Number(rawMs) || 0);
+  const rawMin = env('AIPULSE_X_CHECK_DELAY_MIN');
+  return Math.max(0, Number(rawMin || 5) || 0) * 60000;
+}
+
+function sameUrl(a, b) {
+  return String(a || '').replace(/\/$/, '') === String(b || '').replace(/\/$/, '');
+}
+
+function tweetUrlTarget(urlEntity) {
+  return urlEntity?.expanded_url || urlEntity?.unwound_url || urlEntity?.url || '';
+}
+
+async function checkPublicUrl(url) {
+  let lastError = '';
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const res = await fetch(url, {
+        headers: { 'user-agent': 'Twitterbot/1.0' },
+        redirect: 'follow',
+        signal: AbortSignal.timeout(30000),
+      });
+      if (res.ok) return;
+      lastError = `HTTP ${res.status}`;
+    } catch (error) {
+      lastError = error.message;
+    }
+    if (attempt < 3) await sleep(10000);
+  }
+  throw new Error(`日报页不可访问: ${url} (${lastError})`);
+}
+
+async function checkPostedTweet({ id, lang, expectedUrl }) {
+  const label = lang === 'zh' ? '中文帖' : '英文帖';
+  const tweet = await readApi(`/tweets/${id}?tweet.fields=created_at,text,entities`);
+  const urls = tweet.data?.entities?.urls || [];
+  const targets = urls.map(tweetUrlTarget).filter(Boolean);
+  const hasExpectedUrl = targets.some((url) => sameUrl(url, expectedUrl));
+  const extraUrls = targets.filter((url) => !sameUrl(url, expectedUrl) && !url.startsWith('https://t.co/'));
+  if (!hasExpectedUrl) throw new Error(`${label}缺少日报链接: ${expectedUrl}`);
+  if (extraUrls.length) throw new Error(`${label}出现额外链接: ${extraUrls.join(', ')}`);
+
+  await checkPublicUrl(expectedUrl);
+  const expectedEntity = urls.find((url) => sameUrl(tweetUrlTarget(url), expectedUrl));
+  if (expectedEntity?.status && expectedEntity.status >= 400) {
+    console.log(`[post-x] ${label} X 卡片状态暂为 ${expectedEntity.status}，但页面直连正常: ${expectedUrl}`);
+  }
+  console.log(`[post-x] ${label}检查通过: https://x.com/i/status/${id}`);
+}
+
+function queuePostCheck(pending, lang, id) {
+  const delayMs = postCheckDelayMs();
+  const expectedUrl = postUrl(lang);
+  pending.push({ id, lang, expectedUrl, due: Date.now() + delayMs });
+  console.log(`[post-x] ${Math.round(delayMs / 60000)} 分钟后检查${lang === 'zh' ? '中文' : '英文'}帖: ${expectedUrl}`);
+}
+
+async function runDueChecks(pending) {
+  for (let i = 0; i < pending.length;) {
+    if (pending[i].due > Date.now()) { i++; continue; }
+    const item = pending.splice(i, 1)[0];
+    await checkPostedTweet(item);
+  }
+}
+
+async function waitWithChecks(ms, pending) {
+  const end = Date.now() + ms;
+  while (Date.now() < end) {
+    const nextDue = pending.length ? Math.min(...pending.map((item) => item.due)) : end;
+    await sleep(Math.max(0, Math.min(nextDue, end) - Date.now()));
+    await runDueChecks(pending);
+  }
+}
+
+async function drainChecks(pending) {
+  while (pending.length) {
+    pending.sort((a, b) => a.due - b.due);
+    await sleep(Math.max(0, pending[0].due - Date.now()));
+    await runDueChecks(pending);
+  }
 }
 
 function editionInstant({ featured, batch }) {
@@ -148,8 +250,10 @@ function composeText(lang, picks) {
   return lines.join('\n') + '\n' + url;
 }
 
-const [cmd, arg] = process.argv.slice(2);
-if (!CREDS.key || !CREDS.token) { console.error('[post-x] 凭证缺失，跳过'); process.exit(0); }
+const [cmd, arg, arg2] = process.argv.slice(2);
+const needsOAuth = ['verify', 'post', 'delete', 'daily'].includes(cmd);
+if (needsOAuth && (!CREDS.key || !CREDS.token)) { console.error('[post-x] 发布凭证缺失，跳过'); process.exit(0); }
+if (cmd === 'check' && !CREDS.bearer && (!CREDS.key || !CREDS.token)) { console.error('[post-x] 读取凭证缺失，跳过'); process.exit(0); }
 
 if (cmd === 'verify') {
   const me = await api('GET', '/users/me');
@@ -161,20 +265,28 @@ if (cmd === 'verify') {
   if (!arg) throw new Error('缺少 tweet id');
   await api('DELETE', `/tweets/${arg}`);
   console.log('[post-x] 已删除:', `https://x.com/i/status/${arg}`);
+} else if (cmd === 'check') {
+  if (!arg) throw new Error('缺少 tweet id');
+  const lang = arg2 === 'en' ? 'en' : 'zh';
+  await checkPostedTweet({ id: arg, lang, expectedUrl: postUrl(lang) });
 } else if (cmd === 'daily') {
   const picks = await pickToday();
+  const pendingChecks = [];
   const zh = await api('POST', '/tweets', { text: composeText('zh', picks) });
   console.log('[post-x] 中文帖已发布:', `https://x.com/i/status/${zh.data.id}`);
+  queuePostCheck(pendingChecks, 'zh', zh.data.id);
   if (env('AIPULSE_POST_EN') !== '0') {
     const gapMin = Number(env('AIPULSE_POST_GAP_MIN') || 10);
     console.log(`[post-x] ${gapMin} 分钟后发布英文帖…`);
-    await new Promise((r) => setTimeout(r, gapMin * 60000));
+    await waitWithChecks(gapMin * 60000, pendingChecks);
     const en = await api('POST', '/tweets', { text: composeText('en', picks) });
     console.log('[post-x] 英文帖已发布:', `https://x.com/i/status/${en.data.id}`);
+    queuePostCheck(pendingChecks, 'en', en.data.id);
   }
+  await drainChecks(pendingChecks);
 } else if (cmd === 'preview') {
   const picks = await pickToday();
   console.log(composeText('zh', picks), '\n---\n', composeText('en', picks));
 } else {
-  console.log('用法: verify | post "文本" | delete <tweet_id> | daily | preview');
+  console.log('用法: verify | post "文本" | delete <tweet_id> | check <tweet_id> [zh|en] | daily | preview');
 }
