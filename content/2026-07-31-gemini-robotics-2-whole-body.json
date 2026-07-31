@@ -1,0 +1,31 @@
+{
+  "slug": "gemini-robotics-2-whole-body",
+  "title": "Gemini Robotics 2 gives humanoids whole-body control",
+  "summary": "Google DeepMind released three physical-AI models that let a single policy drive legs, torso, arms and fingers, and coordinate multiple robots on one task.",
+  "body": "Google DeepMind released Gemini Robotics 2 on Thursday, a three-model suite that extends its robotics stack from tabletop manipulation to full-body humanoid control and multi-robot coordination.\n\n## The three models\n\nThe headline vision-language-action model handles whole-body control, unifying locomotion, torso posture and bimanual manipulation under a single policy. In DeepMind's demonstration, Apptronik's Apollo 2 humanoid receives one instruction — place a watering can into a bin on a lower shelf — then walks to a table, grasps the object, crosses to the shelving unit and completes the placement without the task being decomposed by a human operator. The model also drives the SharpaWave five-fingered hand with 22 degrees of freedom, with DeepMind citing knot-tying and sealing a ziplock bag as dexterity tests.\n\nGemini Robotics ER 2 is the embodied-reasoning layer, a vision-language model acting as the high-level planner. It handles video understanding with continuous progress tracking, native tool calling including Google Search, and orchestration of the VLA model beneath it. DeepMind reports 57.4 percent accuracy on progress classification across five levels and 91.3 percent on moment-finding with a mean absolute distance of 0.96 seconds, and claims sub-second latency roughly four times faster than competing models. A third model, Gemini Robotics On-Device 2, runs locally on robot hardware and can adapt to an unfamiliar embodiment with a few hours of data.\n\nA single checkpoint controls three embodiments — Apollo 2 with SharpaWave hands, Apollo 2 with Inspire hands, and a Franka arm — and robots hand off subtasks to each other through shared semantic understanding. Partners include Boston Dynamics' Spot and Franka's F3 Duo. ER 2 is available through the Gemini API and Google AI Studio, with the Gemini Enterprise Agent Platform in private preview. DeepMind published a separate safety technical report; the model halts when humans are detected nearby and scores above its predecessor on safety instruction-following and human-proximity benchmarks.\n\n## Why it matters\n\nWhole-body control has been the standing gap between language-model-driven robotics demos and machines that operate in unmodified human spaces. Folding locomotion and manipulation into one learned policy — and shipping the reasoning layer as an ordinary API product — moves general-purpose robot control from research artefact toward something third-party developers can build against.",
+  "title_zh": "谷歌 Gemini Robotics 2 让人形机器人实现全身控制",
+  "summary_zh": "谷歌 DeepMind 发布三款具身智能模型，用单一策略统一控制腿、躯干、双臂与手指，并支持多台机器人协同完成同一任务。",
+  "body_zh": "谷歌 DeepMind 周四发布 Gemini Robotics 2，这套包含三个模型的系统把其机器人技术栈从桌面操作推进到人形全身控制和多机协同。\n\n## 三个模型\n\n作为主角的视觉-语言-动作（VLA）模型负责全身控制，把行走、躯干姿态与双手操作统一进同一套策略。在 DeepMind 的演示中，Apptronik 的 Apollo 2 人形机器人只接到一句指令——把洒水壶放进下层货架的绿色箱子——随后自己走到桌边抓取物体、迈步至货架并完成放置，整个过程无需人工拆解子步骤。该模型还能驱动 22 自由度的 SharpaWave 五指手，DeepMind 用打绳结和密封自封袋来展示其灵巧度。\n\nGemini Robotics ER 2 是具身推理层，一个充当高层规划器的视觉语言模型，具备视频理解与任务进度连续跟踪能力，可原生调用包括谷歌搜索在内的工具，并调度下层 VLA 模型。官方数据显示，其五级进度分类准确率 57.4%，关键时刻定位准确率 91.3%、平均绝对偏差 0.96 秒，延迟低于一秒，约为同类模型的四倍速度。第三个模型 Gemini Robotics On-Device 2 可在机器人本体上离线运行，只需数小时数据即可适配全新构型。\n\n同一份模型 checkpoint 可控制三种本体——搭载 SharpaWave 手和 Inspire 手的 Apollo 2，以及 Franka 机械臂——机器人之间通过共享语义理解交接子任务。合作硬件还包括波士顿动力 Spot 与 Franka F3 Duo。ER 2 已通过 Gemini API 和 Google AI Studio 开放，Gemini Enterprise Agent Platform 则处于私有预览。DeepMind 同时发布了独立的安全技术报告：模型检测到附近有人时会停止动作，在安全指令遵循与人体接近度两项基准上均优于上一代。\n\n## 为何重要\n\n全身控制一直是\"大模型驱动的机器人演示\"与\"能在未改造的人类空间里干活的机器\"之间的那道坎。把移动与操作压进同一套学习策略，并把推理层当作普通 API 产品发售，意味着通用机器人控制正从研究成果变成第三方开发者可以直接调用的能力。",
+  "tags": [
+    "Models",
+    "Research"
+  ],
+  "sources": [
+    {
+      "title": "Gemini Robotics ER 2 — Google DeepMind",
+      "url": "https://deepmind.google/blog/gemini-robotics-er-2-powering-robotics-with-video-understanding-task-orchestration-and-multi-robot-collaboration/"
+    },
+    {
+      "title": "Gemini Robotics 2 brings whole body intelligence to robots — Google DeepMind",
+      "url": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/"
+    },
+    {
+      "title": "Google reveals Gemini Robotics 2.0 — Ars Technica",
+      "url": "https://arstechnica.com/ai/2026/07/google-reveals-gemini-robotics-2-0-promising-improved-dexterity-and-safety/"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-31",
+  "published": "2026-07-30T15:00:00Z",
+  "published_at": "2026-07-30T23:00:00.000Z"
+}

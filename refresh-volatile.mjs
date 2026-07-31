@@ -1,6 +1,7 @@
 // Refresh volatile roster/signatory claims before publishing.
 // This catches fast-moving stories where membership lists or signature counts change after the first article.
-import { spawn } from 'node:child_process';
+import { execFileSync, spawn } from 'node:child_process';
+import { existsSync, readdirSync } from 'node:fs';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -12,10 +13,41 @@ const today = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
 
 const VOLATILE_RE = /signator|signature|signed|did not sign|not sign|absent|not among|member|founding|joined|coalition|alliance|roster|名单|签署|签名|联署|未签|缺席|未列名|成员|创始|联盟|阵营/i;
 
+function findClaudeBin() {
+  if (process.env.CLAUDE_BIN && existsSync(process.env.CLAUDE_BIN)) return process.env.CLAUDE_BIN;
+  const npmBin = join(process.env.APPDATA || '', 'npm', 'node_modules', '@anthropic-ai', 'claude-code', 'bin', 'claude.exe');
+  if (existsSync(npmBin)) return npmBin;
+  const roots = [
+    join(process.env.LOCALAPPDATA || '', 'Packages', 'Claude_pzs8sxrjxfjjc', 'LocalCache', 'Roaming', 'Claude', 'claude-code'),
+    join(process.env.APPDATA || '', 'Claude', 'claude-code'),
+  ];
+  for (const root of roots) {
+    if (!root || !existsSync(root)) continue;
+    const versions = readdirSync(root, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name)
+      .sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
+    for (const version of versions) {
+      const bin = join(root, version, 'claude.exe');
+      if (existsSync(bin)) return bin;
+    }
+  }
+  try {
+    const found = execFileSync('where.exe', ['claude'], { encoding: 'utf8', windowsHide: true })
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .find((line) => line.toLowerCase().endsWith('.exe'));
+    if (found) return found;
+  } catch {}
+  return 'claude';
+}
+
+const CLAUDE_BIN = findClaudeBin();
+
 function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
   return new Promise((resolve, reject) => {
-    const child = spawn('claude', ['-p', '--output-format', 'text', '--allowedTools', 'WebSearch,WebFetch'], {
-      shell: true, windowsHide: true, timeout: timeoutMs,
+    const child = spawn(CLAUDE_BIN, ['-p', '--output-format', 'text', '--allowedTools', 'WebSearch,WebFetch'], {
+      windowsHide: true, timeout: timeoutMs,
     });
     let out = '', err = '';
     child.stdout.on('data', (d) => (out += d));
@@ -23,7 +55,7 @@ function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
     child.on('error', reject);
     child.on('close', (code) => {
       if (code === 0 && out.trim()) resolve(out.trim());
-      else reject(new Error(err.trim().slice(0, 500) || `claude exited ${code}`));
+      else reject(new Error((err.trim() || out.trim()).slice(0, 500) || `${CLAUDE_BIN} exited ${code}`));
     });
     child.stdin.write(prompt);
     child.stdin.end();
@@ -113,6 +145,7 @@ ${JSON.stringify(items, null, 2)}`;
 }
 
 async function main() {
+  console.log(`[volatile] Claude CLI: ${CLAUDE_BIN}`);
   const items = await candidates();
   if (!items.length) {
     console.log('[volatile] no recent volatile articles');

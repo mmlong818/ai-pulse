@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gemini Robotics 2 gives humanoids whole-body control — AI Focus Bulletin</title>
+<meta name="description" content="Google DeepMind released three physical-AI models that let a single policy drive legs, torso, arms and fingers, and coordinate multiple robots on one task.">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/gemini-robotics-2-whole-body.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/gemini-robotics-2-whole-body.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/gemini-robotics-2-whole-body.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/gemini-robotics-2-whole-body.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="Gemini Robotics 2 gives humanoids whole-body control — AI Focus Bulletin">
+<meta property="og:description" content="Google DeepMind released three physical-AI models that let a single policy drive legs, torso, arms and fingers, and coordinate multiple robots on one task.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/gemini-robotics-2-whole-body.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gemini Robotics 2 gives humanoids whole-body control — AI Focus Bulletin">
+<meta name="twitter:description" content="Google DeepMind released three physical-AI models that let a single policy drive legs, torso, arms and fingers, and coordinate multiple robots on one task.">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Gemini Robotics 2 gives humanoids whole-body control","description":"Google DeepMind released three physical-AI models that let a single policy drive legs, torso, arms and fingers, and coordinate multiple robots on one task.","datePublished":"2026-07-30T23:00:00.000Z","inLanguage":"en","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/articles/gemini-robotics-2-whole-body.html"}</script>
+</head>
+<body data-slug="gemini-robotics-2-whole-body" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ AI Focus Bulletin</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/gemini-robotics-2-whole-body.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-30T15:00:00Z">July 30, 2026, 11:00 AM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/models.html">Models</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/research.html">Research</a><span class="views" id="viewCount"></span></div>
+  <h1>Gemini Robotics 2 gives humanoids whole-body control</h1>
+  <p class="standfirst">Google DeepMind released three physical-AI models that let a single policy drive legs, torso, arms and fingers, and coordinate multiple robots on one task.</p>
+  <p>Google DeepMind released Gemini Robotics 2 on Thursday, a three-model suite that extends its robotics stack from tabletop manipulation to full-body humanoid control and multi-robot coordination.</p><h2>The three models</h2><p>The headline vision-language-action model handles whole-body control, unifying locomotion, torso posture and bimanual manipulation under a single policy. In DeepMind's demonstration, Apptronik's Apollo 2 humanoid receives one instruction — place a watering can into a bin on a lower shelf — then walks to a table, grasps the object, crosses to the shelving unit and completes the placement without the task being decomposed by a human operator. The model also drives the SharpaWave five-fingered hand with 22 degrees of freedom, with DeepMind citing knot-tying and sealing a ziplock bag as dexterity tests.</p><p>Gemini Robotics ER 2 is the embodied-reasoning layer, a vision-language model acting as the high-level planner. It handles video understanding with continuous progress tracking, native tool calling including Google Search, and orchestration of the VLA model beneath it. DeepMind reports 57.4 percent accuracy on progress classification across five levels and 91.3 percent on moment-finding with a mean absolute distance of 0.96 seconds, and claims sub-second latency roughly four times faster than competing models. A third model, Gemini Robotics On-Device 2, runs locally on robot hardware and can adapt to an unfamiliar embodiment with a few hours of data.</p><p>A single checkpoint controls three embodiments — Apollo 2 with SharpaWave hands, Apollo 2 with Inspire hands, and a Franka arm — and robots hand off subtasks to each other through shared semantic understanding. Partners include Boston Dynamics' Spot and Franka's F3 Duo. ER 2 is available through the Gemini API and Google AI Studio, with the Gemini Enterprise Agent Platform in private preview. DeepMind published a separate safety technical report; the model halts when humans are detected nearby and scores above its predecessor on safety instruction-following and human-proximity benchmarks.</p><h2>Why it matters</h2><p>Whole-body control has been the standing gap between language-model-driven robotics demos and machines that operate in unmodified human spaces. Folding locomotion and manipulation into one learned policy — and shipping the reasoning layer as an ordinary API product — moves general-purpose robot control from research artefact toward something third-party developers can build against.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://deepmind.google/blog/gemini-robotics-er-2-powering-robotics-with-video-understanding-task-orchestration-and-multi-robot-collaboration/" rel="noopener" target="_blank">Gemini Robotics ER 2 — Google DeepMind</a></li><li><a href="https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/" rel="noopener" target="_blank">Gemini Robotics 2 brings whole body intelligence to robots — Google DeepMind</a></li><li><a href="https://arstechnica.com/ai/2026/07/google-reveals-gemini-robotics-2-0-promising-improved-dexterity-and-safety/" rel="noopener" target="_blank">Google reveals Gemini Robotics 2.0 — Ars Technica</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/ideogram-pruna-p-image.html">Ideogram and Pruna ship $0.003-per-image model line</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/thinking-machines-inkling-small.html">Thinking Machines open-weights 276B Inkling-Small</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/alibaba-wan-realtime-mode.html">Alibaba's Wan adds a realtime text-driven image mode</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI Focus Bulletin</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>

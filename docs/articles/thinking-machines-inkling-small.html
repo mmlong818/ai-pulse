@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thinking Machines open-weights 276B Inkling-Small — AI Focus Bulletin</title>
+<meta name="description" content="Two weeks after its 975B flagship, Thinking Machines released a 276B Apache-2.0 sibling with 12B active parameters and full text, image and audio reasoning.">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/thinking-machines-inkling-small.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/thinking-machines-inkling-small.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/thinking-machines-inkling-small.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/thinking-machines-inkling-small.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="Thinking Machines open-weights 276B Inkling-Small — AI Focus Bulletin">
+<meta property="og:description" content="Two weeks after its 975B flagship, Thinking Machines released a 276B Apache-2.0 sibling with 12B active parameters and full text, image and audio reasoning.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/thinking-machines-inkling-small.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Thinking Machines open-weights 276B Inkling-Small — AI Focus Bulletin">
+<meta name="twitter:description" content="Two weeks after its 975B flagship, Thinking Machines released a 276B Apache-2.0 sibling with 12B active parameters and full text, image and audio reasoning.">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Thinking Machines open-weights 276B Inkling-Small","description":"Two weeks after its 975B flagship, Thinking Machines released a 276B Apache-2.0 sibling with 12B active parameters and full text, image and audio reasoning.","datePublished":"2026-07-30T23:00:00.000Z","inLanguage":"en","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/articles/thinking-machines-inkling-small.html"}</script>
+</head>
+<body data-slug="thinking-machines-inkling-small" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ AI Focus Bulletin</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/thinking-machines-inkling-small.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-30T17:47:00Z">July 30, 2026, 1:47 PM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/open-source.html">Open Source</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/models.html">Models</a><span class="views" id="viewCount"></span></div>
+  <h1>Thinking Machines open-weights 276B Inkling-Small</h1>
+  <p class="standfirst">Two weeks after its 975B flagship, Thinking Machines released a 276B Apache-2.0 sibling with 12B active parameters and full text, image and audio reasoning.</p>
+  <p>Thinking Machines Lab released Inkling-Small on Thursday, an Apache 2.0 open-weights model with 276 billion total parameters and 12 billion active, roughly a quarter the size of the Inkling flagship it shipped two weeks earlier.</p><h2>Architecture and scores</h2><p>Inkling-Small is a 42-layer decoder-only transformer with a sparse mixture-of-experts feed-forward stack; each token routes to six of 256 experts plus two shared experts. It accepts text, images between 40 and 4096 pixels, and 16kHz audio, outputs text, and carries a one-million-token context window. Like the flagship, it exposes controllable thinking effort.</p><p>The published model card reports 80.2 percent on SWE-bench Verified, 89.5 percent on GPQA Diamond, 95.5 percent on AIME 2026, 74.0 percent on MMMU Pro, and 98.4 percent on the StrongREJECT safety evaluation. The lab says the smaller model delivers more performance per FLOP than Inkling across agentic tool use, reasoning and instruction-following benchmarks, while the larger model retains an edge on the hardest reasoning and coding tasks.</p><p>Hardware requirements put BF16 inference at roughly 600GB of VRAM — four B300s or eight H200s — dropping to about 180GB under NVFP4 quantisation. Unsloth said the model runs locally on a 128GB machine with its quantisation work. Weights are on Hugging Face, with fine-tuning available through the lab's Tinker platform and multimodal chat in Tinker Playground. Nvidia, Baseten and Unsloth published day-zero support; Baseten listed it on its model APIs the same afternoon. Arena placed it around rank 88 on Text Arena's AutoEval score with 1431 points and roughly 21st among open models, noting it as one of only five US models in the open top tier.</p><h2>Why it matters</h2><p>The open-weight frontier has been dominated for months by Chinese labs, with Moonshot's 2.8-trillion-parameter Kimi K3 requiring more than 1.5TB of memory just to hold its weights. A US-origin Apache 2.0 model that fits on a single eight-GPU node — or a quantised workstation — is a different proposition for enterprises that want on-premise deployment without a Chinese provenance question or a supercomputer budget.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://thinkingmachines.ai/model-card/inkling-small/" rel="noopener" target="_blank">Inkling-Small Model Card — Thinking Machines Lab</a></li><li><a href="https://x.com/thinkymachines/status/2082885869426631032" rel="noopener" target="_blank">Thinking Machines on X</a></li><li><a href="https://x.com/arena/status/2082890136858263896" rel="noopener" target="_blank">Arena on X: Inkling-Small AutoEval debut</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/gemini-robotics-2-whole-body.html">Gemini Robotics 2 gives humanoids whole-body control</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/ideogram-pruna-p-image.html">Ideogram and Pruna ship $0.003-per-image model line</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/alibaba-wan-realtime-mode.html">Alibaba's Wan adds a realtime text-driven image mode</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI Focus Bulletin</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>

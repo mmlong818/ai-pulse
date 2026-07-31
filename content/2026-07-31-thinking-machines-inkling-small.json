@@ -1,0 +1,31 @@
+{
+  "slug": "thinking-machines-inkling-small",
+  "title": "Thinking Machines open-weights 276B Inkling-Small",
+  "summary": "Two weeks after its 975B flagship, Thinking Machines released a 276B Apache-2.0 sibling with 12B active parameters and full text, image and audio reasoning.",
+  "body": "Thinking Machines Lab released Inkling-Small on Thursday, an Apache 2.0 open-weights model with 276 billion total parameters and 12 billion active, roughly a quarter the size of the Inkling flagship it shipped two weeks earlier.\n\n## Architecture and scores\n\nInkling-Small is a 42-layer decoder-only transformer with a sparse mixture-of-experts feed-forward stack; each token routes to six of 256 experts plus two shared experts. It accepts text, images between 40 and 4096 pixels, and 16kHz audio, outputs text, and carries a one-million-token context window. Like the flagship, it exposes controllable thinking effort.\n\nThe published model card reports 80.2 percent on SWE-bench Verified, 89.5 percent on GPQA Diamond, 95.5 percent on AIME 2026, 74.0 percent on MMMU Pro, and 98.4 percent on the StrongREJECT safety evaluation. The lab says the smaller model delivers more performance per FLOP than Inkling across agentic tool use, reasoning and instruction-following benchmarks, while the larger model retains an edge on the hardest reasoning and coding tasks.\n\nHardware requirements put BF16 inference at roughly 600GB of VRAM — four B300s or eight H200s — dropping to about 180GB under NVFP4 quantisation. Unsloth said the model runs locally on a 128GB machine with its quantisation work. Weights are on Hugging Face, with fine-tuning available through the lab's Tinker platform and multimodal chat in Tinker Playground. Nvidia, Baseten and Unsloth published day-zero support; Baseten listed it on its model APIs the same afternoon. Arena placed it around rank 88 on Text Arena's AutoEval score with 1431 points and roughly 21st among open models, noting it as one of only five US models in the open top tier.\n\n## Why it matters\n\nThe open-weight frontier has been dominated for months by Chinese labs, with Moonshot's 2.8-trillion-parameter Kimi K3 requiring more than 1.5TB of memory just to hold its weights. A US-origin Apache 2.0 model that fits on a single eight-GPU node — or a quantised workstation — is a different proposition for enterprises that want on-premise deployment without a Chinese provenance question or a supercomputer budget.",
+  "title_zh": "Thinking Machines 开源 276B 参数 Inkling-Small",
+  "summary_zh": "旗舰 975B 模型发布仅两周，Thinking Machines 又开源 Apache 2.0 授权的 276B 小版本，激活参数 12B，支持文本、图像与音频推理。",
+  "body_zh": "Thinking Machines Lab 周四发布 Inkling-Small，一款采用 Apache 2.0 许可的开源权重模型，总参数 276B、激活参数 12B，体量约为两周前发布的旗舰 Inkling 的四分之一。\n\n## 架构与成绩\n\nInkling-Small 是 42 层纯解码器 Transformer，前馈部分采用稀疏专家混合结构，每个 token 路由到 256 个专家中的 6 个，外加 2 个共享专家。模型接受文本、40 至 4096 像素的图像以及 16kHz 音频输入，输出文本，上下文窗口达 100 万 token，同样支持可调节的思考强度。\n\n官方模型卡给出的成绩包括：SWE-bench Verified 80.2%、GPQA Diamond 89.5%、AIME 2026 95.5%、MMMU Pro 74.0%，StrongREJECT 安全评测 98.4%。实验室称，在智能体工具调用、推理与指令遵循等基准上，小模型的单位算力性能优于旗舰版；而在最难的推理和编程任务上，大模型仍保持领先。\n\n硬件门槛方面，BF16 推理约需 600GB 显存（4 张 B300 或 8 张 H200），NVFP4 量化后可降至约 180GB。Unsloth 表示经其量化后可在 128GB 内存的本地设备上跑起来。权重已上传 Hugging Face，微调通过官方 Tinker 平台开放，多模态对话可在 Tinker Playground 体验。英伟达、Baseten 与 Unsloth 均在发布当天提供支持，Baseten 当天下午即上架其模型 API。Arena 给出的 AutoEval 分数为 1431 分，文本竞技场总榜约第 88 位、开源模型中约第 21 位，并指出这是开源第一梯队中仅有的五个美国模型之一。\n\n## 为何重要\n\n开源权重的前沿位置已被中国实验室占据数月，月之暗面 2.8 万亿参数的 Kimi K3 光是装下权重就要 1.5TB 以上内存。一个能塞进单台八卡服务器、量化后甚至能上工作站的美国产 Apache 2.0 模型，对那些既想本地部署、又不愿面对来源审查或超算预算的企业来说，是完全不同的选项。",
+  "tags": [
+    "Open Source",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "Inkling-Small Model Card — Thinking Machines Lab",
+      "url": "https://thinkingmachines.ai/model-card/inkling-small/"
+    },
+    {
+      "title": "Thinking Machines on X",
+      "url": "https://x.com/thinkymachines/status/2082885869426631032"
+    },
+    {
+      "title": "Arena on X: Inkling-Small AutoEval debut",
+      "url": "https://x.com/arena/status/2082890136858263896"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-31",
+  "published": "2026-07-30T17:47:00Z",
+  "published_at": "2026-07-30T23:00:00.000Z"
+}
