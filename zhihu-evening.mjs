@@ -182,6 +182,10 @@ function markdownToBasicHtml(md) {
   return `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title></title></head><body>${out.join('\n')}</body></html>`;
 }
 
+function markdownBodyOnly(md) {
+  return md.replace(/^# .*\r?\n\r?\n?/, '').trim();
+}
+
 function inlineHtml(s) {
   return escHtml(s)
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
@@ -203,12 +207,16 @@ async function main() {
   }
 
   const { title, md } = buildMarkdown({ date, articles: selectedArticles, radarItems });
+  const bodyMd = markdownBodyOnly(md);
   const html = markdownToBasicHtml(md).replace('<title></title>', `<title>${escHtml(title)}</title>`);
+  const bodyHtml = markdownToBasicHtml(bodyMd).replace('<title></title>', `<title>${escHtml(title)}</title>`);
   const meta = {
     platform: 'zhihu',
     type: 'evening-draft',
     date,
     title,
+    body_markdown: 'latest-evening-body.md',
+    body_html: 'latest-evening-body.html',
     articles: selectedArticles.map((a) => ({ slug: a.slug, title: langOfZh(a).title, url: `${BASE}/zh/articles/${a.slug}.html` })),
     radar_count: radarItems.length,
     generated_at: new Date().toISOString(),
@@ -216,11 +224,17 @@ async function main() {
 
   await mkdir(OUT, { recursive: true });
   const base = join(OUT, `${date}-evening`);
+  await writeFile(`${base}-title.txt`, `${title}\n`, 'utf8');
   await writeFile(`${base}.md`, md, 'utf8');
+  await writeFile(`${base}-body.md`, bodyMd, 'utf8');
   await writeFile(`${base}.html`, html, 'utf8');
+  await writeFile(`${base}-body.html`, bodyHtml, 'utf8');
   await writeFile(`${base}.json`, JSON.stringify(meta, null, 2), 'utf8');
+  await writeFile(join(OUT, 'latest-evening-title.txt'), `${title}\n`, 'utf8');
   await writeFile(join(OUT, 'latest-evening.md'), md, 'utf8');
+  await writeFile(join(OUT, 'latest-evening-body.md'), bodyMd, 'utf8');
   await writeFile(join(OUT, 'latest-evening.html'), html, 'utf8');
+  await writeFile(join(OUT, 'latest-evening-body.html'), bodyHtml, 'utf8');
   await writeFile(join(OUT, 'latest-evening.json'), JSON.stringify(meta, null, 2), 'utf8');
   console.log(`[zhihu] 已生成知乎晚报草稿：${date}，深度 ${selectedArticles.length} 篇，快讯 ${radarItems.length} 条。`);
 }
