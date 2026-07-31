@@ -3,31 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>吴恩达开源 OpenWorker：只交付成果、不闲聊的本地桌面 Agent — AI Focus Bulletin</title>
+<title>吴恩达开源 OpenWorker：只交付成果、不闲聊的本地桌面 Agent — Uncle Cat AI Radar</title>
 <meta name="description" content="吴恩达联手 Rohit Prasad 发布 MIT 协议的本地优先桌面 Agent，跨文件和 25+ 应用把任务做完再交付，数据不出本机，剑指大厂闭源&quot;AI 同事&quot;。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
 <link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/andrew-ng-openworker-desktop-agent.html">
 <link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/andrew-ng-openworker-desktop-agent.html">
 <link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/andrew-ng-openworker-desktop-agent.html">
 <link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/andrew-ng-openworker-desktop-agent.html">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="AI Focus Bulletin">
-<meta property="og:title" content="吴恩达开源 OpenWorker：只交付成果、不闲聊的本地桌面 Agent — AI Focus Bulletin">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="吴恩达开源 OpenWorker：只交付成果、不闲聊的本地桌面 Agent — Uncle Cat AI Radar">
 <meta property="og:description" content="吴恩达联手 Rohit Prasad 发布 MIT 协议的本地优先桌面 Agent，跨文件和 25+ 应用把任务做完再交付，数据不出本机，剑指大厂闭源&quot;AI 同事&quot;。">
 <meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/andrew-ng-openworker-desktop-agent.html">
 <meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="吴恩达开源 OpenWorker：只交付成果、不闲聊的本地桌面 Agent — AI Focus Bulletin">
+<meta name="twitter:title" content="吴恩达开源 OpenWorker：只交付成果、不闲聊的本地桌面 Agent — Uncle Cat AI Radar">
 <meta name="twitter:description" content="吴恩达联手 Rohit Prasad 发布 MIT 协议的本地优先桌面 Agent，跨文件和 25+ 应用把任务做完再交付，数据不出本机，剑指大厂闭源&quot;AI 同事&quot;。">
 <meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
 <link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"吴恩达开源 OpenWorker：只交付成果、不闲聊的本地桌面 Agent","description":"吴恩达联手 Rohit Prasad 发布 MIT 协议的本地优先桌面 Agent，跨文件和 25+ 应用把任务做完再交付，数据不出本机，剑指大厂闭源\"AI 同事\"。","datePublished":"2026-07-23T23:14:02.573Z","inLanguage":"zh-CN","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/zh/articles/andrew-ng-openworker-desktop-agent.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"吴恩达开源 OpenWorker：只交付成果、不闲聊的本地桌面 Agent","item":"https://mmlong818.github.io/ai-pulse/zh/articles/andrew-ng-openworker-desktop-agent.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/andrew-ng-openworker-desktop-agent.html#article","headline":"吴恩达开源 OpenWorker：只交付成果、不闲聊的本地桌面 Agent","description":"吴恩达联手 Rohit Prasad 发布 MIT 协议的本地优先桌面 Agent，跨文件和 25+ 应用把任务做完再交付，数据不出本机，剑指大厂闭源\"AI 同事\"。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/andrew-ng-openworker-desktop-agent.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/andrew-ng-openworker-desktop-agent.html"},"datePublished":"2026-07-23T19:31:00.000Z","dateModified":"2026-07-23T23:14:02.573Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["Agent","开源"],"keywords":"Agent, 开源","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://github.com/andrewyng/openworker","https://x.com/AndrewYNg/status/2080333504446108104","https://www.marktechpost.com/2026/07/23/andrew-ng-just-released-openworker-an-open-source-local-first-desktop-ai-coworker-that-returns-finished-deliverables-instead-of-chat/"],"about":[{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"开源"}]}]}</script>
 </head>
 <body data-slug="andrew-ng-openworker-desktop-agent" data-lang="zh">
 <header class="masthead">
   <div class="brand-block">
-    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ AI专注速报</a>
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
   </div>
   <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/andrew-ng-openworker-desktop-agent.html" class="lang-switch">English</a></nav>
 </header>
@@ -45,7 +48,7 @@
 </article>
 </main>
 <footer class="footer">
-  <p><strong>AI专注速报</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
   <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
 </footer>
 <script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>

@@ -1,4 +1,4 @@
-// AI专注速报（AI Focus Bulletin）静态站构建器（中英双语）：content/*.json → docs/
+// 猫叔的AI资讯雷达（Uncle Cat AI Radar）静态站构建器（中英双语）：content/*.json → docs/
 import { readdir, readFile, writeFile, mkdir, cp } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
@@ -7,8 +7,10 @@ const ROOT = new URL('.', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$
 const CONTENT = join(ROOT, 'content');
 const SITE = join(ROOT, 'docs');
 const BASE = process.env.AIPULSE_BASE || 'https://mmlong818.github.io/ai-pulse';
-const SITE_NAME = 'AI Focus Bulletin';
-const BRAND = { en: 'AI Focus Bulletin', zh: 'AI专注速报' };
+const SITE_NAME = 'Uncle Cat AI Radar';
+const ALT_SITE_NAMES = ['AI Focus Bulletin', 'AI专注速报'];
+const BRAND = { en: SITE_NAME, zh: '猫叔的AI资讯雷达' };
+const AUTHOR = { name: 'Uncle Cat', zhName: '猫叔', url: 'https://x.com/mmlong8' };
 
 const TAG_META = {
   'Models': { slug: 'models', zh: '模型' },
@@ -33,8 +35,8 @@ const T = {
     sources: 'Sources', back: '← All briefings',
     footer1: 'Every briefing is researched and written by an AI editor, with linked primary sources.',
     footer2: 'How this works',
-    whatH: 'What is AI Focus Bulletin?',
-    what: 'AI Focus Bulletin is an autonomous AI newsroom: an AI editor searches global news every day, reads the primary sources, and writes original, source-linked briefings on artificial intelligence — covering new models, research breakthroughs, policy and regulation, funding, and open-source releases worldwide.',
+    whatH: 'What is Uncle Cat AI Radar?',
+    what: 'Uncle Cat AI Radar is an autonomous AI newsroom: an AI editor searches global news every day, reads the primary sources, and writes original, source-linked briefings on artificial intelligence — covering new models, research breakthroughs, policy and regulation, funding, and open-source releases worldwide.',
     howH: 'How are briefings produced?',
     how: 'The pipeline runs twice a day (07:00 and 19:00 Beijing time). It gathers timestamped candidates from 30+ RSS/Atom sources and 100+ official X accounts across frontier labs, AI products, infrastructure, AIGC, agents, benchmarks and safety, then an AI editor selects the most significant stories, verifies sources and publication dates, and writes each deep briefing plus the Daily Radar from scratch in English and Chinese. Every page lists its sources so readers can verify every claim. There are no ads, trackers, or paywalls.',
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
@@ -50,8 +52,8 @@ const T = {
     sources: '信源', back: '← 全部简报',
     footer1: '每篇简报均由 AI 编辑检索并撰写，附原始信源链接。',
     footer2: '了解运作方式',
-    whatH: '什么是 AI专注速报？',
-    what: 'AI专注速报（AI Focus Bulletin）是一个自主运行的 AI 编辑部：AI 编辑每天检索全球新闻、阅读原始信源，并撰写原创的、附信源的人工智能简报——覆盖全球的新模型、研究突破、政策监管、融资与开源发布。',
+    whatH: '什么是猫叔的AI资讯雷达？',
+    what: '猫叔的AI资讯雷达（Uncle Cat AI Radar）是一个自主运行的 AI 编辑部：AI 编辑每天检索全球新闻、阅读原始信源，并撰写原创的、附信源的人工智能简报——覆盖全球的新模型、研究突破、政策监管、融资与开源发布。',
     howH: '简报如何产出？',
     how: '流水线每天运行两次（北京时间 7:00 与 19:00）：先从 30+ 个 RSS/Atom 信源和 100+ 个官方 X 账号获取带真实时间戳的候选新闻，覆盖前沿模型、AI 产品、基础设施、AIGC、Agent、评测与安全等方向；AI 编辑再遴选最重要的故事、核验信源与发布日期，以中英双语原创撰写深度简报与「每日雷达」快讯并自动发布。每个页面都列出信源，读者可以核验每一条信息。没有广告、追踪器和付费墙。',
     dateFmt: (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }),
@@ -109,6 +111,8 @@ function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd,
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="${esc(AUTHOR.name)}">
 <link rel="canonical" href="${canonical}">
 <link rel="alternate" hreflang="en" href="${altEn}">
 <link rel="alternate" hreflang="zh" href="${altZh}">
@@ -125,6 +129,7 @@ function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd,
 <meta name="twitter:image" content="${socialImage}">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <link rel="alternate" type="application/rss+xml" title="${SITE_NAME} RSS" href="${rss}">
+<link rel="alternate" type="text/plain" title="${SITE_NAME} LLM entry point" href="${BASE}/llms.txt">
 <link rel="stylesheet" href="${BASE}/assets/style.css">
 <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 </head>
@@ -174,6 +179,88 @@ const articleDateTime = (a, lang) => {
     ? `${t.dateFmt(d)} ${dt.toLocaleTimeString('zh-CN', { timeZone: 'Asia/Shanghai', hour: '2-digit', minute: '2-digit', hour12: false })}`
     : `${t.dateFmt(d)}, ${dt.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit', hour12: true })} ET`;
 };
+
+const schemaLang = (lang) => (lang === 'zh' ? 'zh-CN' : 'en');
+const schemaDate = (value) => {
+  if (!value) return null;
+  const d = new Date(value.includes?.('T') ? value : `${value}T00:00:00Z`);
+  return isNaN(d) ? null : d.toISOString();
+};
+const articleModified = (a) => schemaDate(a.updated_at || a.modified_at || a.published_at || articleTs(a) || a.date);
+const articlePublished = (a) => schemaDate(articleTs(a) || a.published_at || a.date);
+const orgSchema = () => ({
+  '@type': 'Organization',
+  '@id': `${BASE}/#organization`,
+  name: SITE_NAME,
+  alternateName: ALT_SITE_NAMES,
+  url: `${BASE}/`,
+  logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` },
+  sameAs: ['https://github.com/mmlong818/ai-pulse', AUTHOR.url, 'https://x.com/mmlong8/status/2079913046747820417'],
+  founder: { '@type': 'Person', name: AUTHOR.name, url: AUTHOR.url },
+});
+const siteSchema = (lang) => ({
+  '@type': 'WebSite',
+  '@id': `${BASE}/#website`,
+  name: SITE_NAME,
+  alternateName: ALT_SITE_NAMES,
+  url: `${BASE}/`,
+  description: T[lang].tagline,
+  inLanguage: schemaLang(lang),
+  publisher: { '@id': `${BASE}/#organization` },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${BASE}/${lang === 'zh' ? 'zh/' : ''}archive.html?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+});
+const breadcrumbSchema = (items) => ({
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.name,
+    item: item.url,
+  })),
+});
+const pageSchema = (type, lang, name, url, extra = {}) => ({
+  '@context': 'https://schema.org',
+  '@graph': [
+    orgSchema(),
+    siteSchema(lang),
+    { '@type': type, name, url, inLanguage: schemaLang(lang), isPartOf: { '@id': `${BASE}/#website` }, publisher: { '@id': `${BASE}/#organization` }, ...extra },
+  ],
+});
+const articleSchema = (a, lang, c) => ({
+  '@context': 'https://schema.org',
+  '@graph': [
+    orgSchema(),
+    siteSchema(lang),
+    breadcrumbSchema([
+      { name: lang === 'zh' ? '首页' : 'Home', url: urlFor(lang, '') },
+      { name: lang === 'zh' ? '简报' : 'Briefings', url: urlFor(lang, 'archive.html') },
+      { name: c.title, url: urlFor(lang, `articles/${a.slug}.html`) },
+    ]),
+    {
+      '@type': 'NewsArticle',
+      '@id': `${urlFor(lang, `articles/${a.slug}.html`)}#article`,
+      headline: c.title,
+      description: c.summary,
+      url: urlFor(lang, `articles/${a.slug}.html`),
+      mainEntityOfPage: { '@type': 'WebPage', '@id': urlFor(lang, `articles/${a.slug}.html`) },
+      datePublished: articlePublished(a),
+      dateModified: articleModified(a),
+      inLanguage: schemaLang(lang),
+      isAccessibleForFree: true,
+      articleSection: (a.tags || []).map((x) => tagLabel(x, lang)),
+      keywords: (a.tags || []).map((x) => tagLabel(x, lang)).join(', '),
+      image: `${BASE}/assets/${lang === 'zh' ? 'og.png' : 'og-en.png'}`,
+      author: { '@type': 'Organization', name: `${SITE_NAME} AI Newsroom`, url: `${BASE}/about.html` },
+      publisher: { '@id': `${BASE}/#organization` },
+      citation: (a.sources || []).map((s) => s.url),
+      about: (a.tags || []).map((x) => ({ '@type': 'Thing', name: tagLabel(x, lang) })),
+    },
+  ],
+});
 
 const tagChips = (a, lang, n = 3) => a.tags.slice(0, n).map((x) => `<a class="tag" href="${tagUrl(x, lang)}">${esc(tagLabel(x, lang))}</a>`).join('');
 
@@ -325,23 +412,19 @@ ${currentIssueBody()}
   const latest = list[0];
   await writeFile(join(dir, 'index.html'), page({
     lang,
-    title: lang === 'zh' ? 'AI专注速报 — 由 AI 撰写的每日 AI 简报' : 'AI Focus Bulletin — Daily AI Briefings, Written by AI',
+    title: lang === 'zh' ? '猫叔的AI资讯雷达 — 由 AI 撰写的每日 AI 资讯' : 'Uncle Cat AI Radar — Daily AI Briefings, Written by AI',
     description: (lang === 'zh'
       ? `AI 每日自主采编的中英双语 AI 资讯简报：模型、研究、政策与产业，每篇附原始信源。${latest ? `最新：${langOf(latest, 'zh').title}` : ''}`
       : `Daily, source-linked briefings on AI models, research, policy, and industry, researched and written autonomously by an AI newsroom.${latest ? ` Latest: ${latest.title}` : ''}`).slice(0, 158),
     canonical: urlFor(lang, ''),
     altEn: `${BASE}/`, altZh: `${BASE}/zh/`,
-    jsonLd: [
-      { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, url: urlFor(lang, ''), description: t.tagline, inLanguage: lang === 'zh' ? 'zh-CN' : 'en',
-        publisher: { '@type': 'Organization', name: SITE_NAME, url: `${BASE}/`, logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` } } },
-      { '@context': 'https://schema.org', '@type': 'Organization', name: SITE_NAME, url: `${BASE}/`,
-        description: 'An autonomous AI newsroom publishing daily source-linked briefings on artificial intelligence, in English and Chinese.',
-        logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` },
-        sameAs: ['https://github.com/mmlong818/ai-pulse', 'https://x.com/mmlong8', 'https://x.com/mmlong8/status/2079913046747820417'],
-        founder: { '@type': 'Person', name: 'Uncle Cat (猫叔)', url: 'https://x.com/mmlong8' } },
-      { '@context': 'https://schema.org', '@type': 'ItemList',
+    jsonLd: { '@context': 'https://schema.org', '@graph': [
+      orgSchema(),
+      siteSchema(lang),
+      { '@type': 'CollectionPage', name: BRAND[lang], url: urlFor(lang, ''), inLanguage: schemaLang(lang), isPartOf: { '@id': `${BASE}/#website` } },
+      { '@type': 'ItemList',
         itemListElement: list.slice(0, 10).map((a, i) => ({ '@type': 'ListItem', position: i + 1, url: urlFor(lang, `articles/${a.slug}.html`), name: langOf(a, lang).title })) },
-    ],
+    ] },
     body: indexBody,
     isHome: true,
   }));
@@ -376,11 +459,7 @@ ${currentIssueBody()}
       canonical: urlFor(lang, `articles/${a.slug}.html`),
       altEn: `${BASE}/articles/${a.slug}.html`, altZh: `${BASE}/zh/articles/${a.slug}.html`,
       ogType: 'article',
-      jsonLd: { '@context': 'https://schema.org', '@type': 'NewsArticle',
-        headline: c.title, description: c.summary, datePublished: a.published_at || a.date, inLanguage: lang === 'zh' ? 'zh-CN' : 'en',
-        author: { '@type': 'Organization', name: `${SITE_NAME} AI Newsroom` },
-        publisher: { '@type': 'Organization', name: SITE_NAME, logo: { '@type': 'ImageObject', url: `${BASE}/assets/og.png` } },
-        mainEntityOfPage: urlFor(lang, `articles/${a.slug}.html`) },
+      jsonLd: articleSchema(a, lang, c),
       body,
     }));
   }
@@ -388,9 +467,9 @@ ${currentIssueBody()}
   // About
   const aboutBody = lang === 'zh' ? `
 <article class="article">
-  <h1>关于 AI专注速报</h1>
+  <h1>关于猫叔的AI资讯雷达</h1>
   <p class="standfirst">${esc(t.tagline)}</p>
-  <p>AI专注速报（AI Focus Bulletin）是一个自主发布实验。每天，AI 编辑检索全球人工智能领域最重要的进展，阅读原始信源，并以中英双语撰写原创简报——编辑环节没有人类介入。</p>
+  <p>猫叔的AI资讯雷达（Uncle Cat AI Radar）是一个自主发布实验。每天，AI 编辑检索全球人工智能领域最重要的进展，阅读原始信源，并以中英双语撰写原创简报——编辑环节没有人类介入。</p>
   <h2>编辑原则</h2>
   <ul>
     <li><strong>附信源：</strong>每篇简报列出原始信源，一切可自行核验。</li>
@@ -402,9 +481,9 @@ ${currentIssueBody()}
   <p>定时流水线每天运行两次（北京时间 7:00 与 19:00）：从 30+ 个 RSS/Atom 信源和 100+ 个官方 X 账号获取带真实时间戳的候选 → AI 编辑遴选并核验信源与发布日期 → 以中英双语原创撰写深度简报与「每日雷达」→ 重建并发布本站，同时通过 IndexNow 通知搜索引擎。全部历史内容永久留存于<a href="${urlFor(lang, "archive.html")}">存档</a>。技术栈公开、简单、快速：无追踪器、无广告、无 Cookie。</p>
 </article>` : `
 <article class="article">
-  <h1>About AI Focus Bulletin</h1>
+  <h1>About Uncle Cat AI Radar</h1>
   <p class="standfirst">${esc(t.tagline)}</p>
-  <p>AI Focus Bulletin is an experiment in autonomous publishing. Every day, an AI editor searches the web for the most significant developments in artificial intelligence, reads the primary sources, and writes original briefings in English and Chinese — no human in the editorial loop.</p>
+  <p>Uncle Cat AI Radar is an experiment in autonomous publishing. Every day, an AI editor searches the web for the most significant developments in artificial intelligence, reads the primary sources, and writes original briefings in English and Chinese — no human in the editorial loop.</p>
   <h2>Editorial principles</h2>
   <ul>
     <li><strong>Source-linked:</strong> every briefing cites its primary sources, so you can verify everything yourself.</li>
@@ -417,13 +496,13 @@ ${currentIssueBody()}
 </article>`;
   await writeFile(join(dir, 'about.html'), page({
     lang,
-    title: lang === 'zh' ? '关于 — AI专注速报：自主运行的 AI 编辑部' : `About — ${SITE_NAME}: an Autonomous AI Newsroom`,
+    title: lang === 'zh' ? '关于 — 猫叔的AI资讯雷达：自主运行的 AI 编辑部' : `About — ${SITE_NAME}: an Autonomous AI Newsroom`,
     description: lang === 'zh'
-      ? 'AI专注速报（AI Focus Bulletin）是自主运行的 AI 编辑部：AI 编辑每日检索、撰写并以中英双语发布附信源的人工智能简报。'
-      : 'AI Focus Bulletin is an autonomous AI newsroom: an AI editor researches, writes, and publishes daily source-linked briefings on artificial intelligence.',
+      ? '猫叔的AI资讯雷达（Uncle Cat AI Radar）是自主运行的 AI 编辑部：AI 编辑每日检索、撰写并以中英双语发布附信源的人工智能简报。'
+      : 'Uncle Cat AI Radar is an autonomous AI newsroom: an AI editor researches, writes, and publishes daily source-linked briefings on artificial intelligence.',
     canonical: urlFor(lang, 'about.html'),
     altEn: `${BASE}/about.html`, altZh: `${BASE}/zh/about.html`,
-    jsonLd: { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About AI Focus Bulletin', url: urlFor(lang, 'about.html') },
+    jsonLd: pageSchema('AboutPage', lang, lang === 'zh' ? '关于猫叔的AI资讯雷达' : 'About Uncle Cat AI Radar', urlFor(lang, 'about.html')),
     body: aboutBody,
   }));
 
@@ -435,11 +514,11 @@ ${currentIssueBody()}
       lang,
       title: `${tagLabel(tag, lang)} — ${SITE_NAME}`,
       description: lang === 'zh'
-        ? `AI专注速报「${meta.zh}」分类下的全部简报（${catList.length} 篇），AI 每日采编，附原始信源。`
-        : `All AI Focus Bulletin briefings in the ${tag} category (${catList.length}), researched daily by an AI newsroom with linked sources.`,
+        ? `猫叔的AI资讯雷达「${meta.zh}」分类下的全部简报（${catList.length} 篇），AI 每日采编，附原始信源。`
+        : `All Uncle Cat AI Radar briefings in the ${tag} category (${catList.length}), researched daily by an AI newsroom with linked sources.`,
       canonical: urlFor(lang, `category/${meta.slug}.html`),
       altEn: `${BASE}/category/${meta.slug}.html`, altZh: `${BASE}/zh/category/${meta.slug}.html`,
-      jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: tagLabel(tag, lang), url: urlFor(lang, `category/${meta.slug}.html`) },
+      jsonLd: pageSchema('CollectionPage', lang, tagLabel(tag, lang), urlFor(lang, `category/${meta.slug}.html`), { about: { '@type': 'Thing', name: tagLabel(tag, lang) } }),
       body: `
 <section class="hero"><h1>${t.catTitle(tagLabel(tag, lang))}</h1></section>
 ${catBar}
@@ -465,13 +544,13 @@ ${catList.map((a) => articleCard(a, lang)).join('\n')}
       description: isLatestIssue
         ? (lang === 'zh'
           ? `${disp} 当前期 AI 简报与快讯，内容与首页同步，完整保留最近两个班次。`
-          : `The current AI Focus Bulletin issue for ${disp}, synchronized with the homepage and preserving the latest two editions.`)
+          : `The current Uncle Cat AI Radar issue for ${disp}, synchronized with the homepage and preserving the latest two editions.`)
         : lang === 'zh'
         ? `${disp} 发布的 ${d.articles.length} 篇深度简报与 ${nItems} 条一句话快讯。`
         : `${d.articles.length} briefings and ${nItems} quick hits published on ${disp} (ET).`,
       canonical: urlFor(lang, `day/${date}.html`),
       altEn: `${BASE}/day/${date}.html`, altZh: `${BASE}/zh/day/${date}.html`,
-      jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: t.dateFmt(disp), url: urlFor(lang, `day/${date}.html`) },
+      jsonLd: pageSchema('CollectionPage', lang, t.dateFmt(disp), urlFor(lang, `day/${date}.html`)),
       body: `
 <section class="hero"><h1>${t.dateFmt(disp)}</h1><p class="lede">${esc(t.dayLede)}</p></section>
 ${isLatestIssue ? currentIssueBody() : `<section class="feed">
@@ -488,14 +567,14 @@ ${timelineHtml(d.articles, d.radars, lang)}
     await writeFile(join(dir, 'radar', `${r.date}.html`), page({
       lang,
       title: lang === 'zh'
-        ? `AI专注速报 · ${t.dateFmt(disp)}快讯`
-        : `AI Focus Bulletin — Quick Hits for ${t.dateFmt(disp)}`,
+        ? `猫叔的AI资讯雷达 · ${t.dateFmt(disp)}快讯`
+        : `Uncle Cat AI Radar — Quick Hits for ${t.dateFmt(disp)}`,
       description: lang === 'zh'
         ? `${t.dateFmt(disp)} 的 ${n} 条 AI 快讯，附原始信源与发布时间。`
         : `${n} AI quick hits for ${t.dateFmt(disp)}, with source links and timestamps.`,
       canonical: urlFor(lang, `radar/${r.date}.html`),
       altEn: `${BASE}/radar/${r.date}.html`, altZh: `${BASE}/zh/radar/${r.date}.html`,
-      jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: `${SITE_NAME} ${t.dateFmt(disp)}`, url: urlFor(lang, `radar/${r.date}.html`) },
+      jsonLd: pageSchema('CollectionPage', lang, `${BRAND[lang]} ${t.dateFmt(disp)}`, urlFor(lang, `radar/${r.date}.html`)),
       body: `
 <section class="hero"><h1>${t.dateFmt(disp)}</h1><p class="lede">${esc(t.radarLede)}</p></section>
 <section class="feed">
@@ -530,7 +609,7 @@ ${calendarHtml(calEntries, lang)}
     lang,
     title: lang === 'zh' ? `存档 — ${BRAND.zh}` : `Archive — ${SITE_NAME}`,
     description: lang === 'zh'
-      ? `AI专注速报历史存档：按日历浏览每天发布的全部简报与快讯，支持搜索。`
+      ? `猫叔的AI资讯雷达历史存档：按日历浏览每天发布的全部简报与快讯，支持搜索。`
       : `${SITE_NAME} archive: browse every day's briefings and quick hits on a calendar, with search.`,
     canonical: urlFor(lang, 'archive.html'),
     altEn: `${BASE}/archive.html`, altZh: `${BASE}/zh/archive.html`,
@@ -541,11 +620,11 @@ ${calendarHtml(calEntries, lang)}
   // 收藏页（内容由 pulse.js 从 localStorage 渲染）
   await writeFile(join(dir, 'favorites.html'), page({
     lang,
-    title: lang === 'zh' ? '我的收藏 — AI专注速报' : `Saved briefings — ${SITE_NAME}`,
-    description: lang === 'zh' ? '你在本设备上收藏的 AI专注速报简报（仅存于浏览器本地）。' : 'Briefings you saved on this device (stored locally in your browser only).',
+    title: lang === 'zh' ? '我的收藏 — 猫叔的AI资讯雷达' : `Saved briefings — ${SITE_NAME}`,
+    description: lang === 'zh' ? '你在本设备上收藏的猫叔的AI资讯雷达简报（仅存于浏览器本地）。' : 'Briefings you saved on this device (stored locally in your browser only).',
     canonical: urlFor(lang, 'favorites.html'),
     altEn: `${BASE}/favorites.html`, altZh: `${BASE}/zh/favorites.html`,
-    jsonLd: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: lang === 'zh' ? '我的收藏' : 'Saved briefings', url: urlFor(lang, 'favorites.html') },
+    jsonLd: pageSchema('CollectionPage', lang, lang === 'zh' ? '我的收藏' : 'Saved briefings', urlFor(lang, 'favorites.html')),
     body: `
 <section class="hero"><h1>${lang === 'zh' ? '我的收藏' : 'Saved briefings'}</h1>
 <p class="lede">${lang === 'zh' ? '收藏只保存在你这台设备的浏览器里，不会上传。' : 'Saved items live only in this browser on this device — nothing is uploaded.'}</p></section>
@@ -590,12 +669,48 @@ ${calendarHtml(calEntries, lang)}
   </item>`;
     }),
   ].join('\n');
+  const jsonFeedItems = list.slice(0, 50).map((a) => {
+    const c = langOf(a, lang);
+    return {
+      id: urlFor(lang, `articles/${a.slug}.html`),
+      url: urlFor(lang, `articles/${a.slug}.html`),
+      title: c.title,
+      summary: c.summary,
+      content_text: c.body,
+      date_published: articlePublished(a),
+      date_modified: articleModified(a),
+      tags: (a.tags || []).map((x) => tagLabel(x, lang)),
+      authors: [{ name: `${SITE_NAME} AI Newsroom`, url: `${BASE}/about.html` }],
+      language: schemaLang(lang),
+      _ai_pulse: {
+        canonical_en: `${BASE}/articles/${a.slug}.html`,
+        canonical_zh: `${BASE}/zh/articles/${a.slug}.html`,
+        source_published_at: articlePublished(a),
+        site_published_at: schemaDate(a.published_at || a.date),
+        sources: a.sources || [],
+      },
+    };
+  });
+  await writeFile(join(SITE, lang === 'zh' ? 'feed-zh.json' : 'feed.json'), JSON.stringify({
+    version: 'https://jsonfeed.org/version/1.1',
+    title: `${SITE_NAME}${lang === 'zh' ? '（中文）' : ''}`,
+    home_page_url: urlFor(lang, ''),
+    feed_url: `${BASE}/${lang === 'zh' ? 'feed-zh.json' : 'feed.json'}`,
+    description: t.tagline,
+    language: schemaLang(lang),
+    authors: [{ name: AUTHOR.name, url: AUTHOR.url }],
+    items: jsonFeedItems,
+  }, null, 2));
+
   await writeFile(join(SITE, lang === 'zh' ? 'rss-zh.xml' : 'rss.xml'), `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
   <title>${SITE_NAME}${lang === 'zh' ? '（中文）' : ''}</title>
   <link>${urlFor(lang, '')}</link>
   <description>${esc(t.tagline)}</description>
   <language>${lang === 'zh' ? 'zh-cn' : 'en'}</language>
+  <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+  <ttl>60</ttl>
+  <atom:link href="${BASE}/${lang === 'zh' ? 'rss-zh.xml' : 'rss.xml'}" rel="self" type="application/rss+xml" />
 ${rssItems}
 </channel></rss>`);
 
@@ -629,32 +744,91 @@ async function build() {
   const catSlugs = Object.values(TAG_META).map((m) => m.slug).filter((slug) =>
     existsSync(join(SITE, 'category', `${slug}.html`)));
 
+  const allDates = [...new Set([...articles.map((a) => a.date), ...radars.map((r) => r.date)])].sort().reverse();
+  const maxIso = (values) => values.map(schemaDate).filter(Boolean).sort().at(-1) || new Date().toISOString();
+  const latestSiteIso = maxIso([
+    ...articles.map((a) => a.published_at || articleTs(a) || a.date),
+    ...radars.flatMap((r) => (r.items || []).map((i) => i.published || r.date)),
+  ]);
+  const dayLastmod = (date) => maxIso([
+    ...articles.filter((a) => a.date === date).map((a) => a.published_at || articleTs(a) || a.date),
+    ...radars.filter((r) => r.date === date).flatMap((r) => (r.items || []).map((i) => i.published || r.date)),
+  ]);
+  const tagLastmod = (slug) => {
+    const tag = Object.entries(TAG_META).find(([, meta]) => meta.slug === slug)?.[0];
+    return maxIso(articles.filter((a) => tag && (a.tags || []).includes(tag)).map((a) => a.published_at || articleTs(a) || a.date));
+  };
+  const sitemapEntry = (loc, lastmod = latestSiteIso, priority = '0.7') => ({ loc, lastmod, priority });
   // sitemap（双语 + hreflang 由页面承担）
   const urls = [
-    `${BASE}/`, `${BASE}/about.html`, `${BASE}/zh/`, `${BASE}/zh/about.html`,
-    `${BASE}/archive.html`, `${BASE}/zh/archive.html`,
-    ...en.map((a) => `${BASE}/articles/${a.slug}.html`),
-    ...zh.map((a) => `${BASE}/zh/articles/${a.slug}.html`),
-    ...catSlugs.flatMap((s) => [`${BASE}/category/${s}.html`, `${BASE}/zh/category/${s}.html`]),
-    ...[...new Set([...articles.map((a) => a.date), ...radars.map((r) => r.date)])].flatMap((d) => [`${BASE}/day/${d}.html`, `${BASE}/zh/day/${d}.html`]),
+    sitemapEntry(`${BASE}/`, latestSiteIso, '1.0'),
+    sitemapEntry(`${BASE}/zh/`, latestSiteIso, '1.0'),
+    sitemapEntry(`${BASE}/about.html`, latestSiteIso, '0.6'),
+    sitemapEntry(`${BASE}/zh/about.html`, latestSiteIso, '0.6'),
+    sitemapEntry(`${BASE}/archive.html`, latestSiteIso, '0.8'),
+    sitemapEntry(`${BASE}/zh/archive.html`, latestSiteIso, '0.8'),
+    ...en.map((a) => sitemapEntry(`${BASE}/articles/${a.slug}.html`, articleModified(a), '0.9')),
+    ...zh.map((a) => sitemapEntry(`${BASE}/zh/articles/${a.slug}.html`, articleModified(a), '0.9')),
+    ...catSlugs.flatMap((s) => [sitemapEntry(`${BASE}/category/${s}.html`, tagLastmod(s), '0.7'), sitemapEntry(`${BASE}/zh/category/${s}.html`, tagLastmod(s), '0.7')]),
+    ...allDates.flatMap((d) => [
+      sitemapEntry(`${BASE}/day/${d}.html`, dayLastmod(d), '0.85'),
+      sitemapEntry(`${BASE}/zh/day/${d}.html`, dayLastmod(d), '0.85'),
+      sitemapEntry(`${BASE}/radar/${d}.html`, dayLastmod(d), '0.75'),
+      sitemapEntry(`${BASE}/zh/radar/${d}.html`, dayLastmod(d), '0.75'),
+    ]),
   ];
   await writeFile(join(SITE, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}
+${urls.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${u.lastmod}</lastmod><priority>${u.priority}</priority></url>`).join('\n')}
 </urlset>`);
 
   await writeFile(join(SITE, 'robots.txt'), `User-agent: *
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
 Allow: /
 
 Sitemap: ${BASE}/sitemap.xml`);
 
   await writeFile(join(SITE, 'llms.txt'), `# ${SITE_NAME}
 
-> ${T.en.tagline} Original, source-linked daily briefings on AI models, research, policy, and industry — published in English and Chinese. Free to read; no ads, trackers, or paywalls.
+> ${SITE_NAME}（中文名：猫叔的AI资讯雷达）is an autonomous, source-linked AI news radar by Uncle Cat. It publishes bilingual AI briefings and quick-hit radar updates on models, research, products, policy, open source, safety, funding, and industry, with original source links and timestamps.
+
+Canonical site: ${BASE}/
+Publisher: ${AUTHOR.name} (${AUTHOR.url})
+Former names: ${ALT_SITE_NAMES.join(', ')}
+Languages: English and zh-CN
+Update cadence: twice daily around 07:00 and 19:00 Beijing time
+Access policy: public, free, no ads, no trackers, no paywall
 
 ## Latest briefings
 
 ${articles.slice(0, 15).map((a) => `- [${a.title}](${BASE}/articles/${a.slug}.html): ${a.summary}`).join('\n')}
+
+## Latest Chinese briefings
+
+${articles.filter((a) => a.title_zh && a.summary_zh).slice(0, 15).map((a) => `- [${a.title_zh}](${BASE}/zh/articles/${a.slug}.html): ${a.summary_zh}`).join('\n')}
 
 ## Pages
 
@@ -662,15 +836,79 @@ ${articles.slice(0, 15).map((a) => `- [${a.title}](${BASE}/articles/${a.slug}.ht
 - [全部简报（中文）](${BASE}/zh/): Chinese edition
 - [About](${BASE}/about.html): editorial principles and how the autonomous newsroom works
 - [RSS English](${BASE}/rss.xml) / [RSS 中文](${BASE}/rss-zh.xml): machine-readable feeds
+- [JSON Feed English](${BASE}/feed.json) / [JSON Feed 中文](${BASE}/feed-zh.json): structured article feed with source URLs
 - [Archive](${BASE}/archive.html): calendar of every day's briefings and quick hits, with search
+- [Latest radar page](${BASE}/radar/${radars[0]?.date || allDates[0]}.html): one-sentence quick hits with timestamps and sources
+- [Full LLM context](${BASE}/llms-full.txt): expanded machine-readable digest of recent stories and sources
 - Categories: ${catSlugs.map((s) => `[${s}](${BASE}/category/${s}.html)`).join(', ')}
+
+## Source and citation policy
+
+- Every article has a stable canonical URL, a Chinese alternate URL, visible source links, JSON-LD NewsArticle metadata, and machine-readable citation URLs.
+- Use the original source links on each article for factual verification.
+- Treat this site as an original synthesis and monitoring layer, not as the primary source when a linked company, paper, filing, or official post is available.
+- If referencing a quick hit from X or another social source, preserve its timestamp and original URL.
 
 ## Optional
 
 - [Source code](https://github.com/mmlong818/ai-pulse): the open pipeline that researches, writes, and publishes this site
-- [Launch announcement on X](https://x.com/mmlong8/status/2079913046747820417): by the publisher, Uncle Cat (猫叔)
+- [Launch announcement on X](https://x.com/mmlong8/status/2079913046747820417): by the publisher, Uncle Cat
 - Coverage areas: AI models, research, policy & regulation, industry, funding, open source, safety
-- Update cadence: daily; each briefing cites 1-3 primary sources; bilingual (en, zh-CN)
+- sitemap.xml: ${BASE}/sitemap.xml
+`);
+
+  const recentArticles = articles.slice(0, 30);
+  const recentRadars = radars.slice(0, 5);
+  await writeFile(join(SITE, 'llms-full.txt'), `# ${SITE_NAME} full context
+
+> Expanded context for LLMs and AI search systems. This file summarizes the current site identity, recent briefings, source URLs, and radar items. Canonical HTML pages remain the preferred citation targets.
+
+## Site identity
+
+- Name: ${SITE_NAME}
+- Chinese name: 猫叔的AI资讯雷达
+- Former names: ${ALT_SITE_NAMES.join(', ')}
+- Canonical URL: ${BASE}/
+- Publisher: ${AUTHOR.name} (${AUTHOR.url})
+- About: ${BASE}/about.html
+- Chinese about: ${BASE}/zh/about.html
+- RSS: ${BASE}/rss.xml
+- Chinese RSS: ${BASE}/rss-zh.xml
+- JSON Feed: ${BASE}/feed.json
+- Chinese JSON Feed: ${BASE}/feed-zh.json
+- Sitemap: ${BASE}/sitemap.xml
+
+## Recent briefings
+
+${recentArticles.map((a) => {
+  const sources = (a.sources || []).map((s) => `  - ${s.title}: ${s.url}`).join('\n') || '  - No source URL recorded';
+  return `### ${a.title}
+
+- Canonical: ${BASE}/articles/${a.slug}.html
+- Chinese: ${BASE}/zh/articles/${a.slug}.html
+- Source timestamp: ${articlePublished(a) || a.date}
+- Site timestamp: ${schemaDate(a.published_at || a.date)}
+- Tags: ${(a.tags || []).join(', ')}
+
+${a.summary}
+
+${a.body}
+
+Chinese title: ${a.title_zh || ''}
+Chinese summary: ${a.summary_zh || ''}
+
+Sources:
+${sources}`;
+}).join('\n\n')}
+
+## Recent radar items
+
+${recentRadars.map((r) => `### ${r.date}
+
+- English radar: ${BASE}/radar/${r.date}.html
+- Chinese radar: ${BASE}/zh/radar/${r.date}.html
+
+${(r.items || []).map((i) => `- ${i.published || r.date} | ${i.source || 'source'} | ${i.text}${i.text_zh ? ` | 中文：${i.text_zh}` : ''} | ${i.url}`).join('\n')}`).join('\n\n')}
 `);
 
   await writeFile(join(SITE, '.nojekyll'), '');
