@@ -1,5 +1,6 @@
 // AI 采编流水线：深度简报（双语）+ 每日雷达快讯（双语）
-import { spawn } from 'node:child_process';
+import { execFileSync, spawn } from 'node:child_process';
+import { existsSync, readdirSync } from 'node:fs';
 import { writeFile, readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fetchFreshHeadlines } from './feeds.mjs';
@@ -49,6 +50,37 @@ const EDITION_NOTE = isEvening
   ? `\nEDITION FOCUS (evening edition): This edition covers Beijing daytime — US overnight and European morning, globally the quietest news half-day. PRIORITIZE fresh stories from the Asian-timezone cycle: Chinese labs (Qwen, DeepSeek, Moonshot, Zhipu, ByteDance, Tencent, StepFun…), Japan/Korea, Asian AI policy and industry, open-source releases and papers that landed during Asian daytime. Do NOT fill the quota by re-picking yesterday's US stories that merely fall inside the ${WINDOW_H}-hour window — the previous edition already covered that cycle.`
   : '';
 
+function findClaudeBin() {
+  if (process.env.CLAUDE_BIN && existsSync(process.env.CLAUDE_BIN)) return process.env.CLAUDE_BIN;
+  const npmBin = join(process.env.APPDATA || '', 'npm', 'node_modules', '@anthropic-ai', 'claude-code', 'bin', 'claude.exe');
+  if (existsSync(npmBin)) return npmBin;
+  const roots = [
+    join(process.env.LOCALAPPDATA || '', 'Packages', 'Claude_pzs8sxrjxfjjc', 'LocalCache', 'Roaming', 'Claude', 'claude-code'),
+    join(process.env.APPDATA || '', 'Claude', 'claude-code'),
+  ];
+  for (const root of roots) {
+    if (!root || !existsSync(root)) continue;
+    const versions = readdirSync(root, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name)
+      .sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
+    for (const version of versions) {
+      const bin = join(root, version, 'claude.exe');
+      if (existsSync(bin)) return bin;
+    }
+  }
+  try {
+    const found = execFileSync('where.exe', ['claude'], { encoding: 'utf8', windowsHide: true })
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .find((line) => line.toLowerCase().endsWith('.exe'));
+    if (found) return found;
+  } catch {}
+  return 'claude';
+}
+
+const CLAUDE_BIN = findClaudeBin();
+
 function inEditionWindow(published) {
   if (!editionStart || !published || !published.includes('T')) return !editionStart;
   const ms = Date.parse(published);
@@ -59,8 +91,8 @@ function inEditionWindow(published) {
 
 function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
   return new Promise((resolve, reject) => {
-    const child = spawn('claude', ['-p', '--output-format', 'text', '--allowedTools', 'WebSearch,WebFetch'], {
-      shell: true, windowsHide: true, timeout: timeoutMs,
+    const child = spawn(CLAUDE_BIN, ['-p', '--output-format', 'text', '--allowedTools', 'WebSearch,WebFetch'], {
+      windowsHide: true, timeout: timeoutMs,
     });
     let out = '', err = '';
     child.stdout.on('data', (d) => (out += d));
@@ -68,7 +100,7 @@ function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
     child.on('error', reject);
     child.on('close', (code) => {
       if (code === 0 && out.trim()) resolve(out.trim());
-      else reject(new Error(err.trim().slice(0, 300) || `claude 退出码 ${code}`));
+      else reject(new Error((err.trim() || out.trim()).slice(0, 300) || `${CLAUDE_BIN} 退出码 ${code}`));
     });
     child.stdin.write(prompt);
     child.stdin.end();
@@ -323,6 +355,7 @@ async function recentRadarTexts() {
 }
 
 async function main() {
+  console.log(`[generate] Claude CLI: ${CLAUDE_BIN}`);
   const skip = await existingTitles();
   const coverage = await existingCoverage();
   console.log(`[generate] 深度简报至多 ${COUNT} 篇（${isEvening ? '晚班·亚洲时段方针' : '早班'}）+ 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);
