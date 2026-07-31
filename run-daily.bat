@@ -27,6 +27,11 @@ if errorlevel 1 (
   exit /b 1
 )
 
+node zhihu-evening.mjs >> daily.log 2>&1
+if errorlevel 1 (
+  echo [%date% %time%] Zhihu evening draft FAILED, continue publish >> daily.log
+)
+
 git add -A >> daily.log 2>&1
 git diff --cached --quiet >> daily.log 2>&1
 if not errorlevel 1 (

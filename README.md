@@ -41,6 +41,7 @@ feeds.mjs      一级 RSS 信源采集（带时间戳过滤）
 x-feed.mjs     官方 X 账号直连（X API v2，token 读环境变量）
 build.mjs      静态站构建 → docs/（双语页面、分类、存档、雷达、RSS、sitemap、llms.txt、JSON-LD）
 serve.mjs      本地预览（http://127.0.0.1:3898/ai-pulse/）
+zhihu-evening.mjs 知乎晚报草稿生成（晚班输出 Markdown/HTML/JSON）
 run-daily.bat  定时班次入口（Windows 计划任务每日 7:00 / 19:00）
 refresh-72h.bat 全量重刷（72 小时窗口）
 ```
@@ -53,6 +54,7 @@ refresh-72h.bat 全量重刷（72 小时窗口）
 node build.mjs   # 从 content/ 构建到 docs/
 node serve.mjs   # 本地预览
 node generate.mjs 6   # 手动采编一班（需本机安装并登录 claude CLI）
+node zhihu-evening.mjs --force 2026-07-31   # 手动生成某日晚报知乎草稿
 ```
 
 环境变量（均可选）：
@@ -64,6 +66,7 @@ node generate.mjs 6   # 手动采编一班（需本机安装并登录 claude CLI
 | `AIPULSE_CUTOFF` | 采集截止时刻（ISO 格式） |
 | `AIPULSE_RADAR_COUNT` | 雷达条数（默认 14） |
 | `AIPULSE_SKIP_RADAR` | 设为 `1` 跳过雷达 |
+| `AIPULSE_ZHIHU_FORCE` | 设为 `1` 强制生成知乎晚报草稿 |
 
 ## 编辑原则 / Editorial principles
 
