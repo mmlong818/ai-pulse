@@ -1,0 +1,27 @@
+{
+  "slug": "jetbrains-open-sources-kotlinllm",
+  "title": "JetBrains open-sources runtime LLM macros for Kotlin",
+  "summary": "JetBrains Research released KotlinLLM under Apache 2.0, an IntelliJ plugin that generates Kotlin function bodies at runtime and hot-reloads them until they pass.",
+  "body": "## Macros whose bodies are written by a model\n\nJetBrains Research published KotlinLLM on 31 July, an IntelliJ IDEA plugin released under the Apache 2.0 licence that lets developers declare Kotlin functions and leave the implementation to a language model at runtime. Two APIs carry the idea: `asLlm<F, T>(from, hint)` for converting between types, and `mockLlm<T>()` for producing an implementation of an interface on demand.\n\nThe mechanism is unusual. The plugin scans a project for macro call sites, generates bootstrap code, then runs the program under the Java Debug Interface. When generated logic fails to handle a real scenario, a runtime breakpoint captures the actual values in play, an LLM agent rewrites the code against that evidence, and the class is recompiled and hot-reloaded through JVM class redefinition before execution is retried.\n\n## Costs are paid once per scenario\n\nBecause the loop writes real Kotlin source, the output is ordinary code that can be deployed without a model dependency at runtime. Scenarios already covered trigger no further model call, so there is no recurring latency or token cost on paths the system has seen before — a departure from agent designs that consult a model on every invocation. In a test on the Spring Petclinic sample application, JetBrains reported 24 of 24 scenarios completed and hot reload succeeding every time. The team labels the project a research prototype and explicitly does not recommend it as a production runtime.\n\n## Why it matters\n\nMost coding-agent tooling operates before the program runs: it reads repositories, proposes diffs and waits for tests. KotlinLLM inverts that by using live execution state as the specification, which sidesteps the hardest part of code generation — inferring intent from static context — and gets ground truth from the debugger instead. Whether the pattern generalises beyond the JVM's unusually good hot-reload and debugging facilities is unresolved, but as an Apache-licensed reference implementation from the company that builds Kotlin, it gives the agent-infrastructure community something concrete to test against the current diff-and-test orthodoxy.",
+  "body_zh": "## 函数体交给模型在运行时写\n\n7月31日，JetBrains Research 发布 KotlinLLM，一款以 Apache 2.0 协议开源的 IntelliJ IDEA 插件：开发者只声明 Kotlin 函数，实现留给运行时的大模型生成。核心是两个 API——`asLlm<F, T>(from, hint)` 负责类型间转换，`mockLlm<T>()` 按需生成接口实现。\n\n机制颇为特别。插件先扫描项目中的宏调用点，生成引导代码，再让程序在 Java Debug Interface 下运行。当生成的逻辑处理不了真实场景时，运行时断点会捕获当下的实际取值，由 LLM 智能体据此重写代码，随后通过 JVM 类重定义完成重新编译与热加载，再次尝试执行。\n\n## 成本只在首次场景付出\n\n由于这套循环产出的是真实 Kotlin 源码，最终交付的就是普通代码，运行时不依赖模型。已覆盖过的场景不会再触发模型调用，走过的路径上没有额外延迟与 token 开销——这与每次调用都问一遍模型的智能体设计明显不同。在 Spring Petclinic 示例项目上，JetBrains 称 24 个场景全部通过，热加载成功率 100%。团队将其定位为研究原型，明确不建议作为生产运行时使用。\n\n## 为什么值得关注\n\n目前多数编码智能体工具都工作在程序运行之前：读仓库、给 diff、等测试结果。KotlinLLM 反其道而行，把运行时状态当作规格说明，绕开代码生成最难的一环——从静态上下文里猜意图——直接从调试器拿到事实。这一范式能否推广到 JVM 之外（其热加载与调试能力本就格外好）尚无定论，但作为 Kotlin 缔造者放出的 Apache 协议参考实现，它给智能体基础设施圈提供了一个可以拿来挑战“改 diff 加跑测试”主流路线的具体样本。",
+  "summary_zh": "JetBrains Research 以 Apache 2.0 开源 KotlinLLM：IntelliJ 插件在运行时生成 Kotlin 函数体，失败即凭断点数据重写并热加载。",
+  "title_zh": "JetBrains 开源 KotlinLLM：运行时生成代码",
+  "tags": [
+    "Open Source",
+    "Agents"
+  ],
+  "sources": [
+    {
+      "title": "MarkTechPost: JetBrains Open-Sources KotlinLLM",
+      "url": "https://www.marktechpost.com/2026/07/31/jetbrains-research-open-sources-kotlinllm-intellij-plugin-kotlin-runtime-llm/"
+    },
+    {
+      "title": "GitHub: JetBrains-Research/kotlinllm-plugin",
+      "url": "https://github.com/JetBrains-Research/kotlinllm-plugin"
+    }
+  ],
+  "featured": false,
+  "date": "2026-07-31",
+  "published": "2026-07-31T10:32:00Z",
+  "published_at": "2026-07-31T11:00:03.442Z"
+}

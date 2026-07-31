@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JetBrains 开源 KotlinLLM：运行时生成代码 — AI Focus Bulletin</title>
+<meta name="description" content="JetBrains Research 以 Apache 2.0 开源 KotlinLLM：IntelliJ 插件在运行时生成 Kotlin 函数体，失败即凭断点数据重写并热加载。">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/jetbrains-open-sources-kotlinllm.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/jetbrains-open-sources-kotlinllm.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/jetbrains-open-sources-kotlinllm.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/jetbrains-open-sources-kotlinllm.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Focus Bulletin">
+<meta property="og:title" content="JetBrains 开源 KotlinLLM：运行时生成代码 — AI Focus Bulletin">
+<meta property="og:description" content="JetBrains Research 以 Apache 2.0 开源 KotlinLLM：IntelliJ 插件在运行时生成 Kotlin 函数体，失败即凭断点数据重写并热加载。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/jetbrains-open-sources-kotlinllm.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JetBrains 开源 KotlinLLM：运行时生成代码 — AI Focus Bulletin">
+<meta name="twitter:description" content="JetBrains Research 以 Apache 2.0 开源 KotlinLLM：IntelliJ 插件在运行时生成 Kotlin 函数体，失败即凭断点数据重写并热加载。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="AI Focus Bulletin RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"JetBrains 开源 KotlinLLM：运行时生成代码","description":"JetBrains Research 以 Apache 2.0 开源 KotlinLLM：IntelliJ 插件在运行时生成 Kotlin 函数体，失败即凭断点数据重写并热加载。","datePublished":"2026-07-31T11:00:03.442Z","inLanguage":"zh-CN","author":{"@type":"Organization","name":"AI Focus Bulletin AI Newsroom"},"publisher":{"@type":"Organization","name":"AI Focus Bulletin","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"}},"mainEntityOfPage":"https://mmlong818.github.io/ai-pulse/zh/articles/jetbrains-open-sources-kotlinllm.html"}</script>
+</head>
+<body data-slug="jetbrains-open-sources-kotlinllm" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ AI专注速报</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/jetbrains-open-sources-kotlinllm.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-07-31T10:32:00Z">2026年7月31日 18:32</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><span class="views" id="viewCount"></span></div>
+  <h1>JetBrains 开源 KotlinLLM：运行时生成代码</h1>
+  <p class="standfirst">JetBrains Research 以 Apache 2.0 开源 KotlinLLM：IntelliJ 插件在运行时生成 Kotlin 函数体，失败即凭断点数据重写并热加载。</p>
+  <h2>函数体交给模型在运行时写</h2><p>7月31日，JetBrains Research 发布 KotlinLLM，一款以 Apache 2.0 协议开源的 IntelliJ IDEA 插件：开发者只声明 Kotlin 函数，实现留给运行时的大模型生成。核心是两个 API——<code>asLlm&lt;F, T&gt;(from, hint)</code> 负责类型间转换，<code>mockLlm&lt;T&gt;()</code> 按需生成接口实现。</p><p>机制颇为特别。插件先扫描项目中的宏调用点，生成引导代码，再让程序在 Java Debug Interface 下运行。当生成的逻辑处理不了真实场景时，运行时断点会捕获当下的实际取值，由 LLM 智能体据此重写代码，随后通过 JVM 类重定义完成重新编译与热加载，再次尝试执行。</p><h2>成本只在首次场景付出</h2><p>由于这套循环产出的是真实 Kotlin 源码，最终交付的就是普通代码，运行时不依赖模型。已覆盖过的场景不会再触发模型调用，走过的路径上没有额外延迟与 token 开销——这与每次调用都问一遍模型的智能体设计明显不同。在 Spring Petclinic 示例项目上，JetBrains 称 24 个场景全部通过，热加载成功率 100%。团队将其定位为研究原型，明确不建议作为生产运行时使用。</p><h2>为什么值得关注</h2><p>目前多数编码智能体工具都工作在程序运行之前：读仓库、给 diff、等测试结果。KotlinLLM 反其道而行，把运行时状态当作规格说明，绕开代码生成最难的一环——从静态上下文里猜意图——直接从调试器拿到事实。这一范式能否推广到 JVM 之外（其热加载与调试能力本就格外好）尚无定论，但作为 Kotlin 缔造者放出的 Apache 协议参考实现，它给智能体基础设施圈提供了一个可以拿来挑战“改 diff 加跑测试”主流路线的具体样本。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://www.marktechpost.com/2026/07/31/jetbrains-research-open-sources-kotlinllm-intellij-plugin-kotlin-runtime-llm/" rel="noopener" target="_blank">MarkTechPost: JetBrains Open-Sources KotlinLLM</a></li><li><a href="https://github.com/JetBrains-Research/kotlinllm-plugin" rel="noopener" target="_blank">GitHub: JetBrains-Research/kotlinllm-plugin</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/gemini-spark-chrome-auto-browse.html">Gemini Spark 接入 Chrome 自动浏览，美国用户先行</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-projects-computer.html">Perplexity 将 Spaces 升级为 Projects，全量开放</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/thinking-machines-inkling-small.html">Thinking Machines 开源 276B 参数 Inkling-Small</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>AI专注速报</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
