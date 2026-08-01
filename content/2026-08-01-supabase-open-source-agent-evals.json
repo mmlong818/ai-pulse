@@ -1,0 +1,23 @@
+{
+  "slug": "supabase-open-source-agent-evals",
+  "title": "Supabase open-sources an eval suite for coding agents",
+  "summary": "Supabase released Evals, an Apache-2.0 benchmark that scores Claude Code, Codex and OpenCode on real database, auth and deployment tasks.",
+  "body": "Supabase has published Evals, an open-source benchmark that measures how well coding agents handle real work on its platform, releasing both the harness and its first round of scores under Apache-2.0 in the `supabase/evals` repository.\n\n## How it works\n\nThe suite runs scenarios against containerised Supabase stacks rather than static prompts, and slices coverage three ways: by product (database, auth, storage, edge functions), by topic (row-level security, security posture, migrations, raw SQL), and by stage of work (build, deploy, investigate, resolve). Scoring mixes deterministic checks — did the migration apply, did the policy actually restrict access — with LLM-as-a-judge grading for the parts that resist assertion.\n\nOn build-stage tasks, Claude Code paired with Opus 5 and with Kimi K3 reached 100% without any Supabase-specific skills loaded. Smaller and mid-tier models depended much more on that scaffolding: Sonnet 5 went from 78% to 100% with skills enabled, GPT-5.6 Sol from 89% to 100%, and GPT-5.4 mini from 78% to 89%. Supabase's summary of the pattern is that skills mattered least to the strongest models and most to the weakest.\n\nThe failure analysis is arguably more useful than the leaderboard. Agents consistently hand-wrote migrations instead of using declarative schema files, and verified authentication manually rather than calling the proper libraries — both habits that pass a test and fail in production. Documentation usage varied sharply too: Codex pulled roughly eight docs per scenario against about two for Claude Code.\n\n## Why it matters\n\nMost agent benchmarks measure whether code runs. This one measures whether an agent operates a specific production platform the way its maintainers would, which is closer to what teams actually delegate. That makes it a template other infrastructure vendors can copy: a platform owner is uniquely positioned to define correct behaviour on its own surface, and publishing that as a runnable Apache-2.0 suite turns vendor documentation into an executable spec.\n\nThe skills result also lands on a live debate about where agent capability sits. If a well-written skill file closes a 22-point gap for a mid-tier model, then a meaningful share of what reads as model quality is really context engineering — and it is the cheaper half to fix.",
+  "body_zh": "Supabase 开源了 Evals——一套衡量编程智能体在其平台上完成真实工作能力的基准测试，框架与首轮成绩均以 Apache-2.0 协议放在 `supabase/evals` 仓库中。\n\n## 怎么测\n\n这套测试不是静态提示词，而是在容器化的 Supabase 环境中跑真实场景，并从三个维度切分覆盖面：产品（数据库、认证、存储、边缘函数）、主题（行级安全、安全配置、数据迁移、原生 SQL）和工作阶段（构建、部署、排查、修复）。评分混用确定性检查（迁移是否成功执行、策略是否真的限制了访问）与难以断言部分的 LLM 裁判打分。\n\n在构建阶段任务上，Claude Code 搭配 Opus 5 以及搭配 Kimi K3 均在不加载任何 Supabase 专用 skills 的情况下拿到 100%。中小模型对这类脚手架的依赖明显更重：Sonnet 5 从 78% 提升到 100%，GPT-5.6 Sol 从 89% 到 100%，GPT-5.4 mini 从 78% 到 89%。Supabase 对此的总结是：skills 对最强模型作用最小，对最弱模型作用最大。\n\n失败分析可能比榜单本身更有价值。智能体普遍倾向手写迁移脚本而不用声明式 schema 文件，验证认证时也倾向手动核对而非调用现成库——两种习惯都能通过测试，却会在生产环境出问题。查文档的行为差异也很大：Codex 每个场景约读 8 篇文档，Claude Code 只读约 2 篇。\n\n## 为何重要\n\n多数智能体基准测的是代码能不能跑。这套测的是智能体是否按平台维护者认可的方式操作一个具体的生产平台，更接近团队真正会外包出去的工作。这也给其他基础设施厂商提供了可复制的范式：平台方最有资格定义自家产品上的「正确做法」，把它写成可运行的 Apache-2.0 测试集，等于把文档变成可执行规范。\n\nskills 的结果也切中当下关于智能体能力来源的争论。如果一份写得好的 skill 文件能为中档模型补上 22 个百分点的差距，那么很大一部分看起来像模型能力的东西其实是上下文工程——而这恰恰是更便宜的那一半。",
+  "title_zh": "Supabase 开源编程智能体实战评测套件 Evals",
+  "summary_zh": "Supabase 发布 Apache-2.0 协议的 Evals 基准，在真实数据库、认证与部署任务上给 Claude Code、Codex 与 OpenCode 打分。",
+  "tags": [
+    "Agents",
+    "Open Source"
+  ],
+  "sources": [
+    {
+      "title": "Supabase Releases Evals: an Open Source Benchmark That Scores Claude Code, Codex and OpenCode on Real Supabase Tasks",
+      "url": "https://www.marktechpost.com/2026/08/01/supabase-releases-evals-an-open-source-benchmark-that-scores-claude-code-codex-and-opencode-on-real-supabase-tasks/"
+    }
+  ],
+  "featured": false,
+  "date": "2026-08-01",
+  "published": "2026-08-01T09:52:00Z",
+  "published_at": "2026-08-01T11:00:03.179Z"
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supabase 开源编程智能体实战评测套件 Evals — Uncle Cat AI Radar</title>
+<meta name="description" content="Supabase 发布 Apache-2.0 协议的 Evals 基准，在真实数据库、认证与部署任务上给 Claude Code、Codex 与 OpenCode 打分。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/supabase-open-source-agent-evals.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/supabase-open-source-agent-evals.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/supabase-open-source-agent-evals.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/supabase-open-source-agent-evals.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Supabase 开源编程智能体实战评测套件 Evals — Uncle Cat AI Radar">
+<meta property="og:description" content="Supabase 发布 Apache-2.0 协议的 Evals 基准，在真实数据库、认证与部署任务上给 Claude Code、Codex 与 OpenCode 打分。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/supabase-open-source-agent-evals.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Supabase 开源编程智能体实战评测套件 Evals — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Supabase 发布 Apache-2.0 协议的 Evals 基准，在真实数据库、认证与部署任务上给 Claude Code、Codex 与 OpenCode 打分。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"Supabase 开源编程智能体实战评测套件 Evals","item":"https://mmlong818.github.io/ai-pulse/zh/articles/supabase-open-source-agent-evals.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/supabase-open-source-agent-evals.html#article","headline":"Supabase 开源编程智能体实战评测套件 Evals","description":"Supabase 发布 Apache-2.0 协议的 Evals 基准，在真实数据库、认证与部署任务上给 Claude Code、Codex 与 OpenCode 打分。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/supabase-open-source-agent-evals.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/supabase-open-source-agent-evals.html"},"datePublished":"2026-08-01T09:52:00.000Z","dateModified":"2026-08-01T11:00:03.179Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["Agent","开源"],"keywords":"Agent, 开源","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://www.marktechpost.com/2026/08/01/supabase-releases-evals-an-open-source-benchmark-that-scores-claude-code-codex-and-opencode-on-real-supabase-tasks/"],"about":[{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"开源"}]}]}</script>
+</head>
+<body data-slug="supabase-open-source-agent-evals" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/supabase-open-source-agent-evals.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-08-01T09:52:00Z">2026年8月1日 17:52</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><span class="views" id="viewCount"></span></div>
+  <h1>Supabase 开源编程智能体实战评测套件 Evals</h1>
+  <p class="standfirst">Supabase 发布 Apache-2.0 协议的 Evals 基准，在真实数据库、认证与部署任务上给 Claude Code、Codex 与 OpenCode 打分。</p>
+  <p>Supabase 开源了 Evals——一套衡量编程智能体在其平台上完成真实工作能力的基准测试，框架与首轮成绩均以 Apache-2.0 协议放在 <code>supabase/evals</code> 仓库中。</p><h2>怎么测</h2><p>这套测试不是静态提示词，而是在容器化的 Supabase 环境中跑真实场景，并从三个维度切分覆盖面：产品（数据库、认证、存储、边缘函数）、主题（行级安全、安全配置、数据迁移、原生 SQL）和工作阶段（构建、部署、排查、修复）。评分混用确定性检查（迁移是否成功执行、策略是否真的限制了访问）与难以断言部分的 LLM 裁判打分。</p><p>在构建阶段任务上，Claude Code 搭配 Opus 5 以及搭配 Kimi K3 均在不加载任何 Supabase 专用 skills 的情况下拿到 100%。中小模型对这类脚手架的依赖明显更重：Sonnet 5 从 78% 提升到 100%，GPT-5.6 Sol 从 89% 到 100%，GPT-5.4 mini 从 78% 到 89%。Supabase 对此的总结是：skills 对最强模型作用最小，对最弱模型作用最大。</p><p>失败分析可能比榜单本身更有价值。智能体普遍倾向手写迁移脚本而不用声明式 schema 文件，验证认证时也倾向手动核对而非调用现成库——两种习惯都能通过测试，却会在生产环境出问题。查文档的行为差异也很大：Codex 每个场景约读 8 篇文档，Claude Code 只读约 2 篇。</p><h2>为何重要</h2><p>多数智能体基准测的是代码能不能跑。这套测的是智能体是否按平台维护者认可的方式操作一个具体的生产平台，更接近团队真正会外包出去的工作。这也给其他基础设施厂商提供了可复制的范式：平台方最有资格定义自家产品上的「正确做法」，把它写成可运行的 Apache-2.0 测试集，等于把文档变成可执行规范。</p><p>skills 的结果也切中当下关于智能体能力来源的争论。如果一份写得好的 skill 文件能为中档模型补上 22 个百分点的差距，那么很大一部分看起来像模型能力的东西其实是上下文工程——而这恰恰是更便宜的那一半。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://www.marktechpost.com/2026/08/01/supabase-releases-evals-an-open-source-benchmark-that-scores-claude-code-codex-and-opencode-on-real-supabase-tasks/" rel="noopener" target="_blank">Supabase Releases Evals: an Open Source Benchmark That Scores Claude Code, Codex and OpenCode on Real Supabase Tasks</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/bolt-security-agent-every-project.html">Bolt 给每个项目内置自动化安全智能体</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/gemini-spark-international-ai-pro.html">Gemini Spark 下沉 AI Pro，覆盖 160 多个国家</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-probe-more-agents-escaped.html">OpenAI 内部调查：更多智能体曾突破沙箱</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
