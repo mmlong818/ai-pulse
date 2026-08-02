@@ -19,6 +19,62 @@
 
 ## Recent briefings
 
+### AI memory crunch pushes MacBook Air into shortage
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/ai-memory-crunch-hits-macbook-air.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/ai-memory-crunch-hits-macbook-air.html
+- Source timestamp: 2026-08-02T21:33:00.000Z
+- Site timestamp: 2026-08-02T23:00:02.982Z
+- Tags: Industry
+
+Apple's highest-volume laptop is now short of supply as DRAM makers divert wafers to AI data centres, with custom orders slipping into September.
+
+The memory shortage created by AI data-centre buildouts has reached Apple's best-selling computer. Bloomberg's Mark Gurman reported on Sunday that MacBook Air supply has tightened globally, with configured orders on Apple's own store slipping into late August or September in North America, Europe and India. Earlier this year the squeeze was confined to Apple's lower-volume desktops, the Mac mini and Mac Studio; the Air is the company's highest-volume Mac and its primary education-market product.
+
+Apple's response, according to the report, has been a mix of pricing and marketing adjustments rather than a fix. The company has raised prices on affected models, begun sourcing memory from Chinese suppliers to widen its vendor base, and delayed its back-to-school promotion — originally planned for June — while steering campaign emphasis toward base-model MacBook Pro units that are easier to keep in stock. Apple has also started attaching availability disclaimers to Air marketing materials.
+
+The underlying cause is allocation, not capacity loss. DRAM fabricators have been shifting wafer starts toward high-bandwidth memory, the stacked DRAM that sits beside AI accelerators and commands far higher margins than the LPDDR modules that go into laptops. Consumer PC lines now effectively bid against hyperscaler orders for the same fab output. DDR5 and NAND contract prices have climbed sharply since January, and most announced greenfield memory capacity is not scheduled to produce volume before 2027.
+
+## Why it matters
+
+This is the clearest consumer-visible evidence yet that AI infrastructure spending has begun to price other industries out of the semiconductor supply chain. Apple has among the strongest procurement positions in electronics — long-term contracts, prepayments, enormous volume — and it still cannot hold stock on its flagship laptop. That sets a floor expectation for everyone below it: PC OEMs, smartphone makers, console and automotive buyers face worse terms and longer waits. For AI economics specifically, memory is now a hard constraint on both sides of the ledger, raising the bill of materials for on-device AI hardware at the same time it inflates the cost of the accelerators the cloud runs on.
+
+Chinese title: AI 抢内存，MacBook Air 陷入缺货
+Chinese summary: 内存厂商把产能让给 AI 数据中心，苹果销量最大的笔记本开始缺货，定制机型发货排到了 9 月。
+
+Sources:
+  - The global memory shortage hits the MacBook Air: https://techcrunch.com/2026/08/02/the-global-memory-shortage-hits-the-macbook-air/
+  - MacBook Air reportedly facing major supply shortages due to AI-driven memory crisis: https://9to5mac.com/2026/08/02/macbook-air-reportedly-facing-major-supply-shortages-due-to-ai-driven-memory-crisis/
+  - AI 产业扩张引发内存芯片短缺，消息称苹果 MacBook Air 笔记本出现供应紧张局面: https://www.ithome.com/0/984/822.htm
+
+### MiniMax releases open weights for its H3 video model
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/minimax-h3-open-weights-release.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-open-weights-release.html
+- Source timestamp: 2026-08-02T16:00:00.000Z
+- Site timestamp: 2026-08-02T23:00:02.982Z
+- Tags: AIGC, Open Source, Models
+
+MiniMax published downloadable weights for H3, its omni-modal 2K video model, making a top-ranked video generator locally runnable for the first time.
+
+MiniMax released the model weights for H3, its omni-modal video generation system, at midnight Beijing time on August 3 — 16:00 UTC on August 2 — following through on an open-sourcing pledge the Shanghai company made when it launched the model on July 31. The drop landed first on the domestic ModelScope hub, with Hugging Face mirrors following, and ComfyUI simultaneously published a local-inference tutorial covering the newly public checkpoints.
+
+H3 is unusual among video models in treating text, images, video and audio as a single input context rather than as separate conditioning channels. It generates clips of roughly four to fifteen seconds at up to 2K resolution and 24 frames per second, and produces native stereo audio inside the same generation pass instead of dubbing sound on afterward. On Artificial Analysis leaderboards the model ranks first in video editing, second in text-to-video and third in image-to-video — placing it among the strongest video generators of any licensing type.
+
+The published artifacts give an unusually clear view of the architecture. ComfyUI's local workflow pulls two pruned int8 diffusion checkpoints — one for text-to-video and image-to-video, one for reference-driven generation — plus separate video and audio VAEs and, notably, a text encoder derived from Alibaba's Qwen3-VL 32B vision-language model. Weights ship under the MiniMax Community License, which permits free non-commercial use and free commercial use by organisations below roughly $20 million in annual revenue, with attribution. MiniMax continues to sell hosted access through its own API and the Hailuo consumer app at prices it describes as under a third of comparable services per second of 2K output.
+
+## Why it matters
+
+Until now the frontier of video generation has been almost entirely closed: OpenAI's Sora, Google's Veo and ByteDance's Seedance line are API-only. H3 breaks that pattern by putting a leaderboard-topping video model on local hardware, where studios can fine-tune it, inspect it, and run it without sending footage to a vendor. It also sharpens a strategic split inside China's video-model race — ByteDance widening closed API access to Seedance 2.5 the same week MiniMax gave its weights away — and hands the local-inference ecosystem, from ComfyUI workflows to quantisation projects, a genuinely competitive base model to build on.
+
+Chinese title: MiniMax 放出 H3 视频模型开源权重
+Chinese summary: MiniMax 正式开放全模态视频模型 H3 的权重下载，让一款榜单前列的视频生成模型首次可以在本地部署运行。
+
+Sources:
+  - MiniMax H3: ComfyUI Workflow Examples (open-weight local deployment): https://docs.comfy.org/tutorials/video/minimax/minimax-h3
+  - Video AI: MiniMax challenges ByteDance with low price, open weights for new H3 model: https://www.scmp.com/tech/article/3362540/video-ai-minimax-challenges-bytedance-low-price-open-weights-new-h3-model
+  - MiniMax H3 通用多模态视频模型将于 8 月 3 日开源，最高可支持 15s 2K 分辨率: https://tech.ifeng.com/c/8vBdVEaynZU
+
 ### Apple caps bug reports as AI-written filings flood in
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/apple-caps-ai-bug-reports.html
@@ -898,67 +954,25 @@ Sources:
   - OpenAI: Hugging Face model evaluation security incident: https://openai.com/index/hugging-face-model-evaluation-security-incident/
   - Redwood Research: The OpenAI/Hugging Face incident: https://blog.redwoodresearch.org/p/the-openaihuggingface-incident-redwood
 
-### OpenAI opens frontier models to 100,000 academic researchers
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-academic-researchers-program.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-academic-researchers-program.html
-- Source timestamp: 2026-07-29T17:19:00.000Z
-- Site timestamp: 2026-07-29T23:00:02.787Z
-- Tags: Industry, Research, Policy
-
-ChatGPT for Academic Researchers starts with 10,000 scientists and scales to 100,000 by 2027, part of a $250M-plus commitment to external research.
-
-OpenAI launched ChatGPT for Academic Researchers on Wednesday, a programme that gives scientists at selected institutions free access to its frontier models, starting with 10,000 researchers this summer and expanding to 100,000 through 2027.
-
-Participants get access to OpenAI's top-end models, including GPT-5.6 Sol Pro at launch, in a workspace roughly equivalent to a year of the $200-per-month ChatGPT Pro tier, and each researcher can invite up to four collaborators from their own institution. The workspaces carry business-grade privacy and security terms, and OpenAI says submitted data is not used for model training by default. Eligibility spans biology, chemistry, computer science, engineering, mathematics and physics; access is already live at institutions including the Institute for Advanced Study and École normale supérieure. OpenAI framed the programme as part of a commitment of more than $250 million through 2027 to support external scientific research, and argued that the benefits of frontier AI should not concentrate in a handful of well-resourced labs.
-
-What the programme does not include is model weights. Researchers get inference access under commercial terms — useful for doing science with the models, largely unusable for doing science on them. Interpretability, robustness and evaluation work that requires internals, fine-tuning or activation access remains outside the offer, which is why a substantial part of academic AI research still runs on open-weight models from Chinese and European labs.
-
-The timing is not incidental. Anthropic, Google and OpenAI have all been expanding academic and national-science programmes, and Washington is simultaneously weighing restrictions on Chinese open-weight models that many university labs currently depend on. Free credits at scale are also a recruiting and standard-setting instrument: a generation of graduate students trained inside one vendor's workspace becomes that vendor's default in industry.
-
-**Why it matters:** Compute access has become the main stratifier in academic AI and adjacent sciences, and 100,000 seats at frontier-tier capability is a meaningful redistribution of it. It also further entrenches the split the open-weights fight is about — labs can now be generous with access while remaining closed about the artefacts, and the science that needs the artefacts still has to look elsewhere.
-
-Chinese title: OpenAI 向 10 万名科研人员免费开放前沿模型
-Chinese summary: ChatGPT for Academic Researchers 首批面向 1 万名科研人员，2027 年扩至 10 万，属其逾 2.5 亿美元外部科研投入的一部分。
-
-Sources:
-  - Accelerating scientific discovery with ChatGPT for Academic Researchers: https://openai.com/index/chatgpt-for-academic-researchers/
-  - OpenAI launches free AI access program for academic researchers: https://www.axios.com/2026/07/29/openai-academics-research-chatgpt-sol
-  - OpenAI Launches Free AI Access for Scientists: Apply Now, Model Weights Still Off-Limits: https://www.techtimes.com/articles/322124/20260729/openai-launches-free-ai-access-scientists-apply-now-model-weights-still-off-limits.htm
-
-### OpenAI's harness settings lift ARC-AGI-3 score to 38.3%
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-arc-agi-3-harness-settings.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-arc-agi-3-harness-settings.html
-- Source timestamp: 2026-07-29T23:57:00.000Z
-- Site timestamp: 2026-07-30T11:00:03.870Z
-- Tags: Models, Research
-
-OpenAI says GPT-5.6 Sol jumps from 7.8% to 38.3% on ARC-AGI-3's public set when run through its Responses API with retained reasoning and context compaction — a figure not directly comparable to official leaderboard scores.
-
-## Same model, different plumbing
-
-OpenAI published a set of experiments arguing that GPT-5.6 Sol's weak showing on ARC-AGI-3 was largely an artifact of how the benchmark was run. In the standardized public harness the model scored 7.8%, because reasoning traces were discarded after each move and context was truncated rather than summarized. Re-running the same benchmark through OpenAI's Responses API with two switches enabled — retained reasoning between steps, and context compaction instead of truncation — lifted the score to 38.3%, a 188% relative gain that OpenAI reported on the public task set.
-
-That 38.3% is not a like-for-like improvement on the 30.2% recorded for Anthropic's Claude Opus 5 earlier this week. Opus 5's figure is an official result produced on ARC's standard harness against the semi-private set, while OpenAI's comes from the public set under its own configuration; the two numbers measure different tasks under different plumbing. On the official leaderboard, which excludes provider-specific settings, Anthropic remains ahead. OpenAI framed its own takeaway broadly: a benchmark number measures a model plus a bundle of largely invisible harness and API choices.
-
-## ARC Prize draws a line
-
-ARC Prize co-founder François Chollet responded by distinguishing two kinds of modification. A harness purpose-built to beat the benchmark, or one carrying knowledge of the benchmark format, breaks the rules; general-purpose API settings that were not developed for ARC-AGI-3 and that any developer can turn on do not, provided the settings and the resulting cost are disclosed. He conceded the arrangement creates parity problems between providers, but treated transparent reporting as an acceptable remedy. The official leaderboard deliberately avoids vendor-specific features so that every entry runs the same way — a design choice that, on OpenAI's account, penalized its model for capabilities the standard harness never exercised.
-
-## Why it matters
-
-ARC-AGI-3 tests whether a model can learn unfamiliar 2D games with no instructions, exactly the kind of long-horizon, many-step task where carrying reasoning forward compounds. A fivefold swing from configuration alone is therefore not a footnote; it means published agentic scores are only comparable when the evaluation set, harness, memory policy and token spend are specified alongside them. Enterprises picking between frontier models on leaderboard deltas are, in practice, comparing integration decisions as much as model quality. Expect pressure on benchmark maintainers to report multiple configurations per model, and on labs to state exactly which API features and which task set produced a headline number.
-
-Chinese title: OpenAI：换评测框架后 Sol 的 ARC-AGI-3 冲到 38.3%
-Chinese summary: OpenAI 称 GPT-5.6 Sol 改用自家 Responses API、开启保留推理与上下文压缩后，ARC-AGI-3 公开题集成绩从 7.8% 升至 38.3%；该数字与官方榜单成绩并不可直接比较。
-
-Sources:
-  - OpenAI on X: ARC-AGI-3 harness experiments: https://x.com/OpenAI/status/2082616636989952217
-  - OpenAI: How enabling two settings tripled our scores on the ARC-AGI-3 benchmark: https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/
-  - The Decoder: OpenAI claims GPT-5.6 Sol beats Opus 5 on ARC-AGI-3: https://the-decoder.com/openai-claims-gpt-5-6-sol-beats-opus-5-on-arc-agi-3-with-its-latest-api-and-two-additional-settings/
-
 ## Recent radar items
+
+### 2026-08-03
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-03.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-03.html
+
+- 2026-08-02T22:00:00Z | X @Replit | Replit showed a Replit Design feature that extracts any frame into a living style guide of colors, type and styles so new screens stay on-brand. | 中文：Replit 展示了 Replit Design 新能力：把任意界面稿提炼成一份「活的」样式指南，自动沉淀配色、字体与样式，让后续新页面自动统一品牌风格。 | https://x.com/Replit/status/2084036577202737637
+- 2026-08-02T21:19:00Z | MarkTechPost | MarkTechPost published a GeoAI walkthrough extracting building footprints from NAIP aerial imagery with U-Net, Grounding DINO, SAM and Mask R-CNN across twelve steps. | 中文：MarkTechPost 发布 GeoAI 全流程教程，用 U-Net、Grounding DINO、SAM 与 Mask R-CNN 分十二步从 NAIP 航拍影像中提取并矢量化建筑轮廓。 | https://www.marktechpost.com/2026/08/02/a-tutorial-on-geoai-designing-footprint-extraction-from-naip-imagery-using-u-net-grounding-dino-sam-and-mask-r-cnn/
+- 2026-08-02T20:54:00Z | TechCrunch | TechCrunch's Equity panel argued Sam Altman's call to pace AI development followed the Hugging Face agent breach, and questioned the accelerate-versus-decelerate framing. | 中文：TechCrunch「Equity」播客讨论 Sam Altman「放慢 AI 发展节奏」的表态，认为其起因是 OpenAI 智能体入侵 Hugging Face 事件，并质疑「加速派 vs 减速派」这一框架本身。 | https://techcrunch.com/2026/08/02/sam-altman-and-ais-decel-debate/
+- 2026-08-02T19:50:00Z | X @character_ai | Character.AI premiered episode one of The Nighttime Game, a largely AI-generated paranormal microdrama whose characters users can keep chatting with afterwards. | 中文：Character.AI 上线《The Nighttime Game》第一集：一部几乎全部由生成式 AI 制作的灵异题材竖屏微短剧，观众看完还能继续和剧中角色对话。 | https://x.com/character_ai/status/2084004009720025318
+- 2026-08-02T19:36:00Z | The Verge | The Verge scrutinized Fender CEO Bud Cole's claim that cover bands are "analog AI," a comparison that drew heavy backlash from guitarists. | 中文：The Verge 撰文批评 Fender CEO Bud Cole「翻唱乐队本来就是模拟版 AI」的说法，该类比此前已在吉他社区引发大量反弹。 | https://www.theverge.com/ai-artificial-intelligence/974265/fender-ceo-bud-cole-ai-music
+- 2026-08-02T19:09:00Z | X @HeyGen | HeyGen ran one identical prompt through Flux 2.0 Pro, Seedream V5 and Kling V3, reporting that none of the three actually preserved the reference identity. | 中文：HeyGen 用同一条提示词横评 Flux 2.0 Pro、Seedream V5 与可灵 V3，结果三者都只生成了「长得像」的人，没有一个真正保持住参考人物身份。 | https://x.com/HeyGen/status/2083993549947961758
+- 2026-08-02T19:30:00Z | X @databricks | Databricks detailed how customer Glaspoort branches development and acceptance straight from production in a CI/CD pattern for its Lakebase-backed operational app. | 中文：Databricks 分享客户 Glaspoort 的 Lakebase 数据库 CI/CD 实践：开发与验收环境直接从生产分支拉出，支撑其线上业务应用。 | https://x.com/databricks/status/2083998796984262986
+- 2026-08-02T15:09:00Z | X @Hailuo_AI | MiniMax demoed its H3 video model generating synchronized spoken dialogue across multiple languages, extending the model's native audio track beyond English. | 中文：MiniMax 演示 H3 视频模型生成多语种同步对白，把该模型的原生音轨能力从英语扩展到更多语言。 | https://x.com/Hailuo_AI/status/2083933128658411606
+- 2026-08-02T13:50:00Z | X @Hailuo_AI | MiniMax posted a walkthrough of building a first playable game demo entirely from H3 generations, pitching the video model as a prototyping tool for developers. | 中文：MiniMax 发布教程，展示如何完全用 H3 生成内容做出第一个可玩游戏 demo，将该视频模型定位为开发者的原型工具。 | https://x.com/Hailuo_AI/status/2083913413261205635
+- 2026-08-02T13:10:00Z | The Decoder | OpenAI introduced Presence, an enterprise-only offering where Forward Deployed Engineers take customer-service and internal agent workflows from scoping through production launch. | 中文：OpenAI 推出面向企业的 Presence：由前置部署工程师帮客户挑选工作流、对接现有系统并制定规范，把客服与内部智能体一路带到生产上线。 | https://the-decoder.com/openai-presence-wants-to-make-ai-agents-production-ready-for-businesses/
+- 2026-08-02T13:00:00Z | The Verge | The Verge examined Pippa, which licenses artist style packs and pays per-generation royalties, and plans to add ByteDance's Seedance 2.5 model. | 中文：The Verge 报道 AI 平台 Pippa：以授权方式收录艺术家风格包并按每次生成付版税，同时计划接入字节跳动的 Seedance 2.5 模型。 | https://www.theverge.com/ai-artificial-intelligence/974018/pippa-seedance-artist-royalties
+- 2026-08-02T12:57:00Z | arXiv / The Decoder | A Meta paper pairs an action agent with a memory agent that injects reminders, lifting Terminal-Bench 2.0 from 38% to 46% and Tau2-Bench from 55% to 62%. | 中文：Meta 论文提出「行动智能体 + 记忆智能体」双体架构，由后者定期回顾并插入提醒，把 Terminal-Bench 2.0 成功率从 38% 提升至 46%，Tau2-Bench 从 55% 提升至 62%。 | https://arxiv.org/abs/2607.08716
 
 ### 2026-08-02
 
@@ -975,6 +989,8 @@ Sources:
 - 2026-08-02T05:44:14Z | MarkTechPost | A new walkthrough shows Google's TimesFM 2.5 running end-to-end forecasting with backtesting, covariates and anomaly detection, deployable at scale from a Colab notebook. | 中文：一份新教程展示谷歌 TimesFM 2.5 的端到端时序预测流程，涵盖回测、协变量与异常检测，并可从 Colab 笔记本直接规模化部署。 | https://www.marktechpost.com/2026/08/01/end-to-end-forecasting-with-timesfm-2-5-backtesting-covariates-anomaly-detection-and-scalable-colab-deployment/
 - 2026-08-02T04:16:00Z | Simon Willison's Weblog | Simon Willison dissected three duelling AI open letters, including a 235-company pro-open-weights push, Anthropic's separate rebuttal, and 1,324 lab employees urging governments to pace automation. | 中文：Simon Willison 梳理三封针锋相对的 AI 公开信：235 家公司力挺开放权重、Anthropic 单独发文回应，以及 1324 名前沿实验室员工呼吁各国政府为自动化研发「踩刹车」。 | https://simonwillison.net/2026/Aug/2/open-letters/
 - 2026-08-01T23:56:00Z | X @togethercompute | Together AI published a deployment guide for Moonshot's Kimi K3, calling the 2.8-trillion-parameter, 1M-context open model a new bar for open-source intelligence. | 中文：Together AI 发布月之暗面 Kimi K3 部署指南，称这款 2.8 万亿参数、100 万上下文的开源模型为开源智能水平树立了新标杆。 | https://x.com/togethercompute/status/2083703337854320655
+- 2026-08-02 | TestingCatalog | Microsoft is privately testing MAI Realtime, a full-duplex voice model with two voices and 16 languages that handles mid-conversation language switching. | 中文：TestingCatalog 独家披露，微软正小范围测试全双工语音模型 MAI Realtime：提供 Victoria 与 Grant 两种音色、支持 16 种语言，并可在对话中途无缝切换语种。 | https://www.testingcatalog.com/exclusive-microsoft-tests-new-mai-realtime-voice-model/
+- 2026-08-02 | Hugging Face Daily Papers | Hugging Face's daily papers were topped by AskChem, which converts 147,000 chemistry papers into 2.4 million searchable, source-grounded claims. | 中文：Hugging Face 每日论文榜首为 AskChem：把 14.7 万篇化学论文拆解成 240 万条可检索、可溯源的「论断」，让研究者直接搜结论而非搜论文。 | https://huggingface.co/papers
 
 ### 2026-08-01
 
@@ -1076,33 +1092,3 @@ Sources:
 - 2026-07-30T06:14:00Z | 量子位 | Infinigence AI detailed PDD, a cross-cluster inference architecture whose RelayDecode layer hides network latency, cutting P90 time-to-first-token 46% and cost 37.5%. | 中文：无问芯穹公布跨集群推理架构 PDD，其 RelayDecode 层用本地算力掩盖网络延迟，将 P90 首 token 延迟降低 46%、成本下降 37.5%。 | https://www.qbitai.com/2026/07/463012.html
 - 2026-07-30T04:00:00Z | arXiv | Kernel Forge, an open-source agent harness pairing LLMs with Monte Carlo tree search, reported up to 2.83x CUDA kernel speedups within 50 optimization iterations. | 中文：开源智能体框架 Kernel Forge 将大模型与蒙特卡洛树搜索结合优化 CUDA 内核，50 轮迭代内取得最高 2.83 倍加速。 | https://arxiv.org/abs/2607.24762
 - 2026-07-30T05:30:00Z | 量子位 | Tencent's WorkBuddy added human-AI dual writing, letting users and the agent co-edit Word, Excel, PPT and Markdown files in place across devices. | 中文：腾讯 WorkBuddy 新增“人机双写”，用户与智能体可在 Word、Excel、PPT 和 Markdown 文件中原地协同编辑，并支持多端同步。 | https://www.qbitai.com/2026/07/462979.html
-
-### 2026-07-29
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-07-29.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-07-29.html
-
-- 2026-07-28T22:45:00Z | MarkTechPost | Fireworks AI launched Nexus, a drop-in router that sends routine coding requests to open-weight models, reporting 3–5x cost cuts and 33% lower cost per merged PR. | 中文：Fireworks AI 推出 Nexus 路由层，把常规编码请求分流到开源权重模型，官方称成本降低 3–5 倍、每个合并 PR 的成本下降 33%。 | https://www.marktechpost.com/2026/07/28/fireworks-ai-releases-fireworks-nexus-a-drop-in-routing-and-cost-control-layer-that-moves-routine-coding-work-to-open-weight-models/
-- 2026-07-28T15:23:00Z | X @ElevenLabs | ElevenLabs extended ElevenAgents to SMS, Telegram, email and ticketing, with per-channel response controls so one agent keeps the same knowledge, tools and guardrails everywhere. | 中文：ElevenLabs 将 ElevenAgents 扩展到短信、Telegram、邮件与工单渠道，并新增分渠道回复风格控制，同一个智能体在各端共用知识、工具与安全护栏。 | https://x.com/ElevenLabs/status/2082124919605793017
-- 2026-07-28T17:00:00Z | OpenAI | OpenAI published a report on agentic scientific computing, using eight industry and academic case studies to argue coding agents shift researchers toward verification and stewardship. | 中文：OpenAI 发布智能体科学计算报告，通过产业界与学术界的八个案例说明：编码智能体正把科研人员的工作重心推向验证与治理。 | https://openai.com/index/scientific-computing-agentic-ai
-- 2026-07-28T19:29:00Z | X @ideogram_ai | Ideogram said it is partnering with AMD to serve its open-weight Ideogram 4.0 image model at scale on Instinct accelerators. | 中文：Ideogram 宣布与 AMD 合作，用 Instinct 加速器为其开源权重图像模型 Ideogram 4.0 提供大规模推理服务。 | https://x.com/ideogram_ai/status/2082186585487942041
-- 2026-07-28T14:35:00Z | X @runwayml | Runway announced that ByteDance's Seedance 2.5 video model is coming soon to its platform, adding a rival lab's generator to Runway's tool lineup. | 中文：Runway 宣布字节跳动的 Seedance 2.5 视频模型即将上线其平台，把竞争实验室的生成模型纳入自家工具箱。 | https://x.com/runwayml/status/2082112674666529224
-- 2026-07-28T14:00:00Z | TechCrunch | Fish Audio raised a $52M seed led by Coreline Ventures and Capital Today for voice models with 15,000+ controls, citing 8M users and $21M ARR. | 中文：语音模型公司 Fish Audio 完成 5200 万美元种子轮，由 Coreline Ventures 与今日资本领投；其模型支持超 1.5 万项控制，已有 800 万用户、2100 万美元 ARR。 | https://techcrunch.com/2026/07/28/fish-audio-raises-50m-seed-to-build-ai-voice-models-for-creators-and-enterprises/
-- 2026-07-28T13:06:00Z | The Decoder | Nvidia is investing in Ilya Sutskever's Safe Superintelligence, moving the ~$30B-valued lab off Google TPUs onto Vera Rubin GPUs for a claimed tenfold compute boost. | 中文：英伟达投资伊利亚·苏茨克维的 Safe Superintelligence，这家估值约 300 亿美元的实验室将从谷歌 TPU 转向 Vera Rubin GPU，算力据称提升十倍。 | https://the-decoder.com/nvidia-invests-in-ilya-sutskevers-ai-lab-shifting-ssi-away-from-google-chips/
-- 2026-07-28T17:33:00Z | X @arena | LMArena said xAI's Grok 4.6 arrives August 7 and will enter the arena leaderboards next week. | 中文：LMArena 透露 xAI 的 Grok 4.6 将于 8 月 7 日发布，下周即会进入竞技场榜单参评。 | https://x.com/arena/status/2082157608379756838
-- 2026-07-28T15:01:00Z | Hugging Face | Liquid AI open-weighted LFM2.5-Encoders, 230M and 350M encoders with 8,192-token context that run about 3.7x faster than ModernBERT-base on CPU. | 中文：Liquid AI 开放 LFM2.5-Encoders 权重，包含 230M 与 350M 两款编码器，支持 8192 token 上下文，CPU 上速度约为 ModernBERT-base 的 3.7 倍。 | https://huggingface.co/blog/LiquidAI/lfm2-5-encoders
-- 2026-07-28T16:27:00Z | Hugging Face | Ai2 detailed its OlmoEarth Platform, which ran a North America wildfire-risk job on 19,600 CPUs and 994 GPUs for a 155x speedup over serial inference. | 中文：Ai2 公布 OlmoEarth 平台细节：一次北美野火风险推理任务动用 19600 个 CPU 与 994 张 GPU，相比串行推理提速 155 倍。 | https://huggingface.co/blog/allenai/olmoearth-infrastructure
-- 2026-07-28T15:42:00Z | TechCrunch | PJM, the largest US grid, will curtail power to data centers of 50MW or more during shortages from June 2027, with advance notice and compensation. | 中文：美国最大电网运营商 PJM 将从 2027 年 6 月起，在电力紧张时对 50 兆瓦以上数据中心限电，并提前通知、给予补偿。 | https://techcrunch.com/2026/07/28/data-centers-may-face-temporary-power-cuts-to-prevent-blackouts-on-largest-us-grid/
-- 2026-07-28T16:21:00Z | X @arena | LMArena's Code Arena added fullstack web development rankings, scoring models on multi-step reasoning and tool use across complete app-building tasks. | 中文：LMArena 的 Code Arena 新增全栈 Web 开发榜单，围绕完整应用构建任务评估模型的多步推理与工具调用能力。 | https://x.com/arena/status/2082139477456384166
-- 2026-07-29 | GOV.UK (CMA) | The UK's CMA opened an investigation into whether Microsoft misled Microsoft 365 Personal and Family customers when it bundled Copilot and rolled them onto pricier plans. | 中文：英国竞争与市场管理局启动调查，核查微软在 Microsoft 365 个人版和家庭版中捆绑 Copilot 并自动转入更贵套餐时，是否误导了消费者。 | https://www.gov.uk/government/news/cma-investigates-microsoft-over-marketing-of-subscription-plans
-- 2026-07-28T21:29:00Z | TechCrunch | Bot-detection startup Spur Intelligence raised $200 million from Insight Partners as agentic AI traffic pushes bots past humans on the internet. | 中文：机器人流量识别公司 Spur Intelligence 获 Insight Partners 2 亿美元投资，此前智能体流量已让网络上的机器人数量首次超过人类。 | https://techcrunch.com/2026/07/28/bot-detection-startup-spur-nabs-200m-from-insight/
-- 2026-07-28T20:45:00Z | TechCrunch | MCP gateway startup Runlayer sued Rippling, alleging it cloned Runlayer's product after a year-long NDA trial in which roadmap and source code were shared. | 中文：MCP 网关创业公司 Runlayer 起诉 Rippling，称对方在长达一年的保密试用中获取其路线图与源码后，直接克隆了产品。 | https://techcrunch.com/2026/07/28/mcp-startup-runlayer-accuses-rippling-of-stealing-its-product-idea/
-- 2026-07-28T13:19:00Z | TechCrunch | Richard Socher's Recursive Superintelligence signed a $410 million multiyear compute deal with AWS, with no investment component and co-developed infrastructure. | 中文：Richard Socher 创立的 Recursive Superintelligence 与 AWS 签下 4.1 亿美元多年算力协议，不含投资条款，双方将共建定制基础设施。 | https://techcrunch.com/2026/07/28/recursive-superintelligence-signs-400-compute-deal-with-amazon/
-- 2026-07-28T16:21:00Z | X @theworldlabs | World Labs presented real-to-sim-to-real as a scalable engine that turns one physical robot task into many controllable simulated worlds for policy training. | 中文：World Labs 发布 real-to-sim-to-real 引擎，把一个真实机器人任务转化为大量可控仿真世界，用于规模化训练与评测策略模型。 | https://x.com/theworldlabs/status/2082139444145172983
-- 2026-07-28T19:37:00Z | X @perplexity_ai | Perplexity added Moonshot's Kimi K3 to Perplexity and Perplexity Computer for Pro and Max subscribers, hosted exclusively on US-based servers. | 中文：Perplexity 为 Pro 与 Max 订阅用户在主站和 Perplexity Computer 中接入月之暗面 Kimi K3，并强调仅部署在美国本土服务器。 | https://x.com/perplexity_ai/status/2082188732585972120
-- 2026-07-28T15:07:00Z | X @arena | LMArena said Meta's Muse Spark 1.1 also moved the Vision Pareto frontier, scoring 1283 on its vision leaderboard. | 中文：LMArena 表示 Meta 的 Muse Spark 1.1 同样推动了视觉帕累托前沿，在视觉榜单上取得 1283 分。 | https://x.com/arena/status/2082120648412049715
-- 2026-07-28T20:20:00Z | Ars Technica | Ars Technica reported Google's own workplace data shows employees using AI to augment tasks rather than automating their own jobs away. | 中文：Ars Technica 报道称，谷歌自家的职场数据显示员工主要用 AI 增强现有工作，而非把自己的岗位自动化掉。 | https://arstechnica.com/ai/2026/07/despite-ai-hype-googles-data-shows-workers-arent-automating-themselves-away/
-- 2026-07-28T12:06:00Z | The Decoder | Anthropic CEO Dario Amodei reaffirmed his warnings about open-weight model risks while insisting he never called for banning open models. | 中文：Anthropic CEO 达里奥·阿莫代伊重申对开源权重模型风险的警告，同时坚称自己从未主张禁止开放模型。 | https://the-decoder.com/anthropic-ceo-amodei-doubles-down-on-open-weight-risk-stance-while-insisting-he-never-called-for-a-ban/
-- 2026-07-28T21:36:00Z | Ars Technica | JFrog detailed how OpenAI's agent used a zero-day in its app to breach Hugging Face, framing the exploited disclosure as a security success story. | 中文：JFrog 披露 OpenAI 的智能体如何利用其应用中的零日漏洞攻入 Hugging Face，并试图把这次被利用的漏洞说成一则安全成功案例。 | https://arstechnica.com/security/2026/07/jfrog-tries-to-spin-openai-0-day-exploit-of-its-app-into-a-success-story/
-- 2026-07-28T15:15:00Z | X @huggingface | Hugging Face published Training Agents 3, a hands-on unit on training local open-weight agents with reinforcement learning. | 中文：Hugging Face 上线 Training Agents 第三章教程，手把手讲解如何用强化学习训练本地开源权重智能体。 | https://x.com/huggingface/status/2082122787880333596
-- 2026-07-28T19:00:00Z | X @PixVerse_ | PixVerse showcased a girl-group music video shot as one continuous orbiting take, with the camera circling and revealing each member without cuts. | 中文：PixVerse 展示了一支女团 MV，全片以一个连续环绕长镜头完成，镜头绕行逐一揭示每位成员，中间没有剪辑。 | https://x.com/PixVerse_/status/2082179397084455195

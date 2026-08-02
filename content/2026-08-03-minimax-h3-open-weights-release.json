@@ -1,0 +1,34 @@
+{
+  "slug": "minimax-h3-open-weights-release",
+  "title": "MiniMax releases open weights for its H3 video model",
+  "summary": "MiniMax published downloadable weights for H3, its omni-modal 2K video model, making a top-ranked video generator locally runnable for the first time.",
+  "body": "MiniMax released the model weights for H3, its omni-modal video generation system, at midnight Beijing time on August 3 — 16:00 UTC on August 2 — following through on an open-sourcing pledge the Shanghai company made when it launched the model on July 31. The drop landed first on the domestic ModelScope hub, with Hugging Face mirrors following, and ComfyUI simultaneously published a local-inference tutorial covering the newly public checkpoints.\n\nH3 is unusual among video models in treating text, images, video and audio as a single input context rather than as separate conditioning channels. It generates clips of roughly four to fifteen seconds at up to 2K resolution and 24 frames per second, and produces native stereo audio inside the same generation pass instead of dubbing sound on afterward. On Artificial Analysis leaderboards the model ranks first in video editing, second in text-to-video and third in image-to-video — placing it among the strongest video generators of any licensing type.\n\nThe published artifacts give an unusually clear view of the architecture. ComfyUI's local workflow pulls two pruned int8 diffusion checkpoints — one for text-to-video and image-to-video, one for reference-driven generation — plus separate video and audio VAEs and, notably, a text encoder derived from Alibaba's Qwen3-VL 32B vision-language model. Weights ship under the MiniMax Community License, which permits free non-commercial use and free commercial use by organisations below roughly $20 million in annual revenue, with attribution. MiniMax continues to sell hosted access through its own API and the Hailuo consumer app at prices it describes as under a third of comparable services per second of 2K output.\n\n## Why it matters\n\nUntil now the frontier of video generation has been almost entirely closed: OpenAI's Sora, Google's Veo and ByteDance's Seedance line are API-only. H3 breaks that pattern by putting a leaderboard-topping video model on local hardware, where studios can fine-tune it, inspect it, and run it without sending footage to a vendor. It also sharpens a strategic split inside China's video-model race — ByteDance widening closed API access to Seedance 2.5 the same week MiniMax gave its weights away — and hands the local-inference ecosystem, from ComfyUI workflows to quantisation projects, a genuinely competitive base model to build on.",
+  "title_zh": "MiniMax 放出 H3 视频模型开源权重",
+  "summary_zh": "MiniMax 正式开放全模态视频模型 H3 的权重下载，让一款榜单前列的视频生成模型首次可以在本地部署运行。",
+  "body_zh": "北京时间 8 月 3 日零点（UTC 8 月 2 日 16:00），MiniMax 放出全模态视频生成模型 H3 的模型权重，兑现了 7 月 31 日发布该模型时给出的开源承诺。权重首发于国内的魔搭 ModelScope，Hugging Face 镜像随后跟上；ComfyUI 同步上线了基于这批新公开权重的本地推理教程。\n\nH3 在视频模型里的路子比较特别：它不是把文本、图像、视频、音频当成彼此独立的条件通道，而是放进同一个上下文里统一理解。模型可生成约 4 至 15 秒、最高 2K 分辨率、24 帧的片段，且原生双声道音频是在同一次生成里出来的，而非事后配音。在 Artificial Analysis 榜单上，H3 视频编辑排名第一、文生视频第二、图生视频第三——无论开源闭源，都属第一梯队。\n\n公开的文件也让模型结构第一次看得清楚。ComfyUI 的本地工作流需要下载两个 int8 剪枝扩散权重（分别对应文生视频/图生视频与参考图驱动生成）、视频与音频两个 VAE，以及一个基于阿里 Qwen3-VL 32B 视觉语言模型改造的文本编码器。权重采用 MiniMax 社区许可证：非商用免费，年营收约 2000 万美元以下的机构商用亦免费，需标注来源。MiniMax 同时继续通过自家 API 与海螺 App 售卖托管服务，称 2K 每秒价格不到同类产品的三分之一。\n\n## 为什么重要\n\n此前视频生成的第一梯队几乎全部闭源：OpenAI Sora、谷歌 Veo、字节 Seedance 都只给 API。H3 打破了这条惯例——一款榜单前列的视频模型现在能跑在自己的机器上，工作室可以微调、可以拆看、也不必把素材交给厂商。它同时凸显出国内视频模型两条分岔的路线：同一周字节在扩大 Seedance 2.5 的闭源 API 覆盖，MiniMax 则直接把权重交了出去。对 ComfyUI 工作流、量化项目这类本地推理生态来说，终于有了一个真正有竞争力的底座模型。",
+  "tags": [
+    "AIGC",
+    "Open Source",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "MiniMax H3: ComfyUI Workflow Examples (open-weight local deployment)",
+      "url": "https://docs.comfy.org/tutorials/video/minimax/minimax-h3"
+    },
+    {
+      "title": "Video AI: MiniMax challenges ByteDance with low price, open weights for new H3 model",
+      "url": "https://www.scmp.com/tech/article/3362540/video-ai-minimax-challenges-bytedance-low-price-open-weights-new-h3-model"
+    },
+    {
+      "title": "MiniMax H3 通用多模态视频模型将于 8 月 3 日开源，最高可支持 15s 2K 分辨率",
+      "url": "https://tech.ifeng.com/c/8vBdVEaynZU"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "It puts a leaderboard-topping video generator into open weights, breaking the closed-API lock on frontier video generation.",
+  "featured_reason_zh": "一款榜单前列的视频生成模型转为开源权重，打破了前沿视频生成长期被闭源 API 垄断的局面。",
+  "date": "2026-08-03",
+  "published": "2026-08-02T16:00:00Z",
+  "published_at": "2026-08-02T23:00:02.982Z"
+}
