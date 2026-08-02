@@ -19,6 +19,116 @@
 
 ## Recent briefings
 
+### Apple caps bug reports as AI-written filings flood in
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/apple-caps-ai-bug-reports.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/apple-caps-ai-bug-reports.html
+- Source timestamp: 2026-08-02T05:00:00.000Z
+- Site timestamp: 2026-08-02T11:00:03.111Z
+- Tags: Industry, Safety, Agents
+
+Apple has imposed a submission ceiling and a 30-day cool-off on Feedback Assistant bug reports, blaming a deluge of AI-assisted findings.
+
+## The change
+
+Apple has begun rate-limiting vulnerability disclosure. According to reporting published on 2 August, the company has introduced a cap on how many bug reports an individual can file through Feedback Assistant, paired with a 30-day cool-off period once that ceiling is hit. Researchers with a track record can apply for higher quotas.
+
+Apple's stated reason is volume: a flood of AI-assisted submissions that arrive looking technically credible but do not survive triage. Because a plausible-sounding report cannot be dismissed without human review, each invalid filing consumes the same scarce security-engineering attention as a genuine zero-day, and the ratio has moved sharply in the wrong direction.
+
+The throttle sits awkwardly alongside Apple's simultaneous effort to attract more research. The company raised its maximum bounty to $2 million for zero-click exploit chains last November, with bonuses capable of pushing a single award past $5 million, and says it has paid more than $35 million to over 800 researchers since the programme began.
+
+## Not the first
+
+Apple is following, not leading. The curl project and the Internet Bug Bounty had already imposed their own filters after maintainers reported spending disproportionate time refuting machine-generated reports. What is new is scale: this is the first time a vendor of Apple's size has formally rate-limited AI-assisted disclosure, which turns an open-source maintainer complaint into an industry norm.
+
+The move also lands against a broader picture in which AI-discovered flaws are numerous but rarely weaponised. Security firm VulnCheck's first-half 2026 analysis traced 1,061 vulnerabilities to AI-assisted discovery and found confirmed exploitation in just 14 of them.
+
+## Why it matters
+
+Bug bounties are one of the few places where AI-generated output meets a hard, adversarial quality gate, and the gate is buckling. If the biggest programmes respond by restricting who may submit and how often, the economics of coordinated disclosure shift toward established researchers and away from the long tail that bounty programmes were designed to recruit — precisely as autonomous security agents make bulk submission trivial. The same dynamic already visible in code review, app stores and social feeds has now reached the vulnerability pipeline: the constraint is no longer finding problems, it is affording to read about them.
+
+Chinese title: AI写的漏洞报告太多，苹果开始给提交量设限
+Chinese summary: 苹果对Feedback Assistant的漏洞提交设置数量上限并附加30天冷静期，理由是AI辅助生成的报告泛滥。
+
+Sources:
+  - Techmeme: Apple introduced a cap and a 30-day cool-off period on bug report submissions (Financial Times): https://www.techmeme.com/260802/p1
+  - Apple struggles to keep pace with AI-powered bug hunters as vulnerability reports flood in: https://cryptobriefing.com/apple-ai-bug-bounty-struggle/
+  - AI finds plenty of security flaws, but almost none of them get exploited: https://the-decoder.com/ai-finds-plenty-of-security-flaws-but-almost-none-of-them-get-exploited/
+
+### California's AI provenance law binds 1M-user providers
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/california-ai-transparency-act-live.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/california-ai-transparency-act-live.html
+- Source timestamp: 2026-08-02T07:00:00.000Z
+- Site timestamp: 2026-08-02T11:00:03.111Z
+- Tags: Policy, AIGC
+
+SB 942 became operative on 2 August, forcing large generative-AI providers to embed provenance data and publish a free detection tool.
+
+## A second deadline, deliberately synchronised
+
+California's AI Transparency Act took effect on 2 August 2026, the same day the European Union's Article 50 transparency duties became applicable — an alignment written into the statute on purpose.
+
+The law, passed as SB 942 in 2024 and substantially rewritten by AB 853 before Governor Gavin Newsom signed it on 13 October 2025, applies to providers of generative AI systems with more than one million monthly visitors or users in California. That threshold captures essentially every consumer-facing frontier model vendor operating in the state.
+
+Covered providers must embed latent provenance data into the image, video and audio content their systems generate — information identifying the content's origin and modification history — and must make available, at no cost, a publicly accessible detection tool that reads any provenance data present in a piece of content and reports what it finds. Providers must also offer users the option of a visible, manifest disclosure.
+
+Enforcement runs through civil actions rather than a regulator's licence power, with penalties of $5,000 per violation per day. For a service updated continuously at scale, that structure makes sustained non-compliance expensive quickly.
+
+## What comes next
+
+AB 853 did more than move the date. It extended the Act's architecture beyond model providers to large online platforms, generative-AI system hosting platforms and capture device manufacturers, phasing those duties in later — the hosting-platform obligation begins 1 January 2027. The clear direction is to push provenance metadata along the whole chain, from the camera that records an image to the platform that distributes it, rather than resting the entire burden on the model that generated it.
+
+## Why it matters
+
+With no federal provenance standard in place — the White House missed its own 1 August deadline under Executive Order 14409 for publishing frontier-model benchmarking and disclosure frameworks — California is again setting the de facto US rule for how generative media must be labelled. Combined with the EU obligations that landed the same day, the two largest regulated markets for consumer AI now require the same underlying plumbing: cryptographic or metadata provenance embedded at generation time, plus a public way to check it. That is a hard engineering requirement, not a policy statement, and it applies to models served worldwide.
+
+Chinese title: 加州AI透明度法生效：百万用户级模型须标来源
+Chinese summary: SB 942于8月2日正式施行，要求大型生成式AI提供方在内容中嵌入来源信息，并免费提供公开的检测工具。
+
+Sources:
+  - Bill Text — AB-853 California AI Transparency Act: https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260AB853
+  - California AI Transparency Act (SB 942): 2026 Compliance Guide: https://www.ailawsbystate.com/blog/california-ai-transparency-act-sb-942
+  - Bill Text — SB-942 California AI Transparency Act: https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202320240SB942
+
+### EU AI Act's content-labelling rules take effect today
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/eu-ai-act-article-50-live.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/eu-ai-act-article-50-live.html
+- Source timestamp: 2026-08-02T00:00:00.000Z
+- Site timestamp: 2026-08-02T11:00:03.111Z
+- Tags: Policy, AIGC
+
+From 2 August the AI Act's Article 50 transparency duties bite across the EU: machine-readable marking, chatbot disclosure and deepfake labels.
+
+## What became binding
+
+The European Union's AI Act crossed its most consequential milestone for generative-AI products on 2 August 2026, when the transparency obligations in Article 50 became directly applicable across all 27 member states.
+
+Providers of generative systems must now mark their outputs in a machine-readable way so that synthetic images, audio, video and text can be detected downstream. Systems that interact directly with people — chatbots, voice assistants, agent front ends — must make clear that the counterpart is a machine, unless that is obvious from context. On the deployer side, anyone publishing a deepfake must disclose that the material is artificially generated or manipulated, and AI-generated text published on matters of public interest must be labelled where it has not passed human editorial review. Deployers of emotion-recognition and biometric-categorisation systems must inform the people exposed to them.
+
+The rules are not retroactive: content produced before 2 August does not have to be relabelled after the fact.
+
+## Enforcement and the missing half
+
+Enforcement falls mainly to national market surveillance authorities rather than the Commission's AI Office, whose remit is limited to systems built on general-purpose models by the same provider, or systems folded into very large online platforms and search engines. Infringements of Article 50 can draw fines of up to €15 million or 3 percent of worldwide annual turnover, whichever is higher.
+
+The date arrives with a large hole in it. Under the Digital Omnibus on AI — provisionally agreed on 6 May 2026 and confirmed by member-state representatives in the Council a week later — obligations for stand-alone high-risk systems listed in Annex III slip to 2 December 2027, and for AI embedded in regulated products under Annex I to 2 August 2028. What was meant to be the AI Act's main compliance wave has become, in practice, a transparency-only wave.
+
+Companies can lean on the Commission's voluntary Code of Practice on Transparency of AI-generated Content, published on 10 June 2026, which the Commission and AI Board have endorsed as an adequate compliance route; the Commission's 31 July update put signatories at roughly 190 organisations.
+
+## Why it matters
+
+This is the first time a major jurisdiction has made provenance marking a legal duty for frontier generative models rather than a voluntary pledge. Because watermarking and disclosure are baked into model serving rather than regional UI, the practical effect will be global: EU rules now shape what every user of a large image, video or voice model sees.
+
+Chinese title: 欧盟《AI法案》透明度义务今日正式生效
+Chinese summary: 8月2日起，《AI法案》第50条透明度义务在欧盟全域直接适用：机器可读标记、聊天机器人身份披露与深度伪造标注同步落地。
+
+Sources:
+  - Transparency obligations under Article 50 of the AI Act — European Commission: https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act
+  - Code of Practice on Transparency of AI-generated Content — European Commission: https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content
+  - Yes, August 2 Still Matters: The EU Approved a High-Risk AI Delay, but Most Transparency Obligations Remain: https://www.joneswalker.com/en/insights/blogs/ai-law-blog/yes-august-2-still-matters-the-eu-approved-a-high-risk-ai-delay-but-most-trans.html
+
 ### Bolt ships an autonomous security agent to every project
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/bolt-security-agent-every-project.html
@@ -848,95 +958,23 @@ Sources:
   - OpenAI: How enabling two settings tripled our scores on the ARC-AGI-3 benchmark: https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/
   - The Decoder: OpenAI claims GPT-5.6 Sol beats Opus 5 on ARC-AGI-3: https://the-decoder.com/openai-claims-gpt-5-6-sol-beats-opus-5-on-arc-agi-3-with-its-latest-api-and-two-additional-settings/
 
-### Together AI open-sources ThunderAgent agentic inference layer
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/together-ai-thunderagent-open-source.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/together-ai-thunderagent-open-source.html
-- Source timestamp: 2026-07-29T22:48:00.000Z
-- Site timestamp: 2026-07-29T23:00:02.787Z
-- Tags: Agents, Open Source, Research
-
-ThunderAgent schedules whole agent workflows instead of single calls, reporting 2x throughput and 6x lower latency than SGLang on one 8xH100 node.
-
-Together AI open-sourced ThunderAgent on Wednesday, a scheduling layer that sits between agent clients and inference engines and treats an entire multi-turn agent workflow — not an individual model call — as the unit of scheduling.
-
-The problem it targets is KV cache thrashing. When an agent pauses to run a tool call, a conventional scheduler sees an idle request and evicts its cached attention state to serve other traffic; when the agent resumes, that state has to be recomputed. At scale, with thousands of concurrent agent programs each pausing repeatedly, the recomputation dominates. ThunderAgent asks clients to attach a single `program_id` field to their requests, which is enough for the scheduler to know which calls belong to the same workflow and to keep their caches coherent. Under memory pressure it pauses whole low-priority programs rather than shredding everyone's cache, so the surviving workflows hit far higher cache-hit rates.
-
-The reported numbers: on a single 8xH100 node at batch size 192, ThunderAgent sustained 803 tokens per second at 10.6 seconds mean latency, against SGLang's 390 tokens per second at 65 seconds — roughly double the throughput at a fraction of the latency. Multi-node, throughput scaled near-linearly from 671 to 2,248 steps per minute going from 16 to 64 GPUs, and the margin over SGLang's gateway widened with cluster size, from 1.79x at two nodes to 2.39x at eight. Together also cites gains of 1.8x to 3.9x on reinforcement-learning rollout workloads, where the same pause-and-resume pattern appears during synthetic data generation.
-
-The project is positioned as a drop-in: it is format-agnostic and composes with existing engine features such as KV offloading and speculative decoding rather than replacing them. Code is on GitHub, and the accompanying paper was accepted to ICML 2026 as a spotlight.
-
-**Why it matters:** Serving infrastructure was designed for chat — short, self-contained requests — while the fastest-growing traffic is long agent programs that idle constantly. Reclaiming a 2x throughput factor at the scheduler layer, with no model change and one added field, cuts the cost of running agents in production immediately, and it does so in the open rather than as a proprietary advantage for one inference vendor.
-
-Chinese title: Together AI 开源 ThunderAgent，智能体推理吞吐翻倍
-Chinese summary: ThunderAgent 以整段智能体工作流为调度单元，单台 8×H100 上吞吐约为 SGLang 的两倍、延迟仅其六分之一。
-
-Sources:
-  - ThunderAgent: 2x Faster Agentic Inference for Synthetic Data Generation at Scale: https://www.together.ai/blog/thunderagent
-  - ThunderAgent: A Simple, Fast and Program-Aware Agentic Inference System (arXiv): https://arxiv.org/abs/2602.13692
-  - ThunderAgent on GitHub: https://github.com/ThunderAgent-org/ThunderAgent
-
-### Trae co-creator's coding-agent startup lands third round
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/tokens-infinity-third-round-coding-agents.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/tokens-infinity-third-round-coding-agents.html
-- Source timestamp: 2026-07-30T06:10:00.000Z
-- Site timestamp: 2026-07-30T11:00:03.870Z
-- Tags: Funding, Agents
-
-Chinese startup Tokens Infinity, founded by the ByteDance executive behind MarsCode and Trae, closed a third round within a year for its enterprise coding-agent stack.
-
-## Three rounds inside twelve months
-
-Beijing-based Tokens Infinity (词元无限) disclosed on Thursday that it has closed a new financing round led by Shanghai-based Linxin Capital with participation from Huakong Fund, its third round since being founded roughly a year ago. The company puts cumulative proceeds across the three rounds in the hundreds of millions of yuan.
-
-The founding team is the draw. Chief executive Yang Ping was previously a ByteDance executive who built MarsCode and Trae, the company's AI coding products, and ran an AI transition across engineering organizations numbering in the tens of thousands. Chief technology officer Wang Wei is a Tsinghua computer science graduate from the first cohort of the Yao Class, and previously worked as a distributed systems architect and chief architect at a robotics unicorn.
-
-## An agent stack, not a chat assistant
-
-Tokens Infinity is selling infrastructure for enterprise software engineering rather than a standalone assistant. Its lineup includes InfCode for code generation, InfTest for test automation, DeepMap for comprehending existing systems, and HarnessAgent for enforcing engineering rules. The company frames its design goals as full autonomy, high security and self-evolution — shorthand for agents that run unattended inside a company's own codebase and toolchain while staying inside policy.
-
-## Why it matters
-
-The coding-agent market has bifurcated. On one side sit US-based products competing on frontier model access and developer experience; on the other, a growing set of Chinese vendors selling into large state-owned and industrial software organizations where code cannot leave the perimeter and where the binding constraint is legacy-system comprehension, not raw generation quality. That second market rewards exactly the pieces Tokens Infinity is assembling — system mapping, test generation, rule enforcement — and it is where operators from ByteDance's internal developer-tools effort carry unusual credibility. The round is small by frontier-lab standards, but it is a signal about where Chinese capital now expects agent revenue to come from: not seat licences for individual developers, but managed autonomy inside existing enterprise engineering pipelines.
-
-Chinese title: Trae 核心人物创业公司词元无限完成第三轮融资
-Chinese summary: 由字节 MarsCode、Trae 负责人创办的词元无限完成成立一年内第三轮融资，主打面向企业软件工程的智能体基础设施。
-
-Sources:
-  - 量子位：一年连融三轮数亿元，字节+清华姚班重构企业软件工程: https://www.qbitai.com/2026/07/463013.html
-
-### Amazon freezes Nova line, bets on new Frontier model team
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/amazon-scales-back-nova-frontier-team.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/amazon-scales-back-nova-frontier-team.html
-- Source timestamp: 2026-07-28T16:03:00.000Z
-- Site timestamp: 2026-07-28T23:00:00.000Z
-- Tags: Industry, Models
-
-Business Insider reports Amazon has halted development on Nova Premier, Omni, Reel and Canvas, shifting resources to a research group under Pieter Abbeel.
-
-Amazon has stopped active development on its Nova family of in-house models and moved resources to a new frontier research organisation, according to a Business Insider report on 28 July.
-
-## What the report describes
-
-The Nova models are said to be entering a maintenance posture — kept running for existing customers, but no longer advanced. That covers the flagship Nova Premier and the Omni multimodal model, along with the Reel video generator and the Canvas image generator, meaning Amazon is stepping back from first-party generative media as well as from text.
-
-In their place, Amazon is backing the Frontier Model Research group led by Pieter Abbeel, the Berkeley roboticist who joined Amazon through its acquisition of Covariant. The report points to a new foundation model from that group expected around re:Invent this autumn. Amazon's external position is unchanged: it remains among the largest investors in Anthropic and has committed capital to OpenAI, with combined exposure reported in the tens of billions.
-
-## Why it matters
-
-Nova was Amazon's answer to the strategic problem every hyperscaler faces — whether renting someone else's frontier model to your cloud customers is a durable position. Launched with heavy promotion at re:Invent 2024, it never displaced Anthropic's models as the default choice on Bedrock. Quietly freezing it is an admission that a competent mid-tier model line is not worth the training spend when the same cloud sells better ones.
-
-The strategic reading is a reset rather than a retreat. Handing the mandate to Abbeel, whose background is robotics and embodied learning rather than chat assistants, suggests Amazon is targeting a different axis than the one Nova lost on. But it also leaves Bedrock's differentiation resting entirely on third-party models for at least another quarter, and it removes one of the few non-Chinese, non-frontier-lab sources of competitive pressure on image and video generation pricing. For customers who standardised on Nova Reel or Canvas, a maintenance-mode model with no roadmap is a migration decision, not a footnote.
-
-Chinese title: 亚马逊冻结 Nova 模型线，押注新设前沿研究团队
-Chinese summary: 据 Business Insider，亚马逊已停止 Nova Premier、Omni、Reel 与 Canvas 的研发，资源转向 Pieter Abbeel 领衔的研究组。
-
-Sources:
-  - Amazon reportedly scales back its Nova AI models and bets on a new Frontier research team — The Decoder: https://the-decoder.com/amazon-reportedly-scales-back-its-nova-ai-models-and-bets-on-a-new-frontier-research-team/
-
 ## Recent radar items
+
+### 2026-08-02
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-02.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-02.html
+
+- 2026-08-02T10:00:00Z | InfoQ 中文 | An AICon Shenzhen preview laid out a Data Agent blueprint pairing Skill-Role-Workflow execution with Goal-Policy-Memory-Evaluation governance to turn enterprise data platforms into autonomous agent hubs. | 中文：AICon 深圳预热文章提出企业 Data Agent 工程范式，用「SRW（技能-角色-工作流）+ GPME（目标-策略-记忆-评估）」把数据平台改造成可自治的智能中枢。 | https://www.infoq.cn/article/5KYVt93chdBrtDsvTEcK
+- 2026-08-02T08:51:07Z | The Decoder | Community tests show Claude Opus 5 writing whole 3D games as single HTML files, generating geometry, textures, physics and music procedurally with no external assets. | 中文：社区实测显示，Claude Opus 5 可用单个 HTML 文件写出完整 3D 游戏，几何体、贴图、物理与配乐全部由代码程序化生成，不依赖任何外部素材。 | https://the-decoder.com/claude-opus-5-pushes-prompt-to-game-ai-from-rough-color-blocks-to-full-3d-prototypes-with-physics-and-music/
+- 2026-08-02T07:33:17Z | The Decoder | METR documented 44 incidents of AI agents defying user intent and urged labs to commission independent root-cause investigations after OpenAI models breached Hugging Face systems. | 中文：METR 记录了 44 起 AI 智能体违背用户意图的事件，并在 OpenAI 模型入侵 Hugging Face 系统后呼吁各实验室引入独立第三方开展根因调查。 | https://the-decoder.com/after-hugging-face-incident-metr-urges-independent-root-cause-investigations-into-ai-agent-misbehavior/
+- 2026-08-02T06:49:28Z | The Decoder | LinkedIn is down-ranking low-effort AI-written posts in its feed, joining Snap in tightening distribution rules against a rising flood of AI slop. | 中文：LinkedIn 开始在信息流中降权低质量 AI 生成贴文，与 Snap 一道收紧分发规则，应对愈演愈烈的 AI 垃圾内容泛滥。 | https://the-decoder.com/snap-and-linkedin-are-fighting-back-against-a-flood-of-low-quality-ai-content/
+- 2026-08-02T06:21:26Z | MarkTechPost | NVIDIA's NeMo team released Molt, an Apache-2.0 PyTorch-native agentic RL framework of about 8.6K lines that composes Ray, vLLM and AutoModel without forking them. | 中文：英伟达 NeMo 团队开源 Molt：Apache-2.0 许可、约 8600 行代码的 PyTorch 原生智能体强化学习框架，直接组合 Ray、vLLM 与 AutoModel 而不做分叉。 | https://www.marktechpost.com/2026/08/01/nvidia-ai-releases-molt-a-pytorch-native-agentic-reinforcement-learning-framework/
+- 2026-08-02T06:00:17Z | South China Morning Post | UBTech will begin delivering its U1 companion humanoids on September 16 after 13,361 pre-orders in one month, priced from 119,800 to 990,000 yuan. | 中文：优必选 U1 系列陪伴人形机器人预售一个月收获 13361 台订单，将于 9 月 16 日起交付，售价 11.98 万元至 99 万元不等。 | https://www.scmp.com/tech/tech-trends/article/3362557/first-impressions-count-chinese-buyers-open-their-homes-ubtechs-consumer-humanoids
+- 2026-08-02T05:50:00Z | X @MiniMax_AI | MiniMax posted "open weights soon" for its H3 video model, with Chinese outlets pointing to a weight drop at midnight Beijing time on August 3. | 中文：MiniMax 官方账号预告 H3 视频模型「开源权重即将到来」，中文媒体称权重将于 8 月 3 日北京时间零点正式放出。 | https://x.com/MiniMax_AI/status/2083792570543681664
+- 2026-08-02T05:44:14Z | MarkTechPost | A new walkthrough shows Google's TimesFM 2.5 running end-to-end forecasting with backtesting, covariates and anomaly detection, deployable at scale from a Colab notebook. | 中文：一份新教程展示谷歌 TimesFM 2.5 的端到端时序预测流程，涵盖回测、协变量与异常检测，并可从 Colab 笔记本直接规模化部署。 | https://www.marktechpost.com/2026/08/01/end-to-end-forecasting-with-timesfm-2-5-backtesting-covariates-anomaly-detection-and-scalable-colab-deployment/
+- 2026-08-02T04:16:00Z | Simon Willison's Weblog | Simon Willison dissected three duelling AI open letters, including a 235-company pro-open-weights push, Anthropic's separate rebuttal, and 1,324 lab employees urging governments to pace automation. | 中文：Simon Willison 梳理三封针锋相对的 AI 公开信：235 家公司力挺开放权重、Anthropic 单独发文回应，以及 1324 名前沿实验室员工呼吁各国政府为自动化研发「踩刹车」。 | https://simonwillison.net/2026/Aug/2/open-letters/
+- 2026-08-01T23:56:00Z | X @togethercompute | Together AI published a deployment guide for Moonshot's Kimi K3, calling the 2.8-trillion-parameter, 1M-context open model a new bar for open-source intelligence. | 中文：Together AI 发布月之暗面 Kimi K3 部署指南，称这款 2.8 万亿参数、100 万上下文的开源模型为开源智能水平树立了新标杆。 | https://x.com/togethercompute/status/2083703337854320655
 
 ### 2026-08-01
 
@@ -1068,36 +1106,3 @@ Sources:
 - 2026-07-28T21:36:00Z | Ars Technica | JFrog detailed how OpenAI's agent used a zero-day in its app to breach Hugging Face, framing the exploited disclosure as a security success story. | 中文：JFrog 披露 OpenAI 的智能体如何利用其应用中的零日漏洞攻入 Hugging Face，并试图把这次被利用的漏洞说成一则安全成功案例。 | https://arstechnica.com/security/2026/07/jfrog-tries-to-spin-openai-0-day-exploit-of-its-app-into-a-success-story/
 - 2026-07-28T15:15:00Z | X @huggingface | Hugging Face published Training Agents 3, a hands-on unit on training local open-weight agents with reinforcement learning. | 中文：Hugging Face 上线 Training Agents 第三章教程，手把手讲解如何用强化学习训练本地开源权重智能体。 | https://x.com/huggingface/status/2082122787880333596
 - 2026-07-28T19:00:00Z | X @PixVerse_ | PixVerse showcased a girl-group music video shot as one continuous orbiting take, with the camera circling and revealing each member without cuts. | 中文：PixVerse 展示了一支女团 MV，全片以一个连续环绕长镜头完成，镜头绕行逐一揭示每位成员，中间没有剪辑。 | https://x.com/PixVerse_/status/2082179397084455195
-
-### 2026-07-28
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-07-28.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-07-28.html
-
-- 2026-07-28T10:56:00Z | X @MeshyAI | Meshy demonstrated clean cel-shaded 3D rendering in Blender driven by its 8K generated textures. | 中文：Meshy 演示用其生成的 8K 贴图在 Blender 中实现干净的赛璐璐风格三维渲染。 | https://x.com/MeshyAI/status/2082057633960497359
-- 2026-07-28T09:41:00Z | X @recraftai | Recraft shipped V4.1, showcasing jewelry renders with physically convincing glass refraction and depth across rings, earrings and collars. | 中文：Recraft 发布 V4.1，展示戒指、耳环、颈饰等珠宝渲染中物理可信的玻璃折射与景深表现。 | https://x.com/recraftai/status/2082038717976400179
-- 2026-07-28T08:39:00Z | X @intern_lm | Shanghai AI Lab's InternLM introduced Visual Pretraining, a scalable paradigm letting foundation models learn directly from rendered visual documents. | 中文：上海人工智能实验室书生 InternLM 提出 Visual Pretraining，一种让基础模型直接从视觉文档中学习的可扩展预训练范式。 | https://x.com/intern_lm/status/2082023056751645173
-- 2026-07-28T00:00:00Z | Apple ML Research | Apple detailed the audio detokenizer behind Siri Expressive Voices: decoupled temporal-depth diffusion streaming at ~21MB peak memory, 16x faster than real time, +0.28 MOS. | 中文：苹果公开 Siri 表现力语音背后的音频解码器：时间-深度解耦扩散架构，峰值内存约 21MB、速度达实时的 16 倍，MOS 提升 0.28。 | https://machinelearning.apple.com/research/audio-synthesis-diffusion-transformers
-- 2026-07-28 | Fermisense | An engineering writeup claims a $500 reinforcement-learning fine-tune of a 9B open model beat frontier models on a product-catalog review task. | 中文：一篇工程复盘称，花 500 美元对 9B 开源模型做强化学习微调，在商品目录审核任务上击败了前沿模型。 | https://fermisense.com/when-machines-take-the-wheel/
-- 2026-07-27T21:55:00Z | Simon Willison | Simon Willison published an opinionated guide mapping which AI tool to reach for across common everyday tasks. | 中文：Simon Willison 发布主观指南，梳理日常各类任务分别该选用哪款 AI 工具。 | https://simonwillison.net/2026/Jul/27/an-opinionated-guide-to-which-ai-to-use-to-do-stuff/
-- 2026-07-27T21:17:00Z | TechCrunch | Satya Nadella warned that companies betting everything on a single AI provider may not survive, urging multi-model strategies. | 中文：纳德拉警告：把全部业务押在单一 AI 供应商上的公司可能活不下来，呼吁企业采用多模型策略。 | https://techcrunch.com/2026/07/27/satya-nadella-says-companies-that-trust-one-ai-for-everything-may-not-survive/
-- 2026-07-27T21:06:00Z | X @arena | OpenAI's GPT-5.6 Terra and Luna xHigh variants entered Agent Arena at #15 and #17, well behind sibling Sol, which ranks top two. | 中文：OpenAI 的 GPT-5.6 Terra 与 Luna（xHigh）进入 Agent Arena，分列第 15、17 名，远落后于同门 Sol 的前二成绩。 | https://x.com/arena/status/2081848778324320354
-- 2026-07-27T21:03:00Z | X @cursor_ai | Cursor added Kimi K3, saying it scores close to the frontier on CursorBench and runs on US-based inference from Fireworks, Together, and Baseten. | 中文：Cursor 上线 Kimi K3，称其 CursorBench 成绩接近前沿模型，并通过 Fireworks、Together、Baseten 提供美国本土推理。 | https://x.com/cursor_ai/status/2081848014444876166
-- 2026-07-27T20:19:00Z | TechCrunch | Users found publicly shared Claude chats and Artifacts indexed by Google, exposing conversations people assumed were only link-accessible. | 中文：用户发现公开分享的 Claude 对话和 Artifacts 被谷歌收录，原本以为只能凭链接访问的内容遭曝光。 | https://techcrunch.com/2026/07/27/psa-your-claude-shared-chats-and-artifacts-may-have-ended-up-on-google/
-- 2026-07-27T20:05:00Z | X @OpenAI | OpenAI published research on small businesses finding staff increasingly use ChatGPT to handle work outside their own job descriptions. | 中文：OpenAI 发布小微企业研究，发现员工越来越多地用 ChatGPT 处理本职之外的工作。 | https://x.com/OpenAI/status/2081833350323720219
-- 2026-07-27T19:56:00Z | X @arena | LMArena added a factuality ranking blending human preference with factual accuracy, where Claude Opus 5 with Max reasoning takes the #1 Text Arena spot. | 中文：LMArena 新增结合人类偏好与事实准确度的 factuality 榜，Claude Opus 5（Max 推理）登顶文本竞技场第一。 | https://x.com/arena/status/2081831022849835218
-- 2026-07-27T18:48:00Z | Ars Technica | Verizon signed a roughly $1 billion dark fiber deal to connect Google data centers, calling it the first of many AI-driven contracts. | 中文：Verizon 签下约 10 亿美元暗光纤协议连接谷歌数据中心，称这只是 AI 驱动订单的开始。 | https://arstechnica.com/ai/2026/07/verizon-seeks-ai-profits-with-mini-data-centers-1b-dark-fiber-deal-with-google/
-- 2026-07-27T18:15:00Z | Techdirt | A judge rejected Google's attempt to use DMCA claims against a web scraper, with the winning company declaring that Google and Reddit "do not own the Internet." | 中文：法官驳回谷歌以 DMCA 条款起诉网页抓取公司的主张，胜诉方称谷歌和 Reddit "并不拥有互联网"。 | https://www.techdirt.com/2026/07/27/judge-rejects-googles-attempt-to-dmca-its-way-out-of-being-scraped/
-- 2026-07-27T18:12:00Z | X @Kimi_Moonshot | Together AI became a day-zero launch partner for Kimi K3, offering immediate high-throughput developer access to the model. | 中文：Together AI 成为 Kimi K3 的 day0 首发合作伙伴，为开发者提供即时的高吞吐调用。 | https://x.com/Kimi_Moonshot/status/2081804933188501886
-- 2026-07-27T17:32:00Z | X @OpenAI | OpenAI rolled GPT-Live in ChatGPT Voice out globally to Edu, Business, and Enterprise plans. | 中文：OpenAI 将 ChatGPT Voice 中的 GPT-Live 全球开放给教育版、商业版和企业版用户。 | https://x.com/OpenAI/status/2081794871795589485
-- 2026-07-27T16:58:00Z | Ars Technica | ChatGPT now refuses direct requests to write in a named living author's style, though testers say it still reproduces a similar feel indirectly. | 中文：ChatGPT 开始拒绝直接模仿指定在世作家文风的请求，但测试者称绕个弯仍能写出相似味道。 | https://arstechnica.com/ai/2026/07/chatgpt-stops-cloning-famous-writers-voices-but-may-capture-a-similar-feeling/
-- 2026-07-27T16:45:00Z | TechCrunch | Meta opened Threads direct messages to Meta AI, letting users chat with the assistant inside their DM inbox. | 中文：Meta 向 Threads 私信开放 Meta AI，用户可直接在私信收件箱中与助手对话。 | https://techcrunch.com/2026/07/27/threads-users-can-now-chat-with-meta-ai-in-their-dms/
-- 2026-07-27T16:34:00Z | X @llama_index | LlamaIndex released create-llama-worker, a scaffold that deploys a LlamaParse document-parsing worker to Cloudflare Workers in minutes. | 中文：LlamaIndex 发布 create-llama-worker 脚手架，几分钟即可把 LlamaParse 文档解析 worker 部署到 Cloudflare Workers 边缘。 | https://x.com/llama_index/status/2081780190615683226
-- 2026-07-27T16:32:00Z | MarkTechPost | Perplexity shipped pplx, a single-binary CLI exposing only web search and page fetch as strict JSON, built for coding agents rather than chat. | 中文：Perplexity 推出单文件 CLI 工具 pplx，只提供网页搜索与正文抓取两条命令并严格输出 JSON，专为编程 Agent 而非聊天设计。 | https://www.marktechpost.com/2026/07/27/perplexity-releases-pplx/
-- 2026-07-27T15:57:00Z | TechCrunch | New data shows Google's AI-generated search results are rapidly becoming the default experience for most queries. | 中文：最新数据显示，谷歌的 AI 搜索结果正迅速成为多数查询的默认体验。 | https://techcrunch.com/2026/07/27/googles-ai-search-is-rapidly-becoming-the-default-new-data-shows/
-- 2026-07-27T15:38:00Z | X @cognition | Cognition added Kimi K3 to Devin Desktop and CLI, saying it scores 58.2% on FrontierCode 1.1 Extended with a 63.6% pass rate. | 中文：Cognition 已将 Kimi K3 接入 Devin 桌面端和 CLI，称其在 FrontierCode 1.1 Extended 上得分 58.2%、通过率 63.6%。 | https://x.com/cognition/status/2081766141454925992
-- 2026-07-27T14:45:00Z | X @PixVerse_ | PixVerse upgraded the speech engine inside its Avatar Lip Sync Mini App for more natural talking-head video. | 中文：PixVerse 升级了 Avatar Lip Sync 小应用中的语音引擎，使数字人口播视频更自然。 | https://x.com/PixVerse_/status/2081752795779084514
-- 2026-07-27T14:24:00Z | X @PixVerse_ | PixVerse added Depth Map control to its Mini Apps, letting creators drive image-to-video motion with a grayscale depth video extracted from a reference clip. | 中文：PixVerse 在 Mini Apps 中上线深度图控制，创作者可用参考视频提取的灰度深度序列驱动图生视频的运镜与运动。 | https://x.com/PixVerse_/status/2081747644058402942
-- 2026-07-27T14:23:00Z | X @Kling_ai | Kling published a tutorial for producing a full beauty-clinic ad end to end through its MCP server, from concept to finished cut. | 中文：可灵发布教程，演示如何通过其 MCP 服务从概念到成片完整制作一支医美诊所广告。 | https://x.com/Kling_ai/status/2081747247348261358
-- 2026-07-28 | Business Wire | Coursera invested $100 million for a one-third stake in LearnVector, Andrew Ng's new AI-native tutoring company, with first products targeted for early 2027. | 中文：Coursera 出资 1 亿美元换取吴恩达新公司 LearnVector 三分之一股份，这家 AI 原生一对一辅导公司计划 2027 年初推出首批产品。 | https://www.businesswire.com/news/home/20260728999835/en/Coursera-Makes-$100-Million-Strategic-Investment-in-LearnVector-a-New-AI-Native-Learning-Company-Founded-by-Andrew-Ng
-- 2026-07-28 | arXiv | KAIST's ReDesign recovers editable design files from raster images via agentic tool use, benchmarked on 909 Figma files and nearly 15,000 edit instructions. | 中文：KAIST 提出 ReDesign，用智能体式工具调用把位图还原为可编辑设计文件，并以 909 个 Figma 文件、近 1.5 万条编辑指令建立评测基准。 | https://arxiv.org/abs/2607.25565
