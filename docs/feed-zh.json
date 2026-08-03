@@ -52,6 +52,112 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-qwenwork-public-beta.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-qwenwork-public-beta.html",
+      "title": "阿里「千问办公」开启公测，企业级 Agent 三端合一",
+      "summary": "阿里将 QoderWork、MuleRun、悟空三款产品整合为千问办公，桌面端、云端与协同 Agent 打包，底座换成新发布的 Qwen3.8。",
+      "content_text": "## 三款产品合成一个\n\n8 月 3 日，在 Qwen3.8 发布数小时后，阿里的「千问办公」（QwenWork）开启公测。这款产品由此前独立的 QoderWork、MuleRun 与悟空三条线整合而来，阿里称其为业内首款同时支持桌面端 Agent、云端 Agent 与企业协同 Agent 的产品。\n\n底座模型是同日发布的旗舰 Qwen3.8。目前网页版与独立 PC 客户端已开放，钉钉 PC 端与手机端入口据称近期上线。新用户注册可得 2000 积分，公测首周每日登录还可领取 500 至 2000 积分。\n\n## 瞄的是企业流程，不是个人效率\n\n阿里的定位相当明确：全面对准企业级市场。除了写文档、做 PPT，千问办公主打的是接入企业内部数据库与既有业务流程，并引入「组织级 Skill」——把一套可复用的操作流程封装起来供全团队共享，让 Agent 的行为方式成为公司层面的基础设施，而不是某个员工私藏的提示词。\n\n这个思路与今年 Agent 市场的走向一致：企业落地的瓶颈很少是模型能力本身，而是权限、数据接入与流程可复现这些「管道活」。把执行拆到能碰本机文件的本地客户端、跑长任务的云端运行时，以及负责团队协同的共享层，本质上是想一次性把三件事都覆盖掉。\n\n## 为什么重要\n\n阿里现在能在同一天把整条栈端到端交付：前沿模型、编程入口，再加一个同时消费两者的办公 Agent。这种垂直捆绑与微软的 Copilot、谷歌的 Workspace 是同一套打法，但定价与分发走的是钉钉，直插 Microsoft 365 渗透率极低的中国企业市场。对正在评估 Agent 的中国公司来说，问题从「买谁的模型」变成了「以谁的工作台为标准」。公测同时也给阿里提供了一条快速反馈通道，用真实企业负载检验 Qwen3.8 的长周期表现——那正是其模型发布所主张、却尚未在规模上被证明的部分。",
+      "date_published": "2026-08-03T04:47:00.000Z",
+      "date_modified": "2026-08-03T11:00:03.158Z",
+      "tags": [
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/alibaba-qwenwork-public-beta.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-qwenwork-public-beta.html",
+        "source_published_at": "2026-08-03T04:47:00.000Z",
+        "site_published_at": "2026-08-03T11:00:03.158Z",
+        "sources": [
+          {
+            "title": "阿里「千问办公」开启公测",
+            "url": "https://www.qbitai.com/2026/08/465211.html"
+          },
+          {
+            "title": "阿里Qwen3.8正式发布，编程与办公再进化",
+            "url": "https://www.qbitai.com/2026/08/465215.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cogent-ai-vr-1-cyber-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cogent-ai-vr-1-cyber-model.html",
+      "title": "Cogent AI 发布 VR-1：受控开放的攻击链推理模型",
+      "summary": "Cogent AI 推出安全专用模型 VR-1，可组合并验证企业级多阶段攻击路径，权重不公开，仅向审核通过的机构开放。",
+      "content_text": "## 训的是入侵链条，不是漏洞清单\n\n8 月 3 日，Cogent AI 发布 VR-1——一个专门针对网络安全场景做后训练的模型。它的目标不是找出单个漏洞，而是拼出并验证完整的攻击路径：在信息不完整的环境中做侦察，提出并验证假设，跨系统边界串联步骤，在某条路径失败后重新找路，并且用「实际打通」而非「文字描述」来确认目标达成。单次运行上限约为两小时或 250 个 agent 轮次。\n\n随模型一同发布的还有两件东西：基于实际执行的评测集 IntrusionBench，以及面向安全智能体的受管运行时 Cogent AI Harness。\n\n## 成绩单，以及它的前提\n\nCogent 称在黑盒测试中，VR-1 的攻击路径成功率约为 Kimi K3、Claude Opus 4.8 与 GLM-5.2 的两倍，成本约为其四分之一。但官方也直言，VR-1 自身的黑盒成功率仍低于 30%，并将结果标注为初步结论——这个数字在说明模型能力之外，同样说明端到端攻击链条依旧很难。\n\n权重不公开。访问需通过 Cogent Frontier Access Program，仅面向经审核的机构，并附带防护策略与审计日志。官方给出的客户画像是《财富》2000 强量级企业与政府部门，覆盖金融、医疗、SaaS、零售、电信与关键基础设施。\n\n## 为什么重要\n\n进攻性安全能力是开源权重之争最难处理的地带，VR-1 给出的答案很明确：能力自己造，权重自己留，客户逐个准入，全程留痕。这套结构更像军品出口管制，而不像一次模型发布，接下来关于发布政策的争论中，两派都会引用它。\n\n对能力本身的判断则应克制。厂商自己披露的完整黑盒链条成功率不足 30%，足以说明自主入侵远未被攻克——这也与 VulnCheck 近期的统计相呼应：2026 上半年由 AI 发现的漏洞中，仅 1.3% 被确认遭到实际利用。「能编出像样的攻击路径」与「真能打进去」之间的落差，仍是这个行业最主要的安全余量。",
+      "date_published": "2026-08-03T07:28:00.000Z",
+      "date_modified": "2026-08-03T11:00:03.158Z",
+      "tags": [
+        "安全",
+        "模型",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cogent-ai-vr-1-cyber-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cogent-ai-vr-1-cyber-model.html",
+        "source_published_at": "2026-08-03T07:28:00.000Z",
+        "site_published_at": "2026-08-03T11:00:03.158Z",
+        "sources": [
+          {
+            "title": "Cogent AI Team Releases VR-1: A Frontier Cyber Reasoning Model",
+            "url": "https://www.marktechpost.com/2026/08/03/ogent-ai-team-releases-vr-1/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/genspark-open-sources-genoffice.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/genspark-open-sources-genoffice.html",
+      "title": "Genspark 开源 GenOffice：面向 PC 与 Mac 的 AI 办公套件",
+      "summary": "Genspark 发布 GenOffice，自称首个功能完整的开源 AI 办公套件，Windows 与 macOS 均可免费使用且无广告。",
+      "content_text": "## 一套免费办公软件，Agent 是原生部件\n\n8 月 3 日，Genspark 宣布开源 GenOffice，官网博客文章标题为《GenOffice：首个开源 AI 办公套件》，同时在 X 上连发数条动态。公司称这是全球首个功能完整、面向 PC 与 Mac 的开源 AI Office，对所有人免费、无广告，并打包了桌面办公软件应有的编辑工具集。\n\n伴随发布，Genspark 在其多人协作 Agent 空间 GenTeam 中开了一个 GenOffice 群聊：用户在里面描述自己想要什么，由 Agent 直接动手实现——相当于把功能需求变成一条实时开发队列，让社区直接影响路线图。截稿时，该博客文章从站外无法公开读取，因此许可协议与代码仓库地址尚无法独立核实，目前依据的是官方一方信息。\n\n## 这个形态为什么值得注意\n\n过去一年 Genspark 一直在给别人的软件装 Agent：4 月的 AI Workspace 4.0 把 Agent 以原生插件形式塞进 Word、Excel 和 PowerPoint，随后又宣布与微软合作，将 Agent 接入微软生态。GenOffice 把这层依赖反了过来——不是去自动化 Office，而是自己交付文档界面本体，Agent 从外挂变成内生组件，并且免费送出。\n\n## 为什么重要\n\n迄今为止，AI 原生的生产力工具要么以插件形式寄生于既有办公套件，要么是封闭的云产品。一套开源、可本地安装、围绕 Agent 设计的办公软件是另一种赌法：文档格式、自动化层与编辑界面全部可审计、可 fork，这对不能把在办文件上传到厂商云的组织很关键。它也恰好与阿里同周把企业办公 Agent 推入公测撞在一起，说明 Agent 竞争的争夺点正从模型转向真正干活的那个工作台。GenOffice 究竟是产品还是姿态，取决于尚未公开的细节：许可证、仓库，以及这套软件有多少部分真能由社区维护。",
+      "date_published": "2026-08-03T10:15:00.000Z",
+      "date_modified": "2026-08-03T11:00:03.158Z",
+      "tags": [
+        "Agent",
+        "开源",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/genspark-open-sources-genoffice.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/genspark-open-sources-genoffice.html",
+        "source_published_at": "2026-08-03T10:15:00.000Z",
+        "site_published_at": "2026-08-03T11:00:03.158Z",
+        "sources": [
+          {
+            "title": "Genspark: Open-sourcing GenOffice",
+            "url": "https://x.com/genspark_ai/status/2084221525327319363"
+          },
+          {
+            "title": "Genspark blog — GenOffice: The First Open-Source AI Office Suite",
+            "url": "https://www.genspark.ai/blog"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-open-weights-release.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-open-weights-release.html",
       "title": "MiniMax 放出 H3 视频模型开源权重",
@@ -88,6 +194,83 @@
           {
             "title": "MiniMax H3 通用多模态视频模型将于 8 月 3 日开源，最高可支持 15s 2K 分辨率",
             "url": "https://tech.ifeng.com/c/8vBdVEaynZU"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen3-8-max-launch.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen3-8-max-launch.html",
+      "title": "阿里发布 2.4 万亿参数 Qwen3.8-Max，API 先行",
+      "summary": "阿里新旗舰 Qwen3.8-Max 为 2.4 万亿参数 MoE 模型，主打长周期智能体任务，官方称下周开放权重。",
+      "content_text": "## Max 级模型，价格直接压下来\n\n阿里通义千问团队 8 月 3 日发布 Qwen3.8-Max，称其为 Qwen 家族至今最强的模型。官方给出的规模是 2.4 万亿参数的混合专家架构，支持文本、图像与视频输入，上下文窗口 100 万 token——输入最高 991K，开启推理模式后降至 983K，输出最高 131K。阿里自身材料未披露激活参数量，The Decoder 报道单次查询约激活 950 亿参数，若准确，实际推理成本会远低于总参数量给人的印象。\n\n海外 API 定价为每百万 token 输入 2 美元、输出 6 美元，缓存命中的输入仅 0.25 美元；国内定价为每百万 token 输入 12 元、输出 36 元，隐式缓存命中 1.5 元。模型已在 QwenCloud 上线，同时兼容 OpenAI Chat Completions 与 Anthropic 两套接口协议。\n\n## 卖点押在「跑得久」\n\n这次发布的重心不是单轮跑分，而是多日自主作业。官方案例包括：模型用 16 天独立开发一个命令行工具，累计 265 次提交、127 个 PR；约 5 天复现并改进一篇论文结果，期间跑了 33 个 GPU 训练任务；在一项多模态竞赛中拿到 0.853 的成绩，排名超过 526 支人类队伍中的 458 支。跑分方面，Terminal-Bench 2.1 得 86.6，低于 GPT-5.6 Sol 的 88.8、高于 Anthropic 的 84.6；PaperBench 官方报 93 分。\n\n第三方榜单反应很快。LMArena 显示 Qwen3.8-Max 文本榜第五（1496 分），其中医疗健康职业分项排名第一；视觉榜第二（1305 分），仅落后 Claude Fable 5（High）13 分；前端代码竞技场的性价比帕累托前沿也被这次发布改写。\n\n## 为什么重要\n\nMax 一直是 Qwen 家族里唯一不开源的那一档，所以真正值得记的承诺是：阿里表示下周将在 Hugging Face 与魔搭放出权重，并同步推出面向本地部署的 Qwen3.8-27B 小尺寸版本。目前权重尚未公开，就当下而言这仍只是一次 API 发布。但如果按官方说法落地，一个价格仅为西方旗舰约三分之一、身后还跟着可下载版本的前沿模型，将直接冲击闭源阵营给智能体类负载的定价逻辑。",
+      "date_published": "2026-08-03T02:16:00.000Z",
+      "date_modified": "2026-08-03T11:00:03.158Z",
+      "tags": [
+        "模型",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/qwen3-8-max-launch.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen3-8-max-launch.html",
+        "source_published_at": "2026-08-03T02:16:00.000Z",
+        "site_published_at": "2026-08-03T11:00:03.158Z",
+        "sources": [
+          {
+            "title": "Qwen3.8-Max: A New Bar for Coding and Cowork",
+            "url": "https://qwen.ai/blog?id=qwen3.8"
+          },
+          {
+            "title": "Alibaba Qwen Releases Qwen3.8-Max: A 2.4 Trillion Parameter MoE Model",
+            "url": "https://www.marktechpost.com/2026/08/03/alibaba-qwen-releases-qwen3-8-max/"
+          },
+          {
+            "title": "Alibaba's Qwen3.8-Max takes on long-horizon AI tasks with 2.4 trillion parameters",
+            "url": "https://the-decoder.com/alibabas-open-weight-qwen3-8-max-takes-on-long-horizon-ai-tasks-with-2-4-trillion-parameters/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/sakana-namazu-japanese-llm-api.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/sakana-namazu-japanese-llm-api.html",
+      "title": "Sakana AI 上线日语专用大模型 API「Namazu」",
+      "summary": "东京实验室 Sakana AI 基于月之暗面开源的 Kimi K2.6 微调出日语特化模型 Namazu，正式开放商用 API。",
+      "content_text": "## 中国开源底座，调成日本职场口吻\n\n8 月 3 日，Sakana AI 开始提供日语特化大模型 API「Namazu」（鲶鱼）。这家东京实验室表示，模型以开源权重模型——月之暗面的 Kimi K2.6——为基座，再用自有数据做微调，使其适配日语表达与日本业务语境，包括自然的敬语和商务惯例。微调同时约束输出行为：抑制偏见，并对特定敏感话题做回避处理。\n\n跑分方面，Sakana 称 Namazu 在数学（AIME26）与编程（LiveCodeBench v6）上基本维持基座水平，而日语相关评测提升明显：在政治中立性测试 FairPoliticsQA 上，成绩从 34.10% 升至 56.30%。\n\n## 定价与打法\n\nNamazu 采用按量付费、无月费：每百万 token 输入 0.95 美元、输出 4.00 美元；联网搜索每千次调用 7 美元，代码执行每小时 0.12 美元。结算币种为美元，日元开票仅面向企业方案。受 GDPR 合规工作尚未完成影响，该 API 目前不在欧盟／欧洲经济区、英国与瑞士提供。\n\nSakana 自己列出的场景都很「不性感」，但量大：每周一早上自动送达的市场调研报告，从制定调研计划、反复联网检索到交叉核对与撰写全程无人介入；客服场景则从问询应答一路做到订单数据的汇总分析；创意场景的演示是只给一句「海洋世界」的题目，模型自行决定呈现什么意象、用联网搜索收集参考图，再编排出约一千条鱼的鱼群动作。\n\n## 为什么重要\n\n真正值得注意的是供应链本身。日本头部 AI 实验室，如今把一个中国开源模型作为本国语言商用 API 的底座，竞争点落在价格与文化贴合度，而非前沿能力。这是近期关于「中国开源权重到底带来了什么」最直白的一个例证：无需自建基础训练，几个月就能做出一款主权语言产品。它同时给东京抛出一个政策问题——日本把 AI 自主可控写进了目标，而 Namazu 在商业上足够「日本」，底座权重却是别人训出来的。",
+      "date_published": "2026-08-03T00:49:00.000Z",
+      "date_modified": "2026-08-03T11:00:03.158Z",
+      "tags": [
+        "模型",
+        "产业",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/sakana-namazu-japanese-llm-api.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/sakana-namazu-japanese-llm-api.html",
+        "source_published_at": "2026-08-03T00:49:00.000Z",
+        "site_published_at": "2026-08-03T11:00:03.158Z",
+        "sources": [
+          {
+            "title": "Sakana Namazu — Sakana AI",
+            "url": "https://sakana.ai/namazu/"
+          },
+          {
+            "title": "Sakana AI、日本語特化のLLM API「Sakana Namazu」を提供開始",
+            "url": "https://x.com/SakanaAILabs/status/2084187517667209237"
           }
         ]
       }
@@ -138,7 +321,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/california-ai-transparency-act-live.html",
       "title": "加州AI透明度法生效：百万用户级模型须标来源",
       "summary": "SB 942于8月2日正式施行，要求大型生成式AI提供方在内容中嵌入来源信息，并免费提供公开的检测工具。",
-      "content_text": "## 刻意对齐的第二个截止日\n\n加州《AI透明度法》于2026年8月2日生效，与欧盟《AI法案》第50条透明度义务同日落地——这种时间对齐是立法时有意为之。\n\n该法2024年以SB 942通过，其后由AB 853大幅改写，纽森州长于2025年10月13日签署。适用对象是在加州月访问量或用户数超过100万的生成式AI系统提供方，这一门槛实际上覆盖了在该州运营的所有面向消费者的前沿模型厂商。\n\n受管辖的提供方必须在其系统生成的图像、视频和音频中嵌入隐式来源数据，用于标明内容出处与修改历史；同时必须免费提供一个公开可用的检测工具，能读取内容中已有的来源数据并给出结果。此外还须为用户提供可见的显式标注选项。\n\n执法路径是民事诉讼而非监管牌照，罚则为每项违规每日5000美元。对于持续大规模更新的服务而言，这种按日累计的结构会让长期不合规迅速变得昂贵。\n\n## 下一步\n\nAB 853不只是改了日期，它把这套架构从模型提供方扩展到大型在线平台、生成式AI系统托管平台以及拍摄设备制造商，相关义务分阶段生效——托管平台义务自2027年1月1日起。方向很清楚：把来源元数据推向整条链路，从拍下画面的相机到分发内容的平台，而不是让生成模型独自承担全部责任。\n\n## 为什么重要\n\n美国联邦层面仍无来源标记标准——白宫连自己在第14409号行政令中设定的8月1日期限都未兑现，前沿模型基准与披露框架至今未发布。加州因此再次成为美国生成式内容标注的事实规则制定者。加上同日生效的欧盟义务，全球两个最大的消费级AI监管市场现在要求同一套底层管线：生成时即嵌入密码学或元数据形式的来源信息，并提供公开的核验方式。这是硬性的工程要求，而非政策表态，且适用于面向全球提供服务的模型。",
+      "content_text": "## 刻意对齐的第二个截止日\n\n加州《AI透明度法》于2026年8月2日生效，与欧盟《AI法案》第50条透明度义务同日落地——这种时间对齐是立法时有意为之。\n\n该法2024年以SB 942通过，其后由AB 853大幅改写，纽森州长于2025年10月13日签署。适用对象是在加州月访问量或用户数超过100万的生成式AI系统提供方，这一门槛实际上覆盖了在该州运营的所有面向消费者的前沿模型厂商。\n\n受管辖的提供方必须在其系统生成的图像、视频和音频中嵌入隐式来源数据，用于标明内容出处与修改历史；同时必须免费提供一个公开可用的检测工具，能读取内容中已有的来源数据并给出结果。此外还须为用户提供可见的显式标注选项。\n\n执法路径是民事诉讼而非监管牌照，罚则为每项违规每日5000美元。对于持续大规模更新的服务而言，这种按日累计的结构会让长期不合规迅速变得昂贵。\n\n## 下一步\n\nAB 853不只是改了日期，它把这套架构从模型提供方扩展到大型在线平台、生成式AI系统托管平台以及拍摄设备制造商，相关义务分阶段生效——托管平台义务自2027年1月1日起。方向很清楚：把来源元数据推向整条链路，从拍下画面的相机到分发内容的平台，而不是让生成模型独自承担全部责任。\n\n## 为什么重要\n\n美国联邦层面至今仍无来源标记标准。2026年6月2日签署的第14409号行政令要求相关机构在8月1日前设计一套面向前沿模型的自愿发布前披露框架；该日期已过，但没有任何内容公开发布，且行政令所述的基准测试流程按设计属于涉密范畴，这套框架未来也可能不会完整对外披露。在联邦标准缺位的情况下，加州再次成为美国生成式内容标注的事实规则制定者。加上同日生效的欧盟义务，全球两个最大的消费级AI监管市场现在要求同一套底层管线：生成时即嵌入密码学或元数据形式的来源信息，并提供公开的核验方式。这是硬性的工程要求，而非政策表态，且适用于面向全球提供服务的模型。",
       "date_published": "2026-08-02T07:00:00.000Z",
       "date_modified": "2026-08-02T11:00:03.111Z",
       "tags": [
@@ -169,6 +352,10 @@
           {
             "title": "Bill Text — SB-942 California AI Transparency Act",
             "url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202320240SB942"
+          },
+          {
+            "title": "Controlling Advanced Artificial Intelligence: Executive Order 14409 Explained — Congressional Research Service",
+            "url": "https://www.congress.gov/crs-product/IF13268"
           }
         ]
       }
@@ -178,7 +365,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/eu-ai-act-article-50-live.html",
       "title": "欧盟《AI法案》透明度义务今日正式生效",
       "summary": "8月2日起，《AI法案》第50条透明度义务在欧盟全域直接适用：机器可读标记、聊天机器人身份披露与深度伪造标注同步落地。",
-      "content_text": "## 今天开始要做什么\n\n2026年8月2日，欧盟《人工智能法案》迎来对生成式AI产品影响最直接的一个节点——第50条透明度义务在27个成员国直接适用。\n\n生成式系统的提供方必须以机器可读方式标记输出，使合成的图像、音频、视频和文本能够在下游被检测出来。直接与人交互的系统——聊天机器人、语音助手、智能体前端——必须让用户明确知道对话方是机器，除非从场景中已显然可知。在部署方一侧，发布深度伪造内容必须披露其为人工生成或篡改；涉及公共利益议题的AI生成文本，如未经人工编辑审核，也必须加注标识。使用情绪识别与生物特征归类系统的部署方，须告知被作用的对象。\n\n规则不溯及既往：8月2日之前生成的内容不需要事后补标。\n\n## 执法权与被抽走的另一半\n\n执法主要由各国市场监管机构承担，而非欧盟委员会下的AI办公室——后者的管辖范围仅限于由同一主体提供的通用模型所构建的系统，以及嵌入超大型在线平台和搜索引擎的系统。违反第50条最高可罚1500万欧元或全球年营业额的3%，取其高者。\n\n但这个日期本身缺了一大块。根据2026年5月6日达成临时政治协议、一周后由成员国代表在理事会确认的《AI数字综合法案》，附件三所列独立高风险系统的义务推迟至2027年12月2日，附件一受监管产品中嵌入式AI的义务推迟至2028年8月2日。原本应是《AI法案》主体合规大潮的时点，实际只剩下透明度这一层。\n\n企业可以依托欧盟委员会2026年6月10日发布的《AI生成内容透明度行为准则》，委员会与AI委员会已认可其为充分的合规路径；按委员会7月31日的更新，签署方约190家机构。\n\n## 为什么重要\n\n这是首次有主要司法辖区把内容来源标记从自愿承诺变成前沿生成模型的法定义务。由于水印与披露通常做在模型服务层而非分区界面上，实际影响会外溢为全球性的：欧盟规则从今天起决定了所有大型图像、视频、语音模型用户看到的东西。",
+      "content_text": "## 今天开始要做什么\n\n2026年8月2日，欧盟《人工智能法案》迎来对生成式AI产品影响最直接的一个节点——第50条透明度义务在27个成员国直接适用。\n\n生成式系统的提供方必须以机器可读方式标记输出，使合成的图像、音频、视频和文本能够在下游被检测出来。直接与人交互的系统——聊天机器人、语音助手、智能体前端——必须让用户明确知道对话方是机器，除非从场景中已显然可知。在部署方一侧，发布深度伪造内容必须披露其为人工生成或篡改；涉及公共利益议题的AI生成文本，如未经人工编辑审核，也必须加注标识。使用情绪识别与生物特征归类系统的部署方，须告知被作用的对象。\n\n规则不溯及既往：8月2日之前生成的内容不需要事后补标。\n\n## 执法权与被抽走的另一半\n\n执法主要由各国市场监管机构承担，而非欧盟委员会下的AI办公室——后者的管辖范围仅限于由同一主体提供的通用模型所构建的系统，以及嵌入超大型在线平台和搜索引擎的系统。违反第50条最高可罚1500万欧元或全球年营业额的3%，取其高者。\n\n但这个日期本身缺了一大块。根据2026年5月6日达成临时政治协议、一周后由成员国代表在理事会确认的《AI数字综合法案》，附件三所列独立高风险系统的义务推迟至2027年12月2日，附件一受监管产品中嵌入式AI的义务推迟至2028年8月2日。原本应是《AI法案》主体合规大潮的时点，实际只剩下透明度这一层。\n\n企业可以依托欧盟委员会2026年6月10日发布的《AI生成内容透明度行为准则》，委员会与AI委员会已认可其为充分的合规路径。据委员会说明，截至2026年7月底约有190家机构签署。这个数字是一个仍在增长的累计值，且涵盖两类性质不同的主体：一是模型提供方，如 Aleph Alpha、Anthropic、Black Forest Labs、Cohere、谷歌、Meta、微软、Mistral、OpenAI 与 Synthesia；二是下游采用方，如 Getty Images、联想、汉莎航空与 Iberdrola。签署本身是自愿的，名单也在持续变动；而第50条的法定义务对签署方与未签署方一律适用。\n\n## 为什么重要\n\n这是首次有主要司法辖区把内容来源标记从自愿承诺变成前沿生成模型的法定义务。由于水印与披露通常做在模型服务层而非分区界面上，实际影响会外溢为全球性的：欧盟规则从今天起决定了所有大型图像、视频、语音模型用户看到的东西。",
       "date_published": "2026-08-02T00:00:00.000Z",
       "date_modified": "2026-08-02T11:00:03.111Z",
       "tags": [
@@ -205,6 +392,10 @@
           {
             "title": "Code of Practice on Transparency of AI-generated Content — European Commission",
             "url": "https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content"
+          },
+          {
+            "title": "Strong backing for the Code of Practice on Transparency of AI-generated Content — European Commission",
+            "url": "https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content"
           },
           {
             "title": "Yes, August 2 Still Matters: The EU Approved a High-Risk AI Delay, but Most Transparency Obligations Remain",
@@ -1735,205 +1926,6 @@
           {
             "title": "CyberGym benchmark",
             "url": "https://www.cybergym.io/cybergym/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-open-weights-position.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-open-weights-position.html",
-      "title": "Anthropic 表态：从未主张封禁开放权重模型",
-      "summary": "面对数月猜测，Anthropic 公开了开放权重立场：不主张封禁，但要求任何能力足够强的模型——无论开源闭源——都必须做发布前安全测试。",
-      "content_text": "## 先把话说清楚\n\nAnthropic 于 7 月 27 日晚发布了关于开放权重模型的正式立场文件，开篇即引用 CEO Dario Amodei 的明确否认：公司从未主张封禁开放权重模型。此前数月，随着华盛顿围绕开源模型政策的博弈升温，外界普遍猜测 Anthropic 的安全主张实质上是在推动限制可下载权重。\n\n文件表述的公司立场是：不具备危险能力的开放模型是一种公共品——它扩大可及性，让用户对自己的部署有更强控制权，也给一个本已集中在少数 API 供应商手中的市场注入竞争压力。\n\n## 真正担心的是什么\n\nAmodei 点出两类他视为严重的风险：威权政府获得更强 AI 用于军事优势或国内镇压；以及高能力模型被用于网络攻击或生物危害。而他的论点是，封禁开放权重对这两者都不是有效工具。\n\n替代方案有三条。一是延续半导体出口管制，理由是决定谁能训练前沿系统的是算力而非权重是否公开。二是打击工业规模的蒸馏行为，尤其是有国家背景支持的那一类；Anthropic 承诺识别并封禁利用自家模型做此类复制的账号，同时承认单一厂商的单边行动解决不了问题。三是对任何能力足够强的模型——开源闭源一视同仁——强制实施针对网络、生物与对齐风险的发布前测试。\n\n文件中没有任何关于 Anthropic 自己将发布开放权重的表态。\n\n## 为何重要\n\n第三条才是实质。以能力而非分发方式为门槛设定测试义务，落地时压力最大的仍是开放权重发布方——因为测试义务挂在一个 API 端点上远比挂在一份已被全网镜像的 checkpoint 上容易。Anthropic 实际是在用「能力阈值」替换「发布形式规则」，既绕开了「封禁」这个框架，又仍在支持一套被许多开源开发者视为事实上收紧的监管。而就在同一天，企业安全行业的大半围绕开放模型组建了联盟，名单里没有 Anthropic。",
-      "date_published": "2026-07-27T22:03:00.000Z",
-      "date_modified": "2026-07-27T23:05:06.711Z",
-      "tags": [
-        "政策",
-        "开源",
-        "安全"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-open-weights-position.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-open-weights-position.html",
-        "source_published_at": "2026-07-27T22:03:00.000Z",
-        "site_published_at": "2026-07-27T23:05:06.711Z",
-        "sources": [
-          {
-            "title": "Our position on open-weights models",
-            "url": "https://www.anthropic.com/news/position-open-weights-models"
-          },
-          {
-            "title": "@AnthropicAI on the open-weights position",
-            "url": "https://x.com/AnthropicAI/status/2081864750296658008"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/chinese-silicon-runs-kimi-k3.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/chinese-silicon-runs-kimi-k3.html",
-      "title": "国产算力 Day0 跑通 2.8 万亿参数 Kimi K3",
-      "summary": "阿里云称真武 M890 超节点是国内首个成功运行月之暗面 2.8 万亿参数模型的超节点，华为昇腾同日宣布零日适配。",
-      "content_text": "## 为万亿参数推理准备的超节点\n\n阿里云 7 月 28 日宣布，灵骏真武 M890 超节点实例已完成对 Kimi K3 的 Day0 适配。K3 是月之暗面 7 月 27 日开源的 2.8 万亿参数模型，阿里云称这是国内首个成功跑通近 3 万亿参数模型的超节点。\n\n该实例由 64 张阿里自研平头哥真武 M890 加速卡组成，通过自研 ICN Switch 高速互联芯片实现 800GB/s 全互联，单节点显存池规模达 9TB。对 K3 这种体量的模型来说，显存是硬约束：没有这一级别的显存池化，权重只能摊到大量松耦合节点上，跨节点通信会主导整体时延。\n\n阿里云、平头哥与 Kimi 团队从软件栈、算子层面做了联合深度适配。阿里云给出的数据是：首 Token 时延降低约 35%，单卡解码吞吐提升 1.8 倍。此外，千问 AI 平台与阿里云百炼也将提供 Kimi K3 的模型 API——考虑到月之暗面与阿里自家通义千问是直接竞争关系，这一点值得留意。\n\n华为同日给出对应表态。华为计算称昇腾在 K3 开源当天即完成零日适配：训练侧在 Atlas 800 A3 与 Atlas 900 A3 SuperPoD 上完成训练复现，配合算子、并行加速与显存优化；推理侧通过开源引擎 vLLM Ascend 和 SGLang 部署。华为还提到昇腾 950 超节点支持 FP8、MXFP8、MXFP4 精度格式，可原生承接月之暗面发布的 mxFP4 量化权重。\n\n## 为何重要\n\n这条消息的分量不在性能数字，而在于闭环终于合上。此前中国最大的开源模型，训练与服务环节仍以英伟达芯片为主，意味着最有代表性的成果依然依赖受出口管制的硬件。如今两家国产厂商在旗舰级模型发布当天就完成适配——其中一家还是竞争对手实验室的云业务——说明历来比算力本身更难补的软件栈成熟度差距正在收窄。对国内企业而言，采购 K3 级别模型的算力方案，从此可以不必绕道华盛顿的许可体系。",
-      "date_published": "2026-07-28T10:40:00.000Z",
-      "date_modified": "2026-07-28T11:05:18.633Z",
-      "tags": [
-        "产业",
-        "模型",
-        "开源"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/chinese-silicon-runs-kimi-k3.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/chinese-silicon-runs-kimi-k3.html",
-        "source_published_at": "2026-07-28T10:40:00.000Z",
-        "site_published_at": "2026-07-28T11:05:18.633Z",
-        "sources": [
-          {
-            "title": "Day0 适配：阿里云灵骏真武 M890 超节点实例现已支持月之暗面 Kimi K3 大模型",
-            "url": "https://www.ithome.com/0/982/734.htm"
-          },
-          {
-            "title": "Kimi K3 开源：海外热议，华为阿里等国产算力已适配",
-            "url": "https://www.guancha.cn/economy/2026_07_28_825302.shtml"
-          },
-          {
-            "title": "阿里云真武超节点 Day0 适配 Kimi K3，国产算力支撑超大参数模型应用再进一步",
-            "url": "https://www.itbear.com.cn/html/2026-07/1467855.html"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-start-india-tier.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-start-india-tier.html",
-      "title": "Cursor 推出印度专属月付 649 卢比套餐，含云端智能体",
-      "summary": "Cursor 首个本地化定价方案打包 Composer 2.5、Grok 4.5、自主云端智能体与 iOS 客户端，价格约为 Pro 的三分之一。",
-      "content_text": "## 本地定价，但功能不缩水\n\nCursor 7 月 28 日推出 Cursor Start，一个仅面向印度开发者的月付 649 卢比套餐，按当前汇率约合 7 美元，而全球 Pro 版为 20 美元。该套餐以卢比计价，支持 UPI 或银行卡支付——此前印度用户只能以美元付费，本地支付是长期诉求。\n\n这不是一个功能被砍空的入门版。套餐包含 Cursor 所称的「充足额度」，可使用其两款性价比模型：自研 Composer 2.5 与 xAI 的 Grok 4.5，覆盖网页、桌面、CLI 与 iOS 客户端。同时提供可在用户离开时自动构建、测试并提交 PR 的云端智能体，支持在手机上启动和操控这些智能体、回到桌面继续接手，并完整支持插件、MCP server、hooks 与 skills。Start 不包含的是 OpenAI 与 Anthropic 的前沿模型，以及 Bugbot、Auto Mode 等更高层功能。\n\nCursor 表示，过去一年其印度用户规模增长约两倍，达到 300 万开发者以上，使印度成为其第三大市场，也是重度用户密度最高的国家。负责亚太业务的 Simon Green 将此举定位为「把商业模式调到合适尺寸以驱动规模」，而非单纯降价。\n\n发布之际，Cursor 本身正处在被收购过程中。SpaceX 于 4 月同意以 600 亿美元股票收购该公司，预计第三季度完成交割，在此之前 Cursor 保持独立运营。\n\n## 为何重要\n\n编码智能体此前的定价基准一直是美国薪资水平，结果是开发者数量最庞大的市场反而用不上最强工具。Start 是头部智能体厂商第一次用「为本地重新设计的套餐」而非「同一 SKU 打区域折扣」来正面回应这个问题——更值得注意的是，它把云端智能体和手机操控放进了入门档，而不是当作高价功能。如果转化跑通，从 GitHub 到阿里 Qoder 都将面临跟进压力，智能体编码的竞争重心也会向亚洲的量级市场迁移。",
-      "date_published": "2026-07-28T05:41:00.000Z",
-      "date_modified": "2026-07-28T11:05:18.634Z",
-      "tags": [
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cursor-start-india-tier.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-start-india-tier.html",
-        "source_published_at": "2026-07-28T05:41:00.000Z",
-        "site_published_at": "2026-07-28T11:05:18.634Z",
-        "sources": [
-          {
-            "title": "Introducing Cursor Start · Cursor",
-            "url": "https://cursor.com/blog/cursor-start-india"
-          },
-          {
-            "title": "Cursor makes its biggest India push yet ahead of SpaceX acquisition with localized pricing",
-            "url": "https://techcrunch.com/2026/07/27/cursor-makes-its-biggest-india-push-yet-ahead-of-spacex-acquisition-with-localized-pricing/"
-          },
-          {
-            "title": "Cursor (@cursor_ai) announcing Cursor Start",
-            "url": "https://x.com/cursor_ai/status/2081978255004053560"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/hugging-face-nudify-models-report.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/hugging-face-nudify-models-report.html",
-      "title": "报告：Hugging Face 热门图像编辑模型多数会「一键脱衣」",
-      "summary": "欧洲非营利组织 AI Forensics 发现，Hugging Face 上最热门的九个图像编辑模型中有七个会直接执行脱衣指令。",
-      "content_text": "## 权重开放之处，护栏就不存在\n\n欧洲非营利组织 AI Forensics 于 7 月 28 日发布报告称，Hugging Face 上最热门的九个图像编辑模型中，有七个会直接执行「去掉女性照片中衣物」这类请求。研究者称这些提示词无需任何越狱技巧，普通自然语言指令即可生效；部分模型还会基于儿童照片生成性化图像。\n\n报告的核心对照是托管式商业系统。谷歌 Gemini 与 OpenAI ChatGPT 都会在推理时通过输入过滤与输出分类器拒绝这类提示。而以可下载 checkpoint 形式分发的开放权重模型不存在这样一个可执行的拦截点：训练进去的拒答行为可以被微调掉，托管平台能动用的手段仅限于服务条款、下架和访问限制，而非运行时控制。\n\nHugging Face 此前已因托管脱衣类模型与 Space 收到网络安全监管机构警告，并据此修改了服务条款。其他地区的执法也在扩面：澳大利亚 eSafety 专员已对每月约 10 万次澳洲访问量、并牵涉校园图像性侵案件的脱衣服务采取行动，英国与欧盟监管机构亦对该领域启动了并行动作。\n\n这份报告落在该平台格外难受的一个月——它此前刚披露一起涉及自主智能体的安全事件，其整体安全控制能力也正受到质疑。\n\n## 为何重要\n\n关于开放权重的政策争论，此前基本围绕灾难性滥用展开：生物武器助力、网络攻击能力、国家安全层面的扩散。这份报告指向的却是一种已经在大规模发生、执行门槛极低、且受害者可被具体指认（包括未成年人）的伤害。它同时暴露了 AI 安全治理的结构性不对称：适用于 API 模型的缓解手段，在权重分发场景下根本无处安放。正在起草开放权重规则的监管者由此拿到了一个量化的具体案例，而模型仓库将面临压力——不只是审查模型来源，还要对模型行为负责。",
-      "date_published": "2026-07-28T09:07:00.000Z",
-      "date_modified": "2026-07-28T11:05:18.637Z",
-      "tags": [
-        "安全",
-        "政策",
-        "AIGC"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/hugging-face-nudify-models-report.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/hugging-face-nudify-models-report.html",
-        "source_published_at": "2026-07-28T09:07:00.000Z",
-        "site_published_at": "2026-07-28T11:05:18.637Z",
-        "sources": [
-          {
-            "title": "Hugging Face is being used to easily undress women and children",
-            "url": "https://www.theverge.com/ai-artificial-intelligence/971723/hugging-face-nudify-deepfake-undress-women-children"
-          },
-          {
-            "title": "eSafety action prevents services 'nudifying' Australian school children",
-            "url": "https://www.esafety.gov.au/newsroom/media-releases/esafety-action-prevents-services-nudifying-australian-school-children"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/kimi-k3-open-weights-release.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/kimi-k3-open-weights-release.html",
-      "title": "月之暗面开源 Kimi K3：2.8 万亿参数权重登陆 Hugging Face",
-      "summary": "月之暗面在 7 月 27 日 0 点（UTC）如约放出 Kimi K3 全部 2.8 万亿参数权重，采用 Kimi K3 License 许可证，成为迄今最大的开源权重模型。",
-      "content_text": "7 月 27 日 0 点（UTC），月之暗面如约在 Hugging Face 上放出了 Kimi K3 的完整权重：MXFP4 量化格式，体积约 1.4TB，沿用 K2 系列的 Kimi K3 License 许可证。总参数 2.8 万亿，这是迄今为止规模最大的开源权重模型。\n\n## 规格与成绩\n\nK3 采用月之暗面自研的 Stable LatentMoE 混合专家架构，896 个专家中每个 token 激活 16 个，配备 100 万 token 上下文窗口和原生视觉能力。按官方口径，K3 综合能力仍落后于 Anthropic 的 Claude Fable 5 和 OpenAI 的 GPT-5.6 Sol，但在编码与智能体测评上全面超过 Claude Opus 4.8 和 GPT-5.5；Tom's Hardware 则注意到它在 Frontend Code Arena 基准上压过了 Fable 5。K3 的 API 此前早已上线（兼容 OpenAI 与 Anthropic 接口，输入/输出约 3/15 美元每百万 token），所以这个周末改变的不是\"能不能用\"，而是\"归谁控制\"——任何人都可以在自己的硬件上部署它。当然，1.4TB 的体量决定了自托管短期内只属于大型团队和基础设施厂商，要等社区量化版本出来才会真正普及。\n\n## 落在风暴眼上\n\n发布时机耐人寻味：华盛顿正在讨论对中国开源模型实施\"选择性禁令\"，英美联合评估几天前刚给 K3 的网络攻击能力打了分；而呼吁美国政府豁免开源模型的《Open Weights and American AI Leadership》公开信，自 7 月 24 日发布以来签署方已翻倍至约 50 家——英伟达、微软、Meta 属首批，Google 与 OpenAI 随后加入，Anthropic 与亚马逊则在所有版本中始终缺席。Hugging Face 官方账号用一句\"free the parameters\"迎接权重上线。而月之暗面正推进估值约 500 亿美元的港股 IPO，这次开源同时也是一步声势棋。\n\n这件事的分量在于：它把一个政策概念变成了既成事实——全球任何有算力的机构现在都能在本地跑起一个准前沿模型，不必碰任何中国 API。这既拆掉了\"数据主权\"层面对中国 AI 的疑虑，也让\"在 API 层围堵前沿能力\"的监管思路失去了支点。",
-      "date_published": "2026-07-27T00:00:00.000Z",
-      "date_modified": "2026-07-27T23:05:06.710Z",
-      "tags": [
-        "模型",
-        "开源"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/kimi-k3-open-weights-release.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/kimi-k3-open-weights-release.html",
-        "source_published_at": "2026-07-27T00:00:00.000Z",
-        "site_published_at": "2026-07-27T23:05:06.710Z",
-        "sources": [
-          {
-            "title": "China's 2.8-trillion-parameter Kimi K3 beats Claude Fable 5 in Frontend Code Arena — Tom's Hardware",
-            "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/moonshot-releases-2-8-trillion-parameter-kimi-k3"
-          },
-          {
-            "title": "Kimi K3 Open Weights Arrive Sunday — Tech Times",
-            "url": "https://www.techtimes.com/articles/321551/20260725/kimi-k3-open-weights-arrive-sunday-self-hosting-cuts-china-data-risk-api-never-can.htm"
-          },
-          {
-            "title": "Kimi K3 Model Overview: MXFP4 Quantization and Open Weights — Hugging Face Blog",
-            "url": "https://huggingface.co/blog/ResterChed/kimi-k3-model-overview-mxfp4-quantization-open-wei"
-          },
-          {
-            "title": "Huang's open-weights letter doubled to 50 without Amazon and Anthropic — Forbes",
-            "url": "https://www.forbes.com/sites/sandycarter/2026/07/25/huangs-open-weights-letter-doubled-to-50-without-amazon-and-anthropic/"
           }
         ]
       }
