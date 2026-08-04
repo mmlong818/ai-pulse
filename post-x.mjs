@@ -8,6 +8,8 @@ import { join } from 'node:path';
 const ROOT = new URL('.', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const CONTENT = join(ROOT, 'content');
 const BASE = 'https://mmlong818.github.io/ai-pulse';
+const EB_ANCHOR = 11 * 3600000;
+const EB_HALF = 12 * 3600000;
 const forcedEdition = (process.env.AIPULSE_FORCE_EDITION || process.env.AIPULSE_EDITION || '').toLowerCase();
 const forcedEditionDate = process.env.AIPULSE_EDITION_DATE || new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
 
@@ -116,6 +118,29 @@ function postUrl(lang) {
   return lang === 'zh' ? `${BASE}/zh/day/${date}.html` : `${BASE}/day/${date}.html`;
 }
 
+const floorEdition = (ms) => Math.floor((ms - EB_ANCHOR) / EB_HALF) * EB_HALF + EB_ANCHOR;
+const ceilEdition = (ms) => Math.ceil((ms - EB_ANCHOR) / EB_HALF) * EB_HALF + EB_ANCHOR;
+
+function radarTs(item, fallbackDate) {
+  const p = item?.published || fallbackDate;
+  return Date.parse(String(p || '').includes('T') ? p : `${p}T00:00:00Z`) || 0;
+}
+
+function radarItemsForEdition(radar, edition) {
+  if (!radar?.items?.length) return [];
+  const boundary = floorEdition(edition.getTime());
+  return radar.items.filter((item) => {
+    const ts = radarTs(item, radar.date);
+    return ts && ceilEdition(ts) === boundary;
+  });
+}
+
+function countLabel(lang, briefingCount, radarCount) {
+  const total = briefingCount + radarCount;
+  if (lang === 'zh') return `${total}条：${briefingCount}篇深度+${radarCount}条快讯`;
+  return `${total} items: ${briefingCount} briefings + ${radarCount} quick hits`;
+}
+
 function postCheckDelayMs() {
   const rawMs = env('AIPULSE_X_CHECK_DELAY_MS');
   if (rawMs) return Math.max(0, Number(rawMs) || 0);
@@ -221,12 +246,14 @@ function localParts(date, timeZone, locale) {
 }
 
 function composeText(lang, picks) {
-  const { featured, batch } = picks;
+  const { featured, batch, radar } = picks;
   const edition = editionInstant(picks);
+  const radarCount = radarItemsForEdition(radar, edition).length;
+  const label = countLabel(lang, batch.length, radarCount);
   let head, star, others, url;
   if (lang === 'zh') {
     const { month, day, hour } = localParts(edition, 'Asia/Shanghai', 'zh-CN');
-    head = `⚡ AI专注速报 · ${month}月${day}日${hour < 12 ? '早报' : '晚报'}（${batch.length}条）`;
+    head = `⚡ AI专注速报 · ${month}月${day}日${hour < 12 ? '早报' : '晚报'}（${label}）`;
     star = `★ ${headlineText(featured.title_zh || featured.title)}`;
     others = batch.filter((a) => a.slug !== featured.slug).map((a) => `· ${headlineText(a.title_zh || a.title)}`);
     url = postUrl('zh');
@@ -234,7 +261,7 @@ function composeText(lang, picks) {
     // 英文帖按美东时间：北京 7:00 班 = 美东前一天晚上（Evening），北京 19:00 班 = 美东当天早上（Morning）
     const etHour = Number(edition.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
     const dateStr = edition.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' });
-    head = `⚡ AI Focus Bulletin · ${etHour < 12 ? 'Morning' : 'Evening'} Edition, ${dateStr} (${batch.length} items)`;
+    head = `⚡ AI Focus Bulletin · ${etHour < 12 ? 'Morning' : 'Evening'} Edition, ${dateStr} (${label})`;
     star = `★ ${headlineText(featured.title)}`;
     others = batch.filter((a) => a.slug !== featured.slug).map((a) => `· ${headlineText(a.title)}`);
     url = postUrl('en');
