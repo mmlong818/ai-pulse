@@ -1,0 +1,34 @@
+{
+  "slug": "tencent-hunyuan-hy-asr-3-preview",
+  "title": "Tencent Hunyuan ships Hy ASR 3.0 preview via cloud API",
+  "summary": "Tencent's new speech model reports about 3% word error rates in Mandarin, English and Cantonese, and is live on Tencent Cloud and in Yuanbao.",
+  "body": "Tencent's Hunyuan team released a preview version of its next-generation speech recognition model, Hy ASR 3.0, on Tuesday, positioning it as a transcription system built on top of a large language model rather than a standalone acoustic pipeline.\n\n## What was released\n\nAccording to Hunyuan's announcement, Hy ASR 3.0 preview borrows the language understanding of the team's Hy3 foundation model and uses it to resolve ambiguity that pure acoustic decoding leaves behind — homophones, proper nouns, domain jargon and speech that only makes sense given what came several sentences earlier. Tencent frames the shift as moving from character-by-character transcription toward a model that interprets the utterance in context and returns a cleaned, punctuated result in one pass.\n\nOn public benchmark sets, the team reports word error rates of 3.34% for Mandarin, 2.62% for English and 3.12% for Cantonese. On Tencent's own internal evaluations, it claims lower error rates than comparison systems across four axes: general recognition, dialect identification, contextual understanding and robustness in noisy or overlapping-speech conditions. Cantonese and broader dialect coverage is emphasised, an area where Chinese-market ASR products have historically been weakest.\n\nThe model is a commercial service, not an open-weight release. It is available through Tencent Cloud's API for use cases such as customer service, voice search and content indexing, and Tencent's consumer assistant Yuanbao has already switched it on, giving users free access to dialect recognition and context-aware correction.\n\n## Why it matters\n\nSpeech recognition has quietly become the contested layer beneath voice agents: an agent's tool calls are only as reliable as the transcript it acts on, and a misheard order number or address propagates through the entire chain. By routing recognition through an LLM's language prior, Tencent is making the same architectural bet as recent releases from Alibaba's Qwen ASR line and xAI's voice stack — that transcription accuracy is now bounded by semantics, not acoustics.\n\nThe pricing and rollout choice is also notable. Tencent is putting the model straight into Yuanbao at no cost while metering it through the cloud API, the same dual-track pattern Chinese vendors have used to seed developer adoption. With Cantonese and dialect handling near Mandarin-level error rates, the release also strengthens Tencent's hand in Hong Kong and Southeast Asian markets, where multilingual and code-switched speech is the norm rather than an edge case.",
+  "title_zh": "腾讯混元发布 Hy ASR 3.0 preview，元宝已首发上线",
+  "summary_zh": "腾讯混元新一代语音识别模型上线，普通话、英语、粤语词错率均约 3%，已在腾讯云开放 API，元宝端免费可用。",
+  "body_zh": "腾讯混元团队 8 月 4 日发布新一代语音识别模型 Hy ASR 3.0 preview，其定位不是传统意义上的声学识别管线，而是把语音识别直接架在大模型的语言能力之上。\n\n## 发布了什么\n\n按混元的说法，Hy ASR 3.0 preview 复用了自家 Hy3 基座模型的语言理解能力，用它去消解纯声学解码解决不了的歧义——同音词、专有名词、行业术语，以及只有结合前几句话才能判断的表述。腾讯把这一变化概括为：从「逐字转写」走向「理解上下文、判断场景、一次给出结果」。\n\n公开测试集上，团队给出的词错率为普通话 3.34%、英语 2.62%、粤语 3.12%。在内部评测中，混元称该模型在通用识别、方言识别、上下文理解和复杂声学场景鲁棒性四个维度上，词错率均低于对比系统。粤语及更广泛的方言覆盖是这次重点强调的方向，而这恰恰是中文语音产品长期以来的薄弱环节。\n\n该模型走的是商业服务路线，并未开源权重。目前已在腾讯云官网开放 API，面向智能客服、语音搜索、内容理解等场景；腾讯自家的元宝已首发接入，用户可免费体验方言识别、结合上下文纠错以及嘈杂环境下的稳定转写。\n\n## 为什么重要\n\n语音识别正在悄悄变成语音智能体的关键底座：智能体的工具调用可靠性上限，取决于它拿到的那份转写文本——一个听错的订单号或地址，会顺着整条链路一路错到底。把识别过程交给大模型的语言先验来兜底，腾讯下的注和阿里 Qwen ASR 系列、xAI 语音栈近期的选择是同一个：转写精度的瓶颈已经从声学转到了语义。\n\n发布节奏同样值得注意。腾讯一边把模型免费塞进元宝，一边在云上按量计费开放 API——这是国内厂商拉开发者的惯用双轨打法。而粤语、方言的词错率已接近普通话水平，也让腾讯在香港与东南亚市场更有底气：在那些地方，多语言与语码混用是常态，而不是长尾特例。",
+  "tags": [
+    "Models",
+    "Industry",
+    "AIGC"
+  ],
+  "sources": [
+    {
+      "title": "Tencent Hunyuan on X: Hy ASR 3.0 preview drops today",
+      "url": "https://x.com/TencentHunyuan/status/2084579829303615497"
+    },
+    {
+      "title": "腾讯混元Hy ASR 3.0 preview：让语音识别理解上下文 — 量子位",
+      "url": "https://www.qbitai.com/2026/08/465973.html"
+    },
+    {
+      "title": "腾讯混元发布语音识别模型 Hy ASR 3.0 preview，元宝已首发上线 — 新浪科技",
+      "url": "https://finance.sina.com.cn/tech/digi/2026-08-04/doc-inimcxxc4039738.shtml"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "The most consequential release in a very quiet Asian half-day: a major lab pushing LLM-grounded transcription into production for voice agents.",
+  "featured_reason_zh": "亚洲时段少有的实质性发布：头部实验室把「大模型底座的语音识别」直接推向生产，直击语音智能体的可靠性瓶颈。",
+  "date": "2026-08-04",
+  "published": "2026-08-04T09:58:00Z",
+  "published_at": "2026-08-04T11:00:03.521Z"
+}

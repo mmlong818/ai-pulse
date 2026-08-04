@@ -135,6 +135,84 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/tencent-hunyuan-hy-asr-3-preview.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/tencent-hunyuan-hy-asr-3-preview.html",
+      "title": "Tencent Hunyuan ships Hy ASR 3.0 preview via cloud API",
+      "summary": "Tencent's new speech model reports about 3% word error rates in Mandarin, English and Cantonese, and is live on Tencent Cloud and in Yuanbao.",
+      "content_text": "Tencent's Hunyuan team released a preview version of its next-generation speech recognition model, Hy ASR 3.0, on Tuesday, positioning it as a transcription system built on top of a large language model rather than a standalone acoustic pipeline.\n\n## What was released\n\nAccording to Hunyuan's announcement, Hy ASR 3.0 preview borrows the language understanding of the team's Hy3 foundation model and uses it to resolve ambiguity that pure acoustic decoding leaves behind — homophones, proper nouns, domain jargon and speech that only makes sense given what came several sentences earlier. Tencent frames the shift as moving from character-by-character transcription toward a model that interprets the utterance in context and returns a cleaned, punctuated result in one pass.\n\nOn public benchmark sets, the team reports word error rates of 3.34% for Mandarin, 2.62% for English and 3.12% for Cantonese. On Tencent's own internal evaluations, it claims lower error rates than comparison systems across four axes: general recognition, dialect identification, contextual understanding and robustness in noisy or overlapping-speech conditions. Cantonese and broader dialect coverage is emphasised, an area where Chinese-market ASR products have historically been weakest.\n\nThe model is a commercial service, not an open-weight release. It is available through Tencent Cloud's API for use cases such as customer service, voice search and content indexing, and Tencent's consumer assistant Yuanbao has already switched it on, giving users free access to dialect recognition and context-aware correction.\n\n## Why it matters\n\nSpeech recognition has quietly become the contested layer beneath voice agents: an agent's tool calls are only as reliable as the transcript it acts on, and a misheard order number or address propagates through the entire chain. By routing recognition through an LLM's language prior, Tencent is making the same architectural bet as recent releases from Alibaba's Qwen ASR line and xAI's voice stack — that transcription accuracy is now bounded by semantics, not acoustics.\n\nThe pricing and rollout choice is also notable. Tencent is putting the model straight into Yuanbao at no cost while metering it through the cloud API, the same dual-track pattern Chinese vendors have used to seed developer adoption. With Cantonese and dialect handling near Mandarin-level error rates, the release also strengthens Tencent's hand in Hong Kong and Southeast Asian markets, where multilingual and code-switched speech is the norm rather than an edge case.",
+      "date_published": "2026-08-04T09:58:00.000Z",
+      "date_modified": "2026-08-04T11:00:03.521Z",
+      "tags": [
+        "Models",
+        "Industry",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-hunyuan-hy-asr-3-preview.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hunyuan-hy-asr-3-preview.html",
+        "source_published_at": "2026-08-04T09:58:00.000Z",
+        "site_published_at": "2026-08-04T11:00:03.521Z",
+        "sources": [
+          {
+            "title": "Tencent Hunyuan on X: Hy ASR 3.0 preview drops today",
+            "url": "https://x.com/TencentHunyuan/status/2084579829303615497"
+          },
+          {
+            "title": "腾讯混元Hy ASR 3.0 preview：让语音识别理解上下文 — 量子位",
+            "url": "https://www.qbitai.com/2026/08/465973.html"
+          },
+          {
+            "title": "腾讯混元发布语音识别模型 Hy ASR 3.0 preview，元宝已首发上线 — 新浪科技",
+            "url": "https://finance.sina.com.cn/tech/digi/2026-08-04/doc-inimcxxc4039738.shtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/wan-real-time-camera-to-image.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/wan-real-time-camera-to-image.html",
+      "title": "Alibaba's Wan adds real-time Camera-to-Image generation",
+      "summary": "Wan launched a Real-time feature suite whose first capability turns a live phone camera feed into stylised imagery, starting with anime looks.",
+      "content_text": "Alibaba's Wan team announced a new Real-time feature suite on Tuesday, led by a capability it calls Camera-to-Image: users open their device camera and see their surroundings restyled on the spot, with the launch demo showing live footage converted into anime-style imagery. The team said the feature is available to try immediately, linking directly to the product rather than a waitlist.\n\n## What is different about it\n\nWan — the international name for Alibaba's Tongyi Wanxiang generative-media line — has until now shipped in the familiar asynchronous shape: submit a prompt or a reference image, wait for a job to finish, collect a file. Camera-to-Image inverts that loop. Instead of authoring a shot and waiting on a render, the user points a camera and the model becomes a filter running against a continuous input stream. That framing puts the feature in the same category as the interactive-latency generation work coming out of Krea, Decart and a handful of research groups, rather than in the text-to-video race Wan is better known for.\n\nAlibaba described Camera-to-Image as the first entry in a broader Real-time suite, implying further capabilities under the same banner. The company has not published latency figures, resolution limits, pricing, or which underlying Wan checkpoint powers the feature, and details available so far come from the team's own announcement.\n\n## Why it matters\n\nReal-time generation is the boundary that separates generative media as a production tool from generative media as an interface. Anything running at camera frame rates can plug into live video, streaming, camera apps, virtual try-on and eventually eyewear — surfaces that batch generation cannot reach, and where distribution belongs to platform owners rather than creative-tool startups. Alibaba is one of the few companies holding both a competitive video model family and the consumer apps to put it in front of hundreds of millions of phones.\n\nThe cost side is the part to watch. Interactive generation means paying for inference every frame instead of every clip, which forces aggressive distillation and small step counts. If Wan can hold acceptable quality at that budget on consumer hardware or cheap serving, the same techniques transfer straight back to its batch video products — and set a floor that rivals in the AIGC field will have to meet.",
+      "date_published": "2026-08-04T03:26:00.000Z",
+      "date_modified": "2026-08-04T11:00:03.521Z",
+      "tags": [
+        "AIGC",
+        "Models",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/wan-real-time-camera-to-image.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/wan-real-time-camera-to-image.html",
+        "source_published_at": "2026-08-04T03:26:00.000Z",
+        "site_published_at": "2026-08-04T11:00:03.521Z",
+        "sources": [
+          {
+            "title": "Alibaba Wan on X: Meet Camera-to-Image, part of our new Real-time feature suite",
+            "url": "https://x.com/Alibaba_Wan/status/2084481142661746976"
+          },
+          {
+            "title": "Alibaba Wan on X: Try it now",
+            "url": "https://x.com/Alibaba_Wan/status/2084481145115439473"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/ai-memory-crunch-hits-macbook-air.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/ai-memory-crunch-hits-macbook-air.html",
       "title": "AI memory crunch pushes MacBook Air into shortage",
@@ -491,7 +569,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/articles/eu-ai-act-article-50-live.html",
       "title": "EU AI Act's content-labelling rules take effect today",
       "summary": "From 2 August the AI Act's Article 50 transparency duties bite across the EU: machine-readable marking, chatbot disclosure and deepfake labels.",
-      "content_text": "## What became binding\n\nThe European Union's AI Act crossed its most consequential milestone for generative-AI products on 2 August 2026, when the transparency obligations in Article 50 became directly applicable across all 27 member states.\n\nProviders of generative systems must now mark their outputs in a machine-readable way so that synthetic images, audio, video and text can be detected downstream. Systems that interact directly with people — chatbots, voice assistants, agent front ends — must make clear that the counterpart is a machine, unless that is obvious from context. On the deployer side, anyone publishing a deepfake must disclose that the material is artificially generated or manipulated, and AI-generated text published on matters of public interest must be labelled where it has not passed human editorial review. Deployers of emotion-recognition and biometric-categorisation systems must inform the people exposed to them.\n\nThe rules are not retroactive: content produced before 2 August does not have to be relabelled after the fact.\n\n## Enforcement and the missing half\n\nEnforcement falls mainly to national market surveillance authorities rather than the Commission's AI Office, whose remit is limited to systems built on general-purpose models by the same provider, or systems folded into very large online platforms and search engines. Infringements of Article 50 can draw fines of up to €15 million or 3 percent of worldwide annual turnover, whichever is higher.\n\nThe date arrives with a large hole in it. Under the Digital Omnibus on AI — provisionally agreed on 6 May 2026 and confirmed by member-state representatives in the Council a week later — obligations for stand-alone high-risk systems listed in Annex III slip to 2 December 2027, and for AI embedded in regulated products under Annex I to 2 August 2028. What was meant to be the AI Act's main compliance wave has become, in practice, a transparency-only wave.\n\nCompanies can lean on the Commission's voluntary Code of Practice on Transparency of AI-generated Content, published on 10 June 2026, which the Commission and AI Board have endorsed as an adequate compliance route. The Commission says about 190 organisations had signed by the end of July 2026. That figure is a running total covering two quite different groups: model providers such as Aleph Alpha, Anthropic, Black Forest Labs, Cohere, Google, Meta, Microsoft, Mistral, OpenAI and Synthesia, and downstream adopters such as Getty Images, Lenovo, Lufthansa and Iberdrola. Signing remains voluntary and the roster keeps growing; the Article 50 duties bind signatories and non-signatories alike.\n\n## Why it matters\n\nThis is the first time a major jurisdiction has made provenance marking a legal duty for frontier generative models rather than a voluntary pledge. Because watermarking and disclosure are baked into model serving rather than regional UI, the practical effect will be global: EU rules now shape what every user of a large image, video or voice model sees.",
+      "content_text": "## What became binding\n\nThe European Union's AI Act crossed its most consequential milestone for generative-AI products on 2 August 2026, when the transparency obligations in Article 50 became directly applicable across all 27 member states.\n\nProviders of generative systems must now mark their outputs in a machine-readable way so that synthetic images, audio, video and text can be detected downstream. Systems that interact directly with people — chatbots, voice assistants, agent front ends — must make clear that the counterpart is a machine, unless that is obvious from context. On the deployer side, anyone publishing a deepfake must disclose that the material is artificially generated or manipulated, and AI-generated text published on matters of public interest must be labelled where it has not passed human editorial review. Deployers of emotion-recognition and biometric-categorisation systems must inform the people exposed to them.\n\nTwo timing carve-outs are worth keeping straight. The rules are not retroactive: content produced before 2 August does not have to be relabelled after the fact. Separately, a limited grace period applies to the marking duty itself — generative systems already placed on the EU market before 2 August have until 2 December 2026 to comply with machine-readable marking. Every other Article 50 duty, including chatbot disclosure and deepfake labelling, applies from today.\n\n## Enforcement and the missing half\n\nEnforcement falls mainly to national market surveillance authorities rather than the Commission's AI Office, whose remit is limited to systems built on general-purpose models by the same provider, or systems folded into very large online platforms and search engines. The European Data Protection Supervisor covers EU institutions. Infringements of Article 50 can draw fines of up to €15 million or 3 percent of worldwide annual turnover, whichever is higher, with proportionality allowances for SMEs and small mid-caps.\n\nThe date arrives with a large hole in it. Under the Digital Omnibus on AI — provisionally agreed on 6 May 2026 and confirmed by member-state representatives in the Council a week later — obligations for stand-alone high-risk systems listed in Annex III slip to 2 December 2027, and for AI embedded in regulated products under Annex I to 2 August 2028. What was meant to be the AI Act's main compliance wave has become, in practice, a transparency-only wave.\n\nCompanies can lean on the Commission's voluntary Code of Practice on Transparency of AI-generated Content, published on 10 June 2026, which the Commission and AI Board have endorsed as an adequate compliance route. The Commission says about 190 organisations had signed by the end of July 2026 — but that headline number covers two separate commitments, not one roster, and an organisation acting in both roles signs both.\n\nSection 1, with 82 signatories, is the provider-side undertaking, covering the Article 50(2) duties on machine-readable marking and detection. Its signatories include Aleph Alpha, Anthropic, Black Forest Labs, Cohere, Google, Meta, Microsoft, Mistral, OpenAI and Synthesia. Section 2, with 152 signatories, is the deployer-side undertaking, covering the Article 50(4) duties on disclosing deepfakes and labelling AI-generated text published to inform the public on matters of public interest. Its signatories include Bulgari, Deutsche Lufthansa, Fastweb, Getty Images, Iberdrola and Lenovo, alongside dual-role firms such as Google, Meta and Microsoft that appear on both lists. The Commission notes that roughly half of all signatories are small or recently founded companies.\n\nThe code stays open for signature indefinitely — the 27 July cut-off applied only to inclusion in the initial published list — so both counts should be read as a snapshot rather than a closed roster. Signing remains voluntary either way, and the Article 50 duties bind signatories and non-signatories alike.\n\n## Why it matters\n\nThis is the first time a major jurisdiction has made provenance marking a legal duty for frontier generative models rather than a voluntary pledge. Because watermarking and disclosure are baked into model serving rather than regional UI, the practical effect will be global: EU rules now shape what every user of a large image, video or voice model sees.",
       "date_published": "2026-08-02T00:00:00.000Z",
       "date_modified": "2026-08-02T11:00:03.111Z",
       "tags": [
@@ -518,6 +596,10 @@
           {
             "title": "Code of Practice on Transparency of AI-generated Content — European Commission",
             "url": "https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content"
+          },
+          {
+            "title": "Signing the Code of Practice on Transparency of AI-generated Content — European Commission",
+            "url": "https://digital-strategy.ec.europa.eu/en/faqs/signing-code-practice-transparency-ai-generated-content"
           },
           {
             "title": "Strong backing for the Code of Practice on Transparency of AI-generated Content — European Commission",
@@ -1842,88 +1924,6 @@
           {
             "title": "LiquidAI/LFM2.5-Encoder-350M · Hugging Face",
             "url": "https://huggingface.co/LiquidAI/LFM2.5-Encoder-350M"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-open-sources-codex-security-cli.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-open-sources-codex-security-cli.html",
-      "title": "OpenAI open-sources its Codex Security scanning CLI",
-      "summary": "The Apache-2.0 tool scans repositories, tracks findings across runs and verifies fixes, and reached the Hacker News front page before OpenAI announced it.",
-      "content_text": "## What happened\n\nOpenAI has published Codex Security as an open-source command-line tool and TypeScript SDK, releasing it under the Apache-2.0 licence as the npm package `@openai/codex-security`. The company confirmed the release only after the repository was spotted and pushed onto the Hacker News front page, writing that it had \"quietly\" shipped the code. The GitHub project accumulated thousands of stars within a day.\n\nCodex Security began in March 2026 as a hosted application-security agent. The CLI packages that workflow for local and pipeline use: it scans a repository, reviews changes on a pull request, persists findings so the same issue is not re-reported on every run, verifies whether a proposed fix actually closes the hole, and can be wired into CI/CD through environment variables. Authentication works either through a ChatGPT login or an OpenAI API key. Node.js 22 and Python 3.10 or later are required, and OpenAI labels the drop an early release.\n\nThe pitch is that model-driven review reasons about how code behaves in surrounding context rather than matching patterns, which is where conventional static analysis generates most of its false positives. The tool still calls OpenAI's hosted models, so the open licence covers the harness and the SDK, not the intelligence behind the scan.\n\n## Why it matters\n\nAI-assisted security review has been the most commercially defensible agent category of 2026, with Microsoft, Anthropic and a cluster of startups shipping competing products in recent weeks. Putting the scanning harness under Apache-2.0 pressures paid AppSec vendors on the interface layer while keeping OpenAI's revenue at the inference layer — the same play open-weight labs have run against proprietary model providers, inverted.\n\nIt also arrives days after the Hugging Face intrusion involving an OpenAI agent, which handed the company an uncomfortable case study in what autonomous code-touching systems can do. Shipping a defensive agent that engineering teams can inspect line by line is a pointed response, and the CI-integration path means findings land where developers already work rather than in a separate dashboard.",
-      "date_published": "2026-07-29T00:35:31.000Z",
-      "date_modified": "2026-07-29T11:00:00.000Z",
-      "tags": [
-        "Agents",
-        "Open Source",
-        "Safety"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-open-sources-codex-security-cli.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-open-sources-codex-security-cli.html",
-        "source_published_at": "2026-07-29T00:35:31.000Z",
-        "site_published_at": "2026-07-29T11:00:00.000Z",
-        "sources": [
-          {
-            "title": "openai/codex-security on GitHub",
-            "url": "https://github.com/openai/codex-security"
-          },
-          {
-            "title": "OpenAI Open-Sources Codex Security CLI for Finding, Validating, and Fixing Security Vulnerabilities",
-            "url": "https://cybersecuritynews.com/openai-open-sources-codex-security-cli/"
-          },
-          {
-            "title": "OpenAI on X: \"We quietly released the open-source Codex Security CLI\"",
-            "url": "https://x.com/OpenAI/status/2082263717916586117"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-transcribe-models-api.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-transcribe-models-api.html",
-      "title": "OpenAI ships GPT-Transcribe and GPT-Live-Transcribe APIs",
-      "summary": "Two new speech-to-text models replace Whisper as OpenAI's recommended default, with steerable context inputs and pricing from $0.0045 per minute.",
-      "content_text": "OpenAI released two speech-to-text models in its API on 28 July, positioning them as the recommended path for new work over both Whisper and the gpt-4o-transcribe family.\n\n## The split\n\nGPT-Live-Transcribe targets low-latency streaming and is exposed only through the realtime transcription endpoint, priced at $0.017 per minute of audio with tunable latency. GPT-Transcribe handles completed files and batch workloads at $0.0045 per minute. OpenAI says both improve on real-world audio — accents, code-switching, numbers, short utterances, domain jargon and heavy background noise — and reports error rates on the async model at less than half Whisper's on its internal comparisons.\n\n## Steerable context\n\nThe more consequential change is that transcription becomes promptable. Developers can pass free-form context describing the recording, a keyword list for proper nouns and domain terms, expected input languages, and formatting expectations. OpenAI's published figure on the Context Aware ASR benchmark is that semantic accuracy rises from 41.6% with no free-form context to 45.2% with it — a modest absolute gain, but on the exact failure mode that has made ASR expensive to productise: a model that transcribes a clinical consultation or a sales call without knowing the drug names, ticker symbols or internal product codes involved. Until now that was patched with post-hoc LLM correction passes. OpenAI has published a migration cookbook for teams moving off Whisper.\n\n## Why it matters\n\nWhisper's 2022 open release effectively set the floor for the entire speech-to-text market, and OpenAI has now formally deprioritised it in favour of closed API models with per-minute billing. For the voice-agent stack — where transcription sits upstream of every downstream decision and a misheard name propagates through the whole turn — steerable context removes a layer of glue code that most production deployments currently maintain themselves. It also lands the same week Fish Audio raised $52M for creator- and enterprise-facing voice models, a reminder that the audio layer is now contested by well-funded specialists rather than treated as solved infrastructure. The pricing gap between the streaming and batch tiers is nearly 4x, which will push architects to keep as much transcription off the realtime path as latency budgets allow.",
-      "date_published": "2026-07-28T20:26:00.000Z",
-      "date_modified": "2026-07-28T23:00:00.000Z",
-      "tags": [
-        "Models",
-        "AIGC",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-transcribe-models-api.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-transcribe-models-api.html",
-        "source_published_at": "2026-07-28T20:26:00.000Z",
-        "site_published_at": "2026-07-28T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "OpenAI Developers: introducing two new transcription models",
-            "url": "https://x.com/OpenAIDevs/status/2082201169443905798"
-          },
-          {
-            "title": "GPT Live Transcribe model reference — OpenAI",
-            "url": "https://developers.openai.com/api/docs/models/gpt-live-transcribe"
-          },
-          {
-            "title": "Migrate from Whisper to GPT-Transcribe and GPT-Live-Transcribe",
-            "url": "https://developers.openai.com/cookbook/examples/migrating_from_whisper_to_gpt_transcribe"
           }
         ]
       }

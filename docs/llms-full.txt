@@ -125,6 +125,71 @@ Sources:
   - MiniMaxAI/MiniMax-H3 — Hugging Face model card and licence Q&A: https://huggingface.co/MiniMaxAI/MiniMax-H3
   - China's MiniMax H3 is the first open model to top an AI video ranking: https://the-decoder.com/chinas-minimax-h3-is-the-first-open-model-to-top-an-ai-video-ranking/
 
+### Tencent Hunyuan ships Hy ASR 3.0 preview via cloud API
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/tencent-hunyuan-hy-asr-3-preview.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hunyuan-hy-asr-3-preview.html
+- Source timestamp: 2026-08-04T09:58:00.000Z
+- Site timestamp: 2026-08-04T11:00:03.521Z
+- Tags: Models, Industry, AIGC
+
+Tencent's new speech model reports about 3% word error rates in Mandarin, English and Cantonese, and is live on Tencent Cloud and in Yuanbao.
+
+Tencent's Hunyuan team released a preview version of its next-generation speech recognition model, Hy ASR 3.0, on Tuesday, positioning it as a transcription system built on top of a large language model rather than a standalone acoustic pipeline.
+
+## What was released
+
+According to Hunyuan's announcement, Hy ASR 3.0 preview borrows the language understanding of the team's Hy3 foundation model and uses it to resolve ambiguity that pure acoustic decoding leaves behind — homophones, proper nouns, domain jargon and speech that only makes sense given what came several sentences earlier. Tencent frames the shift as moving from character-by-character transcription toward a model that interprets the utterance in context and returns a cleaned, punctuated result in one pass.
+
+On public benchmark sets, the team reports word error rates of 3.34% for Mandarin, 2.62% for English and 3.12% for Cantonese. On Tencent's own internal evaluations, it claims lower error rates than comparison systems across four axes: general recognition, dialect identification, contextual understanding and robustness in noisy or overlapping-speech conditions. Cantonese and broader dialect coverage is emphasised, an area where Chinese-market ASR products have historically been weakest.
+
+The model is a commercial service, not an open-weight release. It is available through Tencent Cloud's API for use cases such as customer service, voice search and content indexing, and Tencent's consumer assistant Yuanbao has already switched it on, giving users free access to dialect recognition and context-aware correction.
+
+## Why it matters
+
+Speech recognition has quietly become the contested layer beneath voice agents: an agent's tool calls are only as reliable as the transcript it acts on, and a misheard order number or address propagates through the entire chain. By routing recognition through an LLM's language prior, Tencent is making the same architectural bet as recent releases from Alibaba's Qwen ASR line and xAI's voice stack — that transcription accuracy is now bounded by semantics, not acoustics.
+
+The pricing and rollout choice is also notable. Tencent is putting the model straight into Yuanbao at no cost while metering it through the cloud API, the same dual-track pattern Chinese vendors have used to seed developer adoption. With Cantonese and dialect handling near Mandarin-level error rates, the release also strengthens Tencent's hand in Hong Kong and Southeast Asian markets, where multilingual and code-switched speech is the norm rather than an edge case.
+
+Chinese title: 腾讯混元发布 Hy ASR 3.0 preview，元宝已首发上线
+Chinese summary: 腾讯混元新一代语音识别模型上线，普通话、英语、粤语词错率均约 3%，已在腾讯云开放 API，元宝端免费可用。
+
+Sources:
+  - Tencent Hunyuan on X: Hy ASR 3.0 preview drops today: https://x.com/TencentHunyuan/status/2084579829303615497
+  - 腾讯混元Hy ASR 3.0 preview：让语音识别理解上下文 — 量子位: https://www.qbitai.com/2026/08/465973.html
+  - 腾讯混元发布语音识别模型 Hy ASR 3.0 preview，元宝已首发上线 — 新浪科技: https://finance.sina.com.cn/tech/digi/2026-08-04/doc-inimcxxc4039738.shtml
+
+### Alibaba's Wan adds real-time Camera-to-Image generation
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/wan-real-time-camera-to-image.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/wan-real-time-camera-to-image.html
+- Source timestamp: 2026-08-04T03:26:00.000Z
+- Site timestamp: 2026-08-04T11:00:03.521Z
+- Tags: AIGC, Models, Industry
+
+Wan launched a Real-time feature suite whose first capability turns a live phone camera feed into stylised imagery, starting with anime looks.
+
+Alibaba's Wan team announced a new Real-time feature suite on Tuesday, led by a capability it calls Camera-to-Image: users open their device camera and see their surroundings restyled on the spot, with the launch demo showing live footage converted into anime-style imagery. The team said the feature is available to try immediately, linking directly to the product rather than a waitlist.
+
+## What is different about it
+
+Wan — the international name for Alibaba's Tongyi Wanxiang generative-media line — has until now shipped in the familiar asynchronous shape: submit a prompt or a reference image, wait for a job to finish, collect a file. Camera-to-Image inverts that loop. Instead of authoring a shot and waiting on a render, the user points a camera and the model becomes a filter running against a continuous input stream. That framing puts the feature in the same category as the interactive-latency generation work coming out of Krea, Decart and a handful of research groups, rather than in the text-to-video race Wan is better known for.
+
+Alibaba described Camera-to-Image as the first entry in a broader Real-time suite, implying further capabilities under the same banner. The company has not published latency figures, resolution limits, pricing, or which underlying Wan checkpoint powers the feature, and details available so far come from the team's own announcement.
+
+## Why it matters
+
+Real-time generation is the boundary that separates generative media as a production tool from generative media as an interface. Anything running at camera frame rates can plug into live video, streaming, camera apps, virtual try-on and eventually eyewear — surfaces that batch generation cannot reach, and where distribution belongs to platform owners rather than creative-tool startups. Alibaba is one of the few companies holding both a competitive video model family and the consumer apps to put it in front of hundreds of millions of phones.
+
+The cost side is the part to watch. Interactive generation means paying for inference every frame instead of every clip, which forces aggressive distillation and small step counts. If Wan can hold acceptable quality at that budget on consumer hardware or cheap serving, the same techniques transfer straight back to its batch video products — and set a floor that rivals in the AIGC field will have to meet.
+
+Chinese title: 通义万相上线实时功能，摄像头画面可即时转风格
+Chinese summary: 万相发布 Real-time 实时功能套件，首个能力 Camera-to-Image 可把手机摄像头实时画面即时转成风格化图像，首发主打二次元。
+
+Sources:
+  - Alibaba Wan on X: Meet Camera-to-Image, part of our new Real-time feature suite: https://x.com/Alibaba_Wan/status/2084481142661746976
+  - Alibaba Wan on X: Try it now: https://x.com/Alibaba_Wan/status/2084481145115439473
+
 ### AI memory crunch pushes MacBook Air into shortage
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/ai-memory-crunch-hits-macbook-air.html
@@ -438,15 +503,19 @@ The European Union's AI Act crossed its most consequential milestone for generat
 
 Providers of generative systems must now mark their outputs in a machine-readable way so that synthetic images, audio, video and text can be detected downstream. Systems that interact directly with people — chatbots, voice assistants, agent front ends — must make clear that the counterpart is a machine, unless that is obvious from context. On the deployer side, anyone publishing a deepfake must disclose that the material is artificially generated or manipulated, and AI-generated text published on matters of public interest must be labelled where it has not passed human editorial review. Deployers of emotion-recognition and biometric-categorisation systems must inform the people exposed to them.
 
-The rules are not retroactive: content produced before 2 August does not have to be relabelled after the fact.
+Two timing carve-outs are worth keeping straight. The rules are not retroactive: content produced before 2 August does not have to be relabelled after the fact. Separately, a limited grace period applies to the marking duty itself — generative systems already placed on the EU market before 2 August have until 2 December 2026 to comply with machine-readable marking. Every other Article 50 duty, including chatbot disclosure and deepfake labelling, applies from today.
 
 ## Enforcement and the missing half
 
-Enforcement falls mainly to national market surveillance authorities rather than the Commission's AI Office, whose remit is limited to systems built on general-purpose models by the same provider, or systems folded into very large online platforms and search engines. Infringements of Article 50 can draw fines of up to €15 million or 3 percent of worldwide annual turnover, whichever is higher.
+Enforcement falls mainly to national market surveillance authorities rather than the Commission's AI Office, whose remit is limited to systems built on general-purpose models by the same provider, or systems folded into very large online platforms and search engines. The European Data Protection Supervisor covers EU institutions. Infringements of Article 50 can draw fines of up to €15 million or 3 percent of worldwide annual turnover, whichever is higher, with proportionality allowances for SMEs and small mid-caps.
 
 The date arrives with a large hole in it. Under the Digital Omnibus on AI — provisionally agreed on 6 May 2026 and confirmed by member-state representatives in the Council a week later — obligations for stand-alone high-risk systems listed in Annex III slip to 2 December 2027, and for AI embedded in regulated products under Annex I to 2 August 2028. What was meant to be the AI Act's main compliance wave has become, in practice, a transparency-only wave.
 
-Companies can lean on the Commission's voluntary Code of Practice on Transparency of AI-generated Content, published on 10 June 2026, which the Commission and AI Board have endorsed as an adequate compliance route. The Commission says about 190 organisations had signed by the end of July 2026. That figure is a running total covering two quite different groups: model providers such as Aleph Alpha, Anthropic, Black Forest Labs, Cohere, Google, Meta, Microsoft, Mistral, OpenAI and Synthesia, and downstream adopters such as Getty Images, Lenovo, Lufthansa and Iberdrola. Signing remains voluntary and the roster keeps growing; the Article 50 duties bind signatories and non-signatories alike.
+Companies can lean on the Commission's voluntary Code of Practice on Transparency of AI-generated Content, published on 10 June 2026, which the Commission and AI Board have endorsed as an adequate compliance route. The Commission says about 190 organisations had signed by the end of July 2026 — but that headline number covers two separate commitments, not one roster, and an organisation acting in both roles signs both.
+
+Section 1, with 82 signatories, is the provider-side undertaking, covering the Article 50(2) duties on machine-readable marking and detection. Its signatories include Aleph Alpha, Anthropic, Black Forest Labs, Cohere, Google, Meta, Microsoft, Mistral, OpenAI and Synthesia. Section 2, with 152 signatories, is the deployer-side undertaking, covering the Article 50(4) duties on disclosing deepfakes and labelling AI-generated text published to inform the public on matters of public interest. Its signatories include Bulgari, Deutsche Lufthansa, Fastweb, Getty Images, Iberdrola and Lenovo, alongside dual-role firms such as Google, Meta and Microsoft that appear on both lists. The Commission notes that roughly half of all signatories are small or recently founded companies.
+
+The code stays open for signature indefinitely — the 27 July cut-off applied only to inclusion in the initial published list — so both counts should be read as a snapshot rather than a closed roster. Signing remains voluntary either way, and the Article 50 duties bind signatories and non-signatories alike.
 
 ## Why it matters
 
@@ -458,6 +527,7 @@ Chinese summary: 8月2日起，《AI法案》第50条透明度义务在欧盟全
 Sources:
   - Transparency obligations under Article 50 of the AI Act — European Commission: https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act
   - Code of Practice on Transparency of AI-generated Content — European Commission: https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content
+  - Signing the Code of Practice on Transparency of AI-generated Content — European Commission: https://digital-strategy.ec.europa.eu/en/faqs/signing-code-practice-transparency-ai-generated-content
   - Strong backing for the Code of Practice on Transparency of AI-generated Content — European Commission: https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content
   - Yes, August 2 Still Matters: The EU Approved a High-Risk AI Delay, but Most Transparency Obligations Remain: https://www.joneswalker.com/en/insights/blogs/ai-law-blog/yes-august-2-still-matters-the-eu-approved-a-high-risk-ai-delay-but-most-trans.html
 
@@ -931,70 +1001,6 @@ Sources:
   - MarkTechPost: JetBrains Open-Sources KotlinLLM: https://www.marktechpost.com/2026/07/31/jetbrains-research-open-sources-kotlinllm-intellij-plugin-kotlin-runtime-llm/
   - GitHub: JetBrains-Research/kotlinllm-plugin: https://github.com/JetBrains-Research/kotlinllm-plugin
 
-### OpenAI cuts GPT-5.6 Luna price 80% and Terra 20%
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-gpt-5-6-price-cut.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-5-6-price-cut.html
-- Source timestamp: 2026-07-30T17:15:00.000Z
-- Site timestamp: 2026-07-30T23:00:00.000Z
-- Tags: Industry, Models
-
-OpenAI slashed API pricing across its GPT-5.6 line, dropping Luna to $0.20 per million input tokens and adding a paid Fast mode for Sol.
-
-OpenAI announced a sharp reduction in API pricing for its GPT-5.6 family on Thursday, cutting the cost of the entry-tier Luna model by 80 percent and the mid-tier Terra by 20 percent, effective immediately.
-
-## What changed
-
-Luna now bills at $0.20 per million input tokens and $1.20 per million output tokens, down from roughly $1.00 and $6.00. Terra moves to $2.00 and $12.00 per million input and output tokens respectively. OpenAI also introduced a Fast processing mode for GPT-5.6 Sol in the API, offering up to 2.5 times the throughput of standard processing at twice the standard price — a rare instance of the company selling latency as a separate product tier rather than folding it into the base rate.
-
-The company attributed the reduction to efficiency work spanning three layers: the model itself, the inference stack, and the agentic harness. It said GPT-5.6 Sol was used to optimise GPU-level software, trimming its own serving costs by about 20 percent, while speculative decoding improvements lifted token generation throughput by more than 15 percent. OpenAI framed the combined effect in workload terms, saying a task that cost roughly a dollar on comparable models a year ago now runs at about six cents on Luna and completes substantially faster.
-
-OpenAI simultaneously moved the automatic code-review feature in the ChatGPT app and the Codex CLI from GPT-5.4 to GPT-5.6 Luna, saying the model swap combined with the new price should cut auto-review costs sharply. Cognition updated its FrontierCode 1.1 leaderboard within hours to reflect the new economics, placing the GPT-5.6 series on the cost-performance Pareto curve. The Arena leaderboard also repriced the models the same day.
-
-## Why it matters
-
-Inference pricing has become the main competitive front between US and Chinese labs, with open-weight Chinese models from Zhipu, Moonshot and DeepSeek undercutting Western APIs by an order of magnitude. An 80 percent cut on a general-purpose tier compresses that gap directly and resets the build-versus-buy calculation for agentic products, where token consumption scales with task length rather than user count. For developers running long-horizon agents, the change is closer to a structural shift in unit economics than a routine discount.
-
-Chinese title: OpenAI 下调 GPT-5.6 定价：Luna 降 80%、Terra 降 20%
-Chinese summary: OpenAI 大幅下调 GPT-5.6 系列 API 价格，Luna 输入价降至每百万 token 0.2 美元，并为 Sol 新增付费高速模式。
-
-Sources:
-  - Advancing the price-performance frontier with GPT-5.6 — OpenAI: https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/
-  - OpenAI goes full China pricing mode with an 80 percent cut — The Decoder: https://the-decoder.com/openai-goes-full-china-pricing-mode-with-an-80-percent-cut-to-its-most-affordable-gpt-5-6-model/
-  - OpenAI on X: https://x.com/OpenAI/status/2082878156483219672
-
-### Perplexity turns Spaces into Projects for all users
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/perplexity-projects-computer.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-projects-computer.html
-- Source timestamp: 2026-07-30T16:31:00.000Z
-- Site timestamp: 2026-07-30T23:00:00.000Z
-- Tags: Agents, Industry
-
-Perplexity rebuilt its Spaces feature as Projects, persistent workspaces for its Computer agent with a shared file system and connection to the Brain memory layer.
-
-Perplexity launched Projects on Thursday, replacing its Spaces feature with persistent workspaces built around its agentic product, Computer. The company said Projects are available immediately to all users.
-
-## What changed
-
-Where Spaces functioned largely as a research collection — a place to group threads and reference files — Projects are structured around ongoing agent work. Each Project carries a shared file system that Computer can read, edit and write across sessions, so output from one task becomes input to the next rather than being discarded when a conversation ends. Perplexity describes Projects as hubs for managing, creating and collaborating on tasks, with multiple people able to work in the same Project.
-
-The more consequential piece is the connection to Brain, the self-improving memory system Perplexity introduced for Computer in June. Between tasks, Brain reviews a Project's accumulated files and session history and updates its internal model of the work, so a new task begins with context from everything that came before rather than a cold start. Perplexity has previously reported that Brain improves answer correctness by 25 percent and recall by 16 percent on tasks requiring historical context, while cutting cost per task by 13 percent. Brain itself has been rolling out in research preview to Max and Enterprise Max subscribers.
-
-The launch follows a rapid sequence of Computer releases: a Windows desktop client on 28 July, the SPACE sandboxed runtime that now backs all Computer sessions, and a Model Council feature that runs a single question across several frontier models in parallel.
-
-## Why it matters
-
-Agent products have converged on a shared bottleneck: work does not accumulate. Each session starts fresh, and users compensate by re-uploading context or re-explaining projects. Attaching a durable file system and a memory layer to a named container is a structural answer rather than a longer context window, and it is the same direction Anthropic, OpenAI and Cursor have taken with project-scoped memory and persistent agent environments. Shipping it to every tier, rather than gating it behind a $200 plan, also puts pressure on rivals reserving persistence for premium subscribers.
-
-Chinese title: Perplexity 将 Spaces 升级为 Projects，全量开放
-Chinese summary: Perplexity 把 Spaces 重构为 Projects——面向 Computer 智能体的持久工作区，配备共享文件系统并接入 Brain 记忆系统。
-
-Sources:
-  - Perplexity on X: introducing Projects: https://x.com/perplexity_ai/status/2082866707438415932
-  - Perplexity on X: Projects connect to Brain: https://x.com/perplexity_ai/status/2082866747892478064
-  - Perplexity launches Brain, a self-improving memory system — MarkTechPost: https://www.marktechpost.com/2026/06/18/perplexity-launches-brain/
-
 ## Recent radar items
 
 ### 2026-08-04
@@ -1016,6 +1022,20 @@ Sources:
 - 2026-08-03T22:11:00Z | Ars Technica | A US company's AI now lets Ukraine's low-cost kamikaze drones track targets autonomously, a step toward future swarm attacks. | 中文：一家美国公司的 AI 让乌克兰廉价自杀式无人机具备自主跟踪目标能力，被视为迈向未来蜂群攻击的一步。 | https://arstechnica.com/ai/2026/08/ukraines-drones-get-ai-upgrades-for-kamikaze-strikes-future-swarm-attacks/
 - 2026-08-03T19:00:00Z | Ars Technica | An AI-supervised remote exam failed so badly that 58,000 students have been ordered to retake it, renewing scrutiny of automated proctoring. | 中文：一场由 AI 监考的远程考试出现严重故障，5.8 万名学生被要求重考，自动化监考技术的可靠性再度受到质疑。 | https://arstechnica.com/culture/2026/08/an-ai-supervised-remote-exam-went-so-badly-that-58000-students-must-retake-it/
 - 2026-08-03T22:26:00Z | MarkTechPost | MarkTechPost published a hands-on guide to evaluating multimodal vision models with Moonshot's PerceptionBench, using robust data loading and automated LLM judging. | 中文：MarkTechPost 发布实操教程，讲解如何用月之暗面的 PerceptionBench 评测多模态视觉模型，涵盖稳健的数据加载与自动化裁判评分流程。 | https://www.marktechpost.com/2026/08/03/evaluating-multimodal-vision-models-with-moonshot-perceptionbench-using-robust-data-loading-and-automated-judging/
+- 2026-08-04T10:22:00Z | The Decoder | OpenAI countered Apple's trade-secret suit with iMessage logs showing Apple staff repeatedly texted a departed engineer for internal information, arguing Apple's own access controls failed. | 中文：OpenAI 反击苹果商业机密诉讼，公布 iMessage 聊天记录，显示苹果员工在工程师离职后仍多次向其索要内部信息，称问题出在苹果自身的权限管理。 | https://the-decoder.com/openai-fires-back-at-apples-trade-secret-lawsuit-with-chat-logs-showing-apple-employees-kept-texting-their-former-colleague/
+- 2026-08-04T09:22:00Z | 量子位 | A Kansas mathematician refuted OpenAI's claimed disproof of the Connes rigidity conjecture within 24 hours, tracing 37,000 lines of Lean 4 to a group failing preconditions. | 中文：堪萨斯大学数学家在 24 小时内驳回 OpenAI 号称攻破 Connes 刚性猜想的证明：她逐行核对 3.7 万行 Lean 4 代码，发现构造的一个群不满足前提条件。 | https://www.qbitai.com/2026/08/465792.html
+- 2026-08-04T04:17:00Z | MarkTechPost | Y Combinator open-sourced QM under MIT, a multiplayer agent harness for Slack and web giving each person isolated memory, files, permissions and sandboxes. | 中文：Y Combinator 以 MIT 协议开源多人协作智能体框架 QM，可在 Slack 与网页运行，为每位成员和房间提供隔离的记忆、文件、权限与沙箱环境。 | https://www.marktechpost.com/2026/08/03/y-combinator-open-sources-qm-multiplayer-ai-agent-harness/
+- 2026-08-04T04:00:00Z | arXiv | A study of 414 internet-facing MCP servers found 68 reportable flaws and 91.8% lacking OAuth, plus 687 tools offering unrestricted shell execution. | 中文：一项针对 414 台公网 MCP 服务器的动态审计发现 68 个可上报漏洞，91.8% 未启用 OAuth 认证，另有 687 个工具实例可无限制执行 shell 命令。 | https://arxiv.org/abs/2608.00150
+- 2026-08-04T09:45:00Z | MarkTechPost | Reflex open-sourced XY under Apache-2.0, a Rust-backed Python charting library holding ~0.08s renders from 10,000 to 100 million interactive points. | 中文：Reflex 以 Apache-2.0 协议开源 Python 图表库 XY：Rust 后端加 WebGL2 渲染，从 1 万点到 1 亿点均保持约 0.08 秒渲染与可交互。 | https://www.marktechpost.com/2026/08/04/reflex-open-sources-xy/
+- 2026-08-04T09:13:00Z | 量子位 | OpenAI's luxury Hudson Valley creator retreat drew backlash over $2,000-a-night rooms and farm activities, with several influencers deleting their posts afterwards. | 中文：OpenAI 在纽约哈德逊河谷为内容创作者办的高端"夏令营"引发争议：每晚房费超 2000 美元、活动主打采蜜绘画等田园项目，多位网红事后删帖。 | https://www.qbitai.com/2026/08/466032.html
+- 2026-08-04T06:47:00Z | 量子位 | Om AI raised several hundred million yuan led by Qianhai Mother Fund for edge-native multimodal perception models, whose Homer AI serves nearly 100,000 visually impaired users. | 中文：端侧物理 AI 公司联汇科技完成数亿元融资，前海母基金领投、杭州政府产业基金等跟投；其 Homer AI 已服务近 10 万视障用户。 | https://www.qbitai.com/2026/08/465785.html
+- 2026-08-03T23:19:00Z | TechCrunch | Palantir CEO Alex Karp called AI labs' enterprise ambitions "Marxist" after Q2 revenue hit $1.9 billion, up 93%, with $1.1 billion profit. | 中文：Palantir 二季度营收 19 亿美元、同比增长 93%，利润 11 亿美元；CEO Alex Karp 在股东信中抨击前沿 AI 实验室企图垄断生产资料，称其带有"马克思主义色彩"。 | https://techcrunch.com/2026/08/03/after-killer-quarter-palantir-ceo-alex-karp-calls-ai-industry-marxist/
+- 2026-08-04T09:32:00Z | X @recraftai | Recraft showed V4.1 swapping an object's material while keeping its form intact, pitching editable physical logic rather than a freshly regenerated image. | 中文：Recraft 展示 V4.1 的材质替换能力：在保持物体造型不变的前提下更换材质，强调这不是重新生成一张图，而是给同一设计换一套物理逻辑。 | https://x.com/recraftai/status/2084573222641512717
+- 2026-08-04T02:42:00Z | X @SakanaAILabs | Sakana AI became a full member of Japan's AI Robot Association this month, collaborating on world models and physical AI research under its RSI Lab. | 中文：Sakana AI 宣布本月成为日本 AI 机器人协会（AIRoA）正式会员，将在 RSI Lab 框架下与其合作推进世界模型与物理 AI 的研发。 | https://x.com/SakanaAILabs/status/2084469966880084396
+- 2026-08-04T04:05:00Z | X @MiniMax_AI | MiniMax rebutted claims its H3 video model cannot be legally used in certain regions, saying it can be licensed for deployment in the US, EU, UK and South Korea. | 中文：MiniMax 反驳"H3 视频模型在部分地区不能合法使用"的说法，称该模型可获授权在美国、欧盟、英国与韩国部署。 | https://x.com/MiniMax_AI/status/2084490811652333633
+- 2026-08-04T00:37:00Z | X @togethercompute | Together AI put DeepSeek V4 Flash into production, citing stronger terminal, repository and full-stack coding plus better tool use for long-running agents. | 中文：Together AI 上线 DeepSeek V4 Flash 生产级推理服务，主打终端、代码仓库与全栈编码能力提升，以及面向长时运行智能体的更强工具调用。 | https://x.com/togethercompute/status/2084438456890019970
+- 2026-08-04T08:12:00Z | MarkTechPost | MarkTechPost detailed a skill-auditing pipeline using NVIDIA SkillSpector and LangGraph to scan agent skills for shell injection, credential harvesting and MCP attacks before deployment. | 中文：MarkTechPost 详解基于英伟达 SkillSpector 与 LangGraph 的智能体技能安全审计流水线，可在部署前检出 shell 注入、凭据窃取与 MCP 攻击，并输出 SARIF 报告卡关 CI。 | https://www.marktechpost.com/2026/08/04/building-an-advanced-ai-skill-security-auditing-pipeline-with-nvidia-skillspector-langgraph-yara-rules-sarif-and-ci-policy-gates/
+- 2026-08-04T02:59:00Z | X @PixVerse_ | PixVerse showed a rooftop-to-office scene built in PixVerse Canvas, saying the physics holds up down to a tote bag swinging correctly through the shot. | 中文：PixVerse 展示用 PixVerse Canvas 制作的"天台到办公室"连贯镜头，称画面物理表现足够扎实，连手提袋的摆动都符合真实运动规律。 | https://x.com/PixVerse_/status/2084474358144422385
 
 ### 2026-08-03
 
