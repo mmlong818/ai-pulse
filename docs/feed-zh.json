@@ -13,6 +13,244 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-volta-ten-billion-compute.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-volta-ten-billion-compute.html",
+      "title": "Anthropic 向成立半年的 Volta 采购 100 亿美元算力",
+      "summary": "六年长约锁定挪威 133MW 水电数据中心，搭载英伟达 Vera Rubin 系统，由比特矿企 Bitdeer 参与建设。",
+      "content_text": "## 交易本身\n\nAnthropic 与 Volta Infra Holdings 签下约 100 亿美元、为期六年的算力协议——而这家云服务商在 2026 年初还不存在。产能来自挪威一座 133 兆瓦、以水电供能的数据中心，由比特币矿企 Bitdeer Technologies 参与开发（该公司正把电力与选址经验转向 AI），搭载英伟达 Vera Rubin 系统。产能交付分两批完成，截止于 2027 年 3 月。\n\nVolta 由几位前 Brookfield 资产管理人于今年初创办，已完成约 3 亿美元融资，由 a16z 与 Altimeter Capital 领投，英伟达和迈克尔·戴尔跟投，估值 24 亿美元。它是英伟达云合作伙伴计划成员，还设立了一个 50 亿美元的融资池，帮客户垫付昂贵的芯片成本，并称已为后续站点锁定约 1 吉瓦电力。\n\n## Anthropic 的分散布局\n\n这份合同延续了一条刻意分散的路线。Anthropic 此前已在谷歌、亚马逊、博通、AMD 与 SpaceX 之间铺开算力安排，如今更愿意为一家初创公司的首个大型项目兜底以换取增量。对 Volta 而言，这样体量的锚定客户，等于把一家成立仅半年的公司变成一桩可融资的基础设施生意——这正是这套玩法的核心：长约本身就是抵押物。\n\n## 影响\n\n这就是算力紧缺落到实处的样子。前沿实验室不再只在成熟云厂商之间做选择，而是亲手孵化新的供给方，并且哪里有电就去哪里，而不是哪里有客户去哪里——在得州刚刚冻结新增并网的当口，选择了挪威水电。它也加深了今年备受审视的循环结构：英伟达既是 Volta 的投资人又是其芯片供应商，而 Anthropic 的承诺才让 Volta 的英伟达采购变得可融资。这套结构在 AI 需求持续增长时运转良好，一旦不增长，则会让亏损同时在多张资产负债表上被放大。对一家收入仍以「几十亿」而非「几百亿」计的公司来说，100 亿美元的义务是在押注数年之后的需求。",
+      "date_published": "2026-08-04T15:21:00.000Z",
+      "date_modified": "2026-08-04T23:00:03.460Z",
+      "tags": [
+        "产业",
+        "融资"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-volta-ten-billion-compute.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-volta-ten-billion-compute.html",
+        "source_published_at": "2026-08-04T15:21:00.000Z",
+        "site_published_at": "2026-08-04T23:00:03.460Z",
+        "sources": [
+          {
+            "title": "Anthropic locks in $10 billion of compute from Volta, a cloud startup that didn't exist six months ago",
+            "url": "https://the-decoder.com/anthropic-locks-in-10-billion-of-compute-from-volta-a-cloud-startup-that-didnt-exist-six-months-ago/"
+          },
+          {
+            "title": "Anthropic signs $10B deal with AI cloud startup Volta",
+            "url": "https://techcrunch.com/2026/08/04/anthropic-signs-10-billion-deal-with-ai-cloud-startup-volta/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html",
+      "title": "Cursor 开源 MoE 训练巨型算子 MoK",
+      "summary": "Mixture-of-Kittens 把 MoE 层的全部通信与计算融进单个确定性 Blackwell 算子，使 Cursor 端到端训练吞吐提升 1.41 倍。",
+      "content_text": "## 把整个 MoE 层塞进一个算子\n\nCursor 于 8 月 4 日开源 Mixture-of-Kittens（MoK），一个 Apache-2.0 许可的训练巨型算子，把 MoE 层的所有通信与计算步骤融合进单次 kernel 启动。MoE 训练之所以受带宽拖累，就在于专家计算与 all-to-all 令牌路由要来回交替；MoK 把两者在同一次启动内重叠起来。\n\n代码面向英伟达 Blackwell SM100/SM103，即 GB200 NVL72 或 GB300 NVL72 机柜，依赖 Python 3.12+、PyTorch 2.10+ 与 CUDA 13.0+。在单层 MXFP8 前向的微基准上，Cursor 称吞吐最高达到最强公开基线的 2.37 倍。更有说服力的是端到端数据：在 512 卡规模上替换原有基于 DeepEP 的方案后，训练吞吐提升 1.41 倍，单卡每秒处理令牌数从 760.9 升至 1070.2。Cursor 表示 MoK 已在其数万张 GPU 上承担实际训练任务。\n\n## 确定性本身就是卖点\n\nMoK 是逐位确定性的。这在融合通信算子里并不常见，而且是有意为之：on-policy 强化学习后训练一旦训练路径与采样路径在数值上出现偏差，就会以极隐蔽的方式失效，而非确定性会让回归问题几乎无法二分定位。一个确定性的 MoE 算子让 RL 训练可复现、可调试，对实验室来说这份价值恐怕不输于加速本身。\n\n## 影响\n\n1.41 倍的吞吐提升，等于让 Blackwell 机柜上每一次 MoE 预训练和后训练的成本与耗时直接砍掉约三成——而如今几乎所有前沿模型都跑在这套底座上。以 Apache 2.0 放出来，意味着任何能摸到 NVL72 的团队都能拿到这份节省；这类算子工程通常被实验室视为内部资产，此举缩小了资源充裕者与其他人之间的一道差距。它也说明了 Cursor 的变化：一家以代码编辑器出名的公司如今在输出前沿级训练基础设施，证明其自研模型转型是真做，而不是套壳叙事。同时也再次提醒，训练效率的增量越来越多来自贴着硬件写算子，而非只靠改架构。",
+      "date_published": "2026-08-04T16:00:00.000Z",
+      "date_modified": "2026-08-04T23:00:03.460Z",
+      "tags": [
+        "开源",
+        "研究",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html",
+        "source_published_at": "2026-08-04T16:00:00.000Z",
+        "site_published_at": "2026-08-04T23:00:03.460Z",
+        "sources": [
+          {
+            "title": "Cursor Open-Sources Mixture-of-Kittens (MoK)",
+            "url": "https://www.marktechpost.com/2026/08/04/cursor-open-sources-mixture-of-kittens-mok-a-deterministic-moe-training-megakernel-for-gb300-nvl72-racks/"
+          },
+          {
+            "title": "cursor/mixture-of-kittens on GitHub",
+            "url": "https://github.com/cursor/mixture-of-kittens"
+          },
+          {
+            "title": "Cursor: We're open-sourcing Mixture-of-Kittens",
+            "url": "https://x.com/cursor_ai/status/2084670806613737919"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/far-ai-security-leaderboard-jailbreak-costs.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/far-ai-security-leaderboard-jailbreak-costs.html",
+      "title": "FAR.AI 安全榜：58 美元就能撬开 Grok 的护栏",
+      "summary": "这家非营利机构首份 AI 安全排行榜显示，前沿模型护栏强度差距达百倍，其中两款一个通用越狱都没被找到。",
+      "content_text": "## 一份可横向对比的安全排名\n\nFAR.AI 于 8 月 4 日上线 AI Security Leaderboard，以独立第三方身份公开评估前沿模型的安全护栏在真实攻击面前的表现。团队整理出 60 多种公开记载的越狱技术，构建了自动组合这些技术的工具，随后对每个模型在化学、生物、放射、核、爆炸物与网络攻击五个高危领域上，分别施加 1000 次随机组合攻击和 500 次专家引导攻击。\n\n目标是「通用越狱」——一条能解锁整类被拒请求的可复用提示词，而不是碰巧蒙对一次的回答。\n\n## 差距有多大\n\n结果高度分化。xAI 的 Grok 4.5 被找出 448 个各不相同的通用越狱，谷歌 DeepMind 的 Gemini 3.1 Pro 为 249 个。其中纯自动随机搜索分别贡献 63 个和 18 个，加入专家手动组合后升至 385 个和 231 个，而人工构造的攻击更容易同时在三个以上风险领域生效。Claude Fable 5 与 GPT-5.6 Sol 则是零——任何领域、任何搜索策略下都没被攻破。\n\nFAR.AI 把这些换算成成本：在 Grok 4.5 上找到一个可用的通用越狱约需 58 美元，Gemini 3.1 Pro 约 278 美元；而在守住的两款模型上搜索始终未成功，成本下限已超过 14200 美元且仍在上升。对尚未进榜的开源权重模型，团队称从未花费超过几小时、约 10 至 50 美元就能彻底攻破。值得注意的是，所有被找到的漏洞都属于已知攻击类型，对应的防御手段早已存在、也早已在部署系统中运行。\n\n## 影响\n\n结论不是「护栏很弱」，而是「护栏极不均衡」——同时在售的产品之间存在百倍差距，而这个差距对采购方不可见，也不会体现在业界热衷排名的能力基准上。由于用到的攻击全是公开旧招，这道差距更像是工程投入的选择，而非尚未解决的研究难题。它同时让开源权重之争更加尖锐：如果带实时过滤的托管模型 58 美元就能撬开，可自由下载的那批只需零钱。",
+      "date_published": "2026-08-04T19:42:00.000Z",
+      "date_modified": "2026-08-04T23:00:03.460Z",
+      "tags": [
+        "安全",
+        "研究"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/far-ai-security-leaderboard-jailbreak-costs.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/far-ai-security-leaderboard-jailbreak-costs.html",
+        "source_published_at": "2026-08-04T19:42:00.000Z",
+        "site_published_at": "2026-08-04T23:00:03.460Z",
+        "sources": [
+          {
+            "title": "FAR.AI Launches AI Security Leaderboard Revealing Hundredfold Gap in Frontier AI Model Safeguards",
+            "url": "http://www.prnewswire.com/news-releases/farai-launches-ai-security-leaderboard-revealing-hundredfold-gap-in-frontier-ai-model-safeguards-302838216.html"
+          },
+          {
+            "title": "Open-weight AI models are catching up to the frontier. The safety gap remains.",
+            "url": "https://techcrunch.com/2026/08/04/open-weight-ai-models-are-catching-up-to-the-frontier-the-safety-gap-remains/"
+          },
+          {
+            "title": "FAR.AI: 60 dollars. That's what a universal jailbreak costs",
+            "url": "https://x.com/farairesearch/status/2084742176525767077"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/flux-3-video-exits-early-access.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/flux-3-video-exits-early-access.html",
+      "title": "FLUX 3 视频模型结束灰度，登陆 Runway 与 Krea",
+      "summary": "Black Forest Labs 的 20 秒原生带音轨视频模型 8 月 4 日在 Runway、Krea、Replicate 同步开放，结束限量灰度期。",
+      "content_text": "## 从 Discord 排队到公开可调用\n\nBlack Forest Labs 的 FLUX 3 Video 于 8 月 4 日大范围开放，当天同时出现在 Krea、Replicate 和 Runway 上。该模型 7 月 23 日发布，但此前只以邀请制灰度方式提供，限制商用，也没有公开 API 和第三方托管——7 月下旬 Replicate 与 fal.ai 都还查不到入口。周二的同步上线，才是普通创作者真正能用上它的时间点。\n\n## 这个模型能做什么\n\nFLUX 3 是一套统一的多模态流模型，用同一组主干权重覆盖图像、视频、音频以及机器人动作预测，底层是 BFL 的 Self-Flow 方法，把生成与理解放进同一架构。视频部分可生成最长 20 秒、720p 的片段，音轨在同一次生成过程中产出而非事后配音；支持文生视频、图生视频、参考片段的视频转视频、关键帧过渡控制，以及带音频的续写延长。BFL 强调的卖点包括人脸表情还原、声音与画面内物理事件的对应，以及多语种对白。1080p 输出、FLUX 3 Image，以及官方称年内会放出的开源权重版 FLUX 3 Dev，目前仍未到位。\n\n值得注意的是 Runway 的上架：这家平台如今把竞争对手的「视频+音频」模型摆在自家生成能力旁边一起卖，延续了它近来的聚合器路线。\n\n## 影响\n\n生成式视频的竞争点已经从「片段能有多长」转向「画面和声音是否一次生成」，而 FLUX 3 是少数能原生做到 20 秒同步出声的模型之一。全面开放也解决了一个现实问题：此前商用条款受限的灰度模型，工作室和广告公司无法真正押注。更长线的看点是动作预测头——BFL 让生成画面的同一组权重也去预测物理动作，把一家以图像生成成名的公司塞进了世界模型与机器人的赛道。",
+      "date_published": "2026-08-04T17:35:00.000Z",
+      "date_modified": "2026-08-04T23:00:03.460Z",
+      "tags": [
+        "AIGC",
+        "模型"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/flux-3-video-exits-early-access.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/flux-3-video-exits-early-access.html",
+        "source_published_at": "2026-08-04T17:35:00.000Z",
+        "site_published_at": "2026-08-04T23:00:03.460Z",
+        "sources": [
+          {
+            "title": "Krea: introducing FLUX 3, available now",
+            "url": "https://x.com/krea_ai/status/2084694677522157763"
+          },
+          {
+            "title": "Replicate: FLUX 3 Video from BFL is now on Replicate",
+            "url": "https://x.com/replicate/status/2084695365370912909"
+          },
+          {
+            "title": "Runway: FLUX 3 is now available on Runway",
+            "url": "https://x.com/runwayml/status/2084729635720270277"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/mistral-open-sources-shieldstral.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/mistral-open-sources-shieldstral.html",
+      "title": "Mistral 开源 Shieldstral：30 亿参数内容安全模型",
+      "summary": "Apache-2.0 许可，推理时以自然语言提问的方式接收审核策略，单张 16GB 显卡即可跑起来。",
+      "content_text": "## 策略写在推理里，不写进权重\n\nMistral 于 8 月 4 日发布 Shieldstral，一个 30 亿参数的内容安全模型，采用 Apache 2.0 许可，同时公开了技术报告。它的思路与常见的护栏模型不同：不再依赖训练阶段固化的风险类目表，而是把审核当成一个二元问答任务——部署方在推理时用自然语言把策略写成一个问题，模型返回一个校准过的分数，文本与图像走同一个接口。\n\n这个改动是关键。传统护栏分类器逼着使用方要么接受厂商给定的类目，要么每次策略变动都重新微调一版模型；而电商平台、儿童产品和医疗服务需要划的红线本来就不一样。Shieldstral 把这个决定挪进了提示词，改策略从此是改一段文字，而不是跑一次训练。\n\n## 体量与官方给出的成绩\n\nMistral 称该模型在文本安全、拒答识别、策略适配性和多模态安全等评测上，达到或超过体量最多为其 7 倍的开源护栏模型，并在多模态审核上取得 SOTA。30 亿参数意味着它能跑在单张 16GB 英伟达显卡上，既可用于端侧和边缘部署，也可作为托管模型前置的实时过滤层。\n\n## 影响\n\n审核环节是大量已上线 AI 产品悄悄翻车的地方：过严则产品不可用，过松则埋下责任风险，而同一套过滤器往往两头都顾不上。一个小体量、宽松许可、可在运行时配置的分类器，降低了把这层做对的成本——尤其是对养不起自研安全栈的中小团队。许可证的意义甚至不亚于跑分：Apache 2.0 意味着企业可以把过滤器完全私有化部署在自己的边界内，这对面临《AI 法案》透明度与内容义务的欧洲运营方、以及任何不能把用户内容送去第三方审核 API 的团队都直接相关。它同时延续了一个趋势：被开放出来的不只有前沿能力，还有安全工具本身。",
+      "date_published": "2026-08-04T16:55:00.000Z",
+      "date_modified": "2026-08-04T23:00:03.460Z",
+      "tags": [
+        "开源",
+        "安全",
+        "模型"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/mistral-open-sources-shieldstral.html",
+        "source_published_at": "2026-08-04T16:55:00.000Z",
+        "site_published_at": "2026-08-04T23:00:03.460Z",
+        "sources": [
+          {
+            "title": "Shieldstral — Mistral AI",
+            "url": "https://mistral.ai/news/shieldstral/"
+          },
+          {
+            "title": "Mistral AI: Introducing Shieldstral",
+            "url": "https://x.com/MistralAI/status/2084684735725379637"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/texas-freezes-data-center-grid-hookups.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/texas-freezes-data-center-grid-hookups.html",
+      "title": "得州冻结数据中心并网：先审计，后接电",
+      "summary": "得州州长阿博特要求 ERCOT 与公用事业委员会对所有新建数据中心先行审计才可并网，目前排队申请已达 474GW。",
+      "content_text": "## 从自愿填报变成强制审计\n\n得州州长格雷格·阿博特 8 月 3 日下令，要求得州公用事业委员会（PUCT）与电网运营商 ERCOT 对所有新建数据中心项目开展正式审计，通过审计前不得获批并网。也就是说，在审查完成之前，这些项目的接电申请实际处于冻结状态。\n\n触发这道命令的是一条七个月内翻了一倍的排队名单。今年 1 月，ERCOT 手上的待并网申请约为 233GW；到 8 月已攀升至约 474GW，其中约九成来自数据中心。这个数字相当于该电网历史最高负荷的五倍以上——差距大到监管机构已无法把这些申请当作真实建设预期来对待。\n\n## 开发商必须交出哪些信息\n\n审计要求项目方披露此前可以不讲的细节：预计用电量、耗水量、噪声治理方案、室外照明控制、正在申领的州与地方税收优惠，以及项目的最终实际控制人。此前阿博特曾以自愿问卷形式索要过其中大部分数据，回应者寥寥，强制审计正是这次「无人应答」的直接结果。\n\n## 影响\n\n得州一直是美国 AI 算力建设最受青睐的落点，原因就在于 ERCOT 独立成网、审批宽松，项目落地速度远快于 PJM 或加州。如今这条最快通道被装上闸门，而前沿实验室正基于「电总能找到」的假设签下数吉瓦、跨年度的算力长约。审查会挤掉大量投机性申报、提升规划质量，但真实项目也要额外承担时间风险和披露义务。可以预期的是：近期可交付产能的价格将上涨，而更多新公告会指向北欧水电、墨西哥湾沿岸和中东，而不是西得州。",
+      "date_published": "2026-08-04T15:33:00.000Z",
+      "date_modified": "2026-08-04T23:00:03.460Z",
+      "tags": [
+        "政策",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/texas-freezes-data-center-grid-hookups.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/texas-freezes-data-center-grid-hookups.html",
+        "source_published_at": "2026-08-04T15:33:00.000Z",
+        "site_published_at": "2026-08-04T23:00:03.460Z",
+        "sources": [
+          {
+            "title": "Texas halts new data centers as governor calls for audits",
+            "url": "https://techcrunch.com/2026/08/04/texas-halts-new-data-centers-as-governor-calls-for-audits/"
+          },
+          {
+            "title": "Texas halts data center connections to power grid amid overwhelming demand",
+            "url": "https://arstechnica.com/ai/2026/08/texas-halts-data-center-connections-to-power-grid-amid-overwhelming-demand/"
+          },
+          {
+            "title": "Texas says data centers must pass an audit before connecting to the grid",
+            "url": "https://www.theverge.com/policy/975071/texas-data-center-audit"
+          },
+          {
+            "title": "Governor Abbott Directs Comprehensive Data Center Audit — Office of the Texas Governor",
+            "url": "https://gov.texas.gov/news/post/governor-abbott-directs-comprehensive-data-center-audit"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-google-workspace-plugins.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-google-workspace-plugins.html",
       "title": "Cursor 上线 Workspace 插件，智能体可读写 Gmail 与云端硬盘",
@@ -1709,221 +1947,6 @@
           {
             "title": "量子位：一年连融三轮数亿元，字节+清华姚班重构企业软件工程",
             "url": "https://www.qbitai.com/2026/07/463013.html"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/amazon-scales-back-nova-frontier-team.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/amazon-scales-back-nova-frontier-team.html",
-      "title": "亚马逊冻结 Nova 模型线，押注新设前沿研究团队",
-      "summary": "据 Business Insider，亚马逊已停止 Nova Premier、Omni、Reel 与 Canvas 的研发，资源转向 Pieter Abbeel 领衔的研究组。",
-      "content_text": "据 Business Insider 于 7 月 28 日的报道，亚马逊已停止自研 Nova 模型系列的主动研发，把资源转向一个新设的前沿研究组织。\n\n## 报道内容\n\nNova 系列据称进入维护状态——为存量客户保持运行，但不再迭代。范围包括旗舰 Nova Premier、多模态模型 Omni，以及视频生成器 Reel 与图像生成器 Canvas。这意味着亚马逊不只在文本上后撤，在第一方生成式媒体上也一并收手。\n\n接棒的是由 Pieter Abbeel 领导的 Frontier Model Research 团队。Abbeel 是伯克利机器人学者，随亚马逊收购 Covariant 而加入。报道称该团队的新基础模型预计在今秋 re:Invent 前后亮相。亚马逊的对外布局不变：它仍是 Anthropic 最大投资方之一，并已向 OpenAI 承诺资金，两项合计规模据报道达数百亿美元级别。\n\n## 为何重要\n\nNova 曾是亚马逊对所有超大规模云厂商共同难题的回答：把别人的前沿模型转租给自家云客户，是否是个可持续的位置。它在 2024 年 re:Invent 上被高调推出，却始终未能取代 Anthropic 模型在 Bedrock 上的默认地位。悄然冻结它，等于承认——当同一个云上就卖着更好的模型时，一条「够用的中档模型线」不值那笔训练开支。\n\n战略上更像重置而非撤退。把任务交给 Abbeel——背景是机器人与具身学习，而非聊天助手——说明亚马逊打算换一条赛道，而不是在 Nova 输掉的那条上继续。但这也意味着 Bedrock 的差异化至少还要有一个季度完全靠第三方模型撑着，同时抽走了图像与视频生成定价上少数几股既非中国厂商、也非前沿实验室的竞争压力。对已标准化在 Nova Reel 或 Canvas 上的客户来说，一个没有路线图的维护态模型不是脚注，而是一道迁移决策。",
-      "date_published": "2026-07-28T16:03:00.000Z",
-      "date_modified": "2026-07-28T23:00:00.000Z",
-      "tags": [
-        "产业",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/amazon-scales-back-nova-frontier-team.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/amazon-scales-back-nova-frontier-team.html",
-        "source_published_at": "2026-07-28T16:03:00.000Z",
-        "site_published_at": "2026-07-28T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Amazon reportedly scales back its Nova AI models and bets on a new Frontier research team — The Decoder",
-            "url": "https://the-decoder.com/amazon-reportedly-scales-back-its-nova-ai-models-and-bets-on-a-new-frontier-research-team/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-mythos-cryptanalysis-hawk-aes.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-mythos-cryptanalysis-hawk-aes.html",
-      "title": "Anthropic：Claude Mythos 自主攻破 HAWK 与 7 轮 AES",
-      "summary": "Anthropic 称其前沿模型在极少人工干预下产出两项原创密码分析成果，HAWK-256 有效安全强度腰斩，AES 攻击提速数百倍。",
-      "content_text": "Anthropic 于 7 月 28 日发布研究，称其前沿模型 Claude Mythos 的预览版本在几乎没有人工指导的情况下，独立完成了两项原创密码分析工作。这是目前最有说服力的公开证据之一——在一个结论可被严格验证、无从蒙混的领域里，大模型已能做到专家水准。\n\n## 两项结果\n\n第一项针对 HAWK，这是提交至 NIST 后量子标准化流程的一种格基数字签名方案。模型发现了此前分析未利用的非平凡自同构结构，并借此将有效密钥长度直接减半。按 Anthropic 给出的数据，HAWK-256 参数集下的密钥恢复复杂度从约 2^64 降至约 2^38。这项工作耗时约 60 小时。\n\n第二项是对 7 轮 AES 的中间相遇攻击改进。完整 AES 为 10 轮，7 轮属削弱变体。模型在此自创了一种被它命名为「莫比乌斯桥」的指纹算法，省掉一次枚举猜测，相比此前最优攻击提速 200 至 800 倍。该任务跨三天、消耗数十亿输出 token。Anthropic 称单次攻击的 API 成本约 10 万美元。\n\nAnthropic 与苏黎世联邦理工、特拉维夫大学、海法大学的密码学者合作，同步公开两篇论文，并放出 CryptanalysisBench——一套把破译任务打包成可测评项的基准，便于外界直接衡量模型的密码分析能力。\n\n## 需要说清的边界\n\n两项成果都不威胁在用系统。HAWK 尚未部署，更大参数集依然安全；7 轮 AES 攻击属学术设定，真要执行仍需数亿美元量级算力。两者都只是压低了指数级工作量，而非将其瓦解。\n\n## 为何重要\n\n「前沿模型做不出真正新颖的技术研究」，密码分析一直是这一论断最干净的阵地：结果可验证，也没有基准可供刷分。若结论可复现，该论断的空间被大幅压缩，而且刀是双刃的——让防守方在标准落地前做压力测试的能力，同样降低了攻击性分析的门槛。Anthropic 的叙事落点在防御，但 CryptanalysisBench 的公开意味着这道题从此要在明面上打分。",
-      "date_published": "2026-07-28T17:16:00.000Z",
-      "date_modified": "2026-07-28T23:00:00.000Z",
-      "tags": [
-        "研究",
-        "安全",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/claude-mythos-cryptanalysis-hawk-aes.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-mythos-cryptanalysis-hawk-aes.html",
-        "source_published_at": "2026-07-28T17:16:00.000Z",
-        "site_published_at": "2026-07-28T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Discovering Cryptographic Weaknesses with Claude — Anthropic",
-            "url": "https://www.anthropic.com/research/discovering-cryptographic-weaknesses"
-          },
-          {
-            "title": "Anthropic says its Mythos model found vulnerabilities in cryptographic algorithms — The Decoder",
-            "url": "https://the-decoder.com/anthropic-says-its-mythos-model-found-vulnerabilities-in-cryptographic-algorithms-that-secure-the-internet/"
-          },
-          {
-            "title": "Anthropic thread on CryptanalysisBench and both attacks",
-            "url": "https://x.com/AnthropicAI/status/2082153311189225927"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cyera-acquires-oasis-security-agents.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cyera-acquires-oasis-security-agents.html",
-      "title": "Cyera 拟10亿美元收购 Oasis Security，管住AI智能体权限",
-      "summary": "数据安全公司Cyera已就收购非人类身份安全创业公司Oasis签署意向书，这是其今年第三笔并购，企业正急于给智能体套上权限枷锁。",
-      "content_text": "## 发生了什么\n\nCyera 已签署意向书，拟以约10亿美元收购 Oasis Security，对价以现金为主、其余部分为 Cyera 股份。Oasis 成立于2022年，专注于「非人类身份」的安全治理——即服务账号、API 密钥、令牌，以及越来越多在企业系统内无人值守自行动作的 AI 智能体。其平台监控智能体行为，并管理每个身份在互联软件中可以触达的范围。该公司此前从 Accel、Craft Ventures、Cyberstarts 等投资方累计融资约1.95亿美元。\n\n对 Cyera 来说，这是其2026年的第三笔并购，前两笔是 Ryft 和 Genie Security。这家成立五年的公司近期以120亿美元估值完成6亿美元融资，年度经常性收入已突破1.5亿美元，累计融资23亿美元，但仍未盈利。它计划把 Oasis 并入一个面向企业客户的「身份+数据」一体化安全平台。\n\n## 为何重要\n\n智能体的规模化部署造出了一个企业毫无准备的身份难题。编程智能体、客服智能体、流程智能体各自需要凭证、各自累积权限，而多数大型组织仍在使用以人为中心的身份工具，根本管不住它们。结果是一批快速膨胀、谁也数不清的高权限行为者——而近期一连串智能体相关事故（包括 Hugging Face 入侵事件和本月披露的 Claude 沙箱逃逸）已经把这种抽象风险摆到了董事会桌面上。\n\n一家成立四年、累计融资约1.95亿美元的公司卖出10亿美元，正是给这份焦虑直接定价。它同时说明智能体基础设施的价值正沉淀在哪里：不是在快速商品化的智能体开发框架上，而是在决定「一个运行中的智能体可以碰什么」的控制平面上。可以预期传统身份厂商会跟进——要么买下同类资产，要么把特权访问产品重新包装成面向智能体的方案。此次交易目前仍处意向书阶段，最终条款仍可能变化。",
-      "date_published": "2026-07-29T00:09:00.000Z",
-      "date_modified": "2026-07-29T11:00:00.000Z",
-      "tags": [
-        "产业",
-        "Agent",
-        "融资"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cyera-acquires-oasis-security-agents.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cyera-acquires-oasis-security-agents.html",
-        "source_published_at": "2026-07-29T00:09:00.000Z",
-        "site_published_at": "2026-07-29T11:00:00.000Z",
-        "sources": [
-          {
-            "title": "Cyera agrees to acquire Oasis Security for $1B to safeguard proliferating AI agents — TechCrunch",
-            "url": "https://techcrunch.com/2026/07/28/cyera-agrees-to-acquire-oasis-security-for-1b-to-safeguard-proliferating-ai-agents/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-managed-agents-hooks.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-managed-agents-hooks.html",
-      "title": "Gemini API 托管智能体上线 3.6 Flash 与沙箱 hooks",
-      "summary": "谷歌托管智能体运行时默认切至 Gemini 3.6 Flash，并新增工具调用前后 hooks、token 上限、定时触发与免费额度。",
-      "content_text": "谷歌 7 月 28 日更新 Gemini API 中的 Managed Agents（托管智能体），让这套托管运行时从预览形态向生产基础设施该有的控制面靠拢。\n\n## 更新内容\n\n`antigravity-preview-05-2026` 智能体现默认使用 Gemini 3.6 Flash，同时可显式选择 Gemini 3.5 Flash 与 3.5 Flash-Lite 以压低成本。最重要的新增能力是环境 hooks：开发者通过 `.agents/hooks.json` 注册基于正则匹配的处理器，在沙箱内任何工具调用之前或之后触发，执行 shell 命令或 HTTP 调用。谷歌的定位是用 hooks 实现对工具调用的拦截、检查与审计——也就是说，策略执行从「包在运行时外面」挪进了托管运行时内部。\n\n配套还有：`max_total_tokens` 参数为单次运行设置消耗上限；状态保留机制让未完成的交互可续跑而非重启；支持 cron 语法的定时触发，且沙箱在多次执行间持久存在；以及用于列出、查看、删除沙箱会话的 Environments API。托管智能体现已可在免费额度项目中通过 API key 使用。\n\n## 为何重要\n\n这里的设计范式明显是借来的。工具调用前后 hooks、持久沙箱、定时自主运行，正是让本地编码智能体框架变得可控的那几个原语；谷歌现在把它们做成带计费、带免费入口的托管服务。这会重设竞争命题：智能体平台的差异点正从模型质量转向「运营者能否约束、观测并给成本上限」——而上周前沿实验室的沙箱逃逸事故，恰好把这道缺口摆到了台面上。\n\ntoken 上限与可续跑状态也直指让智能体部署长期卡在试点阶段的那笔账：失控循环烧光预算却毫无产出，以及长任务一失败就前功尽弃。定时触发加持久环境走得更远，让智能体在无人值守的多次运行之间保留上下文——这很有用，但也正是这种配置下，hooks 不再是锦上添花，而是定时任务与一次无人复核的工具调用之间唯一的那道闸。",
-      "date_published": "2026-07-28T16:00:00.000Z",
-      "date_modified": "2026-07-28T23:00:00.000Z",
-      "tags": [
-        "Agent",
-        "模型",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gemini-managed-agents-hooks.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-managed-agents-hooks.html",
-        "source_published_at": "2026-07-28T16:00:00.000Z",
-        "site_published_at": "2026-07-28T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Gemini API Managed Agents: 3.6 Flash, hooks, and more — Google",
-            "url": "https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api-3-6-flash-hooks/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/kospi-worst-two-day-ai-chip-rout.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/kospi-worst-two-day-ai-chip-rout.html",
-      "title": "AI芯片抛售引爆韩股，韩综指创史上最惨两日跌幅",
-      "summary": "周三韩国综合指数再跌约6%，接续周二10.84%的暴跌；SK海力士业绩不及预期，中国首台国产浸没式DUV设备同期投产。",
-      "content_text": "## 发生了什么\n\n韩国综合指数周三收于5663.24点，下跌360.42点、约6%，两个交易日累计跌幅超过12%，为该指数历史上最惨烈的连续两日下挫。周二韩交所已触发全市场熔断，当日收跌10.84%至6023.66点，三星电子跌13.39%，SK海力士跌14.65%。7月以来韩综指累计下跌近29%，超过1997年10月亚洲金融危机时27%的单月纪录。\n\n周三的直接导火索是SK海力士的二季度财报。这家存储巨头营收79.3万亿韩元、营业利润60.54万亿韩元，同比暴增557%并创下历史新高，但两项数据都低于LSEG汇总的市场一致预期约5%至7%——通用DRAM涨价放缓，利润高度集中于高带宽存储（HBM）。尽管管理层否认AI需求转冷，公司股价当日仍跌超9%。\n\n## 中国这条引线\n\n更深层的重新定价始于前一天：上海一家国资背景设备厂商将中国首批国产浸没式深紫外（DUV）光刻机交付中芯国际与长鑫存储投入使用。紧接着长鑫存储约86亿美元的港股IPO首日市值超过英特尔，把「中国补贴产能引发DRAM过剩」的担忧彻底点燃。首尔多位分析师提醒，光刻突破目前更多是象征意义——今年五台、2027年计划约二十台，相较ASML的年供货量微不足道——但市场交易的是信号，不是产量。\n\n抛售迅速外溢：周二日经225指数跌3.95%至62364.92点，铠侠跌18.33%，软银集团跌4.43%。\n\n## 为何重要\n\n存储价格是AI数据中心经济性的支点。如果投资者开始相信中国供应商能在数年维度上压缩HBM与DRAM的利润率，而557%的利润增速都不足以满足预期，那么整个AI基建的资本成本都要重估。而这个问题，正是在亚洲交易时段、而不是在华尔街被回答的。",
-      "date_published": "2026-07-29T06:30:00.000Z",
-      "date_modified": "2026-07-29T11:00:00.000Z",
-      "tags": [
-        "产业",
-        "政策"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/kospi-worst-two-day-ai-chip-rout.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/kospi-worst-two-day-ai-chip-rout.html",
-        "source_published_at": "2026-07-29T06:30:00.000Z",
-        "site_published_at": "2026-07-29T11:00:00.000Z",
-        "sources": [
-          {
-            "title": "'China Chip Phobia' Drags Samsung, SK Shares Sharply Lower — Seoul Economic Daily",
-            "url": "https://en.sedaily.com/finance/2026/07/29/china-chip-phobia-drags-samsung-sk-shares-sharply-lower"
-          },
-          {
-            "title": "South Korean stocks plunge, erasing AI rally gains as chip selloff deepens — Nikkei Asia",
-            "url": "https://asia.nikkei.com/business/markets/south-korean-stocks-plunge-erasing-ai-rally-gains-as-chip-selloff-deepens"
-          },
-          {
-            "title": "SK Hynix shares tank as exponential earnings growth fails to satisfy AI-charged expectations — CNBC",
-            "url": "https://www.cnbc.com/2026/07/29/sk-hynix-earnings-profit-revenue-hbm-memory.html"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/liquid-ai-lfm25-encoders-open-weights.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/liquid-ai-lfm25-encoders-open-weights.html",
-      "title": "Liquid AI 开源两款 CPU 友好的 8K 长上下文编码器",
-      "summary": "LFM2.5-Encoder-230M 与 350M 把 BERT 级模型的上下文推到 8192 token，满长度下 CPU 推理速度约为 ModernBERT-base 的 3.7 倍。",
-      "content_text": "## 小模型，长输入\n\nLiquid AI 7 月 29 日放出两款双向文本编码器权重：LFM2.5-Encoder-230M 和 LFM2.5-Encoder-350M。它们瞄准的是 AI 系统里最不起眼的中间环节——检索、重排、分类与过滤，这些活儿用生成式大模型属于杀鸡用牛刀。\n\n两款模型均基于该公司的 LFM2 混合骨干，把门控短卷积块与分组查询注意力组合在一起，支持 8192 token 输入。在这个参数量级里，此前 512 token 长期是常态，8K 属于相当奢侈的配置。二者隐藏层维度均为 1024，词表 65536，覆盖 15 种语言。\n\n团队没有从零训练，而是把已有的 LFM2.5 解码器改造成编码器，做了三处改动：注意力掩码改为双向、短卷积改为非因果、以 30% 掩码率继续做掩码语言建模训练——这一比例是 BERT 原始 15% 的两倍。\n\n## 成绩单\n\n在 17 项任务的评测集合上，350M 版本平均分 81.02，在参评的 14 个模型中排第四；230M 版本得 79.29，参数更少却高于 ModernBERT-base 的 78.19。更值得留意的是普通硬件上的吞吐：8K 输入下，230M 编码器在 CPU 上单次前向约 28 秒，而 ModernBERT-base 需要 90 秒以上，差距约 3.7 倍。当嵌入流水线与应用跑在同一台机器、而非独立 GPU 上时，这个差距直接决定体验。\n\n两个权重均已上传 Hugging Face，采用 Liquid AI 自家的 LFM Open License v1.0，而非标准宽松开源协议，商用前需要先看清条款。\n\n## 为什么重要\n\n编码器是生产环境里的沉默主力：几乎每一套 RAG 系统、内容审核过滤器和语义检索索引都塞满了它们。但这类模型的进步速度远慢于生成模型，ModernBERT 当了好几年默认选项。把 400M 以下的编码器推到 8K 上下文、同时让 CPU 推理仍可接受，意味着能力继续往端侧移动——在那里决定用什么的不是榜单排名，而是隐私、离线可用性和每次调用的成本。",
-      "date_published": "2026-07-29T09:38:00.000Z",
-      "date_modified": "2026-07-29T11:00:00.000Z",
-      "tags": [
-        "开源",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/liquid-ai-lfm25-encoders-open-weights.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/liquid-ai-lfm25-encoders-open-weights.html",
-        "source_published_at": "2026-07-29T09:38:00.000Z",
-        "site_published_at": "2026-07-29T11:00:00.000Z",
-        "sources": [
-          {
-            "title": "Liquid AI Releases LFM2.5-Encoder-230M and LFM2.5-Encoder-350M",
-            "url": "https://www.marktechpost.com/2026/07/29/liquid-ai-releases-lfm2-5-encoder-230m-and-lfm2-5-encoder-350m-bidirectional-encoders-that-stay-fast-at-8k-context-on-cpu/"
-          },
-          {
-            "title": "LiquidAI/LFM2.5-Encoder-350M · Hugging Face",
-            "url": "https://huggingface.co/LiquidAI/LFM2.5-Encoder-350M"
           }
         ]
       }

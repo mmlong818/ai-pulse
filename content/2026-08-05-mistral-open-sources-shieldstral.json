@@ -1,0 +1,28 @@
+{
+  "slug": "mistral-open-sources-shieldstral",
+  "title": "Mistral open-sources Shieldstral, a 3B moderation model",
+  "summary": "The Apache-2.0 guard model takes safety policies as plain-language questions at inference and runs on a single 16GB GPU.",
+  "body": "## Policy at inference, not in the weights\n\nMistral released Shieldstral on August 4, a 3-billion-parameter content-safety model published under Apache 2.0 alongside a technical report. Its design departs from the usual guard model: instead of a taxonomy of harm categories fixed during training, Shieldstral treats moderation as a binary question-answering problem. The deployer supplies the policy as a natural-language question at inference time and receives a calibrated score, over both text and images through one interface.\n\nThat shift is the point. Conventional guardrail classifiers force operators to either accept a vendor's category list or fine-tune their own model whenever the policy changes — a marketplace, a children's product and a medical service all need different lines drawn. Shieldstral pushes that decision into the prompt, so a policy change is a text edit rather than a training run.\n\n## Size and claimed performance\n\nMistral says the model matches or beats open guard models up to seven times its size across text safety, refusal detection, policy adaptability and multimodal safety evaluations, and claims state-of-the-art results on multimodal moderation. At 3B parameters it runs on a single 16GB Nvidia GPU, which puts it within reach of on-device and edge deployment as well as inline filtering in front of a hosted model.\n\n## Why it matters\n\nModeration is where a lot of deployed AI quietly fails: too strict and the product is useless, too loose and it is a liability, and the same filter usually cannot serve both. A small, permissively licensed, runtime-configurable classifier lowers the cost of getting that layer right — and lowers it most for the smaller teams that cannot afford a bespoke safety stack. The licence matters as much as the benchmarks. Apache 2.0 means enterprises can self-host the filter inside their own perimeter, which is directly relevant for European operators facing AI Act transparency and content obligations and for anyone who cannot route user content through a third-party moderation API. It also extends a pattern in which safety tooling, not just frontier capability, is being released openly.",
+  "title_zh": "Mistral 开源 Shieldstral：30 亿参数内容安全模型",
+  "summary_zh": "Apache-2.0 许可，推理时以自然语言提问的方式接收审核策略，单张 16GB 显卡即可跑起来。",
+  "body_zh": "## 策略写在推理里，不写进权重\n\nMistral 于 8 月 4 日发布 Shieldstral，一个 30 亿参数的内容安全模型，采用 Apache 2.0 许可，同时公开了技术报告。它的思路与常见的护栏模型不同：不再依赖训练阶段固化的风险类目表，而是把审核当成一个二元问答任务——部署方在推理时用自然语言把策略写成一个问题，模型返回一个校准过的分数，文本与图像走同一个接口。\n\n这个改动是关键。传统护栏分类器逼着使用方要么接受厂商给定的类目，要么每次策略变动都重新微调一版模型；而电商平台、儿童产品和医疗服务需要划的红线本来就不一样。Shieldstral 把这个决定挪进了提示词，改策略从此是改一段文字，而不是跑一次训练。\n\n## 体量与官方给出的成绩\n\nMistral 称该模型在文本安全、拒答识别、策略适配性和多模态安全等评测上，达到或超过体量最多为其 7 倍的开源护栏模型，并在多模态审核上取得 SOTA。30 亿参数意味着它能跑在单张 16GB 英伟达显卡上，既可用于端侧和边缘部署，也可作为托管模型前置的实时过滤层。\n\n## 影响\n\n审核环节是大量已上线 AI 产品悄悄翻车的地方：过严则产品不可用，过松则埋下责任风险，而同一套过滤器往往两头都顾不上。一个小体量、宽松许可、可在运行时配置的分类器，降低了把这层做对的成本——尤其是对养不起自研安全栈的中小团队。许可证的意义甚至不亚于跑分：Apache 2.0 意味着企业可以把过滤器完全私有化部署在自己的边界内，这对面临《AI 法案》透明度与内容义务的欧洲运营方、以及任何不能把用户内容送去第三方审核 API 的团队都直接相关。它同时延续了一个趋势：被开放出来的不只有前沿能力，还有安全工具本身。",
+  "tags": [
+    "Open Source",
+    "Safety",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "Shieldstral — Mistral AI",
+      "url": "https://mistral.ai/news/shieldstral/"
+    },
+    {
+      "title": "Mistral AI: Introducing Shieldstral",
+      "url": "https://x.com/MistralAI/status/2084684735725379637"
+    }
+  ],
+  "featured": false,
+  "date": "2026-08-05",
+  "published": "2026-08-04T16:55:00Z",
+  "published_at": "2026-08-04T23:00:03.460Z"
+}

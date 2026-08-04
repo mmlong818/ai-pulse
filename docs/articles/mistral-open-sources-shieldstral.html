@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mistral open-sources Shieldstral, a 3B moderation model — Uncle Cat AI Radar</title>
+<meta name="description" content="The Apache-2.0 guard model takes safety policies as plain-language questions at inference and runs on a single 16GB GPU.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/mistral-open-sources-shieldstral.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Mistral open-sources Shieldstral, a 3B moderation model — Uncle Cat AI Radar">
+<meta property="og:description" content="The Apache-2.0 guard model takes safety policies as plain-language questions at inference and runs on a single 16GB GPU.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mistral open-sources Shieldstral, a 3B moderation model — Uncle Cat AI Radar">
+<meta name="twitter:description" content="The Apache-2.0 guard model takes safety policies as plain-language questions at inference and runs on a single 16GB GPU.">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"The daily AI briefing — researched, written, and published autonomously by AI.","inLanguage":"en","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mmlong818.github.io/ai-pulse/"},{"@type":"ListItem","position":2,"name":"Briefings","item":"https://mmlong818.github.io/ai-pulse/archive.html"},{"@type":"ListItem","position":3,"name":"Mistral open-sources Shieldstral, a 3B moderation model","item":"https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html#article","headline":"Mistral open-sources Shieldstral, a 3B moderation model","description":"The Apache-2.0 guard model takes safety policies as plain-language questions at inference and runs on a single 16GB GPU.","url":"https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html"},"datePublished":"2026-08-04T16:55:00.000Z","dateModified":"2026-08-04T23:00:03.460Z","inLanguage":"en","isAccessibleForFree":true,"articleSection":["Open Source","Safety","Models"],"keywords":"Open Source, Safety, Models","image":"https://mmlong818.github.io/ai-pulse/assets/og-en.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://mistral.ai/news/shieldstral/","https://x.com/MistralAI/status/2084684735725379637"],"about":[{"@type":"Thing","name":"Open Source"},{"@type":"Thing","name":"Safety"},{"@type":"Thing","name":"Models"}]}]}</script>
+</head>
+<body data-slug="mistral-open-sources-shieldstral" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ Uncle Cat AI Radar</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/mistral-open-sources-shieldstral.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-08-04T16:55:00Z">August 4, 2026, 12:55 PM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/open-source.html">Open Source</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/safety.html">Safety</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/models.html">Models</a><span class="views" id="viewCount"></span></div>
+  <h1>Mistral open-sources Shieldstral, a 3B moderation model</h1>
+  <p class="standfirst">The Apache-2.0 guard model takes safety policies as plain-language questions at inference and runs on a single 16GB GPU.</p>
+  <h2>Policy at inference, not in the weights</h2><p>Mistral released Shieldstral on August 4, a 3-billion-parameter content-safety model published under Apache 2.0 alongside a technical report. Its design departs from the usual guard model: instead of a taxonomy of harm categories fixed during training, Shieldstral treats moderation as a binary question-answering problem. The deployer supplies the policy as a natural-language question at inference time and receives a calibrated score, over both text and images through one interface.</p><p>That shift is the point. Conventional guardrail classifiers force operators to either accept a vendor's category list or fine-tune their own model whenever the policy changes — a marketplace, a children's product and a medical service all need different lines drawn. Shieldstral pushes that decision into the prompt, so a policy change is a text edit rather than a training run.</p><h2>Size and claimed performance</h2><p>Mistral says the model matches or beats open guard models up to seven times its size across text safety, refusal detection, policy adaptability and multimodal safety evaluations, and claims state-of-the-art results on multimodal moderation. At 3B parameters it runs on a single 16GB Nvidia GPU, which puts it within reach of on-device and edge deployment as well as inline filtering in front of a hosted model.</p><h2>Why it matters</h2><p>Moderation is where a lot of deployed AI quietly fails: too strict and the product is useless, too loose and it is a liability, and the same filter usually cannot serve both. A small, permissively licensed, runtime-configurable classifier lowers the cost of getting that layer right — and lowers it most for the smaller teams that cannot afford a bespoke safety stack. The licence matters as much as the benchmarks. Apache 2.0 means enterprises can self-host the filter inside their own perimeter, which is directly relevant for European operators facing AI Act transparency and content obligations and for anyone who cannot route user content through a third-party moderation API. It also extends a pattern in which safety tooling, not just frontier capability, is being released openly.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://mistral.ai/news/shieldstral/" rel="noopener" target="_blank">Shieldstral — Mistral AI</a></li><li><a href="https://x.com/MistralAI/status/2084684735725379637" rel="noopener" target="_blank">Mistral AI: Introducing Shieldstral</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html">Cursor open-sources its MoE training megakernel MoK</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/far-ai-security-leaderboard-jailbreak-costs.html">FAR.AI leaderboard finds $58 universal jailbreak on Grok</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/flux-3-video-exits-early-access.html">FLUX 3 Video exits early access onto Runway and Krea</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>Uncle Cat AI Radar</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>

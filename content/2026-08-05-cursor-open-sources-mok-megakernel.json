@@ -1,0 +1,32 @@
+{
+  "slug": "cursor-open-sources-mok-megakernel",
+  "title": "Cursor open-sources its MoE training megakernel MoK",
+  "summary": "Mixture-of-Kittens fuses all MoE communication and compute into one deterministic Blackwell kernel, lifting Cursor's training throughput 1.41x.",
+  "body": "## One kernel for the whole MoE layer\n\nCursor released Mixture-of-Kittens on August 4, an Apache-2.0 training megakernel that collapses every communication and computation step of a Mixture-of-Experts layer into a single fused kernel. Rather than alternating between expert compute and all-to-all token routing — the pattern that makes MoE training bandwidth-bound — MoK overlaps them inside one launch.\n\nThe code targets Nvidia Blackwell SM100/SM103 parts, meaning GB200 NVL72 or GB300 NVL72 racks, and requires Python 3.12+, PyTorch 2.10+ and CUDA 13.0+. On a single-layer MXFP8 forward-pass benchmark Cursor reports up to 2.37x the throughput of the strongest public baseline. The number that matters more is end to end: across 512 GPUs, replacing its previous DeepEP-based path lifted training throughput 1.41x, from 760.9 to 1,070.2 tokens per second per GPU. Cursor says MoK is already carrying training across tens of thousands of its GPUs.\n\n## Determinism as a feature\n\nMoK is bit-wise deterministic. That is unusual for fused collective kernels and it is deliberate: on-policy reinforcement learning post-training breaks in subtle ways when the training and sampling paths disagree numerically, and non-determinism makes regressions almost impossible to bisect. A deterministic MoE kernel makes RL runs reproducible and debuggable, which is arguably worth more to a lab than the raw speedup.\n\n## Why it matters\n\nA 1.41x throughput gain is a direct 30 percent cut in the cost and wall-clock of every MoE pretraining and post-training run on Blackwell racks — the substrate nearly every frontier model now trains on. Publishing it under Apache 2.0 hands that saving to anyone with NVL72 access, narrowing one of the gaps between well-resourced labs and everyone else, since this class of kernel work usually stays internal. It also says something about Cursor. A company known for a code editor is now shipping frontier-grade training infrastructure, evidence that its shift into training its own models is real rather than a wrapper strategy — and a reminder that hardware-specific kernel engineering, not just architecture, is where a growing share of training efficiency now comes from.",
+  "title_zh": "Cursor 开源 MoE 训练巨型算子 MoK",
+  "summary_zh": "Mixture-of-Kittens 把 MoE 层的全部通信与计算融进单个确定性 Blackwell 算子，使 Cursor 端到端训练吞吐提升 1.41 倍。",
+  "body_zh": "## 把整个 MoE 层塞进一个算子\n\nCursor 于 8 月 4 日开源 Mixture-of-Kittens（MoK），一个 Apache-2.0 许可的训练巨型算子，把 MoE 层的所有通信与计算步骤融合进单次 kernel 启动。MoE 训练之所以受带宽拖累，就在于专家计算与 all-to-all 令牌路由要来回交替；MoK 把两者在同一次启动内重叠起来。\n\n代码面向英伟达 Blackwell SM100/SM103，即 GB200 NVL72 或 GB300 NVL72 机柜，依赖 Python 3.12+、PyTorch 2.10+ 与 CUDA 13.0+。在单层 MXFP8 前向的微基准上，Cursor 称吞吐最高达到最强公开基线的 2.37 倍。更有说服力的是端到端数据：在 512 卡规模上替换原有基于 DeepEP 的方案后，训练吞吐提升 1.41 倍，单卡每秒处理令牌数从 760.9 升至 1070.2。Cursor 表示 MoK 已在其数万张 GPU 上承担实际训练任务。\n\n## 确定性本身就是卖点\n\nMoK 是逐位确定性的。这在融合通信算子里并不常见，而且是有意为之：on-policy 强化学习后训练一旦训练路径与采样路径在数值上出现偏差，就会以极隐蔽的方式失效，而非确定性会让回归问题几乎无法二分定位。一个确定性的 MoE 算子让 RL 训练可复现、可调试，对实验室来说这份价值恐怕不输于加速本身。\n\n## 影响\n\n1.41 倍的吞吐提升，等于让 Blackwell 机柜上每一次 MoE 预训练和后训练的成本与耗时直接砍掉约三成——而如今几乎所有前沿模型都跑在这套底座上。以 Apache 2.0 放出来，意味着任何能摸到 NVL72 的团队都能拿到这份节省；这类算子工程通常被实验室视为内部资产，此举缩小了资源充裕者与其他人之间的一道差距。它也说明了 Cursor 的变化：一家以代码编辑器出名的公司如今在输出前沿级训练基础设施，证明其自研模型转型是真做，而不是套壳叙事。同时也再次提醒，训练效率的增量越来越多来自贴着硬件写算子，而非只靠改架构。",
+  "tags": [
+    "Open Source",
+    "Research",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Cursor Open-Sources Mixture-of-Kittens (MoK)",
+      "url": "https://www.marktechpost.com/2026/08/04/cursor-open-sources-mixture-of-kittens-mok-a-deterministic-moe-training-megakernel-for-gb300-nvl72-racks/"
+    },
+    {
+      "title": "cursor/mixture-of-kittens on GitHub",
+      "url": "https://github.com/cursor/mixture-of-kittens"
+    },
+    {
+      "title": "Cursor: We're open-sourcing Mixture-of-Kittens",
+      "url": "https://x.com/cursor_ai/status/2084670806613737919"
+    }
+  ],
+  "featured": false,
+  "date": "2026-08-05",
+  "published": "2026-08-04T16:00:00Z",
+  "published_at": "2026-08-04T23:00:03.460Z"
+}

@@ -13,6 +13,244 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/anthropic-volta-ten-billion-compute.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/anthropic-volta-ten-billion-compute.html",
+      "title": "Anthropic buys $10B of compute from six-month-old Volta",
+      "summary": "The six-year deal routes Anthropic through a 133MW hydro-powered Norwegian site running Nvidia Vera Rubin systems, operated with Bitdeer.",
+      "content_text": "## The deal\n\nAnthropic has committed roughly $10 billion over six years to Volta Infra Holdings, a cloud provider that did not exist at the start of 2026. The capacity comes from a 133-megawatt, hydroelectrically powered data center in Norway, developed with Bitdeer Technologies — a bitcoin miner repurposing its power and siting expertise for AI — and equipped with Nvidia's Vera Rubin systems. Handover happens in two phases, completing by March 2027.\n\nVolta was founded early this year by former Brookfield asset managers and has raised about $300 million led by Andreessen Horowitz and Altimeter Capital, with Nvidia and Michael Dell also participating, at a $2.4 billion valuation. It sits in Nvidia's Cloud Partner program, has assembled a $5 billion financing pool to help customers cover chip costs, and says it has secured roughly a gigawatt of power for future sites.\n\n## Anthropic's spread\n\nThe contract extends a deliberate diversification. Anthropic already has capacity arrangements spanning Google, Amazon, Broadcom, AMD and SpaceX, and is now willing to underwrite a startup's first major buildout to add more. For Volta, a single anchor tenant of this size effectively converts a six-month-old company into a financeable infrastructure business — which is the model: the offtake contract is the collateral.\n\n## Why it matters\n\nThis is what the compute crunch looks like in practice. Frontier labs are no longer choosing among established hyperscalers; they are seeding new ones, and doing it where power is available rather than where the customers are — Norwegian hydro, at a moment when Texas has just frozen new grid connections. It also deepens the circularity that has drawn scrutiny all year: Nvidia is simultaneously Volta's investor and its chip supplier, while Anthropic's commitment is what makes Volta's Nvidia purchases bankable. That structure works while AI demand grows and amplifies losses through several balance sheets at once if it does not. A $10 billion obligation from a company whose revenue is measured in billions, not tens of billions, is a bet on demand years out.",
+      "date_published": "2026-08-04T15:21:00.000Z",
+      "date_modified": "2026-08-04T23:00:03.460Z",
+      "tags": [
+        "Industry",
+        "Funding"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-volta-ten-billion-compute.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-volta-ten-billion-compute.html",
+        "source_published_at": "2026-08-04T15:21:00.000Z",
+        "site_published_at": "2026-08-04T23:00:03.460Z",
+        "sources": [
+          {
+            "title": "Anthropic locks in $10 billion of compute from Volta, a cloud startup that didn't exist six months ago",
+            "url": "https://the-decoder.com/anthropic-locks-in-10-billion-of-compute-from-volta-a-cloud-startup-that-didnt-exist-six-months-ago/"
+          },
+          {
+            "title": "Anthropic signs $10B deal with AI cloud startup Volta",
+            "url": "https://techcrunch.com/2026/08/04/anthropic-signs-10-billion-deal-with-ai-cloud-startup-volta/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html",
+      "title": "Cursor open-sources its MoE training megakernel MoK",
+      "summary": "Mixture-of-Kittens fuses all MoE communication and compute into one deterministic Blackwell kernel, lifting Cursor's training throughput 1.41x.",
+      "content_text": "## One kernel for the whole MoE layer\n\nCursor released Mixture-of-Kittens on August 4, an Apache-2.0 training megakernel that collapses every communication and computation step of a Mixture-of-Experts layer into a single fused kernel. Rather than alternating between expert compute and all-to-all token routing — the pattern that makes MoE training bandwidth-bound — MoK overlaps them inside one launch.\n\nThe code targets Nvidia Blackwell SM100/SM103 parts, meaning GB200 NVL72 or GB300 NVL72 racks, and requires Python 3.12+, PyTorch 2.10+ and CUDA 13.0+. On a single-layer MXFP8 forward-pass benchmark Cursor reports up to 2.37x the throughput of the strongest public baseline. The number that matters more is end to end: across 512 GPUs, replacing its previous DeepEP-based path lifted training throughput 1.41x, from 760.9 to 1,070.2 tokens per second per GPU. Cursor says MoK is already carrying training across tens of thousands of its GPUs.\n\n## Determinism as a feature\n\nMoK is bit-wise deterministic. That is unusual for fused collective kernels and it is deliberate: on-policy reinforcement learning post-training breaks in subtle ways when the training and sampling paths disagree numerically, and non-determinism makes regressions almost impossible to bisect. A deterministic MoE kernel makes RL runs reproducible and debuggable, which is arguably worth more to a lab than the raw speedup.\n\n## Why it matters\n\nA 1.41x throughput gain is a direct 30 percent cut in the cost and wall-clock of every MoE pretraining and post-training run on Blackwell racks — the substrate nearly every frontier model now trains on. Publishing it under Apache 2.0 hands that saving to anyone with NVL72 access, narrowing one of the gaps between well-resourced labs and everyone else, since this class of kernel work usually stays internal. It also says something about Cursor. A company known for a code editor is now shipping frontier-grade training infrastructure, evidence that its shift into training its own models is real rather than a wrapper strategy — and a reminder that hardware-specific kernel engineering, not just architecture, is where a growing share of training efficiency now comes from.",
+      "date_published": "2026-08-04T16:00:00.000Z",
+      "date_modified": "2026-08-04T23:00:03.460Z",
+      "tags": [
+        "Open Source",
+        "Research",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html",
+        "source_published_at": "2026-08-04T16:00:00.000Z",
+        "site_published_at": "2026-08-04T23:00:03.460Z",
+        "sources": [
+          {
+            "title": "Cursor Open-Sources Mixture-of-Kittens (MoK)",
+            "url": "https://www.marktechpost.com/2026/08/04/cursor-open-sources-mixture-of-kittens-mok-a-deterministic-moe-training-megakernel-for-gb300-nvl72-racks/"
+          },
+          {
+            "title": "cursor/mixture-of-kittens on GitHub",
+            "url": "https://github.com/cursor/mixture-of-kittens"
+          },
+          {
+            "title": "Cursor: We're open-sourcing Mixture-of-Kittens",
+            "url": "https://x.com/cursor_ai/status/2084670806613737919"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/far-ai-security-leaderboard-jailbreak-costs.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/far-ai-security-leaderboard-jailbreak-costs.html",
+      "title": "FAR.AI leaderboard finds $58 universal jailbreak on Grok",
+      "summary": "The nonprofit's first AI Security Leaderboard reports a hundredfold spread in safeguard robustness, with two frontier models yielding none.",
+      "content_text": "## An apples-to-apples security ranking\n\nFAR.AI launched its AI Security Leaderboard on August 4, an independent public ranking of how well frontier model safeguards hold up under the attacks most likely to be used against them. The nonprofit assembled a taxonomy of more than 60 publicly documented jailbreak techniques, built tooling to compose them automatically, then ran 1,000 randomly assembled attacks and 500 expert-guided attacks against each model across five risk domains: chemical, biological, radiological, nuclear, explosive and cyber.\n\nThe target was universal jailbreaks — reusable prompts that unlock whole categories of refused requests rather than a single lucky answer.\n\n## The spread\n\nResults diverged sharply. xAI's Grok 4.5 yielded 448 distinct universal jailbreaks and Google DeepMind's Gemini 3.1 Pro 249. Automated random search alone accounted for 63 and 18 respectively; adding expert composition of techniques pushed those to 385 and 231, and the hand-built attacks were far more likely to work across three or more risk domains simultaneously. Claude Fable 5 and GPT-5.6 Sol yielded none — in any domain, under any search strategy.\n\nFAR.AI converts that into cost. A working universal jailbreak ran roughly $58 to find on Grok 4.5 and roughly $278 on Gemini 3.1 Pro. On the two models that held, the search simply never succeeded, putting the floor above $14,200 and climbing. For open-weight models not yet on the board, the team says it has never needed more than a few hours, or roughly $10 to $50, to break one completely. Every vulnerability found belongs to a known attack class with defences that already exist and already run in deployed systems.\n\n## Why it matters\n\nThe finding is not that safeguards are weak but that they are wildly uneven — a hundredfold gap between shipping products, invisible to buyers and to the capability benchmarks the industry ranks on. Because the attacks are all previously documented, the gap reads as an engineering choice rather than an open research problem. It also sharpens the open-weight debate: if hosted models with active filtering fall for $58, the downloadable ones fall for pocket change.",
+      "date_published": "2026-08-04T19:42:00.000Z",
+      "date_modified": "2026-08-04T23:00:03.460Z",
+      "tags": [
+        "Safety",
+        "Research"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/far-ai-security-leaderboard-jailbreak-costs.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/far-ai-security-leaderboard-jailbreak-costs.html",
+        "source_published_at": "2026-08-04T19:42:00.000Z",
+        "site_published_at": "2026-08-04T23:00:03.460Z",
+        "sources": [
+          {
+            "title": "FAR.AI Launches AI Security Leaderboard Revealing Hundredfold Gap in Frontier AI Model Safeguards",
+            "url": "http://www.prnewswire.com/news-releases/farai-launches-ai-security-leaderboard-revealing-hundredfold-gap-in-frontier-ai-model-safeguards-302838216.html"
+          },
+          {
+            "title": "Open-weight AI models are catching up to the frontier. The safety gap remains.",
+            "url": "https://techcrunch.com/2026/08/04/open-weight-ai-models-are-catching-up-to-the-frontier-the-safety-gap-remains/"
+          },
+          {
+            "title": "FAR.AI: 60 dollars. That's what a universal jailbreak costs",
+            "url": "https://x.com/farairesearch/status/2084742176525767077"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/flux-3-video-exits-early-access.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/flux-3-video-exits-early-access.html",
+      "title": "FLUX 3 Video exits early access onto Runway and Krea",
+      "summary": "Black Forest Labs' 20-second video model with native audio opened to the public on Runway, Krea and Replicate after a gated rollout.",
+      "content_text": "## From Discord waitlist to public endpoints\n\nBlack Forest Labs' FLUX 3 Video became broadly available on August 4, appearing the same day on Krea, Replicate and Runway. The model had been announced on July 23 but shipped only through a gated early-access program, with production use restricted and no public API or third-party endpoints; as of late July neither Replicate nor fal.ai carried it. Tuesday's simultaneous listings mark the point at which ordinary creators can actually generate with it.\n\n## What the model does\n\nFLUX 3 is a single multimodal flow model covering image, video, audio and robot action prediction from one backbone, built on BFL's Self-Flow approach to unifying generation and understanding. The video component produces clips of up to 20 seconds at 720p with audio synthesised in the same pass rather than dubbed afterwards, and supports text-to-video, image-to-video, video-to-video from a reference clip, keyframe-controlled transitions, and generative continuation of an existing clip with its audio. BFL has emphasised facial expression fidelity, sound tied to on-screen physical events, and multilingual dialogue. 1080p output and a FLUX 3 Image release are still pending, as is the open-weight FLUX 3 Dev variant the company has said will follow later this year.\n\nRunway's listing is the notable one: the platform is now serving a rival lab's video-plus-audio model alongside its own generation stack, a continuation of the aggregator posture it has adopted in recent weeks.\n\n## Why it matters\n\nGenerative video's competitive axis has moved from clip length to whether picture and sound are produced together, and FLUX 3 arrives as one of the few models doing that natively at 20 seconds. Broad availability also settles a practical question for studios and agencies that could not commit to an early-access model with restricted commercial terms. The action-prediction head is the longer-term story: BFL is training the same weights that generate footage to also predict physical actions, positioning a company known for image generation inside the world-model and robotics race.",
+      "date_published": "2026-08-04T17:35:00.000Z",
+      "date_modified": "2026-08-04T23:00:03.460Z",
+      "tags": [
+        "AIGC",
+        "Models"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/flux-3-video-exits-early-access.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/flux-3-video-exits-early-access.html",
+        "source_published_at": "2026-08-04T17:35:00.000Z",
+        "site_published_at": "2026-08-04T23:00:03.460Z",
+        "sources": [
+          {
+            "title": "Krea: introducing FLUX 3, available now",
+            "url": "https://x.com/krea_ai/status/2084694677522157763"
+          },
+          {
+            "title": "Replicate: FLUX 3 Video from BFL is now on Replicate",
+            "url": "https://x.com/replicate/status/2084695365370912909"
+          },
+          {
+            "title": "Runway: FLUX 3 is now available on Runway",
+            "url": "https://x.com/runwayml/status/2084729635720270277"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html",
+      "title": "Mistral open-sources Shieldstral, a 3B moderation model",
+      "summary": "The Apache-2.0 guard model takes safety policies as plain-language questions at inference and runs on a single 16GB GPU.",
+      "content_text": "## Policy at inference, not in the weights\n\nMistral released Shieldstral on August 4, a 3-billion-parameter content-safety model published under Apache 2.0 alongside a technical report. Its design departs from the usual guard model: instead of a taxonomy of harm categories fixed during training, Shieldstral treats moderation as a binary question-answering problem. The deployer supplies the policy as a natural-language question at inference time and receives a calibrated score, over both text and images through one interface.\n\nThat shift is the point. Conventional guardrail classifiers force operators to either accept a vendor's category list or fine-tune their own model whenever the policy changes — a marketplace, a children's product and a medical service all need different lines drawn. Shieldstral pushes that decision into the prompt, so a policy change is a text edit rather than a training run.\n\n## Size and claimed performance\n\nMistral says the model matches or beats open guard models up to seven times its size across text safety, refusal detection, policy adaptability and multimodal safety evaluations, and claims state-of-the-art results on multimodal moderation. At 3B parameters it runs on a single 16GB Nvidia GPU, which puts it within reach of on-device and edge deployment as well as inline filtering in front of a hosted model.\n\n## Why it matters\n\nModeration is where a lot of deployed AI quietly fails: too strict and the product is useless, too loose and it is a liability, and the same filter usually cannot serve both. A small, permissively licensed, runtime-configurable classifier lowers the cost of getting that layer right — and lowers it most for the smaller teams that cannot afford a bespoke safety stack. The licence matters as much as the benchmarks. Apache 2.0 means enterprises can self-host the filter inside their own perimeter, which is directly relevant for European operators facing AI Act transparency and content obligations and for anyone who cannot route user content through a third-party moderation API. It also extends a pattern in which safety tooling, not just frontier capability, is being released openly.",
+      "date_published": "2026-08-04T16:55:00.000Z",
+      "date_modified": "2026-08-04T23:00:03.460Z",
+      "tags": [
+        "Open Source",
+        "Safety",
+        "Models"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/mistral-open-sources-shieldstral.html",
+        "source_published_at": "2026-08-04T16:55:00.000Z",
+        "site_published_at": "2026-08-04T23:00:03.460Z",
+        "sources": [
+          {
+            "title": "Shieldstral — Mistral AI",
+            "url": "https://mistral.ai/news/shieldstral/"
+          },
+          {
+            "title": "Mistral AI: Introducing Shieldstral",
+            "url": "https://x.com/MistralAI/status/2084684735725379637"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/texas-freezes-data-center-grid-hookups.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/texas-freezes-data-center-grid-hookups.html",
+      "title": "Texas freezes new data center grid hookups pending audit",
+      "summary": "Governor Greg Abbott ordered ERCOT and state regulators to audit every new data center before it can connect, with 474GW now queued.",
+      "content_text": "## A mandatory audit replaces a voluntary survey\n\nTexas Governor Greg Abbott on August 3 directed the Public Utility Commission of Texas and grid operator ERCOT to put new data center projects through a formal audit before they can be granted an interconnection to the state grid. Until a project clears that review, its request to connect is effectively on hold.\n\nThe order lands on an interconnection queue that has roughly doubled in seven months. ERCOT was holding about 233 gigawatts of pending connection requests in January; by August that figure had reached roughly 474 gigawatts, of which about 90 percent is attributed to data centers. The queue now represents more than five times the grid's all-time peak demand — a gap wide enough that regulators cannot treat the requests as a credible forecast of what will actually be built.\n\n## What developers must now disclose\n\nUnder the audit, operators are required to hand over details they were previously free to withhold: projected electricity draw, water consumption, noise mitigation plans, outdoor lighting controls, which state and local tax incentives they are claiming, and who ultimately owns the project. Abbott had earlier asked for much of this through a voluntary information request, which drew almost no participation — the mandatory process is the direct consequence of that failure.\n\n## Why it matters\n\nTexas has been the single most attractive destination for US AI compute construction, precisely because ERCOT's standalone grid and light-touch permitting let projects move faster than in PJM or California. A screening gate on that grid removes the industry's main escape valve at the moment when frontier labs are signing multi-gigawatt, multi-year compute contracts on the assumption that power can be found. Speculative filings will be squeezed out, which improves planning quality, but genuine projects also inherit new timeline risk and disclosure obligations. Expect the cost of firm, near-term capacity to rise, and expect more announcements to point at Nordic hydro, the Gulf, and the Middle East rather than West Texas.",
+      "date_published": "2026-08-04T15:33:00.000Z",
+      "date_modified": "2026-08-04T23:00:03.460Z",
+      "tags": [
+        "Policy",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/texas-freezes-data-center-grid-hookups.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/texas-freezes-data-center-grid-hookups.html",
+        "source_published_at": "2026-08-04T15:33:00.000Z",
+        "site_published_at": "2026-08-04T23:00:03.460Z",
+        "sources": [
+          {
+            "title": "Texas halts new data centers as governor calls for audits",
+            "url": "https://techcrunch.com/2026/08/04/texas-halts-new-data-centers-as-governor-calls-for-audits/"
+          },
+          {
+            "title": "Texas halts data center connections to power grid amid overwhelming demand",
+            "url": "https://arstechnica.com/ai/2026/08/texas-halts-data-center-connections-to-power-grid-amid-overwhelming-demand/"
+          },
+          {
+            "title": "Texas says data centers must pass an audit before connecting to the grid",
+            "url": "https://www.theverge.com/policy/975071/texas-data-center-audit"
+          },
+          {
+            "title": "Governor Abbott Directs Comprehensive Data Center Audit — Office of the Texas Governor",
+            "url": "https://gov.texas.gov/news/post/governor-abbott-directs-comprehensive-data-center-audit"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/cursor-google-workspace-plugins.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/cursor-google-workspace-plugins.html",
       "title": "Cursor agents gain read-write access to Google Workspace",
@@ -1709,221 +1947,6 @@
           {
             "title": "量子位：一年连融三轮数亿元，字节+清华姚班重构企业软件工程",
             "url": "https://www.qbitai.com/2026/07/463013.html"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/amazon-scales-back-nova-frontier-team.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/amazon-scales-back-nova-frontier-team.html",
-      "title": "Amazon freezes Nova line, bets on new Frontier model team",
-      "summary": "Business Insider reports Amazon has halted development on Nova Premier, Omni, Reel and Canvas, shifting resources to a research group under Pieter Abbeel.",
-      "content_text": "Amazon has stopped active development on its Nova family of in-house models and moved resources to a new frontier research organisation, according to a Business Insider report on 28 July.\n\n## What the report describes\n\nThe Nova models are said to be entering a maintenance posture — kept running for existing customers, but no longer advanced. That covers the flagship Nova Premier and the Omni multimodal model, along with the Reel video generator and the Canvas image generator, meaning Amazon is stepping back from first-party generative media as well as from text.\n\nIn their place, Amazon is backing the Frontier Model Research group led by Pieter Abbeel, the Berkeley roboticist who joined Amazon through its acquisition of Covariant. The report points to a new foundation model from that group expected around re:Invent this autumn. Amazon's external position is unchanged: it remains among the largest investors in Anthropic and has committed capital to OpenAI, with combined exposure reported in the tens of billions.\n\n## Why it matters\n\nNova was Amazon's answer to the strategic problem every hyperscaler faces — whether renting someone else's frontier model to your cloud customers is a durable position. Launched with heavy promotion at re:Invent 2024, it never displaced Anthropic's models as the default choice on Bedrock. Quietly freezing it is an admission that a competent mid-tier model line is not worth the training spend when the same cloud sells better ones.\n\nThe strategic reading is a reset rather than a retreat. Handing the mandate to Abbeel, whose background is robotics and embodied learning rather than chat assistants, suggests Amazon is targeting a different axis than the one Nova lost on. But it also leaves Bedrock's differentiation resting entirely on third-party models for at least another quarter, and it removes one of the few non-Chinese, non-frontier-lab sources of competitive pressure on image and video generation pricing. For customers who standardised on Nova Reel or Canvas, a maintenance-mode model with no roadmap is a migration decision, not a footnote.",
-      "date_published": "2026-07-28T16:03:00.000Z",
-      "date_modified": "2026-07-28T23:00:00.000Z",
-      "tags": [
-        "Industry",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/amazon-scales-back-nova-frontier-team.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/amazon-scales-back-nova-frontier-team.html",
-        "source_published_at": "2026-07-28T16:03:00.000Z",
-        "site_published_at": "2026-07-28T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Amazon reportedly scales back its Nova AI models and bets on a new Frontier research team — The Decoder",
-            "url": "https://the-decoder.com/amazon-reportedly-scales-back-its-nova-ai-models-and-bets-on-a-new-frontier-research-team/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/claude-mythos-cryptanalysis-hawk-aes.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/claude-mythos-cryptanalysis-hawk-aes.html",
-      "title": "Claude Mythos finds new attacks on HAWK and 7-round AES",
-      "summary": "Anthropic says its frontier model autonomously produced two publishable cryptanalysis results, cutting HAWK-256's effective security and speeding an AES attack 200-800x.",
-      "content_text": "Anthropic published research on 28 July claiming that a preview version of its frontier model, Claude Mythos, generated two original cryptanalysis results with minimal human direction — the strongest public evidence so far that language models can operate at expert level inside a field where wrong answers are trivially falsifiable.\n\n## The two results\n\nThe first targets HAWK, a lattice-based digital signature scheme submitted to NIST's post-quantum standardisation process. The model identified a nontrivial automorphism — a symmetry in the scheme's structure that prior analysis had not exploited — and used it to halve the effective key size. For the HAWK-256 parameter set, Anthropic reports that key-recovery complexity falls from roughly 2^64 to about 2^38. The work took the model around 60 hours.\n\nThe second is an improved meet-in-the-middle attack on 7-round AES, a reduced variant of the cipher whose full version uses 10 rounds. Here the model devised a fingerprinting routine it named the \"Möbius Bridge,\" which removes one enumeration guess and delivers a claimed 200-800x speedup over the previous best attack. That run consumed billions of output tokens across three days. Anthropic puts the API cost at roughly $100,000 per attack.\n\nAnthropic worked with cryptographers at ETH Zurich, Tel Aviv University and the University of Haifa, and released both papers alongside CryptanalysisBench, a benchmark that packages cipher-breaking tasks so other groups can measure model cryptanalytic ability directly.\n\n## Caveats\n\nNeither finding threatens deployed systems. HAWK is a candidate scheme, not a shipping one, and larger parameter sets remain out of reach; the 7-round AES attack is an academic exercise whose execution would still cost hundreds of millions of dollars. Both results reduce exponential work factors rather than collapsing them.\n\n## Why it matters\n\nCryptanalysis has been one of the cleanest remaining arguments that frontier models cannot yet do genuinely novel technical research — results are verifiable, and there is no benchmark to overfit. If reproducible, this narrows that argument considerably, and it cuts both ways: the same capability that lets defenders stress-test standards before adoption also lowers the cost of offensive analysis. Anthropic's framing is defensive, but the release of CryptanalysisBench guarantees the question is now measured in public.",
-      "date_published": "2026-07-28T17:16:00.000Z",
-      "date_modified": "2026-07-28T23:00:00.000Z",
-      "tags": [
-        "Research",
-        "Safety",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/claude-mythos-cryptanalysis-hawk-aes.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-mythos-cryptanalysis-hawk-aes.html",
-        "source_published_at": "2026-07-28T17:16:00.000Z",
-        "site_published_at": "2026-07-28T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Discovering Cryptographic Weaknesses with Claude — Anthropic",
-            "url": "https://www.anthropic.com/research/discovering-cryptographic-weaknesses"
-          },
-          {
-            "title": "Anthropic says its Mythos model found vulnerabilities in cryptographic algorithms — The Decoder",
-            "url": "https://the-decoder.com/anthropic-says-its-mythos-model-found-vulnerabilities-in-cryptographic-algorithms-that-secure-the-internet/"
-          },
-          {
-            "title": "Anthropic thread on CryptanalysisBench and both attacks",
-            "url": "https://x.com/AnthropicAI/status/2082153311189225927"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/cyera-acquires-oasis-security-agents.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/cyera-acquires-oasis-security-agents.html",
-      "title": "Cyera to buy Oasis Security for $1B to police AI agents",
-      "summary": "The data-security firm signed a letter of intent for the non-human identity startup, its third acquisition this year, as enterprises scramble to govern agent access.",
-      "content_text": "## What happened\n\nCyera has signed a letter of intent to acquire Oasis Security for approximately $1 billion, mostly in cash with the balance in Cyera shares. Founded in 2022, Oasis specialises in securing non-human identities — the service accounts, API keys, tokens and, increasingly, AI agents that act inside corporate systems without a human at the keyboard. Its platform monitors agent behaviour and manages what each identity is permitted to reach across connected software. The startup had raised about $195 million from investors including Accel, Craft Ventures and Cyberstarts.\n\nFor Cyera the deal is the third of 2026, after Ryft and Genie Security. The five-year-old company recently raised $600 million at a $12 billion valuation, has passed $150 million in annual recurring revenue and has taken $2.3 billion in total funding while remaining unprofitable. It plans to fold Oasis into a combined identity-and-data security platform for enterprise customers.\n\n## Why it matters\n\nAgent deployments have created an identity problem enterprises were not provisioned for. A coding agent, a support agent and a workflow agent each need credentials, each accumulate permissions, and none of them can be governed by the human-centric identity tooling that most large organisations still run on. The result is a fast-growing population of privileged actors that nobody can fully enumerate — and the recent run of agent-related incidents, including the Hugging Face intrusion and the Claude sandbox escape disclosed this month, has made that abstract risk concrete for boards.\n\nA $1 billion price for a four-year-old company with roughly $195 million raised prices that anxiety directly. It also signals where agent infrastructure value is settling: not in the frameworks that build agents, which are commoditising fast, but in the control planes that decide what a running agent is allowed to touch. Expect identity incumbents to respond, either by buying comparable assets or by rebranding privileged-access products around agents. The transaction is still a letter of intent, so terms could shift before close.",
-      "date_published": "2026-07-29T00:09:00.000Z",
-      "date_modified": "2026-07-29T11:00:00.000Z",
-      "tags": [
-        "Industry",
-        "Agents",
-        "Funding"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cyera-acquires-oasis-security-agents.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cyera-acquires-oasis-security-agents.html",
-        "source_published_at": "2026-07-29T00:09:00.000Z",
-        "site_published_at": "2026-07-29T11:00:00.000Z",
-        "sources": [
-          {
-            "title": "Cyera agrees to acquire Oasis Security for $1B to safeguard proliferating AI agents — TechCrunch",
-            "url": "https://techcrunch.com/2026/07/28/cyera-agrees-to-acquire-oasis-security-for-1b-to-safeguard-proliferating-ai-agents/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/gemini-managed-agents-hooks.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/gemini-managed-agents-hooks.html",
-      "title": "Gemini API managed agents add 3.6 Flash and sandbox hooks",
-      "summary": "Google's hosted agent runtime switches its default to Gemini 3.6 Flash and adds pre/post tool-call hooks, token ceilings, cron triggers and a free tier.",
-      "content_text": "Google shipped an update to Managed Agents in the Gemini API on 28 July, moving the hosted agent runtime closer to the controls operators expect from production infrastructure rather than a preview.\n\n## What changed\n\nThe `antigravity-preview-05-2026` agent now defaults to Gemini 3.6 Flash, with Gemini 3.5 Flash and 3.5 Flash-Lite selectable for cheaper configurations. The headline addition is environment hooks: a `.agents/hooks.json` file lets developers register regex-matched handlers that fire before or after any tool call inside the sandbox, executing either a shell command or an HTTP call. Google's framing is that hooks let you block, lint or audit tool invocations — meaning policy enforcement now sits inside the managed runtime rather than being wrapped around it.\n\nAlongside that: a `max_total_tokens` parameter to cap spend on a single run, state preservation so an incomplete interaction can be resumed rather than restarted, cron-syntax scheduled triggers with sandboxes that persist across executions, and an Environments API for listing, inspecting and deleting sandbox sessions. Managed agents are now reachable from free-tier projects with an API key.\n\n## Why it matters\n\nThe design pattern here is conspicuously borrowed. Pre- and post-tool-use hooks, persistent sandboxes and scheduled autonomous runs are the primitives that made local coding-agent harnesses controllable, and Google is now offering them as a hosted service with billing and a free entry tier attached. That reframes the competitive question: the differentiator for agent platforms is shifting from model quality to whether operators can constrain, observe and cost-cap what the agent does — precisely the gap that the past week's frontier-lab sandbox-escape incident made concrete.\n\nThe token ceiling and resumable state also target the specific economics that have kept agent deployments in pilot: runaway loops that burn budget with nothing to show, and long tasks that lose all progress on failure. Scheduled triggers with persistent environments push further, letting an agent hold context between unattended runs — useful, and also the configuration where hooks stop being a nicety and start being the only thing standing between a cron job and an unreviewed tool call.",
-      "date_published": "2026-07-28T16:00:00.000Z",
-      "date_modified": "2026-07-28T23:00:00.000Z",
-      "tags": [
-        "Agents",
-        "Models",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gemini-managed-agents-hooks.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-managed-agents-hooks.html",
-        "source_published_at": "2026-07-28T16:00:00.000Z",
-        "site_published_at": "2026-07-28T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Gemini API Managed Agents: 3.6 Flash, hooks, and more — Google",
-            "url": "https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api-3-6-flash-hooks/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/kospi-worst-two-day-ai-chip-rout.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/kospi-worst-two-day-ai-chip-rout.html",
-      "title": "AI chip selloff hands Kospi its worst two-day drop ever",
-      "summary": "Seoul's benchmark fell about 6% on Wednesday after a 10.84% Tuesday collapse, as SK Hynix missed estimates and China's first domestic DUV tools entered service.",
-      "content_text": "## What happened\n\nSouth Korea's Kospi closed Wednesday at 5,663.24, down 360.42 points or roughly 6%, extending a two-day decline of more than 12% — the steepest back-to-back fall in the index's history. Tuesday's session had already ended with a 10.84% drop to 6,023.66 after the Korea Exchange triggered a market-wide circuit breaker, with Samsung Electronics down 13.39% and SK Hynix down 14.65%. The Kospi's July loss now stands near 29%, exceeding the 27% monthly plunge recorded during the Asian financial crisis in October 1997.\n\nThe immediate catalyst on Wednesday was SK Hynix's second-quarter report. The memory maker posted revenue of 79.3 trillion won and operating profit of 60.54 trillion won — a 557% year-on-year jump, and a record — but both figures landed roughly 5% to 7% below consensus compiled by LSEG, with commodity DRAM price gains slowing and profit heavily concentrated in high-bandwidth memory. Shares fell more than 9% despite management pushing back on the idea that AI demand is cooling.\n\n## The China trigger\n\nThe deeper repricing began a day earlier, when a Shanghai state-backed toolmaker delivered China's first domestically produced immersion deep-ultraviolet lithography systems into service at SMIC and ChangXin Memory Technologies. CXMT's roughly $8.6 billion Hong Kong listing then debuted at a valuation above Intel's, crystallising fears of a DRAM oversupply cycle driven by subsidised Chinese capacity. Analysts in Seoul cautioned that the lithography milestone is symbolic rather than material for now — five units this year and about 20 planned for 2027, against ASML's annual output — but the market traded the signal, not the volume.\n\nThe unwind spread across the region: Japan's Nikkei 225 fell 3.95% to 62,364.92 on Tuesday, with Kioxia down 18.33% and SoftBank Group off 4.43%.\n\n## Why it matters\n\nMemory pricing is the hinge on which AI datacentre economics turn. If investors now believe Chinese suppliers can compress HBM and DRAM margins on a multi-year horizon — and that even 557% profit growth is not enough to clear expectations — the cost of capital for the entire AI buildout shifts. That question is being answered in Asian trading hours, not on Wall Street.",
-      "date_published": "2026-07-29T06:30:00.000Z",
-      "date_modified": "2026-07-29T11:00:00.000Z",
-      "tags": [
-        "Industry",
-        "Policy"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/kospi-worst-two-day-ai-chip-rout.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/kospi-worst-two-day-ai-chip-rout.html",
-        "source_published_at": "2026-07-29T06:30:00.000Z",
-        "site_published_at": "2026-07-29T11:00:00.000Z",
-        "sources": [
-          {
-            "title": "'China Chip Phobia' Drags Samsung, SK Shares Sharply Lower — Seoul Economic Daily",
-            "url": "https://en.sedaily.com/finance/2026/07/29/china-chip-phobia-drags-samsung-sk-shares-sharply-lower"
-          },
-          {
-            "title": "South Korean stocks plunge, erasing AI rally gains as chip selloff deepens — Nikkei Asia",
-            "url": "https://asia.nikkei.com/business/markets/south-korean-stocks-plunge-erasing-ai-rally-gains-as-chip-selloff-deepens"
-          },
-          {
-            "title": "SK Hynix shares tank as exponential earnings growth fails to satisfy AI-charged expectations — CNBC",
-            "url": "https://www.cnbc.com/2026/07/29/sk-hynix-earnings-profit-revenue-hbm-memory.html"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/liquid-ai-lfm25-encoders-open-weights.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/liquid-ai-lfm25-encoders-open-weights.html",
-      "title": "Liquid AI open-weights two CPU-fast 8K text encoders",
-      "summary": "LFM2.5-Encoder-230M and 350M bring an 8,192-token window to BERT-class models and cut CPU latency roughly threefold at full length.",
-      "content_text": "## Small models, long inputs\n\nLiquid AI released weights on 29 July for two bidirectional text encoders, LFM2.5-Encoder-230M and LFM2.5-Encoder-350M, aimed at the unglamorous middle of most AI systems: retrieval, reranking, classification and filtering, where a full generative model is overkill.\n\nBoth models are built on the company's LFM2 hybrid backbone, combining gated short convolution blocks with grouped-query attention, and both accept 8,192 tokens — a long window for this size class, where 512-token limits were the norm until recently. They share a hidden size of 1,024 and a 65,536-token vocabulary covering 15 languages.\n\nRather than train from scratch, Liquid AI converted its existing LFM2.5 decoders into encoders with three changes: switching attention masking to bidirectional, making the short convolutions non-causal, and continuing training with masked language modelling at a 30% mask rate, double BERT's original 15%.\n\n## The numbers\n\nAcross a 17-task evaluation suite, the 350M model posts a mean score of 81.02, placing fourth among the 14 models compared; the 230M version scores 79.29, ahead of ModernBERT-base at 78.19 despite being smaller. The sharper claim is throughput on commodity hardware: at 8K tokens the 230M encoder completes a forward pass in roughly 28 seconds on CPU, against more than 90 seconds for ModernBERT-base — about a 3.7x gap, which matters when embedding pipelines run on the same machine as the application rather than on a GPU.\n\nBoth checkpoints are on Hugging Face under the LFM Open License v1.0, Liquid AI's own terms rather than a standard permissive licence, so teams should read the conditions before shipping commercially.\n\n## Why it matters\n\nEncoder models are the quiet workhorses of production AI — every RAG stack, moderation filter and semantic search index is full of them — yet they have improved far more slowly than generative models, with ModernBERT serving as the default for years. Pushing a sub-400M encoder to 8K context while keeping CPU inference tolerable moves capability toward the edge, where privacy, offline operation and per-query cost, not benchmark leadership, decide what gets deployed.",
-      "date_published": "2026-07-29T09:38:00.000Z",
-      "date_modified": "2026-07-29T11:00:00.000Z",
-      "tags": [
-        "Open Source",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/liquid-ai-lfm25-encoders-open-weights.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/liquid-ai-lfm25-encoders-open-weights.html",
-        "source_published_at": "2026-07-29T09:38:00.000Z",
-        "site_published_at": "2026-07-29T11:00:00.000Z",
-        "sources": [
-          {
-            "title": "Liquid AI Releases LFM2.5-Encoder-230M and LFM2.5-Encoder-350M",
-            "url": "https://www.marktechpost.com/2026/07/29/liquid-ai-releases-lfm2-5-encoder-230m-and-lfm2-5-encoder-350m-bidirectional-encoders-that-stay-fast-at-8k-context-on-cpu/"
-          },
-          {
-            "title": "LiquidAI/LFM2.5-Encoder-350M · Hugging Face",
-            "url": "https://huggingface.co/LiquidAI/LFM2.5-Encoder-350M"
           }
         ]
       }

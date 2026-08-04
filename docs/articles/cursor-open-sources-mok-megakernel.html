@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursor open-sources its MoE training megakernel MoK — Uncle Cat AI Radar</title>
+<meta name="description" content="Mixture-of-Kittens fuses all MoE communication and compute into one deterministic Blackwell kernel, lifting Cursor's training throughput 1.41x.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Cursor open-sources its MoE training megakernel MoK — Uncle Cat AI Radar">
+<meta property="og:description" content="Mixture-of-Kittens fuses all MoE communication and compute into one deterministic Blackwell kernel, lifting Cursor's training throughput 1.41x.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cursor open-sources its MoE training megakernel MoK — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Mixture-of-Kittens fuses all MoE communication and compute into one deterministic Blackwell kernel, lifting Cursor's training throughput 1.41x.">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"The daily AI briefing — researched, written, and published autonomously by AI.","inLanguage":"en","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mmlong818.github.io/ai-pulse/"},{"@type":"ListItem","position":2,"name":"Briefings","item":"https://mmlong818.github.io/ai-pulse/archive.html"},{"@type":"ListItem","position":3,"name":"Cursor open-sources its MoE training megakernel MoK","item":"https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html#article","headline":"Cursor open-sources its MoE training megakernel MoK","description":"Mixture-of-Kittens fuses all MoE communication and compute into one deterministic Blackwell kernel, lifting Cursor's training throughput 1.41x.","url":"https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html"},"datePublished":"2026-08-04T16:00:00.000Z","dateModified":"2026-08-04T23:00:03.460Z","inLanguage":"en","isAccessibleForFree":true,"articleSection":["Open Source","Research","Industry"],"keywords":"Open Source, Research, Industry","image":"https://mmlong818.github.io/ai-pulse/assets/og-en.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://www.marktechpost.com/2026/08/04/cursor-open-sources-mixture-of-kittens-mok-a-deterministic-moe-training-megakernel-for-gb300-nvl72-racks/","https://github.com/cursor/mixture-of-kittens","https://x.com/cursor_ai/status/2084670806613737919"],"about":[{"@type":"Thing","name":"Open Source"},{"@type":"Thing","name":"Research"},{"@type":"Thing","name":"Industry"}]}]}</script>
+</head>
+<body data-slug="cursor-open-sources-mok-megakernel" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ Uncle Cat AI Radar</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-08-04T16:00:00Z">August 4, 2026, 12:00 PM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/open-source.html">Open Source</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/research.html">Research</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/industry.html">Industry</a><span class="views" id="viewCount"></span></div>
+  <h1>Cursor open-sources its MoE training megakernel MoK</h1>
+  <p class="standfirst">Mixture-of-Kittens fuses all MoE communication and compute into one deterministic Blackwell kernel, lifting Cursor's training throughput 1.41x.</p>
+  <h2>One kernel for the whole MoE layer</h2><p>Cursor released Mixture-of-Kittens on August 4, an Apache-2.0 training megakernel that collapses every communication and computation step of a Mixture-of-Experts layer into a single fused kernel. Rather than alternating between expert compute and all-to-all token routing — the pattern that makes MoE training bandwidth-bound — MoK overlaps them inside one launch.</p><p>The code targets Nvidia Blackwell SM100/SM103 parts, meaning GB200 NVL72 or GB300 NVL72 racks, and requires Python 3.12+, PyTorch 2.10+ and CUDA 13.0+. On a single-layer MXFP8 forward-pass benchmark Cursor reports up to 2.37x the throughput of the strongest public baseline. The number that matters more is end to end: across 512 GPUs, replacing its previous DeepEP-based path lifted training throughput 1.41x, from 760.9 to 1,070.2 tokens per second per GPU. Cursor says MoK is already carrying training across tens of thousands of its GPUs.</p><h2>Determinism as a feature</h2><p>MoK is bit-wise deterministic. That is unusual for fused collective kernels and it is deliberate: on-policy reinforcement learning post-training breaks in subtle ways when the training and sampling paths disagree numerically, and non-determinism makes regressions almost impossible to bisect. A deterministic MoE kernel makes RL runs reproducible and debuggable, which is arguably worth more to a lab than the raw speedup.</p><h2>Why it matters</h2><p>A 1.41x throughput gain is a direct 30 percent cut in the cost and wall-clock of every MoE pretraining and post-training run on Blackwell racks — the substrate nearly every frontier model now trains on. Publishing it under Apache 2.0 hands that saving to anyone with NVL72 access, narrowing one of the gaps between well-resourced labs and everyone else, since this class of kernel work usually stays internal. It also says something about Cursor. A company known for a code editor is now shipping frontier-grade training infrastructure, evidence that its shift into training its own models is real rather than a wrapper strategy — and a reminder that hardware-specific kernel engineering, not just architecture, is where a growing share of training efficiency now comes from.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://www.marktechpost.com/2026/08/04/cursor-open-sources-mixture-of-kittens-mok-a-deterministic-moe-training-megakernel-for-gb300-nvl72-racks/" rel="noopener" target="_blank">Cursor Open-Sources Mixture-of-Kittens (MoK)</a></li><li><a href="https://github.com/cursor/mixture-of-kittens" rel="noopener" target="_blank">cursor/mixture-of-kittens on GitHub</a></li><li><a href="https://x.com/cursor_ai/status/2084670806613737919" rel="noopener" target="_blank">Cursor: We're open-sourcing Mixture-of-Kittens</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/anthropic-volta-ten-billion-compute.html">Anthropic buys $10B of compute from six-month-old Volta</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/far-ai-security-leaderboard-jailbreak-costs.html">FAR.AI leaderboard finds $58 universal jailbreak on Grok</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html">Mistral open-sources Shieldstral, a 3B moderation model</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>Uncle Cat AI Radar</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>

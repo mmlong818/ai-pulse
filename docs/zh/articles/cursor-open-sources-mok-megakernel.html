@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursor 开源 MoE 训练巨型算子 MoK — Uncle Cat AI Radar</title>
+<meta name="description" content="Mixture-of-Kittens 把 MoE 层的全部通信与计算融进单个确定性 Blackwell 算子，使 Cursor 端到端训练吞吐提升 1.41 倍。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Cursor 开源 MoE 训练巨型算子 MoK — Uncle Cat AI Radar">
+<meta property="og:description" content="Mixture-of-Kittens 把 MoE 层的全部通信与计算融进单个确定性 Blackwell 算子，使 Cursor 端到端训练吞吐提升 1.41 倍。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cursor 开源 MoE 训练巨型算子 MoK — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Mixture-of-Kittens 把 MoE 层的全部通信与计算融进单个确定性 Blackwell 算子，使 Cursor 端到端训练吞吐提升 1.41 倍。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"Cursor 开源 MoE 训练巨型算子 MoK","item":"https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html#article","headline":"Cursor 开源 MoE 训练巨型算子 MoK","description":"Mixture-of-Kittens 把 MoE 层的全部通信与计算融进单个确定性 Blackwell 算子，使 Cursor 端到端训练吞吐提升 1.41 倍。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html"},"datePublished":"2026-08-04T16:00:00.000Z","dateModified":"2026-08-04T23:00:03.460Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["开源","研究","产业"],"keywords":"开源, 研究, 产业","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://www.marktechpost.com/2026/08/04/cursor-open-sources-mixture-of-kittens-mok-a-deterministic-moe-training-megakernel-for-gb300-nvl72-racks/","https://github.com/cursor/mixture-of-kittens","https://x.com/cursor_ai/status/2084670806613737919"],"about":[{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"研究"},{"@type":"Thing","name":"产业"}]}]}</script>
+</head>
+<body data-slug="cursor-open-sources-mok-megakernel" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-08-04T16:00:00Z">2026年8月5日 00:00</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><span class="views" id="viewCount"></span></div>
+  <h1>Cursor 开源 MoE 训练巨型算子 MoK</h1>
+  <p class="standfirst">Mixture-of-Kittens 把 MoE 层的全部通信与计算融进单个确定性 Blackwell 算子，使 Cursor 端到端训练吞吐提升 1.41 倍。</p>
+  <h2>把整个 MoE 层塞进一个算子</h2><p>Cursor 于 8 月 4 日开源 Mixture-of-Kittens（MoK），一个 Apache-2.0 许可的训练巨型算子，把 MoE 层的所有通信与计算步骤融合进单次 kernel 启动。MoE 训练之所以受带宽拖累，就在于专家计算与 all-to-all 令牌路由要来回交替；MoK 把两者在同一次启动内重叠起来。</p><p>代码面向英伟达 Blackwell SM100/SM103，即 GB200 NVL72 或 GB300 NVL72 机柜，依赖 Python 3.12+、PyTorch 2.10+ 与 CUDA 13.0+。在单层 MXFP8 前向的微基准上，Cursor 称吞吐最高达到最强公开基线的 2.37 倍。更有说服力的是端到端数据：在 512 卡规模上替换原有基于 DeepEP 的方案后，训练吞吐提升 1.41 倍，单卡每秒处理令牌数从 760.9 升至 1070.2。Cursor 表示 MoK 已在其数万张 GPU 上承担实际训练任务。</p><h2>确定性本身就是卖点</h2><p>MoK 是逐位确定性的。这在融合通信算子里并不常见，而且是有意为之：on-policy 强化学习后训练一旦训练路径与采样路径在数值上出现偏差，就会以极隐蔽的方式失效，而非确定性会让回归问题几乎无法二分定位。一个确定性的 MoE 算子让 RL 训练可复现、可调试，对实验室来说这份价值恐怕不输于加速本身。</p><h2>影响</h2><p>1.41 倍的吞吐提升，等于让 Blackwell 机柜上每一次 MoE 预训练和后训练的成本与耗时直接砍掉约三成——而如今几乎所有前沿模型都跑在这套底座上。以 Apache 2.0 放出来，意味着任何能摸到 NVL72 的团队都能拿到这份节省；这类算子工程通常被实验室视为内部资产，此举缩小了资源充裕者与其他人之间的一道差距。它也说明了 Cursor 的变化：一家以代码编辑器出名的公司如今在输出前沿级训练基础设施，证明其自研模型转型是真做，而不是套壳叙事。同时也再次提醒，训练效率的增量越来越多来自贴着硬件写算子，而非只靠改架构。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://www.marktechpost.com/2026/08/04/cursor-open-sources-mixture-of-kittens-mok-a-deterministic-moe-training-megakernel-for-gb300-nvl72-racks/" rel="noopener" target="_blank">Cursor Open-Sources Mixture-of-Kittens (MoK)</a></li><li><a href="https://github.com/cursor/mixture-of-kittens" rel="noopener" target="_blank">cursor/mixture-of-kittens on GitHub</a></li><li><a href="https://x.com/cursor_ai/status/2084670806613737919" rel="noopener" target="_blank">Cursor: We're open-sourcing Mixture-of-Kittens</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-volta-ten-billion-compute.html">Anthropic 向成立半年的 Volta 采购 100 亿美元算力</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/far-ai-security-leaderboard-jailbreak-costs.html">FAR.AI 安全榜：58 美元就能撬开 Grok 的护栏</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/mistral-open-sources-shieldstral.html">Mistral 开源 Shieldstral：30 亿参数内容安全模型</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
