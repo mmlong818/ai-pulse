@@ -71,6 +71,8 @@ node zhihu-evening.mjs --force 2026-07-31   # 手动生成某日晚报知乎草�
 | `AIPULSE_ZHIHU_FORCE` | 设为 `1` 强制生成知乎晚报草稿 |
 | `AIPULSE_X_CARD_WAIT_MIN` | X 发帖前等待引用页卡片可抓取的分钟数（默认 10） |
 
+X 自动发布采用“两段式”：主帖只放重点、判断和提问，不放外链；第一条回复放完整来源页链接，并在发布后自动检查。
+
 ## 编辑原则 / Editorial principles
 
 - **原创撰写**：绝不复制来源文章语句
