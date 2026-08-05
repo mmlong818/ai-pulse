@@ -69,6 +69,7 @@ node zhihu-evening.mjs --force 2026-07-31   # 手动生成某日晚报知乎草�
 | `AIPULSE_RADAR_COUNT` | 雷达条数（默认 14） |
 | `AIPULSE_SKIP_RADAR` | 设为 `1` 跳过雷达 |
 | `AIPULSE_ZHIHU_FORCE` | 设为 `1` 强制生成知乎晚报草稿 |
+| `AIPULSE_X_CARD_WAIT_MIN` | X 发帖前等待引用页卡片可抓取的分钟数（默认 10） |
 
 ## 编辑原则 / Editorial principles
 

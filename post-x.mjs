@@ -115,7 +115,7 @@ function headlineText(text) {
 
 function postUrl(lang) {
   const date = currentBeijingDate();
-  return lang === 'zh' ? `${BASE}/zh/day/${date}.html` : `${BASE}/day/${date}.html`;
+  return lang === 'zh' ? `${BASE}/zh/radar/${date}.html` : `${BASE}/radar/${date}.html`;
 }
 
 const floorEdition = (ms) => Math.floor((ms - EB_ANCHOR) / EB_HALF) * EB_HALF + EB_ANCHOR;
@@ -172,7 +172,59 @@ async function checkPublicUrl(url) {
     }
     if (attempt < 3) await sleep(10000);
   }
-  throw new Error(`日报页不可访问: ${url} (${lastError})`);
+  throw new Error(`引用页不可访问: ${url} (${lastError})`);
+}
+
+function metaContent(html, key) {
+  const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(`<meta\\s+(?:property|name)=["']${escaped}["']\\s+content=["']([^"']+)["']`, 'i');
+  return html.match(re)?.[1] || '';
+}
+
+async function fetchAsTwitterbot(url) {
+  const res = await fetch(url, {
+    headers: { 'user-agent': 'Twitterbot/1.0' },
+    redirect: 'follow',
+    signal: AbortSignal.timeout(30000),
+  });
+  const text = await res.text().catch(() => '');
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return text;
+}
+
+async function checkXCardReady(url) {
+  const html = await fetchAsTwitterbot(url);
+  const card = metaContent(html, 'twitter:card');
+  const title = metaContent(html, 'twitter:title') || metaContent(html, 'og:title');
+  const image = metaContent(html, 'twitter:image') || metaContent(html, 'og:image');
+  if (!card || !title || !image) {
+    throw new Error(`missing card meta card=${card || '-'} title=${title ? 'yes' : 'no'} image=${image || '-'}`);
+  }
+  const img = await fetch(image, {
+    headers: { 'user-agent': 'Twitterbot/1.0' },
+    redirect: 'follow',
+    signal: AbortSignal.timeout(30000),
+  });
+  if (!img.ok) throw new Error(`card image HTTP ${img.status}: ${image}`);
+}
+
+async function waitForXCardReady(lang) {
+  const url = postUrl(lang);
+  const maxMs = Math.max(0, Number(env('AIPULSE_X_CARD_WAIT_MIN') || 10) || 0) * 60000;
+  const start = Date.now();
+  let lastError = '';
+  for (;;) {
+    try {
+      await checkXCardReady(url);
+      console.log(`[post-x] ${lang === 'zh' ? '中文' : '英文'} X 引用页卡片已就绪: ${url}`);
+      return;
+    } catch (error) {
+      lastError = error.message || String(error);
+      if (Date.now() - start >= maxMs) break;
+      await sleep(15000);
+    }
+  }
+  throw new Error(`${lang === 'zh' ? '中文' : '英文'} X 引用页卡片未就绪: ${url} (${lastError})`);
 }
 
 async function checkPostedTweet({ id, lang, expectedUrl }) {
@@ -299,6 +351,7 @@ if (cmd === 'verify') {
 } else if (cmd === 'daily') {
   const picks = await pickToday();
   const pendingChecks = [];
+  await waitForXCardReady('zh');
   const zh = await api('POST', '/tweets', { text: composeText('zh', picks) });
   console.log('[post-x] 中文帖已发布:', `https://x.com/i/status/${zh.data.id}`);
   queuePostCheck(pendingChecks, 'zh', zh.data.id);
@@ -306,6 +359,7 @@ if (cmd === 'verify') {
     const gapMin = Number(env('AIPULSE_POST_GAP_MIN') || 10);
     console.log(`[post-x] ${gapMin} 分钟后发布英文帖…`);
     await waitWithChecks(gapMin * 60000, pendingChecks);
+    await waitForXCardReady('en');
     const en = await api('POST', '/tweets', { text: composeText('en', picks) });
     console.log('[post-x] 英文帖已发布:', `https://x.com/i/status/${en.data.id}`);
     queuePostCheck(pendingChecks, 'en', en.data.id);

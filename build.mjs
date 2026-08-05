@@ -155,10 +155,13 @@ function page({ lang, title, description, canonical, altEn, altZh, body, jsonLd,
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${socialImage}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${socialImage}">
+<meta name="twitter:image:alt" content="${esc(title)}">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <link rel="alternate" type="application/rss+xml" title="${SITE_NAME} RSS" href="${rss}">
 <link rel="alternate" type="text/plain" title="${SITE_NAME} LLM entry point" href="${BASE}/llms.txt">
