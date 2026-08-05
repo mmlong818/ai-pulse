@@ -1,0 +1,31 @@
+{
+  "slug": "meta-ships-muse-code-agent",
+  "title": "Meta ships Muse Code agent on new Muse Spark 1.2 model",
+  "summary": "Meta Superintelligence Labs released a terminal coding agent in beta alongside a co-trained model priced at $1.25 per million input tokens, undercutting rivals.",
+  "body": "Meta Superintelligence Labs released Muse Code, a terminal-based coding agent, in beta on Wednesday, paired with Muse Spark 1.2 — a model the company says was co-trained with the agent harness rather than adapted to it afterwards.\n\n## Architecture\n\nMuse Code installs via a single command on macOS and Linux. Its distinguishing design choice is persistent asynchronous background agents that stay alive for the duration of a session, instead of subagents spawned and discarded per task. Meta says this cuts repeated context-gathering and reduces the steering a developer must supply on long multi-step work. When a task is complex enough, the agent parallelises across isolated git worktrees, leaving the user's working directory untouched; internal testing built six game features concurrently without merge conflicts.\n\nThe runtime writes every model call and action to a local append-only event log, which allows replay-exact resumption after a crash. Built-in skills include `/plan` for approval-gated planning, `/grill` for adversarially stress-testing a plan before execution, and `/goal` for objective tracking.\n\n## Model and pricing\n\nMeta scaled up training compute specifically on coding tasks for Muse Spark 1.2. Its own launch charts place the model second behind Claude Opus 5 on Terminal-Bench 2.1 (89 tasks), DeepSWE v1.1 (113 tasks across 91 repositories and five languages) and an internal benchmark of 440 tasks derived from real pull requests — with the caveat, which Meta states, that its harness may not be tuned for competitors' models. In a long-horizon test the agent optimised KDA and MLA GPU kernels on Nvidia Hopper hardware across more than 1,000 tool calls over roughly 24 hours.\n\nAPI pricing is $1.25 per million input tokens and $4.25 per million output. Meta also introduced a contributor tier at $0.10 and $0.20 — a 12.5x and 21.25x discount — in exchange for permission to train future models on submitted prompts and completions, capped at 60 requests per minute versus 3,000 on the standard tier. Weights are not published; this is a hosted dependency.\n\n## Why it matters\n\nMeta now competes directly with Claude Code and OpenAI's Codex, and it is competing on price. Independent evaluation put Muse Spark 1.2 at roughly $0.40 per Intelligence Index task, among the cheapest at its capability level. The data-for-discount tier is the more novel move: it converts developer telemetry into an explicit line item, which enterprise buyers will have to price against their own code-confidentiality requirements.",
+  "title_zh": "Meta 发布终端编码智能体 Muse Code 及配套模型 Muse Spark 1.2",
+  "summary_zh": "Meta 超级智能实验室上线 Muse Code 测试版，配套模型定价每百万输入 token 1.25 美元，并推出「用数据换折扣」的贡献者档。",
+  "body_zh": "8 月 5 日，Meta 超级智能实验室（Meta Superintelligence Labs）发布终端编码智能体 Muse Code 测试版，同时推出配套模型 Muse Spark 1.2。官方称该模型与智能体框架是「联合训练」的，而非事后适配。\n\n## 架构设计\n\nMuse Code 在 macOS 与 Linux 上通过一条命令安装。它最显著的设计选择是持久化的异步后台智能体——在整个会话期间保持活跃，而不是每个任务临时拉起再销毁。Meta 表示这样可以减少重复的上下文收集，也降低开发者在长链条多步任务中需要人工纠偏的次数。当任务足够复杂时，智能体会在相互隔离的 git worktree 中并行推进，不触碰用户当前的工作目录；内部测试中它同时完成了六个游戏功能且没有产生合并冲突。\n\n运行时会把每一次模型调用与动作写入本地的追加式事件日志，因此崩溃后可以精确重放恢复。内置技能包括需审批的规划 `/plan`、在执行前对方案做对抗性压测的 `/grill`，以及目标跟踪 `/goal`。\n\n## 模型与定价\n\nMuse Spark 1.2 在编码任务上显著加大了训练算力投入。Meta 自家的发布图表显示，该模型在 Terminal-Bench 2.1（89 项任务）、DeepSWE v1.1（覆盖 91 个仓库、5 种语言的 113 项任务）以及由 440 个真实 PR 衍生的内部基准上均排在 Claude Opus 5 之后位列第二——Meta 同时说明，其框架未必针对第三方模型做过调优。在一项长时程测试中，该智能体在英伟达 Hopper 硬件上对 KDA 与 MLA GPU 内核做优化，历时约 24 小时、调用工具超过 1000 次。\n\nAPI 定价为每百万输入 token 1.25 美元、输出 4.25 美元。Meta 还推出「贡献者档」，价格降至 0.10 与 0.20 美元（输入便宜 12.5 倍、输出便宜 21.25 倍），代价是授权 Meta 用你提交的提示与生成内容训练后续模型，且速率限制为每分钟 60 次请求，而标准档为 3000 次。该模型不提供权重下载，属于托管服务依赖。\n\n## 为何重要\n\nMeta 由此正面对上 Claude Code 与 OpenAI Codex，切入点是价格。第三方评测将 Muse Spark 1.2 的成本折算为每项 Intelligence Index 任务约 0.40 美元，在同等能力档位中属于最便宜的一档。更值得注意的是那个「数据换折扣」的档位：它把开发者的使用数据明确标了价，企业采购方必须把它和自己的代码保密要求放在一起权衡。",
+  "tags": [
+    "Agents",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "Introducing Muse Code and Muse Spark 1.2 — Meta AI Research",
+      "url": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2"
+    },
+    {
+      "title": "Meta launches Muse Code, an AI agent for large code bases — TechCrunch",
+      "url": "https://techcrunch.com/2026/08/05/meta-launches-muse-code-an-ai-agent-for-large-code-bases/"
+    },
+    {
+      "title": "Meta AI Releases Muse Code (Beta) — MarkTechPost",
+      "url": "https://www.marktechpost.com/2026/08/05/meta-superintelligence-labs-releases-muse-code/"
+    }
+  ],
+  "featured": false,
+  "date": "2026-08-06",
+  "published": "2026-08-05T19:25:00Z",
+  "published_at": "2026-08-05T23:00:03.104Z"
+}
