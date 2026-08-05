@@ -1,0 +1,32 @@
+{
+  "slug": "jd-joyai-video-edit-open-weights",
+  "title": "JD open-sources 16B real-time video editing model",
+  "summary": "JD.com released Apache-2.0 weights for JoyAI-Video-Edit, which edits 720p video at about 30 frames per second on a single NVIDIA B200.",
+  "body": "JD.com's open-source arm published weights, deployment code and a technical report on Wednesday for JoyAI-Video-Edit, a 16-billion-parameter model that performs instruction-guided video editing in real time rather than as an offline render job.\n\n## The claim\n\nThe system is built on a multimodal diffusion transformer converted to chunk-wise autoregressive generation, so it consumes and emits video in causal segments and never needs to see future frames. That removes the fixed-duration ceiling common to diffusion video editors: the model accepts an unbounded stream. JD reports end-to-end throughput of 30.19 frames per second at 720×1280 on a single NVIDIA B200 accelerator, which is roughly the threshold at which editing can be applied to a live feed instead of a file.\n\nGetting there required two distillation stages described in the paper. Source-Anchored Distribution Matching Distillation compresses the sampling schedule while keeping outputs tied to the original footage, addressing the tendency of few-step distilled editors to drift away from the source. Long-Horizon Autoregressive Distillation targets error accumulation, the failure mode in which causal generation degrades over long sequences as each chunk conditions on its own imperfect output. In the authors' automatic and human evaluations, the model beats existing streaming video editors and stays competitive with slower offline systems on both short and long clips.\n\nWeights are hosted on Hugging Face under `jdopensource/JoyAI-Video-Edit`, with an online demo and Apache 2.0 licensing on both code and checkpoints. The accompanying paper is arXiv 2608.03974.\n\n## Why it matters\n\nMost generative video tooling is still batch-shaped: submit a prompt, wait, review. Real-time editing is a different product category — live streams, virtual production, on-set previsualization, video conferencing — and it has been gated less by quality than by latency and duration limits. A permissively licensed 16B model that clears 30fps on one GPU puts that category within reach of teams that cannot train such a system themselves, and it extends JD's pattern of shipping usable open multimodal models rather than frontier-chasing LLMs. It also raises the bar in an area where closed AIGC vendors have marketed real-time capability without exposing the underlying weights.",
+  "title_zh": "京东开源 JoyAI-Video-Edit：160 亿参数实时视频编辑",
+  "summary_zh": "京东开源 JoyAI-Video-Edit，160 亿参数、Apache 2.0 协议，单张 NVIDIA B200 上以约 30 FPS 完成 720P 视频实时编辑。",
+  "body_zh": "8 月 5 日，京东开源团队放出 JoyAI-Video-Edit 的权重、部署代码与技术报告。这是一个 160 亿参数的指令式视频编辑模型，主打「实时」——不是提交任务等渲染，而是边输入边出片。\n\n## 具体能力\n\n模型以多模态扩散 Transformer 为骨干，改造成分块自回归生成：视频按因果分块进出，不需要预知未来帧。这也顺带拆掉了扩散类视频编辑常见的定长限制，理论上可处理无限长输入。京东给出的端到端指标是：单张 NVIDIA B200 上 720×1280 分辨率达到 30.19 FPS——大致就是「能处理直播流而非文件」的门槛线。\n\n为此论文提出两项蒸馏设计。Source-Anchored DMD 在压缩采样步数的同时把输出锚定在原始素材上，缓解少步蒸馏后画面「跑偏」、丢失源片信息的问题；Long-Horizon Autoregressive Distillation 则针对误差累积——自回归生成中每一块都以自己上一块的瑕疵输出为条件，长序列下画质会持续劣化。作者的自动评测与人工评测显示，该模型明显优于现有流式视频编辑方案，在短片与长片上都能与更慢的离线系统正面掰手腕。\n\n权重托管在 Hugging Face 的 `jdopensource/JoyAI-Video-Edit`，同时提供在线 demo，代码与 checkpoint 均为 Apache 2.0。论文编号 arXiv 2608.03974。\n\n## 为什么重要\n\n目前绝大多数生成式视频工具仍是「批处理」形态：写提示词、排队、看结果。实时编辑属于另一个产品品类——直播、虚拟制片、片场预览、视频会议——长期卡住它的不是画质，而是延迟与时长上限。一个宽松许可、单卡就能跑到 30FPS 的 160 亿参数模型，把这个品类交到了自己训不出模型的团队手里。这也延续了京东的开源路径：不去卷前沿语言模型，而是持续放出能直接用的多模态模型。在闭源 AIGC 厂商纷纷宣传实时能力却不放权重的当下，这一步把标准抬高了。",
+  "tags": [
+    "Open Source",
+    "AIGC",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "jd-opensource/JoyAI-Video-Edit on GitHub",
+      "url": "https://github.com/jd-opensource/JoyAI-Video-Edit"
+    },
+    {
+      "title": "JoyAI-Video-Edit: Real-Time Open-Ended Video Editing with Autoregressive Diffusion",
+      "url": "https://arxiv.org/abs/2608.03974"
+    },
+    {
+      "title": "Hugging Face Daily Papers",
+      "url": "https://huggingface.co/papers/date/2026-08-05"
+    }
+  ],
+  "featured": false,
+  "date": "2026-08-05",
+  "published": "2026-08-05T02:00:00Z",
+  "published_at": "2026-08-05T11:00:03.615Z"
+}

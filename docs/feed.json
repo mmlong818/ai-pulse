@@ -170,6 +170,47 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/jd-joyai-video-edit-open-weights.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/jd-joyai-video-edit-open-weights.html",
+      "title": "JD open-sources 16B real-time video editing model",
+      "summary": "JD.com released Apache-2.0 weights for JoyAI-Video-Edit, which edits 720p video at about 30 frames per second on a single NVIDIA B200.",
+      "content_text": "JD.com's open-source arm published weights, deployment code and a technical report on Wednesday for JoyAI-Video-Edit, a 16-billion-parameter model that performs instruction-guided video editing in real time rather than as an offline render job.\n\n## The claim\n\nThe system is built on a multimodal diffusion transformer converted to chunk-wise autoregressive generation, so it consumes and emits video in causal segments and never needs to see future frames. That removes the fixed-duration ceiling common to diffusion video editors: the model accepts an unbounded stream. JD reports end-to-end throughput of 30.19 frames per second at 720×1280 on a single NVIDIA B200 accelerator, which is roughly the threshold at which editing can be applied to a live feed instead of a file.\n\nGetting there required two distillation stages described in the paper. Source-Anchored Distribution Matching Distillation compresses the sampling schedule while keeping outputs tied to the original footage, addressing the tendency of few-step distilled editors to drift away from the source. Long-Horizon Autoregressive Distillation targets error accumulation, the failure mode in which causal generation degrades over long sequences as each chunk conditions on its own imperfect output. In the authors' automatic and human evaluations, the model beats existing streaming video editors and stays competitive with slower offline systems on both short and long clips.\n\nWeights are hosted on Hugging Face under `jdopensource/JoyAI-Video-Edit`, with an online demo and Apache 2.0 licensing on both code and checkpoints. The accompanying paper is arXiv 2608.03974.\n\n## Why it matters\n\nMost generative video tooling is still batch-shaped: submit a prompt, wait, review. Real-time editing is a different product category — live streams, virtual production, on-set previsualization, video conferencing — and it has been gated less by quality than by latency and duration limits. A permissively licensed 16B model that clears 30fps on one GPU puts that category within reach of teams that cannot train such a system themselves, and it extends JD's pattern of shipping usable open multimodal models rather than frontier-chasing LLMs. It also raises the bar in an area where closed AIGC vendors have marketed real-time capability without exposing the underlying weights.",
+      "date_published": "2026-08-05T02:00:00.000Z",
+      "date_modified": "2026-08-05T11:00:03.615Z",
+      "tags": [
+        "Open Source",
+        "AIGC",
+        "Models"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/jd-joyai-video-edit-open-weights.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/jd-joyai-video-edit-open-weights.html",
+        "source_published_at": "2026-08-05T02:00:00.000Z",
+        "site_published_at": "2026-08-05T11:00:03.615Z",
+        "sources": [
+          {
+            "title": "jd-opensource/JoyAI-Video-Edit on GitHub",
+            "url": "https://github.com/jd-opensource/JoyAI-Video-Edit"
+          },
+          {
+            "title": "JoyAI-Video-Edit: Real-Time Open-Ended Video Editing with Autoregressive Diffusion",
+            "url": "https://arxiv.org/abs/2608.03974"
+          },
+          {
+            "title": "Hugging Face Daily Papers",
+            "url": "https://huggingface.co/papers/date/2026-08-05"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html",
       "title": "Mistral open-sources Shieldstral, a 3B moderation model",
@@ -202,6 +243,88 @@
           {
             "title": "Mistral AI: Introducing Shieldstral",
             "url": "https://x.com/MistralAI/status/2084684735725379637"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/sand-ai-magi-2-preview-open-weights.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/sand-ai-magi-2-preview-open-weights.html",
+      "title": "Sand.ai open-sources MAGI-2, a 114B MoE video model",
+      "summary": "Beijing lab Sand.ai released Apache-2.0 weights for a 114-billion-parameter sparse video model that generates 1080p clips with synchronized audio.",
+      "content_text": "Chinese video-generation startup Sand.ai published open weights and inference code on Wednesday for MAGI-2-preview, a 114-billion-parameter model that produces ten-second clips with a jointly generated soundtrack. The release is unusual for its architecture: MAGI-2 is a mixture-of-experts video model, activating roughly 6 billion parameters per token out of its 114 billion total.\n\n## What shipped\n\nThe model card describes a single-stream transformer built on what Sand.ai calls MagiMoE, with thousands of expert units per layer and multi-head expert routing — an attempt to import the sparse-scaling playbook that reshaped large language models into diffusion-style video generation, where nearly all frontier systems remain dense. Video and audio share the same attention stack rather than being stitched together by a separate voice or sound model, which the lab credits for lip-sync, sound-effect and ambience alignment.\n\nGeneration runs as a two-stage pipeline: a low-resolution preview pass followed by a refiner that upscales to 1088×1920. Only the fixed ten-second length is supported. The published checkpoints total roughly 300GB across the transformer stages, a Qwen3.5-27B text encoder, and video and audio VAEs, and the reference implementation expects eight NVIDIA Hopper GPUs. Everything is licensed under Apache 2.0, including the code, with a Docker image provided. Chinese outlet QbitAI put the inference cost of a ten-second 1080p clip at around half a dollar on an eight-H100 node, and noted the preview places sixth on Artificial Analysis' video-generation leaderboard despite its small active-parameter count.\n\n## Why it matters\n\nOpen video weights have been arriving steadily from Chinese labs, but almost all of them are dense models in the single-digit-to-low-tens-of-billions range, because video generation is bandwidth-bound and MoE routing is awkward to serve. Sand.ai's claim is that sparsity transfers: a model with a 114-billion-parameter knowledge capacity can be run at roughly the compute cost of a 6-billion-parameter one. If that holds up under community reproduction, it changes the cost curve for open video generation the way sparse LLMs did for text — and it lands days after MiniMax opened its H3 video weights, tightening a competition in which the highest-quality freely downloadable video model is now consistently Chinese.",
+      "date_published": "2026-08-05T07:05:00.000Z",
+      "date_modified": "2026-08-05T11:00:03.615Z",
+      "tags": [
+        "Models",
+        "Open Source",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/sand-ai-magi-2-preview-open-weights.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/sand-ai-magi-2-preview-open-weights.html",
+        "source_published_at": "2026-08-05T07:05:00.000Z",
+        "site_published_at": "2026-08-05T11:00:03.615Z",
+        "sources": [
+          {
+            "title": "114B参数、6B激活，Sand.ai刚刚开源全球首个千亿MoE视频生成模型",
+            "url": "https://www.qbitai.com/2026/08/466847.html"
+          },
+          {
+            "title": "SandAI-org/MAGI-2-preview on GitHub",
+            "url": "https://github.com/SandAI-org/MAGI-2-preview"
+          },
+          {
+            "title": "sand-ai/MAGI-2-preview model card",
+            "url": "https://huggingface.co/sand-ai/MAGI-2-preview"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy3-global-workbuddy-free.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy3-global-workbuddy-free.html",
+      "title": "Tencent takes Hy3 global with free WorkBuddy access",
+      "summary": "Tencent opened its 295B-parameter Hy3 model to overseas users through WorkBuddy's international edition, cloud APIs and design tools, free until August 31.",
+      "content_text": "Tencent said on Wednesday that Hy3, the flagship Hunyuan model it launched domestically on July 6, is now available worldwide across three surfaces: the international edition of its WorkBuddy agent, the Miora design product, and TokenHub on Tencent Cloud. Access through WorkBuddy is free for individual and enterprise users until August 31, Pacific time.\n\n## The offer\n\nHy3 is a mixture-of-experts model with 295 billion total parameters and 21 billion active, a 256K context window, and what Tencent describes as hybrid fast-and-slow thinking — routing between quick responses and extended reasoning. The company positions it as matching flagship models several times its size on parameter count while costing far less to serve; on OpenRouter it is listed at roughly $0.13 per million input tokens and $0.53 per million output tokens.\n\nTencent leaned on adoption metrics rather than benchmarks. It says Hy3 has drawn 68 times the API call volume of its predecessor and reached the top of OpenRouter's global usage leaderboard within a week of release. For WorkBuddy specifically — an agent with concurrent multi-agent execution and more than 100 built-in skills, handling research, data analysis, document and presentation generation — internal evaluations put task success above 90 percent and average completion time 34 percent lower than the previous Hunyuan generation. Serving runs across 66 availability zones in 23 regions.\n\n## Why it matters\n\nThe interesting part is not the model but the distribution strategy. Chinese labs have historically globalized through open weights or bare API endpoints; Tencent is instead exporting a finished agent product with a month of free access, aimed at the same knowledge-work budgets that OpenAI, Anthropic and Google are chasing with enterprise agents. That makes token economics the wedge: a 21-billion-active-parameter model priced near a tenth of Western flagships can absorb the many-call, long-horizon workloads agents generate. Whether overseas enterprises will route work through a Chinese-hosted model remains the open question, and data-residency scrutiny in Europe and the US is the obvious constraint. But the free window is a deliberate test of how far price and packaging can move that decision.",
+      "date_published": "2026-08-05T02:59:00.000Z",
+      "date_modified": "2026-08-05T11:00:03.615Z",
+      "tags": [
+        "Industry",
+        "Models",
+        "Agents"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy3-global-workbuddy-free.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy3-global-workbuddy-free.html",
+        "source_published_at": "2026-08-05T02:59:00.000Z",
+        "site_published_at": "2026-08-05T11:00:03.615Z",
+        "sources": [
+          {
+            "title": "Tencent Hunyuan on X: Hy3 now live in WorkBuddy global",
+            "url": "https://x.com/TencentHunyuan/status/2084836757095526689"
+          },
+          {
+            "title": "Tencent Hy3 Now Available Globally, Extending Practical AI Across Products, Workflows and Cloud Services",
+            "url": "https://www.prnewswire.com/news-releases/tencent-hy3-now-available-globally-extending-practical-ai-across-products-workflows-and-cloud-services-302843373.html"
+          },
+          {
+            "title": "Tencent ramps up overseas AI push with wider roll-out of flagship Hy3 model",
+            "url": "https://www.scmp.com/tech/tech-war/article/3362991/tencent-ramps-overseas-ai-push-wider-rollout-flagship-hy3-model"
           }
         ]
       }
@@ -807,7 +930,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/articles/eu-ai-act-article-50-live.html",
       "title": "EU AI Act's content-labelling rules take effect today",
       "summary": "From 2 August the AI Act's Article 50 transparency duties bite across the EU: machine-readable marking, chatbot disclosure and deepfake labels.",
-      "content_text": "## What became binding\n\nThe European Union's AI Act crossed its most consequential milestone for generative-AI products on 2 August 2026, when the transparency obligations in Article 50 became directly applicable across all 27 member states.\n\nProviders of generative systems must now mark their outputs in a machine-readable way so that synthetic images, audio, video and text can be detected downstream. Systems that interact directly with people — chatbots, voice assistants, agent front ends — must make clear that the counterpart is a machine, unless that is obvious from context. On the deployer side, anyone publishing a deepfake must disclose that the material is artificially generated or manipulated, and AI-generated text published on matters of public interest must be labelled where it has not passed human editorial review. Deployers of emotion-recognition and biometric-categorisation systems must inform the people exposed to them.\n\nTwo timing carve-outs are worth keeping straight. The rules are not retroactive: content produced before 2 August does not have to be relabelled after the fact. Separately, a limited grace period applies to the marking duty itself — generative systems already placed on the EU market before 2 August have until 2 December 2026 to comply with machine-readable marking. Every other Article 50 duty, including chatbot disclosure and deepfake labelling, applies from today.\n\n## Enforcement and the missing half\n\nEnforcement falls mainly to national market surveillance authorities rather than the Commission's AI Office, whose remit is limited to systems built on general-purpose models by the same provider, or systems folded into very large online platforms and search engines. The European Data Protection Supervisor covers EU institutions. Infringements of Article 50 can draw fines of up to €15 million or 3 percent of worldwide annual turnover, whichever is higher, with proportionality allowances for SMEs and small mid-caps.\n\nThe date arrives with a large hole in it. Under the Digital Omnibus on AI — provisionally agreed on 6 May 2026 and confirmed by member-state representatives in the Council a week later — obligations for stand-alone high-risk systems listed in Annex III slip to 2 December 2027, and for AI embedded in regulated products under Annex I to 2 August 2028. What was meant to be the AI Act's main compliance wave has become, in practice, a transparency-only wave.\n\nCompanies can lean on the Commission's voluntary Code of Practice on Transparency of AI-generated Content, published on 10 June 2026, which the Commission and AI Board have endorsed as an adequate compliance route. The Commission says about 190 organisations had signed by the end of July 2026 — but that headline number covers two separate commitments, not one roster, and an organisation acting in both roles signs both.\n\nSection 1, with 82 signatories, is the provider-side undertaking, covering the Article 50(2) duties on machine-readable marking and detection. Its signatories include Aleph Alpha, Anthropic, Black Forest Labs, Cohere, Google, Meta, Microsoft, Mistral, OpenAI and Synthesia. Section 2, with 152 signatories, is the deployer-side undertaking, covering the Article 50(4) duties on disclosing deepfakes and labelling AI-generated text published to inform the public on matters of public interest. Its signatories include Bulgari, Deutsche Lufthansa, Fastweb, Getty Images, Iberdrola and Lenovo, alongside dual-role firms such as Google, Meta and Microsoft that appear on both lists. The Commission notes that roughly half of all signatories are small or recently founded companies.\n\nThe code stays open for signature indefinitely — the 27 July cut-off applied only to inclusion in the initial published list — so both counts should be read as a snapshot rather than a closed roster. Signing remains voluntary either way, and the Article 50 duties bind signatories and non-signatories alike.\n\n## Why it matters\n\nThis is the first time a major jurisdiction has made provenance marking a legal duty for frontier generative models rather than a voluntary pledge. Because watermarking and disclosure are baked into model serving rather than regional UI, the practical effect will be global: EU rules now shape what every user of a large image, video or voice model sees.",
+      "content_text": "## What became binding\n\nThe European Union's AI Act crossed its most consequential milestone for generative-AI products on 2 August 2026, when the transparency obligations in Article 50 became directly applicable across all 27 member states.\n\nProviders of generative systems must now mark their outputs in a machine-readable way so that synthetic images, audio, video and text can be detected downstream. Systems that interact directly with people — chatbots, voice assistants, agent front ends — must make clear that the counterpart is a machine, unless that is obvious from context. On the deployer side, anyone publishing a deepfake must disclose that the material is artificially generated or manipulated, and AI-generated text published on matters of public interest must be labelled where it has not passed human editorial review. Deployers of emotion-recognition and biometric-categorisation systems must inform the people exposed to them.\n\nTwo timing carve-outs are worth keeping straight. The rules are not retroactive: content produced before 2 August does not have to be relabelled after the fact. Separately, a limited grace period applies to the marking duty itself — generative systems already placed on the EU market before 2 August have until 2 December 2026 to comply with machine-readable marking. Every other Article 50 duty, including chatbot disclosure and deepfake labelling, applies from today.\n\n## Enforcement and the missing half\n\nEnforcement falls mainly to national market surveillance authorities rather than the Commission's AI Office, whose remit is limited to systems built on general-purpose models by the same provider, or systems folded into very large online platforms and search engines. The European Data Protection Supervisor covers EU institutions. Infringements of Article 50 can draw fines of up to €15 million or 3 percent of worldwide annual turnover, whichever is higher, with proportionality allowances for SMEs and small mid-caps.\n\nThe date arrives with a large hole in it. Under the Digital Omnibus on AI — provisionally agreed on 6 May 2026 and confirmed by member-state representatives in the Council a week later — obligations for stand-alone high-risk systems listed in Annex III slip to 2 December 2027, and for AI embedded in regulated products under Annex I to 2 August 2028. What was meant to be the AI Act's main compliance wave has become, in practice, a transparency-only wave.\n\nCompanies can lean on the Commission's voluntary Code of Practice on Transparency of AI-generated Content, published on 10 June 2026, which the Commission and AI Board have endorsed as an adequate compliance route. The Commission says about 190 organisations had signed by the end of July 2026 — but that headline number covers two separate commitments rather than a single roster, and the two sections are signed independently of each other.\n\nSection 1, with 82 signatories, is the provider-side undertaking, covering the Article 50(2) duties on machine-readable marking and detection. The Commission's published examples for it are Aleph Alpha, Anthropic, Black Forest Labs, Cohere, Google, Meta, Microsoft, Mistral, OpenAI and Synthesia. Section 2, with 152 signatories, is the deployer-side undertaking, covering the Article 50(4) duties on disclosing deepfakes and labelling AI-generated text published to inform the public on matters of public interest. Its published examples are Bulgari, Deutsche Lufthansa, Fastweb, Getty Images, Iberdrola and Lenovo. The Commission's summary lists the two sets separately and does not name Google, Meta or Microsoft among the Section 2 examples, so their deployer-side status should not be inferred from the provider list; the full roster is the only place to confirm which organisations signed both. The Commission notes that roughly half of all signatories are small or recently founded companies.\n\nThe code stays open for signature indefinitely — the 27 July cut-off applied only to inclusion in the initial published list, and the Commission says the published roster will keep being updated — so both counts should be read as a snapshot rather than a closed list. Signing remains voluntary either way, and the Article 50 duties bind signatories and non-signatories alike.\n\n## Why it matters\n\nThis is the first time a major jurisdiction has made provenance marking a legal duty for frontier generative models rather than a voluntary pledge. Because watermarking and disclosure are baked into model serving rather than regional UI, the practical effect will be global: EU rules now shape what every user of a large image, video or voice model sees.",
       "date_published": "2026-08-02T00:00:00.000Z",
       "date_modified": "2026-08-02T11:00:03.111Z",
       "tags": [
@@ -1834,119 +1957,6 @@
           {
             "title": "OpenAI Launches Free AI Access for Scientists: Apply Now, Model Weights Still Off-Limits",
             "url": "https://www.techtimes.com/articles/322124/20260729/openai-launches-free-ai-access-scientists-apply-now-model-weights-still-off-limits.htm"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-arc-agi-3-harness-settings.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-arc-agi-3-harness-settings.html",
-      "title": "OpenAI's harness settings lift ARC-AGI-3 score to 38.3%",
-      "summary": "OpenAI says GPT-5.6 Sol jumps from 7.8% to 38.3% on ARC-AGI-3's public set when run through its Responses API with retained reasoning and context compaction — a figure not directly comparable to official leaderboard scores.",
-      "content_text": "## Same model, different plumbing\n\nOpenAI published a set of experiments arguing that GPT-5.6 Sol's weak showing on ARC-AGI-3 was largely an artifact of how the benchmark was run. In the standardized public harness the model scored 7.8%, because reasoning traces were discarded after each move and context was truncated rather than summarized. Re-running the same benchmark through OpenAI's Responses API with two switches enabled — retained reasoning between steps, and context compaction instead of truncation — lifted the score to 38.3%, a 188% relative gain that OpenAI reported on the public task set.\n\nThat 38.3% is not a like-for-like improvement on the 30.2% recorded for Anthropic's Claude Opus 5 earlier this week. Opus 5's figure is an official result produced on ARC's standard harness against the semi-private set, while OpenAI's comes from the public set under its own configuration; the two numbers measure different tasks under different plumbing. On the official leaderboard, which excludes provider-specific settings, Anthropic remains ahead. OpenAI framed its own takeaway broadly: a benchmark number measures a model plus a bundle of largely invisible harness and API choices.\n\n## ARC Prize draws a line\n\nARC Prize co-founder François Chollet responded by distinguishing two kinds of modification. A harness purpose-built to beat the benchmark, or one carrying knowledge of the benchmark format, breaks the rules; general-purpose API settings that were not developed for ARC-AGI-3 and that any developer can turn on do not, provided the settings and the resulting cost are disclosed. He conceded the arrangement creates parity problems between providers, but treated transparent reporting as an acceptable remedy. The official leaderboard deliberately avoids vendor-specific features so that every entry runs the same way — a design choice that, on OpenAI's account, penalized its model for capabilities the standard harness never exercised.\n\n## Why it matters\n\nARC-AGI-3 tests whether a model can learn unfamiliar 2D games with no instructions, exactly the kind of long-horizon, many-step task where carrying reasoning forward compounds. A fivefold swing from configuration alone is therefore not a footnote; it means published agentic scores are only comparable when the evaluation set, harness, memory policy and token spend are specified alongside them. Enterprises picking between frontier models on leaderboard deltas are, in practice, comparing integration decisions as much as model quality. Expect pressure on benchmark maintainers to report multiple configurations per model, and on labs to state exactly which API features and which task set produced a headline number.",
-      "date_published": "2026-07-29T23:57:00.000Z",
-      "date_modified": "2026-07-30T11:00:03.870Z",
-      "tags": [
-        "Models",
-        "Research"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-arc-agi-3-harness-settings.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-arc-agi-3-harness-settings.html",
-        "source_published_at": "2026-07-29T23:57:00.000Z",
-        "site_published_at": "2026-07-30T11:00:03.870Z",
-        "sources": [
-          {
-            "title": "OpenAI on X: ARC-AGI-3 harness experiments",
-            "url": "https://x.com/OpenAI/status/2082616636989952217"
-          },
-          {
-            "title": "OpenAI: How enabling two settings tripled our scores on the ARC-AGI-3 benchmark",
-            "url": "https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/"
-          },
-          {
-            "title": "The Decoder: OpenAI claims GPT-5.6 Sol beats Opus 5 on ARC-AGI-3",
-            "url": "https://the-decoder.com/openai-claims-gpt-5-6-sol-beats-opus-5-on-arc-agi-3-with-its-latest-api-and-two-additional-settings/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/together-ai-thunderagent-open-source.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/together-ai-thunderagent-open-source.html",
-      "title": "Together AI open-sources ThunderAgent agentic inference layer",
-      "summary": "ThunderAgent schedules whole agent workflows instead of single calls, reporting 2x throughput and 6x lower latency than SGLang on one 8xH100 node.",
-      "content_text": "Together AI open-sourced ThunderAgent on Wednesday, a scheduling layer that sits between agent clients and inference engines and treats an entire multi-turn agent workflow — not an individual model call — as the unit of scheduling.\n\nThe problem it targets is KV cache thrashing. When an agent pauses to run a tool call, a conventional scheduler sees an idle request and evicts its cached attention state to serve other traffic; when the agent resumes, that state has to be recomputed. At scale, with thousands of concurrent agent programs each pausing repeatedly, the recomputation dominates. ThunderAgent asks clients to attach a single `program_id` field to their requests, which is enough for the scheduler to know which calls belong to the same workflow and to keep their caches coherent. Under memory pressure it pauses whole low-priority programs rather than shredding everyone's cache, so the surviving workflows hit far higher cache-hit rates.\n\nThe reported numbers: on a single 8xH100 node at batch size 192, ThunderAgent sustained 803 tokens per second at 10.6 seconds mean latency, against SGLang's 390 tokens per second at 65 seconds — roughly double the throughput at a fraction of the latency. Multi-node, throughput scaled near-linearly from 671 to 2,248 steps per minute going from 16 to 64 GPUs, and the margin over SGLang's gateway widened with cluster size, from 1.79x at two nodes to 2.39x at eight. Together also cites gains of 1.8x to 3.9x on reinforcement-learning rollout workloads, where the same pause-and-resume pattern appears during synthetic data generation.\n\nThe project is positioned as a drop-in: it is format-agnostic and composes with existing engine features such as KV offloading and speculative decoding rather than replacing them. Code is on GitHub, and the accompanying paper was accepted to ICML 2026 as a spotlight.\n\n**Why it matters:** Serving infrastructure was designed for chat — short, self-contained requests — while the fastest-growing traffic is long agent programs that idle constantly. Reclaiming a 2x throughput factor at the scheduler layer, with no model change and one added field, cuts the cost of running agents in production immediately, and it does so in the open rather than as a proprietary advantage for one inference vendor.",
-      "date_published": "2026-07-29T22:48:00.000Z",
-      "date_modified": "2026-07-29T23:00:02.787Z",
-      "tags": [
-        "Agents",
-        "Open Source",
-        "Research"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/together-ai-thunderagent-open-source.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/together-ai-thunderagent-open-source.html",
-        "source_published_at": "2026-07-29T22:48:00.000Z",
-        "site_published_at": "2026-07-29T23:00:02.787Z",
-        "sources": [
-          {
-            "title": "ThunderAgent: 2x Faster Agentic Inference for Synthetic Data Generation at Scale",
-            "url": "https://www.together.ai/blog/thunderagent"
-          },
-          {
-            "title": "ThunderAgent: A Simple, Fast and Program-Aware Agentic Inference System (arXiv)",
-            "url": "https://arxiv.org/abs/2602.13692"
-          },
-          {
-            "title": "ThunderAgent on GitHub",
-            "url": "https://github.com/ThunderAgent-org/ThunderAgent"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/tokens-infinity-third-round-coding-agents.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/tokens-infinity-third-round-coding-agents.html",
-      "title": "Trae co-creator's coding-agent startup lands third round",
-      "summary": "Chinese startup Tokens Infinity, founded by the ByteDance executive behind MarsCode and Trae, closed a third round within a year for its enterprise coding-agent stack.",
-      "content_text": "## Three rounds inside twelve months\n\nBeijing-based Tokens Infinity (词元无限) disclosed on Thursday that it has closed a new financing round led by Shanghai-based Linxin Capital with participation from Huakong Fund, its third round since being founded roughly a year ago. The company puts cumulative proceeds across the three rounds in the hundreds of millions of yuan.\n\nThe founding team is the draw. Chief executive Yang Ping was previously a ByteDance executive who built MarsCode and Trae, the company's AI coding products, and ran an AI transition across engineering organizations numbering in the tens of thousands. Chief technology officer Wang Wei is a Tsinghua computer science graduate from the first cohort of the Yao Class, and previously worked as a distributed systems architect and chief architect at a robotics unicorn.\n\n## An agent stack, not a chat assistant\n\nTokens Infinity is selling infrastructure for enterprise software engineering rather than a standalone assistant. Its lineup includes InfCode for code generation, InfTest for test automation, DeepMap for comprehending existing systems, and HarnessAgent for enforcing engineering rules. The company frames its design goals as full autonomy, high security and self-evolution — shorthand for agents that run unattended inside a company's own codebase and toolchain while staying inside policy.\n\n## Why it matters\n\nThe coding-agent market has bifurcated. On one side sit US-based products competing on frontier model access and developer experience; on the other, a growing set of Chinese vendors selling into large state-owned and industrial software organizations where code cannot leave the perimeter and where the binding constraint is legacy-system comprehension, not raw generation quality. That second market rewards exactly the pieces Tokens Infinity is assembling — system mapping, test generation, rule enforcement — and it is where operators from ByteDance's internal developer-tools effort carry unusual credibility. The round is small by frontier-lab standards, but it is a signal about where Chinese capital now expects agent revenue to come from: not seat licences for individual developers, but managed autonomy inside existing enterprise engineering pipelines.",
-      "date_published": "2026-07-30T06:10:00.000Z",
-      "date_modified": "2026-07-30T11:00:03.870Z",
-      "tags": [
-        "Funding",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tokens-infinity-third-round-coding-agents.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tokens-infinity-third-round-coding-agents.html",
-        "source_published_at": "2026-07-30T06:10:00.000Z",
-        "site_published_at": "2026-07-30T11:00:03.870Z",
-        "sources": [
-          {
-            "title": "量子位：一年连融三轮数亿元，字节+清华姚班重构企业软件工程",
-            "url": "https://www.qbitai.com/2026/07/463013.html"
           }
         ]
       }

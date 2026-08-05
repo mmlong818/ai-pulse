@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>京东开源 JoyAI-Video-Edit：160 亿参数实时视频编辑 — Uncle Cat AI Radar</title>
+<meta name="description" content="京东开源 JoyAI-Video-Edit，160 亿参数、Apache 2.0 协议，单张 NVIDIA B200 上以约 30 FPS 完成 720P 视频实时编辑。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/jd-joyai-video-edit-open-weights.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/jd-joyai-video-edit-open-weights.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/jd-joyai-video-edit-open-weights.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/jd-joyai-video-edit-open-weights.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="京东开源 JoyAI-Video-Edit：160 亿参数实时视频编辑 — Uncle Cat AI Radar">
+<meta property="og:description" content="京东开源 JoyAI-Video-Edit，160 亿参数、Apache 2.0 协议，单张 NVIDIA B200 上以约 30 FPS 完成 720P 视频实时编辑。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/jd-joyai-video-edit-open-weights.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="京东开源 JoyAI-Video-Edit：160 亿参数实时视频编辑 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="京东开源 JoyAI-Video-Edit，160 亿参数、Apache 2.0 协议，单张 NVIDIA B200 上以约 30 FPS 完成 720P 视频实时编辑。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="京东开源 JoyAI-Video-Edit：160 亿参数实时视频编辑 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"京东开源 JoyAI-Video-Edit：160 亿参数实时视频编辑","item":"https://mmlong818.github.io/ai-pulse/zh/articles/jd-joyai-video-edit-open-weights.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/jd-joyai-video-edit-open-weights.html#article","headline":"京东开源 JoyAI-Video-Edit：160 亿参数实时视频编辑","description":"京东开源 JoyAI-Video-Edit，160 亿参数、Apache 2.0 协议，单张 NVIDIA B200 上以约 30 FPS 完成 720P 视频实时编辑。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/jd-joyai-video-edit-open-weights.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/jd-joyai-video-edit-open-weights.html"},"datePublished":"2026-08-05T02:00:00.000Z","dateModified":"2026-08-05T11:00:03.615Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["开源","AIGC","模型"],"keywords":"开源, AIGC, 模型","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://github.com/jd-opensource/JoyAI-Video-Edit","https://arxiv.org/abs/2608.03974","https://huggingface.co/papers/date/2026-08-05"],"about":[{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"AIGC"},{"@type":"Thing","name":"模型"}]}]}</script>
+</head>
+<body data-slug="jd-joyai-video-edit-open-weights" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/jd-joyai-video-edit-open-weights.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-08-05T02:00:00Z">2026年8月5日 10:00</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/aigc.html">AIGC</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><span class="views" id="viewCount"></span></div>
+  <h1>京东开源 JoyAI-Video-Edit：160 亿参数实时视频编辑</h1>
+  <p class="standfirst">京东开源 JoyAI-Video-Edit，160 亿参数、Apache 2.0 协议，单张 NVIDIA B200 上以约 30 FPS 完成 720P 视频实时编辑。</p>
+  <p>8 月 5 日，京东开源团队放出 JoyAI-Video-Edit 的权重、部署代码与技术报告。这是一个 160 亿参数的指令式视频编辑模型，主打「实时」——不是提交任务等渲染，而是边输入边出片。</p><h2>具体能力</h2><p>模型以多模态扩散 Transformer 为骨干，改造成分块自回归生成：视频按因果分块进出，不需要预知未来帧。这也顺带拆掉了扩散类视频编辑常见的定长限制，理论上可处理无限长输入。京东给出的端到端指标是：单张 NVIDIA B200 上 720×1280 分辨率达到 30.19 FPS——大致就是「能处理直播流而非文件」的门槛线。</p><p>为此论文提出两项蒸馏设计。Source-Anchored DMD 在压缩采样步数的同时把输出锚定在原始素材上，缓解少步蒸馏后画面「跑偏」、丢失源片信息的问题；Long-Horizon Autoregressive Distillation 则针对误差累积——自回归生成中每一块都以自己上一块的瑕疵输出为条件，长序列下画质会持续劣化。作者的自动评测与人工评测显示，该模型明显优于现有流式视频编辑方案，在短片与长片上都能与更慢的离线系统正面掰手腕。</p><p>权重托管在 Hugging Face 的 <code>jdopensource/JoyAI-Video-Edit</code>，同时提供在线 demo，代码与 checkpoint 均为 Apache 2.0。论文编号 arXiv 2608.03974。</p><h2>为什么重要</h2><p>目前绝大多数生成式视频工具仍是「批处理」形态：写提示词、排队、看结果。实时编辑属于另一个产品品类——直播、虚拟制片、片场预览、视频会议——长期卡住它的不是画质，而是延迟与时长上限。一个宽松许可、单卡就能跑到 30FPS 的 160 亿参数模型，把这个品类交到了自己训不出模型的团队手里。这也延续了京东的开源路径：不去卷前沿语言模型，而是持续放出能直接用的多模态模型。在闭源 AIGC 厂商纷纷宣传实时能力却不放权重的当下，这一步把标准抬高了。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://github.com/jd-opensource/JoyAI-Video-Edit" rel="noopener" target="_blank">jd-opensource/JoyAI-Video-Edit on GitHub</a></li><li><a href="https://arxiv.org/abs/2608.03974" rel="noopener" target="_blank">JoyAI-Video-Edit: Real-Time Open-Ended Video Editing with Autoregressive Diffusion</a></li><li><a href="https://huggingface.co/papers/date/2026-08-05" rel="noopener" target="_blank">Hugging Face Daily Papers</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html">Cursor 开源 MoE 训练巨型算子 MoK</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/flux-3-video-exits-early-access.html">FLUX 3 视频模型结束灰度，登陆 Runway 与 Krea</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/mistral-open-sources-shieldstral.html">Mistral 开源 Shieldstral：30 亿参数内容安全模型</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
