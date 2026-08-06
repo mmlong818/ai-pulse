@@ -183,8 +183,8 @@ function takeFor(lang, article) {
   const rules = [
     {
       hit: ['jailbreak', 'security', 'safety', 'cyber', 'incident', 'eval', '越狱', '安全', '事故', '网络安全'],
-      zh: ['猫叔毒舌', '别把安全当公关页脚；模型越能干活，事故就越像运维工单。'],
-      en: ["Uncle Cat's bite", 'Safety is no longer slideware; it is production risk.'],
+      zh: ['猫叔直说', '别把安全当公关页脚；模型越能干活，事故就越像运维工单。'],
+      en: ["Uncle Cat's take", 'Safety is no longer slideware; it is production risk.'],
     },
     {
       hit: ['policy', 'regulation', 'law', 'court', 'white house', 'ai act', 'ban', 'audit', '监管', '政策', '法院', '白宫', '法案', '审计'],
@@ -203,8 +203,8 @@ function takeFor(lang, article) {
     },
     {
       hit: ['ceo', 'quit', 'quits', 'exit', 'exits', 'resign', 'leaves', 'leadership', 'talent', 'brain drain', '卸任', '离职', '换帅', '掌舵人', '核心研究者'],
-      zh: ['猫叔毒舌', '顶级实验室最怕的不是少 GPU，是关键人同一天离场。'],
-      en: ["Uncle Cat's bite", 'Talent leaving on the same day is not a footnote; it is smoke from the engine room.'],
+      zh: ['猫叔直说', '顶级实验室最怕的不是少 GPU，是关键人同一天离场。'],
+      en: ["Uncle Cat's take", 'Talent leaving on the same day is not a footnote; it is smoke from the engine room.'],
     },
     {
       hit: ['open-source', 'open source', 'open-weight', 'weights', 'apache', 'mit license', '开源', '权重', '许可证'],
@@ -214,7 +214,7 @@ function takeFor(lang, article) {
     {
       hit: ['agent', 'agents', 'coding', 'devin', 'cursor', 'copilot', 'workspace', '智能体', '编程', '工作流'],
       zh: ['猫叔锐评', 'Agent 别再只会演示，会省人、省钱、省时间才算数。'],
-      en: ["Uncle Cat's bite", 'Agent demos are cheap; saved labor and saved time are the scoreboard.'],
+      en: ["Uncle Cat's take", 'Agent demos are cheap; saved labor and saved time are the scoreboard.'],
     },
     {
       hit: ['video', 'image', 'audio', 'aigc', 'runway', 'flux', 'pika', 'canva', '视频', '图像', '音频', '生成'],
