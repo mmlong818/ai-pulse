@@ -19,6 +19,199 @@
 
 ## Recent briefings
 
+### OpenAI, Vercel and rivals ship Agent Plugins 1.0 standard
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/agent-plugins-standard-1-0.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/agent-plugins-standard-1-0.html
+- Source timestamp: 2026-08-06T16:11:00.000Z
+- Site timestamp: 2026-08-06T23:00:03.114Z
+- Tags: Agents, Open Source
+
+A vendor-neutral format bundles Agent Skills and MCP server configs into one portable plugin, supported at launch by ChatGPT, Codex, Cursor, Copilot, Kiro and VS Code.
+
+Six companies published Agent Plugins 1.0.0 on Thursday, an open specification for packaging agent extensions once and running them across competing agent clients.
+
+## The format
+
+A plugin is a directory with a `plugin.json` manifest requiring only two fields — schema version and plugin name — plus fixed locations for its contents: skills live under `skills/`, MCP server configuration in `mcp.json`, with namespaced sections available for client-specific extras. The deliberate minimalism is the point: the directory layout, not a large schema, carries the contract, which keeps the barrier to implementing a reader low.
+
+The specification bundles two things that until now travelled separately. Agent Skills are natural-language instruction documents that teach an agent a procedure; MCP servers expose tools and data. Extension authors have been repackaging the same components for each client's conventions. Agent Plugins gives them one artefact.
+
+## Who signed on
+
+Vercel initiated the proposal, and engineers from Amazon Web Services, Anysphere (Cursor), GitHub, Microsoft, OpenAI and Vercel refined it to 1.0.0. The initial technical steering committee draws core maintainers from AWS, Cursor, Microsoft, OpenAI and Vercel. Clients supporting the format at launch are ChatGPT, Codex, Cursor, GitHub Copilot, Kiro and VS Code. Governance and the spec sit in a public repository, with documentation at agent-plugins.org.
+
+One name is conspicuously missing from the launch roster: Anthropic, whose Agent Skills format the specification builds on and whose Claude Code is among the most widely used coding agents. Neither Anthropic nor Claude Code appears among the announced participants or launch clients; the company has not publicly commented on whether it intends to adopt the format.
+
+## Why it matters
+
+MCP established a common wire protocol for tools; Agent Plugins is an attempt to standardise the layer above it — the distribution unit an author actually ships. If it holds, the practical effect is that a plugin ecosystem becomes portable rather than a per-vendor moat, and agent clients compete on execution quality instead of on which extensions they exclusively host. The unresolved question is whether a standard advanced by OpenAI, Microsoft, AWS and Vercel can become genuinely neutral without the vendor whose format supplied its starting point.
+
+Chinese title: OpenAI 联手 Vercel 等推出 Agent Plugins 1.0 开放标准
+Chinese summary: 该规范把 Agent Skills 与 MCP 服务器配置打包成一份可移植插件，首发支持 ChatGPT、Codex、Cursor、Copilot、Kiro 与 VS Code。
+
+Sources:
+  - Introducing Agent Plugins — Vercel: https://vercel.com/blog/introducing-agent-plugins
+  - OpenAI Developers on X: https://x.com/OpenAIDevs/status/2085398373511918022
+  - Introducing Agent Plugins 1.0.0 — Vercel Changelog: https://vercel.com/changelog/introducing-agent-plugins-1-0-0
+
+### AMD buys Taalas to etch AI models directly into silicon
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/amd-acquires-taalas-hardwired-silicon.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/amd-acquires-taalas-hardwired-silicon.html
+- Source timestamp: 2026-08-06T20:14:00.000Z
+- Site timestamp: 2026-08-06T23:00:03.114Z
+- Tags: Industry, Models
+
+The Toronto startup builds chips whose metal layers are finalised around one model's weights, promising inference without HBM, advanced packaging or liquid cooling.
+
+AMD said on Thursday it has agreed to acquire Taalas, a Toronto chip startup founded in 2023 that builds processors around a single fixed model rather than around general-purpose compute. Terms were not disclosed. The deal is subject to regulatory approval and is expected to close in the fourth quarter.
+
+## What Taalas makes
+
+Taalas calls its products "Hardcore Models." Once a model's weights are frozen, the company finalises a small number of a chip's metal layers to encode them, collapsing the usual separation between memory and compute onto one die. The claimed consequence is a serving system that needs no high-bandwidth memory, no advanced packaging, no 3D stacking and no liquid cooling — the four cost centres that dominate the bill of materials for a modern inference rack. Taalas says a previously unseen model can be turned into hardware in about two months. Its first product, shown in February, hard-wires Meta's Llama 3.1 8B.
+
+AMD's AI group head Vamsi Boppana framed the purchase as filling out a full-stack platform, with Taalas technology entering the accelerator roadmap alongside Instinct GPUs. Taalas co-founder and chief executive Ljubisa Bajic — previously a founder of Tenstorrent — said the acquisition supplies scale and engineering resources.
+
+## Why it matters
+
+Inference, not training, is now where the industry's compute spending is heading, and it is a workload with a very different shape: the same weights served billions of times. Hard-wiring those weights trades all flexibility for efficiency, and until now that trade has looked too brittle to take, because frontier models are replaced every few months. Taalas's two-month turnaround is the bet that the trade has become viable. For AMD, it is a hedge that does not depend on beating Nvidia at general-purpose GPUs: if a meaningful share of production inference settles onto a handful of stable open-weight models, fixed-function silicon could undercut GPU serving economics by a wide margin. It also gives the open-weights ecosystem a hardware argument — a model has to be widely deployed and stable to be worth etching, which favours exactly the models anyone can download.
+
+Chinese title: AMD 收购 Taalas：把大模型直接「刻」进芯片
+Chinese summary: 这家多伦多初创公司在权重冻结后定制芯片金属层，宣称推理系统可完全不用 HBM、先进封装、3D 堆叠与液冷。
+
+Sources:
+  - AMD Acquires Taalas to Advance Compute Solutions for Rapidly Growing AI Inference Market: https://ir.amd.com/news-events/press-releases/detail/1296/amd-acquires-taalas-to-advance-compute-solutions-for-rapidly-growing-ai-inference-market
+  - AMD acquires AI chip startup Taalas to boost inference performance by etching models into silicon: https://www.theregister.com/systems/2026/08/06/amd-acquires-ai-chip-startup-taalas-to-boost-inference-performance-by-etching-models-into-silicon/
+  - AMD buys Taalas, startup that hardwires AI models into its silicon: https://www.cnbc.com/2026/08/06/amd-buys-taalas-startup-that-hardwires-ai-models-into-its-silicon.html
+
+### Cloudflare's Kitesurf drops Chromium for agent browsing
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/cloudflare-kitesurf-agent-browser.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-kitesurf-agent-browser.html
+- Source timestamp: 2026-08-06T14:30:00.000Z
+- Site timestamp: 2026-08-06T23:00:03.114Z
+- Tags: Agents, Industry
+
+The agent-first browser runs in V8 isolates on Workers with no Chromium underneath, claiming 3–7x lower CPU and memory on common agent tasks at 1.7–1.8x the wall-clock time.
+
+Cloudflare introduced Kitesurf on Thursday, a web browser built for AI agents that runs entirely inside V8 isolates on Cloudflare Workers with no Chromium engine beneath it. It is free during beta through Browser Run, with per-account limits.
+
+## The architecture
+
+Kitesurf discards the parts of a browser that exist for humans — tabs, extensions, pixel-perfect 60fps compositing — and keeps what an agent consumes: machine-readable page content, low token overhead, cheap parallelism and isolation. The system splits into an Engine that manages sessions over the Chrome DevTools Protocol and HTTP REST; PageScript, which handles DOM and layout using the Rust rendering engine Blitz and Firefox's Stylo CSS parser; a PageRenderer that emits JPEG, PNG or PDF; and SandboxOutbound, which enforces network policy, CORS and cookie handling.
+
+Cloudflare reports 3.1–3.8x less CPU and 4.7–7.0x less memory than Chromium on typical agent workloads such as screenshots and HTML extraction, at roughly 1.7–1.8x slower wall-clock time. The company says the engine passes more than 215,000 Web Platform Tests. Existing Puppeteer, Playwright and MCP clients can switch by adding a single `browser=kitesurf` parameter, and Cloudflare says it plans to open-source Kitesurf for self-hosting.
+
+## Why it matters
+
+Browser use has become a default agent capability, and the standard implementation — one headless Chromium per session — was never designed for it. Chromium's cost is dominated by rendering fidelity an agent never looks at, which makes per-agent browsing expensive enough to cap how many concurrent sessions a product can afford. Kitesurf's trade is explicit and unusual: accept nearly double the latency to cut resource consumption several-fold, which is the right direction when agents run unattended and cost, not responsiveness, is the binding constraint.
+
+The strategic reading is that Cloudflare is positioning the browser as infrastructure it sells rather than a component each agent vendor rebuilds — the same move it made with Workers for compute. If the promised open-sourcing arrives, the more consequential outcome may be that a credible non-Chromium engine enters production use at scale for the first time in years.
+
+Chinese title: Cloudflare 推出 Kitesurf：为智能体重造的无 Chromium 浏览器
+Chinese summary: 该浏览器完全跑在 Workers 的 V8 隔离环境中，官方称常见智能体任务下 CPU 与内存开销仅为 Chromium 的三分之一到七分之一，代价是耗时约 1.7–1.8 倍。
+
+Sources:
+  - Introducing Kitesurf: The agent-first browser that runs in V8 isolates on Cloudflare Workers: https://blog.cloudflare.com/kitesurf/
+  - Cloudflare Introduces Kitesurf: An Agent-First Web Browser That Runs Entirely in V8 Isolates on Cloudflare Workers: https://www.marktechpost.com/2026/08/06/cloudflare-introduces-kitesurf-an-agent-first-web-browser-that-runs-entirely-in-v8-isolates-on-cloudflare-workers/
+
+### DeepMind open-sources WeatherNext cyclone forecasting model
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepmind-weathernext-cyclones-open.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-weathernext-cyclones-open.html
+- Source timestamp: 2026-08-06T15:06:00.000Z
+- Site timestamp: 2026-08-06T23:00:03.114Z
+- Tags: Research, Open Source
+
+A Nature paper puts Google DeepMind's WeatherNext Cyclones ahead of operational systems by over a day of lead time, with code and weights released on GitHub.
+
+Google DeepMind published its WeatherNext cyclone forecasting work in Nature on Thursday and simultaneously released the model's code and weights on GitHub, making a system already used inside operational hurricane forecasting freely available to anyone.
+
+## The result
+
+WeatherNext Cyclones produces probabilistic 15-day forecasts of a storm's track, intensity and wind structure. DeepMind reports state-of-the-art accuracy across all three, and frames the gain in the currency forecasters actually use: lead time. On average, its three-day predictions match the quality that prior systems delivered at two days — better than a full extra day of warning. In a field where operational skill has historically improved by roughly a day per decade, that is a decade of progress arriving at once.
+
+The model was trained on years of global atmospheric reanalysis data — on the order of 20 terabytes — combined with the IBTrACS archive of nearly 5,000 historical cyclones, which supplies the storm-specific structure that general atmospheric training alone tends to smooth away. DeepMind cites Hurricane Melissa as a field test: forecasters received early signals of a Category 5 landfall five days ahead with 80 percent confidence.
+
+## Release and partners
+
+The code and weights are on GitHub for academic, operational and commercial use, and a compact WeatherNext 2-mini variant runs in a free Colab notebook. Predictions are also served through DeepMind's Weather Lab. The work was done with the US National Hurricane Center, the Cooperative Institute for Research in the Atmosphere, the UK Met Office and other national agencies, and DeepMind says it is expanding access for forecasters this season.
+
+## Why it matters
+
+Machine-learning weather models have been outperforming numerical simulation on general forecasting for two years, but tropical cyclones — rare, small-scale, high-consequence — were the hard case that kept operational meteorologists cautious. Publishing in Nature settles the methodological argument in public; releasing the weights settles the access question. Any national meteorological service, including those without the supercomputing budgets that traditional cyclone modelling demands, can now run a frontier system on modest hardware. It is also a rare instance of a frontier lab open-sourcing a model whose primary value is not commercial, and the clearest current example of AI capability translating into measurable public-safety outcomes.
+
+Chinese title: DeepMind 台风预报模型登 Nature，代码权重同步开源
+Chinese summary: WeatherNext Cyclones 在路径、强度与风场三项上刷新精度，三天预报相当于旧系统两天水平，代码与权重已上传 GitHub。
+
+Sources:
+  - WeatherNext: AI model achieves breakthrough in forecasting cyclones: https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones/
+  - Google DeepMind on X: https://x.com/GoogleDeepMind/status/2085395442347524506
+
+### OpenAI splits ChatGPT tiers between GPT-5.6 Sol and Luna
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-splits-chatgpt-sol-luna.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-splits-chatgpt-sol-luna.html
+- Source timestamp: 2026-08-06T17:00:00.000Z
+- Site timestamp: 2026-08-06T23:00:03.114Z
+- Tags: Models, Industry
+
+Paid ChatGPT users get an updated GPT-5.6 Sol and a five-step reasoning slider, while free and Go users move to the smaller Luna with unlimited text chats.
+
+OpenAI restructured how ChatGPT's roughly billion-user base reaches its models on Wednesday, publishing a product note that redraws the line between paid and free access rather than launching a new frontier system.
+
+## What changed for paid users
+
+Plus and Pro subscribers now run every conversation on a revised build of GPT-5.6 Sol, including the fast "Instant" path that previously used a separate lighter model. OpenAI says the updated Sol trims padding and heavy formatting in favour of shorter answers that lead with a recommendation. Alongside it, paying users get a slider offering five levels of reasoning effort, letting them trade latency against depth per query instead of picking a model from a dropdown. On the company's internal high-stakes factuality evaluation, it reports factual errors falling about 68 percent for Sol relative to the older GPT-5.5 Instant configuration; the figure has not been independently reproduced.
+
+## What changed for free users
+
+Free and Go accounts move to GPT-5.6 Luna, a smaller model, as their default. They also gain a "Think" button that lets Luna reason for longer on harder prompts — but it extends the small model's thinking rather than escalating to Sol. OpenAI reports a roughly 62 percent drop in factual errors for Luna against the same baseline. The sweetener is capacity: unlimited text conversations, arriving next week, ending the message caps that have defined the free tier since launch. Separate quotas still apply to files, images, voice and image generation. Sol-tier changes shipped immediately; the free-tier changes roll out across this week and next.
+
+## Why it matters
+
+This is the clearest statement yet of how OpenAI intends to make consumer inference pay. Unlimited text at the bottom of the funnel is cheap only if the bottom of the funnel is served by a small model, and the Think button is designed to absorb demand for reasoning without routing it to expensive weights. The structural consequence is a widening quality gap between free and paid ChatGPT that is now explicit rather than incidental — a template rivals distributing free assistants at scale will have to answer, and a change in what hundreds of millions of people actually get when they ask an AI a hard question.
+
+Chinese title: OpenAI 重划 ChatGPT 分层：付费用 Sol，免费转 Luna
+Chinese summary: 付费用户全面切换到升级版 GPT-5.6 Sol 并获得五档推理滑杆，免费与 Go 用户则默认改用更小的 Luna，换来文字对话不限量。
+
+Sources:
+  - Improving GPT-5.6 Sol in ChatGPT, expanding GPT-5.6 Luna access for free users: https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/
+  - OpenAI improves GPT-5.6 Sol in ChatGPT and restricts free users to its weakest model: https://the-decoder.com/openai-improves-gpt-5-6-sol-in-chatgpt-and-restricts-free-users-to-its-weakest-model/
+  - ChatGPT brings unlimited text chats to free users: https://techcrunch.com/2026/08/06/openai-brings-unlimited-chatgpt-text-chats-to-free-users/
+
+### Suno to watermark and fingerprint AI-generated songs
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/suno-watermarks-ai-generated-songs.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/suno-watermarks-ai-generated-songs.html
+- Source timestamp: 2026-08-06T13:31:00.000Z
+- Site timestamp: 2026-08-06T23:00:03.114Z
+- Tags: AIGC, Policy
+
+The music generator will embed tamper-resistant audio watermarks, add fingerprinting, restrict bulk downloads and license Musixmatch's Sentinel for lyric copyright detection.
+
+Suno said on Thursday it will begin marking the songs its models generate, publishing a plan that combines audio watermarking, fingerprinting, tighter download rules and a licensing deal for lyric copyright detection.
+
+## The measures
+
+Chief executive Mikey Shulman said in a company post that the marks are meant to be durable and resistant to tampering while leaving the listening experience untouched. Suno has not said which scheme it will use — whether Google's SynthID or an alternative — nor when enforcement begins. Alongside watermarking, the company will fingerprint generated audio so tracks can be recognised after the fact, and change its download policies to make mass distribution onto streaming services harder. Updated community guidelines explicitly bar deceptive audio and the use of a person's voice without permission. Separately, Suno has signed an agreement with lyrics provider Musixmatch to incorporate its Sentinel copyright-detection system.
+
+## The context
+
+The announcement lands in the middle of Suno's worst legal stretch. The company faces suits from major record labels and artist organisations, recently lost a copyright case brought by German collecting society GEMA, and is contending with a class action over a data breach affecting tens of millions of users. It raised $400 million in a Series D in June. Streaming platforms, meanwhile, have spent the past year deleting AI-generated uploads at scale and pressing generators to make their output identifiable at the source.
+
+## Why it matters
+
+Provenance marking has been the industry's stated answer to AI slop for two years, but it only works if the generators themselves apply it — detection bolted on downstream has consistently failed. Suno is the largest music generator to commit publicly, which makes its implementation the de facto test of whether audio watermarking survives contact with re-encoding, stem separation and deliberate stripping. It is also a negotiating posture: labels and platforms have made identifiability a precondition for licensing talks, and a generator that can prove which tracks are its own has something to trade. Whether that converts into settlements, or merely into cleaner evidence for the plaintiffs, is the open question.
+
+Chinese title: Suno 宣布给 AI 生成歌曲加水印与指纹
+Chinese summary: 该音乐生成平台将嵌入抗篡改音频水印、引入指纹识别、收紧批量下载，并接入 Musixmatch 的 Sentinel 歌词版权检测系统。
+
+Sources:
+  - Amid legal battles, Suno says it will start watermarking songs: https://techcrunch.com/2026/08/06/amid-legal-battles-suno-says-it-will-start-watermarking-songs/
+  - Suno hopes to go legit with watermarks for AI-generated music: https://arstechnica.com/ai/2026/08/suno-hopes-to-go-legit-with-watermarks-for-ai-generated-music/
+
 ### Anthropic starts hiring a custom AI silicon design team
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-hires-custom-silicon-team.html
@@ -807,206 +1000,27 @@ Sources:
   - 阿里「千问办公」开启公测: https://www.qbitai.com/2026/08/465211.html
   - 阿里Qwen3.8正式发布，编程与办公再进化: https://www.qbitai.com/2026/08/465215.html
 
-### Cogent AI gates VR-1, a cyber attack-path model
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/cogent-ai-vr-1-cyber-model.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cogent-ai-vr-1-cyber-model.html
-- Source timestamp: 2026-08-03T07:28:00.000Z
-- Site timestamp: 2026-08-03T11:00:03.158Z
-- Tags: Safety, Models, Industry
-
-Cogent AI released VR-1, a security-specialised model that composes and verifies multi-stage enterprise attack paths, with weights withheld from the public.
-
-## Post-trained for intrusion, not vulnerability lists
-
-Cogent AI released VR-1 on Monday, a model post-trained specifically for cybersecurity work. Its stated target is not finding individual vulnerabilities but assembling and verifying whole attack paths: investigating an environment under incomplete information, forming and testing hypotheses, chaining steps across system boundaries, recovering after a failed route, and confirming an objective by executing it rather than describing it. Runs are bounded at roughly two hours or 250 agent turns.
-
-The model shipped with two accompanying pieces: IntrusionBench, an execution-based evaluation suite, and the Cogent AI Harness, a governed runtime for security agents.
-
-## Numbers, and their caveats
-
-Cogent reports that in black-box testing VR-1 achieved roughly double the attack-path success rate of Kimi K3, Claude Opus 4.8 and GLM-5.2 at about a quarter of the cost. It also states plainly that VR-1's own black-box success rate remains under 30% and calls the results preliminary — a rate that says as much about how hard end-to-end intrusion chaining still is as it does about the model.
-
-Weights are not public. Access runs through a Cogent Frontier Access Program limited to vetted organisations, with guardrails and audit logging attached. The stated customer base is Fortune 2000-scale enterprises and government bodies in finance, healthcare, SaaS, retail, telecom and critical infrastructure.
-
-## Why it matters
-
-Offensive security capability is where the open-weights debate gets uncomfortable, and VR-1 is a clear statement of one answer: build the capability, keep the weights, admit customers individually, log everything. That structure is closer to arms-export control than to a model launch, and it will be cited by both camps in the current argument over release policy.
-
-The honest read on capability is more measured. Sub-30% success on full black-box chains, published by the vendor itself, undercuts the idea that autonomous intrusion is solved — and echoes VulnCheck's recent finding that only 1.3% of AI-discovered vulnerabilities in the first half of 2026 were confirmed exploited. The gap between generating plausible attack paths and landing them remains the industry's main margin of safety.
-
-Chinese title: Cogent AI 发布 VR-1：受控开放的攻击链推理模型
-Chinese summary: Cogent AI 推出安全专用模型 VR-1，可组合并验证企业级多阶段攻击路径，权重不公开，仅向审核通过的机构开放。
-
-Sources:
-  - Cogent AI Team Releases VR-1: A Frontier Cyber Reasoning Model: https://www.marktechpost.com/2026/08/03/ogent-ai-team-releases-vr-1/
-
-### Genspark open-sources GenOffice suite for PC and Mac
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/genspark-open-sources-genoffice.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/genspark-open-sources-genoffice.html
-- Source timestamp: 2026-08-03T10:15:00.000Z
-- Site timestamp: 2026-08-03T11:00:03.158Z
-- Tags: Agents, Open Source, Industry
-
-Genspark released GenOffice, which it calls the first full-featured open-source AI office suite, free and ad-free on Windows and macOS under Apache-2.0.
-
-## A free office suite with an agent inside
-
-Genspark announced GenOffice on Monday, publishing a blog post titled "GenOffice: The First Open-Source AI Office Suite" and a set of posts on X. The company describes it as the world's first full-featured open-source AI Office for PC and Mac, available free to everyone and without advertising, bundling the editing tools users expect from a desktop productivity suite.
-
-The code is on GitHub at genspark-ai/genoffice under the Apache License 2.0, with one carve-out: the `ee/` directory, reserved for future enterprise modules, falls under a separate GenOffice Enterprise Licence. The suite ships as five Electron applications — Docs for `.docx`, Sheets for `.xlsx`, Slides for `.pptx`, a PDF viewer and editor, and a shell that hosts them in tabs — with signed installers for Apple Silicon macOS and Windows x64. Sheets is built on the Apache-2.0 Univer core with Genspark's own extensions for import/export, charts, pivot tables and formula tracing. Genspark's own blog post remains unreadable from outside its site, so the repository is currently the more useful primary source.
-
-Alongside the release, Genspark opened a GenOffice group chat inside GenTeam, its multi-participant agent workspace, where users describe what they want and an agent implements it — effectively turning feature requests into a live development queue and inviting the community to steer the roadmap directly.
-
-## Why the format matters
-
-Genspark has spent the past year attaching agents to other people's software: its April AI Workspace 4.0 release put agents inside Microsoft Word, Excel and PowerPoint as native plugins, and it later announced a partnership placing its agents in the Microsoft ecosystem. GenOffice inverts that dependency. Rather than automating Office, Genspark is shipping the document surface itself, with the agent as a native rather than bolted-on component — and giving it away.
-
-## Why it matters
-
-AI-native productivity tools have so far arrived either as plugins to incumbent suites or as closed cloud products. An open-source, locally installable office suite designed around an agent is a different bet: it makes the document format, the automation layer and the editing surface all inspectable and forkable, which matters for organisations that cannot send working files to a vendor's cloud. It also lands in a week when Alibaba pushed its own enterprise office agent into public beta, underscoring that the contested layer in agent competition is shifting from the model to the workspace where work actually gets done. With the licence and repository now settled, the open question is narrower: how much of the suite proves genuinely community-maintainable, and how much accumulates behind the enterprise carve-out.
-
-Chinese title: Genspark 开源 GenOffice：面向 PC 与 Mac 的 AI 办公套件
-Chinese summary: Genspark 发布 GenOffice，自称首个功能完整的开源 AI 办公套件，Windows 与 macOS 均可免费使用且无广告，代码以 Apache-2.0 开放。
-
-Sources:
-  - Genspark: Open-sourcing GenOffice: https://x.com/genspark_ai/status/2084221525327319363
-  - genspark-ai/genoffice — GitHub repository: https://github.com/genspark-ai/genoffice
-  - Genspark blog — GenOffice: The First Open-Source AI Office Suite: https://www.genspark.ai/blog/genoffice-open-source-ai-office
-
-### MiniMax releases open weights for its H3 video model
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/minimax-h3-open-weights-release.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-open-weights-release.html
-- Source timestamp: 2026-08-02T16:00:00.000Z
-- Site timestamp: 2026-08-02T23:00:02.982Z
-- Tags: AIGC, Open Source, Models
-
-MiniMax published downloadable weights for H3, its omni-modal 2K video model, making a top-ranked video generator locally runnable for the first time.
-
-MiniMax released the model weights for H3, its omni-modal video generation system, at midnight Beijing time on August 3 — 16:00 UTC on August 2 — following through on an open-sourcing pledge the Shanghai company made when it launched the model on July 31. The drop landed first on the domestic ModelScope hub, with Hugging Face mirrors following, and ComfyUI simultaneously published a local-inference tutorial covering the newly public checkpoints.
-
-H3 is unusual among video models in treating text, images, video and audio as a single input context rather than as separate conditioning channels. It generates clips of roughly four to fifteen seconds at up to 2K resolution and 24 frames per second, and produces native stereo audio inside the same generation pass instead of dubbing sound on afterward. On Artificial Analysis leaderboards the model ranks first in video editing, second in text-to-video and third in image-to-video — placing it among the strongest video generators of any licensing type.
-
-The published artifacts give an unusually clear view of the architecture. ComfyUI's local workflow pulls two pruned int8 diffusion checkpoints — one for text-to-video and image-to-video, one for reference-driven generation — plus separate video and audio VAEs and, notably, a text encoder derived from Alibaba's Qwen3-VL 32B vision-language model. Weights ship under the MiniMax Community License, which permits free non-commercial use and free commercial use by organisations below roughly $20 million in annual revenue, with attribution. MiniMax continues to sell hosted access through its own API and the Hailuo consumer app at prices it describes as under a third of comparable services per second of 2K output.
-
-## Why it matters
-
-Until now the frontier of video generation has been almost entirely closed: OpenAI's Sora, Google's Veo and ByteDance's Seedance line are API-only. H3 breaks that pattern by putting a leaderboard-topping video model on local hardware, where studios can fine-tune it, inspect it, and run it without sending footage to a vendor. It also sharpens a strategic split inside China's video-model race — ByteDance widening closed API access to Seedance 2.5 the same week MiniMax gave its weights away — and hands the local-inference ecosystem, from ComfyUI workflows to quantisation projects, a genuinely competitive base model to build on.
-
-Chinese title: MiniMax 放出 H3 视频模型开源权重
-Chinese summary: MiniMax 正式开放全模态视频模型 H3 的权重下载，让一款榜单前列的视频生成模型首次可以在本地部署运行。
-
-Sources:
-  - MiniMax H3: ComfyUI Workflow Examples (open-weight local deployment): https://docs.comfy.org/tutorials/video/minimax/minimax-h3
-  - Video AI: MiniMax challenges ByteDance with low price, open weights for new H3 model: https://www.scmp.com/tech/article/3362540/video-ai-minimax-challenges-bytedance-low-price-open-weights-new-h3-model
-  - MiniMax H3 通用多模态视频模型将于 8 月 3 日开源，最高可支持 15s 2K 分辨率: https://tech.ifeng.com/c/8vBdVEaynZU
-
-### Alibaba launches 2.4T-parameter Qwen3.8-Max via API
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/qwen3-8-max-launch.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/qwen3-8-max-launch.html
-- Source timestamp: 2026-08-03T02:16:00.000Z
-- Site timestamp: 2026-08-03T11:00:03.158Z
-- Tags: Models, Industry
-
-Alibaba's new flagship is a 2.4-trillion-parameter mixture-of-experts model aimed at long-horizon agent work, with open weights promised next week.
-
-## A Max-class model, priced to undercut
-
-Alibaba's Qwen team published Qwen3.8-Max on Monday, describing it as the most capable model the family has shipped. The company puts the total size at 2.4 trillion parameters in a mixture-of-experts configuration accepting text, image and video input, with a one-million-token context window — a maximum of 991,000 input tokens, dropping to 983,000 when reasoning is enabled, and up to 131,000 output tokens. Alibaba has not published an activated-parameter figure in its own materials; The Decoder reports roughly 95 billion active per query, which would leave inference cost far below the headline number.
-
-International API pricing is $2.00 per million input tokens and $6.00 per million output tokens, with cached input reads at $0.25. Chinese pricing is set at ¥12 and ¥36 per million tokens, with cache hits at ¥1.5. The model is live on QwenCloud behind both OpenAI Chat Completions and Anthropic-compatible endpoints.
-
-## Long-horizon tasks as the pitch
-
-Alibaba built its launch around multi-day autonomy rather than single-turn scores. Case studies include a command-line tool the model developed over 16 days across 265 commits and 127 pull requests, a roughly five-day research-paper reproduction spanning 33 GPU training jobs, and a multimodal competition entry scoring 0.853 that placed ahead of 458 of 526 human teams. On Terminal-Bench 2.1 the model scores 86.6, behind GPT-5.6 Sol at 88.8 and ahead of Anthropic's 84.6; Alibaba reports 93 on PaperBench.
-
-Third-party boards moved quickly. LMArena placed Qwen3.8-Max fifth in Text Arena at 1,496 points and first in its medicine and healthcare slice, second in Vision Arena at 1,305 — thirteen points behind Claude Fable 5 (High) — and said the release reshaped the cost-performance frontier in Frontend Code Arena.
-
-## Why it matters
-
-Qwen-Max has always been the closed tier of an otherwise open family, so the notable commitment here is Alibaba's statement that weights will ship next week on Hugging Face and ModelScope alongside a smaller Qwen3.8-27B checkpoint intended for on-premise hardware. Those weights are not public yet, and until they are this is an API launch. But if the release lands as described, a frontier-class model at roughly a third of Western flagship pricing — with a downloadable variant behind it — would put direct pressure on how closed labs price agentic workloads.
-
-Chinese title: 阿里发布 2.4 万亿参数 Qwen3.8-Max，API 先行
-Chinese summary: 阿里新旗舰 Qwen3.8-Max 为 2.4 万亿参数 MoE 模型，主打长周期智能体任务，官方称下周开放权重。
-
-Sources:
-  - Qwen3.8-Max: A New Bar for Coding and Cowork: https://qwen.ai/blog?id=qwen3.8
-  - Alibaba Qwen Releases Qwen3.8-Max: A 2.4 Trillion Parameter MoE Model: https://www.marktechpost.com/2026/08/03/alibaba-qwen-releases-qwen3-8-max/
-  - Alibaba's Qwen3.8-Max takes on long-horizon AI tasks with 2.4 trillion parameters: https://the-decoder.com/alibabas-open-weight-qwen3-8-max-takes-on-long-horizon-ai-tasks-with-2-4-trillion-parameters/
-
-### Sakana AI launches Namazu, a Japanese-tuned LLM API
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/sakana-namazu-japanese-llm-api.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/sakana-namazu-japanese-llm-api.html
-- Source timestamp: 2026-08-03T00:49:00.000Z
-- Site timestamp: 2026-08-03T11:00:03.158Z
-- Tags: Models, Industry, Open Source
-
-Tokyo lab Sakana AI opened commercial access to Namazu, a Japanese-specialised model built by fine-tuning Moonshot's open-weight Kimi K2.6.
-
-## An open Chinese base, tuned for Japanese business
-
-Sakana AI began offering Namazu, a Japanese-focused large language model API, on Monday. The Tokyo lab says the model starts from an open-weight base — Moonshot's Kimi K2.6 — and adds fine-tuning on Sakana's own data to fit Japanese language use and Japanese workplace context, including natural keigo and business convention. The tuning also targets output behaviour, suppressing bias and adding refusal handling on sensitive topics.
-
-On benchmarks, Sakana reports that Namazu holds roughly the base model's level on mathematics (AIME26) and coding (LiveCodeBench v6) while improving substantially on Japanese-specific evaluations; on FairPoliticsQA, a political-neutrality test, the score rises from 34.10% to 56.30%.
-
-## Pricing and positioning
-
-Namazu is sold pay-as-you-go with no monthly fee: $0.95 per million input tokens and $4.00 per million output tokens, with web search billed at $7.00 per 1,000 calls and code execution at $0.12 per hour. Billing is in US dollars, with yen invoicing reserved for enterprise plans. The API is not currently offered in the EU/EEA, the UK or Switzerland while the company completes GDPR work.
-
-Sakana's own use-case posts point at unglamorous volume work: autonomous weekly market-research reports that plan their own search loops and write themselves; customer support that runs from inquiry handling through order-data aggregation; and creative generation, illustrated by a demo where a single prompt about an ocean world led the model to pick motifs, gather reference images by web search, and choreograph a school of roughly a thousand fish.
-
-## Why it matters
-
-The interesting part is the supply chain. Japan's flagship AI lab is now productising a Chinese open-weight model as the foundation of a commercial national-language API, competing on price and cultural fit rather than on frontier capability. That is the clearest recent illustration of what open weights from Chinese labs actually enable: a sovereign-language product built in months without a foundation-training run. It also sharpens a policy question for Tokyo, where AI self-sufficiency is a stated goal — Namazu is Japanese where it matters commercially, but its base weights were trained elsewhere.
-
-Chinese title: Sakana AI 上线日语专用大模型 API「Namazu」
-Chinese summary: 东京实验室 Sakana AI 基于月之暗面开源的 Kimi K2.6 微调出日语特化模型 Namazu，正式开放商用 API。
-
-Sources:
-  - Sakana Namazu — Sakana AI: https://sakana.ai/namazu/
-  - Sakana AI、日本語特化のLLM API「Sakana Namazu」を提供開始: https://x.com/SakanaAILabs/status/2084187517667209237
-
-### Apple caps bug reports as AI-written filings flood in
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/apple-caps-ai-bug-reports.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/apple-caps-ai-bug-reports.html
-- Source timestamp: 2026-08-02T05:00:00.000Z
-- Site timestamp: 2026-08-02T11:00:03.111Z
-- Tags: Industry, Safety, Agents
-
-Apple has imposed a submission ceiling and a 30-day cool-off on Feedback Assistant bug reports, blaming a deluge of AI-assisted findings.
-
-## The change
-
-Apple has begun rate-limiting vulnerability disclosure. According to reporting published on 2 August, the company has introduced a cap on how many bug reports an individual can file through Feedback Assistant, paired with a 30-day cool-off period once that ceiling is hit. Researchers with a track record can apply for higher quotas.
-
-Apple's stated reason is volume: a flood of AI-assisted submissions that arrive looking technically credible but do not survive triage. Because a plausible-sounding report cannot be dismissed without human review, each invalid filing consumes the same scarce security-engineering attention as a genuine zero-day, and the ratio has moved sharply in the wrong direction.
-
-The throttle sits awkwardly alongside Apple's simultaneous effort to attract more research. The company raised its maximum bounty to $2 million for zero-click exploit chains last November, with bonuses capable of pushing a single award past $5 million, and says it has paid more than $35 million to over 800 researchers since the programme began.
-
-## Not the first
-
-Apple is following, not leading. The curl project and the Internet Bug Bounty had already imposed their own filters after maintainers reported spending disproportionate time refuting machine-generated reports. What is new is scale: this is the first time a vendor of Apple's size has formally rate-limited AI-assisted disclosure, which turns an open-source maintainer complaint into an industry norm.
-
-The move also lands against a broader picture in which AI-discovered flaws are numerous but rarely weaponised. Security firm VulnCheck's first-half 2026 analysis traced 1,061 vulnerabilities to AI-assisted discovery and found confirmed exploitation in just 14 of them.
-
-## Why it matters
-
-Bug bounties are one of the few places where AI-generated output meets a hard, adversarial quality gate, and the gate is buckling. If the biggest programmes respond by restricting who may submit and how often, the economics of coordinated disclosure shift toward established researchers and away from the long tail that bounty programmes were designed to recruit — precisely as autonomous security agents make bulk submission trivial. The same dynamic already visible in code review, app stores and social feeds has now reached the vulnerability pipeline: the constraint is no longer finding problems, it is affording to read about them.
-
-Chinese title: AI写的漏洞报告太多，苹果开始给提交量设限
-Chinese summary: 苹果对Feedback Assistant的漏洞提交设置数量上限并附加30天冷静期，理由是AI辅助生成的报告泛滥。
-
-Sources:
-  - Techmeme: Apple introduced a cap and a 30-day cool-off period on bug report submissions (Financial Times): https://www.techmeme.com/260802/p1
-  - Apple struggles to keep pace with AI-powered bug hunters as vulnerability reports flood in: https://cryptobriefing.com/apple-ai-bug-bounty-struggle/
-  - AI finds plenty of security flaws, but almost none of them get exploited: https://the-decoder.com/ai-finds-plenty-of-security-flaws-but-almost-none-of-them-get-exploited/
-
 ## Recent radar items
+
+### 2026-08-07
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-07.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-07.html
+
+- 2026-08-06T22:43:00Z | TechCrunch | OpenAI's first Jony Ive-designed device is reportedly a hockey-puck-sized smart speaker priced between $300 and $400, according to Bloomberg's Mark Gurman. | 中文：据彭博社古尔曼爆料，OpenAI 与 Jony Ive 合作的首款硬件是一台冰球大小的智能音箱，售价预计在 300 至 400 美元之间。 | https://techcrunch.com/2026/08/06/openais-new-ai-smart-speaker-will-reportedly-sell-for-between-300-400/
+- 2026-08-06T21:45:00Z | X @OpenAIDevs | OpenAI put Codex Security Review into research preview, having the agent inspect GitHub pull requests for security issues using full repository context. | 中文：OpenAI 推出研究预览版 Codex Security Review，让智能体结合完整仓库上下文审查 GitHub 拉取请求中的安全问题。 | https://x.com/OpenAIDevs/status/2085482310636560830
+- 2026-08-06T15:28:00Z | IT之家 | ChatGPT can now call Adobe Photoshop and Lightroom directly, letting users retouch and design inside the chat without leaving the conversation. | 中文：ChatGPT 现已可直接调用 Adobe Photoshop 与 Lightroom，用户无需离开对话即可完成修图与设计。 | https://www.ithome.com/0/986/769.htm
+- 2026-08-06T17:30:00Z | X @github | Moonshot AI's open-weight Kimi K3 became generally available in GitHub Copilot for agentic coding, hosted by Fireworks AI. | 中文：月之暗面开源权重模型 Kimi K3 正式在 GitHub Copilot 上线，面向智能体编程场景，由 Fireworks AI 提供托管。 | https://x.com/github/status/2085418319545356351
+- 2026-08-06T19:07:00Z | X @perplexity_ai | Perplexity made GPT-5.6 Terra the default model for all Perplexity Computer subagents, saying it scores eleven points above Sonnet on WANDR. | 中文：Perplexity 将 GPT-5.6 Terra 设为 Perplexity Computer 全部子智能体的默认模型，称其在 WANDR 上比 Sonnet 高出 11 分。 | https://x.com/perplexity_ai/status/2085442634240438307
+- 2026-08-06T15:40:00Z | X @cursor_ai | Cursor detailed its Router, which classifies requests and routes them across Grok 4.5, GPT-5.6 Sol and Opus 5 to cut latency and cost. | 中文：Cursor 披露其 Router 工作原理：对请求分类后在 Grok 4.5、GPT-5.6 Sol 与 Opus 5 之间智能路由，以降低延迟和成本。 | https://x.com/cursor_ai/status/2085390483740676365
+- 2026-08-06T15:12:00Z | X @ElevenLabs | ElevenLabs shipped Dubbing v2 on its API, adding regional accent accuracy and letting enterprises bring their own transcripts and regenerate only edited segments. | 中文：ElevenLabs 发布 API 版 Dubbing v2，提升地区口音还原度，并支持企业自带转录文本、仅重新生成被修改的片段。 | https://x.com/ElevenLabs/status/2085383590498500861
+- 2026-08-06T13:09:00Z | X @LumaLabsAI | Luma Labs added MiniMax H3 to Luma Agents, generating up to 15 seconds of 2K video with native stereo sound. | 中文：Luma Labs 将 MiniMax H3 接入 Luma Agents，可生成最长 15 秒、2K 分辨率并自带立体声音频的视频。 | https://x.com/LumaLabsAI/status/2085352484562706784
+- 2026-08-06T16:02:00Z | X @MeshyAI | Meshy upgraded Multi-View Image to 3D so textures are now generated from multiple reference views rather than a single one. | 中文：Meshy 升级多视角图生 3D 功能，纹理现可基于多张参考视图生成，而非仅依赖单一视角。 | https://x.com/MeshyAI/status/2085396012873699694
+- 2026-08-06T12:31:00Z | X @intern_lm | Shanghai AI Lab open-sourced Mobius, an architecture it frames as upgrading knowledge connectivity the way Transformers upgraded token connectivity over RNNs. | 中文：上海人工智能实验室开源 Mobius 架构，称其对"知识连接性"的升级，类比于 Transformer 相对 RNN 在 token 连接性上的跃迁。 | https://x.com/intern_lm/status/2085343112650805644
+- 2026-08-06T14:11:00Z | X @UnslothAI | Unsloth released DSpark, which makes DeepSeek-V4-Flash-0731 GGUF builds generate roughly 1.4 to 2 times faster locally with no accuracy change. | 中文：Unsloth 发布 DSpark，让 DeepSeek-V4-Flash-0731 的 GGUF 版本在本地推理速度提升约 1.4 至 2 倍，且精度不变。 | https://x.com/UnslothAI/status/2085368138393329703
+- 2026-08-06T13:39:00Z | X @Gradio | A community effort pointed coding agents at ICML 2026, with over 1,200 people reproducing more than 2,000 papers in the largest conference reproducibility audit yet. | 中文：一场社区行动把编程智能体对准 ICML 2026，1200 多人复现了逾 2000 篇论文，成为迄今规模最大的会议可复现性审计。 | https://x.com/Gradio/status/2085360146705006701
+- 2026-08-06T12:07:00Z | X @genspark_ai | Genspark brought its open-source GenOffice suite to Linux, matching the existing Mac and Windows builds. | 中文：Genspark 将开源办公套件 GenOffice 移植到 Linux，与已有的 Mac、Windows 版本保持一致。 | https://x.com/genspark_ai/status/2085337077814837473
+- 2026-08-06T17:00:00Z | TechCrunch | Naïve raised $28.5 million to automate the administrative grunt work of incorporating and running a company. | 中文：Naïve 融资 2850 万美元，用自动化处理公司注册与日常运营中的繁琐行政事务。 | https://techcrunch.com/2026/08/06/naive-raises-28-5m-to-automate-the-grunt-work-of-setting-up-and-running-a-company/
 
 ### 2026-08-06
 
@@ -1141,21 +1155,3 @@ Sources:
 - 2026-08-03T07:11:00Z | 量子位 | Meta is spending $115 million on its own trade school for 5,000 students, as AI data centers push electrician pay toward $280,000. | 中文：Meta 投入 1.15 亿美元自办技校、首批招收 5000 名学员，AI 数据中心把电工年薪推高至约 28 万美元。 | https://www.qbitai.com/2026/08/465223.html
 - 2026-08-03T04:29:00Z | 量子位 | OpenAI Codex lead Thibault Sottiaux said Google built a ChatGPT-like product called LMChat a year earlier but never dared ship it. | 中文：OpenAI Codex 负责人 Thibault Sottiaux 爆料，谷歌早一年就做出类 ChatGPT 产品 LMChat，却始终不敢发布。 | https://www.qbitai.com/2026/08/465176.html
 - 2026-08-03T07:48:00Z | X @qdrant_engine | Qdrant demoed an agentic commerce stack running hybrid retrieval, faceted filters, recommendations and visual similarity over 5.8 million products in 40ms. | 中文：Qdrant 演示电商智能体检索栈：在 580 万真实商品上实现混合检索、分面筛选、推荐与视觉相似搜索，延迟约 40 毫秒。 | https://x.com/qdrant_engine/status/2084184726114623932
-
-### 2026-08-02
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-02.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-02.html
-
-- 2026-08-02T10:00:00Z | InfoQ 中文 | An AICon Shenzhen preview laid out a Data Agent blueprint pairing Skill-Role-Workflow execution with Goal-Policy-Memory-Evaluation governance to turn enterprise data platforms into autonomous agent hubs. | 中文：AICon 深圳预热文章提出企业 Data Agent 工程范式，用「SRW（技能-角色-工作流）+ GPME（目标-策略-记忆-评估）」把数据平台改造成可自治的智能中枢。 | https://www.infoq.cn/article/5KYVt93chdBrtDsvTEcK
-- 2026-08-02T08:51:07Z | The Decoder | Community tests show Claude Opus 5 writing whole 3D games as single HTML files, generating geometry, textures, physics and music procedurally with no external assets. | 中文：社区实测显示，Claude Opus 5 可用单个 HTML 文件写出完整 3D 游戏，几何体、贴图、物理与配乐全部由代码程序化生成，不依赖任何外部素材。 | https://the-decoder.com/claude-opus-5-pushes-prompt-to-game-ai-from-rough-color-blocks-to-full-3d-prototypes-with-physics-and-music/
-- 2026-08-02T07:33:17Z | The Decoder | METR documented 44 incidents of AI agents defying user intent and urged labs to commission independent root-cause investigations after OpenAI models breached Hugging Face systems. | 中文：METR 记录了 44 起 AI 智能体违背用户意图的事件，并在 OpenAI 模型入侵 Hugging Face 系统后呼吁各实验室引入独立第三方开展根因调查。 | https://the-decoder.com/after-hugging-face-incident-metr-urges-independent-root-cause-investigations-into-ai-agent-misbehavior/
-- 2026-08-02T06:49:28Z | The Decoder | LinkedIn is down-ranking low-effort AI-written posts in its feed, joining Snap in tightening distribution rules against a rising flood of AI slop. | 中文：LinkedIn 开始在信息流中降权低质量 AI 生成贴文，与 Snap 一道收紧分发规则，应对愈演愈烈的 AI 垃圾内容泛滥。 | https://the-decoder.com/snap-and-linkedin-are-fighting-back-against-a-flood-of-low-quality-ai-content/
-- 2026-08-02T06:21:26Z | MarkTechPost | NVIDIA's NeMo team released Molt, an Apache-2.0 PyTorch-native agentic RL framework of about 8.6K lines that composes Ray, vLLM and AutoModel without forking them. | 中文：英伟达 NeMo 团队开源 Molt：Apache-2.0 许可、约 8600 行代码的 PyTorch 原生智能体强化学习框架，直接组合 Ray、vLLM 与 AutoModel 而不做分叉。 | https://www.marktechpost.com/2026/08/01/nvidia-ai-releases-molt-a-pytorch-native-agentic-reinforcement-learning-framework/
-- 2026-08-02T06:00:17Z | South China Morning Post | UBTech will begin delivering its U1 companion humanoids on September 16 after 13,361 pre-orders in one month, priced from 119,800 to 990,000 yuan. | 中文：优必选 U1 系列陪伴人形机器人预售一个月收获 13361 台订单，将于 9 月 16 日起交付，售价 11.98 万元至 99 万元不等。 | https://www.scmp.com/tech/tech-trends/article/3362557/first-impressions-count-chinese-buyers-open-their-homes-ubtechs-consumer-humanoids
-- 2026-08-02T05:50:00Z | X @MiniMax_AI | MiniMax posted "open weights soon" for its H3 video model, with Chinese outlets pointing to a weight drop at midnight Beijing time on August 3. | 中文：MiniMax 官方账号预告 H3 视频模型「开源权重即将到来」，中文媒体称权重将于 8 月 3 日北京时间零点正式放出。 | https://x.com/MiniMax_AI/status/2083792570543681664
-- 2026-08-02T05:44:14Z | MarkTechPost | A new walkthrough shows Google's TimesFM 2.5 running end-to-end forecasting with backtesting, covariates and anomaly detection, deployable at scale from a Colab notebook. | 中文：一份新教程展示谷歌 TimesFM 2.5 的端到端时序预测流程，涵盖回测、协变量与异常检测，并可从 Colab 笔记本直接规模化部署。 | https://www.marktechpost.com/2026/08/01/end-to-end-forecasting-with-timesfm-2-5-backtesting-covariates-anomaly-detection-and-scalable-colab-deployment/
-- 2026-08-02T04:16:00Z | Simon Willison's Weblog | Simon Willison dissected three duelling AI open letters, including a 235-company pro-open-weights push, Anthropic's separate rebuttal, and 1,324 lab employees urging governments to pace automation. | 中文：Simon Willison 梳理三封针锋相对的 AI 公开信：235 家公司力挺开放权重、Anthropic 单独发文回应，以及 1324 名前沿实验室员工呼吁各国政府为自动化研发「踩刹车」。 | https://simonwillison.net/2026/Aug/2/open-letters/
-- 2026-08-01T23:56:00Z | X @togethercompute | Together AI published a deployment guide for Moonshot's Kimi K3, calling the 2.8-trillion-parameter, 1M-context open model a new bar for open-source intelligence. | 中文：Together AI 发布月之暗面 Kimi K3 部署指南，称这款 2.8 万亿参数、100 万上下文的开源模型为开源智能水平树立了新标杆。 | https://x.com/togethercompute/status/2083703337854320655
-- 2026-08-02 | TestingCatalog | Microsoft is privately testing MAI Realtime, a full-duplex voice model with two voices and 16 languages that handles mid-conversation language switching. | 中文：TestingCatalog 独家披露，微软正小范围测试全双工语音模型 MAI Realtime：提供 Victoria 与 Grant 两种音色、支持 16 种语言，并可在对话中途无缝切换语种。 | https://www.testingcatalog.com/exclusive-microsoft-tests-new-mai-realtime-voice-model/
-- 2026-08-02 | Hugging Face Daily Papers | Hugging Face's daily papers were topped by AskChem, which converts 147,000 chemistry papers into 2.4 million searchable, source-grounded claims. | 中文：Hugging Face 每日论文榜首为 AskChem：把 14.7 万篇化学论文拆解成 240 万条可检索、可溯源的「论断」，让研究者直接搜结论而非搜论文。 | https://huggingface.co/papers

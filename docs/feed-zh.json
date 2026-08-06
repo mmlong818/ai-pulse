@@ -13,6 +13,234 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/agent-plugins-standard-1-0.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/agent-plugins-standard-1-0.html",
+      "title": "OpenAI 联手 Vercel 等推出 Agent Plugins 1.0 开放标准",
+      "summary": "该规范把 Agent Skills 与 MCP 服务器配置打包成一份可移植插件，首发支持 ChatGPT、Codex、Cursor、Copilot、Kiro 与 VS Code。",
+      "content_text": "8 月 6 日，六家公司共同发布 Agent Plugins 1.0.0——一套开放规范，让智能体扩展只需打包一次，即可在互为竞争对手的各家客户端中通用。\n\n## 格式本身\n\n一个插件就是一个目录：根部放 `plugin.json` 清单，必填字段只有两个（schema 版本与插件名）；技能放在 `skills/` 目录，MCP 服务器配置写进 `mcp.json`，各客户端的私有扩展则通过命名空间字段承载。刻意的极简是设计要点——由目录结构而非庞大 schema 来承担契约，实现方接入成本被压到很低。\n\n这份规范把此前分头传播的两样东西合到了一起：Agent Skills 是教智能体「怎么做某件事」的自然语言指令文档，MCP 服务器则负责暴露工具与数据。扩展作者过去不得不按各家客户端的约定反复重新打包，如今只需产出一份产物。\n\n## 参与方\n\n提案由 Vercel 发起，亚马逊云科技、Anysphere（Cursor）、GitHub、微软、OpenAI 与 Vercel 的工程师共同打磨至 1.0.0。首届技术指导委员会由 AWS、Cursor、微软、OpenAI 与 Vercel 的核心维护者组成。首发支持该格式的客户端为 ChatGPT、Codex、Cursor、GitHub Copilot、Kiro 和 VS Code。治理流程与规范托管在公开仓库，文档见 agent-plugins.org。\n\n首发名单里少了一个显眼的名字：Anthropic。该规范正是构建在其 Agent Skills 格式之上，而它的 Claude Code 是当下使用最广的编程智能体之一。无论是参与方还是首发客户端名单中都未出现 Anthropic 与 Claude Code，该公司也尚未公开表态是否会跟进采用。\n\n## 为什么重要\n\nMCP 统一了工具调用的传输协议，Agent Plugins 则试图统一它上面那一层——作者真正对外分发的那个「包」。如果标准立得住，插件生态就从各家的护城河变成可移植资产，智能体客户端将被迫在执行质量上竞争，而不是靠独占扩展留人。悬而未决的问题是：一个由 OpenAI、微软、AWS 与 Vercel 主推的标准，在缺席了提供原始格式的那家厂商的情况下，能否真正做到中立。",
+      "date_published": "2026-08-06T16:11:00.000Z",
+      "date_modified": "2026-08-06T23:00:03.114Z",
+      "tags": [
+        "Agent",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/agent-plugins-standard-1-0.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/agent-plugins-standard-1-0.html",
+        "source_published_at": "2026-08-06T16:11:00.000Z",
+        "site_published_at": "2026-08-06T23:00:03.114Z",
+        "sources": [
+          {
+            "title": "Introducing Agent Plugins — Vercel",
+            "url": "https://vercel.com/blog/introducing-agent-plugins"
+          },
+          {
+            "title": "OpenAI Developers on X",
+            "url": "https://x.com/OpenAIDevs/status/2085398373511918022"
+          },
+          {
+            "title": "Introducing Agent Plugins 1.0.0 — Vercel Changelog",
+            "url": "https://vercel.com/changelog/introducing-agent-plugins-1-0-0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/amd-acquires-taalas-hardwired-silicon.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/amd-acquires-taalas-hardwired-silicon.html",
+      "title": "AMD 收购 Taalas：把大模型直接「刻」进芯片",
+      "summary": "这家多伦多初创公司在权重冻结后定制芯片金属层，宣称推理系统可完全不用 HBM、先进封装、3D 堆叠与液冷。",
+      "content_text": "8 月 6 日，AMD 宣布已达成协议收购多伦多芯片初创公司 Taalas。这家成立于 2023 年的公司不做通用算力芯片，而是围绕某一个固定模型来造芯片。交易金额未披露，需通过监管审批，预计四季度完成交割。\n\n## Taalas 造的是什么\n\nTaalas 把自己的产品称为「Hardcore Models」。当一个模型的权重确定后，公司只需定制芯片中少数几层金属层就能把权重固化进硬件，让存储与计算在同一颗裸片上合一。其宣称的结果是：整套推理系统不需要高带宽内存、不需要先进封装、不需要 3D 堆叠、也不需要液冷——而这四项恰恰是当代推理机柜物料成本的大头。公司称，从拿到一个全新模型到做出硬件约需两个月。今年 2 月亮相的首款产品固化的是 Meta 的 Llama 3.1 8B。\n\nAMD 人工智能事业群高级副总裁 Vamsi Boppana 表示，此次收购是在补全全栈 AI 平台，Taalas 技术将与 Instinct GPU 一同进入加速器路线图。Taalas 联合创始人兼 CEO Ljubisa Bajic（此前是 Tenstorrent 的创始人之一）称，并入 AMD 带来了规模与工程资源。\n\n## 为什么重要\n\n行业算力开支的重心正从训练转向推理，而推理是一种形态完全不同的负载：同一套权重被调用数十亿次。把权重硬连线进芯片，等于用全部灵活性换效率——此前这笔交易一直显得太脆，因为前沿模型几个月就换一代。Taalas 的两个月周转期，赌的就是这笔交易如今算得过来了。对 AMD 而言，这是一条不必在通用 GPU 上正面赢过英伟达的对冲路径：一旦相当比例的生产级推理沉淀到少数几个稳定的开源权重模型上，固定功能芯片有望在服务成本上大幅压过 GPU。这同时也给开源权重生态添了一条硬件层面的理由——只有部署广、版本稳的模型才值得「刻进硅里」，而这正是任何人都能下载的那类模型的天然优势。",
+      "date_published": "2026-08-06T20:14:00.000Z",
+      "date_modified": "2026-08-06T23:00:03.114Z",
+      "tags": [
+        "产业",
+        "模型"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/amd-acquires-taalas-hardwired-silicon.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/amd-acquires-taalas-hardwired-silicon.html",
+        "source_published_at": "2026-08-06T20:14:00.000Z",
+        "site_published_at": "2026-08-06T23:00:03.114Z",
+        "sources": [
+          {
+            "title": "AMD Acquires Taalas to Advance Compute Solutions for Rapidly Growing AI Inference Market",
+            "url": "https://ir.amd.com/news-events/press-releases/detail/1296/amd-acquires-taalas-to-advance-compute-solutions-for-rapidly-growing-ai-inference-market"
+          },
+          {
+            "title": "AMD acquires AI chip startup Taalas to boost inference performance by etching models into silicon",
+            "url": "https://www.theregister.com/systems/2026/08/06/amd-acquires-ai-chip-startup-taalas-to-boost-inference-performance-by-etching-models-into-silicon/"
+          },
+          {
+            "title": "AMD buys Taalas, startup that hardwires AI models into its silicon",
+            "url": "https://www.cnbc.com/2026/08/06/amd-buys-taalas-startup-that-hardwires-ai-models-into-its-silicon.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-kitesurf-agent-browser.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-kitesurf-agent-browser.html",
+      "title": "Cloudflare 推出 Kitesurf：为智能体重造的无 Chromium 浏览器",
+      "summary": "该浏览器完全跑在 Workers 的 V8 隔离环境中，官方称常见智能体任务下 CPU 与内存开销仅为 Chromium 的三分之一到七分之一，代价是耗时约 1.7–1.8 倍。",
+      "content_text": "8 月 6 日，Cloudflare 发布 Kitesurf——一款为 AI 智能体设计的网页浏览器，完全运行在 Cloudflare Workers 的 V8 隔离环境中，底层没有 Chromium。目前通过 Browser Run 免费开放公测，按账号设有额度限制。\n\n## 架构\n\nKitesurf 砍掉了浏览器中为人类而生的部分——标签页、扩展、像素级 60fps 合成渲染，只保留智能体真正消费的东西：机器可读的页面内容、更低的 token 开销、廉价的并发与隔离性。系统分为四部分：Engine 通过 Chrome DevTools Protocol 与 HTTP REST 管理会话；PageScript 基于 Rust 渲染引擎 Blitz 与 Firefox 的 Stylo CSS 解析器处理 DOM 与布局；PageRenderer 负责输出 JPEG、PNG 或 PDF；SandboxOutbound 则执行网络策略、CORS 与 Cookie 管控。\n\nCloudflare 称，在截图、HTML 抽取等典型智能体负载下，相比 Chromium 其 CPU 占用降至 1/3.1–1/3.8、内存降至 1/4.7–1/7.0，代价是墙钟耗时增加约 1.7–1.8 倍。官方称该引擎已通过超过 21.5 万项 Web Platform Tests。现有 Puppeteer、Playwright 与 MCP 客户端只需加一个 `browser=kitesurf` 参数即可切换，Cloudflare 表示后续计划开源以支持自托管。\n\n## 为什么重要\n\n「让智能体用浏览器」已成为默认能力，而业界标准做法——每个会话起一个无头 Chromium——从来就不是为此设计的。Chromium 的开销大头是智能体根本不看的渲染保真度，这让单智能体浏览贵到直接限制产品能承受的并发会话数。Kitesurf 的取舍很明确也不常见：接受近乎翻倍的延迟，换取数倍的资源节省——当智能体无人值守长跑、真正的约束是成本而非响应速度时，这个方向是对的。\n\n战略层面看，Cloudflare 是在把浏览器做成自己出售的基础设施，而不是让每家智能体厂商各自重造一遍——和它当年用 Workers 做算力是同一套打法。若开源承诺兑现，更深远的影响可能是：多年来第一次，有一款可信的非 Chromium 引擎进入了规模化生产使用。",
+      "date_published": "2026-08-06T14:30:00.000Z",
+      "date_modified": "2026-08-06T23:00:03.114Z",
+      "tags": [
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cloudflare-kitesurf-agent-browser.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-kitesurf-agent-browser.html",
+        "source_published_at": "2026-08-06T14:30:00.000Z",
+        "site_published_at": "2026-08-06T23:00:03.114Z",
+        "sources": [
+          {
+            "title": "Introducing Kitesurf: The agent-first browser that runs in V8 isolates on Cloudflare Workers",
+            "url": "https://blog.cloudflare.com/kitesurf/"
+          },
+          {
+            "title": "Cloudflare Introduces Kitesurf: An Agent-First Web Browser That Runs Entirely in V8 Isolates on Cloudflare Workers",
+            "url": "https://www.marktechpost.com/2026/08/06/cloudflare-introduces-kitesurf-an-agent-first-web-browser-that-runs-entirely-in-v8-isolates-on-cloudflare-workers/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-weathernext-cyclones-open.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-weathernext-cyclones-open.html",
+      "title": "DeepMind 台风预报模型登 Nature，代码权重同步开源",
+      "summary": "WeatherNext Cyclones 在路径、强度与风场三项上刷新精度，三天预报相当于旧系统两天水平，代码与权重已上传 GitHub。",
+      "content_text": "8 月 6 日，谷歌 DeepMind 在《自然》发表其热带气旋预报模型 WeatherNext 的研究，并同步在 GitHub 开源代码与模型权重——这套系统此前已进入实际的飓风业务预报流程。\n\n## 结果本身\n\nWeatherNext Cyclones 可生成长达 15 天的概率性预报，覆盖风暴路径、强度与风场结构三个维度。DeepMind 称三项均达到当前最优，并用预报员真正在意的指标来衡量收益：提前量。平均而言，它的三天预报质量相当于此前系统的两天水平，等于凭空多出一整天预警时间。考虑到业务预报技巧的历史进步速度大致是「十年提前一天」，这相当于一次性兑现了十年进展。\n\n模型训练数据包含多年全球大气再分析资料（约 20TB 规模），并叠加了收录近 5000 个历史气旋的 IBTrACS 数据库——后者提供的正是通用大气训练容易「抹平」的风暴细结构。DeepMind 举飓风 Melissa 为实战例证：预报员提前五天就以 80% 置信度获得了五级登陆的预警信号。\n\n## 开源与合作方\n\n代码与权重已在 GitHub 开放，可用于学术、业务与商业用途；精简版 WeatherNext 2-mini 可在免费 Colab 笔记本中运行，预报结果也通过 Weather Lab 对外提供。合作方包括美国国家飓风中心、大气研究合作institute（CIRA）、英国气象局及多国气象机构，DeepMind 表示本季将向更多预报员扩大开放。\n\n## 为什么重要\n\n机器学习气象模型在通用预报上超越数值模拟已有两年，但热带气旋——样本稀少、尺度小、后果严重——一直是业务界保持谨慎的硬骨头。发表于《自然》在公开层面终结了方法论之争，开源权重则终结了可及性之争：任何国家气象部门，包括负担不起传统气旋模式所需超算的机构，如今都能在普通硬件上跑一套前沿系统。这也是前沿实验室罕见地开源一个主要价值并非商业的模型，是当下 AI 能力转化为可量化公共安全收益最清晰的例子。",
+      "date_published": "2026-08-06T15:06:00.000Z",
+      "date_modified": "2026-08-06T23:00:03.114Z",
+      "tags": [
+        "研究",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepmind-weathernext-cyclones-open.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-weathernext-cyclones-open.html",
+        "source_published_at": "2026-08-06T15:06:00.000Z",
+        "site_published_at": "2026-08-06T23:00:03.114Z",
+        "sources": [
+          {
+            "title": "WeatherNext: AI model achieves breakthrough in forecasting cyclones",
+            "url": "https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones/"
+          },
+          {
+            "title": "Google DeepMind on X",
+            "url": "https://x.com/GoogleDeepMind/status/2085395442347524506"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-splits-chatgpt-sol-luna.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-splits-chatgpt-sol-luna.html",
+      "title": "OpenAI 重划 ChatGPT 分层：付费用 Sol，免费转 Luna",
+      "summary": "付费用户全面切换到升级版 GPT-5.6 Sol 并获得五档推理滑杆，免费与 Go 用户则默认改用更小的 Luna，换来文字对话不限量。",
+      "content_text": "8 月 6 日，OpenAI 发布产品更新，重新划定了 ChatGPT 付费与免费用户之间的模型分界线。这次调整没有推出新的前沿模型，改动的是近十亿用户以何种方式触达已有模型。\n\n## 付费侧：Sol 统一接管，新增推理滑杆\n\nPlus 与 Pro 用户的全部对话现在都由升级后的 GPT-5.6 Sol 驱动，包括此前由更轻量模型承担的「Instant」快速路径。OpenAI 称新版 Sol 减少了冗余细节和过度排版，倾向于把结论前置、把回答压短。同时付费用户获得一个五档推理强度滑杆，可以按问题自行在延迟与深度之间取舍，而不再需要在下拉菜单里挑模型。按官方内部的高风险事实性评测，Sol 相比旧版 GPT-5.5 Instant 的事实性错误下降约 68%——该数字尚无第三方复现。\n\n## 免费侧：默认换成更小的 Luna\n\n免费与 Go 用户的默认模型改为体量更小的 GPT-5.6 Luna，同时新增「Think」按钮，可让 Luna 在难题上思考更久，但它延长的是小模型的推理时间，并不会升级到 Sol。官方称 Luna 在同一基准下事实性错误下降约 62%。作为补偿，免费层下周起开放不限量文字对话，终结了长期存在的消息条数上限；文件、图像、语音和图像生成仍有各自配额。付费侧改动即时生效，免费侧则在本周与下周分批推送。\n\n## 为什么重要\n\n这是 OpenAI 迄今对「消费级推理如何算得过账」最清晰的一次表态。漏斗底部之所以敢放开无限对话，前提是底部由小模型承接；而 Think 按钮的作用，是把用户对推理的需求吸收在小模型内部，不让它流向昂贵权重。结构性后果是：免费版与付费版 ChatGPT 的质量落差从此前的隐性差异变成了显性设计。对同样在大规模免费分发助手的竞争对手来说，这是一份必须回应的模板；对数亿普通用户而言，这直接决定了他们向 AI 提出难题时到底能拿到什么。",
+      "date_published": "2026-08-06T17:00:00.000Z",
+      "date_modified": "2026-08-06T23:00:03.114Z",
+      "tags": [
+        "模型",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-splits-chatgpt-sol-luna.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-splits-chatgpt-sol-luna.html",
+        "source_published_at": "2026-08-06T17:00:00.000Z",
+        "site_published_at": "2026-08-06T23:00:03.114Z",
+        "sources": [
+          {
+            "title": "Improving GPT-5.6 Sol in ChatGPT, expanding GPT-5.6 Luna access for free users",
+            "url": "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/"
+          },
+          {
+            "title": "OpenAI improves GPT-5.6 Sol in ChatGPT and restricts free users to its weakest model",
+            "url": "https://the-decoder.com/openai-improves-gpt-5-6-sol-in-chatgpt-and-restricts-free-users-to-its-weakest-model/"
+          },
+          {
+            "title": "ChatGPT brings unlimited text chats to free users",
+            "url": "https://techcrunch.com/2026/08/06/openai-brings-unlimited-chatgpt-text-chats-to-free-users/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/suno-watermarks-ai-generated-songs.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/suno-watermarks-ai-generated-songs.html",
+      "title": "Suno 宣布给 AI 生成歌曲加水印与指纹",
+      "summary": "该音乐生成平台将嵌入抗篡改音频水印、引入指纹识别、收紧批量下载，并接入 Musixmatch 的 Sentinel 歌词版权检测系统。",
+      "content_text": "8 月 6 日，AI 音乐生成平台 Suno 宣布将开始为模型生成的歌曲加标记，方案包含音频水印、音频指纹、更严格的下载规则，以及一项歌词版权检测的合作授权。\n\n## 具体措施\n\nCEO Mikey Shulman 在公司博客中称，这些标记将做到「耐久且抗篡改」，同时不影响听感。Suno 尚未说明将采用哪套方案（谷歌 SynthID 抑或其他），也未给出执行时间表。除水印外，公司还将对生成音频做指纹处理，以便事后识别；并调整下载策略，加大把生成内容批量分发到流媒体平台的难度。更新后的社区规范明确禁止具有欺骗性的音频以及未经许可使用他人声音。此外，Suno 已与歌词服务商 Musixmatch 达成协议，接入其 Sentinel 版权检测系统。\n\n## 背景\n\n这份声明发布于 Suno 法律处境最艰难的时期。公司正面临主流唱片公司与艺人组织的多起诉讼，近期在德国音乐版权协会 GEMA 提起的案件中败诉，还因一起波及数千万用户的数据泄露事件遭遇集体诉讼。今年 6 月，它刚完成 4 亿美元 D 轮融资。与此同时，流媒体平台过去一年大规模清理 AI 生成上传内容，并持续施压要求生成方在源头就让内容可被识别。\n\n## 为什么重要\n\n「来源标记」被业界当作应对 AI 垃圾内容的标准答案已有两年，但它只有在生成方自己动手时才成立——事后在下游做检测的路线屡屡失效。Suno 是迄今体量最大的、公开作出此类承诺的音乐生成平台，因此它的落地效果将成为一次事实上的检验：音频水印能否扛住重新编码、音轨分离与刻意剥离。这同样是一种谈判姿态——唱片公司与平台已把「可识别」列为授权谈判的前提，能自证哪些曲目出自己家的生成方，手里才有筹码。至于这最终换来的是和解，还是给原告提供了更干净的证据，尚无定论。",
+      "date_published": "2026-08-06T13:31:00.000Z",
+      "date_modified": "2026-08-06T23:00:03.114Z",
+      "tags": [
+        "AIGC",
+        "政策"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/suno-watermarks-ai-generated-songs.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/suno-watermarks-ai-generated-songs.html",
+        "source_published_at": "2026-08-06T13:31:00.000Z",
+        "site_published_at": "2026-08-06T23:00:03.114Z",
+        "sources": [
+          {
+            "title": "Amid legal battles, Suno says it will start watermarking songs",
+            "url": "https://techcrunch.com/2026/08/06/amid-legal-battles-suno-says-it-will-start-watermarking-songs/"
+          },
+          {
+            "title": "Suno hopes to go legit with watermarks for AI-generated music",
+            "url": "https://arstechnica.com/ai/2026/08/suno-hopes-to-go-legit-with-watermarks-for-ai-generated-music/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-hires-custom-silicon-team.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-hires-custom-silicon-team.html",
       "title": "Anthropic 开始组建自研 AI 芯片设计团队",
@@ -1733,238 +1961,6 @@
           {
             "title": "Google reveals Gemini Robotics 2.0 — Ars Technica",
             "url": "https://arstechnica.com/ai/2026/07/google-reveals-gemini-robotics-2-0-promising-improved-dexterity-and-safety/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-spark-chrome-auto-browse.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-spark-chrome-auto-browse.html",
-      "title": "Gemini Spark 接入 Chrome 自动浏览，美国用户先行",
-      "summary": "谷歌把智能体嵌进 Chrome，Spark 可借用户已登录的会话直接在网页上操作，同时将 Spark 覆盖扩展到 160 多个国家。",
-      "content_text": "谷歌周四开始推送 Gemini Spark 与 Chrome 的集成，通过名为\"自动浏览\"（auto browse）的功能，让智能体直接驱动浏览器。\n\n## 具体形态\n\n在获得用户明确授权后，Spark 直接在桌面版 Chrome 内运行，而不是另开一个隔离的沙箱浏览器——这意味着它继承了用户已登录的账号和已保存的密码。谷歌给出的示例集中在过去卡在登录墙前的多步网页事务：预约看房、比价航班并启动预订流程等。该功能面向美国的 Google AI Pro 与 Ultra 订阅用户推送，谷歌称后续会扩展到其他地区。欧洲经济区、英国、瑞士和尼日利亚暂不可用。\n\n与 Chrome 集成同步的是一次地域扩张：Spark 向 160 多个国家和地区的 AI Pro 订阅用户开放，相比一周前仅限美国是大幅放开。同一天，Gemini 应用还接入了 Viator，美国用户可在 Gemini 和 Gemini Spark 中直接检索并预订超过 42.5 万项旅游与活动项目——这是谷歌如何为智能体交易变现的一个早期信号。\n\n## 为何重要\n\n浏览器智能体此前普遍被关在隔离环境里，恰恰是因为\"带凭证浏览\"才是难点：拿不到用户会话的智能体只能读公开网页，任何需要账号的事都做不完。让智能体跑在用户自己的 Chrome 配置文件里，谷歌等于把消费互联网上最大的浏览器分发量直接变成了智能体的执行面，这是那些做独立智能体浏览器的创业公司在覆盖面上无法企及的。\n\n优势的另一面是对应的风险。带着有效会话 cookie 在任意网页上行动的智能体，会暴露在来自页面内容的提示词注入之下，而注入成功的后果也从\"答错一个问题\"升级为\"在已登录账号上执行未授权操作\"。欧洲经济区与英国被排除在外，同样说明监管分化正在决定智能体功能先在哪里落地，以及不同市场之间的能力差距可能拉开得多快。",
-      "date_published": "2026-07-30T20:15:00.000Z",
-      "date_modified": "2026-07-30T23:00:00.000Z",
-      "tags": [
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gemini-spark-chrome-auto-browse.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-spark-chrome-auto-browse.html",
-        "source_published_at": "2026-07-30T20:15:00.000Z",
-        "site_published_at": "2026-07-30T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Gemini Spark: new Chrome browsing integration — Google",
-            "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-july-2026/"
-          },
-          {
-            "title": "Gemini App on X: Spark and Chrome auto browse",
-            "url": "https://x.com/GeminiApp/status/2082923048362299629"
-          },
-          {
-            "title": "Gemini Spark can now use Chrome to auto browse — 9to5Google",
-            "url": "https://9to5google.com/2026/07/30/gemini-spark-chrome-auto-browse/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/ideogram-pruna-p-image.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/ideogram-pruna-p-image.html",
-      "title": "Ideogram 联手 Pruna 推出每张 0.003 美元的图像模型",
-      "summary": "P-Image-Ideogram 提供四档质量模式、原生 1K 与 2K 输出、3 至 8 秒出图，直接瞄准规模化生产的图像流水线。",
-      "content_text": "Ideogram 周四发布 P-Image-Ideogram，这是与推理优化创业公司 Pruna AI 联合开发的文生图模型家族，主打成本与速度，而非单纯拼画质上限。\n\n## 发布内容\n\n该系列提供极低、低、中、高四档质量模式，开发者可在同一套 API 内按需在画质与价格之间取舍。模型原生支持 1K 与 2K 分辨率及多种画幅比例，出图耗时 3 至 8 秒，价格低至每张 0.003 美元。它还支持 JSON 结构化提示词与版面控制——这些能力面向的是程序化流水线，而不是交互式创作。官方在发布示例中重点展示了照片级写实、文字渲染与风格多样性，其中文字排版一直是 Ideogram 最强的差异化能力。\n\nIdeogram 的核心主张是一个帕累托论证：在 DesignArena 的盲测人类投票图像榜单上，P-Image-Ideogram 同时推进了\"质量对成本\"和\"质量对速度\"两条前沿曲线，即榜上没有任何竞品能做到既更便宜又更好、或既更快又更好。该公司并未宣称拿下绝对画质第一。\n\n首日分发铺得很开。除自家 API 外，模型已在 ComfyUI、Replicate、Runware、Cloudflare、Leonardo AI、Picsart 和 Magnific 上线，Replicate 等平台在发布数小时内即宣布可用。此前 Ideogram 刚宣布与 AMD 合作，用 Instinct 加速器为其开源权重的 Ideogram 4.0 提供推理服务，显示出该公司正试图掌控自己的推理成本结构。\n\n## 为何重要\n\n图像生成的竞争重心，已经从\"模型能不能画出这个场景\"转向\"规模化生产这个场景要花多少钱\"。每张 0.003 美元、十秒内出图，改变的是那些每天生成数千张素材的应用的账本——电商商品图、广告素材 A/B 测试、游戏与 App 资源流水线——在这些场景里，决定天花板的是单张成本而非边际美感。与 Pruna 的联名也说明，专做压缩与推理优化的厂商正从下游优化者变成前沿消费级模型的共同作者。",
-      "date_published": "2026-07-30T14:45:00.000Z",
-      "date_modified": "2026-07-30T23:00:00.000Z",
-      "tags": [
-        "AIGC",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/ideogram-pruna-p-image.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/ideogram-pruna-p-image.html",
-        "source_published_at": "2026-07-30T14:45:00.000Z",
-        "site_published_at": "2026-07-30T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Ideogram on X: introducing P-Image-Ideogram",
-            "url": "https://x.com/ideogram_ai/status/2082839902207779024"
-          },
-          {
-            "title": "P-Image Model — Pruna AI",
-            "url": "https://www.pruna.ai/p-image"
-          },
-          {
-            "title": "Replicate on X: P-Image-Ideogram availability",
-            "url": "https://x.com/replicate/status/2082836594789155272"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/jetbrains-open-sources-kotlinllm.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/jetbrains-open-sources-kotlinllm.html",
-      "title": "JetBrains 开源 KotlinLLM：运行时生成代码",
-      "summary": "JetBrains Research 以 Apache 2.0 开源 KotlinLLM：IntelliJ 插件在运行时生成 Kotlin 函数体，失败即凭断点数据重写并热加载。",
-      "content_text": "## 函数体交给模型在运行时写\n\n7月31日，JetBrains Research 发布 KotlinLLM，一款以 Apache 2.0 协议开源的 IntelliJ IDEA 插件：开发者只声明 Kotlin 函数，实现留给运行时的大模型生成。核心是两个 API——`asLlm<F, T>(from, hint)` 负责类型间转换，`mockLlm<T>()` 按需生成接口实现。\n\n机制颇为特别。插件先扫描项目中的宏调用点，生成引导代码，再让程序在 Java Debug Interface 下运行。当生成的逻辑处理不了真实场景时，运行时断点会捕获当下的实际取值，由 LLM 智能体据此重写代码，随后通过 JVM 类重定义完成重新编译与热加载，再次尝试执行。\n\n## 成本只在首次场景付出\n\n由于这套循环产出的是真实 Kotlin 源码，最终交付的就是普通代码，运行时不依赖模型。已覆盖过的场景不会再触发模型调用，走过的路径上没有额外延迟与 token 开销——这与每次调用都问一遍模型的智能体设计明显不同。在 Spring Petclinic 示例项目上，JetBrains 称 24 个场景全部通过，热加载成功率 100%。团队将其定位为研究原型，明确不建议作为生产运行时使用。\n\n## 为什么值得关注\n\n目前多数编码智能体工具都工作在程序运行之前：读仓库、给 diff、等测试结果。KotlinLLM 反其道而行，把运行时状态当作规格说明，绕开代码生成最难的一环——从静态上下文里猜意图——直接从调试器拿到事实。这一范式能否推广到 JVM 之外（其热加载与调试能力本就格外好）尚无定论，但作为 Kotlin 缔造者放出的 Apache 协议参考实现，它给智能体基础设施圈提供了一个可以拿来挑战“改 diff 加跑测试”主流路线的具体样本。",
-      "date_published": "2026-07-31T10:32:00.000Z",
-      "date_modified": "2026-07-31T11:00:03.442Z",
-      "tags": [
-        "开源",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/jetbrains-open-sources-kotlinllm.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/jetbrains-open-sources-kotlinllm.html",
-        "source_published_at": "2026-07-31T10:32:00.000Z",
-        "site_published_at": "2026-07-31T11:00:03.442Z",
-        "sources": [
-          {
-            "title": "MarkTechPost: JetBrains Open-Sources KotlinLLM",
-            "url": "https://www.marktechpost.com/2026/07/31/jetbrains-research-open-sources-kotlinllm-intellij-plugin-kotlin-runtime-llm/"
-          },
-          {
-            "title": "GitHub: JetBrains-Research/kotlinllm-plugin",
-            "url": "https://github.com/JetBrains-Research/kotlinllm-plugin"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-5-6-price-cut.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-5-6-price-cut.html",
-      "title": "OpenAI 下调 GPT-5.6 定价：Luna 降 80%、Terra 降 20%",
-      "summary": "OpenAI 大幅下调 GPT-5.6 系列 API 价格，Luna 输入价降至每百万 token 0.2 美元，并为 Sol 新增付费高速模式。",
-      "content_text": "OpenAI 周四宣布即时下调 GPT-5.6 系列的 API 价格，入门档 Luna 降价 80%，中间档 Terra 降价 20%。\n\n## 具体变化\n\nLuna 的输入价格降至每百万 token 0.2 美元、输出 1.2 美元，此前分别约为 1 美元和 6 美元；Terra 调整为输入 2 美元、输出 12 美元。同时，OpenAI 为 GPT-5.6 Sol 在 API 中新增 Fast 处理模式，吞吐最高可达标准模式的 2.5 倍，价格为标准档的两倍——把\"低延迟\"单独拆成一个付费档位，在 OpenAI 的定价史上并不常见。\n\n官方将降价归因于模型、推理栈和智能体 harness 三个层面的效率优化：GPT-5.6 Sol 被用来优化 GPU 底层软件，使自身部署成本下降约 20%；投机解码等改进则让 token 生成吞吐提升超过 15%。OpenAI 用任务成本来描述综合效果：一年前在同类模型上花费约 1 美元的任务，如今在 Luna 上约合 6 美分，且完成速度明显更快。\n\n与降价同步，ChatGPT 应用和 Codex CLI 中的自动代码审查从 GPT-5.4 切换到 GPT-5.6 Luna，OpenAI 称模型更换叠加新价格将大幅降低自动审查开销。Cognition 当天即更新 FrontierCode 1.1 榜单，按新成本重新计算后把 GPT-5.6 系列放在了性价比帕累托前沿上；Arena 榜单同日也完成重新定价。\n\n## 为何重要\n\n推理定价已经成为中美实验室最直接的竞争战场——智谱、月之暗面、DeepSeek 等开源权重模型的调用成本长期比西方 API 低一个数量级。一次针对通用档位的 80% 降价，等于正面压缩这道价差，也重写了智能体产品\"自建还是采购\"的账本。对于 token 消耗随任务时长而非用户数增长的长程智能体来说，这更像是单位经济模型的结构性变化，而不是一次常规促销。",
-      "date_published": "2026-07-30T17:15:00.000Z",
-      "date_modified": "2026-07-30T23:00:00.000Z",
-      "tags": [
-        "产业",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt-5-6-price-cut.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-5-6-price-cut.html",
-        "source_published_at": "2026-07-30T17:15:00.000Z",
-        "site_published_at": "2026-07-30T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Advancing the price-performance frontier with GPT-5.6 — OpenAI",
-            "url": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/"
-          },
-          {
-            "title": "OpenAI goes full China pricing mode with an 80 percent cut — The Decoder",
-            "url": "https://the-decoder.com/openai-goes-full-china-pricing-mode-with-an-80-percent-cut-to-its-most-affordable-gpt-5-6-model/"
-          },
-          {
-            "title": "OpenAI on X",
-            "url": "https://x.com/OpenAI/status/2082878156483219672"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-projects-computer.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-projects-computer.html",
-      "title": "Perplexity 将 Spaces 升级为 Projects，全量开放",
-      "summary": "Perplexity 把 Spaces 重构为 Projects——面向 Computer 智能体的持久工作区，配备共享文件系统并接入 Brain 记忆系统。",
-      "content_text": "Perplexity 周四推出 Projects，以围绕其智能体产品 Computer 构建的持久工作区取代原有的 Spaces 功能，并称该功能即日起向所有用户开放。\n\n## 变化在哪\n\nSpaces 此前更像一个资料集合——用来归拢对话线程和参考文件；Projects 则是围绕持续进行的智能体工作组织的。每个 Project 自带一套共享文件系统，Computer 可以跨会话读取、编辑和保存其中的文件，于是上一个任务的产出会成为下一个任务的输入，而不是随着对话结束一并作废。Perplexity 将 Projects 定位为管理、创建与协作任务的中枢，多人可以在同一个 Project 中协同。\n\n更关键的是与 Brain 的打通——这是 Perplexity 6 月为 Computer 推出的自我改进型记忆系统。在两次任务之间，Brain 会回顾该 Project 累积的文件与会话记录并更新自己对这项工作的理解，使新任务从\"已有全部前情\"开始，而不是冷启动。官方此前给出的数据是：在依赖历史上下文的任务上，Brain 让答案正确率提升 25%、召回率提升 16%，单任务成本下降 13%。Brain 本身仍以研究预览形式面向 Max 与 Enterprise Max 订阅用户推送。\n\n此次发布延续了 Computer 的密集迭代节奏：7 月 28 日上线 Windows 桌面客户端，此前推出的 SPACE 沙箱运行时已承载全部 Computer 会话，另有可让同一问题在多个前沿模型上并行分析的 Model Council 功能。\n\n## 为何重要\n\n智能体产品正撞上同一个瓶颈：工作不会累积。每次会话都从零开始，用户只能靠反复上传资料、重新交代背景来弥补。把持久文件系统和记忆层挂到一个具名容器上，是比\"再加长上下文窗口\"更结构化的解法，方向上也与 Anthropic、OpenAI、Cursor 在项目级记忆和常驻智能体环境上的做法一致。把它一次性开放给所有档位、而非锁在 200 美元套餐之后，也给那些把\"持久化\"当作高级订阅卖点的对手施加了压力。",
-      "date_published": "2026-07-30T16:31:00.000Z",
-      "date_modified": "2026-07-30T23:00:00.000Z",
-      "tags": [
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/perplexity-projects-computer.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-projects-computer.html",
-        "source_published_at": "2026-07-30T16:31:00.000Z",
-        "site_published_at": "2026-07-30T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Perplexity on X: introducing Projects",
-            "url": "https://x.com/perplexity_ai/status/2082866707438415932"
-          },
-          {
-            "title": "Perplexity on X: Projects connect to Brain",
-            "url": "https://x.com/perplexity_ai/status/2082866747892478064"
-          },
-          {
-            "title": "Perplexity launches Brain, a self-improving memory system — MarkTechPost",
-            "url": "https://www.marktechpost.com/2026/06/18/perplexity-launches-brain/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/seedance-2-5-public-launch-jimeng.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/seedance-2-5-public-launch-jimeng.html",
-      "title": "Seedance 2.5 开放公测，单次可生成 30 秒",
-      "summary": "字节跳动 Seedance 2.5 于 7 月 31 日结束企业内测，在国内即梦与海外 Dreamina 同步开放，单次可生成 30 秒视频。",
-      "content_text": "## 走出企业内测\n\n7月31日，字节跳动的 Seedance 2.5 正式面向公众开放，结束了自 6 月底首次亮相以来的企业封闭测试。这次上线走的是自家创作平台：国内在即梦，海外在 Dreamina——后者在 X 上宣布全球上线，并称自己是该模型的官方平台。\n\n最抢眼的能力是单次生成时长。Seedance 2.5 原生一次可生成 30 秒，是上一代的两倍，并支持续写到约三分钟的连续内容。单条提示最多可接入 50 个参考素材，Dreamina 还强调其时间控制精确到 1 秒级，创作者可以指定动作、卡点、剪切出现的时刻，而不必反复重抽直到节奏对上。\n\n## 目标是接进生产流程\n\n真正对标同行的是编辑能力。模型支持局部级修改——改画面的一部分、删除或加入元素、替换角色——同时在多镜头之间保持角色一致性与画面连贯。它还能接收专业流程的输入，包括绿幕素材和无贴图的白模，字节也同时提供面向游戏与动画团队的 Maya、Blender 插件。\n\n国内报道把这次发布视为定位的转变：如果 Seedance 2.0 卖的是视觉惊艳，2.5 要的是嵌进现有流程，减少广告、影视、游戏中一个镜头达到可用状态所需的迭代次数。\n\n## 为什么值得关注\n\n生成视频的瓶颈早已从画质转到可控性，而 Seedance 2.5 用的正是工业流程熟悉的那几根杠杆：参考素材堆叠、局部改图、秒级时间控制、DCC 插件。它在 MiniMax H3 铺开到 Runway、Pika、Krea 的次日登场，也印证 AIGC 视频最激烈的竞争如今发生在中国团队之间，且分发靠自家消费级应用而非西方创作平台。对一线团队来说，悬而未决的问题是：30 秒可控素材，够不够取代传统的逐镜头拼接。",
-      "date_published": "2026-07-31T05:02:00.000Z",
-      "date_modified": "2026-07-31T11:00:03.442Z",
-      "tags": [
-        "AIGC",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/seedance-2-5-public-launch-jimeng.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/seedance-2-5-public-launch-jimeng.html",
-        "source_published_at": "2026-07-31T05:02:00.000Z",
-        "site_published_at": "2026-07-31T11:00:03.442Z",
-        "sources": [
-          {
-            "title": "Dreamina on X: Meet Dreamina Seedance 2.5",
-            "url": "https://x.com/dreamina_ai/status/2083055760511299642"
-          },
-          {
-            "title": "量子位：刚刚，即梦 Seedance 2.5来了",
-            "url": "https://www.qbitai.com/2026/07/464329.html"
           }
         ]
       }

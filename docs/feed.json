@@ -13,6 +13,234 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/agent-plugins-standard-1-0.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/agent-plugins-standard-1-0.html",
+      "title": "OpenAI, Vercel and rivals ship Agent Plugins 1.0 standard",
+      "summary": "A vendor-neutral format bundles Agent Skills and MCP server configs into one portable plugin, supported at launch by ChatGPT, Codex, Cursor, Copilot, Kiro and VS Code.",
+      "content_text": "Six companies published Agent Plugins 1.0.0 on Thursday, an open specification for packaging agent extensions once and running them across competing agent clients.\n\n## The format\n\nA plugin is a directory with a `plugin.json` manifest requiring only two fields — schema version and plugin name — plus fixed locations for its contents: skills live under `skills/`, MCP server configuration in `mcp.json`, with namespaced sections available for client-specific extras. The deliberate minimalism is the point: the directory layout, not a large schema, carries the contract, which keeps the barrier to implementing a reader low.\n\nThe specification bundles two things that until now travelled separately. Agent Skills are natural-language instruction documents that teach an agent a procedure; MCP servers expose tools and data. Extension authors have been repackaging the same components for each client's conventions. Agent Plugins gives them one artefact.\n\n## Who signed on\n\nVercel initiated the proposal, and engineers from Amazon Web Services, Anysphere (Cursor), GitHub, Microsoft, OpenAI and Vercel refined it to 1.0.0. The initial technical steering committee draws core maintainers from AWS, Cursor, Microsoft, OpenAI and Vercel. Clients supporting the format at launch are ChatGPT, Codex, Cursor, GitHub Copilot, Kiro and VS Code. Governance and the spec sit in a public repository, with documentation at agent-plugins.org.\n\nOne name is conspicuously missing from the launch roster: Anthropic, whose Agent Skills format the specification builds on and whose Claude Code is among the most widely used coding agents. Neither Anthropic nor Claude Code appears among the announced participants or launch clients; the company has not publicly commented on whether it intends to adopt the format.\n\n## Why it matters\n\nMCP established a common wire protocol for tools; Agent Plugins is an attempt to standardise the layer above it — the distribution unit an author actually ships. If it holds, the practical effect is that a plugin ecosystem becomes portable rather than a per-vendor moat, and agent clients compete on execution quality instead of on which extensions they exclusively host. The unresolved question is whether a standard advanced by OpenAI, Microsoft, AWS and Vercel can become genuinely neutral without the vendor whose format supplied its starting point.",
+      "date_published": "2026-08-06T16:11:00.000Z",
+      "date_modified": "2026-08-06T23:00:03.114Z",
+      "tags": [
+        "Agents",
+        "Open Source"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/agent-plugins-standard-1-0.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/agent-plugins-standard-1-0.html",
+        "source_published_at": "2026-08-06T16:11:00.000Z",
+        "site_published_at": "2026-08-06T23:00:03.114Z",
+        "sources": [
+          {
+            "title": "Introducing Agent Plugins — Vercel",
+            "url": "https://vercel.com/blog/introducing-agent-plugins"
+          },
+          {
+            "title": "OpenAI Developers on X",
+            "url": "https://x.com/OpenAIDevs/status/2085398373511918022"
+          },
+          {
+            "title": "Introducing Agent Plugins 1.0.0 — Vercel Changelog",
+            "url": "https://vercel.com/changelog/introducing-agent-plugins-1-0-0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/amd-acquires-taalas-hardwired-silicon.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/amd-acquires-taalas-hardwired-silicon.html",
+      "title": "AMD buys Taalas to etch AI models directly into silicon",
+      "summary": "The Toronto startup builds chips whose metal layers are finalised around one model's weights, promising inference without HBM, advanced packaging or liquid cooling.",
+      "content_text": "AMD said on Thursday it has agreed to acquire Taalas, a Toronto chip startup founded in 2023 that builds processors around a single fixed model rather than around general-purpose compute. Terms were not disclosed. The deal is subject to regulatory approval and is expected to close in the fourth quarter.\n\n## What Taalas makes\n\nTaalas calls its products \"Hardcore Models.\" Once a model's weights are frozen, the company finalises a small number of a chip's metal layers to encode them, collapsing the usual separation between memory and compute onto one die. The claimed consequence is a serving system that needs no high-bandwidth memory, no advanced packaging, no 3D stacking and no liquid cooling — the four cost centres that dominate the bill of materials for a modern inference rack. Taalas says a previously unseen model can be turned into hardware in about two months. Its first product, shown in February, hard-wires Meta's Llama 3.1 8B.\n\nAMD's AI group head Vamsi Boppana framed the purchase as filling out a full-stack platform, with Taalas technology entering the accelerator roadmap alongside Instinct GPUs. Taalas co-founder and chief executive Ljubisa Bajic — previously a founder of Tenstorrent — said the acquisition supplies scale and engineering resources.\n\n## Why it matters\n\nInference, not training, is now where the industry's compute spending is heading, and it is a workload with a very different shape: the same weights served billions of times. Hard-wiring those weights trades all flexibility for efficiency, and until now that trade has looked too brittle to take, because frontier models are replaced every few months. Taalas's two-month turnaround is the bet that the trade has become viable. For AMD, it is a hedge that does not depend on beating Nvidia at general-purpose GPUs: if a meaningful share of production inference settles onto a handful of stable open-weight models, fixed-function silicon could undercut GPU serving economics by a wide margin. It also gives the open-weights ecosystem a hardware argument — a model has to be widely deployed and stable to be worth etching, which favours exactly the models anyone can download.",
+      "date_published": "2026-08-06T20:14:00.000Z",
+      "date_modified": "2026-08-06T23:00:03.114Z",
+      "tags": [
+        "Industry",
+        "Models"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/amd-acquires-taalas-hardwired-silicon.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/amd-acquires-taalas-hardwired-silicon.html",
+        "source_published_at": "2026-08-06T20:14:00.000Z",
+        "site_published_at": "2026-08-06T23:00:03.114Z",
+        "sources": [
+          {
+            "title": "AMD Acquires Taalas to Advance Compute Solutions for Rapidly Growing AI Inference Market",
+            "url": "https://ir.amd.com/news-events/press-releases/detail/1296/amd-acquires-taalas-to-advance-compute-solutions-for-rapidly-growing-ai-inference-market"
+          },
+          {
+            "title": "AMD acquires AI chip startup Taalas to boost inference performance by etching models into silicon",
+            "url": "https://www.theregister.com/systems/2026/08/06/amd-acquires-ai-chip-startup-taalas-to-boost-inference-performance-by-etching-models-into-silicon/"
+          },
+          {
+            "title": "AMD buys Taalas, startup that hardwires AI models into its silicon",
+            "url": "https://www.cnbc.com/2026/08/06/amd-buys-taalas-startup-that-hardwires-ai-models-into-its-silicon.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/cloudflare-kitesurf-agent-browser.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/cloudflare-kitesurf-agent-browser.html",
+      "title": "Cloudflare's Kitesurf drops Chromium for agent browsing",
+      "summary": "The agent-first browser runs in V8 isolates on Workers with no Chromium underneath, claiming 3–7x lower CPU and memory on common agent tasks at 1.7–1.8x the wall-clock time.",
+      "content_text": "Cloudflare introduced Kitesurf on Thursday, a web browser built for AI agents that runs entirely inside V8 isolates on Cloudflare Workers with no Chromium engine beneath it. It is free during beta through Browser Run, with per-account limits.\n\n## The architecture\n\nKitesurf discards the parts of a browser that exist for humans — tabs, extensions, pixel-perfect 60fps compositing — and keeps what an agent consumes: machine-readable page content, low token overhead, cheap parallelism and isolation. The system splits into an Engine that manages sessions over the Chrome DevTools Protocol and HTTP REST; PageScript, which handles DOM and layout using the Rust rendering engine Blitz and Firefox's Stylo CSS parser; a PageRenderer that emits JPEG, PNG or PDF; and SandboxOutbound, which enforces network policy, CORS and cookie handling.\n\nCloudflare reports 3.1–3.8x less CPU and 4.7–7.0x less memory than Chromium on typical agent workloads such as screenshots and HTML extraction, at roughly 1.7–1.8x slower wall-clock time. The company says the engine passes more than 215,000 Web Platform Tests. Existing Puppeteer, Playwright and MCP clients can switch by adding a single `browser=kitesurf` parameter, and Cloudflare says it plans to open-source Kitesurf for self-hosting.\n\n## Why it matters\n\nBrowser use has become a default agent capability, and the standard implementation — one headless Chromium per session — was never designed for it. Chromium's cost is dominated by rendering fidelity an agent never looks at, which makes per-agent browsing expensive enough to cap how many concurrent sessions a product can afford. Kitesurf's trade is explicit and unusual: accept nearly double the latency to cut resource consumption several-fold, which is the right direction when agents run unattended and cost, not responsiveness, is the binding constraint.\n\nThe strategic reading is that Cloudflare is positioning the browser as infrastructure it sells rather than a component each agent vendor rebuilds — the same move it made with Workers for compute. If the promised open-sourcing arrives, the more consequential outcome may be that a credible non-Chromium engine enters production use at scale for the first time in years.",
+      "date_published": "2026-08-06T14:30:00.000Z",
+      "date_modified": "2026-08-06T23:00:03.114Z",
+      "tags": [
+        "Agents",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cloudflare-kitesurf-agent-browser.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-kitesurf-agent-browser.html",
+        "source_published_at": "2026-08-06T14:30:00.000Z",
+        "site_published_at": "2026-08-06T23:00:03.114Z",
+        "sources": [
+          {
+            "title": "Introducing Kitesurf: The agent-first browser that runs in V8 isolates on Cloudflare Workers",
+            "url": "https://blog.cloudflare.com/kitesurf/"
+          },
+          {
+            "title": "Cloudflare Introduces Kitesurf: An Agent-First Web Browser That Runs Entirely in V8 Isolates on Cloudflare Workers",
+            "url": "https://www.marktechpost.com/2026/08/06/cloudflare-introduces-kitesurf-an-agent-first-web-browser-that-runs-entirely-in-v8-isolates-on-cloudflare-workers/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/deepmind-weathernext-cyclones-open.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/deepmind-weathernext-cyclones-open.html",
+      "title": "DeepMind open-sources WeatherNext cyclone forecasting model",
+      "summary": "A Nature paper puts Google DeepMind's WeatherNext Cyclones ahead of operational systems by over a day of lead time, with code and weights released on GitHub.",
+      "content_text": "Google DeepMind published its WeatherNext cyclone forecasting work in Nature on Thursday and simultaneously released the model's code and weights on GitHub, making a system already used inside operational hurricane forecasting freely available to anyone.\n\n## The result\n\nWeatherNext Cyclones produces probabilistic 15-day forecasts of a storm's track, intensity and wind structure. DeepMind reports state-of-the-art accuracy across all three, and frames the gain in the currency forecasters actually use: lead time. On average, its three-day predictions match the quality that prior systems delivered at two days — better than a full extra day of warning. In a field where operational skill has historically improved by roughly a day per decade, that is a decade of progress arriving at once.\n\nThe model was trained on years of global atmospheric reanalysis data — on the order of 20 terabytes — combined with the IBTrACS archive of nearly 5,000 historical cyclones, which supplies the storm-specific structure that general atmospheric training alone tends to smooth away. DeepMind cites Hurricane Melissa as a field test: forecasters received early signals of a Category 5 landfall five days ahead with 80 percent confidence.\n\n## Release and partners\n\nThe code and weights are on GitHub for academic, operational and commercial use, and a compact WeatherNext 2-mini variant runs in a free Colab notebook. Predictions are also served through DeepMind's Weather Lab. The work was done with the US National Hurricane Center, the Cooperative Institute for Research in the Atmosphere, the UK Met Office and other national agencies, and DeepMind says it is expanding access for forecasters this season.\n\n## Why it matters\n\nMachine-learning weather models have been outperforming numerical simulation on general forecasting for two years, but tropical cyclones — rare, small-scale, high-consequence — were the hard case that kept operational meteorologists cautious. Publishing in Nature settles the methodological argument in public; releasing the weights settles the access question. Any national meteorological service, including those without the supercomputing budgets that traditional cyclone modelling demands, can now run a frontier system on modest hardware. It is also a rare instance of a frontier lab open-sourcing a model whose primary value is not commercial, and the clearest current example of AI capability translating into measurable public-safety outcomes.",
+      "date_published": "2026-08-06T15:06:00.000Z",
+      "date_modified": "2026-08-06T23:00:03.114Z",
+      "tags": [
+        "Research",
+        "Open Source"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepmind-weathernext-cyclones-open.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-weathernext-cyclones-open.html",
+        "source_published_at": "2026-08-06T15:06:00.000Z",
+        "site_published_at": "2026-08-06T23:00:03.114Z",
+        "sources": [
+          {
+            "title": "WeatherNext: AI model achieves breakthrough in forecasting cyclones",
+            "url": "https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones/"
+          },
+          {
+            "title": "Google DeepMind on X",
+            "url": "https://x.com/GoogleDeepMind/status/2085395442347524506"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-splits-chatgpt-sol-luna.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-splits-chatgpt-sol-luna.html",
+      "title": "OpenAI splits ChatGPT tiers between GPT-5.6 Sol and Luna",
+      "summary": "Paid ChatGPT users get an updated GPT-5.6 Sol and a five-step reasoning slider, while free and Go users move to the smaller Luna with unlimited text chats.",
+      "content_text": "OpenAI restructured how ChatGPT's roughly billion-user base reaches its models on Wednesday, publishing a product note that redraws the line between paid and free access rather than launching a new frontier system.\n\n## What changed for paid users\n\nPlus and Pro subscribers now run every conversation on a revised build of GPT-5.6 Sol, including the fast \"Instant\" path that previously used a separate lighter model. OpenAI says the updated Sol trims padding and heavy formatting in favour of shorter answers that lead with a recommendation. Alongside it, paying users get a slider offering five levels of reasoning effort, letting them trade latency against depth per query instead of picking a model from a dropdown. On the company's internal high-stakes factuality evaluation, it reports factual errors falling about 68 percent for Sol relative to the older GPT-5.5 Instant configuration; the figure has not been independently reproduced.\n\n## What changed for free users\n\nFree and Go accounts move to GPT-5.6 Luna, a smaller model, as their default. They also gain a \"Think\" button that lets Luna reason for longer on harder prompts — but it extends the small model's thinking rather than escalating to Sol. OpenAI reports a roughly 62 percent drop in factual errors for Luna against the same baseline. The sweetener is capacity: unlimited text conversations, arriving next week, ending the message caps that have defined the free tier since launch. Separate quotas still apply to files, images, voice and image generation. Sol-tier changes shipped immediately; the free-tier changes roll out across this week and next.\n\n## Why it matters\n\nThis is the clearest statement yet of how OpenAI intends to make consumer inference pay. Unlimited text at the bottom of the funnel is cheap only if the bottom of the funnel is served by a small model, and the Think button is designed to absorb demand for reasoning without routing it to expensive weights. The structural consequence is a widening quality gap between free and paid ChatGPT that is now explicit rather than incidental — a template rivals distributing free assistants at scale will have to answer, and a change in what hundreds of millions of people actually get when they ask an AI a hard question.",
+      "date_published": "2026-08-06T17:00:00.000Z",
+      "date_modified": "2026-08-06T23:00:03.114Z",
+      "tags": [
+        "Models",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-splits-chatgpt-sol-luna.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-splits-chatgpt-sol-luna.html",
+        "source_published_at": "2026-08-06T17:00:00.000Z",
+        "site_published_at": "2026-08-06T23:00:03.114Z",
+        "sources": [
+          {
+            "title": "Improving GPT-5.6 Sol in ChatGPT, expanding GPT-5.6 Luna access for free users",
+            "url": "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/"
+          },
+          {
+            "title": "OpenAI improves GPT-5.6 Sol in ChatGPT and restricts free users to its weakest model",
+            "url": "https://the-decoder.com/openai-improves-gpt-5-6-sol-in-chatgpt-and-restricts-free-users-to-its-weakest-model/"
+          },
+          {
+            "title": "ChatGPT brings unlimited text chats to free users",
+            "url": "https://techcrunch.com/2026/08/06/openai-brings-unlimited-chatgpt-text-chats-to-free-users/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/suno-watermarks-ai-generated-songs.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/suno-watermarks-ai-generated-songs.html",
+      "title": "Suno to watermark and fingerprint AI-generated songs",
+      "summary": "The music generator will embed tamper-resistant audio watermarks, add fingerprinting, restrict bulk downloads and license Musixmatch's Sentinel for lyric copyright detection.",
+      "content_text": "Suno said on Thursday it will begin marking the songs its models generate, publishing a plan that combines audio watermarking, fingerprinting, tighter download rules and a licensing deal for lyric copyright detection.\n\n## The measures\n\nChief executive Mikey Shulman said in a company post that the marks are meant to be durable and resistant to tampering while leaving the listening experience untouched. Suno has not said which scheme it will use — whether Google's SynthID or an alternative — nor when enforcement begins. Alongside watermarking, the company will fingerprint generated audio so tracks can be recognised after the fact, and change its download policies to make mass distribution onto streaming services harder. Updated community guidelines explicitly bar deceptive audio and the use of a person's voice without permission. Separately, Suno has signed an agreement with lyrics provider Musixmatch to incorporate its Sentinel copyright-detection system.\n\n## The context\n\nThe announcement lands in the middle of Suno's worst legal stretch. The company faces suits from major record labels and artist organisations, recently lost a copyright case brought by German collecting society GEMA, and is contending with a class action over a data breach affecting tens of millions of users. It raised $400 million in a Series D in June. Streaming platforms, meanwhile, have spent the past year deleting AI-generated uploads at scale and pressing generators to make their output identifiable at the source.\n\n## Why it matters\n\nProvenance marking has been the industry's stated answer to AI slop for two years, but it only works if the generators themselves apply it — detection bolted on downstream has consistently failed. Suno is the largest music generator to commit publicly, which makes its implementation the de facto test of whether audio watermarking survives contact with re-encoding, stem separation and deliberate stripping. It is also a negotiating posture: labels and platforms have made identifiability a precondition for licensing talks, and a generator that can prove which tracks are its own has something to trade. Whether that converts into settlements, or merely into cleaner evidence for the plaintiffs, is the open question.",
+      "date_published": "2026-08-06T13:31:00.000Z",
+      "date_modified": "2026-08-06T23:00:03.114Z",
+      "tags": [
+        "AIGC",
+        "Policy"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/suno-watermarks-ai-generated-songs.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/suno-watermarks-ai-generated-songs.html",
+        "source_published_at": "2026-08-06T13:31:00.000Z",
+        "site_published_at": "2026-08-06T23:00:03.114Z",
+        "sources": [
+          {
+            "title": "Amid legal battles, Suno says it will start watermarking songs",
+            "url": "https://techcrunch.com/2026/08/06/amid-legal-battles-suno-says-it-will-start-watermarking-songs/"
+          },
+          {
+            "title": "Suno hopes to go legit with watermarks for AI-generated music",
+            "url": "https://arstechnica.com/ai/2026/08/suno-hopes-to-go-legit-with-watermarks-for-ai-generated-music/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/anthropic-hires-custom-silicon-team.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/anthropic-hires-custom-silicon-team.html",
       "title": "Anthropic starts hiring a custom AI silicon design team",
@@ -1733,238 +1961,6 @@
           {
             "title": "Google reveals Gemini Robotics 2.0 — Ars Technica",
             "url": "https://arstechnica.com/ai/2026/07/google-reveals-gemini-robotics-2-0-promising-improved-dexterity-and-safety/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/gemini-spark-chrome-auto-browse.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/gemini-spark-chrome-auto-browse.html",
-      "title": "Gemini Spark gains Chrome auto browse for US users",
-      "summary": "Google wired its agent into Chrome, letting Spark act on live pages using a user's own logged-in sessions, while expanding Spark access to 160-plus countries.",
-      "content_text": "Google began rolling out an integration between Gemini Spark and Chrome on Thursday, giving its agent the ability to drive the browser directly through a feature the company calls auto browse.\n\n## How it works\n\nWith explicit user permission, Spark operates inside Chrome on desktop rather than in a separate sandboxed browser, which means it inherits the user's logged-in accounts and saved credentials. Google's examples centre on multi-step web errands that previously stalled at authentication walls: scheduling apartment viewings, comparing flight options and beginning a booking flow. The integration is rolling out to Google AI Pro and Ultra subscribers in the United States, with Google saying other regions will follow. It is not available in the European Economic Area, the United Kingdom, Switzerland or Nigeria.\n\nGoogle paired the Chrome work with a geographic expansion, extending Spark access to AI Pro subscribers in more than 160 additional countries — a substantial widening from the US-only footprint the agent carried a week earlier. Separately, the Gemini app added a Viator integration on the same day, surfacing more than 425,000 bookable tours and activities directly inside Gemini and Gemini Spark for US users, an early signal of how Google intends to monetise agentic transactions.\n\n## Why it matters\n\nBrowser agents have generally been confined to isolated environments precisely because credentialed browsing is the hard part: an agent without the user's session can read the public web but cannot complete anything that requires an account. By running inside the user's own Chrome profile, Google converts its browser distribution — the largest on the consumer internet — into an agent execution surface that startups building standalone agentic browsers cannot match on reach.\n\nThat advantage carries the corresponding risk. An agent operating with live session cookies on arbitrary pages is exposed to prompt injection from page content, and the consequences of a successful injection escalate from a wrong answer to an unauthorised action on a logged-in account. The exclusion of the EEA and UK also underlines how regulatory divergence is now shaping where agentic features ship first — and how quickly the capability gap between markets can widen.",
-      "date_published": "2026-07-30T20:15:00.000Z",
-      "date_modified": "2026-07-30T23:00:00.000Z",
-      "tags": [
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gemini-spark-chrome-auto-browse.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-spark-chrome-auto-browse.html",
-        "source_published_at": "2026-07-30T20:15:00.000Z",
-        "site_published_at": "2026-07-30T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Gemini Spark: new Chrome browsing integration — Google",
-            "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-july-2026/"
-          },
-          {
-            "title": "Gemini App on X: Spark and Chrome auto browse",
-            "url": "https://x.com/GeminiApp/status/2082923048362299629"
-          },
-          {
-            "title": "Gemini Spark can now use Chrome to auto browse — 9to5Google",
-            "url": "https://9to5google.com/2026/07/30/gemini-spark-chrome-auto-browse/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/ideogram-pruna-p-image.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/ideogram-pruna-p-image.html",
-      "title": "Ideogram and Pruna ship $0.003-per-image model line",
-      "summary": "P-Image-Ideogram launches with four quality tiers, native 1K and 2K output and three-to-eight-second latency, aimed squarely at production image pipelines.",
-      "content_text": "Ideogram introduced P-Image-Ideogram on Thursday, a family of text-to-image models co-developed with inference-optimisation startup Pruna AI and positioned around cost and speed rather than peak quality alone.\n\n## What shipped\n\nThe family offers four quality modes — very low, low, medium and high — letting developers trade fidelity against price within a single API surface. Generation runs natively at 1K and 2K resolution across a wide range of aspect ratios, with latency reported between three and eight seconds and pricing starting at $0.003 per image. The models support JSON-structured prompting and layout control, features aimed at programmatic pipelines rather than interactive creative sessions. Ideogram highlighted photorealism, text rendering and style range in its launch examples, with typography historically the company's strongest differentiator.\n\nIdeogram's central claim is a Pareto argument: on DesignArena's blind head-to-head human-vote image leaderboard, P-Image-Ideogram advances the frontier on both quality-versus-cost and quality-versus-speed, meaning no listed competitor is simultaneously cheaper and better, or faster and better. The company did not claim the top absolute quality position.\n\nDistribution went wide on day one. Beyond Ideogram's own API, the models are live on ComfyUI, Replicate, Runware, Cloudflare, Leonardo AI, Picsart and Magnific. Replicate and other partners posted availability within hours of the announcement. The launch follows Ideogram's recent partnership with AMD to serve its open-weight Ideogram 4.0 model on Instinct accelerators, suggesting a broader push to control its own inference economics.\n\n## Why it matters\n\nImage generation has largely stopped competing on whether a model can render a scene and started competing on what a rendered scene costs at volume. At $0.003 per image with sub-ten-second latency, the calculus shifts for applications that generate thousands of assets per day — e-commerce catalogues, ad variant testing, game and app asset pipelines — where per-image cost, not marginal aesthetic quality, sets the ceiling on what can be built. The tie-up with Pruna also signals that specialist compression and inference vendors are becoming co-authors of frontier consumer models rather than downstream optimisers.",
-      "date_published": "2026-07-30T14:45:00.000Z",
-      "date_modified": "2026-07-30T23:00:00.000Z",
-      "tags": [
-        "AIGC",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/ideogram-pruna-p-image.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/ideogram-pruna-p-image.html",
-        "source_published_at": "2026-07-30T14:45:00.000Z",
-        "site_published_at": "2026-07-30T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Ideogram on X: introducing P-Image-Ideogram",
-            "url": "https://x.com/ideogram_ai/status/2082839902207779024"
-          },
-          {
-            "title": "P-Image Model — Pruna AI",
-            "url": "https://www.pruna.ai/p-image"
-          },
-          {
-            "title": "Replicate on X: P-Image-Ideogram availability",
-            "url": "https://x.com/replicate/status/2082836594789155272"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/jetbrains-open-sources-kotlinllm.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/jetbrains-open-sources-kotlinllm.html",
-      "title": "JetBrains open-sources runtime LLM macros for Kotlin",
-      "summary": "JetBrains Research released KotlinLLM under Apache 2.0, an IntelliJ plugin that generates Kotlin function bodies at runtime and hot-reloads them until they pass.",
-      "content_text": "## Macros whose bodies are written by a model\n\nJetBrains Research published KotlinLLM on 31 July, an IntelliJ IDEA plugin released under the Apache 2.0 licence that lets developers declare Kotlin functions and leave the implementation to a language model at runtime. Two APIs carry the idea: `asLlm<F, T>(from, hint)` for converting between types, and `mockLlm<T>()` for producing an implementation of an interface on demand.\n\nThe mechanism is unusual. The plugin scans a project for macro call sites, generates bootstrap code, then runs the program under the Java Debug Interface. When generated logic fails to handle a real scenario, a runtime breakpoint captures the actual values in play, an LLM agent rewrites the code against that evidence, and the class is recompiled and hot-reloaded through JVM class redefinition before execution is retried.\n\n## Costs are paid once per scenario\n\nBecause the loop writes real Kotlin source, the output is ordinary code that can be deployed without a model dependency at runtime. Scenarios already covered trigger no further model call, so there is no recurring latency or token cost on paths the system has seen before — a departure from agent designs that consult a model on every invocation. In a test on the Spring Petclinic sample application, JetBrains reported 24 of 24 scenarios completed and hot reload succeeding every time. The team labels the project a research prototype and explicitly does not recommend it as a production runtime.\n\n## Why it matters\n\nMost coding-agent tooling operates before the program runs: it reads repositories, proposes diffs and waits for tests. KotlinLLM inverts that by using live execution state as the specification, which sidesteps the hardest part of code generation — inferring intent from static context — and gets ground truth from the debugger instead. Whether the pattern generalises beyond the JVM's unusually good hot-reload and debugging facilities is unresolved, but as an Apache-licensed reference implementation from the company that builds Kotlin, it gives the agent-infrastructure community something concrete to test against the current diff-and-test orthodoxy.",
-      "date_published": "2026-07-31T10:32:00.000Z",
-      "date_modified": "2026-07-31T11:00:03.442Z",
-      "tags": [
-        "Open Source",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/jetbrains-open-sources-kotlinllm.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/jetbrains-open-sources-kotlinllm.html",
-        "source_published_at": "2026-07-31T10:32:00.000Z",
-        "site_published_at": "2026-07-31T11:00:03.442Z",
-        "sources": [
-          {
-            "title": "MarkTechPost: JetBrains Open-Sources KotlinLLM",
-            "url": "https://www.marktechpost.com/2026/07/31/jetbrains-research-open-sources-kotlinllm-intellij-plugin-kotlin-runtime-llm/"
-          },
-          {
-            "title": "GitHub: JetBrains-Research/kotlinllm-plugin",
-            "url": "https://github.com/JetBrains-Research/kotlinllm-plugin"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt-5-6-price-cut.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt-5-6-price-cut.html",
-      "title": "OpenAI cuts GPT-5.6 Luna price 80% and Terra 20%",
-      "summary": "OpenAI slashed API pricing across its GPT-5.6 line, dropping Luna to $0.20 per million input tokens and adding a paid Fast mode for Sol.",
-      "content_text": "OpenAI announced a sharp reduction in API pricing for its GPT-5.6 family on Thursday, cutting the cost of the entry-tier Luna model by 80 percent and the mid-tier Terra by 20 percent, effective immediately.\n\n## What changed\n\nLuna now bills at $0.20 per million input tokens and $1.20 per million output tokens, down from roughly $1.00 and $6.00. Terra moves to $2.00 and $12.00 per million input and output tokens respectively. OpenAI also introduced a Fast processing mode for GPT-5.6 Sol in the API, offering up to 2.5 times the throughput of standard processing at twice the standard price — a rare instance of the company selling latency as a separate product tier rather than folding it into the base rate.\n\nThe company attributed the reduction to efficiency work spanning three layers: the model itself, the inference stack, and the agentic harness. It said GPT-5.6 Sol was used to optimise GPU-level software, trimming its own serving costs by about 20 percent, while speculative decoding improvements lifted token generation throughput by more than 15 percent. OpenAI framed the combined effect in workload terms, saying a task that cost roughly a dollar on comparable models a year ago now runs at about six cents on Luna and completes substantially faster.\n\nOpenAI simultaneously moved the automatic code-review feature in the ChatGPT app and the Codex CLI from GPT-5.4 to GPT-5.6 Luna, saying the model swap combined with the new price should cut auto-review costs sharply. Cognition updated its FrontierCode 1.1 leaderboard within hours to reflect the new economics, placing the GPT-5.6 series on the cost-performance Pareto curve. The Arena leaderboard also repriced the models the same day.\n\n## Why it matters\n\nInference pricing has become the main competitive front between US and Chinese labs, with open-weight Chinese models from Zhipu, Moonshot and DeepSeek undercutting Western APIs by an order of magnitude. An 80 percent cut on a general-purpose tier compresses that gap directly and resets the build-versus-buy calculation for agentic products, where token consumption scales with task length rather than user count. For developers running long-horizon agents, the change is closer to a structural shift in unit economics than a routine discount.",
-      "date_published": "2026-07-30T17:15:00.000Z",
-      "date_modified": "2026-07-30T23:00:00.000Z",
-      "tags": [
-        "Industry",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt-5-6-price-cut.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-5-6-price-cut.html",
-        "source_published_at": "2026-07-30T17:15:00.000Z",
-        "site_published_at": "2026-07-30T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Advancing the price-performance frontier with GPT-5.6 — OpenAI",
-            "url": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/"
-          },
-          {
-            "title": "OpenAI goes full China pricing mode with an 80 percent cut — The Decoder",
-            "url": "https://the-decoder.com/openai-goes-full-china-pricing-mode-with-an-80-percent-cut-to-its-most-affordable-gpt-5-6-model/"
-          },
-          {
-            "title": "OpenAI on X",
-            "url": "https://x.com/OpenAI/status/2082878156483219672"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/perplexity-projects-computer.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/perplexity-projects-computer.html",
-      "title": "Perplexity turns Spaces into Projects for all users",
-      "summary": "Perplexity rebuilt its Spaces feature as Projects, persistent workspaces for its Computer agent with a shared file system and connection to the Brain memory layer.",
-      "content_text": "Perplexity launched Projects on Thursday, replacing its Spaces feature with persistent workspaces built around its agentic product, Computer. The company said Projects are available immediately to all users.\n\n## What changed\n\nWhere Spaces functioned largely as a research collection — a place to group threads and reference files — Projects are structured around ongoing agent work. Each Project carries a shared file system that Computer can read, edit and write across sessions, so output from one task becomes input to the next rather than being discarded when a conversation ends. Perplexity describes Projects as hubs for managing, creating and collaborating on tasks, with multiple people able to work in the same Project.\n\nThe more consequential piece is the connection to Brain, the self-improving memory system Perplexity introduced for Computer in June. Between tasks, Brain reviews a Project's accumulated files and session history and updates its internal model of the work, so a new task begins with context from everything that came before rather than a cold start. Perplexity has previously reported that Brain improves answer correctness by 25 percent and recall by 16 percent on tasks requiring historical context, while cutting cost per task by 13 percent. Brain itself has been rolling out in research preview to Max and Enterprise Max subscribers.\n\nThe launch follows a rapid sequence of Computer releases: a Windows desktop client on 28 July, the SPACE sandboxed runtime that now backs all Computer sessions, and a Model Council feature that runs a single question across several frontier models in parallel.\n\n## Why it matters\n\nAgent products have converged on a shared bottleneck: work does not accumulate. Each session starts fresh, and users compensate by re-uploading context or re-explaining projects. Attaching a durable file system and a memory layer to a named container is a structural answer rather than a longer context window, and it is the same direction Anthropic, OpenAI and Cursor have taken with project-scoped memory and persistent agent environments. Shipping it to every tier, rather than gating it behind a $200 plan, also puts pressure on rivals reserving persistence for premium subscribers.",
-      "date_published": "2026-07-30T16:31:00.000Z",
-      "date_modified": "2026-07-30T23:00:00.000Z",
-      "tags": [
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/perplexity-projects-computer.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-projects-computer.html",
-        "source_published_at": "2026-07-30T16:31:00.000Z",
-        "site_published_at": "2026-07-30T23:00:00.000Z",
-        "sources": [
-          {
-            "title": "Perplexity on X: introducing Projects",
-            "url": "https://x.com/perplexity_ai/status/2082866707438415932"
-          },
-          {
-            "title": "Perplexity on X: Projects connect to Brain",
-            "url": "https://x.com/perplexity_ai/status/2082866747892478064"
-          },
-          {
-            "title": "Perplexity launches Brain, a self-improving memory system — MarkTechPost",
-            "url": "https://www.marktechpost.com/2026/06/18/perplexity-launches-brain/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/seedance-2-5-public-launch-jimeng.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/seedance-2-5-public-launch-jimeng.html",
-      "title": "ByteDance opens Seedance 2.5 to creators worldwide",
-      "summary": "ByteDance's Seedance 2.5 left closed enterprise beta on Friday, launching on Jimeng in China and Dreamina globally with 30-second single-pass generation.",
-      "content_text": "## Out of enterprise beta\n\nByteDance made Seedance 2.5 publicly available on 31 July, ending a closed enterprise beta that had run since the model was first shown in late June. The rollout came through the company's own creative apps: Jimeng in China and Dreamina internationally, which announced a global launch on X and positioned itself as the model's official platform.\n\nThe headline capability is length in one pass. Seedance 2.5 generates up to 30 seconds natively — double its predecessor — and supports extension to roughly three minutes of continuous material. It accepts as many as 50 reference inputs in a single prompt, and Dreamina highlights timing control described as accurate to within a second, letting creators specify when a beat, cut or action lands rather than re-rolling until the pacing works.\n\n## Aimed at production pipelines\n\nThe editing feature set is where ByteDance is pushing hardest against rivals. The model handles region-level changes — modifying part of a frame, removing or inserting elements, swapping characters — while holding character identity and visual continuity across shots. It also ingests inputs from professional workflows, including green-screen footage and untextured 3D blockouts, and ByteDance is shipping plugins for Maya and Blender aimed at game and animation teams.\n\nChinese coverage framed the release as a shift in intent: where Seedance 2.0 sold visual spectacle, 2.5 is built to slot into an existing pipeline and cut the number of iterations needed before a shot is usable in advertising, film and games.\n\n## Why it matters\n\nThe generative video field has been converging on a single bottleneck — controllability, not fidelity — and Seedance 2.5 attacks it with the levers studios already understand: reference stacks, region edits, second-level timing and DCC plugins. Arriving a day after MiniMax's H3 rolled out across Runway, Pika and Krea, it also confirms that the most aggressive competition in AIGC video is now between Chinese labs, with distribution through their own consumer apps rather than Western creative platforms. For working teams, the open question is whether 30 seconds of controllable footage is enough to displace conventional shot-by-shot assembly.",
-      "date_published": "2026-07-31T05:02:00.000Z",
-      "date_modified": "2026-07-31T11:00:03.442Z",
-      "tags": [
-        "AIGC",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/seedance-2-5-public-launch-jimeng.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/seedance-2-5-public-launch-jimeng.html",
-        "source_published_at": "2026-07-31T05:02:00.000Z",
-        "site_published_at": "2026-07-31T11:00:03.442Z",
-        "sources": [
-          {
-            "title": "Dreamina on X: Meet Dreamina Seedance 2.5",
-            "url": "https://x.com/dreamina_ai/status/2083055760511299642"
-          },
-          {
-            "title": "量子位：刚刚，即梦 Seedance 2.5来了",
-            "url": "https://www.qbitai.com/2026/07/464329.html"
           }
         ]
       }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepMind 台风预报模型登 Nature，代码权重同步开源 — Uncle Cat AI Radar</title>
+<meta name="description" content="WeatherNext Cyclones 在路径、强度与风场三项上刷新精度，三天预报相当于旧系统两天水平，代码与权重已上传 GitHub。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-weathernext-cyclones-open.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/deepmind-weathernext-cyclones-open.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-weathernext-cyclones-open.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/deepmind-weathernext-cyclones-open.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="DeepMind 台风预报模型登 Nature，代码权重同步开源 — Uncle Cat AI Radar">
+<meta property="og:description" content="WeatherNext Cyclones 在路径、强度与风场三项上刷新精度，三天预报相当于旧系统两天水平，代码与权重已上传 GitHub。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-weathernext-cyclones-open.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepMind 台风预报模型登 Nature，代码权重同步开源 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="WeatherNext Cyclones 在路径、强度与风场三项上刷新精度，三天预报相当于旧系统两天水平，代码与权重已上传 GitHub。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="DeepMind 台风预报模型登 Nature，代码权重同步开源 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"DeepMind 台风预报模型登 Nature，代码权重同步开源","item":"https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-weathernext-cyclones-open.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-weathernext-cyclones-open.html#article","headline":"DeepMind 台风预报模型登 Nature，代码权重同步开源","description":"WeatherNext Cyclones 在路径、强度与风场三项上刷新精度，三天预报相当于旧系统两天水平，代码与权重已上传 GitHub。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-weathernext-cyclones-open.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-weathernext-cyclones-open.html"},"datePublished":"2026-08-06T15:06:00.000Z","dateModified":"2026-08-06T23:00:03.114Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["研究","开源"],"keywords":"研究, 开源","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones/","https://x.com/GoogleDeepMind/status/2085395442347524506"],"about":[{"@type":"Thing","name":"研究"},{"@type":"Thing","name":"开源"}]}]}</script>
+</head>
+<body data-slug="deepmind-weathernext-cyclones-open" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/deepmind-weathernext-cyclones-open.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-08-06T15:06:00Z">2026年8月6日 23:06</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><span class="views" id="viewCount"></span></div>
+  <h1>DeepMind 台风预报模型登 Nature，代码权重同步开源</h1>
+  <p class="standfirst">WeatherNext Cyclones 在路径、强度与风场三项上刷新精度，三天预报相当于旧系统两天水平，代码与权重已上传 GitHub。</p>
+  <p>8 月 6 日，谷歌 DeepMind 在《自然》发表其热带气旋预报模型 WeatherNext 的研究，并同步在 GitHub 开源代码与模型权重——这套系统此前已进入实际的飓风业务预报流程。</p><h2>结果本身</h2><p>WeatherNext Cyclones 可生成长达 15 天的概率性预报，覆盖风暴路径、强度与风场结构三个维度。DeepMind 称三项均达到当前最优，并用预报员真正在意的指标来衡量收益：提前量。平均而言，它的三天预报质量相当于此前系统的两天水平，等于凭空多出一整天预警时间。考虑到业务预报技巧的历史进步速度大致是「十年提前一天」，这相当于一次性兑现了十年进展。</p><p>模型训练数据包含多年全球大气再分析资料（约 20TB 规模），并叠加了收录近 5000 个历史气旋的 IBTrACS 数据库——后者提供的正是通用大气训练容易「抹平」的风暴细结构。DeepMind 举飓风 Melissa 为实战例证：预报员提前五天就以 80% 置信度获得了五级登陆的预警信号。</p><h2>开源与合作方</h2><p>代码与权重已在 GitHub 开放，可用于学术、业务与商业用途；精简版 WeatherNext 2-mini 可在免费 Colab 笔记本中运行，预报结果也通过 Weather Lab 对外提供。合作方包括美国国家飓风中心、大气研究合作institute（CIRA）、英国气象局及多国气象机构，DeepMind 表示本季将向更多预报员扩大开放。</p><h2>为什么重要</h2><p>机器学习气象模型在通用预报上超越数值模拟已有两年，但热带气旋——样本稀少、尺度小、后果严重——一直是业务界保持谨慎的硬骨头。发表于《自然》在公开层面终结了方法论之争，开源权重则终结了可及性之争：任何国家气象部门，包括负担不起传统气旋模式所需超算的机构，如今都能在普通硬件上跑一套前沿系统。这也是前沿实验室罕见地开源一个主要价值并非商业的模型，是当下 AI 能力转化为可量化公共安全收益最清晰的例子。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones/" rel="noopener" target="_blank">WeatherNext: AI model achieves breakthrough in forecasting cyclones</a></li><li><a href="https://x.com/GoogleDeepMind/status/2085395442347524506" rel="noopener" target="_blank">Google DeepMind on X</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/agent-plugins-standard-1-0.html">OpenAI 联手 Vercel 等推出 Agent Plugins 1.0 开放标准</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/hassabis-exits-deepmind-ceo-role.html">哈萨比斯卸任 DeepMind CEO，Jeff Dean 同日离职创业</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/qwen38-max-independent-benchmark-results.html">第三方评测：Qwen3.8-Max 登顶智能体分榜，代价是成本翻倍</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>
