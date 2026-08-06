@@ -42,6 +42,7 @@ x-feed.mjs     官方 X 账号直连（X API v2，token 读环境变量）
 build.mjs      静态站构建 → docs/（双语页面、分类、存档、雷达、RSS、sitemap、llms.txt、JSON-LD）
 serve.mjs      本地预览（http://127.0.0.1:3898/ai-pulse/）
 zhihu-evening.mjs 知乎晚报草稿生成（晚班输出标题、正文专用稿、Markdown/HTML/JSON）
+wait-pages.mjs 推送后等待 GitHub Pages 确认已上线本次版本，避免向外发布旧页面
 run-daily.bat  定时班次入口（Windows 计划任务每日 7:00 / 19:00）
 refresh-72h.bat 全量重刷（72 小时窗口）
 ```

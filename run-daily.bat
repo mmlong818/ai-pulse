@@ -51,6 +51,12 @@ if errorlevel 1 (
   exit /b 1
 )
 
+node wait-pages.mjs >> daily.log 2>&1
+if errorlevel 1 (
+  echo [%date% %time%] Pages deploy FAILED, skip IndexNow and X >> daily.log
+  exit /b 1
+)
+
 node submit-indexnow.mjs >> daily.log 2>&1
 if errorlevel 1 (
   echo [%date% %time%] IndexNow FAILED, skip X >> daily.log
