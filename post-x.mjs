@@ -241,6 +241,26 @@ function takeFor(lang, article) {
   return `${label}: ${text}`;
 }
 
+function hookFor(lang, article) {
+  if (lang !== 'zh') return 'Watch';
+  const moneyHit = hasAny(article, ['funding', 'ipo', 'valuation', 'acquire', 'acquisition', 'deal', 'billion', '融资', '估值', '收购', '上市', '交易', '亿美元', '亿元']);
+  if (moneyHit && hasAny(article, ['down', 'discount', 'below', '亏', '低于', '折价', '缩水', '贱卖'])) return '亏了亏了';
+  if (moneyHit) return '好多钱啊';
+
+  const rules = [
+    { hit: ['outage', 'incident', 'breach', 'bug', 'lawsuit', 'court', 'ban', 'halt', '事故', '宕机', '漏洞', '法院', '禁令', '叫停', '撤销'], label: '谁的锅' },
+    { hit: ['ceo', 'quit', 'quits', 'exit', 'exits', 'resign', 'leaves', 'leadership', 'brain drain', '卸任', '离职', '换帅', '掌舵人', '核心研究者'], label: '爆炸信息' },
+    { hit: ['jailbreak', 'security', 'safety', 'cyber', 'eval', '越狱', '安全', '网络安全', '评测翻车'], label: '谁的锅' },
+    { hit: ['price', 'cost', 'cheaper', 'cut', 'saving', 'throughput', '降价', '成本', '便宜', '省钱', '吞吐'], label: '赚了赚了' },
+    { hit: ['open-source', 'open source', 'open-weight', 'weights', 'apache', 'mit license', '开源', '权重', '许可证'], label: '坐稳了' },
+    { hit: ['compute', 'data center', 'datacenter', 'power', 'grid', 'capacity', 'chip', 'silicon', 'gpu', '算力', '数据中心', '电力', '并网', '芯片', '显卡'], label: '坐稳了' },
+    { hit: ['benchmark', 'leaderboard', 'arena', 'index', 'rank', 'score', '榜单', '排名', '分数'], label: '有点意思' },
+    { hit: ['video', 'image', 'audio', 'aigc', 'runway', 'flux', 'pika', 'canva', '视频', '图像', '音频', '生成'], label: '哇哦' },
+    { hit: ['policy', 'regulation', 'white house', 'ai act', '监管', '政策', '白宫', '法案'], label: '？？？' },
+  ];
+  return rules.find((item) => hasAny(article, item.hit))?.label || '有点意思';
+}
+
 function postCheckDelayMs() {
   const rawMs = env('AIPULSE_X_CHECK_DELAY_MS');
   if (rawMs) return Math.max(0, Number(rawMs) || 0);
@@ -406,7 +426,7 @@ function composeText(lang, picks) {
   if (lang === 'zh') {
     const { month, day, hour } = localParts(edition, 'Asia/Shanghai', 'zh-CN');
     head = `⚡ 猫叔AI雷达 · ${month}月${day}日${hour < 12 ? '早报' : '晚报'}（${label}）`;
-    lead = `最值得盯：${trimWeighted(storyTitle(featured, lang), 82)}`;
+    lead = `${hookFor(lang, featured)}：${trimWeighted(storyTitle(featured, lang), 82)}`;
     take = takeFor(lang, featured);
     question = '你觉得哪条最值得继续追？';
     otherPrefix = '另外：';
