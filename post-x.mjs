@@ -115,7 +115,7 @@ function headlineText(text) {
 
 function postUrl(lang) {
   const date = currentBeijingDate();
-  return lang === 'zh' ? `${BASE}/zh/radar/${date}.html` : `${BASE}/radar/${date}.html`;
+  return lang === 'zh' ? `${BASE}/zh/day/${date}.html` : `${BASE}/day/${date}.html`;
 }
 
 const floorEdition = (ms) => Math.floor((ms - EB_ANCHOR) / EB_HALF) * EB_HALF + EB_ANCHOR;
@@ -366,8 +366,8 @@ function composeText(lang, picks) {
 function composeLinkReply(lang) {
   const url = postUrl(lang);
   return lang === 'zh'
-    ? `完整来源、发布时间和全部快讯在这里：\n${url}`
-    : `Sources, timestamps, and the full radar:\n${url}`;
+    ? `完整深度简报、来源、发布时间和全部快讯在这里：\n${url}`
+    : `Full briefings, sources, timestamps, and quick hits:\n${url}`;
 }
 
 async function postTweet(text, replyToId) {
