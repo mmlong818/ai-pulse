@@ -55,6 +55,37 @@ Sources:
   - OpenAI Developers on X: https://x.com/OpenAIDevs/status/2085398373511918022
   - Introducing Agent Plugins 1.0.0 — Vercel Changelog: https://vercel.com/changelog/introducing-agent-plugins-1-0-0
 
+### Alibaba launches CosyVoice Studio, a unified voice platform
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/alibaba-cosyvoice-studio-launch.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-cosyvoice-studio-launch.html
+- Source timestamp: 2026-08-07T07:43:00.000Z
+- Site timestamp: 2026-08-07T11:00:03.870Z
+- Tags: AIGC, Industry, Models
+
+The Qwen-Audio-based product bundles dictation, voice agents and audiobook generation, and ships free on iOS, Android, Mac and Windows.
+
+## One platform, three surfaces
+
+Alibaba released CosyVoice Studio on Friday, describing it as China's first integrated AI voice production platform. The product is built on the company's in-house Qwen-Audio speech model and folds recognition, synthesis and semantic understanding into a single stack rather than exposing them as separate APIs.
+
+It ships with three components. CosyFlow is a dictation layer that strips filler words, silently repairs the speaker's self-corrections, and reorganises rambling speech into structured output — emails, meeting notes or work reports formatted for the context rather than a raw transcript. It also supports a continuous recording mode with speaker diarisation and automatic multilingual translation. CosyAgent lets users assemble voice agents in natural language, wiring in enterprise knowledge bases and tool calls for real-time conversational use cases such as customer service and outbound sales. CosyCreative turns uploaded documents into conversational podcasts or multi-character audiobooks, drawing on a library of thousands of voices plus voice cloning.
+
+## Availability
+
+The dictation app is downloadable now on iOS, Android, Mac and Windows, free for an introductory period with no usage cap on the core function. The agent builder and the audio-creation tools are gated behind a whitelist invitation for enterprise customers, with broader access promised later.
+
+## Why it matters
+
+The interesting move is architectural. Most speech products treat transcription as a solved commodity and bolt intent handling on afterwards; Alibaba is arguing that pushing semantic understanding down into the speech layer changes what the output is — not a transcript to be cleaned up, but a document that already knows what the speaker meant. That framing also positions voice as an input method for agents rather than an accessibility feature, which is where the enterprise revenue sits. Coming from the vendor that also open-sourced the earlier CosyVoice models, the launch signals Alibaba consolidating a scattered audio research line into a commercial surface — and it lands as Chinese platforms compete to own the voice front-end to the agent stack.
+
+Chinese title: 阿里推出 CosyVoice Studio，把语音能力打包成一个平台
+Chinese summary: 基于自研 Qwen-Audio 模型，把录音成稿、语音智能体与有声内容创作合为一体，四端上线并限时免费。
+
+Sources:
+  - 阿里推出国内首个AI语音平台CosyVoice Studio — 量子位: https://www.qbitai.com/2026/08/468324.html
+  - 阿里推出国内首个 AI 语音平台 CosyVoice Studio，限时免费体验 — 新浪科技: https://finance.sina.com.cn/tech/digi/2026-08-07/doc-inimnrap3180730.shtml
+
 ### AMD buys Taalas to etch AI models directly into silicon
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/amd-acquires-taalas-hardwired-silicon.html
@@ -84,6 +115,37 @@ Sources:
   - AMD Acquires Taalas to Advance Compute Solutions for Rapidly Growing AI Inference Market: https://ir.amd.com/news-events/press-releases/detail/1296/amd-acquires-taalas-to-advance-compute-solutions-for-rapidly-growing-ai-inference-market
   - AMD acquires AI chip startup Taalas to boost inference performance by etching models into silicon: https://www.theregister.com/systems/2026/08/06/amd-acquires-ai-chip-startup-taalas-to-boost-inference-performance-by-etching-models-into-silicon/
   - AMD buys Taalas, startup that hardwires AI models into its silicon: https://www.cnbc.com/2026/08/06/amd-buys-taalas-startup-that-hardwires-ai-models-into-its-silicon.html
+
+### Anthropic loosens Claude Fable 5's biology safeguards
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-loosens-fable-5-biology.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-loosens-fable-5-biology.html
+- Source timestamp: 2026-08-07T03:08:00.000Z
+- Site timestamp: 2026-08-07T11:00:03.870Z
+- Tags: Safety, Models, Policy
+
+A rewritten classifier constitution cut biology-related fallbacks by roughly 85%, after months of complaints that the model refused routine health questions.
+
+## Undoing a deliberate over-block
+
+Anthropic said on Friday it has retrained the safety classifier governing biology queries in Claude Fable 5, reducing biology-related fallbacks by about 85% across its product surfaces. A fallback occurs when the classifier flags a prompt as potentially touching safeguarded biology and silently routes the user to Opus 5, a less capable model, instead of answering with Fable 5.
+
+The over-blocking was intentional at launch. Anthropic deployed deliberately broad classifiers when Fable 5 shipped, accepting a high false-positive rate as the price of catching dual-use biology work early. In practice that swept in people asking about lab results, symptoms or textbook biology, and drew public criticism that the model refused innocuous prompts.
+
+The fix was to rewrite the classifier's constitution — the rule set that separates safeguarded from allowed content — carving out explicit exceptions for benign categories. Anthropic collected input from internal and external experts over several weeks, generated fresh training data reflecting the revised rules, and retrained. The company reported uneven improvement by surface: overall fallbacks fell 67% on Claude.ai and 55% on Cowork, but only 17% on Claude Code and 7% on the Claude Platform, where biology triggers were rarer to begin with.
+
+Virology, toxicology and molecular design remain blocked as genuinely dual-use. Anthropic said legitimate researchers in those areas should eventually be served through trusted access pathways rather than by loosening the general policy.
+
+## Why it matters
+
+This is one of the few public instances of a frontier lab measuring, and then paying down, the cost of its own caution. Refusal rates are usually discussed as a product annoyance; here they are treated as a tunable engineering quantity with published numbers attached. The disclosure also implicitly concedes that Anthropic's launch-time posture was miscalibrated by a wide margin — useful evidence for the ongoing argument over whether broad classifiers or narrow, capability-specific gating is the better default. The per-surface breakdown is the more practical takeaway: safety behaviour varies sharply by product, not just by model.
+
+Chinese title: Anthropic 放宽 Claude Fable 5 的生物学安全限制
+Chinese summary: 重写分类器「宪法」后，生物学相关的降级回退减少约 85%，此前该模型频繁拒答普通健康问题饱受批评。
+
+Sources:
+  - Improving Fable 5's Biology Safeguards — Anthropic: https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards
+  - Claude on X: updating Claude Fable 5's biology safeguards: https://x.com/claudeai/status/2085563808773189680
 
 ### Cloudflare's Kitesurf drops Chromium for agent browsing
 
@@ -180,6 +242,69 @@ Sources:
   - Improving GPT-5.6 Sol in ChatGPT, expanding GPT-5.6 Luna access for free users: https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/
   - OpenAI improves GPT-5.6 Sol in ChatGPT and restricts free users to its weakest model: https://the-decoder.com/openai-improves-gpt-5-6-sol-in-chatgpt-and-restricts-free-users-to-its-weakest-model/
   - ChatGPT brings unlimited text chats to free users: https://techcrunch.com/2026/08/06/openai-brings-unlimited-chatgpt-text-chats-to-free-users/
+
+### Huawei's openJiuwen ships agent swarm into bank production
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openjiuwen-enterprise-swarm-bank.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openjiuwen-enterprise-swarm-bank.html
+- Source timestamp: 2026-08-07T06:18:00.000Z
+- Site timestamp: 2026-08-07T11:00:03.870Z
+- Tags: Agents, Open Source, Industry
+
+The open-source agent platform released an enterprise-grade distributed swarm architecture, first deployed in production at China's Postal Savings Bank.
+
+## Swarms, but on a cluster
+
+openJiuwen, the open-source AI agent platform developed by Huawei's 2012 Laboratories together with the company's cloud, device and computing teams, released what it calls the industry's first enterprise-grade distributed swarm architecture on Friday, and said the design has gone live in production at the Postal Savings Bank of China.
+
+Swarm patterns — many lightweight agents negotiating a task among themselves rather than a single planner dispatching subtasks — have mostly existed as single-machine research demos. The new architecture extends the pattern across enterprise distributed clusters and adds compute affinity, so agent placement accounts for where the work and the hardware actually are rather than scheduling blindly. The platform is fully open-sourced, with repositories on both GitHub and the domestic AtomGit.
+
+At the Postal Savings Bank, the deployment serves thousands of employees across intelligent office assistance, information monitoring and risk alerting. The bank's rollout is presented as the first time a distributed swarm architecture has run in a production environment at enterprise scale — a claim that matters mainly because Chinese financial institutions are among the most conservative buyers of agent infrastructure, with regulatory constraints on how autonomous systems may touch internal data.
+
+## Why it matters
+
+Agent frameworks have accumulated far faster than production references for them. The gap in the market is not another orchestration library but evidence that multi-agent systems survive contact with a regulated enterprise — audit trails, permission boundaries, cluster-level scheduling and all. Huawei is pitching openJiuwen into exactly that gap, and pairing it with a state-owned bank as proof.
+
+The strategic subtext is domestic substitution. An open-source agent stack developed inside Huawei, hosted partly on China's own code platform and validated on a major state bank, is positioned to become default infrastructure for Chinese enterprises that cannot or will not build on US-hosted agent frameworks. Whether the architecture is technically novel matters less than whether it becomes the reference deployment others copy.
+
+Chinese title: 华为 openJiuwen 把智能体蜂群架构送进银行生产环境
+Chinese summary: 这一开源智能体平台发布企业级分布式蜂群架构，并在中国邮政储蓄银行完成首个生产环境落地。
+
+Sources:
+  - openJiuwen发布业界首个企业级分布式蜂群架构 — 量子位: https://www.qbitai.com/2026/08/468305.html
+
+### Seedance 2.5 API opens, landing on Runway, Krea and Pika
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/seedance-2-5-api-global-rollout.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/seedance-2-5-api-global-rollout.html
+- Source timestamp: 2026-08-07T06:11:00.000Z
+- Site timestamp: 2026-08-07T11:00:03.870Z
+- Tags: AIGC, Industry, Models
+
+ByteDance switched on public API access for its 30-second video model, and Western creative platforms shipped it to users within hours of each other.
+
+## From demo to distribution
+
+ByteDance opened public API access to Seedance 2.5 on 7 August, and the model appeared almost simultaneously inside a row of Western creative platforms. Runway announced availability first, followed within roughly ninety minutes by Krea, the agentic design tool Lovart, and Pika, which folded the model into its recently launched API membership at a steep discount. Several other platforms — among them Magnific, Yapper and YouArt — have announced integrations of their own, while ByteDance's Volcano Engine has been signing up Chinese apps directly. The model itself was unveiled on 31 July, but at that point it ran only inside ByteDance's own consumer apps — Jimeng and Doubao — with programmatic access listed as forthcoming. This week closed that gap.
+
+The capability set is what makes the distribution notable. Seedance 2.5 generates up to 30 seconds of continuous audio-video in a single pass rather than stitching short clips, and it can organise multiple logically connected shots inside that span, so a sequence can carry setup, development and resolution without an editor intervening. It accepts as many as 50 reference inputs per generation — up to 30 images, 10 video clips and 10 audio clips — and supports timestamp-level editing of both picture and sound, alongside green-screen output and camera-angle adjustment.
+
+## Pricing and positioning
+
+Resellers list the model in the region of nine cents per second of output at lower resolutions, with token-based rates differing depending on whether video is supplied as input. That places it in direct competition with the incumbent Western video models on the same platforms that now host all of them side by side.
+
+## Why it matters
+
+The significant fact is not the model but the channel. A Chinese lab's flagship video model became, in the space of a single morning, a first-class option inside the tools most Western creators actually use — including platforms that build their own models. Video generation is consolidating into a thin layer of interface companies buying capability wholesale, and on this cycle the wholesale supplier was ByteDance. For rivals in the US and Europe, the competitive question shifts from whose model is better to whose model is cheap and available everywhere at once.
+
+Chinese title: Seedance 2.5 开放 API，同日登陆 Runway、Krea 与 Pika
+Chinese summary: 字节跳动正式开放这款 30 秒视频模型的公开 API，欧美主流创作平台在数小时内密集接入上线。
+
+Sources:
+  - Runway on X: Seedance 2.5 is live on Runway: https://x.com/runwayml/status/2085609871765069877
+  - Krea on X: introducing Seedance 2.5: https://x.com/krea_ai/status/2085629541385736662
+  - Introducing Seedance 2.5 — ByteDance Seed: https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5
+  - 火山引擎正式上线 Seedance 2.5 API 服务 — 新浪财经: https://finance.sina.com.cn/tech/it/2026-08-07/doc-inimnvkh9934281.shtml
 
 ### Suno to watermark and fingerprint AI-generated songs
 
@@ -874,132 +999,6 @@ Sources:
   - MiniMaxAI/MiniMax-H3 — Hugging Face model card and licence Q&A: https://huggingface.co/MiniMaxAI/MiniMax-H3
   - China's MiniMax H3 is the first open model to top an AI video ranking: https://the-decoder.com/chinas-minimax-h3-is-the-first-open-model-to-top-an-ai-video-ranking/
 
-### Tencent Hunyuan ships Hy ASR 3.0 preview via cloud API
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/tencent-hunyuan-hy-asr-3-preview.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hunyuan-hy-asr-3-preview.html
-- Source timestamp: 2026-08-04T09:58:00.000Z
-- Site timestamp: 2026-08-04T11:00:03.521Z
-- Tags: Models, Industry, AIGC
-
-Tencent's new speech model reports about 3% word error rates in Mandarin, English and Cantonese, and is live on Tencent Cloud and in Yuanbao.
-
-Tencent's Hunyuan team released a preview version of its next-generation speech recognition model, Hy ASR 3.0, on Tuesday, positioning it as a transcription system built on top of a large language model rather than a standalone acoustic pipeline.
-
-## What was released
-
-According to Hunyuan's announcement, Hy ASR 3.0 preview borrows the language understanding of the team's Hy3 foundation model and uses it to resolve ambiguity that pure acoustic decoding leaves behind — homophones, proper nouns, domain jargon and speech that only makes sense given what came several sentences earlier. Tencent frames the shift as moving from character-by-character transcription toward a model that interprets the utterance in context and returns a cleaned, punctuated result in one pass.
-
-On public benchmark sets, the team reports word error rates of 3.34% for Mandarin, 2.62% for English and 3.12% for Cantonese. On Tencent's own internal evaluations, it claims lower error rates than comparison systems across four axes: general recognition, dialect identification, contextual understanding and robustness in noisy or overlapping-speech conditions. Cantonese and broader dialect coverage is emphasised, an area where Chinese-market ASR products have historically been weakest.
-
-The model is a commercial service, not an open-weight release. It is available through Tencent Cloud's API for use cases such as customer service, voice search and content indexing, and Tencent's consumer assistant Yuanbao has already switched it on, giving users free access to dialect recognition and context-aware correction.
-
-## Why it matters
-
-Speech recognition has quietly become the contested layer beneath voice agents: an agent's tool calls are only as reliable as the transcript it acts on, and a misheard order number or address propagates through the entire chain. By routing recognition through an LLM's language prior, Tencent is making the same architectural bet as recent releases from Alibaba's Qwen ASR line and xAI's voice stack — that transcription accuracy is now bounded by semantics, not acoustics.
-
-The pricing and rollout choice is also notable. Tencent is putting the model straight into Yuanbao at no cost while metering it through the cloud API, the same dual-track pattern Chinese vendors have used to seed developer adoption. With Cantonese and dialect handling near Mandarin-level error rates, the release also strengthens Tencent's hand in Hong Kong and Southeast Asian markets, where multilingual and code-switched speech is the norm rather than an edge case.
-
-Chinese title: 腾讯混元发布 Hy ASR 3.0 preview，元宝已首发上线
-Chinese summary: 腾讯混元新一代语音识别模型上线，普通话、英语、粤语词错率均约 3%，已在腾讯云开放 API，元宝端免费可用。
-
-Sources:
-  - Tencent Hunyuan on X: Hy ASR 3.0 preview drops today: https://x.com/TencentHunyuan/status/2084579829303615497
-  - 腾讯混元Hy ASR 3.0 preview：让语音识别理解上下文 — 量子位: https://www.qbitai.com/2026/08/465973.html
-  - 腾讯混元发布语音识别模型 Hy ASR 3.0 preview，元宝已首发上线 — 新浪科技: https://finance.sina.com.cn/tech/digi/2026-08-04/doc-inimcxxc4039738.shtml
-
-### Alibaba's Wan adds real-time Camera-to-Image generation
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/wan-real-time-camera-to-image.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/wan-real-time-camera-to-image.html
-- Source timestamp: 2026-08-04T03:26:00.000Z
-- Site timestamp: 2026-08-04T11:00:03.521Z
-- Tags: AIGC, Models, Industry
-
-Wan launched a Real-time feature suite whose first capability turns a live phone camera feed into stylised imagery, starting with anime looks.
-
-Alibaba's Wan team announced a new Real-time feature suite on Tuesday, led by a capability it calls Camera-to-Image: users open their device camera and see their surroundings restyled on the spot, with the launch demo showing live footage converted into anime-style imagery. The team said the feature is available to try immediately, linking directly to the product rather than a waitlist.
-
-## What is different about it
-
-Wan — the international name for Alibaba's Tongyi Wanxiang generative-media line — has until now shipped in the familiar asynchronous shape: submit a prompt or a reference image, wait for a job to finish, collect a file. Camera-to-Image inverts that loop. Instead of authoring a shot and waiting on a render, the user points a camera and the model becomes a filter running against a continuous input stream. That framing puts the feature in the same category as the interactive-latency generation work coming out of Krea, Decart and a handful of research groups, rather than in the text-to-video race Wan is better known for.
-
-Alibaba described Camera-to-Image as the first entry in a broader Real-time suite, implying further capabilities under the same banner. The company has not published latency figures, resolution limits, pricing, or which underlying Wan checkpoint powers the feature, and details available so far come from the team's own announcement.
-
-## Why it matters
-
-Real-time generation is the boundary that separates generative media as a production tool from generative media as an interface. Anything running at camera frame rates can plug into live video, streaming, camera apps, virtual try-on and eventually eyewear — surfaces that batch generation cannot reach, and where distribution belongs to platform owners rather than creative-tool startups. Alibaba is one of the few companies holding both a competitive video model family and the consumer apps to put it in front of hundreds of millions of phones.
-
-The cost side is the part to watch. Interactive generation means paying for inference every frame instead of every clip, which forces aggressive distillation and small step counts. If Wan can hold acceptable quality at that budget on consumer hardware or cheap serving, the same techniques transfer straight back to its batch video products — and set a floor that rivals in the AIGC field will have to meet.
-
-Chinese title: 通义万相上线实时功能，摄像头画面可即时转风格
-Chinese summary: 万相发布 Real-time 实时功能套件，首个能力 Camera-to-Image 可把手机摄像头实时画面即时转成风格化图像，首发主打二次元。
-
-Sources:
-  - Alibaba Wan on X: Meet Camera-to-Image, part of our new Real-time feature suite: https://x.com/Alibaba_Wan/status/2084481142661746976
-  - Alibaba Wan on X: Try it now: https://x.com/Alibaba_Wan/status/2084481145115439473
-
-### AI memory crunch pushes MacBook Air into shortage
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/ai-memory-crunch-hits-macbook-air.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/ai-memory-crunch-hits-macbook-air.html
-- Source timestamp: 2026-08-02T21:33:00.000Z
-- Site timestamp: 2026-08-02T23:00:02.982Z
-- Tags: Industry
-
-Apple's highest-volume laptop is now short of supply as DRAM makers divert wafers to AI data centres, with custom orders slipping into September.
-
-The memory shortage created by AI data-centre buildouts has reached Apple's best-selling computer. Bloomberg's Mark Gurman reported on Sunday that MacBook Air supply has tightened globally, with configured orders on Apple's own store slipping into late August or September in North America, Europe and India. Earlier this year the squeeze was confined to Apple's lower-volume desktops, the Mac mini and Mac Studio; the Air is the company's highest-volume Mac and its primary education-market product.
-
-Apple's response, according to the report, has been a mix of pricing and marketing adjustments rather than a fix. The company has raised prices on affected models, begun sourcing memory from Chinese suppliers to widen its vendor base, and delayed its back-to-school promotion — originally planned for June — while steering campaign emphasis toward base-model MacBook Pro units that are easier to keep in stock. Apple has also started attaching availability disclaimers to Air marketing materials.
-
-The underlying cause is allocation, not capacity loss. DRAM fabricators have been shifting wafer starts toward high-bandwidth memory, the stacked DRAM that sits beside AI accelerators and commands far higher margins than the LPDDR modules that go into laptops. Consumer PC lines now effectively bid against hyperscaler orders for the same fab output. DDR5 and NAND contract prices have climbed sharply since January, and most announced greenfield memory capacity is not scheduled to produce volume before 2027.
-
-## Why it matters
-
-This is the clearest consumer-visible evidence yet that AI infrastructure spending has begun to price other industries out of the semiconductor supply chain. Apple has among the strongest procurement positions in electronics — long-term contracts, prepayments, enormous volume — and it still cannot hold stock on its flagship laptop. That sets a floor expectation for everyone below it: PC OEMs, smartphone makers, console and automotive buyers face worse terms and longer waits. For AI economics specifically, memory is now a hard constraint on both sides of the ledger, raising the bill of materials for on-device AI hardware at the same time it inflates the cost of the accelerators the cloud runs on.
-
-Chinese title: AI 抢内存，MacBook Air 陷入缺货
-Chinese summary: 内存厂商把产能让给 AI 数据中心，苹果销量最大的笔记本开始缺货，定制机型发货排到了 9 月。
-
-Sources:
-  - The global memory shortage hits the MacBook Air: https://techcrunch.com/2026/08/02/the-global-memory-shortage-hits-the-macbook-air/
-  - MacBook Air reportedly facing major supply shortages due to AI-driven memory crisis: https://9to5mac.com/2026/08/02/macbook-air-reportedly-facing-major-supply-shortages-due-to-ai-driven-memory-crisis/
-  - AI 产业扩张引发内存芯片短缺，消息称苹果 MacBook Air 笔记本出现供应紧张局面: https://www.ithome.com/0/984/822.htm
-
-### Alibaba opens QwenWork enterprise agent to public beta
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/alibaba-qwenwork-public-beta.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-qwenwork-public-beta.html
-- Source timestamp: 2026-08-03T04:47:00.000Z
-- Site timestamp: 2026-08-03T11:00:03.158Z
-- Tags: Agents, Industry
-
-Alibaba merged three internal agent products into QwenWork, a suite pairing desktop, cloud and team agents on top of the new Qwen3.8 model.
-
-## Three products folded into one
-
-Alibaba began a public beta of QwenWork (千问办公) on Monday, hours after the Qwen3.8 launch. The product consolidates three previously separate efforts — QoderWork, MuleRun and Wukong (悟空) — into a single enterprise agent suite, and Alibaba claims it is the first product to combine desktop-side agents, cloud-side agents and team-collaboration agents in one package.
-
-The suite runs on Qwen3.8, the flagship generation released the same day. A web client and a standalone PC client are open now; entry points inside DingTalk on both desktop and mobile are described as arriving soon. New accounts receive 2,000 credits, with daily login top-ups of 500 to 2,000 credits during the first week.
-
-## Aimed at company workflows, not individuals
-
-Alibaba's framing is explicitly enterprise. Beyond drafting documents and building slides, QwenWork is pitched as connecting to internal databases and existing business workflows, and it introduces organisation-level Skills — reusable, packaged procedures a team can define once and share, so an agent behaviour becomes company infrastructure rather than one person's prompt.
-
-That design mirrors where the agent market has moved this year: the bottleneck for enterprise deployment is rarely raw model capability but the plumbing of permissions, data access and repeatable procedure. Splitting execution across a local client that can touch files on the machine, a cloud runtime for long tasks, and a shared layer for team coordination is an attempt to cover all three at once.
-
-## Why it matters
-
-Alibaba is now shipping the full stack in a single day — a frontier model, a coding surface, and an office agent that consumes both. That vertical bundling is the same strategy Microsoft runs with Copilot and Google with Workspace, but priced and distributed through DingTalk into China's enterprise base, where Microsoft 365 has little reach. For Chinese firms weighing agent adoption, the practical question shifts from which model to license to whose workspace to standardise on. The public beta also gives Alibaba a fast feedback loop on Qwen3.8's long-horizon behaviour under real corporate workloads — exactly the evidence its model launch claims but cannot yet prove at scale.
-
-Chinese title: 阿里「千问办公」开启公测，企业级 Agent 三端合一
-Chinese summary: 阿里将 QoderWork、MuleRun、悟空三款产品整合为千问办公，桌面端、云端与协同 Agent 打包，底座换成新发布的 Qwen3.8。
-
-Sources:
-  - 阿里「千问办公」开启公测: https://www.qbitai.com/2026/08/465211.html
-  - 阿里Qwen3.8正式发布，编程与办公再进化: https://www.qbitai.com/2026/08/465215.html
-
 ## Recent radar items
 
 ### 2026-08-07
@@ -1021,6 +1020,20 @@ Sources:
 - 2026-08-06T13:39:00Z | X @Gradio | A community effort pointed coding agents at ICML 2026, with over 1,200 people reproducing more than 2,000 papers in the largest conference reproducibility audit yet. | 中文：一场社区行动把编程智能体对准 ICML 2026，1200 多人复现了逾 2000 篇论文，成为迄今规模最大的会议可复现性审计。 | https://x.com/Gradio/status/2085360146705006701
 - 2026-08-06T12:07:00Z | X @genspark_ai | Genspark brought its open-source GenOffice suite to Linux, matching the existing Mac and Windows builds. | 中文：Genspark 将开源办公套件 GenOffice 移植到 Linux，与已有的 Mac、Windows 版本保持一致。 | https://x.com/genspark_ai/status/2085337077814837473
 - 2026-08-06T17:00:00Z | TechCrunch | Naïve raised $28.5 million to automate the administrative grunt work of incorporating and running a company. | 中文：Naïve 融资 2850 万美元，用自动化处理公司注册与日常运营中的繁琐行政事务。 | https://techcrunch.com/2026/08/06/naive-raises-28-5m-to-automate-the-grunt-work-of-setting-up-and-running-a-company/
+- 2026-08-07T03:42:00Z | MarkTechPost | Liquid AI released LFM2.5-2.6B, an on-device agentic model with 128K context, tool calling and open weights in native, GGUF, MLX and ONNX formats. | 中文：Liquid AI 发布端侧智能体模型 LFM2.5-2.6B，支持 128K 上下文与工具调用，权重开放并提供原生、GGUF、MLX、ONNX 四种格式。 | https://www.marktechpost.com/2026/08/06/liquid-ai-lfm2-5-2-6b-on-device-agentic-model/
+- 2026-08-07T05:42:00Z | MarkTechPost | Microsoft open-sourced code-testing-generator, a polyglot unit-test agent that completed 92.1% of 152 internal tasks versus 78.9% for stock GitHub Copilot. | 中文：微软开源多语言单元测试智能体 code-testing-generator，在 152 项内部任务中完成率达 92.1%，而原版 GitHub Copilot 为 78.9%。 | https://www.marktechpost.com/2026/08/06/microsoft-open-sources-code-testing-generator/
+- 2026-08-07T02:10:00Z | X @Alibaba_Wan | Alibaba opened public beta of video model Wan3.0, which generates 30-second clips and accepts docs, spreadsheets, slides and PDFs as input. | 中文：阿里视频大模型 Wan3.0 开启公测，单段可生成 30 秒视频，并支持文档、表格、PPT、PDF 作为输入素材。 | https://x.com/Alibaba_Wan/status/2085549080097530237
+- 2026-08-07T03:08:00Z | 量子位 | Ant Group open-sourced Avernet under Apache 2.0, a multi-agent collaboration layer already deployed across 12 internal business units with over 90% task completion. | 中文：蚂蚁集团以 Apache 2.0 协议开源多智能体协作基础设施 Avernet，已在内部 12 个核心业务线落地，任务完成率持续超过 90%。 | https://www.qbitai.com/2026/08/467871.html
+- 2026-08-07T06:28:00Z | X @MiniMax_AI | MiniMax said the community built a distillation LoRA for its open-weight H3 video model four days after release, cutting sampling from 20 steps to 4–8. | 中文：MiniMax 表示开源 H3 视频模型放出权重四天后，社区就做出蒸馏 LoRA，把采样步数从 20 步压到 4—8 步。 | https://x.com/MiniMax_AI/status/2085614043512127542
+- 2026-08-07T04:46:00Z | X @Hailuo_AI | Hailuo AI demoed redubbing existing clips into another language or tone while preserving the original speaker's exact voice and natural speech cadence. | 中文：海螺 AI 演示视频重配音功能，可将已有片段换成另一种语言或语气，同时保留原说话人的音色与自然语速。 | https://x.com/Hailuo_AI/status/2085588294797291854
+- 2026-08-07T02:41:00Z | X @MiniMax_AI | MiniMax will livestream with ComfyUI on August 7 to stress-test H3, showing open weights, native stereo audio and clips up to 2K resolution and 15 seconds. | 中文：MiniMax 将于 8 月 7 日联合 ComfyUI 直播实测 H3，展示开源权重、原生立体声音频以及最高 2K、15 秒的视频生成。 | https://x.com/MiniMax_AI/status/2085556856311984150
+- 2026-08-07T03:34:00Z | X @togethercompute | Together AI benchmarked DeepSeek-V4 Flash-0731 against GPT-5.6 Luna on DeepSWE software engineering tasks, finding it delivers 80% of Luna's performance far more cheaply. | 中文：Together AI 用 DeepSWE 软件工程任务对比 DeepSeek-V4 Flash-0731 与 GPT-5.6 Luna，称前者以极低成本达到后者 80% 的表现。 | https://x.com/togethercompute/status/2085570328135118977
+- 2026-08-07T09:28:00Z | InfoQ 中文 | Cloudflare launched temporary accounts so agents can deploy Workers instantly via wrangler deploy --temporary, with deployments expiring in 60 minutes unless a human claims them. | 中文：Cloudflare 推出临时账户，智能体可用 wrangler deploy --temporary 直接部署 Worker，部署 60 分钟后若无人认领即自动失效。 | https://www.infoq.cn/article/6q0ACAlcmf7vmpIcJb09
+- 2026-08-07T06:21:00Z | 量子位 | Apple's bug bounty review team went offline under a flood of AI-generated reports, imposing submission caps and a 30-day cooldown from August 2. | 中文：在 AI 批量生成的漏洞报告轰炸下，苹果漏洞赏金审核团队已下线，并自 8 月 2 日起实施提交数量限制和 30 天冷却期。 | https://www.qbitai.com/2026/08/466738.html
+- 2026-08-06T23:00:00Z | X @Replit | Replit said a live session where 14,075 people built apps together set a Guinness World Record for the largest AI video lesson. | 中文：Replit 宣布一场 14075 人同时在线共建应用的直播课，创下"最大规模 AI 视频课程"吉尼斯世界纪录。 | https://x.com/Replit/status/2085501387714986373
+- 2026-08-06T23:42:00Z | X @genspark_ai | Genspark argued that enterprise AI bills keep climbing even as per-unit intelligence got roughly ten times cheaper this year, because agents moved into production. | 中文：Genspark 指出，今年单位智能成本降了约十倍，但企业 AI 账单仍在上涨，原因是智能体大规模进入生产环境。 | https://x.com/genspark_ai/status/2085511812313985486
+- 2026-08-07T10:24:00Z | IT之家 | South Korea's Mobilint launched the MLD-R1, a USB-form AI accelerator delivering 10 TOPS of INT8 compute for edge inference. | 中文：韩国 Mobilint 推出 USB 形态 AI 加速器 MLD-R1，内置 10TOPS INT8 算力，面向边缘侧推理场景。 | https://www.ithome.com/0/987/158.htm
+- 2026-08-07T10:52:00Z | IT之家 | A leaked new Microsoft Copilot icon shows the assistant moving to a flatter, simpler design. | 中文：微软 Copilot 新版图标泄露，助手标识趋向扁平化、设计更为简洁。 | https://www.ithome.com/0/987/164.htm
 
 ### 2026-08-06
 
