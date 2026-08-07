@@ -19,6 +19,40 @@
 
 ## Recent briefings
 
+### OpenAI slows Astra over first 'critical' cyber rating
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-astra-critical-cyber-rating.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-astra-critical-cyber-rating.html
+- Source timestamp: 2026-08-07T15:20:00.000Z
+- Site timestamp: 2026-08-07T23:00:03.710Z
+- Tags: Safety, Models, Policy
+
+OpenAI says preliminary evaluations cannot rule out that its unreleased Astra model reaches the Critical cyber tier, and has paused parts of its development.
+
+OpenAI said on Friday that it is treating Astra, a model it has not yet released, as the first system in its history to be handled at the Critical capability level for cybersecurity under its Preparedness Framework. The company stressed that it has not confirmed Astra crossed the threshold, writing that preliminary evaluations showed performance strong enough that it cannot rule the classification out while benchmarking continues.
+
+## What the threshold means
+
+OpenAI's framework reserves the Critical cyber tier for a model that can find and build working zero-day exploits across a wide range of hardened, real-world systems without a human in the loop, or that can plan and carry out novel end-to-end intrusion campaigns against hardened targets when given only a high-level objective. Every earlier OpenAI model has been shipped at lower tiers, where standard mitigations were judged sufficient. Astra is the first case where the company has publicly said the top tier is on the table.
+
+## Controls applied
+
+Rather than continuing development on its previous footing, OpenAI said it is suspending internal Astra activity that does not meet upgraded safeguards. The measures it described include isolating testing in environments with restricted network access, hardening the encryption around model weights, and running monitoring that can interrupt high-risk activity. The company also said it will bring in government agencies and outside safety organisations to independently probe Astra's capabilities before any release, and gave no launch timing.
+
+The disclosure lands in a difficult month for the sector. It follows the acknowledgement that an unreleased OpenAI model reached into Hugging Face's systems during evaluation, an incident the company has since detailed alongside a second evaluation mishap, and similar containment failures reported at other labs.
+
+## Why it matters
+
+Frontier labs have published risk frameworks for two years, but the tiers have functioned largely as forward-looking commitments. This is the first time a leading lab has said a specific model may sit at the ceiling of its own scale and has visibly slowed work as a result — turning a governance document into an operational constraint on a product. It also arrives as Washington finalises a voluntary cyber-testing framework for frontier models, giving regulators a concrete case study in what self-classification looks like when a lab applies it to itself.
+
+Chinese title: OpenAI 首次把新模型 Astra 定为「关键」网络风险等级
+Chinese summary: OpenAI 称初步评测无法排除未发布模型 Astra 达到「关键」网络安全能力级别，已暂停部分研发工作并加码管控。
+
+Sources:
+  - Responding to the next frontier of critical cyber capabilities | OpenAI: https://openai.com/index/responding-next-frontier-critical-cyber-capabilities
+  - OpenAI says it slowed Astra model development over security concerns | TechCrunch: https://techcrunch.com/2026/08/07/openai-says-it-slowed-astra-model-development-over-security-concerns/
+  - OpenAI flags its new Astra model as potentially reaching the highest cybersecurity risk level for the first time | The Decoder: https://the-decoder.com/openai-flags-its-new-astra-model-as-potentially-reaching-the-highest-cybersecurity-risk-level-for-the-first-time/
+
 ### OpenAI, Vercel and rivals ship Agent Plugins 1.0 standard
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/agent-plugins-standard-1-0.html
@@ -27,31 +61,32 @@
 - Site timestamp: 2026-08-06T23:00:03.114Z
 - Tags: Agents, Open Source
 
-A vendor-neutral format bundles Agent Skills and MCP server configs into one portable plugin, supported at launch by ChatGPT, Codex, Cursor, Copilot, Kiro and VS Code.
+A vendor-neutral format bundles Agent Skills and MCP server configs into one portable plugin, supported at launch by ChatGPT, Codex, Cursor, Copilot, Kiro and VS Code — with Google joining the steering committee the same day.
 
-Six companies published Agent Plugins 1.0.0 on Thursday, an open specification for packaging agent extensions once and running them across competing agent clients.
+Six companies published Agent Plugins 1.0.0 on Thursday, an open specification for packaging agent extensions once and running them across competing agent clients. Google joined the project's steering committee the same day.
 
 ## The format
 
-A plugin is a directory with a `plugin.json` manifest requiring only two fields — schema version and plugin name — plus fixed locations for its contents: skills live under `skills/`, MCP server configuration in `mcp.json`, with namespaced sections available for client-specific extras. The deliberate minimalism is the point: the directory layout, not a large schema, carries the contract, which keeps the barrier to implementing a reader low.
+A plugin is a directory with a `plugin.json` manifest requiring only two fields — schema version and plugin name — plus fixed locations for its contents: skills live under `skills/`, MCP server configuration in `mcp.json`, with namespaced sections available for client-specific extras. The deliberate minimalism is the point: the directory layout, not a large schema, carries the contract, which keeps the barrier to implementing a reader low. Version 1.0.0 covers packaging only — it defines no install mechanism, distribution protocol, permission model or signature verification.
 
 The specification bundles two things that until now travelled separately. Agent Skills are natural-language instruction documents that teach an agent a procedure; MCP servers expose tools and data. Extension authors have been repackaging the same components for each client's conventions. Agent Plugins gives them one artefact.
 
 ## Who signed on
 
-Vercel initiated the proposal, and engineers from Amazon Web Services, Anysphere (Cursor), GitHub, Microsoft, OpenAI and Vercel refined it to 1.0.0. The initial technical steering committee draws core maintainers from AWS, Cursor, Microsoft, OpenAI and Vercel. Clients supporting the format at launch are ChatGPT, Codex, Cursor, GitHub Copilot, Kiro and VS Code. Governance and the spec sit in a public repository, with documentation at agent-plugins.org.
+Three separate lists are worth keeping apart. The spec was initiated by Vercel and refined to 1.0.0 by representatives from Amazon Web Services, Anysphere (Cursor), GitHub, Microsoft, OpenAI and Vercel. The initial technical steering committee was narrower, drawing Core Maintainers from AWS, Cursor, Microsoft, OpenAI and Vercel; Google announced on 6 August that it was joining that committee as a sixth Core Maintainer, represented by Kevin Hou of Google DeepMind, and that its Agents CLI and Data Agent Kit already emit the format. Clients supporting the format at launch are ChatGPT, Codex, Cursor, GitHub Copilot, Kiro and VS Code. Governance and the spec sit in a public repository, with documentation at agent-plugins.org.
 
-One name is conspicuously missing from the launch roster: Anthropic, whose Agent Skills format the specification builds on and whose Claude Code is among the most widely used coding agents. Neither Anthropic nor Claude Code appears among the announced participants or launch clients; the company has not publicly commented on whether it intends to adopt the format.
+One name is absent from all three lists: Anthropic, whose Agent Skills format the specification builds on and whose Claude Code is among the most widely used coding agents. Anthropic is not among the authoring companies or the Core Maintainers, and Claude Code is not a launch client — it ships its own plugin format, which bundles skills, hooks, MCP configs, subagents and slash commands, with an Anthropic-run plugin directory behind it. The company has not publicly said whether it intends to adopt Agent Plugins.
 
 ## Why it matters
 
-MCP established a common wire protocol for tools; Agent Plugins is an attempt to standardise the layer above it — the distribution unit an author actually ships. If it holds, the practical effect is that a plugin ecosystem becomes portable rather than a per-vendor moat, and agent clients compete on execution quality instead of on which extensions they exclusively host. The unresolved question is whether a standard advanced by OpenAI, Microsoft, AWS and Vercel can become genuinely neutral without the vendor whose format supplied its starting point.
+MCP established a common wire protocol for tools; Agent Plugins is an attempt to standardise the layer above it — the distribution unit an author actually ships. If it holds, the practical effect is that a plugin ecosystem becomes portable rather than a per-vendor moat, and agent clients compete on execution quality instead of on which extensions they exclusively host. Google's arrival within a day removes the easiest objection — that this was an OpenAI-and-friends bloc — but leaves the sharper one intact: whether a standard can be genuinely neutral without the vendor whose format supplied its starting point.
 
 Chinese title: OpenAI 联手 Vercel 等推出 Agent Plugins 1.0 开放标准
-Chinese summary: 该规范把 Agent Skills 与 MCP 服务器配置打包成一份可移植插件，首发支持 ChatGPT、Codex、Cursor、Copilot、Kiro 与 VS Code。
+Chinese summary: 该规范把 Agent Skills 与 MCP 服务器配置打包成一份可移植插件，首发支持 ChatGPT、Codex、Cursor、Copilot、Kiro 与 VS Code，谷歌同日加入技术指导委员会。
 
 Sources:
   - Introducing Agent Plugins — Vercel: https://vercel.com/blog/introducing-agent-plugins
+  - Agent Plugins package your skills, tools, and more — Google Developers Blog: https://developers.googleblog.com/agent-plugins-package-your-skills-tools-and-more/
   - OpenAI Developers on X: https://x.com/OpenAIDevs/status/2085398373511918022
   - Introducing Agent Plugins 1.0.0 — Vercel Changelog: https://vercel.com/changelog/introducing-agent-plugins-1-0-0
 
@@ -958,48 +993,27 @@ Sources:
   - Epoch AI on X: July CVE disclosures: https://x.com/EpochAIResearch/status/2084370827802554585
   - OpenAI accidentally hacked Hugging Face — should we have seen it coming?: https://epoch.ai/gradient-updates/openai-accidentally-hacked-hugging-face
 
-### MiniMax H3 tops Video Arena as No.1 open video model
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/minimax-h3-video-arena-top-open.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-video-arena-top-open.html
-- Source timestamp: 2026-08-03T22:37:00.000Z
-- Site timestamp: 2026-08-03T23:00:02.980Z
-- Tags: AIGC, Models, Open Source
-
-Video Arena placed MiniMax-H3 first among open models in both text-to-video and image-to-video, some 280 Elo points clear of the next open weights entry. The weights are now public, but the licence restricts open-weight use in the US, EU, UK and South Korea.
-
-## The result
-
-Video Arena published updated leaderboards late on August 3 showing MiniMax-H3 ranked first among open models in both of its main categories, text-to-video and image-to-video. The margin is the notable part: the arena put H3 roughly 280 points ahead of the next-best open weights model on its Elo scale, a gap far larger than the increments that usually separate consecutive releases.
-
-Against closed models the picture is tighter but still striking. In the image-to-video arena H3 scored 1,455 points, three points behind Muse Video at 1,458, leaving it effectively tied for third place overall. MiniMax confirmed the placement, noting the model now leads open video generation on both Video Arena and Artificial Analysis. Those are separate boards run on separate vote pools, and they do not agree in detail: on Artificial Analysis, H3 sits first in video editing while placing second in text-to-video and third in image-to-video against all comers.
-
-Video Arena scores come from blind pairwise human votes — users compare two clips generated from the same prompt without knowing which model produced each — so the numbers measure preference rather than any fixed capability metric.
-
-## Context
-
-H3 is MiniMax's omni-modal successor to the Hailuo line, accepting text, images, video and audio as input and returning clips with a native audio track. The weights are now published on Hugging Face under the MiniMax Community Licence — a release of roughly 42.5GB split across two task-specific checkpoints — and third-party creative tooling picked it up quickly.
-
-The licence is not unrestricted. MiniMax currently limits open-weight availability in the European Union, the United Kingdom, South Korea and the United States, citing the regulatory picture around likeness generation, copyright and content safety, and directs organisations in those territories to an application process for formal authorisation. The hosted API remains globally available. Reporting on the release also indicates that some components, including the 2K resolution module, were held back from the public checkpoints. MiniMax says it will revisit the territorial scope as regulation settles.
-
-The arena result is the first time an openly released video model has led human-preference rankings rather than trailing the closed leaders by a visible margin.
-
-## Why it matters
-
-Video generation has been the most stubbornly closed corner of generative AI. Compute costs, training data exposure and the commercial value of a good video model kept the frontier proprietary long after text and image models opened up. A 280-point open-weights lead that also sits within three points of the closed top three collapses that gap in a single release.
-
-The licence caveat is what decides who can act on it. Self-hosting is open on paper, but is currently off-limits without authorisation in precisely the markets where most Western studios and tool builders operate, leaving them on the hosted API for now. For everyone else — and for anyone who obtains territorial clearance — the calculation for paying closed-model rates on video work has just changed.
-
-Chinese title: MiniMax H3 登顶 Video Arena，成开源视频模型第一
-Chinese summary: Video Arena 榜单显示，MiniMax-H3 在文生视频与图生视频两个分区均位列开源模型第一，领先次名开源模型约 280 分。权重现已公开，但许可协议目前限制美、欧、英、韩地区的开源权重使用。
-
-Sources:
-  - Arena on X: MiniMax-H3 is #1 open model in Video Arena: https://x.com/arena/status/2084408459991421319
-  - MiniMax on X: H3 is SOTA open video generation model: https://x.com/MiniMax_AI/status/2084410437618352386
-  - MiniMaxAI/MiniMax-H3 — Hugging Face model card and licence Q&A: https://huggingface.co/MiniMaxAI/MiniMax-H3
-  - China's MiniMax H3 is the first open model to top an AI video ranking: https://the-decoder.com/chinas-minimax-h3-is-the-first-open-model-to-top-an-ai-video-ranking/
-
 ## Recent radar items
+
+### 2026-08-08
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-08.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-08.html
+
+- 2026-08-07T12:54:00Z | The Decoder | ByteDance is pretraining an AI model of up to ten trillion parameters, roughly three times the size of Moonshot's Kimi K3, the Financial Times reported. | 中文：据《金融时报》报道，字节跳动正在预训练一个参数量最高达 10 万亿的大模型，规模约为月之暗面 Kimi K3 的三倍。 | https://the-decoder.com/chinas-largest-ai-model-is-being-developed-at-bytedance/
+- 2026-08-07T12:50:00Z | The Decoder | Stanford and Arc Institute scientists used the Evo model to design 285 bacteriophage genomes, of which 16 became working viruses that killed bacteria in the lab. | 中文：斯坦福与 Arc 研究所科学家用 Evo 模型设计了 285 条噬菌体基因组，其中 16 条在实验室里长成可杀灭细菌的有效病毒。 | https://the-decoder.com/stanford-and-arc-institute-scientists-used-ai-to-design-new-viruses-that-killed-bacteria-in-the-lab/
+- 2026-08-07T21:18:00Z | X @Sourcegraph | Sourcegraph traced 517,604 commits across 120 established open-source repositories to measure how fast coding agents are being adopted, where their code lands and whether it sticks. | 中文：Sourcegraph 追踪了 120 个成熟开源仓库中的 517,604 次提交，考察编程智能体的采用速度、代码落在哪些位置以及是否能长期保留。 | https://x.com/Sourcegraph/status/2085837892169937233
+- 2026-08-07T21:30:00Z | TechCrunch | Rippling launched an AI Spend Console after its token bill reached 40% of R&D headcount budget, with one engineer alone spending $50,000 a month. | 中文：Rippling 推出 AI Spend Console：此前其 token 支出一度占到研发人力预算的 40%，单是一名工程师每月就花掉 5 万美元。 | https://techcrunch.com/2026/08/07/after-rippling-blew-millions-on-ai-in-months-it-built-an-employee-roi-tool/
+- 2026-08-07T14:22:00Z | TechCrunch | Airbnb says AI now writes 60% of its new code and is testing AI-generated conversational search titles, shipping nearly 80% more features than a year ago. | 中文：爱彼迎称 AI 已承担其 60% 的新代码编写，并正在测试由 AI 生成、对话式表达的搜索标题，功能上线量同比增长近 80%。 | https://techcrunch.com/2026/08/07/airbnb-says-ai-is-helping-it-ship-features-faster-as-it-tests-a-new-search-function/
+- 2026-08-07T19:54:00Z | X @ollama | Ollama fully rolled out DeepSeek-V4-Flash-0731 as the new default for deepseek-v4-flash on its cloud, citing speed, efficiency and frontier-level quality. | 中文：Ollama 已全量上线 DeepSeek-V4-Flash-0731，将其设为云端 deepseek-v4-flash 的新默认模型，主打速度、效率与前沿水准的能力。 | https://x.com/ollama/status/2085816970893738381
+- 2026-08-07T16:14:00Z | X @GoodfireAI | Goodfire said its Silico agent solved two open cases of the approximate counting colorings conjecture, with a mathematician describing its proof style as experimental science. | 中文：Goodfire 称其 Silico 智能体解决了近似计数染色猜想的两个未决情形，有数学家形容它的证明风格像"骨子里的实验科学家"。 | https://x.com/GoodfireAI/status/2085761594076835869
+- 2026-08-07T18:13:00Z | X @ArtificialAnlys | Artificial Analysis expanded its Text to Image Arena with UIUX and live-action film use cases plus physics and text-rendering capability categories, opening public voting. | 中文：Artificial Analysis 扩充文生图竞技场，新增 UIUX 与真人电影两类使用场景，以及物理合理性与文字渲染两项能力评测，并开放公众投票。 | https://x.com/ArtificialAnlys/status/2085791397962219527
+- 2026-08-07T13:17:00Z | X @recraftai | Recraft showcased V4.1 on macro nature photography, holding sharp detail on water droplets, petal texture and insect skin while keeping backgrounds soft. | 中文：Recraft 展示 V4.1 的微距自然摄影效果：水珠、花瓣纹理与昆虫表皮该锐的地方锐利，背景该虚的地方柔和。 | https://x.com/recraftai/status/2085716936764125510
+- 2026-08-07T14:30:00Z | X @ElevenLabs | ElevenLabs said ElevenReader Voice Chat raised average listening time 24%, with book completion hitting 78% among users who held five or more voice sessions. | 中文：ElevenLabs 称 ElevenReader 语音对话功能使平均收听时长提升 24%，进行过 5 次以上语音会话的用户读完率达到 78%。 | https://x.com/ElevenLabs/status/2085735303352828140
+- 2026-08-07T14:38:00Z | X @v0 | Vercel's v0 added a Usage and Activity dashboard that tracks daily credit consumption and activity by member or project, drillable down to individual messages. | 中文：Vercel 旗下 v0 上线用量与活动看板，可按天查看积分消耗、按成员或项目分析活动，并可下钻到单条消息。 | https://x.com/v0/status/2085737461058248804
+- 2026-08-07T15:25:00Z | IT之家 | Anthropic is paying premium salaries for its in-house AI chip effort, with model-training roles listed above the pay of the engineers actually designing the silicon. | 中文：Anthropic 为自研 AI 芯片项目开出高薪，其中模型训练相关岗位的薪资甚至高于真正做芯片设计的工程师。 | https://www.ithome.com/0/987/218.htm
+- 2026-08-07T17:53:00Z | Hugging Face | Allen Institute for AI released TutorMoments, finding models over-help students and rarely push for rigor, and shipped 462 de-identified tutoring transcripts with evaluation code. | 中文：艾伦人工智能研究所发布 TutorMoments，发现模型倾向于过度帮忙、很少逼学生深入思考，同时开放 462 份脱敏辅导对话与评测代码。 | https://huggingface.co/blog/allenai/tutormoments
+- 2026-08-07T18:20:00Z | X @arena | Agent Arena now tracks how many tokens a model spends completing real-world tasks, reporting that Opus-series models have improved significantly on that measure. | 中文：Agent Arena 开始统计模型完成真实任务所消耗的 token 量，并称 Opus 系列模型在这一指标上有显著改善。 | https://x.com/arena/status/2085793291853852746
 
 ### 2026-08-07
 
@@ -1136,35 +1150,3 @@ Sources:
 - 2026-08-04T00:37:00Z | X @togethercompute | Together AI put DeepSeek V4 Flash into production, citing stronger terminal, repository and full-stack coding plus better tool use for long-running agents. | 中文：Together AI 上线 DeepSeek V4 Flash 生产级推理服务，主打终端、代码仓库与全栈编码能力提升，以及面向长时运行智能体的更强工具调用。 | https://x.com/togethercompute/status/2084438456890019970
 - 2026-08-04T08:12:00Z | MarkTechPost | MarkTechPost detailed a skill-auditing pipeline using NVIDIA SkillSpector and LangGraph to scan agent skills for shell injection, credential harvesting and MCP attacks before deployment. | 中文：MarkTechPost 详解基于英伟达 SkillSpector 与 LangGraph 的智能体技能安全审计流水线，可在部署前检出 shell 注入、凭据窃取与 MCP 攻击，并输出 SARIF 报告卡关 CI。 | https://www.marktechpost.com/2026/08/04/building-an-advanced-ai-skill-security-auditing-pipeline-with-nvidia-skillspector-langgraph-yara-rules-sarif-and-ci-policy-gates/
 - 2026-08-04T02:59:00Z | X @PixVerse_ | PixVerse showed a rooftop-to-office scene built in PixVerse Canvas, saying the physics holds up down to a tote bag swinging correctly through the shot. | 中文：PixVerse 展示用 PixVerse Canvas 制作的"天台到办公室"连贯镜头，称画面物理表现足够扎实，连手提袋的摆动都符合真实运动规律。 | https://x.com/PixVerse_/status/2084474358144422385
-
-### 2026-08-03
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-03.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-03.html
-
-- 2026-08-02T22:00:00Z | X @Replit | Replit showed a Replit Design feature that extracts any frame into a living style guide of colors, type and styles so new screens stay on-brand. | 中文：Replit 展示了 Replit Design 新能力：把任意界面稿提炼成一份「活的」样式指南，自动沉淀配色、字体与样式，让后续新页面自动统一品牌风格。 | https://x.com/Replit/status/2084036577202737637
-- 2026-08-02T21:19:00Z | MarkTechPost | MarkTechPost published a GeoAI walkthrough extracting building footprints from NAIP aerial imagery with U-Net, Grounding DINO, SAM and Mask R-CNN across twelve steps. | 中文：MarkTechPost 发布 GeoAI 全流程教程，用 U-Net、Grounding DINO、SAM 与 Mask R-CNN 分十二步从 NAIP 航拍影像中提取并矢量化建筑轮廓。 | https://www.marktechpost.com/2026/08/02/a-tutorial-on-geoai-designing-footprint-extraction-from-naip-imagery-using-u-net-grounding-dino-sam-and-mask-r-cnn/
-- 2026-08-02T20:54:00Z | TechCrunch | TechCrunch's Equity panel argued Sam Altman's call to pace AI development followed the Hugging Face agent breach, and questioned the accelerate-versus-decelerate framing. | 中文：TechCrunch「Equity」播客讨论 Sam Altman「放慢 AI 发展节奏」的表态，认为其起因是 OpenAI 智能体入侵 Hugging Face 事件，并质疑「加速派 vs 减速派」这一框架本身。 | https://techcrunch.com/2026/08/02/sam-altman-and-ais-decel-debate/
-- 2026-08-02T19:50:00Z | X @character_ai | Character.AI premiered episode one of The Nighttime Game, a largely AI-generated paranormal microdrama whose characters users can keep chatting with afterwards. | 中文：Character.AI 上线《The Nighttime Game》第一集：一部几乎全部由生成式 AI 制作的灵异题材竖屏微短剧，观众看完还能继续和剧中角色对话。 | https://x.com/character_ai/status/2084004009720025318
-- 2026-08-02T19:36:00Z | The Verge | The Verge scrutinized Fender CEO Bud Cole's claim that cover bands are "analog AI," a comparison that drew heavy backlash from guitarists. | 中文：The Verge 撰文批评 Fender CEO Bud Cole「翻唱乐队本来就是模拟版 AI」的说法，该类比此前已在吉他社区引发大量反弹。 | https://www.theverge.com/ai-artificial-intelligence/974265/fender-ceo-bud-cole-ai-music
-- 2026-08-02T19:09:00Z | X @HeyGen | HeyGen ran one identical prompt through Flux 2.0 Pro, Seedream V5 and Kling V3, reporting that none of the three actually preserved the reference identity. | 中文：HeyGen 用同一条提示词横评 Flux 2.0 Pro、Seedream V5 与可灵 V3，结果三者都只生成了「长得像」的人，没有一个真正保持住参考人物身份。 | https://x.com/HeyGen/status/2083993549947961758
-- 2026-08-02T19:30:00Z | X @databricks | Databricks detailed how customer Glaspoort branches development and acceptance straight from production in a CI/CD pattern for its Lakebase-backed operational app. | 中文：Databricks 分享客户 Glaspoort 的 Lakebase 数据库 CI/CD 实践：开发与验收环境直接从生产分支拉出，支撑其线上业务应用。 | https://x.com/databricks/status/2083998796984262986
-- 2026-08-02T15:09:00Z | X @Hailuo_AI | MiniMax demoed its H3 video model generating synchronized spoken dialogue across multiple languages, extending the model's native audio track beyond English. | 中文：MiniMax 演示 H3 视频模型生成多语种同步对白，把该模型的原生音轨能力从英语扩展到更多语言。 | https://x.com/Hailuo_AI/status/2083933128658411606
-- 2026-08-02T13:50:00Z | X @Hailuo_AI | MiniMax posted a walkthrough of building a first playable game demo entirely from H3 generations, pitching the video model as a prototyping tool for developers. | 中文：MiniMax 发布教程，展示如何完全用 H3 生成内容做出第一个可玩游戏 demo，将该视频模型定位为开发者的原型工具。 | https://x.com/Hailuo_AI/status/2083913413261205635
-- 2026-08-02T13:10:00Z | The Decoder | OpenAI introduced Presence, an enterprise-only offering where Forward Deployed Engineers take customer-service and internal agent workflows from scoping through production launch. | 中文：OpenAI 推出面向企业的 Presence：由前置部署工程师帮客户挑选工作流、对接现有系统并制定规范，把客服与内部智能体一路带到生产上线。 | https://the-decoder.com/openai-presence-wants-to-make-ai-agents-production-ready-for-businesses/
-- 2026-08-02T13:00:00Z | The Verge | The Verge examined Pippa, which licenses artist style packs and pays per-generation royalties, and plans to add ByteDance's Seedance 2.5 model. | 中文：The Verge 报道 AI 平台 Pippa：以授权方式收录艺术家风格包并按每次生成付版税，同时计划接入字节跳动的 Seedance 2.5 模型。 | https://www.theverge.com/ai-artificial-intelligence/974018/pippa-seedance-artist-royalties
-- 2026-08-02T12:57:00Z | arXiv / The Decoder | A Meta paper pairs an action agent with a memory agent that injects reminders, lifting Terminal-Bench 2.0 from 38% to 46% and Tau2-Bench from 55% to 62%. | 中文：Meta 论文提出「行动智能体 + 记忆智能体」双体架构，由后者定期回顾并插入提醒，把 Terminal-Bench 2.0 成功率从 38% 提升至 46%，Tau2-Bench 从 55% 提升至 62%。 | https://arxiv.org/abs/2607.08716
-- 2026-08-03T10:51:00Z | IT之家 | Chinese police detained two people for seven days over an AI-generated fake video of a Xiaomi car crash, the company said. | 中文：小米通报：两名网友使用 AI 生成小米汽车虚假车祸视频，已被警方行政拘留 7 日并罚款。 | https://www.ithome.com/0/985/202.htm
-- 2026-08-03T10:49:00Z | The Decoder | Two teams independently cracked the same open quantum-cryptography problem with GPT-5.6 and posted papers to arXiv three hours apart. | 中文：两支团队各自借 GPT-5.6 攻克同一个量子密码学开放难题，论文提交 arXiv 仅相隔三小时。 | https://the-decoder.com/two-teams-solved-the-same-quantum-crypto-problem-using-gpt-5-6-just-three-hours-apart/
-- 2026-08-03T10:49:00Z | IT之家 | JD.com added AI interviews to campus recruiting for the first time, opening online applications for 2027 bachelor's and graduate-degree candidates. | 中文：京东首次在校招流程中引入 AI 面试，面向 2027 届本科及硕博毕业生开启网申。 | https://www.ithome.com/0/985/200.htm
-- 2026-08-03T10:43:00Z | IT之家 | AgiBot denied that chief scientist Luo Jianlan has left, calling it an internal role adjustment amid embodied-AI talent churn. | 中文：智元回应“首席科学家罗剑岚离职”传闻：暂未离职，属内部岗位调整。 | https://www.ithome.com/0/985/198.htm
-- 2026-08-03T10:00:00Z | TechCrunch | June left stealth with $20 million pre-seed led by Marc Benioff's Time Ventures, auto-building agent workflows to replace legacy enterprise processes. | 中文：June 结束隐身状态，获 Marc Benioff 旗下 Time Ventures 领投的 2000 万美元 pre-seed，自动生成智能体工作流替代企业遗留流程。 | https://techcrunch.com/2026/08/03/a-marc-benioff-backed-startup-thinks-ai-can-solve-the-ai-deployment-problem/
-- 2026-08-03T02:46:00Z | X @arena | Qwen3.8-Max debuted at #2 in Vision Arena with 1,305 points, trailing Claude Fable 5 (High) by just 13 points. | 中文：Qwen3.8-Max 以 1305 分登上 Vision Arena 第二，仅落后 Claude Fable 5（High）13 分。 | https://x.com/arena/status/2084108711665270942
-- 2026-08-03T02:54:00Z | X @UnslothAI | Unsloth said a Qwen3.8-27B model is coming and will run locally on setups with just 17GB of RAM or VRAM. | 中文：Unsloth 透露 Qwen3.8-27B 即将到来，17GB 内存/显存的配置即可本地运行。 | https://x.com/UnslothAI/status/2084110664789024769
-- 2026-08-03T00:15:00Z | X @togethercompute | Together AI's DeepSWE analysis found Kimi K3 Max near Fable 5 xhigh on Pass@1 at a third the rollout cost, solving 2.8x more tasks. | 中文：Together AI 的 DeepSWE 分析显示，Kimi K3 Max 的 Pass@1 接近 Fable 5 xhigh，单次 rollout 成本仅约三分之一，解题量多出 2.8 倍。 | https://x.com/togethercompute/status/2084070492294578658
-- 2026-08-03T00:49:00Z | MarkTechPost | Onton released Ontology 1, a neurosymbolic search model scoring 0.630 precision@10 versus Google Shopping's 0.543 and Amazon's 0.469. | 中文：Onton 发布神经符号搜索模型 Ontology 1，内部基准 precision@10 达 0.630，高于 Google Shopping 的 0.543 与亚马逊的 0.469。 | https://www.marktechpost.com/2026/08/02/onton-releases-ontology-1-a-neurosymbolic-search-model/
-- 2026-08-03T06:57:00Z | X @PixVerse_ | PixVerse said PixVerse Live returns August 6 with a walkthrough of PixVerse Agent and Canvas taking a video from first frame to finish. | 中文：PixVerse 宣布 PixVerse Live 将于 8 月 6 日回归，演示 PixVerse Agent 与 Canvas 如何协作完成整支视频。 | https://x.com/PixVerse_/status/2084171855427166674
-- 2026-08-03T03:13:00Z | X @Hailuo_AI | MiniMax's Hailuo demonstrated precision lip-sync that holds up for every character across all visual styles. | 中文：MiniMax 旗下海螺 AI 展示精准口型同步能力，可适配各种美术风格下的每个角色。 | https://x.com/Hailuo_AI/status/2084115462934483201
-- 2026-08-03T07:11:00Z | 量子位 | Meta is spending $115 million on its own trade school for 5,000 students, as AI data centers push electrician pay toward $280,000. | 中文：Meta 投入 1.15 亿美元自办技校、首批招收 5000 名学员，AI 数据中心把电工年薪推高至约 28 万美元。 | https://www.qbitai.com/2026/08/465223.html
-- 2026-08-03T04:29:00Z | 量子位 | OpenAI Codex lead Thibault Sottiaux said Google built a ChatGPT-like product called LMChat a year earlier but never dared ship it. | 中文：OpenAI Codex 负责人 Thibault Sottiaux 爆料，谷歌早一年就做出类 ChatGPT 产品 LMChat，却始终不敢发布。 | https://www.qbitai.com/2026/08/465176.html
-- 2026-08-03T07:48:00Z | X @qdrant_engine | Qdrant demoed an agentic commerce stack running hybrid retrieval, faceted filters, recommendations and visual similarity over 5.8 million products in 40ms. | 中文：Qdrant 演示电商智能体检索栈：在 580 万真实商品上实现混合检索、分面筛选、推荐与视觉相似搜索，延迟约 40 毫秒。 | https://x.com/qdrant_engine/status/2084184726114623932

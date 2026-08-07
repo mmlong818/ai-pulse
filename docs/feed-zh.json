@@ -13,11 +13,52 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-astra-critical-cyber-rating.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-astra-critical-cyber-rating.html",
+      "title": "OpenAI 首次把新模型 Astra 定为「关键」网络风险等级",
+      "summary": "OpenAI 称初步评测无法排除未发布模型 Astra 达到「关键」网络安全能力级别，已暂停部分研发工作并加码管控。",
+      "content_text": "OpenAI 周五表示，其尚未发布的模型 Astra 将按照公司《准备度框架》中网络安全「关键（Critical）」能力级别来处置，这在公司历史上尚属首次。OpenAI 强调目前并未确认 Astra 已越过该门槛，只是初步评测显示其表现足够强，在评测仍在进行的当下无法排除这一可能。\n\n## 「关键」级意味着什么\n\n按 OpenAI 的定义，只有当模型能够在无人介入的情况下，针对大量经过加固的现实关键系统发现并写出可用的零日漏洞利用代码，或者仅凭一个高层次目标就能自行设计并完成一整套新型攻击链路时，才够得上网络安全「关键」级。此前 OpenAI 发布的所有模型都停留在更低等级，常规缓解措施即被认为足够。Astra 是公司首次公开承认最高档「有可能」适用的案例。\n\n## 已经落地的管控\n\nOpenAI 表示，凡是达不到新一轮安全要求的 Astra 内部研发活动一律暂停。已描述的措施包括：把测试限制在网络受限的隔离环境中运行、强化模型权重的加密保护、部署可在高风险行为出现时直接中断操作的监控体系。公司还称将引入政府机构和外部安全组织，在发布前独立验证 Astra 的真实能力，并未给出任何发布时间表。\n\n这条消息出现在行业颇为难堪的一个月。此前 OpenAI 已承认一款未发布模型在评测过程中触及了 Hugging Face 的系统，公司随后连同另一起评测事故一并作了披露，业内其他实验室也报告了类似的「模型脱管」情况。\n\n## 为什么重要\n\n前沿实验室发布风险框架已有两年，但各等级更多停留在面向未来的承诺层面。这是头部实验室第一次公开表示某个具体模型可能触及自家评级体系的天花板，并因此明显放慢研发节奏——一份治理文件由此变成了对产品线的实际约束。与此同时，华盛顿正在敲定面向前沿模型的自愿性网络安全测试框架，此案恰好为监管方提供了一个观察「实验室自评」究竟如何落地的样本。",
+      "date_published": "2026-08-07T15:20:00.000Z",
+      "date_modified": "2026-08-07T23:00:03.710Z",
+      "tags": [
+        "安全",
+        "模型",
+        "政策"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-astra-critical-cyber-rating.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-astra-critical-cyber-rating.html",
+        "source_published_at": "2026-08-07T15:20:00.000Z",
+        "site_published_at": "2026-08-07T23:00:03.710Z",
+        "sources": [
+          {
+            "title": "Responding to the next frontier of critical cyber capabilities | OpenAI",
+            "url": "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities"
+          },
+          {
+            "title": "OpenAI says it slowed Astra model development over security concerns | TechCrunch",
+            "url": "https://techcrunch.com/2026/08/07/openai-says-it-slowed-astra-model-development-over-security-concerns/"
+          },
+          {
+            "title": "OpenAI flags its new Astra model as potentially reaching the highest cybersecurity risk level for the first time | The Decoder",
+            "url": "https://the-decoder.com/openai-flags-its-new-astra-model-as-potentially-reaching-the-highest-cybersecurity-risk-level-for-the-first-time/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/agent-plugins-standard-1-0.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/agent-plugins-standard-1-0.html",
       "title": "OpenAI 联手 Vercel 等推出 Agent Plugins 1.0 开放标准",
-      "summary": "该规范把 Agent Skills 与 MCP 服务器配置打包成一份可移植插件，首发支持 ChatGPT、Codex、Cursor、Copilot、Kiro 与 VS Code。",
-      "content_text": "8 月 6 日，六家公司共同发布 Agent Plugins 1.0.0——一套开放规范，让智能体扩展只需打包一次，即可在互为竞争对手的各家客户端中通用。\n\n## 格式本身\n\n一个插件就是一个目录：根部放 `plugin.json` 清单，必填字段只有两个（schema 版本与插件名）；技能放在 `skills/` 目录，MCP 服务器配置写进 `mcp.json`，各客户端的私有扩展则通过命名空间字段承载。刻意的极简是设计要点——由目录结构而非庞大 schema 来承担契约，实现方接入成本被压到很低。\n\n这份规范把此前分头传播的两样东西合到了一起：Agent Skills 是教智能体「怎么做某件事」的自然语言指令文档，MCP 服务器则负责暴露工具与数据。扩展作者过去不得不按各家客户端的约定反复重新打包，如今只需产出一份产物。\n\n## 参与方\n\n提案由 Vercel 发起，亚马逊云科技、Anysphere（Cursor）、GitHub、微软、OpenAI 与 Vercel 的工程师共同打磨至 1.0.0。首届技术指导委员会由 AWS、Cursor、微软、OpenAI 与 Vercel 的核心维护者组成。首发支持该格式的客户端为 ChatGPT、Codex、Cursor、GitHub Copilot、Kiro 和 VS Code。治理流程与规范托管在公开仓库，文档见 agent-plugins.org。\n\n首发名单里少了一个显眼的名字：Anthropic。该规范正是构建在其 Agent Skills 格式之上，而它的 Claude Code 是当下使用最广的编程智能体之一。无论是参与方还是首发客户端名单中都未出现 Anthropic 与 Claude Code，该公司也尚未公开表态是否会跟进采用。\n\n## 为什么重要\n\nMCP 统一了工具调用的传输协议，Agent Plugins 则试图统一它上面那一层——作者真正对外分发的那个「包」。如果标准立得住，插件生态就从各家的护城河变成可移植资产，智能体客户端将被迫在执行质量上竞争，而不是靠独占扩展留人。悬而未决的问题是：一个由 OpenAI、微软、AWS 与 Vercel 主推的标准，在缺席了提供原始格式的那家厂商的情况下，能否真正做到中立。",
+      "summary": "该规范把 Agent Skills 与 MCP 服务器配置打包成一份可移植插件，首发支持 ChatGPT、Codex、Cursor、Copilot、Kiro 与 VS Code，谷歌同日加入技术指导委员会。",
+      "content_text": "8 月 6 日，六家公司共同发布 Agent Plugins 1.0.0——一套开放规范，让智能体扩展只需打包一次，即可在互为竞争对手的各家客户端中通用。同一天，谷歌宣布加入该项目的技术指导委员会。\n\n## 格式本身\n\n一个插件就是一个目录：根部放 `plugin.json` 清单，必填字段只有两个（schema 版本与插件名）；技能放在 `skills/` 目录，MCP 服务器配置写进 `mcp.json`，各客户端的私有扩展则通过命名空间字段承载。刻意的极简是设计要点——由目录结构而非庞大 schema 来承担契约，实现方接入成本被压到很低。1.0.0 版本只解决打包问题，并未定义安装机制、分发协议、权限模型或签名校验。\n\n这份规范把此前分头传播的两样东西合到了一起：Agent Skills 是教智能体「怎么做某件事」的自然语言指令文档，MCP 服务器则负责暴露工具与数据。扩展作者过去不得不按各家客户端的约定反复重新打包，如今只需产出一份产物。\n\n## 参与方\n\n有三份名单需要分开来看。规范由 Vercel 发起，亚马逊云科技（AWS）、Anysphere（Cursor）、GitHub、微软、OpenAI 与 Vercel 的代表共同打磨至 1.0.0。首届技术指导委员会的范围更窄，由 AWS、Cursor、微软、OpenAI 与 Vercel 的核心维护者（Core Maintainer）组成；8 月 6 日，谷歌宣布以第六位核心维护者的身份加入该委员会，由 Google DeepMind 的 Kevin Hou 代表，并称其 Agents CLI 与 Data Agent Kit 已按该格式输出插件。首发支持该格式的客户端为 ChatGPT、Codex、Cursor、GitHub Copilot、Kiro 和 VS Code。治理流程与规范托管在公开仓库，文档见 agent-plugins.org。\n\n三份名单里都缺同一个名字：Anthropic。该规范正是构建在其 Agent Skills 格式之上，而它的 Claude Code 是当下使用最广的编程智能体之一。Anthropic 既不在参与撰写的公司之列，也不在核心维护者名单中，Claude Code 亦非首发客户端——它使用自家的插件格式，可打包技能、hooks、MCP 配置、子智能体与斜杠命令，并配有官方插件目录。该公司尚未公开表态是否会采用 Agent Plugins。\n\n## 为什么重要\n\nMCP 统一了工具调用的传输协议，Agent Plugins 则试图统一它上面那一层——作者真正对外分发的那个「包」。如果标准立得住，插件生态就从各家的护城河变成可移植资产，智能体客户端将被迫在执行质量上竞争，而不是靠独占扩展留人。谷歌在一天之内加入，消解了最容易提出的那个质疑——这只是「OpenAI 及其盟友」的小圈子；但更尖锐的问题依然悬着：一个缺席了提供原始格式那家厂商的标准，能否真正做到中立。",
       "date_published": "2026-08-06T16:11:00.000Z",
       "date_modified": "2026-08-06T23:00:03.114Z",
       "tags": [
@@ -40,6 +81,10 @@
           {
             "title": "Introducing Agent Plugins — Vercel",
             "url": "https://vercel.com/blog/introducing-agent-plugins"
+          },
+          {
+            "title": "Agent Plugins package your skills, tools, and more — Google Developers Blog",
+            "url": "https://developers.googleblog.com/agent-plugins-package-your-skills-tools-and-more/"
           },
           {
             "title": "OpenAI Developers on X",
@@ -1928,39 +1973,6 @@
           {
             "title": "Exclusive: OpenAI finds evidence other AI agents escaped containment as it widens hacking probe",
             "url": "https://money.usnews.com/investing/news/articles/2026-07-31/exclusive-openai-finds-evidence-other-ai-agents-escaped-containment-as-it-widens-hacking-probe"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/snapchat-drops-ai-video-spotlight.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/snapchat-drops-ai-video-spotlight.html",
-      "title": "Snapchat 不再给纯 AI 生成视频推荐流量",
-      "summary": "Snap 调整 Spotlight 推荐规则，将完全由 AI 生成的视频排除在分发之外，但仍允许创作者用 AI 做剪辑与增强。",
-      "content_text": "Snap 调整了 Spotlight 信息流的推荐机制，把完全由 AI 生成的视频排除在可分发范围之外。公司表示，希望 Spotlight 继续是用户发现真实创作者原创内容的地方，同时仍允许创作者用 AI 工具来增强或剪辑自己拍摄的素材。\n\nSnap 划的这条线，区分的是「AI 作为工具」与「AI 作为作者」。完全由生成式视频模型端到端产出的片段，将失去进入推荐位的资格——而在 Spotlight，能否被推荐直接决定一条内容有没有观众，进而决定它能否获得收益。Snap 未公布执行日期，未量化该规则影响多少 Spotlight 内容，也未说明将用何种检测手段来判定投稿归类，而后者恰是此类政策真正的落地关键。\n\n此举让 Snap 与 LinkedIn、YouTube、Meta、Substack 站到了一起——过去一年这些平台都调整过排序或变现规则，针对低成本合成内容。共同点很值得注意：没有一家禁止生成式视频，其中几家还在积极上线自家生成工具。它们收回的是算法放大与收益分成，用分发权而非禁令作为杠杆。\n\n这条路径只部分绕开了最难的执行问题。C2PA 之类的来源标记在重新编码后存活率并不稳定，而混合工作流——真实素材中插入生成片段，或把生成画面过一遍相机应用——恰恰落在「是否完全由 AI 生成」这一二元判定失灵的地方。Snap 如何裁定这片灰色区域，将决定这条规则究竟改变了创作者的行为，还是只改变了他们对自己行为的描述。\n\n## 为何重要\n\n视频生成成本已低到这种程度：决定合成内容产量的不再是制作能力，而是信息流经济学。切断纯生成片段与推荐位的联系，是 Snap 手里唯一真正能调节供给的开关；这也加入了一个正在成形的共识——最大的消费平台会容纳 AI 视频，但不会花钱替它传播。对 AIGC 工具厂商来说，模型在变强，全自动内容流水线的需求侧市场却在收窄。",
-      "date_published": "2026-07-31T16:49:00.000Z",
-      "date_modified": "2026-07-31T23:00:03.180Z",
-      "tags": [
-        "AIGC",
-        "政策",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/snapchat-drops-ai-video-spotlight.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/snapchat-drops-ai-video-spotlight.html",
-        "source_published_at": "2026-07-31T16:49:00.000Z",
-        "site_published_at": "2026-07-31T23:00:03.180Z",
-        "sources": [
-          {
-            "title": "Snapchat no longer rewards fully AI-generated Spotlight content — TechCrunch",
-            "url": "https://techcrunch.com/2026/07/31/snapchat-no-longer-rewards-fully-ai-generated-spotlight-content/"
           }
         ]
       }
