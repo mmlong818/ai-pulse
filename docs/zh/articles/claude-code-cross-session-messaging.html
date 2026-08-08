@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 打通会话互通，多终端智能体可互发消息 — Uncle Cat AI Radar</title>
+<meta name="description" content="新功能让一个 Claude Code 会话通过本地套接字把结论直接传给另一个会话，跨机器场景仅允许回复。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-cross-session-messaging.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/claude-code-cross-session-messaging.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-cross-session-messaging.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/claude-code-cross-session-messaging.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Claude Code 打通会话互通，多终端智能体可互发消息 — Uncle Cat AI Radar">
+<meta property="og:description" content="新功能让一个 Claude Code 会话通过本地套接字把结论直接传给另一个会话，跨机器场景仅允许回复。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-cross-session-messaging.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code 打通会话互通，多终端智能体可互发消息 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="新功能让一个 Claude Code 会话通过本地套接字把结论直接传给另一个会话，跨机器场景仅允许回复。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="Claude Code 打通会话互通，多终端智能体可互发消息 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"Claude Code 打通会话互通，多终端智能体可互发消息","item":"https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-cross-session-messaging.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-cross-session-messaging.html#article","headline":"Claude Code 打通会话互通，多终端智能体可互发消息","description":"新功能让一个 Claude Code 会话通过本地套接字把结论直接传给另一个会话，跨机器场景仅允许回复。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-cross-session-messaging.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-cross-session-messaging.html"},"datePublished":"2026-08-08T12:28:00.000Z","dateModified":"2026-08-08T23:00:03.966Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["Agent","模型"],"keywords":"Agent, 模型","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://code.claude.com/docs/en/cross-session-messaging","https://the-decoder.com/claude-code-sessions-can-now-talk-to-each-other-and-share-context-across-terminals/"],"about":[{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"模型"}]}]}</script>
+</head>
+<body data-slug="claude-code-cross-session-messaging" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/claude-code-cross-session-messaging.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-08-08T12:28:00Z">2026年8月8日 20:28</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><span class="views" id="viewCount"></span></div>
+  <h1>Claude Code 打通会话互通，多终端智能体可互发消息</h1>
+  <p class="standfirst">新功能让一个 Claude Code 会话通过本地套接字把结论直接传给另一个会话，跨机器场景仅允许回复。</p>
+  <p>Anthropic 为 Claude Code 上线跨会话消息功能：正在运行的一个会话可以直接给另一个会话发送文字消息，用户不必再在多个终端之间手动搬运上下文。该功能需要 2.1.224 及以上版本，支持 macOS 与 Linux（含 WSL 2），满足条件后无需任何配置即自动生效。</p><p>模型手上多了两个工具：用 <code>ListAgents</code> 列出可触达的会话，用 <code>SendMessage</code> 按名称投递消息。用户可以主动要求发送——比如询问另一个终端里的数据库迁移是否完成——模型也可以在判断自己刚做的改动会影响其他会话的工作时自行发出提醒。传递的内容只有纯文本，不包含对话历史、文件或发送方的上下文。同一台机器上的会话通过各自的 Unix 域套接字通信，权限限定为当前操作系统用户，全程不经过 Anthropic 服务器；而要触达另一台机器或网页版 Claude Code 上的会话，则需经由 Anthropic 服务器，且只能回复，无法主动发起。</p><p>Anthropic 为这条通道设了多重围栏。收到的消息会被明确标注来自另一个会话而非用户，因此无法替用户批准待确认的权限请求，也不能要求接收方修改权限设置或 <code>CLAUDE.md</code>，消息里出现的斜杠命令只会被当作普通文本。消息要求的任何操作，仍需通过接收方自己的权限规则。<code>crossSessionInbound</code> 设置可选择接收、暂存或直接丢弃；默认情况下，绕过权限确认的会话会先把消息挂起等待人工批准。系统还对重复发送做了限流并去重，最多排队 50 条、挂起 100 条，避免两个智能体陷入互发死循环。管理员可通过托管设置关闭收发两端；该功能在 Amazon Bedrock、谷歌云 Agent Platform 和微软 Foundry 上不可用。</p><h2>影响</h2><p>开发者同时在多个 worktree 里跑好几个编程智能体已成常态，此前协同全靠人工。给会话之间开一条对等通道，等于把一组彼此隔离的智能体变成松耦合系统；同时它也新增了一条提示注入的传播路径——这正是设计上刻意把消息削减为纯文本、且不赋予任何批准或改配置权限的原因。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://code.claude.com/docs/en/cross-session-messaging" rel="noopener" target="_blank">Message your other Claude Code sessions — Claude Code docs</a></li><li><a href="https://the-decoder.com/claude-code-sessions-can-now-talk-to-each-other-and-share-context-across-terminals/" rel="noopener" target="_blank">Claude Code sessions can now talk to each other and share context across terminals — The Decoder</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/grok-imagine-image-2-arena-debut.html">Grok Imagine Image 2.0 双榜登上竞技场第二</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/ling-3-flash-efficiency-frontier.html">蚂蚁 Ling 3.0 Flash 重划开源效率前沿</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-astra-critical-cyber-rating.html">OpenAI 首次把新模型 Astra 定为「关键」网络风险等级</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>

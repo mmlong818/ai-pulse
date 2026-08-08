@@ -1,0 +1,27 @@
+{
+  "slug": "claude-code-cross-session-messaging",
+  "title": "Claude Code sessions gain direct messaging across terminals",
+  "summary": "A new channel lets one Claude Code session hand findings to another over a local socket, with cross-machine exchanges limited to replies only.",
+  "body": "Anthropic has shipped cross-session messaging in Claude Code, letting one running session pass a written message to another instead of the user copying context between terminals. The feature requires version 2.1.224 or later, runs on macOS and Linux including WSL 2, and is active with no setup once those conditions are met.\n\nThe model gets two tools: `ListAgents` to enumerate reachable sessions and `SendMessage` to address one by name. Users can prompt a send — asking whether a migration finished in another terminal, for instance — or the agent can initiate one on its own when it judges that a change it just made breaks work another session depends on. What travels is plain text only: never conversation history, files, or the sender's context. Sessions on the same machine communicate over a per-session Unix domain socket restricted to the operating-system user, with nothing routed through Anthropic's servers. Reaching a session on another machine, or on Claude Code on the web, does go through Anthropic and is reply-only — a session cannot initiate a conversation across machines.\n\nAnthropic has fenced the channel with several restrictions. An incoming message is explicitly labelled as coming from another session rather than the user, so it cannot satisfy a pending permission prompt, cannot instruct the receiver to alter permission settings or `CLAUDE.md`, and any slash command inside it arrives as inert text. The receiving session's own permission rules still apply to anything the message asks for. A `crossSessionInbound` setting accepts, holds or refuses arriving messages; by default a session that bypasses permission prompts holds messages for approval. Repeat sends are rate-limited and identical messages deduplicated so two agents cannot spin into a loop, with at most 50 queued and 100 held. Administrators can disable both directions through managed settings, and the feature is unavailable on Amazon Bedrock, Google Cloud's Agent Platform and Microsoft Foundry.\n\n## Why it matters\n\nDevelopers increasingly run several coding agents at once across worktrees, and the coordination has been manual. Giving sessions a peer channel turns a set of isolated agents into a loosely coupled system — and creates a new propagation path for prompt injection, which is why the design deliberately strips the message down to text with no authority to approve or reconfigure anything.",
+  "title_zh": "Claude Code 打通会话互通，多终端智能体可互发消息",
+  "summary_zh": "新功能让一个 Claude Code 会话通过本地套接字把结论直接传给另一个会话，跨机器场景仅允许回复。",
+  "body_zh": "Anthropic 为 Claude Code 上线跨会话消息功能：正在运行的一个会话可以直接给另一个会话发送文字消息，用户不必再在多个终端之间手动搬运上下文。该功能需要 2.1.224 及以上版本，支持 macOS 与 Linux（含 WSL 2），满足条件后无需任何配置即自动生效。\n\n模型手上多了两个工具：用 `ListAgents` 列出可触达的会话，用 `SendMessage` 按名称投递消息。用户可以主动要求发送——比如询问另一个终端里的数据库迁移是否完成——模型也可以在判断自己刚做的改动会影响其他会话的工作时自行发出提醒。传递的内容只有纯文本，不包含对话历史、文件或发送方的上下文。同一台机器上的会话通过各自的 Unix 域套接字通信，权限限定为当前操作系统用户，全程不经过 Anthropic 服务器；而要触达另一台机器或网页版 Claude Code 上的会话，则需经由 Anthropic 服务器，且只能回复，无法主动发起。\n\nAnthropic 为这条通道设了多重围栏。收到的消息会被明确标注来自另一个会话而非用户，因此无法替用户批准待确认的权限请求，也不能要求接收方修改权限设置或 `CLAUDE.md`，消息里出现的斜杠命令只会被当作普通文本。消息要求的任何操作，仍需通过接收方自己的权限规则。`crossSessionInbound` 设置可选择接收、暂存或直接丢弃；默认情况下，绕过权限确认的会话会先把消息挂起等待人工批准。系统还对重复发送做了限流并去重，最多排队 50 条、挂起 100 条，避免两个智能体陷入互发死循环。管理员可通过托管设置关闭收发两端；该功能在 Amazon Bedrock、谷歌云 Agent Platform 和微软 Foundry 上不可用。\n\n## 影响\n\n开发者同时在多个 worktree 里跑好几个编程智能体已成常态，此前协同全靠人工。给会话之间开一条对等通道，等于把一组彼此隔离的智能体变成松耦合系统；同时它也新增了一条提示注入的传播路径——这正是设计上刻意把消息削减为纯文本、且不赋予任何批准或改配置权限的原因。",
+  "tags": [
+    "Agents",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "Message your other Claude Code sessions — Claude Code docs",
+      "url": "https://code.claude.com/docs/en/cross-session-messaging"
+    },
+    {
+      "title": "Claude Code sessions can now talk to each other and share context across terminals — The Decoder",
+      "url": "https://the-decoder.com/claude-code-sessions-can-now-talk-to-each-other-and-share-context-across-terminals/"
+    }
+  ],
+  "featured": false,
+  "date": "2026-08-09",
+  "published": "2026-08-08T12:28:00Z",
+  "published_at": "2026-08-08T23:00:03.966Z"
+}
