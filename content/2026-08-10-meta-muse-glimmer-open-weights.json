@@ -1,0 +1,35 @@
+{
+  "slug": "meta-muse-glimmer-open-weights",
+  "title": "Meta open-sources 30B Muse Glimmer under Apache 2.0",
+  "summary": "Meta Superintelligence Labs released its first open model — a 30B agentic multimodal system under Apache 2.0 that runs on a single consumer GPU.",
+  "body": "Meta published open weights for Muse Glimmer on Monday, a 30-billion-parameter multimodal model tuned for agent workloads and licensed under Apache 2.0. It is the first open release from Meta Superintelligence Labs, the unit the company assembled last year, and it arrives alongside a commitment from Mark Zuckerberg to publish weights for Muse Spark 1.2 — Meta's most capable foundation model — within the coming weeks.\n\n## What shipped\n\nThe model pairs a 2B ViT-style perception encoder with a 28B text decoder. Meta describes a hybrid attention stack that alternates sliding-window and full-attention layers, plus gated grouped-query attention that the company says cuts KV-cache memory by roughly 16x. Quantised to 4 bits the checkpoint lands under 20 GB, which puts it inside a 24 GB VRAM envelope; Meta reports testing on an RTX 5090 and on M4-Max and M5-Max Macs. An optional speculative-decoding drafter called DFlash raises generation speed by about 3.1x on the RTX 5090 and 1.5–1.8x on the Apple silicon configurations.\n\nThe pitch is agentic reliability at a size that fits on a desk. Muse Glimmer plans, calls tools, checks its own output and recovers from failures, accepts interleaved text, image and video input, and covers more than 100 languages. On Meta's published comparisons against Gemma4-31B and Qwen3.6-27B, it scores 75.5 on MCP Atlas (versus 62.5 and 54.2), 51.2 on SWE-Bench Pro (versus 50.2 and 36.9) and 76.0 on SWE-Bench Verified, where Qwen3.6-27B edges it at 77.2.\n\nWeights are on Hugging Face with day-zero support across llama.cpp, vLLM, MLX, ExecuTorch, Ollama and LM Studio, plus hosted endpoints from Together AI and Fireworks AI.\n\n## Why it matters\n\nMeta's retreat from open weights over the past year left the open-model tier to Chinese labs, which now account for a large share of Hugging Face downloads and set the pace on licensing. A permissively licensed, agent-tuned 30B model from Meta puts a well-resourced US lab back into that competition at exactly the size class developers actually deploy locally. The bigger variable is Spark 1.2: if Meta follows through on frontier-tier open weights, it would be the first time a US lab has released anything at that level since the Llama era, and it would reset what \"open\" means at the top of the market.",
+  "title_zh": "Meta 开源 300 亿参数 Muse Glimmer，Apache 2.0 授权",
+  "summary_zh": "Meta 超级智能实验室交出首个开源模型：300 亿参数多模态智能体模型，Apache 2.0 协议，单张消费级显卡即可跑。",
+  "body_zh": "Meta 于 8 月 10 日放出 Muse Glimmer 的开放权重——一个 300 亿参数、面向智能体任务调优的多模态模型，采用 Apache 2.0 协议。这是 Meta 去年组建的超级智能实验室（Meta Superintelligence Labs）交出的第一个开源模型。与此同时，扎克伯格表态称，公司最强的基础模型 Muse Spark 1.2 也将在未来几周内开放权重。\n\n## 这次放出了什么\n\n模型由 20 亿参数的 ViT 式感知编码器加 280 亿参数文本解码器组成。注意力部分采用混合结构，滑动窗口层与全注意力层交替，并用带门控的分组查询注意力把 KV 缓存显存压掉约 16 倍。4bit 量化后体积不到 20GB，落在 24GB 显存的区间内；Meta 表示已在 RTX 5090 以及 M4-Max、M5-Max 芯片的 Mac 上完成实测。可选的投机解码模块 DFlash 能把生成速度在 RTX 5090 上拉高约 3.1 倍，在两款 Apple 芯片上提升 1.5 至 1.8 倍。\n\n卖点是「桌面级尺寸下的智能体可靠性」：Muse Glimmer 能做规划、调工具、自查结果并从失败中恢复，支持文本、图像、视频交错输入，覆盖 100 多种语言。在 Meta 公布的对比中，它在 MCP Atlas 上拿到 75.5 分，高于 Qwen3.6-27B 的 62.5 与 Gemma4-31B 的 54.2；SWE-Bench Pro 为 51.2，对应 50.2 与 36.9；SWE-Bench Verified 为 76.0，略低于 Qwen3.6-27B 的 77.2。\n\n权重已上架 Hugging Face，llama.cpp、vLLM、MLX、ExecuTorch、Ollama 与 LM Studio 均为首日支持，Together AI 和 Fireworks AI 同步提供托管服务。\n\n## 为何重要\n\n过去一年 Meta 在开源上的收缩，把开放权重这块阵地几乎让给了中国团队——中国模型如今占据 Hugging Face 下载量的相当大比例，也在许可证策略上定调。此时一个宽松协议、专攻智能体、正好落在开发者真正会本地部署的尺寸段的 Meta 模型，意味着一家资源雄厚的美国实验室重新入场。更关键的变量是 Spark 1.2：如果 Meta 真把前沿级模型的权重放出来，这将是 Llama 时代之后美国实验室的首例，也会重新定义这个市场顶端的「开放」二字。",
+  "tags": [
+    "Models",
+    "Open Source",
+    "Agents",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device | Meta AI Research",
+      "url": "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model"
+    },
+    {
+      "title": "Meta is back with Muse Glimmer: local, agentic, multimodal, and open source",
+      "url": "https://huggingface.co/blog/muse-glimmer"
+    },
+    {
+      "title": "Techmeme: Meta releases Muse Glimmer and will release open weights for Muse Spark 1.2 (WSJ)",
+      "url": "https://www.techmeme.com/260810/p11"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "A permissively licensed, agent-tuned Meta model plus a pledge to open Spark 1.2's weights is the biggest shift in the open-model balance this year.",
+  "featured_reason_zh": "宽松协议的智能体模型加上 Spark 1.2 开权重的承诺，是今年开源格局最重要的一次变动。",
+  "date": "2026-08-10",
+  "published": "2026-08-10T00:00:00Z",
+  "published_at": "2026-08-10T11:00:03.543Z"
+}
