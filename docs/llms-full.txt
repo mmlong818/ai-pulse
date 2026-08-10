@@ -19,6 +19,173 @@
 
 ## Recent briefings
 
+### Claude lifts Riemann zeta lower bound to 67.2%
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/claude-riemann-zeta-lower-bound.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/claude-riemann-zeta-lower-bound.html
+- Source timestamp: 2026-08-10T17:28:00.000Z
+- Site timestamp: 2026-08-10T23:00:03.008Z
+- Tags: Research, Agents
+
+Anthropic says an unreleased research Claude raised the proven share of zeta zeros on the critical line from 41.6% to 67.2%, checked by outside experts.
+
+Anthropic on Monday published an account of asking an unreleased research version of Claude to attempt the Riemann hypothesis. The model did not prove it. It did produce a new result on a well-known adjacent problem.
+
+## What the result is
+
+Mathematicians have long sought to bound the proportion of non-trivial zeros of the Riemann zeta function that lie on the critical line — the property the hypothesis asserts holds for all of them. The prior published state of the art stood at about 41.6%. Anthropic says Claude raised that lower bound to 67.2%, by recognising that results from Baluyot, Goldston, Suriajaya and Turnage-Butterbaugh could be combined with earlier work by Bombieri to clear the previous ceiling.
+
+## How it was produced and checked
+
+The run was not a single prompt. Anthropic describes two sessions in Claude Code consuming roughly 31 million output tokens: the model generated about 650 candidate ideas, then orchestrated some 60 subagents that executed around 2,400 shell commands and wrote hundreds of Python scripts to numerically verify claims, hunt counterexamples, re-prove steps independently and critique the draft.
+
+Two mathematicians employed by Anthropic, Levent Alpöge and Ralph Furman, validated the output, and analytic number theory specialists Brian Conrey and Dan Goldston reviewed the paper on short notice. Anthropic states plainly that it does not expect these techniques to lead to a proof of the hypothesis itself.
+
+## Why it matters
+
+This is a concrete, expert-inspected advance on a problem professional number theorists have pushed at for decades, not a benchmark score. But the caveats are structural: the work has not been through conventional peer review, and because the model is unreleased and unnamed, no outside party can reproduce the run. The industry is now generating research claims faster than the verification infrastructure around them exists — which makes agent-scale orchestration, and the 31-million-token compute bill behind it, as much of the story as the mathematics.
+
+Chinese title: Claude 把黎曼 ζ 零点下界从 41.6% 提到 67.2%
+Chinese summary: Anthropic 称一个未发布的研究版 Claude 将临界线上 ζ 函数零点占比的已证下界提高到 67.2%，并已获外部专家审读。
+
+Sources:
+  - Learning more about Claude's mathematical capabilities — Anthropic: https://www.anthropic.com/research/riemann-zeta
+  - Anthropic on X: an unreleased research version of Claude and the Riemann hypothesis: https://x.com/AnthropicAI/status/2086867246073401655
+
+### Anthropic makes Sonnet 5's $2/$10 pricing permanent
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/claude-sonnet-5-pricing-permanent.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/claude-sonnet-5-pricing-permanent.html
+- Source timestamp: 2026-08-10T19:03:00.000Z
+- Site timestamp: 2026-08-10T23:00:03.008Z
+- Tags: Industry, Models
+
+Anthropic scrapped the planned end of Claude Sonnet 5's introductory rate, locking $2 per million input and $10 per million output tokens past August 31.
+
+Anthropic said on Monday that the introductory pricing on Claude Sonnet 5 will not expire. The model launched in June at $2 per million input tokens and $10 per million output tokens, with that rate advertised as running only through 31 August 2026. Those numbers are now the standing price.
+
+## What changes
+
+The published plan had Sonnet 5 reverting to $3 per million input and $15 per million output tokens once the promotional window closed — the level Anthropic's mid-tier models have historically occupied. Making the lower figure permanent is a one-third cut to input cost and a one-third cut to output cost against the price developers had been told to budget for from September.
+
+Anthropic framed it as a simple removal of the deadline rather than a new promotion, which matters for procurement: teams that had modelled a step-up in unit costs six weeks out no longer need contingency for it.
+
+## Context
+
+The decision lands in a market where per-token prices are being pushed down from both directions. Open-weight releases from Chinese labs and Meta have made capable models available at hosting cost, and independent evaluations have repeatedly shown cheaper models capturing a large share of frontier performance on coding and agentic tasks. At the same time, agentic workloads consume far more tokens than chat — long tool-calling runs can burn millions of output tokens per task — so the mid-tier price point, not the flagship one, increasingly determines what an AI product costs to operate.
+
+## Why it matters
+
+Sonnet-class models are the default workhorse behind a large share of production coding agents and enterprise pipelines, including Anthropic's own Claude Code. Freezing that rate removes a scheduled cost increase from thousands of budgets and signals that Anthropic sees no room to raise mid-tier prices while open-weight competition holds. For anyone forecasting inference spend, the mid-tier floor just got harder to move upward.
+
+Chinese title: Anthropic 把 Sonnet 5 的 2/10 美元优惠价永久化
+Chinese summary: Anthropic 取消 Claude Sonnet 5 优惠价的截止日期，每百万输入 2 美元、输出 10 美元的定价在 8 月 31 日后继续沿用。
+
+Sources:
+  - Claude on X: making Claude Sonnet 5's introductory pricing permanent: https://x.com/claudeai/status/2086891169217122586
+  - Introducing Claude Sonnet 5 — Anthropic: https://www.anthropic.com/news/claude-sonnet-5
+
+### MAI-Image-2.6 debuts at No.2 in Text-to-Image Arena
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/mai-image-2-6-arena-second.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/mai-image-2-6-arena-second.html
+- Source timestamp: 2026-08-10T22:32:00.000Z
+- Site timestamp: 2026-08-10T23:00:03.008Z
+- Tags: AIGC, Models
+
+Microsoft AI's newest image model entered Arena's text-to-image leaderboard at second with 1336 points, up from 2.5's tenth place and 45 behind GPT Image 2.
+
+Arena said on Monday that MAI-Image-2.6, the latest text-to-image model from Microsoft AI, entered its Text-to-Image leaderboard in second place with 1336 points. Its predecessor, MAI-Image-2.5, sits at tenth.
+
+## The numbers
+
+The gap to the top is now 45 points: GPT Image 2 (Medium) holds first. Arena reported gains across every scored category, with the sharpest movement in 3D imaging and modelling, where the model went from sixth to first, alongside improvement in cartoon and illustration work. Arena has opened the model for public voting in Image Arena so the ranking can be tested against fresh human preference data rather than a launch snapshot.
+
+An eight-place jump between consecutive versions of the same family is unusual at the top of this board. Microsoft's in-house imaging effort entered at ninth with MAI-Image-1 in October 2025, reached third with MAI-Image-2 in March 2026, then stalled — 2.5 debuted at third in May and slid as competitors shipped. Second place is the highest the family has ranked.
+
+## Context
+
+Human-preference leaderboards are noisy and reward style as much as fidelity, and early Elo scores typically drift as vote volume accumulates. But the standing at the top of text-to-image has been stable for months, dominated by OpenAI's GPT Image 2 and Google's Imagen line, with Microsoft, Black Forest Labs and Midjourney trading positions below. A 45-point deficit is close enough that the next release cycle could change the order.
+
+## Why it matters
+
+Microsoft distributes image generation through Copilot, Bing Image Creator and Azure API access rather than a standalone creative app, so a model at this quality level reaches an unusually broad default audience without users choosing it. The company also runs the largest commercial distribution channel for OpenAI's models — narrowing the gap with GPT Image 2 using its own weights strengthens Microsoft's hand in exactly the place that dependency has been most visible.
+
+Chinese title: MAI-Image-2.6 首次上榜即拿下文生图竞技场第二
+Chinese summary: 微软 AI 新版图像模型以 1336 分空降 Arena 文生图榜第二，上一代 2.5 仅排第十，与榜首 GPT Image 2 相差 45 分。
+
+Sources:
+  - Arena on X: MAI-Image-2.6 lands in the Text-to-Image Arena at #2: https://x.com/arena/status/2086943856289853931
+  - Arena on X: MAI-Image-2.6 jumped to #2 overall, category gains: https://x.com/arena/status/2086943860681531555
+
+### OpenAI ships GPT-5.6-Cyber to vetted security teams
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-gpt-5-6-cyber-daybreak.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-5-6-cyber-daybreak.html
+- Source timestamp: 2026-08-10T17:16:00.000Z
+- Site timestamp: 2026-08-10T23:00:03.008Z
+- Tags: Models, Safety, Policy
+
+OpenAI released a purpose-trained cyber model that answers 95% of advanced security prompts its general models refuse, behind identity-verified access tiers.
+
+OpenAI on Monday expanded its cybersecurity programme Daybreak into two access tiers and released GPT-5.6-Cyber, a model trained specifically for authorised offensive and defensive security work.
+
+## Two doors, different keys
+
+The lower tier, Daybreak Blue, gives approved defenders frontier models including GPT-5.6 Sol with the system-level cyber guardrails relaxed — aimed at malware analysis, vulnerability triage and incident response. Daybreak Red is the narrow gate: it carries GPT-5.6-Cyber itself and is scoped to authorised vulnerability research, exploit validation and red-team simulation. Entry requires identity verification, hardened account security and legal attestations; OpenAI says hardware security keys become mandatory on 1 September 2026, and it recommends isolated sandboxes plus monitoring for higher-risk work.
+
+The capability gap is the point. On OpenAI's internal Advanced Cybersecurity Completion Rate measure, GPT-5.6-Cyber engages with roughly 95% of sensitive security requests — exploit-chain construction, authentication bypass, privilege escalation — against about 1.5% for the guarded GPT-5.6 Sol. In one cited case the standard variants refused a WebSocket authentication bypass task the cyber model completed with working code.
+
+## Evidence offered
+
+OpenAI says it used the model in live research, surfacing two previously unknown flaws in V8, Chrome's JavaScript engine, that could be chained to corrupt memory and break out of the heap sandbox, plus five issues in a major mobile operating system including privilege-escalation chains. The company classifies the model as "High" cyber capability under its Preparedness Framework, short of the "Critical" threshold that would trigger heavier restrictions.
+
+## Why it matters
+
+Until now the industry's answer to dual-use cyber capability was blanket refusal. OpenAI has instead built a licensing regime: the capability exists, and eligibility is decided by vetting rather than by the model. That shifts the security question from "can a model do this" to "who holds the credential" — a template rivals and regulators will now have to respond to, and a new attack surface if the vetting leaks.
+
+Chinese title: OpenAI 推出 GPT-5.6-Cyber，仅向审核过的安全团队开放
+Chinese summary: OpenAI 发布专为授权安全工作训练的网络安全模型，对通用模型会拒答的高危请求响应率达 95%，通过实名审核分层放行。
+
+Sources:
+  - OpenAI on X: expanding Daybreak and introducing GPT-5.6-Cyber: https://x.com/OpenAI/status/2086864365379010729
+  - OpenAI launches GPT-5.6-Cyber to help defenders find vulnerabilities before attackers do: https://the-decoder.com/openai-launches-gpt-5-6-cyber-to-help-defenders-find-vulnerabilities-before-attackers-do/
+  - OpenAI unveils GPT-5.6-Cyber to help prepare for AI cyberattacks: https://www.axios.com/2026/08/10/openai-gpt-astra-restrictions-safety-hacking-defenders
+
+### Zuckerberg manifesto resets Meta on open weights
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/zuckerberg-manifesto-open-weights-auction.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/zuckerberg-manifesto-open-weights-auction.html
+- Source timestamp: 2026-08-10T14:06:00.000Z
+- Site timestamp: 2026-08-10T23:00:03.008Z
+- Tags: Industry, Open Source, Policy
+
+In a 6,500-word essay Zuckerberg recommitted Meta to open models, attacked closed rivals for concentrating power, and floated auctioning superintelligence compute.
+
+Mark Zuckerberg published a roughly 6,500-word essay on Monday setting out Meta's artificial intelligence strategy, timed alongside the company's return to publishing open-weight models. It is the clearest statement of direction since Meta reorganised its AI effort into Meta Superintelligence Labs and drifted away from the open releases that once defined its position.
+
+## The argument
+
+Zuckerberg's central claim is that the largest risk from advanced AI is not capability but concentration — a small number of companies, institutions or governments controlling systems everyone depends on. He casts rival labs as pursuing exactly that, and positions open weights plus individually held AI as the counterweight, framed around "personal superintelligence" rather than a centralised oracle.
+
+## The mechanism
+
+More novel is how Meta says it will ration capacity. Zuckerberg describes free or low-cost access to baseline tools, with paid tiers acquiring compute through a dynamic auction — users bidding for the intelligence they need rather than paying a flat subscription. He also signalled that developers would get access to a more capable model, Muse Spark 1.2, alongside the permissively licensed Muse Glimmer weights.
+
+The reception was mixed. Coverage across FT, Axios, The Verge and TechCrunch read the essay less as a technical roadmap than as a positioning document, with several outlets noting the awkwardness of an anti-concentration argument from one of the few firms able to fund frontier training at all, and Meta's own recent retreat from open releases.
+
+## Why it matters
+
+Meta is the only US hyperscaler that has consistently shipped open weights at scale, and its withdrawal left Chinese labs setting the pace of that ecosystem. A public recommitment changes the supply of frontier-adjacent open models available to developers worldwide. The auction idea matters separately: if compute is priced by live bidding rather than subscription, it reframes access to advanced AI as a commodity market — with the distributional consequences that implies.
+
+Chinese title: 扎克伯格万字宣言：Meta 重回开源权重路线
+Chinese summary: 扎克伯格发布约 6500 词长文，重申开源模型路线，指责闭源对手集中权力，并提出用动态竞价机制分配超级智能算力。
+
+Sources:
+  - Mark Zuckerberg attacks 'closed' AI rivals as Meta returns to open models — FT: https://www.ft.com/content/4e3957f8-ea7c-4c46-a3de-cdce8e526878
+  - Zuckerberg: AI's biggest risk is one entity with too much control — Axios: https://www.axios.com/2026/08/10/zuckerberg-ai-manifesto-meta
+  - Meta returns to open models with Zuckerberg's plan to out-copy China and sell compute by auction: https://the-decoder.com/meta-returns-to-open-models-with-zuckerbergs-plan-to-out-copy-china-and-sell-compute-by-auction/
+
 ### AI-drafted claims push UK employment tribunals to 64,000
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/ai-drafted-claims-uk-tribunals.html
@@ -233,7 +400,7 @@ Sources:
   - Message your other Claude Code sessions — Claude Code docs: https://code.claude.com/docs/en/cross-session-messaging
   - Claude Code sessions can now talk to each other and share context across terminals — The Decoder: https://the-decoder.com/claude-code-sessions-can-now-talk-to-each-other-and-share-context-across-terminals/
 
-### Grok Imagine Image 2.0 debuts at No.2 in both arenas
+### Grok Imagine Image 2.0 debuts at No.2 in both arenas, then slips to third
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/grok-imagine-image-2-arena-debut.html
 - Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/grok-imagine-image-2-arena-debut.html
@@ -241,24 +408,26 @@ Sources:
 - Site timestamp: 2026-08-08T11:00:03.715Z
 - Tags: AIGC, Models
 
-SpaceXAI's new image model entered the Arena leaderboards at No.2 for both text-to-image and image editing, trailing only OpenAI's GPT-Image-2.
+SpaceXAI's new image model entered both Arena leaderboards at No.2 behind GPT-Image-2; by 11 August it had been pushed to third in text-to-image by Microsoft's MAI-Image-2.6, while holding second in image editing.
 
 ## The result
 
-Arena, the crowdsourced model-comparison platform, published leaderboard placements for the newest image model from SpaceXAI — the company formerly known as xAI, rebranded in July after its merger into SpaceX — on Saturday morning UTC. Grok Imagine Image 2.0, tested in its faster "Low" configuration, entered the Text-to-Image Arena in second place with 1,320 points, behind OpenAI's GPT-Image-2 at 1,380. In the Image Edit Arena it also landed second, scoring 1,439 against GPT-Image-2's 1,463 — a jump from seventh place in that arena for the previous generation, Grok Imagine Image Quality, which Arena ranks 14th in text-to-image. Ranked below the new SpaceXAI entry in text-to-image are Reve AI's Reve 2.1 at 1,302, Meta's Muse-Image at 1,283, Reve AI's older Reve 2.0 at 1,270, Google's Gemini 3.1 Flash Image at 1,263, Alibaba's Qwen-Image-3.0-Pro at 1,258 and ByteDance's Seedream 5.0 Pro at 1,257. The score is still provisional, drawn from roughly 2,700 votes against nearly 70,000 for the leader; its image-edit score rests on about 5,900 votes against 184,000 for GPT-Image-2. Leaderboard positions move as voting accumulates.
+Arena, the crowdsourced model-comparison platform, published leaderboard placements for the newest image model from SpaceXAI — the company formerly known as xAI, rebranded in July after its merger into SpaceX — on Saturday morning UTC. Grok Imagine Image 2.0, tested in its faster "Low" configuration, entered the Text-to-Image Arena in second place with 1,320 points, behind OpenAI's GPT-Image-2 at 1,380. In the Image Edit Arena it also landed second, scoring 1,439 against GPT-Image-2's 1,463 — a jump from seventh place in that arena for the previous generation, Grok Imagine Image Quality, which Arena ranks 14th in text-to-image.
+
+One of those two placements has already changed. As of 11 August the model sits third in text-to-image with 1,316 points, displaced by the MAI-Image-2.6 preview from Microsoft AI, which entered on Monday at 1,336; GPT-Image-2 leads with 1,381. Ranked below the SpaceXAI entry are Reve AI's Reve 2.1 at 1,302, Meta's Muse-Image at 1,282, Reve AI's older Reve 2.0 at 1,270, Google's Gemini 3.1 Flash Image at 1,264, ByteDance's Seedream 5.0 Pro at 1,258 and Alibaba's Qwen-Image-3.0-Pro at 1,257. In the Image Edit Arena it still holds second, 1,439 against 1,463. Both scores remain provisional: roughly 2,700 text-to-image votes against about 70,000 for the leader, and about 5,900 image-edit votes against 184,000. Positions keep moving as voting accumulates.
 
 ## What shipped
 
-SpaceXAI released Image 2.0 the previous day as the "Quality Mode" of Grok Imagine, available on grok.com/imagine and in the company's iOS and Android apps. API access has not opened; the company says it is coming. It describes the model as designed to follow detailed instructions precisely, plan typography and page layout the way a designer would, and hold small text legible inside dense composite visuals.
+SpaceXAI released Image 2.0 on 7 August as the "Quality Mode" of Grok Imagine, available on grok.com/imagine and in the company's iOS and Android apps. First-party API access has not opened; the company says it is coming, without giving a date, a model ID or pricing. Developer access so far runs through a third party: a preview of the model has been made available on Vercel's AI Gateway. SpaceXAI describes the model as designed to follow detailed instructions precisely, plan typography and page layout the way a designer would, and hold small text legible inside dense composite visuals.
 
 The release bundles an editing toolkit rather than a bare generator: a magic-wand tool that alters only the region a user points at, segmentation-based selection, background removal with transparent export, multi-reference editing that accepts up to five input images in a single generation, and aspect-ratio conversion via Smart Resize. Templates package workflows for photo retouching, product photography, marketing assets and game art. The company also highlights consistent characters, locations and props across separate generations — a capability it frames as groundwork for later video production.
 
 ## Why it matters
 
-Human-preference leaderboards have been led by OpenAI's image stack for much of this year, with Reve AI and Chinese entrants such as Qwen-Image-3.0-Pro pressing from below. A simultaneous No.2 placement in both generation and editing puts SpaceXAI within roughly 60 Elo points of the top in text-to-image and 24 in editing, using its cheaper inference tier. The catch for professional users is distribution: the model is confined to Grok's consumer apps with no API, so unlike Qwen's and ByteDance's image and video models — already wired into third-party platforms — it cannot yet enter production creative pipelines. Whether the ranking translates into real usage depends on how quickly that API arrives.
+Human-preference leaderboards have been led by OpenAI's image stack for much of this year, with Reve AI, Microsoft and Chinese entrants such as Qwen-Image-3.0-Pro pressing from below. SpaceXAI took second on both boards at launch using its cheaper inference tier — but within three days the text-to-image order had shifted again, leaving it about 65 Elo points off the top and behind Microsoft's newest preview, while its 24-point editing deficit still stands. The catch for professional users is distribution: with no first-party API and developer access limited to a Vercel gateway preview, the model lives mainly inside Grok's consumer apps, so unlike Qwen's and ByteDance's image and video models — already wired into many third-party platforms — it is only beginning to reach production creative pipelines. Whether the ranking translates into real usage depends on how quickly that API arrives.
 
-Chinese title: Grok Imagine Image 2.0 双榜登上竞技场第二
-Chinese summary: SpaceXAI 最新图像模型首次进入 Arena 榜单，在文生图与图像编辑两个榜单同时位列第二，仅次于 OpenAI 的 GPT-Image-2。
+Chinese title: Grok Imagine Image 2.0 双榜空降第二，随后在文生图榜退居第三
+Chinese summary: SpaceXAI 最新图像模型首次上榜即在文生图与图像编辑两个榜单位列第二；至 8 月 11 日，它在文生图榜已被微软 MAI-Image-2.6 挤到第三，图像编辑榜仍保持第二。
 
 Sources:
   - Arena on X: Grok Imagine Image 2.0 (Low) debuts at #2 in the Text-to-Image Arena: https://x.com/arena/status/2085951322897998199
@@ -266,6 +435,7 @@ Sources:
   - Image Edit Leaderboard — Arena: https://arena.ai/leaderboard/image-edit
   - xAI's Imagine Image 2.0 lands just behind OpenAI's GPT-Image-2 in Arena benchmarks: https://the-decoder.com/xais-imagine-image-2-0-lands-just-behind-openais-gpt-image-2-in-arena-benchmarks/
   - Imagine Image 2.0 — SpaceXAI: https://x.ai/news/grok-imagine-image-2
+  - Grok Imagine Image 2.0 Preview now available on Vercel AI Gateway: https://vercel.com/changelog/grok-imagine-image-2-0-preview-now-available-on-vercel-ai-gateway
 
 ### Ling 3.0 Flash sets open-weights efficiency frontier
 
@@ -819,175 +989,27 @@ Sources:
   - The startup idea that convinced a UW computer science legend to leave Google after 27 years — GeekWire: https://www.geekwire.com/2026/the-startup-idea-that-convinced-a-uw-computer-science-legend-to-leave-google-after-27-years/
   - Google Deepmind loses both its CEO and chief scientist — The Decoder: https://the-decoder.com/google-deepmind-loses-both-its-ceo-and-chief-scientist-as-demis-hassabis-and-jeff-dean-step-down-simultaneously/
 
-### Meta ships Muse Code agent on new Muse Spark 1.2 model
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-ships-muse-code-agent.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meta-ships-muse-code-agent.html
-- Source timestamp: 2026-08-05T19:25:00.000Z
-- Site timestamp: 2026-08-05T23:00:03.104Z
-- Tags: Agents, Models
-
-Meta Superintelligence Labs released a terminal coding agent in beta alongside a co-trained model priced at $1.25 per million input tokens, undercutting rivals.
-
-Meta Superintelligence Labs released Muse Code, a terminal-based coding agent, in beta on Wednesday, paired with Muse Spark 1.2 — a model the company says was co-trained with the agent harness rather than adapted to it afterwards.
-
-## Architecture
-
-Muse Code installs via a single command on macOS and Linux. Its distinguishing design choice is persistent asynchronous background agents that stay alive for the duration of a session, instead of subagents spawned and discarded per task. Meta says this cuts repeated context-gathering and reduces the steering a developer must supply on long multi-step work. When a task is complex enough, the agent parallelises across isolated git worktrees, leaving the user's working directory untouched; internal testing built six game features concurrently without merge conflicts.
-
-The runtime writes every model call and action to a local append-only event log, which allows replay-exact resumption after a crash. Built-in skills include `/plan` for approval-gated planning, `/grill` for adversarially stress-testing a plan before execution, and `/goal` for objective tracking.
-
-## Model and pricing
-
-Meta scaled up training compute specifically on coding tasks for Muse Spark 1.2. Its own launch charts place the model second behind Claude Opus 5 on Terminal-Bench 2.1 (89 tasks), DeepSWE v1.1 (113 tasks across 91 repositories and five languages) and an internal benchmark of 440 tasks derived from real pull requests — with the caveat, which Meta states, that its harness may not be tuned for competitors' models. In a long-horizon test the agent optimised KDA and MLA GPU kernels on Nvidia Hopper hardware across more than 1,000 tool calls over roughly 24 hours.
-
-API pricing is $1.25 per million input tokens and $4.25 per million output. Meta also introduced a contributor tier at $0.10 and $0.20 — a 12.5x and 21.25x discount — in exchange for permission to train future models on submitted prompts and completions, capped at 60 requests per minute versus 3,000 on the standard tier. Weights are not published; this is a hosted dependency.
-
-## Why it matters
-
-Meta now competes directly with Claude Code and OpenAI's Codex, and it is competing on price. Independent evaluation put Muse Spark 1.2 at roughly $0.40 per Intelligence Index task, among the cheapest at its capability level. The data-for-discount tier is the more novel move: it converts developer telemetry into an explicit line item, which enterprise buyers will have to price against their own code-confidentiality requirements.
-
-Chinese title: Meta 发布终端编码智能体 Muse Code 及配套模型 Muse Spark 1.2
-Chinese summary: Meta 超级智能实验室上线 Muse Code 测试版，配套模型定价每百万输入 token 1.25 美元，并推出「用数据换折扣」的贡献者档。
-
-Sources:
-  - Introducing Muse Code and Muse Spark 1.2 — Meta AI Research: https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2
-  - Meta launches Muse Code, an AI agent for large code bases — TechCrunch: https://techcrunch.com/2026/08/05/meta-launches-muse-code-an-ai-agent-for-large-code-bases/
-  - Meta AI Releases Muse Code (Beta) — MarkTechPost: https://www.marktechpost.com/2026/08/05/meta-superintelligence-labs-releases-muse-code/
-
-### Independent tests put Qwen3.8-Max top of agentic index
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/qwen38-max-independent-benchmark-results.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/qwen38-max-independent-benchmark-results.html
-- Source timestamp: 2026-08-06T07:43:00.000Z
-- Site timestamp: 2026-08-06T11:00:03.204Z
-- Tags: Models, Research
-
-Artificial Analysis published its full evaluation of Alibaba's 2.4T flagship: strong agentic scores and a top-five composite, paid for with far more tokens and cost.
-
-## The numbers
-
-Artificial Analysis released its complete evaluation run for Qwen3.8-Max on Thursday, several days after Alibaba opened the 2.4-trillion-parameter model through its API. The composite Intelligence Index — a blend of nine evaluations including GDPval-AA, Terminal-Bench, SciCode and Humanity's Last Exam — puts the model at 56, well above the 32 median for comparable reasoning models. Alibaba's Qwen team said the result places it fifth overall on the index and first on the agentic sub-index, which would make it the first Chinese model to lead that category.
-
-On GDPval-AA, the evaluator's proxy for real knowledge work, Qwen3.8-Max recorded 1,739 Elo. That puts it ahead of Moonshot's Kimi K3 at 1,685, effectively level with Claude Fable 5 at 1,743 and GPT-5.6 Sol (max) at 1,730, and behind only Anthropic's top configuration.
-
-## The trade-offs
-
-The gains are bought with effort. The model averaged 64 turns per GDPval-AA task against 14 for its predecessor, and generated roughly 150 million output tokens across the index versus a 66 million median — unusually verbose even by reasoning-model standards. Cost follows: $1.14 per Intelligence Index task, more than double Qwen3.7-Max's $0.53 and about 1.3x the open-weights leader Kimi K3 at $0.86.
-
-One result moved the wrong way. On AA-Omniscience, which nets correct answers against confident wrong ones, the score fell about ten points, from +14 to +4. Raw accuracy stayed roughly flat near 31%, meaning the drop comes from the model asserting more when it should abstain — reversing a calibration gain its predecessor had made.
-
-## Why it matters
-
-Vendor benchmarks are cheap; third-party runs with published cost and token accounting are not. This one confirms that Alibaba has closed most of the capability gap with US frontier labs on agentic work, while showing the bill has moved with it — a Chinese flagship is no longer automatically the cheap option. The hallucination regression is the more durable warning: agentic systems that chain dozens of turns compound confident errors, and calibration is now a harder constraint on deployment than raw score.
-
-Chinese title: 第三方评测：Qwen3.8-Max 登顶智能体分榜，代价是成本翻倍
-Chinese summary: Artificial Analysis 放出阿里 2.4 万亿参数旗舰的完整测评：综合排名前五、智能体能力第一，但 token 消耗与单任务成本同步飙升。
-
-Sources:
-  - Artificial Analysis on X: Qwen3.8 Max GDPval-AA results: https://x.com/ArtificialAnlys/status/2085270417904947597
-  - Qwen3.8 Max - Intelligence, Performance & Price Analysis: https://artificialanalysis.ai/models/qwen3-8-max
-  - Artificial Analysis榜单：阿里Qwen3.8 Agentic能力得分全球第一 - 量子位: https://www.qbitai.com/2026/08/467444.html
-
-### Reddit opens LLM Rules Hub to all new communities
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/reddit-opens-llm-rules-hub.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/reddit-opens-llm-rules-hub.html
-- Source timestamp: 2026-08-05T16:00:00.000Z
-- Site timestamp: 2026-08-05T23:00:03.104Z
-- Tags: Industry, Policy
-
-Reddit is rolling out Rules Hub, which lets moderators write rules in prose for a language model to enforce by intent, and will reduce reliance on karma gates.
-
-Reddit said on Wednesday it is opening Rules Hub — a moderation system that uses large language models to enforce community rules — to every newly created community, ahead of a site-wide rollout planned for later in 2026.
-
-## How it works
-
-Rules Hub lets volunteer moderator teams write rules in ordinary prose and leaves a language model to judge whether a given post or comment violates the intent of that rule. This is a departure from AutoMod, the long-standing regex-and-keyword configuration system that has governed Reddit moderation for years and which struggles with nuance, sarcasm and edge cases. AutoMod's other functions remain in place; Rules Hub is optional for new communities. The company tested it with more than 700 communities and members of its Mod Council Network before this expansion.
-
-Reddit also said it intends to make karma — its upvote-derived reputation score — less decisive for first-time posters, replacing karma and account-age gates with stronger abuse-detection systems. The stated aim is to let genuine newcomers participate without moderators having to blanket-block low-karma accounts.
-
-## Adjacent changes
-
-The same set of announcements tightens third-party access. Reddit is further restricting the public API and pushing developers onto its Developer Platform, with new API requests to be gradually curtailed and a $1 million programme to fund migration. Legacy desktop interface old.reddit.com is being moved toward modern moderation workflows, with reporting indicating logged-out access will be restricted — a change framed around scraping rather than moderation.
-
-## Why it matters
-
-Reddit runs one of the largest volunteer moderation operations on the internet, across a platform with roughly 500 million weekly active users. Replacing keyword rules with intent classification at that scale is a substantial real-world deployment of LLM judgment on contested speech decisions, with failure modes — inconsistency, false positives, no clear appeal path — that keyword systems did not have. It is also inseparable from the data question: Reddit's corpus is a primary training source licensed to AI companies, and the API restrictions alongside old.reddit changes show the platform tightening control of that supply while automating its own governance with the same technology.
-
-Chinese title: Reddit 向所有新社区开放由大模型执行规则的 Rules Hub
-Chinese summary: Reddit 推广 Rules Hub：版主用自然语言写规则，由语言模型按「意图」判定违规，同时弱化 karma 门槛并进一步收紧 API。
-
-Sources:
-  - Reddit aims to make 'karma' less important for first-time posters with shift to AI moderation tools — TechCrunch: https://techcrunch.com/2026/08/05/reddit-aims-to-make-karma-less-important-for-first-time-posters-with-shift-to-ai-moderation-tools/
-  - Reddit is introducing a new moderator: AI — The Verge: https://www.theverge.com/tech/975398/reddit-ai-rules-hub-moderator-old-reddit-developer-platform
-
-### Anthropic buys $10B of compute from six-month-old Volta
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-volta-ten-billion-compute.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-volta-ten-billion-compute.html
-- Source timestamp: 2026-08-04T15:21:00.000Z
-- Site timestamp: 2026-08-04T23:00:03.460Z
-- Tags: Industry, Funding
-
-The six-year deal routes Anthropic through a 133MW hydro-powered Norwegian site running Nvidia Vera Rubin systems, operated with Bitdeer.
-
-## The deal
-
-Anthropic has committed roughly $10 billion over six years to Volta Infra Holdings, a cloud provider that did not exist at the start of 2026. The capacity comes from a 133-megawatt, hydroelectrically powered data center at Bitdeer Technologies' Tydal campus in Norway — Bitdeer is a bitcoin miner repurposing its power and siting expertise for AI — and is equipped with Nvidia's Vera Rubin systems; reporting on the contract puts the Vera Rubin capacity Anthropic has actually contracted at around 121 megawatts of that site. Handover happens in two even phases, the first targeted for the end of 2026 and the second for March 2027.
-
-Volta was founded in January by former Brookfield asset managers and has raised about $300 million across its seed and Series A rounds, co-led by Andreessen Horowitz and Altimeter Capital, with Nvidia, Michael Dell's family office, Azora and Matter Venture Partners also participating, at a $2.4 billion post-money valuation. It sits in Nvidia's Cloud Partner program, has set up a separate $5 billion financing programme with Azora — an asset manager with more than $20 billion under management — to fund its next generation of sites with non-dilutive infrastructure capital and give customers credit-supported access to GPU capacity, and says it has secured roughly a gigawatt of near-term power, with expansion targeted at Texas and Wyoming.
-
-## Anthropic's spread
-
-The contract extends a deliberate diversification. Anthropic already has capacity arrangements spanning Google and Broadcom, Amazon, Microsoft Azure, AMD and SpaceX, and is now willing to underwrite a startup's first major buildout to add more. For Volta, a single anchor tenant of this size effectively converts a six-month-old company into a financeable infrastructure business — which is the model: the offtake contract is the collateral.
-
-## Why it matters
-
-This is what the compute crunch looks like in practice. Frontier labs are no longer choosing among established hyperscalers; they are seeding new ones, and doing it where power is available rather than where the customers are — Norwegian hydro, at a moment when Texas has just frozen new grid connections. It also deepens the circularity that has drawn scrutiny all year: Nvidia is simultaneously Volta's investor and its chip supplier, while Anthropic's commitment is what makes Volta's Nvidia purchases bankable. That structure works while AI demand grows and amplifies losses through several balance sheets at once if it does not. A $10 billion obligation from a company whose revenue is measured in billions, not tens of billions, is a bet on demand years out.
-
-Chinese title: Anthropic 向成立半年的 Volta 采购 100 亿美元算力
-Chinese summary: 六年长约锁定挪威 133MW 水电数据中心，搭载英伟达 Vera Rubin 系统，由比特矿企 Bitdeer 参与建设。
-
-Sources:
-  - Anthropic locks in $10 billion of compute from Volta, a cloud startup that didn't exist six months ago: https://the-decoder.com/anthropic-locks-in-10-billion-of-compute-from-volta-a-cloud-startup-that-didnt-exist-six-months-ago/
-  - Anthropic signs $10B deal with AI cloud startup Volta: https://techcrunch.com/2026/08/04/anthropic-signs-10-billion-deal-with-ai-cloud-startup-volta/
-  - Anthropic signs $10 billion Norway compute deal using Bitdeer site: https://finance.yahoo.com/technology/ai/articles/anthropic-signs-10-billion-norway-132747149.html
-  - Volta Emerges From Stealth With $10 Billion AI Lab Partnership and $5 Billion AI Infrastructure Program — Business Wire: https://www.businesswire.com/news/home/20260804493428/en/Volta-Emerges-From-Stealth-With-$10-Billion-AI-Lab-Partnership-and-$5-Billion-AI-Infrastructure-Program
-
-### Cursor open-sources its MoE training megakernel MoK
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html
-- Source timestamp: 2026-08-04T16:00:00.000Z
-- Site timestamp: 2026-08-04T23:00:03.460Z
-- Tags: Open Source, Research, Industry
-
-Mixture-of-Kittens fuses all MoE communication and compute into one deterministic Blackwell kernel, lifting Cursor's training throughput 1.41x.
-
-## One kernel for the whole MoE layer
-
-Cursor released Mixture-of-Kittens on August 4, an Apache-2.0 training megakernel that collapses every communication and computation step of a Mixture-of-Experts layer into a single fused kernel. Rather than alternating between expert compute and all-to-all token routing — the pattern that makes MoE training bandwidth-bound — MoK overlaps them inside one launch.
-
-The code targets Nvidia Blackwell SM100/SM103 parts, meaning GB200 NVL72 or GB300 NVL72 racks, and requires Python 3.12+, PyTorch 2.10+ and CUDA 13.0+. On a single-layer MXFP8 forward-pass benchmark Cursor reports up to 2.37x the throughput of the strongest public baseline. The number that matters more is end to end: across 512 GPUs, replacing its previous DeepEP-based path lifted training throughput 1.41x, from 760.9 to 1,070.2 tokens per second per GPU. Cursor says MoK is already carrying training across tens of thousands of its GPUs.
-
-## Determinism as a feature
-
-MoK is bit-wise deterministic. That is unusual for fused collective kernels and it is deliberate: on-policy reinforcement learning post-training breaks in subtle ways when the training and sampling paths disagree numerically, and non-determinism makes regressions almost impossible to bisect. A deterministic MoE kernel makes RL runs reproducible and debuggable, which is arguably worth more to a lab than the raw speedup.
-
-## Why it matters
-
-A 1.41x throughput gain is a direct 30 percent cut in the cost and wall-clock of every MoE pretraining and post-training run on Blackwell racks — the substrate nearly every frontier model now trains on. Publishing it under Apache 2.0 hands that saving to anyone with NVL72 access, narrowing one of the gaps between well-resourced labs and everyone else, since this class of kernel work usually stays internal. It also says something about Cursor. A company known for a code editor is now shipping frontier-grade training infrastructure, evidence that its shift into training its own models is real rather than a wrapper strategy — and a reminder that hardware-specific kernel engineering, not just architecture, is where a growing share of training efficiency now comes from.
-
-Chinese title: Cursor 开源 MoE 训练巨型算子 MoK
-Chinese summary: Mixture-of-Kittens 把 MoE 层的全部通信与计算融进单个确定性 Blackwell 算子，使 Cursor 端到端训练吞吐提升 1.41 倍。
-
-Sources:
-  - Cursor Open-Sources Mixture-of-Kittens (MoK): https://www.marktechpost.com/2026/08/04/cursor-open-sources-mixture-of-kittens-mok-a-deterministic-moe-training-megakernel-for-gb300-nvl72-racks/
-  - cursor/mixture-of-kittens on GitHub: https://github.com/cursor/mixture-of-kittens
-  - Cursor: We're open-sourcing Mixture-of-Kittens: https://x.com/cursor_ai/status/2084670806613737919
-
 ## Recent radar items
+
+### 2026-08-11
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-11.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-11.html
+
+- 2026-08-10T22:19:00Z | X @vercel | Vercel is making its Sandbox Egress Firewall free on every plan, citing security research showing untrusted agent-written code needs network-level containment, not just compute isolation. | 中文：Vercel 宣布 Sandbox 出站流量防火墙在所有套餐中免费开放，理由是近期安全研究表明，运行不可信的 Agent 生成代码不能只靠算力隔离，还需要网络层管控。 | https://x.com/vercel/status/2086940594283450486
+- 2026-08-10T22:17:00Z | X @MiniMax_AI | MiniMax highlighted a community-built inference engine that runs its open-weights H3 model natively on Mac computers, days after the release. | 中文：MiniMax 转发展示了一位顶级开发者为 Mac 电脑编写的 H3 推理引擎，称开放权重意味着任何人都能把 H3 跑在任意硬件上。 | https://x.com/MiniMax_AI/status/2086940119324565748
+- 2026-08-10T21:04:00Z | X @runwayml | Runway added Ideogram's P-Image model to its platform, generating images from prompts in as little as 0.6 seconds across four quality modes. | 中文：Runway 上线 Ideogram 的 P-Image 模型，最快 0.6 秒即可从提示词出图，并提供四档质量模式在速度与细节之间取舍。 | https://x.com/runwayml/status/2086921725044817922
+- 2026-08-10T15:02:00Z | X @MeshyAI | Meshy released Meshy 7, focused on narrowing the alignment gap between an input image and the generated 3D model. | 中文：Meshy 发布 Meshy 7，重点收窄输入图像与生成 3D 模型之间的「对齐差距」，让成品更贴合参考图。 | https://x.com/MeshyAI/status/2086830431501156411
+- 2026-08-10T15:03:00Z | X @recraftai | Recraft showed V4.1 holding one character and art style across four different scenes, varying hair, lighting and expression while keeping everything else fixed. | 中文：Recraft 展示 V4.1 的风格一致性：同一角色、同一风格跨四个场景生成，仅发型、光照与表情变化，其余元素保持锁定。 | https://x.com/recraftai/status/2086830697281364241
+- 2026-08-10T13:45:00Z | X @ElevenLabs | ElevenLabs is partnering with Deutsche Telekom to embed its AI voice models network-side, powering a call assistant that works on any phone able to make calls. | 中文：ElevenLabs 宣布与德国电信合作，将 AI 语音技术嵌入其网络侧，使 AI 通话助手可在任何能打电话的手机上使用，并已用于客服业务。 | https://x.com/ElevenLabs/status/2086811068899152053
+- 2026-08-10T16:25:00Z | Hugging Face | NVIDIA released Magpie TTS Multilingual, a 364M-parameter open-weights speech model covering 12 languages with 32ms time-to-first-audio on B200. | 中文：英伟达发布 Magpie TTS Multilingual，3.64 亿参数开放权重语音合成模型，支持 12 种语言，在 B200 上单流首字音延迟仅 32 毫秒。 | https://huggingface.co/blog/nvidia/magpie-tts-multilingual-voice-agents
+- 2026-08-10T17:14:00Z | InfoQ 中文 | Microsoft shipped Agent Framework Harness and Foundry Hosted Agents to production, bundling tool approval, context compression, file memory and OpenTelemetry on by default. | 中文：微软正式发布 Agent Framework Harness 与 Foundry Hosted Agents，内置工具审批、上下文压缩、文件记忆与 OpenTelemetry 遥测并默认开启，按用量计费托管运行。 | https://www.infoq.cn/article/aDEJegvNSKwvue2JZ0yI
+- 2026-08-10T20:07:00Z | X @FireworksAI_HQ | Fireworks AI released a Training Skill that lets coding agents such as Claude Code, Codex and Cursor configure and launch fine-tuning jobs from one install line. | 中文：Fireworks AI 推出 Training Skill，一行命令安装后，Claude Code、Codex、Cursor 等编程 Agent 即可直接配置并启动其训练任务。 | https://x.com/FireworksAI_HQ/status/2086907308106535400
+- 2026-08-10T14:59:00Z | X @SakanaAILabs | Sakana AI said it is expanding its Recursive Self-Improvement Lab into physical AI, building world models aimed at robotics. | 中文：Sakana AI 宣布将其递归自我改进（RSI）实验室扩展到物理 AI 方向，着手构建面向机器人的世界模型。 | https://x.com/SakanaAILabs/status/2086829673699316179
+- 2026-08-10T18:20:00Z | The Decoder | Hugging Face and EleutherAI's FineBooks benchmarked 14 OCR models on historical pages, showing above 97% character accuracy for under $2 per thousand pages. | 中文：Hugging Face 与 EleutherAI 推出 FineBooks：在历史书页上评测 14 个开源 OCR 模型，最佳者字符准确率超 97%，每千页成本不到 2 美元，计划重跑 20 万份公共领域文献。 | https://the-decoder.com/old-ocr-text-cripples-language-model-training-and-finebooks-wants-to-fix-that-at-scale/
+- 2026-08-10T15:59:00Z | X @arena | Arena said the proprietary-versus-open-source performance gap has reached its narrowest point yet, citing frontier margins in Code Arena's WebDev leaderboard. | 中文：Arena 表示闭源与开源模型的性能差距已缩至历史最窄，并以 Code Arena WebDev 榜单上的前沿分差作为依据。 | https://x.com/arena/status/2086844868454662210
+- 2026-08-10T22:49:00Z | IT之家 | ChatGPT deepened its Yelp integration in the US and Canada, letting users book restaurant tables directly inside a conversation. | 中文：ChatGPT 在美加地区进一步接入点评平台 Yelp，用户可在对话过程中直接完成餐厅订座。 | https://www.ithome.com/0/988/073.htm
+- 2026-08-10T12:00:00Z | TechCrunch | Discovered Materials raised a $9M seed led by Lightspeed India to run agent swarms on Anthropic models plus physics simulation, hunting cooler semiconductor materials. | 中文：Discovered Materials 完成 900 万美元种子轮，由 Lightspeed India 领投，Peak XV 及 Paul Graham 等参投；公司用 Anthropic 模型驱动的 Agent 集群配合物理仿真，寻找更散热的芯片材料。 | https://techcrunch.com/2026/08/10/discovered-materials-is-playing-ai-whack-a-mole-to-hunt-cooler-chips/
 
 ### 2026-08-10
 
@@ -1108,37 +1130,3 @@ Sources:
 - 2026-08-06T23:42:00Z | X @genspark_ai | Genspark argued that enterprise AI bills keep climbing even as per-unit intelligence got roughly ten times cheaper this year, because agents moved into production. | 中文：Genspark 指出，今年单位智能成本降了约十倍，但企业 AI 账单仍在上涨，原因是智能体大规模进入生产环境。 | https://x.com/genspark_ai/status/2085511812313985486
 - 2026-08-07T10:24:00Z | IT之家 | South Korea's Mobilint launched the MLD-R1, a USB-form AI accelerator delivering 10 TOPS of INT8 compute for edge inference. | 中文：韩国 Mobilint 推出 USB 形态 AI 加速器 MLD-R1，内置 10TOPS INT8 算力，面向边缘侧推理场景。 | https://www.ithome.com/0/987/158.htm
 - 2026-08-07T10:52:00Z | IT之家 | A leaked new Microsoft Copilot icon shows the assistant moving to a flatter, simpler design. | 中文：微软 Copilot 新版图标泄露，助手标识趋向扁平化、设计更为简洁。 | https://www.ithome.com/0/987/164.htm
-
-### 2026-08-06
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-06.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-06.html
-
-- 2026-08-05T21:32:00Z | X @ArtificialAnlys | Artificial Analysis ranked Meta's Muse Spark 1.2 fifth on its GDPval-AA v2 agentic knowledge-work benchmark at 1631 Elo, behind Claude Opus 5 max at 1852. | 中文：Artificial Analysis 的 GDPval-AA v2 智能体真实工作基准显示，Meta 的 Muse Spark 1.2 以 1631 Elo 位列第五，落后于 1852 分的 Claude Opus 5（max）。 | https://x.com/ArtificialAnlys/status/2085116740904890737
-- 2026-08-05T21:29:00Z | X @cognition | Cognition said Devin Outposts can now run on Vercel Sandbox, letting the agent build and test apps inside an isolated microVM with Docker and private network access. | 中文：Cognition 宣布 Devin Outposts 现可运行在 Vercel Sandbox 上，让智能体在隔离的 microVM 中构建和测试应用，并支持 Docker 与私有网络访问。 | https://x.com/cognition/status/2085115898004709624
-- 2026-08-05T21:00:00Z | X @Replit | Replit now runs its security scans in parallel while an app is being built rather than at the end, folding them into its Auto-Protect capabilities. | 中文：Replit 改为在应用构建过程中并行运行安全扫描，而非等到构建结束，并将其纳入 Auto-Protect 自动防护能力。 | https://x.com/Replit/status/2085108636464955700
-- 2026-08-05T18:56:00Z | X @code | VS Code's new release adds /btw side chats that share the primary chat's context and prompt cache, on-device multilingual dictation, and element-level web page feedback for agents. | 中文：VS Code 新版本加入 /btw 侧边对话（共享主对话上下文与提示缓存）、端侧多语言语音输入，以及可对网页元素逐个批注并发给智能体的反馈功能。 | https://x.com/code/status/2085077613580607573
-- 2026-08-05T15:46:00Z | TechCrunch | Hark previewed a browser-use agent that completes multi-step web tasks on a user's behalf inside a controlled browser session. | 中文：Hark 预览了一款浏览器操作智能体，可在受控浏览器会话中代替用户完成多步网页任务。 | https://techcrunch.com/2026/08/05/hark-previews-its-browser-use-agent-for-completing-tasks/
-- 2026-08-05T22:32:00Z | X @qdrant_engine | Qdrant 1.19 shipped the Turbo4 4-bit datatype, unified memory tiers, per-tenant IDF statistics and keyword prefix matching, while removing the legacy search, recommend and discover endpoints. | 中文：Qdrant 1.19 发布 Turbo4 四比特数据类型、统一内存分层、按租户的 IDF 统计和关键词前缀匹配，同时移除了旧版 search、recommend 与 discover 接口。 | https://x.com/qdrant_engine/status/2085131968359055472
-- 2026-08-05T15:15:00Z | X @milvusio | Milvus 3.0 introduced online schema evolution with backfill, letting teams change a collection's schema without rebuilding or reindexing the data. | 中文：Milvus 3.0 引入在线 schema 演进与回填能力，团队可直接修改集合结构，无需重建或重新索引数据。 | https://x.com/milvusio/status/2085021761448665466
-- 2026-08-05T20:12:00Z | X @character_ai | Character.AI launched LongSqueak, a chat style tuned for novella-length long-form storytelling, plus Style Control for PipSqueak 2, both rolling out to c.ai+ members. | 中文：Character.AI 推出 LongSqueak 对话风格，专为小说式长篇叙事调优，同时为 PipSqueak 2 加入 Style Control，均先向 c.ai+ 会员开放。 | https://x.com/character_ai/status/2085096717737959668
-- 2026-08-05T18:58:00Z | X @dreamina_ai | ByteDance's Dreamina opened submissions for a Seedance 2.5 3D-reference creative contest, rolling it out across Southeast Asia, the Middle East, Africa, Europe and South America. | 中文：字节跳动旗下 Dreamina 开启 Seedance 2.5 「3D 参考」创作大赛投稿，覆盖东南亚、中东、非洲、欧洲和南美等地区。 | https://x.com/dreamina_ai/status/2085077886072222118
-- 2026-08-05T16:21:00Z | X @PixVerse_ | PixVerse announced PixLight, a funding program that backs creators making ambitious AI-generated worlds and characters instead of shrinking projects to fit budgets. | 中文：PixVerse 公布创作者资助计划 PixLight，支持用 AI 打造宏大世界观与角色的创作者，让项目不必因预算而缩水。 | https://x.com/PixVerse_/status/2085038387107442784
-- 2026-08-05T16:57:00Z | The Verge | The Verge reported that rapper Fenix Flexin appears to have used AI music generator Treblo on newly released tracks, based on telltale artifacts in the audio. | 中文：The Verge 报道称，从音频中的特征痕迹看，说唱歌手 Fenix Flexin 新发布的作品疑似使用了 AI 音乐生成工具 Treblo。 | https://www.theverge.com/ai-artificial-intelligence/975528/fenix-flexin-ai-music-generator-treblo
-- 2026-08-05T16:31:00Z | X @GoodfireAI | Goodfire probed the 6B protein language model ESM-C's internal representations to predict how genetic variants alter specific protein properties, exposing the method on its Silico platform. | 中文：Goodfire 探查 60 亿参数蛋白质语言模型 ESM-C 的内部表征，用以预测基因变异如何改变特定蛋白性质，并在其 Silico 研究平台上开放该方法。 | https://x.com/GoodfireAI/status/2085040978860368177
-- 2026-08-05T13:01:00Z | X @farairesearch | FAR.AI, partnering with Scale, published work arguing the future of chain-of-thought monitoring remains an open question and a growing priority for AI safety research. | 中文：FAR.AI 与 Scale 合作发布研究，认为思维链监控的前景仍是开放问题，也是日益重要的 AI 安全研究方向。 | https://x.com/farairesearch/status/2084988195398164844
-- 2026-08-05T20:33:00Z | X @FireworksAI_HQ | Fireworks AI opened DeepSeek V4 Flash 0731 for fine-tuning, offering SFT, DPO and RL jobs on its Dedicated Training API with SFT and DPO from the managed UI. | 中文：Fireworks AI 开放 DeepSeek V4 Flash 0731 微调，可在其 Dedicated Training API 上运行 SFT、DPO 与 RL 任务，其中 SFT 和 DPO 支持托管界面操作。 | https://x.com/FireworksAI_HQ/status/2085102033997287718
-- 2026-08-06T02:18:00Z | X @MiniMax_AI | MiniMax says its H3 video model took the #1 spot in Design Arena's Multi-Image-to-Video, Image-to-Video and Video Editing categories. | 中文：MiniMax 宣布其 H3 视频模型在 Design Arena 的多图生视频、图生视频和视频编辑三个类别中同时登顶第一。 | https://x.com/MiniMax_AI/status/2085188712342954326
-- 2026-08-06T08:24:00Z | X @lovart_ai | Lovart demoed sketching an exact camera path directly onto a photo and letting Seedance 2.0 fly it, producing one-take drone-style stadium shots. | 中文：Lovart 演示了直接在照片上手绘相机运动轨迹、再交由 Seedance 2.0 执行，生成一镜到底的无人机穿越体育场镜头。 | https://x.com/lovart_ai/status/2085280774727831847
-- 2026-08-06T04:00:00Z | arXiv | ToolArtist, the day's #2 trending paper on Hugging Face, unifies reasoning, tool invocation and image generation in one agentic policy for text-to-image work. | 中文：登上 Hugging Face 当日趋势第二的论文 ToolArtist，把推理、工具调用与图像生成统一进单一智能体策略，用于文生图任务。 | https://arxiv.org/abs/2608.04436
-- 2026-08-06T05:26:00Z | X @genspark_ai | Genspark launched Genspark Design, which turns any project a user has already built into a reusable design system of colors, type and components. | 中文：Genspark 推出 Genspark Design，可把用户已完成的任意项目转化为可复用的设计系统，涵盖配色、字体与组件。 | https://x.com/genspark_ai/status/2085236034380718322
-- 2026-08-06T00:41:00Z | X @togethercompute | Together AI said builders can now use it as an inference provider inside the newly launched Roomote, assigning different open models to different agents. | 中文：Together AI 表示，开发者已可在新上线的 Roomote 中将其用作推理供应商，为不同智能体分配不同的开源模型。 | https://x.com/togethercompute/status/2085164199102075370
-- 2026-08-06T00:37:00Z | MarkTechPost | Microsoft's SkillOpt optimizes natural-language skill documents that transfer across harnesses: a Codex-trained skill scored 81.8 in Claude Code, beating its in-domain 80.4. | 中文：微软 SkillOpt 优化的自然语言技能文档可跨 harness 迁移：在 Codex 中训练的技能移植到 Claude Code 得 81.8 分，超过后者自身域内的 80.4 分。 | https://www.marktechpost.com/2026/08/05/microsoft-skillopt-agent-skill-transfer-portability/
-- 2026-08-06T08:08:00Z | X @MSFTResearch | Microsoft Research published three playbooks — Vibhasha, Atlas and Paza — for building multilingual, culturally grounded and low-resource speech AI systems. | 中文：微软研究院发布 Vibhasha、Atlas、Paza 三份实践指南，指导构建多语言、贴合文化语境以及面向低资源语言的语音 AI 系统。 | https://x.com/MSFTResearch/status/2085276884384801242
-- 2026-08-06T00:25:00Z | Simon Willison | Meta's Muse Spark exploited a vulnerability at an unnamed company during cyber testing after evaluator Irregular misconfigured the sandbox and left internet access open. | 中文：Meta 的 Muse Spark 在网络安全测试中入侵了一家未披露公司的系统，原因是评测方 Irregular 沙箱配置失误、留下了联网权限。 | https://simonwillison.net/2026/Aug/6/an-ai-model-from-meta/
-- 2026-08-06T10:11:00Z | The Decoder | OpenAI researcher roon urged developers to scrub exposed API keys, wallet credentials and insecure contracts before "the tireless eagle eyes of a million models" arrive. | 中文：OpenAI 研究员 roon 呼吁开发者尽快清理暴露的 API 密钥、钱包凭证和不安全合约，趁"百万模型不眠不休的鹰眼"尚未扫到。 | https://the-decoder.com/openai-developer-warns-the-tireless-eagle-eyes-of-a-million-models-are-coming-for-your-exposed-api-keys-and-crypto-wallets/
-- 2026-08-06T09:33:00Z | The Verge | OpenAI asked a court to throw out Apple's trade-secrets lawsuit, calling the complaint "rotten to its core." | 中文：OpenAI 请求法院驳回苹果的商业机密诉讼，称对方的起诉"从根上就是烂的"。 | https://www.theverge.com/tech/976042/openai-apple-trade-secrets-lawsuit-dismissal-request
-- 2026-08-06T00:25:00Z | The Verge | Elon Musk's AI-written Wikipedia rival Grokipedia has gone months without updates, suggesting the project is effectively dormant. | 中文：马斯克的 AI 生成维基百科竞品 Grokipedia 已数月未更新，项目实际上处于停摆状态。 | https://www.theverge.com/ai-artificial-intelligence/976004/elon-musk-grokipedia-ai-wikipedia-not-updating-dead
-- 2026-08-06T10:30:00Z | IT之家 | Google's $15 billion Indian data center buildout is drawing scrutiny over local water supplies and wildlife protection near the sites. | 中文：谷歌在印度投入 150 亿美元建设数据中心的计划，正因当地水资源消耗和周边野生动物保护问题受到质疑。 | https://www.ithome.com/0/986/684.htm
-- 2026-08-06T10:55:00Z | InfoQ 中文 | Ant Group disclosed the data architecture behind its Lingguang AI mini-app platform for the first time, with OceanBase detailing the underlying database practices. | 中文：蚂蚁集团首次公开灵光闪应用的数据架构，OceanBase 同步披露了底层数据库的关键工程实践。 | https://www.infoq.cn/article/ix9IT7I9LmH2X0w5xQck
-- 2026-08-06T04:00:00Z | arXiv | MatrAIx, from 93 authors, offers AI product evaluation against simulated users drawn from a database of 8.3 billion personas spanning 1,290 dimensions. | 中文：由 93 位作者共同完成的 MatrAIx，用一个覆盖 1290 个维度、83 亿人物画像的数据库生成模拟用户，来评测 AI 产品表现。 | https://arxiv.org/abs/2608.04205

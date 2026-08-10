@@ -13,6 +13,196 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-riemann-zeta-lower-bound.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-riemann-zeta-lower-bound.html",
+      "title": "Claude 把黎曼 ζ 零点下界从 41.6% 提到 67.2%",
+      "summary": "Anthropic 称一个未发布的研究版 Claude 将临界线上 ζ 函数零点占比的已证下界提高到 67.2%，并已获外部专家审读。",
+      "content_text": "Anthropic 于 8 月 10 日公布，其一个未发布的研究版 Claude 被要求正面挑战黎曼猜想。模型没能证明它，但在一个公认的相邻问题上给出了新结果。\n\n## 结果是什么\n\n数学界长期试图给出黎曼 ζ 函数非平凡零点落在临界线上的比例下界——猜想断言全部零点都落在这条线上。此前公开发表的最好结果约为 41.6%。Anthropic 称 Claude 把这一下界推到 67.2%，思路是发现 Baluyot、Goldston、Suriajaya 与 Turnage-Butterbaugh 的结果可以与 Bombieri 的早期工作结合，从而突破原有上限。\n\n## 怎么做出来，又怎么核验\n\n这不是一次提问就能得到的结果。Anthropic 描述的过程是在 Claude Code 中跑了两轮会话，消耗约 3100 万输出 token：模型先生成约 650 个候选思路，再调度约 60 个子智能体，执行约 2400 条 shell 命令、编写数百个 Python 脚本，用于数值验证、寻找反例、独立重证关键步骤并互相挑错。\n\n结果由 Anthropic 内部两位数学家 Levent Alpöge 与 Ralph Furman 验证，解析数论领域专家 Brian Conrey 与 Dan Goldston 也在短时间内审阅了论文。Anthropic 明确表示，并不认为 Claude 使用的这套技术能通向黎曼猜想本身的证明。\n\n## 为何重要\n\n这是一项在专业数论学者耕耘数十年的问题上取得、并经同行过目的具体推进，而非跑分成绩。但保留意见是结构性的：论文尚未经过常规同行评议，而模型未发布、未具名，外部无人能复现这次运行。当下行业产出研究性结论的速度，已经超过了配套核验机制的建设速度——因此，智能体规模化编排本身，以及背后 3100 万 token 的算力账单，与数学结论同样值得关注。",
+      "date_published": "2026-08-10T17:28:00.000Z",
+      "date_modified": "2026-08-10T23:00:03.008Z",
+      "tags": [
+        "研究",
+        "Agent"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/claude-riemann-zeta-lower-bound.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-riemann-zeta-lower-bound.html",
+        "source_published_at": "2026-08-10T17:28:00.000Z",
+        "site_published_at": "2026-08-10T23:00:03.008Z",
+        "sources": [
+          {
+            "title": "Learning more about Claude's mathematical capabilities — Anthropic",
+            "url": "https://www.anthropic.com/research/riemann-zeta"
+          },
+          {
+            "title": "Anthropic on X: an unreleased research version of Claude and the Riemann hypothesis",
+            "url": "https://x.com/AnthropicAI/status/2086867246073401655"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-sonnet-5-pricing-permanent.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-sonnet-5-pricing-permanent.html",
+      "title": "Anthropic 把 Sonnet 5 的 2/10 美元优惠价永久化",
+      "summary": "Anthropic 取消 Claude Sonnet 5 优惠价的截止日期，每百万输入 2 美元、输出 10 美元的定价在 8 月 31 日后继续沿用。",
+      "content_text": "Anthropic 8 月 10 日表示，Claude Sonnet 5 的优惠定价不再设截止期限。该模型 6 月发布时定价为每百万输入 token 2 美元、每百万输出 token 10 美元，当时对外说明该价格仅执行至 2026 年 8 月 31 日。现在这组数字成为长期价格。\n\n## 变化在哪\n\n按原公布的计划，优惠窗口结束后 Sonnet 5 将回到每百万输入 3 美元、输出 15 美元——这也是 Anthropic 中端模型一直以来的价位。把低价定为永久，相当于在开发者原本被要求从 9 月起编入预算的价格基础上，输入与输出成本各降三分之一。\n\nAnthropic 把这件事表述为取消截止日期，而非新一轮促销。这对采购是有意义的区别：此前按六周后单价上台阶做过测算的团队，不必再为此留缓冲。\n\n## 背景\n\n这一决定所处的市场，token 单价正被两头挤压。中国实验室与 Meta 的开源权重发布，使能力可用的模型只需承担托管成本；多份独立评测也反复显示，更便宜的模型在编程与智能体任务上已能拿到前沿水准的相当大一部分。与此同时，智能体类负载的 token 消耗远高于聊天——一次长链条工具调用可能烧掉数百万输出 token——因此决定一个 AI 产品运营成本的，越来越是中端而非旗舰的价位。\n\n## 为何重要\n\nSonnet 这一档模型是大量生产环境编程智能体与企业流水线的默认主力，Anthropic 自家的 Claude Code 也在其中。冻结价格意味着从成千上万份预算中抹掉一次既定涨价，也说明在开源权重竞争压制之下，Anthropic 认为中端价格没有上调空间。对做推理支出预测的人来说，中端价格的地板从此更难往上抬。",
+      "date_published": "2026-08-10T19:03:00.000Z",
+      "date_modified": "2026-08-10T23:00:03.008Z",
+      "tags": [
+        "产业",
+        "模型"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/claude-sonnet-5-pricing-permanent.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-sonnet-5-pricing-permanent.html",
+        "source_published_at": "2026-08-10T19:03:00.000Z",
+        "site_published_at": "2026-08-10T23:00:03.008Z",
+        "sources": [
+          {
+            "title": "Claude on X: making Claude Sonnet 5's introductory pricing permanent",
+            "url": "https://x.com/claudeai/status/2086891169217122586"
+          },
+          {
+            "title": "Introducing Claude Sonnet 5 — Anthropic",
+            "url": "https://www.anthropic.com/news/claude-sonnet-5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/mai-image-2-6-arena-second.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/mai-image-2-6-arena-second.html",
+      "title": "MAI-Image-2.6 首次上榜即拿下文生图竞技场第二",
+      "summary": "微软 AI 新版图像模型以 1336 分空降 Arena 文生图榜第二，上一代 2.5 仅排第十，与榜首 GPT Image 2 相差 45 分。",
+      "content_text": "Arena 于 8 月 10 日表示，微软 AI 最新文生图模型 MAI-Image-2.6 以 1336 分首次上榜即位列文生图排行榜第二，而上一代 MAI-Image-2.5 目前排在第十。\n\n## 具体数字\n\n与榜首的差距现为 45 分，第一名是 GPT Image 2（Medium）。Arena 称该模型在所有评分类别上都有提升，其中三维成像与建模一项进步最猛，从第六直接升到第一，卡通与插画类同样有改善。Arena 已在 Image Arena 中开放该模型的公众投票，使排名可以接受持续的人类偏好数据检验，而非停留在发布时的快照。\n\n同一系列相邻两个版本之间跨八个位次，在这张榜的头部并不常见。微软自研图像模型 2025 年 10 月以 MAI-Image-1 上榜时排第九，2026 年 3 月的 MAI-Image-2 冲到第三，随后陷入停滞——5 月发布的 2.5 首次上榜排第三，之后随竞品迭代而下滑。第二名是该系列迄今最高排位。\n\n## 背景\n\n人类偏好榜噪声不小，风格讨喜的权重不亚于画质本身，早期 Elo 分数通常会随投票量累积而漂移。但文生图头部格局已稳定数月，由 OpenAI 的 GPT Image 2 与谷歌 Imagen 系列主导，微软、Black Forest Labs 与 Midjourney 在其下互换位置。45 分的差距已足够小，下一轮发布就可能改写顺序。\n\n## 为何重要\n\n微软的图像生成主要经 Copilot、Bing Image Creator 与 Azure API 分发，而非一个独立创作 App，因此这一水准的模型会以默认选项的身份触达异常广泛的用户，无需用户主动挑选。微软同时是 OpenAI 模型最大的商业分发渠道——用自研权重把与 GPT Image 2 的差距压到这个程度，正好加强了它在依赖关系最显眼那一环上的话语权。",
+      "date_published": "2026-08-10T22:32:00.000Z",
+      "date_modified": "2026-08-10T23:00:03.008Z",
+      "tags": [
+        "AIGC",
+        "模型"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/mai-image-2-6-arena-second.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/mai-image-2-6-arena-second.html",
+        "source_published_at": "2026-08-10T22:32:00.000Z",
+        "site_published_at": "2026-08-10T23:00:03.008Z",
+        "sources": [
+          {
+            "title": "Arena on X: MAI-Image-2.6 lands in the Text-to-Image Arena at #2",
+            "url": "https://x.com/arena/status/2086943856289853931"
+          },
+          {
+            "title": "Arena on X: MAI-Image-2.6 jumped to #2 overall, category gains",
+            "url": "https://x.com/arena/status/2086943860681531555"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-5-6-cyber-daybreak.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-5-6-cyber-daybreak.html",
+      "title": "OpenAI 推出 GPT-5.6-Cyber，仅向审核过的安全团队开放",
+      "summary": "OpenAI 发布专为授权安全工作训练的网络安全模型，对通用模型会拒答的高危请求响应率达 95%，通过实名审核分层放行。",
+      "content_text": "OpenAI 于 8 月 10 日把其网络安全项目 Daybreak 拆成两级准入，并发布专门为授权攻防工作训练的模型 GPT-5.6-Cyber。\n\n## 两道门，两把钥匙\n\n较低一级的 Daybreak Blue 面向通过审核的防守方，提供包括 GPT-5.6 Sol 在内的前沿模型，并放宽系统层面的网络安全限制，用于恶意样本分析、漏洞分级与事件响应。Daybreak Red 是窄门，直接给到 GPT-5.6-Cyber 本体，适用范围限定为获授权的漏洞研究、漏洞利用验证与红队演练。申请方需完成身份核验、账号安全加固并签署法律声明；OpenAI 称自 2026 年 9 月 1 日起硬件安全密钥成为强制项，高风险场景还建议配合隔离沙箱与全程监控。\n\n能力落差正是这次发布的核心。按 OpenAI 内部的高级网络安全完成率指标，GPT-5.6-Cyber 对约 95% 的敏感安全请求给出实质回应——涵盖利用链构造、认证绕过、权限提升——而带完整防护的 GPT-5.6 Sol 只有约 1.5%。官方举例称，一个 WebSocket 认证绕过任务被常规版本拒答，网络安全版本则直接给出可用代码。\n\n## 拿出的证据\n\nOpenAI 表示已把该模型用于真实研究，在 Chrome 的 JavaScript 引擎 V8 中发现两个此前未知漏洞，二者串联后可造成内存破坏并逃出堆沙箱；此外还在一款主流移动操作系统中找到五个问题，含权限提升链。按其自家的准备度框架，该模型网络安全能力被定级为「高」，尚未触及会触发更严格管控的「关键」门槛。\n\n## 为何重要\n\n此前业界应对军民两用网络能力的办法基本是一律拒答。OpenAI 换成了发牌照的思路：能力本身存在，谁能用由审核决定，而不再由模型自己判断。安全问题因此从「模型能不能做」变成「凭证在谁手上」——竞争对手和监管方都得回应这套范式，而一旦审核环节被绕过，它本身就是新的攻击面。",
+      "date_published": "2026-08-10T17:16:00.000Z",
+      "date_modified": "2026-08-10T23:00:03.008Z",
+      "tags": [
+        "模型",
+        "安全",
+        "政策"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt-5-6-cyber-daybreak.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-5-6-cyber-daybreak.html",
+        "source_published_at": "2026-08-10T17:16:00.000Z",
+        "site_published_at": "2026-08-10T23:00:03.008Z",
+        "sources": [
+          {
+            "title": "OpenAI on X: expanding Daybreak and introducing GPT-5.6-Cyber",
+            "url": "https://x.com/OpenAI/status/2086864365379010729"
+          },
+          {
+            "title": "OpenAI launches GPT-5.6-Cyber to help defenders find vulnerabilities before attackers do",
+            "url": "https://the-decoder.com/openai-launches-gpt-5-6-cyber-to-help-defenders-find-vulnerabilities-before-attackers-do/"
+          },
+          {
+            "title": "OpenAI unveils GPT-5.6-Cyber to help prepare for AI cyberattacks",
+            "url": "https://www.axios.com/2026/08/10/openai-gpt-astra-restrictions-safety-hacking-defenders"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/zuckerberg-manifesto-open-weights-auction.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/zuckerberg-manifesto-open-weights-auction.html",
+      "title": "扎克伯格万字宣言：Meta 重回开源权重路线",
+      "summary": "扎克伯格发布约 6500 词长文，重申开源模型路线，指责闭源对手集中权力，并提出用动态竞价机制分配超级智能算力。",
+      "content_text": "扎克伯格 8 月 10 日发表一篇约 6500 词的长文，系统阐述 Meta 的人工智能战略，时间点与公司重新对外发布开源权重模型同步。这是 Meta 把 AI 部门重组为 Meta Superintelligence Labs、并一度偏离其赖以立身的开源路线之后，方向最清晰的一次表态。\n\n## 论点\n\n扎克伯格的核心判断是：先进 AI 最大的风险不在能力本身，而在集中——少数公司、机构或政府掌控所有人都要依赖的系统。他把竞争对手的路线描述为正在朝这个方向走，并把开源权重加上「个人拥有的 AI」作为对冲，主张「个人超级智能」而非一个中心化的全能问答机。\n\n## 机制\n\n更新鲜的是 Meta 打算怎么分配算力。扎克伯格称基础工具将免费或以低价提供，付费档则通过动态竞价机制获取算力——用户为自己需要的智能出价，而非缴纳固定订阅费。他同时表示开发者除了可以拿到宽松许可的 Muse Glimmer 权重，还将获得能力更强的 Muse Spark 1.2 的访问途径。\n\n外界反应不一。英国《金融时报》、Axios、The Verge 与 TechCrunch 的报道更多把这篇文章当作立场声明而非技术路线图，其中几家指出一个尴尬之处：能负担前沿训练的公司本就寥寥，由其中一家来讲反集中的道理，加上 Meta 自己此前刚从开源发布上后撤，说服力有折扣。\n\n## 为何重要\n\nMeta 是美国唯一持续大规模发布开源权重的超大规模厂商，它的收缩曾让中国实验室主导了这一生态的节奏。公开重回该路线，会直接改变全球开发者能拿到的准前沿开源模型供给。竞价机制则是另一件事：如果算力按实时出价而非订阅定价，先进 AI 的获取方式就被重构成一个大宗商品市场，随之而来的分配效应值得盯住。",
+      "date_published": "2026-08-10T14:06:00.000Z",
+      "date_modified": "2026-08-10T23:00:03.008Z",
+      "tags": [
+        "产业",
+        "开源",
+        "政策"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/zuckerberg-manifesto-open-weights-auction.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/zuckerberg-manifesto-open-weights-auction.html",
+        "source_published_at": "2026-08-10T14:06:00.000Z",
+        "site_published_at": "2026-08-10T23:00:03.008Z",
+        "sources": [
+          {
+            "title": "Mark Zuckerberg attacks 'closed' AI rivals as Meta returns to open models — FT",
+            "url": "https://www.ft.com/content/4e3957f8-ea7c-4c46-a3de-cdce8e526878"
+          },
+          {
+            "title": "Zuckerberg: AI's biggest risk is one entity with too much control — Axios",
+            "url": "https://www.axios.com/2026/08/10/zuckerberg-ai-manifesto-meta"
+          },
+          {
+            "title": "Meta returns to open models with Zuckerberg's plan to out-copy China and sell compute by auction",
+            "url": "https://the-decoder.com/meta-returns-to-open-models-with-zuckerbergs-plan-to-out-copy-china-and-sell-compute-by-auction/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/ai-drafted-claims-uk-tribunals.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/ai-drafted-claims-uk-tribunals.html",
       "title": "AI 代写诉状把英国劳动法庭积案推高到 6.4 万件",
@@ -283,9 +473,9 @@
     {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/grok-imagine-image-2-arena-debut.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/grok-imagine-image-2-arena-debut.html",
-      "title": "Grok Imagine Image 2.0 双榜登上竞技场第二",
-      "summary": "SpaceXAI 最新图像模型首次进入 Arena 榜单，在文生图与图像编辑两个榜单同时位列第二，仅次于 OpenAI 的 GPT-Image-2。",
-      "content_text": "## 榜单成绩\n\n众包模型对比平台 Arena 于 UTC 时间 8 日凌晨公布了 SpaceXAI（原 xAI，今年 7 月并入 SpaceX 后完成更名）最新图像模型的排名。以更快的 “Low” 档位参评的 Grok Imagine Image 2.0，在文生图（Text-to-Image）榜单以 1320 分首次登榜即位列第二，次于 OpenAI GPT-Image-2 的 1380 分；在图像编辑（Image Edit）榜单同样排名第二，得 1439 分，对手为 1463 分——相比上一代 Grok Imagine Image Quality 在该榜单的第七名，是一次明显跃升，而后者在文生图榜单上位列第 14。在文生图榜单上排在这一新模型之后的依次是：Reve AI 的 Reve 2.1（1302 分）、Meta 的 Muse-Image（1283 分）、Reve AI 上一代的 Reve 2.0（1270 分）、谷歌的 Gemini 3.1 Flash Image（1263 分）、阿里的 Qwen-Image-3.0-Pro（1258 分）与字节跳动的 Seedream 5.0 Pro（1257 分）。目前分数仍属初步结果：文生图票数约 2700，而榜首已积累近 7 万票；图像编辑票数约 5900，榜首约 18.4 万票。随着投票累积，名次仍会变动。\n\n## 模型本体\n\nSpaceXAI 在前一日将 Image 2.0 作为 Grok Imagine 的“质量模式”正式上线，可在 grok.com/imagine 及其 iOS、安卓应用中使用，API 尚未开放，官方称“即将推出”。官方的说法是，该模型能严格遵循细节指令，像设计师那样规划字体排印与版面结构，让信息密集的复合画面中的小字也保持清晰可读。\n\n此次发布交付的不只是一个生成器，还包括一整套编辑工具：只改动用户指定区域的“魔术棒”、基于分割的精确选区、可导出透明背景的抠图、单次生成最多接受五张参考图的多参考编辑，以及用于画幅转换的 Smart Resize。模板则把修图、产品摄影、营销素材和游戏美术等工作流打包。官方还强调跨多次生成保持角色、场景与道具一致的能力，并把它定位为后续视频生成能力的铺垫。\n\n## 为何重要\n\n今年以来，人类偏好类图像榜单长期由 OpenAI 的图像模型领跑，Reve AI 以及来自中国的 Qwen-Image-3.0-Pro 等模型自下方紧逼。SpaceXAI 用更便宜的推理档位在生成与编辑两条赛道同时拿到第二，文生图与榜首相差约 60 分、编辑相差 24 分。但对专业用户来说问题在分发：模型目前只存在于 Grok 的消费级应用里、没有 API，与已经接入各类第三方平台的通义、字节图像视频模型不同，暂时进不了真正的生产级创作管线。这个排名能否转化为实际使用量，取决于 API 开放的速度。",
+      "title": "Grok Imagine Image 2.0 双榜空降第二，随后在文生图榜退居第三",
+      "summary": "SpaceXAI 最新图像模型首次上榜即在文生图与图像编辑两个榜单位列第二；至 8 月 11 日，它在文生图榜已被微软 MAI-Image-2.6 挤到第三，图像编辑榜仍保持第二。",
+      "content_text": "## 榜单成绩\n\n众包模型对比平台 Arena 于 UTC 时间 8 日凌晨公布了 SpaceXAI（原 xAI，今年 7 月并入 SpaceX 后完成更名）最新图像模型的排名。以更快的 “Low” 档位参评的 Grok Imagine Image 2.0，在文生图（Text-to-Image）榜单以 1320 分首次登榜即位列第二，次于 OpenAI GPT-Image-2 的 1380 分；在图像编辑（Image Edit）榜单同样排名第二，得 1439 分，对手为 1463 分——相比上一代 Grok Imagine Image Quality 在该榜单的第七名，是一次明显跃升，而后者在文生图榜单上位列第 14。\n\n其中一个名次已经发生变化。截至 8 月 11 日，该模型在文生图榜以 1316 分排在第三，被微软 AI 于 10 日上榜的 MAI-Image-2.6 预览版（1336 分）挤下；榜首仍是 GPT-Image-2，1381 分。排在这一 SpaceXAI 模型之后的依次是：Reve AI 的 Reve 2.1（1302 分）、Meta 的 Muse-Image（1282 分）、Reve AI 上一代的 Reve 2.0（1270 分）、谷歌的 Gemini 3.1 Flash Image（1264 分）、字节跳动的 Seedream 5.0 Pro（1258 分）与阿里的 Qwen-Image-3.0-Pro（1257 分）。图像编辑榜上它仍保持第二，1439 分对 1463 分。两项分数都还属初步结果：文生图票数约 2700，榜首已积累约 7 万票；图像编辑票数约 5900，榜首约 18.4 万票。随着投票累积，名次仍在变动。\n\n## 模型本体\n\nSpaceXAI 于 8 月 7 日将 Image 2.0 作为 Grok Imagine 的“质量模式”正式上线，可在 grok.com/imagine 及其 iOS、安卓应用中使用。官方 API 尚未开放，公司称“即将推出”，但未给出时间、模型 ID 或价格。目前开发者只能通过第三方接入：该模型的预览版已上线 Vercel 的 AI Gateway。官方的说法是，该模型能严格遵循细节指令，像设计师那样规划字体排印与版面结构，让信息密集的复合画面中的小字也保持清晰可读。\n\n此次发布交付的不只是一个生成器，还包括一整套编辑工具：只改动用户指定区域的“魔术棒”、基于分割的精确选区、可导出透明背景的抠图、单次生成最多接受五张参考图的多参考编辑，以及用于画幅转换的 Smart Resize。模板则把修图、产品摄影、营销素材和游戏美术等工作流打包。官方还强调跨多次生成保持角色、场景与道具一致的能力，并把它定位为后续视频生成能力的铺垫。\n\n## 为何重要\n\n今年以来，人类偏好类图像榜单长期由 OpenAI 的图像模型领跑，Reve AI、微软以及来自中国的 Qwen-Image-3.0-Pro 等模型自下方紧逼。SpaceXAI 上线时用更便宜的推理档位在两张榜单同时拿到第二，但三天之内文生图的顺序就再次改写：它与榜首相差约 65 分，并落到微软最新预览版之后，编辑榜上 24 分的差距则依旧。对专业用户来说问题在分发：没有官方 API，开发者接入仅限 Vercel 网关上的预览版，模型主要还是活在 Grok 的消费级应用里；与已经广泛接入第三方平台的通义、字节图像视频模型不同，它才刚开始触及真正的生产级创作管线。这个排名能否转化为实际使用量，取决于 API 开放的速度。",
       "date_published": "2026-08-08T04:48:00.000Z",
       "date_modified": "2026-08-08T11:00:03.715Z",
       "tags": [
@@ -324,6 +514,10 @@
           {
             "title": "Imagine Image 2.0 — SpaceXAI",
             "url": "https://x.ai/news/grok-imagine-image-2"
+          },
+          {
+            "title": "Grok Imagine Image 2.0 Preview now available on Vercel AI Gateway",
+            "url": "https://vercel.com/changelog/grok-imagine-image-2-0-preview-now-available-on-vercel-ai-gateway"
           }
         ]
       }
@@ -1778,206 +1972,6 @@
           {
             "title": "Cogent AI Team Releases VR-1: A Frontier Cyber Reasoning Model",
             "url": "https://www.marktechpost.com/2026/08/03/ogent-ai-team-releases-vr-1/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/genspark-open-sources-genoffice.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/genspark-open-sources-genoffice.html",
-      "title": "Genspark 开源 GenOffice：面向 PC 与 Mac 的 AI 办公套件",
-      "summary": "Genspark 发布 GenOffice，自称首个功能完整的开源 AI 办公套件，Windows 与 macOS 均可免费使用且无广告，代码以 Apache-2.0 开放。",
-      "content_text": "## 一套免费办公软件，Agent 是原生部件\n\n8 月 3 日，Genspark 宣布开源 GenOffice，官网博客文章标题为《GenOffice：首个开源 AI 办公套件》，同时在 X 上连发数条动态。公司称这是全球首个功能完整、面向 PC 与 Mac 的开源 AI Office，对所有人免费、无广告，并打包了桌面办公软件应有的编辑工具集。\n\n代码托管于 GitHub 的 genspark-ai/genoffice，采用 Apache License 2.0，仅有一处例外：预留给未来企业版模块的 `ee/` 目录，适用单独的 GenOffice 企业许可。整套软件由五个 Electron 应用组成——处理 `.docx` 的 Docs、处理 `.xlsx` 的 Sheets、处理 `.pptx` 的 Slides、PDF 阅读与编辑器，以及以标签页承载它们的外壳程序，并提供面向 Apple Silicon macOS 与 Windows x64 的签名安装包。其中 Sheets 基于 Apache-2.0 协议的 Univer 内核，叠加了 Genspark 自研的导入导出、图表、数据透视表与公式追溯等扩展。Genspark 自家博客文章目前仍无法从站外读取，因此代码仓库反而是更可用的一手来源。\n\n伴随发布，Genspark 在其多人协作 Agent 空间 GenTeam 中开了一个 GenOffice 群聊：用户在里面描述自己想要什么，由 Agent 直接动手实现——相当于把功能需求变成一条实时开发队列，让社区直接影响路线图。\n\n## 这个形态为什么值得注意\n\n过去一年 Genspark 一直在给别人的软件装 Agent：4 月的 AI Workspace 4.0 把 Agent 以原生插件形式塞进 Word、Excel 和 PowerPoint，随后又宣布与微软合作，将 Agent 接入微软生态。GenOffice 把这层依赖反了过来——不是去自动化 Office，而是自己交付文档界面本体，Agent 从外挂变成内生组件，并且免费送出。\n\n## 为什么重要\n\n迄今为止，AI 原生的生产力工具要么以插件形式寄生于既有办公套件，要么是封闭的云产品。一套开源、可本地安装、围绕 Agent 设计的办公软件是另一种赌法：文档格式、自动化层与编辑界面全部可审计、可 fork，这对不能把在办文件上传到厂商云的组织很关键。它也恰好与阿里同周把企业办公 Agent 推入公测撞在一起，说明 Agent 竞争的争夺点正从模型转向真正干活的那个工作台。如今许可与仓库都已落定，剩下的问题更具体：这套软件究竟有多少部分真能由社区维护，又有多少会逐渐沉淀到企业版那道例外条款背后。",
-      "date_published": "2026-08-03T10:15:00.000Z",
-      "date_modified": "2026-08-03T11:00:03.158Z",
-      "tags": [
-        "Agent",
-        "开源",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/genspark-open-sources-genoffice.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/genspark-open-sources-genoffice.html",
-        "source_published_at": "2026-08-03T10:15:00.000Z",
-        "site_published_at": "2026-08-03T11:00:03.158Z",
-        "sources": [
-          {
-            "title": "Genspark: Open-sourcing GenOffice",
-            "url": "https://x.com/genspark_ai/status/2084221525327319363"
-          },
-          {
-            "title": "genspark-ai/genoffice — GitHub repository",
-            "url": "https://github.com/genspark-ai/genoffice"
-          },
-          {
-            "title": "Genspark blog — GenOffice: The First Open-Source AI Office Suite",
-            "url": "https://www.genspark.ai/blog/genoffice-open-source-ai-office"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-open-weights-release.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-open-weights-release.html",
-      "title": "MiniMax 放出 H3 视频模型开源权重",
-      "summary": "MiniMax 正式开放全模态视频模型 H3 的权重下载，让一款榜单前列的视频生成模型首次可以在本地部署运行。",
-      "content_text": "北京时间 8 月 3 日零点（UTC 8 月 2 日 16:00），MiniMax 放出全模态视频生成模型 H3 的模型权重，兑现了 7 月 31 日发布该模型时给出的开源承诺。权重首发于国内的魔搭 ModelScope，Hugging Face 镜像随后跟上；ComfyUI 同步上线了基于这批新公开权重的本地推理教程。\n\nH3 在视频模型里的路子比较特别：它不是把文本、图像、视频、音频当成彼此独立的条件通道，而是放进同一个上下文里统一理解。模型可生成约 4 至 15 秒、最高 2K 分辨率、24 帧的片段，且原生双声道音频是在同一次生成里出来的，而非事后配音。在 Artificial Analysis 榜单上，H3 视频编辑排名第一、文生视频第二、图生视频第三——无论开源闭源，都属第一梯队。\n\n公开的文件也让模型结构第一次看得清楚。ComfyUI 的本地工作流需要下载两个 int8 剪枝扩散权重（分别对应文生视频/图生视频与参考图驱动生成）、视频与音频两个 VAE，以及一个基于阿里 Qwen3-VL 32B 视觉语言模型改造的文本编码器。权重采用 MiniMax 社区许可证：非商用免费，年营收约 2000 万美元以下的机构商用亦免费，需标注来源。MiniMax 同时继续通过自家 API 与海螺 App 售卖托管服务，称 2K 每秒价格不到同类产品的三分之一。\n\n## 为什么重要\n\n此前视频生成的第一梯队几乎全部闭源：OpenAI Sora、谷歌 Veo、字节 Seedance 都只给 API。H3 打破了这条惯例——一款榜单前列的视频模型现在能跑在自己的机器上，工作室可以微调、可以拆看、也不必把素材交给厂商。它同时凸显出国内视频模型两条分岔的路线：同一周字节在扩大 Seedance 2.5 的闭源 API 覆盖，MiniMax 则直接把权重交了出去。对 ComfyUI 工作流、量化项目这类本地推理生态来说，终于有了一个真正有竞争力的底座模型。",
-      "date_published": "2026-08-02T16:00:00.000Z",
-      "date_modified": "2026-08-02T23:00:02.982Z",
-      "tags": [
-        "AIGC",
-        "开源",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/minimax-h3-open-weights-release.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-open-weights-release.html",
-        "source_published_at": "2026-08-02T16:00:00.000Z",
-        "site_published_at": "2026-08-02T23:00:02.982Z",
-        "sources": [
-          {
-            "title": "MiniMax H3: ComfyUI Workflow Examples (open-weight local deployment)",
-            "url": "https://docs.comfy.org/tutorials/video/minimax/minimax-h3"
-          },
-          {
-            "title": "Video AI: MiniMax challenges ByteDance with low price, open weights for new H3 model",
-            "url": "https://www.scmp.com/tech/article/3362540/video-ai-minimax-challenges-bytedance-low-price-open-weights-new-h3-model"
-          },
-          {
-            "title": "MiniMax H3 通用多模态视频模型将于 8 月 3 日开源，最高可支持 15s 2K 分辨率",
-            "url": "https://tech.ifeng.com/c/8vBdVEaynZU"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen3-8-max-launch.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen3-8-max-launch.html",
-      "title": "阿里发布 2.4 万亿参数 Qwen3.8-Max，API 先行",
-      "summary": "阿里新旗舰 Qwen3.8-Max 为 2.4 万亿参数 MoE 模型，主打长周期智能体任务，官方称下周开放权重。",
-      "content_text": "## Max 级模型，价格直接压下来\n\n阿里通义千问团队 8 月 3 日发布 Qwen3.8-Max，称其为 Qwen 家族至今最强的模型。官方给出的规模是 2.4 万亿参数的混合专家架构，支持文本、图像与视频输入，上下文窗口 100 万 token——输入最高 991K，开启推理模式后降至 983K，输出最高 131K。阿里自身材料未披露激活参数量，The Decoder 报道单次查询约激活 950 亿参数，若准确，实际推理成本会远低于总参数量给人的印象。\n\n海外 API 定价为每百万 token 输入 2 美元、输出 6 美元，缓存命中的输入仅 0.25 美元；国内定价为每百万 token 输入 12 元、输出 36 元，隐式缓存命中 1.5 元。模型已在 QwenCloud 上线，同时兼容 OpenAI Chat Completions 与 Anthropic 两套接口协议。\n\n## 卖点押在「跑得久」\n\n这次发布的重心不是单轮跑分，而是多日自主作业。官方案例包括：模型用 16 天独立开发一个命令行工具，累计 265 次提交、127 个 PR；约 5 天复现并改进一篇论文结果，期间跑了 33 个 GPU 训练任务；在一项多模态竞赛中拿到 0.853 的成绩，排名超过 526 支人类队伍中的 458 支。跑分方面，Terminal-Bench 2.1 得 86.6，低于 GPT-5.6 Sol 的 88.8、高于 Anthropic 的 84.6；PaperBench 官方报 93 分。\n\n第三方榜单反应很快。LMArena 显示 Qwen3.8-Max 文本榜第五（1496 分），其中医疗健康职业分项排名第一；视觉榜第二（1305 分），仅落后 Claude Fable 5（High）13 分；前端代码竞技场的性价比帕累托前沿也被这次发布改写。\n\n## 为什么重要\n\nMax 一直是 Qwen 家族里唯一不开源的那一档，所以真正值得记的承诺是：阿里表示下周将在 Hugging Face 与魔搭放出权重，并同步推出面向本地部署的 Qwen3.8-27B 小尺寸版本。目前权重尚未公开，就当下而言这仍只是一次 API 发布。但如果按官方说法落地，一个价格仅为西方旗舰约三分之一、身后还跟着可下载版本的前沿模型，将直接冲击闭源阵营给智能体类负载的定价逻辑。",
-      "date_published": "2026-08-03T02:16:00.000Z",
-      "date_modified": "2026-08-03T11:00:03.158Z",
-      "tags": [
-        "模型",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/qwen3-8-max-launch.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen3-8-max-launch.html",
-        "source_published_at": "2026-08-03T02:16:00.000Z",
-        "site_published_at": "2026-08-03T11:00:03.158Z",
-        "sources": [
-          {
-            "title": "Qwen3.8-Max: A New Bar for Coding and Cowork",
-            "url": "https://qwen.ai/blog?id=qwen3.8"
-          },
-          {
-            "title": "Alibaba Qwen Releases Qwen3.8-Max: A 2.4 Trillion Parameter MoE Model",
-            "url": "https://www.marktechpost.com/2026/08/03/alibaba-qwen-releases-qwen3-8-max/"
-          },
-          {
-            "title": "Alibaba's Qwen3.8-Max takes on long-horizon AI tasks with 2.4 trillion parameters",
-            "url": "https://the-decoder.com/alibabas-open-weight-qwen3-8-max-takes-on-long-horizon-ai-tasks-with-2-4-trillion-parameters/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/sakana-namazu-japanese-llm-api.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/sakana-namazu-japanese-llm-api.html",
-      "title": "Sakana AI 上线日语专用大模型 API「Namazu」",
-      "summary": "东京实验室 Sakana AI 基于月之暗面开源的 Kimi K2.6 微调出日语特化模型 Namazu，正式开放商用 API。",
-      "content_text": "## 中国开源底座，调成日本职场口吻\n\n8 月 3 日，Sakana AI 开始提供日语特化大模型 API「Namazu」（鲶鱼）。这家东京实验室表示，模型以开源权重模型——月之暗面的 Kimi K2.6——为基座，再用自有数据做微调，使其适配日语表达与日本业务语境，包括自然的敬语和商务惯例。微调同时约束输出行为：抑制偏见，并对特定敏感话题做回避处理。\n\n跑分方面，Sakana 称 Namazu 在数学（AIME26）与编程（LiveCodeBench v6）上基本维持基座水平，而日语相关评测提升明显：在政治中立性测试 FairPoliticsQA 上，成绩从 34.10% 升至 56.30%。\n\n## 定价与打法\n\nNamazu 采用按量付费、无月费：每百万 token 输入 0.95 美元、输出 4.00 美元；联网搜索每千次调用 7 美元，代码执行每小时 0.12 美元。结算币种为美元，日元开票仅面向企业方案。受 GDPR 合规工作尚未完成影响，该 API 目前不在欧盟／欧洲经济区、英国与瑞士提供。\n\nSakana 自己列出的场景都很「不性感」，但量大：每周一早上自动送达的市场调研报告，从制定调研计划、反复联网检索到交叉核对与撰写全程无人介入；客服场景则从问询应答一路做到订单数据的汇总分析；创意场景的演示是只给一句「海洋世界」的题目，模型自行决定呈现什么意象、用联网搜索收集参考图，再编排出约一千条鱼的鱼群动作。\n\n## 为什么重要\n\n真正值得注意的是供应链本身。日本头部 AI 实验室，如今把一个中国开源模型作为本国语言商用 API 的底座，竞争点落在价格与文化贴合度，而非前沿能力。这是近期关于「中国开源权重到底带来了什么」最直白的一个例证：无需自建基础训练，几个月就能做出一款主权语言产品。它同时给东京抛出一个政策问题——日本把 AI 自主可控写进了目标，而 Namazu 在商业上足够「日本」，底座权重却是别人训出来的。",
-      "date_published": "2026-08-03T00:49:00.000Z",
-      "date_modified": "2026-08-03T11:00:03.158Z",
-      "tags": [
-        "模型",
-        "产业",
-        "开源"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/sakana-namazu-japanese-llm-api.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/sakana-namazu-japanese-llm-api.html",
-        "source_published_at": "2026-08-03T00:49:00.000Z",
-        "site_published_at": "2026-08-03T11:00:03.158Z",
-        "sources": [
-          {
-            "title": "Sakana Namazu — Sakana AI",
-            "url": "https://sakana.ai/namazu/"
-          },
-          {
-            "title": "Sakana AI、日本語特化のLLM API「Sakana Namazu」を提供開始",
-            "url": "https://x.com/SakanaAILabs/status/2084187517667209237"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/apple-caps-ai-bug-reports.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/apple-caps-ai-bug-reports.html",
-      "title": "AI写的漏洞报告太多，苹果开始给提交量设限",
-      "summary": "苹果对Feedback Assistant的漏洞提交设置数量上限并附加30天冷静期，理由是AI辅助生成的报告泛滥。",
-      "content_text": "## 具体改了什么\n\n苹果开始对漏洞披露限流。据8月2日的报道，公司已对个人通过Feedback Assistant提交漏洞报告的数量设置上限，触顶后附加30天冷静期；有既往记录的研究者可申请更高配额。\n\n苹果给出的理由是量：大批AI辅助生成的提交，表面看技术上说得通，但经不起人工核验。问题在于，一份听起来合理的报告不经人工审阅就无法排除，于是每一份无效提交都要消耗与真实零日同等稀缺的安全工程注意力，而两者的比例正在急剧恶化。\n\n这道闸门与苹果同期扩大招募研究者的努力形成了微妙对照。去年11月，公司把零点击利用链的最高赏金提高到200万美元，叠加奖励后单笔可超过500万美元；苹果称项目启动以来已向800多名研究者支付超过3500万美元。\n\n## 并非首例\n\n苹果是跟随者而非开创者。curl项目和Internet Bug Bounty此前就已加设过滤机制，维护者抱怨大量时间被用于反驳机器生成的报告。新的地方在于量级：这是首次有苹果体量的厂商正式对AI辅助披露限流，把开源维护者的抱怨变成了行业惯例。\n\n此举的背景是另一组数据：AI发现的漏洞数量庞大，但真正被利用的极少。安全公司VulnCheck对2026年上半年的分析显示，有1061个漏洞可追溯到AI辅助发现，其中仅14个存在确证的被利用记录。\n\n## 为什么重要\n\n漏洞赏金是少数几个让AI生成内容直面严苛对抗式质量门槛的场景，而这道门槛正在变形。如果最大的项目以限制提交者和提交频次来应对，协同披露的经济学就会向成熟研究者倾斜，而远离赏金项目原本想招募的长尾人群——偏偏此时自主安全智能体让批量提交变得毫无成本。代码评审、应用商店和社交信息流里早已出现的动态，如今抵达了漏洞管道：瓶颈不再是发现问题，而是能否负担把它们读完。",
-      "date_published": "2026-08-02T05:00:00.000Z",
-      "date_modified": "2026-08-02T11:00:03.111Z",
-      "tags": [
-        "产业",
-        "安全",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/apple-caps-ai-bug-reports.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/apple-caps-ai-bug-reports.html",
-        "source_published_at": "2026-08-02T05:00:00.000Z",
-        "site_published_at": "2026-08-02T11:00:03.111Z",
-        "sources": [
-          {
-            "title": "Techmeme: Apple introduced a cap and a 30-day cool-off period on bug report submissions (Financial Times)",
-            "url": "https://www.techmeme.com/260802/p1"
-          },
-          {
-            "title": "Apple struggles to keep pace with AI-powered bug hunters as vulnerability reports flood in",
-            "url": "https://cryptobriefing.com/apple-ai-bug-bounty-struggle/"
-          },
-          {
-            "title": "AI finds plenty of security flaws, but almost none of them get exploited",
-            "url": "https://the-decoder.com/ai-finds-plenty-of-security-flaws-but-almost-none-of-them-get-exploited/"
           }
         ]
       }
