@@ -238,6 +238,7 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
   const articles = await parseJson(await runClaude(prompt), '[', ']', 'briefings');
   const coveredUrls = new Set(coverage.urls);
   let saved = 0;
+  const savedTitles = [];
   for (const a of articles) {
     if (!a.slug || !a.title || !a.body) continue;
     a.date = a.date || today;
@@ -272,10 +273,14 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
     for (const u of sourceUrls) coveredUrls.add(u);
     await writeFile(join(CONTENT, `${a.date}-${a.slug}.json`), JSON.stringify(a, null, 2));
     saved++;
+    savedTitles.push(a.title);
     console.log(`  + ${a.featured ? '★ ' : ''}${a.title}`);
   }
-  if (saved === 0) throw new Error('简报 0 篇');
-  return articles.map((a) => a.title);
+  if (saved === 0) {
+    if (SKIP_RADAR) throw new Error('简报 0 篇');
+    console.log('  ! 深度简报 0 篇，继续生成快讯雷达');
+  }
+  return savedTitles;
 }
 
 async function generateRadar(skipTitles, digest) {

@@ -58,20 +58,42 @@ function oauthHeader(method, url) {
   return 'OAuth ' + Object.keys(p).sort().map((k) => `${pct(k)}="${pct(p[k])}"`).join(', ');
 }
 
-async function api(method, path, body) {
-  const url = `https://api.x.com/2${path}`;
-  const res = await fetch(url, {
-    method,
-    headers: { authorization: oauthHeader(method, url), 'content-type': 'application/json' },
-    body: body ? JSON.stringify(body) : undefined,
-    signal: AbortSignal.timeout(30000),
-  });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(`X API ${res.status}: ${JSON.stringify(data).slice(0, 200)}`);
-  return data;
+const TRANSIENT_X_STATUS = new Set([429, 500, 502, 503, 504]);
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+function parseMaybeJson(text) {
+  if (!text) return {};
+  try { return JSON.parse(text); } catch { return { raw: text.slice(0, 200) }; }
 }
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+async function api(method, path, body, options = {}) {
+  const retries = options.retries ?? 4;
+  const url = `https://api.x.com/2${path}`;
+  let lastError = '';
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const res = await fetch(url, {
+        method,
+        headers: { authorization: oauthHeader(method, url), 'content-type': 'application/json' },
+        body: body ? JSON.stringify(body) : undefined,
+        signal: AbortSignal.timeout(30000),
+      });
+      const data = parseMaybeJson(await res.text().catch(() => ''));
+      if (res.ok) return data;
+      lastError = `X API ${res.status}: ${JSON.stringify(data).slice(0, 200)}`;
+      if (!TRANSIENT_X_STATUS.has(res.status) || attempt === retries) throw new Error(lastError);
+    } catch (error) {
+      if (lastError && !TRANSIENT_X_STATUS.has(Number(lastError.match(/^X API (\d+)/)?.[1] || 0))) throw error;
+      if (!lastError && method.toUpperCase() === 'POST') throw error;
+      lastError = lastError || `X API request failed: ${error?.message || error}`;
+      if (attempt === retries) throw new Error(lastError);
+    }
+    const delay = Math.min(60000, 5000 * 2 ** attempt);
+    console.log(`[post-x] X API 临时失败，${Math.round(delay / 1000)} 秒后重试 ${attempt + 1}/${retries}: ${lastError}`);
+    await sleep(delay);
+    lastError = '';
+  }
+}
 
 async function readApi(path) {
   if (!CREDS.bearer) return api('GET', path);
@@ -96,13 +118,15 @@ async function pickToday() {
     articles.push(a);
     if (!fallback) fallback = a;
   }
-  if (!articles.length) throw new Error('当天无内容可发');
   // 当班 = 一次生成的时间簇。强制指定早/晚报时，必须取对应班次，避免标题与内容错位。
   const forced = forcedEditionInstant();
-  const anchor = forced ? forced.getTime() : Math.max(...articles.map((a) => Date.parse(a.published_at) || 0));
+  const articleTimes = articles.map((a) => Date.parse(a.published_at) || 0).filter(Boolean);
+  const anchor = forced ? forced.getTime() : (articleTimes.length ? Math.max(...articleTimes) : floorEdition(Date.now()));
+  const edition = new Date(anchor);
   const batch = articles.filter((a) => Math.abs((Date.parse(a.published_at) || 0) - anchor) <= 30 * 60000);
-  if (!batch.length) throw new Error('指定班次无内容可发');
-  const featured = batch.find((a) => a.featured) || batch[0] || fallback;
+  const radarBatch = radarItemsForEdition(radar, edition);
+  if (!batch.length && !radarBatch.length) throw new Error('指定班次无内容可发');
+  const featured = batch.find((a) => a.featured) || batch[0] || radarAsFeatured(radarBatch[0], radar?.date || today, edition) || fallback;
   return { featured, batch, radar };
 }
 
@@ -133,6 +157,27 @@ function radarItemsForEdition(radar, edition) {
     const ts = radarTs(item, radar.date);
     return ts && ceilEdition(ts) === boundary;
   });
+}
+
+function radarAsFeatured(item, date, edition) {
+  if (!item) return null;
+  const publishedAt = item.published && String(item.published).includes('T')
+    ? item.published
+    : edition.toISOString();
+  return {
+    slug: `radar-lead-${date}`,
+    title: item.text || item.text_zh || 'AI radar update',
+    title_zh: item.text_zh || item.text || 'AI 快讯',
+    summary: item.text || item.text_zh || '',
+    summary_zh: item.text_zh || item.text || '',
+    featured_reason: 'This edition is radar-only, so the lead quick hit carries the post.',
+    featured_reason_zh: '本班没有深度简报，用快讯里最有讨论度的一条领发。',
+    tags: [item.tag].filter(Boolean),
+    date,
+    published: item.published || publishedAt,
+    published_at: edition.toISOString(),
+    sources: item.url ? [{ title: item.source || 'Source', url: item.url }] : [],
+  };
 }
 
 function countLabel(lang, briefingCount, radarCount) {
