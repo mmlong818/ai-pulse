@@ -42,6 +42,11 @@ Set-SecretEnvironmentVariable 'X_ACCESS_SECRET' 'Access Token Secret'
 
 Write-Host ''
 Write-Host 'Verifying X credentials without posting...'
+$proxyNames = @('NODE_USE_ENV_PROXY', 'HTTPS_PROXY', 'HTTP_PROXY')
+foreach ($name in $proxyNames) {
+  $value = [Environment]::GetEnvironmentVariable($name, 'User')
+  if ($value) { Set-Item -Path "Env:$name" -Value $value }
+}
 Push-Location $Root
 try {
   node post-x.mjs verify
