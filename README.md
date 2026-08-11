@@ -60,6 +60,8 @@ node zhihu-evening.mjs --force 2026-07-31   # 手动生成某日晚报知乎草�
 
 知乎发布时使用 `zhihu/drafts/latest-evening-title.txt` 填标题，使用 `zhihu/drafts/latest-evening-body.md` 填正文。不要把 `latest-evening.md` 整篇粘进正文，避免和标题栏或旧草稿重复。
 
+换机、计划任务、X 凭证和故障排查见 [RUNBOOK.md](RUNBOOK.md)。仓库不保存任何 API token；新机器必须重新配置用户级环境变量。
+
 环境变量（均可选）：
 
 | 变量 | 作用 |
