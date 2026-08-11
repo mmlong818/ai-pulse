@@ -97,13 +97,28 @@ async function api(method, path, body, options = {}) {
 
 async function readApi(path) {
   if (!CREDS.bearer) return api('GET', path);
-  const res = await fetch(`https://api.x.com/2${path}`, {
-    headers: { authorization: `Bearer ${CREDS.bearer}` },
-    signal: AbortSignal.timeout(30000),
-  });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(`X API ${res.status}: ${JSON.stringify(data).slice(0, 200)}`);
-  return data;
+  const url = `https://api.x.com/2${path}`;
+  let lastError = '';
+  for (let attempt = 0; attempt <= 4; attempt++) {
+    try {
+      const res = await fetch(url, {
+        headers: { authorization: `Bearer ${CREDS.bearer}` },
+        signal: AbortSignal.timeout(30000),
+      });
+      const data = parseMaybeJson(await res.text().catch(() => ''));
+      if (res.ok) return data;
+      lastError = `X API ${res.status}: ${JSON.stringify(data).slice(0, 200)}`;
+      if (!TRANSIENT_X_STATUS.has(res.status) || attempt === 4) throw new Error(lastError);
+    } catch (error) {
+      if (lastError && !TRANSIENT_X_STATUS.has(Number(lastError.match(/^X API (\d+)/)?.[1] || 0))) throw error;
+      lastError = lastError || `X API read failed: ${error?.message || error}`;
+      if (attempt === 4) throw new Error(lastError);
+    }
+    const delay = Math.min(60000, 5000 * 2 ** attempt);
+    console.log(`[post-x] X API 检查临时失败，${Math.round(delay / 1000)} 秒后重试 ${attempt + 1}/4: ${lastError}`);
+    await sleep(delay);
+    lastError = '';
+  }
 }
 
 async function pickToday() {
