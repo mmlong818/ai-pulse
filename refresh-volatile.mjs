@@ -1,7 +1,7 @@
 // Refresh volatile roster/signatory claims before publishing.
 // This catches fast-moving stories where membership lists or signature counts change after the first article.
 import { execFileSync, spawn } from 'node:child_process';
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -13,41 +13,30 @@ const today = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
 
 const VOLATILE_RE = /signator|signature|signed|did not sign|not sign|absent|not among|member|founding|joined|coalition|alliance|roster|名单|签署|签名|联署|未签|缺席|未列名|成员|创始|联盟|阵营/i;
 
-function findClaudeBin() {
-  if (process.env.CLAUDE_BIN && existsSync(process.env.CLAUDE_BIN)) return process.env.CLAUDE_BIN;
-  const npmBin = join(process.env.APPDATA || '', 'npm', 'node_modules', '@anthropic-ai', 'claude-code', 'bin', 'claude.exe');
-  if (existsSync(npmBin)) return npmBin;
-  const roots = [
-    join(process.env.LOCALAPPDATA || '', 'Packages', 'Claude_pzs8sxrjxfjjc', 'LocalCache', 'Roaming', 'Claude', 'claude-code'),
-    join(process.env.APPDATA || '', 'Claude', 'claude-code'),
-  ];
-  for (const root of roots) {
-    if (!root || !existsSync(root)) continue;
-    const versions = readdirSync(root, { withFileTypes: true })
-      .filter((entry) => entry.isDirectory())
-      .map((entry) => entry.name)
-      .sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
-    for (const version of versions) {
-      const bin = join(root, version, 'claude.exe');
-      if (existsSync(bin)) return bin;
-    }
+function findCodexCommand() {
+  if (process.env.CODEX_BIN && existsSync(process.env.CODEX_BIN)) {
+    return { command: process.env.CODEX_BIN, prefixArgs: [], shell: /\.cmd$/i.test(process.env.CODEX_BIN) };
   }
+  const npmJs = join(process.env.APPDATA || '', 'npm', 'node_modules', '@openai', 'codex', 'bin', 'codex.js');
+  if (existsSync(npmJs)) return { command: process.execPath, prefixArgs: [npmJs], shell: false };
   try {
-    const found = execFileSync('where.exe', ['claude'], { encoding: 'utf8', windowsHide: true })
+    const found = execFileSync('where.exe', ['codex.cmd'], { encoding: 'utf8', windowsHide: true })
       .split(/\r?\n/)
       .map((line) => line.trim())
-      .find((line) => line.toLowerCase().endsWith('.exe'));
-    if (found) return found;
+      .find(Boolean);
+    if (found) return { command: found, prefixArgs: [], shell: true };
   } catch {}
-  return 'claude';
+  return { command: 'codex', prefixArgs: [], shell: false };
 }
 
-const CLAUDE_BIN = findClaudeBin();
+const CODEX = findCodexCommand();
 
-function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
+function runEditor(prompt, { timeoutMs = 1200000 } = {}) {
   return new Promise((resolve, reject) => {
-    const child = spawn(CLAUDE_BIN, ['-p', '--output-format', 'text', '--allowedTools', 'WebSearch,WebFetch'], {
-      windowsHide: true, timeout: timeoutMs,
+    const args = [...CODEX.prefixArgs, '--search', 'exec', '--ephemeral', '--sandbox', 'read-only',
+      '--skip-git-repo-check', '--color', 'never', '-'];
+    const child = spawn(CODEX.command, args, {
+      cwd: ROOT, shell: CODEX.shell, windowsHide: true, timeout: timeoutMs,
     });
     let out = '', err = '';
     child.stdout.on('data', (d) => (out += d));
@@ -55,7 +44,7 @@ function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
     child.on('error', reject);
     child.on('close', (code) => {
       if (code === 0 && out.trim()) resolve(out.trim());
-      else reject(new Error((err.trim() || out.trim()).slice(0, 500) || `${CLAUDE_BIN} exited ${code}`));
+      else reject(new Error((err.trim() || out.trim()).slice(0, 500) || `${CODEX.command} exited ${code}`));
     });
     child.stdin.write(prompt);
     child.stdin.end();
@@ -75,7 +64,7 @@ async function parseJson(raw) {
     return JSON.parse(text);
   } catch (firstError) {
     console.error(`[volatile] JSON parse failed, repairing: ${firstError.message}`);
-    const repairedRaw = await runClaude(`Repair the following invalid JSON array into strict valid JSON.
+    const repairedRaw = await runEditor(`Repair the following invalid JSON array into strict valid JSON.
 Do not add, remove, rewrite, translate, summarize, or explain any content.
 Return ONLY the repaired JSON array.
 
@@ -145,14 +134,14 @@ ${JSON.stringify(items, null, 2)}`;
 }
 
 async function main() {
-  console.log(`[volatile] Claude CLI: ${CLAUDE_BIN}`);
+  console.log(`[volatile] Codex CLI: ${CODEX.command}`);
   const items = await candidates();
   if (!items.length) {
     console.log('[volatile] no recent volatile articles');
     return;
   }
   console.log(`[volatile] auditing ${items.length} recent volatile article(s)`);
-  const result = await parseJson(await runClaude(promptFor(items)));
+  const result = await parseJson(await runEditor(promptFor(items)));
   let changed = 0;
   for (const r of result) {
     if (!r || !r.file) continue;

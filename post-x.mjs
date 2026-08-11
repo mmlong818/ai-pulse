@@ -573,7 +573,12 @@ if (cmd === 'check' && !CREDS.bearer && (!CREDS.key || !CREDS.token)) { console.
 
 if (cmd === 'verify') {
   const me = await api('GET', '/users/me');
-  console.log('[post-x] 验证成功:', '@' + me.data.username, '(', me.data.name, ')');
+  if (CREDS.bearer) {
+    await readApi(`/users/by/username/${encodeURIComponent(me.data.username)}`);
+    console.log('[post-x] OAuth 写入凭据和 Bearer 读取凭据验证成功:', '@' + me.data.username, '(', me.data.name, ')');
+  } else {
+    console.log('[post-x] OAuth 写入凭据验证成功（未配置 Bearer Token）:', '@' + me.data.username, '(', me.data.name, ')');
+  }
 } else if (cmd === 'post') {
   const d = await api('POST', '/tweets', { text: arg });
   console.log('[post-x] 已发帖:', `https://x.com/i/status/${d.data.id}`);
