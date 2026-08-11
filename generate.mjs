@@ -1,6 +1,6 @@
 // AI 采编流水线：深度简报（双语）+ 每日雷达快讯（双语）
 import { execFileSync, spawn } from 'node:child_process';
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import { writeFile, readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fetchFreshHeadlines } from './feeds.mjs';
@@ -50,36 +50,23 @@ const EDITION_NOTE = isEvening
   ? `\nEDITION FOCUS (evening edition): This edition covers Beijing daytime — US overnight and European morning, globally the quietest news half-day. PRIORITIZE fresh stories from the Asian-timezone cycle: Chinese labs (Qwen, DeepSeek, Moonshot, Zhipu, ByteDance, Tencent, StepFun…), Japan/Korea, Asian AI policy and industry, open-source releases and papers that landed during Asian daytime. Do NOT fill the quota by re-picking yesterday's US stories that merely fall inside the ${WINDOW_H}-hour window — the previous edition already covered that cycle.`
   : '';
 
-function findClaudeBin() {
-  if (process.env.CLAUDE_BIN && existsSync(process.env.CLAUDE_BIN)) return process.env.CLAUDE_BIN;
-  const npmBin = join(process.env.APPDATA || '', 'npm', 'node_modules', '@anthropic-ai', 'claude-code', 'bin', 'claude.exe');
-  if (existsSync(npmBin)) return npmBin;
-  const roots = [
-    join(process.env.LOCALAPPDATA || '', 'Packages', 'Claude_pzs8sxrjxfjjc', 'LocalCache', 'Roaming', 'Claude', 'claude-code'),
-    join(process.env.APPDATA || '', 'Claude', 'claude-code'),
-  ];
-  for (const root of roots) {
-    if (!root || !existsSync(root)) continue;
-    const versions = readdirSync(root, { withFileTypes: true })
-      .filter((entry) => entry.isDirectory())
-      .map((entry) => entry.name)
-      .sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
-    for (const version of versions) {
-      const bin = join(root, version, 'claude.exe');
-      if (existsSync(bin)) return bin;
-    }
+function findCodexCommand() {
+  if (process.env.CODEX_BIN && existsSync(process.env.CODEX_BIN)) {
+    return { command: process.env.CODEX_BIN, prefixArgs: [], shell: /\.cmd$/i.test(process.env.CODEX_BIN) };
   }
+  const npmJs = join(process.env.APPDATA || '', 'npm', 'node_modules', '@openai', 'codex', 'bin', 'codex.js');
+  if (existsSync(npmJs)) return { command: process.execPath, prefixArgs: [npmJs], shell: false };
   try {
-    const found = execFileSync('where.exe', ['claude'], { encoding: 'utf8', windowsHide: true })
+    const found = execFileSync('where.exe', ['codex.cmd'], { encoding: 'utf8', windowsHide: true })
       .split(/\r?\n/)
       .map((line) => line.trim())
-      .find((line) => line.toLowerCase().endsWith('.exe'));
-    if (found) return found;
+      .find(Boolean);
+    if (found) return { command: found, prefixArgs: [], shell: true };
   } catch {}
-  return 'claude';
+  return { command: 'codex', prefixArgs: [], shell: false };
 }
 
-const CLAUDE_BIN = findClaudeBin();
+const CODEX = findCodexCommand();
 
 function inEditionWindow(published) {
   if (!editionStart || !published || !published.includes('T')) return !editionStart;
@@ -89,10 +76,12 @@ function inEditionWindow(published) {
   return ms >= editionStart.getTime() && ms < endMs;
 }
 
-function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
+function runEditor(prompt, { timeoutMs = 1200000 } = {}) {
   return new Promise((resolve, reject) => {
-    const child = spawn(CLAUDE_BIN, ['-p', '--output-format', 'text', '--allowedTools', 'WebSearch,WebFetch'], {
-      windowsHide: true, timeout: timeoutMs,
+    const args = [...CODEX.prefixArgs, '--search', 'exec', '--ephemeral', '--sandbox', 'read-only',
+      '--skip-git-repo-check', '--color', 'never', '-'];
+    const child = spawn(CODEX.command, args, {
+      cwd: ROOT, shell: CODEX.shell, windowsHide: true, timeout: timeoutMs,
     });
     let out = '', err = '';
     child.stdout.on('data', (d) => (out += d));
@@ -100,7 +89,7 @@ function runClaude(prompt, { timeoutMs = 1200000 } = {}) {
     child.on('error', reject);
     child.on('close', (code) => {
       if (code === 0 && out.trim()) resolve(out.trim());
-      else reject(new Error((err.trim() || out.trim()).slice(0, 300) || `${CLAUDE_BIN} 退出码 ${code}`));
+      else reject(new Error((err.trim() || out.trim()).slice(0, 500) || `${CODEX.command} 退出码 ${code}`));
     });
     child.stdin.write(prompt);
     child.stdin.end();
@@ -120,7 +109,7 @@ async function parseJson(raw, open, close, label = 'JSON') {
     return JSON.parse(text);
   } catch (firstError) {
     console.error(`[generate] ${label} JSON parse failed, repairing: ${firstError.message}`);
-    const repairedRaw = await runClaude(`Repair the following invalid JSON into strict valid JSON.
+    const repairedRaw = await runEditor(`Repair the following invalid JSON into strict valid JSON.
 Do not add, remove, rewrite, translate, summarize, or explain any content.
 Return ONLY the repaired JSON. It must begin with "${open}" and end with "${close}".
 
@@ -235,7 +224,7 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
   "date": "${today}",
   "published": "the story's ORIGINAL publication moment as ISO 8601 UTC, e.g. 2026-01-01T14:30:00Z — copy from the candidate list when the story comes from it; date-only YYYY-MM-DD if the exact time cannot be found"
 }`;
-  const articles = await parseJson(await runClaude(prompt), '[', ']', 'briefings');
+  const articles = await parseJson(await runEditor(prompt), '[', ']', 'briefings');
   const coveredUrls = new Set(coverage.urls);
   let saved = 0;
   const savedTitles = [];
@@ -310,7 +299,7 @@ OUTPUT: ONLY a JSON object (no fence, no commentary):
     { "text": "...", "text_zh": "...", "url": "https://...", "source": "source site name", "published": "2026-01-01T14:30:00Z (UTC; date-only YYYY-MM-DD if exact time unknown)", "tag": "Models|Research|Policy|Industry|Funding|Open Source|Safety|AIGC|Agents" }
   ]
 }`;
-  const radar = await parseJson(await runClaude(prompt), '{', '}', 'radar');
+  const radar = await parseJson(await runEditor(prompt), '{', '}', 'radar');
   const cutoff = new Date(Date.now() - Math.ceil(WINDOW_H / 24) * 86400000).toISOString().slice(0, 10);
   radar.items = (radar.items || []).filter((i) => i.text && i.url)
     .filter((i) => {
@@ -360,7 +349,14 @@ async function recentRadarTexts() {
 }
 
 async function main() {
-  console.log(`[generate] Claude CLI: ${CLAUDE_BIN}`);
+  console.log(`[generate] Codex CLI: ${CODEX.command}`);
+  if (process.env.AIPULSE_EDITOR_SMOKE === '1') {
+    const raw = await runEditor('Return only this exact JSON and nothing else: {"ok":true}', { timeoutMs: 180000 });
+    const result = JSON.parse(extractJson(raw, '{', '}'));
+    if (result.ok !== true) throw new Error('Codex smoke test returned an unexpected result');
+    console.log('[generate] Codex 无人值守测试通过');
+    return;
+  }
   const skip = await existingTitles();
   const coverage = await existingCoverage();
   console.log(`[generate] 深度简报至多 ${COUNT} 篇（${isEvening ? '晚班·亚洲时段方针' : '早班'}）+ 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);

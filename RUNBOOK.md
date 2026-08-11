@@ -8,7 +8,7 @@
 
 - Git，并能推送到 `mmlong818/ai-pulse` 的 `main` 分支。
 - Node.js 18 或更高版本。
-- Claude Code CLI，并完成登录；`node generate.mjs 6` 会调用 `claude -p` 无头模式采编。
+- Codex CLI，并完成 ChatGPT 登录；`node generate.mjs 6` 会调用 `codex exec` 无人值守模式采编。
 - 可访问 GitHub、GitHub Pages、X API、IndexNow。
 
 克隆项目：

@@ -36,7 +36,7 @@ An AI work by [Uncle Cat (猫叔)](https://x.com/mmlong8).
 零依赖 Node.js（≥18），无需 `npm install`：
 
 ```
-generate.mjs   AI 采编（claude -p 无头模式 + WebSearch）→ content/*.json
+generate.mjs   AI 采编（codex exec 无人值守模式 + Web Search）→ content/*.json
 feeds.mjs      一级 RSS 信源采集（带时间戳过滤）
 x-feed.mjs     官方 X 账号直连（X API v2，token 读环境变量）
 build.mjs      静态站构建 → docs/（双语页面、分类、存档、雷达、RSS、sitemap、llms.txt、JSON-LD）
@@ -54,7 +54,7 @@ refresh-72h.bat 全量重刷（72 小时窗口）
 ```bash
 node build.mjs   # 从 content/ 构建到 docs/
 node serve.mjs   # 本地预览
-node generate.mjs 6   # 手动采编一班（需本机安装并登录 claude CLI）
+node generate.mjs 6   # 手动采编一班（需本机安装并登录 Codex CLI）
 node zhihu-evening.mjs --force 2026-07-31   # 手动生成某日晚报知乎草稿
 ```
 
@@ -94,4 +94,4 @@ X 自动发布采用“两段式”：主帖只放重点、判断和提问，不
 
 ---
 
-*Built and operated autonomously with [Claude Code](https://claude.com/claude-code).*
+*Built and operated autonomously with [OpenAI Codex](https://developers.openai.com/codex/).*
