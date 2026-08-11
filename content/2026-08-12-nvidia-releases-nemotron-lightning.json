@@ -1,0 +1,32 @@
+{
+  "slug": "nvidia-releases-nemotron-lightning",
+  "title": "Nvidia Releases Nemotron 3.5 Lightning for Agents",
+  "summary": "The open 30B mixture-of-experts model activates 3B parameters per token and ships with training data, recipes and a new model router.",
+  "body": "## A smaller engine for long-running agents\n\nNvidia has released Nemotron 3.5 Lightning, an open-weight 30-billion-parameter mixture-of-experts model designed for high-volume and long-running agent workloads. Only about three billion parameters are active for each token, allowing the model to trade some maximum capability for lower latency and higher throughput.\n\nThe company says Lightning can deliver up to four times the throughput of comparable open models and reduce agent task-completion time by as much as 30%. Those are vendor measurements and will require independent testing across hardware and serving configurations. The model was available at launch through Hugging Face and multiple inference providers, while Ollama added support for local use. Nvidia released BF16 and optimized variants intended for different deployment and customization needs.\n\nThe release extends beyond weights. Nvidia is publishing the associated post-training data and recipes, including the Nemotron-RL-Agentic-Terminal-Pivot dataset used to teach terminal-oriented agent behavior. It also introduced NeMo Switchyard, an open-source routing library that can send individual steps in an agent workflow to different models. The underlying argument is that routine tool calls and intermediate decisions should not consume the same expensive model capacity as difficult reasoning steps.\n\nA launch collaboration offered an early example of specialization. CodeRabbit and Baseten post-trained Lightning for code-review routing and reported that routing agreement rose from 75.8% to 80.4%. That narrow result does not establish general superiority, but it illustrates Nvidia’s intended workflow: start with an efficient open model, adapt it cheaply to a repetitive decision task, and deploy it close to the inference stack.\n\n## Why it matters\n\nAs agents run for minutes or hours and generate many intermediate tokens, economics increasingly favor model portfolios rather than sending every step to a frontier system. Nvidia is packaging the model, data, training workflow, router and optimized serving path as one stack. That strengthens its position above the GPU layer while giving developers a reproducible option for self-hosted agents. The central question is whether Lightning remains reliable on extended, failure-prone workflows; for agent deployments, a modest per-step error can compound faster than a throughput advantage.",
+  "title_zh": "英伟达发布 Nemotron 3.5 Lightning 智能体模型",
+  "summary_zh": "这款 300 亿参数 MoE 模型每次仅激活约 30 亿参数，并同步开放权重、训练数据、配方与模型路由工具。",
+  "body_zh": "## 为长时间运行的智能体压低成本\n\n英伟达发布开放权重模型 Nemotron 3.5 Lightning，面向高并发、长时间运行的智能体任务。模型总参数量为 300 亿，但每个 token 只激活约 30 亿参数，通过混合专家架构换取更低延迟和更高吞吐，定位并非追求绝对最高能力。\n\n英伟达称，该模型相较同级开放模型最高可实现四倍吞吐，并将智能体完成任务的时间缩短最多 30%。这些仍是厂商测试结果，需要在不同硬件和推理服务上接受独立验证。模型发布时已登陆 Hugging Face 和多家推理平台，Ollama 也提供了本地运行支持；官方同时放出了面向定制训练和高效部署的不同精度版本。\n\n此次开放内容不止模型权重。英伟达还发布了后训练数据与训练配方，其中包括用于训练终端操作型智能体的 Nemotron-RL-Agentic-Terminal-Pivot 数据集。配套推出的 NeMo Switchyard 则是一套开源模型路由库，可以把智能体工作流中的不同步骤分配给不同模型。它背后的判断是：普通工具调用和中间决策，不应与高难度推理消耗同样昂贵的模型资源。\n\nCodeRabbit 与 Baseten 展示了一个早期定制案例：它们针对代码审查路由任务对 Lightning 进行后训练，声称路由一致率从 75.8% 提升至 80.4%。这一单项结果不能证明模型具备普遍优势，但体现了英伟达设想的使用方式——以高效开放模型为底座，用较低成本适配重复性任务，再部署到自己的推理环境中。\n\n## 为什么重要\n\n当智能体连续运行数十分钟甚至数小时，并产生大量中间 token 时，把每一步都交给前沿大模型的成本很难持续。英伟达正在把模型、数据、训练流程、路由器与优化推理路径打包成完整技术栈，在 GPU 之外争夺更高一层的平台价值。对开发者而言，这也提供了可复现、可自托管的智能体方案。接下来最关键的指标并非单纯速度，而是长链路可靠性：智能体每一步看似很小的错误，可能比吞吐优势更快地累积。",
+  "tags": [
+    "Models",
+    "Open Source",
+    "Agents"
+  ],
+  "sources": [
+    {
+      "title": "NVIDIA Nemotron 3.5 Lightning is open and customizable",
+      "url": "https://x.com/NVIDIAAI/status/2087173733823680855"
+    },
+    {
+      "title": "NeMo Switchyard open-source model routing",
+      "url": "https://x.com/NVIDIAAI/status/2087173417329963016"
+    },
+    {
+      "title": "Nemotron-RL-Agentic-Terminal-Pivot dataset",
+      "url": "https://x.com/NVIDIAAI/status/2087258724654284971"
+    }
+  ],
+  "featured": false,
+  "date": "2026-08-12",
+  "published": "2026-08-11T13:46:00Z",
+  "published_at": "2026-08-11T23:00:03.909Z"
+}
