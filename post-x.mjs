@@ -23,12 +23,26 @@ function forcedEditionInstant() {
   return new Date(`${forcedEditionDate}T${localTime}`);
 }
 
-function env(name) {
-  if (process.env[name]) return process.env[name];
+const X_CREDENTIAL_ENV = new Set([
+  'X_API_KEY',
+  'X_API_SECRET',
+  'X_ACCESS_TOKEN',
+  'X_ACCESS_SECRET',
+  'X_BEARER_TOKEN',
+  'TWITTER_BEARER_TOKEN',
+]);
+
+function storedUserEnv(name) {
   try {
     return execSync(`powershell -NoProfile -Command "[Environment]::GetEnvironmentVariable('${name}','User')"`,
       { windowsHide: true }).toString().trim() || null;
   } catch { return null; }
+}
+
+function env(name) {
+  const stored = storedUserEnv(name);
+  if (X_CREDENTIAL_ENV.has(name)) return stored || process.env[name] || null;
+  return process.env[name] || stored;
 }
 const CREDS = {
   key: env('X_API_KEY'), keySecret: env('X_API_SECRET'),
@@ -492,9 +506,9 @@ function composeText(lang, picks) {
     otherPrefix = '另外：';
     maxTitle = 78;
   } else {
-    const etHour = Number(edition.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
-    const dateStr = edition.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' });
-    head = `⚡ Uncle Cat AI Radar · ${dateStr} ${etHour < 12 ? 'Morning' : 'Evening'} (${batch.length + radarCount} items)`;
+    const bjHour = Number(edition.toLocaleString('en-US', { timeZone: 'Asia/Shanghai', hour: 'numeric', hour12: false }));
+    const dateStr = edition.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'Asia/Shanghai' });
+    head = `⚡ Uncle Cat AI Radar · ${dateStr} ${bjHour < 12 ? 'Morning' : 'Evening'} (${batch.length + radarCount} items)`;
     lead = `Watch: ${trimWeighted(storyTitle(featured, lang), 92)}`;
     take = takeFor(lang, featured);
     question = 'What should we track next?';
@@ -513,11 +527,22 @@ function composeText(lang, picks) {
   return lines.join('\n');
 }
 
-function composeLinkReply(lang) {
+function editionLabel(lang, picks) {
+  const edition = editionInstant(picks);
+  if (lang === 'zh') {
+    const { month, day, hour } = localParts(edition, 'Asia/Shanghai', 'zh-CN');
+    return `${month}月${day}日${hour < 12 ? '早报' : '晚报'}`;
+  }
+  const dateStr = edition.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'Asia/Shanghai' });
+  const bjHour = Number(edition.toLocaleString('en-US', { timeZone: 'Asia/Shanghai', hour: 'numeric', hour12: false }));
+  return `${dateStr} ${bjHour < 12 ? 'morning' : 'evening'} edition`;
+}
+
+function composeLinkReply(lang, picks) {
   const url = postUrl(lang);
   return lang === 'zh'
-    ? `完整深度简报、来源、发布时间和全部快讯在这里：\n${url}`
-    : `Full briefings, sources, timestamps, and quick hits:\n${url}`;
+    ? `${editionLabel(lang, picks)}完整深度简报、来源、发布时间和全部快讯在这里：\n${url}`
+    : `Full ${editionLabel(lang, picks)} briefings, sources, timestamps, and quick hits:\n${url}`;
 }
 
 async function postTweet(text, replyToId) {
@@ -530,14 +555,19 @@ async function publishLang(lang, picks, pendingChecks) {
   await waitForXCardReady(lang);
   const main = await postTweet(composeText(lang, picks));
   console.log(`[post-x] ${lang === 'zh' ? '中文主帖' : '英文主帖'}已发布:`, `https://x.com/i/status/${main.data.id}`);
-  const reply = await postTweet(composeLinkReply(lang), main.data.id);
-  console.log(`[post-x] ${lang === 'zh' ? '中文链接回复' : '英文链接回复'}已发布:`, `https://x.com/i/status/${reply.data.id}`);
-  queuePostCheck(pendingChecks, lang, reply.data.id);
+  let reply = null;
+  try {
+    reply = await postTweet(composeLinkReply(lang, picks), main.data.id);
+    console.log(`[post-x] ${lang === 'zh' ? '中文链接回复' : '英文链接回复'}已发布:`, `https://x.com/i/status/${reply.data.id}`);
+    queuePostCheck(pendingChecks, lang, reply.data.id);
+  } catch (error) {
+    console.error(`[post-x] ${lang === 'zh' ? '中文' : '英文'}链接回复失败，继续后续发布: ${error?.message || error}`);
+  }
   return { main, reply };
 }
 
 const [cmd, arg, arg2] = process.argv.slice(2);
-const needsOAuth = ['verify', 'post', 'delete', 'daily'].includes(cmd);
+const needsOAuth = ['verify', 'post', 'reply', 'delete', 'daily'].includes(cmd);
 if (needsOAuth && (!CREDS.key || !CREDS.token)) { console.error('[post-x] 发布凭证缺失，跳过'); process.exit(0); }
 if (cmd === 'check' && !CREDS.bearer && (!CREDS.key || !CREDS.token)) { console.error('[post-x] 读取凭证缺失，跳过'); process.exit(0); }
 
@@ -547,6 +577,10 @@ if (cmd === 'verify') {
 } else if (cmd === 'post') {
   const d = await api('POST', '/tweets', { text: arg });
   console.log('[post-x] 已发帖:', `https://x.com/i/status/${d.data.id}`);
+} else if (cmd === 'reply') {
+  if (!arg || !arg2) throw new Error('缺少 tweet id 或回复文本');
+  const d = await api('POST', '/tweets', { text: arg2, reply: { in_reply_to_tweet_id: arg } });
+  console.log('[post-x] 已回复:', `https://x.com/i/status/${d.data.id}`);
 } else if (cmd === 'delete') {
   if (!arg) throw new Error('缺少 tweet id');
   await api('DELETE', `/tweets/${arg}`);
@@ -569,9 +603,9 @@ if (cmd === 'verify') {
 } else if (cmd === 'preview') {
   const picks = await pickToday();
   console.log('[中文主帖]\n' + composeText('zh', picks));
-  console.log('\n[中文首条回复]\n' + composeLinkReply('zh'));
+  console.log('\n[中文首条回复]\n' + composeLinkReply('zh', picks));
   console.log('\n---\n[English main]\n' + composeText('en', picks));
-  console.log('\n[English first reply]\n' + composeLinkReply('en'));
+  console.log('\n[English first reply]\n' + composeLinkReply('en', picks));
 } else {
-  console.log('用法: verify | post "文本" | delete <tweet_id> | check <tweet_id> [zh|en] | daily | preview');
+  console.log('用法: verify | post "文本" | reply <tweet_id> "文本" | delete <tweet_id> | check <tweet_id> [zh|en] | daily | preview');
 }
