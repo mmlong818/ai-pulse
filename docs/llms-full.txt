@@ -19,6 +19,38 @@
 
 ## Recent briefings
 
+### Alibaba ships Wan CLI to put video gen in agents
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/alibaba-wan-cli-agent-video.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-wan-cli-agent-video.html
+- Source timestamp: 2026-08-11T07:25:00.000Z
+- Site timestamp: 2026-08-11T11:00:03.171Z
+- Tags: AIGC, Agents, Industry
+
+Alibaba's Wan team released a command-line tool that lets coding agents call its image and video models programmatically, installed by pasting one command.
+
+## Generative video as a callable tool
+
+Alibaba's Wan team announced the Wan CLI on Tuesday, a command-line interface that lets AI agents invoke Wan's image and video generation directly rather than through a web UI. The installation path the team described is deliberately agent-shaped: log in at wan.video, find the CLI section in the lower-left of the interface, copy the provided command, and paste it into an agent, which installs the tool itself.
+
+Once installed, an agent can generate images and video programmatically as part of a longer workflow — scripting a sequence of shots, iterating on a prompt against a returned result, or wiring generation into a build step. Alibaba had already published Wan-skills, an Apache 2.0 repository of agent skills covering its Wan 2.7 image model and a document-to-slides generator, alongside the DashScope APIs on Model Studio. The CLI collapses that surface into a single installable entry point.
+
+The team paired the launch with fresh material on Wan-Animate-2-Lite, the efficiency variant of the character-animation model it open-sourced on August 7. Wan says the Lite variant generates arbitrarily long sequences chunk by chunk with no observable error accumulation, which is the property that matters for streaming avatars and live hosts rather than fixed-length clips.
+
+## Why it matters
+
+Generative video has so far been sold mostly as a destination product — a site you visit, a credit you spend, a clip you download. The competitive question now shifting into view is which video model becomes the default primitive that agents reach for when a task happens to need moving pictures. That is a distribution fight with different economics: whoever is installed inside agent workflows captures repeated programmatic calls rather than discrete creative sessions, and gets embedded in pipelines that are costly to rip out.
+
+Alibaba is moving early there, and from an unusual position — it ships both open weights that anyone can self-host and a hosted API, so agent integration feeds a paid endpoint without foreclosing local use. Rivals including Runway, Kuaishou's Kling and ByteDance's Seedance have been expanding through platform partnerships and third-party canvases instead. A CLI is a smaller artifact than a model release, but it is aimed squarely at where AIGC and agent tooling are converging.
+
+Chinese title: 阿里推出 Wan CLI，把视频生成塞进智能体工作流
+Chinese summary: 阿里通义万相发布命令行工具 Wan CLI，智能体可直接以编程方式调用其图像与视频模型，安装只需粘贴一条命令。
+
+Sources:
+  - Alibaba Wan on X: The Wan CLI is here: https://x.com/Alibaba_Wan/status/2087077985333768680
+  - Alibaba Wan on X: Wan-Animate-2-Lite real-time streaming: https://x.com/Alibaba_Wan/status/2087067244304220182
+  - GitHub — Wan-Video/Wan-skills: AI Agent Skills for Wan: https://github.com/Wan-Video/Wan-skills
+
 ### Claude lifts Riemann zeta lower bound to 67.2%
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/claude-riemann-zeta-lower-bound.html
@@ -118,6 +150,38 @@ Sources:
   - Arena on X: MAI-Image-2.6 lands in the Text-to-Image Arena at #2: https://x.com/arena/status/2086943856289853931
   - Arena on X: MAI-Image-2.6 jumped to #2 overall, category gains: https://x.com/arena/status/2086943860681531555
 
+### Meta's Muse Glimmer debuts mid-pack in Arena boards
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/muse-glimmer-arena-debut-rankings.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/muse-glimmer-arena-debut-rankings.html
+- Source timestamp: 2026-08-11T00:54:00.000Z
+- Site timestamp: 2026-08-11T11:00:03.171Z
+- Tags: Models, Open Source, Research
+
+Arena's first human-preference scores put Meta's new Apache-2.0 model at #77 in Code Arena WebDev and #97 in Text Arena, 26th and 24th among open models.
+
+## First independent numbers on Meta's open-weights return
+
+Arena published its first human-preference scores for Muse Glimmer overnight, a day after Meta released the 30-billion-parameter model under Apache 2.0. In Code Arena's WebDev leaderboard the model entered at #77 overall with 1,359 points, ranking 26th among open models. In Text Arena it landed at #97 overall with 1,426 points, 24th among open models.
+
+Muse Glimmer is Meta's most consequential open release in more than a year and the concrete expression of a strategy reset toward open weights. It is built for local, always-on agent work rather than leaderboard chat: roughly 30B parameters including a 1.8B vision encoder, multimodal input, a context window above 131,000 tokens, and a footprint small enough to run in about 18 GB on consumer hardware through LM Studio. Hosting providers including Baseten carried it on day zero.
+
+That design context cuts both ways when reading the Arena placements. Human-preference boards reward conversational polish and are dominated by far larger frontier and near-frontier systems, so a 30B local model placing outside the top 70 is not by itself evidence of weakness on the tasks it was built for — tool use, function-schema adherence and multi-step task completion, which these leaderboards measure only indirectly. Developer accounts of early testing have been more favourable on agentic code exploration than on open-ended creative generation.
+
+## Why it matters
+
+Still, the placements are the first outside data point against a release Meta positioned as a strategic reset, and they land at an awkward angle. Being 24th to 26th among open models means Glimmer debuts well behind the Chinese open-weight tier — Kimi, GLM, Qwen and DeepSeek derivatives — that has spent the past year defining what an open model at the frontier looks like. Meta's argument for the pivot rests on out-executing that cohort, not on trailing it in the boards it will inevitably be compared on.
+
+Arena separately noted this week that the gap between proprietary and open-source performance has narrowed to its tightest point yet. Glimmer is not where that narrowing is happening, which is the more pointed finding for Meta.
+
+Chinese title: Muse Glimmer 竞技场首秀成绩落在中游
+Chinese summary: Arena 首次给出人类偏好评分：Meta 新开源模型 Muse Glimmer 在 Code Arena WebDev 位列第 77、文本竞技场第 97，开源模型中分别排第 26 和第 24。
+
+Sources:
+  - Arena on X: Muse Glimmer debuts at #77 in Code Arena: WebDev: https://x.com/arena/status/2086979482162966600
+  - Arena on X: In the Text Arena Muse Glimmer landed #97 overall: https://x.com/arena/status/2086979489612079538
+  - Simon Willison — Introducing Muse Glimmer: https://simonwillison.net/2026/Aug/10/introducing-muse-glimmer/
+
 ### OpenAI ships GPT-5.6-Cyber to vetted security teams
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-gpt-5-6-cyber-daybreak.html
@@ -151,6 +215,36 @@ Sources:
   - OpenAI on X: expanding Daybreak and introducing GPT-5.6-Cyber: https://x.com/OpenAI/status/2086864365379010729
   - OpenAI launches GPT-5.6-Cyber to help defenders find vulnerabilities before attackers do: https://the-decoder.com/openai-launches-gpt-5-6-cyber-to-help-defenders-find-vulnerabilities-before-attackers-do/
   - OpenAI unveils GPT-5.6-Cyber to help prepare for AI cyberattacks: https://www.axios.com/2026/08/10/openai-gpt-astra-restrictions-safety-hacking-defenders
+
+### Zhipu's ZCode hits 1M users, resets all usage limits
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/zhipu-zcode-one-million-users.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-zcode-one-million-users.html
+- Source timestamp: 2026-08-11T04:58:00.000Z
+- Site timestamp: 2026-08-11T11:00:03.171Z
+- Tags: Agents, Industry, Open Source
+
+Z.ai says its agentic coding environment passed one million users and wiped usage counters for every GLM Coding Plan subscriber as a thank-you.
+
+## A scale marker for Chinese coding agents
+
+Z.ai, the international arm of Beijing-based Zhipu AI, said on Tuesday morning Beijing time that ZCode — its own agentic coding environment built around the GLM model family — has passed one million users. To mark the milestone, the company reset usage limits for every subscriber on its GLM Coding Plan, effectively handing the entire paying base a fresh quota mid-cycle. Z.ai said it is also rolling out an update aimed at converting the models' long-horizon capabilities into finished work rather than long-running attempts.
+
+ZCode is Z.ai's answer to Claude Code, Cursor and GitHub Copilot: a terminal-and-editor harness that drives the company's GLM models through multi-step engineering tasks, with bring-your-own-key support for third-party models and a usage-quota bonus for GLM Coding Plan subscribers. The plan itself has been Zhipu's most successful international product, priced far below Western equivalents and marketed directly at developers looking to migrate off subscription tiers from US labs.
+
+## Why the reset is the interesting part
+
+The user number is notable, but the limit reset carries more information. In January, Zhipu capped new sign-ups to the GLM Coding Plan, citing computing constraints as demand outran the serving capacity it could allocate — an unusual public admission from a lab that had been aggressively courting overseas developers. Handing out additional quota seven months later implies the inference bottleneck has eased, whether through better serving efficiency, more accelerators, or both.
+
+That matters beyond one company. Coding agents have become the primary commercial wedge for Chinese labs outside China: they monetise in hard currency, they do not require a consumer app, and they are relatively insensitive to brand. A million users on a single Chinese-built harness — plus the ability to give away rather than ration capacity — suggests the constraint on Chinese open-weight labs competing internationally is shifting from compute supply toward product and trust. It also sharpens the pricing squeeze on Western coding-agent subscriptions, which continue to meter usage tightly while a MIT-licensed alternative periodically zeroes the meter.
+
+Chinese title: 智谱 ZCode 用户破百万，全量重置用量限制
+Chinese summary: Z.ai 宣布其智能体编程环境 ZCode 用户数突破一百万，并为所有 GLM Coding Plan 订阅用户重置用量额度。
+
+Sources:
+  - Z.ai on X: ZCode now has 1 million users: https://x.com/Zai_org/status/2087040814677725262
+  - Z.ai launches ZCode to challenge Cursor, Claude Code and GitHub Copilot in AI coding: https://venturebeat.com/technology/z-ai-launches-zcode-to-challenge-cursor-claude-code-and-github-copilot-in-ai-coding
+  - China AI Firm Zhipu Limits Coding Agent Access as Demand Soars: https://www.bloomberg.com/news/articles/2026-01-21/china-ai-firm-zhipu-limits-coding-agent-access-as-demand-soars
 
 ### Zuckerberg manifesto resets Meta on open weights
 
@@ -888,107 +982,6 @@ Sources:
   - DeepSeek也扛不住了？API降价后又将大幅涨价 - 新浪科技: https://finance.sina.com.cn/tech/roll/2026-08-06/doc-inimizpi4696639.shtml
   - DeepSeek Plans Significant API Price Increases - TechNode: https://technode.com/2026/08/06/deepseek-plans-significant-api-price-increases/
 
-### Envision brings 2GW-planned AI compute base online in China
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/envision-ulanqab-ai-compute-base-online.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/envision-ulanqab-ai-compute-base-online.html
-- Source timestamp: 2026-08-06T05:29:00.000Z
-- Site timestamp: 2026-08-06T11:00:03.204Z
-- Tags: Industry
-
-The Ulanqab Xinghe base entered production with a 120,000-square-metre hall, million-card parallel design and direct green-power supply, phase one of a 5GW plan.
-
-## What launched
-
-Envision Group's Xinghe base in Ulanqab, Inner Mongolia, entered production on Thursday. The company describes it as a single AI computing hall of about 120,000 square metres — roughly twenty football pitches — engineered for million-accelerator parallel operation and a compute scale it puts at one million PFLOPS. Total planned electrical capacity for the site is 2GW, supplied largely through direct connection to Envision's own wind and solar generation rather than through the public grid.
-
-Ulanqab is one of the eight national hubs designated under China's "East Data, West Computing" programme, chosen for cool climate, cheap land and proximity to renewable generation; roughly two-thirds of the region's electricity already comes from wind and solar. Envision, better known as a wind-turbine and battery manufacturer, is positioning the site as infrastructure for domestic AI labs and cloud providers that need large blocks of power-dense capacity inside China.
-
-The base is the first phase of "Mission Gobi," announced in June, under which Envision says it intends to build 5GW of green AI compute capacity across desert regions worldwide by 2030.
-
-## Context
-
-The launch lands as power, not silicon, becomes the binding constraint on AI buildouts. In the United States, Texas has frozen new data-centre grid connections pending an audit and Nashville moved this week to block a project by eminent domain; Google's $15bn Indian campus is facing scrutiny over water use. A developer that owns its own generation sidesteps the interconnection queue entirely — the structural advantage Envision is selling.
-
-## Why it matters
-
-China's compute expansion has been discussed mostly through the lens of chip export controls, but the practical bottleneck is increasingly megawatts and the years it takes to procure them. Pairing renewable generation directly with an AI hall compresses that timeline and insulates operators from grid politics. If the claimed density holds, the site materially raises the ceiling on how much domestic training and inference Chinese labs can run at home — and offers a template that generation-owning industrial firms elsewhere are likely to copy.
-
-Chinese title: 远景乌兰察布星河基地投产，规划电力容量 2GW
-Chinese summary: 12 万平方米单体机房、百万卡并行设计、绿电直连投产，这是远景"戈壁使命"5GW 计划的第一期。
-
-Sources:
-  - 全球最大AI算力超级单体落地 超级算力枢纽远景乌兰察布星河基地投产 - 证券时报: https://www.stcn.com/article/detail/4061963.html
-  - 超级算力枢纽远景乌兰察布星河基地投产 - 量子位: https://www.qbitai.com/2026/08/467262.html
-
-### Google sets September 4 end date for Assistant on Android
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/google-sets-assistant-shutdown-date.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/google-sets-assistant-shutdown-date.html
-- Source timestamp: 2026-08-05T11:12:00.000Z
-- Site timestamp: 2026-08-05T23:00:03.104Z
-- Tags: Industry, Models
-
-Google began emailing users that Assistant stops working on phones, tablets, Wear OS watches, headphones and Android Auto on September 4, with Gemini taking over.
-
-Google has notified users by email that Google Assistant will cease functioning on September 4, 2026, completing a migration to Gemini across most of the company's consumer hardware surfaces.
-
-## Scope of the shutdown
-
-The cutoff covers Android phones and tablets, Wear OS watches, Assistant-enabled headphones and Android Auto. The one significant carve-out is vehicles with "Google built-in," where Assistant continues for now. In parallel, Gemini is expanding onto Google TV, Google Home speakers and smart displays — surfaces where Assistant has handled routine tasks for close to a decade.
-
-The date closes out a transition Google originally signalled for 2025 and then postponed. Assistant launched in 2016 and became the default voice layer on well over a billion Android devices; the September deadline retires that layer rather than running the two systems side by side.
-
-## Open questions
-
-The substitution is not like-for-like. Assistant was built largely on deterministic intent parsing and a fixed command grammar, which made it predictable for narrow tasks such as setting a timer, toggling a light or starting a call. Gemini is a probabilistic language model, and reporting on the transition has centred on whether it can match Assistant's reliability and latency on exactly those high-frequency, low-complexity operations. Smart-home control is the most exposed category, since a failed light command is more visible to a household than an imperfect summary.
-
-## Why it matters
-
-This is one of the largest single-day replacements of a rule-based system with a generative model in consumer computing. It removes the fallback option: from September 4, users on affected devices have no route back to the older, narrower assistant. For Google it consolidates voice, search and agentic actions behind one model family and one data pipeline, which simplifies where new capabilities land. For the wider industry it becomes a live test of whether LLM assistants are yet dependable enough to carry utility workloads at billion-device scale — and the answer will inform how aggressively Apple, Samsung and Amazon retire their own legacy assistant stacks.
-
-Chinese title: 谷歌确定 9 月 4 日关停 Assistant，Gemini 全面接管
-Chinese summary: 谷歌已向用户发送邮件通知：Assistant 将于 9 月 4 日在手机、平板、Wear OS 手表、耳机与 Android Auto 上停止工作。
-
-Sources:
-  - Google will shut down Google Assistant starting September 2026 — The Decoder: https://the-decoder.com/google-will-shut-down-google-assistant-starting-september-2026-as-gemini-takes-over-on-android-and-wear-os/
-  - Google plans to kill Assistant on your phone on September 4 — Ars Technica: https://arstechnica.com/ai/2026/08/google-plans-to-kill-assistant-on-your-phone-on-september-4/
-
-### Hassabis exits DeepMind CEO role as Jeff Dean quits Google
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/hassabis-exits-deepmind-ceo-role.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/hassabis-exits-deepmind-ceo-role.html
-- Source timestamp: 2026-08-05T16:47:00.000Z
-- Site timestamp: 2026-08-05T23:00:03.104Z
-- Tags: Industry, Research
-
-Alphabet made Demis Hassabis its chief scientist and handed DeepMind's daily operations to Koray Kavukcuoglu, hours before Jeff Dean announced a rival startup.
-
-Alphabet restructured the top of its artificial intelligence organisation on Wednesday, removing Demis Hassabis from day-to-day control of Google DeepMind and losing four of its most senior researchers to a new company on the same day.
-
-## What changed
-
-In a message to staff, Alphabet and Google chief executive Sundar Pichai said Hassabis will become Alphabet's chief scientist, a newly created position, and take a chair role at Google DeepMind. Hassabis, who co-founded DeepMind in 2010 and shared the 2024 Nobel Prize in Chemistry for AlphaFold, framed the move as handing off operational duties so he can concentrate on longer-range questions around artificial general intelligence, advise research teams and spend more time on Isomorphic Labs, Alphabet's drug-discovery subsidiary.
-
-Koray Kavukcuoglu, until now DeepMind's chief technology officer and Alphabet's chief AI architect, assumes daily management. Notably, he does so as a senior vice president reporting to Pichai rather than inheriting a standalone chief executive title — a structural change that folds the lab more tightly into Google's reporting lines. His remit covers Gemini model development, frontier research, the Gemini consumer app and the AI developer platforms.
-
-## The departures
-
-Separately, Jeff Dean left Google after 27 years, together with senior fellow Sanjay Ghemawat, Google Brain co-founder Quoc Le and Oriol Vinyals, vice president of research at Google DeepMind and a technical lead on Gemini. The four are launching Discovery Loop, incorporated as a public benefit corporation, which says it will use large-scale compute to automate entire experimental loops in machine learning, science and engineering. Radical Ventures and Khosla Ventures are co-leading the first round, with Kleiner Perkins, Lightspeed and Doerr Capital participating, and Radical managing partner Jordan Jacobs joining the board. Google is a founding investor and will serve as Discovery Loop's cloud partner, supplying compute for the company's first year and collaborating on a research framework for ML systems and infrastructure. The founders have not disclosed the round's size or valuation.
-
-## Why it matters
-
-This is the most significant change to frontier-lab governance since the Gemini era began. Dean, Ghemawat, Le and Vinyals span the lineage from MapReduce and TensorFlow to sequence-to-sequence learning and the Transformer paper — talent depth no competitor can replicate quickly. Replacing a Nobel-laureate chief executive with an SVP reporting into Google, while a startup absorbs four of the lab's most cited names, points to a shift from research-led autonomy toward product-led integration. That Google is funding and hosting the departing team rather than simply losing it softens the break, but it does not change who now sets the research agenda. How Kavukcuoglu balances Gemini shipping cadence against long-horizon research will shape whether Google's AI lead holds.
-
-Chinese title: 哈萨比斯卸任 DeepMind CEO，Jeff Dean 同日离职创业
-Chinese summary: Alphabet 任命哈萨比斯为首席科学家，DeepMind 日常运营交由 Koray Kavukcuoglu；数小时后 Jeff Dean 宣布带队离职创办新公司。
-
-Sources:
-  - The next chapter of our AI momentum — Google blog: https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/
-  - Jeff Dean and other top AI researchers are leaving Google to launch their own startup — TechCrunch: https://techcrunch.com/2026/08/05/jeff-dean-and-other-top-ai-researchers-are-leaving-google-to-launch-their-own-startup/
-  - The startup idea that convinced a UW computer science legend to leave Google after 27 years — GeekWire: https://www.geekwire.com/2026/the-startup-idea-that-convinced-a-uw-computer-science-legend-to-leave-google-after-27-years/
-  - Google Deepmind loses both its CEO and chief scientist — The Decoder: https://the-decoder.com/google-deepmind-loses-both-its-ceo-and-chief-scientist-as-demis-hassabis-and-jeff-dean-step-down-simultaneously/
-
 ## Recent radar items
 
 ### 2026-08-11
@@ -1010,6 +1003,20 @@ Sources:
 - 2026-08-10T15:59:00Z | X @arena | Arena said the proprietary-versus-open-source performance gap has reached its narrowest point yet, citing frontier margins in Code Arena's WebDev leaderboard. | 中文：Arena 表示闭源与开源模型的性能差距已缩至历史最窄，并以 Code Arena WebDev 榜单上的前沿分差作为依据。 | https://x.com/arena/status/2086844868454662210
 - 2026-08-10T22:49:00Z | IT之家 | ChatGPT deepened its Yelp integration in the US and Canada, letting users book restaurant tables directly inside a conversation. | 中文：ChatGPT 在美加地区进一步接入点评平台 Yelp，用户可在对话过程中直接完成餐厅订座。 | https://www.ithome.com/0/988/073.htm
 - 2026-08-10T12:00:00Z | TechCrunch | Discovered Materials raised a $9M seed led by Lightspeed India to run agent swarms on Anthropic models plus physics simulation, hunting cooler semiconductor materials. | 中文：Discovered Materials 完成 900 万美元种子轮，由 Lightspeed India 领投，Peak XV 及 Paul Graham 等参投；公司用 Anthropic 模型驱动的 Agent 集群配合物理仿真，寻找更散热的芯片材料。 | https://techcrunch.com/2026/08/10/discovered-materials-is-playing-ai-whack-a-mole-to-hunt-cooler-chips/
+- 2026-08-11T09:41:00Z | The Decoder | Nvidia will guarantee up to 25% of residual chip value in AI data-center projects, unlocking over $500 billion of third-party capital from Apollo, BlackRock, Blackstone and KKR. | 中文：英伟达联手阿波罗、贝莱德、黑石、布鲁克菲尔德、高盛与 KKR，为 AI 数据中心项目中最高 25% 的芯片残值提供担保，以此撬动逾 5000 亿美元第三方资金。 | https://the-decoder.com/nvidia-guarantees-its-own-chips-value-to-unlock-500-billion-in-ai-infrastructure-financing/
+- 2026-08-11T09:24:00Z | 量子位 | Google co-founder Sergey Brin has re-immersed himself in Gemini strategy, the FT reports, while SemiAnalysis says Gemini 3.5 Pro was quietly cancelled after its May I/O preview. | 中文：《金融时报》称谷歌联合创始人布林已深度回归 Gemini 战略决策；SemiAnalysis 则透露，5 月 I/O 上宣称「下个月见」的 Gemini 3.5 Pro 已被悄悄取消。 | https://www.qbitai.com/2026/08/470576.html
+- 2026-08-11T00:03:00Z | TechCrunch | OpenAI completed a $7 billion tender offer letting employees sell shares at the same $852 billion valuation as its March round, signaling no imminent IPO. | 中文：OpenAI 完成 70 亿美元员工股份回购，估值与 3 月融资时持平于 8520 亿美元，被视为 IPO 短期内不会推进的信号。 | https://techcrunch.com/2026/08/10/openai-reportedly-completed-a-7-billion-employee-tender-offer/
+- 2026-08-11T06:20:00Z | MarkTechPost | webAI released TwIL-LM, 1.7B and 3B autoformalization models that turn English into first-order logic at 32.9 answers per second versus 4.2 for gpt-oss-120b. | 中文：webAI 发布 TwIL-LM 系列：1.7B 与 3B 形式逻辑模型，可将英文自动转为一阶逻辑，吞吐达每秒 32.9 条答案，而 gpt-oss-120b 仅 4.2 条，权重目前仅限非商业使用。 | https://www.marktechpost.com/2026/08/10/webai-releases-twil-lm-a-1-7b-and-3b-formal-logic-model-family-for-autoformalization-on-local-hardware/
+- 2026-08-11T09:00:00Z | InfoQ 中文 | LangAlpha open-sourced a "financial Agent OS" that drives investment-research workflows from natural language, with code execution, persistent workspaces and support for Claude, DeepSeek, GLM and Kimi. | 中文：LangAlpha 开源「金融 Agent OS」，用自然语言驱动投研工作流，内置代码执行、可持续复用的工作区与审计留痕，并支持 Claude、OpenAI、DeepSeek、GLM、Kimi 等多家模型。 | https://www.infoq.cn/article/q1f3Na2a1MhhGqSETlUm
+- 2026-08-11T10:21:00Z | InfoQ 中文 | DORA published seven AI-assisted development team archetypes and seven enabling capabilities, noting individual efficiency rose with AI adoption while software delivery stability fell. | 中文：DORA 发布 AI 辅助研发的七类团队画像与七项关键能力，并指出一个悖论：AI 使用率提升带来个人效率与代码质量改善，交付稳定性却在下降。 | https://www.infoq.cn/article/1oV8oaYwzU15W5BdSL7C
+- 2026-08-11T00:46:00Z | 量子位 | Five Chinese universities launched TriWorldBench, the first robot three-view world-model leaderboard, scoring 19 metrics across six dimensions with WoVR_Plus leading week one. | 中文：北大、清华、北航、上交与中科大联合发布首个机器人三视角世界模型评测榜 TriWorldBench，覆盖六大维度 19 项指标，首期榜首为中科院自动化所的 WoVR_Plus。 | https://www.qbitai.com/2026/08/469860.html
+- 2026-08-10T23:31:00Z | X @ArtificialAnlys | Artificial Analysis said output speed for one identical model can vary more than 15x across inference providers, and published a breakdown of why those gaps exist. | 中文：Artificial Analysis 指出，同一个模型在不同推理服务商处的输出速度差距可超过 15 倍，并撰文拆解造成这种差距的原因及其实际影响。 | https://x.com/ArtificialAnlys/status/2086958697444696113
+- 2026-08-11T05:00:00Z | X @SakanaAILabs | Sakana AI opened full-time and internship hiring for frontier researchers and engineers to build its next generation of recursive self-improvement systems. | 中文：Sakana AI 开启招聘，为下一代递归自我改进（RSI）系统招募前沿研究员与工程师，全职岗位与实习岗位同步开放。 | https://x.com/SakanaAILabs/status/2087041317784494128
+- 2026-08-11T05:44:00Z | MarkTechPost | MarkTechPost published a walkthrough for wiring MiniMax-H3 into ComfyUI API nodes as one multimodal pipeline that generates video and matching audio together. | 中文：MarkTechPost 发布教程，演示如何用 ComfyUI 的 API 节点把 MiniMax-H3 接成一条多模态流水线，一次生成视频并配上匹配音频。 | https://www.marktechpost.com/2026/08/10/implementing-a-minimax-h3-multimodal-video-and-audio-generation-pipeline-with-comfyui-apis/
+- 2026-08-11T04:00:00Z | X @PixVerse_ | PixVerse opened the Canvas project behind its live-action Barbie-inspired giantess short, exposing scale beats, dialogue timing, lip sync and camera grammar for remixing. | 中文：PixVerse 公开其真人风格「芭比巨人少女」短片的 Canvas 工程文件，展示尺度节奏、台词时序、锁定唇形与运镜语法，供用户直接二次创作。 | https://x.com/PixVerse_/status/2087026319368597894
+- 2026-08-11T04:00:00Z | arXiv | Guide Labs' Steerling-8B shows interpretability scaling with capability, matching peer models while using 2-16x less compute and allowing concept steering without retraining. | 中文：Guide Labs 论文提出 Steerling-8B：在跨三个数量级算力的训练中内建可解释性，性能对标同级模型却少用 2–16 倍算力，并支持免重训的概念归因与引导干预。 | https://arxiv.org/abs/2608.07594
+- 2026-08-11T04:00:00Z | arXiv | A new study found Claude models write SOC 2-compliant code only 47-88% of the time unprompted—including a remote-code-execution debugger—but 86-100% once SOC 2 is mentioned. | 中文：一项研究评测 Claude Fable 5、Opus 4.8 与 Opus 5 的代码合规性：无安全提示时 SOC 2 达标率仅 47%–88%，还出现可远程执行代码的调试器；只需提一句 SOC 2，达标率升至 86%–100%。 | https://arxiv.org/abs/2608.07776
+- 2026-08-11T04:00:00Z | arXiv | Search-G1 trains search agents with representation-based intrinsic rewards that judge when retrieval is actually needed, yielding shorter trajectories at competitive QA accuracy. | 中文：Search-G1 提出基于表征的内在奖励，让搜索型 Agent 自行判断何时真正需要检索，在多个问答基准上以更短的轨迹保持相当准确率。 | https://arxiv.org/abs/2608.07531
 
 ### 2026-08-10
 

@@ -13,6 +13,47 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-wan-cli-agent-video.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-wan-cli-agent-video.html",
+      "title": "阿里推出 Wan CLI，把视频生成塞进智能体工作流",
+      "summary": "阿里通义万相发布命令行工具 Wan CLI，智能体可直接以编程方式调用其图像与视频模型，安装只需粘贴一条命令。",
+      "content_text": "## 让视频生成变成一个可调用的工具\n\n阿里通义万相团队周二发布了 Wan CLI——一个命令行工具，让 AI 智能体可以直接调用万相的图像与视频生成能力，而不必再走网页界面。团队给出的安装方式本身就是为智能体设计的：登录 wan.video，在界面左下角找到 CLI 入口，复制那条命令，粘贴给你的智能体，由它自己完成安装。\n\n装好之后，智能体就能在更长的流程中以编程方式生成图像和视频：批量编排镜头、拿到结果后再迭代提示词，或者把生成环节直接接进构建流程。此前万相已经开源了 Wan-skills 仓库（Apache 2.0），覆盖 Wan 2.7 图像模型与文档转 PPT 等技能，加上百炼平台上的 DashScope API。CLI 把这些散落的接入面收拢成了一个可安装的入口。\n\n配合这次发布，团队还放出了 Wan-Animate-2-Lite 的新演示。这是 8 月 7 日开源的角色动画模型的效率版本，官方称其可以分块生成任意长度的序列，且观察不到误差累积——对数字人直播、实时虚拟主播这类场景来说，这个特性比固定时长的成片更关键。\n\n## 为什么重要\n\n到目前为止，生成式视频基本是按「目的地产品」卖的：你打开一个网站、花掉一些积分、下载一段片子。而现在真正浮出水面的竞争问题是：当一个任务恰好需要动态画面时，智能体会默认去调谁的模型。这是一场经济结构完全不同的分发战——被装进智能体工作流的一方拿到的是反复发生的程序化调用，而不是一次次独立的创作会话，并且会沉进别人换起来很麻烦的管线里。\n\n阿里在这件事上动手较早，位置也比较特殊：它同时提供任何人都能自部署的开放权重和托管 API，因此智能体接入既能喂给付费端点，也不堵住本地使用的路。Runway、快手可灵与字节 Seedance 则更多在通过平台合作与第三方画布扩张。一个 CLI 的体量远小于一次模型发布，但它瞄准的正是 AIGC 与智能体工具链正在合流的地方。",
+      "date_published": "2026-08-11T07:25:00.000Z",
+      "date_modified": "2026-08-11T11:00:03.171Z",
+      "tags": [
+        "AIGC",
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/alibaba-wan-cli-agent-video.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-wan-cli-agent-video.html",
+        "source_published_at": "2026-08-11T07:25:00.000Z",
+        "site_published_at": "2026-08-11T11:00:03.171Z",
+        "sources": [
+          {
+            "title": "Alibaba Wan on X: The Wan CLI is here",
+            "url": "https://x.com/Alibaba_Wan/status/2087077985333768680"
+          },
+          {
+            "title": "Alibaba Wan on X: Wan-Animate-2-Lite real-time streaming",
+            "url": "https://x.com/Alibaba_Wan/status/2087067244304220182"
+          },
+          {
+            "title": "GitHub — Wan-Video/Wan-skills: AI Agent Skills for Wan",
+            "url": "https://github.com/Wan-Video/Wan-skills"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-riemann-zeta-lower-bound.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-riemann-zeta-lower-bound.html",
       "title": "Claude 把黎曼 ζ 零点下界从 41.6% 提到 67.2%",
@@ -121,6 +162,47 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/muse-glimmer-arena-debut-rankings.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/muse-glimmer-arena-debut-rankings.html",
+      "title": "Muse Glimmer 竞技场首秀成绩落在中游",
+      "summary": "Arena 首次给出人类偏好评分：Meta 新开源模型 Muse Glimmer 在 Code Arena WebDev 位列第 77、文本竞技场第 97，开源模型中分别排第 26 和第 24。",
+      "content_text": "## Meta 重回开放权重后的第一份外部成绩单\n\nArena 在北京时间周二凌晨放出 Muse Glimmer 的首份人类偏好评分，距 Meta 以 Apache 2.0 协议发布这个 300 亿参数模型仅一天。在 Code Arena 的 WebDev 榜上，该模型以 1359 分首发第 77 名，在开源模型中排第 26；在文本竞技场以 1426 分位列总榜第 97，开源模型中排第 24。\n\nMuse Glimmer 是 Meta 一年多来最重要的开源动作，也是其战略重新转向开放权重的具体落点。它的定位是本地常驻的智能体工作，而不是刷聊天榜：约 300 亿参数，其中含 18 亿参数的视觉编码器，支持多模态输入，上下文超过 13.1 万 token，体量压到约 18GB，可在消费级硬件上通过 LM Studio 跑起来。Baseten 等托管商在首日就已上线。\n\n这个定位让榜单成绩需要两面看。人类偏好类榜单奖励对话质感，且被体量大得多的前沿与准前沿模型占据，因此一个 300 亿参数的本地模型排在 70 名之外，本身并不能说明它在被设计去做的事上表现不佳——工具调用、函数结构遵循、多步任务完成，这些恰恰是这类榜单只能间接反映的能力。开发者的早期实测反馈中，它在智能体式代码探索上的口碑好于开放式创意生成。\n\n## 为什么重要\n\n但这毕竟是针对一次被 Meta 定义为「战略重置」的发布给出的首个外部数据点，而角度并不好看。在开源模型中排到第 24 至 26 名，意味着 Glimmer 首发时明显落在中国开放权重阵营之后——Kimi、GLM、千问以及 DeepSeek 衍生模型，正是这一年来在定义「前沿开源模型该是什么样」的那一批。Meta 为这次转向给出的理由是要在这条赛道上比它们跑得更好，而不是在最终必然被拿来对比的榜单上落后。\n\nArena 本周还另外提到，闭源与开源模型的性能差距已收窄至历史最窄。而这轮收窄并不是发生在 Glimmer 身上——对 Meta 来说，这才是更扎人的那句。",
+      "date_published": "2026-08-11T00:54:00.000Z",
+      "date_modified": "2026-08-11T11:00:03.171Z",
+      "tags": [
+        "模型",
+        "开源",
+        "研究"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/muse-glimmer-arena-debut-rankings.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/muse-glimmer-arena-debut-rankings.html",
+        "source_published_at": "2026-08-11T00:54:00.000Z",
+        "site_published_at": "2026-08-11T11:00:03.171Z",
+        "sources": [
+          {
+            "title": "Arena on X: Muse Glimmer debuts at #77 in Code Arena: WebDev",
+            "url": "https://x.com/arena/status/2086979482162966600"
+          },
+          {
+            "title": "Arena on X: In the Text Arena Muse Glimmer landed #97 overall",
+            "url": "https://x.com/arena/status/2086979489612079538"
+          },
+          {
+            "title": "Simon Willison — Introducing Muse Glimmer",
+            "url": "https://simonwillison.net/2026/Aug/10/introducing-muse-glimmer/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-5-6-cyber-daybreak.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-5-6-cyber-daybreak.html",
       "title": "OpenAI 推出 GPT-5.6-Cyber，仅向审核过的安全团队开放",
@@ -157,6 +239,47 @@
           {
             "title": "OpenAI unveils GPT-5.6-Cyber to help prepare for AI cyberattacks",
             "url": "https://www.axios.com/2026/08/10/openai-gpt-astra-restrictions-safety-hacking-defenders"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-zcode-one-million-users.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-zcode-one-million-users.html",
+      "title": "智谱 ZCode 用户破百万，全量重置用量限制",
+      "summary": "Z.ai 宣布其智能体编程环境 ZCode 用户数突破一百万，并为所有 GLM Coding Plan 订阅用户重置用量额度。",
+      "content_text": "## 中国编程智能体的一个规模节点\n\n北京时间周二上午，智谱 AI 的海外品牌 Z.ai 宣布，围绕 GLM 模型打造的智能体编程环境 ZCode 用户数已突破一百万。作为回馈，公司为所有 GLM Coding Plan 订阅者重置了用量限制——相当于在计费周期中途给全部付费用户重新发了一份额度。Z.ai 同时表示正在推送一次更新，目标是让模型的长程能力真正转化为「干完的活」，而不是停留在长时间的尝试上。\n\nZCode 是智谱对标 Claude Code、Cursor 与 GitHub Copilot 的产品：一套终端与编辑器一体的执行框架，驱动 GLM 系列模型完成多步工程任务，支持 BYOK 接入第三方模型，并给 GLM Coding Plan 订阅者额外的用量加成。GLM Coding Plan 本身是智谱最成功的海外产品，定价远低于欧美同类，直接面向想从美国大模型订阅方案迁出的开发者。\n\n## 真正值得读的是「重置」\n\n百万用户是个数字，但重置额度这件事信息量更大。今年 1 月，智谱曾因算力紧张限制 GLM Coding Plan 的新用户注册——对一家正积极争取海外开发者的公司来说，这种公开承认相当罕见。七个月后反过来加送额度，说明推理侧的瓶颈已经缓解，无论是靠服务效率优化、卡的增加，还是两者兼有。\n\n这件事的意义超出一家公司。编程智能体已经成为中国大模型公司出海最主要的变现切口：直接收硬通货、不需要做消费级 App、对品牌的依赖也相对低。单一国产框架跑到百万用户量级，而且有余力「送」而不是「限」，意味着中国开放权重阵营在国际市场上的约束正从算力供给转向产品与信任。同时，这也让欧美编程智能体订阅的定价更难受——对手仍在精细计量用量，而一个 MIT 协议的替代方案会时不时把计量器归零。",
+      "date_published": "2026-08-11T04:58:00.000Z",
+      "date_modified": "2026-08-11T11:00:03.171Z",
+      "tags": [
+        "Agent",
+        "产业",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/zhipu-zcode-one-million-users.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-zcode-one-million-users.html",
+        "source_published_at": "2026-08-11T04:58:00.000Z",
+        "site_published_at": "2026-08-11T11:00:03.171Z",
+        "sources": [
+          {
+            "title": "Z.ai on X: ZCode now has 1 million users",
+            "url": "https://x.com/Zai_org/status/2087040814677725262"
+          },
+          {
+            "title": "Z.ai launches ZCode to challenge Cursor, Claude Code and GitHub Copilot in AI coding",
+            "url": "https://venturebeat.com/technology/z-ai-launches-zcode-to-challenge-cursor-claude-code-and-github-copilot-in-ai-coding"
+          },
+          {
+            "title": "China AI Firm Zhipu Limits Coding Agent Access as Demand Soars",
+            "url": "https://www.bloomberg.com/news/articles/2026-01-21/china-ai-firm-zhipu-limits-coding-agent-access-as-demand-soars"
           }
         ]
       }
@@ -1864,114 +1987,6 @@
           {
             "title": "Alibaba Wan on X: Try it now",
             "url": "https://x.com/Alibaba_Wan/status/2084481145115439473"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/ai-memory-crunch-hits-macbook-air.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/ai-memory-crunch-hits-macbook-air.html",
-      "title": "AI 抢内存，MacBook Air 陷入缺货",
-      "summary": "内存厂商把产能让给 AI 数据中心，苹果销量最大的笔记本开始缺货，定制机型发货排到了 9 月。",
-      "content_text": "AI 数据中心带来的内存紧缺，已经烧到了苹果卖得最好的电脑上。彭博社记者 Mark Gurman 周日报道称，MacBook Air 全球供应转紧，北美、欧洲与印度地区在苹果官网下单的定制机型，发货时间已推迟至 8 月底甚至 9 月。今年早些时候，这波紧缺还只影响 Mac mini、Mac Studio 等出货量较小的台式机；而 Air 是苹果销量最大的 Mac，也是其教育市场的主力机型。\n\n报道称，苹果目前的应对更像是缓冲而非解决：对受影响机型涨价、开始向中国内存供应商采购以扩大货源、把原定 6 月的返校促销往后延，并把宣传重点转向更容易备货的入门款 MacBook Pro。同时，Air 的营销素材上已开始加注供货提示。\n\n根本原因是产能分配，而不是产能减少。内存厂正把晶圆投片向高带宽内存（HBM）倾斜——那是紧贴 AI 加速器的堆叠 DRAM，利润率远高于笔记本用的 LPDDR。消费级 PC 产线现在等于要和云厂商争抢同一批产出。DDR5 与 NAND 的合约价自 1 月起大幅上行，而已宣布的新建内存产能，多数要到 2027 年才能形成规模供应。\n\n## 为什么重要\n\n这是迄今最直观的一个信号：AI 基建投入已经开始把其他行业挤出半导体供应链。苹果在电子行业拥有最强的采购地位之一——长约、预付、巨量订单——却依然守不住旗舰笔记本的库存。这几乎给下游所有人划了底线：PC 代工、手机厂、主机与车企只会拿到更差的条件与更长的排期。对 AI 自身的账本而言，内存如今是两头受制的硬约束：既抬高端侧 AI 硬件的物料成本，也推高云端加速器的价格。",
-      "date_published": "2026-08-02T21:33:00.000Z",
-      "date_modified": "2026-08-02T23:00:02.982Z",
-      "tags": [
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/ai-memory-crunch-hits-macbook-air.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/ai-memory-crunch-hits-macbook-air.html",
-        "source_published_at": "2026-08-02T21:33:00.000Z",
-        "site_published_at": "2026-08-02T23:00:02.982Z",
-        "sources": [
-          {
-            "title": "The global memory shortage hits the MacBook Air",
-            "url": "https://techcrunch.com/2026/08/02/the-global-memory-shortage-hits-the-macbook-air/"
-          },
-          {
-            "title": "MacBook Air reportedly facing major supply shortages due to AI-driven memory crisis",
-            "url": "https://9to5mac.com/2026/08/02/macbook-air-reportedly-facing-major-supply-shortages-due-to-ai-driven-memory-crisis/"
-          },
-          {
-            "title": "AI 产业扩张引发内存芯片短缺，消息称苹果 MacBook Air 笔记本出现供应紧张局面",
-            "url": "https://www.ithome.com/0/984/822.htm"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-qwenwork-public-beta.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-qwenwork-public-beta.html",
-      "title": "阿里「千问办公」开启公测，企业级 Agent 三端合一",
-      "summary": "阿里将 QoderWork、MuleRun、悟空三款产品整合为千问办公，桌面端、云端与协同 Agent 打包，底座换成新发布的 Qwen3.8。",
-      "content_text": "## 三款产品合成一个\n\n8 月 3 日，在 Qwen3.8 发布数小时后，阿里的「千问办公」（QwenWork）开启公测。这款产品由此前独立的 QoderWork、MuleRun 与悟空三条线整合而来，阿里称其为业内首款同时支持桌面端 Agent、云端 Agent 与企业协同 Agent 的产品。\n\n底座模型是同日发布的旗舰 Qwen3.8。目前网页版与独立 PC 客户端已开放，钉钉 PC 端与手机端入口据称近期上线。新用户注册可得 2000 积分，公测首周每日登录还可领取 500 至 2000 积分。\n\n## 瞄的是企业流程，不是个人效率\n\n阿里的定位相当明确：全面对准企业级市场。除了写文档、做 PPT，千问办公主打的是接入企业内部数据库与既有业务流程，并引入「组织级 Skill」——把一套可复用的操作流程封装起来供全团队共享，让 Agent 的行为方式成为公司层面的基础设施，而不是某个员工私藏的提示词。\n\n这个思路与今年 Agent 市场的走向一致：企业落地的瓶颈很少是模型能力本身，而是权限、数据接入与流程可复现这些「管道活」。把执行拆到能碰本机文件的本地客户端、跑长任务的云端运行时，以及负责团队协同的共享层，本质上是想一次性把三件事都覆盖掉。\n\n## 为什么重要\n\n阿里现在能在同一天把整条栈端到端交付：前沿模型、编程入口，再加一个同时消费两者的办公 Agent。这种垂直捆绑与微软的 Copilot、谷歌的 Workspace 是同一套打法，但定价与分发走的是钉钉，直插 Microsoft 365 渗透率极低的中国企业市场。对正在评估 Agent 的中国公司来说，问题从「买谁的模型」变成了「以谁的工作台为标准」。公测同时也给阿里提供了一条快速反馈通道，用真实企业负载检验 Qwen3.8 的长周期表现——那正是其模型发布所主张、却尚未在规模上被证明的部分。",
-      "date_published": "2026-08-03T04:47:00.000Z",
-      "date_modified": "2026-08-03T11:00:03.158Z",
-      "tags": [
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/alibaba-qwenwork-public-beta.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-qwenwork-public-beta.html",
-        "source_published_at": "2026-08-03T04:47:00.000Z",
-        "site_published_at": "2026-08-03T11:00:03.158Z",
-        "sources": [
-          {
-            "title": "阿里「千问办公」开启公测",
-            "url": "https://www.qbitai.com/2026/08/465211.html"
-          },
-          {
-            "title": "阿里Qwen3.8正式发布，编程与办公再进化",
-            "url": "https://www.qbitai.com/2026/08/465215.html"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cogent-ai-vr-1-cyber-model.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cogent-ai-vr-1-cyber-model.html",
-      "title": "Cogent AI 发布 VR-1：受控开放的攻击链推理模型",
-      "summary": "Cogent AI 推出安全专用模型 VR-1，可组合并验证企业级多阶段攻击路径，权重不公开，仅向审核通过的机构开放。",
-      "content_text": "## 训的是入侵链条，不是漏洞清单\n\n8 月 3 日，Cogent AI 发布 VR-1——一个专门针对网络安全场景做后训练的模型。它的目标不是找出单个漏洞，而是拼出并验证完整的攻击路径：在信息不完整的环境中做侦察，提出并验证假设，跨系统边界串联步骤，在某条路径失败后重新找路，并且用「实际打通」而非「文字描述」来确认目标达成。单次运行上限约为两小时或 250 个 agent 轮次。\n\n随模型一同发布的还有两件东西：基于实际执行的评测集 IntrusionBench，以及面向安全智能体的受管运行时 Cogent AI Harness。\n\n## 成绩单，以及它的前提\n\nCogent 称在黑盒测试中，VR-1 的攻击路径成功率约为 Kimi K3、Claude Opus 4.8 与 GLM-5.2 的两倍，成本约为其四分之一。但官方也直言，VR-1 自身的黑盒成功率仍低于 30%，并将结果标注为初步结论——这个数字在说明模型能力之外，同样说明端到端攻击链条依旧很难。\n\n权重不公开。访问需通过 Cogent Frontier Access Program，仅面向经审核的机构，并附带防护策略与审计日志。官方给出的客户画像是《财富》2000 强量级企业与政府部门，覆盖金融、医疗、SaaS、零售、电信与关键基础设施。\n\n## 为什么重要\n\n进攻性安全能力是开源权重之争最难处理的地带，VR-1 给出的答案很明确：能力自己造，权重自己留，客户逐个准入，全程留痕。这套结构更像军品出口管制，而不像一次模型发布，接下来关于发布政策的争论中，两派都会引用它。\n\n对能力本身的判断则应克制。厂商自己披露的完整黑盒链条成功率不足 30%，足以说明自主入侵远未被攻克——这也与 VulnCheck 近期的统计相呼应：2026 上半年由 AI 发现的漏洞中，仅 1.3% 被确认遭到实际利用。「能编出像样的攻击路径」与「真能打进去」之间的落差，仍是这个行业最主要的安全余量。",
-      "date_published": "2026-08-03T07:28:00.000Z",
-      "date_modified": "2026-08-03T11:00:03.158Z",
-      "tags": [
-        "安全",
-        "模型",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cogent-ai-vr-1-cyber-model.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cogent-ai-vr-1-cyber-model.html",
-        "source_published_at": "2026-08-03T07:28:00.000Z",
-        "site_published_at": "2026-08-03T11:00:03.158Z",
-        "sources": [
-          {
-            "title": "Cogent AI Team Releases VR-1: A Frontier Cyber Reasoning Model",
-            "url": "https://www.marktechpost.com/2026/08/03/ogent-ai-team-releases-vr-1/"
           }
         ]
       }

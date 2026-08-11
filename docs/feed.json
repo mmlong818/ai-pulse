@@ -13,6 +13,47 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/alibaba-wan-cli-agent-video.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/alibaba-wan-cli-agent-video.html",
+      "title": "Alibaba ships Wan CLI to put video gen in agents",
+      "summary": "Alibaba's Wan team released a command-line tool that lets coding agents call its image and video models programmatically, installed by pasting one command.",
+      "content_text": "## Generative video as a callable tool\n\nAlibaba's Wan team announced the Wan CLI on Tuesday, a command-line interface that lets AI agents invoke Wan's image and video generation directly rather than through a web UI. The installation path the team described is deliberately agent-shaped: log in at wan.video, find the CLI section in the lower-left of the interface, copy the provided command, and paste it into an agent, which installs the tool itself.\n\nOnce installed, an agent can generate images and video programmatically as part of a longer workflow — scripting a sequence of shots, iterating on a prompt against a returned result, or wiring generation into a build step. Alibaba had already published Wan-skills, an Apache 2.0 repository of agent skills covering its Wan 2.7 image model and a document-to-slides generator, alongside the DashScope APIs on Model Studio. The CLI collapses that surface into a single installable entry point.\n\nThe team paired the launch with fresh material on Wan-Animate-2-Lite, the efficiency variant of the character-animation model it open-sourced on August 7. Wan says the Lite variant generates arbitrarily long sequences chunk by chunk with no observable error accumulation, which is the property that matters for streaming avatars and live hosts rather than fixed-length clips.\n\n## Why it matters\n\nGenerative video has so far been sold mostly as a destination product — a site you visit, a credit you spend, a clip you download. The competitive question now shifting into view is which video model becomes the default primitive that agents reach for when a task happens to need moving pictures. That is a distribution fight with different economics: whoever is installed inside agent workflows captures repeated programmatic calls rather than discrete creative sessions, and gets embedded in pipelines that are costly to rip out.\n\nAlibaba is moving early there, and from an unusual position — it ships both open weights that anyone can self-host and a hosted API, so agent integration feeds a paid endpoint without foreclosing local use. Rivals including Runway, Kuaishou's Kling and ByteDance's Seedance have been expanding through platform partnerships and third-party canvases instead. A CLI is a smaller artifact than a model release, but it is aimed squarely at where AIGC and agent tooling are converging.",
+      "date_published": "2026-08-11T07:25:00.000Z",
+      "date_modified": "2026-08-11T11:00:03.171Z",
+      "tags": [
+        "AIGC",
+        "Agents",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/alibaba-wan-cli-agent-video.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-wan-cli-agent-video.html",
+        "source_published_at": "2026-08-11T07:25:00.000Z",
+        "site_published_at": "2026-08-11T11:00:03.171Z",
+        "sources": [
+          {
+            "title": "Alibaba Wan on X: The Wan CLI is here",
+            "url": "https://x.com/Alibaba_Wan/status/2087077985333768680"
+          },
+          {
+            "title": "Alibaba Wan on X: Wan-Animate-2-Lite real-time streaming",
+            "url": "https://x.com/Alibaba_Wan/status/2087067244304220182"
+          },
+          {
+            "title": "GitHub — Wan-Video/Wan-skills: AI Agent Skills for Wan",
+            "url": "https://github.com/Wan-Video/Wan-skills"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/claude-riemann-zeta-lower-bound.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/claude-riemann-zeta-lower-bound.html",
       "title": "Claude lifts Riemann zeta lower bound to 67.2%",
@@ -121,6 +162,47 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/muse-glimmer-arena-debut-rankings.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/muse-glimmer-arena-debut-rankings.html",
+      "title": "Meta's Muse Glimmer debuts mid-pack in Arena boards",
+      "summary": "Arena's first human-preference scores put Meta's new Apache-2.0 model at #77 in Code Arena WebDev and #97 in Text Arena, 26th and 24th among open models.",
+      "content_text": "## First independent numbers on Meta's open-weights return\n\nArena published its first human-preference scores for Muse Glimmer overnight, a day after Meta released the 30-billion-parameter model under Apache 2.0. In Code Arena's WebDev leaderboard the model entered at #77 overall with 1,359 points, ranking 26th among open models. In Text Arena it landed at #97 overall with 1,426 points, 24th among open models.\n\nMuse Glimmer is Meta's most consequential open release in more than a year and the concrete expression of a strategy reset toward open weights. It is built for local, always-on agent work rather than leaderboard chat: roughly 30B parameters including a 1.8B vision encoder, multimodal input, a context window above 131,000 tokens, and a footprint small enough to run in about 18 GB on consumer hardware through LM Studio. Hosting providers including Baseten carried it on day zero.\n\nThat design context cuts both ways when reading the Arena placements. Human-preference boards reward conversational polish and are dominated by far larger frontier and near-frontier systems, so a 30B local model placing outside the top 70 is not by itself evidence of weakness on the tasks it was built for — tool use, function-schema adherence and multi-step task completion, which these leaderboards measure only indirectly. Developer accounts of early testing have been more favourable on agentic code exploration than on open-ended creative generation.\n\n## Why it matters\n\nStill, the placements are the first outside data point against a release Meta positioned as a strategic reset, and they land at an awkward angle. Being 24th to 26th among open models means Glimmer debuts well behind the Chinese open-weight tier — Kimi, GLM, Qwen and DeepSeek derivatives — that has spent the past year defining what an open model at the frontier looks like. Meta's argument for the pivot rests on out-executing that cohort, not on trailing it in the boards it will inevitably be compared on.\n\nArena separately noted this week that the gap between proprietary and open-source performance has narrowed to its tightest point yet. Glimmer is not where that narrowing is happening, which is the more pointed finding for Meta.",
+      "date_published": "2026-08-11T00:54:00.000Z",
+      "date_modified": "2026-08-11T11:00:03.171Z",
+      "tags": [
+        "Models",
+        "Open Source",
+        "Research"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/muse-glimmer-arena-debut-rankings.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/muse-glimmer-arena-debut-rankings.html",
+        "source_published_at": "2026-08-11T00:54:00.000Z",
+        "site_published_at": "2026-08-11T11:00:03.171Z",
+        "sources": [
+          {
+            "title": "Arena on X: Muse Glimmer debuts at #77 in Code Arena: WebDev",
+            "url": "https://x.com/arena/status/2086979482162966600"
+          },
+          {
+            "title": "Arena on X: In the Text Arena Muse Glimmer landed #97 overall",
+            "url": "https://x.com/arena/status/2086979489612079538"
+          },
+          {
+            "title": "Simon Willison — Introducing Muse Glimmer",
+            "url": "https://simonwillison.net/2026/Aug/10/introducing-muse-glimmer/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt-5-6-cyber-daybreak.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt-5-6-cyber-daybreak.html",
       "title": "OpenAI ships GPT-5.6-Cyber to vetted security teams",
@@ -157,6 +239,47 @@
           {
             "title": "OpenAI unveils GPT-5.6-Cyber to help prepare for AI cyberattacks",
             "url": "https://www.axios.com/2026/08/10/openai-gpt-astra-restrictions-safety-hacking-defenders"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/zhipu-zcode-one-million-users.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/zhipu-zcode-one-million-users.html",
+      "title": "Zhipu's ZCode hits 1M users, resets all usage limits",
+      "summary": "Z.ai says its agentic coding environment passed one million users and wiped usage counters for every GLM Coding Plan subscriber as a thank-you.",
+      "content_text": "## A scale marker for Chinese coding agents\n\nZ.ai, the international arm of Beijing-based Zhipu AI, said on Tuesday morning Beijing time that ZCode — its own agentic coding environment built around the GLM model family — has passed one million users. To mark the milestone, the company reset usage limits for every subscriber on its GLM Coding Plan, effectively handing the entire paying base a fresh quota mid-cycle. Z.ai said it is also rolling out an update aimed at converting the models' long-horizon capabilities into finished work rather than long-running attempts.\n\nZCode is Z.ai's answer to Claude Code, Cursor and GitHub Copilot: a terminal-and-editor harness that drives the company's GLM models through multi-step engineering tasks, with bring-your-own-key support for third-party models and a usage-quota bonus for GLM Coding Plan subscribers. The plan itself has been Zhipu's most successful international product, priced far below Western equivalents and marketed directly at developers looking to migrate off subscription tiers from US labs.\n\n## Why the reset is the interesting part\n\nThe user number is notable, but the limit reset carries more information. In January, Zhipu capped new sign-ups to the GLM Coding Plan, citing computing constraints as demand outran the serving capacity it could allocate — an unusual public admission from a lab that had been aggressively courting overseas developers. Handing out additional quota seven months later implies the inference bottleneck has eased, whether through better serving efficiency, more accelerators, or both.\n\nThat matters beyond one company. Coding agents have become the primary commercial wedge for Chinese labs outside China: they monetise in hard currency, they do not require a consumer app, and they are relatively insensitive to brand. A million users on a single Chinese-built harness — plus the ability to give away rather than ration capacity — suggests the constraint on Chinese open-weight labs competing internationally is shifting from compute supply toward product and trust. It also sharpens the pricing squeeze on Western coding-agent subscriptions, which continue to meter usage tightly while a MIT-licensed alternative periodically zeroes the meter.",
+      "date_published": "2026-08-11T04:58:00.000Z",
+      "date_modified": "2026-08-11T11:00:03.171Z",
+      "tags": [
+        "Agents",
+        "Industry",
+        "Open Source"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/zhipu-zcode-one-million-users.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-zcode-one-million-users.html",
+        "source_published_at": "2026-08-11T04:58:00.000Z",
+        "site_published_at": "2026-08-11T11:00:03.171Z",
+        "sources": [
+          {
+            "title": "Z.ai on X: ZCode now has 1 million users",
+            "url": "https://x.com/Zai_org/status/2087040814677725262"
+          },
+          {
+            "title": "Z.ai launches ZCode to challenge Cursor, Claude Code and GitHub Copilot in AI coding",
+            "url": "https://venturebeat.com/technology/z-ai-launches-zcode-to-challenge-cursor-claude-code-and-github-copilot-in-ai-coding"
+          },
+          {
+            "title": "China AI Firm Zhipu Limits Coding Agent Access as Demand Soars",
+            "url": "https://www.bloomberg.com/news/articles/2026-01-21/china-ai-firm-zhipu-limits-coding-agent-access-as-demand-soars"
           }
         ]
       }
@@ -1864,114 +1987,6 @@
           {
             "title": "Alibaba Wan on X: Try it now",
             "url": "https://x.com/Alibaba_Wan/status/2084481145115439473"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/ai-memory-crunch-hits-macbook-air.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/ai-memory-crunch-hits-macbook-air.html",
-      "title": "AI memory crunch pushes MacBook Air into shortage",
-      "summary": "Apple's highest-volume laptop is now short of supply as DRAM makers divert wafers to AI data centres, with custom orders slipping into September.",
-      "content_text": "The memory shortage created by AI data-centre buildouts has reached Apple's best-selling computer. Bloomberg's Mark Gurman reported on Sunday that MacBook Air supply has tightened globally, with configured orders on Apple's own store slipping into late August or September in North America, Europe and India. Earlier this year the squeeze was confined to Apple's lower-volume desktops, the Mac mini and Mac Studio; the Air is the company's highest-volume Mac and its primary education-market product.\n\nApple's response, according to the report, has been a mix of pricing and marketing adjustments rather than a fix. The company has raised prices on affected models, begun sourcing memory from Chinese suppliers to widen its vendor base, and delayed its back-to-school promotion — originally planned for June — while steering campaign emphasis toward base-model MacBook Pro units that are easier to keep in stock. Apple has also started attaching availability disclaimers to Air marketing materials.\n\nThe underlying cause is allocation, not capacity loss. DRAM fabricators have been shifting wafer starts toward high-bandwidth memory, the stacked DRAM that sits beside AI accelerators and commands far higher margins than the LPDDR modules that go into laptops. Consumer PC lines now effectively bid against hyperscaler orders for the same fab output. DDR5 and NAND contract prices have climbed sharply since January, and most announced greenfield memory capacity is not scheduled to produce volume before 2027.\n\n## Why it matters\n\nThis is the clearest consumer-visible evidence yet that AI infrastructure spending has begun to price other industries out of the semiconductor supply chain. Apple has among the strongest procurement positions in electronics — long-term contracts, prepayments, enormous volume — and it still cannot hold stock on its flagship laptop. That sets a floor expectation for everyone below it: PC OEMs, smartphone makers, console and automotive buyers face worse terms and longer waits. For AI economics specifically, memory is now a hard constraint on both sides of the ledger, raising the bill of materials for on-device AI hardware at the same time it inflates the cost of the accelerators the cloud runs on.",
-      "date_published": "2026-08-02T21:33:00.000Z",
-      "date_modified": "2026-08-02T23:00:02.982Z",
-      "tags": [
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/ai-memory-crunch-hits-macbook-air.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/ai-memory-crunch-hits-macbook-air.html",
-        "source_published_at": "2026-08-02T21:33:00.000Z",
-        "site_published_at": "2026-08-02T23:00:02.982Z",
-        "sources": [
-          {
-            "title": "The global memory shortage hits the MacBook Air",
-            "url": "https://techcrunch.com/2026/08/02/the-global-memory-shortage-hits-the-macbook-air/"
-          },
-          {
-            "title": "MacBook Air reportedly facing major supply shortages due to AI-driven memory crisis",
-            "url": "https://9to5mac.com/2026/08/02/macbook-air-reportedly-facing-major-supply-shortages-due-to-ai-driven-memory-crisis/"
-          },
-          {
-            "title": "AI 产业扩张引发内存芯片短缺，消息称苹果 MacBook Air 笔记本出现供应紧张局面",
-            "url": "https://www.ithome.com/0/984/822.htm"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/alibaba-qwenwork-public-beta.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/alibaba-qwenwork-public-beta.html",
-      "title": "Alibaba opens QwenWork enterprise agent to public beta",
-      "summary": "Alibaba merged three internal agent products into QwenWork, a suite pairing desktop, cloud and team agents on top of the new Qwen3.8 model.",
-      "content_text": "## Three products folded into one\n\nAlibaba began a public beta of QwenWork (千问办公) on Monday, hours after the Qwen3.8 launch. The product consolidates three previously separate efforts — QoderWork, MuleRun and Wukong (悟空) — into a single enterprise agent suite, and Alibaba claims it is the first product to combine desktop-side agents, cloud-side agents and team-collaboration agents in one package.\n\nThe suite runs on Qwen3.8, the flagship generation released the same day. A web client and a standalone PC client are open now; entry points inside DingTalk on both desktop and mobile are described as arriving soon. New accounts receive 2,000 credits, with daily login top-ups of 500 to 2,000 credits during the first week.\n\n## Aimed at company workflows, not individuals\n\nAlibaba's framing is explicitly enterprise. Beyond drafting documents and building slides, QwenWork is pitched as connecting to internal databases and existing business workflows, and it introduces organisation-level Skills — reusable, packaged procedures a team can define once and share, so an agent behaviour becomes company infrastructure rather than one person's prompt.\n\nThat design mirrors where the agent market has moved this year: the bottleneck for enterprise deployment is rarely raw model capability but the plumbing of permissions, data access and repeatable procedure. Splitting execution across a local client that can touch files on the machine, a cloud runtime for long tasks, and a shared layer for team coordination is an attempt to cover all three at once.\n\n## Why it matters\n\nAlibaba is now shipping the full stack in a single day — a frontier model, a coding surface, and an office agent that consumes both. That vertical bundling is the same strategy Microsoft runs with Copilot and Google with Workspace, but priced and distributed through DingTalk into China's enterprise base, where Microsoft 365 has little reach. For Chinese firms weighing agent adoption, the practical question shifts from which model to license to whose workspace to standardise on. The public beta also gives Alibaba a fast feedback loop on Qwen3.8's long-horizon behaviour under real corporate workloads — exactly the evidence its model launch claims but cannot yet prove at scale.",
-      "date_published": "2026-08-03T04:47:00.000Z",
-      "date_modified": "2026-08-03T11:00:03.158Z",
-      "tags": [
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/alibaba-qwenwork-public-beta.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-qwenwork-public-beta.html",
-        "source_published_at": "2026-08-03T04:47:00.000Z",
-        "site_published_at": "2026-08-03T11:00:03.158Z",
-        "sources": [
-          {
-            "title": "阿里「千问办公」开启公测",
-            "url": "https://www.qbitai.com/2026/08/465211.html"
-          },
-          {
-            "title": "阿里Qwen3.8正式发布，编程与办公再进化",
-            "url": "https://www.qbitai.com/2026/08/465215.html"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/cogent-ai-vr-1-cyber-model.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/cogent-ai-vr-1-cyber-model.html",
-      "title": "Cogent AI gates VR-1, a cyber attack-path model",
-      "summary": "Cogent AI released VR-1, a security-specialised model that composes and verifies multi-stage enterprise attack paths, with weights withheld from the public.",
-      "content_text": "## Post-trained for intrusion, not vulnerability lists\n\nCogent AI released VR-1 on Monday, a model post-trained specifically for cybersecurity work. Its stated target is not finding individual vulnerabilities but assembling and verifying whole attack paths: investigating an environment under incomplete information, forming and testing hypotheses, chaining steps across system boundaries, recovering after a failed route, and confirming an objective by executing it rather than describing it. Runs are bounded at roughly two hours or 250 agent turns.\n\nThe model shipped with two accompanying pieces: IntrusionBench, an execution-based evaluation suite, and the Cogent AI Harness, a governed runtime for security agents.\n\n## Numbers, and their caveats\n\nCogent reports that in black-box testing VR-1 achieved roughly double the attack-path success rate of Kimi K3, Claude Opus 4.8 and GLM-5.2 at about a quarter of the cost. It also states plainly that VR-1's own black-box success rate remains under 30% and calls the results preliminary — a rate that says as much about how hard end-to-end intrusion chaining still is as it does about the model.\n\nWeights are not public. Access runs through a Cogent Frontier Access Program limited to vetted organisations, with guardrails and audit logging attached. The stated customer base is Fortune 2000-scale enterprises and government bodies in finance, healthcare, SaaS, retail, telecom and critical infrastructure.\n\n## Why it matters\n\nOffensive security capability is where the open-weights debate gets uncomfortable, and VR-1 is a clear statement of one answer: build the capability, keep the weights, admit customers individually, log everything. That structure is closer to arms-export control than to a model launch, and it will be cited by both camps in the current argument over release policy.\n\nThe honest read on capability is more measured. Sub-30% success on full black-box chains, published by the vendor itself, undercuts the idea that autonomous intrusion is solved — and echoes VulnCheck's recent finding that only 1.3% of AI-discovered vulnerabilities in the first half of 2026 were confirmed exploited. The gap between generating plausible attack paths and landing them remains the industry's main margin of safety.",
-      "date_published": "2026-08-03T07:28:00.000Z",
-      "date_modified": "2026-08-03T11:00:03.158Z",
-      "tags": [
-        "Safety",
-        "Models",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cogent-ai-vr-1-cyber-model.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cogent-ai-vr-1-cyber-model.html",
-        "source_published_at": "2026-08-03T07:28:00.000Z",
-        "site_published_at": "2026-08-03T11:00:03.158Z",
-        "sources": [
-          {
-            "title": "Cogent AI Team Releases VR-1: A Frontier Cyber Reasoning Model",
-            "url": "https://www.marktechpost.com/2026/08/03/ogent-ai-team-releases-vr-1/"
           }
         ]
       }
