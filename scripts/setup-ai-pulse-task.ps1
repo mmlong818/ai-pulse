@@ -14,7 +14,7 @@ if (-not (Test-Path -LiteralPath $Bat)) {
 
 $Action = New-ScheduledTaskAction -Execute $Bat -WorkingDirectory $Root
 $Triggers = @(
-  New-ScheduledTaskTrigger -Daily -At '07:00',
+  New-ScheduledTaskTrigger -Daily -At '07:00'
   New-ScheduledTaskTrigger -Daily -At '19:00'
 )
 $Settings = New-ScheduledTaskSettingsSet `
@@ -36,7 +36,7 @@ if ($RunWhetherLoggedOn) {
     -Force | Out-Null
 } else {
   $User = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
-  $Principal = New-ScheduledTaskPrincipal -UserId $User -LogonType Interactive -RunLevel LeastPrivilege
+  $Principal = New-ScheduledTaskPrincipal -UserId $User -LogonType Interactive -RunLevel Limited
   Register-ScheduledTask `
     -TaskName $TaskName `
     -Action $Action `
