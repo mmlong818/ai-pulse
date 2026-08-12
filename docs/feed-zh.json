@@ -13,6 +13,201 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cohere-north-micro-vision.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cohere-north-micro-vision.html",
+      "title": "Cohere 开放 24 亿参数视觉模型，瞄准端侧部署",
+      "summary": "North Micro Vision 以 24 亿参数承载文档和视觉理解能力，开放权重并采用 Apache 2.0 许可证。",
+      "content_text": "## 可定制的小型视觉模型\n\nCohere 发布视觉语言模型 North Micro Vision，参数量为 24 亿，面向端侧部署和专业视觉应用。模型权重已在 Hugging Face 开放，并采用 Apache 2.0 许可证，允许商业使用、修改和再分发，用户不必依赖 Cohere 的托管服务。\n\n该模型重点处理结构化信息提取、视觉问答，以及文档、图表和科学图像理解。Cohere 公布的对比结果显示，它在部分视觉基准上超过了体量相近的 Gemma 4 E2B 和 Ministral 3 3B。不过，厂商选择的评测仍需独立验证，尤其要观察模型在真实业务中的图片类型、语言和复杂版式上能否保持表现。\n\n24 亿参数的体量是这次发布的核心。North Micro Vision 可以面向苹果设备和中小型 GPU 环境，而不是只能运行在数据中心集群。发布当天，社区已提供苹果 MLX 框架支持；Axolotl 和英伟达工具链则覆盖微调与部署。Cohere 也明确把它定位为可进一步训练的视觉底座，例如针对某一种固定表单提取字段，或专门理解某类技术图纸。\n\n## 为何重要\n\n许多高价值视觉任务并不需要一个什么问题都能回答的通用助手，而是需要可控、低成本、靠近数据运行，并能适配固定格式的模型。对于处理敏感企业文档的场景，一款采用宽松许可证的小模型，实际部署价值可能高于大型系统在基准上取得的有限提升。North Micro Vision 也延续了开放模型领域的一条重要趋势：过去只能通过云端多模态 API 获得的能力，正在被拆分为设备厂商和软件公司可以自行拥有、微调和运营的小型组件。",
+      "date_published": "2026-08-12T16:07:00.000Z",
+      "date_modified": "2026-08-12T23:00:03.612Z",
+      "tags": [
+        "模型",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cohere-north-micro-vision.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cohere-north-micro-vision.html",
+        "source_published_at": "2026-08-12T16:07:00.000Z",
+        "site_published_at": "2026-08-12T23:00:03.612Z",
+        "sources": [
+          {
+            "title": "North Micro Vision Instruct Model Card",
+            "url": "https://huggingface.co/CohereLabs/North-Micro-Vision-Instruct"
+          },
+          {
+            "title": "Cohere Announces North Micro Vision",
+            "url": "https://x.com/cohere/status/2087571582960984484"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/google-sl2t-pixel.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/google-sl2t-pixel.html",
+      "title": "谷歌将手语输入带到 Pixel 11，首发支持美式手语",
+      "summary": "DeepMind 的 SL2T 模型进入 Gboard 与实时转写，让 Pixel 11 用户可直接用美式手语输入英文。",
+      "content_text": "## 从实验指标走向手机输入法\n\nGoogle DeepMind 推出多语言手语转文字模型 SL2T，并将其用于 Pixel 11 的 Gboard 手语听写和 Live Transcribe 双向交流功能。首发版本支持把美式手语翻译成英文，用户在写消息、搜索网页或向 Gemini 发出请求时，可以直接对着手机打手语。谷歌表示，后续将扩展到更多设备和语言组合。\n\n系统不会直接把原始摄像头画面上传到服务器，而是先由端侧感知模型提取面部、双手、手臂和躯干的运动坐标，再发送这些坐标完成翻译，从而减少离开手机的可识别视觉信息。模型还针对传统手语数据集容易忽略的真实使用场景进行了优化，包括一只手拿手机时的单手表达、左利手表达，以及不应被误判为语言的无意动作。\n\nDeepMind 表示，SL2T 的研发由聋人员工和外部手语顾问委员会共同参与。相关训练工作覆盖 50 多种手语，但首发产品目前只有“美式手语转英文”这一种组合。这个区别很重要：手语是拥有独立语法的自然语言，并不是把周围口语逐词替换成动作，因此扩展新语言远不只是更换一套词汇。\n\n## 为何重要\n\n手语识别研究已经持续多年，但真正成为可靠通用输入方式的成果仍然很少。SL2T 被整合进键盘和实时交流工具后，衡量标准将不再只是实验室准确率，而是聋人用户能否在日常生活中持续依赖它。首发范围仍然有限，只覆盖一代手机和单一翻译方向；不过，它为多模态 AI 找到了一个清晰、具体的消费级场景，也提出了一套更重视隐私的摄像头助手架构，其他厂商今后很难绕开这一标准。",
+      "date_published": "2026-08-12T14:01:00.000Z",
+      "date_modified": "2026-08-12T23:00:03.612Z",
+      "tags": [
+        "研究",
+        "模型",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-sl2t-pixel.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-sl2t-pixel.html",
+        "source_published_at": "2026-08-12T14:01:00.000Z",
+        "site_published_at": "2026-08-12T23:00:03.612Z",
+        "sources": [
+          {
+            "title": "Putting Sign Language AI into Users’ Hands",
+            "url": "https://deepmind.google/blog/putting-sign-language-ai-into-users-hands/"
+          },
+          {
+            "title": "Google DeepMind SL2T Announcement",
+            "url": "https://x.com/GoogleDeepMind/status/2087541213284946191"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/grok-46-agents.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/grok-46-agents.html",
+      "title": "SpaceXAI 发布 Grok 4.6，主攻长程智能体任务",
+      "summary": "Grok 4.6 以 50 万 token 上下文、原生工具调用和更低定价切入编程及长时间运行的智能体工作流。",
+      "content_text": "## 围绕长时间任务优化\n\nSpaceXAI 发布新一代前沿模型 Grok 4.6，重点面向编程、知识工作以及需要连续多轮调用工具的智能体。模型已通过官方 API 开放，并在发布当天进入 Devin、Poe 等第三方产品，因此其覆盖范围从一开始就不局限于 SpaceXAI 自有应用。\n\nGrok 4.6 支持 50 万 token 上下文，并原生提供函数调用、代码执行、网页搜索和 X 搜索。SpaceXAI 还重点强调上下文压缩与可预测的提示缓存，试图控制智能体反复读取代码库、执行程序和修改计划时不断上升的成本与不稳定性。标准 API 定价为每百万输入 token 2 美元、每百万输出 token 6 美元，另有价格更高的高速服务档位。\n\nArtificial Analysis 的初步独立测试中，Grok 4.6 在 Intelligence Index 综合指标上获得 61 分，与 OpenAI GPT-5.6 Sol 处于相近水平，而测试工作负载的成本更低。在衡量智能体知识工作的 AA-Briefcase 中，它相较 Grok 4.5 也有明显提升。不过，基准成绩不能直接等同于真实生产效果：智能体框架、上下文长度、缓存命中率和重试次数都会显著改变最终性能与总成本。\n\n## 为何重要\n\n这次发布反映出前沿模型竞争重心正在变化。厂商比拼的不再只是一次回答是否更聪明，而是模型能否在持续数小时的工作流中保持可靠且经济。SpaceXAI 希望借助有竞争力的评测表现、内置工具和进取定价，成为其他公司智能体产品中的默认“执行者”。多家平台首日接入也说明，未来模型分发的关键入口越来越可能是编程智能体和工作流平台，而不只是面向消费者的聊天应用。",
+      "date_published": "2026-08-12T15:32:00.000Z",
+      "date_modified": "2026-08-12T23:00:03.612Z",
+      "tags": [
+        "模型",
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/grok-46-agents.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/grok-46-agents.html",
+        "source_published_at": "2026-08-12T15:32:00.000Z",
+        "site_published_at": "2026-08-12T23:00:03.612Z",
+        "sources": [
+          {
+            "title": "Introducing Grok 4.6",
+            "url": "https://x.ai/news/grok-4-6"
+          },
+          {
+            "title": "Grok 4.6 Benchmarks and Analysis",
+            "url": "https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis"
+          },
+          {
+            "title": "Grok 4.6 in Devin",
+            "url": "https://x.com/cognition/status/2087579582492987881"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen38-weights-open.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen38-weights-open.html",
+      "title": "阿里开放 Qwen3.8 旗舰模型权重，参数达 2.4 万亿",
+      "summary": "阿里正式开放 Qwen3.8-2.4T-A95B 权重，为代码与长程智能体提供可独立部署的超大规模基础模型。",
+      "content_text": "## 正式开放权重\n\n阿里 Qwen 团队发布 Qwen3.8-2.4T-A95B 的模型权重和模型卡，让外部机构可以下载并自行运行 Qwen3.8-Max 背后的基础模型。该模型采用混合专家架构，总参数量达 2.4 万亿，但每个 token 仅激活约 950 亿参数，目标是在扩大模型总容量的同时，避免每次推理都调用全部参数。\n\n公开版本原生支持 25.6 万 token 上下文，重点面向编程、复杂工具调用和长时间运行的智能体工作流。Together AI、Baseten 等推理平台在发布当天即提供托管服务；Unsloth 还推出极限一比特量化版本，把原本约 4.9TB 的模型压缩至约 397GB。不过，即使是压缩版也远超普通消费级设备的承载能力，说明“权重可下载”并不等于多数开发者都能在本地轻松部署。\n\n需要注意的是，开放权重版本并不完全等同于阿里的商业服务 Qwen3.8-Max。模型文档显示，托管版还提供视觉输入、非思考模式、内置工具以及默认 100 万 token 上下文。因此，需要数据主权或深度定制的用户获得了核心模型，但不会自动拥有云端产品的全部能力。\n\n## 为何重要\n\n这是迄今规模最大的可公开下载语言模型之一。多家推理服务商同步上线，也显著缩短了开放权重从发布到生产可用之间的时间。更关键的是，它为云服务商、国家级 AI 项目和大型企业提供了一个面向智能体软件开发的闭源 API 替代方案。高昂的硬件门槛会限制直接部署，但开放权重将成为量化、微调和推理系统研究的共同底座，也会迫使西方前沿实验室用更难复制的能力来证明闭源模式的价值。",
+      "date_published": "2026-08-12T15:01:00.000Z",
+      "date_modified": "2026-08-12T23:00:03.612Z",
+      "tags": [
+        "模型",
+        "开源",
+        "Agent"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/qwen38-weights-open.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen38-weights-open.html",
+        "source_published_at": "2026-08-12T15:01:00.000Z",
+        "site_published_at": "2026-08-12T23:00:03.612Z",
+        "sources": [
+          {
+            "title": "Qwen3.8-2.4T-A95B Model Card",
+            "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
+          },
+          {
+            "title": "Qwen3.8-2.4T-A95B ModelScope Page",
+            "url": "https://modelscope.cn/models/Qwen/Qwen3.8-2.4T-A95B"
+          },
+          {
+            "title": "Qwen3.8-Max Day-Zero Availability on Together AI",
+            "url": "https://x.com/togethercompute/status/2087665914556944772"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/twitch-ai-training-optout.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/twitch-ai-training-optout.html",
+      "title": "Twitch 开放 AI 训练退出选项，但默认仍允许使用",
+      "summary": "Twitch 允许主播拒绝亚马逊使用频道内容训练生成式 AI，但默认设置仍将符合条件的数据纳入训练范围。",
+      "content_text": "## 不主动关闭，就可能进入训练集\n\nTwitch 新增隐私控制，允许主播阻止其频道内容被用于训练亚马逊的生成式 AI 模型。真正关键的是默认规则：如果创作者不希望符合条件的直播、点播视频、剪辑、频道文字以及相关聊天消息进入训练流程，就必须自行关闭该选项。\n\n这一设置位于 Twitch 安全与隐私页面的“生成式 AI 训练”栏目。Twitch 表示，关闭后将停止把该频道内容用于未来的生成模型训练，并删除此前为这一用途提供的副本。如果用户在其他主播的频道中留言，能否用于训练则由频道所有者的选择决定。退出训练并不会阻止 Twitch 继续把机器学习用于内容推荐、社区治理、赞助工具或隐私条款覆盖的其他平台功能。\n\nTwitch 同时承认，其向亚马逊提供内容已经持续多年。因此，这次变化并非训练刚刚开始，而是用户终于获得了一个明确的退出入口。这段历史也让“删除既有副本”的承诺及其实际覆盖范围更加重要。目前公司没有公开说明哪些亚马逊模型使用过 Twitch 数据、转移了多少内容，也没有披露单个创作者的数据如何影响模型。\n\n## 为何重要\n\n直播档案同时包含长视频、同步语音、游戏或现实动作、主播解说和观众对话，是多模态模型理解长时间事件所需的稀缺数据。但这些内容也包括人脸、声音、受版权保护的素材，以及从未直接与亚马逊协商过的聊天参与者贡献。因此，Twitch 的做法将成为一个重要案例：平台能否依靠默认同意，把整个创作者生态重新用于 AI 训练。退出开关给了主播一个实际可用的工具，却仍把责任放在个人身上，也无法终结有关报酬、知情同意和聊天参与者权利的争议。",
+      "date_published": "2026-08-12T17:29:00.000Z",
+      "date_modified": "2026-08-12T23:00:03.612Z",
+      "tags": [
+        "政策",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/twitch-ai-training-optout.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/twitch-ai-training-optout.html",
+        "source_published_at": "2026-08-12T17:29:00.000Z",
+        "site_published_at": "2026-08-12T23:00:03.612Z",
+        "sources": [
+          {
+            "title": "Twitch Streamers Can Now Opt Out from Training Amazon’s AI",
+            "url": "https://www.theverge.com/tech/979112/twitch-streamers-can-now-opt-out-from-training-amazons-ai"
+          },
+          {
+            "title": "Amazon Will Train on Twitch Content Unless Streamers Opt Out",
+            "url": "https://techcrunch.com/2026/08/12/amazon-will-train-on-twitch-streamers-content-by-default-unless-they-opt-out/"
+          },
+          {
+            "title": "Twitch Security and Privacy Settings",
+            "url": "https://www.twitch.tv/settings/security#settings-security-page-ai-consent"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-adds-content-watermarks.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-adds-content-watermarks.html",
       "title": "Anthropic 为 Claude 文本与文件加入隐形标记",
@@ -1780,205 +1975,6 @@
           {
             "title": "Cursor: We're open-sourcing Mixture-of-Kittens",
             "url": "https://x.com/cursor_ai/status/2084670806613737919"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/far-ai-security-leaderboard-jailbreak-costs.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/far-ai-security-leaderboard-jailbreak-costs.html",
-      "title": "FAR.AI 安全榜：58 美元就能撬开 Grok 的护栏",
-      "summary": "这家非营利机构首份 AI 安全排行榜显示，前沿模型护栏强度差距达百倍，其中两款一个通用越狱都没被找到。",
-      "content_text": "## 一份可横向对比的安全排名\n\nFAR.AI 于 8 月 4 日上线 AI Security Leaderboard，以独立第三方身份公开评估前沿模型的安全护栏在真实攻击面前的表现。团队整理出 60 多种公开记载的越狱技术，构建了自动组合这些技术的工具，随后对每个模型在化学、生物、放射、核、爆炸物与网络攻击五个高危领域上，分别施加 1000 次随机组合攻击和 500 次专家引导攻击。\n\n目标是「通用越狱」——一条能解锁整类被拒请求的可复用提示词，而不是碰巧蒙对一次的回答。\n\n## 差距有多大\n\n结果高度分化。xAI 的 Grok 4.5 被找出 448 个各不相同的通用越狱，谷歌 DeepMind 的 Gemini 3.1 Pro 为 249 个。其中纯自动随机搜索分别贡献 63 个和 18 个，加入专家手动组合后升至 385 个和 231 个，而人工构造的攻击更容易同时在三个以上风险领域生效。Claude Fable 5 与 GPT-5.6 Sol 则是零——任何领域、任何搜索策略下都没被攻破。\n\nFAR.AI 把这些换算成成本：在 Grok 4.5 上找到一个可用的通用越狱约需 58 美元，Gemini 3.1 Pro 约 278 美元；而在守住的两款模型上搜索始终未成功，成本下限已超过 14200 美元且仍在上升。对尚未进榜的开源权重模型，团队称从未花费超过几小时、约 10 至 50 美元就能彻底攻破。值得注意的是，所有被找到的漏洞都属于已知攻击类型，对应的防御手段早已存在、也早已在部署系统中运行。\n\n## 影响\n\n结论不是「护栏很弱」，而是「护栏极不均衡」——同时在售的产品之间存在百倍差距，而这个差距对采购方不可见，也不会体现在业界热衷排名的能力基准上。由于用到的攻击全是公开旧招，这道差距更像是工程投入的选择，而非尚未解决的研究难题。它同时让开源权重之争更加尖锐：如果带实时过滤的托管模型 58 美元就能撬开，可自由下载的那批只需零钱。",
-      "date_published": "2026-08-04T19:42:00.000Z",
-      "date_modified": "2026-08-04T23:00:03.460Z",
-      "tags": [
-        "安全",
-        "研究"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/far-ai-security-leaderboard-jailbreak-costs.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/far-ai-security-leaderboard-jailbreak-costs.html",
-        "source_published_at": "2026-08-04T19:42:00.000Z",
-        "site_published_at": "2026-08-04T23:00:03.460Z",
-        "sources": [
-          {
-            "title": "FAR.AI Launches AI Security Leaderboard Revealing Hundredfold Gap in Frontier AI Model Safeguards",
-            "url": "http://www.prnewswire.com/news-releases/farai-launches-ai-security-leaderboard-revealing-hundredfold-gap-in-frontier-ai-model-safeguards-302838216.html"
-          },
-          {
-            "title": "Open-weight AI models are catching up to the frontier. The safety gap remains.",
-            "url": "https://techcrunch.com/2026/08/04/open-weight-ai-models-are-catching-up-to-the-frontier-the-safety-gap-remains/"
-          },
-          {
-            "title": "FAR.AI: 60 dollars. That's what a universal jailbreak costs",
-            "url": "https://x.com/farairesearch/status/2084742176525767077"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/flux-3-video-exits-early-access.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/flux-3-video-exits-early-access.html",
-      "title": "FLUX 3 视频模型结束灰度，登陆 Runway 与 Krea",
-      "summary": "Black Forest Labs 的 20 秒原生带音轨视频模型 8 月 4 日在 Runway、Krea、Replicate 同步开放，结束限量灰度期。",
-      "content_text": "## 从 Discord 排队到公开可调用\n\nBlack Forest Labs 的 FLUX 3 Video 于 8 月 4 日大范围开放，当天同时出现在 Krea、Replicate 和 Runway 上。该模型 7 月 23 日发布，但此前只以邀请制灰度方式提供，限制商用，也没有公开 API 和第三方托管——7 月下旬 Replicate 与 fal.ai 都还查不到入口。周二的同步上线，才是普通创作者真正能用上它的时间点。\n\n## 这个模型能做什么\n\nFLUX 3 是一套统一的多模态流模型，用同一组主干权重覆盖图像、视频、音频以及机器人动作预测，底层是 BFL 的 Self-Flow 方法，把生成与理解放进同一架构。视频部分可生成最长 20 秒、720p 的片段，音轨在同一次生成过程中产出而非事后配音；支持文生视频、图生视频、参考片段的视频转视频、关键帧过渡控制，以及带音频的续写延长。BFL 强调的卖点包括人脸表情还原、声音与画面内物理事件的对应，以及多语种对白。1080p 输出、FLUX 3 Image，以及官方称年内会放出的开源权重版 FLUX 3 Dev，目前仍未到位。\n\n值得注意的是 Runway 的上架：这家平台如今把竞争对手的「视频+音频」模型摆在自家生成能力旁边一起卖，延续了它近来的聚合器路线。\n\n## 影响\n\n生成式视频的竞争点已经从「片段能有多长」转向「画面和声音是否一次生成」，而 FLUX 3 是少数能原生做到 20 秒同步出声的模型之一。全面开放也解决了一个现实问题：此前商用条款受限的灰度模型，工作室和广告公司无法真正押注。更长线的看点是动作预测头——BFL 让生成画面的同一组权重也去预测物理动作，把一家以图像生成成名的公司塞进了世界模型与机器人的赛道。",
-      "date_published": "2026-08-04T17:35:00.000Z",
-      "date_modified": "2026-08-04T23:00:03.460Z",
-      "tags": [
-        "AIGC",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/flux-3-video-exits-early-access.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/flux-3-video-exits-early-access.html",
-        "source_published_at": "2026-08-04T17:35:00.000Z",
-        "site_published_at": "2026-08-04T23:00:03.460Z",
-        "sources": [
-          {
-            "title": "Krea: introducing FLUX 3, available now",
-            "url": "https://x.com/krea_ai/status/2084694677522157763"
-          },
-          {
-            "title": "Replicate: FLUX 3 Video from BFL is now on Replicate",
-            "url": "https://x.com/replicate/status/2084695365370912909"
-          },
-          {
-            "title": "Runway: FLUX 3 is now available on Runway",
-            "url": "https://x.com/runwayml/status/2084729635720270277"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/jd-joyai-video-edit-open-weights.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/jd-joyai-video-edit-open-weights.html",
-      "title": "京东开源 JoyAI-Video-Edit：160 亿参数实时视频编辑",
-      "summary": "京东开源 JoyAI-Video-Edit，160 亿参数、Apache 2.0 协议，单张 NVIDIA B200 上以约 30 FPS 完成 720P 视频实时编辑。",
-      "content_text": "8 月 5 日，京东开源团队放出 JoyAI-Video-Edit 的权重、部署代码与技术报告。这是一个 160 亿参数的指令式视频编辑模型，主打「实时」——不是提交任务等渲染，而是边输入边出片。\n\n## 具体能力\n\n模型以多模态扩散 Transformer 为骨干，改造成分块自回归生成：视频按因果分块进出，不需要预知未来帧。这也顺带拆掉了扩散类视频编辑常见的定长限制，理论上可处理无限长输入。京东给出的端到端指标是：单张 NVIDIA B200 上 720×1280 分辨率达到 30.19 FPS——大致就是「能处理直播流而非文件」的门槛线。\n\n为此论文提出两项蒸馏设计。Source-Anchored DMD 在压缩采样步数的同时把输出锚定在原始素材上，缓解少步蒸馏后画面「跑偏」、丢失源片信息的问题；Long-Horizon Autoregressive Distillation 则针对误差累积——自回归生成中每一块都以自己上一块的瑕疵输出为条件，长序列下画质会持续劣化。作者的自动评测与人工评测显示，该模型明显优于现有流式视频编辑方案，在短片与长片上都能与更慢的离线系统正面掰手腕。\n\n权重托管在 Hugging Face 的 `jdopensource/JoyAI-Video-Edit`，同时提供在线 demo，代码与 checkpoint 均为 Apache 2.0。论文编号 arXiv 2608.03974。\n\n## 为什么重要\n\n目前绝大多数生成式视频工具仍是「批处理」形态：写提示词、排队、看结果。实时编辑属于另一个产品品类——直播、虚拟制片、片场预览、视频会议——长期卡住它的不是画质，而是延迟与时长上限。一个宽松许可、单卡就能跑到 30FPS 的 160 亿参数模型，把这个品类交到了自己训不出模型的团队手里。这也延续了京东的开源路径：不去卷前沿语言模型，而是持续放出能直接用的多模态模型。在闭源 AIGC 厂商纷纷宣传实时能力却不放权重的当下，这一步把标准抬高了。",
-      "date_published": "2026-08-05T02:00:00.000Z",
-      "date_modified": "2026-08-05T11:00:03.615Z",
-      "tags": [
-        "开源",
-        "AIGC",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/jd-joyai-video-edit-open-weights.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/jd-joyai-video-edit-open-weights.html",
-        "source_published_at": "2026-08-05T02:00:00.000Z",
-        "site_published_at": "2026-08-05T11:00:03.615Z",
-        "sources": [
-          {
-            "title": "jd-opensource/JoyAI-Video-Edit on GitHub",
-            "url": "https://github.com/jd-opensource/JoyAI-Video-Edit"
-          },
-          {
-            "title": "JoyAI-Video-Edit: Real-Time Open-Ended Video Editing with Autoregressive Diffusion",
-            "url": "https://arxiv.org/abs/2608.03974"
-          },
-          {
-            "title": "Hugging Face Daily Papers",
-            "url": "https://huggingface.co/papers/date/2026-08-05"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/mistral-open-sources-shieldstral.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/mistral-open-sources-shieldstral.html",
-      "title": "Mistral 开源 Shieldstral：30 亿参数内容安全模型",
-      "summary": "Apache-2.0 许可，推理时以自然语言提问的方式接收审核策略，单张 16GB 显卡即可跑起来。",
-      "content_text": "## 策略写在推理里，不写进权重\n\nMistral 于 8 月 4 日发布 Shieldstral，一个 30 亿参数的内容安全模型，采用 Apache 2.0 许可，同时公开了技术报告。它的思路与常见的护栏模型不同：不再依赖训练阶段固化的风险类目表，而是把审核当成一个二元问答任务——部署方在推理时用自然语言把策略写成一个问题，模型返回一个校准过的分数，文本与图像走同一个接口。\n\n这个改动是关键。传统护栏分类器逼着使用方要么接受厂商给定的类目，要么每次策略变动都重新微调一版模型；而电商平台、儿童产品和医疗服务需要划的红线本来就不一样。Shieldstral 把这个决定挪进了提示词，改策略从此是改一段文字，而不是跑一次训练。\n\n## 体量与官方给出的成绩\n\nMistral 称该模型在文本安全、拒答识别、策略适配性和多模态安全等评测上，达到或超过体量最多为其 7 倍的开源护栏模型，并在多模态审核上取得 SOTA。30 亿参数意味着它能跑在单张 16GB 英伟达显卡上，既可用于端侧和边缘部署，也可作为托管模型前置的实时过滤层。\n\n## 影响\n\n审核环节是大量已上线 AI 产品悄悄翻车的地方：过严则产品不可用，过松则埋下责任风险，而同一套过滤器往往两头都顾不上。一个小体量、宽松许可、可在运行时配置的分类器，降低了把这层做对的成本——尤其是对养不起自研安全栈的中小团队。许可证的意义甚至不亚于跑分：Apache 2.0 意味着企业可以把过滤器完全私有化部署在自己的边界内，这对面临《AI 法案》透明度与内容义务的欧洲运营方、以及任何不能把用户内容送去第三方审核 API 的团队都直接相关。它同时延续了一个趋势：被开放出来的不只有前沿能力，还有安全工具本身。",
-      "date_published": "2026-08-04T16:55:00.000Z",
-      "date_modified": "2026-08-04T23:00:03.460Z",
-      "tags": [
-        "开源",
-        "安全",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/mistral-open-sources-shieldstral.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/mistral-open-sources-shieldstral.html",
-        "source_published_at": "2026-08-04T16:55:00.000Z",
-        "site_published_at": "2026-08-04T23:00:03.460Z",
-        "sources": [
-          {
-            "title": "Shieldstral — Mistral AI",
-            "url": "https://mistral.ai/news/shieldstral/"
-          },
-          {
-            "title": "Mistral AI: Introducing Shieldstral",
-            "url": "https://x.com/MistralAI/status/2084684735725379637"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/sand-ai-magi-2-preview-open-weights.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/sand-ai-magi-2-preview-open-weights.html",
-      "title": "Sand.ai 开源 MAGI-2：1140 亿参数 MoE 视频模型",
-      "summary": "国内视频大模型公司 Sand.ai 放出 MAGI-2-preview 权重与推理代码，1140 亿参数稀疏架构、Apache 2.0 协议，可生成带同步音轨的 1080P 视频。",
-      "content_text": "8 月 5 日，视频生成公司 Sand.ai（三呆科技）开源了 MAGI-2-preview 的预训练权重与推理代码。这是一个总参数 1140 亿、每 token 仅激活约 60 亿参数的混合专家（MoE）视频生成模型，可生成 10 秒长、音画由同一模型联合产出的片段。\n\n## 放出了什么\n\n模型卡显示，MAGI-2 采用单流 Transformer 架构，基于自研的 MagiMoE 设计：每层配置数千个专家单元，配合多头专家路由。这实际上是把重塑了大语言模型的稀疏扩展路线搬进视频生成——而当下几乎所有前沿视频模型仍是稠密结构。音频与视频共享同一套注意力层，而非外接语音或音效模型，官方称这是口型、音效与环境声能够精确对齐的原因。\n\n推理走两段式流程：先低分辨率预览，再由 refiner 放大到 1088×1920，目前只支持 10 秒定长。公开的权重合计约 300GB，包含 Transformer 两阶段、Qwen3.5-27B 文本编码器以及视频与音频 VAE，参考实现需要 8 张 NVIDIA Hopper 架构 GPU，并提供了 Docker 镜像。代码与权重均为 Apache 2.0 协议。量子位测算，8 卡 H100 生成一条 10 秒 1080P 视频的成本约合 5 毛美元；尽管激活参数极小，该预览版在 Artificial Analysis 视频生成榜上位列第六。\n\n## 为什么重要\n\n国内实验室开源视频权重已成常态，但此前几乎都是几十亿到百亿级别的稠密模型——视频生成受显存带宽制约，MoE 路由在这一场景下并不好做。Sand.ai 想证明的是稀疏化可以迁移：一个具备千亿级知识容量的模型，可以按 60 亿参数量级的算力成本跑起来。若社区复现能站住脚，开源视频生成的成本曲线将像文本侧那样被重写。而这距离 MiniMax 开源 H3 视频模型仅数天，「可自由下载的最强视频模型出自中国团队」这一格局正被进一步固化。",
-      "date_published": "2026-08-05T07:05:00.000Z",
-      "date_modified": "2026-08-05T11:00:03.615Z",
-      "tags": [
-        "模型",
-        "开源",
-        "AIGC"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/sand-ai-magi-2-preview-open-weights.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/sand-ai-magi-2-preview-open-weights.html",
-        "source_published_at": "2026-08-05T07:05:00.000Z",
-        "site_published_at": "2026-08-05T11:00:03.615Z",
-        "sources": [
-          {
-            "title": "114B参数、6B激活，Sand.ai刚刚开源全球首个千亿MoE视频生成模型",
-            "url": "https://www.qbitai.com/2026/08/466847.html"
-          },
-          {
-            "title": "SandAI-org/MAGI-2-preview on GitHub",
-            "url": "https://github.com/SandAI-org/MAGI-2-preview"
-          },
-          {
-            "title": "sand-ai/MAGI-2-preview model card",
-            "url": "https://huggingface.co/sand-ai/MAGI-2-preview"
           }
         ]
       }
