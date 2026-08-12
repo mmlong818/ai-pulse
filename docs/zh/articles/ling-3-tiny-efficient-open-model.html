@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>蚂蚁发布稀疏小模型 Ling 3.0 Tiny — Uncle Cat AI Radar</title>
+<meta name="description" content="Ling 3.0 Tiny 总参数量为 79 亿、每个 token 仅激活 13 亿参数，瞄准低成本本地部署与高频智能体任务。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/ling-3-tiny-efficient-open-model.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/ling-3-tiny-efficient-open-model.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/ling-3-tiny-efficient-open-model.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/ling-3-tiny-efficient-open-model.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="蚂蚁发布稀疏小模型 Ling 3.0 Tiny — Uncle Cat AI Radar">
+<meta property="og:description" content="Ling 3.0 Tiny 总参数量为 79 亿、每个 token 仅激活 13 亿参数，瞄准低成本本地部署与高频智能体任务。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/ling-3-tiny-efficient-open-model.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="蚂蚁发布稀疏小模型 Ling 3.0 Tiny — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Ling 3.0 Tiny 总参数量为 79 亿、每个 token 仅激活 13 亿参数，瞄准低成本本地部署与高频智能体任务。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="蚂蚁发布稀疏小模型 Ling 3.0 Tiny — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"蚂蚁发布稀疏小模型 Ling 3.0 Tiny","item":"https://mmlong818.github.io/ai-pulse/zh/articles/ling-3-tiny-efficient-open-model.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/ling-3-tiny-efficient-open-model.html#article","headline":"蚂蚁发布稀疏小模型 Ling 3.0 Tiny","description":"Ling 3.0 Tiny 总参数量为 79 亿、每个 token 仅激活 13 亿参数，瞄准低成本本地部署与高频智能体任务。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/ling-3-tiny-efficient-open-model.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/ling-3-tiny-efficient-open-model.html"},"datePublished":"2026-08-12T02:51:00.000Z","dateModified":"2026-08-12T11:00:03.960Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["模型","开源","Agent"],"keywords":"模型, 开源, Agent","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://x.com/ArtificialAnlys/status/2087371367884956099","https://x.com/ArtificialAnlys/status/2087371372683243750","https://x.com/ArtificialAnlys/status/2087371370397409422"],"about":[{"@type":"Thing","name":"模型"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"Agent"}]}]}</script>
+</head>
+<body data-slug="ling-3-tiny-efficient-open-model" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/ling-3-tiny-efficient-open-model.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-08-12T02:51:00Z">2026年8月12日 10:51</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><span class="views" id="viewCount"></span></div>
+  <h1>蚂蚁发布稀疏小模型 Ling 3.0 Tiny</h1>
+  <p class="standfirst">Ling 3.0 Tiny 总参数量为 79 亿、每个 token 仅激活 13 亿参数，瞄准低成本本地部署与高频智能体任务。</p>
+  <h2>用稀疏激活压低推理门槛</h2><p>蚂蚁集团 InclusionAI 团队发布开放权重模型 Ling 3.0 Tiny。该模型总参数量为 79 亿，但处理每个 token 时只激活约 13 亿参数，试图借助混合专家架构，在保留较强能力的同时降低推理所需的计算量和内存带宽，更适合资源受限的部署环境。</p><p>第三方评测机构 Artificial Analysis 在 4.1.1 版 Intelligence Index 中给出 25 分。按该机构的结果，Ling 3.0 Tiny 已进入较强的小型开放权重模型行列，但绝对能力与前沿大模型仍有明显距离。在用于考察模型是否会自信编造答案的 Omniscience Index 上，它得到负 19 分；对于这一体量的模型，评测方认为表现相对不错。</p><p>不过，它的实际效率并不能只看激活参数量。Artificial Analysis 统计发现，Ling 3.0 Tiny 完成每项 Intelligence Index 任务平均会生成约 5.1 万个输出 token，高于 Ling 3.0 Flash 的约 3.6 万个，也比 Nemotron 3.5 Lightning 和同类 Qwen 模型等高效选手多约 65%。每个 token 的计算成本虽然较低，但如果推理链明显更长，节省下来的算力可能被更高的总 token 消耗、延迟和服务时间部分抵消。</p><h2>为何重要</h2><p>Ling 3.0 Tiny 为竞争迅速升温的百亿参数以下市场增加了一个中国选手。这类模型的主要价值并非争夺旗舰聊天机器人榜首，而是进入本地助手、高并发智能体和垂直系统：在这些场景中，延迟、隐私和运营成本通常比极限能力更重要。它偏长的推理轨迹也再次说明，企业选型不能只比较参数规模或单 token 价格，还应衡量完成整项任务所需的总成本。后续在不同硬件上的延迟、显存占用和单任务成本测试，将决定其稀疏架构能否转化为真实优势。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://x.com/ArtificialAnlys/status/2087371367884956099" rel="noopener" target="_blank">Artificial Analysis: Ling 3.0 Tiny release and evaluation</a></li><li><a href="https://x.com/ArtificialAnlys/status/2087371372683243750" rel="noopener" target="_blank">Artificial Analysis: Ling 3.0 Tiny token usage</a></li><li><a href="https://x.com/ArtificialAnlys/status/2087371370397409422" rel="noopener" target="_blank">Artificial Analysis: Ling 3.0 Tiny Omniscience score</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/ltx-releases-video-model-25.html">LTX-2.5 开放权重，用自适应算力提升视频质量</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/mistral-opens-platform-to-rivals.html">Mistral 平台接入第三方模型，首发 GLM-5.2</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-releases-nemotron-lightning.html">英伟达发布 Nemotron 3.5 Lightning 智能体模型</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+</body>
+</html>

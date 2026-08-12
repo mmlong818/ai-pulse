@@ -89,6 +89,47 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/ling-3-tiny-efficient-open-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/ling-3-tiny-efficient-open-model.html",
+      "title": "蚂蚁发布稀疏小模型 Ling 3.0 Tiny",
+      "summary": "Ling 3.0 Tiny 总参数量为 79 亿、每个 token 仅激活 13 亿参数，瞄准低成本本地部署与高频智能体任务。",
+      "content_text": "## 用稀疏激活压低推理门槛\n\n蚂蚁集团 InclusionAI 团队发布开放权重模型 Ling 3.0 Tiny。该模型总参数量为 79 亿，但处理每个 token 时只激活约 13 亿参数，试图借助混合专家架构，在保留较强能力的同时降低推理所需的计算量和内存带宽，更适合资源受限的部署环境。\n\n第三方评测机构 Artificial Analysis 在 4.1.1 版 Intelligence Index 中给出 25 分。按该机构的结果，Ling 3.0 Tiny 已进入较强的小型开放权重模型行列，但绝对能力与前沿大模型仍有明显距离。在用于考察模型是否会自信编造答案的 Omniscience Index 上，它得到负 19 分；对于这一体量的模型，评测方认为表现相对不错。\n\n不过，它的实际效率并不能只看激活参数量。Artificial Analysis 统计发现，Ling 3.0 Tiny 完成每项 Intelligence Index 任务平均会生成约 5.1 万个输出 token，高于 Ling 3.0 Flash 的约 3.6 万个，也比 Nemotron 3.5 Lightning 和同类 Qwen 模型等高效选手多约 65%。每个 token 的计算成本虽然较低，但如果推理链明显更长，节省下来的算力可能被更高的总 token 消耗、延迟和服务时间部分抵消。\n\n## 为何重要\n\nLing 3.0 Tiny 为竞争迅速升温的百亿参数以下市场增加了一个中国选手。这类模型的主要价值并非争夺旗舰聊天机器人榜首，而是进入本地助手、高并发智能体和垂直系统：在这些场景中，延迟、隐私和运营成本通常比极限能力更重要。它偏长的推理轨迹也再次说明，企业选型不能只比较参数规模或单 token 价格，还应衡量完成整项任务所需的总成本。后续在不同硬件上的延迟、显存占用和单任务成本测试，将决定其稀疏架构能否转化为真实优势。",
+      "date_published": "2026-08-12T02:51:00.000Z",
+      "date_modified": "2026-08-12T11:00:03.960Z",
+      "tags": [
+        "模型",
+        "开源",
+        "Agent"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/ling-3-tiny-efficient-open-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/ling-3-tiny-efficient-open-model.html",
+        "source_published_at": "2026-08-12T02:51:00.000Z",
+        "site_published_at": "2026-08-12T11:00:03.960Z",
+        "sources": [
+          {
+            "title": "Artificial Analysis: Ling 3.0 Tiny release and evaluation",
+            "url": "https://x.com/ArtificialAnlys/status/2087371367884956099"
+          },
+          {
+            "title": "Artificial Analysis: Ling 3.0 Tiny token usage",
+            "url": "https://x.com/ArtificialAnlys/status/2087371372683243750"
+          },
+          {
+            "title": "Artificial Analysis: Ling 3.0 Tiny Omniscience score",
+            "url": "https://x.com/ArtificialAnlys/status/2087371370397409422"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/ltx-releases-video-model-25.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/ltx-releases-video-model-25.html",
       "title": "LTX-2.5 开放权重，用自适应算力提升视频质量",
@@ -207,6 +248,43 @@
           {
             "title": "Nemotron-RL-Agentic-Terminal-Pivot dataset",
             "url": "https://x.com/NVIDIAAI/status/2087258724654284971"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/solar-pro-4-arena-debut.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/solar-pro-4-arena-debut.html",
+      "title": "Solar Pro 4 同时登上 Arena 三类榜单",
+      "summary": "Upstage 成为首家同时进入 Arena 智能体、网页开发代码和通用文本榜单的韩国实验室。",
+      "content_text": "## 韩国大模型取得更完整的公开评测席位\n\n韩国 Upstage 的 Solar Pro 4 已进入 Arena 旗下三类公开榜单：Agent Arena、Code Arena: WebDev 与 Text Arena。Arena 表示，Upstage 由此成为首家在这三个类别中均有模型上榜的韩国实验室，覆盖通用对话、网页软件开发以及调用工具完成任务等不同能力。\n\n这次上榜的意义更多来自覆盖面，而非某一个具体名次。Text Arena 主要汇集用户对通用回答的偏好判断；Code Arena: WebDev 关注模型能否生成可运行的网页界面；Agent Arena 则让模型使用网页搜索、文件系统和终端，完成更长、更复杂的现实任务。最后一类测试的不只是单轮回答质量，还包括规划、工具操作以及在中间步骤出错后的恢复能力。\n\n不过，Arena 的公告本身并不能证明 Solar Pro 4 已在三个类别中领先所有前沿模型。公开榜单会随着投票和任务样本增加而变化，模型在统一测试框架内的表现，也不一定能直接反映企业实际使用时的成本、延迟和稳定性。因此，更稳妥的解读是：Solar Pro 4 已进入具备独立可见度的竞争梯队，而不是已经取得综合能力第一。\n\n## 为何重要\n\n亚洲前沿模型竞争长期主要围绕中国实验室展开，日本和韩国厂商在国际视野中的存在感相对有限。一款韩国模型同时进入通用、编程和智能体评测，扩大了区域竞争版图，也让开发者有更多理由评估来自不同亚洲市场的替代方案。Agent Arena 尤其值得关注，因为行业竞争正在从单轮问答转向借助工具完成多步骤工作。如果 Upstage 能在评测表现之外继续提供可靠的韩语能力、可预测的价格和企业部署方案，Solar Pro 4 的战略价值就可能超越榜单名次本身。",
+      "date_published": "2026-08-12T00:50:00.000Z",
+      "date_modified": "2026-08-12T11:00:03.960Z",
+      "tags": [
+        "模型",
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/solar-pro-4-arena-debut.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/solar-pro-4-arena-debut.html",
+        "source_published_at": "2026-08-12T00:50:00.000Z",
+        "site_published_at": "2026-08-12T11:00:03.960Z",
+        "sources": [
+          {
+            "title": "Arena: Solar Pro 4 debuts across three leaderboards",
+            "url": "https://x.com/arena/status/2087340884413264314"
+          },
+          {
+            "title": "Arena: How Agent Arena evaluates models",
+            "url": "https://x.com/arena/status/2087340888385360094"
           }
         ]
       }
@@ -1901,91 +1979,6 @@
           {
             "title": "sand-ai/MAGI-2-preview model card",
             "url": "https://huggingface.co/sand-ai/MAGI-2-preview"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy3-global-workbuddy-free.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy3-global-workbuddy-free.html",
-      "title": "腾讯混元 Hy3 全球开放，WorkBuddy 海外版限时免费",
-      "summary": "腾讯宣布 2950 亿参数的混元 Hy3 面向全球开放，落地 WorkBuddy 国际版、Miora 与腾讯云 TokenHub，WorkBuddy 8 月 31 日前免费。",
-      "content_text": "8 月 5 日，腾讯宣布 7 月 6 日在国内发布的混元旗舰模型 Hy3 全面开放海外访问，落地三个入口：智能体产品 WorkBuddy 国际版、设计产品 Miora，以及腾讯云 TokenHub。个人与企业用户通过 WorkBuddy 使用 Hy3 在太平洋时间 8 月 31 日前免费。\n\n## 具体给了什么\n\nHy3 是一款 MoE 模型，总参数 2950 亿、激活 210 亿，上下文长度 256K，采用腾讯所称的「快慢思考混合」架构，可在快速响应与长链推理之间切换。官方口径是：以远小于同级旗舰的参数规模达到相近水平，推理成本则低得多。OpenRouter 上其定价约为每百万输入 token 0.13 美元、输出 0.53 美元。\n\n腾讯这次主推的不是榜单成绩，而是使用数据：Hy3 的 API 调用量为上一代的 68 倍，发布一周内登顶 OpenRouter 全球模型使用量榜首。WorkBuddy 方面——一个支持多智能体并发、内置 100 多项技能，可做资料检索、数据分析、文档与演示文稿生成的智能体——内部评测显示任务成功率超过 90%，平均完成时间比上一代混元缩短 34%。服务覆盖 23 个地区的 66 个可用区。\n\n## 为什么重要\n\n真正值得关注的不是模型，而是出海方式。中国实验室过去主要靠开源权重或裸 API 走出去，腾讯这次直接输出一个成品智能体，外加一个月免费期，抢的是 OpenAI、Anthropic、谷歌正在争夺的同一笔知识工作预算。切入点是 token 经济性：210 亿激活参数、价格约为西方旗舰十分之一的模型，才吃得下智能体那种高频调用、长链路的负载。海外企业是否愿意把工作流交给中国厂商托管的模型仍是未知数，欧美的数据驻留审查是最直接的约束。但这一个月的免费窗口，本身就是对「价格与打包方式能否改变这个决定」的一次实测。",
-      "date_published": "2026-08-05T02:59:00.000Z",
-      "date_modified": "2026-08-05T11:00:03.615Z",
-      "tags": [
-        "产业",
-        "模型",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy3-global-workbuddy-free.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy3-global-workbuddy-free.html",
-        "source_published_at": "2026-08-05T02:59:00.000Z",
-        "site_published_at": "2026-08-05T11:00:03.615Z",
-        "sources": [
-          {
-            "title": "Tencent Hunyuan on X: Hy3 now live in WorkBuddy global",
-            "url": "https://x.com/TencentHunyuan/status/2084836757095526689"
-          },
-          {
-            "title": "Tencent Hy3 Now Available Globally, Extending Practical AI Across Products, Workflows and Cloud Services",
-            "url": "https://www.prnewswire.com/news-releases/tencent-hy3-now-available-globally-extending-practical-ai-across-products-workflows-and-cloud-services-302843373.html"
-          },
-          {
-            "title": "Tencent ramps up overseas AI push with wider roll-out of flagship Hy3 model",
-            "url": "https://www.scmp.com/tech/tech-war/article/3362991/tencent-ramps-overseas-ai-push-wider-rollout-flagship-hy3-model"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/texas-freezes-data-center-grid-hookups.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/texas-freezes-data-center-grid-hookups.html",
-      "title": "得州冻结数据中心并网：先审计，后接电",
-      "summary": "得州州长阿博特要求 ERCOT 与公用事业委员会对所有新建数据中心先行审计才可并网，目前排队申请已达 474GW。",
-      "content_text": "## 从自愿填报变成强制审计\n\n得州州长格雷格·阿博特 8 月 3 日下令，要求得州公用事业委员会（PUCT）与电网运营商 ERCOT 对所有新建数据中心项目开展正式审计，通过审计前不得获批并网。也就是说，在审查完成之前，这些项目的接电申请实际处于冻结状态。\n\n触发这道命令的是一条七个月内翻了一倍的排队名单。今年 1 月，ERCOT 手上的待并网申请约为 233GW；到 8 月已攀升至约 474GW，其中约九成来自数据中心。这个数字相当于该电网历史最高负荷的五倍以上——差距大到监管机构已无法把这些申请当作真实建设预期来对待。\n\n## 开发商必须交出哪些信息\n\n审计要求项目方披露此前可以不讲的细节：预计用电量、耗水量、噪声治理方案、室外照明控制、正在申领的州与地方税收优惠，以及项目的最终实际控制人。此前阿博特曾以自愿问卷形式索要过其中大部分数据，回应者寥寥，强制审计正是这次「无人应答」的直接结果。\n\n## 影响\n\n得州一直是美国 AI 算力建设最受青睐的落点，原因就在于 ERCOT 独立成网、审批宽松，项目落地速度远快于 PJM 或加州。如今这条最快通道被装上闸门，而前沿实验室正基于「电总能找到」的假设签下数吉瓦、跨年度的算力长约。审查会挤掉大量投机性申报、提升规划质量，但真实项目也要额外承担时间风险和披露义务。可以预期的是：近期可交付产能的价格将上涨，而更多新公告会指向北欧水电、墨西哥湾沿岸和中东，而不是西得州。",
-      "date_published": "2026-08-04T15:33:00.000Z",
-      "date_modified": "2026-08-04T23:00:03.460Z",
-      "tags": [
-        "政策",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/texas-freezes-data-center-grid-hookups.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/texas-freezes-data-center-grid-hookups.html",
-        "source_published_at": "2026-08-04T15:33:00.000Z",
-        "site_published_at": "2026-08-04T23:00:03.460Z",
-        "sources": [
-          {
-            "title": "Texas halts new data centers as governor calls for audits",
-            "url": "https://techcrunch.com/2026/08/04/texas-halts-new-data-centers-as-governor-calls-for-audits/"
-          },
-          {
-            "title": "Texas halts data center connections to power grid amid overwhelming demand",
-            "url": "https://arstechnica.com/ai/2026/08/texas-halts-data-center-connections-to-power-grid-amid-overwhelming-demand/"
-          },
-          {
-            "title": "Texas says data centers must pass an audit before connecting to the grid",
-            "url": "https://www.theverge.com/policy/975071/texas-data-center-audit"
-          },
-          {
-            "title": "Governor Abbott Directs Comprehensive Data Center Audit — Office of the Texas Governor",
-            "url": "https://gov.texas.gov/news/post/governor-abbott-directs-comprehensive-data-center-audit"
           }
         ]
       }

@@ -80,6 +80,36 @@ Sources:
   - ChatGPT and Gemini both just passed 1 billion users: https://www.theverge.com/ai-artificial-intelligence/978113/chatgpt-gemini-1-billion-users
   - Gemini becomes Google's fastest-growing product ever: https://arstechnica.com/ai/2026/08/google-says-gemini-has-reached-1b-users-faster-than-any-other-google-product/
 
+### Ant Group Releases Compact Ling 3.0 Tiny Model
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/ling-3-tiny-efficient-open-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/ling-3-tiny-efficient-open-model.html
+- Source timestamp: 2026-08-12T02:51:00.000Z
+- Site timestamp: 2026-08-12T11:00:03.960Z
+- Tags: Models, Open Source, Agents
+
+The 7.9B-parameter mixture-of-experts model targets economical local and agent deployment, activating only 1.3B parameters per token.
+
+## A small model built around sparse activation
+
+Ant Group’s InclusionAI team has released Ling 3.0 Tiny, a compact open-weights language model with 7.9 billion total parameters and 1.3 billion activated for each token. The sparse mixture-of-experts design is intended to provide more capability than the active parameter count would normally suggest, while keeping inference costs and memory traffic suitable for constrained deployments.
+
+Artificial Analysis gave the model a score of 25 on version 4.1.1 of its Intelligence Index. That places Ling 3.0 Tiny among the stronger small open-weight systems tracked by the evaluator, although it remains well below frontier-scale models in absolute capability. Its score of minus 19 on the evaluator’s Omniscience Index—a measure designed to penalize confident fabrication—was described as relatively competitive for its size.
+
+The efficiency picture is less straightforward. Artificial Analysis found that Ling 3.0 Tiny generated about 51,000 output tokens per Intelligence Index task. That exceeded the roughly 36,000 used by the larger Ling 3.0 Flash and was approximately 65% more than efficient competitors including Nemotron 3.5 Lightning and comparable Qwen models. A low active-parameter count can reduce the cost of each generated token, but excessive reasoning length may return some of those savings through longer runtimes and higher aggregate compute consumption.
+
+## Why it matters
+
+Ling 3.0 Tiny adds another credible Chinese model to the increasingly competitive sub-10-billion-parameter segment. Such models matter less as chatbot flagships than as components for local assistants, high-volume agents and specialized systems where latency, privacy and operating cost outweigh maximum benchmark performance. Its unusually long reasoning traces also underline why buyers should evaluate complete task economics—not parameter counts or per-token prices alone. Independent tests of latency, memory use and task-level cost across deployment hardware will determine whether its sparse architecture translates into a practical advantage.
+
+Chinese title: 蚂蚁发布稀疏小模型 Ling 3.0 Tiny
+Chinese summary: Ling 3.0 Tiny 总参数量为 79 亿、每个 token 仅激活 13 亿参数，瞄准低成本本地部署与高频智能体任务。
+
+Sources:
+  - Artificial Analysis: Ling 3.0 Tiny release and evaluation: https://x.com/ArtificialAnlys/status/2087371367884956099
+  - Artificial Analysis: Ling 3.0 Tiny token usage: https://x.com/ArtificialAnlys/status/2087371372683243750
+  - Artificial Analysis: Ling 3.0 Tiny Omniscience score: https://x.com/ArtificialAnlys/status/2087371370397409422
+
 ### LTX-2.5 Brings Adaptive Compute to Open Video Models
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/ltx-releases-video-model-25.html
@@ -175,6 +205,35 @@ Sources:
   - NVIDIA Nemotron 3.5 Lightning is open and customizable: https://x.com/NVIDIAAI/status/2087173733823680855
   - NeMo Switchyard open-source model routing: https://x.com/NVIDIAAI/status/2087173417329963016
   - Nemotron-RL-Agentic-Terminal-Pivot dataset: https://x.com/NVIDIAAI/status/2087258724654284971
+
+### Solar Pro 4 Puts Korean Lab on Three Arena Boards
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/solar-pro-4-arena-debut.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/solar-pro-4-arena-debut.html
+- Source timestamp: 2026-08-12T00:50:00.000Z
+- Site timestamp: 2026-08-12T11:00:03.960Z
+- Tags: Models, Agents, Industry
+
+Upstage became the first Korean lab represented across Arena’s agent, web-development code and general text leaderboards.
+
+## A broader benchmark debut for Korean AI
+
+Upstage’s Solar Pro 4 has entered three of Arena’s public model leaderboards: Agent Arena, Code Arena: WebDev and Text Arena. Arena said this makes Upstage the first Korean laboratory to place a model across all three categories, giving the country’s model industry a visible foothold in evaluations spanning general conversation, software creation and tool-using work.
+
+The breadth of the debut is more informative than any single ranking. Text Arena collects preference judgments on general model responses, while Code Arena: WebDev focuses on producing working web interfaces. Agent Arena tests longer tasks in environments where models can use web search, a filesystem and a terminal. Those tasks probe whether a model can plan, operate tools and recover from intermediate failures rather than merely return a polished answer to one prompt.
+
+Arena’s announcement did not, by itself, establish that Solar Pro 4 leads frontier models in any of the three categories. Public leaderboards also have important limits: rankings can move as votes accumulate, and performance inside a standardized harness does not necessarily predict cost, latency or reliability in a company’s own workflow. The result should therefore be read as evidence that Solar Pro 4 has reached a competitive, independently visible tier—not as a definitive claim of overall superiority.
+
+## Why it matters
+
+Frontier-model competition in Asia has largely been framed around Chinese laboratories, with Japan and South Korea receiving less attention outside their domestic markets. A Korean model appearing simultaneously in general, coding and agent evaluations broadens that picture and gives developers more reason to assess regional alternatives. Agent Arena is particularly relevant because practical model competition is moving from isolated question answering toward completing multi-step work with tools. If Upstage can pair competitive task performance with strong Korean-language support, predictable pricing and enterprise deployment options, Solar Pro 4 could become strategically significant beyond the leaderboard itself.
+
+Chinese title: Solar Pro 4 同时登上 Arena 三类榜单
+Chinese summary: Upstage 成为首家同时进入 Arena 智能体、网页开发代码和通用文本榜单的韩国实验室。
+
+Sources:
+  - Arena: Solar Pro 4 debuts across three leaderboards: https://x.com/arena/status/2087340884413264314
+  - Arena: How Agent Arena evaluates models: https://x.com/arena/status/2087340888385360094
 
 ### Alibaba ships Wan CLI to put video gen in agents
 
@@ -914,71 +973,6 @@ Sources:
   - Introducing Kitesurf: The agent-first browser that runs in V8 isolates on Cloudflare Workers: https://blog.cloudflare.com/kitesurf/
   - Cloudflare Introduces Kitesurf: An Agent-First Web Browser That Runs Entirely in V8 Isolates on Cloudflare Workers: https://www.marktechpost.com/2026/08/06/cloudflare-introduces-kitesurf-an-agent-first-web-browser-that-runs-entirely-in-v8-isolates-on-cloudflare-workers/
 
-### DeepMind open-sources WeatherNext cyclone forecasting model
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepmind-weathernext-cyclones-open.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-weathernext-cyclones-open.html
-- Source timestamp: 2026-08-06T15:06:00.000Z
-- Site timestamp: 2026-08-06T23:00:03.114Z
-- Tags: Research, Open Source
-
-A Nature paper puts Google DeepMind's WeatherNext Cyclones ahead of operational systems by over a day of lead time, with code and weights released on GitHub.
-
-Google DeepMind published its WeatherNext cyclone forecasting work in Nature on Thursday and simultaneously released the model's code and weights on GitHub, making a system already used inside operational hurricane forecasting freely available to anyone.
-
-## The result
-
-WeatherNext Cyclones produces probabilistic 15-day forecasts of a storm's track, intensity and wind structure. DeepMind reports state-of-the-art accuracy across all three, and frames the gain in the currency forecasters actually use: lead time. On average, its three-day predictions match the quality that prior systems delivered at two days — better than a full extra day of warning. In a field where operational skill has historically improved by roughly a day per decade, that is a decade of progress arriving at once.
-
-The model was trained on years of global atmospheric reanalysis data — on the order of 20 terabytes — combined with the IBTrACS archive of nearly 5,000 historical cyclones, which supplies the storm-specific structure that general atmospheric training alone tends to smooth away. DeepMind cites Hurricane Melissa as a field test: forecasters received early signals of a Category 5 landfall five days ahead with 80 percent confidence.
-
-## Release and partners
-
-The code and weights are on GitHub for academic, operational and commercial use, and a compact WeatherNext 2-mini variant runs in a free Colab notebook. Predictions are also served through DeepMind's Weather Lab. The work was done with the US National Hurricane Center, the Cooperative Institute for Research in the Atmosphere, the UK Met Office and other national agencies, and DeepMind says it is expanding access for forecasters this season.
-
-## Why it matters
-
-Machine-learning weather models have been outperforming numerical simulation on general forecasting for two years, but tropical cyclones — rare, small-scale, high-consequence — were the hard case that kept operational meteorologists cautious. Publishing in Nature settles the methodological argument in public; releasing the weights settles the access question. Any national meteorological service, including those without the supercomputing budgets that traditional cyclone modelling demands, can now run a frontier system on modest hardware. It is also a rare instance of a frontier lab open-sourcing a model whose primary value is not commercial, and the clearest current example of AI capability translating into measurable public-safety outcomes.
-
-Chinese title: DeepMind 台风预报模型登 Nature，代码权重同步开源
-Chinese summary: WeatherNext Cyclones 在路径、强度与风场三项上刷新精度，三天预报相当于旧系统两天水平，代码与权重已上传 GitHub。
-
-Sources:
-  - WeatherNext: AI model achieves breakthrough in forecasting cyclones: https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones/
-  - Google DeepMind on X: https://x.com/GoogleDeepMind/status/2085395442347524506
-
-### OpenAI splits ChatGPT tiers between GPT-5.6 Sol and Luna
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-splits-chatgpt-sol-luna.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-splits-chatgpt-sol-luna.html
-- Source timestamp: 2026-08-06T17:00:00.000Z
-- Site timestamp: 2026-08-06T23:00:03.114Z
-- Tags: Models, Industry
-
-Paid ChatGPT users get an updated GPT-5.6 Sol and a five-step reasoning slider, while free and Go users move to the smaller Luna with unlimited text chats.
-
-OpenAI restructured how ChatGPT's roughly billion-user base reaches its models on Wednesday, publishing a product note that redraws the line between paid and free access rather than launching a new frontier system.
-
-## What changed for paid users
-
-Plus and Pro subscribers now run every conversation on a revised build of GPT-5.6 Sol, including the fast "Instant" path that previously used a separate lighter model. OpenAI says the updated Sol trims padding and heavy formatting in favour of shorter answers that lead with a recommendation. Alongside it, paying users get a slider offering five levels of reasoning effort, letting them trade latency against depth per query instead of picking a model from a dropdown. On the company's internal high-stakes factuality evaluation, it reports factual errors falling about 68 percent for Sol relative to the older GPT-5.5 Instant configuration; the figure has not been independently reproduced.
-
-## What changed for free users
-
-Free and Go accounts move to GPT-5.6 Luna, a smaller model, as their default. They also gain a "Think" button that lets Luna reason for longer on harder prompts — but it extends the small model's thinking rather than escalating to Sol. OpenAI reports a roughly 62 percent drop in factual errors for Luna against the same baseline. The sweetener is capacity: unlimited text conversations, arriving next week, ending the message caps that have defined the free tier since launch. Separate quotas still apply to files, images, voice and image generation. Sol-tier changes shipped immediately; the free-tier changes roll out across this week and next.
-
-## Why it matters
-
-This is the clearest statement yet of how OpenAI intends to make consumer inference pay. Unlimited text at the bottom of the funnel is cheap only if the bottom of the funnel is served by a small model, and the Think button is designed to absorb demand for reasoning without routing it to expensive weights. The structural consequence is a widening quality gap between free and paid ChatGPT that is now explicit rather than incidental — a template rivals distributing free assistants at scale will have to answer, and a change in what hundreds of millions of people actually get when they ask an AI a hard question.
-
-Chinese title: OpenAI 重划 ChatGPT 分层：付费用 Sol，免费转 Luna
-Chinese summary: 付费用户全面切换到升级版 GPT-5.6 Sol 并获得五档推理滑杆，免费与 Go 用户则默认改用更小的 Luna，换来文字对话不限量。
-
-Sources:
-  - Improving GPT-5.6 Sol in ChatGPT, expanding GPT-5.6 Luna access for free users: https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/
-  - OpenAI improves GPT-5.6 Sol in ChatGPT and restricts free users to its weakest model: https://the-decoder.com/openai-improves-gpt-5-6-sol-in-chatgpt-and-restricts-free-users-to-its-weakest-model/
-  - ChatGPT brings unlimited text chats to free users: https://techcrunch.com/2026/08/06/openai-brings-unlimited-chatgpt-text-chats-to-free-users/
-
 ## Recent radar items
 
 ### 2026-08-12
@@ -1000,6 +994,20 @@ Sources:
 - 2026-08-11T17:35Z | OpenAI on X | OpenAI released a Linux preview of its ChatGPT desktop app, bringing ChatGPT Work and Codex to several major distributions. | 中文：OpenAI 发布 ChatGPT Linux 桌面应用预览版，将 ChatGPT Work 和 Codex 带到多个主流发行版。 | https://x.com/OpenAI/status/2087231350134980830
 - 2026-08-11T13:00Z | TechCrunch | Spotify will label AI Persona artist profiles and exclude their tracks from algorithmic recommendations, while leaving them searchable. | 中文：Spotify 将标记“AI Persona”艺人主页，并把其音乐排除在算法推荐之外，但用户仍可主动搜索。 | https://techcrunch.com/2026/08/11/spotify-will-label-ai-persona-profiles-and-exclude-their-music-from-recommendations/
 - 2026-08-11T13:03Z | Manus on X | Manus said it will resume operating independently and announced transition measures required by regulations in specified regions. | 中文：Manus 宣布将恢复独立运营，并将依据特定地区的监管要求实施相应过渡措施。 | https://x.com/ManusAI/status/2087162893796327868
+- 2026-08-12T09:59Z | The Decoder | Mistral introduced EU data processing and paid priority access, although regional routing excludes several features and priority availability is not guaranteed. | 中文：Mistral 推出欧盟境内数据处理和付费优先访问服务，但区域路由不覆盖部分功能，优先可用性也不作保证。 | https://the-decoder.com/mistral-now-offers-eu-data-processing-and-priority-access-but-both-come-with-important-limits/
+- 2026-08-12T07:42Z | Tencent Hunyuan on X | Tencent Hunyuan presented research evaluating whether self-modifying AI agents genuinely improve, targeting more reliable measurement of self-evolution. | 中文：腾讯混元发布研究，评估能够修改自身的 AI 智能体是否真正获得改进，以提高自进化效果衡量的可靠性。 | https://x.com/TencentHunyuan/status/2087444616832594022
+- 2026-08-12T05:05Z | MarkTechPost | Xiaomi's MiLM Plus introduced PROVE, combining two perception-aligned object-removal metrics with a real-world video benchmark. | 中文：小米 MiLM Plus 推出 PROVE，将两项符合人类感知的视频物体移除指标与真实世界视频基准结合起来。 | https://www.marktechpost.com/2026/08/11/xiaomis-milm-plus-releases-prove-perception-aligned-object-removal-metrics-rc-s-and-rc-t-with-a-real-world-video-benchmark/
+- 2026-08-12T03:37Z | Alibaba Qwen on X | Qwen made its Qwen-Image-3.0 image generator available for testing through OpenArt. | 中文：Qwen 已将其 Qwen-Image-3.0 图像生成模型接入 OpenArt，供用户在线试用。 | https://x.com/Alibaba_Qwen/status/2087382849972547730
+- 2026-08-12T03:36Z | Alibaba Qwen on X | Qwen said Qwen3.8-Max climbed from 22nd to fourth place on the Legal Research Bench leaderboard. | 中文：Qwen 表示，Qwen3.8-Max 在 Legal Research Bench 法律研究排行榜上由第 22 名升至第 4 名。 | https://x.com/Alibaba_Qwen/status/2087382811921854827
+- 2026-08-12T01:35Z | Ollama on X | Ollama can now serve as a local model provider for GitHub Copilot inside JetBrains development environments. | 中文：Ollama 现在可在 JetBrains 开发环境中充当 GitHub Copilot 的本地模型提供方。 | https://x.com/ollama/status/2087352262268170319
+- 2026-08-12T04:00Z | arXiv | AEROBAT automated agent-behavior research, generating 79 hypotheses and executing 23,512 simulation rounds across 12 target behaviors. | 中文：AEROBAT 自动完成智能体行为研究流程，围绕 12 种目标行为生成 79 项假设，并执行了 23,512 轮模拟。 | https://arxiv.org/abs/2608.10030
+- 2026-08-12T04:00Z | arXiv | MESA improved long-horizon agent-memory performance by 8.5% while using 41% fewer evidence tokens than an all-structure approach. | 中文：MESA 通过按任务选择多种记忆结构，使长程智能体记忆性能提升 8.5%，同时比全结构方案少用 41% 的证据令牌。 | https://arxiv.org/abs/2608.10108
+- 2026-08-12T04:00Z | arXiv | FACT trains world-action models on failed actions, reducing success-biased future hallucinations and improving simulated and real-world bimanual manipulation. | 中文：FACT 利用失败动作训练世界—动作模型，减少偏向成功结果的未来幻觉，并改善仿真及真实双臂操作表现。 | https://arxiv.org/abs/2608.10232
+- 2026-08-12T04:00Z | arXiv | MarkNull reduced AI-image watermark bit accuracy to 53.14% without perceptible degradation and also compromised Google's SynthID-Image. | 中文：MarkNull 在没有可感知画质损失的情况下，将 AI 图像水印比特准确率降至 53.14%，并成功攻破 Google SynthID-Image。 | https://arxiv.org/abs/2608.10166
+- 2026-08-12T04:00Z | arXiv | A deterministic streaming guardrail withheld every chunk completing predefined dangerous lexical pairs, but researchers stressed its coverage remains deliberately narrow. | 中文：一种确定性流式防护机制成功拦截所有补全预设危险词对的文本块，但研究者强调其覆盖范围刻意保持狭窄。 | https://arxiv.org/abs/2608.10279
+- 2026-08-12T04:00Z | arXiv | Researchers catalogued LLM-mediated variants of eight classic web attacks, finding vulnerability depends on both application architecture and model behavior. | 中文：研究者归纳了八类由大模型介导的传统网络攻击，发现风险同时取决于应用架构和模型行为。 | https://arxiv.org/abs/2608.10281
+- 2026-08-12T04:00Z | arXiv | An empirical study examined when chain-of-thought improves reasoning and when sequential processing depth instead becomes a performance bottleneck. | 中文：一项实证研究分析了思维链何时能够改善推理，以及串行处理深度何时反而成为性能瓶颈。 | https://arxiv.org/abs/2608.09942
+- 2026-08-12T04:00Z | arXiv | Researchers proposed closed-loop LLM copilots that combine agricultural sensor data, domain knowledge and feedback-driven recommendations for digital farming. | 中文：研究者提出闭环农业大模型助手，结合传感器数据、领域知识和反馈驱动的建议服务数字农业。 | https://arxiv.org/abs/2608.09949
 
 ### 2026-08-11
 
