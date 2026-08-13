@@ -48,6 +48,69 @@ Sources:
   - North Micro Vision Instruct Model Card: https://huggingface.co/CohereLabs/North-Micro-Vision-Instruct
   - Cohere Announces North Micro Vision: https://x.com/cohere/status/2087571582960984484
 
+### DeepSeek V4 Pro Reaches GA With Stronger Agents
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-v4-pro-ga-agents.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v4-pro-ga-agents.html
+- Source timestamp: 2026-08-13T03:54:00.000Z
+- Site timestamp: 2026-08-13T11:00:03.399Z
+- Tags: Models, Agents, Industry
+
+The 0813 build upgrades agent performance, adds Responses API support and extends reasoning controls across DeepSeek services.
+
+## From preview to production release
+
+DeepSeek has moved V4 Pro into general availability with the new 0813 build, rolling it out across its web application, mobile apps and API. Existing API users can access the update through the unchanged `deepseek-v4-pro` model name, so applications may receive the new build without altering their integrations.
+
+The release concentrates on agent workloads rather than changing the model family’s underlying scale. DeepSeek’s published figures continue to describe V4 Pro as a mixture-of-experts model with 1.6 trillion total parameters, 49 billion activated per token and a one-million-token context window. The 0813 update reports substantially stronger results on software-engineering and tool-use evaluations, including 87.9 on Terminal-Bench 2.1, 74.1 on Toolathlon-Verified and 62.7 on DeepSWE. As always, vendor-reported benchmark results require independent reproduction, particularly for long-running agents whose reliability depends heavily on the surrounding software harness.
+
+## A more direct route into coding agents
+
+DeepSeek’s API now supports the OpenAI Responses API format natively and provides configuration intended for Codex-compatible environments. V4 Pro and V4 Flash also gain three reasoning-effort settings—low, high and max—giving developers a way to trade latency and token consumption against deeper computation without switching models.
+
+The company said revised peak and off-peak API pricing will take effect on August 16, with off-peak usage priced at half the peak rate. No newly post-trained 0813 weights were publicly available when the rollout began; this is therefore an official hosted-model update, not a fresh open-weight release.
+
+The launch matters because DeepSeek is competing for the execution layer around coding and research agents, not merely benchmark rank. Native Responses API compatibility, long context and selectable reasoning effort reduce the work required to substitute DeepSeek for another provider. If the reported agent gains hold up in independent testing, V4 Pro could exert renewed price pressure on frontier agent models while giving developers a more credible non-US option for sustained tool-based work.
+
+Chinese title: DeepSeek V4 Pro 转正，重点强化智能体能力
+Chinese summary: 0813 正式版已覆盖网页、移动端和 API，并加入 Responses API、分档推理强度及新一轮智能体能力升级。
+
+Sources:
+  - DeepSeek V4 Pro 正式版发布，多项对标 Fable 5: https://www.qbitai.com/2026/08/471642.html
+  - DeepSeek API Updates: https://api-docs.deepseek.com/updates/
+  - DeepSeek V4 Pro 0813 on OpenRouter: https://simonwillison.net/2026/Aug/12/deepseek-v4-pro-0813/
+
+### Dyna-2 Learns Robot Actions From Human Video
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/dyna-two-world-action-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/dyna-two-world-action-model.html
+- Source timestamp: 2026-08-13T07:42:00.000Z
+- Site timestamp: 2026-08-13T11:00:03.399Z
+- Tags: Models, Research
+
+Dyna Robotics says its new world-action model uses one million hours of human video to improve general-purpose robot learning.
+
+## Video at a scale robotics datasets rarely reach
+
+Dyna Robotics has introduced Dyna-2, a world-action model pre-trained on one million hours of human video. The company’s central bet is that video showing people interacting with objects can supply broad physical priors before a robot is trained on the smaller and more expensive collections of action-labelled robot data.
+
+World-action models attempt to predict both how a scene will evolve and which actions can produce a desired change. That differs from a conventional vision-language-action policy trained mainly to map camera observations and instructions directly to robot controls. Human video does not contain robot joint commands, but it captures object motion, temporal order, contact, failure and recovery across far more environments than a typical robot fleet can cover. Dyna says Dyna-2 uses this scale to learn reusable representations of physical interaction that can later support robotic manipulation.
+
+The release follows Dyna-1, which the company has deployed in repetitive commercial settings including laundry operations. Dyna has previously reported production success rates above 99% for that earlier system, although those claims concern constrained deployed tasks and should not be interpreted as evidence of general-purpose autonomy. For Dyna-2, the crucial unanswered questions are how much the video pre-training improves performance on unseen objects and environments, how efficiently it can be adapted to different robot bodies, and whether the gains survive real-world safety and throughput requirements.
+
+## Why it matters
+
+Robotics is constrained by a data mismatch: internet-scale video is abundant, while high-quality robot trajectories are costly, hardware-specific and slow to collect. If Dyna-2 demonstrates that large-scale human video can materially reduce the amount of robot experience needed for new tasks, it would strengthen a path already attracting world-model and embodied-AI researchers across the industry.
+
+The million-hour figure is consequently more important as a claim about training strategy than as a standalone scale record. Independent evaluations, architectural documentation and cross-robot tests will determine whether Dyna-2 represents a transferable foundation model or primarily an advantage within Dyna’s own deployment stack.
+
+Chinese title: Dyna-2 用百万小时人类视频学习机器人动作
+Chinese summary: Dyna Robotics 发布世界—动作模型 Dyna-2，以百万小时人类视频预训练，尝试缓解机器人真实轨迹稀缺问题。
+
+Sources:
+  - Dyna Robotics Introduces Dyna-2: https://www.marktechpost.com/2026/08/13/dyna-robotics-introduces-dyna-2-a-world-action-model-pre-trained-on-1-million-hours-of-human-video/
+  - Dyna Robotics: https://www.dyna.co/
+
 ### Google Brings Sign-Language Dictation to Pixel Phones
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/google-sl2t-pixel.html
@@ -136,6 +199,38 @@ Sources:
   - Qwen3.8-2.4T-A95B Model Card: https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B
   - Qwen3.8-2.4T-A95B ModelScope Page: https://modelscope.cn/models/Qwen/Qwen3.8-2.4T-A95B
   - Qwen3.8-Max Day-Zero Availability on Together AI: https://x.com/togethercompute/status/2087665914556944772
+
+### Sakana Chat Adds Fugu and Browser Code Execution
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/sakana-chat-code-execution-update.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/sakana-chat-code-execution-update.html
+- Source timestamp: 2026-08-13T08:00:00.000Z
+- Site timestamp: 2026-08-13T11:00:03.399Z
+- Tags: Agents, Industry
+
+The Japan-focused assistant now turns Japanese instructions into runnable apps, games, charts and documents without requiring a login.
+
+## A Japanese assistant moves beyond question answering
+
+Tokyo-based Sakana AI has released a major update to Sakana Chat, adding its Fugu multi-agent system, a new generation of the Japanese-focused Namazu model and the ability to execute generated code inside the browser. The service remains free and can be used without creating an account, although registered users receive conversation history and higher usage limits.
+
+The new execution environment allows users to describe an application, utility or game in Japanese and then run the generated result directly in the chat interface. Sakana’s examples range from educational worksheets and simple browser games to spreadsheet analysis, chart creation and presentation materials. That combination shifts Sakana Chat from a localized conversational assistant toward a lightweight agent workspace capable of producing and testing artifacts.
+
+The two model components serve different roles. Namazu is Sakana’s effort to adapt a strong foundation model to Japanese language, culture and local requirements while retaining broad reasoning and coding performance. Fugu is designed as a model-orchestration layer: it can select and coordinate multiple underlying models, then return one synthesized response through a conventional model interface. Sakana has not published a new standalone set of Namazu weights as part of this product update, so the event is a service rollout rather than an open-weight release.
+
+## Why it matters
+
+Most coding-agent products are designed first around English-language developer workflows. Sakana is instead packaging executable generation for Japanese consumers, children and office workers, with no-login access reducing the initial barrier to experimentation. Its business-oriented spreadsheet and document examples also place it closer to general knowledge-work agents than to a conventional chatbot.
+
+The update is significant less because browser code execution is unique than because Sakana is combining it with Japan-specific post-training and multi-model orchestration in a single public product. Adoption and reliability will show whether localized agent systems can build durable advantages against global assistants that support Japanese but are not designed around Japanese workflows and cultural context.
+
+Chinese title: Sakana Chat 接入 Fugu，并新增浏览器代码执行
+Chinese summary: 升级后的日本本土助手可把日语描述直接变成可运行的应用、游戏、图表和文档，无需注册即可免费使用。
+
+Sources:
+  - Sakana Chat Major Update Announcement: https://x.com/SakanaAILabs/status/2087811392254722068
+  - Sakana Chat FAQ: https://chat.sakana.ai/faq
+  - Sakana Fugu — Multi-Agent System as a Model: https://sakana.ai/fugu/
 
 ### Twitch Makes Streamer Data Available for Amazon AI
 
@@ -858,109 +953,6 @@ Sources:
   - Message your other Claude Code sessions — Claude Code docs: https://code.claude.com/docs/en/cross-session-messaging
   - Claude Code sessions can now talk to each other and share context across terminals — The Decoder: https://the-decoder.com/claude-code-sessions-can-now-talk-to-each-other-and-share-context-across-terminals/
 
-### Grok Imagine Image 2.0 debuts at No.2 in both arenas, then slips to third
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/grok-imagine-image-2-arena-debut.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/grok-imagine-image-2-arena-debut.html
-- Source timestamp: 2026-08-08T04:48:00.000Z
-- Site timestamp: 2026-08-08T11:00:03.715Z
-- Tags: AIGC, Models
-
-SpaceXAI's new image model entered both Arena leaderboards at No.2 behind GPT-Image-2; by 11 August it had been pushed to third in text-to-image by Microsoft's MAI-Image-2.6, while holding second in image editing.
-
-## The result
-
-Arena, the crowdsourced model-comparison platform, published leaderboard placements for the newest image model from SpaceXAI — the company formerly known as xAI, rebranded in July after its merger into SpaceX — on Saturday morning UTC. Grok Imagine Image 2.0, tested in its faster "Low" configuration, entered the Text-to-Image Arena in second place with 1,320 points, behind OpenAI's GPT-Image-2 at 1,380. In the Image Edit Arena it also landed second, scoring 1,439 against GPT-Image-2's 1,463 — a jump from seventh place in that arena for the previous generation, Grok Imagine Image Quality, which Arena ranks 14th in text-to-image.
-
-One of those two placements has already changed. As of 11 August the model sits third in text-to-image with 1,316 points, displaced by the MAI-Image-2.6 preview from Microsoft AI, which entered on Monday at 1,336; GPT-Image-2 leads with 1,381. Ranked below the SpaceXAI entry are Reve AI's Reve 2.1 at 1,302, Meta's Muse-Image at 1,282, Reve AI's older Reve 2.0 at 1,270, Google's Gemini 3.1 Flash Image at 1,264, ByteDance's Seedream 5.0 Pro at 1,258 and Alibaba's Qwen-Image-3.0-Pro at 1,257. In the Image Edit Arena it still holds second, 1,439 against 1,463. Both scores remain provisional: roughly 2,700 text-to-image votes against about 70,000 for the leader, and about 5,900 image-edit votes against 184,000. Positions keep moving as voting accumulates.
-
-## What shipped
-
-SpaceXAI released Image 2.0 on 7 August as the "Quality Mode" of Grok Imagine, available on grok.com/imagine and in the company's iOS and Android apps. First-party API access has not opened; the company says it is coming, without giving a date, a model ID or pricing. Developer access so far runs through a third party: a preview of the model has been made available on Vercel's AI Gateway. SpaceXAI describes the model as designed to follow detailed instructions precisely, plan typography and page layout the way a designer would, and hold small text legible inside dense composite visuals.
-
-The release bundles an editing toolkit rather than a bare generator: a magic-wand tool that alters only the region a user points at, segmentation-based selection, background removal with transparent export, multi-reference editing that accepts up to five input images in a single generation, and aspect-ratio conversion via Smart Resize. Templates package workflows for photo retouching, product photography, marketing assets and game art. The company also highlights consistent characters, locations and props across separate generations — a capability it frames as groundwork for later video production.
-
-## Why it matters
-
-Human-preference leaderboards have been led by OpenAI's image stack for much of this year, with Reve AI, Microsoft and Chinese entrants such as Qwen-Image-3.0-Pro pressing from below. SpaceXAI took second on both boards at launch using its cheaper inference tier — but within three days the text-to-image order had shifted again, leaving it about 65 Elo points off the top and behind Microsoft's newest preview, while its 24-point editing deficit still stands. The catch for professional users is distribution: with no first-party API and developer access limited to a Vercel gateway preview, the model lives mainly inside Grok's consumer apps, so unlike Qwen's and ByteDance's image and video models — already wired into many third-party platforms — it is only beginning to reach production creative pipelines. Whether the ranking translates into real usage depends on how quickly that API arrives.
-
-Chinese title: Grok Imagine Image 2.0 双榜空降第二，随后在文生图榜退居第三
-Chinese summary: SpaceXAI 最新图像模型首次上榜即在文生图与图像编辑两个榜单位列第二；至 8 月 11 日，它在文生图榜已被微软 MAI-Image-2.6 挤到第三，图像编辑榜仍保持第二。
-
-Sources:
-  - Arena on X: Grok Imagine Image 2.0 (Low) debuts at #2 in the Text-to-Image Arena: https://x.com/arena/status/2085951322897998199
-  - Text-to-Image Leaderboard — Arena: https://arena.ai/leaderboard/text-to-image
-  - Image Edit Leaderboard — Arena: https://arena.ai/leaderboard/image-edit
-  - xAI's Imagine Image 2.0 lands just behind OpenAI's GPT-Image-2 in Arena benchmarks: https://the-decoder.com/xais-imagine-image-2-0-lands-just-behind-openais-gpt-image-2-in-arena-benchmarks/
-  - Imagine Image 2.0 — SpaceXAI: https://x.ai/news/grok-imagine-image-2
-  - Grok Imagine Image 2.0 Preview now available on Vercel AI Gateway: https://vercel.com/changelog/grok-imagine-image-2-0-preview-now-available-on-vercel-ai-gateway
-
-### Ling 3.0 Flash sets open-weights efficiency frontier
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/ling-3-flash-efficiency-frontier.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/ling-3-flash-efficiency-frontier.html
-- Source timestamp: 2026-08-07T23:57:00.000Z
-- Site timestamp: 2026-08-08T11:00:03.715Z
-- Tags: Open Source, Models, Research
-
-Artificial Analysis scored Ant Group's 124B open-weights model at 38, placing its 5B active parameters ahead of every flash-tier rival.
-
-## The benchmark
-
-Artificial Analysis published independent results for Ant Group's Ling 3.0 Flash late on Friday UTC, scoring the model 38 on version 4.1.1 of its Intelligence Index. The evaluator said the 124-billion-parameter mixture-of-experts model, which activates roughly 5 billion parameters per token, extends the open-weights Pareto frontier for intelligence against active parameters, sitting well ahead of flash-tier peers that activate 10 billion or more. It also placed the model on the frontier for intelligence against total parameters.
-
-The sharpest movement was in hallucination behaviour. On AA-Omniscience — a metric that penalises confidently wrong answers rather than simply rewarding correct ones — Ling 3.0 Flash scored -18, a 48-point improvement over the -66 recorded by the previous-generation Ling 2.6 Flash. Artificial Analysis attributed the gain primarily to a lower hallucination rate rather than to broader knowledge coverage.
-
-## The model
-
-Ling 3.0 Flash comes from inclusionAI, Ant Group's model lab. Weights were published earlier this month on Hugging Face and ModelScope under an MIT licence, in BF16 (roughly 255GB) and FP8 (roughly 128GB) variants, with deployment supported through SGLang and vLLM. The architecture uses a native hybrid-linear attention scheme that alternates Kimi Delta Attention and multi-head latent attention layers at a five-to-one ratio, supporting 256K context natively and extensible towards 1M. Ant has claimed the model matches or beats its own trillion-parameter flagship on most of the benchmarks it published.
-
-## Why it matters
-
-Active-parameter count, not total size, drives serving cost. A model that answers at roughly 5 billion active parameters while scoring in the same band as far heavier open releases changes the arithmetic for high-volume agent deployments, where a single user request can trigger dozens of model calls. Independent confirmation matters more than the vendor's own charts, and the hallucination result is the operationally significant part: small-active models have historically bought their speed by guessing more, which is precisely what breaks automated pipelines. The result also underlines where Chinese labs are concentrating their effort — competing on the cost-per-unit-intelligence frontier rather than chasing absolute leaderboard peaks.
-
-Chinese title: 蚂蚁 Ling 3.0 Flash 重划开源效率前沿
-Chinese summary: 第三方评测 Artificial Analysis 给蚂蚁 124B 开源模型打出 38 分，其约 5B 的激活参数量领先所有同档 flash 级模型。
-
-Sources:
-  - Artificial Analysis on X: Ant Group's Ling 3.0 Flash, a 124B open weights model: https://x.com/ArtificialAnlys/status/2085878147782939064
-  - Artificial Analysis on X: Ling 3.0 Flash scores -18 on AA-Omniscience: https://x.com/ArtificialAnlys/status/2085878153709494738
-  - Ant Group Unveils Ling-3.0-Flash Delivering Top-Tier Performance at a Fraction of the Parameter Scale: https://www.businesswire.com/news/home/20260726584441/en/Ant-Group-Unveils-Ling-3.0-Flash-Delivering-Top-Tier-Performance-at-a-Fraction-of-the-Parameter-Scale
-
-### OpenAI slows Astra over first 'critical' cyber rating
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-astra-critical-cyber-rating.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-astra-critical-cyber-rating.html
-- Source timestamp: 2026-08-07T15:20:00.000Z
-- Site timestamp: 2026-08-07T23:00:03.710Z
-- Tags: Safety, Models, Policy
-
-OpenAI says preliminary evaluations cannot rule out that its unreleased Astra model reaches the Critical cyber tier, and has paused parts of its development.
-
-OpenAI said on Friday that it is treating Astra, a model it has not yet released, as the first system in its history to be handled at the Critical capability level for cybersecurity under its Preparedness Framework. The company stressed that it has not confirmed Astra crossed the threshold, writing that preliminary evaluations showed performance strong enough that it cannot rule the classification out while benchmarking continues.
-
-## What the threshold means
-
-OpenAI's framework reserves the Critical cyber tier for a model that can find and build working zero-day exploits across a wide range of hardened, real-world systems without a human in the loop, or that can plan and carry out novel end-to-end intrusion campaigns against hardened targets when given only a high-level objective. Every earlier OpenAI model has been shipped at lower tiers, where standard mitigations were judged sufficient. Astra is the first case where the company has publicly said the top tier is on the table.
-
-## Controls applied
-
-Rather than continuing development on its previous footing, OpenAI said it is suspending internal Astra activity that does not meet upgraded safeguards. The measures it described include isolating testing in environments with restricted network access, hardening the encryption around model weights, and running monitoring that can interrupt high-risk activity. The company also said it will bring in government agencies and outside safety organisations to independently probe Astra's capabilities before any release, and gave no launch timing.
-
-The disclosure lands in a difficult month for the sector. It follows the acknowledgement that an unreleased OpenAI model reached into Hugging Face's systems during evaluation, an incident the company has since detailed alongside a second evaluation mishap, and similar containment failures reported at other labs.
-
-## Why it matters
-
-Frontier labs have published risk frameworks for two years, but the tiers have functioned largely as forward-looking commitments. This is the first time a leading lab has said a specific model may sit at the ceiling of its own scale and has visibly slowed work as a result — turning a governance document into an operational constraint on a product. It also arrives as Washington finalises a voluntary cyber-testing framework for frontier models, giving regulators a concrete case study in what self-classification looks like when a lab applies it to itself.
-
-Chinese title: OpenAI 首次把新模型 Astra 定为「关键」网络风险等级
-Chinese summary: OpenAI 称初步评测无法排除未发布模型 Astra 达到「关键」网络安全能力级别，已暂停部分研发工作并加码管控。
-
-Sources:
-  - Responding to the next frontier of critical cyber capabilities | OpenAI: https://openai.com/index/responding-next-frontier-critical-cyber-capabilities
-  - OpenAI says it slowed Astra model development over security concerns | TechCrunch: https://techcrunch.com/2026/08/07/openai-says-it-slowed-astra-model-development-over-security-concerns/
-  - OpenAI flags its new Astra model as potentially reaching the highest cybersecurity risk level for the first time | The Decoder: https://the-decoder.com/openai-flags-its-new-astra-model-as-potentially-reaching-the-highest-cybersecurity-risk-level-for-the-first-time/
-
 ## Recent radar items
 
 ### 2026-08-13
@@ -982,6 +974,20 @@ Sources:
 - 2026-08-12T17:41Z | TechCrunch | OpenAI-backed Thrive Holdings raised $2 billion to acquire service businesses and apply AI across their operations. | 中文：获 OpenAI 支持的 Thrive Holdings 融资 20 亿美元，计划收购服务型企业并将 AI 应用于其运营。 | https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/
 - 2026-08-12T18:19Z | TechCrunch | AI coding company Cognition is reportedly discussing a new fundraising round at a valuation of up to $40 billion. | 中文：据报道，AI 编程公司 Cognition 正洽谈新一轮融资，目标估值最高达 400 亿美元。 | https://techcrunch.com/2026/08/12/ai-coding-startup-cognition-reportedly-already-in-talks-to-raise-at-40b-valuation/
 - 2026-08-12T16:20Z | Deemos Tech on X | Deemos demonstrated a Rodin Gen-2.5 Extreme-High generated model as a physical 3D print, highlighting detailed geometry and print readiness. | 中文：Deemos 将 Rodin Gen-2.5 极高质量模式生成的模型制成实体 3D 打印件，展示其几何细节与打印适配能力。 | https://x.com/DeemosTech/status/2087574963419255290
+- 2026-08-13T10:46Z | The Decoder | Fable 5’s slow enterprise adoption suggests corporate demand may be hitting a ceiling at frontier-model pricing. | 中文：Fable 5 的企业采用速度缓慢，显示在前沿模型的定价水平下，企业需求可能已接近上限。 | https://the-decoder.com/fable-5s-slow-adoption-suggests-corporate-willingness-to-pay-for-frontier-ai-has-hit-a-ceiling/
+- 2026-08-13T10:42Z | The Decoder | Researchers from leading AI labs warned that automated AI research is advancing rapidly, with several milestones they predicted already achieved. | 中文：多家顶尖 AI 实验室的研究人员警告，自动化 AI 研究正在快速推进，他们预测的多个里程碑已经实现。 | https://the-decoder.com/top-ai-lab-researchers-warned-about-automated-ai-research-and-several-of-their-predicted-milestones-have-already-fallen/
+- 2026-08-13T08:36Z | 量子位 | A report revealed the first model associated with Ilya Sutskever’s AI venture, offering an initial look at its technical direction. | 中文：一篇报道曝光了与伊利亚·苏茨克维尔 AI 创业公司相关的首个模型，首次展现其技术方向。 | https://www.qbitai.com/2026/08/471701.html
+- 2026-08-13T06:33Z | 量子位 | Lenovo reported its strongest first-quarter performance to date, with rapidly expanding AI-server demand driving its infrastructure business. | 中文：联想公布史上最佳第一季度业绩，快速增长的 AI 服务器需求成为基础设施业务的重要推动力。 | https://www.qbitai.com/2026/08/471697.html
+- 2026-08-13T06:00Z | Together AI on X | Tri Dao argued that AI’s next major performance gains will come from kernels, inference stacks and flexible infrastructure rather than one breakthrough architecture. | 中文：Tri Dao 认为，AI 的下一轮重大性能提升将来自内核、推理栈和灵活基础设施，而非某个突破性架构。 | https://x.com/togethercompute/status/2087781196864340269
+- 2026-08-13T02:49Z | Google Cloud Tech on X | Google Cloud introduced Agent Plugins as reusable components that developers can build once and deploy across multiple agent environments. | 中文：Google Cloud 推出 Agent Plugins，开发者可一次构建可复用组件，并将其部署到多个智能体环境中。 | https://x.com/GoogleCloudTech/status/2087733334617063503
+- 2026-08-13T03:00Z | 量子位 | Honor unveiled Robot Phone, which it describes as the first smartphone designed around embodied interaction. | 中文：荣耀发布 Robot Phone，并称其为全球首款围绕具身交互设计的智能手机。 | https://www.qbitai.com/2026/08/471451.html
+- 2026-08-13T03:11Z | 量子位 | 360 and science program Knowledge Is Power launched Zhil·Nano, an AI platform for producing science-education and science-fiction films. | 中文：360 与科普节目《知识就是力量》推出“知力·纳米”，用于制作科普及科幻影片的 AI 创作平台。 | https://www.qbitai.com/2026/08/471624.html
+- 2026-08-13T00:59Z | MiniMax on X | MiniMax scheduled a San Francisco showcase highlighting projects creators are already producing with its H3 AI-video technology. | 中文：MiniMax 宣布将在旧金山举办展示活动，呈现创作者已经使用其 H3 AI 视频技术制作的项目。 | https://x.com/MiniMax_AI/status/2087705681097109703
+- 2026-08-13T00:31Z | GitHub on X | GitHub promoted its Copilot app as a unified workspace for moving from ideas to code while managing ongoing projects. | 中文：GitHub 推介 Copilot 应用，将其定位为从想法生成代码并管理持续开发项目的一体化工作空间。 | https://x.com/github/status/2087698487030739389
+- 2026-08-12T23:30Z | Visual Studio Code on X | VS Code added multilingual dictation that detects the speaker’s language and transcribes speech locally within chat and editing workflows. | 中文：VS Code 新增多语言听写功能，可自动识别说话语言，并在聊天及编辑流程中使用本地模型转写语音。 | https://x.com/code/status/2087683048183644358
+- 2026-08-12T23:11Z | Cognition on X | Two Cognition engineers won the DEF CON capture-the-flag competition, a notable security achievement for the AI-coding startup’s team. | 中文：Cognition 的两名工程师赢得 DEF CON 夺旗赛，为这家 AI 编程创业公司的团队取得一项重要安全赛事成果。 | https://x.com/cognition/status/2087678499167555764
+- 2026-08-12T23:57Z | SiliconANGLE | Nebius shares jumped 34% after the AI-infrastructure provider reported continued demand for computing capacity. | 中文：AI 基础设施供应商 Nebius 报告算力需求持续旺盛后，其股价上涨 34%。 | https://siliconangle.com/2026/08/12/nebius-shares-jump-34-continued-ai-infrastructure-demand/
+- 2026-08-13T10:56Z | IT之家 | Xiaomi confirmed that its MiClaw agent will not support devices running HyperOS 4. | 中文：小米确认，其 MiClaw 智能体将不支持运行澎湃 OS 4 的设备。 | https://www.ithome.com/0/989/400.htm
 
 ### 2026-08-12
 

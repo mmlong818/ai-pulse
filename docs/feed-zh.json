@@ -49,6 +49,83 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v4-pro-ga-agents.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v4-pro-ga-agents.html",
+      "title": "DeepSeek V4 Pro 转正，重点强化智能体能力",
+      "summary": "0813 正式版已覆盖网页、移动端和 API，并加入 Responses API、分档推理强度及新一轮智能体能力升级。",
+      "content_text": "## 从预览版进入正式商用阶段\n\nDeepSeek 已将 V4 Pro 升级为正式版本，新的 0813 构建开始覆盖网页端、移动应用和 API。API 侧继续沿用 `deepseek-v4-pro` 这一模型名称，因此现有应用无需修改调用标识，就可能直接切换到新版本。\n\n此次更新的重点是智能体任务，而非改变模型的基础规模。DeepSeek 此前公布的参数保持不变：V4 Pro 是总参数 1.6 万亿、单次激活 490 亿参数的混合专家模型，上下文窗口为 100 万令牌。官方数据显示，0813 版本在软件工程和工具调用评测上取得明显提升，包括 Terminal-Bench 2.1 得分 87.9、Toolathlon-Verified 得分 74.1、DeepSWE 得分 62.7。不过，这些仍是厂商自行披露的成绩，尤其是长时间运行的智能体，其实际可靠性还会受到外部执行框架、工具配置和错误恢复机制影响，仍需第三方复测。\n\n## 更直接地接入编程智能体\n\nDeepSeek API 现已原生兼容 OpenAI Responses API 格式，并提供面向 Codex 兼容环境的配置方式。V4 Pro 和 V4 Flash 同时增加 low、high、max 三档推理强度，让开发者无需切换模型，也能在响应速度、令牌成本与推理深度之间进行取舍。\n\nDeepSeek 还宣布，新的高峰与低谷分时价格将于 8 月 16 日生效，低谷时段价格为高峰时段的一半。此次上线时并未同步公开经过新一轮后训练的 0813 权重，因此它属于托管模型正式版更新，而不是一次新的开放权重发布。\n\n这次升级的重要性在于，DeepSeek 争夺的已不只是模型榜单名次，而是编程、研究等智能体的实际执行入口。原生 Responses API、百万上下文和分档推理控制，都降低了开发者从其他供应商迁移到 DeepSeek 的成本。如果官方披露的智能体增益能够通过独立验证，V4 Pro 将进一步压低前沿智能体模型的价格，同时为全球开发者提供一个更具竞争力的非美国方案。",
+      "date_published": "2026-08-13T03:54:00.000Z",
+      "date_modified": "2026-08-13T11:00:03.399Z",
+      "tags": [
+        "模型",
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-v4-pro-ga-agents.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v4-pro-ga-agents.html",
+        "source_published_at": "2026-08-13T03:54:00.000Z",
+        "site_published_at": "2026-08-13T11:00:03.399Z",
+        "sources": [
+          {
+            "title": "DeepSeek V4 Pro 正式版发布，多项对标 Fable 5",
+            "url": "https://www.qbitai.com/2026/08/471642.html"
+          },
+          {
+            "title": "DeepSeek API Updates",
+            "url": "https://api-docs.deepseek.com/updates/"
+          },
+          {
+            "title": "DeepSeek V4 Pro 0813 on OpenRouter",
+            "url": "https://simonwillison.net/2026/Aug/12/deepseek-v4-pro-0813/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/dyna-two-world-action-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/dyna-two-world-action-model.html",
+      "title": "Dyna-2 用百万小时人类视频学习机器人动作",
+      "summary": "Dyna Robotics 发布世界—动作模型 Dyna-2，以百万小时人类视频预训练，尝试缓解机器人真实轨迹稀缺问题。",
+      "content_text": "## 用人类视频补足机器人数据\n\nDyna Robotics 发布世界—动作模型 Dyna-2，称其预训练使用了 100 万小时人类视频。其核心思路是先从人类与物体交互的视频中学习广泛的物理规律，再用规模更小、采集成本更高的机器人动作数据完成适配。\n\n世界—动作模型既要预测场景接下来如何变化，也要理解采取什么动作才能实现目标状态。这与主要把摄像头画面和文字指令直接映射为机器人控制信号的视觉—语言—动作模型有所不同。人类视频虽然不包含机械臂关节指令，却记录了物体运动、动作先后、接触过程、失败与恢复，而且覆盖的场景远多于普通机器人集群能够采集的范围。Dyna 表示，Dyna-2 试图从这种大规模数据中提取可复用的物理交互表征，再将其用于机器人操作。\n\nDyna 此前推出的 Dyna-1 已进入洗衣等重复性商业场景。公司曾披露该系统在生产任务中的成功率超过 99%，但这类数据对应的是边界明确的部署任务，不能直接等同于通用自主能力。对于 Dyna-2，尚待回答的问题包括：视频预训练能否显著改善陌生物体和新环境中的表现，模型适配不同机器人本体需要多少数据，以及这些增益能否在真实生产所要求的安全性、速度和稳定性下保持。\n\n## 为何值得关注\n\n机器人学习长期面临明显的数据错配：互联网视频极其丰富，高质量机器人轨迹却昂贵、采集缓慢，而且往往与特定硬件绑定。如果 Dyna-2 能证明，大规模人类视频确实可以减少新任务所需的机器人实操数据，它将为世界模型和具身智能领域正在探索的一条关键技术路线提供有力支持。\n\n因此，“百万小时”的意义不只在数据规模，更在于训练范式。Dyna-2 最终是可跨平台迁移的基础模型，还是主要增强 Dyna 自有软硬件体系的内部能力，仍需等待独立评测、架构细节以及跨机器人实验来判断。",
+      "date_published": "2026-08-13T07:42:00.000Z",
+      "date_modified": "2026-08-13T11:00:03.399Z",
+      "tags": [
+        "模型",
+        "研究"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/dyna-two-world-action-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/dyna-two-world-action-model.html",
+        "source_published_at": "2026-08-13T07:42:00.000Z",
+        "site_published_at": "2026-08-13T11:00:03.399Z",
+        "sources": [
+          {
+            "title": "Dyna Robotics Introduces Dyna-2",
+            "url": "https://www.marktechpost.com/2026/08/13/dyna-robotics-introduces-dyna-2-a-world-action-model-pre-trained-on-1-million-hours-of-human-video/"
+          },
+          {
+            "title": "Dyna Robotics",
+            "url": "https://www.dyna.co/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/google-sl2t-pixel.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/google-sl2t-pixel.html",
       "title": "谷歌将手语输入带到 Pixel 11，首发支持美式手语",
@@ -163,6 +240,46 @@
           {
             "title": "Qwen3.8-Max Day-Zero Availability on Together AI",
             "url": "https://x.com/togethercompute/status/2087665914556944772"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/sakana-chat-code-execution-update.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/sakana-chat-code-execution-update.html",
+      "title": "Sakana Chat 接入 Fugu，并新增浏览器代码执行",
+      "summary": "升级后的日本本土助手可把日语描述直接变成可运行的应用、游戏、图表和文档，无需注册即可免费使用。",
+      "content_text": "## 从问答助手转向可执行工作台\n\n总部位于东京的 Sakana AI 对 Sakana Chat 进行了大规模升级：接入多智能体系统 Fugu 和新一代日语模型 Namazu，并新增浏览器内代码执行功能。服务目前仍可免费使用，用户无需注册账号即可开始对话；注册后则能保存历史记录并获得更高的使用额度。\n\n升级后的执行环境允许用户直接用日语描述想要的应用、工具或游戏，系统生成代码后可在聊天界面中立即运行。Sakana 展示的使用场景包括学习练习题、简单网页游戏、电子表格分析、图表生成以及演示资料制作。这意味着 Sakana Chat 不再只是回答问题，而是开始成为一个能够生成、运行和检验实际成果的轻量级智能体工作台。\n\n两个模型组件承担不同职责。Namazu 是 Sakana 将高性能基础模型适配到日语、当地文化和日本本土需求的模型系列，同时尽量保留通用推理与编程能力。Fugu 则是模型编排层，可根据任务选择并协调多个底层模型，再通过一个常规模型接口输出整合后的答案。此次产品更新并未同步发布一套新的 Namazu 独立权重，因此应视为在线服务升级，而非开放权重发布。\n\n## 为何值得关注\n\n当前多数编程智能体首先围绕英文开发者工作流设计。Sakana 选择把可执行生成能力直接提供给日本消费者、学生和办公人群，同时用免登录方式降低首次尝试门槛。电子表格分析和资料制作等示例，也让它更接近通用知识工作智能体，而不只是编程聊天机器人。\n\n浏览器内执行代码本身并非独有功能，这次更新的意义在于，Sakana 将日本本土化后训练、多模型编排和可运行产物整合进了同一个公共产品。后续的用户采用情况与任务可靠性，将检验本土化智能体能否对支持日语、但并非围绕日本工作方式和文化语境设计的全球助手形成持久优势。",
+      "date_published": "2026-08-13T08:00:00.000Z",
+      "date_modified": "2026-08-13T11:00:03.399Z",
+      "tags": [
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/sakana-chat-code-execution-update.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/sakana-chat-code-execution-update.html",
+        "source_published_at": "2026-08-13T08:00:00.000Z",
+        "site_published_at": "2026-08-13T11:00:03.399Z",
+        "sources": [
+          {
+            "title": "Sakana Chat Major Update Announcement",
+            "url": "https://x.com/SakanaAILabs/status/2087811392254722068"
+          },
+          {
+            "title": "Sakana Chat FAQ",
+            "url": "https://chat.sakana.ai/faq"
+          },
+          {
+            "title": "Sakana Fugu — Multi-Agent System as a Model",
+            "url": "https://sakana.ai/fugu/"
           }
         ]
       }
@@ -1854,127 +1971,6 @@
           {
             "title": "Artificial Analysis榜单：阿里Qwen3.8 Agentic能力得分全球第一 - 量子位",
             "url": "https://www.qbitai.com/2026/08/467444.html"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/reddit-opens-llm-rules-hub.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/reddit-opens-llm-rules-hub.html",
-      "title": "Reddit 向所有新社区开放由大模型执行规则的 Rules Hub",
-      "summary": "Reddit 推广 Rules Hub：版主用自然语言写规则，由语言模型按「意图」判定违规，同时弱化 karma 门槛并进一步收紧 API。",
-      "content_text": "8 月 5 日，Reddit 宣布把 Rules Hub 开放给所有新建社区。这套系统用大语言模型执行社区规则，全站推广计划安排在 2026 年晚些时候。\n\n## 运作方式\n\nRules Hub 允许志愿版主团队用日常语言写下规则，再由语言模型判断某条帖子或评论是否违背了该规则的「意图」。这与 AutoMod 有本质区别——后者是沿用多年的正则与关键词配置系统，长期支撑 Reddit 的自动审核，但在处理语境、讽刺与边缘情况上力不从心。AutoMod 的其他功能保留，Rules Hub 对新社区是可选项。在此次扩大开放前，Reddit 已与 700 多个社区以及版主委员会网络（Mod Council Network）成员完成测试。\n\nReddit 同时表示，将降低 karma（由点赞累积的声望分）对首次发帖者的决定性作用，用更强的滥用检测系统替代 karma 与账号注册时长门槛。官方说法是让真实的新用户能够参与进来，而不必让版主一刀切地屏蔽低 karma 账号。\n\n## 同步收紧的部分\n\n同一批公告还进一步收紧了第三方访问。Reddit 将继续限制公共 API，推动开发者迁移到自家 Developer Platform，新的 API 申请将逐步收窄，并设 100 万美元资金支持迁移。老版桌面站 old.reddit.com 正被并入现代审核流程，有报道称未登录访问将受限——这项变化的叙事重点是反爬取，而非审核。\n\n## 为何重要\n\nReddit 拥有互联网上规模最大的志愿审核体系之一，平台周活跃用户约 5 亿。在这个量级上把关键词规则换成意图判定，是大模型在有争议言论裁决上的一次大规模真实部署，而它的失效方式——判定不一致、误杀、缺少清晰申诉路径——是关键词系统所没有的。这件事也无法与数据问题分开看：Reddit 的语料是授权给 AI 公司的重要训练来源，API 限制与 old.reddit 的调整同时发生，说明平台一边收紧这条供给的控制权，一边用同一种技术把自身治理自动化。",
-      "date_published": "2026-08-05T16:00:00.000Z",
-      "date_modified": "2026-08-05T23:00:03.104Z",
-      "tags": [
-        "产业",
-        "政策"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/reddit-opens-llm-rules-hub.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/reddit-opens-llm-rules-hub.html",
-        "source_published_at": "2026-08-05T16:00:00.000Z",
-        "site_published_at": "2026-08-05T23:00:03.104Z",
-        "sources": [
-          {
-            "title": "Reddit aims to make 'karma' less important for first-time posters with shift to AI moderation tools — TechCrunch",
-            "url": "https://techcrunch.com/2026/08/05/reddit-aims-to-make-karma-less-important-for-first-time-posters-with-shift-to-ai-moderation-tools/"
-          },
-          {
-            "title": "Reddit is introducing a new moderator: AI — The Verge",
-            "url": "https://www.theverge.com/tech/975398/reddit-ai-rules-hub-moderator-old-reddit-developer-platform"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-volta-ten-billion-compute.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-volta-ten-billion-compute.html",
-      "title": "Anthropic 向成立半年的 Volta 采购 100 亿美元算力",
-      "summary": "六年长约锁定挪威 133MW 水电数据中心，搭载英伟达 Vera Rubin 系统，由比特矿企 Bitdeer 参与建设。",
-      "content_text": "## 交易本身\n\nAnthropic 与 Volta Infra Holdings 签下约 100 亿美元、为期六年的算力协议——而这家云服务商在 2026 年初还不存在。产能来自比特币矿企 Bitdeer Technologies 位于挪威 Tydal 的园区，那是一座 133 兆瓦、以水电供能的数据中心（该公司正把电力与选址经验转向 AI），搭载英伟达 Vera Rubin 系统；据相关报道，Anthropic 实际锁定的 Vera Rubin 产能约为其中的 121 兆瓦。产能分两批等量交付，第一批目标为 2026 年底，第二批为 2027 年 3 月。\n\nVolta 由几位前 Brookfield 资产管理人于今年 1 月创办，种子轮与 A 轮合计融资约 3 亿美元，由 a16z 与 Altimeter Capital 联合领投，英伟达、迈克尔·戴尔家族办公室、Azora 与 Matter Venture Partners 跟投，投后估值 24 亿美元。它是英伟达云合作伙伴计划成员，另与资管规模超 200 亿美元的资产管理机构 Azora 设立了一项 50 亿美元融资计划，为后续站点提供不稀释股权的基础设施资本，并借此让客户以信贷方式获取 GPU 产能；公司称已锁定约 1 吉瓦的近期可用电力，并将扩张目标指向得州与怀俄明州。\n\n## Anthropic 的分散布局\n\n这份合同延续了一条刻意分散的路线。Anthropic 此前已在谷歌与博通、亚马逊、微软 Azure、AMD 与 SpaceX 之间铺开算力安排，如今更愿意为一家初创公司的首个大型项目兜底以换取增量。对 Volta 而言，这样体量的锚定客户，等于把一家成立仅半年的公司变成一桩可融资的基础设施生意——这正是这套玩法的核心：长约本身就是抵押物。\n\n## 影响\n\n这就是算力紧缺落到实处的样子。前沿实验室不再只在成熟云厂商之间做选择，而是亲手孵化新的供给方，并且哪里有电就去哪里，而不是哪里有客户去哪里——在得州刚刚冻结新增并网的当口，选择了挪威水电。它也加深了今年备受审视的循环结构：英伟达既是 Volta 的投资人又是其芯片供应商，而 Anthropic 的承诺才让 Volta 的英伟达采购变得可融资。这套结构在 AI 需求持续增长时运转良好，一旦不增长，则会让亏损同时在多张资产负债表上被放大。对一家收入仍以「几十亿」而非「几百亿」计的公司来说，100 亿美元的义务是在押注数年之后的需求。",
-      "date_published": "2026-08-04T15:21:00.000Z",
-      "date_modified": "2026-08-04T23:00:03.460Z",
-      "tags": [
-        "产业",
-        "融资"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-volta-ten-billion-compute.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-volta-ten-billion-compute.html",
-        "source_published_at": "2026-08-04T15:21:00.000Z",
-        "site_published_at": "2026-08-04T23:00:03.460Z",
-        "sources": [
-          {
-            "title": "Anthropic locks in $10 billion of compute from Volta, a cloud startup that didn't exist six months ago",
-            "url": "https://the-decoder.com/anthropic-locks-in-10-billion-of-compute-from-volta-a-cloud-startup-that-didnt-exist-six-months-ago/"
-          },
-          {
-            "title": "Anthropic signs $10B deal with AI cloud startup Volta",
-            "url": "https://techcrunch.com/2026/08/04/anthropic-signs-10-billion-deal-with-ai-cloud-startup-volta/"
-          },
-          {
-            "title": "Anthropic signs $10 billion Norway compute deal using Bitdeer site",
-            "url": "https://finance.yahoo.com/technology/ai/articles/anthropic-signs-10-billion-norway-132747149.html"
-          },
-          {
-            "title": "Volta Emerges From Stealth With $10 Billion AI Lab Partnership and $5 Billion AI Infrastructure Program — Business Wire",
-            "url": "https://www.businesswire.com/news/home/20260804493428/en/Volta-Emerges-From-Stealth-With-$10-Billion-AI-Lab-Partnership-and-$5-Billion-AI-Infrastructure-Program"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html",
-      "title": "Cursor 开源 MoE 训练巨型算子 MoK",
-      "summary": "Mixture-of-Kittens 把 MoE 层的全部通信与计算融进单个确定性 Blackwell 算子，使 Cursor 端到端训练吞吐提升 1.41 倍。",
-      "content_text": "## 把整个 MoE 层塞进一个算子\n\nCursor 于 8 月 4 日开源 Mixture-of-Kittens（MoK），一个 Apache-2.0 许可的训练巨型算子，把 MoE 层的所有通信与计算步骤融合进单次 kernel 启动。MoE 训练之所以受带宽拖累，就在于专家计算与 all-to-all 令牌路由要来回交替；MoK 把两者在同一次启动内重叠起来。\n\n代码面向英伟达 Blackwell SM100/SM103，即 GB200 NVL72 或 GB300 NVL72 机柜，依赖 Python 3.12+、PyTorch 2.10+ 与 CUDA 13.0+。在单层 MXFP8 前向的微基准上，Cursor 称吞吐最高达到最强公开基线的 2.37 倍。更有说服力的是端到端数据：在 512 卡规模上替换原有基于 DeepEP 的方案后，训练吞吐提升 1.41 倍，单卡每秒处理令牌数从 760.9 升至 1070.2。Cursor 表示 MoK 已在其数万张 GPU 上承担实际训练任务。\n\n## 确定性本身就是卖点\n\nMoK 是逐位确定性的。这在融合通信算子里并不常见，而且是有意为之：on-policy 强化学习后训练一旦训练路径与采样路径在数值上出现偏差，就会以极隐蔽的方式失效，而非确定性会让回归问题几乎无法二分定位。一个确定性的 MoE 算子让 RL 训练可复现、可调试，对实验室来说这份价值恐怕不输于加速本身。\n\n## 影响\n\n1.41 倍的吞吐提升，等于让 Blackwell 机柜上每一次 MoE 预训练和后训练的成本与耗时直接砍掉约三成——而如今几乎所有前沿模型都跑在这套底座上。以 Apache 2.0 放出来，意味着任何能摸到 NVL72 的团队都能拿到这份节省；这类算子工程通常被实验室视为内部资产，此举缩小了资源充裕者与其他人之间的一道差距。它也说明了 Cursor 的变化：一家以代码编辑器出名的公司如今在输出前沿级训练基础设施，证明其自研模型转型是真做，而不是套壳叙事。同时也再次提醒，训练效率的增量越来越多来自贴着硬件写算子，而非只靠改架构。",
-      "date_published": "2026-08-04T16:00:00.000Z",
-      "date_modified": "2026-08-04T23:00:03.460Z",
-      "tags": [
-        "开源",
-        "研究",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cursor-open-sources-mok-megakernel.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-open-sources-mok-megakernel.html",
-        "source_published_at": "2026-08-04T16:00:00.000Z",
-        "site_published_at": "2026-08-04T23:00:03.460Z",
-        "sources": [
-          {
-            "title": "Cursor Open-Sources Mixture-of-Kittens (MoK)",
-            "url": "https://www.marktechpost.com/2026/08/04/cursor-open-sources-mixture-of-kittens-mok-a-deterministic-moe-training-megakernel-for-gb300-nvl72-racks/"
-          },
-          {
-            "title": "cursor/mixture-of-kittens on GitHub",
-            "url": "https://github.com/cursor/mixture-of-kittens"
-          },
-          {
-            "title": "Cursor: We're open-sourcing Mixture-of-Kittens",
-            "url": "https://x.com/cursor_ai/status/2084670806613737919"
           }
         ]
       }
