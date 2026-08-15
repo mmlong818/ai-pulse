@@ -422,7 +422,7 @@ async function waitForXCardReady(lang) {
 }
 
 async function checkPostedTweet({ id, lang, expectedUrl }) {
-  const label = lang === 'zh' ? '中文链接回复' : '英文链接回复';
+  const label = lang === 'zh' ? '中文主帖链接' : '英文主帖链接';
   const tweet = await readApi(`/tweets/${id}?tweet.fields=created_at,text,entities`);
   const urls = tweet.data?.entities?.urls || [];
   const targets = urls.map(tweetUrlTarget).filter(Boolean);
@@ -443,7 +443,7 @@ function queuePostCheck(pending, lang, id) {
   const delayMs = postCheckDelayMs();
   const expectedUrl = postUrl(lang);
   pending.push({ id, lang, expectedUrl, due: Date.now() + delayMs });
-  console.log(`[post-x] ${Math.round(delayMs / 60000)} 分钟后检查${lang === 'zh' ? '中文' : '英文'}链接回复: ${expectedUrl}`);
+  console.log(`[post-x] ${Math.round(delayMs / 60000)} 分钟后检查${lang === 'zh' ? '中文' : '英文'}主帖链接: ${expectedUrl}`);
 }
 
 async function runDueChecks(pending) {
@@ -496,13 +496,14 @@ function composeText(lang, picks) {
   const edition = editionInstant(picks);
   const radarCount = radarItemsForEdition(radar, edition).length;
   const label = countLabel(lang, batch.length, radarCount);
-  let head, lead, take, question, otherPrefix, maxTitle;
+  let head, lead, take, question, linkLabel, otherPrefix, maxTitle;
   if (lang === 'zh') {
     const { month, day, hour } = localParts(edition, 'Asia/Shanghai', 'zh-CN');
     head = `⚡ 猫叔AI雷达 · ${month}月${day}日${hour < 12 ? '早报' : '晚报'}（${label}）`;
     lead = `${hookFor(lang, featured)}：${trimWeighted(storyTitle(featured, lang), 82)}`;
     take = takeFor(lang, featured);
     question = '你觉得哪条最值得继续追？';
+    linkLabel = '完整简报：';
     otherPrefix = '另外：';
     maxTitle = 78;
   } else {
@@ -512,37 +513,22 @@ function composeText(lang, picks) {
     lead = `Watch: ${trimWeighted(storyTitle(featured, lang), 92)}`;
     take = takeFor(lang, featured);
     question = 'What should we track next?';
+    linkLabel = 'Full edition:';
     otherPrefix = 'Also: ';
     maxTitle = 90;
   }
 
+  const linkLine = `${linkLabel} ${postUrl(lang)}`;
   const lines = [head, '', lead, take];
   const others = batch.filter((a) => a.slug !== featured.slug);
   for (const item of others) {
     const line = `${otherPrefix}${trimWeighted(storyTitle(item, lang), maxTitle)}`;
-    if (xLen([...lines, line, '', question].join('\n')) > 280) break;
+    if (xLen([...lines, line, '', question, linkLine].join('\n')) > 280) break;
     lines.push(line);
   }
-  if (xLen([...lines, '', question].join('\n')) <= 280) lines.push('', question);
+  if (xLen([...lines, '', question, linkLine].join('\n')) <= 280) lines.push('', question);
+  lines.push(linkLine);
   return lines.join('\n');
-}
-
-function editionLabel(lang, picks) {
-  const edition = editionInstant(picks);
-  if (lang === 'zh') {
-    const { month, day, hour } = localParts(edition, 'Asia/Shanghai', 'zh-CN');
-    return `${month}月${day}日${hour < 12 ? '早报' : '晚报'}`;
-  }
-  const dateStr = edition.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'Asia/Shanghai' });
-  const bjHour = Number(edition.toLocaleString('en-US', { timeZone: 'Asia/Shanghai', hour: 'numeric', hour12: false }));
-  return `${dateStr} ${bjHour < 12 ? 'morning' : 'evening'} edition`;
-}
-
-function composeLinkReply(lang, picks) {
-  const url = postUrl(lang);
-  return lang === 'zh'
-    ? `${editionLabel(lang, picks)}完整深度简报、来源、发布时间和全部快讯在这里：\n${url}`
-    : `Full ${editionLabel(lang, picks)} briefings, sources, timestamps, and quick hits:\n${url}`;
 }
 
 async function postTweet(text, replyToId) {
@@ -555,15 +541,8 @@ async function publishLang(lang, picks, pendingChecks) {
   await waitForXCardReady(lang);
   const main = await postTweet(composeText(lang, picks));
   console.log(`[post-x] ${lang === 'zh' ? '中文主帖' : '英文主帖'}已发布:`, `https://x.com/i/status/${main.data.id}`);
-  let reply = null;
-  try {
-    reply = await postTweet(composeLinkReply(lang, picks), main.data.id);
-    console.log(`[post-x] ${lang === 'zh' ? '中文链接回复' : '英文链接回复'}已发布:`, `https://x.com/i/status/${reply.data.id}`);
-    queuePostCheck(pendingChecks, lang, reply.data.id);
-  } catch (error) {
-    console.error(`[post-x] ${lang === 'zh' ? '中文' : '英文'}链接回复失败，继续后续发布: ${error?.message || error}`);
-  }
-  return { main, reply };
+  queuePostCheck(pendingChecks, lang, main.data.id);
+  return { main, reply: null };
 }
 
 const [cmd, arg, arg2] = process.argv.slice(2);
@@ -608,9 +587,7 @@ if (cmd === 'verify') {
 } else if (cmd === 'preview') {
   const picks = await pickToday();
   console.log('[中文主帖]\n' + composeText('zh', picks));
-  console.log('\n[中文首条回复]\n' + composeLinkReply('zh', picks));
   console.log('\n---\n[English main]\n' + composeText('en', picks));
-  console.log('\n[English first reply]\n' + composeLinkReply('en', picks));
 } else {
   console.log('用法: verify | post "文本" | reply <tweet_id> "文本" | delete <tweet_id> | check <tweet_id> [zh|en] | daily | preview');
 }
