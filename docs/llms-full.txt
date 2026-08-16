@@ -19,6 +19,40 @@
 
 ## Recent briefings
 
+### Alibaba’s Qwen Models Cross Three Billion Downloads
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/qwen-crosses-three-billion-downloads.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/qwen-crosses-three-billion-downloads.html
+- Source timestamp: 2026-08-16T06:50:00.000Z
+- Site timestamp: 2026-08-16T11:00:03.663Z
+- Tags: Models, Industry, Open Source
+
+Qwen’s download milestone signals that the center of gravity in open-weight AI is shifting toward China’s developer ecosystem.
+
+## Adoption at ecosystem scale
+
+Alibaba’s Qwen family has surpassed three billion cumulative downloads, according to an announcement from the model team. Bloomberg reported that the total was accumulated over the past six months, making Qwen the most-downloaded open-weight model family during that period and placing it ahead of comparable offerings from Meta and Google.
+
+The milestone is broader than the popularity of a single checkpoint. Alibaba says it has published more than 460 Qwen models, while developers have created over 300,000 derivatives spanning fine-tunes, quantized editions and application-specific variants. Qwen’s catalog now covers general language models, coding, vision-language systems, audio and smaller configurations suitable for local hardware. The recently released Qwen3.8-27B also reached the top of Hugging Face’s trending list, reinforcing the evidence of current developer demand.
+
+## Downloads are an imperfect but revealing measure
+
+Model-download totals should not be read as equivalent to active users or production deployments. Automated downloads, repeated pulls and downstream packaging can inflate the number, while different repositories may count activity differently. The total also aggregates a large model catalog rather than measuring adoption of one flagship system.
+
+Even with those qualifications, the rate of growth is strategically important. Alibaba reported only 300 million Qwen downloads when it introduced Qwen3 in April 2025 and said the family had passed one billion on Hugging Face in January 2026. Crossing three billion indicates that Qwen has become infrastructure for a large international community rather than merely a Chinese alternative to US-developed models.
+
+## Why it matters
+
+Open-weight competition increasingly depends on distribution, tooling and derivative ecosystems as much as benchmark leadership. A model family that becomes the default base for local inference, fine-tuning and agent development can shape software standards without controlling every end-user product. Qwen’s scale therefore strengthens China’s influence over the global open-model stack and gives Alibaba a large developer funnel for its cloud services—even though downloads alone do not establish commercial success or technical superiority.
+
+Chinese title: 阿里千问模型全球下载量突破30亿次
+Chinese summary: 千问下载量跨过30亿次，显示全球开放权重模型的开发者生态正加速向中国模型倾斜。
+
+Sources:
+  - Qwen reaches three billion downloads: https://x.com/Alibaba_Qwen/status/2088881015855182122
+  - Alibaba AI Models Hit 3 Billion Downloads, Passing Meta, Google: https://www.bloomberg.com/news/articles/2026-08-15/alibaba-ai-models-hit-3-billion-downloads-passing-meta-google
+  - Qwen models on Hugging Face: https://huggingface.co/Qwen
+
 ### Anthropic Withholds Stronger Model as Risk Estimates Rise
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-withholds-riskier-model.html
@@ -529,15 +563,17 @@ Alibaba has released its largest Qwen model’s weights, giving independent oper
 
 ## The release
 
-Alibaba’s Qwen team has published the weights and model card for Qwen3.8-2.4T-A95B, converting the architecture behind its hosted Qwen3.8-Max service into a model that outside organizations can download and operate. The mixture-of-experts model contains 2.4 trillion parameters but activates about 95 billion for each token, an approach designed to increase total capacity without paying the computational cost of using every parameter on every request.
+Alibaba’s Qwen team has published the weights and model card for Qwen3.8-2.4T-A95B, making the foundation on which the hosted Qwen3.8-Max service is based available for outside organizations to download and operate. The mixture-of-experts model contains 2.4 trillion parameters but activates about 95 billion for each token, an approach designed to increase total capacity without paying the computational cost of using every parameter on every request.
 
-The public model has a native 256,000-token context window and is positioned primarily for coding, complex tool use and long-running agent workflows. Infrastructure providers including Together AI and Baseten offered hosted inference on release day, while Unsloth published an extreme one-bit quantization that reduces the roughly 4.9-terabyte full model to about 397 gigabytes. Even that compressed edition remains beyond ordinary consumer hardware, underlining the difference between weights being downloadable and a model being broadly practical to self-host.
+The public model has a native 262,144-token context window and is positioned primarily for coding, complex tool use and long-running agent workflows. Unsloth published an extreme one-bit quantization that reduces the roughly 4.9-terabyte full model to about 397 gigabytes. Even that compressed edition remains beyond ordinary consumer hardware, underlining the difference between weights being downloadable and a model being broadly practical to self-host.
 
-The downloadable release also should not be treated as identical to Alibaba’s commercial Qwen3.8-Max product. According to the model documentation, the hosted edition adds vision input, non-thinking operation, built-in tools and a default one-million-token context. Users evaluating sovereignty or customization therefore receive the core model, but not necessarily every capability of Alibaba’s managed service.
+Some inference providers separately announced day-zero availability for Qwen3.8-branded services. Those announcements must be evaluated model by model: availability of the proprietary Qwen3.8-Max service does not by itself confirm hosted inference for the downloadable Qwen3.8-2.4T-A95B checkpoint.
+
+The downloadable release also should not be treated as identical to Alibaba’s commercial Qwen3.8-Max product. According to the model documentation, the hosted edition is based on the open model but adds vision input, non-thinking operation, built-in tools and a default one-million-token context. Users evaluating sovereignty or customization therefore receive the core text model, but not necessarily every capability of Alibaba’s managed service.
 
 ## Why it matters
 
-This is one of the largest publicly downloadable language models yet released. Its immediate availability through multiple inference providers also shortens the usual interval between an open-weight launch and usable production deployment. More importantly, it gives cloud companies, national AI programs and large enterprises a new alternative to closed frontier APIs for agentic software work. The hardware demands will limit direct adoption, but the weights create a common foundation for quantization, fine-tuning and systems research—and put additional pressure on Western labs to justify closed access with capabilities that cannot be reproduced around an open model.
+This is one of the largest publicly downloadable language models yet released. More importantly, it gives cloud companies, national AI programs and large enterprises a new alternative to closed frontier APIs for agentic software work. The hardware demands will limit direct adoption, but the weights create a common foundation for quantization, fine-tuning and systems research—and put additional pressure on Western labs to justify closed access with capabilities that cannot be reproduced around an open model.
 
 Chinese title: 阿里开放 Qwen3.8 旗舰模型权重，参数达 2.4 万亿
 Chinese summary: 阿里正式开放 Qwen3.8-2.4T-A95B 权重，为代码与长程智能体提供可独立部署的超大规模基础模型。
@@ -923,39 +959,6 @@ Sources:
   - Claude on X: making Claude Sonnet 5's introductory pricing permanent: https://x.com/claudeai/status/2086891169217122586
   - Introducing Claude Sonnet 5 — Anthropic: https://www.anthropic.com/news/claude-sonnet-5
 
-### MAI-Image-2.6 debuts at No.2 in Text-to-Image Arena
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/mai-image-2-6-arena-second.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/mai-image-2-6-arena-second.html
-- Source timestamp: 2026-08-10T22:32:00.000Z
-- Site timestamp: 2026-08-10T23:00:03.008Z
-- Tags: AIGC, Models
-
-Microsoft AI's newest image model entered Arena's text-to-image leaderboard at second with 1336 points, up from 2.5's tenth place and 45 behind GPT Image 2.
-
-Arena said on Monday that MAI-Image-2.6, the latest text-to-image model from Microsoft AI, entered its Text-to-Image leaderboard in second place with 1336 points. Its predecessor, MAI-Image-2.5, sits at tenth.
-
-## The numbers
-
-The gap to the top is now 45 points: GPT Image 2 (Medium) holds first. Arena reported gains across every scored category, with the sharpest movement in 3D imaging and modelling, where the model went from sixth to first, alongside improvement in cartoon and illustration work. Arena has opened the model for public voting in Image Arena so the ranking can be tested against fresh human preference data rather than a launch snapshot.
-
-An eight-place jump between consecutive versions of the same family is unusual at the top of this board. Microsoft's in-house imaging effort entered at ninth with MAI-Image-1 in October 2025, reached third with MAI-Image-2 in March 2026, then stalled — 2.5 debuted at third in May and slid as competitors shipped. Second place is the highest the family has ranked.
-
-## Context
-
-Human-preference leaderboards are noisy and reward style as much as fidelity, and early Elo scores typically drift as vote volume accumulates. But the standing at the top of text-to-image has been stable for months, dominated by OpenAI's GPT Image 2 and Google's Imagen line, with Microsoft, Black Forest Labs and Midjourney trading positions below. A 45-point deficit is close enough that the next release cycle could change the order.
-
-## Why it matters
-
-Microsoft distributes image generation through Copilot, Bing Image Creator and Azure API access rather than a standalone creative app, so a model at this quality level reaches an unusually broad default audience without users choosing it. The company also runs the largest commercial distribution channel for OpenAI's models — narrowing the gap with GPT Image 2 using its own weights strengthens Microsoft's hand in exactly the place that dependency has been most visible.
-
-Chinese title: MAI-Image-2.6 首次上榜即拿下文生图竞技场第二
-Chinese summary: 微软 AI 新版图像模型以 1336 分空降 Arena 文生图榜第二，上一代 2.5 仅排第十，与榜首 GPT Image 2 相差 45 分。
-
-Sources:
-  - Arena on X: MAI-Image-2.6 lands in the Text-to-Image Arena at #2: https://x.com/arena/status/2086943856289853931
-  - Arena on X: MAI-Image-2.6 jumped to #2 overall, category gains: https://x.com/arena/status/2086943860681531555
-
 ## Recent radar items
 
 ### 2026-08-16
@@ -977,6 +980,20 @@ Sources:
 - 2026-08-15T15:00Z | X (@PixVerse_) | PixVerse highlighted a user-made AI video whose emotional performance was presented as an intentional directing choice rather than incidental model output. | 中文：PixVerse 展示了一段用户制作的 AI 视频，并称其中的情绪表现源于有意的导演选择，而非模型的偶然输出。 | https://x.com/PixVerse_/status/2088641866635890757
 - 2026-08-15T11:28Z | MarkTechPost | MarkTechPost published a practical guide to fine-tuning tool-calling language models using XYZ-Aquila-SFT and Qwen3. | 中文：MarkTechPost 发布实用指南，介绍如何使用 XYZ-Aquila-SFT 与 Qwen3 微调具备工具调用能力的语言模型。 | https://www.marktechpost.com/2026/08/15/fine-tuning-tool-calling-llms-a-complete-guide-using-xyz-aquila-sft-and-qwen3/
 - 2026-08-15T11:00Z | The Decoder | AI-generated books are flooding Amazon’s marketplace, increasing discoverability problems and depressing sales for some human authors, The Decoder reported. | 中文：The Decoder 报道称，AI 生成书籍大量涌入亚马逊，令作品更难被发现，并压低部分人类作者的销量。 | https://the-decoder.com/ai-generated-books-are-flooding-amazon-and-tanking-sales-for-human-authors/
+- 2026-08-16T10:31Z | IT之家 | Actress Joey Wong publicly confirmed authorizing her AI likeness for NetEase’s short film Qian Ying, saying people should use AI rather than be used by it. | 中文：演员王祖贤首次公开确认授权网易短片《倩影》使用其 AI 形象，并表示人应当驾驭 AI，而非被 AI 驾驭。 | https://www.ithome.com/0/990/364.htm
+- 2026-08-16T09:50Z | IT之家 | China’s first AI home-robot flagship store opened in Qingdao, offering demonstrations of household robots and wearable exoskeletons. | 中文：全国首家 AI 家庭机器人旗舰店在青岛开业，消费者可现场体验家用机器人和可穿戴外骨骼。 | https://www.ithome.com/0/990/337.htm
+- 2026-08-16T10:00Z | InfoQ 中文 | A financial-technology case study described extending AI coding from code generation across the full software-development lifecycle. | 中文：一项金融科技实践展示了如何将 AI 编程从单纯生成代码扩展至完整的软件开发生命周期。 | https://www.infoq.cn/article/LflwIiIVHRZlakxDgexC
+- 2026-08-16T08:12Z | The Decoder | OpenAI reportedly dissolved a team dedicated to catastrophic AI risks and reassigned its responsibilities and remaining personnel across other groups. | 中文：据报道，OpenAI 解散了专门研究灾难性 AI 风险的团队，并将其职责及剩余人员分散至其他团队。 | https://the-decoder.com/openai-dissolved-the-team-built-to-catch-catastrophic-ai-risks-reassigning-its-work-to-other-groups/
+- 2026-08-16T08:00Z | InfoQ 中文 | MCP’s proposed shift toward stateless requests sparked developer debate over whether the agent-connection standard was converging back toward conventional APIs. | 中文：MCP 拟转向无状态请求，引发开发者争论：这一智能体连接标准是否正在重新趋近传统 API。 | https://www.infoq.cn/article/412hbBva0NF0AYP0CjzD
+- 2026-08-16T07:37Z | Little Learner | The Little Learner project explored how a language model behaves when its training material never exceeds fifth-grade reading level. | 中文：Little Learner 项目研究了当训练材料始终不超过小学五年级阅读水平时，语言模型会呈现怎样的能力。 | https://littlelearner-ll.github.io/
+- 2026-08-16T07:32Z | Alibaba Qwen on X | Alibaba highlighted Atomic Chat running the 27-billion-parameter Qwen3.8 model locally on a laptop for everyday work. | 中文：阿里巴巴展示了 Atomic Chat 在笔记本电脑本地运行 270 亿参数 Qwen3.8 模型，用于日常工作。 | https://x.com/Alibaba_Qwen/status/2088891548507492646
+- 2026-08-16T07:20Z | The Decoder | Anthropic’s biological-weapons safety filter was reportedly inactive for nearly a year, leaving approximately 133 million requests without that safeguard. | 中文：据报道，Anthropic 的生物武器安全过滤器停用近一年，约 1.33 亿次请求未受到该防护机制检查。 | https://the-decoder.com/anthropics-bio-weapons-filter-was-down-for-nearly-a-year-exposing-133-million-requests/
+- 2026-08-16T05:50Z | The Decoder | Optima introduced customizable AI evaluations that let organizations benchmark models against their own tasks and data instead of relying solely on standardized tests. | 中文：Optima 推出可定制 AI 评测，让机构使用自身任务和数据比较模型，而不再只依赖标准化测试。 | https://the-decoder.com/optima-tackles-ai-benchmarkings-biggest-flaw-by-letting-users-test-models-against-their-own-data/
+- 2026-08-16T05:37Z | 量子位 | WorkSwarm presented an office-agent system designed to coordinate multiple specialized AI workers as a collaborative team rather than a single assistant. | 中文：WorkSwarm 展示了一套办公智能体系统，将多个专业 AI 协调成协作团队，而非只提供单一助手。 | https://www.qbitai.com/2026/08/473972.html
+- 2026-08-16T05:00Z | The Decoder | A survey found one in five US workers now delegates tasks to AI that they previously would have assigned to colleagues. | 中文：一项调查发现，五分之一的美国劳动者如今会把原本交给同事的任务转交给 AI。 | https://the-decoder.com/one-in-five-us-workers-now-delegates-tasks-to-ai-instead-of-colleagues-survey-finds/
+- 2026-08-16T02:00Z | Dreamina on X | Dreamina opened the final ten-day stretch of its AI music-video contest, requiring entrants to combine an original track with AI-generated visuals. | 中文：Dreamina 的 AI 音乐视频大赛进入最后十天，参赛者需把原创音乐与 AI 生成视觉内容结合。 | https://x.com/dreamina_ai/status/2088807962618065305
+- 2026-08-16T02:00Z | Together AI on X | Together AI said Yutori’s screenshot-driven Navigator browser agent surpassed frontier-model performance on its tests through rapid perception-action loops. | 中文：Together AI 表示，Yutori 的 Navigator 浏览器智能体凭借快速的截图—操作循环，在其测试中超过了前沿模型。 | https://x.com/togethercompute/status/2088807960457699509
+- 2026-08-16T10:36Z | IT之家 | A Huawei ADS-equipped Voyah sedan reportedly triggered automatic emergency braking after detecting an obstacle while driving through an inverted tunnel loop. | 中文：据报道，一辆搭载华为乾崑智驾 ADS 的岚图轿车驶过隧道大回环顶部时识别到障碍物并触发自动紧急制动。 | https://www.ithome.com/0/990/365.htm
 
 ### 2026-08-15
 
