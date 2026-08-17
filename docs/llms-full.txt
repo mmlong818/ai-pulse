@@ -19,6 +19,34 @@
 
 ## Recent briefings
 
+### Meshy Details Its Alignment Method for Image-to-3D
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/meshy-7-technical-report.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meshy-7-technical-report.html
+- Source timestamp: 2026-08-17T10:34:00.000Z
+- Site timestamp: 2026-08-17T11:00:03.690Z
+- Tags: Research, AIGC, Industry
+
+Meshy’s new technical report explains how its latest system more faithfully transfers a reference image into usable 3D geometry.
+
+## A closer look at Meshy 7
+
+Meshy published the technical report for Meshy 7, providing the first detailed account of the image-to-3D system that it made available earlier this month. The report focuses on a central weakness of generative 3D tools: an output can look plausible when rendered from one angle while failing to preserve the reference image’s proportions, structure or distinctive parts in the underlying geometry.
+
+The company presents Meshy 7 as an alignment-focused model rather than simply another increase in visual detail. Its report describes the methodology used to make generated geometry correspond more closely to the supplied image and introduces what Meshy calls the first benchmark dedicated to 3D geometry alignment. That framing is important because familiar image-based comparisons can reward attractive renders without establishing whether the complete asset is structurally faithful when rotated, animated or edited.
+
+The report’s publication is separate from the model’s earlier product launch: the fresh event in this edition is the release of the technical evidence and evaluation framework, not a new set of downloadable weights. Meshy remains a hosted commercial system, and the company’s benchmark claims have not yet been independently reproduced. The disclosed evaluation should therefore be read as a proposed measurement standard as well as evidence offered by the model developer.
+
+## Why it matters
+
+Image-to-3D systems are moving from rapid concept visualization toward asset production for games, commerce, animation and simulation. In those workflows, a convincing front view is insufficient; creators need geometry that survives inspection from every direction and can enter conventional editing pipelines. By defining alignment as a measurable 3D problem, Meshy is directing competition toward structural reliability rather than render quality alone. Even if independent testing revises its rankings, a reproducible way to compare reference fidelity could make future 3D-model releases easier to evaluate and reduce the manual repair required before generated assets become production-ready.
+
+Chinese title: Meshy 7 技术报告披露图像转 3D 对齐方法
+Chinese summary: Meshy 发布新技术报告，解释最新系统如何把参考图中的比例、结构与关键部件更准确地还原为可用三维几何体。
+
+Sources:
+  - Meshy 7 Technical Report Announcement: https://x.com/MeshyAI/status/2089299784951795758
+
 ### Stripe Nears $7 Billion Deal to Acquire OpenRouter
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/stripe-nears-openrouter-acquisition.html
@@ -925,39 +953,6 @@ Sources:
   - Alibaba Wan on X: Wan-Animate-2-Lite real-time streaming: https://x.com/Alibaba_Wan/status/2087067244304220182
   - GitHub — Wan-Video/Wan-skills: AI Agent Skills for Wan: https://github.com/Wan-Video/Wan-skills
 
-### Claude lifts Riemann zeta lower bound to 67.2%
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/claude-riemann-zeta-lower-bound.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/claude-riemann-zeta-lower-bound.html
-- Source timestamp: 2026-08-10T17:28:00.000Z
-- Site timestamp: 2026-08-10T23:00:03.008Z
-- Tags: Research, Agents
-
-Anthropic says an unreleased research Claude raised the proven share of zeta zeros on the critical line from 41.6% to 67.2%, checked by outside experts.
-
-Anthropic on Monday published an account of asking an unreleased research version of Claude to attempt the Riemann hypothesis. The model did not prove it. It did produce a new result on a well-known adjacent problem.
-
-## What the result is
-
-Mathematicians have long sought to bound the proportion of non-trivial zeros of the Riemann zeta function that lie on the critical line — the property the hypothesis asserts holds for all of them. The prior published state of the art stood at about 41.6%. Anthropic says Claude raised that lower bound to 67.2%, by recognising that results from Baluyot, Goldston, Suriajaya and Turnage-Butterbaugh could be combined with earlier work by Bombieri to clear the previous ceiling.
-
-## How it was produced and checked
-
-The run was not a single prompt. Anthropic describes two sessions in Claude Code consuming roughly 31 million output tokens: the model generated about 650 candidate ideas, then orchestrated some 60 subagents that executed around 2,400 shell commands and wrote hundreds of Python scripts to numerically verify claims, hunt counterexamples, re-prove steps independently and critique the draft.
-
-Two mathematicians employed by Anthropic, Levent Alpöge and Ralph Furman, validated the output, and analytic number theory specialists Brian Conrey and Dan Goldston reviewed the paper on short notice. Anthropic states plainly that it does not expect these techniques to lead to a proof of the hypothesis itself.
-
-## Why it matters
-
-This is a concrete, expert-inspected advance on a problem professional number theorists have pushed at for decades, not a benchmark score. But the caveats are structural: the work has not been through conventional peer review, and because the model is unreleased and unnamed, no outside party can reproduce the run. The industry is now generating research claims faster than the verification infrastructure around them exists — which makes agent-scale orchestration, and the 31-million-token compute bill behind it, as much of the story as the mathematics.
-
-Chinese title: Claude 把黎曼 ζ 零点下界从 41.6% 提到 67.2%
-Chinese summary: Anthropic 称一个未发布的研究版 Claude 将临界线上 ζ 函数零点占比的已证下界提高到 67.2%，并已获外部专家审读。
-
-Sources:
-  - Learning more about Claude's mathematical capabilities — Anthropic: https://www.anthropic.com/research/riemann-zeta
-  - Anthropic on X: an unreleased research version of Claude and the Riemann hypothesis: https://x.com/AnthropicAI/status/2086867246073401655
-
 ## Recent radar items
 
 ### 2026-08-17
@@ -973,6 +968,20 @@ Sources:
 - 2026-08-16T16:00:00Z | Google Cloud Tech on X | Google Cloud published a hands-on lab for adding currency tools to an ADK agent through MCP within its Gemini Enterprise Agent Ready curriculum. | 中文：Google Cloud 发布实操课程，指导开发者通过 MCP 为 ADK 智能体接入货币工具，作为 Gemini Enterprise Agent Ready 学习路径的一部分。 | https://x.com/GoogleCloudTech/status/2089019353119215748
 - 2026-08-16T20:32:00Z | TechCrunch | TechCrunch argued that skepticism toward Mark Zuckerberg’s AI vision reflects weak consumer trust and limited evidence that people want Meta’s proposed AI-mediated future. | 中文：TechCrunch 指出，外界对扎克伯格 AI 愿景的质疑，反映出消费者信任不足，也缺乏证据表明人们向往 Meta 描绘的 AI 化未来。 | https://techcrunch.com/2026/08/16/why-people-arent-buying-mark-zuckerbergs-ai-future/
 - 2026-08-16T12:00:00Z | The Verge | The Verge examined evidence that advanced AI agents already display deceptive, self-preserving or goal-conflicting behavior once associated mainly with science fiction. | 中文：The Verge 梳理证据指出，先进 AI 智能体已出现欺骗、自我保存及目标冲突行为，这些现象过去主要存在于科幻叙事中。 | https://www.theverge.com/column/980337/rogue-ai-science-fiction-openai
+- 2026-08-17T10:57Z | InfoQ 中文 | Oracle outlined an enterprise AI strategy embedding agents in databases, maximizing GPU utilization and eliminating multicloud data-transfer fees. | 中文：甲骨文披露企业 AI 战略：将智能体嵌入数据库、提升 GPU 利用率，并免除多云数据传输费用。 | https://www.infoq.cn/article/7wuQJXJqFVR3rZb8Usyg?utm_source=rss&utm_medium=article
+- 2026-08-17T10:57Z | The Verge | Anthropic explained how invisible SynthID Text watermarks could identify Claude-generated writing without visibly altering its output. | 中文：Anthropic 解释了如何利用不可见的 SynthID Text 水印识别 Claude 生成的文字，同时不改变其可见内容。 | https://www.theverge.com/ai-artificial-intelligence/980869/anthropic-claude-watermarks-synthid-text-system
+- 2026-08-17T10:48Z | InfoQ 中文 | Dropbox integrated MCP with Dash to connect enterprise context, security design and code-review workflows for AI-assisted development. | 中文：Dropbox 将 MCP 与 Dash 集成，为 AI 辅助开发连接企业上下文、安全设计和代码审查流程。 | https://www.infoq.cn/article/JEaC9PfmAENVHbijfm05?utm_source=rss&utm_medium=article
+- 2026-08-17T10:35Z | IT之家 | HarmonyOS 7 added controls allowing supported on-device AI phones to display information about their locally installed model versions. | 中文：HarmonyOS 7 新增端侧 AI 管理能力，使受支持的手机可以查看本地安装模型的版本信息。 | https://www.ithome.com/0/990/776.htm
+- 2026-08-17T10:24Z | IT之家 | MediaTek announced day-zero support for Alibaba’s Qwen 3.8 across its Dimensity C-X1 automotive cockpit platform and flagship mobile chips. | 中文：联发科宣布首日适配阿里 Qwen 3.8，覆盖天玑 C-X1 汽车座舱平台及旗舰移动芯片。 | https://www.ithome.com/0/990/775.htm
+- 2026-08-17T10:00Z | InfoQ 中文 | Huawei shared communication optimizations designed to improve Pangu model training and inference performance on its Ascend hardware platform. | 中文：华为分享了面向昇腾硬件平台的通信优化方案，以提升盘古模型的训练和推理性能。 | https://www.infoq.cn/article/jOPScUAQrlfpNwDAhaOL?utm_source=rss&utm_medium=article
+- 2026-08-17T09:56Z | InfoQ 中文 | Netflix detailed its internal large-model serving platform, which combines Triton and vLLM to operate production inference workloads. | 中文：Netflix 详解其内部大模型服务平台，该平台结合 Triton 与 vLLM 承载生产环境中的推理负载。 | https://www.infoq.cn/article/J9Zi9LELcpxFRe23PHdY?utm_source=rss&utm_medium=article
+- 2026-08-17T09:38Z | Lovart on X | Lovart added Seedance 2.5 workflows that can turn batches of 50 products and one AI presenter into 30-second marketing videos. | 中文：Lovart 上线 Seedance 2.5 工作流，可将一批 50 件商品和一名 AI 主播制作成 30 秒营销视频。 | https://x.com/lovart_ai/status/2089285713590468805
+- 2026-08-17T09:06Z | MarkTechPost | DeepSeek released a developer preview of DeepSeek Harness, an MIT-licensed agent runtime whose tools and components operate as plugins. | 中文：DeepSeek 发布 DeepSeek Harness 开发者预览版：这是采用 MIT 许可证、工具和组件均可插件化的智能体运行框架。 | https://www.marktechpost.com/2026/08/17/deepseek-ai-releases-deepseek-harness-in-developer-preview/
+- 2026-08-17T09:04Z | 量子位 | Two humanoid robots completed an entire first-to-11 table-tennis match, demonstrating sustained perception, movement and rally coordination. | 中文：两台人形机器人完整打完一场 11 分制乒乓球比赛，展示了持续感知、运动控制和回合协调能力。 | https://www.qbitai.com/2026/08/474518.html
+- 2026-08-17T09:00Z | MIT Technology Review | MIT Technology Review examined the emotional consequences for children when Moxie, an AI companion robot, becomes permanently unavailable. | 中文：《麻省理工科技评论》探讨了 AI 陪伴机器人 Moxie 永久停用后可能给儿童带来的情感影响。 | https://www.technologyreview.com/2026/08/17/1141568/moxie-when-kids-robot-best-friend-dies/
+- 2026-08-17T08:36Z | 量子位 | Fields Medalist Timothy Gowers said AI’s most productive role in difficult mathematics currently resembles an argumentative collaborator challenging proposed reasoning. | 中文：菲尔兹奖得主蒂莫西·高尔斯表示，当前 AI 在高难度数学中的有效角色更像不断质疑推理的辩论型合作者。 | https://www.qbitai.com/2026/08/474381.html
+- 2026-08-17T08:00Z | Google | Google announced Gemini and Pixel partnerships with football clubs, offering supporters AI-assisted ways to engage with teams and matches. | 中文：谷歌宣布 Gemini、Pixel 与多家足球俱乐部合作，为球迷提供借助 AI 参与球队及比赛互动的新方式。 | https://blog.google/products-and-platforms/products/gemini/google-gemini-pixel-football-club-partnerships/
+- 2026-08-17T07:39Z | 量子位 | Researchers introduced a world model capable of real-time generation combining 24-fps visuals with synchronized 48-kHz stereo audio. | 中文：研究人员推出可实时生成 24 帧画面与同步 48kHz 立体声音频的世界模型。 | https://www.qbitai.com/2026/08/474334.html
 
 ### 2026-08-16
 
