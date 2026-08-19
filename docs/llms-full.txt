@@ -19,6 +19,45 @@
 
 ## Recent briefings
 
+### Cerebras CS-4 Pairs Three WSE-3 Turbo Processors for Faster Inference
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/cerebras-cs4-doubles-inference-speed.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cerebras-cs4-doubles-inference-speed.html
+- Source timestamp: 2026-08-19T00:00:00.000Z
+- Site timestamp: 2026-08-19T11:00:03.507Z
+- Tags: Industry, Agents
+
+Cerebras says its fourth-generation system delivers up to twice the inference speed of CS-3 through three WSE-3 Turbo processors and a redesigned rack-scale platform.
+
+## A system-level upgrade around WSE-3 Turbo
+
+Cerebras unveiled the CS-4 at its Supernova event, presenting a fourth-generation system built around three new WSE-3 Turbo processors. It is not simply a CS-3 running the same wafer at a higher frequency: Cerebras describes CS-4 as a new rack-scale platform combining more powerful processors with redesigned wafer-to-wafer communication, power delivery, cooling and input-output systems.
+
+In a company demonstration using OpenAI’s GPT-OSS model, the CS-4 generated 4,465 tokens per second, compared with 2,308 tokens per second on the CS-3. Cerebras contrasted that result with 131 tokens per second for a conventional GPU system. These are vendor-reported measurements rather than independently reproduced benchmarks, and performance will vary with the model, workload and serving configuration.
+
+Cerebras says CS-4 can deliver up to twice the inference performance of CS-3 and up to ten times more token throughput per watt. Those figures refer to internal benchmarks and projections across selected workloads and should not be treated as universal production results.
+
+## A modular rack for split inference
+
+CS-4 is the first system based on Cerebras’s Nexus rack-scale architecture. Its rear-mounted Wafer-Scale Backpack combines power conversion, direct liquid cooling, high-speed input-output and control electronics around each wafer. Cerebras says the module has 50% fewer components, uses 60% more automated manufacturing and reduces deployment time from days to hours.
+
+The system also provides native support for disaggregated inference, in which different hardware handles prompt processing and token generation. Cerebras identifies AMD Helios and AWS Trainium among the platforms that can perform prefill before transferring model state to CS-4 for latency-sensitive decoding. This is broader than an AMD-only configuration and allows operators to combine Cerebras hardware with GPU- or ASIC-based prefill systems.
+
+Cerebras says CS-4 can reduce wafer-to-wafer communication latency to as little as two microseconds and support more than 1,000 tokens per second for models exceeding ten trillion parameters. The latter claim is based on company extrapolation from internal testing, not a demonstrated independent benchmark.
+
+## Why it matters
+
+CS-4 shows how inference gains can come from coordinated changes to processors, interconnects, power, cooling and rack design rather than from a semiconductor-process transition alone. The architecture also reflects growing interest in assigning prefill and decoding to different types of hardware.
+
+Cerebras says the first CS-4 shipments will begin in the third quarter of 2026. Independent production testing will still be needed to establish how its speed, aggregate throughput, energy use and economics compare across real workloads.
+
+Chinese title: Cerebras CS-4 搭载三颗 WSE-3 Turbo，加速大模型推理
+Chinese summary: Cerebras 表示，第四代系统通过三颗 WSE-3 Turbo 处理器和重新设计的机架级平台，将推理速度最高提升至 CS-3 的两倍。
+
+Sources:
+  - Introducing Cerebras CS-4: The Fastest AI Just Got Faster: https://www.cerebras.ai/blog/introducing-cerebras-cs-4
+  - Cerebras Supernova 2026: https://www.cerebras.ai/supernova
+
 ### ChatGPT for Teens Adds Default Age-Based Safeguards
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/chatgpt-teens-default-safeguards.html
@@ -938,38 +977,6 @@ Sources:
   - Qwen3.8-2.4T-A95B ModelScope Page: https://modelscope.cn/models/Qwen/Qwen3.8-2.4T-A95B
   - Qwen3.8-Max Day-Zero Availability on Together AI: https://x.com/togethercompute/status/2087665914556944772
 
-### Sakana Chat Adds Browser Code Execution
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/sakana-chat-code-execution-update.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/sakana-chat-code-execution-update.html
-- Source timestamp: 2026-08-13T08:00:00.000Z
-- Site timestamp: 2026-08-13T11:00:03.399Z
-- Tags: Agents, Industry
-
-The Japan-focused Namazu assistant now turns Japanese instructions into runnable apps, games, charts and documents without requiring a login.
-
-## A Japanese assistant moves beyond question answering
-
-Tokyo-based Sakana AI has released a major update to Sakana Chat, adding a new generation of its Japanese-focused Namazu model and the ability to execute generated code inside the browser. The service remains free and can be used without creating an account, although registered users receive conversation history and higher usage limits. Sakana Chat is currently available only from within Japan, according to its FAQ.
-
-The new execution environment allows users to describe an application, utility or game in Japanese and then run the generated result directly in the chat interface. Sakana’s examples range from educational worksheets and simple browser games to spreadsheet analysis, chart creation and presentation materials. That combination shifts Sakana Chat from a localized conversational assistant toward a lightweight agent workspace capable of producing and testing artifacts.
-
-Namazu is Sakana’s effort to adapt strong foundation models to Japanese language, culture and local requirements while retaining broad reasoning and coding performance. Sakana Fugu, by contrast, is a separate commercial API product that dynamically selects and coordinates multiple underlying models. Sakana’s current public product pages do not establish that Fugu itself has become the model or orchestration layer inside Sakana Chat, so the two products should not be described as a single rollout. The Chat update also did not include a new standalone Namazu weight release and is therefore a service launch rather than an open-weight release.
-
-## Why it matters
-
-Most coding-agent products are designed first around English-language developer workflows. Sakana is instead packaging executable generation for Japanese users, including consumers, students and office workers, with no-login access reducing the initial barrier to experimentation. Its spreadsheet and document examples also place it closer to general knowledge-work agents than to a conventional chatbot.
-
-The update is significant less because browser code execution is unique than because Sakana is combining it with Japan-specific post-training in a public product. Adoption and reliability will show whether localized agent systems can build durable advantages against global assistants that support Japanese but are not designed around Japanese workflows and cultural context. Fugu’s separate multi-model API represents another part of Sakana’s product strategy, but it should be evaluated independently from Sakana Chat’s confirmed feature set.
-
-Chinese title: Sakana Chat 新增浏览器代码执行
-Chinese summary: 升级后的 Namazu 日语助手可把日语描述直接变成可运行的应用、游戏、图表和文档，无需注册即可免费使用。
-
-Sources:
-  - Sakana Chat Major Update Announcement: https://x.com/SakanaAILabs/status/2087811392254722068
-  - Sakana Chat FAQ: https://chat.sakana.ai/faq
-  - Sakana Fugu — Multi-Agent System as a Model: https://sakana.ai/fugu/
-
 ## Recent radar items
 
 ### 2026-08-19
@@ -991,6 +998,20 @@ Sources:
 - 2026-08-18T16:00Z | SiliconANGLE | Hypercubic raised $5.3 million for AI agents that map, understand and rewrite legacy COBOL applications. | 中文：Hypercubic 融资 530 万美元，开发能够梳理、理解并重写传统 COBOL 应用的人工智能智能体。 | https://siliconangle.com/2026/08/18/hypercubic-raises-5-3m-map-rewrite-legacy-cobol-apps-ai-agents/
 - 2026-08-18T14:00Z | TechCrunch | Warp launched an out-of-the-box software factory intended to coordinate AI agents across application development workflows. | 中文：Warp 推出开箱即用的软件工厂，用于在应用开发流程中协调多个人工智能智能体。 | https://techcrunch.com/2026/08/18/warps-new-system-is-an-out-of-the-box-software-factory-for-ai-development/
 - 2026-08-18T15:02Z | Stability AI on X | Stability AI introduced a plugin that brings Stable Audio 3.0 generation directly into music-production workflows. | 中文：Stability AI 推出新插件，将 Stable Audio 3.0 生成功能直接带入音乐制作工作流。 | https://x.com/StabilityAI/status/2089729722368266451
+- 2026-08-19T10:38Z | MiniMax Hailuo on X | MiniMax Design introduced an agent that turns brief instructions into complete design outputs without requiring extremely long prompts. | 中文：MiniMax Design 推出设计智能体，可根据简短指令完成完整设计，无需编写数万字提示词。 | https://x.com/Hailuo_AI/status/2090025566531735648
+- 2026-08-19T10:12Z | 量子位 | A humanoid robot demonstrated what organizers described as the first fully autonomous complete table-tennis match at the 2026 World Robot Conference. | 中文：一款人形机器人在2026世界机器人大会上展示了主办方所称的全球首次全自主完整乒乓球对局。 | https://www.qbitai.com/2026/08/475907.html
+- 2026-08-19T10:00Z | TechCrunch | Relativity Networks raised $22 million to commercialize faster fiber technology for increasingly bandwidth-intensive data centers. | 中文：Relativity Networks 融资2200万美元，计划将面向高带宽数据中心的新型高速光纤技术商业化。 | https://techcrunch.com/2026/08/19/relativity-networks-raises-22-million-to-bring-a-faster-kind-of-fiber-to-data-centers/
+- 2026-08-19T09:06Z | Tencent Hunyuan on X | Tencent Hunyuan reported four new Hyra mathematical advances, including an improved universal lower bound for the three-dimensional Blaschke–Lebesgue problem. | 中文：腾讯混元公布 Hyra 的四项新数学进展，其中包括提高三维 Blaschke–Lebesgue 问题的通用下界。 | https://x.com/TencentHunyuan/status/2090002485771751690
+- 2026-08-19T08:54Z | Qdrant on X | Qdrant detailed how its filterable HNSW index preserves graph connectivity under filters instead of repairing filtered search only at query time. | 中文：Qdrant 介绍其可过滤 HNSW 索引如何在过滤条件下保持图连通性，而非仅在查询阶段补救搜索。 | https://x.com/qdrant_engine/status/2089999409404957029
+- 2026-08-19T08:23Z | 量子位 | MiniMax core engineering leader Adao has left the company after working on its large-scale agent infrastructure. | 中文：曾参与 MiniMax 大规模智能体基础设施建设的核心工程负责人阿岛已离职。 | https://www.qbitai.com/2026/08/475869.html
+- 2026-08-19T07:58Z | Lovart on X | Lovart added Seedance 2.5, showcasing a prompt-driven colored-pencil video workflow that can produce a 30-second stylized clip. | 中文：Lovart 接入 Seedance 2.5，并展示了用一句提示词生成30秒彩铅风格视频的工作流。 | https://x.com/lovart_ai/status/2089985412232319204
+- 2026-08-19T07:35Z | Moonshot AI on X | Kimi published a financial-analyst tutorial covering live investor dashboards, financial-model updates and another common investment-research workflow. | 中文：Kimi 发布金融分析师教程，演示实时投资者看板、财务模型更新等三类常见投研工作流。 | https://x.com/Kimi_Moonshot/status/2089979521412034787
+- 2026-08-19T03:47Z | Alibaba Qwen on X | Alibaba’s Qwen3.8-27B ranked first among open-weight models on Harvey’s Legal Agent benchmark, according to Qwen. | 中文：据通义千问公布，Qwen3.8-27B 在 Harvey 法律智能体基准的开放权重模型中排名第一。 | https://x.com/Alibaba_Qwen/status/2089922175507865795
+- 2026-08-19T03:35Z | Alibaba Qwen on X | Qwen3.8-27B reached first place on Cline’s model leaderboard four days after its release, according to Qwen. | 中文：据通义千问公布，Qwen3.8-27B 发布四天后登上 Cline 模型排行榜首位。 | https://x.com/Alibaba_Qwen/status/2089919106522976337
+- 2026-08-19T03:18Z | Ollama on X | Ollama began rolling out Moonshot AI’s Kimi K3 model to subscribers of its cloud service. | 中文：Ollama 开始面向其云服务订阅用户逐步开放月之暗面 Kimi K3 模型。 | https://x.com/ollama/status/2089914983840989255
+- 2026-08-19T04:00Z | arXiv | Researchers proposed fail-closed runtime governance that verifies provenance and enforces controls whenever an AI agent crosses an action boundary. | 中文：研究人员提出默认拒绝执行的智能体运行时治理方案，在智能体跨越行动边界时核验来源并实施控制。 | https://arxiv.org/abs/2608.16891
+- 2026-08-19T04:00Z | arXiv | SkillEffect introduces checked lowering for agent tools, aiming to keep tool execution reliable when an AI agent has tightly constrained memory. | 中文：SkillEffect 提出面向智能体工具的受检降级机制，旨在有限内存条件下维持工具执行的可靠性。 | https://arxiv.org/abs/2608.17007
+- 2026-08-18T23:35Z | SiliconANGLE | Google partnered with aviation organizations to use AI-assisted flight planning to reduce climate-warming aircraft contrails. | 中文：谷歌与航空业机构合作，利用人工智能辅助航班规划，减少会加剧气候变暖的飞机凝结尾迹。 | https://siliconangle.com/2026/08/18/google-partners-with-the-aviation-industry-to-try-and-prevent-climate-warming-contrails-with-ai/
 
 ### 2026-08-18
 
