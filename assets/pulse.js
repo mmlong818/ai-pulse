@@ -12,6 +12,25 @@
   const peek = (name) => fetch(`${API}/${name}`).then((r) => r.json()).catch(() => null);
   const fmt = (n) => (n >= 1000 ? (n / 1000).toFixed(1) + 'k' : String(n));
 
+  // 不蒜子从当前站点首次接入时开始计数；叠加历史展示基数。
+  const siteViewBase = 12000;
+  const siteViewEl = document.getElementById('busuanzi_value_site_pv');
+  if (siteViewEl) {
+    const applySiteViewBase = () => {
+      const raw = Number(siteViewEl.textContent.replace(/[^\d]/g, ''));
+      if (!Number.isFinite(raw) || raw <= 0) return false;
+      siteViewEl.textContent = (siteViewBase + raw).toLocaleString(lang === 'zh' ? 'zh-CN' : 'en-US');
+      return true;
+    };
+    if (!applySiteViewBase()) {
+      const observer = new MutationObserver(() => {
+        observer.disconnect();
+        if (!applySiteViewBase()) observer.observe(siteViewEl, { childList: true, characterData: true, subtree: true });
+      });
+      observer.observe(siteViewEl, { childList: true, characterData: true, subtree: true });
+    }
+  }
+
   // ---- 点赞（全局计数 + 本地防重复）----
   const likeBtn = document.getElementById('likeBtn');
   if (likeBtn && slug) {
