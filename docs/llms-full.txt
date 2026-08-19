@@ -19,6 +19,69 @@
 
 ## Recent briefings
 
+### Cursor Gives Cloud Agents Persistent Goals and Triggers
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/cursor-persistent-cloud-agents.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cursor-persistent-cloud-agents.html
+- Source timestamp: 2026-08-19T18:00:00.000Z
+- Site timestamp: 2026-08-19T23:00:03.644Z
+- Tags: Industry, Agents
+
+Cursor’s cloud agents can now react to PR and Slack events, pursue durable goals and delegate work to isolated virtual machines.
+
+## From prompted assistants to event-driven workers
+
+Cursor released a collection of cloud-agent and harness upgrades designed to let coding agents continue operating without a person initiating every step. Cloud agents can now subscribe to pull requests, Slack conversations and schedules, waking when a relevant event occurs. An agent that creates a pull request automatically follows it, responds to continuous-integration failures and addresses automated review comments as they arrive.
+
+The new `/goal` command gives an agent a persistent objective that it is expected to pursue until completion. Cursor suggests using it for outcomes such as eliminating flaky tests and restoring a passing CI pipeline. Goals can be combined with recurring check-ins and with Custom Modes, which pin a selected skill to the conversation so the agent follows the same specialized playbook throughout a long session.
+
+Cursor also extended subagent isolation. Delegated agents may now run on separate virtual machines, each receiving a clean copy of the project and an independent working context. That permits several agents to test or investigate the same application concurrently without modifying one another’s workspace. A parent agent could, for example, dispatch a group of isolated subagents to search for different classes of defects or ask one to validate a proposed change in a fresh environment.
+
+A steering change allows users to submit new guidance while an agent is active without abruptly terminating its current operation. The instruction is delivered at the next tool boundary, reducing the chance that intervention leaves a file operation or other action half-finished. Event subscriptions are initially limited to cloud agents.
+
+## Why it matters
+
+The release advances coding agents beyond interactive chat toward persistent software operations. The strategically important shift is not any single command, but the combination of triggers, durable objectives, isolated delegation and mid-run steering. Together, they create the control layer needed for agents to maintain pull requests and react to development events over hours or days. That may reduce routine coordination work, but it also increases the importance of scoped permissions, observable execution and reliable stop conditions as agents gain more opportunities to act without immediate supervision.
+
+Chinese title: Cursor 云端智能体新增长期目标与事件触发
+Chinese summary: Cursor 云端智能体现可响应 PR、Slack 和定时事件，持续追踪长期目标，并在隔离虚拟机中调度子智能体。
+
+Sources:
+  - Cloud Agents and Cursor Harness Improvements: https://cursor.com/changelog
+  - Cursor announcement: subscriptions for cloud agents: https://x.com/cursor_ai/status/2090136958156546150
+  - Cursor announcement: subagents on isolated machines: https://x.com/cursor_ai/status/2090136962376081531
+
+### OpenAI Preserves Zero Retention for Frontier Models
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-private-safety-processing.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-private-safety-processing.html
+- Source timestamp: 2026-08-19T19:00:00.000Z
+- Site timestamp: 2026-08-19T23:00:03.644Z
+- Tags: Industry, Safety, Agents
+
+A privacy-preserving safety system will analyze multi-step risks without giving OpenAI personnel access to customer content.
+
+## Safety monitoring without retaining prompts
+
+OpenAI said it will continue offering Zero Data Retention for its frontier models, addressing a growing conflict between enterprise confidentiality requirements and the broader monitoring needed for increasingly autonomous AI systems. Under the policy, eligible API customers’ prompts and model responses are not retained after processing, cannot be reviewed by OpenAI personnel and are not used for training unless the customer opts in.
+
+The company also previewed Private Safety Processing, a system intended to recognize dangerous patterns spanning multiple interactions without exposing the underlying content to OpenAI staff. Existing safeguards compatible with zero retention generally evaluate requests individually, which can miss activity distributed across a long agent run, repeated attempts to bypass controls or coordinated accounts.
+
+Customer content can remain on infrastructure controlled by the customer. OpenAI is separately developing an arrangement in which content is stored on its systems but encrypted with customer-controlled keys that the company does not possess. Automated safeguards can process the protected content and return a narrowly defined risk signal. Customers retain the information needed to investigate an alert and may voluntarily disclose relevant material when appealing an enforcement decision or assisting an abuse investigation.
+
+The preview does not eliminate every retention exception. OpenAI said images flagged as possible child sexual abuse material will continue to be retained for legally required manual review and reporting. Private Safety Processing is being tested with early customers, with an initial rollout and technical white paper planned for September.
+
+## Why it matters
+
+Frontier-model providers increasingly need longitudinal context to detect misuse and agent behavior that departs from a user’s instructions. That requirement can collide directly with the confidentiality obligations of banks, healthcare organizations and companies handling proprietary research. OpenAI’s approach attempts to separate safety detection from human access to raw customer data. If its technical claims withstand independent scrutiny, customer-controlled storage and encryption could become an important design pattern for deploying powerful agents in regulated industries without making provider-side surveillance the default.
+
+Chinese title: OpenAI 为前沿模型保留零数据留存机制
+Chinese summary: OpenAI 将用隐私保护机制识别跨多轮交互的风险，同时不让公司人员接触企业客户的原始内容。
+
+Sources:
+  - Offering Zero Data Retention for frontier models: https://openai.com/index/offering-zero-data-retention-for-frontier-models/
+  - OpenAI seeks to one-up Anthropic with new customer privacy protections: https://techcrunch.com/2026/08/19/openai-seeks-to-one-up-anthropic-with-new-customer-privacy-protections/
+
 ### Cerebras CS-4 Pairs Three WSE-3 Turbo Processors for Faster Inference
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/cerebras-cs4-doubles-inference-speed.html
@@ -915,69 +978,27 @@ Sources:
   - Putting Sign Language AI into Users’ Hands: https://deepmind.google/blog/putting-sign-language-ai-into-users-hands/
   - Google DeepMind SL2T Announcement: https://x.com/GoogleDeepMind/status/2087541213284946191
 
-### SpaceXAI Releases Grok 4.6 for Long-Running Agents
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/grok-46-agents.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/grok-46-agents.html
-- Source timestamp: 2026-08-12T15:32:00.000Z
-- Site timestamp: 2026-08-12T23:00:03.612Z
-- Tags: Models, Agents, Industry
-
-Grok 4.6 targets coding and sustained agent work with a 500,000-token context window and pricing below several frontier rivals.
-
-## A model tuned for sustained work
-
-SpaceXAI has released Grok 4.6, a new frontier model aimed at coding, knowledge work and agents that operate across long sequences of tool calls. The model is available through the company’s API and has already appeared in third-party products including Devin and Poe, giving the launch immediate reach beyond SpaceXAI’s own interfaces.
-
-Grok 4.6 supports a 500,000-token context window and includes native function calling, code execution, web search and X search. SpaceXAI also emphasizes context compaction and predictable prompt caching—features intended to control the growing cost and instability of agents that repeatedly inspect repositories, execute code and revise their plans. Standard API pricing is listed at $2 per million input tokens and $6 per million output tokens, with a faster service tier costing more.
-
-Early independent testing from Artificial Analysis gave Grok 4.6 a score of 61 on its Intelligence Index, placing it alongside OpenAI’s GPT-5.6 Sol in that composite test while costing less for the measured workloads. Its AA-Briefcase results also indicate a substantial improvement in agentic knowledge work over Grok 4.5. Those numbers remain benchmark results rather than guarantees: performance and total cost can change sharply with the agent harness, context length, caching behavior and number of retries.
-
-## Why it matters
-
-The release reflects a broader change in frontier-model competition. Vendors are no longer selling only higher answer quality; they are competing on whether a model can remain useful and economical throughout a multi-hour workflow. By combining competitive benchmark performance, built-in tools and aggressive pricing, SpaceXAI is trying to become a default worker inside other companies’ agent products. Day-one integrations suggest model distribution is increasingly decided inside coding agents and workflow platforms, not solely in consumer chat applications.
-
-Chinese title: SpaceXAI 发布 Grok 4.6，主攻长程智能体任务
-Chinese summary: Grok 4.6 以 50 万 token 上下文、原生工具调用和更低定价切入编程及长时间运行的智能体工作流。
-
-Sources:
-  - Introducing Grok 4.6: https://x.ai/news/grok-4-6
-  - Grok 4.6 Benchmarks and Analysis: https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis
-  - Grok 4.6 in Devin: https://x.com/cognition/status/2087579582492987881
-
-### Alibaba Opens 2.4-Trillion-Parameter Qwen3.8 Weights
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/qwen38-weights-open.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/qwen38-weights-open.html
-- Source timestamp: 2026-08-12T15:01:00.000Z
-- Site timestamp: 2026-08-12T23:00:03.612Z
-- Tags: Models, Open Source, Agents
-
-Alibaba has released its largest Qwen model’s weights, giving independent operators a frontier-scale foundation for coding and agents.
-
-## The release
-
-Alibaba’s Qwen team has published the weights and model card for Qwen3.8-2.4T-A95B, making the foundation on which the hosted Qwen3.8-Max service is based available for outside organizations to download and operate. The mixture-of-experts model contains 2.4 trillion parameters but activates about 95 billion for each token, an approach designed to increase total capacity without paying the computational cost of using every parameter on every request.
-
-The public model has a native 262,144-token context window and is positioned primarily for coding, complex tool use and long-running agent workflows. Unsloth published an extreme one-bit quantization that reduces the roughly 4.9-terabyte full model to about 397 gigabytes. Even that compressed edition remains beyond ordinary consumer hardware, underlining the difference between weights being downloadable and a model being broadly practical to self-host.
-
-Some inference providers separately announced day-zero availability for Qwen3.8-branded services. Those announcements must be evaluated model by model: availability of the proprietary Qwen3.8-Max service does not by itself confirm hosted inference for the downloadable Qwen3.8-2.4T-A95B checkpoint.
-
-The downloadable release also should not be treated as identical to Alibaba’s commercial Qwen3.8-Max product. According to the model documentation, the hosted edition is based on the open model but adds vision input, non-thinking operation, built-in tools and a default one-million-token context. Users evaluating sovereignty or customization therefore receive the core text model, but not necessarily every capability of Alibaba’s managed service.
-
-## Why it matters
-
-This is one of the largest publicly downloadable language models yet released. More importantly, it gives cloud companies, national AI programs and large enterprises a new alternative to closed frontier APIs for agentic software work. The hardware demands will limit direct adoption, but the weights create a common foundation for quantization, fine-tuning and systems research—and put additional pressure on Western labs to justify closed access with capabilities that cannot be reproduced around an open model.
-
-Chinese title: 阿里开放 Qwen3.8 旗舰模型权重，参数达 2.4 万亿
-Chinese summary: 阿里正式开放 Qwen3.8-2.4T-A95B 权重，为代码与长程智能体提供可独立部署的超大规模基础模型。
-
-Sources:
-  - Qwen3.8-2.4T-A95B Model Card: https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B
-  - Qwen3.8-2.4T-A95B ModelScope Page: https://modelscope.cn/models/Qwen/Qwen3.8-2.4T-A95B
-  - Qwen3.8-Max Day-Zero Availability on Together AI: https://x.com/togethercompute/status/2087665914556944772
-
 ## Recent radar items
+
+### 2026-08-20
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-20.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-20.html
+
+- 2026-08-19T21:25Z | Pika on X | Pika detailed its Pika SFX model, which generates prompt-aligned, production-ready sound effects in under one second. | 中文：Pika 详解 Pika SFX 模型，该模型可在一秒内生成符合提示词、达到制作级质量的音效。 | https://x.com/pika_labs/status/2090188417896423558
+- 2026-08-19T19:14Z | Krea on X | Krea introduced Seedance Studio, combining Seedance 2.5 with prompt presets, camera paths and 3D scene controls in one creation workspace. | 中文：Krea 推出 Seedance Studio，将 Seedance 2.5、提示词预设、镜头路径和三维场景控制整合到同一创作空间。 | https://x.com/krea_ai/status/2090155543566659916
+- 2026-08-19T17:58Z | ElevenLabs on X | ElevenLabs released Eleven v3 Conversational for real-time applications, offering expressive audio controls and support for more than 70 languages. | 中文：ElevenLabs 发布面向实时应用的 Eleven v3 Conversational，提供富有表现力的音频控制并支持超过 70 种语言。 | https://x.com/ElevenLabs/status/2090136229471813948
+- 2026-08-19T18:51Z | Google AI Studio on X | Google AI Studio added GitHub synchronization, letting Build users import repositories and push or pull changes across environments. | 中文：Google AI Studio 新增 GitHub 同步功能，Build 用户可导入代码仓库，并在不同环境间推送或拉取更改。 | https://x.com/GoogleAIStudio/status/2090149753312932026
+- 2026-08-19T20:21Z | Vercel on X | Vercel Agent can now join Slack threads with production context, create plans and pull requests, and roll back deployments. | 中文：Vercel Agent 现可携带完整生产环境上下文加入 Slack 讨论，并能制定计划、创建拉取请求及回滚部署。 | https://x.com/vercel/status/2090172360410406988
+- 2026-08-19T20:33Z | Together AI on X | TrueFoundry open-sourced TrueForge, a vendor-neutral agent harness covering context management, MCP tools, subagents, sandboxing, approvals and persistent state. | 中文：TrueFoundry 开源了厂商中立的智能体运行框架 TrueForge，涵盖上下文管理、MCP 工具、子智能体、沙箱、审批和持久状态。 | https://x.com/togethercompute/status/2090175250378248300
+- 2026-08-19T15:47Z | Unsloth on X | Unsloth released Dynamic 3.0 GGUFs for Qwen3.8-27B, reporting over 10% better accuracy than competing quantizations on several benchmarks. | 中文：Unsloth 发布 Qwen3.8-27B 的 Dynamic 3.0 GGUF 量化模型，并称其在多项基准上的准确率高出其他量化方案逾 10%。 | https://x.com/UnslothAI/status/2090103470015828184
+- 2026-08-19T21:46Z | NVIDIA AI on X | Nvidia said open-source cuOpt became the fastest solver across three optimization classes in Hans Mittelmann’s benchmark suite. | 中文：英伟达表示，开源优化求解器 cuOpt 在 Hans Mittelmann 基准套件的三类优化问题中均取得最快成绩。 | https://x.com/NVIDIAAI/status/2090193774643446117
+- 2026-08-19T16:28Z | NVIDIA AI on X | Nvidia introduced SkillEvaluator after benchmarking more than 300 verified skills to measure their effect on agents completing identical real-world tasks. | 中文：英伟达在测试逾 300 个认证技能后推出 SkillEvaluator，用于衡量不同技能对智能体完成相同真实任务的实际影响。 | https://x.com/NVIDIAAI/status/2090113635683340622
+- 2026-08-19T22:13Z | AWS Machine Learning Blog | Amazon Bedrock AgentCore Web Search added domain allowlists, blocklists and publication-date filters for more controlled agent retrieval. | 中文：Amazon Bedrock AgentCore 网页搜索新增域名允许列表、阻止列表和发布日期筛选，让智能体检索过程更可控。 | https://aws.amazon.com/blogs/machine-learning/domain-and-publish-date-filters-for-web-search-on-agentcore/
+- 2026-08-19T21:41Z | Google Cloud Tech on X | Google Cloud open-sourced a zero-trust agent blueprint that assumes model compromise and enforces sensitive controls in infrastructure. | 中文：Google Cloud 开源零信任智能体蓝图，以模型可能已被攻破为前提，并在基础设施层执行敏感操作控制。 | https://x.com/GoogleCloudTech/status/2090192424056344794
+- 2026-08-19T15:19Z | Mem0 on X | Mem0 launched a Playground for testing and tuning what application agents remember and how strictly they retrieve stored memories. | 中文：Mem0 推出 Playground，帮助开发者测试并调节应用智能体记住哪些内容，以及以多严格的条件检索记忆。 | https://x.com/mem0ai/status/2090096264251928722
+- 2026-08-19T22:30Z | Agent Arena on X | DeepSeek-V4-Pro High rose to second among open models in Agent Arena, with a reported 6% net improvement and $0.21 median task cost. | 中文：DeepSeek-V4-Pro High 升至 Agent Arena 开放模型第二名，据报净胜率提升 6%，任务成本中位数为 0.21 美元。 | https://x.com/arena/status/2090204783273730479
+- 2026-08-19T17:12Z | Replit on X | Replit introduced a Free Mode designed to make its AI-assisted application creation workflow available without upfront usage costs. | 中文：Replit 推出 Free Mode，旨在让用户无需预先承担使用费用即可体验其 AI 辅助应用创建流程。 | https://x.com/Replit/status/2090124817370620391
 
 ### 2026-08-19
 
@@ -1108,37 +1129,3 @@ Sources:
 - 2026-08-16T02:00Z | Dreamina on X | Dreamina opened the final ten-day stretch of its AI music-video contest, requiring entrants to combine an original track with AI-generated visuals. | 中文：Dreamina 的 AI 音乐视频大赛进入最后十天，参赛者需把原创音乐与 AI 生成视觉内容结合。 | https://x.com/dreamina_ai/status/2088807962618065305
 - 2026-08-16T02:00Z | Together AI on X | Together AI said Yutori’s screenshot-driven Navigator browser agent surpassed frontier-model performance on its tests through rapid perception-action loops. | 中文：Together AI 表示，Yutori 的 Navigator 浏览器智能体凭借快速的截图—操作循环，在其测试中超过了前沿模型。 | https://x.com/togethercompute/status/2088807960457699509
 - 2026-08-16T10:36Z | IT之家 | A Huawei ADS-equipped Voyah sedan reportedly triggered automatic emergency braking after detecting an obstacle while driving through an inverted tunnel loop. | 中文：据报道，一辆搭载华为乾崑智驾 ADS 的岚图轿车驶过隧道大回环顶部时识别到障碍物并触发自动紧急制动。 | https://www.ithome.com/0/990/365.htm
-
-### 2026-08-15
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-15.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-15.html
-
-- 2026-08-14T22:37Z | Pika on X | Pika opened four generative-audio models through its API Club, emphasizing efficient inference and lower-cost access to frontier-quality audio. | 中文：Pika 通过 API Club 开放四款生成式音频模型，主打高效推理，并以更低成本提供前沿级音频生成能力。 | https://x.com/pika_labs/status/2088394693289930757
-- 2026-08-14T19:16Z | Anthropic on X | Anthropic said it is implementing Claude text watermarking for EU AI Act compliance and published an FAQ addressing detection and reliability questions. | 中文：Anthropic 表示将为 Claude 文本加入水印以遵守欧盟《人工智能法案》，并发布常见问题说明检测方式与可靠性。 | https://x.com/AnthropicAI/status/2088343978873966687
-- 2026-08-14T19:39Z | Streamlit on X | Streamlit 1.61 added lazy dataframe loading, background cache refresh and icons for metric components. | 中文：Streamlit 1.61 新增数据表惰性加载、后台缓存刷新，以及指标组件图标。 | https://x.com/streamlit/status/2088349831400136836
-- 2026-08-14T19:22Z | Qdrant on X | Qdrant and Minima demonstrated single-GPU agentic RAG where hybrid search and reranking made the first retrieval sufficient 87% of the time. | 中文：Qdrant 与 Minima 展示了单 GPU 智能体式 RAG；混合搜索和重排使首次检索在 87% 的情况下已足够。 | https://x.com/qdrant_engine/status/2088345620902039615
-- 2026-08-14T18:59Z | NVIDIA AI on X | Nvidia introduced NeMo Switchyard, an open-source routing library that assigns different agent-workflow steps to models based on capability and cost. | 中文：英伟达推出开源路由库 NeMo Switchyard，可根据能力和成本，为智能体工作流的不同步骤分配模型。 | https://x.com/NVIDIAAI/status/2088339706752983230
-- 2026-08-14T18:35Z | Epoch AI on X | An Epoch AI–Ipsos survey found most American workplace AI use relies on free plans, except in science and technology occupations. | 中文：Epoch AI 与益普索的调查发现，美国职场中的 AI 使用大多依赖免费方案，科学和技术岗位除外。 | https://x.com/EpochAIResearch/status/2088333675230580919
-- 2026-08-14T18:28Z | Character.AI on X | Character.AI added one-click bulk Lorebook imports, letting creators draft fictional-world context externally and bring it into the platform at once. | 中文：Character.AI 新增 Lorebook 一键批量导入，创作者可在外部编写世界观资料，再一次性导入平台。 | https://x.com/character_ai/status/2088331917326528857
-- 2026-08-14T18:13Z | Databricks on X | Databricks added AI Spend Controls to Unity AI Gateway to catch costs caused by retry loops and uncontrolled agent experiments. | 中文：Databricks 为 Unity AI Gateway 加入 AI 支出控制，用于及时发现重试循环和失控智能体实验造成的费用。 | https://x.com/databricks/status/2088328114912821576
-- 2026-08-14T16:15Z | Goodfire on X | Goodfire said its Silico research agent autonomously trained a multimodal encoder overnight, then investigated why its vision-language representations underperformed. | 中文：Goodfire 表示，其研究智能体 Silico 在一夜间自主训练出多模态编码器，并进一步调查视觉—语言表征表现不足的原因。 | https://x.com/GoodfireAI/status/2088298375246647443
-- 2026-08-14T15:43Z | Google Security Blog | Google detailed a homomorphic-encryption approach intended to make private AI inference practical while keeping processed data encrypted. | 中文：谷歌介绍了一种同态加密方案，目标是在处理数据始终保持加密的同时，让隐私 AI 推理变得实用。 | https://blog.google/security/how-google-is-making-private-ai-practical-with-homomorphic-encryption/
-- 2026-08-14T16:02Z | AWS Machine Learning Blog | AWS added custom reward functions for multi-turn reinforcement learning with Amazon Nova Forge, enabling developers to tailor model-training objectives. | 中文：AWS 为 Amazon Nova Forge 的多轮强化学习加入自定义奖励函数，让开发者能够按需求调整模型训练目标。 | https://aws.amazon.com/blogs/machine-learning/custom-reward-functions-for-multi-turn-reinforcement-learning-with-amazon-nova-forge/
-- 2026-08-14T15:00Z | Tripo AI on X | Tripo updated Image Gen with 3D-ready templates, asset extraction, cutouts and reference-based variants for building consistent asset collections. | 中文：Tripo 更新 Image Gen，加入面向 3D 的模板、资产提取、抠图和参考图变体功能，可制作风格一致的资产集合。 | https://x.com/tripoai/status/2088279479911109074
-- 2026-08-14T15:00Z | Krea on X | Krea temporarily made Slack generations unlimited for business customers through August 21, removing rate limits and long generation queues. | 中文：Krea 在 8 月 21 日前为企业客户临时开放 Slack 无限生成，取消调用次数限制和长时间生成队列。 | https://x.com/krea_ai/status/2088279481765007592
-- 2026-08-14T14:09Z | Dreamina on X | Dreamina launched Seedance 2.5 video generation at 1080p on its global web product. | 中文：Dreamina 在其全球网页版上线 Seedance 2.5 的 1080p 视频生成功能。 | https://x.com/dreamina_ai/status/2088266704820531272
-- 2026-08-15T10:41Z | IT之家 | Nvidia may guarantee up to 25% residual value for selected AI-compute investments, seeking to reassure buyers about hardware depreciation risks. | 中文：英伟达拟为部分 AI 算力投资提供最高 25% 的残值保障，以缓解买家对硬件贬值风险的担忧。 | https://www.ithome.com/0/990/154.htm
-- 2026-08-15T09:29Z | MiniMax on X | MiniMax showcased commercial and music-video projects already being created with its H3 video model at the Magnific event in San Francisco. | 中文：MiniMax 在旧金山 Magnific 活动上展示了创作者已使用 H3 视频模型制作的商业项目和音乐视频。 | https://x.com/MiniMax_AI/status/2088558801909866526
-- 2026-08-15T08:00Z | The Decoder | A plaintiff embedded invisible AI instructions in court filings, exposing prompt-injection risks for legal systems using automated document review. | 中文：一名原告在法庭文件中嵌入不可见的 AI 指令，暴露了法律机构采用自动文档审查时的提示词注入风险。 | https://the-decoder.com/plaintiff-hid-invisible-ai-instructions-in-court-filings-to-secretly-influence-automated-review/
-- 2026-08-15T07:30Z | The Decoder | World Labs introduced a method that converts one demonstrated real-world robot task into thousands of simulated training variations. | 中文：World Labs 提出一种方法，可将一次真实世界机器人任务演示转化为数千个模拟训练变体。 | https://the-decoder.com/world-labs-turns-one-real-world-robot-task-into-thousands-of-simulated-variations-for-training/
-- 2026-08-15T06:42Z | 量子位 | Zhizhi Research Institute proposed an interpretability method that decomposes model weights while requiring less than 1% of the usual data cost. | 中文：至知研究院提出一种拆解模型权重的可解释性方法，所需数据成本不足常规方案的 1%。 | https://www.qbitai.com/2026/08/473876.html
-- 2026-08-15T06:36Z | 量子位 | A Chinese music-generation model targeted a recurring AI-music quality problem while positioning itself as a domestic challenger to Suno. | 中文：一款中国音乐生成模型瞄准 AI 音乐长期存在的质量通病，并将自身定位为 Suno 的本土挑战者。 | https://www.qbitai.com/2026/08/473866.html
-- 2026-08-15T06:18Z | Runway on X | Runway added 1080p Seedance 2.5 video generation in early access, promising sharper detail at the higher resolution. | 中文：Runway 以抢先体验形式上线 1080p Seedance 2.5 视频生成，主打更高分辨率下的清晰细节。 | https://x.com/runwayml/status/2088510581120647272
-- 2026-08-15T05:43Z | Ollama on X | Ollama fully deployed DeepSeek-V4-Pro 0813 to its cloud, making the model available through Pro and Max subscriptions. | 中文：Ollama 已在云端全面部署 DeepSeek-V4-Pro 0813，并向 Pro 和 Max 订阅用户开放。 | https://x.com/ollama/status/2088501770406473926
-- 2026-08-15T05:30Z | The Decoder | A new visual-perception benchmark found that leading AI models still perform poorly on basic tasks involving fine visual distinctions and spatial relationships. | 中文：一项新的视觉感知基准发现，领先 AI 模型在细微视觉区分和空间关系等基础任务上依然表现不佳。 | https://the-decoder.com/new-benchmark-confirms-ai-models-still-perform-poorly-at-visual-perception/
-- 2026-08-15T06:00Z | The Decoder | Researchers described a “tragedy of the cognitive commons,” where individually rational AI adoption could collectively erode professions’ accumulated expertise. | 中文：研究人员提出“认知公地悲剧”：个体看来合理的 AI 采用行为，可能共同侵蚀整个行业长期积累的专业能力。 | https://the-decoder.com/the-tragedy-of-the-cognitive-commons-explains-how-rational-ai-adoption-could-destroy-entire-professions-expertise/
-- 2026-08-15T03:29Z | Together AI on X | Together AI reported DeepSeek-V4 Pro 0813 reaching 88.5% pass@4 on software-engineering tasks in its DeepSWE evaluation. | 中文：Together AI 报告称，DeepSeek-V4 Pro 0813 在其 DeepSWE 软件工程评测中取得了 88.5% 的 pass@4。 | https://x.com/togethercompute/status/2088468211159171246
-- 2026-08-15T01:39Z | Artificial Analysis on X | Artificial Analysis said DeepSeek V4 Pro 0813’s cost per task rose from $0.05 to $0.25 despite improved token efficiency. | 中文：Artificial Analysis 表示，尽管令牌效率有所提升，DeepSeek V4 Pro 0813 的单任务成本仍从 0.05 美元升至 0.25 美元。 | https://x.com/ArtificialAnlys/status/2088440353351496124
-- 2026-08-15T00:19Z | Together AI on X | Tri Dao argued that open models now trail closed laboratories by only months in quality while open-source serving systems advance rapidly. | 中文：Tri Dao 表示，开放模型的质量如今仅落后闭源实验室数月，同时开源推理服务系统也在快速进步。 | https://x.com/togethercompute/status/2088420230884405394
-- 2026-08-14T23:00Z | Replit on X | Replit upgraded its MCP integration so external agents can find and update existing Replit projects without requiring an API key. | 中文：Replit 升级了 MCP 集成，使外部智能体无需 API 密钥即可查找并更新现有 Replit 项目。 | https://x.com/Replit/status/2088400280542916799
