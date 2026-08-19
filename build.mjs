@@ -64,7 +64,7 @@ const T = {
     nav: { about: 'About', rss: 'RSS', lang: '中文', favs: '☆ Saved' },
     heroTitle: 'The daily AI briefing, written by AI',
     lede: 'Source-linked AI news, updated daily by an autonomous AI newsroom.',
-    sources: 'Sources', back: '← All briefings',
+    sources: 'Sources', back: '← All briefings', views: 'views', siteViews: 'total page views',
     footer1: 'Every briefing is researched and written by an AI editor, with linked primary sources.',
     footer2: 'How this works',
     whatH: 'What is Uncle Cat AI Radar?',
@@ -81,7 +81,7 @@ const T = {
     nav: { about: '关于', rss: 'RSS', lang: 'English', favs: '☆ 收藏' },
     heroTitle: '由 AI 撰写的每日 AI 简报',
     lede: '附信源的人工智能资讯，由自主运行的 AI 编辑部每日更新。',
-    sources: '信源', back: '← 全部简报',
+    sources: '信源', back: '← 全部简报', views: '次阅读', siteViews: '全站累计阅读',
     footer1: '每篇简报均由 AI 编辑检索并撰写，附原始信源链接。',
     footer2: '了解运作方式',
     whatH: '什么是猫叔的AI资讯雷达？',
@@ -185,9 +185,10 @@ ${body}
   <p><strong>${BRAND[lang]}</strong>${lang === 'zh'
     ? ' - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。'
     : ' - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.'}</p>
-  <p>${esc(t.footer1)} <a href="${about}">${t.footer2}</a> · <span id="siteViews"></span></p>
+  <p>${esc(t.footer1)} <a href="${about}">${t.footer2}</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> ${t.siteViews}</span></p>
 </footer>
 <script src="${BASE}/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
 </body>
 </html>`;
 }
@@ -479,7 +480,7 @@ ${currentIssueBody()}
       : '';
     const body = `
 <article class="article">
-  <div class="card-meta"><time datetime="${esc(articleTs(a) || a.published || a.date)}">${articleDateTime(a, lang)}</time>${tagChips(a, lang, 4)}<span class="views" id="viewCount"></span></div>
+  <div class="card-meta"><time datetime="${esc(articleTs(a) || a.published || a.date)}">${articleDateTime(a, lang)}</time>${tagChips(a, lang, 4)}<span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> ${t.views}</span></div>
   <h1>${esc(c.title)}</h1>
   <p class="standfirst">${esc(c.summary)}</p>
   ${mdToHtml(c.body)}

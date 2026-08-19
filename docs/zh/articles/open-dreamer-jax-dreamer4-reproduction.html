@@ -41,7 +41,7 @@
 <main class="wrap">
 
 <article class="article">
-  <div class="card-meta"><time datetime="2026-07-25T18:59:00Z">2026年7月26日 02:59</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><span class="views" id="viewCount"></span></div>
+  <div class="card-meta"><time datetime="2026-07-25T18:59:00Z">2026年7月26日 02:59</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
   <h1>Open Dreamer开源复现Dreamer 4世界模型，完整训练配方公开</h1>
   <p class="standfirst">研究团队Reactor用JAX/Flax复现了DeepMind的Dreamer 4世界模型全流程，训练配方连同六个关键稳定性修复一并开源。</p>
   <p>一个名为Reactor的研究团队发布了Open Dreamer——DeepMind世界模型Dreamer 4训练管线的开源JAX/Flax复现。Dreamer 4的成名之处，是让智能体完全在自己学到的游戏模型内部训练，最终学会了在Minecraft里挖钻石；但原论文并未附带完整可用的公开实现。Open Dreamer这次把整套训练栈都放了出来：因果视频tokenizer、动作条件的隐空间动力学模型、带配置细节的完整训练配方、本地推理框架，外加一个浏览器里实时生成画面的Minecraft演示。</p><h2>放出了什么，没放什么</h2><p>复现的核心是一个16亿参数的动力学Transformer（30层，模型宽度1920），用Muon优化器训练20万步，单卡256帧、约24GB模型状态，在NVIDIA B200上报告了57%–58%的模型算力利用率。需要注意的是，预训练权重以及行为克隆、强化学习两个阶段并未包含——这是世界模型的骨干，不是开箱即用的智能体。</p><h2>瓶颈不是吞吐，是稳定性</h2><p>这次发布最有价值的部分可能是工程笔记。团队直言真正的瓶颈不是训练速度而是稳定性，并记录了六个关键修复，针对的是一种论文里很少写的失败模式：loss曲线一路向好，生成质量却在悄悄劣化。loss与出片质量脱钩是世界模型训练的著名陷阱，而一份写清楚怎么绕开它的配方，此前几乎找不到。</p><p>这次开源正好落在世界模型的行业热潮当中——Genie、Cosmos、Marble等前沿工作几乎全部闭源或只部分开放。带着诚实失败记录的独立复现，对世界模型的意义就像当年的开源复现之于LLM训练：把少数实验室的隐性知识变成公共基础设施。对没有DeepMind级资源的研究者来说，一份验证过、能稳定训练的配方，比又一张benchmark榜单值钱得多。</p>
@@ -53,8 +53,9 @@
 </main>
 <footer class="footer">
   <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
-  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
 </footer>
 <script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
 </body>
 </html>

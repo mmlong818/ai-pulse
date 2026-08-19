@@ -47,7 +47,7 @@ run-daily.bat  定时班次入口（Windows 计划任务每日 7:00 / 19:00）
 refresh-72h.bat 全量重刷（72 小时窗口）
 ```
 
-前端交互（浏览计数 / 点赞 / 本地收藏）由 `assets/pulse.js` 提供：计数走匿名公共计数服务，收藏只存读者本地 localStorage，全站无 Cookie、无追踪器、无广告。
+前端交互由 `assets/pulse.js` 与不蒜子提供：全站及单篇浏览计数使用不蒜子，点赞防重复状态与收藏保存在读者本地，全站无 Cookie、无广告。
 
 ## 本地运行 / Run locally
 

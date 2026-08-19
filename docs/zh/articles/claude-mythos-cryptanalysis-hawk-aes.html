@@ -41,7 +41,7 @@
 <main class="wrap">
 
 <article class="article">
-  <div class="card-meta"><time datetime="2026-07-28T17:16:00Z">2026年7月29日 01:16</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/safety.html">安全</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><span class="views" id="viewCount"></span></div>
+  <div class="card-meta"><time datetime="2026-07-28T17:16:00Z">2026年7月29日 01:16</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/safety.html">安全</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
   <h1>Anthropic：Claude Mythos 自主攻破 HAWK 与 7 轮 AES</h1>
   <p class="standfirst">Anthropic 称其前沿模型在极少人工干预下产出两项原创密码分析成果，HAWK-256 有效安全强度腰斩，AES 攻击提速数百倍。</p>
   <p>Anthropic 于 7 月 28 日发布研究，称其前沿模型 Claude Mythos 的预览版本在几乎没有人工指导的情况下，独立完成了两项原创密码分析工作。这是目前最有说服力的公开证据之一——在一个结论可被严格验证、无从蒙混的领域里，大模型已能做到专家水准。</p><h2>两项结果</h2><p>第一项针对 HAWK，这是提交至 NIST 后量子标准化流程的一种格基数字签名方案。模型发现了此前分析未利用的非平凡自同构结构，并借此将有效密钥长度直接减半。按 Anthropic 给出的数据，HAWK-256 参数集下的密钥恢复复杂度从约 2^64 降至约 2^38。这项工作耗时约 60 小时。</p><p>第二项是对 7 轮 AES 的中间相遇攻击改进。完整 AES 为 10 轮，7 轮属削弱变体。模型在此自创了一种被它命名为「莫比乌斯桥」的指纹算法，省掉一次枚举猜测，相比此前最优攻击提速 200 至 800 倍。该任务跨三天、消耗数十亿输出 token。Anthropic 称单次攻击的 API 成本约 10 万美元。</p><p>Anthropic 与苏黎世联邦理工、特拉维夫大学、海法大学的密码学者合作，同步公开两篇论文，并放出 CryptanalysisBench——一套把破译任务打包成可测评项的基准，便于外界直接衡量模型的密码分析能力。</p><h2>需要说清的边界</h2><p>两项成果都不威胁在用系统。HAWK 尚未部署，更大参数集依然安全；7 轮 AES 攻击属学术设定，真要执行仍需数亿美元量级算力。两者都只是压低了指数级工作量，而非将其瓦解。</p><h2>为何重要</h2><p>「前沿模型做不出真正新颖的技术研究」，密码分析一直是这一论断最干净的阵地：结果可验证，也没有基准可供刷分。若结论可复现，该论断的空间被大幅压缩，而且刀是双刃的——让防守方在标准落地前做压力测试的能力，同样降低了攻击性分析的门槛。Anthropic 的叙事落点在防御，但 CryptanalysisBench 的公开意味着这道题从此要在明面上打分。</p>
@@ -53,8 +53,9 @@
 </main>
 <footer class="footer">
   <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
-  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
 </footer>
 <script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
 </body>
 </html>

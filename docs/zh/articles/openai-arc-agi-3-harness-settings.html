@@ -41,7 +41,7 @@
 <main class="wrap">
 
 <article class="article">
-  <div class="card-meta"><time datetime="2026-07-29T23:57:00Z">2026年7月30日 07:57</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><span class="views" id="viewCount"></span></div>
+  <div class="card-meta"><time datetime="2026-07-29T23:57:00Z">2026年7月30日 07:57</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
   <h1>OpenAI：换评测框架后 Sol 的 ARC-AGI-3 冲到 38.3%</h1>
   <p class="standfirst">OpenAI 称 GPT-5.6 Sol 改用自家 Responses API、开启保留推理与上下文压缩后，ARC-AGI-3 公开题集成绩从 7.8% 升至 38.3%；该数字与官方榜单成绩并不可直接比较。</p>
   <h2>同一个模型，换了&quot;管道&quot;</h2><p>OpenAI 公布了一组实验，主张 GPT-5.6 Sol 在 ARC-AGI-3 上的糟糕成绩，很大程度上是评测跑法造成的假象。在官方统一评测框架里，该模型只拿到 7.8%——因为每走一步后推理过程即被丢弃，上下文靠截断而非摘要来管理。改用 OpenAI 自家的 Responses API 重跑同一套题，并打开两个开关（跨步保留推理、以压缩代替截断），分数升至 38.3%，OpenAI 称这是在公开题集上取得的 188% 相对涨幅。</p><p>这一 38.3% 并不能与本周早前 Claude Opus 5 的 30.2% 直接对比。Opus 5 的成绩是在 ARC 标准评测框架下、针对半私有题集得出的官方结果；而 OpenAI 的数字来自公开题集、且使用自家配置——两个数值衡量的是不同题目、不同&quot;管道&quot;。在刻意排除厂商专属设置的官方榜单上，Anthropic 仍处领先。OpenAI 自己则把结论推向更一般的层面：一个基准分衡量的从来不只是模型，还包括一整套不易察觉的框架与 API 选择。</p><h2>ARC Prize 划出边界</h2><p>ARC Prize 联合创始人 François Chollet 回应时区分了两类改动：为攻榜专门定制、或内含基准格式知识的评测框架属于违规；而并非为 ARC-AGI-3 开发、且所有 API 用户都能开启的通用设置则不算，前提是把设置与相应成本一并披露。他承认这会带来厂商之间的可比性问题，但认为透明报告是可接受的补救。官方榜单刻意不启用厂商专属能力，以保证每个条目跑法一致——按 OpenAI 的说法，这一设计恰恰让自家模型因标准框架用不到的能力而吃亏。</p><h2>为何值得关注</h2><p>ARC-AGI-3 考的是模型能否在没有说明的情况下上手陌生的二维小游戏，正是那种步数极长、推理连续性会不断累积收益的任务。因此仅靠配置就出现五倍量级的摆动并非细枝末节：它意味着公开的智能体分数，只有在同时注明题集、评测框架、记忆策略与 token 开销时才具备可比性。企业若仅凭榜单差值在前沿模型间取舍，实际上比较的既是模型能力，也是集成方案。可以预见，基准维护方将被要求为每个模型报告多套配置，实验室也将被要求说明某个亮眼数字究竟由哪些 API 特性、在哪套题集上支撑。</p>
@@ -53,8 +53,9 @@
 </main>
 <footer class="footer">
   <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
-  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
 </footer>
 <script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
 </body>
 </html>

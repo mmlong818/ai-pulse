@@ -41,7 +41,7 @@
 <main class="wrap">
 
 <article class="article">
-  <div class="card-meta"><time datetime="2026-07-29T00:35:31Z">2026年7月29日 08:35</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/safety.html">安全</a><span class="views" id="viewCount"></span></div>
+  <div class="card-meta"><time datetime="2026-07-29T00:35:31Z">2026年7月29日 08:35</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/safety.html">安全</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
   <h1>OpenAI 开源 Codex Security 命令行安全扫描工具</h1>
   <p class="standfirst">该工具以 Apache-2.0 协议发布，可扫描代码仓库、跨轮次追踪问题并验证修复；上线后先被 Hacker News 挖出，OpenAI 才补发公告。</p>
   <h2>发生了什么</h2><p>OpenAI 将 Codex Security 以开源形式发布，提供命令行工具与 TypeScript SDK，采用 Apache-2.0 协议，npm 包名为 <code>@openai/codex-security</code>。公司是在仓库被网友发现并冲上 Hacker News 首页之后才补发说明，称自己「悄悄」上线了这份代码。该 GitHub 项目一天内即积累数千 star。</p><p>Codex Security 最初于 2026 年 3 月以托管式应用安全智能体的形态推出。此次的 CLI 把这套流程搬到本地和流水线里：扫描仓库、审查 PR 变更、把发现的问题持久化以免每轮重复上报、验证提交的修复是否真正堵住漏洞，并可通过环境变量接入 CI/CD。认证方式既支持 ChatGPT 登录，也支持 OpenAI API key。运行需要 Node.js 22 与 Python 3.10 及以上版本，OpenAI 将这次发布定义为早期版本。</p><p>其卖点在于：模型驱动的审查会结合上下文推断代码的实际行为，而不是单纯做模式匹配——传统静态分析的误报大多来自后者。但扫描仍要调用 OpenAI 的托管模型，因此开源协议覆盖的是外壳与 SDK，而非背后的智能本体。</p><h2>为何重要</h2><p>AI 辅助安全审查是 2026 年商业上最站得住脚的智能体品类，微软、Anthropic 以及一批创业公司近几周都在推同类产品。把扫描外壳放到 Apache-2.0 之下，等于在界面层挤压付费 AppSec 厂商，同时把 OpenAI 的收入牢牢留在推理层——这是开源权重阵营对闭源模型厂商那套打法的反向操作。</p><p>时机也很微妙：几天前 Hugging Face 遭入侵事件牵涉一个 OpenAI 智能体，让公司被迫成为「自主改代码的系统能干出什么」的反面教材。此时开源一个工程团队可以逐行审阅的防守型智能体，回应意味明显；而 CI 集成路径也意味着扫描结果会出现在开发者本来的工作流中，而非另一个独立面板里。</p>
@@ -53,8 +53,9 @@
 </main>
 <footer class="footer">
   <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
-  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="siteViews"></span></p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
 </footer>
 <script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
 </body>
 </html>

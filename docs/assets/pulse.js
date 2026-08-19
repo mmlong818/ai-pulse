@@ -1,28 +1,16 @@
-// AI Pulse 交互层：浏览计数（CounterAPI，匿名，仅计数）+ 点赞 + 本地收藏
+// AI Pulse 交互层：点赞 + 本地收藏（浏览统计由不蒜子提供）
 (() => {
   const NS = 'ai-pulse-mm818';
   const API = `https://api.counterapi.dev/v1/${NS}`;
   const slug = document.body.dataset.slug || '';
   const lang = document.body.dataset.lang || 'en';
   const t = lang === 'zh'
-    ? { views: '次阅读', like: '点赞', liked: '已赞', fav: '收藏', faved: '已收藏', siteViews: '全站累计阅读', empty: '还没有收藏。在任意文章页点「☆ 收藏」即可加入。', favTitle: '我的收藏' }
-    : { views: 'views', like: 'Like', liked: 'Liked', fav: 'Save', faved: 'Saved', siteViews: 'total page views', empty: 'Nothing saved yet. Tap “☆ Save” on any briefing to keep it here.', favTitle: 'Saved briefings' };
+    ? { like: '点赞', liked: '已赞', fav: '收藏', faved: '已收藏', empty: '还没有收藏。在任意文章页点「☆ 收藏」即可加入。', favTitle: '我的收藏' }
+    : { like: 'Like', liked: 'Liked', fav: 'Save', faved: 'Saved', empty: 'Nothing saved yet. Tap “☆ Save” on any briefing to keep it here.', favTitle: 'Saved briefings' };
 
   const hit = (name) => fetch(`${API}/${name}/up`).then((r) => r.json()).catch(() => null);
   const peek = (name) => fetch(`${API}/${name}`).then((r) => r.json()).catch(() => null);
   const fmt = (n) => (n >= 1000 ? (n / 1000).toFixed(1) + 'k' : String(n));
-
-  // ---- 浏览计数 ----
-  hit('site').then((d) => {
-    const el = document.getElementById('siteViews');
-    if (el && d) el.textContent = `${fmt(d.count)} ${t.siteViews}`;
-  });
-  if (slug) {
-    hit(`v-${slug}`).then((d) => {
-      const el = document.getElementById('viewCount');
-      if (el && d) el.textContent = `${fmt(d.count)} ${t.views}`;
-    });
-  }
 
   // ---- 点赞（全局计数 + 本地防重复）----
   const likeBtn = document.getElementById('likeBtn');
