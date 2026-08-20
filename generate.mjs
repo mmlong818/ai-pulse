@@ -76,7 +76,7 @@ function inEditionWindow(published) {
   return ms >= editionStart.getTime() && ms < endMs;
 }
 
-function runEditor(prompt, { timeoutMs = 1200000 } = {}) {
+function runEditorOnce(prompt, { timeoutMs = 1200000 } = {}) {
   return new Promise((resolve, reject) => {
     const args = [...CODEX.prefixArgs, '--search', 'exec', '--ephemeral', '--sandbox', 'read-only',
       '--skip-git-repo-check', '--color', 'never', '-'];
@@ -89,11 +89,31 @@ function runEditor(prompt, { timeoutMs = 1200000 } = {}) {
     child.on('error', reject);
     child.on('close', (code) => {
       if (code === 0 && out.trim()) resolve(out.trim());
-      else reject(new Error((err.trim() || out.trim()).slice(0, 500) || `${CODEX.command} 退出码 ${code}`));
+      else {
+        const detail = (err.trim() || out.trim());
+        reject(new Error(detail ? detail.slice(-3000) : `${CODEX.command} 退出码 ${code}`));
+      }
     });
     child.stdin.write(prompt);
     child.stdin.end();
   });
+}
+
+async function runEditor(prompt, options = {}) {
+  const attempts = 3;
+  let lastError;
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      return await runEditorOnce(prompt, options);
+    } catch (error) {
+      lastError = error;
+      if (attempt === attempts) break;
+      const delayMs = attempt * 15000;
+      console.error(`[generate] Codex 临时失败，${delayMs / 1000} 秒后重试 ${attempt}/${attempts - 1}: ${error.message.slice(-500)}`);
+      await new Promise((resolve) => setTimeout(resolve, delayMs));
+    }
+  }
+  throw lastError;
 }
 
 function extractJson(raw, open, close) {
