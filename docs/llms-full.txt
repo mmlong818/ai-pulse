@@ -19,6 +19,40 @@
 
 ## Recent briefings
 
+### DeepSeek Adds Vision to V4 Flash Through Experimental API
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-v4-flash-gains-vision.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v4-flash-gains-vision.html
+- Source timestamp: 2026-08-21T09:17:00.000Z
+- Site timestamp: 2026-08-21T11:00:03.648Z
+- Tags: Models, Agents
+
+The Chinese lab’s new multimodal endpoint combines its fast text model with image understanding, reusable uploads and agent-framework support.
+
+## A visual extension for V4 Flash
+
+DeepSeek has introduced DeepSeek-V4-Flash-Vision-Exp, an experimental multimodal model available through its API platform. The endpoint accepts images alongside text while retaining what the company describes as comparable text performance to DeepSeek-V4-Flash. Developers access it by selecting `deepseek-v4-flash-vision-exp`; the launch does not include downloadable weights or establish the model as a production release.
+
+DeepSeek says images are converted into billable tokens at the existing V4-Flash rate, with each image consuming no more than 384 tokens. The relatively compact allowance could make visual input economical for applications that inspect screenshots, documents, charts or photographs, although DeepSeek has not yet published a detailed evaluation showing how accuracy changes with image resolution or task complexity.
+
+## Files become reusable agent inputs
+
+A new Files API accompanies the model. Developers can upload an image once, receive a `file_id`, and reference that object in later requests instead of repeatedly transmitting the original file. DeepSeek says file storage and use are free at launch. This design reduces bandwidth and simplifies workflows in which an agent revisits the same diagram, interface capture or reference image across multiple reasoning steps.
+
+The company also demonstrated the model working with agent frameworks and tool use. That combination matters more than conventional image question-answering alone: an agent could inspect a visual state, decide what action is needed and invoke a tool without switching between separate language and vision systems.
+
+## Why it matters
+
+Native image input closes an important capability gap in DeepSeek’s current API lineup and makes its lower-cost Flash tier more practical for document automation, interface testing and visual agents. The experimental label remains consequential, however. Without released weights, comprehensive benchmarks or production-stability commitments, the announcement is best read as a developer-facing trial rather than a new open multimodal foundation model.
+
+Chinese title: DeepSeek 为 V4 Flash 实验版接入视觉能力
+Chinese summary: DeepSeek 推出多模态实验接口，将图像理解、可复用文件上传与智能体框架支持纳入 V4 Flash 产品线。
+
+Sources:
+  - DeepSeek-V4-Flash-Vision-Exp API announcement: https://x.com/deepseek_ai/status/2090730032574631962
+  - DeepSeek multimodal API details: https://x.com/deepseek_ai/status/2090730039973392531
+  - DeepSeek Files API announcement: https://x.com/deepseek_ai/status/2090730042586489333
+
 ### Encrypted Prompt Injection Exposes Grok Chat Data
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/encrypted-injection-exposes-grok-data.html
@@ -450,7 +484,7 @@ Sources:
   - Cursor: Origin, our code hosting platform, is now live: https://x.com/cursor_ai/status/2089399057659596847
   - Cursor announces Origin integrations and beta rollout: https://x.com/cursor_ai/status/2089399059488350447
 
-### Groq Raises $650M to Expand Its AI Inference Cloud
+### Groq Raises $350M Series A After Earlier $650M Financing
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/groq-funds-neocloud-pivot.html
 - Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/groq-funds-neocloud-pivot.html
@@ -458,32 +492,34 @@ Sources:
 - Site timestamp: 2026-08-17T23:00:03.459Z
 - Tags: Funding, Industry
 
-Groq’s latest official financing was a $650 million round co-led by Disruptive and Infinitum, supporting expansion of its global inference cloud.
+Groq’s latest official financing is a $350 million Series A led by Disruptive, with planned participation from Nvidia, bringing its recent funding to $1 billion.
 
-## New capital for the inference cloud
+## Another round for the inference cloud
 
-Groq announced $650 million in new growth capital on June 22, 2026, co-led by Disruptive and Infinitum. The company said the financing would accelerate expansion of its global AI inference cloud and help it scale toward 200 megawatts of capacity by the end of 2027.
+Groq announced a $350 million Series A on August 17, 2026, led by Disruptive, with planned participation from Nvidia. The round values the company at $3.5 billion. Together with the $650 million in growth capital announced in June, Groq says it has raised $1 billion in recent financing.
 
-Groq reported that it was operating 13 data centers across North America, Europe, the Middle East and Asia-Pacific, serving more than five million developers and processing trillions of tokens each week. The financing supports the expansion of that cloud footprint rather than a newly announced $350 million round.
+The company reports operating 13 data centers across North America, Europe, the Middle East and Asia-Pacific. Its latest announcement puts its developer base at more than six million, up from the more than five million reported with the June financing.
 
-Nvidia was not named as a participant in the $650 million financing. Its relationship with Groq comes from a separate transaction announced in December 2025: a non-exclusive agreement licensing Groq’s inference technology to Nvidia. Under that agreement, Groq founder Jonathan Ross, president Sunny Madra and other team members joined Nvidia, while Groq continued operating as an independent company and GroqCloud remained available.
+The new round is separate from Groq’s December 2025 non-exclusive agreement licensing its inference technology to Nvidia. Under that agreement, founder Jonathan Ross, then-president Sunny Madra and other team members joined Nvidia, while Groq continued operating independently and GroqCloud remained available.
 
-Nvidia subsequently incorporated Groq technology into its LPX inference platform. Groq said its new capital would help fit out its existing infrastructure with its latest inference technology, including the Nvidia LPX system.
+The relationship has since expanded. Nvidia incorporated Groq technology into its LPX inference platform, and Groq joined the Nvidia Cloud Partner program in August 2026. Groq says that status will support the future deployment of Nvidia accelerated-computing systems in its data centers. These developments should not be conflated: the licensing agreement, cloud-partner status and planned Nvidia participation in the Series A are distinct arrangements.
 
 ## Why it matters
 
-The financing reinforces Groq’s focus on selling managed inference capacity rather than relying only on standalone accelerator sales. A cloud service gives developers direct access to Groq-derived technology while placing responsibility for infrastructure, scheduling and utilization on the operator.
+The financing reinforces Groq’s shift toward operating a managed inference cloud rather than relying only on sales of its original accelerator technology. A cloud service gives developers direct access to inference capacity while placing responsibility for infrastructure, scheduling and utilization on Groq.
 
-That approach can make specialized inference hardware easier to adopt, but it is capital intensive. Expanding capacity requires data-center space, power, networking and equipment before demand is fully realized.
+That model is capital intensive. Expanding capacity requires data-center space, power, networking and equipment before demand is fully realized. Groq says it is scaling beyond 200 megawatts as inference demand grows.
 
-The separate financing and Nvidia licensing arrangements also illustrate a broader consolidation of the AI infrastructure stack. Groq remains an independent inference-cloud operator, while technology it developed is also being incorporated into Nvidia systems. Its next challenge is to translate the additional capital and broader distribution of its technology into reliable capacity and durable customer demand.
+The company now occupies an unusual position: it remains an independent cloud operator while technology it developed is incorporated into Nvidia systems, and Nvidia is also expected to become an investor in its latest round. Groq’s next challenge is to turn the additional capital and deeper Nvidia relationship into reliable capacity and durable customer demand.
 
-Chinese title: Groq 融资6.5亿美元，扩张AI推理云
-Chinese summary: Groq 最新正式融资为6.5亿美元，由 Disruptive 与 Infinitum 共同领投，用于扩大全球推理云基础设施。
+Chinese title: Groq完成3.5亿美元A轮融资，近期融资总额达10亿美元
+Chinese summary: Groq最新正式融资为3.5亿美元A轮，由Disruptive领投，英伟达计划参投；加上6月融资，公司近期融资总额达到10亿美元。
 
 Sources:
+  - Groq Closes $350 Million Series A, Building the World's Leading AI Inference Cloud: https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud
   - Groq Raises $650M to Scale Its AI Inference Cloud Business: https://groq.com/newsroom/groq-raises-usd650m-to-scale-its-ai-inference-cloud-business
   - Groq and Nvidia Enter Non-Exclusive Inference Technology Licensing Agreement: https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale
+  - Groq Becomes an NVIDIA Cloud Partner: https://groq.com/newsroom/groq-becomes-an-nvidia-cloud-partner
 
 ### Higgsfield Raises $400M at a $5.4B Valuation
 
@@ -957,37 +993,6 @@ Sources:
   - Accelerating GPT-5.6 Sol Ultrafast with OpenAI: https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai
   - OpenAI introduces Ultrafast for GPT-5.6 Sol: https://techcrunch.com/2026/08/13/openai-introduces-ultrafast-a-new-mode-that-makes-gpt-5-6-sol-work-at-14x-the-speed/
 
-### Suno Studio 2.0 Adds Chat, MIDI and Custom Effects
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/suno-studio-2-launch.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/suno-studio-2-launch.html
-- Source timestamp: 2026-08-13T16:00:00.000Z
-- Site timestamp: 2026-08-13T23:00:03.584Z
-- Tags: AIGC, Industry
-
-Suno is turning its music generator into an editable production environment, giving creators finer control over AI-made tracks.
-
-## From song generation to production workflow
-
-Suno has introduced Studio 2.0, expanding its product beyond prompt-to-song generation into a more conventional music-production environment. The release adds conversational editing, MIDI support and custom audio effects, giving musicians more ways to modify individual elements instead of repeatedly regenerating an entire track.
-
-The new chat interface lets users describe changes in ordinary language while working inside a project. Rather than treating the prompt as a one-time instruction, creators can ask the system to adjust parts of an arrangement as the track develops. Suno is presenting the assistant as a collaborator embedded in the studio, closer to communicating with a bandmate or engineer than operating a standalone chatbot.
-
-MIDI support is an important bridge to established production practices. MIDI represents musical notes and performance instructions rather than fixed audio, allowing pitches, timing and instruments to be edited precisely or transferred between compatible tools. Custom effects further extend that control by letting users shape how a track sounds instead of accepting the model’s initial mix and texture as final.
-
-The release reflects a broader change in generative media products. Early music systems were judged primarily on whether a short prompt could produce an impressive finished song. Professional and serious hobbyist workflows require a different standard: generated material must remain editable, interoperable and responsive to detailed creative direction. Studio 2.0 attempts to place generation inside that longer process.
-
-## Why it matters
-
-Suno is competing not only with other music generators but increasingly with digital audio workstations and the AI features being added to them. Moving upstream into editing can increase retention, make the product useful for longer projects and reduce the incentive to export generated audio immediately. It also raises the stakes around attribution, rights and professional adoption, because AI-generated material can now be interwoven more deeply with human composition and production. The central AIGC contest is shifting from who can generate the best first draft to who gives creators the strongest control after generation.
-
-Chinese title: Suno Studio 2.0 上线对话编辑、MIDI 与自定义效果
-Chinese summary: Suno 正从“一句话生成歌曲”转向可持续编辑的音乐制作环境，让创作者能够细调 AI 生成曲目的组成与声音。
-
-Sources:
-  - Suno is trying to look more like a real music production tool: https://www.theverge.com/ai-artificial-intelligence/979345/suno-studio-2-0-midi-chatbot-custom-effects
-  - Suno Studio 2.0 adds conversational editing: https://the-decoder.com/suno-studio-2-0s-new-chat-feature-lets-you-talk-to-your-daw-like-its-a-bandmate/
-
 ## Recent radar items
 
 ### 2026-08-21
@@ -1009,6 +1014,20 @@ Sources:
 - 2026-08-20T18:25Z | Meta AI on X | Meta previewed WildArtifactBench, an internal framework evaluating agents on complex real-world tasks spanning diverse deliverable formats. | 中文：Meta 预览内部评测框架 WildArtifactBench，用多种交付物形式的复杂现实任务评估AI智能体。 | https://x.com/AIatMeta/status/2090505413817246050
 - 2026-08-20T16:41Z | Goodfire on X | Goodfire opened $1 million in grants and free Silico access for external research spanning interpretability, cybersecurity, CBRN risks and AI safety. | 中文：Goodfire 推出总额100万美元的资助及免费 Silico 使用权，支持可解释性、网络安全、化生放核风险和AI安全研究。 | https://x.com/GoodfireAI/status/2090479244287906092
 - 2026-08-20T16:48Z | Visual Studio Code on X | VS Code introduced Agent Host, enabling persistent agent sessions that can continue across projects, environments, desktop and web interfaces. | 中文：VS Code 推出 Agent Host，使智能体会话可跨项目、运行环境、桌面端和网页端持续运行。 | https://x.com/code/status/2090481114133790733
+- 2026-08-21T10:54Z | The Decoder | Meta will reportedly spend hundreds of millions of dollars on Microsoft’s AI services, despite developing its own models and infrastructure. | 中文：据报道，Meta将斥资数亿美元采购微软AI服务，尽管它也在开发自己的模型与基础设施。 | https://the-decoder.com/meta-spends-hundreds-of-millions-on-microsofts-ai-services/
+- 2026-08-21T10:43Z | IT之家 | Samsung code indicates upcoming Galaxy Z Flip8 and Fold8 phones may gain AI-generated widgets powered by Google’s Create My Widget technology. | 中文：代码显示，三星Galaxy Z Flip8和Fold8可能加入由谷歌“Create My Widget”技术驱动的AI生成式小组件。 | https://www.ithome.com/0/992/821.htm
+- 2026-08-21T08:27Z | The Decoder | Nvidia is reportedly acquiring Poolside’s Model Factory and hiring 109 employees in a transaction valued at $6 billion. | 中文：据报道，英伟达将收购Poolside的“模型工厂”并接收109名员工，交易价值达60亿美元。 | https://the-decoder.com/nvidia-is-acquiring-poolsides-model-factory-and-109-employees-for-6-billion/
+- 2026-08-21T08:03Z | 腾讯混元（X） | Tencent’s Hy-MT2-1.8B and sparse Hy-MT2-30B-A3B translation models became available through OpenRouter, supporting 33 languages. | 中文：腾讯Hy-MT2-1.8B及稀疏架构Hy-MT2-30B-A3B翻译模型已登陆OpenRouter，支持33种语言。 | https://x.com/TencentHunyuan/status/2090711479809183943
+- 2026-08-21T07:58Z | 通义千问（X） | Alibaba published SGLang deployment recipes combining NVFP4 quantization and DFlash2 attention for its Qwen3.8-27B model. | 中文：阿里巴巴发布Qwen3.8-27B的SGLang部署方案，结合NVFP4量化与DFlash2注意力技术。 | https://x.com/Alibaba_Qwen/status/2090709994761339190
+- 2026-08-21T06:35Z | 海螺AI（X） | MiniMax introduced Design as a commercial content-creation tool offering multiple skills for producing assets including anime videos and sports promotions. | 中文：MiniMax推出商业内容创作工具Design，提供多种创作技能，可制作动漫宣传片、体育推广素材等内容。 | https://x.com/Hailuo_AI/status/2090689260320129211
+- 2026-08-21T09:44Z | 量子位 | Mininglamp and Hikrobot presented an “Agent plus embodied intelligence” collaboration targeting commercial robot deployments. | 中文：明略科技与海康机器人展示“智能体＋具身智能”合作方案，面向商业机器人场景落地。 | https://www.qbitai.com/2026/08/476733.html
+- 2026-08-21T09:00Z | 量子位 | Thunderbird unveiled the 34-gram iO smart glasses, featuring proactive all-day AI assistance and a claimed two-day battery life. | 中文：雷鸟发布重34克的iO智能眼镜，主打全天候主动式AI助手及两天续航。 | https://www.qbitai.com/2026/08/476628.html
+- 2026-08-21T06:40Z | 量子位 | Deep Potential introduced a desktop system intended to let scientists pose questions while AI plans and executes experimental workflows. | 中文：深势科技推出桌面科研系统，让科学家提出问题后，由AI规划并执行实验工作流。 | https://www.qbitai.com/2026/08/476591.html
+- 2026-08-21T01:37Z | SiliconANGLE | Astromech raised $20 million at a $3.8 billion valuation to develop AI models forecasting biological and evolutionary change. | 中文：Astromech融资2000万美元，估值达38亿美元，用于开发预测生物及进化变化的AI模型。 | https://siliconangle.com/2026/08/20/astromech-raises-20m-to-build-a-biological-operating-system-that-can-forecast-evolutionary-change/
+- 2026-08-21T00:48Z | Sourcegraph（X） | Sourcegraph made Code Finder generally available, giving coding agents focused repository search results with summaries, links and line ranges. | 中文：Sourcegraph正式发布Code Finder，为编程智能体提供包含摘要、链接及代码行范围的精准仓库搜索结果。 | https://x.com/Sourcegraph/status/2090601923145777544
+- 2026-08-20T23:49Z | Sakana AI（X） | Sakana AI upgraded Sakana Translate with a new Namazu generation optimized for natural Japanese-English translation and cultural context. | 中文：Sakana AI为Sakana Translate升级新一代Namazu模型，重点改善日英自然翻译及文化语境理解。 | https://x.com/SakanaAILabs/status/2090586947047895536
+- 2026-08-20T23:57Z | Simon Willison’s Weblog | Simon Willison found ChatGPT Search issuing site-restricted queries at scale, revealing how it targets individual domains during web retrieval. | 中文：Simon Willison发现ChatGPT搜索正大规模使用限定网站查询，揭示其网页检索时定向访问特定域名的方式。 | https://simonwillison.net/2026/Aug/20/chatgpt-search-now-uses-the-siteoperator-at-scale/
+- 2026-08-20T23:27Z | Arena（X） | Arena reported GLM-5.3 Max shifted Code Arena’s WebDev cost-performance frontier and would rank second among open models after weight release. | 中文：Arena称GLM-5.3 Max刷新Code Arena网页开发性价比前沿，并将在权重发布后位列开放模型第二。 | https://x.com/arena/status/2090581559262798055
 
 ### 2026-08-20
 
