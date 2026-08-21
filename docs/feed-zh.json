@@ -13,6 +13,164 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-mythos-security-scans.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-mythos-security-scans.html",
+      "title": "Anthropic将Mythos 5接入企业代码安全扫描",
+      "summary": "Claude Security开始调用受限模型Mythos 5分析企业代码库，在不开放模型直接访问权的情况下扩大防御用途。",
+      "content_text": "## 通过受控产品开放敏感能力\n\nAnthropic已将Claude Security的代码库扫描切换至Claude Mythos 5，并面向所有Claude Enterprise客户推出公开测试。用户可指定一个GitHub代码库，系统会跨文件追踪数据流和控制关系，列出疑似漏洞及依据，并生成可在网页版Claude Code中打开的修复建议。\n\n这并不意味着企业客户获得了Mythos 5的无限制调用权。Anthropic把模型封装在用途明确的安全工作流之后，从而限制输入、输出和可执行操作。客户在审查或落实补丁时，仍可使用团队原本获准使用的通用Claude模型。\n\nMythos 5此前被Anthropic定位为其网络安全和生物研究能力最强的模型。它与面向普通用户的Claude Fable 5采用相同底层模型，但针对获批的敏感领域任务减少了部分限制，因此直接访问长期仅提供给经过审查的机构和可信访问计划参与者。Claude Security则提供了一条更广的防御能力交付渠道，同时避免把底层模型变成通用接口。\n\nAnthropic表示，这次接入只是扩大防守方使用范围的多个步骤之一，公司还在与安全厂商推进更多产品集成。不过，扫描结论仍需人工确认：自动化系统可能误判漏洞是否真正可利用、忽略部署环境，或提出会引入新问题的修复方案。\n\n## 为何重要\n\n这是前沿实验室分发高风险能力的一种重要新模式。除了全面开放API或只批准少量可信用户之外，实验室还可以把敏感模型封装进带有日志、固定工具和受限输出的专用应用。\n\n若实践证明有效，这种方式可能扩展到网络攻击、生物研究等具有双重用途的能力。企业安全市场也可能从通用编程助手，转向能够理解整个代码库关系的推理系统。真正的检验标准，是Mythos能否发现具有实际影响、此前未知的漏洞，同时把误报控制在安全团队能够处理的范围内。",
+      "date_published": "2026-08-21T17:23:00.000Z",
+      "date_modified": "2026-08-21T23:00:03.982Z",
+      "tags": [
+        "安全",
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-mythos-security-scans.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-mythos-security-scans.html",
+        "source_published_at": "2026-08-21T17:23:00.000Z",
+        "site_published_at": "2026-08-21T23:00:03.982Z",
+        "sources": [
+          {
+            "title": "Claude Security scans now run on Mythos 5",
+            "url": "https://x.com/claudeai/status/2090852314319880425"
+          },
+          {
+            "title": "Anthropic puts Claude Mythos 5 to work for cyber defense",
+            "url": "https://the-decoder.com/anthropic-puts-its-most-powerful-model-claude-mythos-5-to-work-for-cyber-defense/"
+          },
+          {
+            "title": "Claude Mythos 5",
+            "url": "https://www.anthropic.com/claude/mythos"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-avo-arc-agi-three.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-avo-arc-agi-three.html",
+      "title": "英伟达AVO完成ARC-AGI-3全部公开关卡",
+      "summary": "英伟达称其通用编程智能体完成ARC-AGI-3的183个公开关卡，智能体框架对最终表现的作用进一步凸显。",
+      "content_text": "## 公开环境取得满分\n\n英伟达表示，其AVO编程智能体完成了ARC-AGI-3全部25个公开环境、共183个关卡，得分达到100%。这项交互式评测由一组陌生的视觉游戏组成，不会直接告诉智能体目标；系统需要通过探索、反馈和连续操作自行推断规则。\n\nAVO被定位为通用编程智能体，并非专为某个游戏评测训练的单一模型。它会持续观察环境、制定计划、编写或修改解决方案、检查执行结果，并将有用信息写入记忆。英伟达认为，正是这套包围模型的智能体运行框架，使系统能够在长流程中利用执行反馈不断修正策略。\n\n这项成绩需要谨慎解读。ARC-AGI-3的25个公开环境属于所有开发者均可查看的示例，评测组织方明确将其与不可见的私有测试集区分开来；此前也已有其他研究系统在公开环境达到100%。因此，AVO证明的是它能够掌握已经发布的关卡，并不等同于在完整评测中获得满分，更不能据此宣称实现了通用智能。\n\n不过，公开关卡仍是研究探索、记忆和错误恢复机制的受控环境。英伟达还称，AVO完成任务所需的环境操作少于一个对比系统，说明编排方式不仅影响能否成功，也可能影响效率。其泛化能力仍需通过独立复现和私有环境成绩检验。\n\n## 为何重要\n\n只比较底层模型，越来越难解释智能体产品的真实差距。记忆策略、工具选择、结果验证、状态追踪和重试机制，都可能让同一个模型呈现截然不同的任务表现。\n\nAVO的结果进一步说明，行业投入正在向智能体框架和运行基础设施倾斜，尤其是需要长时间自主工作的场景。它也提醒评测发布者必须清楚说明成绩来自公开开发集还是隐藏测试集。对用户而言，关键问题已不只是哪个模型分数更高，而是哪套完整系统能以合理成本，在真正陌生的任务上稳定复现能力。",
+      "date_published": "2026-08-21T13:01:00.000Z",
+      "date_modified": "2026-08-21T23:00:03.982Z",
+      "tags": [
+        "Agent",
+        "研究"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/nvidia-avo-arc-agi-three.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-avo-arc-agi-three.html",
+        "source_published_at": "2026-08-21T13:01:00.000Z",
+        "site_published_at": "2026-08-21T23:00:03.982Z",
+        "sources": [
+          {
+            "title": "NVIDIA AVO completes ARC-AGI-3 public environments",
+            "url": "https://x.com/NVIDIAAI/status/2090786258981466231"
+          },
+          {
+            "title": "Nvidia says the harness is the real hero",
+            "url": "https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero/"
+          },
+          {
+            "title": "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence",
+            "url": "https://arxiv.org/abs/2603.24621"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-cuts-sol-pricing.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-cuts-sol-pricing.html",
+      "title": "OpenAI将GPT-5.6 Sol价格下调逾两成，为期三个月",
+      "summary": "OpenAI下调旗舰模型的API与用量额度价格，并补充支出管控功能，前沿模型竞争进一步转向推理成本。",
+      "content_text": "## 降价立即生效，但设有三个月期限\n\nOpenAI宣布，GPT-5.6 Sol的API及用量额度价格下调超过20%，新价格将维持三个月。调整已经面向API用户生效，并在Codex和ChatGPT Work中逐步上线；Pro、Plus和Business订阅原有的使用额度不变。\n\n此次调整针对的是推理服务价格，模型本身并未更换。开发者因此无需迁移应用，也不必牺牲上下文长度或能力等级，就能以更低单价继续使用同一款前沿模型。OpenAI同时增加了组织级和项目级月度预算上限、预警阈值，以及按API密钥查看用量和支出的功能，方便企业判断具体由哪些应用产生费用。\n\n多家开发平台也在跟进促销。Cognition称，调价后Sol已成为Devin桌面端和命令行工具中价格最低的前沿模型；GitHub等平台则推出了各自的阶段性优惠。这些渠道促销与OpenAI的基础价格调整并非同一件事，结束时间也可能不同。\n\n## 为何重要\n\n对于需要长时间运行、反复尝试并自行验证结果的编程或研究智能体，推理费用直接决定产品能否规模化。超过两成的降幅对这类工作负载的影响，远大于偶尔使用的聊天场景，也会迫使Anthropic、谷歌及中国模型厂商更多围绕“完成一项任务的总成本”竞争，而不只是比较每百万词元的标价。\n\n三个月期限同时意味着，这也是一次需求弹性测试。OpenAI可以观察降价带来的新增调用量能否抵消单价下降，开发者则获得了试验高成本工作流的窗口。需要警惕的是，企业不应直接按促销价格设计长期商业模型，否则优惠结束后可能面临成本骤升。",
+      "date_published": "2026-08-21T19:34:00.000Z",
+      "date_modified": "2026-08-21T23:00:03.982Z",
+      "tags": [
+        "模型",
+        "产业",
+        "Agent"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-cuts-sol-pricing.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-cuts-sol-pricing.html",
+        "source_published_at": "2026-08-21T19:34:00.000Z",
+        "site_published_at": "2026-08-21T23:00:03.982Z",
+        "sources": [
+          {
+            "title": "OpenAI GPT-5.6 Sol pricing announcement",
+            "url": "https://x.com/OpenAI/status/2090885187634905500"
+          },
+          {
+            "title": "OpenAI API usage and spend controls",
+            "url": "https://x.com/OpenAIDevs/status/2090903221636338057"
+          },
+          {
+            "title": "GPT-5.6 Sol model documentation",
+            "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-ruby-hdr-video.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-ruby-hdr-video.html",
+      "title": "Runway推出Ruby，将生成视频转为专业HDR母版",
+      "summary": "Runway新模型可把上传或生成的SDR视频转换为高位深HDR文件，进一步进入专业调色与后期制作流程。",
+      "content_text": "## 生成视频开始进入专业收尾环节\n\nRunway推出Ruby模型，可将标准动态范围视频转换为高动态范围输出。它既能处理用户已经上传的素材，也能转换Runway平台生成的视频，并可导出最高16位EXR图像序列，以及10位或12位ProRes、HEVC文件。\n\nRuby支持BT.2020色彩空间，并覆盖PQ、HLG等专业传递函数。这些规格能够承载比普通网络视频更宽的亮度和色彩范围；EXR序列则提供视觉特效、合成和调色流程所需的高位深及逐帧控制能力。目前该模型面向Max和Enterprise客户开放。\n\nRuby并不是以文本生成视频为核心的新模型，而是瞄准制作链条的后段：把SDR素材转换成能够进入专业剪辑、合成和交付系统的文件。这也决定了它的评价标准。可靠的HDR转换需要补充原始素材未完整记录的高光与色彩信息，同时避免相邻画面出现亮度跳变、光晕或偏色。\n\n目前尚无独立测试证明，Ruby转换的画面能够保留与原生HDR拍摄或渲染素材相同的场景信息。因此，其输出更适合被理解为模型对SDR输入的重新生成与扩展，而不是恢复摄像机原本捕获但遗失的数据。\n\n## 为何重要\n\n生成视频厂商过去主要围绕提示词遵循、运动表现和画面质量竞争。Ruby把竞争推进到后期制作基础设施：能否兼容行业既有格式，往往决定AI视频只能用于社交媒体样片，还是能够进入正式项目。\n\n对制作团队而言，它有望缩短AI生成片段进入调色或合成软件的路径，减少额外转换环节。更广泛地看，AIGC平台正从单纯生成素材，扩展为覆盖完整制作流程的工具。Ruby能否形成长期价值，将取决于跨帧稳定性、色彩管理的可预测性，以及专业调色师是否敢于把它纳入真实项目。",
+      "date_published": "2026-08-21T14:24:00.000Z",
+      "date_modified": "2026-08-21T23:00:03.982Z",
+      "tags": [
+        "AIGC",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/runway-ruby-hdr-video.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-ruby-hdr-video.html",
+        "source_published_at": "2026-08-21T14:24:00.000Z",
+        "site_published_at": "2026-08-21T23:00:03.982Z",
+        "sources": [
+          {
+            "title": "Introducing Runway Ruby",
+            "url": "https://x.com/runwayml/status/2090807248402682101"
+          },
+          {
+            "title": "Runway Ruby availability and export formats",
+            "url": "https://x.com/runwayml/status/2090861012488774008"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v4-flash-gains-vision.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v4-flash-gains-vision.html",
       "title": "DeepSeek 为 V4 Flash 实验版接入视觉能力",
@@ -246,7 +404,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/veeda-robot-world-models.html",
       "title": "Veeda获超9000万美元融资，押注机器人世界模型",
       "summary": "这家由英伟达前研究负责人创办的公司，希望构建可大规模试错的模拟世界，让机器人以更安全、低成本的方式学习。",
-      "content_text": "## 为机器人搭建虚拟训练场\n\nVeeda AI 宣布结束隐身状态，并完成超过 9000 万美元种子轮融资，目标是研发面向机器人的世界模型。公司由英伟达前 AI 研究副总裁 Sanja Fidler 与长期合作者 Zan Gojcic、Huan Ling 共同创办，投资方包括 Khosla Ventures 和 Radical Ventures。\n\nVeeda 要做的不是一款通用机器人，也不是传统的仿真软件。其核心设想是利用传感器和现实世界数据训练多模态生成模型，构建符合物理规律的虚拟环境。机器人可在其中获得“虚拟身体”，持续与环境交互、犯错并改进，无需承担损坏设备或危及人员的现实代价。\n\n公司认为，仅靠模仿人类示范不足以训练出能力广泛的机器人。它选择的路线是规模化交互学习：为机器提供大量环境变化，让其反复尝试不同动作。Veeda 希望把这层“模拟现实”建设成通用基础设施，服务于制造、物流、交通等行业的机器人训练与评估。\n\n创始团队的经验横跨生成式 AI、计算机视觉、三维重建和机器人仿真。Veeda 目前在多伦多、山景城、苏黎世和新加坡设有团队，但尚未公布具体模型、数据集、客户或发布时间表。因此，这笔融资首先是投资者对团队和技术路线的重注，而非对已经得到商业验证的产品追加投资。\n\n## 为什么重要\n\n机器人发展的瓶颈正从硬件扩展到训练数据。现实环境中的试验速度慢、成本高，也很难精确复现；人工搭建的仿真器则难以覆盖真实世界的复杂度和多样性。如果生成式世界模型能够同时提供足够可靠的物理规律、视觉感知和交互反馈，它可能像大规模语料之于语言模型一样，成为机器人能力扩张的基础。Veeda 罕见的大额种子轮融资，使其成为这一方向资金最充足的新进入者之一，但其关键技术主张仍需通过可运行系统验证。",
+      "content_text": "## 为机器人搭建虚拟训练场\n\nVeeda AI 宣布结束隐身状态，并完成超过 9000 万美元种子轮融资，目标是研发面向机器人的世界模型。公司由英伟达前 AI 研究副总裁 Sanja Fidler 与长期合作者 Zan Gojcic、Huan Ling 共同创办，投资方包括 Khosla Ventures 和 Radical Ventures。\n\nVeeda 要做的不是一款通用机器人，也不是传统的仿真软件。其核心设想是利用传感器和现实世界数据训练多模态生成模型，构建符合物理规律的虚拟环境。机器人可在其中获得“虚拟身体”，持续与环境交互、犯错并改进，无需承担损坏设备或危及人员的现实代价。\n\n公司认为，仅靠模仿人类示范不足以训练出能力广泛的机器人。它选择的路线是规模化交互学习：为机器提供大量环境变化，让其反复尝试不同动作。Veeda 希望把这层“模拟现实”建设成通用基础设施，服务于制造、物流、交通等行业的机器人训练与评估。\n\n创始团队的经验横跨生成式 AI、计算机视觉、三维重建和机器人仿真。Veeda 官网目前列出的地点为多伦多、苏黎世、旧金山湾区和新加坡，但公司尚未公布具体模型、数据集、客户或发布时间表。因此，这笔融资首先是投资者对团队和技术路线的重注，而非对已经得到商业验证的产品追加投资。\n\n## 为什么重要\n\n机器人发展的瓶颈正从硬件扩展到训练数据。现实环境中的试验速度慢、成本高，也很难精确复现；人工搭建的仿真器则难以覆盖真实世界的复杂度和多样性。如果生成式世界模型能够同时提供足够可靠的物理规律、视觉感知和交互反馈，它可能像大规模语料之于语言模型一样，成为机器人能力扩张的基础。Veeda 罕见的大额种子轮融资，使其成为这一方向资金最充足的新进入者之一，但其关键技术主张仍需通过可运行系统验证。",
       "date_published": "2026-08-20T01:01:00.000Z",
       "date_modified": "2026-08-20T11:51:24.990Z",
       "tags": [
@@ -1775,155 +1933,6 @@
           {
             "title": "Arena: How Agent Arena evaluates models",
             "url": "https://x.com/arena/status/2087340888385360094"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-wan-cli-agent-video.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-wan-cli-agent-video.html",
-      "title": "阿里推出 Wan CLI，把视频生成塞进智能体工作流",
-      "summary": "阿里通义万相发布命令行工具 Wan CLI，智能体可直接以编程方式调用其图像与视频模型，安装只需粘贴一条命令。",
-      "content_text": "## 让视频生成变成一个可调用的工具\n\n阿里通义万相团队周二发布了 Wan CLI——一个命令行工具，让 AI 智能体可以直接调用万相的图像与视频生成能力，而不必再走网页界面。团队给出的安装方式本身就是为智能体设计的：登录 wan.video，在界面左下角找到 CLI 入口，复制那条命令，粘贴给你的智能体，由它自己完成安装。\n\n装好之后，智能体就能在更长的流程中以编程方式生成图像和视频：批量编排镜头、拿到结果后再迭代提示词，或者把生成环节直接接进构建流程。此前万相已经开源了 Wan-skills 仓库（Apache 2.0），覆盖 Wan 2.7 图像模型与文档转 PPT 等技能，加上百炼平台上的 DashScope API。CLI 把这些散落的接入面收拢成了一个可安装的入口。\n\n配合这次发布，团队还放出了 Wan-Animate-2-Lite 的新演示。这是 8 月 7 日开源的角色动画模型的效率版本，官方称其可以分块生成任意长度的序列，且观察不到误差累积——对数字人直播、实时虚拟主播这类场景来说，这个特性比固定时长的成片更关键。\n\n## 为什么重要\n\n到目前为止，生成式视频基本是按「目的地产品」卖的：你打开一个网站、花掉一些积分、下载一段片子。而现在真正浮出水面的竞争问题是：当一个任务恰好需要动态画面时，智能体会默认去调谁的模型。这是一场经济结构完全不同的分发战——被装进智能体工作流的一方拿到的是反复发生的程序化调用，而不是一次次独立的创作会话，并且会沉进别人换起来很麻烦的管线里。\n\n阿里在这件事上动手较早，位置也比较特殊：它同时提供任何人都能自部署的开放权重和托管 API，因此智能体接入既能喂给付费端点，也不堵住本地使用的路。Runway、快手可灵与字节 Seedance 则更多在通过平台合作与第三方画布扩张。一个 CLI 的体量远小于一次模型发布，但它瞄准的正是 AIGC 与智能体工具链正在合流的地方。",
-      "date_published": "2026-08-11T07:25:00.000Z",
-      "date_modified": "2026-08-11T11:00:03.171Z",
-      "tags": [
-        "AIGC",
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/alibaba-wan-cli-agent-video.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-wan-cli-agent-video.html",
-        "source_published_at": "2026-08-11T07:25:00.000Z",
-        "site_published_at": "2026-08-11T11:00:03.171Z",
-        "sources": [
-          {
-            "title": "Alibaba Wan on X: The Wan CLI is here",
-            "url": "https://x.com/Alibaba_Wan/status/2087077985333768680"
-          },
-          {
-            "title": "Alibaba Wan on X: Wan-Animate-2-Lite real-time streaming",
-            "url": "https://x.com/Alibaba_Wan/status/2087067244304220182"
-          },
-          {
-            "title": "GitHub — Wan-Video/Wan-skills: AI Agent Skills for Wan",
-            "url": "https://github.com/Wan-Video/Wan-skills"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-riemann-zeta-lower-bound.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-riemann-zeta-lower-bound.html",
-      "title": "Claude 把黎曼 ζ 零点下界从 41.6% 提到 67.2%",
-      "summary": "Anthropic 称一个未发布的研究版 Claude 将临界线上 ζ 函数零点占比的已证下界提高到 67.2%，并已获外部专家审读。",
-      "content_text": "Anthropic 于 8 月 10 日公布，其一个未发布的研究版 Claude 被要求正面挑战黎曼猜想。模型没能证明它，但在一个公认的相邻问题上给出了新结果。\n\n## 结果是什么\n\n数学界长期试图给出黎曼 ζ 函数非平凡零点落在临界线上的比例下界——猜想断言全部零点都落在这条线上。此前公开发表的最好结果约为 41.6%。Anthropic 称 Claude 把这一下界推到 67.2%，思路是发现 Baluyot、Goldston、Suriajaya 与 Turnage-Butterbaugh 的结果可以与 Bombieri 的早期工作结合，从而突破原有上限。\n\n## 怎么做出来，又怎么核验\n\n这不是一次提问就能得到的结果。Anthropic 描述的过程是在 Claude Code 中跑了两轮会话，消耗约 3100 万输出 token：模型先生成约 650 个候选思路，再调度约 60 个子智能体，执行约 2400 条 shell 命令、编写数百个 Python 脚本，用于数值验证、寻找反例、独立重证关键步骤并互相挑错。\n\n结果由 Anthropic 内部两位数学家 Levent Alpöge 与 Ralph Furman 验证，解析数论领域专家 Brian Conrey 与 Dan Goldston 也在短时间内审阅了论文。Anthropic 明确表示，并不认为 Claude 使用的这套技术能通向黎曼猜想本身的证明。\n\n## 为何重要\n\n这是一项在专业数论学者耕耘数十年的问题上取得、并经同行过目的具体推进，而非跑分成绩。但保留意见是结构性的：论文尚未经过常规同行评议，而模型未发布、未具名，外部无人能复现这次运行。当下行业产出研究性结论的速度，已经超过了配套核验机制的建设速度——因此，智能体规模化编排本身，以及背后 3100 万 token 的算力账单，与数学结论同样值得关注。",
-      "date_published": "2026-08-10T17:28:00.000Z",
-      "date_modified": "2026-08-10T23:00:03.008Z",
-      "tags": [
-        "研究",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/claude-riemann-zeta-lower-bound.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-riemann-zeta-lower-bound.html",
-        "source_published_at": "2026-08-10T17:28:00.000Z",
-        "site_published_at": "2026-08-10T23:00:03.008Z",
-        "sources": [
-          {
-            "title": "Learning more about Claude's mathematical capabilities — Anthropic",
-            "url": "https://www.anthropic.com/research/riemann-zeta"
-          },
-          {
-            "title": "Anthropic on X: an unreleased research version of Claude and the Riemann hypothesis",
-            "url": "https://x.com/AnthropicAI/status/2086867246073401655"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-sonnet-5-pricing-permanent.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-sonnet-5-pricing-permanent.html",
-      "title": "Anthropic 把 Sonnet 5 的 2/10 美元优惠价永久化",
-      "summary": "Anthropic 取消 Claude Sonnet 5 优惠价的截止日期，每百万输入 2 美元、输出 10 美元的定价在 8 月 31 日后继续沿用。",
-      "content_text": "Anthropic 8 月 10 日表示，Claude Sonnet 5 的优惠定价不再设截止期限。该模型 6 月发布时定价为每百万输入 token 2 美元、每百万输出 token 10 美元，当时对外说明该价格仅执行至 2026 年 8 月 31 日。现在这组数字成为长期价格。\n\n## 变化在哪\n\n按原公布的计划，优惠窗口结束后 Sonnet 5 将回到每百万输入 3 美元、输出 15 美元——这也是 Anthropic 中端模型一直以来的价位。把低价定为永久，相当于在开发者原本被要求从 9 月起编入预算的价格基础上，输入与输出成本各降三分之一。\n\nAnthropic 把这件事表述为取消截止日期，而非新一轮促销。这对采购是有意义的区别：此前按六周后单价上台阶做过测算的团队，不必再为此留缓冲。\n\n## 背景\n\n这一决定所处的市场，token 单价正被两头挤压。中国实验室与 Meta 的开源权重发布，使能力可用的模型只需承担托管成本；多份独立评测也反复显示，更便宜的模型在编程与智能体任务上已能拿到前沿水准的相当大一部分。与此同时，智能体类负载的 token 消耗远高于聊天——一次长链条工具调用可能烧掉数百万输出 token——因此决定一个 AI 产品运营成本的，越来越是中端而非旗舰的价位。\n\n## 为何重要\n\nSonnet 这一档模型是大量生产环境编程智能体与企业流水线的默认主力，Anthropic 自家的 Claude Code 也在其中。冻结价格意味着从成千上万份预算中抹掉一次既定涨价，也说明在开源权重竞争压制之下，Anthropic 认为中端价格没有上调空间。对做推理支出预测的人来说，中端价格的地板从此更难往上抬。",
-      "date_published": "2026-08-10T19:03:00.000Z",
-      "date_modified": "2026-08-10T23:00:03.008Z",
-      "tags": [
-        "产业",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/claude-sonnet-5-pricing-permanent.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-sonnet-5-pricing-permanent.html",
-        "source_published_at": "2026-08-10T19:03:00.000Z",
-        "site_published_at": "2026-08-10T23:00:03.008Z",
-        "sources": [
-          {
-            "title": "Claude on X: making Claude Sonnet 5's introductory pricing permanent",
-            "url": "https://x.com/claudeai/status/2086891169217122586"
-          },
-          {
-            "title": "Introducing Claude Sonnet 5 — Anthropic",
-            "url": "https://www.anthropic.com/news/claude-sonnet-5"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/mai-image-2-6-arena-second.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/mai-image-2-6-arena-second.html",
-      "title": "MAI-Image-2.6 首次上榜即拿下文生图竞技场第二",
-      "summary": "微软 AI 新版图像模型以 1336 分空降 Arena 文生图榜第二，上一代 2.5 仅排第十，与榜首 GPT Image 2 相差 45 分。",
-      "content_text": "Arena 于 8 月 10 日表示，微软 AI 最新文生图模型 MAI-Image-2.6 以 1336 分首次上榜即位列文生图排行榜第二，而上一代 MAI-Image-2.5 目前排在第十。\n\n## 具体数字\n\n与榜首的差距现为 45 分，第一名是 GPT Image 2（Medium）。Arena 称该模型在所有评分类别上都有提升，其中三维成像与建模一项进步最猛，从第六直接升到第一，卡通与插画类同样有改善。Arena 已在 Image Arena 中开放该模型的公众投票，使排名可以接受持续的人类偏好数据检验，而非停留在发布时的快照。\n\n同一系列相邻两个版本之间跨八个位次，在这张榜的头部并不常见。微软自研图像模型 2025 年 10 月以 MAI-Image-1 上榜时排第九，2026 年 3 月的 MAI-Image-2 冲到第三，随后陷入停滞——5 月发布的 2.5 首次上榜排第三，之后随竞品迭代而下滑。第二名是该系列迄今最高排位。\n\n## 背景\n\n人类偏好榜噪声不小，风格讨喜的权重不亚于画质本身，早期 Elo 分数通常会随投票量累积而漂移。但文生图头部格局已稳定数月，由 OpenAI 的 GPT Image 2 与谷歌 Imagen 系列主导，微软、Black Forest Labs 与 Midjourney 在其下互换位置。45 分的差距已足够小，下一轮发布就可能改写顺序。\n\n## 为何重要\n\n微软的图像生成主要经 Copilot、Bing Image Creator 与 Azure API 分发，而非一个独立创作 App，因此这一水准的模型会以默认选项的身份触达异常广泛的用户，无需用户主动挑选。微软同时是 OpenAI 模型最大的商业分发渠道——用自研权重把与 GPT Image 2 的差距压到这个程度，正好加强了它在依赖关系最显眼那一环上的话语权。",
-      "date_published": "2026-08-10T22:32:00.000Z",
-      "date_modified": "2026-08-10T23:00:03.008Z",
-      "tags": [
-        "AIGC",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/mai-image-2-6-arena-second.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/mai-image-2-6-arena-second.html",
-        "source_published_at": "2026-08-10T22:32:00.000Z",
-        "site_published_at": "2026-08-10T23:00:03.008Z",
-        "sources": [
-          {
-            "title": "Arena on X: MAI-Image-2.6 lands in the Text-to-Image Arena at #2",
-            "url": "https://x.com/arena/status/2086943856289853931"
-          },
-          {
-            "title": "Arena on X: MAI-Image-2.6 jumped to #2 overall, category gains",
-            "url": "https://x.com/arena/status/2086943860681531555"
           }
         ]
       }
