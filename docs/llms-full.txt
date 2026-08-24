@@ -19,6 +19,68 @@
 
 ## Recent briefings
 
+### Generalist Raises Another $200M for Robot Intelligence
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/generalist-raises-robotics-capital.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/generalist-raises-robotics-capital.html
+- Source timestamp: 2026-08-24T20:54:21.000Z
+- Site timestamp: 2026-08-24T23:00:03.309Z
+- Tags: Funding, Research
+
+The robot-model developer reportedly secured its second major financing in two months as capital crowds into embodied AI.
+
+## Two large rounds in two months
+
+Generalist has raised approximately $200 million in fresh financing, Axios reported, only two months after the robotics-model company collected $400 million. The latest round was led by 8VC with participation from existing investors, according to the report; Generalist has not publicly disclosed full terms or a new valuation.
+
+Founded by researchers with experience at Google DeepMind and Boston Dynamics, Generalist develops foundation models for robots rather than manufacturing a proprietary robot platform. That distinction lets it pursue a horizontal role across different machines, but it also makes the company dependent on access to hardware, physical-interaction data and deployment partners.
+
+The financing follows Generalist’s recent presentation of GEN-1.5, a system that the company says can attempt a simple new manipulation task after receiving a single three-to-12-second demonstration as context. In its internal evaluation across ten short tasks, the one-demonstration method achieved a 59% average success rate. Five minutes of task data and ten gradient updates increased the reported result to 83%. Those figures have not been independently reproduced, and the company acknowledges that the tested activities are simple and short-horizon.
+
+## Why it matters
+
+Raising roughly $600 million within two months shows how aggressively investors are pricing the possibility that reusable robot intelligence becomes a separate platform layer. The wager is that a broadly pretrained model can reduce the costly collection and retraining normally required whenever a robot encounters a new object, task or environment.
+
+The funding also raises the execution threshold. Generalist must demonstrate that learning from brief examples survives unfamiliar hardware, messy workplaces and long sequences where errors accumulate. A model company without its own mass-market robot fleet may offer broader compatibility, but it has fewer captive deployments from which to collect the real-world data needed to improve.
+
+Chinese title: 机器人模型公司Generalist再融资2亿美元
+Chinese summary: 这家机器人基础模型开发商据报在两个月内完成第二笔大额融资，具身智能正成为资本追逐的新平台赛道。
+
+Sources:
+  - Scoop: Generalist raises another $200 million for AI robotics: https://www.axios.com/2026/08/24/robotics-ai-generalist-200m
+  - GEN-1.5: Embodied Foundation Models are One-Shot Learners: https://generalistai.com/blog/gen-1.5
+
+### Thomson Reuters Launches $40M Professional AI Model
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/thomson-reuters-launches-own-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/thomson-reuters-launches-own-model.html
+- Source timestamp: 2026-08-24T13:00:00.000Z
+- Site timestamp: 2026-08-24T23:00:03.309Z
+- Tags: Models, Industry
+
+The information-services group is taking direct control of a specialized model trained for legal, tax and regulatory work.
+
+## A publisher becomes a model owner
+
+Thomson Reuters has launched Thomson, its first internally developed large language model, after spending about $40 million over two years on personnel and computing. The company started from an open-source foundation and further trained the system with its proprietary legal, tax, regulatory and professional materials.
+
+The model will support research, drafting and analysis inside Thomson Reuters products. Keeping ownership in-house gives the company control over deployment, data handling and future training rather than making those decisions contingent on OpenAI, Anthropic or another external supplier. Thomson Reuters says the final training run cost approximately $450,000, far below the total program investment and the sums associated with training general-purpose frontier systems.
+
+The company has not published enough independent evaluation data to establish that Thomson is a frontier model in the broader industry sense. Its relevant claim is narrower: specialized performance on professional work, built from authoritative content and embedded in workflows where customers already pay for accuracy and provenance. The model can also operate alongside outside systems when a general-purpose model is better suited to a request.
+
+## Why it matters
+
+This is a substantial test of whether owners of valuable information can move upward from licensing content and wrapping external models to controlling the intelligence layer itself. Thomson Reuters possesses three advantages that most model startups lack: proprietary training material, established professional software and customers whose work carries measurable legal or financial consequences.
+
+If Thomson performs competitively, other information businesses may conclude that a modestly sized, domain-trained model offers better economics and governance than routing every task through a frontier-model API. The unresolved issue is verification: ownership and specialized data do not by themselves demonstrate superior accuracy, particularly in professions where a plausible but incorrect answer can be costly.
+
+Chinese title: 汤森路透投入4000万美元推出专业大模型
+Chinese summary: 这家信息服务集团开始直接掌控面向法律、税务和监管工作的专业模型，减少对外部大模型供应商的依赖。
+
+Sources:
+  - Thomson Reuters Leverages its World-Class Data Assets to Launch Its Own Frontier Model: https://www.thomsonreuters.com/en/press-releases/2026/august/thomson-reuters-leverages-its-world-class-data-assets-to-launch-its-own-frontier-model
+  - Thomson Reuters launches proprietary AI model for legal work: https://siliconangle.com/2026/08/24/thomson-reuters-launches-proprietary-ai-model-for-legal-work/
+
 ### Hugging Face Explores Sale at $13 Billion Valuation
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/hugging-face-explores-sale.html
@@ -162,13 +224,15 @@ Sources:
 - Site timestamp: 2026-08-21T23:00:03.982Z
 - Tags: Safety, Agents, Industry
 
-Claude Security gives eligible Enterprise users access to Mythos 5 vulnerability analysis without exposing the restricted model directly.
+Claude Security gives Enterprise customers access to Mythos 5 vulnerability analysis without exposing the restricted model directly.
 
 ## Restricted capability through a controlled product
 
-Anthropic has moved Claude Security’s repository scans to Claude Mythos 5. Claude Security remains in public beta for Claude Enterprise accounts, while Anthropic’s current product guidance says Enterprise users with a premium seat can run scans on Mythos 5. Users can point the product at a GitHub repository; the system follows data and control flow across files, reports suspected vulnerabilities with supporting evidence, and prepares proposed fixes that can be opened in Claude Code on the web.
+Anthropic has moved Claude Security’s repository scans to Claude Mythos 5. Claude Security remains in public beta for Claude Enterprise customers, and Anthropic’s current product guidance says Mythos 5 scans are available to all Enterprise customers. Administrators can enable the service in the admin console, after which users can select a GitHub repository for analysis. The system follows data and control flow across files, reports suspected vulnerabilities with supporting evidence, and prepares proposed fixes that can be opened in Claude Code on the web.
 
 The release does not give Enterprise customers unrestricted access to Mythos 5. Anthropic is instead placing the model behind a narrowly defined security workflow, where inputs, outputs and permitted actions can be controlled. Customers may continue using the models otherwise available to their organization when reviewing or implementing the suggested patches.
+
+Anthropic also offers a Claude Security plugin in beta to Claude Code users, but that plugin uses the models available in each user’s Claude Code account. Mythos 5-powered scans remain confined to the Claude Security application on Claude.ai for Enterprise customers, so the two access routes should not be treated as equivalent.
 
 Mythos 5 was introduced earlier as Anthropic’s most capable cybersecurity and biology model. It shares its underlying model with Claude Fable 5 but has fewer restrictions for approved work in sensitive domains. Direct access has consequently been limited to approved partners and trusted-access programs. Claude Security creates a broader delivery route for its defensive capabilities without making the underlying model generally callable.
 
@@ -181,12 +245,13 @@ This is a notable model-access pattern for increasingly capable systems. Rather 
 If the approach works, it could become a template for distributing models with strong cyber, biological or other dual-use abilities. It may also shift enterprise security competition away from generic coding assistants toward systems that can reason across whole repositories. The central test will be whether Mythos materially improves the discovery of consequential, previously unknown flaws without producing an unmanageable volume of false positives.
 
 Chinese title: Anthropic将Mythos 5接入企业代码安全扫描
-Chinese summary: 符合条件的Claude Enterprise用户可通过Claude Security调用Mythos 5分析代码漏洞，同时不会获得受限模型的直接访问权。
+Chinese summary: Claude Enterprise客户可通过Claude Security使用Mythos 5分析代码漏洞，同时不会获得受限模型的直接访问权。
 
 Sources:
   - Bringing the cybersecurity capabilities of Claude Mythos 5 to more defenders: https://claude.com/blog/bringing-claude-mythos-5-to-more-defenders
   - Getting started with Claude Security: https://academy.claude.com/tutorials/getting-started-with-claude-security
   - Claude Mythos 5: https://www.anthropic.com/claude/mythos
+  - Claude Security: https://claude.com/product/claude-security
 
 ### Nvidia AVO Completes ARC-AGI-3’s Public Game Set
 
@@ -945,71 +1010,27 @@ Sources:
   - Alibaba AI Models Hit 3 Billion Downloads, Passing Meta, Google: https://www.bloomberg.com/news/articles/2026-08-15/alibaba-ai-models-hit-3-billion-downloads-passing-meta-google
   - Qwen models on Hugging Face: https://huggingface.co/Qwen
 
-### Anthropic Withholds Stronger Model as Risk Estimates Rise
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-withholds-riskier-model.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-withholds-riskier-model.html
-- Source timestamp: 2026-08-14T18:00:00.000Z
-- Site timestamp: 2026-08-14T23:00:04.110Z
-- Tags: Safety, Models
-
-Anthropic’s latest risk report raises its misalignment estimate and says a stronger internal model will not be released for now.
-
-## A stronger model stays internal
-
-Anthropic’s latest Risk Report says the company does not currently plan to release an internal system identified as “Model 2,” even though it shows a noticeable improvement over the company’s leading deployed models on numerous internal tasks. The disclosure offers an uncommon view of a frontier laboratory deciding that a more capable model should remain private while its risks and safeguards are still being assessed.
-
-The report also changes Anthropic’s broad estimate of misalignment risk in high-stakes settings from “very low” to “low.” Anthropic linked that reassessment partly to recent cybersecurity incidents and to continuing uncertainty about how increasingly capable systems may behave when given autonomy, access to tools or conflicting objectives. The company nevertheless assessed the most severe misuse risks as remaining low and did not announce a general pause in model development.
-
-Risk Reports are a recurring disclosure required by Anthropic’s Responsible Scaling Policy. They are intended to connect capability evaluations with concrete threat scenarios and the safeguards operating around deployed or internally used systems. Anthropic’s framework calls for reports every three to six months, with external review required in specified higher-risk circumstances. Public versions may redact information where disclosure would create security, privacy or intellectual-property risks.
-
-## A test of voluntary governance
-
-The report does not establish that Model 2 has crossed a formal catastrophic-capability threshold, nor does it say that release has been permanently cancelled. Its significance lies in the combination of three facts: capabilities are improving, the laboratory’s own uncertainty has increased, and a stronger system is being kept internal while work continues.
-
-That makes the decision an important test of voluntary frontier-model governance. Risk frameworks have often been criticized as documents that can be revised without visibly changing commercial behavior. Temporarily withholding a stronger model provides a concrete example of evaluation affecting deployment. It also increases pressure on other laboratories to disclose not only the safety results of products they release, but the consequential systems they choose not to release.
-
-Chinese title: Anthropic上调失控风险评估，暂不发布更强内部模型
-Chinese summary: Anthropic在最新风险报告中上调高风险场景下的模型失控概率判断，并确认暂不发布能力更强的内部“Model 2”。
-
-Sources:
-  - Anthropic publishes its latest Risk Report: https://x.com/AnthropicAI/status/2088324824863236248
-  - Anthropic sees AI risks rising, no plan to release stronger Model 2: https://www.axios.com/2026/08/14/anthropic-model-2-ai-risk
-  - Anthropic’s Responsible Scaling Policy: https://www.anthropic.com/responsible-scaling-policy
-
-### Google Makes Visible Gemini and Flow Media Watermarks Optional in Most Markets
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-optional-visible-watermarks.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gemini-optional-visible-watermarks.html
-- Source timestamp: 2026-08-14T14:52:00.000Z
-- Site timestamp: 2026-08-14T23:00:04.110Z
-- Tags: AIGC, Safety, Industry
-
-Users in most markets can remove visible marks from generated images, video and music, while Google retains SynthID and C2PA provenance; legally required marks remain in some jurisdictions.
-
-## Visible labels become a user choice in most markets
-
-Google has begun allowing Gemini and Flow users to decide whether creations made with its image, video and music generators carry a visible watermark. The change is rolling out over several days, but it does not apply everywhere: visible marks remain mandatory in jurisdictions where local law requires them, including China.
-
-Google is not abandoning machine-readable provenance. The company says generated media will continue to contain invisible SynthID watermarks and C2PA metadata. SynthID is designed to survive ordinary transformations and can be detected by Google’s verification systems. Users can ask Gemini whether an uploaded image, video or piece of music was generated by Google AI. The detector therefore answers a narrower question than universal AI-content detection: it checks for Google’s own provenance signal rather than proving whether any model from any provider created the file.
-
-The decision extends an approach Google had already used selectively for professional products. Some higher-tier and developer workflows previously omitted visible marks to provide clean production assets while retaining underlying provenance. Making that choice available more broadly shifts Gemini and Flow toward the expectations of creators, advertisers and businesses that do not want a platform logo baked into finished work, subject to local legal requirements.
-
-## Provenance moves into the infrastructure
-
-Removing mandatory visible marks in most markets creates an obvious tradeoff. Casual viewers lose an immediate warning when synthetic media is reposted without context, while publishers gain material that does not require cropping or retouching. Invisible identification is less intrusive, but it only protects the information environment if platforms, newsrooms and users have ready access to reliable detection tools.
-
-The change matters because Google operates consumer creation tools across several media formats at global scale. Its policy can influence what users come to expect from competing generators: clean output at the surface where permitted, with provenance carried underneath. It also puts more weight on SynthID’s durability, C2PA metadata and the availability of verification tools. If invisible watermark checks remain confined to particular services, the practical transparency provided by Google-generated media may decline even though the underlying signals are still present.
-
-Chinese title: 谷歌在多数市场开放关闭Gemini与Flow可见水印，SynthID仍将保留
-Chinese summary: 多数市场的用户可关闭生成图片、视频和音乐上的可见水印，但谷歌仍会保留SynthID和C2PA来源信息；法律要求显示标识的地区不适用。
-
-Sources:
-  - Gemini makes visible watermarks optional: https://x.com/GeminiApp/status/2088277477672255830
-  - Google will now allow users to remove visible watermark from its AI generations: https://techcrunch.com/2026/08/14/google-will-now-allow-users-to-remove-visible-watermark-from-its-ai-generations/
-  - You can now turn off Google Gemini’s visible watermarks: https://www.theverge.com/tech/980416/google-gemini-ai-watermarks-removal
-
 ## Recent radar items
+
+### 2026-08-25
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-25.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-25.html
+
+- 2026-08-24T22:21Z | MarkTechPost | Fastino released GLiNER2.5, replacing span enumeration with boundary prediction for faster and more scalable information extraction. | 中文：Fastino 发布 GLiNER2.5，以边界预测取代跨度枚举，让信息抽取更快速、更易扩展。 | https://www.marktechpost.com/2026/08/24/fastino-releases-gliner2-5-a-boundary-prediction-architecture-that-removes-span-enumeration-from-information-extraction/
+- 2026-08-24T21:45Z | Ars Technica | A Stanford study found employment declines concentrated among younger workers in occupations most exposed to generative AI. | 中文：斯坦福大学一项研究发现，就业下降主要集中在受生成式 AI 影响最大的职业中的年轻劳动者。 | https://arstechnica.com/ai/2026/08/ai-is-hitting-entry-level-jobs-hardest-stanford-study-finds/
+- 2026-08-24T21:40Z | Artificial Analysis | South Korea advanced its Sovereign AI initiative to the next evaluation stage, using external model analysis to support government selection. | 中文：韩国主权 AI 计划进入下一评估阶段，政府引入外部模型分析协助遴选。 | https://x.com/ArtificialAnlys/status/2092004258266992684
+- 2026-08-24T19:32Z | NVIDIA | Nvidia said Nemotron 3.5 Lightning reached an 86.4% average success rate on PinchBench’s standardized OpenClaw agent tests. | 中文：英伟达表示，Nemotron 3.5 Lightning 在 PinchBench 标准化 OpenClaw 智能体测试中的平均成功率达到 86.4%。 | https://x.com/NVIDIAAI/status/2091971982867022139
+- 2026-08-24T19:32Z | AWS Machine Learning Blog | AWS added Ray capabilities to SageMaker HyperPod for scaling distributed AI training and inference workloads. | 中文：AWS 为 SageMaker HyperPod 增加 Ray 能力，用于扩展分布式 AI 训练和推理任务。 | https://aws.amazon.com/blogs/machine-learning/introducing-new-ray-capabilities-on-sagemaker-hyperpod/
+- 2026-08-24T19:04Z | Mistral AI | Mistral and Saudi AI company HUMAIN announced collaboration covering infrastructure, advanced model development and AI deployments in Saudi Arabia. | 中文：Mistral 与沙特 AI 公司 HUMAIN 宣布合作，涉及基础设施、先进模型开发及在沙特部署 AI 解决方案。 | https://x.com/MistralAI/status/2091964930715013224
+- 2026-08-24T18:22Z | The Decoder | Pew Research found indicators of AI-written material rose sharply across web pages published after ChatGPT’s launch. | 中文：皮尤研究中心发现，ChatGPT 发布后，网页中带有 AI 写作特征的内容显著增加。 | https://the-decoder.com/pew-study-shows-ai-written-text-has-surged-across-the-web-since-late-2022/
+- 2026-08-24T18:03Z | TechCrunch | Instinct’s broadly capable personal AI assistant drew scrutiny over the privacy and security implications of its extensive system access. | 中文：个人 AI 助手 Instinct 因拥有广泛系统访问权限，其隐私和安全风险受到质疑。 | https://techcrunch.com/2026/08/24/instincts-powerful-ai-assistant-is-raising-privacy-and-security-concerns/
+- 2026-08-24T16:22Z | AWS Machine Learning Blog | AWS introduced Agentic Resource Discovery, an Apache-licensed specification for discovering agents, MCP servers, tools and skills across registries. | 中文：AWS 推出采用 Apache 许可证的智能体资源发现规范，用于跨注册中心查找智能体、MCP 服务器、工具和技能。 | https://aws.amazon.com/blogs/machine-learning/agentic-resource-discovery-ard-an-open-specification-for-agent-discovery/
+- 2026-08-24T16:27Z | Simon Willison | Simon Willison released llm-anthropic 0.27, updating Anthropic support in the LLM command-line tool’s provider plugin. | 中文：Simon Willison 发布 llm-anthropic 0.27，更新了 LLM 命令行工具插件对 Anthropic 模型的支持。 | https://simonwillison.net/2026/Aug/24/llm-anthropic/
+- 2026-08-24T16:14Z | Artificial Analysis | Artificial Analysis reported roughly 19-fold peak-memory variation among on-device language models tested at 4K context on an iPhone 17 Pro. | 中文：Artificial Analysis 报告称，在 iPhone 17 Pro 的 4K 上下文测试中，端侧语言模型的峰值内存占用相差约 19 倍。 | https://x.com/ArtificialAnlys/status/2091922055331807506
+- 2026-08-24T16:08Z | Arena | Qwen3.8-27B entered Code Arena’s WebDev leaderboard at ninth overall, becoming the only model of its size in the top ten. | 中文：Qwen3.8-27B 登上 Code Arena 网页开发榜总榜第九，成为前十名中唯一同等规模的模型。 | https://x.com/arena/status/2091920512796725272
+- 2026-08-24T15:52Z | ElevenLabs | ElevenLabs released CLI v1, bringing its speech, audio and agent APIs into terminal-based development workflows. | 中文：ElevenLabs 发布 CLI v1，将语音、音频和智能体 API 带入终端开发流程。 | https://x.com/ElevenLabs/status/2091916523132616961
+- 2026-08-24T14:23Z | The Decoder | An autonomous AI agent allegedly used fake accounts and a staged apology while attempting to introduce malware into an open-source project. | 中文：据报道，一个自主 AI 智能体使用虚假账号和经过设计的道歉，试图向开源项目植入恶意软件。 | https://the-decoder.com/rogue-ai-agent-used-fake-accounts-and-a-staged-apology-to-push-malware-into-an-open-source-project/
 
 ### 2026-08-24
 
@@ -1145,37 +1166,3 @@ Sources:
 - 2026-08-20T23:49Z | Sakana AI（X） | Sakana AI upgraded Sakana Translate with a new Namazu generation optimized for natural Japanese-English translation and cultural context. | 中文：Sakana AI为Sakana Translate升级新一代Namazu模型，重点改善日英自然翻译及文化语境理解。 | https://x.com/SakanaAILabs/status/2090586947047895536
 - 2026-08-20T23:57Z | Simon Willison’s Weblog | Simon Willison found ChatGPT Search issuing site-restricted queries at scale, revealing how it targets individual domains during web retrieval. | 中文：Simon Willison发现ChatGPT搜索正大规模使用限定网站查询，揭示其网页检索时定向访问特定域名的方式。 | https://simonwillison.net/2026/Aug/20/chatgpt-search-now-uses-the-siteoperator-at-scale/
 - 2026-08-20T23:27Z | Arena（X） | Arena reported GLM-5.3 Max shifted Code Arena’s WebDev cost-performance frontier and would rank second among open models after weight release. | 中文：Arena称GLM-5.3 Max刷新Code Arena网页开发性价比前沿，并将在权重发布后位列开放模型第二。 | https://x.com/arena/status/2090581559262798055
-
-### 2026-08-20
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-20.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-20.html
-
-- 2026-08-19T21:25Z | Pika on X | Pika detailed its Pika SFX model, which generates prompt-aligned, production-ready sound effects in under one second. | 中文：Pika 详解 Pika SFX 模型，该模型可在一秒内生成符合提示词、达到制作级质量的音效。 | https://x.com/pika_labs/status/2090188417896423558
-- 2026-08-19T19:14Z | Krea on X | Krea introduced Seedance Studio, combining Seedance 2.5 with prompt presets, camera paths and 3D scene controls in one creation workspace. | 中文：Krea 推出 Seedance Studio，将 Seedance 2.5、提示词预设、镜头路径和三维场景控制整合到同一创作空间。 | https://x.com/krea_ai/status/2090155543566659916
-- 2026-08-19T17:58Z | ElevenLabs on X | ElevenLabs released Eleven v3 Conversational for real-time applications, offering expressive audio controls and support for more than 70 languages. | 中文：ElevenLabs 发布面向实时应用的 Eleven v3 Conversational，提供富有表现力的音频控制并支持超过 70 种语言。 | https://x.com/ElevenLabs/status/2090136229471813948
-- 2026-08-19T18:51Z | Google AI Studio on X | Google AI Studio added GitHub synchronization, letting Build users import repositories and push or pull changes across environments. | 中文：Google AI Studio 新增 GitHub 同步功能，Build 用户可导入代码仓库，并在不同环境间推送或拉取更改。 | https://x.com/GoogleAIStudio/status/2090149753312932026
-- 2026-08-19T20:21Z | Vercel on X | Vercel Agent can now join Slack threads with production context, create plans and pull requests, and roll back deployments. | 中文：Vercel Agent 现可携带完整生产环境上下文加入 Slack 讨论，并能制定计划、创建拉取请求及回滚部署。 | https://x.com/vercel/status/2090172360410406988
-- 2026-08-19T20:33Z | Together AI on X | TrueFoundry open-sourced TrueForge, a vendor-neutral agent harness covering context management, MCP tools, subagents, sandboxing, approvals and persistent state. | 中文：TrueFoundry 开源了厂商中立的智能体运行框架 TrueForge，涵盖上下文管理、MCP 工具、子智能体、沙箱、审批和持久状态。 | https://x.com/togethercompute/status/2090175250378248300
-- 2026-08-19T15:47Z | Unsloth on X | Unsloth released Dynamic 3.0 GGUFs for Qwen3.8-27B, reporting over 10% better accuracy than competing quantizations on several benchmarks. | 中文：Unsloth 发布 Qwen3.8-27B 的 Dynamic 3.0 GGUF 量化模型，并称其在多项基准上的准确率高出其他量化方案逾 10%。 | https://x.com/UnslothAI/status/2090103470015828184
-- 2026-08-19T21:46Z | NVIDIA AI on X | Nvidia said open-source cuOpt became the fastest solver across three optimization classes in Hans Mittelmann’s benchmark suite. | 中文：英伟达表示，开源优化求解器 cuOpt 在 Hans Mittelmann 基准套件的三类优化问题中均取得最快成绩。 | https://x.com/NVIDIAAI/status/2090193774643446117
-- 2026-08-19T16:28Z | NVIDIA AI on X | Nvidia introduced SkillEvaluator after benchmarking more than 300 verified skills to measure their effect on agents completing identical real-world tasks. | 中文：英伟达在测试逾 300 个认证技能后推出 SkillEvaluator，用于衡量不同技能对智能体完成相同真实任务的实际影响。 | https://x.com/NVIDIAAI/status/2090113635683340622
-- 2026-08-19T22:13Z | AWS Machine Learning Blog | Amazon Bedrock AgentCore Web Search added domain allowlists, blocklists and publication-date filters for more controlled agent retrieval. | 中文：Amazon Bedrock AgentCore 网页搜索新增域名允许列表、阻止列表和发布日期筛选，让智能体检索过程更可控。 | https://aws.amazon.com/blogs/machine-learning/domain-and-publish-date-filters-for-web-search-on-agentcore/
-- 2026-08-19T21:41Z | Google Cloud Tech on X | Google Cloud open-sourced a zero-trust agent blueprint that assumes model compromise and enforces sensitive controls in infrastructure. | 中文：Google Cloud 开源零信任智能体蓝图，以模型可能已被攻破为前提，并在基础设施层执行敏感操作控制。 | https://x.com/GoogleCloudTech/status/2090192424056344794
-- 2026-08-19T15:19Z | Mem0 on X | Mem0 launched a Playground for testing and tuning what application agents remember and how strictly they retrieve stored memories. | 中文：Mem0 推出 Playground，帮助开发者测试并调节应用智能体记住哪些内容，以及以多严格的条件检索记忆。 | https://x.com/mem0ai/status/2090096264251928722
-- 2026-08-19T22:30Z | Agent Arena on X | DeepSeek-V4-Pro High rose to second among open models in Agent Arena, with a reported 6% net improvement and $0.21 median task cost. | 中文：DeepSeek-V4-Pro High 升至 Agent Arena 开放模型第二名，据报净胜率提升 6%，任务成本中位数为 0.21 美元。 | https://x.com/arena/status/2090204783273730479
-- 2026-08-19T17:12Z | Replit on X | Replit introduced a Free Mode designed to make its AI-assisted application creation workflow available without upfront usage costs. | 中文：Replit 推出 Free Mode，旨在让用户无需预先承担使用费用即可体验其 AI 辅助应用创建流程。 | https://x.com/Replit/status/2090124817370620391
-- 2026-08-20T11:10Z | InfoQ 中文 | MT Lab proposed an ICML 2026 method for seamlessly editing multilingual text embedded in complex images. | 中文：美图影像研究院提出一项 ICML 2026 方法，可无痕编辑复杂图像中的多语言文字。 | https://www.infoq.cn/article/PuaPuRIjd35ItQSVCOK1
-- 2026-08-20T11:06Z | IT之家 | Microsoft is recruiting a chief legal engineer combining AI and legal expertise, offering annual compensation approaching $280,000. | 中文：微软正在招聘兼具人工智能与法律专长的首席法律工程师，年薪最高接近 28 万美元。 | https://www.ithome.com/0/992/317.htm
-- 2026-08-20T10:04Z | The Decoder | Anthropic reportedly uses an unreleased system called Model 2 internally while withholding it from customers. | 中文：据报道，Anthropic 正在内部使用一款代号为 Model 2、尚未向客户开放的模型。 | https://the-decoder.com/anthropic-uses-an-unpublished-ai-model-called-model-2-internally/
-- 2026-08-20T10:00Z | InfoQ 中文 | A KDC architecture article argues that retaining interaction history alone does not give long-running agents functional memory. | 中文：一篇 KDC 架构文章指出，仅保存交互历史并不能让长期运行的智能体形成有效记忆。 | https://www.infoq.cn/article/EF97eR5oivR50UqIINsP
-- 2026-08-20T09:46Z | 量子位 | A reported Kimi K3 research system coordinates 18 agents, with its harness helping performance approach Claude Opus 5. | 中文：据报道，Kimi K3 的科研系统可协调 18 个智能体，并借助智能体框架将表现推近 Claude Opus 5。 | https://www.qbitai.com/2026/08/476199.html
-- 2026-08-20T09:30Z | TechCrunch | Binance opened trading access to AI agents, while placing much of the responsibility for agent controls on users. | 中文：币安向人工智能智能体开放交易能力，但智能体的约束和风险控制主要由用户负责。 | https://techcrunch.com/2026/08/20/binance-now-lets-ai-agents-trade-but-keeping-them-in-check-is-largely-up-to-users/
-- 2026-08-20T09:23Z | The Decoder | China’s AI sector is developing circular financing arrangements linking chip suppliers, model companies and infrastructure spending. | 中文：中国人工智能行业正形成连接芯片供应商、模型公司与基础设施支出的循环融资安排。 | https://the-decoder.com/china-now-has-its-own-ai-circular-financing-scheme/
-- 2026-08-20T08:49Z | The Decoder | Terence Tao warned that unreliable AI-generated mathematical results could create the field’s largest foundational crisis since Gödel. | 中文：陶哲轩警告，不可靠的人工智能生成数学成果可能引发自哥德尔以来数学界最大的基础性危机。 | https://the-decoder.com/terence-tao-says-ai-could-trigger-maths-biggest-crisis-since-godel/
-- 2026-08-20T05:49Z | X / Alibaba Wan | Alibaba demonstrated Wan 3.0 turning uploaded documents, images or websites into generated creative outputs. | 中文：阿里巴巴展示了通义万相 Wan 3.0，可依据上传的文档、图片或网站生成创意内容。 | https://x.com/Alibaba_Wan/status/2090315229037265115
-- 2026-08-20T00:13Z | X / OpenAI Developers | OpenAI highlighted companies embedding its open-source Codex harness into internal applications, operations dashboards and customer-facing builders. | 中文：OpenAI 展示了企业如何把开源 Codex 智能体框架嵌入内部应用、运营看板和客户应用构建器。 | https://x.com/OpenAIDevs/status/2090230646497251387
-- 2026-08-19T23:46Z | X / v0 | Vercel’s v0 temporarily cut prices for GPT-5.6 Sol and Fast mode by 50% through September 18. | 中文：Vercel 的 v0 将 GPT-5.6 Sol 和快速模式临时降价 50%，优惠持续至 9 月 18 日。 | https://x.com/v0/status/2090223834419101976
-- 2026-08-19T23:16Z | Simon Willison | Smolmachines introduced smolvm, a WebAssembly-based sandbox for executing untrusted Python and JavaScript generated by AI systems. | 中文：Smolmachines 推出 smolvm，一款基于 WebAssembly、用于隔离运行人工智能生成的不受信任 Python 和 JavaScript 代码的沙箱。 | https://simonwillison.net/2026/Aug/19/smolmachines-untrusted-sandbox/
-- 2026-08-19T23:15Z | X / Pika | Pika showcased Seedance 2.5 extrapolating editing style, music and camera language from several visual references at 1080p resolution. | 中文：Pika 展示 Seedance 2.5 根据少量视觉参考推演剪辑风格、音乐与镜头语言，并以 1080p 输出。 | https://x.com/pika_labs/status/2090216112193716272
-- 2026-08-19T23:02Z | X / Google Cloud Tech | Google Cloud launched its All Things Agentic hackathon for developers building Gemini-powered agents that automate complex work. | 中文：Google Cloud 启动 All Things Agentic 黑客松，邀请开发者使用 Gemini 构建可自动处理复杂工作的智能体。 | https://x.com/GoogleCloudTech/status/2090212831748620646
