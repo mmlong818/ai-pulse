@@ -179,6 +179,7 @@ async function existingCoverage() {
   const files = (await readdir(CONTENT).catch(() => [])).filter((f) => f.endsWith('.json')).sort().slice(-90);
   const urls = new Set();
   const snippets = [];
+  const takes = new Set();
   for (const f of files) {
     try {
       const item = JSON.parse(await readFile(join(CONTENT, f), 'utf8'));
@@ -189,11 +190,12 @@ async function existingCoverage() {
         }
       } else {
         for (const s of item.sources || []) if (s.url) urls.add(normalizeUrl(s.url));
-        snippets.push([item.title, item.title_zh, item.summary_zh || item.summary].filter(Boolean).join(' / '));
+        for (const take of [item.cat_take_zh, item.cat_take_en].filter(Boolean)) takes.add(String(take).replace(/\s+/g, '').toLowerCase());
+        snippets.push([item.title, item.title_zh, item.summary_zh || item.summary, item.cat_take_zh, item.cat_take_en].filter(Boolean).join(' / '));
       }
     } catch {}
   }
-  return { urls, snippets: snippets.filter(Boolean).slice(-80) };
+  return { urls, snippets: snippets.filter(Boolean).slice(-80), takes };
 }
 
 async function generateBriefings(skipTitles, digest, coverage) {
@@ -224,6 +226,10 @@ RULES:
 - Cite 1-3 real source URLs per story (the pages you actually found).
 - Titles: specific and factual, 45-65 characters, no clickbait.
 - Mark EXACTLY ONE story as featured (the day's most consequential) and give a one-line reason in both languages.
+- Write a distinct "Uncle Cat take" for every briefing. It is an editorial judgment, not another summary: anchor it in a concrete fact unique to this story (an entity, capability, number, constraint, buyer, loser, or unresolved risk), then make a clear call about what is genuinely important, overstated, underpriced, or still unproven.
+- The take must not be reusable on unrelated news. Avoid slogan templates and recurring filler such as "the real test is...", "not X but Y", "demos are cheap", "regulation feels slow", "power, chips and delivery", or generic claims about capability/cost/distribution. Vary the angle and sentence structure from the recent takes included in the skip context.
+- "cat_take_zh": native Chinese, 22-46 Chinese characters, specific and opinionated without pretending personal experience. Do not include the "猫叔：" prefix.
+- "cat_take_en": natural English conveying the same judgment in 12-24 words. Do not include the "Uncle Cat:" prefix.
 - Skip any story matching these already-published titles: ${skipTitles.length ? skipTitles.join(' | ') : '(none)'}
 - Also skip anything whose facts or source URLs already appeared in recent briefings or radar: ${coverage.snippets.length ? coverage.snippets.join(' | ') : '(none)'}
 
@@ -241,6 +247,8 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
   "featured": false,
   "featured_reason": "only on the featured story: one line on why it leads today",
   "featured_reason_zh": "仅推荐条目：一句话推荐理由",
+  "cat_take_zh": "基于本条新闻具体事实的鲜明判断，不写套话",
+  "cat_take_en": "a specific editorial judgment grounded in this story",
   "date": "${today}",
   "published": "the story's ORIGINAL publication moment as ISO 8601 UTC, e.g. 2026-01-01T14:30:00Z — copy from the candidate list when the story comes from it; date-only YYYY-MM-DD if the exact time cannot be found"
 }`;
@@ -266,6 +274,13 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
     }
     a.tags = a.tags || [];
     a.sources = a.sources || [];
+    for (const field of ['cat_take_zh', 'cat_take_en']) {
+      const normalized = String(a[field] || '').replace(/\s+/g, '').toLowerCase();
+      if (normalized && coverage.takes.has(normalized)) {
+        console.log(`  ! ${field} 与近期短评重复，改用本篇推荐理由: ${a.title}`);
+        delete a[field];
+      } else if (normalized) coverage.takes.add(normalized);
+    }
     const sourceUrls = a.sources.map((s) => normalizeUrl(s.url)).filter(Boolean);
     if (isEvening && a.date !== today) {
       console.log(`  - 跳过非本日晚报(${a.date}): ${a.title}`);

@@ -254,65 +254,14 @@ function hasAny(article, terms) {
 }
 
 function takeFor(lang, article) {
-  const rules = [
-    {
-      hit: ['jailbreak', 'security', 'safety', 'cyber', 'incident', 'eval', '越狱', '安全', '事故', '网络安全'],
-      zh: '别把安全当公关页脚；模型越能干活，事故就越像运维工单。',
-      en: 'Safety is no longer slideware; it is production risk.',
-    },
-    {
-      hit: ['policy', 'regulation', 'law', 'court', 'white house', 'ai act', 'ban', 'audit', '监管', '政策', '法院', '白宫', '法案', '审计'],
-      zh: '监管看着慢，一旦变成准入门槛，商业计划就得重写。',
-      en: 'Regulation feels slow until it becomes a launch gate.',
-    },
-    {
-      hit: ['compute', 'data center', 'datacenter', 'power', 'grid', 'electricity', 'capacity', '算力', '数据中心', '电力', '并网', '接电'],
-      zh: '模型故事讲到最后，还是谁有电、谁有卡、谁先交付。',
-      en: 'The AI story still ends at power, chips, and delivery dates.',
-    },
-    {
-      hit: ['chip', 'silicon', 'gpu', 'blackwell', 'cuda', 'b200', 'mi300', 'mi400', '芯片', '半导体', '显卡', '算子'],
-      zh: '买卡买到想自己造卡，AI 公司终于活成了半导体公司。',
-      en: 'When buying chips is not enough, AI labs start becoming chip companies.',
-    },
-    {
-      hit: ['ceo', 'quit', 'quits', 'exit', 'exits', 'resign', 'leaves', 'leadership', 'talent', 'brain drain', '卸任', '离职', '换帅', '掌舵人', '核心研究者'],
-      zh: '顶级实验室最怕的不是少 GPU，是关键人同一天离场。',
-      en: 'Talent leaving on the same day is not a footnote; it is smoke from the engine room.',
-    },
-    {
-      hit: ['open-source', 'open source', 'open-weight', 'weights', 'apache', 'mit license', '开源', '权重', '许可证'],
-      zh: '开源不是做慈善，是把价格、生态和执行力拉到台面上硬拼。',
-      en: 'Open source is not charity; it is a pricing and ecosystem weapon.',
-    },
-    {
-      hit: ['agent', 'agents', 'coding', 'devin', 'cursor', 'copilot', 'workspace', '智能体', '编程', '工作流'],
-      zh: 'Agent 别再只会演示，会省人、省钱、省时间才算数。',
-      en: 'Agent demos are cheap; saved labor and saved time are the scoreboard.',
-    },
-    {
-      hit: ['video', 'image', 'audio', 'aigc', 'runway', 'flux', 'pika', 'canva', '视频', '图像', '音频', '生成'],
-      zh: 'Demo 好看不稀奇，能稳定交付才是创作者会付钱的地方。',
-      en: 'Pretty demos are table stakes; reliable output is where money shows up.',
-    },
-    {
-      hit: ['benchmark', 'leaderboard', 'arena', 'index', 'rank', 'score', '榜单', '评测', '排名', '分数'],
-      zh: '榜单不是圣旨，但连续爬升通常说明真有东西在迭代。',
-      en: 'Leaderboards are not scripture, but movement shows who is iterating.',
-    },
-    {
-      hit: ['funding', 'ipo', 'valuation', 'acquire', 'acquisition', 'deal', '融资', '估值', '收购', '上市', '交易'],
-      zh: '估值故事可以很美，账单和客户留存才是真刀真枪。',
-      en: 'Valuation is theater; customer bills are the receipt.',
-    },
-  ];
-  const rule = rules.find((item) => hasAny(article, item.hit));
   if (lang === 'zh') {
-    const text = rule?.zh || '这不是单点更新，是能力、成本和入口在重新分配。';
-    return `猫叔：${text}`;
+    const generated = cleanLine(article.cat_take_zh || '').replace(/^猫叔[：:]\s*/, '');
+    const fallback = cleanLine(article.featured_reason_zh || article.summary_zh || storyTitle(article, 'zh'));
+    return `猫叔：${trimWeighted(generated || fallback, 92)}`;
   }
-  const text = rule?.en || 'This is a power shift in capability, cost, and distribution.';
-  return `Uncle Cat: ${text}`;
+  const generated = cleanLine(article.cat_take_en || '').replace(/^Uncle Cat[：:]\s*/i, '');
+  const fallback = cleanLine(article.featured_reason || article.summary || storyTitle(article, 'en'));
+  return `Uncle Cat: ${trimWeighted(generated || fallback, 120)}`;
 }
 
 function hookFor(lang, article) {
