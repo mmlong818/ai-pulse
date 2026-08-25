@@ -49,6 +49,76 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/gradio-visual-ai-workflows.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/gradio-visual-ai-workflows.html",
+      "title": "Gradio推出可视化工作流，一张图直接部署API",
+      "summary": "Gradio新增Workflow功能，可将多步骤AI流程变成可检查的拖拽画布，并同步生成REST接口和可部署应用。",
+      "content_text": "## 让流程图直接成为产品界面\n\nHugging Face为Gradio推出`gr.Workflow`，可把多步骤AI应用表示为可视化图结构。开发者通过带类型的节点定义流程，使用者则获得一张拖拽画布；每个步骤都能单独运行，所有中间结果也会保留在界面上。\n\n工作流由三类节点组成：接收输入的引用节点、执行任务的算子节点，以及代表输出的结果节点。算子可以调用普通Python函数、Hugging Face推理服务中的模型、已有Gradio Space，或Hub数据集中的记录。互不依赖的分支能够并行执行，因此同一条提示词可以同时触发多种图像生成、转换或分析任务。\n\n首批示例包括调用Qwen-Image-Edit编辑图片；将FLUX生图、背景移除、语音合成和大模型串联成媒体工作室；以及并行生成数据预览、字段统计和分布图的数据集分析工具。另一个示例则在Space内部通过Diffusers运行LTX-Video，并只在对应节点执行时申请ZeroGPU算力。\n\n## 一张图对应三种使用方式\n\n同一套工作流会同时成为可视化应用、REST API和可部署的Hugging Face Space。每个命名输出都会自动获得独立接口，开发者既可通过Gradio的Python客户端调用，也可直接发送HTTP请求。这意味着团队能够单独开放某个中间结果，无需另建服务，也不必强制调用方完整执行整张流程图。\n\n这一变化对智能体和生成式媒体开发尤其有价值，因为故障往往发生在模型之间的数据传递环节，而非某一个模型内部。中间产物可见有助于快速定位问题，带类型的连接则能减少组件输入输出不匹配。自动生成接口，也缩短了实验原型变成可复用服务的距离。\n\n尚待观察的是，这套可视化抽象能否妥善覆盖身份验证、失败重试、版本管理和有状态执行等生产要求。Gradio已经显著降低了组合、检查和分享AI流程的门槛，但它能否承载长期运行的系统，仍取决于流程图外围的运维控制。",
+      "date_published": "2026-08-25T00:00:00.000Z",
+      "date_modified": "2026-08-25T11:00:03.370Z",
+      "tags": [
+        "开源",
+        "Agent",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gradio-visual-ai-workflows.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gradio-visual-ai-workflows.html",
+        "source_published_at": "2026-08-25T00:00:00.000Z",
+        "site_published_at": "2026-08-25T11:00:03.370Z",
+        "sources": [
+          {
+            "title": "Wire It, Run It, Deploy It: AI Workflows in Gradio",
+            "url": "https://huggingface.co/blog/gradio-workflow-guide"
+          },
+          {
+            "title": "Introducing Workflow — make your AI pipeline the interface",
+            "url": "https://x.com/Gradio/status/2092163349761147256"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-russian-fake-think-tank.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-russian-fake-think-tank.html",
+      "title": "OpenAI揭露俄方借虚假智库搭建跨平台影响网络",
+      "summary": "OpenAI封禁一批与俄罗斯秘密影响行动相关的账户，该网络借ChatGPT推广虚构智库，并盗用学术成果包装权威性。",
+      "content_text": "## 用虚构机构制造权威\n\nOpenAI披露并处置了一项此前未被公开报道的俄罗斯影响行动。该行动围绕所谓“国际伯克研究所”（IBI）展开，将其包装成总部位于以色列的专家共同体。OpenAI判断，相关ChatGPT账户极可能来自俄罗斯，并通过VPN绕过服务地区限制。\n\n运营者主要利用ChatGPT生成英文和德文社交媒体内容，再发布到X、LinkedIn、Facebook、Substack和Telegram。其俄文提示词明确要求模型消除暴露使用者来源的语言痕迹。另有一名运营者为十余个Telegram频道制作标识，这些频道分别面向德国、美国、法国、波兰和土耳其受众。\n\n真正更具影响力的部分并不在ChatGPT内部。IBI网站罗列所谓专家、学术文章和一套自创的“主权指数”，借此赞扬俄罗斯并贬低西方政府。OpenAI抽查网站关联的36篇文章，发现其中34篇复制自其他来源，部分文章甚至被冠以错误作者。该机构还宣称拥有以色列地址，而其推广网络则刻意掩盖俄罗斯背景。\n\n## 传播有限，基础设施却可复用\n\nOpenAI表示，多数单条帖子关注度不高，但部分关联Telegram频道拥有1万至2万名订阅者。按布鲁金斯学会的传播突破量表，该行动处于第三级的较低位置，即已覆盖多个平台，并在一定程度上触达真实受众。对于若干可能曾以IBI名义参会或投稿的真实个人，OpenAI尚无法确认其与俄罗斯运营者之间的关系。\n\n这起事件的重要性在于，生成式AI并未直接承担核心宣传内容的生产，而是为一套更大的“权威制造”体系提供低成本、多语言推广。被盗用的论文、虚构的专家身份和看似独立的账号可以相互背书，即使主站内容并非AI生成，也足以让操纵行为更难识别。",
+      "date_published": "2026-08-25T00:00:00.000Z",
+      "date_modified": "2026-08-25T11:00:03.370Z",
+      "tags": [
+        "安全",
+        "政策",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-russian-fake-think-tank.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-russian-fake-think-tank.html",
+        "source_published_at": "2026-08-25T00:00:00.000Z",
+        "site_published_at": "2026-08-25T11:00:03.370Z",
+        "sources": [
+          {
+            "title": "Disrupting a new covert influence campaign from Russia",
+            "url": "https://openai.com/index/disrupting-malicious-uses-of-ai-influence-campaign-russia"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/thomson-reuters-launches-own-model.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/thomson-reuters-launches-own-model.html",
       "title": "汤森路透投入4000万美元推出专业大模型",
@@ -367,7 +437,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-ruby-hdr-video.html",
       "title": "Runway推出Ruby，将生成视频转为专业HDR母版",
       "summary": "Runway新模型可把上传或生成的SDR视频转换为高位深HDR文件，进一步进入专业调色与后期制作流程。",
-      "content_text": "## 生成视频开始进入专业收尾环节\n\nRunway推出Ruby模型，可将标准动态范围视频转换为高动态范围输出。它既能处理用户已经上传的素材，也能转换Runway平台生成的视频，并可导出最高16位EXR图像序列，以及10位或12位ProRes、HEVC文件。\n\nRuby支持BT.2020色彩空间，并覆盖PQ、HLG等专业传递函数。这些规格能够承载比普通网络视频更宽的亮度和色彩范围；EXR序列则提供视觉特效、合成和调色流程所需的高位深及逐帧控制能力。目前该模型面向Max和Enterprise客户开放。\n\nRuby并不是以文本生成视频为核心的新模型，而是瞄准制作链条的后段：把SDR素材转换成能够进入专业剪辑、合成和交付系统的文件。这也决定了它的评价标准。可靠的HDR转换需要补充原始素材未完整记录的高光与色彩信息，同时避免相邻画面出现亮度跳变、光晕或偏色。\n\n目前尚无独立测试证明，Ruby转换的画面能够保留与原生HDR拍摄或渲染素材相同的场景信息。因此，其输出更适合被理解为模型对SDR输入的重新生成与扩展，而不是恢复摄像机原本捕获但遗失的数据。\n\n## 为何重要\n\n生成视频厂商过去主要围绕提示词遵循、运动表现和画面质量竞争。Ruby把竞争推进到后期制作基础设施：能否兼容行业既有格式，往往决定AI视频只能用于社交媒体样片，还是能够进入正式项目。\n\n对制作团队而言，它有望缩短AI生成片段进入调色或合成软件的路径，减少额外转换环节。更广泛地看，AIGC平台正从单纯生成素材，扩展为覆盖完整制作流程的工具。Ruby能否形成长期价值，将取决于跨帧稳定性、色彩管理的可预测性，以及专业调色师是否敢于把它纳入真实项目。",
+      "content_text": "## 生成视频开始进入专业收尾环节\n\nRunway推出Ruby模型，可将标准动态范围视频转换为高动态范围输出。它既能处理用户已经上传的素材，也能转换Runway平台生成的视频，并可导出最高16位EXR图像序列，以及10位或12位ProRes、HEVC文件。\n\nRuby支持BT.2020色彩空间，并覆盖PQ、HLG等专业传递函数。这些规格能够承载比普通网络视频更宽的亮度和色彩范围；EXR序列则提供视觉特效、合成和调色流程所需的高位深及逐帧控制能力。根据Runway当前的产品文档，Ruby面向Max及以上套餐用户和全部Runway Dev账户开放。\n\nRuby并不是以文本生成视频为核心的新模型，而是瞄准制作链条的后段：把SDR素材转换成能够进入专业剪辑、合成和交付系统的文件。这也决定了它的评价标准。可靠的HDR转换需要补充原始素材未完整记录的高光与色彩信息，同时避免相邻画面出现亮度跳变、光晕或偏色。\n\n目前尚无独立测试证明，Ruby转换的画面能够保留与原生HDR拍摄或渲染素材相同的场景信息。因此，其输出更适合被理解为模型对SDR输入的重新生成与扩展，而不是恢复摄像机原本捕获但遗失的数据。\n\n## 为何重要\n\n生成视频厂商过去主要围绕提示词遵循、运动表现和画面质量竞争。Ruby把竞争推进到后期制作基础设施：能否兼容行业既有格式，往往决定AI视频只能用于社交媒体样片，还是能够进入正式项目。\n\n对制作团队而言，它有望缩短AI生成片段进入调色或合成软件的路径，减少额外转换环节。更广泛地看，AIGC平台正从单纯生成素材，扩展为覆盖完整制作流程的工具。Ruby能否形成长期价值，将取决于跨帧稳定性、色彩管理的可预测性，以及专业调色师是否敢于把它纳入真实项目。",
       "date_published": "2026-08-21T14:24:00.000Z",
       "date_modified": "2026-08-21T23:00:03.982Z",
       "tags": [
@@ -1848,87 +1918,6 @@
           {
             "title": "Sakana Fugu — Multi-Agent System as a Model",
             "url": "https://sakana.ai/fugu/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/twitch-ai-training-optout.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/twitch-ai-training-optout.html",
-      "title": "Twitch 开放 AI 训练退出选项，但默认仍允许使用",
-      "summary": "Twitch 允许主播拒绝亚马逊使用频道内容训练生成式 AI，但默认设置仍将符合条件的数据纳入训练范围。",
-      "content_text": "## 不主动关闭，就可能进入训练集\n\nTwitch 新增隐私控制，允许主播阻止其频道内容被用于训练亚马逊的生成式 AI 模型。真正关键的是默认规则：如果创作者不希望符合条件的直播、点播视频、剪辑、频道文字以及相关聊天消息进入训练流程，就必须自行关闭该选项。\n\n这一设置位于 Twitch 安全与隐私页面的“生成式 AI 训练”栏目。Twitch 表示，关闭后将停止把该频道内容用于未来的生成模型训练，并删除此前为这一用途提供的副本。如果用户在其他主播的频道中留言，能否用于训练则由频道所有者的选择决定。退出训练并不会阻止 Twitch 继续把机器学习用于内容推荐、社区治理、赞助工具或隐私条款覆盖的其他平台功能。\n\nTwitch 同时承认，其向亚马逊提供内容已经持续多年。因此，这次变化并非训练刚刚开始，而是用户终于获得了一个明确的退出入口。这段历史也让“删除既有副本”的承诺及其实际覆盖范围更加重要。目前公司没有公开说明哪些亚马逊模型使用过 Twitch 数据、转移了多少内容，也没有披露单个创作者的数据如何影响模型。\n\n## 为何重要\n\n直播档案同时包含长视频、同步语音、游戏或现实动作、主播解说和观众对话，是多模态模型理解长时间事件所需的稀缺数据。但这些内容也包括人脸、声音、受版权保护的素材，以及从未直接与亚马逊协商过的聊天参与者贡献。因此，Twitch 的做法将成为一个重要案例：平台能否依靠默认同意，把整个创作者生态重新用于 AI 训练。退出开关给了主播一个实际可用的工具，却仍把责任放在个人身上，也无法终结有关报酬、知情同意和聊天参与者权利的争议。",
-      "date_published": "2026-08-12T17:29:00.000Z",
-      "date_modified": "2026-08-12T23:00:03.612Z",
-      "tags": [
-        "政策",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/twitch-ai-training-optout.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/twitch-ai-training-optout.html",
-        "source_published_at": "2026-08-12T17:29:00.000Z",
-        "site_published_at": "2026-08-12T23:00:03.612Z",
-        "sources": [
-          {
-            "title": "Twitch Streamers Can Now Opt Out from Training Amazon’s AI",
-            "url": "https://www.theverge.com/tech/979112/twitch-streamers-can-now-opt-out-from-training-amazons-ai"
-          },
-          {
-            "title": "Amazon Will Train on Twitch Content Unless Streamers Opt Out",
-            "url": "https://techcrunch.com/2026/08/12/amazon-will-train-on-twitch-streamers-content-by-default-unless-they-opt-out/"
-          },
-          {
-            "title": "Twitch Security and Privacy Settings",
-            "url": "https://www.twitch.tv/settings/security#settings-security-page-ai-consent"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-adds-content-watermarks.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-adds-content-watermarks.html",
-      "title": "Anthropic 为 Claude 文本与文件加入隐形标记",
-      "summary": "随着欧盟透明度规则生效，Claude 开始在全球范围为生成文本加入模型级隐形水印，并为受支持文件写入经过签名的 C2PA 来源凭证。",
-      "content_text": "## 文本水印与文件凭证并行\n\nAnthropic 开始为受支持的 Claude 模型生成内容添加标记，但文本和文件采用不同技术。文本水印是在模型选择 token 时嵌入人眼不可见的统计信号；PNG、JPEG 和 SVG 等受支持文件，则写入基于 C2PA 标准、带有密码学签名的来源元数据。\n\n2026 年 8 月 2 日及以后推出的受支持 Claude 模型从发布起便会携带这些标记，无论模型在何处使用，包括 Claude 自有产品、API 及受支持的第三方平台。Anthropic 表示，将在截至 2026 年 12 月 2 日的过渡期内让此前推出的模型逐步符合要求。此次部署用于落实 8 月 2 日开始适用的欧盟《人工智能法》合成内容透明度要求，但并不只限于欧盟用户。Anthropic 称，文本标记不会改变答案的可见含义和质量。不过，要得到可靠检测结果，通常需要足够长且没有经过大幅修改的文本样本，更广泛的检测能力仍在开发中。\n\n两种机制能够证明的事情并不相同。文本水印只能提供概率性证据，表明某段文字曾由兼容的 Claude 模型处理；它无法证明是谁提出请求、底层观点或原文是否由 Claude 创作，也不能证明每一句都来自 Claude。C2PA 凭证则记录文件声明的来源，并允许软件检查签名后是否被改动。截图、重新编码或不支持该标准的平台可能移除元数据；改写、翻译和大量编辑也会削弱文本水印。两者都不是识别所有 AI 内容的万能检测器。\n\n因此，这项功能不应被直接当作抄袭或作者身份的最终裁决工具。学校、出版社或雇主若据此作出决定，仍需要其他证据与申诉机制。它更适合作为一层基础设施，与主动披露、账号信息和平台审核共同使用。\n\n## 为什么重要\n\nAnthropic 是首批把标记机制扩展到普通生成文本、而非只处理图片的前沿模型公司之一。Claude 的庞大使用规模，将检验模型级水印能否经受日常编辑，同时避免造成不可接受的误判。此举也说明欧盟法规可能影响全球产品设计：Anthropic 选择在受支持的 Claude 分发渠道中统一部署标记，而不是只为欧洲维护一套生成系统。最终成效不只取决于水印是否存在，更取决于验证工具能否互通，以及各机构是否克制地使用检测结果。",
-      "date_published": "2026-08-11T12:13:00.000Z",
-      "date_modified": "2026-08-11T23:00:03.909Z",
-      "tags": [
-        "安全",
-        "政策",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/claude-adds-content-watermarks.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-adds-content-watermarks.html",
-        "source_published_at": "2026-08-11T12:13:00.000Z",
-        "site_published_at": "2026-08-11T23:00:03.909Z",
-        "sources": [
-          {
-            "title": "How Claude marks AI-generated content",
-            "url": "https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content"
-          },
-          {
-            "title": "Claude will apply invisible watermarks to AI text and images",
-            "url": "https://www.theverge.com/ai-artificial-intelligence/977823/anthropic-claude-ai-watermarks-c2pa-text-images"
-          },
-          {
-            "title": "Anthropic says it will watermark text generated by its AI models",
-            "url": "https://techcrunch.com/2026/08/11/anthropic-says-it-will-watermark-text-generated-by-its-ai-models/"
           }
         ]
       }

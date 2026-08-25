@@ -49,6 +49,76 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/gradio-visual-ai-workflows.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/gradio-visual-ai-workflows.html",
+      "title": "Gradio Adds Visual Workflows That Deploy as APIs",
+      "summary": "Gradio’s new Workflow interface turns typed AI pipelines into inspectable canvases, callable REST endpoints and deployable applications.",
+      "content_text": "## The pipeline becomes the interface\n\nHugging Face has introduced `gr.Workflow`, a Gradio capability for representing multi-step AI applications as visual graphs. Developers define a pipeline through typed nodes, while users receive a drag-and-drop canvas on which each step can run independently and every intermediate result remains visible.\n\nA workflow contains references for inputs, operators that perform work and subjects representing outputs. Operators may invoke ordinary Python functions, models available through Hugging Face Inference Providers, existing Gradio Spaces or rows from Hub datasets. Independent branches can execute in parallel, allowing one prompt to trigger several image generators, transformations or analytical tasks at once.\n\nThe launch examples span image editing with Qwen-Image-Edit, a media studio connecting FLUX image generation with background removal, speech synthesis and an LLM, and a dataset profiler that calculates previews, statistics and distributions concurrently. Another demonstration loads LTX-Video through Diffusers inside a Space and obtains ZeroGPU capacity only when its node runs.\n\n## One graph, three operating surfaces\n\nThe same workflow is exposed as a visual application, a REST API and a deployable Hugging Face Space. Every named output automatically becomes its own endpoint, callable through the Gradio Python client or ordinary HTTP requests. Developers can therefore expose a useful intermediate result without building a separate service or forcing every caller to execute the entire graph.\n\nThis matters for agent and generative-media development because pipeline failures often hide between model calls rather than inside a single model. Keeping intermediate artifacts visible can shorten diagnosis, while typed connections reduce accidental mismatches between components. The automatic API surface also narrows the gap between an experiment and a reusable service.\n\nThe remaining question is how well the visual abstraction handles production concerns such as authentication, retries, versioning and stateful execution. Gradio has made composable AI workflows substantially easier to inspect and share; whether teams adopt the canvas for durable systems will depend on the operational controls surrounding those graphs.",
+      "date_published": "2026-08-25T00:00:00.000Z",
+      "date_modified": "2026-08-25T11:00:03.370Z",
+      "tags": [
+        "Open Source",
+        "Agents",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gradio-visual-ai-workflows.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gradio-visual-ai-workflows.html",
+        "source_published_at": "2026-08-25T00:00:00.000Z",
+        "site_published_at": "2026-08-25T11:00:03.370Z",
+        "sources": [
+          {
+            "title": "Wire It, Run It, Deploy It: AI Workflows in Gradio",
+            "url": "https://huggingface.co/blog/gradio-workflow-guide"
+          },
+          {
+            "title": "Introducing Workflow — make your AI pipeline the interface",
+            "url": "https://x.com/Gradio/status/2092163349761147256"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-russian-fake-think-tank.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-russian-fake-think-tank.html",
+      "title": "OpenAI Exposes Russian Network Built Around Fake Think Tank",
+      "summary": "OpenAI banned accounts tied to a covert Russian campaign that used ChatGPT to promote a fabricated institute and stolen scholarship.",
+      "content_text": "## A manufactured source of authority\n\nOpenAI says it disrupted a previously unreported Russian influence operation that used ChatGPT to promote the International Burke Institute, or IBI, a purported Israel-based expert community. The company banned a cluster of accounts that it assessed as very likely originating in Russia and accessing its service through VPNs.\n\nThe operators used ChatGPT chiefly to produce English and German social-media posts, comments and promotional material distributed across X, LinkedIn, Facebook, Substack and Telegram. Prompts written in Russian instructed the model to remove linguistic clues about the users’ origin. One operator also generated logos for a dozen Telegram channels targeting audiences in Germany, the United States, France, Poland and Türkiye.\n\nThe campaign’s more consequential component existed outside ChatGPT. IBI presented named experts, academic-looking articles and a proprietary “sovereignty index” that praised Russia while attacking Western governments. OpenAI reviewed 36 articles associated with the site and found 34 had been copied from elsewhere; some were assigned to the wrong authors. The institute also claimed an Israeli address, while its promotional network tried to conceal Russian involvement.\n\n## Limited reach, reusable infrastructure\n\nOpenAI said most individual posts attracted little attention, although some related Telegram channels had between 10,000 and 20,000 subscribers. It placed the operation at the lower end of Category Three on the Brookings Breakout Scale, indicating activity across several platforms with some exposure to authentic audiences. The company did not establish the relationship between the Russian operators and several real individuals who may have represented IBI at conferences or in article submissions.\n\nThe case matters because generative AI was not the campaign’s central propaganda engine. It supplied inexpensive multilingual promotion for a larger apparatus designed to manufacture institutional credibility. That division of labor makes detection harder: copied scholarship, invented affiliations and apparently independent social accounts can lend authority to narratives without requiring AI-generated flagship content.",
+      "date_published": "2026-08-25T00:00:00.000Z",
+      "date_modified": "2026-08-25T11:00:03.370Z",
+      "tags": [
+        "Safety",
+        "Policy",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-russian-fake-think-tank.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-russian-fake-think-tank.html",
+        "source_published_at": "2026-08-25T00:00:00.000Z",
+        "site_published_at": "2026-08-25T11:00:03.370Z",
+        "sources": [
+          {
+            "title": "Disrupting a new covert influence campaign from Russia",
+            "url": "https://openai.com/index/disrupting-malicious-uses-of-ai-influence-campaign-russia"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/thomson-reuters-launches-own-model.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/thomson-reuters-launches-own-model.html",
       "title": "Thomson Reuters Launches $40M Professional AI Model",
@@ -367,7 +437,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/articles/runway-ruby-hdr-video.html",
       "title": "Runway Ruby Converts Generated Video Into HDR Masters",
       "summary": "Runway’s new model converts uploaded or generated SDR footage into high-bit-depth HDR formats designed for professional post-production.",
-      "content_text": "## Generative video enters the finishing pipeline\n\nRunway has introduced Ruby, a model that converts standard-dynamic-range video into high-dynamic-range output. It can process footage already uploaded to Runway as well as clips generated on the platform, and export up to 16-bit EXR image sequences or 10- and 12-bit ProRes and HEVC files.\n\nThe service supports the BT.2020 color space and professional transfer functions including PQ and HLG. These specifications matter because they preserve a substantially wider brightness and color range than ordinary web video, while EXR sequences provide the high bit depth and frame-level control expected in visual-effects and color-grading pipelines. Ruby is available to Max and Enterprise customers.\n\nRuby is not principally a new text-to-video generator. It addresses a later production stage: translating SDR source material into files that can move through professional editing, compositing and delivery systems. That distinction also shapes how its output should be assessed. A convincing HDR conversion must reconstruct highlight and color information that was not fully represented in the source, while avoiding unstable brightness, halos or color shifts from frame to frame.\n\nRunway has not established through independent testing that converted footage contains the same recoverable scene information as material captured or rendered natively in HDR. The model’s exports should therefore be treated as generated interpretations of the SDR input, not as recovery of original sensor data.\n\n## Why it matters\n\nGenerative-video companies have largely competed on prompt adherence, motion and visual fidelity. Ruby moves the contest into post-production infrastructure, where compatibility with established formats can determine whether generated footage is useful beyond social media prototypes.\n\nFor studios, the appeal is a shorter path from an AI-generated clip to a grading or compositing suite, without first relying on a separate conversion service. More broadly, the release shows AIGC platforms expanding from asset generation toward end-to-end production workflows. Its lasting value will depend less on spectacular demonstrations than on temporal consistency, predictable color management and whether professional colorists can safely integrate the output into real projects.",
+      "content_text": "## Generative video enters the finishing pipeline\n\nRunway has introduced Ruby, a model that converts standard-dynamic-range video into high-dynamic-range output. It can process footage already uploaded to Runway as well as clips generated on the platform, and export up to 16-bit EXR image sequences or 10- and 12-bit ProRes and HEVC files.\n\nThe service supports the BT.2020 color space and professional transfer functions including PQ and HLG. These specifications matter because they preserve a substantially wider brightness and color range than ordinary web video, while EXR sequences provide the high bit depth and frame-level control expected in visual-effects and color-grading pipelines. According to Runway’s current documentation, Ruby is available on the Max plan or higher and to all Runway Dev accounts.\n\nRuby is not principally a new text-to-video generator. It addresses a later production stage: translating SDR source material into files that can move through professional editing, compositing and delivery systems. That distinction also shapes how its output should be assessed. A convincing HDR conversion must reconstruct highlight and color information that was not fully represented in the source, while avoiding unstable brightness, halos or color shifts from frame to frame.\n\nRunway has not established through independent testing that converted footage contains the same recoverable scene information as material captured or rendered natively in HDR. The model’s exports should therefore be treated as generated interpretations of the SDR input, not as recovery of original sensor data.\n\n## Why it matters\n\nGenerative-video companies have largely competed on prompt adherence, motion and visual fidelity. Ruby moves the contest into post-production infrastructure, where compatibility with established formats can determine whether generated footage is useful beyond social media prototypes.\n\nFor studios, the appeal is a shorter path from an AI-generated clip to a grading or compositing suite, without first relying on a separate conversion service. More broadly, the release shows AIGC platforms expanding from asset generation toward end-to-end production workflows. Its lasting value will depend less on spectacular demonstrations than on temporal consistency, predictable color management and whether professional colorists can safely integrate the output into real projects.",
       "date_published": "2026-08-21T14:24:00.000Z",
       "date_modified": "2026-08-21T23:00:03.982Z",
       "tags": [
@@ -1848,87 +1918,6 @@
           {
             "title": "Sakana Fugu — Multi-Agent System as a Model",
             "url": "https://sakana.ai/fugu/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/twitch-ai-training-optout.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/twitch-ai-training-optout.html",
-      "title": "Twitch Makes Streamer Data Available for Amazon AI",
-      "summary": "Twitch now lets creators refuse generative-AI training, but its default setting leaves eligible channel content available to Amazon.",
-      "content_text": "## Training is on unless creators object\n\nTwitch has added a privacy control allowing streamers to stop their channel content from being used to train Amazon’s generative-AI models. The consequential detail is the default: creators must switch the setting off if they do not want eligible broadcasts, videos on demand, clips, channel text and associated chat messages included in training.\n\nThe control appears under “Training for Generative AI” in Twitch’s security and privacy settings. Twitch says changing it prevents future use of a channel’s content for generative-model training and triggers deletion of copies previously supplied for that purpose. For messages written in another creator’s chat, the channel owner’s preference governs whether the material is eligible. The opt-out does not stop Twitch from applying machine learning to recommendations, moderation, sponsorship tools or other platform functions covered by its broader privacy terms.\n\nTwitch also says it has been providing content to Amazon for years, meaning the new development is the availability of a user control rather than the beginning of training itself. That history makes the deletion promise and its operational scope particularly important. The company has not publicly itemized which Amazon models used Twitch data, how much content was transferred or how individual creators’ material influenced those systems.\n\n## Why it matters\n\nLivestream archives combine several forms of scarce training material: long-form video, synchronized speech, gameplay or real-world action, creator commentary and audience conversation. They are potentially valuable for multimodal models that must understand events over time, but they also contain faces, voices, copyrighted media and contributions from people who never negotiated directly with Amazon. Twitch’s policy therefore becomes a major test of whether platforms can repurpose creator ecosystems for AI through default consent. The opt-out gives creators a practical lever, yet it leaves the burden on individuals and is unlikely to settle wider disputes over compensation, informed consent and the rights of chat participants.",
-      "date_published": "2026-08-12T17:29:00.000Z",
-      "date_modified": "2026-08-12T23:00:03.612Z",
-      "tags": [
-        "Policy",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/twitch-ai-training-optout.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/twitch-ai-training-optout.html",
-        "source_published_at": "2026-08-12T17:29:00.000Z",
-        "site_published_at": "2026-08-12T23:00:03.612Z",
-        "sources": [
-          {
-            "title": "Twitch Streamers Can Now Opt Out from Training Amazon’s AI",
-            "url": "https://www.theverge.com/tech/979112/twitch-streamers-can-now-opt-out-from-training-amazons-ai"
-          },
-          {
-            "title": "Amazon Will Train on Twitch Content Unless Streamers Opt Out",
-            "url": "https://techcrunch.com/2026/08/12/amazon-will-train-on-twitch-streamers-content-by-default-unless-they-opt-out/"
-          },
-          {
-            "title": "Twitch Security and Privacy Settings",
-            "url": "https://www.twitch.tv/settings/security#settings-security-page-ai-consent"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/claude-adds-content-watermarks.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/claude-adds-content-watermarks.html",
-      "title": "Anthropic Adds Watermarks to Claude-Generated Content",
-      "summary": "Claude is adding model-level marks to generated text and signed C2PA provenance to supported files worldwide as EU transparency rules take effect.",
-      "content_text": "## Two forms of provenance\n\nAnthropic has begun marking content produced by supported Claude models, using different mechanisms for text and files. Generated text receives an imperceptible statistical signal introduced during token selection, while supported image and vector files—including PNG, JPEG and SVG outputs—carry cryptographically signed provenance metadata based on the C2PA standard.\n\nSupported Claude models launched on or after August 2, 2026 include the marks from launch wherever they are used, including across Claude products, APIs and supported third-party platforms. Anthropic says it plans to bring models launched before that date into compliance during a transition period ending December 2, 2026. The rollout supports the EU AI Act’s transparency requirements for synthetic content, which became applicable on August 2, but the implementation is not limited to users in the European Union. Anthropic says the text mark is designed not to alter the visible meaning or quality of an answer. Reliable detection generally requires a sufficiently long, substantially unedited sample, and broader detection access is still being developed.\n\nThe two technologies make different claims. A text watermark offers probabilistic evidence that a compatible Claude model processed a passage; it does not prove who requested it, whether Claude originated the underlying ideas or text, or whether every sentence came from Claude. C2PA credentials instead attach a signed history to a file, allowing software to verify its stated origin and whether the asset changed after signing. Metadata can be stripped by screenshots, re-encoding or unsupported platforms, while text marks can weaken through paraphrasing, translation or heavy editing. Neither mechanism is a universal detector for all AI content.\n\nThe launch therefore should not be treated as a definitive plagiarism or authorship test. Institutions using the signal for education, publishing or employment decisions would still need corroborating evidence and an appeals process. It is more useful as an infrastructure component that platforms can combine with disclosure rules, account information and content moderation.\n\n## Why it matters\n\nAnthropic is among the first frontier-model providers to apply marking broadly to ordinary generated text, not only images. At Claude’s scale, that creates a significant real-world test of whether model-level watermarking can survive normal editing without producing unacceptable false accusations. It also shows how the EU AI Act can shape global product behavior: Anthropic is implementing the marks across supported Claude distribution channels rather than maintaining a Europe-only generation system. Its success will depend less on the existence of a mark than on interoperable verification and restrained use of the resulting evidence.",
-      "date_published": "2026-08-11T12:13:00.000Z",
-      "date_modified": "2026-08-11T23:00:03.909Z",
-      "tags": [
-        "Safety",
-        "Policy",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/claude-adds-content-watermarks.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-adds-content-watermarks.html",
-        "source_published_at": "2026-08-11T12:13:00.000Z",
-        "site_published_at": "2026-08-11T23:00:03.909Z",
-        "sources": [
-          {
-            "title": "How Claude marks AI-generated content",
-            "url": "https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content"
-          },
-          {
-            "title": "Claude will apply invisible watermarks to AI text and images",
-            "url": "https://www.theverge.com/ai-artificial-intelligence/977823/anthropic-claude-ai-watermarks-c2pa-text-images"
-          },
-          {
-            "title": "Anthropic says it will watermark text generated by its AI models",
-            "url": "https://techcrunch.com/2026/08/11/anthropic-says-it-will-watermark-text-generated-by-its-ai-models/"
           }
         ]
       }

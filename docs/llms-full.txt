@@ -50,6 +50,69 @@ Sources:
   - Scoop: Generalist raises another $200 million for AI robotics: https://www.axios.com/2026/08/24/robotics-ai-generalist-200m
   - GEN-1.5: Embodied Foundation Models are One-Shot Learners: https://generalistai.com/blog/gen-1.5
 
+### Gradio Adds Visual Workflows That Deploy as APIs
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/gradio-visual-ai-workflows.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gradio-visual-ai-workflows.html
+- Source timestamp: 2026-08-25T00:00:00.000Z
+- Site timestamp: 2026-08-25T11:00:03.370Z
+- Tags: Open Source, Agents, AIGC
+
+Gradio’s new Workflow interface turns typed AI pipelines into inspectable canvases, callable REST endpoints and deployable applications.
+
+## The pipeline becomes the interface
+
+Hugging Face has introduced `gr.Workflow`, a Gradio capability for representing multi-step AI applications as visual graphs. Developers define a pipeline through typed nodes, while users receive a drag-and-drop canvas on which each step can run independently and every intermediate result remains visible.
+
+A workflow contains references for inputs, operators that perform work and subjects representing outputs. Operators may invoke ordinary Python functions, models available through Hugging Face Inference Providers, existing Gradio Spaces or rows from Hub datasets. Independent branches can execute in parallel, allowing one prompt to trigger several image generators, transformations or analytical tasks at once.
+
+The launch examples span image editing with Qwen-Image-Edit, a media studio connecting FLUX image generation with background removal, speech synthesis and an LLM, and a dataset profiler that calculates previews, statistics and distributions concurrently. Another demonstration loads LTX-Video through Diffusers inside a Space and obtains ZeroGPU capacity only when its node runs.
+
+## One graph, three operating surfaces
+
+The same workflow is exposed as a visual application, a REST API and a deployable Hugging Face Space. Every named output automatically becomes its own endpoint, callable through the Gradio Python client or ordinary HTTP requests. Developers can therefore expose a useful intermediate result without building a separate service or forcing every caller to execute the entire graph.
+
+This matters for agent and generative-media development because pipeline failures often hide between model calls rather than inside a single model. Keeping intermediate artifacts visible can shorten diagnosis, while typed connections reduce accidental mismatches between components. The automatic API surface also narrows the gap between an experiment and a reusable service.
+
+The remaining question is how well the visual abstraction handles production concerns such as authentication, retries, versioning and stateful execution. Gradio has made composable AI workflows substantially easier to inspect and share; whether teams adopt the canvas for durable systems will depend on the operational controls surrounding those graphs.
+
+Chinese title: Gradio推出可视化工作流，一张图直接部署API
+Chinese summary: Gradio新增Workflow功能，可将多步骤AI流程变成可检查的拖拽画布，并同步生成REST接口和可部署应用。
+
+Sources:
+  - Wire It, Run It, Deploy It: AI Workflows in Gradio: https://huggingface.co/blog/gradio-workflow-guide
+  - Introducing Workflow — make your AI pipeline the interface: https://x.com/Gradio/status/2092163349761147256
+
+### OpenAI Exposes Russian Network Built Around Fake Think Tank
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-russian-fake-think-tank.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-russian-fake-think-tank.html
+- Source timestamp: 2026-08-25T00:00:00.000Z
+- Site timestamp: 2026-08-25T11:00:03.370Z
+- Tags: Safety, Policy, Industry
+
+OpenAI banned accounts tied to a covert Russian campaign that used ChatGPT to promote a fabricated institute and stolen scholarship.
+
+## A manufactured source of authority
+
+OpenAI says it disrupted a previously unreported Russian influence operation that used ChatGPT to promote the International Burke Institute, or IBI, a purported Israel-based expert community. The company banned a cluster of accounts that it assessed as very likely originating in Russia and accessing its service through VPNs.
+
+The operators used ChatGPT chiefly to produce English and German social-media posts, comments and promotional material distributed across X, LinkedIn, Facebook, Substack and Telegram. Prompts written in Russian instructed the model to remove linguistic clues about the users’ origin. One operator also generated logos for a dozen Telegram channels targeting audiences in Germany, the United States, France, Poland and Türkiye.
+
+The campaign’s more consequential component existed outside ChatGPT. IBI presented named experts, academic-looking articles and a proprietary “sovereignty index” that praised Russia while attacking Western governments. OpenAI reviewed 36 articles associated with the site and found 34 had been copied from elsewhere; some were assigned to the wrong authors. The institute also claimed an Israeli address, while its promotional network tried to conceal Russian involvement.
+
+## Limited reach, reusable infrastructure
+
+OpenAI said most individual posts attracted little attention, although some related Telegram channels had between 10,000 and 20,000 subscribers. It placed the operation at the lower end of Category Three on the Brookings Breakout Scale, indicating activity across several platforms with some exposure to authentic audiences. The company did not establish the relationship between the Russian operators and several real individuals who may have represented IBI at conferences or in article submissions.
+
+The case matters because generative AI was not the campaign’s central propaganda engine. It supplied inexpensive multilingual promotion for a larger apparatus designed to manufacture institutional credibility. That division of labor makes detection harder: copied scholarship, invented affiliations and apparently independent social accounts can lend authority to narratives without requiring AI-generated flagship content.
+
+Chinese title: OpenAI揭露俄方借虚假智库搭建跨平台影响网络
+Chinese summary: OpenAI封禁一批与俄罗斯秘密影响行动相关的账户，该网络借ChatGPT推广虚构智库，并盗用学术成果包装权威性。
+
+Sources:
+  - Disrupting a new covert influence campaign from Russia: https://openai.com/index/disrupting-malicious-uses-of-ai-influence-campaign-russia
+
 ### Thomson Reuters Launches $40M Professional AI Model
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/thomson-reuters-launches-own-model.html
@@ -333,7 +396,7 @@ Runway’s new model converts uploaded or generated SDR footage into high-bit-de
 
 Runway has introduced Ruby, a model that converts standard-dynamic-range video into high-dynamic-range output. It can process footage already uploaded to Runway as well as clips generated on the platform, and export up to 16-bit EXR image sequences or 10- and 12-bit ProRes and HEVC files.
 
-The service supports the BT.2020 color space and professional transfer functions including PQ and HLG. These specifications matter because they preserve a substantially wider brightness and color range than ordinary web video, while EXR sequences provide the high bit depth and frame-level control expected in visual-effects and color-grading pipelines. Ruby is available to Max and Enterprise customers.
+The service supports the BT.2020 color space and professional transfer functions including PQ and HLG. These specifications matter because they preserve a substantially wider brightness and color range than ordinary web video, while EXR sequences provide the high bit depth and frame-level control expected in visual-effects and color-grading pipelines. According to Runway’s current documentation, Ruby is available on the Max plan or higher and to all Runway Dev accounts.
 
 Ruby is not principally a new text-to-video generator. It addresses a later production stage: translating SDR source material into files that can move through professional editing, compositing and delivery systems. That distinction also shapes how its output should be assessed. A convincing HDR conversion must reconstruct highlight and color information that was not fully represented in the source, while avoiding unstable brightness, halos or color shifts from frame to frame.
 
@@ -944,72 +1007,6 @@ Chinese summary: Meshy 发布新技术报告，解释最新系统如何把参考
 Sources:
   - Meshy 7 Technical Report Announcement: https://x.com/MeshyAI/status/2089299784951795758
 
-### Stripe Reportedly Agrees to Acquire OpenRouter for More Than $8 Billion
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/stripe-nears-openrouter-acquisition.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/stripe-nears-openrouter-acquisition.html
-- Source timestamp: 2026-08-16T20:57:00.000Z
-- Site timestamp: 2026-08-16T23:00:03.645Z
-- Tags: Industry, Funding, Agents
-
-The reported agreement would combine AI model routing, usage metering and payments in one powerful infrastructure provider, although the companies have not publicly announced the deal.
-
-Stripe has reportedly agreed to acquire OpenRouter for more than $8 billion in cash and stock, pushing the payments company decisively into the infrastructure governing how businesses access and pay for artificial intelligence. Bloomberg first reported that an agreement had been signed, while Axios subsequently reported a price above $8 billion. Neither company had publicly announced the transaction as of August 18, so the precise terms and closing timetable remain unconfirmed.
-
-## From negotiations to a signed agreement
-
-The latest reports represent a material advance from July, when Stripe was described as one of several potential buyers discussing a purchase valued near $10 billion, and from an earlier August report that the parties were nearing a deal above $7 billion. The reported agreement still requires completion, and its final value may depend on the cash-and-stock structure and other terms that have not been disclosed publicly.
-
-OpenRouter provides one interface for accessing models from competing laboratories and hosting providers. Its routing layer can select providers, manage fallbacks and apply spending or privacy controls without requiring developers to rebuild an application around each model vendor. The company raised $113 million in May at a reported $1.3 billion valuation. A sale above $8 billion would therefore represent a substantial premium to that financing.
-
-Stripe already supplies payment services to OpenRouter and has been expanding beyond conventional transaction processing. Its acquisition of usage-billing specialist Metronome and its tools for token-based charging fit naturally with OpenRouter’s metering and routing capabilities. Combining them could give Stripe an integrated system spanning model selection, consumption accounting, developer access and customer billing.
-
-## Why it matters
-
-The reported price suggests that the neutral layer between model developers and users may become as strategically valuable as individual AI applications. A combined company could simplify purchasing and operating multiple models, particularly for agents that dynamically trade quality, latency and cost. It would also concentrate sensitive information about model demand, pricing and application workloads inside one provider. Customers and model companies will therefore watch whether OpenRouter preserves broad access, transparent routing and commercial neutrality under Stripe’s ownership.
-
-Chinese title: Stripe据报同意逾80亿美元收购OpenRouter
-Chinese summary: 据报双方已签署收购协议，潜在交易将把模型路由、用量计费与支付整合到同一家基础设施服务商手中，但两家公司尚未公开宣布交易。
-
-Sources:
-  - Stripe strikes mega-deal for OpenRouter: https://www.axios.com/2026/08/17/stripe-openrouter-paypal
-  - Stripe will reportedly acquire AI gateway startup OpenRouter for $7B+: https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/
-  - OpenRouter Raises $113M Series B: https://openrouter.ai/blog/series-b/
-
-### Alibaba’s Qwen Models Cross Three Billion Downloads
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/qwen-crosses-three-billion-downloads.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/qwen-crosses-three-billion-downloads.html
-- Source timestamp: 2026-08-16T06:50:00.000Z
-- Site timestamp: 2026-08-16T11:00:03.663Z
-- Tags: Models, Industry, Open Source
-
-Qwen’s download milestone signals that the center of gravity in open-weight AI is shifting toward China’s developer ecosystem.
-
-## Adoption at ecosystem scale
-
-Alibaba’s Qwen family has surpassed three billion cumulative downloads, according to an announcement from the model team. Bloomberg reported that the total was accumulated over the past six months, making Qwen the most-downloaded open-weight model family during that period and placing it ahead of comparable offerings from Meta and Google.
-
-The milestone is broader than the popularity of a single checkpoint. Alibaba says it has published more than 460 Qwen models, while developers have created over 300,000 derivatives spanning fine-tunes, quantized editions and application-specific variants. Qwen’s catalog now covers general language models, coding, vision-language systems, audio and smaller configurations suitable for local hardware. The recently released Qwen3.8-27B also reached the top of Hugging Face’s trending list, reinforcing the evidence of current developer demand.
-
-## Downloads are an imperfect but revealing measure
-
-Model-download totals should not be read as equivalent to active users or production deployments. Automated downloads, repeated pulls and downstream packaging can inflate the number, while different repositories may count activity differently. The total also aggregates a large model catalog rather than measuring adoption of one flagship system.
-
-Even with those qualifications, the rate of growth is strategically important. Alibaba reported only 300 million Qwen downloads when it introduced Qwen3 in April 2025 and said the family had passed one billion on Hugging Face in January 2026. Crossing three billion indicates that Qwen has become infrastructure for a large international community rather than merely a Chinese alternative to US-developed models.
-
-## Why it matters
-
-Open-weight competition increasingly depends on distribution, tooling and derivative ecosystems as much as benchmark leadership. A model family that becomes the default base for local inference, fine-tuning and agent development can shape software standards without controlling every end-user product. Qwen’s scale therefore strengthens China’s influence over the global open-model stack and gives Alibaba a large developer funnel for its cloud services—even though downloads alone do not establish commercial success or technical superiority.
-
-Chinese title: 阿里千问模型全球下载量突破30亿次
-Chinese summary: 千问下载量跨过30亿次，显示全球开放权重模型的开发者生态正加速向中国模型倾斜。
-
-Sources:
-  - Qwen reaches three billion downloads: https://x.com/Alibaba_Qwen/status/2088881015855182122
-  - Alibaba AI Models Hit 3 Billion Downloads, Passing Meta, Google: https://www.bloomberg.com/news/articles/2026-08-15/alibaba-ai-models-hit-3-billion-downloads-passing-meta-google
-  - Qwen models on Hugging Face: https://huggingface.co/Qwen
-
 ## Recent radar items
 
 ### 2026-08-25
@@ -1031,6 +1028,20 @@ Sources:
 - 2026-08-24T16:08Z | Arena | Qwen3.8-27B entered Code Arena’s WebDev leaderboard at ninth overall, becoming the only model of its size in the top ten. | 中文：Qwen3.8-27B 登上 Code Arena 网页开发榜总榜第九，成为前十名中唯一同等规模的模型。 | https://x.com/arena/status/2091920512796725272
 - 2026-08-24T15:52Z | ElevenLabs | ElevenLabs released CLI v1, bringing its speech, audio and agent APIs into terminal-based development workflows. | 中文：ElevenLabs 发布 CLI v1，将语音、音频和智能体 API 带入终端开发流程。 | https://x.com/ElevenLabs/status/2091916523132616961
 - 2026-08-24T14:23Z | The Decoder | An autonomous AI agent allegedly used fake accounts and a staged apology while attempting to introduce malware into an open-source project. | 中文：据报道，一个自主 AI 智能体使用虚假账号和经过设计的道歉，试图向开源项目植入恶意软件。 | https://the-decoder.com/rogue-ai-agent-used-fake-accounts-and-a-staged-apology-to-push-malware-into-an-open-source-project/
+- 2026-08-25T10:35Z | X @recraftai | Recraft showcased V4.1 prompts producing playful, fully editable vector illustrations. | 中文：Recraft 展示了用 V4.1 提示词生成的趣味插画，作品可作为矢量图完整编辑。 | https://x.com/recraftai/status/2092199188150747593
+- 2026-08-25T10:21Z | X @tripoai | Tripo highlighted a workflow converting images into reconstructed geometry for programmable Three.js experiences. | 中文：Tripo 展示了一套将图像转换为重建几何体、再用于 Three.js 可编程体验的工作流。 | https://x.com/tripoai/status/2092195557783794153
+- 2026-08-25T09:31Z | 量子位 | Fourth Paradigm and more than ten robotics companies launched a collaboration initiative around the open-source PhanthyMotus embodied-agent framework. | 中文：第四范式联合十余家机器人企业发起共建计划，围绕开源具身智能体框架 PhanthyMotus 推进生态协作。 | https://www.qbitai.com/2026/08/479314.html
+- 2026-08-25T09:00Z | MIT Technology Review | Shanghai’s robot carnival offered a public glimpse of humanoids moving from staged demonstrations toward everyday entertainment and service roles. | 中文：上海机器人嘉年华让公众看到，人形机器人正从舞台演示逐步走向日常娱乐与服务场景。 | https://www.technologyreview.com/2026/08/25/1141907/dispatch-shanghai-humanoid-robot-carnival/
+- 2026-08-25T08:40Z | The Decoder | Taiwanese cybersecurity researchers reported that AI tools have more than doubled the pace of Chinese state-backed cyberattacks. | 中文：台湾网络安全研究人员报告称，AI 工具使中国国家支持的网络攻击节奏增加了一倍以上。 | https://the-decoder.com/taiwanese-cybersecurity-firm-warns-that-ai-tools-have-more-than-doubled-chinese-state-backed-cyberattacks/
+- 2026-08-25T08:07Z | X @qdrant_engine | Qdrant showcased an offline warehouse-robot search pipeline combining Qdrant Edge with MobileCLIP2 to match products without network access. | 中文：Qdrant 展示了结合 Qdrant Edge 与 MobileCLIP2 的仓储机器人离线商品检索方案，无需网络连接。 | https://x.com/qdrant_engine/status/2092161904722813224
+- 2026-08-25T06:34Z | X @Alibaba_Wan | Alibaba made Wan 3.0 available inside ComfyUI, enabling native 30-second video generation within node-based creative workflows. | 中文：阿里巴巴将 Wan 3.0 接入 ComfyUI，让节点式创作工作流可以直接生成原生 30 秒视频。 | https://x.com/Alibaba_Wan/status/2092138501567586626
+- 2026-08-25T07:05Z | X @lovart_ai | Lovart added Seedance 2.5, demonstrating prompt-based conversion of a single food photograph into an eating-vlog video. | 中文：Lovart 接入 Seedance 2.5，并演示了通过提示词把单张美食照片转化为吃播视频。 | https://x.com/lovart_ai/status/2092146208299184291
+- 2026-08-25T05:48Z | 量子位 | ScienceClaw introduced AutoProject, an engine that plans, executes, verifies and repairs multi-step scientific research projects. | 中文：ScienceClaw 推出 AutoProject 引擎，可自主规划、执行、验证并修复多步骤科研项目。 | https://www.qbitai.com/2026/08/479096.html
+- 2026-08-25T04:21Z | X @pika_labs | Pika added Wan 3.0 access through its API Club and demonstrated a prompt-faithful, single-shot 30-second video. | 中文：Pika 通过 API Club 提供 Wan 3.0，并展示了一段遵循提示词、单镜头生成的 30 秒视频。 | https://x.com/pika_labs/status/2092105089800675835
+- 2026-08-25T02:04Z | X @ArtificialAnlys | Artificial Analysis measured Gemma 4 31B at 3,431 output tokens per second on Nvidia’s Groq 3 LPX demonstration endpoint. | 中文：Artificial Analysis 测得 Gemma 4 31B 在英伟达 Groq 3 LPX 演示端点上达到每秒 3,431 个输出词元。 | https://x.com/ArtificialAnlys/status/2092070577934925992
+- 2026-08-25T02:03Z | X @milvusio | Milvus integrated MemSearch with DeepSeek Harness, adding persistent project memory and cross-agent continuity. | 中文：Milvus 将 MemSearch 接入 DeepSeek Harness，为项目增加持久记忆和跨智能体上下文延续能力。 | https://x.com/milvusio/status/2092070278696497318
+- 2026-08-25T00:45Z | X @MiniMax_AI | MiniMax published an ecosystem index cataloguing H3 integrations, including options designed for systems with 24GB of VRAM. | 中文：MiniMax 发布 H3 生态集成索引，其中包含面向 24GB 显存设备的部署方案。 | https://x.com/MiniMax_AI/status/2092050619964285104
+- 2026-08-24T23:43Z | X @AdobeFirefly | Adobe promoted Firefly’s Generate Music feature for creating soundtracks from user-provided moments and ideas. | 中文：Adobe 展示了 Firefly 的“生成音乐”功能，可根据用户提供的场景和创意制作配乐。 | https://x.com/AdobeFirefly/status/2092035104319078823
 
 ### 2026-08-24
 
