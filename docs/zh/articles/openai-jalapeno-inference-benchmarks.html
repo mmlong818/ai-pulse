@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAI公布Jalapeño芯片实测，对标英伟达 — Uncle Cat AI Radar</title>
+<meta name="description" content="OpenAI首次披露自研推理芯片Jalapeño的详细测试结果，称其在三款大型开放模型上兼顾低延迟与能效优势。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-jalapeno-inference-benchmarks.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/openai-jalapeno-inference-benchmarks.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-jalapeno-inference-benchmarks.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/openai-jalapeno-inference-benchmarks.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="OpenAI公布Jalapeño芯片实测，对标英伟达 — Uncle Cat AI Radar">
+<meta property="og:description" content="OpenAI首次披露自研推理芯片Jalapeño的详细测试结果，称其在三款大型开放模型上兼顾低延迟与能效优势。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/openai-jalapeno-inference-benchmarks.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenAI公布Jalapeño芯片实测，对标英伟达 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="OpenAI首次披露自研推理芯片Jalapeño的详细测试结果，称其在三款大型开放模型上兼顾低延迟与能效优势。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="OpenAI公布Jalapeño芯片实测，对标英伟达 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"OpenAI公布Jalapeño芯片实测，对标英伟达","item":"https://mmlong818.github.io/ai-pulse/zh/articles/openai-jalapeno-inference-benchmarks.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/openai-jalapeno-inference-benchmarks.html#article","headline":"OpenAI公布Jalapeño芯片实测，对标英伟达","description":"OpenAI首次披露自研推理芯片Jalapeño的详细测试结果，称其在三款大型开放模型上兼顾低延迟与能效优势。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/openai-jalapeno-inference-benchmarks.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/openai-jalapeno-inference-benchmarks.html"},"datePublished":"2026-08-25T17:19:00.000Z","dateModified":"2026-08-25T23:00:03.126Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["产业","Agent"],"keywords":"产业, Agent","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://openai.com/index/jalapeno-first-results/","https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/"],"about":[{"@type":"Thing","name":"产业"},{"@type":"Thing","name":"Agent"}]}]}</script>
+</head>
+<body data-slug="openai-jalapeno-inference-benchmarks" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/openai-jalapeno-inference-benchmarks.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-08-25T17:19:00Z">2026年8月26日 01:19</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>OpenAI公布Jalapeño芯片实测，对标英伟达</h1>
+  <p class="standfirst">OpenAI首次披露自研推理芯片Jalapeño的详细测试结果，称其在三款大型开放模型上兼顾低延迟与能效优势。</p>
+  <h2>从预告走向实测</h2><p>OpenAI公布了自研推理加速器Jalapeño的首批详细性能数据。这款芯片由OpenAI与博通共同开发；测试采用公开的InferenceX基准，覆盖GPT-OSS 120B、DeepSeek R1 670B和Kimi K2.5 1T，并考察高吞吐及低延迟等不同运行状态下的完整推理系统。</p><p>按照OpenAI给出的结果，Jalapeño在峰值吞吐状态下，每瓦完成的工作量是英伟达GB200或GB300对照系统的1.5至1.9倍，端到端延迟降低至后者的约三分之一至五分之三；在强调交互速度的配置下，性能优势达到2.1至4.1倍。以Kimi K2.5为例，其峰值每瓦性能约高出1.5倍，端到端延迟则低3.4倍。</p><p>测试按芯片公开标称功耗进行归一化：Jalapeño为700瓦，GB200为1200瓦，GB300为1400瓦。OpenAI称，Jalapeño在相关任务中的持续实测功耗不超过550瓦。不过，这些数据仍由厂商自行发布，量产后的稳定性、软件成熟度和系统总成本尚未获得独立验证。</p><h2>争夺推理成本的控制权</h2><p>Jalapeño通过让模型状态和KV缓存尽可能靠近计算资源，并协同设计计算、内存与网络，兼顾提示词处理和逐词生成。OpenAI还表示，AI辅助工程把芯片从初始设计推进到流片只用了九个月；在部分注意力和混合专家模块上，AI生成的实现比专家编写版本快1.5至1.8倍，但这一数据并不代表整套模型性能。</p><p>OpenAI计划在年底前把Jalapeño部署到自有计算基础设施，同时继续采购英伟达等厂商的加速器。它的重要性在于，一旦自研芯片在规模化运行中兑现指标，OpenAI便可能降低推理边际成本、缩短智能体连续操作的等待时间，并增强与上游硬件供应商谈判的筹码。真正需要观察的，是量产后的利用率、良率和实际运营成本。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://openai.com/index/jalapeno-first-results/" rel="noopener" target="_blank">Jalapeño’s first results show industry-leading speed and efficiency in AI inference</a></li><li><a href="https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/" rel="noopener" target="_blank">OpenAI’s Jalapeño chip is built for fast inference at scale, benchmarks show</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-portable-computer-agent.html">Perplexity推出本地运行的Computer智能体</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/stability-ai-series-b.html">三大音乐集团与EA参投Stability AI新融资</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/gradio-visual-ai-workflows.html">Gradio推出可视化工作流，一张图直接部署API</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

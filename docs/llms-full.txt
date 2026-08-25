@@ -19,6 +19,100 @@
 
 ## Recent briefings
 
+### OpenAI Benchmarks Jalapeño Against Nvidia AI Chips
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-jalapeno-inference-benchmarks.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-jalapeno-inference-benchmarks.html
+- Source timestamp: 2026-08-25T17:19:00.000Z
+- Site timestamp: 2026-08-25T23:00:03.126Z
+- Tags: Industry, Agents
+
+OpenAI says its first inference chip delivers lower latency and more work per watt across three large open-weight models.
+
+## Measured silicon, not another preview
+
+OpenAI has published the first detailed performance results for Jalapeño, its custom inference accelerator developed with Broadcom. On the public InferenceX benchmark, the company tested complete serving systems running GPT-OSS 120B, DeepSeek R1 670B and Kimi K2.5 1T, spanning both high-throughput and latency-sensitive operating points.
+
+OpenAI reports that Jalapeño completed 1.5 to 1.9 times more work per watt at peak throughput than systems based on Nvidia GB200 or GB300 accelerators. End-to-end latency was between 1.7 and 3.6 times lower, while performance in highly interactive configurations improved by 2.1 to 4.1 times. On Kimi K2.5, for example, OpenAI measured about 1.5 times higher peak performance per watt and 3.4 times lower latency than the comparison system.
+
+The company normalized results using published package power ratings: 700 watts for Jalapeño, 1,200 watts for GB200 and 1,400 watts for GB300. It said Jalapeño sustained no more than 550 watts during the measured workloads. These remain vendor-produced results, however, and production-scale reliability, software maturity and total system cost have not yet been independently demonstrated.
+
+## A bid to control inference economics
+
+The design keeps model state and KV cache close to the relevant compute resources while coordinating memory, networking and processing for both prompt ingestion and token generation. OpenAI also said AI-assisted engineering helped take the chip from initial design to tapeout in nine months; selected AI-generated kernels ran 1.5 to 1.8 times faster than expert-written versions, though that comparison did not cover entire models.
+
+OpenAI plans to deploy Jalapeño internally by year-end while continuing to buy Nvidia and other accelerators. The significance is strategic: credible first-party inference silicon could reduce OpenAI's marginal serving costs, improve agent responsiveness and give it greater leverage over the hardware suppliers underpinning its products. The decisive evidence will come after deployment, when utilization, yield and operating costs can be observed outside a controlled benchmark.
+
+Chinese title: OpenAI公布Jalapeño芯片实测，对标英伟达
+Chinese summary: OpenAI首次披露自研推理芯片Jalapeño的详细测试结果，称其在三款大型开放模型上兼顾低延迟与能效优势。
+
+Sources:
+  - Jalapeño’s first results show industry-leading speed and efficiency in AI inference: https://openai.com/index/jalapeno-first-results/
+  - OpenAI’s Jalapeño chip is built for fast inference at scale, benchmarks show: https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/
+
+### Perplexity Runs Its Computer Agent on Local Hardware
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/perplexity-portable-computer-agent.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-portable-computer-agent.html
+- Source timestamp: 2026-08-25T18:43:00.000Z
+- Site timestamp: 2026-08-25T23:00:03.126Z
+- Tags: Agents, Industry
+
+Portable Computer keeps agent planning, file analysis and tool execution on a DGX Spark, escalating to cloud models only with permission.
+
+## An agent stack contained on the desk
+
+Perplexity has launched Portable Computer, a local-first version of its Computer agent designed initially for Nvidia's DGX Spark. Unlike a desktop interface that merely forwards requests to a cloud model, the product runs its orchestrator, planner, tool router, scheduler, durable task queue and local search index on the user's machine.
+
+Users can choose Qwen 3.8 27B or PPLX 27B, Perplexity's task-specific post-training of that model. Nemotron 3.5 Lightning is due to join the model picker later. The agent can read and search local documents and code, create files, execute tools and continue long-running jobs without charging credits for locally completed steps. Voice transcription also stays on the device through Nvidia's Nemotron speech-recognition model.
+
+Portable Computer can connect to Gmail, Google Drive, Slack and GitHub. When a workflow needs current web information, a connected application or stronger reasoning, it may request permission to consult Perplexity search or more than 15 cloud models. Perplexity says transfers from the device require user approval and that code execution occurs inside isolated sandboxes with restricted file and application access.
+
+## Privacy has a hardware threshold
+
+The initial release is available to Perplexity Pro and Max subscribers using Linux on DGX Spark, whose Grace Blackwell GB10 platform includes 128 GB of unified memory. Windows and RTX PC support are promised but are not yet available. The requirement substantially narrows the launch audience and means the product has not yet established that this architecture works conveniently on ordinary workplace computers.
+
+Still, Portable Computer is a consequential test of hybrid agents. It divides a task at execution time rather than forcing customers to choose permanently between private but weaker local software and capable but remote cloud services. If its permission boundaries are dependable, organizations could keep confidential source code, contracts and internal correspondence on premises while purchasing frontier reasoning only for selected steps. Its benchmark claims and security controls now need independent testing, particularly around what context an escalation request exposes.
+
+Chinese title: Perplexity推出本地运行的Computer智能体
+Chinese summary: Portable Computer把任务规划、文件分析和工具执行留在DGX Spark本机，仅在用户授权后调用云端模型。
+
+Sources:
+  - Introducing Portable Computer: https://www.perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai
+  - A Local-First Agent for Private and Cost-Effective Knowledge Work: https://www.perplexity.ai/hub/blog/a-local-first-agent-for-private-and-cost-effective-knowledge-work
+  - NVIDIA and Local AI Community Fuel Open Source Models and Intelligent Agents: https://blogs.nvidia.com/blog/local-ai-open-source-models-agents-nemotron/
+
+### Entertainment Majors Back Stability AI’s $76M Round
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/stability-ai-series-b.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/stability-ai-series-b.html
+- Source timestamp: 2026-08-25T15:13:00.000Z
+- Site timestamp: 2026-08-25T23:00:03.126Z
+- Tags: Funding, AIGC, Industry
+
+EA and three global music groups joined Stability AI’s Series B, tying its next phase more closely to licensed creative production.
+
+## Rights holders become shareholders
+
+Stability AI has raised $76 million in a Series B whose new investors include Electronic Arts, Sony Music Group, Universal Music Group and Warner Music Group. AMD Ventures and Pacific Alliance Ventures also participated, alongside returning backers including Coatue, Greycroft, Kadmos Capital, Sean Parker and Eric Schmidt.
+
+The company says it has now secured $232 million under chief executive Prem Akkaraju since he took over in June 2024. That total includes two equity rounds and convertible notes, rather than representing a single cash investment. Stability did not disclose its valuation, financial performance or the ownership acquired by the new investors.
+
+The capital is earmarked for creative-production products, applied research and an expanded professional-services business. Stability now develops image, video, 3D and audio systems, including Stable Audio 3.0, an open-weight music-model family trained on licensed material. Coatue co-founder Thomas Laffont is also joining its board.
+
+## A different compact for generative media
+
+The investor roster is more important than the headline amount. EA, Universal and Warner already had strategic relationships with Stability, while Sony Music is joining as a new investor. Their equity participation gives Stability direct access to organizations controlling valuable games, recordings and production workflows, but may also pull its roadmap toward bespoke commercial tools and away from the broadly accessible image-model releases that built its reputation.
+
+The financing marks a further turn in generative media's relationship with copyright owners. Rather than treating studios and labels only as licensors or legal adversaries, Stability is making several of them financial stakeholders in the tools that could reshape creative production. That alignment could improve access to licensed training data and accelerate adoption inside established media companies. It does not eliminate the harder questions: the company still must show sustainable revenue, explain how value reaches individual creators, and demonstrate that strategic investors will tolerate products that compete with existing production labor and licensing markets.
+
+Chinese title: 三大音乐集团与EA参投Stability AI新融资
+Chinese summary: Stability AI完成7600万美元B轮融资，EA及三大国际音乐集团入股，其发展路线进一步转向授权内容与专业制作。
+
+Sources:
+  - The Entertainment Industry’s Biggest Names Back Stability AI in Latest Funding Round: https://stability.ai/news-updates/stability-ai-latest-funding-backed-by-entertainment-industry-biggest-names
+  - Stability AI, maker of image generator Stable Diffusion, raises $76 million in fresh funding: https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/
+
 ### Generalist Raises Another $200M for Robot Intelligence
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/generalist-raises-robotics-capital.html
@@ -918,96 +1012,27 @@ Sources:
   - Groq and Nvidia Enter Non-Exclusive Inference Technology Licensing Agreement: https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale
   - Groq Becomes an NVIDIA Cloud Partner: https://groq.com/newsroom/groq-becomes-an-nvidia-cloud-partner
 
-### Higgsfield Raises $400M at a $5.4B Valuation
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/higgsfield-raises-video-ai-round.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/higgsfield-raises-video-ai-round.html
-- Source timestamp: 2026-08-17T15:50:00.000Z
-- Site timestamp: 2026-08-17T23:00:03.459Z
-- Tags: Funding, AIGC, Industry
-
-The generative-media company has secured a major round to scale its video and image platform amid intensifying AIGC competition.
-
-## Capital pours into generative video
-
-Higgsfield has raised $400 million at a $5.4 billion valuation to expand its AI video and image generation business. The round places the company among the most highly valued independent generative-media platforms and supplies substantial capital for model access, computing capacity, product development and international expansion.
-
-Higgsfield competes in a market that has moved rapidly beyond isolated text-to-video demonstrations. Commercial users increasingly expect controllable camera movement, consistent characters, image editing, reusable visual references and workflows capable of producing advertising or social-media campaigns at scale. That shift favors platforms able to combine multiple models with editing, asset management and distribution tools rather than offering generation alone.
-
-The financing arrives as competition spans both frontier laboratories and consumer-creation companies. OpenAI, Google, ByteDance and other large technology groups can subsidize model development through broader businesses, while specialist platforms must purchase compute, secure model access and acquire users in an increasingly crowded market. A large balance sheet gives Higgsfield more room to compete on product velocity and distribution, but the valuation also raises expectations for durable revenue and retention.
-
-## Why it matters
-
-The size of the round is evidence that investors continue to see generative video as a distinct platform opportunity rather than a feature destined to be absorbed entirely by general-purpose AI products. Video workloads are expensive, and commercial adoption depends not only on visual quality but also on predictable costs, editing control, brand consistency and rights management.
-
-Higgsfield’s challenge will be converting attention and rapid usage growth into defensible economics while underlying models improve and become interchangeable. If creators can move easily between providers, workflow ownership and customer relationships may prove more valuable than any single generation model.
-
-The funding therefore represents a wager on the application layer of AIGC: the company that organizes models into reliable production systems may capture meaningful value even when it does not own every foundational model. It also ensures that the global video-generation contest will remain well funded as Chinese, American and European providers compete for creators and marketing budgets.
-
-Chinese title: Higgsfield 融资 4 亿美元，估值升至 54 亿美元
-Chinese summary: 这家生成式媒体公司获得大额融资，将扩张视频与图像平台，迎战持续升温的全球 AIGC 竞争。
-
-Sources:
-  - Higgsfield raises $400M at $5.4 billion valuation: https://siliconangle.com/2026/08/17/higgsfield-raises-400m-at-5-4-billion-valuation-to-scale-video-and-image-generation-platform/
-
-### Alibaba Brings QwenWork Agent Into Tencent’s WeCom
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/qwenwork-enters-tencent-wecom.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/qwenwork-enters-tencent-wecom.html
-- Source timestamp: 2026-08-18T07:17:00.000Z
-- Site timestamp: 2026-08-18T11:00:03.744Z
-- Tags: Industry, Agents
-
-QwenWork can now operate through WeCom chats, taking Alibaba’s workplace agent into the heart of Tencent’s enterprise ecosystem.
-
-## Alibaba crosses a major workplace boundary
-
-Alibaba has connected QwenWork, its agent-oriented workplace product, to Tencent’s WeCom, allowing employees to interact with the service without leaving their existing corporate messaging environment. The integration became available on August 18 and supports WeCom robots that receive user messages and return QwenWork responses.
-
-Administrators can establish the connection through a QR-code authorization flow or configure it manually with a WeCom bot ID and secret. Once linked, staff can send requests to QwenWork directly from WeCom. The arrangement reduces the need to introduce another chat interface when deploying the agent inside an organization, although companies must still decide what information and permissions the connected robot may access.
-
-QwenWork is designed as more than a question-answering assistant. Alibaba is positioning it as an execution layer for professional work, where models, tools and organizational information can be brought together around a task. Putting that layer inside WeCom gives Alibaba a route into companies whose daily communications are already anchored in Tencent’s ecosystem, rather than requiring those customers to migrate to an Alibaba collaboration product.
-
-## Why it matters
-
-The move illustrates how China’s enterprise-agent contest is shifting from model capability toward distribution and access to workplace context. WeCom is both a communication hub and a gateway to corporate processes, making it a strategically valuable surface for any agent provider. Alibaba’s willingness to support a rival platform also suggests that successful workplace agents may need to operate across collaboration suites instead of depending on a closed software stack. For customers, that could widen their choice of models and agents; for platform owners, it raises sharper questions about permission controls, auditability and which company ultimately governs the employee’s AI work interface.
-
-Chinese title: 阿里千问办公接入企业微信，跨入腾讯办公生态
-Chinese summary: 千问办公现可通过企业微信机器人直接响应员工请求，阿里由此把办公智能体带入腾讯主导的企业协作入口。
-
-Sources:
-  - 今日起，阿里“千问办公”接入企业微信: https://www.qbitai.com/2026/08/474803.html
-  - 千问办公：接入企业微信: https://qwenwork.cn/docs/desktop/im-channels
-
-### Meshy Details Its Alignment Method for Image-to-3D
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/meshy-7-technical-report.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meshy-7-technical-report.html
-- Source timestamp: 2026-08-17T10:34:00.000Z
-- Site timestamp: 2026-08-17T11:00:03.690Z
-- Tags: Research, AIGC, Industry
-
-Meshy’s new technical report explains how its latest system more faithfully transfers a reference image into usable 3D geometry.
-
-## A closer look at Meshy 7
-
-Meshy published the technical report for Meshy 7, providing the first detailed account of the image-to-3D system that it made available earlier this month. The report focuses on a central weakness of generative 3D tools: an output can look plausible when rendered from one angle while failing to preserve the reference image’s proportions, structure or distinctive parts in the underlying geometry.
-
-The company presents Meshy 7 as an alignment-focused model rather than simply another increase in visual detail. Its report describes the methodology used to make generated geometry correspond more closely to the supplied image and introduces what Meshy calls the first benchmark dedicated to 3D geometry alignment. That framing is important because familiar image-based comparisons can reward attractive renders without establishing whether the complete asset is structurally faithful when rotated, animated or edited.
-
-The report’s publication is separate from the model’s earlier product launch: the fresh event in this edition is the release of the technical evidence and evaluation framework, not a new set of downloadable weights. Meshy remains a hosted commercial system, and the company’s benchmark claims have not yet been independently reproduced. The disclosed evaluation should therefore be read as a proposed measurement standard as well as evidence offered by the model developer.
-
-## Why it matters
-
-Image-to-3D systems are moving from rapid concept visualization toward asset production for games, commerce, animation and simulation. In those workflows, a convincing front view is insufficient; creators need geometry that survives inspection from every direction and can enter conventional editing pipelines. By defining alignment as a measurable 3D problem, Meshy is directing competition toward structural reliability rather than render quality alone. Even if independent testing revises its rankings, a reproducible way to compare reference fidelity could make future 3D-model releases easier to evaluate and reduce the manual repair required before generated assets become production-ready.
-
-Chinese title: Meshy 7 技术报告披露图像转 3D 对齐方法
-Chinese summary: Meshy 发布新技术报告，解释最新系统如何把参考图中的比例、结构与关键部件更准确地还原为可用三维几何体。
-
-Sources:
-  - Meshy 7 Technical Report Announcement: https://x.com/MeshyAI/status/2089299784951795758
-
 ## Recent radar items
+
+### 2026-08-26
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-26.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-26.html
+
+- 2026-08-25T17:14Z | Claude | Anthropic unified Claude’s memory across chat and Cowork, while letting users inspect, edit, delete, or disable remembered topics. | 中文：Anthropic 打通 Claude 聊天与 Cowork 的记忆，用户可以查看、编辑、删除或关闭记忆主题。 | https://x.com/claudeai/status/2092299704864284888
+- 2026-08-25T22:55Z | IT之家 | OpenAI released an Admin plugin enabling ChatGPT Work and Codex administrators to manage users and permissions conversationally. | 中文：OpenAI 发布管理插件，让 ChatGPT Work 和 Codex 管理员能够通过对话管理用户及权限。 | https://www.ithome.com/0/994/294.htm
+- 2026-08-25T22:41Z | Figma | Figma increased AI add-on credits across every plan, doubling Pro allowances and raising Organization and Enterprise allocations by 60%. | 中文：Figma 提高所有套餐的 AI 附加额度，其中专业版翻倍，组织版和企业版增加 60%。 | https://x.com/figma/status/2092381939345076686
+- 2026-08-25T21:59Z | NVIDIA AI | Nvidia previewed Dynamo shadow engine recovery, which maintains a standby LLM engine to reduce lost inference capacity after crashes. | 中文：英伟达预览 Dynamo 影子引擎恢复功能，通过保留备用大模型引擎减少崩溃后的推理产能损失。 | https://x.com/NVIDIAAI/status/2092371238635307116
+- 2026-08-25T20:34Z | Adobe Firefly | Adobe added Animation Generator to Firefly, turning children’s ideas and other prompts into animated visual creations. | 中文：Adobe 为 Firefly 加入动画生成器，可将儿童创意等提示转化为动画视觉作品。 | https://x.com/AdobeFirefly/status/2092350006913081706
+- 2026-08-25T19:51Z | Together AI | Together AI added Qwen3.8-27B support for fine-tuning and deployment through dedicated model inference infrastructure. | 中文：Together AI 开放 Qwen3.8-27B 微调，并支持通过专用模型推理基础设施部署定制版本。 | https://x.com/togethercompute/status/2092339003777573069
+- 2026-08-25T19:10Z | Google Research | Google introduced AgentHands, an XR research prototype generating synchronized, spatially grounded hand gestures for conversational agents. | 中文：Google 推出 AgentHands 研究原型，为扩展现实中的对话智能体生成同步且具空间指向性的手势。 | https://research.google/blog/agenthands-generating-interactive-hand-gestures-for-spatially-grounded-agent-conversations-in-xr/
+- 2026-08-25T18:43Z | Gemini | Gemini’s macOS app added voice-driven dictation, file summarization, and text rewriting directly inside other application windows. | 中文：Gemini macOS 应用新增语音听写、文件总结和文字改写，并可直接在其他应用窗口中使用。 | https://x.com/GeminiApp/status/2092322045296255330
+- 2026-08-25T18:42Z | GitHub Next | GitHub Next proposed a “knowledge compressor” for rigorously shrinking accumulated specifications and reducing the context consumed by coding agents. | 中文：GitHub Next 提出“知识压缩器”，用于系统压缩不断累积的规格文档，降低编码智能体的上下文占用。 | https://x.com/GitHubNext/status/2092321759832023551
+- 2026-08-25T16:41Z | Recraft | Recraft redesigned Studio around Create, Edit, and Chat tabs while retaining vector editing, styles, and mockup workflows. | 中文：Recraft 重新设计 Studio，以创建、编辑和聊天三个标签组织矢量编辑、风格及样机工作流。 | https://x.com/recraftai/status/2092291161889071268
+- 2026-08-25T16:11Z | HeyGen | HeyGen removed LiveAvatar API concurrency limits and advertised scalable full-body 1080p avatar sessions starting at one cent per minute. | 中文：HeyGen 取消 LiveAvatar API 并发限制，并提供最低每分钟一美分的可扩展全身 1080p 数字人会话。 | https://x.com/HeyGen/status/2092283676470214847
+- 2026-08-25T15:14Z | Hugging Face | IBM released Apache-2.0-licensed Granite 4.2 reasoning models in 3B, 8B, and 30B sizes, featuring tool calling and up to 512K context. | 中文：IBM 发布采用 Apache 2.0 许可的 Granite 4.2 推理模型，提供 3B、8B 和 30B 版本、工具调用及最长 512K 上下文。 | https://huggingface.co/blog/ibm-granite/granite-4-2
+- 2026-08-25T14:10Z | ElevenLabs | ElevenLabs launched Composer for Music v2, enabling section-level editing of lyrics, arrangement, duration, tempo, and key. | 中文：ElevenLabs 为 Music v2 推出 Composer，支持逐段编辑歌词、编排、时长、速度和调性。 | https://x.com/ElevenLabs/status/2092253219795632320
+- 2026-08-25T15:00Z | TechCrunch | AI presentation company Gamma acquired design startup Lica, whose founders will lead a new design research laboratory. | 中文：AI 演示文稿公司 Gamma 收购设计初创企业 Lica，后者创始人将领导一个新的设计研究实验室。 | https://techcrunch.com/2026/08/25/gamma-acquires-accel-backed-design-startup-lica/
 
 ### 2026-08-25
 
@@ -1143,37 +1168,3 @@ Sources:
 - 2026-08-21T23:00Z | X / Replit | Replit introduced Conversations, allowing users to begin an application project through exploratory chat before entering the building workflow. | 中文：Replit 推出 Conversations，让用户先通过探索式对话梳理应用构想，再进入正式构建流程。 | https://x.com/Replit/status/2090936990162370741
 - 2026-08-21T23:00Z | X / Replit | Replit added beta Routines for scheduling recurring agent tasks and returning their results within the originating conversation. | 中文：Replit 推出测试版 Routines，可定时运行智能体任务，并在原始对话中返回结果。 | https://x.com/Replit/status/2090936991273922618
 - 2026-08-21T23:00Z | X / Replit | Replit added black-box penetration testing that examines deployed applications from an external attacker’s perspective. | 中文：Replit 新增黑盒渗透测试功能，可从外部攻击者视角检查已部署的应用。 | https://x.com/Replit/status/2090936991781441766
-
-### 2026-08-21
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-21.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-21.html
-
-- 2026-08-20T22:23Z | MarkTechPost | Superwhisper released S1-mini, a 462MB open-weight model that converts raw speech-recognition transcripts into polished written text. | 中文：Superwhisper 发布 462MB 开放权重模型 S1-mini，可将原始语音识别转录稿整理为流畅书面文本。 | https://www.marktechpost.com/2026/08/20/meet-s1-mini-superwhispers-462-mb-open-weights-text-normalizer-that-turns-raw-asr-transcripts-into-clean-written-text/
-- 2026-08-20T22:22Z | SiliconANGLE | Twin1 AI raised $20 million to develop AI twins that learn individual knowledge workers’ tasks and working patterns. | 中文：Twin1 AI 融资2000万美元，用于开发可学习知识工作者任务与工作模式的个人AI分身。 | https://siliconangle.com/2026/08/20/twin1-ai-raises-20m-to-put-an-ai-twin-behind-every-knowledge-worker/
-- 2026-08-20T21:50Z | The Verge | Google is adding a chatbot-tuned feed to Discover, reshaping content recommendations around users’ AI conversations. | 中文：Google 正为 Discover 增加面向聊天机器人的信息流，根据用户的AI对话调整内容推荐。 | https://www.theverge.com/tech/983088/google-discover-ai-chatbot-feed
-- 2026-08-20T21:46Z | AWS Machine Learning Blog | Amazon Bedrock introduced cross-Region inference for OpenAI GPT-5.6 models, routing requests across supported regions to improve capacity and resilience. | 中文：Amazon Bedrock 为 OpenAI GPT-5.6 模型推出跨区域推理，可在支持的区域间路由请求，提高容量与韧性。 | https://aws.amazon.com/blogs/machine-learning/introducing-cross-region-inference-for-openai-gpt-5-6-models-on-amazon-bedrock/
-- 2026-08-20T21:44Z | Pika on X | Pika introduced a music model offering editable tracks and claimed generation costs up to ten times lower than competing music models. | 中文：Pika 推出支持编辑曲目的音乐模型，并称其生成成本最多可比其他音乐模型低十倍。 | https://x.com/pika_labs/status/2090555484218757219
-- 2026-08-20T21:43Z | OpenAI Developers on X | Codex and ChatGPT Work added shared read-only threads, letting teams review the process and reasoning behind pull requests through a link. | 中文：Codex 与 ChatGPT Work 新增只读共享线程，团队可通过链接查看拉取请求背后的过程与推理。 | https://x.com/OpenAIDevs/status/2090555241343418814
-- 2026-08-20T21:35Z | Artificial Analysis on X | Artificial Analysis added Qwen-Image-3.0 and its Pro variant to its text-to-image and image-editing leaderboards for public comparison. | 中文：Artificial Analysis 将 Qwen-Image-3.0 及 Pro 版加入文生图和图像编辑排行榜，供公众比较。 | https://x.com/ArtificialAnlys/status/2090553298101420158
-- 2026-08-20T21:06Z | SiliconANGLE | AI workload-optimization startup Callosum raised $100 million to help enterprises improve computing utilization for AI systems. | 中文：AI工作负载优化初创公司 Callosum 融资1亿美元，帮助企业提升AI系统的计算资源利用率。 | https://siliconangle.com/2026/08/20/ai-workload-optimization-startup-callosum-raises-100m/
-- 2026-08-20T20:30Z | OpenAI Developers on X | OpenAI previewed transparent-background generation for GPT-Image-2 API, enabling reusable product, game and design assets with alpha transparency. | 中文：OpenAI 预览 GPT-Image-2 API 的透明背景生成功能，可制作带透明通道的产品、游戏和设计素材。 | https://x.com/OpenAIDevs/status/2090536933571330440
-- 2026-08-20T16:52Z | Hugging Face | Liquid AI released LFM2.5-DSpark draft models, reporting speculative decoding speedups of up to 3.2 times without changing model outputs. | 中文：Liquid AI 发布 LFM2.5-DSpark 草稿模型，称其推测解码最高加速3.2倍，同时不改变模型输出。 | https://huggingface.co/blog/LiquidAI/lfm25-dspark
-- 2026-08-20T18:51Z | Recraft on X | Recraft Studio added Grok Imagine Image 2, MiniMax H3, FLUX 3 Video, Qwen Image 3 Pro and Reve 2.1. | 中文：Recraft Studio 新增 Grok Imagine Image 2、MiniMax H3、FLUX 3 Video、Qwen Image 3 Pro 和 Reve 2.1。 | https://x.com/recraftai/status/2090511988975694251
-- 2026-08-20T18:25Z | Meta AI on X | Meta previewed WildArtifactBench, an internal framework evaluating agents on complex real-world tasks spanning diverse deliverable formats. | 中文：Meta 预览内部评测框架 WildArtifactBench，用多种交付物形式的复杂现实任务评估AI智能体。 | https://x.com/AIatMeta/status/2090505413817246050
-- 2026-08-20T16:41Z | Goodfire on X | Goodfire opened $1 million in grants and free Silico access for external research spanning interpretability, cybersecurity, CBRN risks and AI safety. | 中文：Goodfire 推出总额100万美元的资助及免费 Silico 使用权，支持可解释性、网络安全、化生放核风险和AI安全研究。 | https://x.com/GoodfireAI/status/2090479244287906092
-- 2026-08-20T16:48Z | Visual Studio Code on X | VS Code introduced Agent Host, enabling persistent agent sessions that can continue across projects, environments, desktop and web interfaces. | 中文：VS Code 推出 Agent Host，使智能体会话可跨项目、运行环境、桌面端和网页端持续运行。 | https://x.com/code/status/2090481114133790733
-- 2026-08-21T10:54Z | The Decoder | Meta will reportedly spend hundreds of millions of dollars on Microsoft’s AI services, despite developing its own models and infrastructure. | 中文：据报道，Meta将斥资数亿美元采购微软AI服务，尽管它也在开发自己的模型与基础设施。 | https://the-decoder.com/meta-spends-hundreds-of-millions-on-microsofts-ai-services/
-- 2026-08-21T10:43Z | IT之家 | Samsung code indicates upcoming Galaxy Z Flip8 and Fold8 phones may gain AI-generated widgets powered by Google’s Create My Widget technology. | 中文：代码显示，三星Galaxy Z Flip8和Fold8可能加入由谷歌“Create My Widget”技术驱动的AI生成式小组件。 | https://www.ithome.com/0/992/821.htm
-- 2026-08-21T08:27Z | The Decoder | Nvidia is reportedly acquiring Poolside’s Model Factory and hiring 109 employees in a transaction valued at $6 billion. | 中文：据报道，英伟达将收购Poolside的“模型工厂”并接收109名员工，交易价值达60亿美元。 | https://the-decoder.com/nvidia-is-acquiring-poolsides-model-factory-and-109-employees-for-6-billion/
-- 2026-08-21T08:03Z | 腾讯混元（X） | Tencent’s Hy-MT2-1.8B and sparse Hy-MT2-30B-A3B translation models became available through OpenRouter, supporting 33 languages. | 中文：腾讯Hy-MT2-1.8B及稀疏架构Hy-MT2-30B-A3B翻译模型已登陆OpenRouter，支持33种语言。 | https://x.com/TencentHunyuan/status/2090711479809183943
-- 2026-08-21T07:58Z | 通义千问（X） | Alibaba published SGLang deployment recipes combining NVFP4 quantization and DFlash2 attention for its Qwen3.8-27B model. | 中文：阿里巴巴发布Qwen3.8-27B的SGLang部署方案，结合NVFP4量化与DFlash2注意力技术。 | https://x.com/Alibaba_Qwen/status/2090709994761339190
-- 2026-08-21T06:35Z | 海螺AI（X） | MiniMax introduced Design as a commercial content-creation tool offering multiple skills for producing assets including anime videos and sports promotions. | 中文：MiniMax推出商业内容创作工具Design，提供多种创作技能，可制作动漫宣传片、体育推广素材等内容。 | https://x.com/Hailuo_AI/status/2090689260320129211
-- 2026-08-21T09:44Z | 量子位 | Mininglamp and Hikrobot presented an “Agent plus embodied intelligence” collaboration targeting commercial robot deployments. | 中文：明略科技与海康机器人展示“智能体＋具身智能”合作方案，面向商业机器人场景落地。 | https://www.qbitai.com/2026/08/476733.html
-- 2026-08-21T09:00Z | 量子位 | Thunderbird unveiled the 34-gram iO smart glasses, featuring proactive all-day AI assistance and a claimed two-day battery life. | 中文：雷鸟发布重34克的iO智能眼镜，主打全天候主动式AI助手及两天续航。 | https://www.qbitai.com/2026/08/476628.html
-- 2026-08-21T06:40Z | 量子位 | Deep Potential introduced a desktop system intended to let scientists pose questions while AI plans and executes experimental workflows. | 中文：深势科技推出桌面科研系统，让科学家提出问题后，由AI规划并执行实验工作流。 | https://www.qbitai.com/2026/08/476591.html
-- 2026-08-21T01:37Z | SiliconANGLE | Astromech raised $20 million at a $3.8 billion valuation to develop AI models forecasting biological and evolutionary change. | 中文：Astromech融资2000万美元，估值达38亿美元，用于开发预测生物及进化变化的AI模型。 | https://siliconangle.com/2026/08/20/astromech-raises-20m-to-build-a-biological-operating-system-that-can-forecast-evolutionary-change/
-- 2026-08-21T00:48Z | Sourcegraph（X） | Sourcegraph made Code Finder generally available, giving coding agents focused repository search results with summaries, links and line ranges. | 中文：Sourcegraph正式发布Code Finder，为编程智能体提供包含摘要、链接及代码行范围的精准仓库搜索结果。 | https://x.com/Sourcegraph/status/2090601923145777544
-- 2026-08-20T23:49Z | Sakana AI（X） | Sakana AI upgraded Sakana Translate with a new Namazu generation optimized for natural Japanese-English translation and cultural context. | 中文：Sakana AI为Sakana Translate升级新一代Namazu模型，重点改善日英自然翻译及文化语境理解。 | https://x.com/SakanaAILabs/status/2090586947047895536
-- 2026-08-20T23:57Z | Simon Willison’s Weblog | Simon Willison found ChatGPT Search issuing site-restricted queries at scale, revealing how it targets individual domains during web retrieval. | 中文：Simon Willison发现ChatGPT搜索正大规模使用限定网站查询，揭示其网页检索时定向访问特定域名的方式。 | https://simonwillison.net/2026/Aug/20/chatgpt-search-now-uses-the-siteoperator-at-scale/
-- 2026-08-20T23:27Z | Arena（X） | Arena reported GLM-5.3 Max shifted Code Arena’s WebDev cost-performance frontier and would rank second among open models after weight release. | 中文：Arena称GLM-5.3 Max刷新Code Arena网页开发性价比前沿，并将在权重发布后位列开放模型第二。 | https://x.com/arena/status/2090581559262798055

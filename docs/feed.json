@@ -13,6 +13,119 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-jalapeno-inference-benchmarks.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-jalapeno-inference-benchmarks.html",
+      "title": "OpenAI Benchmarks Jalapeño Against Nvidia AI Chips",
+      "summary": "OpenAI says its first inference chip delivers lower latency and more work per watt across three large open-weight models.",
+      "content_text": "## Measured silicon, not another preview\n\nOpenAI has published the first detailed performance results for Jalapeño, its custom inference accelerator developed with Broadcom. On the public InferenceX benchmark, the company tested complete serving systems running GPT-OSS 120B, DeepSeek R1 670B and Kimi K2.5 1T, spanning both high-throughput and latency-sensitive operating points.\n\nOpenAI reports that Jalapeño completed 1.5 to 1.9 times more work per watt at peak throughput than systems based on Nvidia GB200 or GB300 accelerators. End-to-end latency was between 1.7 and 3.6 times lower, while performance in highly interactive configurations improved by 2.1 to 4.1 times. On Kimi K2.5, for example, OpenAI measured about 1.5 times higher peak performance per watt and 3.4 times lower latency than the comparison system.\n\nThe company normalized results using published package power ratings: 700 watts for Jalapeño, 1,200 watts for GB200 and 1,400 watts for GB300. It said Jalapeño sustained no more than 550 watts during the measured workloads. These remain vendor-produced results, however, and production-scale reliability, software maturity and total system cost have not yet been independently demonstrated.\n\n## A bid to control inference economics\n\nThe design keeps model state and KV cache close to the relevant compute resources while coordinating memory, networking and processing for both prompt ingestion and token generation. OpenAI also said AI-assisted engineering helped take the chip from initial design to tapeout in nine months; selected AI-generated kernels ran 1.5 to 1.8 times faster than expert-written versions, though that comparison did not cover entire models.\n\nOpenAI plans to deploy Jalapeño internally by year-end while continuing to buy Nvidia and other accelerators. The significance is strategic: credible first-party inference silicon could reduce OpenAI's marginal serving costs, improve agent responsiveness and give it greater leverage over the hardware suppliers underpinning its products. The decisive evidence will come after deployment, when utilization, yield and operating costs can be observed outside a controlled benchmark.",
+      "date_published": "2026-08-25T17:19:00.000Z",
+      "date_modified": "2026-08-25T23:00:03.126Z",
+      "tags": [
+        "Industry",
+        "Agents"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-jalapeno-inference-benchmarks.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-jalapeno-inference-benchmarks.html",
+        "source_published_at": "2026-08-25T17:19:00.000Z",
+        "site_published_at": "2026-08-25T23:00:03.126Z",
+        "sources": [
+          {
+            "title": "Jalapeño’s first results show industry-leading speed and efficiency in AI inference",
+            "url": "https://openai.com/index/jalapeno-first-results/"
+          },
+          {
+            "title": "OpenAI’s Jalapeño chip is built for fast inference at scale, benchmarks show",
+            "url": "https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/perplexity-portable-computer-agent.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/perplexity-portable-computer-agent.html",
+      "title": "Perplexity Runs Its Computer Agent on Local Hardware",
+      "summary": "Portable Computer keeps agent planning, file analysis and tool execution on a DGX Spark, escalating to cloud models only with permission.",
+      "content_text": "## An agent stack contained on the desk\n\nPerplexity has launched Portable Computer, a local-first version of its Computer agent designed initially for Nvidia's DGX Spark. Unlike a desktop interface that merely forwards requests to a cloud model, the product runs its orchestrator, planner, tool router, scheduler, durable task queue and local search index on the user's machine.\n\nUsers can choose Qwen 3.8 27B or PPLX 27B, Perplexity's task-specific post-training of that model. Nemotron 3.5 Lightning is due to join the model picker later. The agent can read and search local documents and code, create files, execute tools and continue long-running jobs without charging credits for locally completed steps. Voice transcription also stays on the device through Nvidia's Nemotron speech-recognition model.\n\nPortable Computer can connect to Gmail, Google Drive, Slack and GitHub. When a workflow needs current web information, a connected application or stronger reasoning, it may request permission to consult Perplexity search or more than 15 cloud models. Perplexity says transfers from the device require user approval and that code execution occurs inside isolated sandboxes with restricted file and application access.\n\n## Privacy has a hardware threshold\n\nThe initial release is available to Perplexity Pro and Max subscribers using Linux on DGX Spark, whose Grace Blackwell GB10 platform includes 128 GB of unified memory. Windows and RTX PC support are promised but are not yet available. The requirement substantially narrows the launch audience and means the product has not yet established that this architecture works conveniently on ordinary workplace computers.\n\nStill, Portable Computer is a consequential test of hybrid agents. It divides a task at execution time rather than forcing customers to choose permanently between private but weaker local software and capable but remote cloud services. If its permission boundaries are dependable, organizations could keep confidential source code, contracts and internal correspondence on premises while purchasing frontier reasoning only for selected steps. Its benchmark claims and security controls now need independent testing, particularly around what context an escalation request exposes.",
+      "date_published": "2026-08-25T18:43:00.000Z",
+      "date_modified": "2026-08-25T23:00:03.126Z",
+      "tags": [
+        "Agents",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/perplexity-portable-computer-agent.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-portable-computer-agent.html",
+        "source_published_at": "2026-08-25T18:43:00.000Z",
+        "site_published_at": "2026-08-25T23:00:03.126Z",
+        "sources": [
+          {
+            "title": "Introducing Portable Computer",
+            "url": "https://www.perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai"
+          },
+          {
+            "title": "A Local-First Agent for Private and Cost-Effective Knowledge Work",
+            "url": "https://www.perplexity.ai/hub/blog/a-local-first-agent-for-private-and-cost-effective-knowledge-work"
+          },
+          {
+            "title": "NVIDIA and Local AI Community Fuel Open Source Models and Intelligent Agents",
+            "url": "https://blogs.nvidia.com/blog/local-ai-open-source-models-agents-nemotron/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/stability-ai-series-b.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/stability-ai-series-b.html",
+      "title": "Entertainment Majors Back Stability AI’s $76M Round",
+      "summary": "EA and three global music groups joined Stability AI’s Series B, tying its next phase more closely to licensed creative production.",
+      "content_text": "## Rights holders become shareholders\n\nStability AI has raised $76 million in a Series B whose new investors include Electronic Arts, Sony Music Group, Universal Music Group and Warner Music Group. AMD Ventures and Pacific Alliance Ventures also participated, alongside returning backers including Coatue, Greycroft, Kadmos Capital, Sean Parker and Eric Schmidt.\n\nThe company says it has now secured $232 million under chief executive Prem Akkaraju since he took over in June 2024. That total includes two equity rounds and convertible notes, rather than representing a single cash investment. Stability did not disclose its valuation, financial performance or the ownership acquired by the new investors.\n\nThe capital is earmarked for creative-production products, applied research and an expanded professional-services business. Stability now develops image, video, 3D and audio systems, including Stable Audio 3.0, an open-weight music-model family trained on licensed material. Coatue co-founder Thomas Laffont is also joining its board.\n\n## A different compact for generative media\n\nThe investor roster is more important than the headline amount. EA, Universal and Warner already had strategic relationships with Stability, while Sony Music is joining as a new investor. Their equity participation gives Stability direct access to organizations controlling valuable games, recordings and production workflows, but may also pull its roadmap toward bespoke commercial tools and away from the broadly accessible image-model releases that built its reputation.\n\nThe financing marks a further turn in generative media's relationship with copyright owners. Rather than treating studios and labels only as licensors or legal adversaries, Stability is making several of them financial stakeholders in the tools that could reshape creative production. That alignment could improve access to licensed training data and accelerate adoption inside established media companies. It does not eliminate the harder questions: the company still must show sustainable revenue, explain how value reaches individual creators, and demonstrate that strategic investors will tolerate products that compete with existing production labor and licensing markets.",
+      "date_published": "2026-08-25T15:13:00.000Z",
+      "date_modified": "2026-08-25T23:00:03.126Z",
+      "tags": [
+        "Funding",
+        "AIGC",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/stability-ai-series-b.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/stability-ai-series-b.html",
+        "source_published_at": "2026-08-25T15:13:00.000Z",
+        "site_published_at": "2026-08-25T23:00:03.126Z",
+        "sources": [
+          {
+            "title": "The Entertainment Industry’s Biggest Names Back Stability AI in Latest Funding Round",
+            "url": "https://stability.ai/news-updates/stability-ai-latest-funding-backed-by-entertainment-industry-biggest-names"
+          },
+          {
+            "title": "Stability AI, maker of image generator Stable Diffusion, raises $76 million in fresh funding",
+            "url": "https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/generalist-raises-robotics-capital.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/generalist-raises-robotics-capital.html",
       "title": "Generalist Raises Another $200M for Robot Intelligence",
@@ -1796,128 +1909,6 @@
           {
             "title": "Google DeepMind SL2T Announcement",
             "url": "https://x.com/GoogleDeepMind/status/2087541213284946191"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/grok-46-agents.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/grok-46-agents.html",
-      "title": "SpaceXAI Releases Grok 4.6 for Long-Running Agents",
-      "summary": "Grok 4.6 targets coding and sustained agent work with a 500,000-token context window and pricing below several frontier rivals.",
-      "content_text": "## A model tuned for sustained work\n\nSpaceXAI has released Grok 4.6, a new frontier model aimed at coding, knowledge work and agents that operate across long sequences of tool calls. The model is available through the company’s API and has already appeared in third-party products including Devin and Poe, giving the launch immediate reach beyond SpaceXAI’s own interfaces.\n\nGrok 4.6 supports a 500,000-token context window and includes native function calling, code execution, web search and X search. SpaceXAI also emphasizes context compaction and predictable prompt caching—features intended to control the growing cost and instability of agents that repeatedly inspect repositories, execute code and revise their plans. Standard API pricing is listed at $2 per million input tokens and $6 per million output tokens, with a faster service tier costing more.\n\nEarly independent testing from Artificial Analysis gave Grok 4.6 a score of 61 on its Intelligence Index, placing it alongside OpenAI’s GPT-5.6 Sol in that composite test while costing less for the measured workloads. Its AA-Briefcase results also indicate a substantial improvement in agentic knowledge work over Grok 4.5. Those numbers remain benchmark results rather than guarantees: performance and total cost can change sharply with the agent harness, context length, caching behavior and number of retries.\n\n## Why it matters\n\nThe release reflects a broader change in frontier-model competition. Vendors are no longer selling only higher answer quality; they are competing on whether a model can remain useful and economical throughout a multi-hour workflow. By combining competitive benchmark performance, built-in tools and aggressive pricing, SpaceXAI is trying to become a default worker inside other companies’ agent products. Day-one integrations suggest model distribution is increasingly decided inside coding agents and workflow platforms, not solely in consumer chat applications.",
-      "date_published": "2026-08-12T15:32:00.000Z",
-      "date_modified": "2026-08-12T23:00:03.612Z",
-      "tags": [
-        "Models",
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/grok-46-agents.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/grok-46-agents.html",
-        "source_published_at": "2026-08-12T15:32:00.000Z",
-        "site_published_at": "2026-08-12T23:00:03.612Z",
-        "sources": [
-          {
-            "title": "Introducing Grok 4.6",
-            "url": "https://x.ai/news/grok-4-6"
-          },
-          {
-            "title": "Grok 4.6 Benchmarks and Analysis",
-            "url": "https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis"
-          },
-          {
-            "title": "Grok 4.6 in Devin",
-            "url": "https://x.com/cognition/status/2087579582492987881"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/qwen38-weights-open.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/qwen38-weights-open.html",
-      "title": "Alibaba Opens 2.4-Trillion-Parameter Qwen3.8 Weights",
-      "summary": "Alibaba has released its largest Qwen model’s weights, giving independent operators a frontier-scale foundation for coding and agents.",
-      "content_text": "## The release\n\nAlibaba’s Qwen team has published the weights and model card for Qwen3.8-2.4T-A95B, making the foundation on which the hosted Qwen3.8-Max service is based available for outside organizations to download and operate. The mixture-of-experts model contains 2.4 trillion parameters but activates about 95 billion for each token, an approach designed to increase total capacity without paying the computational cost of using every parameter on every request.\n\nThe public model has a native 262,144-token context window and is positioned primarily for coding, complex tool use and long-running agent workflows. Unsloth published an extreme one-bit quantization that reduces the roughly 4.9-terabyte full model to about 397 gigabytes. Even that compressed edition remains beyond ordinary consumer hardware, underlining the difference between weights being downloadable and a model being broadly practical to self-host.\n\nSome inference providers separately announced day-zero availability for Qwen3.8-branded services. Those announcements must be evaluated model by model: availability of the proprietary Qwen3.8-Max service does not by itself confirm hosted inference for the downloadable Qwen3.8-2.4T-A95B checkpoint.\n\nThe downloadable release also should not be treated as identical to Alibaba’s commercial Qwen3.8-Max product. According to the model documentation, the hosted edition is based on the open model but adds vision input, non-thinking operation, built-in tools and a default one-million-token context. Users evaluating sovereignty or customization therefore receive the core text model, but not necessarily every capability of Alibaba’s managed service.\n\n## Why it matters\n\nThis is one of the largest publicly downloadable language models yet released. More importantly, it gives cloud companies, national AI programs and large enterprises a new alternative to closed frontier APIs for agentic software work. The hardware demands will limit direct adoption, but the weights create a common foundation for quantization, fine-tuning and systems research—and put additional pressure on Western labs to justify closed access with capabilities that cannot be reproduced around an open model.",
-      "date_published": "2026-08-12T15:01:00.000Z",
-      "date_modified": "2026-08-12T23:00:03.612Z",
-      "tags": [
-        "Models",
-        "Open Source",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/qwen38-weights-open.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen38-weights-open.html",
-        "source_published_at": "2026-08-12T15:01:00.000Z",
-        "site_published_at": "2026-08-12T23:00:03.612Z",
-        "sources": [
-          {
-            "title": "Qwen3.8-2.4T-A95B Model Card",
-            "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
-          },
-          {
-            "title": "Qwen3.8-2.4T-A95B ModelScope Page",
-            "url": "https://modelscope.cn/models/Qwen/Qwen3.8-2.4T-A95B"
-          },
-          {
-            "title": "Qwen3.8-Max Day-Zero Availability on Together AI",
-            "url": "https://x.com/togethercompute/status/2087665914556944772"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/sakana-chat-code-execution-update.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/sakana-chat-code-execution-update.html",
-      "title": "Sakana Chat Adds Browser Code Execution",
-      "summary": "The Japan-focused Namazu assistant now turns Japanese instructions into runnable apps, games, charts and documents without requiring a login.",
-      "content_text": "## A Japanese assistant moves beyond question answering\n\nTokyo-based Sakana AI has released a major update to Sakana Chat, adding a new generation of its Japanese-focused Namazu model and the ability to execute generated code inside the browser. The service remains free and can be used without creating an account, although registered users receive conversation history and higher usage limits. Sakana Chat is currently available only from within Japan, according to its FAQ.\n\nThe new execution environment allows users to describe an application, utility or game in Japanese and then run the generated result directly in the chat interface. Sakana’s examples range from educational worksheets and simple browser games to spreadsheet analysis, chart creation and presentation materials. That combination shifts Sakana Chat from a localized conversational assistant toward a lightweight agent workspace capable of producing and testing artifacts.\n\nNamazu is Sakana’s effort to adapt strong foundation models to Japanese language, culture and local requirements while retaining broad reasoning and coding performance. Sakana Fugu, by contrast, is a separate commercial API product that dynamically selects and coordinates multiple underlying models. Sakana’s current public product pages do not establish that Fugu itself has become the model or orchestration layer inside Sakana Chat, so the two products should not be described as a single rollout. The Chat update also did not include a new standalone Namazu weight release and is therefore a service launch rather than an open-weight release.\n\n## Why it matters\n\nMost coding-agent products are designed first around English-language developer workflows. Sakana is instead packaging executable generation for Japanese users, including consumers, students and office workers, with no-login access reducing the initial barrier to experimentation. Its spreadsheet and document examples also place it closer to general knowledge-work agents than to a conventional chatbot.\n\nThe update is significant less because browser code execution is unique than because Sakana is combining it with Japan-specific post-training in a public product. Adoption and reliability will show whether localized agent systems can build durable advantages against global assistants that support Japanese but are not designed around Japanese workflows and cultural context. Fugu’s separate multi-model API represents another part of Sakana’s product strategy, but it should be evaluated independently from Sakana Chat’s confirmed feature set.",
-      "date_published": "2026-08-13T08:00:00.000Z",
-      "date_modified": "2026-08-13T11:00:03.399Z",
-      "tags": [
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/sakana-chat-code-execution-update.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/sakana-chat-code-execution-update.html",
-        "source_published_at": "2026-08-13T08:00:00.000Z",
-        "site_published_at": "2026-08-13T11:00:03.399Z",
-        "sources": [
-          {
-            "title": "Sakana Chat Major Update Announcement",
-            "url": "https://x.com/SakanaAILabs/status/2087811392254722068"
-          },
-          {
-            "title": "Sakana Chat FAQ",
-            "url": "https://chat.sakana.ai/faq"
-          },
-          {
-            "title": "Sakana Fugu — Multi-Agent System as a Model",
-            "url": "https://sakana.ai/fugu/"
           }
         ]
       }
