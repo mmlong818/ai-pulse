@@ -1,0 +1,31 @@
+{
+  "slug": "qwen-flash-next-open-weights",
+  "title": "Qwen Opens Flash-Next as a Preview of Qwen4",
+  "summary": "Alibaba’s 125B-parameter multimodal model activates 6B parameters per token and introduces the architecture intended for Qwen4.",
+  "body": "## An open architectural preview\n\nAlibaba’s Qwen team released the weights of Qwen3.8-Flash-Next, a multimodal mixture-of-experts model that previews architectural choices planned for the Qwen4 family. The main network contains 125 billion parameters but activates about 6 billion per token. A separate 51-billion-parameter N-gram embedding table expands capacity through inexpensive lookups that can be offloaded to host memory.\n\nThe model combines Gated DeltaNet layers, which compress prior context into a fixed state, with global layers using Qwen Sparse Attention. Its lightweight indexer selects relevant blocks instead of applying full attention across every token. Qwen says the design supports a native context window of 262,144 tokens and can be extended to one million with YaRN.\n\n## Efficiency across training and deployment\n\nOther changes include a four-branch gated residual stream and a refined Muon optimizer configuration. Qwen says training required about one-ninth the resources of Qwen3.7-Plus while producing stronger results on coding and office tasks. Those figures come from the developer’s evaluations and require independent replication.\n\nThe official weights were made available through Hugging Face and ModelScope, satisfying the threshold for an open-weight release rather than an announced future release. Early support from vLLM, SGLang and quantization projects widens the potential deployment base. Qwen also offers a managed production version, Qwen3.8-Flash, through QwenCloud, separating the downloadable research artifact from its hosted commercial service.\n\n## Why it matters\n\nThe release gives outside researchers early access to design decisions likely to shape Alibaba’s next flagship generation. Sparse retrieval, state-based history compression and memory-offloaded embeddings all target the same problem: increasing model capacity and usable context without making every generated token proportionally more expensive. Because only 6 billion main-model parameters are active per token, Flash-Next could also make a large multimodal system practical on more modest inference clusters. The consequential question is whether its efficiency claims survive varied workloads, especially long contexts where retrieval errors can remain hidden by aggregate benchmark scores.",
+  "title_zh": "通义千问开源Flash-Next，提前展示Qwen4架构",
+  "summary_zh": "阿里巴巴开源1250亿参数多模态模型，每个词元仅激活60亿参数，并首次展示Qwen4的核心架构方向。",
+  "body_zh": "## 提前开放下一代架构\n\n阿里巴巴通义千问团队发布Qwen3.8-Flash-Next权重。这是一款多模态混合专家模型，同时也是Qwen4架构的提前预览。主模型共有1250亿参数，每个词元约激活60亿参数；另有510亿参数的N-gram嵌入表，通过成本较低的查表方式增加容量，并可卸载到主机内存。\n\n模型把用于压缩历史信息的Gated DeltaNet层，与采用Qwen稀疏注意力的全局层结合。后者利用轻量索引器筛选相关文本块，避免对全部上下文执行完整注意力计算。官方称其原生上下文长度为262,144个词元，并可借助YaRN扩展至100万个词元。\n\n## 从训练到部署控制成本\n\n其他变化包括四分支门控残差通道，以及针对大规模训练调整后的Muon优化器。千问团队称，这款模型的训练资源约为Qwen3.7-Plus的九分之一，同时在编程和办公任务上表现更强。这些数字目前主要来自官方测试，仍需独立评测验证。\n\n官方权重已经在Hugging Face和魔搭社区公开，因此此次发布属于真正的开放权重，而不是发布预告。vLLM、SGLang及量化工具的首日支持也扩大了部署范围。与此同时，阿里还通过QwenCloud提供托管版Qwen3.8-Flash，将可下载的研究版本与商业API服务区分开来。\n\n## 为什么重要\n\n外部开发者现在可以直接研究阿里下一代旗舰模型可能采用的关键设计。稀疏检索、状态化历史压缩和可卸载嵌入都指向同一目标：在增加容量和上下文长度的同时，避免每个输出词元的成本同步膨胀。主模型每次只激活60亿参数，也可能让大型多模态模型适配规模更有限的推理集群。接下来值得关注的是，这些效率优势能否在多样化真实任务中保持，尤其是长上下文检索失误可能被综合榜单掩盖。",
+  "tags": [
+    "Models",
+    "Open Source"
+  ],
+  "sources": [
+    {
+      "title": "Qwen3.8-Flash-Next: A New Architecture, Towards Ultimate Cost-Efficiency",
+      "url": "https://qwen.ai/blog?id=qwen3.8-flash-next"
+    },
+    {
+      "title": "Qwen3.8-Flash-Next",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "510亿参数被移到可卸载嵌入表，Qwen4最值得关注的是内存设计。",
+  "cat_take_en": "The 51B offloadable embedding table makes Qwen4’s memory architecture more consequential than its headline parameter count.",
+  "date": "2026-08-27",
+  "published": "2026-08-26T15:20:00Z",
+  "published_at": "2026-08-26T23:00:03.019Z"
+}

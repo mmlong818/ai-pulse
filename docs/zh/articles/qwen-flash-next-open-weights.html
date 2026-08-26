@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>通义千问开源Flash-Next，提前展示Qwen4架构 — Uncle Cat AI Radar</title>
+<meta name="description" content="阿里巴巴开源1250亿参数多模态模型，每个词元仅激活60亿参数，并首次展示Qwen4的核心架构方向。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/qwen-flash-next-open-weights.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/qwen-flash-next-open-weights.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/qwen-flash-next-open-weights.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/qwen-flash-next-open-weights.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="通义千问开源Flash-Next，提前展示Qwen4架构 — Uncle Cat AI Radar">
+<meta property="og:description" content="阿里巴巴开源1250亿参数多模态模型，每个词元仅激活60亿参数，并首次展示Qwen4的核心架构方向。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/qwen-flash-next-open-weights.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="通义千问开源Flash-Next，提前展示Qwen4架构 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="阿里巴巴开源1250亿参数多模态模型，每个词元仅激活60亿参数，并首次展示Qwen4的核心架构方向。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="通义千问开源Flash-Next，提前展示Qwen4架构 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"通义千问开源Flash-Next，提前展示Qwen4架构","item":"https://mmlong818.github.io/ai-pulse/zh/articles/qwen-flash-next-open-weights.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/qwen-flash-next-open-weights.html#article","headline":"通义千问开源Flash-Next，提前展示Qwen4架构","description":"阿里巴巴开源1250亿参数多模态模型，每个词元仅激活60亿参数，并首次展示Qwen4的核心架构方向。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/qwen-flash-next-open-weights.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/qwen-flash-next-open-weights.html"},"datePublished":"2026-08-26T15:20:00.000Z","dateModified":"2026-08-26T23:00:03.019Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["模型","开源"],"keywords":"模型, 开源","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://qwen.ai/blog?id=qwen3.8-flash-next","https://huggingface.co/Qwen/Qwen3.8-Flash-Next"],"about":[{"@type":"Thing","name":"模型"},{"@type":"Thing","name":"开源"}]}]}</script>
+</head>
+<body data-slug="qwen-flash-next-open-weights" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/qwen-flash-next-open-weights.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-08-26T15:20:00Z">2026年8月26日 23:20</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>通义千问开源Flash-Next，提前展示Qwen4架构</h1>
+  <p class="standfirst">阿里巴巴开源1250亿参数多模态模型，每个词元仅激活60亿参数，并首次展示Qwen4的核心架构方向。</p>
+  <h2>提前开放下一代架构</h2><p>阿里巴巴通义千问团队发布Qwen3.8-Flash-Next权重。这是一款多模态混合专家模型，同时也是Qwen4架构的提前预览。主模型共有1250亿参数，每个词元约激活60亿参数；另有510亿参数的N-gram嵌入表，通过成本较低的查表方式增加容量，并可卸载到主机内存。</p><p>模型把用于压缩历史信息的Gated DeltaNet层，与采用Qwen稀疏注意力的全局层结合。后者利用轻量索引器筛选相关文本块，避免对全部上下文执行完整注意力计算。官方称其原生上下文长度为262,144个词元，并可借助YaRN扩展至100万个词元。</p><h2>从训练到部署控制成本</h2><p>其他变化包括四分支门控残差通道，以及针对大规模训练调整后的Muon优化器。千问团队称，这款模型的训练资源约为Qwen3.7-Plus的九分之一，同时在编程和办公任务上表现更强。这些数字目前主要来自官方测试，仍需独立评测验证。</p><p>官方权重已经在Hugging Face和魔搭社区公开，因此此次发布属于真正的开放权重，而不是发布预告。vLLM、SGLang及量化工具的首日支持也扩大了部署范围。与此同时，阿里还通过QwenCloud提供托管版Qwen3.8-Flash，将可下载的研究版本与商业API服务区分开来。</p><h2>为什么重要</h2><p>外部开发者现在可以直接研究阿里下一代旗舰模型可能采用的关键设计。稀疏检索、状态化历史压缩和可卸载嵌入都指向同一目标：在增加容量和上下文长度的同时，避免每个输出词元的成本同步膨胀。主模型每次只激活60亿参数，也可能让大型多模态模型适配规模更有限的推理集群。接下来值得关注的是，这些效率优势能否在多样化真实任务中保持，尤其是长上下文检索失误可能被综合榜单掩盖。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://qwen.ai/blog?id=qwen3.8-flash-next" rel="noopener" target="_blank">Qwen3.8-Flash-Next: A New Architecture, Towards Ultimate Cost-Efficiency</a></li><li><a href="https://huggingface.co/Qwen/Qwen3.8-Flash-Next" rel="noopener" target="_blank">Qwen3.8-Flash-Next</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/gemini-transcribe-speech-model.html">谷歌推出Gemini 3.5 Transcribe语音转写模型</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/glm-flash-multimodal-release.html">智谱开源GLM-5.3-Flash，主打多模态低成本推理</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/recraft-v4-style-reference.html">Recraft V4 Styles上线，参考图可直接生成统一风格</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
