@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>谷歌试行前沿模型“双盲”安全评测 — Uncle Cat AI Radar</title>
+<meta name="description" content="谷歌以机密计算隔离模型权重和测试题，使评测方与模型提供者都无法查看对方的敏感资产。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/google-double-blind-ai-evals.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/google-double-blind-ai-evals.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/google-double-blind-ai-evals.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/google-double-blind-ai-evals.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="谷歌试行前沿模型“双盲”安全评测 — Uncle Cat AI Radar">
+<meta property="og:description" content="谷歌以机密计算隔离模型权重和测试题，使评测方与模型提供者都无法查看对方的敏感资产。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/google-double-blind-ai-evals.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="谷歌试行前沿模型“双盲”安全评测 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="谷歌以机密计算隔离模型权重和测试题，使评测方与模型提供者都无法查看对方的敏感资产。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="谷歌试行前沿模型“双盲”安全评测 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"谷歌试行前沿模型“双盲”安全评测","item":"https://mmlong818.github.io/ai-pulse/zh/articles/google-double-blind-ai-evals.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/google-double-blind-ai-evals.html#article","headline":"谷歌试行前沿模型“双盲”安全评测","description":"谷歌以机密计算隔离模型权重和测试题，使评测方与模型提供者都无法查看对方的敏感资产。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/google-double-blind-ai-evals.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/google-double-blind-ai-evals.html"},"datePublished":"2026-08-27T12:59:00.000Z","dateModified":"2026-08-27T23:00:03.363Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["安全","研究","政策"],"keywords":"安全, 研究, 政策","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/","https://x.com/GoogleDeepMind/status/2092961763553677387"],"about":[{"@type":"Thing","name":"安全"},{"@type":"Thing","name":"研究"},{"@type":"Thing","name":"政策"}]}]}</script>
+</head>
+<body data-slug="google-double-blind-ai-evals" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/google-double-blind-ai-evals.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-08-27T12:59:00Z">2026年8月27日 20:59</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/safety.html">安全</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/policy.html">政策</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>谷歌试行前沿模型“双盲”安全评测</h1>
+  <p class="standfirst">谷歌以机密计算隔离模型权重和测试题，使评测方与模型提供者都无法查看对方的敏感资产。</p>
+  <h2>把模型与试题同时锁进“黑箱”</h2><p>Google DeepMind开始试行其所称首个面向闭源前沿模型的双盲外部评测。该方案借助机密计算环境运行测试：评测机构看不到Gemini模型权重，谷歌也无法读取保密测试题。</p><p>首轮试点由新加坡人工智能安全研究所、隐私技术组织OpenMined、评测机构AVERI和MLCommons参与。他们将在Google Cloud Confidential Space构建的受保护GPU环境中，用保密基准测试一款Gemini Flash Lite模型。密码学验证用于证明指定评测代码按约定执行，同时双方的敏感资料没有暴露给对方。</p><p>传统外部评测通常要求一方交出核心资产。评测机构若向模型公司提供秘密试题，题目可能进入研发或训练环节；模型公司若交出权重或内部系统，又会承担知识产权与安全风险。合同和零日志承诺可以降低风险，却无法从技术上独立证明信息从未被访问。</p><p>双盲方案仍不能消除所有基准偏差。题目设计、样本选择、评分方法及模型配置都会影响结果。首轮试点使用的也是Flash Lite，而非谷歌能力最强的模型。DeepMind尚未公布最终测试成绩，也没有承诺今后所有前沿模型都采用这一流程。</p><h2>为什么重要</h2><p>网络攻击、生物安全及国家安全相关测试往往不能公开，但闭源实验室也不会轻易向每家外部机构交付模型权重。若这种技术隔离方式被证明可靠，政府和独立评测方就能以真正未泄露的题目检查专有模型。未来若不同云平台和模型公司采用可互操作的实现，双盲执行环境有望成为监管与采购的公共基础设施，而不只是又一种评测方法。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/" rel="noopener" target="_blank">Piloting the world's first double-blind AI evaluations</a></li><li><a href="https://x.com/GoogleDeepMind/status/2092961763553677387" rel="noopener" target="_blank">Google DeepMind double-blind evaluation announcement</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/ai-cyber-defense-letter.html">逾百家机构联署呼吁加码AI网络防御</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/google-planetary-prediction-engine.html">谷歌推出行星级预测工作流智能体</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/claude-cowork-built-in-browser.html">Claude Cowork内置独立浏览器，可代用户操作网页</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
