@@ -33,7 +33,7 @@ More than 100 organizations warn that AI-enabled attacks will spread within mont
 
 OpenAI, Anthropic, Google, AWS and Microsoft have joined cybersecurity vendors, banks, industrial companies and more than 100 other organizations in calling for an international surge in cyber defense. The open letter argues that increasingly capable models will make sophisticated attacks more widespread over the coming months, placing hospitals, water systems and internet infrastructure at particular risk.
 
-The current signatory roster also includes AMD, Arm, Broadcom, Cloudflare, CrowdStrike, Deutsche Telekom, Hugging Face, IBM, Mastercard, National Australia Bank, Oracle, SAP, Visa and several major professional-services firms. It is a policy-letter roster, not a newly created alliance or membership body, and the page remains open to additional signatories.
+The current signatory roster also includes AMD, Arm, Broadcom, Cloudflare, CrowdStrike, Deutsche Telekom, Hugging Face, IBM, Mastercard, Oracle, SAP, Visa and several major professional-services firms. It is a policy-letter roster, not a newly created alliance or membership body, and may continue to change as the page is updated.
 
 The letter asks organizations to treat cybersecurity as an executive priority, reduce excessive permissions, patch exposed systems and verify AI-generated code. Technology suppliers are urged to share threat intelligence and tested fixes, while governments are asked to finance under-resourced essential services, coordinate incident response and impose costs on attackers. Frontier laboratories are separately asked to provide responsible access to capable models, funding, training, monitoring tools and practical support.
 
@@ -176,6 +176,77 @@ Chinese summary: 谷歌实验性地理空间智能体可自动发现数据、训
 Sources:
   - Planetary prediction engine: Automating global models via Earth AI: https://www.research.google/blog/planetary-prediction-engine-automating-global-models-via-earth-ai/
   - Planetary Prediction Engine research paper: https://arxiv.org/abs/2608.26088
+
+### Midjourney Opens V8.2 Image Editing to Testers
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/midjourney-tests-v82-image-editor.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/midjourney-tests-v82-image-editor.html
+- Source timestamp: 2026-08-28T08:24:00.000Z
+- Site timestamp: 2026-08-28T11:00:03.884Z
+- Tags: Models, AIGC
+
+Midjourney’s first V8.2 editing model adds instruction-led changes, four-image references, inpainting and canvas expansion.
+
+## A native editor for the V8 generation
+
+Midjourney has begun broad community testing of its first image-editing model built for V8.2. Users can modify an existing picture with written instructions, regenerate selected regions through inpainting, extend a composition beyond its original borders and generate new images from as many as four visual references.
+
+The new reference workflow replaces Midjourney’s earlier Omni Reference mechanism for these editing jobs. Personalization profiles, moodboards and style references remain available, although the company warns that moodboards and style references may need more explicit prompting during the test.
+
+Users can attach images directly to the web prompt bar, open an existing result and select Edit, upload through a dedicated editing tab, or invoke the model on Discord with an edit command. Midjourney has also modified the interfaces on its main and alpha websites, indicating that the editing model is being tested together with the workflow surrounding it rather than as an isolated endpoint.
+
+## A test release with acknowledged gaps
+
+Midjourney is explicitly treating this as a larger community test, not a finished production release. It is asking users to flag unsuccessful generations and submit job identifiers or links for difficult cases. The company expects rapid follow-up changes to both the model and interface.
+
+That qualification matters because instruction-based editing is judged differently from unconstrained image generation. A visually attractive result can still fail if it alters protected details, mishandles one reference among four or changes areas outside the user’s selection. Midjourney has not yet published systematic measurements for edit fidelity, identity retention or reference consistency.
+
+## Why it matters
+
+The release moves Midjourney further from a prompt-to-image generator toward an iterative visual-production environment. Native editing can reduce the need to transfer generated work into another product for revisions, while multi-image conditioning could make recurring subjects and art direction easier to preserve. Whether it becomes a dependable professional tool will depend on precise local control—the part Midjourney is now asking its community to stress-test.
+
+Chinese title: Midjourney 向用户开放 V8.2 图像编辑模型测试
+Chinese summary: Midjourney 首款 V8.2 图像编辑模型开始扩大测试，支持文字指令修改、四图参考、局部重绘与画布扩展。
+
+Sources:
+  - Edit Model for V8: https://updates.midjourney.com/edit-model-for-v8/
+  - Midjourney V8.2 Edit Model Announcement: https://x.com/midjourney/status/2093253371650031949
+
+### Tencent Opens Hy4 Preview With One-Million Context
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/tencent-opens-hy4-preview.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/tencent-opens-hy4-preview.html
+- Source timestamp: 2026-08-28T06:23:00.000Z
+- Site timestamp: 2026-08-28T11:00:03.884Z
+- Tags: Models, Open Source, Agents
+
+Tencent has released Hy4 Preview’s open weights, pairing a 770-billion-parameter MoE design with a one-million-token context window.
+
+## Open weights and a larger architecture
+
+Tencent has released the weights for Hy4 Preview, its new flagship mixture-of-experts language model, through Hugging Face, ModelScope, GitCode and CNB. The model contains 770 billion parameters but activates 49 billion for each token. It supports a one-million-token context window and ships in full-precision and FP8 variants.
+
+Hy4 uses 256 routed experts per mixture layer, activating eight alongside a shared expert. Its attention system combines gated sparse attention with cross-layer index reuse, while a native multi-token-prediction layer supports speculative decoding. Tencent provides deployment instructions for vLLM and SGLang, although the model’s size still puts self-hosting beyond ordinary workstations.
+
+## Built around productivity agents
+
+Tencent is positioning Hy4 for coding, office work, game development and scientific research. It says 163 internal specialists compared model outputs across 203 engineering tasks: Hy4 averaged 2.99 out of four, narrowly exceeding GLM-5.3 at 2.92 and Kimi K3 at 2.94. These are vendor-run results rather than independent evaluations.
+
+The company also says Hy4 participated in optimizing its own training methods, data strategies, evaluations and low-level operators. Work on operator fusion and communications reportedly improved end-to-end inference throughput by 31.8% from Tencent’s baseline. The model card nevertheless identifies excessive reasoning and repeated self-verification as known weaknesses.
+
+Hy4 is available through Tencent products, Tencent Cloud TokenHub and OpenRouter. Tencent lists API prices of $0.834 per million input tokens, $2.501 per million output tokens and $0.042 per million cached tokens.
+
+## Why it matters
+
+Hy4 adds another genuinely large Chinese open-weight model to a rapidly tightening field. Its combination of long context, agent-oriented training and downloadable weights gives researchers and infrastructure providers something concrete to inspect and deploy. The central uncertainty is efficiency: 49 billion active parameters are economical relative to the full model, but operating a 770-billion-parameter checkpoint remains a substantial hardware commitment.
+
+Chinese title: 腾讯开源混元 Hy4 Preview，上下文扩至百万 Token
+Chinese summary: 腾讯发布混元 Hy4 Preview 开放权重，以 7700 亿总参数、490 亿激活参数和百万 Token 上下文主攻生产力智能体。
+
+Sources:
+  - Tencent Releases and Open-Sources Tencent Hy4 preview: https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/
+  - Tencent-Hunyuan Hy4-preview: https://github.com/Tencent-Hunyuan/Hy4-preview
+  - Tencent Hunyuan Hy4 Preview Announcement: https://x.com/TencentHunyuan/status/2093222928720761009
 
 ### Anthropic Secures $45B in Nscale Compute Capacity
 
@@ -937,73 +1008,6 @@ Sources:
   - OpenAI API usage and spend controls: https://x.com/OpenAIDevs/status/2090903221636338057
   - GPT-5.6 Sol model documentation: https://developers.openai.com/api/docs/models/gpt-5.6-sol
 
-### Runway Ruby Converts Generated Video Into HDR Masters
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/runway-ruby-hdr-video.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/runway-ruby-hdr-video.html
-- Source timestamp: 2026-08-21T14:24:00.000Z
-- Site timestamp: 2026-08-21T23:00:03.982Z
-- Tags: AIGC, Industry
-
-Runway’s new model converts uploaded or generated SDR footage into high-bit-depth HDR formats designed for professional post-production.
-
-## Generative video enters the finishing pipeline
-
-Runway has introduced Ruby, a model that converts standard-dynamic-range video into high-dynamic-range output. It can process footage already uploaded to Runway as well as clips generated on the platform, and export up to 16-bit EXR image sequences or 10- and 12-bit ProRes and HEVC files.
-
-The service supports the BT.2020 color space and professional transfer functions including PQ and HLG. These specifications matter because they preserve a substantially wider brightness and color range than ordinary web video, while EXR sequences provide the high bit depth and frame-level control expected in visual-effects and color-grading pipelines. According to Runway’s current documentation, Ruby is available on the Max plan or higher and to all Runway Dev accounts.
-
-Ruby is not principally a new text-to-video generator. It addresses a later production stage: translating SDR source material into files that can move through professional editing, compositing and delivery systems. That distinction also shapes how its output should be assessed. A convincing HDR conversion must reconstruct highlight and color information that was not fully represented in the source, while avoiding unstable brightness, halos or color shifts from frame to frame.
-
-Runway has not established through independent testing that converted footage contains the same recoverable scene information as material captured or rendered natively in HDR. The model’s exports should therefore be treated as generated interpretations of the SDR input, not as recovery of original sensor data.
-
-## Why it matters
-
-Generative-video companies have largely competed on prompt adherence, motion and visual fidelity. Ruby moves the contest into post-production infrastructure, where compatibility with established formats can determine whether generated footage is useful beyond social media prototypes.
-
-For studios, the appeal is a shorter path from an AI-generated clip to a grading or compositing suite, without first relying on a separate conversion service. More broadly, the release shows AIGC platforms expanding from asset generation toward end-to-end production workflows. Its lasting value will depend less on spectacular demonstrations than on temporal consistency, predictable color management and whether professional colorists can safely integrate the output into real projects.
-
-Chinese title: Runway推出Ruby，将生成视频转为专业HDR母版
-Chinese summary: Runway新模型可把上传或生成的SDR视频转换为高位深HDR文件，进一步进入专业调色与后期制作流程。
-
-Sources:
-  - Introducing Runway Ruby: https://x.com/runwayml/status/2090807248402682101
-  - Runway Ruby availability and export formats: https://x.com/runwayml/status/2090861012488774008
-
-### DeepSeek Adds Vision to V4 Flash Through Experimental API
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-v4-flash-gains-vision.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v4-flash-gains-vision.html
-- Source timestamp: 2026-08-21T09:17:00.000Z
-- Site timestamp: 2026-08-21T11:00:03.648Z
-- Tags: Models, Agents
-
-The Chinese lab’s new multimodal endpoint combines its fast text model with image understanding, reusable uploads and agent-framework support.
-
-## A visual extension for V4 Flash
-
-DeepSeek has introduced DeepSeek-V4-Flash-Vision-Exp, an experimental multimodal model available through its API platform. The endpoint accepts images alongside text while retaining what the company describes as comparable text performance to DeepSeek-V4-Flash. Developers access it by selecting `deepseek-v4-flash-vision-exp`; the launch does not include downloadable weights or establish the model as a production release.
-
-DeepSeek says images are converted into billable tokens at the existing V4-Flash rate, with each image consuming no more than 384 tokens. The relatively compact allowance could make visual input economical for applications that inspect screenshots, documents, charts or photographs, although DeepSeek has not yet published a detailed evaluation showing how accuracy changes with image resolution or task complexity.
-
-## Files become reusable agent inputs
-
-A new Files API accompanies the model. Developers can upload an image once, receive a `file_id`, and reference that object in later requests instead of repeatedly transmitting the original file. DeepSeek says file storage and use are free at launch. This design reduces bandwidth and simplifies workflows in which an agent revisits the same diagram, interface capture or reference image across multiple reasoning steps.
-
-The company also demonstrated the model working with agent frameworks and tool use. That combination matters more than conventional image question-answering alone: an agent could inspect a visual state, decide what action is needed and invoke a tool without switching between separate language and vision systems.
-
-## Why it matters
-
-Native image input closes an important capability gap in DeepSeek’s current API lineup and makes its lower-cost Flash tier more practical for document automation, interface testing and visual agents. The experimental label remains consequential, however. Without released weights, comprehensive benchmarks or production-stability commitments, the announcement is best read as a developer-facing trial rather than a new open multimodal foundation model.
-
-Chinese title: DeepSeek 为 V4 Flash 实验版接入视觉能力
-Chinese summary: DeepSeek 推出多模态实验接口，将图像理解、可复用文件上传与智能体框架支持纳入 V4 Flash 产品线。
-
-Sources:
-  - DeepSeek-V4-Flash-Vision-Exp API announcement: https://x.com/deepseek_ai/status/2090730032574631962
-  - DeepSeek multimodal API details: https://x.com/deepseek_ai/status/2090730039973392531
-  - DeepSeek Files API announcement: https://x.com/deepseek_ai/status/2090730042586489333
-
 ## Recent radar items
 
 ### 2026-08-28
@@ -1025,6 +1029,20 @@ Sources:
 - 2026-08-27T15:30Z | Weaviate on X | Weaviate 1.39 made Boost API and multi-target vector search generally available while previewing additional search and storage improvements. | 中文：Weaviate 1.39 将 Boost API 和多目标向量搜索转为正式可用，并预览了更多搜索与存储改进。 | https://x.com/weaviate_io/status/2092998156422115767
 - 2026-08-27T16:04Z | Bolt on X | Bolt added collaborative prompt queues, allowing teammates to view, modify, and submit queued instructions while its coding agent continues building. | 中文：Bolt 新增多人协作提示词队列，团队成员可在编程智能体继续构建时查看、修改并提交后续指令。 | https://x.com/boltdotnew/status/2093006855735795791
 - 2026-08-27T17:15Z | Databricks on X | Databricks previewed chart-to-JSON enrichment for Genie One, helping agents answer questions about numerical information embedded in PDF charts. | 中文：Databricks 为 Genie One 预览图表转 JSON 增强功能，帮助智能体回答 PDF 图表中数值信息相关的问题。 | https://x.com/databricks/status/2093024735412064527
+- 2026-08-28T10:53Z | InfoQ 中文 | Cloudflare turned engineering specifications into machine-readable controls that AI coding agents must satisfy before code can advance. | 中文：Cloudflare 将工程规范转化为机器可读的管控规则，AI 编程代理必须满足这些规则，代码才能进入后续流程。 | https://www.infoq.cn/article/TEgX02zINMmLVbYPyP0N
+- 2026-08-28T10:47Z | IT之家 | Minecraft creator Markus Persson said his early rejection of AI coding may have been wrong after experimenting with the technology. | 中文：《我的世界》创始人马库斯·佩尔松在亲自尝试后表示，自己早期排斥 AI 编程的看法可能错了。 | https://www.ithome.com/0/995/770.htm
+- 2026-08-28T10:18Z | IT之家 | Asus established a physical-AI business group and plans to begin deploying its humanoid robots in September. | 中文：华硕成立物理 AI 事业群，并计划从 9 月开始部署其人形机器人。 | https://www.ithome.com/0/995/763.htm
+- 2026-08-28T09:44Z | Alibaba Wan on X | Picsart added Alibaba’s Wan 3.0, bringing the video-generation model into its creative platform. | 中文：Picsart 接入阿里巴巴 Wan 3.0，将这款视频生成模型带入其创作平台。 | https://x.com/Alibaba_Wan/status/2093273564736782574
+- 2026-08-28T09:00Z | Tripo on X | Tripo opened its Creator Program, offering early product access, creative challenges, co-creation opportunities and a channel for workflow feedback. | 中文：Tripo 开放创作者计划，提供新品抢先体验、创作挑战、共创机会及工作流反馈渠道。 | https://x.com/tripoai/status/2093262322999439395
+- 2026-08-28T08:39Z | Lovart on X | Lovart demonstrated Seedance 2.5 turning one photograph into a hyper-realistic 30-second vlog from a text prompt. | 中文：Lovart 演示了 Seedance 2.5 如何通过文字提示，将一张照片生成写实的 30 秒视频博客。 | https://x.com/lovart_ai/status/2093257258423775323
+- 2026-08-28T08:03Z | The Decoder | OpenAI job listings indicate it is prototyping always-on agents that proactively monitor events and initiate work without fresh user prompts. | 中文：OpenAI 的招聘信息显示，公司正在开发常驻型代理，可主动监测事件并在没有新指令时自行发起任务。 | https://the-decoder.com/always-on-and-self-starting-ai-agents-might-be-openais-next-big-play/
+- 2026-08-28T02:04Z | Artificial Analysis on X | Agnes 2.5 Pro Beta scored 44 on Artificial Analysis’s Agentic Index, up from its predecessor’s 25. | 中文：Agnes 2.5 Pro Beta 在 Artificial Analysis 的代理能力指数中获得 44 分，高于上一版本的 25 分。 | https://x.com/ArtificialAnlys/status/2093157747848294799
+- 2026-08-28T02:00Z | OpenAI | OpenAI and Thailand’s higher-education ministry launched an eight-week accelerator for ten healthcare, wellness and education AI startups. | 中文：OpenAI 与泰国高等教育部门启动为期八周的加速计划，首批覆盖十家医疗、健康和教育 AI 初创企业。 | https://openai.com/index/supporting-next-generation-ai-startups-thailand/
+- 2026-08-28T01:06Z | Arena on X | Wan 3.0 reached first place in Video Edit Arena with 1,414 points, four points ahead of Seedance 2.5. | 中文：Wan 3.0 以 1414 分登顶 Video Edit Arena，领先 Seedance 2.5 四分。 | https://x.com/arena/status/2093143153167810608
+- 2026-08-28T00:17Z | Pika on X | Pika added Wan 3.0 to its API and said access costs up to 35% less than through competing API aggregators. | 中文：Pika API 接入 Wan 3.0，并称其价格比其他 API 聚合平台最高低 35%。 | https://x.com/pika_labs/status/2093130745384780118
+- 2026-08-27T23:04Z | AWS Machine Learning Blog | AWS demonstrated approval-gated creative agents combining Amazon Quick, reusable Skills, MCP and fal’s image, video, audio and 3D models. | 中文：AWS 展示了结合 Amazon Quick、可复用技能、MCP 与 fal 多模态模型，并设置人工审批节点的创作代理工作流。 | https://aws.amazon.com/blogs/machine-learning/build-agentic-creative-workflows-with-amazon-quick-and-fal/
+- 2026-08-28T04:00Z | arXiv | WALL-SS proposes next-scale autoregression to improve the scalability and long-horizon prediction capabilities of robotic world models. | 中文：WALL-SS 提出“下一尺度自回归”方法，以提升机器人世界模型的扩展性和长时程预测能力。 | https://arxiv.org/abs/2608.26239
+- 2026-08-28T04:00Z | arXiv | ADeptS-Bench evaluates whether computer-use agents remain trustworthy when performing equivalent tasks across different device environments. | 中文：ADeptS-Bench 用于评估计算机操作代理在不同设备环境中执行同类任务时能否保持可信。 | https://arxiv.org/abs/2608.26204
 
 ### 2026-08-27
 

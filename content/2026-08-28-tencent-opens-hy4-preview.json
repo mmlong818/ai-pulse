@@ -1,0 +1,36 @@
+{
+  "slug": "tencent-opens-hy4-preview",
+  "title": "Tencent Opens Hy4 Preview With One-Million Context",
+  "summary": "Tencent has released Hy4 Preview’s open weights, pairing a 770-billion-parameter MoE design with a one-million-token context window.",
+  "body": "## Open weights and a larger architecture\n\nTencent has released the weights for Hy4 Preview, its new flagship mixture-of-experts language model, through Hugging Face, ModelScope, GitCode and CNB. The model contains 770 billion parameters but activates 49 billion for each token. It supports a one-million-token context window and ships in full-precision and FP8 variants.\n\nHy4 uses 256 routed experts per mixture layer, activating eight alongside a shared expert. Its attention system combines gated sparse attention with cross-layer index reuse, while a native multi-token-prediction layer supports speculative decoding. Tencent provides deployment instructions for vLLM and SGLang, although the model’s size still puts self-hosting beyond ordinary workstations.\n\n## Built around productivity agents\n\nTencent is positioning Hy4 for coding, office work, game development and scientific research. It says 163 internal specialists compared model outputs across 203 engineering tasks: Hy4 averaged 2.99 out of four, narrowly exceeding GLM-5.3 at 2.92 and Kimi K3 at 2.94. These are vendor-run results rather than independent evaluations.\n\nThe company also says Hy4 participated in optimizing its own training methods, data strategies, evaluations and low-level operators. Work on operator fusion and communications reportedly improved end-to-end inference throughput by 31.8% from Tencent’s baseline. The model card nevertheless identifies excessive reasoning and repeated self-verification as known weaknesses.\n\nHy4 is available through Tencent products, Tencent Cloud TokenHub and OpenRouter. Tencent lists API prices of $0.834 per million input tokens, $2.501 per million output tokens and $0.042 per million cached tokens.\n\n## Why it matters\n\nHy4 adds another genuinely large Chinese open-weight model to a rapidly tightening field. Its combination of long context, agent-oriented training and downloadable weights gives researchers and infrastructure providers something concrete to inspect and deploy. The central uncertainty is efficiency: 49 billion active parameters are economical relative to the full model, but operating a 770-billion-parameter checkpoint remains a substantial hardware commitment.",
+  "title_zh": "腾讯开源混元 Hy4 Preview，上下文扩至百万 Token",
+  "summary_zh": "腾讯发布混元 Hy4 Preview 开放权重，以 7700 亿总参数、490 亿激活参数和百万 Token 上下文主攻生产力智能体。",
+  "body_zh": "## 权重已开放，架构进一步扩容\n\n腾讯正式发布混元 Hy4 Preview，并通过 Hugging Face、ModelScope、GitCode 和 CNB 提供完整精度及 FP8 版本权重。该模型采用混合专家架构，总参数量为 7700 亿，每个 Token 激活 490 亿参数，支持最长 100 万 Token 上下文。\n\nHy4 的每个混合专家层设有 256 个路由专家，每次激活其中八个及一个共享专家。注意力模块结合门控稀疏注意力与跨层索引复用，另有原生多 Token 预测层用于推测解码。腾讯同时给出了 vLLM 和 SGLang 部署方案，但如此规模的模型仍远超普通工作站的承载能力。\n\n## 面向生产力智能体优化\n\n腾讯将 Hy4 的重点场景放在编程、办公、游戏开发和科学研究。公司组织 163 名内部专家，对 203 项工程任务进行盲测；Hy4 平均得分为 2.99 分，略高于 GLM-5.3 的 2.92 分和 Kimi K3 的 2.94 分。不过，这组结果来自厂商内部测试，仍需独立评测验证。\n\n腾讯还称，Hy4 参与了自身训练方法、数据策略、评估体系和底层算子的优化，并通过算子融合与通信优化，将端到端推理吞吐量较内部基线提高 31.8%。模型卡也明确列出当前缺陷，包括复杂任务中思考时间偏长，以及反复验证自身结论。\n\nHy4 已接入腾讯旗下产品、腾讯云 TokenHub 和 OpenRouter。官方 API 定价为每百万输入 Token 0.834 美元、输出 2.501 美元，缓存 Token 为 0.042 美元。\n\n## 为什么重要\n\nHy4 为快速扩大的中国开放权重模型阵营增加了一个真正的大体量选手。百万上下文、面向智能体的训练和可下载权重，让研究机构与基础设施厂商能够实际检查和部署它。悬念在于运行效率：每次只激活 490 亿参数固然降低了计算量，但托管一个 7700 亿参数检查点依然需要昂贵的硬件资源。",
+  "tags": [
+    "Models",
+    "Open Source",
+    "Agents"
+  ],
+  "sources": [
+    {
+      "title": "Tencent Releases and Open-Sources Tencent Hy4 preview",
+      "url": "https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/"
+    },
+    {
+      "title": "Tencent-Hunyuan Hy4-preview",
+      "url": "https://github.com/Tencent-Hunyuan/Hy4-preview"
+    },
+    {
+      "title": "Tencent Hunyuan Hy4 Preview Announcement",
+      "url": "https://x.com/TencentHunyuan/status/2093222928720761009"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "Hy4 leads because its downloadable 770B checkpoint materially expands the open-model frontier for long-context agents.",
+  "featured_reason_zh": "Hy4 以可下载的 7700 亿参数权重，把开放模型的长上下文智能体能力推向新规模。",
+  "cat_take_zh": "490亿激活参数仍非轻量模型，开放权重不等于低门槛部署。",
+  "cat_take_en": "Forty-nine billion active parameters remain heavyweight; downloadable weights do not make Hy4 inexpensive to operate.",
+  "date": "2026-08-28",
+  "published": "2026-08-28T06:23:00Z",
+  "published_at": "2026-08-28T11:00:03.884Z"
+}
