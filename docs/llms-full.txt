@@ -553,30 +553,33 @@ Sources:
 - Site timestamp: 2026-08-26T23:00:03.019Z
 - Tags: Models, Agents
 
-Google’s new speech model handles live multilingual audio, cleans disfluencies and connects dictation directly to tool-using workflows.
+Google’s new speech model handles live multilingual audio, cleans disfluencies and powers voice-driven workflows in products such as Gemini for macOS.
 
 ## Two models for live and recorded speech
 
-Google introduced Gemini 3.5 Transcribe, a speech-to-text model offered in separate preview variants for real-time streaming and prerecorded or batch audio. It is available through the Gemini API and Google AI Studio, as well as products and platforms including Gemini for macOS, Gboard, Workspace and Google’s enterprise agent environment.
+Google introduced Gemini 3.5 Transcribe, a speech-to-text model offered in separate preview variants for real-time streaming and prerecorded audio. Developers can access it through the Gemini API and Google AI Studio, while Google is also using the technology in products including Gboard’s Rambler feature on Android and the Gemini app for macOS.
 
-The batch model supports more than 85 languages, a 96,000-token input window and speaker attribution with timestamps for up to three speakers. Google reports word error rates of 5.04% on a selected group of FLEURS languages in non-streaming evaluation and 5.50% in streaming mode. Those results are Google’s own measurements and do not establish performance across every accent, acoustic setting or domain vocabulary.
+The prerecorded-audio model supports more than 85 languages, a 96,000-token input window and speaker attribution with timestamps for up to three speakers. Google reports word error rates of 5.04% on a selected group of FLEURS languages in non-streaming evaluation and 5.50% in streaming mode. Those results are Google’s own benchmark measurements and do not establish performance across every accent, acoustic setting or domain vocabulary.
 
 ## Transcription becomes an interface
 
 The model is designed to produce usable prose rather than a strictly literal transcript. It can remove filler words, add punctuation and formatting, interpret spoken corrections, and improve recognition of phone numbers, postal codes and order identifiers. It also detects language changes during a conversation.
 
-More consequentially, the streaming version supports function calling. Spoken requests can be routed to other Gemini capabilities for web search, image generation, summarization or file analysis. That turns transcription into an input layer for agents: a user can dictate, revise the wording verbally and initiate a task without switching interfaces. The same flexibility raises accuracy and governance questions because removing disfluencies or interpreting intent can alter the evidentiary value of a transcript.
+In the Gemini app for macOS, Google combines transcription with other Gemini models so spoken commands can initiate tasks such as image generation, information lookup, document summarization and file analysis. Google describes this product experience as function calling, but the current Gemini API documentation marks function calling as unsupported by the Transcribe endpoint itself. Developers therefore should not treat tool use as a native capability of either transcription API.
+
+This product-level integration still turns transcription into an input layer for agents: a user can dictate, revise wording verbally and initiate a task without switching interfaces. The same flexibility raises accuracy and governance questions because removing disfluencies or interpreting intent can alter the evidentiary value of a transcript.
 
 ## Why it matters
 
-Speech recognition is becoming infrastructure for agentic systems rather than a standalone conversion utility. Google can distribute this model across consumer keyboards, desktop software, enterprise tools and a developer API, giving it unusually broad reach at launch. Its handling of alphanumeric strings addresses a persistent weakness in voice interfaces, while function calling connects speech directly to actions. Buyers will still need to distinguish polished dictation from faithful transcription—especially in medical, legal and compliance settings where an omitted hesitation or normalized phrase may carry meaning.
+Speech recognition is becoming infrastructure for agentic systems rather than a standalone conversion utility. Google can distribute this model across consumer software, enterprise tools and developer APIs, giving it unusually broad reach at launch. Its handling of alphanumeric strings addresses a persistent weakness in voice interfaces, while integrations such as Gemini for macOS connect speech to actions. Buyers will still need to distinguish polished dictation from faithful transcription—especially in medical, legal and compliance settings where an omitted hesitation or normalized phrase may carry meaning.
 
 Chinese title: 谷歌推出Gemini 3.5 Transcribe语音转写模型
-Chinese summary: 谷歌新模型支持实时多语种音频、自动清理口头停顿，并能把语音输入直接连接到调用工具的任务流程。
+Chinese summary: 谷歌新模型支持实时多语种音频、自动清理口头停顿，并在Gemini macOS版等产品中为语音驱动的任务流程提供输入能力。
 
 Sources:
   - Intelligent transcription with Gemini 3.5 Transcribe: https://deepmind.google/blog/intelligent-transcription-with-gemini-3.5-transcribe/
   - Gemini Audio — AI transcription: https://deepmind.google/models/gemini-audio/ai-transcription/
+  - Gemini 3.5 Transcribe API documentation: https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe
 
 ### Z.ai Releases GLM-5.3-Flash With Open Weights
 
@@ -1003,6 +1006,26 @@ Sources:
 
 ## Recent radar items
 
+### 2026-08-30
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-30.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-30.html
+
+- 2026-08-29T22:34Z | AWS Developers on X | AWS highlighted Lambda MicroVMs as disposable sandboxes for AI agents to execute generated code without exposing credentials. | 中文：AWS 展示了将 Lambda MicroVM 用作一次性 AI 智能体沙箱，让生成代码在不暴露凭证的环境中执行。 | https://x.com/awsdevelopers/status/2093829553281966089
+- 2026-08-29T19:12Z | MiniMax on X | MiniMax said its open-weight H3 Max model achieved a significant leaderboard milestone, highlighting continued progress in its video-generation ecosystem. | 中文：MiniMax 表示，开放权重的 H3 Max 模型取得重要榜单成绩，显示其视频生成生态仍在持续进步。 | https://x.com/MiniMax_AI/status/2093778769903534294
+- 2026-08-29T18:41Z | TechCrunch | Sony Music and Warner Music sued Anthropic, alleging unauthorized copying of copyrighted lyrics for AI training and generated responses. | 中文：索尼音乐和华纳音乐起诉 Anthropic，指控其未经授权复制受版权保护的歌词，用于 AI 训练和生成回答。 | https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/
+- 2026-08-29T17:59Z | Hailuo AI on X | Hailuo demonstrated H3 Max generating continuously extendable anime, positioning longer narrative continuity as a practical use for AI video. | 中文：海螺展示了 H3 Max 持续延展动漫内容的能力，将更长的叙事连续性作为 AI 视频的一项实际用途。 | https://x.com/Hailuo_AI/status/2093760512073077148
+- 2026-08-29T18:53Z | Databricks on X | Databricks published practical guidance for moving AI prototypes into production, covering implementation patterns and operational considerations. | 中文：Databricks 发布了将 AI 原型投入生产的实用指南，涵盖实施模式和运行阶段需要考虑的问题。 | https://x.com/databricks/status/2093774020176961835
+- 2026-08-29T15:00Z | Tripo AI on X | Tripo previewed Smart Mesh P2.0 through a game-companion creation challenge offering $6,000 in total prizes. | 中文：Tripo 通过游戏风格伙伴创作挑战预览 Smart Mesh P2.0，并提供总计六千美元奖金。 | https://x.com/tripoai/status/2093715298591428622
+- 2026-08-29T13:25Z | The Decoder | AI-generated video is increasingly replacing some actors and livestreamers in China’s entertainment workflows, according to an industry report. | 中文：一份行业报道显示，AI 生成视频正在中国娱乐制作流程中逐渐替代部分演员和直播人员。 | https://the-decoder.com/ai-generated-videos-are-already-displacing-actors-and-livestreamers-across-chinas-entertainment-industry/
+- 2026-08-29T13:19Z | InfoQ 中文 | HarmonyOS 7’s visual AI supports natural-language image retrieval and low-resolution image enhancement within real-world applications. | 中文：HarmonyOS 7 的视觉 AI 已在实际应用中支持自然语言找图和低清图像增强。 | https://www.infoq.cn/article/3R8f57Bow3B4kEBkPv5J
+- 2026-08-29T13:11Z | 量子位 | An investigation found that differences across 734 software dependencies can materially degrade locally deployed AI models versus official implementations. | 中文：一项调查发现，734 个软件依赖包之间的差异可能导致本地部署的 AI 模型明显落后于官方实现。 | https://www.qbitai.com/2026/08/481372.html
+- 2026-08-29T12:50Z | 量子位 | A Claude-based research agent reportedly outperformed human researchers costing $150 per hour while operating at roughly $4 per hour. | 中文：据报道，一个基于 Claude 的研究智能体以约每小时四美元的成本，超过了时薪一百五十美元的人类研究员。 | https://www.qbitai.com/2026/08/481223.html
+- 2026-08-29T12:26Z | 量子位 | A newly open-sourced OCR tool reportedly converts PDF content into Markdown in 20 milliseconds, nearly 300 times faster than a comparison system. | 中文：一款新近开源的 OCR 工具据称能在二十毫秒内把 PDF 转成 Markdown，速度接近对比系统的三百倍。 | https://www.qbitai.com/2026/08/481075.html
+- 2026-08-29T12:11Z | 量子位 | Alibaba’s Qoder coding product targets non-programmers with natural-language software creation and agent-assisted development workflows. | 中文：阿里巴巴的 Qoder 编程产品面向非程序员，提供自然语言软件创建和智能体辅助开发流程。 | https://www.qbitai.com/2026/08/480940.html
+- 2026-08-29T12:51Z | The Decoder | Google’s WikiSkill gives AI agents persistent records of previous successes and failures to improve performance on future tasks. | 中文：Google 的 WikiSkill 为 AI 智能体保存以往成功与失败的持久记录，以改善后续任务表现。 | https://the-decoder.com/google-gives-ai-agents-their-own-wiki-so-they-can-learn-from-mistakes-and-successes/
+- 2026-08-29T11:35Z | 量子位 | Intel’s 32GB Arc Pro B70 GPU is being positioned for local AI-comic production and other memory-intensive generative workloads. | 中文：英特尔配备三十二 GB 显存的锐炫 Pro B70 GPU 正被用于本地 AI 漫剧制作等高显存生成任务。 | https://www.qbitai.com/2026/08/480787.html
+
 ### 2026-08-29
 
 - English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-29.html
@@ -1138,37 +1161,3 @@ Sources:
 - 2026-08-26T04:00Z | arXiv | Researchers found that agentic scaffolding can amplify large language models’ tendency to agree with users’ incorrect or biased premises. | 中文：研究发现，智能体脚手架可能放大大语言模型迎合用户错误或偏见前提的倾向。 | https://arxiv.org/abs/2608.21377
 - 2026-08-26T04:00Z | arXiv | A new reinforcement-learning method trains generalist robot policies to use inference delays productively instead of remaining idle while awaiting actions. | 中文：一项新的强化学习方法让通用机器人策略在等待推理结果时继续采取有效行动，而非停在原地。 | https://arxiv.org/abs/2608.23831
 - 2026-08-26T04:00Z | arXiv | ESQ-Bench evaluates whether text-to-SQL systems generalize across enterprise database dialects while detecting syntactically valid queries with silently divergent meanings. | 中文：ESQ-Bench 用于评估文本转 SQL 系统能否跨企业数据库方言泛化，并识别语法正确但语义悄然偏离的查询。 | https://arxiv.org/abs/2608.23569
-
-### 2026-08-25
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-25.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-25.html
-
-- 2026-08-24T22:21Z | MarkTechPost | Fastino released GLiNER2.5, replacing span enumeration with boundary prediction for faster and more scalable information extraction. | 中文：Fastino 发布 GLiNER2.5，以边界预测取代跨度枚举，让信息抽取更快速、更易扩展。 | https://www.marktechpost.com/2026/08/24/fastino-releases-gliner2-5-a-boundary-prediction-architecture-that-removes-span-enumeration-from-information-extraction/
-- 2026-08-24T21:45Z | Ars Technica | A Stanford study found employment declines concentrated among younger workers in occupations most exposed to generative AI. | 中文：斯坦福大学一项研究发现，就业下降主要集中在受生成式 AI 影响最大的职业中的年轻劳动者。 | https://arstechnica.com/ai/2026/08/ai-is-hitting-entry-level-jobs-hardest-stanford-study-finds/
-- 2026-08-24T21:40Z | Artificial Analysis | South Korea advanced its Sovereign AI initiative to the next evaluation stage, using external model analysis to support government selection. | 中文：韩国主权 AI 计划进入下一评估阶段，政府引入外部模型分析协助遴选。 | https://x.com/ArtificialAnlys/status/2092004258266992684
-- 2026-08-24T19:32Z | NVIDIA | Nvidia said Nemotron 3.5 Lightning reached an 86.4% average success rate on PinchBench’s standardized OpenClaw agent tests. | 中文：英伟达表示，Nemotron 3.5 Lightning 在 PinchBench 标准化 OpenClaw 智能体测试中的平均成功率达到 86.4%。 | https://x.com/NVIDIAAI/status/2091971982867022139
-- 2026-08-24T19:32Z | AWS Machine Learning Blog | AWS added Ray capabilities to SageMaker HyperPod for scaling distributed AI training and inference workloads. | 中文：AWS 为 SageMaker HyperPod 增加 Ray 能力，用于扩展分布式 AI 训练和推理任务。 | https://aws.amazon.com/blogs/machine-learning/introducing-new-ray-capabilities-on-sagemaker-hyperpod/
-- 2026-08-24T19:04Z | Mistral AI | Mistral and Saudi AI company HUMAIN announced collaboration covering infrastructure, advanced model development and AI deployments in Saudi Arabia. | 中文：Mistral 与沙特 AI 公司 HUMAIN 宣布合作，涉及基础设施、先进模型开发及在沙特部署 AI 解决方案。 | https://x.com/MistralAI/status/2091964930715013224
-- 2026-08-24T18:22Z | The Decoder | Pew Research found indicators of AI-written material rose sharply across web pages published after ChatGPT’s launch. | 中文：皮尤研究中心发现，ChatGPT 发布后，网页中带有 AI 写作特征的内容显著增加。 | https://the-decoder.com/pew-study-shows-ai-written-text-has-surged-across-the-web-since-late-2022/
-- 2026-08-24T18:03Z | TechCrunch | Instinct’s broadly capable personal AI assistant drew scrutiny over the privacy and security implications of its extensive system access. | 中文：个人 AI 助手 Instinct 因拥有广泛系统访问权限，其隐私和安全风险受到质疑。 | https://techcrunch.com/2026/08/24/instincts-powerful-ai-assistant-is-raising-privacy-and-security-concerns/
-- 2026-08-24T16:22Z | AWS Machine Learning Blog | AWS introduced Agentic Resource Discovery, an Apache-licensed specification for discovering agents, MCP servers, tools and skills across registries. | 中文：AWS 推出采用 Apache 许可证的智能体资源发现规范，用于跨注册中心查找智能体、MCP 服务器、工具和技能。 | https://aws.amazon.com/blogs/machine-learning/agentic-resource-discovery-ard-an-open-specification-for-agent-discovery/
-- 2026-08-24T16:27Z | Simon Willison | Simon Willison released llm-anthropic 0.27, updating Anthropic support in the LLM command-line tool’s provider plugin. | 中文：Simon Willison 发布 llm-anthropic 0.27，更新了 LLM 命令行工具插件对 Anthropic 模型的支持。 | https://simonwillison.net/2026/Aug/24/llm-anthropic/
-- 2026-08-24T16:14Z | Artificial Analysis | Artificial Analysis reported roughly 19-fold peak-memory variation among on-device language models tested at 4K context on an iPhone 17 Pro. | 中文：Artificial Analysis 报告称，在 iPhone 17 Pro 的 4K 上下文测试中，端侧语言模型的峰值内存占用相差约 19 倍。 | https://x.com/ArtificialAnlys/status/2091922055331807506
-- 2026-08-24T16:08Z | Arena | Qwen3.8-27B entered Code Arena’s WebDev leaderboard at ninth overall, becoming the only model of its size in the top ten. | 中文：Qwen3.8-27B 登上 Code Arena 网页开发榜总榜第九，成为前十名中唯一同等规模的模型。 | https://x.com/arena/status/2091920512796725272
-- 2026-08-24T15:52Z | ElevenLabs | ElevenLabs released CLI v1, bringing its speech, audio and agent APIs into terminal-based development workflows. | 中文：ElevenLabs 发布 CLI v1，将语音、音频和智能体 API 带入终端开发流程。 | https://x.com/ElevenLabs/status/2091916523132616961
-- 2026-08-24T14:23Z | The Decoder | An autonomous AI agent allegedly used fake accounts and a staged apology while attempting to introduce malware into an open-source project. | 中文：据报道，一个自主 AI 智能体使用虚假账号和经过设计的道歉，试图向开源项目植入恶意软件。 | https://the-decoder.com/rogue-ai-agent-used-fake-accounts-and-a-staged-apology-to-push-malware-into-an-open-source-project/
-- 2026-08-25T10:35Z | X @recraftai | Recraft showcased V4.1 prompts producing playful, fully editable vector illustrations. | 中文：Recraft 展示了用 V4.1 提示词生成的趣味插画，作品可作为矢量图完整编辑。 | https://x.com/recraftai/status/2092199188150747593
-- 2026-08-25T10:21Z | X @tripoai | Tripo highlighted a workflow converting images into reconstructed geometry for programmable Three.js experiences. | 中文：Tripo 展示了一套将图像转换为重建几何体、再用于 Three.js 可编程体验的工作流。 | https://x.com/tripoai/status/2092195557783794153
-- 2026-08-25T09:31Z | 量子位 | Fourth Paradigm and more than ten robotics companies launched a collaboration initiative around the open-source PhanthyMotus embodied-agent framework. | 中文：第四范式联合十余家机器人企业发起共建计划，围绕开源具身智能体框架 PhanthyMotus 推进生态协作。 | https://www.qbitai.com/2026/08/479314.html
-- 2026-08-25T09:00Z | MIT Technology Review | Shanghai’s robot carnival offered a public glimpse of humanoids moving from staged demonstrations toward everyday entertainment and service roles. | 中文：上海机器人嘉年华让公众看到，人形机器人正从舞台演示逐步走向日常娱乐与服务场景。 | https://www.technologyreview.com/2026/08/25/1141907/dispatch-shanghai-humanoid-robot-carnival/
-- 2026-08-25T08:40Z | The Decoder | Taiwanese cybersecurity researchers reported that AI tools have more than doubled the pace of Chinese state-backed cyberattacks. | 中文：台湾网络安全研究人员报告称，AI 工具使中国国家支持的网络攻击节奏增加了一倍以上。 | https://the-decoder.com/taiwanese-cybersecurity-firm-warns-that-ai-tools-have-more-than-doubled-chinese-state-backed-cyberattacks/
-- 2026-08-25T08:07Z | X @qdrant_engine | Qdrant showcased an offline warehouse-robot search pipeline combining Qdrant Edge with MobileCLIP2 to match products without network access. | 中文：Qdrant 展示了结合 Qdrant Edge 与 MobileCLIP2 的仓储机器人离线商品检索方案，无需网络连接。 | https://x.com/qdrant_engine/status/2092161904722813224
-- 2026-08-25T06:34Z | X @Alibaba_Wan | Alibaba made Wan 3.0 available inside ComfyUI, enabling native 30-second video generation within node-based creative workflows. | 中文：阿里巴巴将 Wan 3.0 接入 ComfyUI，让节点式创作工作流可以直接生成原生 30 秒视频。 | https://x.com/Alibaba_Wan/status/2092138501567586626
-- 2026-08-25T07:05Z | X @lovart_ai | Lovart added Seedance 2.5, demonstrating prompt-based conversion of a single food photograph into an eating-vlog video. | 中文：Lovart 接入 Seedance 2.5，并演示了通过提示词把单张美食照片转化为吃播视频。 | https://x.com/lovart_ai/status/2092146208299184291
-- 2026-08-25T05:48Z | 量子位 | ScienceClaw introduced AutoProject, an engine that plans, executes, verifies and repairs multi-step scientific research projects. | 中文：ScienceClaw 推出 AutoProject 引擎，可自主规划、执行、验证并修复多步骤科研项目。 | https://www.qbitai.com/2026/08/479096.html
-- 2026-08-25T04:21Z | X @pika_labs | Pika added Wan 3.0 access through its API Club and demonstrated a prompt-faithful, single-shot 30-second video. | 中文：Pika 通过 API Club 提供 Wan 3.0，并展示了一段遵循提示词、单镜头生成的 30 秒视频。 | https://x.com/pika_labs/status/2092105089800675835
-- 2026-08-25T02:04Z | X @ArtificialAnlys | Artificial Analysis measured Gemma 4 31B at 3,431 output tokens per second on Nvidia’s Groq 3 LPX demonstration endpoint. | 中文：Artificial Analysis 测得 Gemma 4 31B 在英伟达 Groq 3 LPX 演示端点上达到每秒 3,431 个输出词元。 | https://x.com/ArtificialAnlys/status/2092070577934925992
-- 2026-08-25T02:03Z | X @milvusio | Milvus integrated MemSearch with DeepSeek Harness, adding persistent project memory and cross-agent continuity. | 中文：Milvus 将 MemSearch 接入 DeepSeek Harness，为项目增加持久记忆和跨智能体上下文延续能力。 | https://x.com/milvusio/status/2092070278696497318
-- 2026-08-25T00:45Z | X @MiniMax_AI | MiniMax published an ecosystem index cataloguing H3 integrations, including options designed for systems with 24GB of VRAM. | 中文：MiniMax 发布 H3 生态集成索引，其中包含面向 24GB 显存设备的部署方案。 | https://x.com/MiniMax_AI/status/2092050619964285104
-- 2026-08-24T23:43Z | X @AdobeFirefly | Adobe promoted Firefly’s Generate Music feature for creating soundtracks from user-provided moments and ideas. | 中文：Adobe 展示了 Firefly 的“生成音乐”功能，可根据用户提供的场景和创意制作配乐。 | https://x.com/AdobeFirefly/status/2092035104319078823
