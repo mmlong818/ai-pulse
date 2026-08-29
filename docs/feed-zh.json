@@ -13,6 +13,43 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/baseten-agents-optimize-production-kernels.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/baseten-agents-optimize-production-kernels.html",
+      "title": "Baseten用智能体将Qwen-Image延迟降低42%",
+      "summary": "Baseten称其智能体系统已能生成、验证并部署生产级优化，为图像和语言模型带来端到端性能提升。",
+      "content_text": "## 从内核竞赛走向生产推理\n\nBaseten公布了一套智能体优化框架，可分析AI模型运行情况、提出计算图改造方案、编写GPU内核，并在生产推理引擎中完成验证。公司称，该系统将Qwen-Image的端到端延迟降低42.3%，将FLUX.2的延迟降低15.2%，同时令MiniMax M3的吞吐量提高5.5%。\n\n这套系统包含两条相互连接的优化路径。模型层智能体分析完整执行轨迹，寻找重复计算、多余内存传输以及可融合操作；内核层流程则围绕识别出的瓶颈生成多个实现并进行比较。候选修改必须通过正确性检查、消融测试和完整模型性能测试，才能进入生产环境。通过验证的内核会被保存供后续复用，失败方案及其对应的工作负载限制也会写入知识库。\n\n图像模型测试基于英伟达B300 GPU和SGLang进行。针对Qwen-Image，系统把偏置运算合并进后续步骤，缓存无分类器引导两次计算中共享的时间步调制结果，并继续优化关键内核。针对FLUX.2，它把此前需要多次启动或写入中间结果的归一化、旋转位置计算、激活、量化和残差操作进行了融合。\n\n## 为何重要\n\n在这套实现中，AI编写GPU内核已不再局限于合成基准竞赛，而是修改了生产执行路径，并取得完整模型层面的实测提升。孤立测试中更快的内核，接入真实系统后可能受到张量形状、批处理、CUDA图和上下游操作影响，反而出现退化；因此，生产验证比单项纪录更关键。最大提升出现在Qwen-Image这类实际生成模型上，也说明当前图像推理栈仍存在大量可挖掘的低效环节。这些数据来自Baseten自身，且只覆盖特定模型与硬件，暂时不能普遍外推。不过，它已展示一种可能性：推理平台可以持续针对每个模型和真实流量定制执行代码，从而缩短目前高度依赖稀缺GPU内核工程师的优化周期。",
+      "date_published": "2026-08-29T00:00:00.000Z",
+      "date_modified": "2026-08-29T11:00:03.340Z",
+      "tags": [
+        "Agent",
+        "产业",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/baseten-agents-optimize-production-kernels.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/baseten-agents-optimize-production-kernels.html",
+        "source_published_at": "2026-08-29T00:00:00.000Z",
+        "site_published_at": "2026-08-29T11:00:03.340Z",
+        "sources": [
+          {
+            "title": "Agentic kernels in production",
+            "url": "https://www.baseten.co/blog/agentic-kernels-in-production/"
+          },
+          {
+            "title": "Baseten agentic kernel framework announcement",
+            "url": "https://x.com/baseten/status/2093489037608702118"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-automates-model-alignment.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-automates-model-alignment.html",
       "title": "Claude自动修复十类模型对齐缺陷，实验亦发现作弊",
@@ -123,6 +160,47 @@
           {
             "title": "Neocloud Lambda secures $1B in debt to buy more chips",
             "url": "https://techcrunch.com/2026/08/28/neocloud-lambda-secures-1b-in-debt-to-buy-more-chips/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-cuts-cursor-model-access.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-cuts-cursor-model-access.html",
+      "title": "OpenAI将停止向SpaceX旗下Cursor直供模型",
+      "summary": "OpenAI拟于11月12日终止向Cursor直接提供模型，并将公司控制权变更转化为一次重要的平台分裂。",
+      "content_text": "## OpenAI启动控制权变更条款\n\nOpenAI已通知SpaceX，计划终止向Cursor直接供应模型的合同，并提议将2026年11月12日设为停止接入日期。OpenAI表示，这是Cursor被SpaceX收购后触发控制权变更条款时，合同允许提供的最长通知期。\n\nOpenAI将决定归因于合同信任和模型治理问题。公司援引埃隆·马斯克控制的企业此前被指违反其服务条款的经历，称无法确信SpaceX会遵守同等保障措施。公告还明确划出了下一代模型的边界：过渡期内，Cursor可以继续使用现有协议覆盖的OpenAI模型，但即将推出的Astra等未来模型不会通过原合作关系提供。\n\n双方尚未最终确认正式终止日期，Cursor也可以选择提前结束接入。OpenAI的支持说明显示，这并非全面封锁：用户仍可在Cursor中填写自己的OpenAI API密钥、安装Codex扩展，或经Azure、Amazon Bedrock等兼容网关调用OpenAI模型。被切断的是Cursor作为平台获得的直接商业供应关系，而不是所有间接技术通道。\n\n## 为何重要\n\nCursor既是前沿模型触达开发者的重要入口，也正逐渐成为模型开发者。被SpaceX收购后，它已与Grok和SpaceX的大规模专有算力进一步绑定；失去OpenAI下一代模型的自动接入，将加速这一垂直整合。此事也可能重塑智能体市场的合作预期：当分销平台被竞争对手收购时，模型供应商可能重新评估访问权，即使终端用户仍有绕行路径。开发者短期内不会彻底失去OpenAI兼容性，但Cursor必须在更换战略供应方的同时，证明其多模型体验能够经受所有权阵营化的冲击。",
+      "date_published": "2026-08-29T01:46:00.000Z",
+      "date_modified": "2026-08-29T11:00:03.340Z",
+      "tags": [
+        "产业",
+        "Agent",
+        "模型"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-cuts-cursor-model-access.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-cuts-cursor-model-access.html",
+        "source_published_at": "2026-08-29T01:46:00.000Z",
+        "site_published_at": "2026-08-29T11:00:03.340Z",
+        "sources": [
+          {
+            "title": "Our decision on Cursor following its acquisition by SpaceX",
+            "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/"
+          },
+          {
+            "title": "Using OpenAI models in Cursor",
+            "url": "https://help.openai.com/en/articles/20001506-using-openai-models-in-cursor"
+          },
+          {
+            "title": "Cursor is now a part of SpaceX",
+            "url": "https://cursor.com/blog/joining-spacex"
           }
         ]
       }
@@ -1822,86 +1900,6 @@
           {
             "title": "Hidden AirTag reveals Amazon is trashing rare books to train AI",
             "url": "https://arstechnica.com/tech-policy/2026/08/hidden-airtag-reveals-amazon-is-trashing-rare-books-to-train-ai/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-launches-origin-code-hosting.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-launches-origin-code-hosting.html",
-      "title": "Cursor 推出代码托管平台 Origin，正面切入 GitHub 腹地",
-      "summary": "Cursor 从 AI 编程工具进一步扩展至代码仓库基础设施，试图把代码、智能体和部署集成纳入同一平台。",
-      "content_text": "## 从代码编辑器走向开发平台\n\nCursor 正式开放代码托管平台 Origin 的测试版。用户可以先从 GitHub 同步现有仓库，并通过 Vercel、Buildkite 和 Depot 等首批集成，将托管代码接入部署及持续集成流程；Cursor 表示后续还会增加更多合作服务。\n\n这意味着 Cursor 不再只与其他 AI 编程工具竞争，而是进入 GitHub、GitLab 和 Bitbucket 长期占据的基础设施市场。代码托管平台是软件团队的核心记录系统，承载源代码、权限、开发历史，并协调测试与发布。掌握这一层之后，Cursor 的智能体可能获得更完整的项目上下文，并直接执行覆盖整个软件生命周期的操作。\n\n不过，Origin 目前仍处于测试阶段。企业在迁移关键仓库前，仍需评估平台可靠性、权限控制、审计能力、区域支持和迁移机制。私有代码与智能体交互数据是否会被用于改进 Cursor 的模型或服务，也将成为采购和合规审查的重点。\n\n## 为什么重要\n\n现有 AI 编程公司普遍依赖传统开发平台提供底层仓库和工作流。Origin 试图打破这种依赖，把开发者指挥智能体的界面、存放代码的仓库，以及构建和部署服务连成一体。\n\n更紧密的集成可以减少身份验证和工具切换，让智能体同时理解仓库内容、自动检查与发布状态，从而缩短任务链路。但这也会加深平台集中度：团队获得便利的同时，代码生成和代码保管都可能依赖同一家供应商。\n\n因此，Origin 的战略意义远大于测试版当前提供的功能。它将检验 AI 原生开发商能否挑战 GitHub 所处的基础设施层，而不只是继续充当寄居在既有平台中的编程助手。",
-      "date_published": "2026-08-17T17:08:00.000Z",
-      "date_modified": "2026-08-17T23:00:03.459Z",
-      "tags": [
-        "产业",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cursor-launches-origin-code-hosting.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-launches-origin-code-hosting.html",
-        "source_published_at": "2026-08-17T17:08:00.000Z",
-        "site_published_at": "2026-08-17T23:00:03.459Z",
-        "sources": [
-          {
-            "title": "Cursor: Origin, our code hosting platform, is now live",
-            "url": "https://x.com/cursor_ai/status/2089399057659596847"
-          },
-          {
-            "title": "Cursor announces Origin integrations and beta rollout",
-            "url": "https://x.com/cursor_ai/status/2089399059488350447"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/groq-funds-neocloud-pivot.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/groq-funds-neocloud-pivot.html",
-      "title": "Groq完成3.5亿美元A轮融资，近期融资总额达10亿美元",
-      "summary": "Groq最新正式融资为3.5亿美元A轮，由Disruptive领投，英伟达计划参投；加上6月融资，公司近期融资总额达到10亿美元。",
-      "content_text": "## 推理云再获一轮融资\n\nGroq于2026年8月17日宣布完成3.5亿美元A轮融资，由Disruptive领投，英伟达计划参与投资。本轮融资对公司的估值为35亿美元。加上6月宣布的6.5亿美元增长资金，Groq称其近期融资总额已达到10亿美元。\n\n公司目前表示，其在北美、欧洲、中东和亚太地区运营13座数据中心。最新公告称Groq服务的开发者已超过600万，高于6月融资公告所披露的超过500万。\n\n本轮融资与Groq在2025年12月同英伟达签署的非独家推理技术许可协议是两项独立交易。根据该许可协议，创始人Jonathan Ross、时任总裁Sunny Madra及其他部分团队成员加入英伟达；Groq继续作为独立公司运营，GroqCloud也继续提供服务。\n\n双方关系此后进一步扩大。英伟达把Groq技术纳入LPX推理平台，Groq又于2026年8月加入英伟达云合作伙伴计划。Groq表示，这项认证将支持其未来在自有数据中心部署英伟达加速计算系统。技术许可、云合作伙伴身份以及英伟达计划参与A轮融资属于不同安排，不应合并为同一项交易。\n\n## 为什么重要\n\n这轮融资进一步强化了Groq向托管式推理云运营商转型的方向，而不再只依赖其原创加速器技术的销售。云服务能让开发者直接使用推理算力，同时由Groq负责基础设施、任务调度和设备利用率。\n\n这种模式也十分消耗资本。扩充算力需要提前投入数据中心空间、电力、网络和设备，而客户需求未必会同步兑现。Groq目前表示，随着推理需求增长，公司正在把容量扩展到200兆瓦以上。\n\nGroq如今处于一个较为特殊的位置：公司仍是独立云服务运营商，其研发的技术已被纳入英伟达系统，而英伟达又计划成为其最新一轮融资的投资者。Groq接下来需要证明，新增资本以及与英伟达更深入的关系能够转化为稳定算力和长期客户需求。",
-      "date_published": "2026-08-17T14:41:00.000Z",
-      "date_modified": "2026-08-17T23:00:03.459Z",
-      "tags": [
-        "融资",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/groq-funds-neocloud-pivot.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/groq-funds-neocloud-pivot.html",
-        "source_published_at": "2026-08-17T14:41:00.000Z",
-        "site_published_at": "2026-08-17T23:00:03.459Z",
-        "sources": [
-          {
-            "title": "Groq Closes $350 Million Series A, Building the World's Leading AI Inference Cloud",
-            "url": "https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud"
-          },
-          {
-            "title": "Groq Raises $650M to Scale Its AI Inference Cloud Business",
-            "url": "https://groq.com/newsroom/groq-raises-usd650m-to-scale-its-ai-inference-cloud-business"
-          },
-          {
-            "title": "Groq and Nvidia Enter Non-Exclusive Inference Technology Licensing Agreement",
-            "url": "https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale"
-          },
-          {
-            "title": "Groq Becomes an NVIDIA Cloud Partner",
-            "url": "https://groq.com/newsroom/groq-becomes-an-nvidia-cloud-partner"
           }
         ]
       }

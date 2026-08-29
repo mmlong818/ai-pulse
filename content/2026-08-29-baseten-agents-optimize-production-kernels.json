@@ -1,0 +1,32 @@
+{
+  "slug": "baseten-agents-optimize-production-kernels",
+  "title": "Baseten Agents Cut Qwen-Image Latency by 42 Percent",
+  "summary": "Baseten says an agentic system generated, tested and deployed production optimizations across image and language models.",
+  "body": "## From kernel benchmark to serving stack\n\nBaseten has disclosed an agentic framework that profiles AI models, proposes computation-level changes, writes optimized GPU kernels and validates them inside its production inference engine. The company reports a 42.3% end-to-end latency reduction for Qwen-Image, a 15.2% reduction for FLUX.2 and a 5.5% throughput increase for MiniMax M3.\n\nThe system uses two connected tracks. A model-level agent studies complete execution traces and searches for redundant computation, memory traffic and operations that can be fused. A kernel-level process then generates and benchmarks multiple implementations for the bottlenecks it finds. Candidate changes must pass correctness checks, ablation tests and full-model performance measurements before deployment. Successful kernels are retained for reuse, while failed approaches and workload-specific constraints are recorded in a knowledge base for later runs.\n\nBaseten tested the image-model work with SGLang on Nvidia B300 GPUs. For Qwen-Image, optimizations included absorbing bias operations into later fused steps, caching timestep-dependent modulation shared by the two classifier-free-guidance passes, and improving individual kernels. For FLUX.2, the framework combined normalization, rotary-position calculations, activation, quantization and residual operations that had previously required separate launches or intermediate memory transfers.\n\n## Why it matters\n\nAI-written GPU kernels are no longer confined to synthetic contests in this implementation: they altered production execution paths and produced measured model-wide gains. That distinction matters because a kernel that wins an isolated benchmark can regress after integration, where tensor shapes, batching, CUDA graphs and surrounding operations change the result. The largest reported gain also landed on Qwen-Image rather than a toy workload, showing substantial remaining inefficiency in current generative-image stacks. The figures are Baseten’s own and cover selected models and hardware, so broad generalization remains premature. Even so, the work suggests inference providers could continuously specialize serving code for each model and traffic pattern, compressing an optimization cycle that currently depends on scarce kernel engineers.",
+  "title_zh": "Baseten用智能体将Qwen-Image延迟降低42%",
+  "summary_zh": "Baseten称其智能体系统已能生成、验证并部署生产级优化，为图像和语言模型带来端到端性能提升。",
+  "body_zh": "## 从内核竞赛走向生产推理\n\nBaseten公布了一套智能体优化框架，可分析AI模型运行情况、提出计算图改造方案、编写GPU内核，并在生产推理引擎中完成验证。公司称，该系统将Qwen-Image的端到端延迟降低42.3%，将FLUX.2的延迟降低15.2%，同时令MiniMax M3的吞吐量提高5.5%。\n\n这套系统包含两条相互连接的优化路径。模型层智能体分析完整执行轨迹，寻找重复计算、多余内存传输以及可融合操作；内核层流程则围绕识别出的瓶颈生成多个实现并进行比较。候选修改必须通过正确性检查、消融测试和完整模型性能测试，才能进入生产环境。通过验证的内核会被保存供后续复用，失败方案及其对应的工作负载限制也会写入知识库。\n\n图像模型测试基于英伟达B300 GPU和SGLang进行。针对Qwen-Image，系统把偏置运算合并进后续步骤，缓存无分类器引导两次计算中共享的时间步调制结果，并继续优化关键内核。针对FLUX.2，它把此前需要多次启动或写入中间结果的归一化、旋转位置计算、激活、量化和残差操作进行了融合。\n\n## 为何重要\n\n在这套实现中，AI编写GPU内核已不再局限于合成基准竞赛，而是修改了生产执行路径，并取得完整模型层面的实测提升。孤立测试中更快的内核，接入真实系统后可能受到张量形状、批处理、CUDA图和上下游操作影响，反而出现退化；因此，生产验证比单项纪录更关键。最大提升出现在Qwen-Image这类实际生成模型上，也说明当前图像推理栈仍存在大量可挖掘的低效环节。这些数据来自Baseten自身，且只覆盖特定模型与硬件，暂时不能普遍外推。不过，它已展示一种可能性：推理平台可以持续针对每个模型和真实流量定制执行代码，从而缩短目前高度依赖稀缺GPU内核工程师的优化周期。",
+  "tags": [
+    "Agents",
+    "Industry",
+    "AIGC"
+  ],
+  "sources": [
+    {
+      "title": "Agentic kernels in production",
+      "url": "https://www.baseten.co/blog/agentic-kernels-in-production/"
+    },
+    {
+      "title": "Baseten agentic kernel framework announcement",
+      "url": "https://x.com/baseten/status/2093489037608702118"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "Qwen-Image的42.3%降幅表明，生产内核优化仍有大片空间未被工程团队吃透。",
+  "cat_take_en": "Qwen-Image’s 42.3% gain exposes how much production kernel headroom still remains unclaimed.",
+  "date": "2026-08-29",
+  "published": "2026-08-29T00:00:00Z",
+  "published_at": "2026-08-29T11:00:03.340Z"
+}

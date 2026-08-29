@@ -13,6 +13,43 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/baseten-agents-optimize-production-kernels.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/baseten-agents-optimize-production-kernels.html",
+      "title": "Baseten Agents Cut Qwen-Image Latency by 42 Percent",
+      "summary": "Baseten says an agentic system generated, tested and deployed production optimizations across image and language models.",
+      "content_text": "## From kernel benchmark to serving stack\n\nBaseten has disclosed an agentic framework that profiles AI models, proposes computation-level changes, writes optimized GPU kernels and validates them inside its production inference engine. The company reports a 42.3% end-to-end latency reduction for Qwen-Image, a 15.2% reduction for FLUX.2 and a 5.5% throughput increase for MiniMax M3.\n\nThe system uses two connected tracks. A model-level agent studies complete execution traces and searches for redundant computation, memory traffic and operations that can be fused. A kernel-level process then generates and benchmarks multiple implementations for the bottlenecks it finds. Candidate changes must pass correctness checks, ablation tests and full-model performance measurements before deployment. Successful kernels are retained for reuse, while failed approaches and workload-specific constraints are recorded in a knowledge base for later runs.\n\nBaseten tested the image-model work with SGLang on Nvidia B300 GPUs. For Qwen-Image, optimizations included absorbing bias operations into later fused steps, caching timestep-dependent modulation shared by the two classifier-free-guidance passes, and improving individual kernels. For FLUX.2, the framework combined normalization, rotary-position calculations, activation, quantization and residual operations that had previously required separate launches or intermediate memory transfers.\n\n## Why it matters\n\nAI-written GPU kernels are no longer confined to synthetic contests in this implementation: they altered production execution paths and produced measured model-wide gains. That distinction matters because a kernel that wins an isolated benchmark can regress after integration, where tensor shapes, batching, CUDA graphs and surrounding operations change the result. The largest reported gain also landed on Qwen-Image rather than a toy workload, showing substantial remaining inefficiency in current generative-image stacks. The figures are Baseten’s own and cover selected models and hardware, so broad generalization remains premature. Even so, the work suggests inference providers could continuously specialize serving code for each model and traffic pattern, compressing an optimization cycle that currently depends on scarce kernel engineers.",
+      "date_published": "2026-08-29T00:00:00.000Z",
+      "date_modified": "2026-08-29T11:00:03.340Z",
+      "tags": [
+        "Agents",
+        "Industry",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/baseten-agents-optimize-production-kernels.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/baseten-agents-optimize-production-kernels.html",
+        "source_published_at": "2026-08-29T00:00:00.000Z",
+        "site_published_at": "2026-08-29T11:00:03.340Z",
+        "sources": [
+          {
+            "title": "Agentic kernels in production",
+            "url": "https://www.baseten.co/blog/agentic-kernels-in-production/"
+          },
+          {
+            "title": "Baseten agentic kernel framework announcement",
+            "url": "https://x.com/baseten/status/2093489037608702118"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/claude-automates-model-alignment.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/claude-automates-model-alignment.html",
       "title": "Claude Researchers Repair Ten Model Alignment Failures",
@@ -123,6 +160,47 @@
           {
             "title": "Neocloud Lambda secures $1B in debt to buy more chips",
             "url": "https://techcrunch.com/2026/08/28/neocloud-lambda-secures-1b-in-debt-to-buy-more-chips/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-cuts-cursor-model-access.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-cuts-cursor-model-access.html",
+      "title": "OpenAI to Cut Cursor Access After SpaceX Acquisition",
+      "summary": "OpenAI plans to stop supplying models directly to Cursor, turning a change-of-control clause into a major platform split.",
+      "content_text": "## OpenAI invokes its change-of-control rights\n\nOpenAI has notified SpaceX that it intends to wind down the contract supplying OpenAI models directly to Cursor, proposing November 12, 2026, as the cutoff. The company said this is the longest notice permitted under a change-of-control provision triggered by SpaceX’s acquisition of Cursor.\n\nOpenAI framed the decision as a question of contractual trust and model governance. It cited previous alleged violations of its terms by companies controlled by Elon Musk and said those experiences left it unable to rely on SpaceX following the same safeguards. The announcement also draws a line around Astra, OpenAI’s forthcoming model: Cursor can retain the OpenAI models covered during the transition, but OpenAI says it will not provide future models through the existing partnership.\n\nThe final termination date has not yet been confirmed by both companies, and Cursor could end access earlier. OpenAI’s support guidance says users should still be able to run its models inside Cursor by supplying their own API key, using the Codex extension, or connecting through compatible gateways such as Azure or Amazon Bedrock. The rupture therefore concerns Cursor’s direct commercial access rather than a universal technical block.\n\n## Why it matters\n\nCursor is both a major distribution channel for frontier models and an increasingly important model builder in its own right. SpaceX’s acquisition already aligned the coding platform with Grok and large-scale proprietary compute; losing automatic access to OpenAI’s next generation accelerates that vertical integration. It may also change expectations across the agent market: model suppliers can treat an acquisition by a competitor as grounds to reconsider access even when end users retain indirect routes. Developers are unlikely to lose OpenAI compatibility overnight, but Cursor must now replace a strategic supplier while proving that its multi-model experience will survive a more fragmented ownership landscape.",
+      "date_published": "2026-08-29T01:46:00.000Z",
+      "date_modified": "2026-08-29T11:00:03.340Z",
+      "tags": [
+        "Industry",
+        "Agents",
+        "Models"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-cuts-cursor-model-access.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-cuts-cursor-model-access.html",
+        "source_published_at": "2026-08-29T01:46:00.000Z",
+        "site_published_at": "2026-08-29T11:00:03.340Z",
+        "sources": [
+          {
+            "title": "Our decision on Cursor following its acquisition by SpaceX",
+            "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/"
+          },
+          {
+            "title": "Using OpenAI models in Cursor",
+            "url": "https://help.openai.com/en/articles/20001506-using-openai-models-in-cursor"
+          },
+          {
+            "title": "Cursor is now a part of SpaceX",
+            "url": "https://cursor.com/blog/joining-spacex"
           }
         ]
       }
@@ -1822,86 +1900,6 @@
           {
             "title": "Hidden AirTag reveals Amazon is trashing rare books to train AI",
             "url": "https://arstechnica.com/tech-policy/2026/08/hidden-airtag-reveals-amazon-is-trashing-rare-books-to-train-ai/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/cursor-launches-origin-code-hosting.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/cursor-launches-origin-code-hosting.html",
-      "title": "Cursor Launches Origin, Its GitHub Alternative",
-      "summary": "Cursor is expanding from AI coding into repository infrastructure, bringing code, agents and deployment integrations under one roof.",
-      "content_text": "## From code editor to development platform\n\nCursor has opened the beta of Origin, a code-hosting service designed to sit directly inside its AI-assisted development environment. Users can begin by synchronizing repositories from GitHub, while integrations with Vercel, Buildkite and Depot connect hosted code to deployment and continuous-integration workflows. Cursor says additional integrations are planned.\n\nThe launch moves Cursor beyond the editor and coding-agent market into territory dominated by GitHub, GitLab and Bitbucket. Source hosting is the system of record for software teams: it holds repositories, permissions and development history while coordinating automated tests and releases. Owning that layer could let Cursor give its agents more direct access to the context and actions required to complete work across the software lifecycle.\n\nOrigin enters beta rather than general availability, leaving important operational questions unresolved. Enterprises will want evidence on reliability, access controls, auditability, regional availability and migration paths before moving critical repositories. They will also need clear policies governing whether private source code or agent interactions may be used to improve Cursor’s models and services.\n\n## Why it matters\n\nAI coding companies have so far depended heavily on infrastructure controlled by established developer platforms. Origin is a bid to collapse that dependency: Cursor can now connect the interface where developers direct agents with the place where code is stored and the services that build and deploy it.\n\nThat integration could shorten agent workflows by reducing authentication handoffs and giving agents a more coherent view of repositories, checks and releases. It also increases platform concentration. A team adopting the full stack may gain convenience while becoming more dependent on Cursor for both code creation and custody. The strategic significance is therefore larger than the initial beta feature set: Origin tests whether an AI-native entrant can challenge GitHub at the foundational infrastructure layer rather than remaining an assistant inside somebody else’s platform.",
-      "date_published": "2026-08-17T17:08:00.000Z",
-      "date_modified": "2026-08-17T23:00:03.459Z",
-      "tags": [
-        "Industry",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cursor-launches-origin-code-hosting.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-launches-origin-code-hosting.html",
-        "source_published_at": "2026-08-17T17:08:00.000Z",
-        "site_published_at": "2026-08-17T23:00:03.459Z",
-        "sources": [
-          {
-            "title": "Cursor: Origin, our code hosting platform, is now live",
-            "url": "https://x.com/cursor_ai/status/2089399057659596847"
-          },
-          {
-            "title": "Cursor announces Origin integrations and beta rollout",
-            "url": "https://x.com/cursor_ai/status/2089399059488350447"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/groq-funds-neocloud-pivot.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/groq-funds-neocloud-pivot.html",
-      "title": "Groq Raises $350M Series A After Earlier $650M Financing",
-      "summary": "Groq’s latest official financing is a $350 million Series A led by Disruptive, with planned participation from Nvidia, bringing its recent funding to $1 billion.",
-      "content_text": "## Another round for the inference cloud\n\nGroq announced a $350 million Series A on August 17, 2026, led by Disruptive, with planned participation from Nvidia. The round values the company at $3.5 billion. Together with the $650 million in growth capital announced in June, Groq says it has raised $1 billion in recent financing.\n\nThe company reports operating 13 data centers across North America, Europe, the Middle East and Asia-Pacific. Its latest announcement puts its developer base at more than six million, up from the more than five million reported with the June financing.\n\nThe new round is separate from Groq’s December 2025 non-exclusive agreement licensing its inference technology to Nvidia. Under that agreement, founder Jonathan Ross, then-president Sunny Madra and other team members joined Nvidia, while Groq continued operating independently and GroqCloud remained available.\n\nThe relationship has since expanded. Nvidia incorporated Groq technology into its LPX inference platform, and Groq joined the Nvidia Cloud Partner program in August 2026. Groq says that status will support the future deployment of Nvidia accelerated-computing systems in its data centers. These developments should not be conflated: the licensing agreement, cloud-partner status and planned Nvidia participation in the Series A are distinct arrangements.\n\n## Why it matters\n\nThe financing reinforces Groq’s shift toward operating a managed inference cloud rather than relying only on sales of its original accelerator technology. A cloud service gives developers direct access to inference capacity while placing responsibility for infrastructure, scheduling and utilization on Groq.\n\nThat model is capital intensive. Expanding capacity requires data-center space, power, networking and equipment before demand is fully realized. Groq says it is scaling beyond 200 megawatts as inference demand grows.\n\nThe company now occupies an unusual position: it remains an independent cloud operator while technology it developed is incorporated into Nvidia systems, and Nvidia is also expected to become an investor in its latest round. Groq’s next challenge is to turn the additional capital and deeper Nvidia relationship into reliable capacity and durable customer demand.",
-      "date_published": "2026-08-17T14:41:00.000Z",
-      "date_modified": "2026-08-17T23:00:03.459Z",
-      "tags": [
-        "Funding",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/groq-funds-neocloud-pivot.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/groq-funds-neocloud-pivot.html",
-        "source_published_at": "2026-08-17T14:41:00.000Z",
-        "site_published_at": "2026-08-17T23:00:03.459Z",
-        "sources": [
-          {
-            "title": "Groq Closes $350 Million Series A, Building the World's Leading AI Inference Cloud",
-            "url": "https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud"
-          },
-          {
-            "title": "Groq Raises $650M to Scale Its AI Inference Cloud Business",
-            "url": "https://groq.com/newsroom/groq-raises-usd650m-to-scale-its-ai-inference-cloud-business"
-          },
-          {
-            "title": "Groq and Nvidia Enter Non-Exclusive Inference Technology Licensing Agreement",
-            "url": "https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale"
-          },
-          {
-            "title": "Groq Becomes an NVIDIA Cloud Partner",
-            "url": "https://groq.com/newsroom/groq-becomes-an-nvidia-cloud-partner"
           }
         ]
       }

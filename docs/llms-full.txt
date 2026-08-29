@@ -19,6 +19,35 @@
 
 ## Recent briefings
 
+### Baseten Agents Cut Qwen-Image Latency by 42 Percent
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/baseten-agents-optimize-production-kernels.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/baseten-agents-optimize-production-kernels.html
+- Source timestamp: 2026-08-29T00:00:00.000Z
+- Site timestamp: 2026-08-29T11:00:03.340Z
+- Tags: Agents, Industry, AIGC
+
+Baseten says an agentic system generated, tested and deployed production optimizations across image and language models.
+
+## From kernel benchmark to serving stack
+
+Baseten has disclosed an agentic framework that profiles AI models, proposes computation-level changes, writes optimized GPU kernels and validates them inside its production inference engine. The company reports a 42.3% end-to-end latency reduction for Qwen-Image, a 15.2% reduction for FLUX.2 and a 5.5% throughput increase for MiniMax M3.
+
+The system uses two connected tracks. A model-level agent studies complete execution traces and searches for redundant computation, memory traffic and operations that can be fused. A kernel-level process then generates and benchmarks multiple implementations for the bottlenecks it finds. Candidate changes must pass correctness checks, ablation tests and full-model performance measurements before deployment. Successful kernels are retained for reuse, while failed approaches and workload-specific constraints are recorded in a knowledge base for later runs.
+
+Baseten tested the image-model work with SGLang on Nvidia B300 GPUs. For Qwen-Image, optimizations included absorbing bias operations into later fused steps, caching timestep-dependent modulation shared by the two classifier-free-guidance passes, and improving individual kernels. For FLUX.2, the framework combined normalization, rotary-position calculations, activation, quantization and residual operations that had previously required separate launches or intermediate memory transfers.
+
+## Why it matters
+
+AI-written GPU kernels are no longer confined to synthetic contests in this implementation: they altered production execution paths and produced measured model-wide gains. That distinction matters because a kernel that wins an isolated benchmark can regress after integration, where tensor shapes, batching, CUDA graphs and surrounding operations change the result. The largest reported gain also landed on Qwen-Image rather than a toy workload, showing substantial remaining inefficiency in current generative-image stacks. The figures are Baseten’s own and cover selected models and hardware, so broad generalization remains premature. Even so, the work suggests inference providers could continuously specialize serving code for each model and traffic pattern, compressing an optimization cycle that currently depends on scarce kernel engineers.
+
+Chinese title: Baseten用智能体将Qwen-Image延迟降低42%
+Chinese summary: Baseten称其智能体系统已能生成、验证并部署生产级优化，为图像和语言模型带来端到端性能提升。
+
+Sources:
+  - Agentic kernels in production: https://www.baseten.co/blog/agentic-kernels-in-production/
+  - Baseten agentic kernel framework announcement: https://x.com/baseten/status/2093489037608702118
+
 ### Claude Researchers Repair Ten Model Alignment Failures
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/claude-automates-model-alignment.html
@@ -122,6 +151,36 @@ Chinese summary: 这笔短期私募债务将用于购买并出租给微软的英
 Sources:
   - Nvidia-Backed Lambda Inks $1 Billion Private Debt for Chip Deal: https://www.bloomberg.com/news/articles/2026-08-28/nvidia-backed-lambda-inks-1-billion-private-debt-for-chip-deal
   - Neocloud Lambda secures $1B in debt to buy more chips: https://techcrunch.com/2026/08/28/neocloud-lambda-secures-1b-in-debt-to-buy-more-chips/
+
+### OpenAI to Cut Cursor Access After SpaceX Acquisition
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-cuts-cursor-model-access.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-cuts-cursor-model-access.html
+- Source timestamp: 2026-08-29T01:46:00.000Z
+- Site timestamp: 2026-08-29T11:00:03.340Z
+- Tags: Industry, Agents, Models
+
+OpenAI plans to stop supplying models directly to Cursor, turning a change-of-control clause into a major platform split.
+
+## OpenAI invokes its change-of-control rights
+
+OpenAI has notified SpaceX that it intends to wind down the contract supplying OpenAI models directly to Cursor, proposing November 12, 2026, as the cutoff. The company said this is the longest notice permitted under a change-of-control provision triggered by SpaceX’s acquisition of Cursor.
+
+OpenAI framed the decision as a question of contractual trust and model governance. It cited previous alleged violations of its terms by companies controlled by Elon Musk and said those experiences left it unable to rely on SpaceX following the same safeguards. The announcement also draws a line around Astra, OpenAI’s forthcoming model: Cursor can retain the OpenAI models covered during the transition, but OpenAI says it will not provide future models through the existing partnership.
+
+The final termination date has not yet been confirmed by both companies, and Cursor could end access earlier. OpenAI’s support guidance says users should still be able to run its models inside Cursor by supplying their own API key, using the Codex extension, or connecting through compatible gateways such as Azure or Amazon Bedrock. The rupture therefore concerns Cursor’s direct commercial access rather than a universal technical block.
+
+## Why it matters
+
+Cursor is both a major distribution channel for frontier models and an increasingly important model builder in its own right. SpaceX’s acquisition already aligned the coding platform with Grok and large-scale proprietary compute; losing automatic access to OpenAI’s next generation accelerates that vertical integration. It may also change expectations across the agent market: model suppliers can treat an acquisition by a competitor as grounds to reconsider access even when end users retain indirect routes. Developers are unlikely to lose OpenAI compatibility overnight, but Cursor must now replace a strategic supplier while proving that its multi-model experience will survive a more fragmented ownership landscape.
+
+Chinese title: OpenAI将停止向SpaceX旗下Cursor直供模型
+Chinese summary: OpenAI拟于11月12日终止向Cursor直接提供模型，并将公司控制权变更转化为一次重要的平台分裂。
+
+Sources:
+  - Our decision on Cursor following its acquisition by SpaceX: https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/
+  - Using OpenAI models in Cursor: https://help.openai.com/en/articles/20001506-using-openai-models-in-cursor
+  - Cursor is now a part of SpaceX: https://cursor.com/blog/joining-spacex
 
 ### OpenAI Adds Rosalind Workbench for Life Sciences
 
@@ -942,75 +1001,6 @@ Sources:
   - Report: AI model hub Hugging Face exploring sale at $13B valuation: https://siliconangle.com/2026/08/23/report-ai-model-hub-hugging-face-exploring-sale-at-13b-valuation/
   - Hugging Face exploring sale valuing it at $13 billion, Business Insider says: https://finance.yahoo.com/technology/ai/articles/hugging-face-exploring-sale-valuing-200012818.html
 
-### Nvidia Weighs Perplexity Investment at $30B Valuation
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-weighs-perplexity-investment.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-weighs-perplexity-investment.html
-- Source timestamp: 2026-08-24T08:44:00.000Z
-- Site timestamp: 2026-08-24T11:00:03.637Z
-- Tags: Funding, Industry, Agents
-
-The chipmaker is reportedly discussing an equity investment as Perplexity’s agent-led revenue growth drives a steep valuation increase.
-
-## Talks around a multibillion-dollar round
-
-Nvidia is discussing an investment in Perplexity as part of a funding round that would value the AI search and agent company at more than $30 billion, according to The Information. The talks have also included a possible technology-licensing arrangement. Perplexity declined to comment on the report, while Nvidia did not immediately respond; the size and final structure of any investment remain unsettled.
-
-The proposed valuation would exceed Perplexity’s previous reported mark of about $20 billion by more than 50%. The company’s annualized revenue reportedly rose from below $250 million at the beginning of 2026 to more than $750 million, with professional adoption of its cloud-based Computer agent contributing to the increase. Perplexity has said it is aiming for an initial public offering in 2028.
-
-## A relationship spanning capital and infrastructure
-
-Nvidia is already a Perplexity investor, and the startup has been identified as an early customer for Nvidia’s Vera CPU. A new equity commitment paired with technology licensing would deepen a relationship that spans financing, hardware and software. It would also fit Nvidia’s broader strategy of backing companies that create demand for accelerated computing.
-
-For Perplexity, the capital could support the substantial inference expense of search and computer-use agents, which must retrieve information, reason across steps and operate external tools. Yet the reported valuation sets a demanding benchmark: even at a $750 million annualized revenue rate, investors would be paying roughly 40 times that figure. The revenue estimate has not been independently verified, and early investment discussions can change or collapse.
-
-## Why it matters
-
-Perplexity is increasingly being valued as an agent platform rather than solely as a search alternative. The reported revenue acceleration suggests computer-using agents may be creating a commercial category beyond consumer question answering. But Nvidia simultaneously acting as investor, infrastructure supplier and potential technology licensor makes the financing unusually intertwined. The eventual terms will determine whether the round primarily validates independent customer demand or reinforces a capital loop centered on Nvidia-powered computing.
-
-Chinese title: 英伟达拟投资Perplexity，估值或超300亿美元
-Chinese summary: 英伟达据报正商谈参与Perplexity新一轮融资，智能体业务带来的收入增长推动其估值大幅上升。
-
-Sources:
-  - Nvidia in talks to invest in Perplexity at $30 billion-plus valuation: https://the-decoder.com/nvidia-in-talks-to-invest-in-perplexity-at-30-billion-plus-valuation/
-  - Nvidia discusses Perplexity investment at $30 billion-plus valuation: https://www.boursorama.com/bourse/actualites/nvidia-evoque-son-investissement-dans-perplexity-dont-la-valorisation-s-eleverait-a-plus-de-30-milliards-de-dollars-selon-the-information-35fe73305d866090b11af01cb55ac46a
-
-### Sakana AI Signs Japan Defense Intelligence Contract
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/sakana-japan-defense-intelligence-contract.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/sakana-japan-defense-intelligence-contract.html
-- Source timestamp: 2026-08-23T22:58:00.000Z
-- Site timestamp: 2026-08-23T23:00:03.731Z
-- Tags: Industry, Agents, Policy, Safety
-
-Japan’s Defense Ministry hired Sakana AI to test agent-based intelligence analysis, moving sovereign AI into security operations.
-
-## A second defense mandate
-
-Tokyo-based Sakana AI said it has signed a contract with Japan’s Ministry of Defense to investigate and demonstrate AI capabilities for comprehensive intelligence analysis. Announced at 22:58 UTC on August 23, the project will apply the company’s AI-agent technology to work performed by intelligence analysts.
-
-The ministry’s original procurement documents describe a system intended to improve the collection, analysis and management of large, fragmented information flows. The stated goals include increasing speed and accuracy, reducing human error and easing personnel constraints. The documents also emphasize organizing information for policy and operational decision-makers rather than automating those decisions themselves.
-
-Sakana did not disclose the contract’s value, duration, deployment environment or the models involved. It has also not said whether the demonstration will process live intelligence or synthetic and declassified material. Those omissions make it too early to judge operational capability or procurement scale.
-
-## From research to operational analysis
-
-The contract is distinct from Sakana’s earlier multiyear research agreement with Japan’s defense technology agency. That March project concerns combining AI systems and small vision-language models to integrate multimodal data from land, sea and air, including information collected by drones. The new mandate moves closer to analysts’ everyday information-management and assessment workflows.
-
-Sakana says its defense work excludes mass domestic surveillance and fully autonomous weapons, and that technical and contractual safeguards will prevent its systems from enabling autonomous lethal force. These are company commitments; the public announcement does not provide project-specific evaluation, audit or human-oversight requirements.
-
-## Why it matters
-
-The deal shows Japan turning a domestic foundation-model startup into a supplier for core defense-intelligence work, not merely experimental model research. It also illustrates a broader sovereign-AI strategy: governments increasingly want locally controlled agents that can operate under national security, language and information-governance constraints. How Japan evaluates accuracy, traceability and analyst control in this demonstration could influence later procurement across allied defense organizations.
-
-Chinese title: Sakana AI签约日本防卫省，测试情报分析智能体
-Chinese summary: 日本防卫省委托Sakana AI调查并验证情报分析智能体，主权AI由技术研究进一步进入国家安全业务流程。
-
-Sources:
-  - Sakana AI announces Japan Defense Ministry contract: https://x.com/SakanaAILabs/status/2091661446677664115
-  - 説明書：総合分析業務に必要なAI機能の調査・実証: https://www.mod.go.jp/atla/soubiseisaku/newentry/startup_proc_r080306.pdf
-  - Sakana AI Defense Policy: https://sakana.ai/company-info/defense-policy.html
-
 ## Recent radar items
 
 ### 2026-08-29
@@ -1032,6 +1022,20 @@ Sources:
 - 2026-08-28T15:18Z | Vercel | Vercel introduced Ora, which runs agents against live websites and traces each action to diagnose failed signups, integrations and payments. | 中文：Vercel 推出 Ora，可让智能体在真实网站上执行任务并追踪每一步操作，以诊断注册、集成和支付流程中的故障。 | https://x.com/vercel/status/2093357677003096416
 - 2026-08-28T16:52Z | Luma AI | Luma released an improved upscaling system intended to produce clearer, higher-resolution results from generated images and video. | 中文：Luma 上线改进版放大系统，旨在为生成图像与视频提供更清晰、更高分辨率的输出。 | https://x.com/LumaLabsAI/status/2093381220373594559
 - 2026-08-28T12:46Z | TechCrunch | A federal judge ruled the Pentagon’s designation barring Anthropic from government supply chains unlawful, delivering the company its first victory in the dispute. | 中文：美国联邦法官裁定五角大楼将 Anthropic 排除出政府供应链的认定违法，使 Anthropic 在这场争议中取得首次胜利。 | https://techcrunch.com/2026/08/28/anthropic-gets-its-first-court-win-over-the-pentagons-supply-chain-risk-label/
+- 2026-08-29T09:36Z | The Decoder | LAION released BVD, an open research dataset spanning 80 million videos and 10 million hours of multimodal footage. | 中文：LAION 发布开放研究数据集 BVD，涵盖 8000 万段视频、共计 1000 万小时的多模态素材。 | https://the-decoder.com/laion-drops-massive-open-video-dataset-with-10-million-hours-of-footage-for-ai-research/
+- 2026-08-29T09:25Z | IT之家 | US immigration authorities plan to spend $2 million procuring robotic dogs for enforcement operations. | 中文：美国移民执法部门计划斥资 200 万美元采购机器狗，用于执法行动。 | https://www.ithome.com/0/995/967.htm
+- 2026-08-29T09:35Z | IT之家 | A Canadian creator’s promotion of Claude drew extensive criticism, illustrating growing social resistance to publicly endorsing AI tools. | 中文：一名加拿大创作者推广 Claude 后遭到大量批评，反映公开支持 AI 工具正面临更强的社会抵触。 | https://www.ithome.com/0/995/969.htm
+- 2026-08-29T08:43Z | Meshy on X | Meshy hosted its first Creator Day, bringing 3D creators together for demonstrations, discussion and product feedback. | 中文：Meshy 举办首届创作者日，邀请 3D 创作者参与演示、交流及产品反馈。 | https://x.com/MeshyAI/status/2093620441038696448
+- 2026-08-29T03:18Z | Pika on X | Pika added access to Gemini Omni 1.1 Flash through its API Club. | 中文：Pika 通过其 API Club 接入了 Gemini Omni 1.1 Flash。 | https://x.com/pika_labs/status/2093538707693539453
+- 2026-08-29T03:18Z | Pika on X | Pika compared Gemini Omni 1.1 Flash, Seedance 2.5 and Wan 3.0 using identical product-video inputs. | 中文：Pika 使用完全相同的产品视频输入，对比了 Gemini Omni 1.1 Flash、Seedance 2.5 和 Wan 3.0。 | https://x.com/pika_labs/status/2093538706036834614
+- 2026-08-29T05:31Z | Tencent Hunyuan on X | Tencent compressed Hy4-preview from 1.5 terabytes to roughly 200 GiB using its calibration-guided MIX-STQ1_0 quantization method. | 中文：腾讯利用校准引导的 MIX-STQ1_0 量化方法，将 Hy4-preview 从 1.5TB 压缩至约 200GiB。 | https://x.com/TencentHunyuan/status/2093572224342954019
+- 2026-08-29T00:13Z | Ollama on X | Ollama completed the cloud rollout of GLM 5.3 and GLM 5.3 Flash with US and European hosting and zero data retention. | 中文：Ollama 云端已全面上线 GLM 5.3 和 GLM 5.3 Flash，提供美国及欧洲托管与零数据保留。 | https://x.com/ollama/status/2093492205029908752
+- 2026-08-29T00:13Z | Ollama on X | Ollama published instructions for configuring Claude Desktop to use GLM 5.3 and GLM 5.3 Flash. | 中文：Ollama 发布配置说明，让 Claude Desktop 可以使用 GLM 5.3 和 GLM 5.3 Flash。 | https://x.com/ollama/status/2093492209786212359
+- 2026-08-28T23:51Z | OpenAI Developers on X | OpenAI’s WebMCP Challenge entered its final weekend, with projects due September 3 and an official support session planned. | 中文：OpenAI 的 WebMCP 挑战赛进入最后一个周末，项目须于 9 月 3 日前提交，并将举行官方答疑活动。 | https://x.com/OpenAIDevs/status/2093486538370032050
+- 2026-08-28T23:02Z | Luma AI on X | Luma announced a maker night featuring senior-creator walkthroughs, a shared prompt exercise and in-person creative support. | 中文：Luma 宣布举办创作者之夜，安排资深创意人员演示、统一提示词创作及现场指导。 | https://x.com/LumaLabsAI/status/2093474324032229559
+- 2026-08-28T23:00Z | Replicate on X | Replicate temporarily halved Wan 3.0 generation prices for the weekend. | 中文：Replicate 在本周末限时将 Wan 3.0 的生成价格降低一半。 | https://x.com/replicate/status/2093473739031695762
+- 2026-08-29T02:00Z | Dreamina on X | Dreamina launched weekly Discord activities offering product updates, creator networking and a chance to win 25,000 generation credits. | 中文：Dreamina 启动每周 Discord 活动，提供产品更新、创作者交流以及赢取 2.5 万生成积分的机会。 | https://x.com/dreamina_ai/status/2093519004333654065
+- 2026-08-29T10:00Z | IT之家 | China’s first vehicle-mounted mobile token factory debuted as an experiment in coordinating AI computing workloads with electricity supply. | 中文：中国首个车载移动式词元工厂亮相，用于探索 AI 计算任务与电力供应的协同模式。 | https://www.ithome.com/0/995/975.htm
 
 ### 2026-08-28
 
