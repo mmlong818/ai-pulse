@@ -13,6 +13,146 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html",
+      "title": "谷歌发布TimesFM-3，零样本预测拓展至多变量场景",
+      "summary": "这款3.3亿参数模型无需针对任务微调，即可联合预测关联序列并利用促销、天气等外部变量。",
+      "content_text": "## 同时预测相互关联的信号\n\n谷歌研究院发布TimesFM-3，一款拥有3.3亿参数的时间序列基础模型。它可以在无需针对具体任务微调的情况下，联合预测多条相关序列，并把外部变量纳入计算。模型文件已通过GitHub和Hugging Face开放，不局限于谷歌自有服务。\n\n此前的TimesFM版本会独立处理每条序列。TimesFM-3则原生面向多变量预测：它能够同时预测多个目标，使用只存在于历史记录中的协变量，也能利用已经知道未来取值的动态变量，例如促销计划、节假日和天气预报。谷歌使用真实与合成数据混合训练，语料规模超过一万亿个时间点。\n\n这种变化对实际经营具有直接价值。零售销量同时受关联商品、促销和客流影响，能源需求随天气变化，工业设备的不同信号也往往相互作用。谷歌给出的示例显示，模型读取未来促销安排后，可以预判促销日约20%的销量增幅；只依赖历史销量的单变量模型无法获得这项信息。\n\n谷歌称，TimesFM-3在GIFT-Eval、FEV-Bench和TIME三项公开基准中，无论点预测还是概率预测，平均排名均领先其他参评的预训练模型。对手包括Chronos-2、Toto 2.0和TimesFM-2.5。相关结果来自模型开发者，模型在企业自有数据上的表现仍可能不同。\n\n## 为什么重要\n\n时间序列预测不像聊天机器人那样显眼，却直接影响库存、排班、能源采购、产能规划和异常检测。一次前向计算即可处理多个目标和已知未来变量，补上了通用预测模型的重要短板，也可能减少企业为每项业务单独开发模型的工作量。\n\n更大的机会来自经营决策，而非人机对话：一款紧凑且可复用的模型，可能让无力维护多套预测系统的组织获得更复杂的分析能力。它能否普及，取决于零样本优势在噪声多、分布持续变化的真实数据中还能保留多少。",
+      "date_published": "2026-08-31T17:19:00.000Z",
+      "date_modified": "2026-08-31T23:00:04.050Z",
+      "tags": [
+        "模型",
+        "研究",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-timesfm3-multivariate-forecasting.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html",
+        "source_published_at": "2026-08-31T17:19:00.000Z",
+        "site_published_at": "2026-08-31T23:00:04.050Z",
+        "sources": [
+          {
+            "title": "TimesFM-3: A zero-shot foundation model for multivariate forecasting",
+            "url": "https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-flash-pathology-models.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-flash-pathology-models.html",
+      "title": "微软压缩病理基础模型，推动大规模患者队列研究",
+      "summary": "开放权重的GigaPath-Flash与GigaTIME-Flash大幅降低算力和显存需求，同时保持研究基准表现。",
+      "content_text": "## 用更小模型研究更大患者群体\n\n微软研究院、华盛顿大学和Providence联合发布两款开放权重病理模型，旨在让全切片图像和肿瘤微环境分析覆盖更大规模的患者队列。GigaPath-Flash与GigaTIME-Flash采用Apache 2.0许可证，代码和权重已在Hugging Face提供。\n\n一张全切片病理图像可能超过十亿像素，处理时需要拆分成数千个图块。当研究人员针对数万名患者反复分析生物标志物、人群亚组和临床假设时，计算成本会迅速成为限制因素。两款新模型采用紧凑型视觉Transformer骨干网络，由原版GigaPath的十亿参数编码器蒸馏而来。\n\nGigaPath-Flash由2200万参数的图块编码器和2100万参数的LongNet切片编码器组成。微软称，它在前列腺分级和脑肿瘤亚型识别基准中保留了原版约97%的预测表现，而计算量约降至五十分之一。\n\nGigaTIME-Flash使用同一紧凑编码器，根据常规H&E病理图像推断空间蛋白分布。研究团队称，它的运行速度约提升六倍，内存占用约降至八分之一，并在脑癌、乳腺癌、结肠癌和肺癌队列中达到或超过原版GigaTIME。微软估算，使用一块A100 GPU处理一百万张切片约需70天，旧系统则约需300天。\n\n## 为什么重要\n\n医疗基础模型经常强调最高基准精度，但病理研究更现实的瓶颈，是反复处理超大图像所需的成本。此次效率提升可能改变一批研究在经济上是否可行，尤其有利于缺少大型计算集群的学术团队。开放许可证也方便外部机构独立验证和改造模型。\n\n这仍是研究工具，而不是临床系统。目前评估只覆盖有限的数据集、扫描设备和医疗机构，真正用于临床还需要更广泛的前瞻性验证。这项工作的核心价值并非宣称自动诊断，而是让群体规模的计算病理研究更接近可负担范围。",
+      "date_published": "2026-08-31T16:00:00.000Z",
+      "date_modified": "2026-08-31T23:00:04.050Z",
+      "tags": [
+        "研究",
+        "模型",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/microsoft-flash-pathology-models.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-flash-pathology-models.html",
+        "source_published_at": "2026-08-31T16:00:00.000Z",
+        "site_published_at": "2026-08-31T23:00:04.050Z",
+        "sources": [
+          {
+            "title": "GigaPath-Flash and GigaTIME-Flash: Toward population-scale discovery",
+            "url": "https://www.microsoft.com/en-us/research/blog/gigapath-flash-and-gigatime-flash-toward-population-scale-discovery-with-efficient-pathology-foundation-models/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-solaris-generated-interfaces.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-solaris-generated-interfaces.html",
+      "title": "Runway发布Solaris，以实时生成画面取代固定应用界面",
+      "summary": "这套研究系统逐帧生成可交互的720p界面，将视频生成能力延伸至软件形态和智能体训练环境。",
+      "content_text": "## 把软件界面变成连续生成的视频\n\nRunway发布早期研究系统Solaris。它不执行传统代码编写的应用，而是持续生成可交互的视觉界面。Runway将其称为首个“界面世界模型”，希望连接生成视频、软件交互和计算机操作智能体的训练环境。\n\nSolaris可以从一张图片或一个场景描述开始，以最高720p分辨率逐帧合成界面。用户的点击、拖动和文字指令会成为后续画面的条件，使物体和布局发生响应，而开发者不必预先定义每一种交互。系统由语言模型理解意图并决定场景如何变化，再由基于Runway Gen-4.5技术改造的世界模型负责视觉呈现。\n\n据Runway介绍，团队将原有扩散系统改为自回归生成，通过蒸馏减少去噪步骤，并使用快速模型自身生成的结果继续训练，以改善长时间交互中的稳定性。在一项由公司组织、涵盖250名参与者和近7500次两两判断的研究中，与Claude Opus 5生成的代码界面相比，Solaris在指令执行维度获得61%的偏好，在行为自然度维度获得71%的偏好。\n\nSolaris目前尚未公开发布，Runway正在招募早期合作伙伴。公司同时承认，文字精度、结果确定性、无障碍支持、安全、传统软件集成以及逐帧生成成本等问题仍未解决。\n\n## 为什么重要\n\nSolaris把世界模型的适用范围从视频片段和物理空间模拟推进到了软件界面。不断变化的界面可以为智能体提供更丰富的训练环境，减少其对固定网站布局的依赖，也可能用于生成高度个性化、以传统方式开发成本较高的视觉应用。\n\n不过，能够生成画面并不等于具备生产软件所需的可靠性、可审计性和无障碍能力。因此，Solaris目前更像一条值得重视的研究路线，也是Runway走出媒体生成市场的战略尝试，而非即将取代代码应用的成熟产品。",
+      "date_published": "2026-08-31T16:31:00.000Z",
+      "date_modified": "2026-08-31T23:00:04.050Z",
+      "tags": [
+        "研究",
+        "AIGC",
+        "Agent"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/runway-solaris-generated-interfaces.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-solaris-generated-interfaces.html",
+        "source_published_at": "2026-08-31T16:31:00.000Z",
+        "site_published_at": "2026-08-31T23:00:04.050Z",
+        "sources": [
+          {
+            "title": "Introducing Solaris",
+            "url": "https://runway.com/news/research/introducing-solaris"
+          },
+          {
+            "title": "Runway announces Solaris on X",
+            "url": "https://x.com/runwayml/status/2094463070466646019"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/together-humain-saudi-ai-campus.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/together-humain-saudi-ai-campus.html",
+      "title": "Together AI与HUMAIN将在沙特建设250兆瓦AI数据中心",
+      "summary": "双方称项目将使Together AI可用算力接近增至三倍，并有望承载超过50亿美元的年化收入。",
+      "content_text": "## 开放模型进入重资产竞争\n\nTogether AI与沙特阿拉伯HUMAIN达成合作，计划在沙特建设一座250兆瓦AI数据中心，将HUMAIN的电力、土地与资本资源接入Together AI用于训练和部署开放模型的云平台。Together将其称为目前面向开源AI规模最大的基础设施项目之一。\n\n双方表示，新项目将使Together AI能够向客户提供的算力接近增至三倍。Together还预计，该设施承载的业务可对应超过50亿美元的年化收入。不过，这一数字属于前瞻性估算，并非现有收入；双方也没有公布建设成本、融资方式、GPU供应商或投产时间表。\n\nHUMAIN由沙特公共投资基金支持，目标是建设覆盖数据中心、云服务和模型的完整AI产业链。对Together AI而言，这项合作提供了独立AI云服务商在美国日益难以获得的大规模电力和建设资本。项目面向的是全球企业需求，而不只是沙特本地市场。\n\n## 为什么重要\n\n这份协议意味着，开放模型的竞争已经进入与闭源前沿AI同样重资产的阶段。模型权重可以开放，但训练模型并稳定提供推理服务，仍然离不开电力、加速芯片和长期基础设施投入。一座250兆瓦园区若能落地，将增强Together对大型云厂商的议价能力，同时让沙特成为全球AI算力版图中更重要的节点。\n\n目前最关键的未知数包括投产时间、采用何种芯片，以及预计需求中有多少已经获得客户合同支持。在这些细节披露前，50亿美元更适合被视为项目所瞄准的业务规模，而不是已经锁定的收入。",
+      "date_published": "2026-08-31T13:26:00.000Z",
+      "date_modified": "2026-08-31T23:00:04.050Z",
+      "tags": [
+        "产业",
+        "开源",
+        "融资"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/together-humain-saudi-ai-campus.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/together-humain-saudi-ai-campus.html",
+        "source_published_at": "2026-08-31T13:26:00.000Z",
+        "site_published_at": "2026-08-31T23:00:04.050Z",
+        "sources": [
+          {
+            "title": "Together AI announces 250MW HUMAIN infrastructure deal",
+            "url": "https://x.com/togethercompute/status/2094416469920796999"
+          },
+          {
+            "title": "Together AI and HUMAIN form strategic AI infrastructure partnership",
+            "url": "https://fr.finance.yahoo.com/actualites/together-ia-humain-forment-partenariat-204500636.html"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/chatgpt-eu-search-engine-designation.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/chatgpt-eu-search-engine-designation.html",
       "title": "欧盟将ChatGPT搜索纳入最严格平台监管",
@@ -1764,151 +1904,6 @@
           {
             "title": "OpenAI seeks to one-up Anthropic with new customer privacy protections",
             "url": "https://techcrunch.com/2026/08/19/openai-seeks-to-one-up-anthropic-with-new-customer-privacy-protections/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/veeda-robot-world-models.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/veeda-robot-world-models.html",
-      "title": "Veeda获超9000万美元融资，押注机器人世界模型",
-      "summary": "这家由英伟达前研究负责人创办的公司，希望构建可大规模试错的模拟世界，让机器人以更安全、低成本的方式学习。",
-      "content_text": "## 为机器人搭建虚拟训练场\n\nVeeda AI 宣布结束隐身状态，并完成超过 9000 万美元种子轮融资，目标是研发面向机器人的世界模型。公司由英伟达前 AI 研究副总裁 Sanja Fidler 与长期合作者 Zan Gojcic、Huan Ling 共同创办，投资方包括 Khosla Ventures 和 Radical Ventures。\n\nVeeda 要做的不是一款通用机器人，也不是传统的仿真软件。其核心设想是利用传感器和现实世界数据训练多模态生成模型，构建符合物理规律的虚拟环境。机器人可在其中获得“虚拟身体”，持续与环境交互、犯错并改进，无需承担损坏设备或危及人员的现实代价。\n\n公司认为，仅靠模仿人类示范不足以训练出能力广泛的机器人。它选择的路线是规模化交互学习：为机器提供大量环境变化，让其反复尝试不同动作。Veeda 希望把这层“模拟现实”建设成通用基础设施，服务于制造、物流、交通等行业的机器人训练与评估。\n\n创始团队的经验横跨生成式 AI、计算机视觉、三维重建和机器人仿真。Veeda 官网目前列出的地点为多伦多、苏黎世、旧金山湾区和新加坡，但公司尚未公布具体模型、数据集、客户或发布时间表。因此，这笔融资首先是投资者对团队和技术路线的重注，而非对已经得到商业验证的产品追加投资。\n\n## 为什么重要\n\n机器人发展的瓶颈正从硬件扩展到训练数据。现实环境中的试验速度慢、成本高，也很难精确复现；人工搭建的仿真器则难以覆盖真实世界的复杂度和多样性。如果生成式世界模型能够同时提供足够可靠的物理规律、视觉感知和交互反馈，它可能像大规模语料之于语言模型一样，成为机器人能力扩张的基础。Veeda 罕见的大额种子轮融资，使其成为这一方向资金最充足的新进入者之一，但其关键技术主张仍需通过可运行系统验证。",
-      "date_published": "2026-08-20T01:01:00.000Z",
-      "date_modified": "2026-08-20T11:51:24.990Z",
-      "tags": [
-        "融资",
-        "研究",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/veeda-robot-world-models.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/veeda-robot-world-models.html",
-        "source_published_at": "2026-08-20T01:01:00.000Z",
-        "site_published_at": "2026-08-20T11:51:24.990Z",
-        "sources": [
-          {
-            "title": "Veeda AI",
-            "url": "https://veeda.ai/"
-          },
-          {
-            "title": "Sanja Fidler’s world model startup Veeda AI raises $90M in seed funding",
-            "url": "https://siliconangle.com/2026/08/19/sanja-fidlers-world-model-startup-veeda-ai-raises-90m-in-seed-funding/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cerebras-cs4-doubles-inference-speed.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cerebras-cs4-doubles-inference-speed.html",
-      "title": "Cerebras CS-4 搭载三颗 WSE-3 Turbo，加速大模型推理",
-      "summary": "Cerebras 表示，第四代系统通过三颗 WSE-3 Turbo 处理器和重新设计的机架级平台，将推理速度最高提升至 CS-3 的两倍。",
-      "content_text": "## 围绕 WSE-3 Turbo 的系统级升级\n\nCerebras 在 Supernova 大会上发布第四代计算系统 CS-4。该系统搭载三颗新的 WSE-3 Turbo 处理器，并非简单让 CS-3 的原有晶圆以更高频率运行。按照 Cerebras 的介绍，CS-4 是一个新的机架级平台，同时升级了处理器、晶圆间通信、供电、散热和输入输出系统。\n\n在 Cerebras 公布的 GPT-OSS 演示中，CS-4 的生成速度达到每秒4465个 Token，CS-3 为每秒2308个 Token；公司给出的传统 GPU 系统对照值为每秒131个 Token。这些均为厂商披露的数据，尚未经过独立复现，实际表现会随模型、工作负载和服务配置而变化。\n\nCerebras 表示，CS-4 的推理性能最高可达到 CS-3 的两倍，每瓦 Token 总吞吐量最高可达到 CS-3 的十倍。这些数字来自公司针对特定工作负载进行的内部测试和推算，不能直接视为所有生产环境中的普遍表现。\n\n## 面向拆分式推理的模块化机架\n\nCS-4 是首个采用 Cerebras Nexus 机架级架构的系统。其后置 Wafer-Scale Backpack 模块围绕每颗晶圆整合供电转换、直接液冷、高速输入输出和控制电子元件。Cerebras 称，该模块的零部件数量减少50%，制造自动化程度提高60%，并可把部署时间从数天缩短至数小时。\n\nCS-4 还原生支持拆分式推理，让不同硬件分别处理提示词预填充和逐 Token 生成。Cerebras 列出的预填充平台包括 AMD Helios 和 AWS Trainium；模型状态随后可传输至 CS-4，执行对延迟更敏感的解码。因此，这项能力并不限于与 AMD 搭配，运营商也可采用 GPU 或其他 ASIC 处理预填充阶段。\n\nCerebras 表示，CS-4 可将晶圆间通信延迟降至最低约2微秒，并让参数规模超过10万亿的模型实现每秒1000个以上 Token。后一项数字来自公司根据内部测试所作的推算，并非已经由第三方独立验证的实测结果。\n\n## 为何重要\n\nCS-4 表明，推理性能提升可以来自处理器、互连、供电、散热和机架设计的协同升级，而不只是依赖新的半导体制程。其架构也反映出行业正日益重视让不同类型的硬件分别承担预填充和解码任务。\n\nCerebras 表示，首批 CS-4 将于2026年第三季度开始出货。其速度、总体吞吐量、能耗和经济性在真实工作负载中的表现，仍有待独立生产测试确认。",
-      "date_published": "2026-08-19T00:00:00.000Z",
-      "date_modified": "2026-08-19T11:00:03.507Z",
-      "tags": [
-        "产业",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cerebras-cs4-doubles-inference-speed.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cerebras-cs4-doubles-inference-speed.html",
-        "source_published_at": "2026-08-19T00:00:00.000Z",
-        "site_published_at": "2026-08-19T11:00:03.507Z",
-        "sources": [
-          {
-            "title": "Introducing Cerebras CS-4: The Fastest AI Just Got Faster",
-            "url": "https://www.cerebras.ai/blog/introducing-cerebras-cs-4"
-          },
-          {
-            "title": "Cerebras Supernova 2026",
-            "url": "https://www.cerebras.ai/supernova"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/chatgpt-teens-default-safeguards.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/chatgpt-teens-default-safeguards.html",
-      "title": "ChatGPT 推出青少年专属模式，安全限制默认开启",
-      "summary": "OpenAI 面向13至17岁用户推出独立体验，系统识别为未成年人的账户将自动启用更严格的学习与安全保护。",
-      "content_text": "## 不再依赖家长手动开启\n\nOpenAI 推出 ChatGPT 青少年专属体验，面向13至17岁用户。当用户主动填写符合条件的年龄，或年龄预测系统判断其可能未满18岁时，账户会自动进入青少年模式。这意味着安全保护从可选设置变成默认产品路径，不再完全依赖家长提前配置。\n\n学习功能整合了学习模式、测验和可视化讲解，并新增“负责任作业提醒”。当系统判断用户可能只是想直接获取作业答案时，可以把对话引导至分步提问和协作解题。青少年或已绑定账户的家长还可以设置“学习时段”，让学习模式在指定时间自动开启。\n\n## 对模型行为设置更严格边界\n\n青少年模式针对自残、饮食失调、暴力、危险活动、露骨内容等敏感领域增加限制。OpenAI 的未成年人行为规范还要求模型不得使用带有浪漫暗示的语言，不得鼓励青少年对 AI 形成情感依赖，也不能暗示自己具有意识或对用户抱有真实感情。\n\n产品同时加入休息提醒、敏感图片上传警告和专门的新手引导，持续提示用户 ChatGPT 是 AI 系统。绑定后的家长可以设置安静时段、管理部分功能，并在少数高风险情况下收到通知。OpenAI 还将增加与饮食失调相关的提醒，同时承诺限制向家长披露的信息范围。\n\nOpenAI 也开始在模型系统卡中发布青少年专项评测，覆盖自残、暴力、限制年龄的商品和性内容等困难场景。不过，公司并未声称这些措施可以杜绝有害回答，也没有保证年龄预测能够准确识别每一名未成年人。\n\n## 为何重要\n\nChatGPT 青少年模式把年龄识别从一项政策要求，变成了直接决定产品体验的分流机制：系统会依据申报或推测的年龄自动改变模型行为。考虑到 ChatGPT 的用户规模，这种设计可能成为其他消费级 AI 产品需要参照的新标准。与此同时，它也带来了儿童保护、个人隐私和识别错误之间的现实冲突，尤其是当自动化系统需要判断某个账户是否属于未成年人时。",
-      "date_published": "2026-08-18T11:00:00.000Z",
-      "date_modified": "2026-08-18T23:00:03.710Z",
-      "tags": [
-        "产业",
-        "安全"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/chatgpt-teens-default-safeguards.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/chatgpt-teens-default-safeguards.html",
-        "source_published_at": "2026-08-18T11:00:00.000Z",
-        "site_published_at": "2026-08-18T23:00:03.710Z",
-        "sources": [
-          {
-            "title": "Introducing ChatGPT for Teens: Built for learning, backed by protections",
-            "url": "https://openai.com/index/chatgpt-for-teens"
-          },
-          {
-            "title": "OpenAI launches a safer ChatGPT for teens",
-            "url": "https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-designs-protein-binders.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-designs-protein-binders.html",
-      "title": "Claude 模型参与蛋白结合物设计并接受实验验证",
-      "summary": "Anthropic 将 Mythos Preview 和 Claude Opus 4.8 设计的蛋白结合物送入实验室验证，并公开技术报告、提示词与实验数据。",
-      "content_text": "## 从推理走向实体实验\n\nAnthropic 公布了一项由 Claude 模型参与蛋白结合物设计的实验。此次结合物设计使用的是 Mythos Preview 和 Claude Opus 4.8，而非 Claude Opus 5。蛋白结合物是能够附着于特定生物靶点的分子，可用于基础研究，也可能成为药物研发的早期起点。\n\n在这项工作中，模型并非只负责检索或概括生物学资料，而是实际参与候选方案的设计。研究团队随后把模型提出的方案送入实验室测试，使这项研究成为一次更严格的能力检验：通用前沿模型能否参与一个最终由现实世界实验结果裁决的科学流程。Anthropic 表示，目前该领域常见的设计成功率约为10%至15%，但同时提醒，不能据此推断 Claude 已经能够独立开发药物。\n\nAnthropic 还同步公开了技术报告、实验提示词和数据。这一点尤其重要，因为生物设计结果很容易受到靶点选择、实验流程、候选筛选规则以及人类专家介入程度的影响。外部研究者因此可以进一步判断，成果究竟来自模型本身、配套计算工具，还是指导实验的科学人员。\n\n## 不把结合物等同于药物\n\nAnthropic 特别强调，高亲和力蛋白结合物并不是药物。真正的治疗候选物还必须满足选择性、稳定性、递送效率、可制造性、毒性和临床获益等一系列要求。成功结合目标蛋白，只是漫长研发链条中的早期一步。\n\n## 为何重要\n\n这项实验把“AI for Science”的讨论从问答和跑分推进到了可由物理实验验证的层面。模型生成的方案进入实验室，并由真实测量而非另一个模型评分，证据强度明显更高。提示词与数据的公开，也为后续复现和比较提供了基础。如果这种“提出方案—实验验证—反馈改进”的闭环能够稳定运行，前沿模型可能帮助科学家更快探索庞大的设计空间；与此同时，实验也再次说明，人类专家监督与湿实验验证仍不可替代。",
-      "date_published": "2026-08-18T22:30:00.000Z",
-      "date_modified": "2026-08-18T23:00:03.710Z",
-      "tags": [
-        "研究",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/claude-designs-protein-binders.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-designs-protein-binders.html",
-        "source_published_at": "2026-08-18T22:30:00.000Z",
-        "site_published_at": "2026-08-18T23:00:03.710Z",
-        "sources": [
-          {
-            "title": "Anthropic thread on Claude’s protein-binder experiment",
-            "url": "https://x.com/AnthropicAI/status/2089842394527301881"
-          },
-          {
-            "title": "Anthropic technical report and open materials announcement",
-            "url": "https://x.com/AnthropicAI/status/2089842395722678689"
           }
         ]
       }

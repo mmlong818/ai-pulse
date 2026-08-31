@@ -19,6 +19,134 @@
 
 ## Recent briefings
 
+### Google TimesFM-3 Adds Zero-Shot Multivariate Forecasts
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/google-timesfm3-multivariate-forecasting.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html
+- Source timestamp: 2026-08-31T17:19:00.000Z
+- Site timestamp: 2026-08-31T23:00:04.050Z
+- Tags: Models, Research, Open Source
+
+The 330-million-parameter model forecasts related series and external variables without task-specific fine-tuning.
+
+## Forecasting connected signals together
+
+Google Research has released TimesFM-3, a 330-million-parameter foundation model designed to forecast multiple related time series and incorporate external variables without task-specific fine-tuning. Model artifacts are available through GitHub and Hugging Face, making the release usable outside Google’s own services.
+
+Earlier TimesFM versions treated each series independently. TimesFM-3 is instead pretrained for multivariate forecasting: it can predict several targets together, use covariates available only in historical data, and account for variables whose future values are already known, such as planned promotions, holidays or weather forecasts. Google trained it on a mixture of real and synthetic data containing more than one trillion time points.
+
+The distinction matters in operational settings. Retail sales depend on related products, promotions and foot traffic; energy demand moves with weather; industrial equipment signals interact rather than failing in isolation. Google’s example shows the model using a future promotion schedule to anticipate an approximately 20% sales increase on promotion days, something an otherwise comparable univariate forecast cannot infer from sales history alone.
+
+Google reports that TimesFM-3 achieved the best average rank among evaluated pretrained models on point and probabilistic forecasting across GIFT-Eval, FEV-Bench and the TIME benchmark. The comparison included Chronos-2, Toto 2.0 and TimesFM-2.5. These are research results reported by the model’s developer, and performance on company-specific data may differ.
+
+## Why it matters
+
+Time-series forecasting is less visible than chatbots but directly affects inventory, staffing, energy procurement, capacity planning and anomaly detection. Supporting multiple targets and known future variables in one forward pass removes an important limitation of general-purpose forecasting models and may reduce the amount of specialist modeling needed for each deployment.
+
+The larger opportunity is operational rather than conversational: a compact, reusable model could make sophisticated forecasting accessible to organizations that cannot maintain separate pipelines for every dataset. Adoption will depend on how reliably its zero-shot advantages survive messy, shifting real-world data.
+
+Chinese title: 谷歌发布TimesFM-3，零样本预测拓展至多变量场景
+Chinese summary: 这款3.3亿参数模型无需针对任务微调，即可联合预测关联序列并利用促销、天气等外部变量。
+
+Sources:
+  - TimesFM-3: A zero-shot foundation model for multivariate forecasting: https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/
+
+### Microsoft Shrinks Pathology Models for Cohort-Scale AI
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/microsoft-flash-pathology-models.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-flash-pathology-models.html
+- Source timestamp: 2026-08-31T16:00:00.000Z
+- Site timestamp: 2026-08-31T23:00:04.050Z
+- Tags: Research, Models, Open Source
+
+Open-weight GigaPath-Flash and GigaTIME-Flash sharply reduce compute and memory needs while retaining research performance.
+
+## Smaller models for larger pathology studies
+
+Microsoft Research, the University of Washington and Providence have released two open-weight pathology models intended to make whole-slide and tumor-microenvironment analysis practical across much larger patient cohorts. GigaPath-Flash and GigaTIME-Flash are available under the Apache 2.0 license with code and weights on Hugging Face.
+
+Whole-slide pathology images can exceed a gigapixel and require thousands of image tiles to process. That expense becomes a limiting factor when researchers repeatedly analyze tens of thousands of patients while testing biomarkers, subgroups and clinical hypotheses. The new models use a compact Vision Transformer backbone distilled from the original billion-parameter GigaPath encoder.
+
+GigaPath-Flash combines a 22-million-parameter tile encoder with a 21-million-parameter LongNet slide encoder. Microsoft reports that it retained about 97% of GigaPath’s predictive performance on prostate-grading and brain-tumor-subtyping benchmarks while requiring roughly 50 times less compute.
+
+GigaTIME-Flash uses the same compact encoder to infer spatial protein patterns from standard H&E pathology images. According to the researchers, it runs about six times faster, uses roughly eight times less memory and matched or improved on the original GigaTIME across brain, breast, colon and lung cancer cohorts. Microsoft estimates that processing one million slides would take approximately 70 days on one A100 GPU, compared with about 300 days for the earlier system.
+
+## Why it matters
+
+Medical foundation models often emphasize peak benchmark accuracy, but pathology research is constrained by the cost of repeatedly processing enormous images. These efficiency gains could change which studies are economically feasible, particularly for academic groups without large computing clusters. Open licensing also permits independent testing and adaptation.
+
+The release remains a research tool, not a clinical system. Its evaluations cover a limited selection of datasets, scanners and institutions, and clinical use would require broader, prospective validation. The important achievement is therefore not an automated diagnosis claim; it is making population-scale computational pathology substantially more attainable.
+
+Chinese title: 微软压缩病理基础模型，推动大规模患者队列研究
+Chinese summary: 开放权重的GigaPath-Flash与GigaTIME-Flash大幅降低算力和显存需求，同时保持研究基准表现。
+
+Sources:
+  - GigaPath-Flash and GigaTIME-Flash: Toward population-scale discovery: https://www.microsoft.com/en-us/research/blog/gigapath-flash-and-gigatime-flash-toward-population-scale-discovery-with-efficient-pathology-foundation-models/
+
+### Runway Solaris Generates Interfaces Without Coded Apps
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/runway-solaris-generated-interfaces.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/runway-solaris-generated-interfaces.html
+- Source timestamp: 2026-08-31T16:31:00.000Z
+- Site timestamp: 2026-08-31T23:00:04.050Z
+- Tags: Research, AIGC, Agents
+
+The research system renders interactive 720p interfaces frame by frame, extending generative video into software and agent training.
+
+## Software rendered as video
+
+Runway has introduced Solaris, an early research system that generates an interactive visual interface continuously instead of executing a conventionally coded application. The company calls it its first “Interface World Model,” positioning the technology as a bridge between generative video, software interfaces and environments for training computer-using agents.
+
+Solaris begins from an image or described scene and synthesizes the interface one frame at a time at up to 720p. Clicks, drags and typed instructions condition subsequent frames, allowing objects and layouts to respond without developers defining every interaction in advance. A language model interprets the user’s intent and decides how the scene should change, while a world model derived from Runway’s Gen-4.5 technology handles visual rendering.
+
+Runway says it converted the underlying diffusion system to autoregressive generation, reduced the number of denoising steps through distillation and trained the faster model on its own outputs to improve stability during longer sessions. In a company-run study involving 250 participants and almost 7,500 pairwise judgments, Solaris was preferred over a Claude Opus 5-generated coded interface in 61% of instruction-following comparisons and 71% of natural-behavior comparisons.
+
+Solaris is not yet a public product; Runway is recruiting early-access partners. The company also acknowledges unresolved problems involving text precision, deterministic behavior, accessibility, security, integration with conventional software and the cost of generating every frame.
+
+## Why it matters
+
+Solaris expands world models beyond video clips and simulated physical spaces into the software layer itself. Constantly changing interfaces could provide richer training environments for agents that currently overfit to familiar website layouts. They could also produce highly personalized visual applications that would be expensive to hand-code.
+
+Yet generated pixels do not automatically supply the reliability, auditability or accessibility expected from production software. Solaris is therefore best understood as a credible research direction—and a strategic expansion for Runway beyond media generation—rather than an imminent replacement for coded applications.
+
+Chinese title: Runway发布Solaris，以实时生成画面取代固定应用界面
+Chinese summary: 这套研究系统逐帧生成可交互的720p界面，将视频生成能力延伸至软件形态和智能体训练环境。
+
+Sources:
+  - Introducing Solaris: https://runway.com/news/research/introducing-solaris
+  - Runway announces Solaris on X: https://x.com/runwayml/status/2094463070466646019
+
+### Together AI, HUMAIN Plan 250MW Saudi AI Data Center
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/together-humain-saudi-ai-campus.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/together-humain-saudi-ai-campus.html
+- Source timestamp: 2026-08-31T13:26:00.000Z
+- Site timestamp: 2026-08-31T23:00:04.050Z
+- Tags: Industry, Open Source, Funding
+
+The partners say the project will nearly triple Together AI’s capacity and support more than $5 billion in annualized revenue.
+
+## A major bet on open-model infrastructure
+
+Together AI and Saudi Arabia’s HUMAIN have agreed to develop a 250-megawatt AI data center in the kingdom, linking HUMAIN’s power, land and capital resources with Together AI’s cloud platform for training and serving open models. Together described it as one of the largest infrastructure commitments yet aimed specifically at open-source AI.
+
+The companies said the planned capacity would nearly triple the computing power available to Together AI customers. Together also projected that workloads running through the facility could represent more than $5 billion in annualized revenue. That figure is a forward-looking estimate rather than present revenue, and the companies did not disclose the project’s construction cost, financing structure, GPU suppliers or delivery schedule.
+
+HUMAIN is backed by Saudi Arabia’s Public Investment Fund and was created to build a vertically integrated AI industry spanning data centers, cloud services and models. For Together AI, the arrangement offers access to a scale of power and construction financing that is increasingly difficult for independent AI-cloud providers to secure in the United States. The resulting capacity is intended to serve global enterprise demand, rather than only Saudi customers.
+
+## Why it matters
+
+The agreement moves competition around open models into the same capital-intensive arena as proprietary frontier AI. Model weights may be freely available, but training and reliably serving them still requires power, accelerators and long-term infrastructure commitments. A 250MW campus would give Together substantially more leverage against hyperscale clouds while making Saudi Arabia a larger node in the global AI-compute market.
+
+The unanswered questions are consequential: when the capacity becomes operational, which chips it uses, and how much of the projected demand is contractually committed. Until those details emerge, the $5 billion figure should be read as the economic ambition attached to the campus, not as secured revenue.
+
+Chinese title: Together AI与HUMAIN将在沙特建设250兆瓦AI数据中心
+Chinese summary: 双方称项目将使Together AI可用算力接近增至三倍，并有望承载超过50亿美元的年化收入。
+
+Sources:
+  - Together AI announces 250MW HUMAIN infrastructure deal: https://x.com/togethercompute/status/2094416469920796999
+  - Together AI and HUMAIN form strategic AI infrastructure partnership: https://fr.finance.yahoo.com/actualites/together-ia-humain-forment-partenariat-204500636.html
+
 ### EU Places ChatGPT Search Under Its Strictest Platform Rules
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/chatgpt-eu-search-engine-designation.html
@@ -877,138 +1005,27 @@ Sources:
   - Jalapeño’s first results show industry-leading speed and efficiency in AI inference: https://openai.com/index/jalapeno-first-results/
   - OpenAI’s Jalapeño chip is built for fast inference at scale, benchmarks show: https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/
 
-### Perplexity Runs Its Computer Agent on Local Hardware
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/perplexity-portable-computer-agent.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-portable-computer-agent.html
-- Source timestamp: 2026-08-25T18:43:00.000Z
-- Site timestamp: 2026-08-25T23:00:03.126Z
-- Tags: Agents, Industry
-
-Portable Computer keeps agent planning, file analysis and tool execution on a DGX Spark, escalating to cloud models only with permission.
-
-## An agent stack contained on the desk
-
-Perplexity has launched Portable Computer, a local-first version of its Computer agent designed initially for Nvidia's DGX Spark. Unlike a desktop interface that merely forwards requests to a cloud model, the product runs its orchestrator, planner, tool router, scheduler, durable task queue and local search index on the user's machine.
-
-Users can choose Qwen 3.8 27B or PPLX 27B, Perplexity's task-specific post-training of that model. Nemotron 3.5 Lightning is due to join the model picker later. The agent can read and search local documents and code, create files, execute tools and continue long-running jobs without charging credits for locally completed steps. Voice transcription also stays on the device through Nvidia's Nemotron speech-recognition model.
-
-Portable Computer can connect to Gmail, Google Drive, Slack and GitHub. When a workflow needs current web information, a connected application or stronger reasoning, it may request permission to consult Perplexity search or more than 15 cloud models. Perplexity says transfers from the device require user approval and that code execution occurs inside isolated sandboxes with restricted file and application access.
-
-## Privacy has a hardware threshold
-
-The initial release is available to Perplexity Pro and Max subscribers using Linux on DGX Spark, whose Grace Blackwell GB10 platform includes 128 GB of unified memory. Windows and RTX PC support are promised but are not yet available. The requirement substantially narrows the launch audience and means the product has not yet established that this architecture works conveniently on ordinary workplace computers.
-
-Still, Portable Computer is a consequential test of hybrid agents. It divides a task at execution time rather than forcing customers to choose permanently between private but weaker local software and capable but remote cloud services. If its permission boundaries are dependable, organizations could keep confidential source code, contracts and internal correspondence on premises while purchasing frontier reasoning only for selected steps. Its benchmark claims and security controls now need independent testing, particularly around what context an escalation request exposes.
-
-Chinese title: Perplexity推出本地运行的Computer智能体
-Chinese summary: Portable Computer把任务规划、文件分析和工具执行留在DGX Spark本机，仅在用户授权后调用云端模型。
-
-Sources:
-  - Introducing Portable Computer: https://www.perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai
-  - A Local-First Agent for Private and Cost-Effective Knowledge Work: https://www.perplexity.ai/hub/blog/a-local-first-agent-for-private-and-cost-effective-knowledge-work
-  - NVIDIA and Local AI Community Fuel Open Source Models and Intelligent Agents: https://blogs.nvidia.com/blog/local-ai-open-source-models-agents-nemotron/
-
-### Entertainment Majors Back Stability AI’s $76M Round
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/stability-ai-series-b.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/stability-ai-series-b.html
-- Source timestamp: 2026-08-25T15:13:00.000Z
-- Site timestamp: 2026-08-25T23:00:03.126Z
-- Tags: Funding, AIGC, Industry
-
-EA and three global music groups participated in Stability AI’s Series B, tying its next phase more closely to licensed creative production.
-
-## Rights holders become shareholders
-
-Stability AI has raised $76 million in a Series B. Its announcement names Electronic Arts, Sony Music Group, Universal Music Group, Warner Music Group, AMD Ventures and Pacific Alliance Ventures among a new group of investors participating in the round. Coatue, Greycroft, Kadmos Capital, Sean Parker and Eric Schmidt also participated, investing for a second consecutive round under the company’s current leadership.
-
-The company says it has now secured $232 million under chief executive Prem Akkaraju since he took over in June 2024. That total includes two equity rounds and convertible notes, rather than representing a single cash investment. Stability did not disclose its valuation, financial performance or the ownership acquired by the new investors.
-
-The capital is earmarked for creative-production products, applied research and an expanded professional-services business. Stability now develops image, video, 3D and audio systems, including Stable Audio 3.0, an open-weight music-model family trained on licensed material. Coatue co-founder Thomas Laffont has also joined its board.
-
-## A different compact for generative media
-
-The investor distinctions are more important than the headline amount. Stability explicitly identified EA, Universal and Warner as existing strategic partners that invested in the round. Its announcement included Sony Music among the participating music companies but did not describe Sony as an existing strategic partner. It separately listed Coatue, Greycroft, Kadmos Capital, Sean Parker and Eric Schmidt as returning participants in a second consecutive round under the current leadership.
-
-The announcement also named Lightspeed Venture Partners, Mantis Capital, Sound Ventures, WPP and several individuals as existing Stability AI backers, but did not say they all participated in this Series B. WPP was described separately as a strategic partner and investor throughout the current leadership period, not as a named participant in this round.
-
-Participation by major games and music companies gives Stability closer ties to organizations controlling valuable recordings, intellectual property and production workflows, but may also pull its roadmap toward bespoke commercial tools and away from the broadly accessible image-model releases that built its reputation.
-
-The financing marks a further turn in generative media's relationship with copyright owners. Rather than treating studios and labels only as licensors or legal adversaries, Stability is making several of them financial stakeholders in the tools that could reshape creative production. That alignment could improve access to licensed training data and accelerate adoption inside established media companies. It does not eliminate the harder questions: the company still must show sustainable revenue, explain how value reaches individual creators, and demonstrate that strategic investors will tolerate products that compete with existing production labor and licensing markets.
-
-Chinese title: 三大音乐集团与EA参投Stability AI新融资
-Chinese summary: Stability AI完成7600万美元B轮融资，EA及三大国际音乐集团参与，其发展路线进一步转向授权内容与专业制作。
-
-Sources:
-  - The Entertainment Industry’s Biggest Names Back Stability AI in Latest Funding Round: https://stability.ai/news-updates/stability-ai-latest-funding-backed-by-entertainment-industry-biggest-names
-  - Stability AI, maker of image generator Stable Diffusion, raises $76 million in fresh funding: https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/
-
-### Generalist Raises Another $200M for Robot Intelligence
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/generalist-raises-robotics-capital.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/generalist-raises-robotics-capital.html
-- Source timestamp: 2026-08-24T20:54:21.000Z
-- Site timestamp: 2026-08-24T23:00:03.309Z
-- Tags: Funding, Research
-
-The robot-model developer reportedly secured its second major financing in two months as capital crowds into embodied AI.
-
-## Two large rounds in two months
-
-Generalist has raised approximately $200 million in fresh financing, Axios reported, only two months after the robotics-model company collected $400 million. The latest round was led by 8VC with participation from existing investors, according to the report; Generalist has not publicly disclosed full terms or a new valuation.
-
-Founded by researchers with experience at Google DeepMind and Boston Dynamics, Generalist develops foundation models for robots rather than manufacturing a proprietary robot platform. That distinction lets it pursue a horizontal role across different machines, but it also makes the company dependent on access to hardware, physical-interaction data and deployment partners.
-
-The financing follows Generalist’s recent presentation of GEN-1.5, a system that the company says can attempt a simple new manipulation task after receiving a single three-to-12-second demonstration as context. In its internal evaluation across ten short tasks, the one-demonstration method achieved a 59% average success rate. Five minutes of task data and ten gradient updates increased the reported result to 83%. Those figures have not been independently reproduced, and the company acknowledges that the tested activities are simple and short-horizon.
-
-## Why it matters
-
-Raising roughly $600 million within two months shows how aggressively investors are pricing the possibility that reusable robot intelligence becomes a separate platform layer. The wager is that a broadly pretrained model can reduce the costly collection and retraining normally required whenever a robot encounters a new object, task or environment.
-
-The funding also raises the execution threshold. Generalist must demonstrate that learning from brief examples survives unfamiliar hardware, messy workplaces and long sequences where errors accumulate. A model company without its own mass-market robot fleet may offer broader compatibility, but it has fewer captive deployments from which to collect the real-world data needed to improve.
-
-Chinese title: 机器人模型公司Generalist再融资2亿美元
-Chinese summary: 这家机器人基础模型开发商据报在两个月内完成第二笔大额融资，具身智能正成为资本追逐的新平台赛道。
-
-Sources:
-  - Scoop: Generalist raises another $200 million for AI robotics: https://www.axios.com/2026/08/24/robotics-ai-generalist-200m
-  - GEN-1.5: Embodied Foundation Models are One-Shot Learners: https://generalistai.com/blog/gen-1.5
-
-### Gradio Adds Visual Workflows That Deploy as APIs
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/gradio-visual-ai-workflows.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gradio-visual-ai-workflows.html
-- Source timestamp: 2026-08-25T00:00:00.000Z
-- Site timestamp: 2026-08-25T11:00:03.370Z
-- Tags: Open Source, Agents, AIGC
-
-Gradio’s new Workflow interface turns typed AI pipelines into inspectable canvases, callable REST endpoints and deployable applications.
-
-## The pipeline becomes the interface
-
-Hugging Face has introduced `gr.Workflow`, a Gradio capability for representing multi-step AI applications as visual graphs. Developers define a pipeline through typed nodes, while users receive a drag-and-drop canvas on which each step can run independently and every intermediate result remains visible.
-
-A workflow contains references for inputs, operators that perform work and subjects representing outputs. Operators may invoke ordinary Python functions, models available through Hugging Face Inference Providers, existing Gradio Spaces or rows from Hub datasets. Independent branches can execute in parallel, allowing one prompt to trigger several image generators, transformations or analytical tasks at once.
-
-The launch examples span image editing with Qwen-Image-Edit, a media studio connecting FLUX image generation with background removal, speech synthesis and an LLM, and a dataset profiler that calculates previews, statistics and distributions concurrently. Another demonstration loads LTX-Video through Diffusers inside a Space and obtains ZeroGPU capacity only when its node runs.
-
-## One graph, three operating surfaces
-
-The same workflow is exposed as a visual application, a REST API and a deployable Hugging Face Space. Every named output automatically becomes its own endpoint, callable through the Gradio Python client or ordinary HTTP requests. Developers can therefore expose a useful intermediate result without building a separate service or forcing every caller to execute the entire graph.
-
-This matters for agent and generative-media development because pipeline failures often hide between model calls rather than inside a single model. Keeping intermediate artifacts visible can shorten diagnosis, while typed connections reduce accidental mismatches between components. The automatic API surface also narrows the gap between an experiment and a reusable service.
-
-The remaining question is how well the visual abstraction handles production concerns such as authentication, retries, versioning and stateful execution. Gradio has made composable AI workflows substantially easier to inspect and share; whether teams adopt the canvas for durable systems will depend on the operational controls surrounding those graphs.
-
-Chinese title: Gradio推出可视化工作流，一张图直接部署API
-Chinese summary: Gradio新增Workflow功能，可将多步骤AI流程变成可检查的拖拽画布，并同步生成REST接口和可部署应用。
-
-Sources:
-  - Wire It, Run It, Deploy It: AI Workflows in Gradio: https://huggingface.co/blog/gradio-workflow-guide
-  - Introducing Workflow — make your AI pipeline the interface: https://x.com/Gradio/status/2092163349761147256
-
 ## Recent radar items
+
+### 2026-09-01
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-01.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-01.html
+
+- 2026-08-31T22:47Z | AWS Machine Learning Blog | AWS published a guide for connecting MCP servers hosted on AgentCore Runtime to Amazon Quick. | 中文：AWS 发布指南，介绍如何将托管于 AgentCore Runtime 的 MCP 服务器接入 Amazon Quick。 | https://aws.amazon.com/blogs/machine-learning/connect-an-agentcore-runtime-hosted-mcp-server-to-amazon-quick/
+- 2026-08-31T22:45Z | Anthropic on X | Anthropic issued an alignment and security update following three reported incidents involving Claude models operating without cyber safeguards. | 中文：Anthropic 发布对齐与安全进展，回应三起 Claude 模型在缺少网络安全防护时运行的事件。 | https://x.com/AnthropicAI/status/2094557124038951170
+- 2026-08-31T22:35Z | Together AI on X | Together AI said Greptile uses its infrastructure to run agents that review and test pull requests for more than 11,000 teams. | 中文：Together AI 称，Greptile 使用其基础设施运行代码审查与拉取请求测试智能体，服务超过1.1万个团队。 | https://x.com/togethercompute/status/2094554758912868364
+- 2026-08-31T21:35Z | Vercel on X | Vercel said its agents use a design.md file containing brand decisions and guidance, with outputs shaped through evaluations. | 中文：Vercel 表示，其智能体通过 design.md 文件读取品牌决策与规范，并利用评测塑造输出。 | https://x.com/vercel/status/2094539714984550471
+- 2026-08-31T19:52Z | Visual Studio Code on X | Visual Studio Code’s August update added editable Markdown diff review and a feature for obtaining second opinions on agent work. | 中文：Visual Studio Code 八月更新加入可编辑的 Markdown 差异审阅，以及为智能体工作获取第二意见的功能。 | https://x.com/code/status/2094513642964222283
+- 2026-08-31T20:27Z | Fireworks AI on X | Fireworks AI highlighted Droid Shield, which checks secrets as Factory’s coding agents rapidly write and commit software. | 中文：Fireworks AI 介绍 Droid Shield，用于在 Factory 编程智能体快速编写并提交代码时检查密钥泄露。 | https://x.com/FireworksAI_HQ/status/2094522569416409570
+- 2026-08-31T19:18Z | AWS Machine Learning Blog | AWS introduced Agent Registry guidance for centrally managing agents, tools, and skills across enterprise deployments. | 中文：AWS 发布 Agent Registry 指南，支持企业集中管理部署中的智能体、工具与技能。 | https://aws.amazon.com/blogs/machine-learning/manage-agents-tools-and-skills-at-scale-with-aws-agent-registry/
+- 2026-08-31T19:00Z | Replit on X | Replit demonstrated Free Mode supporting open-ended conversations about visual concepts for creating a community running club. | 中文：Replit 展示了 Free Mode，可围绕社区跑团的视觉概念进行开放式讨论与创作。 | https://x.com/Replit/status/2094500689829302549
+- 2026-08-31T16:11Z | LlamaIndex on X | LlamaIndex announced LlamaParse as a verified Claude connector for extracting context from complex, non-text-only documents. | 中文：LlamaIndex 宣布 LlamaParse 成为 Claude 认证连接器，可从复杂的非纯文本文档中提取上下文。 | https://x.com/llama_index/status/2094458130679689314
+- 2026-08-31T16:10Z | Recraft on X | Recraft showcased V4 Styles maintaining the same velvet texture and red-black palette across separately generated objects. | 中文：Recraft 展示 V4 Styles，可让分别生成的物体保持一致的丝绒质感与红黑配色。 | https://x.com/recraftai/status/2094457688289665396
+- 2026-08-31T15:33Z | Fireworks AI on X | Fireworks AI launched Fireworks Lab, offering embedded researchers and engineers to co-design or build customized models for customers. | 中文：Fireworks AI 推出 Fireworks Lab，由驻场研究人员和工程师协助客户共同设计或构建定制模型。 | https://x.com/FireworksAI_HQ/status/2094448452596117712
+- 2026-08-31T15:00Z | Deemos Tech on X | Hyper3D introduced WorldGen, which creates interactive worlds from one image using separate foreground meshes and a 3D Gaussian-splatting background. | 中文：Hyper3D 推出 WorldGen，可从单张图片生成由独立前景网格和三维高斯背景组成的交互世界。 | https://x.com/DeemosTech/status/2094440163246256523
+- 2026-08-31T15:34Z | The Verge | Debian decided not to prohibit AI-generated code, instead requiring contributions to remain reviewable, maintainable, and compliant with existing rules. | 中文：Debian 决定不禁止 AI 生成代码，转而要求相关贡献可审查、可维护并符合既有规则。 | https://www.theverge.com/tech/986789/linux-debian-generative-ai-policy
+- 2026-08-31T14:00Z | Meshy on X | Meshy opened its API Playground to free-plan users, allowing image-to-3D testing without first obtaining an API key. | 中文：Meshy 向免费套餐用户开放 API Playground，无需先获取 API 密钥即可测试图像转三维功能。 | https://x.com/MeshyAI/status/2094424981442822509
 
 ### 2026-08-31
 
@@ -1140,37 +1157,3 @@ Sources:
 - 2026-08-27T23:04Z | AWS Machine Learning Blog | AWS demonstrated approval-gated creative agents combining Amazon Quick, reusable Skills, MCP and fal’s image, video, audio and 3D models. | 中文：AWS 展示了结合 Amazon Quick、可复用技能、MCP 与 fal 多模态模型，并设置人工审批节点的创作代理工作流。 | https://aws.amazon.com/blogs/machine-learning/build-agentic-creative-workflows-with-amazon-quick-and-fal/
 - 2026-08-28T04:00Z | arXiv | WALL-SS proposes next-scale autoregression to improve the scalability and long-horizon prediction capabilities of robotic world models. | 中文：WALL-SS 提出“下一尺度自回归”方法，以提升机器人世界模型的扩展性和长时程预测能力。 | https://arxiv.org/abs/2608.26239
 - 2026-08-28T04:00Z | arXiv | ADeptS-Bench evaluates whether computer-use agents remain trustworthy when performing equivalent tasks across different device environments. | 中文：ADeptS-Bench 用于评估计算机操作代理在不同设备环境中执行同类任务时能否保持可信。 | https://arxiv.org/abs/2608.26204
-
-### 2026-08-27
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-27.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-27.html
-
-- 2026-08-26T22:34:00Z | SiliconANGLE | Deep Cogito raised $43 million to develop AI models designed to improve themselves through iterative learning. | 中文：Deep Cogito 融资4300万美元，用于开发可通过迭代学习实现自我改进的AI模型。 | https://siliconangle.com/2026/08/26/deep-cogito-raises-43m-to-develop-self-improving-ai-models/
-- 2026-08-26T21:34:00Z | X (@huggingface) | Hugging Face began using the open-weight Inkling-Small model to turn research-paper abstracts into concise summaries. | 中文：Hugging Face开始使用开放权重模型Inkling-Small，将研究论文摘要转化为简明解读。 | https://x.com/huggingface/status/2092727360584135026
-- 2026-08-26T19:52:00Z | X (@GitHubNext) | GitHub introduced Agentic Workflows for automating code changes, organization-wide rollouts and code-quality assessments at scale. | 中文：GitHub推出Agentic Workflows，用于自动修改代码、在组织范围内推广变更并规模化评估代码质量。 | https://x.com/GitHubNext/status/2092701757059334178
-- 2026-08-26T19:13:00Z | AWS Machine Learning Blog | AWS added AgentCore Evaluations for assessing agents built with any framework through configurable evaluators and production monitoring. | 中文：AWS推出AgentCore Evaluations，可通过自定义评估器和生产环境监控，评测使用任意框架构建的智能体。 | https://aws.amazon.com/blogs/machine-learning/evaluate-any-agent-framework-with-amazon-bedrock-agentcore-evaluations/
-- 2026-08-26T18:42:00Z | Google Research | Google Research introduced GlucoFM, a foundation model for extracting health insights from continuous glucose-monitoring data. | 中文：Google Research发布GlucoFM基础模型，用于从连续血糖监测数据中提取健康洞察。 | https://research.google/blog/glucofm-foundation-model-for-continuous-glucose-monitoring/
-- 2026-08-26T18:10:00Z | X (@code) | VS Code added a rubber-duck command that asks a complementary model to review agent work for missed details and edge cases. | 中文：VS Code新增“橡皮鸭”命令，可调用另一个模型复查智能体工作，寻找遗漏细节和边界情况。 | https://x.com/code/status/2092676108047061125
-- 2026-08-26T17:46:00Z | X (@runwayml) | Runway added Meta’s Muse Image to its platform alongside its existing image and video generation models. | 中文：Runway将Meta的Muse Image接入平台，与现有图像和视频生成模型一同提供。 | https://x.com/runwayml/status/2092670079070822579
-- 2026-08-26T17:20:00Z | X (@boltdotnew) | Bolt introduced an agentic security audit that scans applications, applies patches and hardens detected vulnerabilities. | 中文：Bolt推出智能体安全审计功能，可扫描整个应用、自动打补丁并加固发现的漏洞。 | https://x.com/boltdotnew/status/2092663409355452770
-- 2026-08-26T17:15:00Z | X (@GeminiApp) | Gemini Live added autonomous multi-step tasks, Gmail actions, Daily Brief access and personalized assistance based on previous conversations. | 中文：Gemini Live新增自主执行多步骤任务、操作Gmail、访问每日简报，以及基于历史对话的个性化协助。 | https://x.com/GeminiApp/status/2092662298016117180
-- 2026-08-26T17:12:00Z | X (@AnthropicAI) | Anthropic gave independent researchers access to privacy-preserved Claude usage data for studying collaboration, wellbeing and real-world productivity. | 中文：Anthropic向独立研究人员开放经过隐私保护的Claude使用数据，用于研究人机协作、身心感受和现实生产力。 | https://x.com/AnthropicAI/status/2092661573223657834
-- 2026-08-26T17:12:00Z | X (@FireworksAI_HQ) | Harvey and Fireworks post-trained Tenet from Kimi K3 for long-horizon legal work, nearly doubling fully passed benchmark tasks at similar cost. | 中文：Harvey与Fireworks基于Kimi K3后训练法律模型Tenet，以相近成本将基准测试中完全通过的任务数提高近一倍。 | https://x.com/FireworksAI_HQ/status/2092661446039814317
-- 2026-08-26T17:11:00Z | X (@GoodfireAI) | Goodfire presented a more token-efficient method for identifying chain-of-thought branching tokens that materially alter model outcomes. | 中文：Goodfire提出一种更节省令牌的方法，用于识别会显著改变模型结果的思维链分叉令牌。 | https://x.com/GoodfireAI/status/2092661148671946916
-- 2026-08-26T16:00:00Z | X (@cognition) | Devin sessions can now launch managed subagents with separate virtual machines, and those child sessions can spawn further subagents. | 中文：Devin会话现在可以启动拥有独立虚拟机的托管子智能体，而且子会话还能继续创建更多子智能体。 | https://x.com/cognition/status/2092643323542442020
-- 2026-08-26T16:18:00Z | X (@HeyGen) | Harvard Business School used HeyGen LiveAvatar to create interactive AI avatars of professors for its Foundry entrepreneurship program. | 中文：哈佛商学院通过HeyGen LiveAvatar为教授制作互动式AI化身，并应用于Foundry创业项目。 | https://x.com/HeyGen/status/2092647767395258518
-- 2026-08-27T10:27Z | InfoQ 中文 | MiniMax reported annual recurring revenue above $800 million, with enterprise customers contributing 80% of revenue. | 中文：MiniMax披露年度经常性收入已超过8亿美元，企业客户贡献的收入占比达到80%。 | https://www.infoq.cn/article/OtZAGeLtUBgd9UzkO7eC
-- 2026-08-27T10:10Z | InfoQ 中文 | Harper recreated the same AI-built application deployed on Vercel and reported performance differences reaching 14-fold in its tests. | 中文：Harper重新搭建了一个部署于Vercel的同款AI生成应用，并称测试中的性能差距最高达到14倍。 | https://www.infoq.cn/article/jbOa8ChckHTgVVKh5AKb
-- 2026-08-27T09:38Z | Meshy on X | Meshy previewed Meshy 7, claiming stronger alignment between uploaded source models and generated assets intended for 3D printing. | 中文：Meshy预告Meshy 7，称其可加强上传源模型与生成资产之间的一致性，尤其适用于3D打印。 | https://x.com/MeshyAI/status/2092909689340362882
-- 2026-08-27T07:36Z | Alibaba Wan on X | Alibaba launched a weekly Wan Skill Challenge rewarding three creators who package Wan-powered video workflows as reusable skills. | 中文：阿里巴巴发起每周一期的万相技能挑战，奖励三名把万相视频工作流封装成可复用技能的创作者。 | https://x.com/Alibaba_Wan/status/2092878992504475999
-- 2026-08-27T07:00Z | MongoDB on X | MongoDB released its managed Atlas MCP server as a Claude Code plugin, enabling agents to query data and optimize vector search. | 中文：MongoDB将托管式Atlas MCP服务器发布为Claude Code插件，使智能体能够查询数据并优化向量搜索。 | https://x.com/MongoDB/status/2092869724518387826
-- 2026-08-27T06:12Z | Qwen on X | Qwen3.8-Flash became available through OpenRouter for coding assistants, agent workflows and long-video understanding. | 中文：Qwen3.8-Flash已接入OpenRouter，可用于编程助手、智能体工作流和长视频理解。 | https://x.com/Alibaba_Qwen/status/2092857839299826095
-- 2026-08-27T06:49Z | Qwen on X | Qwen Cloud priced Qwen3.8-Flash at $0.15 per million input tokens, $0.47 for output and $0.016 for cache hits. | 中文：千问云将Qwen3.8-Flash定价为每百万输入Token 0.15美元、输出0.47美元，缓存命中仅0.016美元。 | https://x.com/Alibaba_Qwen/status/2092867093385613760
-- 2026-08-27T05:43Z | 量子位 | Chinese inference-platform startup Key Motion raised tens of millions of yuan and introduced a model-routing service positioned as a domestic OpenRouter. | 中文：中国推理平台创业公司基元律动累计融资数千万元，并推出定位为“中国版OpenRouter”的模型路由服务。 | https://www.qbitai.com/2026/08/480079.html
-- 2026-08-27T03:00Z | OpenAI | OpenAI launched commercial operations in Brazil, establishing a São Paulo team to work with businesses, developers, researchers and public institutions. | 中文：OpenAI在巴西启动商业运营，并在圣保罗组建团队，服务企业、开发者、研究人员及公共机构。 | https://openai.com/index/expanding-our-presence-in-brazil
-- 2026-08-27T02:46Z | 量子位 | Siemens detailed an industrial AI agent that embeds the company’s engineering knowledge rather than merely wrapping a general-purpose language model. | 中文：西门子介绍了一款融入其工程经验的工业AI智能体，强调它并非简单套用通用大模型。 | https://www.qbitai.com/2026/08/480005.html
-- 2026-08-27T00:24Z | TechCrunch | AI startup Instinct raised $350 million at a $2.5 billion valuation following rapid viral adoption of its consumer product. | 中文：AI创业公司Instinct在消费级产品迅速走红后完成3.5亿美元融资，估值达到25亿美元。 | https://techcrunch.com/2026/08/26/viral-ai-startup-instinct-has-raised-350-million-at-a-2-billion-valuation/
-- 2026-08-27T01:36Z | SiliconANGLE | Bill Gates warned that advanced AI could threaten humanity if governance and technical safeguards fail to keep pace with capabilities. | 中文：比尔·盖茨警告称，如果治理与技术防护跟不上能力发展，先进人工智能可能对人类构成威胁。 | https://siliconangle.com/2026/08/26/bill-gates-issues-stark-warning-about-ai-and-the-future-of-humanity/
-- 2026-08-27T03:35Z | Qwen on X | Qwen received day-zero TokenSpeed support covering its new GDN, QSA, N-gram embedding and FP8 architecture components. | 中文：TokenSpeed首日适配千问新架构，覆盖GDN、QSA、N-gram嵌入及FP8等组件。 | https://x.com/Alibaba_Qwen/status/2092818199146536983
-- 2026-08-27T08:05Z | Alibaba Wan on X | Wan published a builder guide explaining how creators can turn Wan-powered generation workflows into reusable agent skills. | 中文：通义万相发布技能构建指南，讲解如何把基于万相的生成工作流制作成可复用的智能体技能。 | https://x.com/Alibaba_Wan/status/2092886195693134218

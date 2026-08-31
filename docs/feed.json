@@ -13,6 +13,146 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/google-timesfm3-multivariate-forecasting.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/google-timesfm3-multivariate-forecasting.html",
+      "title": "Google TimesFM-3 Adds Zero-Shot Multivariate Forecasts",
+      "summary": "The 330-million-parameter model forecasts related series and external variables without task-specific fine-tuning.",
+      "content_text": "## Forecasting connected signals together\n\nGoogle Research has released TimesFM-3, a 330-million-parameter foundation model designed to forecast multiple related time series and incorporate external variables without task-specific fine-tuning. Model artifacts are available through GitHub and Hugging Face, making the release usable outside Google’s own services.\n\nEarlier TimesFM versions treated each series independently. TimesFM-3 is instead pretrained for multivariate forecasting: it can predict several targets together, use covariates available only in historical data, and account for variables whose future values are already known, such as planned promotions, holidays or weather forecasts. Google trained it on a mixture of real and synthetic data containing more than one trillion time points.\n\nThe distinction matters in operational settings. Retail sales depend on related products, promotions and foot traffic; energy demand moves with weather; industrial equipment signals interact rather than failing in isolation. Google’s example shows the model using a future promotion schedule to anticipate an approximately 20% sales increase on promotion days, something an otherwise comparable univariate forecast cannot infer from sales history alone.\n\nGoogle reports that TimesFM-3 achieved the best average rank among evaluated pretrained models on point and probabilistic forecasting across GIFT-Eval, FEV-Bench and the TIME benchmark. The comparison included Chronos-2, Toto 2.0 and TimesFM-2.5. These are research results reported by the model’s developer, and performance on company-specific data may differ.\n\n## Why it matters\n\nTime-series forecasting is less visible than chatbots but directly affects inventory, staffing, energy procurement, capacity planning and anomaly detection. Supporting multiple targets and known future variables in one forward pass removes an important limitation of general-purpose forecasting models and may reduce the amount of specialist modeling needed for each deployment.\n\nThe larger opportunity is operational rather than conversational: a compact, reusable model could make sophisticated forecasting accessible to organizations that cannot maintain separate pipelines for every dataset. Adoption will depend on how reliably its zero-shot advantages survive messy, shifting real-world data.",
+      "date_published": "2026-08-31T17:19:00.000Z",
+      "date_modified": "2026-08-31T23:00:04.050Z",
+      "tags": [
+        "Models",
+        "Research",
+        "Open Source"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-timesfm3-multivariate-forecasting.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html",
+        "source_published_at": "2026-08-31T17:19:00.000Z",
+        "site_published_at": "2026-08-31T23:00:04.050Z",
+        "sources": [
+          {
+            "title": "TimesFM-3: A zero-shot foundation model for multivariate forecasting",
+            "url": "https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/microsoft-flash-pathology-models.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/microsoft-flash-pathology-models.html",
+      "title": "Microsoft Shrinks Pathology Models for Cohort-Scale AI",
+      "summary": "Open-weight GigaPath-Flash and GigaTIME-Flash sharply reduce compute and memory needs while retaining research performance.",
+      "content_text": "## Smaller models for larger pathology studies\n\nMicrosoft Research, the University of Washington and Providence have released two open-weight pathology models intended to make whole-slide and tumor-microenvironment analysis practical across much larger patient cohorts. GigaPath-Flash and GigaTIME-Flash are available under the Apache 2.0 license with code and weights on Hugging Face.\n\nWhole-slide pathology images can exceed a gigapixel and require thousands of image tiles to process. That expense becomes a limiting factor when researchers repeatedly analyze tens of thousands of patients while testing biomarkers, subgroups and clinical hypotheses. The new models use a compact Vision Transformer backbone distilled from the original billion-parameter GigaPath encoder.\n\nGigaPath-Flash combines a 22-million-parameter tile encoder with a 21-million-parameter LongNet slide encoder. Microsoft reports that it retained about 97% of GigaPath’s predictive performance on prostate-grading and brain-tumor-subtyping benchmarks while requiring roughly 50 times less compute.\n\nGigaTIME-Flash uses the same compact encoder to infer spatial protein patterns from standard H&E pathology images. According to the researchers, it runs about six times faster, uses roughly eight times less memory and matched or improved on the original GigaTIME across brain, breast, colon and lung cancer cohorts. Microsoft estimates that processing one million slides would take approximately 70 days on one A100 GPU, compared with about 300 days for the earlier system.\n\n## Why it matters\n\nMedical foundation models often emphasize peak benchmark accuracy, but pathology research is constrained by the cost of repeatedly processing enormous images. These efficiency gains could change which studies are economically feasible, particularly for academic groups without large computing clusters. Open licensing also permits independent testing and adaptation.\n\nThe release remains a research tool, not a clinical system. Its evaluations cover a limited selection of datasets, scanners and institutions, and clinical use would require broader, prospective validation. The important achievement is therefore not an automated diagnosis claim; it is making population-scale computational pathology substantially more attainable.",
+      "date_published": "2026-08-31T16:00:00.000Z",
+      "date_modified": "2026-08-31T23:00:04.050Z",
+      "tags": [
+        "Research",
+        "Models",
+        "Open Source"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/microsoft-flash-pathology-models.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-flash-pathology-models.html",
+        "source_published_at": "2026-08-31T16:00:00.000Z",
+        "site_published_at": "2026-08-31T23:00:04.050Z",
+        "sources": [
+          {
+            "title": "GigaPath-Flash and GigaTIME-Flash: Toward population-scale discovery",
+            "url": "https://www.microsoft.com/en-us/research/blog/gigapath-flash-and-gigatime-flash-toward-population-scale-discovery-with-efficient-pathology-foundation-models/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/runway-solaris-generated-interfaces.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/runway-solaris-generated-interfaces.html",
+      "title": "Runway Solaris Generates Interfaces Without Coded Apps",
+      "summary": "The research system renders interactive 720p interfaces frame by frame, extending generative video into software and agent training.",
+      "content_text": "## Software rendered as video\n\nRunway has introduced Solaris, an early research system that generates an interactive visual interface continuously instead of executing a conventionally coded application. The company calls it its first “Interface World Model,” positioning the technology as a bridge between generative video, software interfaces and environments for training computer-using agents.\n\nSolaris begins from an image or described scene and synthesizes the interface one frame at a time at up to 720p. Clicks, drags and typed instructions condition subsequent frames, allowing objects and layouts to respond without developers defining every interaction in advance. A language model interprets the user’s intent and decides how the scene should change, while a world model derived from Runway’s Gen-4.5 technology handles visual rendering.\n\nRunway says it converted the underlying diffusion system to autoregressive generation, reduced the number of denoising steps through distillation and trained the faster model on its own outputs to improve stability during longer sessions. In a company-run study involving 250 participants and almost 7,500 pairwise judgments, Solaris was preferred over a Claude Opus 5-generated coded interface in 61% of instruction-following comparisons and 71% of natural-behavior comparisons.\n\nSolaris is not yet a public product; Runway is recruiting early-access partners. The company also acknowledges unresolved problems involving text precision, deterministic behavior, accessibility, security, integration with conventional software and the cost of generating every frame.\n\n## Why it matters\n\nSolaris expands world models beyond video clips and simulated physical spaces into the software layer itself. Constantly changing interfaces could provide richer training environments for agents that currently overfit to familiar website layouts. They could also produce highly personalized visual applications that would be expensive to hand-code.\n\nYet generated pixels do not automatically supply the reliability, auditability or accessibility expected from production software. Solaris is therefore best understood as a credible research direction—and a strategic expansion for Runway beyond media generation—rather than an imminent replacement for coded applications.",
+      "date_published": "2026-08-31T16:31:00.000Z",
+      "date_modified": "2026-08-31T23:00:04.050Z",
+      "tags": [
+        "Research",
+        "AIGC",
+        "Agents"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/runway-solaris-generated-interfaces.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-solaris-generated-interfaces.html",
+        "source_published_at": "2026-08-31T16:31:00.000Z",
+        "site_published_at": "2026-08-31T23:00:04.050Z",
+        "sources": [
+          {
+            "title": "Introducing Solaris",
+            "url": "https://runway.com/news/research/introducing-solaris"
+          },
+          {
+            "title": "Runway announces Solaris on X",
+            "url": "https://x.com/runwayml/status/2094463070466646019"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/together-humain-saudi-ai-campus.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/together-humain-saudi-ai-campus.html",
+      "title": "Together AI, HUMAIN Plan 250MW Saudi AI Data Center",
+      "summary": "The partners say the project will nearly triple Together AI’s capacity and support more than $5 billion in annualized revenue.",
+      "content_text": "## A major bet on open-model infrastructure\n\nTogether AI and Saudi Arabia’s HUMAIN have agreed to develop a 250-megawatt AI data center in the kingdom, linking HUMAIN’s power, land and capital resources with Together AI’s cloud platform for training and serving open models. Together described it as one of the largest infrastructure commitments yet aimed specifically at open-source AI.\n\nThe companies said the planned capacity would nearly triple the computing power available to Together AI customers. Together also projected that workloads running through the facility could represent more than $5 billion in annualized revenue. That figure is a forward-looking estimate rather than present revenue, and the companies did not disclose the project’s construction cost, financing structure, GPU suppliers or delivery schedule.\n\nHUMAIN is backed by Saudi Arabia’s Public Investment Fund and was created to build a vertically integrated AI industry spanning data centers, cloud services and models. For Together AI, the arrangement offers access to a scale of power and construction financing that is increasingly difficult for independent AI-cloud providers to secure in the United States. The resulting capacity is intended to serve global enterprise demand, rather than only Saudi customers.\n\n## Why it matters\n\nThe agreement moves competition around open models into the same capital-intensive arena as proprietary frontier AI. Model weights may be freely available, but training and reliably serving them still requires power, accelerators and long-term infrastructure commitments. A 250MW campus would give Together substantially more leverage against hyperscale clouds while making Saudi Arabia a larger node in the global AI-compute market.\n\nThe unanswered questions are consequential: when the capacity becomes operational, which chips it uses, and how much of the projected demand is contractually committed. Until those details emerge, the $5 billion figure should be read as the economic ambition attached to the campus, not as secured revenue.",
+      "date_published": "2026-08-31T13:26:00.000Z",
+      "date_modified": "2026-08-31T23:00:04.050Z",
+      "tags": [
+        "Industry",
+        "Open Source",
+        "Funding"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/together-humain-saudi-ai-campus.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/together-humain-saudi-ai-campus.html",
+        "source_published_at": "2026-08-31T13:26:00.000Z",
+        "site_published_at": "2026-08-31T23:00:04.050Z",
+        "sources": [
+          {
+            "title": "Together AI announces 250MW HUMAIN infrastructure deal",
+            "url": "https://x.com/togethercompute/status/2094416469920796999"
+          },
+          {
+            "title": "Together AI and HUMAIN form strategic AI infrastructure partnership",
+            "url": "https://fr.finance.yahoo.com/actualites/together-ia-humain-forment-partenariat-204500636.html"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/chatgpt-eu-search-engine-designation.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/chatgpt-eu-search-engine-designation.html",
       "title": "EU Places ChatGPT Search Under Its Strictest Platform Rules",
@@ -1764,151 +1904,6 @@
           {
             "title": "OpenAI seeks to one-up Anthropic with new customer privacy protections",
             "url": "https://techcrunch.com/2026/08/19/openai-seeks-to-one-up-anthropic-with-new-customer-privacy-protections/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/veeda-robot-world-models.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/veeda-robot-world-models.html",
-      "title": "Veeda Raises $90M to Build Robot Training World Models",
-      "summary": "The former Nvidia researchers aim to create simulated worlds where robots can learn safely through large-scale trial and error.",
-      "content_text": "## A virtual training ground for physical AI\n\nVeeda AI has emerged from stealth with more than $90 million in seed financing to develop world models for robotics. The company is led by Sanja Fidler, formerly Nvidia’s vice president of AI research, alongside longtime collaborators Zan Gojcic and Huan Ling. Khosla Ventures and Radical Ventures are backing the startup.\n\nVeeda’s proposed product is not a general-purpose robot or a conventional simulation package. It wants to build generative, multimodal models that can produce physically plausible virtual environments from sensor and real-world data. Robots would receive virtual bodies inside those environments, allowing their control systems to interact, make mistakes and improve without damaging equipment or endangering people.\n\nThe company argues that imitation learning from recorded human behavior will not be sufficient for broadly capable robots. Its alternative is interactive learning at scale: exposing machines to many variations of an environment and letting them test actions repeatedly. Veeda describes this simulated-reality layer as shared infrastructure that could support robot training and evaluation across manufacturing, logistics, transportation and other physical industries.\n\nFidler’s team brings experience spanning generative AI, computer vision, 3D reconstruction and robotics simulation. Veeda currently lists locations in Toronto, Zürich, the San Francisco Bay Area and Singapore, but has not yet disclosed a model, dataset, customer or release schedule. The financing therefore represents a substantial bet on the team and technical thesis rather than a demonstrated commercial system.\n\n## Why it matters\n\nRobotics is increasingly constrained by data rather than hardware alone. Real-world experiments are slow, costly and difficult to reproduce, while hand-built simulators struggle to match the variety and visual complexity of reality. If generative world models can provide sufficiently accurate physics, perception and interaction, they could become for robotics what large-scale training corpora became for language models. Veeda’s unusually large seed round makes it one of the best-funded new efforts to build that foundational layer, although its central claims remain to be validated in working systems.",
-      "date_published": "2026-08-20T01:01:00.000Z",
-      "date_modified": "2026-08-20T11:51:24.990Z",
-      "tags": [
-        "Funding",
-        "Research",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/veeda-robot-world-models.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/veeda-robot-world-models.html",
-        "source_published_at": "2026-08-20T01:01:00.000Z",
-        "site_published_at": "2026-08-20T11:51:24.990Z",
-        "sources": [
-          {
-            "title": "Veeda AI",
-            "url": "https://veeda.ai/"
-          },
-          {
-            "title": "Sanja Fidler’s world model startup Veeda AI raises $90M in seed funding",
-            "url": "https://siliconangle.com/2026/08/19/sanja-fidlers-world-model-startup-veeda-ai-raises-90m-in-seed-funding/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/cerebras-cs4-doubles-inference-speed.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/cerebras-cs4-doubles-inference-speed.html",
-      "title": "Cerebras CS-4 Pairs Three WSE-3 Turbo Processors for Faster Inference",
-      "summary": "Cerebras says its fourth-generation system delivers up to twice the inference speed of CS-3 through three WSE-3 Turbo processors and a redesigned rack-scale platform.",
-      "content_text": "## A system-level upgrade around WSE-3 Turbo\n\nCerebras unveiled the CS-4 at its Supernova event, presenting a fourth-generation system built around three new WSE-3 Turbo processors. It is not simply a CS-3 running the same wafer at a higher frequency: Cerebras describes CS-4 as a new rack-scale platform combining more powerful processors with redesigned wafer-to-wafer communication, power delivery, cooling and input-output systems.\n\nIn a company demonstration using OpenAI’s GPT-OSS model, the CS-4 generated 4,465 tokens per second, compared with 2,308 tokens per second on the CS-3. Cerebras contrasted that result with 131 tokens per second for a conventional GPU system. These are vendor-reported measurements rather than independently reproduced benchmarks, and performance will vary with the model, workload and serving configuration.\n\nCerebras says CS-4 can deliver up to twice the inference performance of CS-3 and up to ten times more token throughput per watt. Those figures refer to internal benchmarks and projections across selected workloads and should not be treated as universal production results.\n\n## A modular rack for split inference\n\nCS-4 is the first system based on Cerebras’s Nexus rack-scale architecture. Its rear-mounted Wafer-Scale Backpack combines power conversion, direct liquid cooling, high-speed input-output and control electronics around each wafer. Cerebras says the module has 50% fewer components, uses 60% more automated manufacturing and reduces deployment time from days to hours.\n\nThe system also provides native support for disaggregated inference, in which different hardware handles prompt processing and token generation. Cerebras identifies AMD Helios and AWS Trainium among the platforms that can perform prefill before transferring model state to CS-4 for latency-sensitive decoding. This is broader than an AMD-only configuration and allows operators to combine Cerebras hardware with GPU- or ASIC-based prefill systems.\n\nCerebras says CS-4 can reduce wafer-to-wafer communication latency to as little as two microseconds and support more than 1,000 tokens per second for models exceeding ten trillion parameters. The latter claim is based on company extrapolation from internal testing, not a demonstrated independent benchmark.\n\n## Why it matters\n\nCS-4 shows how inference gains can come from coordinated changes to processors, interconnects, power, cooling and rack design rather than from a semiconductor-process transition alone. The architecture also reflects growing interest in assigning prefill and decoding to different types of hardware.\n\nCerebras says the first CS-4 shipments will begin in the third quarter of 2026. Independent production testing will still be needed to establish how its speed, aggregate throughput, energy use and economics compare across real workloads.",
-      "date_published": "2026-08-19T00:00:00.000Z",
-      "date_modified": "2026-08-19T11:00:03.507Z",
-      "tags": [
-        "Industry",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cerebras-cs4-doubles-inference-speed.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cerebras-cs4-doubles-inference-speed.html",
-        "source_published_at": "2026-08-19T00:00:00.000Z",
-        "site_published_at": "2026-08-19T11:00:03.507Z",
-        "sources": [
-          {
-            "title": "Introducing Cerebras CS-4: The Fastest AI Just Got Faster",
-            "url": "https://www.cerebras.ai/blog/introducing-cerebras-cs-4"
-          },
-          {
-            "title": "Cerebras Supernova 2026",
-            "url": "https://www.cerebras.ai/supernova"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/chatgpt-teens-default-safeguards.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/chatgpt-teens-default-safeguards.html",
-      "title": "ChatGPT for Teens Adds Default Age-Based Safeguards",
-      "summary": "OpenAI launched a dedicated experience that automatically places identified 13-to-17-year-olds behind stronger safety and learning controls.",
-      "content_text": "## A separate default experience\n\nOpenAI has launched ChatGPT for Teens, a dedicated product experience for users aged 13 to 17. Accounts are placed into the teen experience when users provide an eligible age or OpenAI’s age-prediction system estimates that they are under 18, making the protections automatic rather than dependent on a family configuring them manually.\n\nThe learning layer combines Study Mode, quizzes and visual explanations with new “responsible homework” reminders. When ChatGPT detects that a user may be seeking a shortcut to completing an assignment, it can redirect the conversation toward guided questions and step-by-step problem solving. Teens and linked parents can also define Study Hours during which Study Mode becomes the default.\n\n## Stronger behavioral boundaries\n\nThe teen version applies additional restrictions around self-harm, eating disorders, violence, dangerous activities, sexual material and other developmentally sensitive content. OpenAI says its under-18 behavior rules also prohibit the assistant from encouraging emotional dependence, using romantic language toward a teen or presenting itself as conscious and emotionally attached.\n\nOther measures include break reminders, warnings before sensitive images are uploaded and onboarding that explicitly identifies ChatGPT as an AI system. Linked parents can set quiet hours, manage selected features and receive narrowly scoped notifications in certain high-risk situations. OpenAI is adding alerts related to eating disorders while saying it will limit the information disclosed to parents.\n\nThe company also began publishing teen-specific evaluations in its model system cards, covering difficult cases involving self-harm, violence, age-restricted goods and sexual content. It did not claim that these controls can eliminate harmful outputs or accurately identify every minor.\n\n## Why it matters\n\nChatGPT for Teens converts age assurance from a policy question into a product-routing mechanism: the model experience now changes automatically according to an inferred or declared age. Given ChatGPT’s scale, that design could influence expectations for other consumer AI services. It also creates a consequential trade-off among child protection, privacy and classification errors, especially when an automated system must decide whether an account belongs to a minor.",
-      "date_published": "2026-08-18T11:00:00.000Z",
-      "date_modified": "2026-08-18T23:00:03.710Z",
-      "tags": [
-        "Industry",
-        "Safety"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/chatgpt-teens-default-safeguards.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/chatgpt-teens-default-safeguards.html",
-        "source_published_at": "2026-08-18T11:00:00.000Z",
-        "site_published_at": "2026-08-18T23:00:03.710Z",
-        "sources": [
-          {
-            "title": "Introducing ChatGPT for Teens: Built for learning, backed by protections",
-            "url": "https://openai.com/index/chatgpt-for-teens"
-          },
-          {
-            "title": "OpenAI launches a safer ChatGPT for teens",
-            "url": "https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/claude-designs-protein-binders.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/claude-designs-protein-binders.html",
-      "title": "Claude Models Design Protein Binders in Lab Test",
-      "summary": "Anthropic tested protein binders designed by Mythos Preview and Claude Opus 4.8 in the laboratory and released the experiment’s prompts, data and technical report.",
-      "content_text": "## From reasoning to physical testing\n\nAnthropic has published an experiment examining whether Claude models can help design protein binders whose performance can be measured in a laboratory. The binder-design work used Mythos Preview and Claude Opus 4.8, rather than Claude Opus 5. Protein binders are molecules engineered to attach to a selected biological target, making them useful research tools and potential starting points for therapeutic development.\n\nThe models participated in the design process rather than merely summarizing biological literature. Anthropic then subjected proposed binders to experimental testing, turning the project into a test of whether general-purpose frontier models can contribute to a scientific workflow whose outcome is verified in the physical world. The company said typical success rates for binder-design work are around 10% to 15%, although it cautioned against treating the experiment as evidence that Claude can independently develop medicines.\n\nAnthropic also released a technical report alongside the prompts and data used in the project. That disclosure is important because biological-design results are highly sensitive to target selection, laboratory protocols, filtering decisions and the amount of expert intervention. External researchers can now examine how much of the result came from the models, the surrounding computational tools and the scientists directing the process.\n\n## A deliberately narrow claim\n\nThe company stressed that a high-affinity protein binder is not a drug. A therapeutic candidate would still have to satisfy requirements including selectivity, stability, delivery, manufacturability, toxicity and clinical benefit. Success at binding therefore demonstrates only an early step in a much longer development chain.\n\n## Why it matters\n\nThe experiment moves the debate over AI for science beyond question answering and benchmark performance. Model-generated proposals were carried into a laboratory and judged against physical measurements, creating a stronger form of evidence than model-scored outputs. The open prompts and data also make the work more useful as a reproducible baseline. If similar closed-loop workflows become reliable, frontier models could help scientists explore a larger design space—but the experiment equally underlines that expert supervision and wet-lab validation remain indispensable.",
-      "date_published": "2026-08-18T22:30:00.000Z",
-      "date_modified": "2026-08-18T23:00:03.710Z",
-      "tags": [
-        "Research",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/claude-designs-protein-binders.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-designs-protein-binders.html",
-        "source_published_at": "2026-08-18T22:30:00.000Z",
-        "site_published_at": "2026-08-18T23:00:03.710Z",
-        "sources": [
-          {
-            "title": "Anthropic thread on Claude’s protein-binder experiment",
-            "url": "https://x.com/AnthropicAI/status/2089842394527301881"
-          },
-          {
-            "title": "Anthropic technical report and open materials announcement",
-            "url": "https://x.com/AnthropicAI/status/2089842395722678689"
           }
         ]
       }

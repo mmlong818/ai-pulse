@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>谷歌发布TimesFM-3，零样本预测拓展至多变量场景 — Uncle Cat AI Radar</title>
+<meta name="description" content="这款3.3亿参数模型无需针对任务微调，即可联合预测关联序列并利用促销、天气等外部变量。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/google-timesfm3-multivariate-forecasting.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/google-timesfm3-multivariate-forecasting.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="谷歌发布TimesFM-3，零样本预测拓展至多变量场景 — Uncle Cat AI Radar">
+<meta property="og:description" content="这款3.3亿参数模型无需针对任务微调，即可联合预测关联序列并利用促销、天气等外部变量。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="谷歌发布TimesFM-3，零样本预测拓展至多变量场景 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="这款3.3亿参数模型无需针对任务微调，即可联合预测关联序列并利用促销、天气等外部变量。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="谷歌发布TimesFM-3，零样本预测拓展至多变量场景 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"谷歌发布TimesFM-3，零样本预测拓展至多变量场景","item":"https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html#article","headline":"谷歌发布TimesFM-3，零样本预测拓展至多变量场景","description":"这款3.3亿参数模型无需针对任务微调，即可联合预测关联序列并利用促销、天气等外部变量。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html"},"datePublished":"2026-08-31T17:19:00.000Z","dateModified":"2026-08-31T23:00:04.050Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["模型","研究","开源"],"keywords":"模型, 研究, 开源","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/"],"about":[{"@type":"Thing","name":"模型"},{"@type":"Thing","name":"研究"},{"@type":"Thing","name":"开源"}]}]}</script>
+</head>
+<body data-slug="google-timesfm3-multivariate-forecasting" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/google-timesfm3-multivariate-forecasting.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-08-31T17:19:00Z">2026年9月1日 01:19</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>谷歌发布TimesFM-3，零样本预测拓展至多变量场景</h1>
+  <p class="standfirst">这款3.3亿参数模型无需针对任务微调，即可联合预测关联序列并利用促销、天气等外部变量。</p>
+  <h2>同时预测相互关联的信号</h2><p>谷歌研究院发布TimesFM-3，一款拥有3.3亿参数的时间序列基础模型。它可以在无需针对具体任务微调的情况下，联合预测多条相关序列，并把外部变量纳入计算。模型文件已通过GitHub和Hugging Face开放，不局限于谷歌自有服务。</p><p>此前的TimesFM版本会独立处理每条序列。TimesFM-3则原生面向多变量预测：它能够同时预测多个目标，使用只存在于历史记录中的协变量，也能利用已经知道未来取值的动态变量，例如促销计划、节假日和天气预报。谷歌使用真实与合成数据混合训练，语料规模超过一万亿个时间点。</p><p>这种变化对实际经营具有直接价值。零售销量同时受关联商品、促销和客流影响，能源需求随天气变化，工业设备的不同信号也往往相互作用。谷歌给出的示例显示，模型读取未来促销安排后，可以预判促销日约20%的销量增幅；只依赖历史销量的单变量模型无法获得这项信息。</p><p>谷歌称，TimesFM-3在GIFT-Eval、FEV-Bench和TIME三项公开基准中，无论点预测还是概率预测，平均排名均领先其他参评的预训练模型。对手包括Chronos-2、Toto 2.0和TimesFM-2.5。相关结果来自模型开发者，模型在企业自有数据上的表现仍可能不同。</p><h2>为什么重要</h2><p>时间序列预测不像聊天机器人那样显眼，却直接影响库存、排班、能源采购、产能规划和异常检测。一次前向计算即可处理多个目标和已知未来变量，补上了通用预测模型的重要短板，也可能减少企业为每项业务单独开发模型的工作量。</p><p>更大的机会来自经营决策，而非人机对话：一款紧凑且可复用的模型，可能让无力维护多套预测系统的组织获得更复杂的分析能力。它能否普及，取决于零样本优势在噪声多、分布持续变化的真实数据中还能保留多少。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/" rel="noopener" target="_blank">TimesFM-3: A zero-shot foundation model for multivariate forecasting</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-flash-pathology-models.html">微软压缩病理基础模型，推动大规模患者队列研究</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/runway-solaris-generated-interfaces.html">Runway发布Solaris，以实时生成画面取代固定应用界面</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openclaw-two-agent-platform.html">OpenClaw 2.0将个人智能体升级为协作平台</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
