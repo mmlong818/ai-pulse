@@ -138,25 +138,36 @@ async function readApi(path) {
 async function pickToday() {
   const files = (await readdir(CONTENT)).filter((f) => f.endsWith('.json'));
   const today = currentBeijingDate(); // 与 generate.mjs 的北京日期归档一致
-  let radar = null, fallback = null;
+  const radars = [];
+  let fallback = null;
   const articles = [];
   for (const f of files) {
     const a = JSON.parse(await readFile(join(CONTENT, f), 'utf8'));
-    if (f.startsWith('radar-')) { if (a.date === today) radar = a; continue; }
-    if (a.date !== today) continue;
+    if (f.startsWith('radar-')) { radars.push(a); continue; }
     articles.push(a);
-    if (!fallback) fallback = a;
+    if (!fallback || String(a.published_at || '') > String(fallback.published_at || '')) fallback = a;
   }
   // 当班 = 一次生成的时间簇。强制指定早/晚报时，必须取对应班次，避免标题与内容错位。
   const forced = forcedEditionInstant();
-  const articleTimes = articles.map((a) => Date.parse(a.published_at) || 0).filter(Boolean);
+  const articleTimes = articles.filter((a) => a.date === today).map((a) => Date.parse(a.published_at) || 0).filter(Boolean);
   const anchor = forced ? forced.getTime() : (articleTimes.length ? Math.max(...articleTimes) : floorEdition(Date.now()));
   const edition = new Date(anchor);
-  const batch = articles.filter((a) => Math.abs((Date.parse(a.published_at) || 0) - anchor) <= 30 * 60000);
-  const radarBatch = radarItemsForEdition(radar, edition);
+  const boundary = floorEdition(anchor);
+  const bjHour = Number(edition.toLocaleString('en-US', { timeZone: 'Asia/Shanghai', hour: 'numeric', hour12: false }));
+  // 早报聚合最近两个班次（约 24 小时）；晚报只发布本班新增，避免与早报重复。
+  const boundaries = new Set(bjHour < 12 ? [boundary, boundary - EB_HALF] : [boundary]);
+  const batch = articles.filter((a) => boundaries.has(floorEdition(Date.parse(a.published_at || '') || 0)));
+  const currentBatch = batch.filter((a) => floorEdition(Date.parse(a.published_at || '') || 0) === boundary);
+  const radarBatch = radars.flatMap((radar) => (radar.items || []).filter((item) => {
+    const ts = radarTs(item, radar.date);
+    return ts && boundaries.has(ceilEdition(ts));
+  }));
+  const currentRadar = radarBatch.filter((item) => ceilEdition(radarTs(item, today)) === boundary);
   if (!batch.length && !radarBatch.length) throw new Error('指定班次无内容可发');
-  const featured = batch.find((a) => a.featured) || batch[0] || radarAsFeatured(radarBatch[0], radar?.date || today, edition) || fallback;
-  return { featured, batch, radar };
+  const featured = currentBatch.find((a) => a.featured) || currentBatch[0]
+    || radarAsFeatured(currentRadar[0] || radarBatch[0], today, edition)
+    || batch.find((a) => a.featured) || batch[0] || fallback;
+  return { featured, batch, radarItems: radarBatch, edition };
 }
 
 // X 加权长度：CJK/全角/emoji 记 2，其余记 1；URL 固定折算 23
@@ -166,8 +177,10 @@ function headlineText(text) {
   return String(text || '').replace(/(?<![:/@])\b([A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)\.([A-Za-z]{2,})(?=\b)/g, '$1 $2');
 }
 
-function postUrl(lang) {
-  const date = currentBeijingDate();
+function postUrl(lang, edition = forcedEditionInstant() || new Date()) {
+  const bjHour = Number(edition.toLocaleString('en-US', { timeZone: 'Asia/Shanghai', hour: 'numeric', hour12: false }));
+  if (bjHour < 12) return lang === 'zh' ? `${BASE}/zh/` : `${BASE}/`;
+  const date = edition.toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' });
   return lang === 'zh' ? `${BASE}/zh/day/${date}.html` : `${BASE}/day/${date}.html`;
 }
 
@@ -201,6 +214,8 @@ function radarAsFeatured(item, date, edition) {
     summary_zh: item.text_zh || item.text || '',
     featured_reason: 'This edition is radar-only, so the lead quick hit carries the post.',
     featured_reason_zh: '本班没有深度简报，用快讯里最有讨论度的一条领发。',
+    cat_take_en: item.cat_take_en || item.text || '',
+    cat_take_zh: item.cat_take_zh || item.text_zh || item.text || '',
     tags: [item.tag].filter(Boolean),
     date,
     published: item.published || publishedAt,
@@ -351,8 +366,7 @@ async function checkXCardReady(url) {
   if (!img.ok) throw new Error(`card image HTTP ${img.status}: ${image}`);
 }
 
-async function waitForXCardReady(lang) {
-  const url = postUrl(lang);
+async function waitForXCardReady(lang, url = postUrl(lang)) {
   const maxMs = Math.max(0, Number(env('AIPULSE_X_CARD_WAIT_MIN') || 10) || 0) * 60000;
   const start = Date.now();
   let lastError = '';
@@ -388,9 +402,8 @@ async function checkPostedTweet({ id, lang, expectedUrl }) {
   console.log(`[post-x] ${label}检查通过: https://x.com/i/status/${id}`);
 }
 
-function queuePostCheck(pending, lang, id) {
+function queuePostCheck(pending, lang, id, expectedUrl = postUrl(lang)) {
   const delayMs = postCheckDelayMs();
-  const expectedUrl = postUrl(lang);
   pending.push({ id, lang, expectedUrl, due: Date.now() + delayMs });
   console.log(`[post-x] ${Math.round(delayMs / 60000)} 分钟后检查${lang === 'zh' ? '中文' : '英文'}主帖链接: ${expectedUrl}`);
 }
@@ -420,7 +433,8 @@ async function drainChecks(pending) {
   }
 }
 
-function editionInstant({ featured, batch }) {
+function editionInstant({ featured, batch, edition }) {
+  if (edition) return edition;
   const forced = forcedEditionInstant();
   if (forced) return forced;
   const times = [featured, ...batch]
@@ -441,9 +455,9 @@ function localParts(date, timeZone, locale) {
 }
 
 function composeText(lang, picks) {
-  const { featured, batch, radar } = picks;
+  const { featured, batch, radarItems = [] } = picks;
   const edition = editionInstant(picks);
-  const radarCount = radarItemsForEdition(radar, edition).length;
+  const radarCount = radarItems.length;
   const label = countLabel(lang, batch.length, radarCount);
   let head, lead, take, question, linkLabel, otherPrefix, maxTitle;
   if (lang === 'zh') {
@@ -467,7 +481,7 @@ function composeText(lang, picks) {
     maxTitle = 90;
   }
 
-  const linkLine = `${linkLabel} ${postUrl(lang)}`;
+  const linkLine = `${linkLabel} ${postUrl(lang, edition)}`;
   const lines = [head, '', lead, take];
   const others = batch.filter((a) => a.slug !== featured.slug);
   for (const item of others) {
@@ -487,10 +501,11 @@ async function postTweet(text, replyToId) {
 }
 
 async function publishLang(lang, picks, pendingChecks) {
-  await waitForXCardReady(lang);
+  const expectedUrl = postUrl(lang, editionInstant(picks));
+  await waitForXCardReady(lang, expectedUrl);
   const main = await postTweet(composeText(lang, picks));
   console.log(`[post-x] ${lang === 'zh' ? '中文主帖' : '英文主帖'}已发布:`, `https://x.com/i/status/${main.data.id}`);
-  queuePostCheck(pendingChecks, lang, main.data.id);
+  queuePostCheck(pendingChecks, lang, main.data.id, expectedUrl);
   return { main, reply: null };
 }
 

@@ -319,6 +319,7 @@ ${digest}
 
 RULES:
 - Each item: ONE factual sentence in English (max 30 words) + native-quality Chinese version.
+- Add a story-specific editorial take in both languages: ground it in a concrete fact from this item and make a clear judgment about impact, beneficiary, loser, constraint, or unresolved risk. It must not be a generic slogan or merely repeat the factual sentence. Chinese 22-46 characters; English 12-24 words.
 - Every item MUST have a real source URL you actually found.
 - FRESHNESS IS MANDATORY: verify the ORIGINAL publication date of each item (open the source page or check the dateline; search results often resurface old news). Set "published" to the exact UTC timestamp — when the item comes from the candidate list, COPY its timestamp verbatim; otherwise use the time shown on the source page (converted to UTC), or "YYYY-MM-DD" if only a date is available. If you cannot confirm it is within the last ${WINDOW_H} hours, DISCARD the item — a shorter list is better than stale items.
 - For model/open-weight releases, use the date official weights or download artifacts become public, not the earlier preview, promise, or API-only date.
@@ -331,7 +332,7 @@ OUTPUT: ONLY a JSON object (no fence, no commentary):
 {
   "date": "${today}",
   "items": [
-    { "text": "...", "text_zh": "...", "url": "https://...", "source": "source site name", "published": "2026-01-01T14:30:00Z (UTC; date-only YYYY-MM-DD if exact time unknown)", "tag": "Models|Research|Policy|Industry|Funding|Open Source|Safety|AIGC|Agents" }
+    { "text": "...", "text_zh": "...", "cat_take_en": "specific editorial judgment", "cat_take_zh": "基于本条事实的明确判断", "url": "https://...", "source": "source site name", "published": "2026-01-01T14:30:00Z (UTC; date-only YYYY-MM-DD if exact time unknown)", "tag": "Models|Research|Policy|Industry|Funding|Open Source|Safety|AIGC|Agents" }
   ]
 }`;
   const radar = await parseJson(await runEditor(prompt), '{', '}', 'radar');
