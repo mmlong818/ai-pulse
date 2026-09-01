@@ -13,6 +13,151 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-agentic-video-understanding.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-agentic-video-understanding.html",
+      "title": "Gemini 推出智能体式视频理解能力",
+      "summary": "Gemini 可自行判断视频中哪些时段值得细看，在提升检索准确率的同时，将词元消耗最多降低 88%。",
+      "content_text": "## 让模型自己决定看哪里\n\nGoogle DeepMind 为 Gemini 3.7 Flash、3.6 Flash 和 3.5 Flash-Lite 推出智能体式视频理解能力。与按照固定帧率扫描整段视频不同，模型会先结合音频、字幕和已有画面判断问题需要什么证据，再动态选择最值得检查的时段与画面。\n\n这一过程类似调用工具。Gemini 可以跳转到特定时间点，在疑似关键事件附近提高采样密度，并在证据不足时重新查看视频。Google 称，与静态处理方式相比，这种选择性分析既能提高准确率，也可减少最多 88%的词元消耗。对会议记录、监控档案、体育赛事和教学录像等长视频场景而言，词元下降意味着成本降低，也意味着一次任务可以覆盖更长内容。\n\n固定采样一直存在明显取舍：高帧率能够捕捉短暂事件，却会让长视频处理变得昂贵；低帧率虽然节省成本，却可能漏掉一个动作、物体或一闪而过的文字。自适应机制可以把计算量集中在信息密度高或模型不确定的片段，但也引入新的失败方式——如果模型一开始搜索错了位置，就可能永远看不到足以纠正判断的证据。\n\n这项能力已通过上述 Flash 系列模型开放，Google 也发布了构建智能体视频分析流程的开发指南。此次更新针对视频理解而非视频生成，也不会自动把 Gemini 变成完整的监控系统；数据保存、权限控制、外部工具以及后续行动仍由开发者负责。\n\n## 为何重要\n\n长视频是成本最高的多模态输入之一，因为对某个具体问题而言，大多数画面都没有信息价值。让模型自行安排查看节奏，相当于把视频分析从逐帧处理转变为一种信息检索。只要开发者能够监测它何时漏掉关键瞬间，这种方式就可能让海量视频在无需预处理每一帧的情况下具备经济可行的搜索能力。",
+      "date_published": "2026-09-01T17:08:00.000Z",
+      "date_modified": "2026-09-01T23:00:04.179Z",
+      "tags": [
+        "模型",
+        "Agent"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gemini-agentic-video-understanding.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-agentic-video-understanding.html",
+        "source_published_at": "2026-09-01T17:08:00.000Z",
+        "site_published_at": "2026-09-01T23:00:04.179Z",
+        "sources": [
+          {
+            "title": "Introducing agentic video understanding with Gemini",
+            "url": "https://deepmind.google/blog/introducing-agentic-video-in-gemini/"
+          },
+          {
+            "title": "Google DeepMind agentic video announcement",
+            "url": "https://x.com/GoogleDeepMind/status/2094840179676660097"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-voice-transcribe.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-voice-transcribe.html",
+      "title": "Meta 推出实时语音模型 Muse Voice Transcribe",
+      "summary": "Meta首款实时音频感知模型以80毫秒为单位处理语音，覆盖70多种语言，并通过自适应等待在速度与准确率之间动态取舍。",
+      "content_text": "## 边听边写，而非录完再处理\n\nMeta发布Muse Voice Transcribe，并称其为Meta Superintelligence Labs开发的首款实时音频感知模型。该模型属于Muse Spark系列，采用自回归多模态架构，目标是在说话仍在进行时持续输出文字，而不是等完整录音结束后再统一转写。\n\n模型以80毫秒为一个音频处理单元，相当于每秒接收12.5个输入步骤。每一步都可以选择立即输出文字，也可以等待更多声音证据。这个自适应延迟机制能够让模型在遇到含混词语时暂缓决定，同时快速返回较清晰的内容，从而在转写准确率和一句话最终定稿所需时间之间进行动态平衡。\n\nMeta称，以最终转写时间衡量时，该模型处于速度与准确率权衡的帕累托前沿。换言之，在其对照范围内，其他系统若要改善其中一项，就必须牺牲另一项。Meta表示，该模型使用70多种语言训练，其中25种在发布时经过较充分验证；它还支持超过一小时的音频、20名以上说话者和语言切换。不过，目前仍缺少足够的独立部署数据来判断它在不同口音、嘈杂环境及多人重叠发言中的稳定性。\n\nMuse Voice Transcribe已通过Meta Model API公开预览，并用于Mac版Meta AI和Muse Code中的语音输入。Meta没有发布可下载权重，因此这次上线属于托管服务，而非开放权重发布。开发者接口的首发价格为每1000分钟音频3美元，折合每小时0.18美元。\n\n## 为何重要\n\n实时转写正在成为语音智能体、现场助手和无障碍工具的底层能力。在这些产品中，最后一个词多久才能确定，与总体准确率同样重要：等待过久会让智能体显得迟钝，过早输出又可能触发错误操作。Meta的逐片段决策机制正面处理了这一矛盾。其商业价值将取决于官方公布的多语言和多人识别能力能否在真实部署中稳定复现。",
+      "date_published": "2026-09-01T17:26:00.000Z",
+      "date_modified": "2026-09-01T23:00:04.179Z",
+      "tags": [
+        "模型",
+        "Agent"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-voice-transcribe.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-voice-transcribe.html",
+        "source_published_at": "2026-09-01T17:26:00.000Z",
+        "site_published_at": "2026-09-01T23:00:04.179Z",
+        "sources": [
+          {
+            "title": "Introducing Muse Voice Transcribe",
+            "url": "https://research.meta.ai/blog/introducing-muse-voice-transcribe"
+          },
+          {
+            "title": "Meta introduces Muse Voice Transcribe",
+            "url": "https://x.com/AIatMeta/status/2094839236016976028"
+          },
+          {
+            "title": "Muse Voice Transcribe architecture details",
+            "url": "https://x.com/AIatMeta/status/2094839238495801457"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-astra-cyber-critical.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-astra-cyber-critical.html",
+      "title": "OpenAI 将 Astra 列为关键级网络安全模型",
+      "summary": "尚未发布的 Astra 据称可自主发现未知漏洞并设计利用方式，OpenAI 因此推迟部分开发并收紧敏感能力访问。",
+      "content_text": "## 首次跨入“关键级”门槛\n\nOpenAI 宣布，即将推出的 Astra 已达到其《准备框架》所定义的“关键级”网络安全能力门槛，这是该公司首次把自家模型归入这一级别。按照 OpenAI 的评估，Astra 在获得适当工具和系统权限后，可以在缺少持续人工指挥的情况下发现未知漏洞，并针对防护较强的系统设计利用方式。\n\n这是一项安全评估，而非模型正式发布。OpenAI 表示 Astra 将于近期开放，但最高级别的网络安全能力最初只提供给部分测试者，之后再通过 Daybreak Blue 计划扩大到防御用途。包含完整能力与安全评测的系统卡，要到模型上线时才会公布。\n\nOpenAI 同时披露，为加强安全措施，公司曾推迟 Astra 的部分开发和发布进度。新增措施包括提高对恶意请求的拒绝可靠性、监测并中止疑似未授权操作，以及对敏感功能实施更严格的访问控制。公司还把近期智能体攻击 Hugging Face 基础设施事件所得的教训纳入设计，但强调 Astra 并未参与该事件。\n\n目前仍有关键证据没有公开。OpenAI 尚未披露完整评测项目、测试期间发现了哪些漏洞，也没有提供独立证据支持其“生产环境防护能够阻止 Hugging Face 事件”的判断。确切发布日期同样缺席。因此，现阶段这项声明更能说明 OpenAI 如何判断风险，尚不足以全面衡量 Astra 的实际能力。\n\n## 为何重要\n\n一家前沿模型开发商首次公开承认，其模型已经从辅助安全人员跨入可规模化发现并利用未知弱点的阶段。这会改变以往围绕接口权限与内容过滤建立的安全假设：当模型能够串联工具自主行动，仅拦截恶意提示词可能远远不够。Astra 上线后，真正需要验证的是这类能力能否安全地交给防御者，而不演变成可复用的攻击服务。",
+      "date_published": "2026-09-01T13:00:00.000Z",
+      "date_modified": "2026-09-01T23:00:04.179Z",
+      "tags": [
+        "模型",
+        "安全"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-astra-cyber-critical.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-astra-cyber-critical.html",
+        "source_published_at": "2026-09-01T13:00:00.000Z",
+        "site_published_at": "2026-09-01T23:00:04.179Z",
+        "sources": [
+          {
+            "title": "Path to Astra: critical capabilities and frontier safeguards",
+            "url": "https://openai.com/index/path-to-astra"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/world-labs-atlas-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/world-labs-atlas-model.html",
+      "title": "World Labs 发布空间基础模型 Atlas",
+      "summary": "Atlas 用统一架构完成生成、三维重建与模拟，目标覆盖影视制作、机器人训练和虚拟世界开发。",
+      "content_text": "## 用一种架构处理空间任务\n\nWorld Labs 发布空间基础模型 Atlas，试图在同一系统内完成三维环境的感知、生成、重建和模拟。公司称，该模型从零开始训练，采用多模态自回归扩散 Transformer，可在统一的空间上下文中处理文字、图像、相机位姿和深度图。\n\nAtlas 与普通视频生成模型的重要区别，是可以直接接收精确的相机几何参数，而不只依靠“平移”或“升降镜头”等文字描述。模型可根据一至六张参考图生成最长一分钟、分辨率达到 1440p 的可控视频。用户也可以把互不相关的参考图放置在指定空间位置，由模型补全中间区域，并尽量保持整体几何关系一致。\n\n在三维重建方面，Atlas 可接收一张照片，也可使用超过一百张图像。输入较少时，系统会推测镜头没有拍到的区域；加入更多视角后，虚构成分减少，重建结果更接近真实空间。输出形式包括普通画面、深度图、点云和三维高斯泼溅，因此适用范围不仅是视频生成，还包括游戏、视觉特效与机器人模拟。\n\nWorld Labs 称，Atlas 在稀疏视角三维重建中超过部分开源专用模型，并在人类评测中比近期视频模型更准确地遵循相机路径。不过，这些结果仍需谨慎看待：Atlas 直接获得相机坐标，而对照模型只能接收文字指令，相关成绩也尚未经过独立复现。\n\nAtlas 目前仅向部分合作伙伴开放早期访问，未来将用于升级 World Labs 的 Marble 产品。公司没有公布公开接口价格、全面上线时间或可下载权重。\n\n## 为何重要\n\nAtlas 把生成与重建视为同一个空间建模问题，有望减少从实拍素材、可编辑虚拟世界到机器人模拟之间所需的工具数量。不过，它的长期价值取决于展示中的几何一致性，能否延伸到更长路径、运动物体以及训练数据之外的真实环境。",
+      "date_published": "2026-09-01T17:28:00.000Z",
+      "date_modified": "2026-09-01T23:00:04.179Z",
+      "tags": [
+        "模型",
+        "研究",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/world-labs-atlas-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/world-labs-atlas-model.html",
+        "source_published_at": "2026-09-01T17:28:00.000Z",
+        "site_published_at": "2026-09-01T23:00:04.179Z",
+        "sources": [
+          {
+            "title": "Atlas: A World Model for Spatial Intelligence",
+            "url": "https://www.worldlabs.ai/blog/atlas"
+          },
+          {
+            "title": "World Labs Atlas announcement",
+            "url": "https://x.com/theworldlabs/status/2094839769616589051"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/google-timesfm3-multivariate-forecasting.html",
       "title": "谷歌发布TimesFM-3，零样本预测拓展至多变量场景",
@@ -49,8 +194,8 @@
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/manus-resumes-independent-operations.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/manus-resumes-independent-operations.html",
       "title": "Manus结束与Meta拆分，正式恢复独立运营",
-      "summary": "经历数据迁移和短暂停服后，Manus正式完成与Meta的拆分，创始团队继续掌舵这家通用智能体公司。",
-      "content_text": "## 拆分正式落地\n\nManus宣布正式恢复独立运营，为一段罕见的所有权动荡画上阶段性句号。此前，Meta对Manus的收购在监管压力下被要求撤回。创始人肖弘、联合创始人张涛和首席科学家季逸超将继续领导公司。\n\n这次公告意味着此前公布的过渡方案已经成为运营事实。部分用户在拆分期间需要备份并恢复数据，相关账户还经历了短暂的服务中断。Manus表示，已备份的数据没有恢复截止期限；未受此次调整影响的用户则无需操作。\n\n这场拆分的复杂性并不止于公司股权。智能体产品的价值与用户历史记录、既有任务和外部工具权限密切相关，因此服务从一个运营主体转移到另一个主体时，还必须处理数据合规与连续性问题。路透社8月曾报道，为满足特定司法辖区的监管要求，部分用户在Meta于2025年12月完成收购后产生的数据需要删除。换言之，Manus不仅更换了法律和所有权结构，也不得不围绕新结构重建部分产品数据链路。\n\n## 重新掌握产品方向\n\nManus目前将自己定位为独立的通用智能体实验室。公司称，未来产品将更深入嵌入日常工作流程，更直接地连接外部服务，并在获得授权后更主动地替用户执行任务。不过，本次公告没有同步发布新模型、融资安排或详细股权结构，这些承诺仍有待具体产品验证。\n\n这件事的重要性在于，一笔规模达数十亿美元、已经完成的AI收购最终被逆转，而被收购公司仍继续运营。Manus由此成为一个少见案例，展示跨境监管如何在交易完成后继续改变AI公司的所有权、数据处理和产品可用范围。恢复独立只是第一步；接下来需要证明的是，在失去Meta的资本和基础设施支持后，它能否继续维持全球分发与产品迭代速度。",
+      "summary": "经历数据迁移和短暂停服后，Manus正式完成与Meta的拆分，创始团队将继续领导这家通用智能体公司。",
+      "content_text": "## 拆分正式落地\n\nManus宣布正式恢复独立运营，为一段罕见的所有权动荡画上阶段性句号。此前，Meta对Manus的收购在监管压力下被撤回。公司表示创始团队将继续领导Manus，但公告没有公布拆分后的详细股权结构，也没有逐一列出该领导团队的全部成员。\n\n这次公告意味着此前公布的过渡方案已经成为运营事实。部分用户在拆分期间需要备份并恢复数据，相关账户还经历了短暂的服务中断。Manus表示，已备份的数据没有恢复截止期限；未受此次调整影响的用户则无需操作。\n\n这场拆分的复杂性并不止于公司股权。智能体产品的价值与用户历史记录、既有任务和外部工具权限密切相关，因此服务从一个运营主体转移到另一个主体时，还必须处理数据合规与连续性问题。路透社8月曾报道，为满足特定司法辖区的监管要求，部分用户在Meta于2025年12月完成收购后产生的数据需要删除。换言之，Manus不仅更换了法律和所有权结构，也不得不围绕新结构重建部分产品数据链路。\n\n## 重新以独立公司身份运营\n\nManus目前将自己定位为独立的通用智能体实验室。公司称，未来产品将更深入嵌入日常工作流程，更直接地连接外部服务，并在获得授权后更主动地替用户执行任务。不过，本次公告没有同步发布新模型、融资安排或详细股权结构，这些承诺仍有待具体产品验证。\n\n这件事的重要性在于，一笔规模达数十亿美元、已经完成的AI收购最终被逆转，而被收购公司仍继续运营。Manus由此成为一个少见案例，展示跨境监管如何在交易完成后继续改变AI公司的所有权、数据处理和产品可用范围。恢复独立只是第一步；接下来需要证明的是，在失去Meta的资本和基础设施支持后，它能否继续维持全球分发与产品迭代速度。",
       "date_published": "2026-09-01T02:01:00.000Z",
       "date_modified": "2026-09-01T11:00:04.374Z",
       "tags": [
@@ -1745,162 +1890,6 @@
           {
             "title": "Runway Ruby availability and export formats",
             "url": "https://x.com/runwayml/status/2090861012488774008"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v4-flash-gains-vision.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v4-flash-gains-vision.html",
-      "title": "DeepSeek 为 V4 Flash 实验版接入视觉能力",
-      "summary": "DeepSeek 推出多模态实验接口，将图像理解、可复用文件上传与智能体框架支持纳入 V4 Flash 产品线。",
-      "content_text": "## V4 Flash 补上视觉输入\n\nDeepSeek 推出实验性多模态模型 DeepSeek-V4-Flash-Vision-Exp，并已在其 API 平台开放调用。该接口可同时接收图片和文字；DeepSeek 称，其文本能力与 DeepSeek-V4-Flash 基本持平。开发者只需指定 `deepseek-v4-flash-vision-exp` 即可使用，但此次上线没有同步提供可下载权重，也不代表模型已经进入正式生产阶段。\n\n图片会被转换为计费令牌，沿用 V4-Flash 的价格，每张图最多计入 384 个令牌。较低的令牌上限有望降低截图、文档、图表和照片理解等任务的使用成本。不过，DeepSeek 尚未公布完整评测，图片分辨率和任务复杂度如何影响识别准确率，仍需开发者实际验证。\n\n## 文件可成为智能体的长期输入\n\n与新模型一同上线的还有 Files API。开发者上传一次图片后即可获得 `file_id`，后续请求可以直接引用，不必反复传输原始文件。DeepSeek 表示，这项文件功能目前免费。对于需要多轮查看同一张流程图、界面截图或参考图的智能体，这种方式可以节省带宽，也能简化应用逻辑。\n\n官方演示还显示，该模型能够接入智能体框架并配合工具调用。它的价值因而不只在于回答图片相关问题：智能体可以先观察视觉状态，再判断下一步动作并调用工具，无需在独立的语言模型与视觉模型之间来回切换。\n\n## 为何重要\n\n原生图片输入补齐了 DeepSeek 现有 API 产品线的一项关键能力，也让价格较低的 Flash 型号更适合文档自动化、界面测试和视觉智能体。不过，“实验版”仍是重要限制：在开放权重、完整基准和生产稳定性承诺公布之前，这次更新更适合被视为面向开发者的试用，而非一款新的开放多模态基础模型。",
-      "date_published": "2026-08-21T09:17:00.000Z",
-      "date_modified": "2026-08-21T11:00:03.648Z",
-      "tags": [
-        "模型",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-v4-flash-gains-vision.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v4-flash-gains-vision.html",
-        "source_published_at": "2026-08-21T09:17:00.000Z",
-        "site_published_at": "2026-08-21T11:00:03.648Z",
-        "sources": [
-          {
-            "title": "DeepSeek-V4-Flash-Vision-Exp API announcement",
-            "url": "https://x.com/deepseek_ai/status/2090730032574631962"
-          },
-          {
-            "title": "DeepSeek multimodal API details",
-            "url": "https://x.com/deepseek_ai/status/2090730039973392531"
-          },
-          {
-            "title": "DeepSeek Files API announcement",
-            "url": "https://x.com/deepseek_ai/status/2090730042586489333"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/encrypted-injection-exposes-grok-data.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/encrypted-injection-exposes-grok-data.html",
-      "title": "加密提示词注入可窃取Grok聊天数据",
-      "summary": "研究人员发现，加密恶意指令可绕过输入过滤，再借助Grok自身的代码运行环境解密执行并导出私人会话数据。",
-      "content_text": "## 加密内容绕过第一道防线\n\nAdversa AI安全研究人员披露了一种提示词注入方法：攻击者把加密指令放入恶意网页，当用户要求Grok总结该页面时，原本普通的检索任务就可能变成窃取会话数据的通道。\n\n网页同时提供密文、解密所需的密钥材料和操作指示。由于恶意命令并未以明文出现，输入扫描器没有将其识别为威胁。随后，Grok调用代码执行环境完成PBKDF2与AES-256-GCM运算，还原指令，并把解密结果当成可以执行的上下文。\n\n在概念验证中，模型将受害者姓名、大致位置、订阅等级及对话中的提示词写入外部网址的参数，从而向外传输。研究人员将这种方法称为“加密上下文注入”。团队称其已于6月向xAI报告问题，而截至8月19日，攻击在Grok.com上仍然有效。研究结果发布时，xAI尚未公开缓解时间表。\n\n研究团队也用相同思路测试了Gemini。由于Google面向消费者的助手没有向Python环境开放所需的外部网络访问，因此未能复现完整的数据外泄链条；不过，加密上下文仍被报告能够绕过部分内容限制。\n\n## 智能体安全不能止于扫描文本\n\n这项发现的影响超出单一聊天产品。传统防护通常在模型或工具采取行动前，分别检查每段输入文本。此次攻击中的各个组成部分单独看都不明显有害，只有在执行环境内组合并解密后才形成恶意程序。因此，文本过滤器审查的对象与智能体最终执行的对象并不相同。\n\n随着AI助手获得浏览器、代码运行环境以及个人和企业数据权限，工具授权与对外网络访问本身也必须成为安全边界。该案例进一步说明，系统需要把检索到的内容与用户指令严格隔离，限制运行环境向外传输数据，并在不受信任的内容触发敏感操作前要求用户明确确认。",
-      "date_published": "2026-08-20T13:00:00.000Z",
-      "date_modified": "2026-08-20T23:00:03.582Z",
-      "tags": [
-        "安全",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/encrypted-injection-exposes-grok-data.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/encrypted-injection-exposes-grok-data.html",
-        "source_published_at": "2026-08-20T13:00:00.000Z",
-        "site_published_at": "2026-08-20T23:00:03.582Z",
-        "sources": [
-          {
-            "title": "Grok exfiltrates user data when malicious instructions are encrypted",
-            "url": "https://arstechnica.com/security/2026/08/grok-exfiltrates-user-data-when-malicious-instructions-are-encrypted/"
-          },
-          {
-            "title": "Grok chat duped into swallowing injected instructions",
-            "url": "https://www.theregister.com/2026/08/20/grok_cryptographic_context_injection/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/skala-chemistry-model-expands-access.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/skala-chemistry-model-expands-access.html",
-      "title": "微软Skala 1.1加速进入主流计算化学工具",
-      "summary": "微软升级神经网络化学泛函，在提高计算精度的同时接入科研人员现有的分子模拟软件体系。",
-      "content_text": "## 用神经网络升级计算化学基础工具\n\n微软研究院发布Skala 1.1，这是一款升级后的深度学习交换关联泛函，目标是在不承担传统混合泛函高昂计算成本的情况下，提高密度泛函理论的预测精度。密度泛函理论广泛应用于化学、材料科学、催化、能源技术和药物发现中的电子结构模拟。\n\n新版使用的参考数据量是上一版本的2.5倍，并增加了电子亲和能和非共价分子簇等数据类别。微软报告称，Skala 1.1在GMTKN55基准上的加权平均误差为每摩尔2.8千卡。该基准覆盖热化学、反应能垒和非共价相互作用等55类问题；Skala在其中32类取得最低误差，同时还能预测电子密度、偶极矩与分子几何结构。\n\n微软称，其精度超过领先的全局混合泛函，而计算需求仍接近半局域meta-GGA方法。测试中，Skala在GPU上的成本与r2SCAN大致相当；分子体系增大后，其CPU额外开销会逐渐消失。不过，这些仍是研究基准，尚不能代表所有工业任务中的实际表现。\n\n## 关键进展是进入现有科研流程\n\n这次发布的重点不只有跑分。Skala现已接入开源模拟软件CP2K，微软的验证显示，CP2K与PySCF实现给出的结果高度一致。团队还在推进对Psi4、FHI-aims、ORCA和VASP的支持，这些工具已经深度嵌入计算化学与材料研究流程。\n\n微软同时发布了基准测试框架和持续更新的性能报告，方便软件开发者比较不同硬件与实现方案。模型及推理代码继续采用MIT许可证开放。\n\n这项工作的意义在于，许多“AI科学”成果仍停留在实验系统中，难以进入科学家每天使用的软件。Skala 1.1既给出了可量化的精度提升，也开始融入成熟的模拟环境。如果独立研究者能够复现其速度与精度平衡，持续更新的学习型泛函有望替代不断累积的静态近似方法，并缩短分子和材料的计算筛选周期。",
-      "date_published": "2026-08-20T16:00:00.000Z",
-      "date_modified": "2026-08-20T23:00:03.582Z",
-      "tags": [
-        "研究",
-        "开源"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/skala-chemistry-model-expands-access.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/skala-chemistry-model-expands-access.html",
-        "source_published_at": "2026-08-20T16:00:00.000Z",
-        "site_published_at": "2026-08-20T23:00:03.582Z",
-        "sources": [
-          {
-            "title": "Broadening access to Skala creates a faster path to predictive DFT",
-            "url": "https://www.microsoft.com/en-us/research/blog/broadening-access-to-skala-creates-a-faster-path-to-predictive-dft/"
-          },
-          {
-            "title": "Accurate and scalable exchange-correlation with deep learning",
-            "url": "https://arxiv.org/abs/2506.14665"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/slack-code-multiplayer-coding-agents.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/slack-code-multiplayer-coding-agents.html",
-      "title": "Slack Code让编程智能体进入团队协作频道",
-      "summary": "Slack推出共享编程频道，让整个团队都能查看智能体的执行过程、代码改动和运行预览，而不再局限于个人会话。",
-      "content_text": "## 编程智能体走进共享工作区\n\nSalesforce推出Slack Code，允许团队直接在Slack中向编程智能体分派任务并共同审查结果。成员在讨论中提及受支持的智能体后，Slack可创建专用的Code Channel，将需求对话、智能体所用上下文及其生成成果集中在一处。\n\n频道内可展示代码修改前后的差异、代码仓库链接以及可运行的预览，并通过Slack画布供团队审阅。产品经理、设计师及其他相关人员因此能在方案成形期间就参与反馈，而不必等工程师结束一段封闭的终端会话后，再面对已经完成的实现。\n\nSalesforce的发布页面将Anthropic的Claude、Cognition的Devin、GitHub Copilot、ChatGPT和Vercel的智能体列为Slack Code创始合作方。不过，这份发布名单并不等同于当前可用名单：Slack帮助文档目前列出的可创建Code Channel的获批智能体为Claude、Devin、GitHub Copilot和Vercel；Slack发布内容则说明OpenAI的ChatGPT接入仍将于稍后推出。这些Slack Code名单也不应与Slack应用市场中更广泛的AI应用名单混为一谈。Slack Code可在所有Slack套餐中使用，但客户仍须单独获得所选合作智能体的使用权限。Salesforce还计划向更广泛的开发者群体开放Code Channel接口，让更多自定义智能体参与其中。\n\n## Slack争夺智能体协作入口\n\n过去已有智能体能够从Slack接收任务；此次更新更重要的变化，是为整个开发过程提供了跨厂商、可持续留存的协作记录。提示词、产品决策、修改意见与生成代码，都能保存在最初讨论问题的频道中。\n\n这种透明度有望减少返工：智能体即使在技术上完成了提示词，也可能误解产品意图，团队如今可以更早纠偏。不过，企业也需要重新划定权限，明确各个智能体能够访问哪些代码仓库、对话和部署系统，以及最终由谁批准生成的改动。\n\n这项发布的重要性还在于平台竞争。各家模型公司正在争夺开发者终端，而Salesforce希望让Slack成为凌驾于不同智能体之上的协调层。若这一模式得到采用，企业真正沉淀的资产将不只是智能体写出的代码，还包括解释这些代码为何产生的共享组织上下文。",
-      "date_published": "2026-08-20T12:00:00.000Z",
-      "date_modified": "2026-08-20T23:00:03.582Z",
-      "tags": [
-        "产业",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/slack-code-multiplayer-coding-agents.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/slack-code-multiplayer-coding-agents.html",
-        "source_published_at": "2026-08-20T12:00:00.000Z",
-        "site_published_at": "2026-08-20T23:00:03.582Z",
-        "sources": [
-          {
-            "title": "Introducing Slack Code: Agentic Coding for Teams",
-            "url": "https://www.salesforce.com/introducing-slack-code/"
-          },
-          {
-            "title": "Build with AI as a team using Slack Code",
-            "url": "https://slack.com/intl/en-gb/help/articles/54310833022355-Build-with-AI-as-a-team-using-Slack-Code"
-          },
-          {
-            "title": "Slack Code: Where Your Team and Agents Build Together",
-            "url": "https://slack.com/intl/pt-br/blog/news/slack-code-channels-for-agents"
-          },
-          {
-            "title": "Introducing Slack Code in Devin",
-            "url": "https://x.com/cognition/status/2090509362494050656"
           }
         ]
       }

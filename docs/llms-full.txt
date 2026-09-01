@@ -19,6 +19,132 @@
 
 ## Recent briefings
 
+### Gemini Adds Agentic Video Search With Fewer Tokens
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-agentic-video-understanding.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gemini-agentic-video-understanding.html
+- Source timestamp: 2026-09-01T17:08:00.000Z
+- Site timestamp: 2026-09-01T23:00:04.179Z
+- Tags: Models, Agents
+
+Google’s Gemini models can now choose which moments of a video to inspect, reducing token use while improving retrieval accuracy.
+
+## The model decides where to look
+
+Google DeepMind introduced agentic video understanding for Gemini 3.7 Flash, Gemini 3.6 Flash and Gemini 3.5 Flash-Lite. Instead of sampling an entire recording at a fixed frame rate, the models first reason over available audio, transcript and visual context, then dynamically inspect the sections and frames most relevant to a question.
+
+The process resembles tool use. Gemini can seek to particular timestamps, increase sampling around a suspected event and revisit the recording when its initial evidence is insufficient. Google says this selective approach improves accuracy while consuming up to 88% fewer tokens than static video processing. Lower token use can translate into lower cost and longer practical reach for applications examining meetings, surveillance archives, sports footage or instructional recordings.
+
+The feature matters because fixed-rate sampling imposes an awkward compromise. Sampling densely captures brief events but makes long videos expensive; sampling sparsely saves tokens but may miss a single gesture, object or line of text. An adaptive system can devote computation to uncertain or information-rich moments, although its initial routing decision introduces another failure mode: a model that looks in the wrong place may never collect the evidence needed to correct itself.
+
+Google is making the capability available through its latest Flash models and has published developer guidance for building agentic video-analysis workflows. The announcement concerns video understanding rather than generation, and it does not turn Gemini into an autonomous surveillance product by itself. Developers remain responsible for storage, permissions, tool access and any actions taken from the model’s conclusions.
+
+## Why it matters
+
+Long-form video is one of the most expensive multimodal inputs because most frames add little value to a specific question. Allowing a model to control its own inspection schedule makes video analysis look more like information retrieval than exhaustive vision processing. If developers can measure when the search strategy misses decisive moments, the approach could make large video libraries economically searchable without preprocessing every frame.
+
+Chinese title: Gemini 推出智能体式视频理解能力
+Chinese summary: Gemini 可自行判断视频中哪些时段值得细看，在提升检索准确率的同时，将词元消耗最多降低 88%。
+
+Sources:
+  - Introducing agentic video understanding with Gemini: https://deepmind.google/blog/introducing-agentic-video-in-gemini/
+  - Google DeepMind agentic video announcement: https://x.com/GoogleDeepMind/status/2094840179676660097
+
+### Meta Launches Muse Voice Transcribe for Streaming Audio
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-muse-voice-transcribe.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-voice-transcribe.html
+- Source timestamp: 2026-09-01T17:26:00.000Z
+- Site timestamp: 2026-09-01T23:00:04.179Z
+- Tags: Models, Agents
+
+Meta’s first real-time audio perception model processes speech in 80-millisecond chunks, supports more than 70 languages and adapts its delay to balance speed and accuracy.
+
+## Streaming rather than waiting
+
+Meta introduced Muse Voice Transcribe, which it describes as the first real-time audio perception model developed by Meta Superintelligence Labs. The autoregressive multimodal model belongs to the Muse Spark family and is designed to produce streaming transcription while speech is still arriving, rather than waiting for a complete recording.
+
+The model processes audio in 80-millisecond chunks, equivalent to 12.5 input steps per second. At each step it can either emit text or wait for more acoustic evidence. That adaptive-delay mechanism lets it postpone ambiguous words while returning clearer passages quickly, giving developers a tunable balance between transcription accuracy and the time required to finalize each phrase.
+
+Meta says the model reaches the Pareto frontier for the speed–accuracy trade-off when measured by time to final transcription. The claim means that, within Meta’s comparison, competing systems did not improve one dimension without sacrificing the other. Meta says the model was trained on more than 70 languages, with 25 extensively verified at launch, and supports audio longer than an hour, more than 20 speakers and code-switching. Independent deployment evidence across accents, noisy environments and overlapping speech nevertheless remains limited.
+
+Muse Voice Transcribe is available in public preview through the Meta Model API and also powers dictation in Meta AI for Mac and Muse Code. Meta did not announce downloadable weights, so this is a hosted release rather than an open-weight one. The developer API launched at $3 per 1,000 audio minutes, equivalent to $0.18 per hour.
+
+## Why it matters
+
+Real-time transcription increasingly serves as infrastructure for voice agents, live assistants and accessibility tools. In those products, the final-word delay can matter as much as headline accuracy: hesitation makes an agent feel unresponsive, while premature text can trigger the wrong action. Meta’s per-chunk decision mechanism directly targets that tension. Its commercial importance will depend on how reliably the reported multilingual and multi-speaker capabilities hold up in real deployments.
+
+Chinese title: Meta 推出实时语音模型 Muse Voice Transcribe
+Chinese summary: Meta首款实时音频感知模型以80毫秒为单位处理语音，覆盖70多种语言，并通过自适应等待在速度与准确率之间动态取舍。
+
+Sources:
+  - Introducing Muse Voice Transcribe: https://research.meta.ai/blog/introducing-muse-voice-transcribe
+  - Meta introduces Muse Voice Transcribe: https://x.com/AIatMeta/status/2094839236016976028
+  - Muse Voice Transcribe architecture details: https://x.com/AIatMeta/status/2094839238495801457
+
+### OpenAI Classifies Astra as Cyber-Critical Model
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-astra-cyber-critical.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-astra-cyber-critical.html
+- Source timestamp: 2026-09-01T13:00:00.000Z
+- Site timestamp: 2026-09-01T23:00:04.179Z
+- Tags: Models, Safety
+
+OpenAI says its unreleased Astra model can autonomously discover and exploit unknown flaws, prompting tighter release controls.
+
+## A new capability threshold
+
+OpenAI said its forthcoming Astra model has reached the “Critical” cybersecurity threshold under the company’s Preparedness Framework—the first OpenAI model to receive that classification. According to the laboratory, Astra can, when equipped with appropriate tools and access, discover previously unknown vulnerabilities and develop exploits against well-protected systems without continuous human direction.
+
+The announcement is a safety assessment, not a model release. OpenAI says Astra will become available soon, but the most advanced cybersecurity functions will initially be restricted to selected testers and later expanded to defensive users through its Daybreak Blue program. A system card containing fuller capability and safety evaluations is due when the model launches.
+
+OpenAI disclosed that it delayed parts of Astra’s development and release while strengthening safeguards. Those measures include training intended to improve refusals of harmful requests, monitoring capable of halting potentially unauthorized activity, and tighter controls over sensitive access. The company also incorporated lessons from a recent incident involving agents attacking Hugging Face infrastructure, although it says Astra itself was not used in that episode.
+
+Important evidence remains unpublished. OpenAI has not yet provided the complete benchmark suite, details of the vulnerabilities found during testing, or independent verification of its claim that production safeguards would have stopped the Hugging Face incident. Nor has it announced a firm availability date. The designation therefore documents OpenAI’s internal risk judgment more clearly than Astra’s practical performance.
+
+## Why it matters
+
+A frontier developer has now publicly stated that one of its models crosses from assisting security professionals into autonomously finding and operationalizing unknown weaknesses at scale. That raises the cost of conventional API access and monitoring assumptions: limiting harmful prompts alone may be inadequate when a model can chain tools and actions. Astra’s eventual release will test whether powerful cyber capability can be segmented for defenders without creating a broadly reusable offensive service.
+
+Chinese title: OpenAI 将 Astra 列为关键级网络安全模型
+Chinese summary: 尚未发布的 Astra 据称可自主发现未知漏洞并设计利用方式，OpenAI 因此推迟部分开发并收紧敏感能力访问。
+
+Sources:
+  - Path to Astra: critical capabilities and frontier safeguards: https://openai.com/index/path-to-astra
+
+### World Labs Unveils Atlas Spatial Foundation Model
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/world-labs-atlas-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/world-labs-atlas-model.html
+- Source timestamp: 2026-09-01T17:28:00.000Z
+- Site timestamp: 2026-09-01T23:00:04.179Z
+- Tags: Models, Research, AIGC
+
+Atlas combines generation, 3D reconstruction and simulation in one architecture aimed at filmmaking, robotics and virtual worlds.
+
+## One architecture for spatial tasks
+
+World Labs introduced Atlas, a foundation model designed to perceive, generate, reconstruct and simulate three-dimensional environments. The company says it trained the system from scratch as a multimodal autoregressive diffusion transformer capable of processing text, images, camera poses and depth maps within a shared spatial context.
+
+Atlas differs from conventional video generators by accepting precise camera geometry rather than relying only on written instructions such as “pan” or “crane.” From one to six reference images, it can generate controlled video lasting up to one minute at 1440p. It can also combine unrelated references placed at specified positions, filling the space between them with a geometrically consistent scene.
+
+For reconstruction, Atlas accepts anything from a single photograph to more than 100 images. With sparse input it invents unseen regions; additional views reduce that uncertainty and produce a closer reconstruction. Outputs can include ordinary frames, depth maps, point clouds and 3D Gaussian splats, making the system relevant to game development, visual effects and robotic simulation rather than video creation alone.
+
+World Labs reports that Atlas beat selected open-source specialist models on sparse-view 3D reconstruction and outperformed recent video systems in human judgments of camera-path adherence. Those comparisons require caution: Atlas receives camera coordinates directly, while competing video models were instructed through text, and the results have not yet been independently reproduced.
+
+The model is entering early access with selected partners and will power future versions of World Labs’ Marble product. No public API pricing, broad release date or downloadable weights were announced.
+
+## Why it matters
+
+Atlas treats generation and reconstruction as parts of the same spatial system. That could reduce the number of separate tools needed to move from captured footage to an editable world and then into robot simulation. Its strategic value, however, depends on whether the geometric consistency shown in curated examples survives long trajectories, moving objects and unfamiliar physical environments.
+
+Chinese title: World Labs 发布空间基础模型 Atlas
+Chinese summary: Atlas 用统一架构完成生成、三维重建与模拟，目标覆盖影视制作、机器人训练和虚拟世界开发。
+
+Sources:
+  - Atlas: A World Model for Spatial Intelligence: https://www.worldlabs.ai/blog/atlas
+  - World Labs Atlas announcement: https://x.com/theworldlabs/status/2094839769616589051
+
 ### Google TimesFM-3 Adds Zero-Shot Multivariate Forecasts
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/google-timesfm3-multivariate-forecasting.html
@@ -59,24 +185,24 @@ Sources:
 - Site timestamp: 2026-09-01T11:00:04.374Z
 - Tags: Industry, Agents, Policy
 
-The agent developer is again operating independently, with its founders retaining control after a disruptive separation from Meta.
+The agent developer is again operating independently after a disruptive separation from Meta, with its founding team continuing to lead the company.
 
 ## A completed separation
 
-Manus said it has formally resumed independent operations, closing a turbulent chapter that began when its acquisition by Meta was unwound under regulatory pressure. Founder Xiao Hong, co-founder Zhang Tao and chief scientist Ji Yichao will continue to lead the general-purpose AI agent developer.
+Manus said it has formally resumed independent operations, closing a turbulent chapter that began when its acquisition by Meta was unwound under regulatory pressure. The company said its founding team will continue to lead it, but did not publish a post-separation ownership breakdown or identify every member of that leadership group in the announcement.
 
 The announcement converts an earlier transition plan into an operational fact. Some users had to back up and restore their information, while service was temporarily interrupted for affected accounts. Manus said restored data has no submission deadline and that users untouched by the transition need take no action.
 
 The disruption reflects the unusual complexity of separating an AI service whose value depends on user histories, stored tasks and access to external tools. Reuters reported in August that data generated by certain users after Meta’s December 2025 acquisition would be deleted to meet regulatory requirements in specified jurisdictions. The separation therefore involved more than a corporate change: parts of the product’s data continuity had to be rebuilt around a new legal and ownership structure.
 
-## An agent company with its autonomy restored
+## An agent company operating independently again
 
-Manus now describes itself as an independent agent laboratory. Its stated roadmap emphasizes deeper integration with everyday workflows, more direct interaction with outside services and agents that act proactively rather than waiting for individual instructions. Those ambitions remain broad, and the company disclosed no new model, financing arrangement or ownership breakdown alongside today’s announcement.
+Manus now describes itself as an independent agent laboratory. Its stated roadmap emphasizes deeper integration with everyday workflows, more direct interaction with outside services and agents that act proactively rather than waiting for individual instructions. Those ambitions remain broad, and the company disclosed no new model, financing arrangement or detailed ownership structure alongside the announcement.
 
 The development matters because a completed, multibillion-dollar AI acquisition has effectively been reversed while the target remains operational. Manus gives regulators, founders and investors a rare working example of how cross-border intervention can reshape ownership, data handling and product availability after a deal has already closed. Its next challenge is demonstrating that independence can preserve global distribution and product momentum without Meta’s infrastructure and capital.
 
 Chinese title: Manus结束与Meta拆分，正式恢复独立运营
-Chinese summary: 经历数据迁移和短暂停服后，Manus正式完成与Meta的拆分，创始团队继续掌舵这家通用智能体公司。
+Chinese summary: 经历数据迁移和短暂停服后，Manus正式完成与Meta的拆分，创始团队将继续领导这家通用智能体公司。
 
 Sources:
   - Manus Resumes Independent Operations: https://manus.im/blog/manus-resumes-independent-operations
@@ -869,140 +995,27 @@ Sources:
   - Gemini Audio — AI transcription: https://deepmind.google/models/gemini-audio/ai-transcription/
   - Gemini 3.5 Transcribe API documentation: https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe
 
-### Z.ai Releases GLM-5.3-Flash With Open Weights
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/glm-flash-multimodal-release.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/glm-flash-multimodal-release.html
-- Source timestamp: 2026-08-26T14:12:00.000Z
-- Site timestamp: 2026-08-26T23:00:03.019Z
-- Tags: Models, Open Source, Agents
-
-The 320B mixture-of-experts model pairs native multimodality and one-million-token context with aggressively priced hosted inference.
-
-## A smaller active footprint
-
-Z.ai released GLM-5.3-Flash, a natively multimodal mixture-of-experts model with 320 billion total parameters and 18 billion active parameters. The company also published its weights and introduced hosted pricing of $0.15 per million input tokens, $0.50 per million output tokens and $0.03 per million cached input tokens.
-
-The model combines linear and sparse attention to reduce the cost of processing long contexts. A mechanism called IndexPool compresses groups of index keys before retrieval, while manifold-constrained hyper-connections are intended to improve information flow and scaling stability. GLM-5.3-Flash supports a context window of up to one million tokens and was pretrained on a 30-trillion-token multimodal corpus.
-
-## Coding, vision and domestic infrastructure
-
-Z.ai says the model substantially improves on GLM-5.2 across coding and agent benchmarks. Its reported scores include 63.4 on DeepSWE 1.1, versus 46.2 for GLM-5.2, and 48.8 on AutomationBench, versus 26.2. The company also reports stronger document, chart and visual-interface capabilities, including workflows where the model inspects a rendered interface and iteratively corrects its own code. These remain vendor-reported results, and comparisons may depend on harnesses, reasoning budgets and context-management settings.
-
-Before the public release, the model appeared anonymously as Ox Alpha on OpenCode and OpenRouter. Z.ai says all of that trial traffic was served on Chinese accelerators. Its production system separates multimodal encoding, prompt prefill and decoding into independently scheduled pools across tens of thousands of domestic chips, with the company claiming a threefold improvement over its original serving baseline.
-
-## Why it matters
-
-GLM-5.3-Flash links three strategic developments: open model weights, sharply lower agent-inference pricing and credible large-scale service on non-Nvidia hardware. The model’s public weights make its architecture inspectable, while the hosted price could pressure competitors serving coding and computer-use agents, where long trajectories quickly accumulate tokens. Its most important claim is therefore operational rather than a single benchmark result: that a competitive multimodal agent model can be served economically across a very large cluster of Chinese accelerators.
-
-Chinese title: 智谱开源GLM-5.3-Flash，主打多模态低成本推理
-Chinese summary: 这款3200亿参数混合专家模型支持原生多模态和百万词元上下文，并以激进价格提供托管推理服务。
-
-Sources:
-  - GLM-5.3-Flash: Frontier Intelligence, Flash Cost: https://z.ai/blog/glm-5.3-flash
-  - Introducing GLM-5.3-Flash: https://x.com/Zai_org/status/2092616204787626030
-
-### Nvidia Reportedly Nears $12.9B Hugging Face Deal
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-hugging-face-acquisition-reports.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-hugging-face-acquisition-reports.html
-- Source timestamp: 2026-08-27T06:32:00.000Z
-- Site timestamp: 2026-08-27T11:00:03.973Z
-- Tags: Industry, Open Source
-
-Conflicting reports say Nvidia has agreed, or is close, to acquire the central hub of the open-model ecosystem for $12.9 billion.
-
-## The reported transaction
-
-Nvidia is reportedly closing in on a $12.9 billion acquisition of Hugging Face, the platform that hosts models, datasets and developer applications central to the open AI ecosystem. TechCrunch cited The Information as reporting an agreement, while also noting a conflicting Business Insider account that said no contract had been signed and negotiations could still collapse. Neither company had publicly confirmed the transaction when the reports appeared.
-
-The proposed price is almost three times Hugging Face’s $4.5 billion valuation in its 2023 financing. TechCrunch reported that the company was generating about $150 million in annual revenue and approaching profitability, making the valuation primarily a bet on its strategic position rather than its current cash flow. Nvidia already participated in Hugging Face’s previous financing and has cultivated a growing catalog of open models, datasets and development tools on the platform.
-
-## What Nvidia would acquire
-
-Hugging Face is more than a model repository. It provides libraries, hosted inference, training services and Spaces for deploying interactive applications. Ownership would give Nvidia a direct relationship with developers choosing models and compute, along with a marketplace through which spare or committed cloud capacity could be distributed.
-
-That creates an unresolved governance question. Hugging Face has operated as a relatively neutral meeting point for models optimized across Nvidia, AMD, Intel, Apple and other hardware. Control by the dominant AI-chip supplier could prompt rivals and some community projects to reconsider how much infrastructure, metadata and distribution they place on the platform.
-
-## Why it matters
-
-If completed, the deal would vertically integrate the leading AI-accelerator vendor with the most influential open-model distribution layer. It could strengthen funding and infrastructure for open AI while simultaneously weakening the platform’s perceived independence. Because the reports disagree about whether an agreement is signed, the immediate fact is a late-stage negotiation—not a completed acquisition.
-
-Chinese title: 英伟达据报接近129亿美元收购Hugging Face
-Chinese summary: 多家媒体对交易是否已经签约说法不一，但均指向英伟达正推进收购开放模型生态核心平台Hugging Face。
-
-Sources:
-  - Nvidia closes in on Hugging Face acquisition: https://techcrunch.com/2026/08/26/nvidia-closes-in-on-hugging-face-acquisition/
-  - Nvidia snaps up Hugging Face for $12.9 billion: https://the-decoder.com/nvidia-snaps-up-hugging-face-for-12-9-billion-as-closed-ai-labs-pull-away/
-
-### Qwen Opens Flash-Next as a Preview of Qwen4
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/qwen-flash-next-open-weights.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/qwen-flash-next-open-weights.html
-- Source timestamp: 2026-08-26T15:20:00.000Z
-- Site timestamp: 2026-08-26T23:00:03.019Z
-- Tags: Models, Open Source
-
-Alibaba’s 125B-parameter multimodal model activates 6B parameters per token and introduces the architecture intended for Qwen4.
-
-## An open architectural preview
-
-Alibaba’s Qwen team released the weights of Qwen3.8-Flash-Next, a multimodal mixture-of-experts model that previews architectural choices planned for the Qwen4 family. The main network contains 125 billion parameters but activates about 6 billion per token. A separate 51-billion-parameter N-gram embedding table expands capacity through inexpensive lookups that can be offloaded to host memory.
-
-The model combines Gated DeltaNet layers, which compress prior context into a fixed state, with global layers using Qwen Sparse Attention. Its lightweight indexer selects relevant blocks instead of applying full attention across every token. Qwen says the design supports a native context window of 262,144 tokens and can be extended to one million with YaRN.
-
-## Efficiency across training and deployment
-
-Other changes include a four-branch gated residual stream and a refined Muon optimizer configuration. Qwen says training required about one-ninth the resources of Qwen3.7-Plus while producing stronger results on coding and office tasks. Those figures come from the developer’s evaluations and require independent replication.
-
-The official weights were made available through Hugging Face and ModelScope, satisfying the threshold for an open-weight release rather than an announced future release. Early support from vLLM, SGLang and quantization projects widens the potential deployment base. Qwen also offers a managed production version, Qwen3.8-Flash, through QwenCloud, separating the downloadable research artifact from its hosted commercial service.
-
-## Why it matters
-
-The release gives outside researchers early access to design decisions likely to shape Alibaba’s next flagship generation. Sparse retrieval, state-based history compression and memory-offloaded embeddings all target the same problem: increasing model capacity and usable context without making every generated token proportionally more expensive. Because only 6 billion main-model parameters are active per token, Flash-Next could also make a large multimodal system practical on more modest inference clusters. The consequential question is whether its efficiency claims survive varied workloads, especially long contexts where retrieval errors can remain hidden by aggregate benchmark scores.
-
-Chinese title: 通义千问开源Flash-Next，提前展示Qwen4架构
-Chinese summary: 阿里巴巴开源1250亿参数多模态模型，每个词元仅激活60亿参数，并首次展示Qwen4的核心架构方向。
-
-Sources:
-  - Qwen3.8-Flash-Next: A New Architecture, Towards Ultimate Cost-Efficiency: https://qwen.ai/blog?id=qwen3.8-flash-next
-  - Qwen3.8-Flash-Next: https://huggingface.co/Qwen/Qwen3.8-Flash-Next
-
-### Recraft V4 Styles Adds Reference-Led Generation
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/recraft-v4-style-reference.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/recraft-v4-style-reference.html
-- Source timestamp: 2026-08-26T18:02:00.000Z
-- Site timestamp: 2026-08-26T23:00:03.019Z
-- Tags: AIGC, Models
-
-The design model can derive a reusable visual style from one to ten reference images without requiring a separate training process.
-
-## Style extraction without training
-
-Recraft launched V4 Styles, a reference-led image-generation mode intended to preserve a visual identity across multiple assets. A user can supply a single reference image in Recraft Studio, while API integrations support between one and ten references. The model then applies the inferred style to subsequent generations without requiring fine-tuning or a separately trained adapter.
-
-The feature produces raster images and editable SVG vectors, extending style control beyond conventional text-to-image output. Recraft says the reference is used to guide characteristics such as texture, color treatment and graphic language without copying its depicted subject. V4 Styles was released through Recraft’s own product and distributed at launch through partners including OpenRouter, Replicate and fal.
-
-## A production workflow, not a one-off prompt
-
-Consistent style has remained a practical weakness of generative design systems. A model may create a strong individual image but drift when asked to build a campaign, icon family or set of illustrations. Recraft’s approach turns the inferred style into a reusable production control, allowing teams to generate multiple assets without describing the same visual rules repeatedly.
-
-Support for up to ten API references also gives developers a way to represent a broader brand vocabulary than a single image can carry. However, the launch materials do not provide a public quantitative measure of style fidelity or subject leakage. The absence of training lowers setup time, but it also leaves open how reliably the system separates style from composition, recognizable characters or protected creative elements.
-
-## Why it matters
-
-Generative-image competition is shifting from isolated image quality toward repeatability and editability. Recraft is targeting professional design work where a coherent series is more valuable than a striking standalone result, and native SVG output makes the generated material easier to revise in existing production pipelines. The feature’s commercial significance will depend on whether it maintains consistency across varied subjects without reproducing unwanted details from references. That unresolved boundary is especially important for agencies and brands using third-party artwork as inspiration.
-
-Chinese title: Recraft V4 Styles上线，参考图可直接生成统一风格
-Chinese summary: 新功能无需单独训练，即可从一至十张参考图提取可复用视觉风格，并生成位图或可编辑SVG素材。
-
-Sources:
-  - V4 Styles is live: https://x.com/recraftai/status/2092674085746512135
-  - Recraft V4 Styles on OpenRouter: https://x.com/recraftai/status/2092691043221160055
-  - Recraft V4 Styles on Replicate: https://x.com/replicate/status/2092640777482453483
-
 ## Recent radar items
+
+### 2026-09-02
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-02.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-02.html
+
+- 2026-09-01T22:57Z | Epoch AI on X | Epoch AI said its capability frontier has advanced 14 ECI points yearly since reasoning models arrived, versus six points previously. | 中文：Epoch AI称，推理模型出现后，能力前沿每年提升14个ECI点，此前为6点。 | https://x.com/EpochAIResearch/status/2094922644428898737
+- 2026-09-01T17:53Z | Anthropic | Anthropic released Claude Fable 5.1, cutting cache-read prices 75% and typical workload costs about 25%. | 中文：Anthropic发布Claude Fable 5.1，缓存读取价格降低75%，典型工作负载成本约降25%。 | https://www.anthropic.com/claude-fable-and-mythos-5-1
+- 2026-09-01T21:39Z | Hugging Face | AllenAI published BenchMIRT, an analysis examining what large-language-model benchmarks are actually measuring. | 中文：AllenAI发布BenchMIRT，分析大语言模型基准测试实际测量的能力。 | https://huggingface.co/blog/allenai/benchmirt
+- 2026-09-01T20:03Z | Replit on X | Replit launched an MCP connection allowing users to steer its coding agent from ChatGPT, Claude, Slack, and other compatible clients. | 中文：Replit推出MCP连接，用户可从ChatGPT、Claude、Slack及其他兼容客户端操控其编程代理。 | https://x.com/Replit/status/2094878808717644084
+- 2026-09-01T16:00Z | Google | Google introduced Pics, a Workspace tool for creating and editing images through prompts, templates, and collaborative controls. | 中文：谷歌推出Workspace图像工具Pics，支持通过提示词、模板和协作控件创建及编辑图片。 | https://blog.google/products-and-platforms/products/workspace/google-pics/
+- 2026-09-01T17:46Z | Runway on X | Runway added ACES support to Ruby, enabling scene-referred half-float EXR exports in ACEScg 1.3 and 2.0. | 中文：Runway为Ruby加入ACES支持，可导出ACEScg 1.3和2.0的场景参考半浮点EXR序列。 | https://x.com/runwayml/status/2094844421086884081
+- 2026-09-01T18:00Z | Fireworks AI on X | Fireworks AI added native vision to DeepSeek V4 Flash, offering it on serverless and priority inference tiers. | 中文：Fireworks AI为DeepSeek V4 Flash加入原生视觉能力，并在无服务器及优先推理层提供。 | https://x.com/FireworksAI_HQ/status/2094847757358137779
+- 2026-09-01T12:00Z | OpenAI | OpenAI added Epic health-record integration and a plugin connecting ChatGPT to nine official healthcare data sources. | 中文：OpenAI为ChatGPT加入Epic健康记录集成，以及连接九个官方医疗数据源的插件。 | https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources
+- 2026-09-01T15:04Z | Perplexity on X | Perplexity introduced hybrid compute, routing sensitive Mac files to a local model while cloud models handle search, planning, and reasoning. | 中文：Perplexity推出混合计算，由本地模型处理Mac敏感文件，云端模型负责搜索、规划和推理。 | https://x.com/perplexity_ai/status/2094803515264978953
+- 2026-09-01T15:00Z | Pinecone on X | Pinecone said its support agent’s fully autonomous resolution rate rose from 24.6% to 55.1% without changing its model or documentation. | 中文：Pinecone称，其客服代理全自动解决率从24.6%升至55.1%，模型和文档均未改变。 | https://x.com/pinecone/status/2094802592148648130
+- 2026-09-01T14:59Z | Luma AI on X | Luma AI introduced FLUX Video Upscale, which raises generated video output to 2K or 4K resolution. | 中文：Luma AI推出FLUX Video Upscale，可将生成视频提升至2K或4K分辨率。 | https://x.com/LumaLabsAI/status/2094802207119909059
+- 2026-09-01T13:08Z | Qdrant on X | Qdrant released Qdrant-FineWeb-10B, an open vector-search benchmark containing 10 billion FineWeb documents and 120,000 queries. | 中文：Qdrant发布开放向量搜索基准Qdrant-FineWeb-10B，包含100亿份FineWeb文档和12万条查询。 | https://x.com/qdrant_engine/status/2094774288440324390
+- 2026-09-01T15:35Z | SiliconANGLE | Phonely launched Alma, a voice AI model trained using more than 10 million telephone conversations. | 中文：Phonely推出语音AI模型Alma，其训练使用了超过1000万通电话对话。 | https://siliconangle.com/2026/09/01/phonely-launches-alma-a-voice-ai-model-trained-on-10m-phone-conversations/
+- 2026-09-01T16:31Z | TechCrunch | Sequoia-incubated Empirik launched with $21 million to build AI systems that predict infrastructure outages before they occur. | 中文：红杉孵化的Empirik携2100万美元资金亮相，开发可提前预测基础设施故障的AI系统。 | https://techcrunch.com/2026/09/01/sequoia-incubated-empirik-launches-with-21m-to-predict-outages-before-they-happen/
 
 ### 2026-09-01
 
@@ -1134,37 +1147,3 @@ Sources:
 - 2026-08-28T23:00Z | Replicate on X | Replicate temporarily halved Wan 3.0 generation prices for the weekend. | 中文：Replicate 在本周末限时将 Wan 3.0 的生成价格降低一半。 | https://x.com/replicate/status/2093473739031695762
 - 2026-08-29T02:00Z | Dreamina on X | Dreamina launched weekly Discord activities offering product updates, creator networking and a chance to win 25,000 generation credits. | 中文：Dreamina 启动每周 Discord 活动，提供产品更新、创作者交流以及赢取 2.5 万生成积分的机会。 | https://x.com/dreamina_ai/status/2093519004333654065
 - 2026-08-29T10:00Z | IT之家 | China’s first vehicle-mounted mobile token factory debuted as an experiment in coordinating AI computing workloads with electricity supply. | 中文：中国首个车载移动式词元工厂亮相，用于探索 AI 计算任务与电力供应的协同模式。 | https://www.ithome.com/0/995/975.htm
-
-### 2026-08-28
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-28.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-28.html
-
-- 2026-08-27T20:45Z | Cursor on X | Cursor Cloud Agents can now create web apps without external repositories, save code to Origin, preview it in-browser, and publish through Vercel. | 中文：Cursor 云端智能体现可脱离外部代码仓库创建网页应用，将代码保存至 Origin、在浏览器中预览，并通过 Vercel 发布。 | https://x.com/cursor_ai/status/2093077548649570777
-- 2026-08-27T16:21Z | Replit on X | Replit introduced Intelligent Model Routing, automatically selecting models for each Agent task by balancing quality, speed, and cost. | 中文：Replit 推出智能模型路由，可根据质量、速度和成本，为每项智能体任务自动选择模型。 | https://x.com/Replit/status/2093011106067288321
-- 2026-08-27T13:08Z | Cohere on X | Cohere released Parse 5, a 2.3-billion-parameter vision-language model that converts documents containing tables, forms, and images into structured Markdown. | 中文：Cohere 发布 Parse 5，这款 23 亿参数视觉语言模型可将含表格、表单和图像的文档转换为结构化 Markdown。 | https://x.com/cohere/status/2092962411284189285
-- 2026-08-27T19:30Z | The Verge | Google introduced Expert Intelligence, letting Gemini Notebook users interact with eligible books they own through Google Play Books. | 中文：谷歌推出“专家智能”，允许 Gemini Notebook 用户与自己通过 Google Play 图书购买的合资格书籍进行交互。 | https://www.theverge.com/tech/985567/google-gemini-notebook-expert-sources-books
-- 2026-08-27T18:24Z | The Decoder | A Wharton study found small contextual changes could substantially alter product recommendations made by AI shopping agents. | 中文：沃顿商学院一项研究发现，细微的上下文变化就可能大幅改变 AI 购物智能体的商品推荐。 | https://the-decoder.com/ai-shopping-agents-arent-ready-to-buy-on-your-behalf-study-finds/
-- 2026-08-27T13:11Z | The Verge | Plaud unveiled AI recording earbuds paired with an eSIM-enabled case that provides an interface for speaking with AI agents. | 中文：Plaud 发布 AI 录音耳机，配套支持 eSIM 的充电盒，可作为与 AI 智能体对话的入口。 | https://www.theverge.com/ai-artificial-intelligence/985500/plaud-one-earbuds-ai-recorder-price-availability
-- 2026-08-27T14:56Z | TechCrunch | Hugging Face unveiled Microduck, a $399 open-source robot whose behaviors can be trained in simulation and deployed directly to the hardware. | 中文：Hugging Face 发布售价 399 美元的开源机器人 Microduck，其行为可在模拟环境中训练并直接部署到实体硬件。 | https://techcrunch.com/2026/08/27/hugging-face-is-selling-a-cute-399-open-source-duck-robot-microduck/
-- 2026-08-27T16:00Z | Google | Google AI Mode added conversational flight-price tracking, points-and-miles comparisons, and hotel booking, with availability varying by region. | 中文：谷歌 AI 模式新增对话式机票价格追踪、积分与里程价格比较及酒店预订功能，具体开放范围因地区而异。 | https://blog.google/products-and-platforms/products/search/book-travel-ai-mode/
-- 2026-08-27T16:35Z | SiliconANGLE | Runable raised $21 million to expand its AI-agent platform for building and operating small-business products, marketing, and growth workflows. | 中文：Runable 融资 2100 万美元，用于扩展其面向小企业产品构建、营销和增长运营的 AI 智能体平台。 | https://siliconangle.com/2026/08/27/runable-raises-21m-to-realize-small-businesses-growth-vision-using-ai-agents/
-- 2026-08-27T19:52Z | TechCrunch | Former Thinking Machines co-founder Barret Zoph joined Google as vice president of research, focusing on reinforcement learning and Gemini post-training. | 中文：Thinking Machines 前联合创始人巴雷特·佐夫加入谷歌出任研究副总裁，重点负责强化学习和 Gemini 后训练。 | https://techcrunch.com/2026/08/27/barret-zoph-the-thinking-machines-co-founder-who-defected-to-openai-is-now-at-google/
-- 2026-08-27T15:52Z | Milvus on X | Milvus 3.0 introduced StructArray, enabling multiple embeddings such as video clips or document passages to remain searchable within one entity. | 中文：Milvus 3.0 引入 StructArray，使视频片段或文档段落等多个向量可保存在同一实体中并参与检索。 | https://x.com/milvusio/status/2093003606303572174
-- 2026-08-27T15:30Z | Weaviate on X | Weaviate 1.39 made Boost API and multi-target vector search generally available while previewing additional search and storage improvements. | 中文：Weaviate 1.39 将 Boost API 和多目标向量搜索转为正式可用，并预览了更多搜索与存储改进。 | https://x.com/weaviate_io/status/2092998156422115767
-- 2026-08-27T16:04Z | Bolt on X | Bolt added collaborative prompt queues, allowing teammates to view, modify, and submit queued instructions while its coding agent continues building. | 中文：Bolt 新增多人协作提示词队列，团队成员可在编程智能体继续构建时查看、修改并提交后续指令。 | https://x.com/boltdotnew/status/2093006855735795791
-- 2026-08-27T17:15Z | Databricks on X | Databricks previewed chart-to-JSON enrichment for Genie One, helping agents answer questions about numerical information embedded in PDF charts. | 中文：Databricks 为 Genie One 预览图表转 JSON 增强功能，帮助智能体回答 PDF 图表中数值信息相关的问题。 | https://x.com/databricks/status/2093024735412064527
-- 2026-08-28T10:53Z | InfoQ 中文 | Cloudflare turned engineering specifications into machine-readable controls that AI coding agents must satisfy before code can advance. | 中文：Cloudflare 将工程规范转化为机器可读的管控规则，AI 编程代理必须满足这些规则，代码才能进入后续流程。 | https://www.infoq.cn/article/TEgX02zINMmLVbYPyP0N
-- 2026-08-28T10:47Z | IT之家 | Minecraft creator Markus Persson said his early rejection of AI coding may have been wrong after experimenting with the technology. | 中文：《我的世界》创始人马库斯·佩尔松在亲自尝试后表示，自己早期排斥 AI 编程的看法可能错了。 | https://www.ithome.com/0/995/770.htm
-- 2026-08-28T10:18Z | IT之家 | Asus established a physical-AI business group and plans to begin deploying its humanoid robots in September. | 中文：华硕成立物理 AI 事业群，并计划从 9 月开始部署其人形机器人。 | https://www.ithome.com/0/995/763.htm
-- 2026-08-28T09:44Z | Alibaba Wan on X | Picsart added Alibaba’s Wan 3.0, bringing the video-generation model into its creative platform. | 中文：Picsart 接入阿里巴巴 Wan 3.0，将这款视频生成模型带入其创作平台。 | https://x.com/Alibaba_Wan/status/2093273564736782574
-- 2026-08-28T09:00Z | Tripo on X | Tripo opened its Creator Program, offering early product access, creative challenges, co-creation opportunities and a channel for workflow feedback. | 中文：Tripo 开放创作者计划，提供新品抢先体验、创作挑战、共创机会及工作流反馈渠道。 | https://x.com/tripoai/status/2093262322999439395
-- 2026-08-28T08:39Z | Lovart on X | Lovart demonstrated Seedance 2.5 turning one photograph into a hyper-realistic 30-second vlog from a text prompt. | 中文：Lovart 演示了 Seedance 2.5 如何通过文字提示，将一张照片生成写实的 30 秒视频博客。 | https://x.com/lovart_ai/status/2093257258423775323
-- 2026-08-28T08:03Z | The Decoder | OpenAI job listings indicate it is prototyping always-on agents that proactively monitor events and initiate work without fresh user prompts. | 中文：OpenAI 的招聘信息显示，公司正在开发常驻型代理，可主动监测事件并在没有新指令时自行发起任务。 | https://the-decoder.com/always-on-and-self-starting-ai-agents-might-be-openais-next-big-play/
-- 2026-08-28T02:04Z | Artificial Analysis on X | Agnes 2.5 Pro Beta scored 44 on Artificial Analysis’s Agentic Index, up from its predecessor’s 25. | 中文：Agnes 2.5 Pro Beta 在 Artificial Analysis 的代理能力指数中获得 44 分，高于上一版本的 25 分。 | https://x.com/ArtificialAnlys/status/2093157747848294799
-- 2026-08-28T02:00Z | OpenAI | OpenAI and Thailand’s higher-education ministry launched an eight-week accelerator for ten healthcare, wellness and education AI startups. | 中文：OpenAI 与泰国高等教育部门启动为期八周的加速计划，首批覆盖十家医疗、健康和教育 AI 初创企业。 | https://openai.com/index/supporting-next-generation-ai-startups-thailand/
-- 2026-08-28T01:06Z | Arena on X | Wan 3.0 reached first place in Video Edit Arena with 1,414 points, four points ahead of Seedance 2.5. | 中文：Wan 3.0 以 1414 分登顶 Video Edit Arena，领先 Seedance 2.5 四分。 | https://x.com/arena/status/2093143153167810608
-- 2026-08-28T00:17Z | Pika on X | Pika added Wan 3.0 to its API and said access costs up to 35% less than through competing API aggregators. | 中文：Pika API 接入 Wan 3.0，并称其价格比其他 API 聚合平台最高低 35%。 | https://x.com/pika_labs/status/2093130745384780118
-- 2026-08-27T23:04Z | AWS Machine Learning Blog | AWS demonstrated approval-gated creative agents combining Amazon Quick, reusable Skills, MCP and fal’s image, video, audio and 3D models. | 中文：AWS 展示了结合 Amazon Quick、可复用技能、MCP 与 fal 多模态模型，并设置人工审批节点的创作代理工作流。 | https://aws.amazon.com/blogs/machine-learning/build-agentic-creative-workflows-with-amazon-quick-and-fal/
-- 2026-08-28T04:00Z | arXiv | WALL-SS proposes next-scale autoregression to improve the scalability and long-horizon prediction capabilities of robotic world models. | 中文：WALL-SS 提出“下一尺度自回归”方法，以提升机器人世界模型的扩展性和长时程预测能力。 | https://arxiv.org/abs/2608.26239
-- 2026-08-28T04:00Z | arXiv | ADeptS-Bench evaluates whether computer-use agents remain trustworthy when performing equivalent tasks across different device environments. | 中文：ADeptS-Bench 用于评估计算机操作代理在不同设备环境中执行同类任务时能否保持可信。 | https://arxiv.org/abs/2608.26204
