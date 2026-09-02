@@ -13,6 +13,119 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/cursor-self-hosted-agent-pools.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/cursor-self-hosted-agent-pools.html",
+      "title": "Cursor Lets Cloud Agents Run on Managed Machines",
+      "summary": "Cursor adds scalable worker pools across corporate infrastructure while retaining its cloud-based planning, inference and orchestration layer.",
+      "content_text": "## Execution moves inside the customer network\n\nCursor introduced Self-Hosted Machines that allow its cloud agents to execute commands on customer-managed laptops, servers and dynamically scaled worker pools. The agent interface, inference and planning remain in Cursor’s cloud, but repositories, build systems and command execution can sit inside an organization’s existing network.\n\nA worker establishes an outbound HTTPS connection to Cursor, avoiding inbound firewall access. When an agent requests an action, Cursor sends the tool call to a dedicated worker, which edits files, runs commands and returns results. Cursor says it never initiates a connection into the customer network. However, tool outputs and transcripts still travel through its service for inference and may contain source code, so the architecture is not equivalent to a fully local agent.\n\nTeams can attach an individual machine or create pools shared across repositories. A controller can start more workers when requests queue, release idle capacity and restore hibernated workspaces when follow-up instructions arrive. Cursor lists AWS Lambda, Coder, Cloudflare, Daytona, E2B, Modal, Namespace and Vercel among supported infrastructure and sandbox providers. Linux workers also gain browser control, joining existing Mac support and enabling agents to click, capture screenshots and test web applications.\n\n## The environment becomes part of the agent platform\n\nCursor says cloud agents now generate more than 60% of the pull requests merged internally. Giving comparable agents access to private services, bespoke build pipelines, GPUs and Apple hardware addresses a practical barrier to enterprise adoption: many valuable software tasks cannot be reproduced inside a generic hosted sandbox.\n\nThe move matters because coding-agent competition is expanding from model quality into workload placement, isolation and fleet operations. Cursor retains the high-value control plane while customers supply the machines and absorb more responsibility for credentials, capacity and containment. Enterprises considering the feature will therefore need to examine exactly what leaves each worker. Keeping execution inside the network reduces one class of exposure, but transmitted tool results mean it does not eliminate the data-governance boundary.",
+      "date_published": "2026-09-02T21:07:00.000Z",
+      "date_modified": "2026-09-02T23:00:04.105Z",
+      "tags": [
+        "Agents",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cursor-self-hosted-agent-pools.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-self-hosted-agent-pools.html",
+        "source_published_at": "2026-09-02T21:07:00.000Z",
+        "site_published_at": "2026-09-02T23:00:04.105Z",
+        "sources": [
+          {
+            "title": "Run Cloud Agents on Machines You Manage",
+            "url": "https://cursor.com/blog/self-hosted-machines"
+          },
+          {
+            "title": "Self-Hosted Machines",
+            "url": "https://cursor.com/changelog/self-hosted-machines"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/gemini-flash-cyber-launch.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/gemini-flash-cyber-launch.html",
+      "title": "Google Launches Gemini 3.8 Flash and Cyber Model",
+      "summary": "Google pairs a broadly available agent model with a restricted cyber variant built for vulnerability discovery and automated patching.",
+      "content_text": "## One core model, two access tiers\n\nGoogle released Gemini 3.8 Flash, a production model aimed at coding, professional analysis and long-running agent workflows, alongside Gemini 3.8 Flash Cyber, a security-specialized version reserved for vetted defenders. The general model is available through the Gemini API, AI Studio, Gemini Enterprise, Google Search’s AI Mode, Sheets and paid Gemini plans. It supports multimodal input, a one-million-token context window and up to 64,000 output tokens.\n\nGoogle kept the introductory API price at $0.75 per million input tokens and $3.75 per million output tokens, matching Gemini 3.7 Flash. That rate expires after December 31, when both prices are scheduled to double. Google also cautions that the model may consume more tokens on difficult work because higher effort settings trigger additional reasoning and tool calls.\n\n## Cyber capability reaches deployment\n\nThe restricted Cyber variant uses the same underlying intelligence but has more permissive security controls for defensive work. Google says it exceeded a 70% success rate on an internal vulnerability-discovery test spanning 20 programming languages and scored 47.2% pass@1 on the external CWE-Bench patching benchmark. Chrome’s security team reported 2.6 times as many correct patches as it obtained from larger commercial models. In another internal deployment, the model reportedly identified a critical foundational vulnerability in under two hours.\n\nAccess is being managed through Google’s new Fairwind Program, initially serving national cyber authorities, critical-infrastructure operators and software maintainers. This separates a mass-market agent model from a more capable security configuration whose offensive potential requires tighter distribution.\n\nThe release matters because Google is putting frontier-adjacent reasoning into its high-volume Flash tier while simultaneously demonstrating why model access may increasingly depend on the task, customer and safeguards. The scheduled price increase and potentially higher token use, however, mean developers must validate total task cost rather than rely on the headline API rate.",
+      "date_published": "2026-09-02T16:18:00.000Z",
+      "date_modified": "2026-09-02T23:00:04.105Z",
+      "tags": [
+        "Models",
+        "Agents",
+        "Safety"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gemini-flash-cyber-launch.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-flash-cyber-launch.html",
+        "source_published_at": "2026-09-02T16:18:00.000Z",
+        "site_published_at": "2026-09-02T23:00:04.105Z",
+        "sources": [
+          {
+            "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+            "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/"
+          },
+          {
+            "title": "Gemini 3.8 Flash Model Card",
+            "url": "https://deepmind.google/models/model-cards/gemini-3-8-flash/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-spark-update.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-spark-update.html",
+      "title": "Meta Releases Muse Spark 1.3 for Coding Agents",
+      "summary": "Muse Spark 1.3 targets sustained coding and agent workflows, while Meta postpones both open weights and its highest reasoning setting.",
+      "content_text": "## An agent-focused model update\n\nMeta released Muse Spark 1.3 through Muse Code and the Meta Model API, positioning the update around sustained coding, tool use and real-world agent tasks. The release is immediately usable as a hosted model, but it is not yet an open-weight release: Meta said downloadable weights will follow later, without giving a firm publication time.\n\nThe rollout also separates the model’s currently available reasoning settings from its most compute-intensive configuration. Meta said the “max” reasoning mode will arrive only after additional safety testing. That distinction matters because some of the strongest third-party results disclosed on launch day came from the unreleased max setting, rather than the configuration developers can deploy immediately.\n\nArtificial Analysis reported that Muse Spark 1.3 max scored 52% on Tau3-Bench Banking, the highest result it had measured on that evaluation. The available xhigh setting reached 47%, while the evaluator described the model as unusually cost-efficient at its intelligence level. Meta kept API pricing at $1.25 per million input tokens and $4.25 per million output tokens. The reported improvements were concentrated in agentic evaluations rather than spread evenly across every category.\n\n## Availability tempers the headline numbers\n\nMuse Spark 1.3 strengthens Meta’s attempt to compete in coding agents through both a first-party harness and an API, while preserving the prospect of a later local ecosystem around open weights. That staged strategy can generate adoption quickly without releasing the most sensitive or expensive configuration on day one.\n\nIts significance will depend on what Meta ultimately publishes. Hosted access gives developers a practical new option now, but the open-source community cannot yet inspect, fine-tune or independently serve the weights. Likewise, results from the pending max mode should not be treated as the performance of today’s generally accessible product. The consequential milestone will be whether Meta delivers the promised weights with capabilities close to the hosted release and terms broad enough for serious deployment.",
+      "date_published": "2026-09-02T19:36:00.000Z",
+      "date_modified": "2026-09-02T23:00:04.105Z",
+      "tags": [
+        "Models",
+        "Agents"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-spark-update.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-spark-update.html",
+        "source_published_at": "2026-09-02T19:36:00.000Z",
+        "site_published_at": "2026-09-02T23:00:04.105Z",
+        "sources": [
+          {
+            "title": "Muse Spark 1.3",
+            "url": "https://developer.meta.com/ai/models/muse-spark/"
+          },
+          {
+            "title": "Meta AI Announces Muse Spark 1.3",
+            "url": "https://x.com/AIatMeta/status/2095234385129963666"
+          },
+          {
+            "title": "Artificial Analysis Muse Spark 1.3 Results",
+            "url": "https://x.com/ArtificialAnlys/status/2095247793183166917"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/gemini-agentic-video-understanding.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/gemini-agentic-video-understanding.html",
       "title": "Gemini Adds Agentic Video Search With Fewer Tokens",
@@ -1766,127 +1879,6 @@
           {
             "title": "Sakana AI Defense Policy",
             "url": "https://sakana.ai/company-info/defense-policy.html"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/xiao-lu-launches-cooking-ai.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/xiao-lu-launches-cooking-ai.html",
-      "title": "Xiao Lu Launches AI System for Autonomous Cooking",
-      "summary": "The Beijing company introduced a multimodal cooking model and two robots that adjust recipes by watching food change in real time.",
-      "content_text": "## From fixed recipes to adaptive cooking\n\nBeijing-based Xiao Lu Robot unveiled a multimodal cooking foundation model and two machines built around it at the 2026 World Robot Conference. The launch moves commercial cooking automation beyond replaying fixed instructions toward responding to conditions inside the wok.\n\nThe company says CookingMuse combines kitchen imagery, process data and decision-making software. Its first hardware implementation, a 3K-vision cooking robot, uses three 40-megapixel industrial cameras to monitor ingredients at 30 frames per second. The system can alter heat, cooking time, stirring speed and seasoning when it detects differences in moisture, temperature, portion placement or thawing.\n\nIn demonstrations, the robot reportedly compensated after extra water was added to mapo tofu and recalculated the cooking process for partially frozen meat. These tests were designed to show adaptation rather than simple recipe execution, although the results were presented by the company and have not been independently benchmarked.\n\n## A mobile automated kitchen\n\nXiao Lu also introduced Fresh-Cook Ark, a movable micro-kitchen that combines refrigerated ingredient storage, two parallel cooking stations, serving, fume treatment and self-cleaning. The company is targeting offices, campuses, festivals and other locations where constructing a conventional kitchen would be expensive or impractical.\n\nXiao Lu says its existing cooking robots operate in more than 13,000 outlets across nearly 350 Chinese cities and over 20 countries, while its recipe system contains close to one million digitized dishes. That installed base could provide unusually broad operational data, but the company did not disclose pricing, availability or independent measures of food quality and reliability for the new products.\n\nThe launch matters because cooking is a difficult embodied-AI environment: ingredients vary continuously, safety requirements are strict and small errors directly affect the finished product. If Xiao Lu can reproduce its demonstrations at commercial scale, it would offer a concrete example of specialized multimodal models creating value through physical deployment rather than general-purpose conversation.",
-      "date_published": "2026-08-23T10:01:00.000Z",
-      "date_modified": "2026-08-23T11:00:03.637Z",
-      "tags": [
-        "Industry",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/xiao-lu-launches-cooking-ai.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/xiao-lu-launches-cooking-ai.html",
-        "source_published_at": "2026-08-23T10:01:00.000Z",
-        "site_published_at": "2026-08-23T11:00:03.637Z",
-        "sources": [
-          {
-            "title": "WRC 2026｜从执行菜谱到理解烹饪，橡鹿烹饪机器人再进化",
-            "url": "https://tech.gmw.cn/2026-08/23/content_38958334.htm"
-          },
-          {
-            "title": "AI 机器人进厨房：橡鹿机器人全球首发三款烹饪机器人产品",
-            "url": "https://www.ithome.com/0/993/248.htm"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/anthropic-mythos-security-scans.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/anthropic-mythos-security-scans.html",
-      "title": "Anthropic Puts Mythos 5 Behind Enterprise Code Scans",
-      "summary": "Claude Security gives Enterprise customers access to Mythos 5 vulnerability analysis without exposing the restricted model directly.",
-      "content_text": "## Restricted capability through a controlled product\n\nAnthropic has moved Claude Security’s repository scans to Claude Mythos 5. Claude Security remains in public beta for Claude Enterprise customers, and Anthropic’s current product guidance says Mythos 5 scans are available to all Enterprise customers. Administrators can enable the service in the admin console, after which users can select a GitHub repository for analysis. The system follows data and control flow across files, reports suspected vulnerabilities with supporting evidence, and prepares proposed fixes that can be opened in Claude Code on the web.\n\nThe release does not give Enterprise customers unrestricted access to Mythos 5. Anthropic is instead placing the model behind a narrowly defined security workflow, where inputs, outputs and permitted actions can be controlled. Customers may continue using the models otherwise available to their organization when reviewing or implementing the suggested patches.\n\nAnthropic also offers a Claude Security plugin in beta to Claude Code users, but that plugin uses the models available in each user’s Claude Code account. Mythos 5-powered scans remain confined to the Claude Security application on Claude.ai for Enterprise customers, so the two access routes should not be treated as equivalent.\n\nMythos 5 was introduced earlier as Anthropic’s most capable cybersecurity and biology model. It shares its underlying model with Claude Fable 5 but has fewer restrictions for approved work in sensitive domains. Direct access has consequently been limited to approved partners and trusted-access programs. Claude Security creates a broader delivery route for its defensive capabilities without making the underlying model generally callable.\n\nAnthropic said the integration is one of several steps intended to expand access for defenders and that it is working with security partners on additional product integrations. Findings still require human validation: automated scanners can misjudge exploitability, overlook deployment context or recommend a patch that creates a different failure.\n\n## Why it matters\n\nThis is a notable model-access pattern for increasingly capable systems. Rather than choosing only between a fully public API and a small trusted-user roster, a laboratory can expose sensitive capability through a constrained application with logging, fixed tools and limited outputs.\n\nIf the approach works, it could become a template for distributing models with strong cyber, biological or other dual-use abilities. It may also shift enterprise security competition away from generic coding assistants toward systems that can reason across whole repositories. The central test will be whether Mythos materially improves the discovery of consequential, previously unknown flaws without producing an unmanageable volume of false positives.",
-      "date_published": "2026-08-21T17:23:00.000Z",
-      "date_modified": "2026-08-21T23:00:03.982Z",
-      "tags": [
-        "Safety",
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-mythos-security-scans.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-mythos-security-scans.html",
-        "source_published_at": "2026-08-21T17:23:00.000Z",
-        "site_published_at": "2026-08-21T23:00:03.982Z",
-        "sources": [
-          {
-            "title": "Bringing the cybersecurity capabilities of Claude Mythos 5 to more defenders",
-            "url": "https://claude.com/blog/bringing-claude-mythos-5-to-more-defenders"
-          },
-          {
-            "title": "Getting started with Claude Security",
-            "url": "https://academy.claude.com/tutorials/getting-started-with-claude-security"
-          },
-          {
-            "title": "Claude Mythos 5",
-            "url": "https://www.anthropic.com/claude/mythos"
-          },
-          {
-            "title": "Claude Security",
-            "url": "https://claude.com/product/claude-security"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/nvidia-avo-arc-agi-three.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/nvidia-avo-arc-agi-three.html",
-      "title": "Nvidia AVO Completes ARC-AGI-3’s Public Game Set",
-      "summary": "Nvidia says its general-purpose coding agent solved all 183 public ARC-AGI-3 levels, highlighting the growing influence of agent harness design.",
-      "content_text": "## A perfect result on the public environments\n\nNvidia says its AVO coding agent completed all 183 levels across the 25 public ARC-AGI-3 environments, producing a 100% score. The interactive benchmark presents agents with unfamiliar visual games whose objectives must be inferred through exploration, feedback and repeated action rather than supplied as explicit instructions.\n\nAVO is described as a general-purpose coding agent, not a model trained solely to play the benchmark. Its loop continuously inspects the environment, forms a plan, writes or modifies solutions, evaluates the result and stores useful information in memory. Nvidia argues that this surrounding system — often called an agent harness — allowed the agent to build on execution feedback over long trajectories.\n\nThe result should be interpreted carefully. ARC-AGI-3’s 25 public environments are visible development examples, and the benchmark’s maintainers distinguish them from its unseen private evaluation set. Other research systems have also reached 100% on the public games. Completing the public set therefore demonstrates that a system can master those released environments; it does not establish a perfect score on the full benchmark or prove general intelligence.\n\nThe public games nevertheless offer a useful controlled setting for studying exploration, memory and recovery from mistakes. Nvidia reported completing the set with fewer environment actions than a comparison system, suggesting that orchestration can affect efficiency as well as eventual success. Independent reproduction and performance on private environments will be needed to determine how well the approach generalizes.\n\n## Why it matters\n\nFrontier-model comparisons increasingly understate how much application performance comes from the software around the model. Memory policy, tool selection, verification, state tracking and retry logic can turn the same underlying model into markedly different agents.\n\nNvidia’s result adds evidence for investment shifting toward harnesses and runtime infrastructure, especially for long-duration tasks. It also illustrates why benchmark disclosures must specify whether results concern public development material or hidden tests. For buyers and researchers, the practical question is no longer simply which model scored highest, but which complete system can reproduce reliable performance on genuinely new tasks at an acceptable cost.",
-      "date_published": "2026-08-21T13:01:00.000Z",
-      "date_modified": "2026-08-21T23:00:03.982Z",
-      "tags": [
-        "Agents",
-        "Research"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/nvidia-avo-arc-agi-three.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-avo-arc-agi-three.html",
-        "source_published_at": "2026-08-21T13:01:00.000Z",
-        "site_published_at": "2026-08-21T23:00:03.982Z",
-        "sources": [
-          {
-            "title": "NVIDIA AVO completes ARC-AGI-3 public environments",
-            "url": "https://x.com/NVIDIAAI/status/2090786258981466231"
-          },
-          {
-            "title": "Nvidia says the harness is the real hero",
-            "url": "https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero/"
-          },
-          {
-            "title": "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence",
-            "url": "https://arxiv.org/abs/2603.24621"
           }
         ]
       }

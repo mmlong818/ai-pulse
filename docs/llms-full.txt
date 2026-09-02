@@ -19,6 +19,100 @@
 
 ## Recent briefings
 
+### Cursor Lets Cloud Agents Run on Managed Machines
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/cursor-self-hosted-agent-pools.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cursor-self-hosted-agent-pools.html
+- Source timestamp: 2026-09-02T21:07:00.000Z
+- Site timestamp: 2026-09-02T23:00:04.105Z
+- Tags: Agents, Industry
+
+Cursor adds scalable worker pools across corporate infrastructure while retaining its cloud-based planning, inference and orchestration layer.
+
+## Execution moves inside the customer network
+
+Cursor introduced Self-Hosted Machines that allow its cloud agents to execute commands on customer-managed laptops, servers and dynamically scaled worker pools. The agent interface, inference and planning remain in Cursor’s cloud, but repositories, build systems and command execution can sit inside an organization’s existing network.
+
+A worker establishes an outbound HTTPS connection to Cursor, avoiding inbound firewall access. When an agent requests an action, Cursor sends the tool call to a dedicated worker, which edits files, runs commands and returns results. Cursor says it never initiates a connection into the customer network. However, tool outputs and transcripts still travel through its service for inference and may contain source code, so the architecture is not equivalent to a fully local agent.
+
+Teams can attach an individual machine or create pools shared across repositories. A controller can start more workers when requests queue, release idle capacity and restore hibernated workspaces when follow-up instructions arrive. Cursor lists AWS Lambda, Coder, Cloudflare, Daytona, E2B, Modal, Namespace and Vercel among supported infrastructure and sandbox providers. Linux workers also gain browser control, joining existing Mac support and enabling agents to click, capture screenshots and test web applications.
+
+## The environment becomes part of the agent platform
+
+Cursor says cloud agents now generate more than 60% of the pull requests merged internally. Giving comparable agents access to private services, bespoke build pipelines, GPUs and Apple hardware addresses a practical barrier to enterprise adoption: many valuable software tasks cannot be reproduced inside a generic hosted sandbox.
+
+The move matters because coding-agent competition is expanding from model quality into workload placement, isolation and fleet operations. Cursor retains the high-value control plane while customers supply the machines and absorb more responsibility for credentials, capacity and containment. Enterprises considering the feature will therefore need to examine exactly what leaves each worker. Keeping execution inside the network reduces one class of exposure, but transmitted tool results mean it does not eliminate the data-governance boundary.
+
+Chinese title: Cursor云端智能体可在客户自管机器上运行
+Chinese summary: Cursor新增可弹性扩缩的自管工作节点，代码执行留在企业网络内，推理、规划和调度仍由其云端负责。
+
+Sources:
+  - Run Cloud Agents on Machines You Manage: https://cursor.com/blog/self-hosted-machines
+  - Self-Hosted Machines: https://cursor.com/changelog/self-hosted-machines
+
+### Google Launches Gemini 3.8 Flash and Cyber Model
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-flash-cyber-launch.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gemini-flash-cyber-launch.html
+- Source timestamp: 2026-09-02T16:18:00.000Z
+- Site timestamp: 2026-09-02T23:00:04.105Z
+- Tags: Models, Agents, Safety
+
+Google pairs a broadly available agent model with a restricted cyber variant built for vulnerability discovery and automated patching.
+
+## One core model, two access tiers
+
+Google released Gemini 3.8 Flash, a production model aimed at coding, professional analysis and long-running agent workflows, alongside Gemini 3.8 Flash Cyber, a security-specialized version reserved for vetted defenders. The general model is available through the Gemini API, AI Studio, Gemini Enterprise, Google Search’s AI Mode, Sheets and paid Gemini plans. It supports multimodal input, a one-million-token context window and up to 64,000 output tokens.
+
+Google kept the introductory API price at $0.75 per million input tokens and $3.75 per million output tokens, matching Gemini 3.7 Flash. That rate expires after December 31, when both prices are scheduled to double. Google also cautions that the model may consume more tokens on difficult work because higher effort settings trigger additional reasoning and tool calls.
+
+## Cyber capability reaches deployment
+
+The restricted Cyber variant uses the same underlying intelligence but has more permissive security controls for defensive work. Google says it exceeded a 70% success rate on an internal vulnerability-discovery test spanning 20 programming languages and scored 47.2% pass@1 on the external CWE-Bench patching benchmark. Chrome’s security team reported 2.6 times as many correct patches as it obtained from larger commercial models. In another internal deployment, the model reportedly identified a critical foundational vulnerability in under two hours.
+
+Access is being managed through Google’s new Fairwind Program, initially serving national cyber authorities, critical-infrastructure operators and software maintainers. This separates a mass-market agent model from a more capable security configuration whose offensive potential requires tighter distribution.
+
+The release matters because Google is putting frontier-adjacent reasoning into its high-volume Flash tier while simultaneously demonstrating why model access may increasingly depend on the task, customer and safeguards. The scheduled price increase and potentially higher token use, however, mean developers must validate total task cost rather than rely on the headline API rate.
+
+Chinese title: 谷歌发布Gemini 3.8 Flash及网络安全版
+Chinese summary: 谷歌同步推出面向大众的智能体模型与受限开放的网络安全版本，覆盖漏洞发现、自动修复和长流程编程任务。
+
+Sources:
+  - Introducing Gemini 3.8 Flash and 3.8 Flash Cyber: https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/
+  - Gemini 3.8 Flash Model Card: https://deepmind.google/models/model-cards/gemini-3-8-flash/
+
+### Meta Releases Muse Spark 1.3 for Coding Agents
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-muse-spark-update.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-spark-update.html
+- Source timestamp: 2026-09-02T19:36:00.000Z
+- Site timestamp: 2026-09-02T23:00:04.105Z
+- Tags: Models, Agents
+
+Muse Spark 1.3 targets sustained coding and agent workflows, while Meta postpones both open weights and its highest reasoning setting.
+
+## An agent-focused model update
+
+Meta released Muse Spark 1.3 through Muse Code and the Meta Model API, positioning the update around sustained coding, tool use and real-world agent tasks. The release is immediately usable as a hosted model, but it is not yet an open-weight release: Meta said downloadable weights will follow later, without giving a firm publication time.
+
+The rollout also separates the model’s currently available reasoning settings from its most compute-intensive configuration. Meta said the “max” reasoning mode will arrive only after additional safety testing. That distinction matters because some of the strongest third-party results disclosed on launch day came from the unreleased max setting, rather than the configuration developers can deploy immediately.
+
+Artificial Analysis reported that Muse Spark 1.3 max scored 52% on Tau3-Bench Banking, the highest result it had measured on that evaluation. The available xhigh setting reached 47%, while the evaluator described the model as unusually cost-efficient at its intelligence level. Meta kept API pricing at $1.25 per million input tokens and $4.25 per million output tokens. The reported improvements were concentrated in agentic evaluations rather than spread evenly across every category.
+
+## Availability tempers the headline numbers
+
+Muse Spark 1.3 strengthens Meta’s attempt to compete in coding agents through both a first-party harness and an API, while preserving the prospect of a later local ecosystem around open weights. That staged strategy can generate adoption quickly without releasing the most sensitive or expensive configuration on day one.
+
+Its significance will depend on what Meta ultimately publishes. Hosted access gives developers a practical new option now, but the open-source community cannot yet inspect, fine-tune or independently serve the weights. Likewise, results from the pending max mode should not be treated as the performance of today’s generally accessible product. The consequential milestone will be whether Meta delivers the promised weights with capabilities close to the hosted release and terms broad enough for serious deployment.
+
+Chinese title: Meta发布Muse Spark 1.3，主攻编程智能体
+Chinese summary: Muse Spark 1.3强化长流程编程和智能体任务，但开放权重与最高推理档位均未在发布当天提供。
+
+Sources:
+  - Muse Spark 1.3: https://developer.meta.com/ai/models/muse-spark/
+  - Meta AI Announces Muse Spark 1.3: https://x.com/AIatMeta/status/2095234385129963666
+  - Artificial Analysis Muse Spark 1.3 Results: https://x.com/ArtificialAnlys/status/2095247793183166917
+
 ### Gemini Adds Agentic Video Search With Fewer Tokens
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-agentic-video-understanding.html
@@ -890,109 +984,27 @@ Sources:
   - Edit Model for V8: https://updates.midjourney.com/edit-model-for-v8/
   - Midjourney V8.2 Edit Model Announcement: https://x.com/midjourney/status/2093253371650031949
 
-### Tencent Opens Hy4 Preview With One-Million Context
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/tencent-opens-hy4-preview.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/tencent-opens-hy4-preview.html
-- Source timestamp: 2026-08-28T06:23:00.000Z
-- Site timestamp: 2026-08-28T11:00:03.884Z
-- Tags: Models, Open Source, Agents
-
-Tencent has released Hy4 Preview’s open weights, pairing a 770-billion-parameter MoE design with a one-million-token context window.
-
-## Open weights and a larger architecture
-
-Tencent has released the weights for Hy4 Preview, its new flagship mixture-of-experts language model, through Hugging Face, ModelScope, GitCode and CNB. The model contains 770 billion parameters but activates 49 billion for each token. It supports a one-million-token context window and ships in full-precision and FP8 variants.
-
-Hy4 uses 256 routed experts per mixture layer, activating eight alongside a shared expert. Its attention system combines gated sparse attention with cross-layer index reuse, while a native multi-token-prediction layer supports speculative decoding. Tencent provides deployment instructions for vLLM and SGLang, although the model’s size still puts self-hosting beyond ordinary workstations.
-
-## Built around productivity agents
-
-Tencent is positioning Hy4 for coding, office work, game development and scientific research. It says 163 internal specialists compared model outputs across 203 engineering tasks: Hy4 averaged 2.99 out of four, narrowly exceeding GLM-5.3 at 2.92 and Kimi K3 at 2.94. These are vendor-run results rather than independent evaluations.
-
-The company also says Hy4 participated in optimizing its own training methods, data strategies, evaluations and low-level operators. Work on operator fusion and communications reportedly improved end-to-end inference throughput by 31.8% from Tencent’s baseline. The model card nevertheless identifies excessive reasoning and repeated self-verification as known weaknesses.
-
-Hy4 is available through Tencent products, Tencent Cloud TokenHub and OpenRouter. Tencent lists API prices of $0.834 per million input tokens, $2.501 per million output tokens and $0.042 per million cached tokens.
-
-## Why it matters
-
-Hy4 adds another genuinely large Chinese open-weight model to a rapidly tightening field. Its combination of long context, agent-oriented training and downloadable weights gives researchers and infrastructure providers something concrete to inspect and deploy. The central uncertainty is efficiency: 49 billion active parameters are economical relative to the full model, but operating a 770-billion-parameter checkpoint remains a substantial hardware commitment.
-
-Chinese title: 腾讯开源混元 Hy4 Preview，上下文扩至百万 Token
-Chinese summary: 腾讯发布混元 Hy4 Preview 开放权重，以 7700 亿总参数、490 亿激活参数和百万 Token 上下文主攻生产力智能体。
-
-Sources:
-  - Tencent Releases and Open-Sources Tencent Hy4 preview: https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/
-  - Tencent-Hunyuan Hy4-preview: https://github.com/Tencent-Hunyuan/Hy4-preview
-  - Tencent Hunyuan Hy4 Preview Announcement: https://x.com/TencentHunyuan/status/2093222928720761009
-
-### Anthropic Secures $45B in Nscale Compute Capacity
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-nscale-compute-deal.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-nscale-compute-deal.html
-- Source timestamp: 2026-08-26T21:37:00.000Z
-- Site timestamp: 2026-08-26T23:00:03.019Z
-- Tags: Industry
-
-The six-year agreement ties Anthropic’s next growth phase to 460 megawatts of Nvidia Vera Rubin infrastructure in West Virginia.
-
-## A six-year infrastructure commitment
-
-Anthropic has agreed to spend about $45 billion over six years on computing capacity from British infrastructure provider Nscale, according to reports citing people familiar with the transaction. The agreement covers roughly 460 megawatts at Nscale’s planned Monarch campus in West Virginia, with service expected to begin in late 2027.
-
-Nscale is expected to supply systems built around Nvidia’s Vera Rubin platform. The arrangement would give Anthropic a large, dedicated block of next-generation infrastructure for training models and serving products such as Claude and Claude Code. Neither company had issued a detailed public contract announcement when the reports appeared, leaving questions about payment guarantees, construction milestones and cancellation terms.
-
-## Capacity bought years before delivery
-
-The commitment illustrates how frontier laboratories are reserving electricity, land and accelerators well ahead of demand. Unlike ordinary cloud purchases, a 460-megawatt deployment requires coordinated construction of data halls, grid connections, cooling and supporting generation. Nscale’s West Virginia project is therefore exposed to permitting, equipment-delivery and power-supply risks before Anthropic can use the contracted capacity.
-
-Anthropic has pursued several large infrastructure agreements as it expands beyond capacity supplied by established partners including Amazon and Google. For Nscale, the contract could anchor its flagship American campus and strengthen its position ahead of a potential public listing. It also concentrates substantial execution risk in a provider founded only in 2024.
-
-## Why it matters
-
-The size and duration of the agreement show that competition among frontier labs is increasingly being determined through infrastructure commitments made years in advance. Anthropic is effectively wagering that demand for Claude—and the computational requirements of future models—will justify paying for nearly half a gigawatt of capacity. If the campus arrives on schedule, the deal could reduce Anthropic’s dependence on the largest hyperscale clouds. If utilization, financing or construction disappoints, the same contract could become an unusually expensive constraint.
-
-Chinese title: Anthropic签下450亿美元Nscale算力协议
-Chinese summary: 这份六年协议将Anthropic下一阶段扩张押注于西弗吉尼亚州460兆瓦的英伟达Vera Rubin算力。
-
-Sources:
-  - Anthropic continues compute-gobbling streak in $45 billion deal with Nscale: https://techcrunch.com/2026/08/26/anthropic-continues-compute-gobbling-streak-in-45-billion-deal-with-nscale/
-  - Anthropic to pay Nscale $45 billion to rent AI computing power: https://www.investing.com/news/stock-market-news/anthropic-to-pay-nscale-45-billion-to-rent-ai-computing-power-bloomberg-news-reports-4877696
-
-### AWS Orders Two Million More Nvidia GPUs for 2027–28
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/aws-orders-two-million-nvidia-gpus.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/aws-orders-two-million-nvidia-gpus.html
-- Source timestamp: 2026-08-26T23:47:00.000Z
-- Site timestamp: 2026-08-27T11:00:03.973Z
-- Tags: Industry
-
-Amazon will deploy two million additional Blackwell Ultra and Rubin-generation GPUs while extending Nvidia technology across AWS and robotics.
-
-## A hyperscale commitment
-
-Amazon Web Services and Nvidia announced that AWS plans to deploy two million additional Nvidia GPUs across its global infrastructure during 2027 and 2028. The order covers Blackwell Ultra, Rubin and Rubin Ultra accelerators and follows an earlier commitment, announced five months ago, to deploy more than one million Nvidia GPUs. Financial terms were not disclosed, but an order of this scale implies spending worth tens of billions of dollars.
-
-The agreement extends well beyond accelerator purchases. AWS plans to incorporate Nvidia’s Vera CPUs and networking technology into future systems, while offering Nvidia’s Nemotron open models through Amazon Bedrock and SageMaker. Amazon will also use Nvidia’s Omniverse simulation platform, Cosmos world models, Isaac robotics software and Jetson edge hardware across warehouse and physical-AI work, including robot training, synthetic-data generation and route optimization.
-
-## Cooperation alongside competition
-
-The expansion is striking because Amazon has invested heavily in reducing its reliance on Nvidia. Its Trainium accelerators compete for AI training and inference workloads, while its Graviton CPU business has reached a reported $25 billion annualized revenue run rate. AWS also has large infrastructure commitments from customers including Anthropic and OpenAI, giving it a strong incentive to develop lower-cost in-house silicon.
-
-Yet customer demand still requires Nvidia compatibility and supply at enormous scale. The new order indicates that custom chips are expanding AWS’s capacity rather than displacing Nvidia in the near term. It also secures AWS access to Rubin-generation systems before those products become the industry’s standard deployment base.
-
-## Why it matters
-
-Two million additional GPUs materially expand the amount of frontier-model training and inference capacity scheduled to come online in 2027–28. The agreement also shows Nvidia converting its accelerator lead into a broader position spanning CPUs, networking, models and robotics. For Amazon, the unresolved question is whether demand and utilization will grow fast enough to justify the capital committed before the hardware arrives.
-
-Chinese title: AWS追加采购200万块英伟达GPU，2027年起部署
-Chinese summary: 亚马逊将追加部署200万块Blackwell Ultra及Rubin系列GPU，并把英伟达技术进一步引入AWS云服务和机器人业务。
-
-Sources:
-  - AWS and NVIDIA to Deliver 2 Million Additional GPUs: https://investor.nvidia.com/news/press-release-details/2026/AWS-and-NVIDIA-to-Deliver-2-Million-Additional-GPUs-and-Next-Generation-Infrastructure-for-Agentic-and-Physical-AI/default.aspx
-  - Amazon just tripled its order of Nvidia chips: https://techcrunch.com/2026/08/26/amazon-just-tripled-its-order-of-nvidia-chips-over-surging-demand/
-
 ## Recent radar items
+
+### 2026-09-03
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-03.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-03.html
+
+- 2026-09-02T20:34Z | GitHub on X | GitHub added Copilot integrations for Slack and Microsoft Teams, new models, and a Balanced code-review depth. | 中文：GitHub 为 Copilot 新增 Slack、微软 Teams 集成、新模型及“平衡”代码审查深度。 | https://x.com/github/status/2095248954133016876
+- 2026-09-02T19:06Z | Claude on X | Claude can now operate desktop applications in the background through Claude Cowork and Claude Code on macOS. | 中文：Claude 现可通过 macOS 版 Claude Cowork 和 Claude Code 在后台操作桌面应用。 | https://x.com/claudeai/status/2095226833293685100
+- 2026-09-02T18:41Z | Visual Studio Code on X | VS Code previewed Agent Merge, which addresses review comments, failed checks, and merge conflicts before pull requests land. | 中文：VS Code 预览 Agent Merge，可在合并拉取请求前处理审查意见、失败检查和代码冲突。 | https://x.com/code/status/2095220650507919780
+- 2026-09-02T18:22Z | GitHub Next on X | GitHub Next open-sourced Chopin, a real-time multiplayer environment for teams to plan agent work collaboratively. | 中文：GitHub Next 开源 Chopin，这是供团队实时协作规划智能体工作的多人环境。 | https://x.com/GitHubNext/status/2095215736322953601
+- 2026-09-02T16:04Z | TechCrunch | Enterprise AI automation startup Wonderful raised $550 million at a $5 billion valuation, more than doubling its valuation within six months. | 中文：企业 AI 自动化公司 Wonderful 融资5.5亿美元，估值达50亿美元，半年内增长逾一倍。 | https://techcrunch.com/2026/09/02/wonderful-more-than-doubles-its-valuation-to-5b-in-under-6-months/
+- 2026-09-02T17:09Z | TechCrunch | The US Justice Department backed OpenAI’s fair-use argument for training models on copyrighted material in its dispute with The New York Times. | 中文：美国司法部在 OpenAI 与《纽约时报》的争议中支持其使用版权材料训练模型属于合理使用的主张。 | https://techcrunch.com/2026/09/02/u-s-government-sides-with-openai-on-issue-of-training-llms-on-copyrighted-material/
+- 2026-09-02T14:39Z | Runway on X | Runway introduced Dev MCP for building, debugging, and managing its developer platform directly from compatible coding agents. | 中文：Runway 推出 Dev MCP，开发者可在兼容的编程智能体中构建、调试并管理其开发平台。 | https://x.com/runwayml/status/2095159754414813249
+- 2026-09-02T13:17Z | ElevenLabs on X | ElevenLabs appointed former GitLab executive Ashley Kramer as chief revenue officer to lead global customer deployment and commercial growth. | 中文：ElevenLabs 任命前 GitLab 高管 Ashley Kramer 为首席营收官，负责全球客户部署与商业增长。 | https://x.com/ElevenLabs/status/2095138972422848564
+- 2026-09-02T13:09Z | AI21 Labs on X | AI21 Labs trained lower-cost independent verifiers to improve agent answers, reporting results on Google DeepMind’s FACTS-Search benchmark. | 中文：AI21 Labs 训练了成本更低的独立验证模型，以改进智能体回答，并公布 FACTS-Search 测试结果。 | https://x.com/AI21Labs/status/2095137046717243484
+- 2026-09-02T13:00Z | SiliconANGLE | ZeroDrift launched a service that checks AI-agent-generated customer messages against an organization’s policies before delivery. | 中文：ZeroDrift 推出服务，可在发送前依据企业政策检查 AI 智能体生成的客户消息。 | https://siliconangle.com/2026/09/02/zerodrift-launches-service-to-check-agent-generated-messages-against-company-policies/
+- 2026-09-02T16:31Z | Adobe Firefly on X | Adobe Firefly introduced an AI video upscaler designed to sharpen low-resolution footage, including older personal videos. | 中文：Adobe Firefly 推出 AI 视频增强工具，用于提升低分辨率素材及老旧个人视频的清晰度。 | https://x.com/AdobeFirefly/status/2095187933863002252
+- 2026-09-02T16:01Z | LlamaIndex on X | LlamaIndex released ExtractBench on Kaggle to test schema-guided extraction from documents likely to break downstream agent workflows. | 中文：LlamaIndex 在 Kaggle 发布 ExtractBench，用于测试易导致下游智能体失败的文档结构化抽取。 | https://x.com/llama_index/status/2095180282538135724
+- 2026-09-02T18:28Z | NVIDIA AI on X | The Open Source AI Alliance began transitioning to the Linux Foundation to advance open, practical, and secure AI development. | 中文：开放安全 AI 联盟开始转入 Linux 基金会，以推进开放、实用且安全的 AI 开发。 | https://x.com/NVIDIAAI/status/2095217259610550730
+- 2026-09-02T14:29Z | Unsloth AI on X | Unsloth added MTP support for local Qwen3.8-Flash inference, claiming 1.3–1.7× speedups and up to 170 tokens per second on specified hardware. | 中文：Unsloth 为本地 Qwen3.8-Flash 推理加入 MTP，称特定硬件可提速1.3至1.7倍并达到每秒170词元。 | https://x.com/UnslothAI/status/2095157074112164072
 
 ### 2026-09-02
 
@@ -1124,37 +1136,3 @@ Sources:
 - 2026-08-30T03:32Z | X / Together AI | Together AI said GLM-5.3 Flash costs 17 times less, while full GLM-5.3 is more reliable on first attempts. | 中文：Together AI 表示，GLM-5.3 Flash 成本低 17 倍，而完整版 GLM-5.3 首次尝试的可靠性更高。 | https://x.com/togethercompute/status/2093904558405586996
 - 2026-08-30T02:52Z | X / MiniMax | MiniMax highlighted its collaboration with generative-media platform fal, emphasizing joint execution in bringing creative AI capabilities to market. | 中文：MiniMax 强调了与生成式媒体平台 fal 的合作，突出双方共同推动创意 AI 能力落地。 | https://x.com/MiniMax_AI/status/2093894477090111836
 - 2026-08-30T01:35Z | MarkTechPost | Code-as-World uses an agentic loop to reconstruct real videos as executable MuJoCo physics programs rather than conventional pixel predictions. | 中文：Code-as-World 通过智能体循环，将真实视频重建为可执行的 MuJoCo 物理程序，而非传统像素预测。 | https://www.marktechpost.com/2026/08/29/mirros-code-as-world-executable-world-representations/
-
-### 2026-08-29
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-08-29.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-08-29.html
-
-- 2026-08-28T22:59Z | Fireworks AI | Fireworks said GLM-5.3 improved 50% over GLM-5.2 on its coding benchmark and became available on the platform at launch. | 中文：Fireworks 表示，GLM-5.3 在其代码基准测试中较 GLM-5.2 提升 50%，并于发布首日上线平台。 | https://x.com/FireworksAI_HQ/status/2093473586019549305
-- 2026-08-28T22:25Z | Replit | Replit introduced Growth Kit, a collection of agent skills for cold-email outreach and other tasks involved in turning completed products into businesses. | 中文：Replit 推出 Growth Kit，其中包含冷邮件拓客等智能体技能，帮助用户把已经完成的产品进一步发展为业务。 | https://x.com/Replit/status/2093464976941781127
-- 2026-08-28T21:34Z | Streamlit | Streamlit 1.62 added client-side text-input validation, new input types, layout wrapping controls and public keyboard-shortcut APIs. | 中文：Streamlit 1.62 新增文本输入的客户端验证与输入类型、布局换行控制，以及公开的键盘快捷键接口。 | https://x.com/streamlit/status/2093452072960278832
-- 2026-08-28T20:31Z | MiniMax | MiniMax highlighted Fast H3 v1, an accelerated video-generation implementation developed by Hao AI Lab, NuvaLab and Nvidia’s FastGen teams. | 中文：MiniMax 介绍了由 Hao AI Lab、NuvaLab 与英伟达 FastGen 团队开发的视频生成加速方案 Fast H3 v1。 | https://x.com/MiniMax_AI/status/2093436440869032168
-- 2026-08-28T19:58Z | Artificial Analysis | Perplexity Search’s three context-size configurations took the leading positions on Artificial Analysis’s newly updated Search Index. | 中文：Perplexity Search 的三种上下文规模配置包揽了 Artificial Analysis 最新搜索能力榜单的领先位置。 | https://x.com/ArtificialAnlys/status/2093427938968666138
-- 2026-08-28T18:36Z | AWS Developers | AWS released an agent toolkit that lets coding agents configure infrastructure, including CloudFormation resources, after a one-command setup. | 中文：AWS 发布智能体工具包，完成一条命令的初始化后，编码智能体即可配置包括 CloudFormation 资源在内的云基础设施。 | https://x.com/awsdevelopers/status/2093407500892545057
-- 2026-08-28T17:57Z | Unsloth | Unsloth compressed GLM-5.3 from 1.51 terabytes to 239 gigabytes at two-bit precision, enabling local operation on 256-gigabyte memory systems. | 中文：Unsloth 将 GLM-5.3 以二比特精度从 1.51TB 压缩至 239GB，使其可在拥有 256GB 内存的设备上本地运行。 | https://x.com/UnslothAI/status/2093397494889890050
-- 2026-08-28T17:28Z | GitHub | Vercel open-sourced vgpu, a TypeScript WebGPU library supporting browser, headless Node.js and deterministic test environments with a shared shader implementation. | 中文：Vercel 开源 TypeScript WebGPU 库 vgpu，同一套着色器代码可运行于浏览器、无界面 Node.js 和确定性测试环境。 | https://github.com/vercel-labs/vgpu
-- 2026-08-28T16:48Z | GitHub | GitHub added a Copilot customization hub that brings MCP servers, plugins, skills and canvases together under one tab. | 中文：GitHub 为 Copilot 新增统一定制中心，在一个标签页中集中管理 MCP 服务器、插件、技能与画布。 | https://x.com/github/status/2093380330325409923
-- 2026-08-28T16:48Z | GitHub | GitHub added a Sessions sidebar to Copilot CLI for opening, switching between and managing multiple concurrent agent sessions. | 中文：GitHub 在 Copilot CLI 中新增“会话”侧边栏，用于打开、切换和管理多个并行智能体会话。 | https://x.com/github/status/2093380335241253106
-- 2026-08-28T15:31Z | NVIDIA AI | Nvidia Warp reached 10 million downloads, marking growing adoption of its Python framework for GPU-accelerated simulation, physics and robotics workloads. | 中文：英伟达 Warp 下载量突破一千万，显示其面向 GPU 加速仿真、物理计算和机器人任务的 Python 框架正获得更广泛采用。 | https://x.com/NVIDIAAI/status/2093360947608113363
-- 2026-08-28T15:18Z | Vercel | Vercel introduced Ora, which runs agents against live websites and traces each action to diagnose failed signups, integrations and payments. | 中文：Vercel 推出 Ora，可让智能体在真实网站上执行任务并追踪每一步操作，以诊断注册、集成和支付流程中的故障。 | https://x.com/vercel/status/2093357677003096416
-- 2026-08-28T16:52Z | Luma AI | Luma released an improved upscaling system intended to produce clearer, higher-resolution results from generated images and video. | 中文：Luma 上线改进版放大系统，旨在为生成图像与视频提供更清晰、更高分辨率的输出。 | https://x.com/LumaLabsAI/status/2093381220373594559
-- 2026-08-28T12:46Z | TechCrunch | A federal judge ruled the Pentagon’s designation barring Anthropic from government supply chains unlawful, delivering the company its first victory in the dispute. | 中文：美国联邦法官裁定五角大楼将 Anthropic 排除出政府供应链的认定违法，使 Anthropic 在这场争议中取得首次胜利。 | https://techcrunch.com/2026/08/28/anthropic-gets-its-first-court-win-over-the-pentagons-supply-chain-risk-label/
-- 2026-08-29T09:36Z | The Decoder | LAION released BVD, an open research dataset spanning 80 million videos and 10 million hours of multimodal footage. | 中文：LAION 发布开放研究数据集 BVD，涵盖 8000 万段视频、共计 1000 万小时的多模态素材。 | https://the-decoder.com/laion-drops-massive-open-video-dataset-with-10-million-hours-of-footage-for-ai-research/
-- 2026-08-29T09:25Z | IT之家 | US immigration authorities plan to spend $2 million procuring robotic dogs for enforcement operations. | 中文：美国移民执法部门计划斥资 200 万美元采购机器狗，用于执法行动。 | https://www.ithome.com/0/995/967.htm
-- 2026-08-29T09:35Z | IT之家 | A Canadian creator’s promotion of Claude drew extensive criticism, illustrating growing social resistance to publicly endorsing AI tools. | 中文：一名加拿大创作者推广 Claude 后遭到大量批评，反映公开支持 AI 工具正面临更强的社会抵触。 | https://www.ithome.com/0/995/969.htm
-- 2026-08-29T08:43Z | Meshy on X | Meshy hosted its first Creator Day, bringing 3D creators together for demonstrations, discussion and product feedback. | 中文：Meshy 举办首届创作者日，邀请 3D 创作者参与演示、交流及产品反馈。 | https://x.com/MeshyAI/status/2093620441038696448
-- 2026-08-29T03:18Z | Pika on X | Pika added access to Gemini Omni 1.1 Flash through its API Club. | 中文：Pika 通过其 API Club 接入了 Gemini Omni 1.1 Flash。 | https://x.com/pika_labs/status/2093538707693539453
-- 2026-08-29T03:18Z | Pika on X | Pika compared Gemini Omni 1.1 Flash, Seedance 2.5 and Wan 3.0 using identical product-video inputs. | 中文：Pika 使用完全相同的产品视频输入，对比了 Gemini Omni 1.1 Flash、Seedance 2.5 和 Wan 3.0。 | https://x.com/pika_labs/status/2093538706036834614
-- 2026-08-29T05:31Z | Tencent Hunyuan on X | Tencent compressed Hy4-preview from 1.5 terabytes to roughly 200 GiB using its calibration-guided MIX-STQ1_0 quantization method. | 中文：腾讯利用校准引导的 MIX-STQ1_0 量化方法，将 Hy4-preview 从 1.5TB 压缩至约 200GiB。 | https://x.com/TencentHunyuan/status/2093572224342954019
-- 2026-08-29T00:13Z | Ollama on X | Ollama completed the cloud rollout of GLM 5.3 and GLM 5.3 Flash with US and European hosting and zero data retention. | 中文：Ollama 云端已全面上线 GLM 5.3 和 GLM 5.3 Flash，提供美国及欧洲托管与零数据保留。 | https://x.com/ollama/status/2093492205029908752
-- 2026-08-29T00:13Z | Ollama on X | Ollama published instructions for configuring Claude Desktop to use GLM 5.3 and GLM 5.3 Flash. | 中文：Ollama 发布配置说明，让 Claude Desktop 可以使用 GLM 5.3 和 GLM 5.3 Flash。 | https://x.com/ollama/status/2093492209786212359
-- 2026-08-28T23:51Z | OpenAI Developers on X | OpenAI’s WebMCP Challenge entered its final weekend, with projects due September 3 and an official support session planned. | 中文：OpenAI 的 WebMCP 挑战赛进入最后一个周末，项目须于 9 月 3 日前提交，并将举行官方答疑活动。 | https://x.com/OpenAIDevs/status/2093486538370032050
-- 2026-08-28T23:02Z | Luma AI on X | Luma announced a maker night featuring senior-creator walkthroughs, a shared prompt exercise and in-person creative support. | 中文：Luma 宣布举办创作者之夜，安排资深创意人员演示、统一提示词创作及现场指导。 | https://x.com/LumaLabsAI/status/2093474324032229559
-- 2026-08-28T23:00Z | Replicate on X | Replicate temporarily halved Wan 3.0 generation prices for the weekend. | 中文：Replicate 在本周末限时将 Wan 3.0 的生成价格降低一半。 | https://x.com/replicate/status/2093473739031695762
-- 2026-08-29T02:00Z | Dreamina on X | Dreamina launched weekly Discord activities offering product updates, creator networking and a chance to win 25,000 generation credits. | 中文：Dreamina 启动每周 Discord 活动，提供产品更新、创作者交流以及赢取 2.5 万生成积分的机会。 | https://x.com/dreamina_ai/status/2093519004333654065
-- 2026-08-29T10:00Z | IT之家 | China’s first vehicle-mounted mobile token factory debuted as an experiment in coordinating AI computing workloads with electricity supply. | 中文：中国首个车载移动式词元工厂亮相，用于探索 AI 计算任务与电力供应的协同模式。 | https://www.ithome.com/0/995/975.htm

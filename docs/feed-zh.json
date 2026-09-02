@@ -13,6 +13,119 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-self-hosted-agent-pools.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-self-hosted-agent-pools.html",
+      "title": "Cursor云端智能体可在客户自管机器上运行",
+      "summary": "Cursor新增可弹性扩缩的自管工作节点，代码执行留在企业网络内，推理、规划和调度仍由其云端负责。",
+      "content_text": "## 执行环境进入客户网络\n\nCursor 推出 Self-Hosted Machines，让云端编程智能体可以在客户管理的笔记本、服务器及弹性工作节点池中执行命令。用户界面、模型推理和任务规划仍留在 Cursor 云端，但代码仓库、构建系统及具体命令可以运行在企业现有网络内部。\n\n工作节点通过向外发起的 HTTPS 连接接入 Cursor，无需开放入站端口。智能体需要采取行动时，Cursor 会把工具调用发送给专属节点，由节点修改文件、运行命令，再返回结果。Cursor 表示不会主动连接客户网络。不过，工具输出和会话记录仍需传回其服务用于后续推理，其中可能包含源代码，因此这并不是完全本地化的智能体方案。\n\n客户既可以接入单台个人电脑，也可以建立供多个代码库共享的工作节点池。控制器能够在任务排队时启动更多节点、释放闲置容量，并在收到后续指令时恢复休眠的工作区。Cursor 列出的支持方包括 AWS Lambda、Coder、Cloudflare、Daytona、E2B、Modal、Namespace 和 Vercel。Linux 节点还新增浏览器操控能力，可让智能体点击页面、截取画面并测试网页应用，此前同类能力已支持 Mac。\n\n## 运行环境成为智能体平台的一部分\n\nCursor 称，其云端智能体目前已经生成公司内部超过60%的合并拉取请求。让这些智能体访问私有服务、定制构建流程、GPU 和苹果硬件，解决了企业采用中的一个现实问题：不少高价值软件任务无法在标准化云端沙箱里完整复现。\n\n这项变化意味着，编程智能体的竞争正从模型能力延伸到任务放在哪里运行、如何隔离以及怎样管理计算资源。Cursor 保留推理与调度这一核心控制层，客户则提供机器，并承担更多密钥、容量和隔离责任。企业评估时需要确认每个节点究竟会向外发送什么；执行留在内网确实减少了一类风险，但工具结果仍会传输，数据治理边界并未消失。",
+      "date_published": "2026-09-02T21:07:00.000Z",
+      "date_modified": "2026-09-02T23:00:04.105Z",
+      "tags": [
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cursor-self-hosted-agent-pools.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-self-hosted-agent-pools.html",
+        "source_published_at": "2026-09-02T21:07:00.000Z",
+        "site_published_at": "2026-09-02T23:00:04.105Z",
+        "sources": [
+          {
+            "title": "Run Cloud Agents on Machines You Manage",
+            "url": "https://cursor.com/blog/self-hosted-machines"
+          },
+          {
+            "title": "Self-Hosted Machines",
+            "url": "https://cursor.com/changelog/self-hosted-machines"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-flash-cyber-launch.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-flash-cyber-launch.html",
+      "title": "谷歌发布Gemini 3.8 Flash及网络安全版",
+      "summary": "谷歌同步推出面向大众的智能体模型与受限开放的网络安全版本，覆盖漏洞发现、自动修复和长流程编程任务。",
+      "content_text": "## 同一底座，两套开放方式\n\n谷歌发布 Gemini 3.8 Flash，并同步推出面向网络安全工作的 Gemini 3.8 Flash Cyber。普通版主攻编程、专业分析和长流程智能体任务，现已接入 Gemini API、AI Studio、Gemini Enterprise、Google 搜索 AI Mode、Sheets 以及付费版 Gemini。模型支持多模态输入，上下文窗口为100万 token，单次最多输出6.4万 token。\n\nAPI 首发价格与 Gemini 3.7 Flash 相同：每百万输入 token 0.75美元、每百万输出 token 3.75美元。不过这一价格只维持到12月31日，2027年起将双双翻倍。谷歌同时提醒，模型处理复杂问题时会增加推理步骤和工具调用，因此高强度模式下的实际 token 消耗可能上升。\n\n## 网络防御能力进入实际部署\n\nCyber 版本沿用相同的核心模型，但为防御任务配置了更宽松的安全限制，只向经过审核的机构开放。谷歌称，该模型在覆盖20种编程语言的内部漏洞发现测试中成功率超过70%，在外部 CWE-Bench 自动补丁评测中取得47.2%的 pass@1。Chrome 安全团队测得，其正确补丁数量是更大商业模型的2.6倍；谷歌另一支安全团队还称，它在不到两小时内发现了一项关键底层漏洞。\n\n谷歌通过新设立的 Fairwind 计划管理访问，首批对象包括国家级网络安全机构、关键基础设施运营方和软件维护者。这实际上把同一底座拆成了广泛商用版与受控安全版，以降低强网络能力被滥用的风险。\n\n这次发布的重要性在于，谷歌把接近前沿水平的推理能力下放到高调用量的 Flash 产品线，同时明确展示了未来模型可能按任务风险和客户身份分级开放。不过，开发者仍需按完整任务核算成本：首发价格会到期，模型“更努力”也可能意味着更高的 token 账单。",
+      "date_published": "2026-09-02T16:18:00.000Z",
+      "date_modified": "2026-09-02T23:00:04.105Z",
+      "tags": [
+        "模型",
+        "Agent",
+        "安全"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gemini-flash-cyber-launch.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-flash-cyber-launch.html",
+        "source_published_at": "2026-09-02T16:18:00.000Z",
+        "site_published_at": "2026-09-02T23:00:04.105Z",
+        "sources": [
+          {
+            "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+            "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/"
+          },
+          {
+            "title": "Gemini 3.8 Flash Model Card",
+            "url": "https://deepmind.google/models/model-cards/gemini-3-8-flash/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-spark-update.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-spark-update.html",
+      "title": "Meta发布Muse Spark 1.3，主攻编程智能体",
+      "summary": "Muse Spark 1.3强化长流程编程和智能体任务，但开放权重与最高推理档位均未在发布当天提供。",
+      "content_text": "## 面向智能体任务的模型升级\n\nMeta 通过 Muse Code 和 Meta Model API 发布 Muse Spark 1.3，重点提升持续编程、工具调用以及真实场景中的智能体任务能力。开发者目前可以调用托管模型，但这还不是一次开放权重发布：Meta 只表示可下载权重将在之后推出，没有给出明确时间。\n\n此次上线还把现有推理档位与计算量最高的“max”模式分开。Meta 称，max 模式需要完成额外安全测试后才会开放。这一区别不能忽略，因为发布当天部分最亮眼的第三方成绩来自尚未上线的 max 版本，并不代表开发者现在能够直接使用的配置。\n\nArtificial Analysis 的测试显示，Muse Spark 1.3 max 在 Tau3-Bench Banking 上取得52%，是该机构在这项银行业务智能体评测中记录的最高成绩；已经开放的 xhigh 档位得分为47%。该机构同时认为，xhigh 在相近能力水平上具有较好的成本效率。Meta 保持每百万输入 token 1.25美元、每百万输出 token 4.25美元的价格不变，而本轮提升主要集中在智能体评测，并非所有能力类别都同步大幅增长。\n\n## 发布范围限制了榜单含金量\n\nMuse Spark 1.3让 Meta 在编程智能体市场同时拥有自家工具框架和模型 API，也保留了通过开放权重发展本地生态的可能。这种分阶段发布可以先推动云端采用，再决定何时释放更敏感或资源需求更高的版本。\n\n它最终有多重要，仍取决于 Meta 实际交付什么。托管接口已经提供了可用的新选择，但开发者尚不能审查、微调或自主部署权重；同样，未开放的 max 成绩不应被当作现有产品能力。下一项真正关键的节点，是承诺中的权重能否保持接近托管版的水平，并采用足以支持商业部署的许可条款。",
+      "date_published": "2026-09-02T19:36:00.000Z",
+      "date_modified": "2026-09-02T23:00:04.105Z",
+      "tags": [
+        "模型",
+        "Agent"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-spark-update.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-spark-update.html",
+        "source_published_at": "2026-09-02T19:36:00.000Z",
+        "site_published_at": "2026-09-02T23:00:04.105Z",
+        "sources": [
+          {
+            "title": "Muse Spark 1.3",
+            "url": "https://developer.meta.com/ai/models/muse-spark/"
+          },
+          {
+            "title": "Meta AI Announces Muse Spark 1.3",
+            "url": "https://x.com/AIatMeta/status/2095234385129963666"
+          },
+          {
+            "title": "Artificial Analysis Muse Spark 1.3 Results",
+            "url": "https://x.com/ArtificialAnlys/status/2095247793183166917"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-agentic-video-understanding.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-agentic-video-understanding.html",
       "title": "Gemini 推出智能体式视频理解能力",
@@ -1766,127 +1879,6 @@
           {
             "title": "Sakana AI Defense Policy",
             "url": "https://sakana.ai/company-info/defense-policy.html"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/xiao-lu-launches-cooking-ai.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/xiao-lu-launches-cooking-ai.html",
-      "title": "橡鹿发布烹饪多模态模型及两款自主炒菜机器人",
-      "summary": "橡鹿机器人推出烹饪多模态基础模型及两款机器人，可观察锅内食材变化并实时调整火力、时间和调料投放。",
-      "content_text": "## 从照菜谱执行转向看状态决策\n\n北京橡鹿机器人在2026世界机器人大会发布多模态烹饪AI基座“CookingMuse厨启”，并推出两款搭载该系统的机器人。新品试图把商用烹饪自动化从复现固定程序，推进到根据锅内实际状态动态调整。\n\n据公司介绍，CookingMuse融合厨房视觉、烹饪过程数据和决策能力。首款落地硬件“3K视觉AI炒菜机器人”配备三颗4000万像素工业相机，以每秒30帧采集锅内画面；系统发现食材含水量、温度、投放位置或解冻程度偏离预设条件时，可以调整加热功率、炒制时长、搅拌速度和调料用量。\n\n现场演示中，团队向麻婆豆腐额外加水后，机器人延长收汁过程；面对没有完全解冻的肉类，系统则重新计算炒制路径。这些测试意在证明机器具备临场适应能力，而不是机械执行菜谱。不过，相关效果目前主要来自公司展示，尚缺少独立评测。\n\n## 把无人后厨装进可移动设备\n\n橡鹿同时发布具身烹饪机器人“现炒方舟”。这是一套可移动的微型无人后厨，整合净菜冷藏、双锅并行炒制、供碗出餐、油烟处理和设备自清洁，主要面向办公园区、大学、展会和音乐节等不便建设传统厨房的场景。\n\n公司称，现有炒菜机器人已经进入近350座国内城市及20多个海外国家和地区，覆盖超过1.3万家门店；其菜谱系统积累了近百万道数字化菜谱。这一装机规模有望形成“设备采集数据、数据改进模型、模型再升级设备”的闭环，但公司尚未公布新品价格、上市时间，也没有提供第三方验证的出品质量和可靠性数据。\n\n这次发布的重要性在于，厨房是具身智能的高难度环境：食材状态持续变化，安全要求严格，细微误差也会直接影响成品。如果橡鹿能够在规模化运营中复现现场表现，它将证明垂直多模态模型可以通过实体部署创造价值，而不只停留在通用对话能力上。",
-      "date_published": "2026-08-23T10:01:00.000Z",
-      "date_modified": "2026-08-23T11:00:03.637Z",
-      "tags": [
-        "产业",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/xiao-lu-launches-cooking-ai.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/xiao-lu-launches-cooking-ai.html",
-        "source_published_at": "2026-08-23T10:01:00.000Z",
-        "site_published_at": "2026-08-23T11:00:03.637Z",
-        "sources": [
-          {
-            "title": "WRC 2026｜从执行菜谱到理解烹饪，橡鹿烹饪机器人再进化",
-            "url": "https://tech.gmw.cn/2026-08/23/content_38958334.htm"
-          },
-          {
-            "title": "AI 机器人进厨房：橡鹿机器人全球首发三款烹饪机器人产品",
-            "url": "https://www.ithome.com/0/993/248.htm"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-mythos-security-scans.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-mythos-security-scans.html",
-      "title": "Anthropic将Mythos 5接入企业代码安全扫描",
-      "summary": "Claude Enterprise客户可通过Claude Security使用Mythos 5分析代码漏洞，同时不会获得受限模型的直接访问权。",
-      "content_text": "## 通过受控产品开放敏感能力\n\nAnthropic已将Claude Security的代码库扫描切换至Claude Mythos 5。Claude Security仍以公开测试形式面向Claude Enterprise客户提供；Anthropic当前的产品说明显示，所有Enterprise客户均可使用Mythos 5扫描。管理员可在管理控制台启用该服务，随后用户能够选择一个GitHub代码库进行分析。系统会跨文件追踪数据流和控制关系，列出疑似漏洞及依据，并生成可在网页版Claude Code中打开的修复建议。\n\n这并不意味着企业客户获得了Mythos 5的无限制调用权。Anthropic把模型封装在用途明确的安全工作流之后，从而限制输入、输出和可执行操作。客户在审查或落实补丁时，仍使用其组织在Claude Code中原本获准使用的模型。\n\nAnthropic还向Claude Code用户提供测试版Claude Security插件，但该插件使用的是各用户Claude Code账户已有的模型。由Mythos 5驱动的扫描仍仅限Claude.ai上的Claude Security应用，并面向Enterprise客户开放，因此这两条使用路径不能视为同一种模型访问权限。\n\nMythos 5此前被Anthropic定位为其网络安全和生物研究能力最强的模型。它与面向普通用户的Claude Fable 5采用相同底层模型，但针对获批的敏感领域任务减少了部分限制，因此直接访问仍限于获批合作方及可信访问计划参与者。Claude Security提供了一条覆盖范围更广的防御能力交付渠道，同时避免把底层模型变成通用接口。\n\nAnthropic表示，这次接入只是扩大防守方使用范围的多个步骤之一，公司还在与安全厂商推进更多产品集成。不过，扫描结论仍需人工确认：自动化系统可能误判漏洞是否真正可利用、忽略部署环境，或提出会引入新问题的修复方案。\n\n## 为何重要\n\n这是前沿实验室分发高风险能力的一种重要新模式。除了全面开放API或只批准少量可信用户之外，实验室还可以把敏感模型封装进带有日志、固定工具和受限输出的专用应用。\n\n若实践证明有效，这种方式可能扩展到网络攻击、生物研究等具有双重用途的能力。企业安全市场也可能从通用编程助手，转向能够理解整个代码库关系的推理系统。真正的检验标准，是Mythos能否发现具有实际影响、此前未知的漏洞，同时把误报控制在安全团队能够处理的范围内。",
-      "date_published": "2026-08-21T17:23:00.000Z",
-      "date_modified": "2026-08-21T23:00:03.982Z",
-      "tags": [
-        "安全",
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-mythos-security-scans.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-mythos-security-scans.html",
-        "source_published_at": "2026-08-21T17:23:00.000Z",
-        "site_published_at": "2026-08-21T23:00:03.982Z",
-        "sources": [
-          {
-            "title": "Bringing the cybersecurity capabilities of Claude Mythos 5 to more defenders",
-            "url": "https://claude.com/blog/bringing-claude-mythos-5-to-more-defenders"
-          },
-          {
-            "title": "Getting started with Claude Security",
-            "url": "https://academy.claude.com/tutorials/getting-started-with-claude-security"
-          },
-          {
-            "title": "Claude Mythos 5",
-            "url": "https://www.anthropic.com/claude/mythos"
-          },
-          {
-            "title": "Claude Security",
-            "url": "https://claude.com/product/claude-security"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-avo-arc-agi-three.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-avo-arc-agi-three.html",
-      "title": "英伟达AVO完成ARC-AGI-3全部公开关卡",
-      "summary": "英伟达称其通用编程智能体完成ARC-AGI-3的183个公开关卡，智能体框架对最终表现的作用进一步凸显。",
-      "content_text": "## 公开环境取得满分\n\n英伟达表示，其AVO编程智能体完成了ARC-AGI-3全部25个公开环境、共183个关卡，得分达到100%。这项交互式评测由一组陌生的视觉游戏组成，不会直接告诉智能体目标；系统需要通过探索、反馈和连续操作自行推断规则。\n\nAVO被定位为通用编程智能体，并非专为某个游戏评测训练的单一模型。它会持续观察环境、制定计划、编写或修改解决方案、检查执行结果，并将有用信息写入记忆。英伟达认为，正是这套包围模型的智能体运行框架，使系统能够在长流程中利用执行反馈不断修正策略。\n\n这项成绩需要谨慎解读。ARC-AGI-3的25个公开环境属于所有开发者均可查看的示例，评测组织方明确将其与不可见的私有测试集区分开来；此前也已有其他研究系统在公开环境达到100%。因此，AVO证明的是它能够掌握已经发布的关卡，并不等同于在完整评测中获得满分，更不能据此宣称实现了通用智能。\n\n不过，公开关卡仍是研究探索、记忆和错误恢复机制的受控环境。英伟达还称，AVO完成任务所需的环境操作少于一个对比系统，说明编排方式不仅影响能否成功，也可能影响效率。其泛化能力仍需通过独立复现和私有环境成绩检验。\n\n## 为何重要\n\n只比较底层模型，越来越难解释智能体产品的真实差距。记忆策略、工具选择、结果验证、状态追踪和重试机制，都可能让同一个模型呈现截然不同的任务表现。\n\nAVO的结果进一步说明，行业投入正在向智能体框架和运行基础设施倾斜，尤其是需要长时间自主工作的场景。它也提醒评测发布者必须清楚说明成绩来自公开开发集还是隐藏测试集。对用户而言，关键问题已不只是哪个模型分数更高，而是哪套完整系统能以合理成本，在真正陌生的任务上稳定复现能力。",
-      "date_published": "2026-08-21T13:01:00.000Z",
-      "date_modified": "2026-08-21T23:00:03.982Z",
-      "tags": [
-        "Agent",
-        "研究"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/nvidia-avo-arc-agi-three.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-avo-arc-agi-three.html",
-        "source_published_at": "2026-08-21T13:01:00.000Z",
-        "site_published_at": "2026-08-21T23:00:03.982Z",
-        "sources": [
-          {
-            "title": "NVIDIA AVO completes ARC-AGI-3 public environments",
-            "url": "https://x.com/NVIDIAAI/status/2090786258981466231"
-          },
-          {
-            "title": "Nvidia says the harness is the real hero",
-            "url": "https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero/"
-          },
-          {
-            "title": "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence",
-            "url": "https://arxiv.org/abs/2603.24621"
           }
         ]
       }

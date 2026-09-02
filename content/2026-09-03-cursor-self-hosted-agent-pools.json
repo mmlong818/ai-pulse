@@ -1,0 +1,29 @@
+{
+  "slug": "cursor-self-hosted-agent-pools",
+  "title": "Cursor Lets Cloud Agents Run on Managed Machines",
+  "summary": "Cursor adds scalable worker pools across corporate infrastructure while retaining its cloud-based planning, inference and orchestration layer.",
+  "body": "## Execution moves inside the customer network\n\nCursor introduced Self-Hosted Machines that allow its cloud agents to execute commands on customer-managed laptops, servers and dynamically scaled worker pools. The agent interface, inference and planning remain in Cursor’s cloud, but repositories, build systems and command execution can sit inside an organization’s existing network.\n\nA worker establishes an outbound HTTPS connection to Cursor, avoiding inbound firewall access. When an agent requests an action, Cursor sends the tool call to a dedicated worker, which edits files, runs commands and returns results. Cursor says it never initiates a connection into the customer network. However, tool outputs and transcripts still travel through its service for inference and may contain source code, so the architecture is not equivalent to a fully local agent.\n\nTeams can attach an individual machine or create pools shared across repositories. A controller can start more workers when requests queue, release idle capacity and restore hibernated workspaces when follow-up instructions arrive. Cursor lists AWS Lambda, Coder, Cloudflare, Daytona, E2B, Modal, Namespace and Vercel among supported infrastructure and sandbox providers. Linux workers also gain browser control, joining existing Mac support and enabling agents to click, capture screenshots and test web applications.\n\n## The environment becomes part of the agent platform\n\nCursor says cloud agents now generate more than 60% of the pull requests merged internally. Giving comparable agents access to private services, bespoke build pipelines, GPUs and Apple hardware addresses a practical barrier to enterprise adoption: many valuable software tasks cannot be reproduced inside a generic hosted sandbox.\n\nThe move matters because coding-agent competition is expanding from model quality into workload placement, isolation and fleet operations. Cursor retains the high-value control plane while customers supply the machines and absorb more responsibility for credentials, capacity and containment. Enterprises considering the feature will therefore need to examine exactly what leaves each worker. Keeping execution inside the network reduces one class of exposure, but transmitted tool results mean it does not eliminate the data-governance boundary.",
+  "title_zh": "Cursor云端智能体可在客户自管机器上运行",
+  "summary_zh": "Cursor新增可弹性扩缩的自管工作节点，代码执行留在企业网络内，推理、规划和调度仍由其云端负责。",
+  "body_zh": "## 执行环境进入客户网络\n\nCursor 推出 Self-Hosted Machines，让云端编程智能体可以在客户管理的笔记本、服务器及弹性工作节点池中执行命令。用户界面、模型推理和任务规划仍留在 Cursor 云端，但代码仓库、构建系统及具体命令可以运行在企业现有网络内部。\n\n工作节点通过向外发起的 HTTPS 连接接入 Cursor，无需开放入站端口。智能体需要采取行动时，Cursor 会把工具调用发送给专属节点，由节点修改文件、运行命令，再返回结果。Cursor 表示不会主动连接客户网络。不过，工具输出和会话记录仍需传回其服务用于后续推理，其中可能包含源代码，因此这并不是完全本地化的智能体方案。\n\n客户既可以接入单台个人电脑，也可以建立供多个代码库共享的工作节点池。控制器能够在任务排队时启动更多节点、释放闲置容量，并在收到后续指令时恢复休眠的工作区。Cursor 列出的支持方包括 AWS Lambda、Coder、Cloudflare、Daytona、E2B、Modal、Namespace 和 Vercel。Linux 节点还新增浏览器操控能力，可让智能体点击页面、截取画面并测试网页应用，此前同类能力已支持 Mac。\n\n## 运行环境成为智能体平台的一部分\n\nCursor 称，其云端智能体目前已经生成公司内部超过60%的合并拉取请求。让这些智能体访问私有服务、定制构建流程、GPU 和苹果硬件，解决了企业采用中的一个现实问题：不少高价值软件任务无法在标准化云端沙箱里完整复现。\n\n这项变化意味着，编程智能体的竞争正从模型能力延伸到任务放在哪里运行、如何隔离以及怎样管理计算资源。Cursor 保留推理与调度这一核心控制层，客户则提供机器，并承担更多密钥、容量和隔离责任。企业评估时需要确认每个节点究竟会向外发送什么；执行留在内网确实减少了一类风险，但工具结果仍会传输，数据治理边界并未消失。",
+  "tags": [
+    "Agents",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Run Cloud Agents on Machines You Manage",
+      "url": "https://cursor.com/blog/self-hosted-machines"
+    },
+    {
+      "title": "Self-Hosted Machines",
+      "url": "https://cursor.com/changelog/self-hosted-machines"
+    }
+  ],
+  "featured": false,
+  "cat_take_zh": "执行留在内网却仍回传工具结果，Cursor卖的是控制平面而非纯本地化。",
+  "cat_take_en": "Tool results still return to Cursor, making this a customer-hosted execution layer rather than a fully local agent.",
+  "date": "2026-09-03",
+  "published": "2026-09-02T21:07:00Z",
+  "published_at": "2026-09-02T23:00:04.105Z"
+}
