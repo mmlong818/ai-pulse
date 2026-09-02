@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MiniMax以轻量训练将H3改造成交互式世界引擎 — Uncle Cat AI Radar</title>
+<meta name="description" content="MiniMax用8000条样本和不足千分之二的可训练参数，将H3视频模型中的动态知识转化为可交互环境。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/hailuo-h3-interactive-world-adapter.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/hailuo-h3-interactive-world-adapter.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/hailuo-h3-interactive-world-adapter.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/hailuo-h3-interactive-world-adapter.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="MiniMax以轻量训练将H3改造成交互式世界引擎 — Uncle Cat AI Radar">
+<meta property="og:description" content="MiniMax用8000条样本和不足千分之二的可训练参数，将H3视频模型中的动态知识转化为可交互环境。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/hailuo-h3-interactive-world-adapter.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MiniMax以轻量训练将H3改造成交互式世界引擎 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="MiniMax用8000条样本和不足千分之二的可训练参数，将H3视频模型中的动态知识转化为可交互环境。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="MiniMax以轻量训练将H3改造成交互式世界引擎 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"MiniMax以轻量训练将H3改造成交互式世界引擎","item":"https://mmlong818.github.io/ai-pulse/zh/articles/hailuo-h3-interactive-world-adapter.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/hailuo-h3-interactive-world-adapter.html#article","headline":"MiniMax以轻量训练将H3改造成交互式世界引擎","description":"MiniMax用8000条样本和不足千分之二的可训练参数，将H3视频模型中的动态知识转化为可交互环境。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/hailuo-h3-interactive-world-adapter.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/hailuo-h3-interactive-world-adapter.html"},"datePublished":"2026-09-02T10:22:00.000Z","dateModified":"2026-09-02T11:00:04.296Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["研究","AIGC","Agent"],"keywords":"研究, AIGC, Agent","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://x.com/Hailuo_AI/status/2095094950757380257"],"about":[{"@type":"Thing","name":"研究"},{"@type":"Thing","name":"AIGC"},{"@type":"Thing","name":"Agent"}]}]}</script>
+</head>
+<body data-slug="hailuo-h3-interactive-world-adapter" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/hailuo-h3-interactive-world-adapter.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-09-02T10:22:00Z">2026年9月2日 18:22</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/aigc.html">AIGC</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>MiniMax以轻量训练将H3改造成交互式世界引擎</h1>
+  <p class="standfirst">MiniMax用8000条样本和不足千分之二的可训练参数，将H3视频模型中的动态知识转化为可交互环境。</p>
+  <h2>从生成视频转向响应操作</h2><p>MiniMax旗下海螺团队展示了一项实验性改造：把现有H3视频生成模型转化为可交互的世界模型。团队称，整个训练只使用8000条样本，并仅更新H3模型0.199%的参数，从而保留绝大部分原有模型，同时重新调用其对运动和场景变化的内部表征。</p><p>普通视频模型根据提示生成一段固定影像，这个改造后的系统则接收用户操作，并继续生成与操作相符的环境变化。任务由影视合成变成了有状态的模拟：场景不仅要改变，还要在连续交互中维持物体、空间关系和视觉历史的一致性。</p><p>这项工作意味着，大型视频生成器内部可能已经隐含了一部分世界模型能力。模型从海量视频中学习镜头运动、物体移动、接触关系和场景演化规律；通过一个规模较小的可训练接口，这些规律或许可以被直接调动，无需重新训练一套独立的交互模型。</p><h2>现有证据仍属初步</h2><p>MiniMax披露了样本规模和可训练参数占比，但尚未提供足以独立评估延迟、可用动作范围、连续运行时长和失败率的信息。系统如何应对陌生场景、不可逆操作，以及长时间交互中不断累积的偏差，也仍不清楚。因此，这次展示证明的是技术路径具有可行性，还不能等同于可投入生产的游戏引擎或通用物理模拟器。</p><h2>为何重要</h2><p>如果这种转换方法能够稳定迁移，视频模型厂商便可能把昂贵的生成底座复用于游戏、智能体训练环境和具身模拟。真正关键的是极小的适配成本：交互能力可能成为叠加在视频模型之上的扩展层，而不必发展成完全独立的模型门类。这有望缩短世界模型产品的开发周期，但最终价值仍取决于操控精度和状态持久性，而不只是画面是否逼真。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://x.com/Hailuo_AI/status/2095094950757380257" rel="noopener" target="_blank">Hailuo H3 Interactive World Demonstration</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/gemini-agentic-video-understanding.html">Gemini 推出智能体式视频理解能力</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-voice-transcribe.html">Meta 推出实时语音模型 Muse Voice Transcribe</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/world-labs-atlas-model.html">World Labs 发布空间基础模型 Atlas</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

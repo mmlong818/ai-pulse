@@ -49,6 +49,39 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/hailuo-h3-interactive-world-adapter.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/hailuo-h3-interactive-world-adapter.html",
+      "title": "MiniMax以轻量训练将H3改造成交互式世界引擎",
+      "summary": "MiniMax用8000条样本和不足千分之二的可训练参数，将H3视频模型中的动态知识转化为可交互环境。",
+      "content_text": "## 从生成视频转向响应操作\n\nMiniMax旗下海螺团队展示了一项实验性改造：把现有H3视频生成模型转化为可交互的世界模型。团队称，整个训练只使用8000条样本，并仅更新H3模型0.199%的参数，从而保留绝大部分原有模型，同时重新调用其对运动和场景变化的内部表征。\n\n普通视频模型根据提示生成一段固定影像，这个改造后的系统则接收用户操作，并继续生成与操作相符的环境变化。任务由影视合成变成了有状态的模拟：场景不仅要改变，还要在连续交互中维持物体、空间关系和视觉历史的一致性。\n\n这项工作意味着，大型视频生成器内部可能已经隐含了一部分世界模型能力。模型从海量视频中学习镜头运动、物体移动、接触关系和场景演化规律；通过一个规模较小的可训练接口，这些规律或许可以被直接调动，无需重新训练一套独立的交互模型。\n\n## 现有证据仍属初步\n\nMiniMax披露了样本规模和可训练参数占比，但尚未提供足以独立评估延迟、可用动作范围、连续运行时长和失败率的信息。系统如何应对陌生场景、不可逆操作，以及长时间交互中不断累积的偏差，也仍不清楚。因此，这次展示证明的是技术路径具有可行性，还不能等同于可投入生产的游戏引擎或通用物理模拟器。\n\n## 为何重要\n\n如果这种转换方法能够稳定迁移，视频模型厂商便可能把昂贵的生成底座复用于游戏、智能体训练环境和具身模拟。真正关键的是极小的适配成本：交互能力可能成为叠加在视频模型之上的扩展层，而不必发展成完全独立的模型门类。这有望缩短世界模型产品的开发周期，但最终价值仍取决于操控精度和状态持久性，而不只是画面是否逼真。",
+      "date_published": "2026-09-02T10:22:00.000Z",
+      "date_modified": "2026-09-02T11:00:04.296Z",
+      "tags": [
+        "研究",
+        "AIGC",
+        "Agent"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/hailuo-h3-interactive-world-adapter.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/hailuo-h3-interactive-world-adapter.html",
+        "source_published_at": "2026-09-02T10:22:00.000Z",
+        "site_published_at": "2026-09-02T11:00:04.296Z",
+        "sources": [
+          {
+            "title": "Hailuo H3 Interactive World Demonstration",
+            "url": "https://x.com/Hailuo_AI/status/2095094950757380257"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-voice-transcribe.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-voice-transcribe.html",
       "title": "Meta 推出实时语音模型 Muse Voice Transcribe",
@@ -116,6 +149,47 @@
           {
             "title": "Path to Astra: critical capabilities and frontier safeguards",
             "url": "https://openai.com/index/path-to-astra"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen-max-code-arena-lead.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen-max-code-arena-lead.html",
+      "title": "阿里升级Qwen3.8-Max，登顶网页开发竞技场",
+      "summary": "阿里发布Qwen3.8-Max-0902，在保留百万上下文与多模态能力的同时，登上Code Arena网页开发榜首。",
+      "content_text": "## 旗舰模型进一步强化\n\n阿里通义千问发布Qwen3.8-Max-0902，这是其2.4万亿参数旗舰模型的新版API快照。模型继续提供100万词元上下文，并原生接收文本、图像和视频输入，重点提升编程、科研以及需要长期连续执行的智能体任务。\n\n此次更新上线的是API模型，并非新的开放权重检查点。QwenCloud显示，其最大输入和输出分别约为99.1万和13.1万词元，并支持函数调用、结构化输出以及网页搜索、内容提取、代码执行和图像检索等内置工具。标准价格维持每百万输入词元2美元、每百万输出词元6美元；显式缓存读取价格为每百万词元0.17美元。\n\n## 编程榜单成为最大看点\n\n在独立评测平台Code Arena的WebDev榜单上，Qwen3.8-Max-0902以1691分排名第一，比上一版Qwen3.8-Max高22分，领先Claude Opus 5 Max三分、领先Kimi K3 Max十七分。按每百万词元约5美元的综合价格计算，它同时进入该榜单的成本—性能前沿。\n\n该榜单通过对生成的网页开发成果进行成对比较，比孤立问答测试更贴近智能体编程。不过，这一结果尚不足以证明Qwen在软件维护、终端操作或生产环境可靠性上全面领先。阿里公布的多项智能体编程成绩同样显示明显进步，但仍有待更广泛的独立复现。\n\n## 为何重要\n\n这次发布增强的是中国厂商在高端托管模型市场的竞争力，而非开放权重生态。领先的编程成绩、多模态输入、超长上下文和积极定价相结合，为软件智能体开发者增加了一个有分量的供应商选择。更值得持续观察的是，这22分的提升能否延伸到真实代码库中的长时间工作；在那里，出错后的恢复能力和工具调用稳定性，通常比榜首的微小分差更关键。",
+      "date_published": "2026-09-02T02:00:00.000Z",
+      "date_modified": "2026-09-02T11:00:04.296Z",
+      "tags": [
+        "模型",
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/qwen-max-code-arena-lead.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen-max-code-arena-lead.html",
+        "source_published_at": "2026-09-02T02:00:00.000Z",
+        "site_published_at": "2026-09-02T11:00:04.296Z",
+        "sources": [
+          {
+            "title": "Qwen3.8-Max-0902 Release Announcement",
+            "url": "https://x.com/Alibaba_Qwen/status/2094968708288680276"
+          },
+          {
+            "title": "Qwen3.8-Max-0902 Model Page",
+            "url": "https://www.qwencloud.com/models/qwen3.8-max-0902"
+          },
+          {
+            "title": "Code Arena WebDev Leaderboard Announcement",
+            "url": "https://x.com/arena/status/2094979331420504491"
           }
         ]
       }
@@ -1813,83 +1887,6 @@
           {
             "title": "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence",
             "url": "https://arxiv.org/abs/2603.24621"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-cuts-sol-pricing.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-cuts-sol-pricing.html",
-      "title": "OpenAI将GPT-5.6 Sol价格下调逾两成，为期三个月",
-      "summary": "OpenAI下调旗舰模型的API与用量额度价格，并补充支出管控功能，前沿模型竞争进一步转向推理成本。",
-      "content_text": "## 降价立即生效，但设有三个月期限\n\nOpenAI宣布，GPT-5.6 Sol的API及用量额度价格下调超过20%，新价格将维持三个月。调整已经面向API用户生效，并在Codex和ChatGPT Work中逐步上线；Pro、Plus和Business订阅原有的使用额度不变。\n\n此次调整针对的是推理服务价格，模型本身并未更换。开发者因此无需迁移应用，也不必牺牲上下文长度或能力等级，就能以更低单价继续使用同一款前沿模型。OpenAI同时增加了组织级和项目级月度预算上限、预警阈值，以及按API密钥查看用量和支出的功能，方便企业判断具体由哪些应用产生费用。\n\n多家开发平台也在跟进促销。Cognition称，调价后Sol已成为Devin桌面端和命令行工具中价格最低的前沿模型；GitHub等平台则推出了各自的阶段性优惠。这些渠道促销与OpenAI的基础价格调整并非同一件事，结束时间也可能不同。\n\n## 为何重要\n\n对于需要长时间运行、反复尝试并自行验证结果的编程或研究智能体，推理费用直接决定产品能否规模化。超过两成的降幅对这类工作负载的影响，远大于偶尔使用的聊天场景，也会迫使Anthropic、谷歌及中国模型厂商更多围绕“完成一项任务的总成本”竞争，而不只是比较每百万词元的标价。\n\n三个月期限同时意味着，这也是一次需求弹性测试。OpenAI可以观察降价带来的新增调用量能否抵消单价下降，开发者则获得了试验高成本工作流的窗口。需要警惕的是，企业不应直接按促销价格设计长期商业模型，否则优惠结束后可能面临成本骤升。",
-      "date_published": "2026-08-21T19:34:00.000Z",
-      "date_modified": "2026-08-21T23:00:03.982Z",
-      "tags": [
-        "模型",
-        "产业",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-cuts-sol-pricing.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-cuts-sol-pricing.html",
-        "source_published_at": "2026-08-21T19:34:00.000Z",
-        "site_published_at": "2026-08-21T23:00:03.982Z",
-        "sources": [
-          {
-            "title": "OpenAI GPT-5.6 Sol pricing announcement",
-            "url": "https://x.com/OpenAI/status/2090885187634905500"
-          },
-          {
-            "title": "OpenAI API usage and spend controls",
-            "url": "https://x.com/OpenAIDevs/status/2090903221636338057"
-          },
-          {
-            "title": "GPT-5.6 Sol model documentation",
-            "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-ruby-hdr-video.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-ruby-hdr-video.html",
-      "title": "Runway推出Ruby，将生成视频转为专业HDR母版",
-      "summary": "Runway新模型可把上传或生成的SDR视频转换为高位深HDR文件，进一步进入专业调色与后期制作流程。",
-      "content_text": "## 生成视频开始进入专业收尾环节\n\nRunway推出Ruby模型，可将标准动态范围视频转换为高动态范围输出。它既能处理用户已经上传的素材，也能转换Runway平台生成的视频，并可导出最高16位EXR图像序列，以及10位或12位ProRes、HEVC文件。\n\nRuby支持BT.2020色彩空间，并覆盖PQ、HLG等专业传递函数。这些规格能够承载比普通网络视频更宽的亮度和色彩范围；EXR序列则提供视觉特效、合成和调色流程所需的高位深及逐帧控制能力。根据Runway当前的产品文档，Ruby面向Max及以上套餐用户和全部Runway Dev账户开放。\n\nRuby并不是以文本生成视频为核心的新模型，而是瞄准制作链条的后段：把SDR素材转换成能够进入专业剪辑、合成和交付系统的文件。这也决定了它的评价标准。可靠的HDR转换需要补充原始素材未完整记录的高光与色彩信息，同时避免相邻画面出现亮度跳变、光晕或偏色。\n\n目前尚无独立测试证明，Ruby转换的画面能够保留与原生HDR拍摄或渲染素材相同的场景信息。因此，其输出更适合被理解为模型对SDR输入的重新生成与扩展，而不是恢复摄像机原本捕获但遗失的数据。\n\n## 为何重要\n\n生成视频厂商过去主要围绕提示词遵循、运动表现和画面质量竞争。Ruby把竞争推进到后期制作基础设施：能否兼容行业既有格式，往往决定AI视频只能用于社交媒体样片，还是能够进入正式项目。\n\n对制作团队而言，它有望缩短AI生成片段进入调色或合成软件的路径，减少额外转换环节。更广泛地看，AIGC平台正从单纯生成素材，扩展为覆盖完整制作流程的工具。Ruby能否形成长期价值，将取决于跨帧稳定性、色彩管理的可预测性，以及专业调色师是否敢于把它纳入真实项目。",
-      "date_published": "2026-08-21T14:24:00.000Z",
-      "date_modified": "2026-08-21T23:00:03.982Z",
-      "tags": [
-        "AIGC",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/runway-ruby-hdr-video.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-ruby-hdr-video.html",
-        "source_published_at": "2026-08-21T14:24:00.000Z",
-        "site_published_at": "2026-08-21T23:00:03.982Z",
-        "sources": [
-          {
-            "title": "Introducing Runway Ruby",
-            "url": "https://x.com/runwayml/status/2090807248402682101"
-          },
-          {
-            "title": "Runway Ruby availability and export formats",
-            "url": "https://x.com/runwayml/status/2090861012488774008"
           }
         ]
       }
