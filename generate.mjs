@@ -12,8 +12,11 @@ const COUNT = Number(process.argv[2] || 6);
 const RADAR_COUNT = Number(process.env.AIPULSE_RADAR_COUNT || 14);
 const WINDOW_H = Number(process.env.AIPULSE_WINDOW_HOURS || 24); // 采集时间窗（小时），与站点「过去 24 小时」口径一致
 const SKIP_RADAR = process.env.AIPULSE_SKIP_RADAR === '1';
-// 按北京日期归档：早班（7:00）与晚班（19:00）落到同一天的文件里
-const today = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
+// 按北京日期归档：早班（7:00）与晚班（19:00）落到同一天的文件里；补跑时服从指定刊期。
+const actualToday = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
+const forcedEdition = (process.env.AIPULSE_FORCE_EDITION || process.env.AIPULSE_EDITION || '').toLowerCase();
+const forcedEditionDate = process.env.AIPULSE_EDITION_DATE || actualToday;
+const today = forcedEditionDate;
 // 可选采集截止时间：AIPULSE_CUTOFF（ISO 格式，如 2026-07-22T18:00:00+08:00），只收此前发布的新闻
 const CUTOFF = process.env.AIPULSE_CUTOFF ? new Date(process.env.AIPULSE_CUTOFF) : null;
 const CUTOFF_NOTE = CUTOFF
@@ -21,8 +24,6 @@ const CUTOFF_NOTE = CUTOFF
   : '';
 // 班次编辑方针：晚班覆盖北京白天 = 美国深夜 + 欧洲上午，全球重磅天然少——
 // 主动倾斜亚洲时段动态，不够成色不硬凑（早班无此限制）
-const forcedEdition = (process.env.AIPULSE_FORCE_EDITION || process.env.AIPULSE_EDITION || '').toLowerCase();
-const forcedEditionDate = process.env.AIPULSE_EDITION_DATE || today;
 const isEvening = forcedEdition === 'evening'
   ? true
   : forcedEdition === 'morning'

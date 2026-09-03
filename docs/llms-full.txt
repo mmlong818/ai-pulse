@@ -113,6 +113,38 @@ Sources:
   - Meta AI Announces Muse Spark 1.3: https://x.com/AIatMeta/status/2095234385129963666
   - Artificial Analysis Muse Spark 1.3 Results: https://x.com/ArtificialAnlys/status/2095247793183166917
 
+### Perplexity Announces Lily for Faster Qwen Inference on Macs
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/perplexity-lily-apple-silicon-inference.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-lily-apple-silicon-inference.html
+- Source timestamp: 2026-09-03T06:57:00.000Z
+- Site timestamp: 2026-09-03T11:00:00.000Z
+- Tags: Open Source, Models, Industry
+
+The specialized Rust and Metal engine runs Qwen3.6-35B-A3B up to 1.35 times faster than MLX-LM on an M5 Max, according to Perplexity.
+
+## A purpose-built local engine
+
+Perplexity has announced Lily, a compact inference server designed exclusively for the Qwen3.6-35B-A3B model on Apple silicon, and says it will open-source the engine soon. Lily combines a Rust runtime with custom Metal kernels and exposes a minimal OpenAI-compatible chat-completions interface. PyTorch and Apple’s general-purpose MLX framework are not part of its execution path.
+
+Lily currently accepts one specific 4-bit checkpoint. Qwen3.6-35B-A3B has 35 billion parameters but activates roughly 3 billion per token, routing each token through eight of 256 experts plus a shared expert. Its checkpoint occupies 19.4 GB, while the model mixes ten full-attention layers with 30 Gated DeltaNet recurrent layers. Perplexity tailored Lily’s data movement, scheduling and kernels around those fixed characteristics.
+
+## Faster, within narrow boundaries
+
+On a MacBook Pro equipped with a 40-core M5 Max GPU and 128 GB of unified memory, Perplexity says Lily averaged 1.23 times MLX-LM’s prompt-processing throughput and 1.35 times its token-generation throughput across contexts ranging from 256 to 128,000 tokens. At a 4,000-token prompt and context, it processed prompts at 5,749.9 tokens per second and generated 186.6 tokens per second, versus 4,737.5 and 140.9 for MLX-LM.
+
+The gains came from keeping expert routing and recurrent state on the GPU, fusing operations to avoid intermediate memory traffic, and changing attention paths as context length grows. Perplexity also reported an instructive failure: speculative decoding made this batch-one workload 18% slower because proposed tokens created inefficient execution shapes and scattered expert access.
+
+The comparison remains vendor-run and deliberately narrow. Perplexity says Lily requires M5-class hardware, macOS 26 and the designated quantized Qwen checkpoint; it does not support other Qwen sizes, dense models or common GGUF, AWQ and GPTQ formats. Because the code has not yet been publicly released, outside developers cannot currently reproduce the benchmark or inspect the implementation.
+
+The announcement matters because local AI performance may increasingly depend on co-designing runtimes for a particular model architecture and device, rather than relying entirely on portable frameworks. Lily’s reported results suggest a substantial advantage, but its limited compatibility and pending code release leave open whether those optimizations can become a durable platform rather than a one-model showcase.
+
+Chinese title: Perplexity 发布 Lily，本地千问推理提速最高1.35倍
+Chinese summary: 据Perplexity测试，这款面向苹果芯片的Rust与Metal专用引擎，在M5 Max上运行千问模型的速度最高较MLX-LM提升1.35倍。
+
+Sources:
+  - Optimizing On-Device Inference for Apple Silicon: https://www.perplexity.ai/hub/blog/optimizing-on-device-inference-for-apple-silicon
+
 ### Gemini Adds Agentic Video Search With Fewer Tokens
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-agentic-video-understanding.html
@@ -949,41 +981,6 @@ Sources:
   - Planetary prediction engine: Automating global models via Earth AI: https://www.research.google/blog/planetary-prediction-engine-automating-global-models-via-earth-ai/
   - Planetary Prediction Engine research paper: https://arxiv.org/abs/2608.26088
 
-### Midjourney Opens V8.2 Image Editing to Testers
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/midjourney-tests-v82-image-editor.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/midjourney-tests-v82-image-editor.html
-- Source timestamp: 2026-08-28T08:24:00.000Z
-- Site timestamp: 2026-08-28T11:00:03.884Z
-- Tags: Models, AIGC
-
-Midjourney’s first V8.2 editing model adds instruction-led changes, four-image references, inpainting and canvas expansion.
-
-## A native editor for the V8 generation
-
-Midjourney has begun broad community testing of its first image-editing model built for V8.2. Users can modify an existing picture with written instructions, regenerate selected regions through inpainting, extend a composition beyond its original borders and generate new images from as many as four visual references.
-
-The new reference workflow replaces Midjourney’s earlier Omni Reference mechanism for these editing jobs. Personalization profiles, moodboards and style references remain available, although the company warns that moodboards and style references may need more explicit prompting during the test.
-
-Users can attach images directly to the web prompt bar, open an existing result and select Edit, upload through a dedicated editing tab, or invoke the model on Discord with an edit command. Midjourney has also modified the interfaces on its main and alpha websites, indicating that the editing model is being tested together with the workflow surrounding it rather than as an isolated endpoint.
-
-## A test release with acknowledged gaps
-
-Midjourney is explicitly treating this as a larger community test, not a finished production release. It is asking users to flag unsuccessful generations and submit job identifiers or links for difficult cases. The company expects rapid follow-up changes to both the model and interface.
-
-That qualification matters because instruction-based editing is judged differently from unconstrained image generation. A visually attractive result can still fail if it alters protected details, mishandles one reference among four or changes areas outside the user’s selection. Midjourney has not yet published systematic measurements for edit fidelity, identity retention or reference consistency.
-
-## Why it matters
-
-The release moves Midjourney further from a prompt-to-image generator toward an iterative visual-production environment. Native editing can reduce the need to transfer generated work into another product for revisions, while multi-image conditioning could make recurring subjects and art direction easier to preserve. Whether it becomes a dependable professional tool will depend on precise local control—the part Midjourney is now asking its community to stress-test.
-
-Chinese title: Midjourney 向用户开放 V8.2 图像编辑模型测试
-Chinese summary: Midjourney 首款 V8.2 图像编辑模型开始扩大测试，支持文字指令修改、四图参考、局部重绘与画布扩展。
-
-Sources:
-  - Edit Model for V8: https://updates.midjourney.com/edit-model-for-v8/
-  - Midjourney V8.2 Edit Model Announcement: https://x.com/midjourney/status/2093253371650031949
-
 ## Recent radar items
 
 ### 2026-09-03
@@ -1005,6 +1002,20 @@ Sources:
 - 2026-09-02T16:01Z | LlamaIndex on X | LlamaIndex released ExtractBench on Kaggle to test schema-guided extraction from documents likely to break downstream agent workflows. | 中文：LlamaIndex 在 Kaggle 发布 ExtractBench，用于测试易导致下游智能体失败的文档结构化抽取。 | https://x.com/llama_index/status/2095180282538135724
 - 2026-09-02T18:28Z | NVIDIA AI on X | The Open Source AI Alliance began transitioning to the Linux Foundation to advance open, practical, and secure AI development. | 中文：开放安全 AI 联盟开始转入 Linux 基金会，以推进开放、实用且安全的 AI 开发。 | https://x.com/NVIDIAAI/status/2095217259610550730
 - 2026-09-02T14:29Z | Unsloth AI on X | Unsloth added MTP support for local Qwen3.8-Flash inference, claiming 1.3–1.7× speedups and up to 170 tokens per second on specified hardware. | 中文：Unsloth 为本地 Qwen3.8-Flash 推理加入 MTP，称特定硬件可提速1.3至1.7倍并达到每秒170词元。 | https://x.com/UnslothAI/status/2095157074112164072
+- 2026-09-03T09:09Z | InfoQ 中文 | Cursor introduced Origin, an early-beta Git forge where agents and teams can create repositories, mirror GitHub projects, and manage pull requests. | 中文：Cursor 推出早期测试版代码托管平台 Origin，支持智能体和团队建仓、镜像 GitHub 项目及管理拉取请求。 | https://www.infoq.cn/article/labxcNbT15HapoWw69lq
+- 2026-09-03T08:22Z | The Decoder | Anthropic signed a $35 billion infrastructure agreement with Lambda to expand the computing capacity supporting Claude. | 中文：Anthropic 与 Lambda 签署价值350亿美元的基础设施协议，以扩充支撑 Claude 的算力。 | https://the-decoder.com/anthropic-ramps-up-claude-infrastructure-with-35-billion-lambda-deal/
+- 2026-09-03T03:12Z | X / Artificial Analysis | Wan 3.0 debuted first for video editing and second for text-to-video with audio on Artificial Analysis’s leaderboards. | 中文：万相 Wan 3.0 登顶 Artificial Analysis 视频编辑榜，并在带音频文生视频榜位列第二。 | https://x.com/ArtificialAnlys/status/2095349174799888760
+- 2026-09-03T02:30Z | X / Baseten | Baseten released GLM-5.3 Fast, positioning the open-weight model for latency-sensitive applications requiring higher token throughput. | 中文：Baseten 发布开放权重模型 GLM-5.3 Fast，面向要求更高吞吐量的低延迟应用。 | https://x.com/baseten/status/2095338689492578693
+- 2026-09-03T00:54Z | X / Replit | Replit enabled project analytics for all new projects and lets its agent suggest application-specific custom metrics. | 中文：Replit 为所有新项目启用项目分析，并允许智能体建议与应用场景匹配的自定义指标。 | https://x.com/Replit/status/2095314533548167240
+- 2026-09-03T00:00Z | Hugging Face | Hugging Face demonstrated improving structured output from a 350-million-parameter model using 100 GRPO training steps. | 中文：Hugging Face 展示了通过100步 GRPO 训练，提升3.5亿参数模型结构化输出能力的方法。 | https://huggingface.co/blog/grpo-with-trl-ifstruct
+- 2026-09-03T00:00Z | Hugging Face | Hugging Face introduced Funes, an open approach for giving coding agents persistent memory controlled by users. | 中文：Hugging Face 推出 Funes，为编程智能体提供由用户掌控的持久化记忆方案。 | https://huggingface.co/blog/funes
+- 2026-09-03T00:00Z | Hugging Face | Hugging Face trained a coding model with TRL and OpenEnv to generate programs that render watercolor-style images. | 中文：Hugging Face 使用 TRL 与 OpenEnv 训练编程模型，使其生成可渲染水彩风格图像的程序。 | https://huggingface.co/blog/train-to-paint-with-code
+- 2026-09-02T23:48Z | GitHub | Qwen developers open-sourced zg, a local-first workspace search tool combining ripgrep, BM25, vector retrieval, and agent integrations. | 中文：Qwen 开发者开源本地优先的工作区搜索工具 zg，整合 ripgrep、BM25、向量检索和智能体接口。 | https://github.com/zvec-ai/zvec-grep
+- 2026-09-03T04:34Z | X / Genspark | Genspark added Gemini 3.8 Flash across AI Chat, Code Agent, and Claw immediately after the model became available. | 中文：Genspark 将 Gemini 3.8 Flash 接入 AI Chat、Code Agent 和 Claw 三款产品。 | https://x.com/genspark_ai/status/2095369742194450555
+- 2026-09-03T07:23Z | X / Sakana AI | Sakana AI discussed resilience and lessons from nuclear deterrence as foundations for governing AI used in defense. | 中文：Sakana AI 探讨了如何以系统韧性及核威慑历史经验作为国防人工智能治理基础。 | https://x.com/SakanaAILabs/status/2095412226047770679
+- 2026-09-03T09:30Z | MIT Technology Review | MIT Technology Review published guidance on scaling enterprise agentic-AI pilots beyond isolated experiments and into production operations. | 中文：《麻省理工科技评论》发布指南，讨论企业如何将智能体试点从孤立实验扩展至生产运营。 | https://www.technologyreview.com/2026/09/03/1142868/scaling-agentic-ai-pilots-across-the-enterprise/
+- 2026-09-03T07:00Z | X / Meshy | Meshy and SHAKE4 announced a free, approval-based Tokyo meetup connecting game-industry participants after Tokyo Game Show. | 中文：Meshy 与 SHAKE4 宣布在东京举办免费但需审核的游戏行业交流会，承接东京电玩展参会人群。 | https://x.com/MeshyAI/status/2095406444564852983
+- 2026-09-03T04:11Z | X / Hailuo AI | Hailuo AI published a generative-video demonstration framing an ordinary object with a newly created behind-the-scenes sequence. | 中文：海螺 AI 发布生成视频演示，为普通物体构造了一段全新的“幕后花絮”场景。 | https://x.com/Hailuo_AI/status/2095364148612010298
 
 ### 2026-09-02
 

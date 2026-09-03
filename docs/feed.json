@@ -126,6 +126,39 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/perplexity-lily-apple-silicon-inference.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/perplexity-lily-apple-silicon-inference.html",
+      "title": "Perplexity Announces Lily for Faster Qwen Inference on Macs",
+      "summary": "The specialized Rust and Metal engine runs Qwen3.6-35B-A3B up to 1.35 times faster than MLX-LM on an M5 Max, according to Perplexity.",
+      "content_text": "## A purpose-built local engine\n\nPerplexity has announced Lily, a compact inference server designed exclusively for the Qwen3.6-35B-A3B model on Apple silicon, and says it will open-source the engine soon. Lily combines a Rust runtime with custom Metal kernels and exposes a minimal OpenAI-compatible chat-completions interface. PyTorch and Apple’s general-purpose MLX framework are not part of its execution path.\n\nLily currently accepts one specific 4-bit checkpoint. Qwen3.6-35B-A3B has 35 billion parameters but activates roughly 3 billion per token, routing each token through eight of 256 experts plus a shared expert. Its checkpoint occupies 19.4 GB, while the model mixes ten full-attention layers with 30 Gated DeltaNet recurrent layers. Perplexity tailored Lily’s data movement, scheduling and kernels around those fixed characteristics.\n\n## Faster, within narrow boundaries\n\nOn a MacBook Pro equipped with a 40-core M5 Max GPU and 128 GB of unified memory, Perplexity says Lily averaged 1.23 times MLX-LM’s prompt-processing throughput and 1.35 times its token-generation throughput across contexts ranging from 256 to 128,000 tokens. At a 4,000-token prompt and context, it processed prompts at 5,749.9 tokens per second and generated 186.6 tokens per second, versus 4,737.5 and 140.9 for MLX-LM.\n\nThe gains came from keeping expert routing and recurrent state on the GPU, fusing operations to avoid intermediate memory traffic, and changing attention paths as context length grows. Perplexity also reported an instructive failure: speculative decoding made this batch-one workload 18% slower because proposed tokens created inefficient execution shapes and scattered expert access.\n\nThe comparison remains vendor-run and deliberately narrow. Perplexity says Lily requires M5-class hardware, macOS 26 and the designated quantized Qwen checkpoint; it does not support other Qwen sizes, dense models or common GGUF, AWQ and GPTQ formats. Because the code has not yet been publicly released, outside developers cannot currently reproduce the benchmark or inspect the implementation.\n\nThe announcement matters because local AI performance may increasingly depend on co-designing runtimes for a particular model architecture and device, rather than relying entirely on portable frameworks. Lily’s reported results suggest a substantial advantage, but its limited compatibility and pending code release leave open whether those optimizations can become a durable platform rather than a one-model showcase.",
+      "date_published": "2026-09-03T06:57:00.000Z",
+      "date_modified": "2026-09-03T11:00:00.000Z",
+      "tags": [
+        "Open Source",
+        "Models",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/perplexity-lily-apple-silicon-inference.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-lily-apple-silicon-inference.html",
+        "source_published_at": "2026-09-03T06:57:00.000Z",
+        "site_published_at": "2026-09-03T11:00:00.000Z",
+        "sources": [
+          {
+            "title": "Optimizing On-Device Inference for Apple Silicon",
+            "url": "https://www.perplexity.ai/hub/blog/optimizing-on-device-inference-for-apple-silicon"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/gemini-agentic-video-understanding.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/gemini-agentic-video-understanding.html",
       "title": "Gemini Adds Agentic Video Search With Fewer Tokens",
@@ -1837,48 +1870,6 @@
           {
             "title": "Nvidia discusses Perplexity investment at $30 billion-plus valuation",
             "url": "https://www.boursorama.com/bourse/actualites/nvidia-evoque-son-investissement-dans-perplexity-dont-la-valorisation-s-eleverait-a-plus-de-30-milliards-de-dollars-selon-the-information-35fe73305d866090b11af01cb55ac46a"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/sakana-japan-defense-intelligence-contract.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/sakana-japan-defense-intelligence-contract.html",
-      "title": "Sakana AI Signs Japan Defense Intelligence Contract",
-      "summary": "Japan’s Defense Ministry hired Sakana AI to test agent-based intelligence analysis, moving sovereign AI into security operations.",
-      "content_text": "## A second defense mandate\n\nTokyo-based Sakana AI said it has signed a contract with Japan’s Ministry of Defense to investigate and demonstrate AI capabilities for comprehensive intelligence analysis. Announced at 22:58 UTC on August 23, the project will apply the company’s AI-agent technology to work performed by intelligence analysts.\n\nThe ministry’s original procurement documents describe a system intended to improve the collection, analysis and management of large, fragmented information flows. The stated goals include increasing speed and accuracy, reducing human error and easing personnel constraints. The documents also emphasize organizing information for policy and operational decision-makers rather than automating those decisions themselves.\n\nSakana did not disclose the contract’s value, duration, deployment environment or the models involved. It has also not said whether the demonstration will process live intelligence or synthetic and declassified material. Those omissions make it too early to judge operational capability or procurement scale.\n\n## From research to operational analysis\n\nThe contract is distinct from Sakana’s earlier multiyear research agreement with Japan’s defense technology agency. That March project concerns combining AI systems and small vision-language models to integrate multimodal data from land, sea and air, including information collected by drones. The new mandate moves closer to analysts’ everyday information-management and assessment workflows.\n\nSakana says its defense work excludes mass domestic surveillance and fully autonomous weapons, and that technical and contractual safeguards will prevent its systems from enabling autonomous lethal force. These are company commitments; the public announcement does not provide project-specific evaluation, audit or human-oversight requirements.\n\n## Why it matters\n\nThe deal shows Japan turning a domestic foundation-model startup into a supplier for core defense-intelligence work, not merely experimental model research. It also illustrates a broader sovereign-AI strategy: governments increasingly want locally controlled agents that can operate under national security, language and information-governance constraints. How Japan evaluates accuracy, traceability and analyst control in this demonstration could influence later procurement across allied defense organizations.",
-      "date_published": "2026-08-23T22:58:00.000Z",
-      "date_modified": "2026-08-23T23:00:03.731Z",
-      "tags": [
-        "Industry",
-        "Agents",
-        "Policy",
-        "Safety"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/sakana-japan-defense-intelligence-contract.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/sakana-japan-defense-intelligence-contract.html",
-        "source_published_at": "2026-08-23T22:58:00.000Z",
-        "site_published_at": "2026-08-23T23:00:03.731Z",
-        "sources": [
-          {
-            "title": "Sakana AI announces Japan Defense Ministry contract",
-            "url": "https://x.com/SakanaAILabs/status/2091661446677664115"
-          },
-          {
-            "title": "説明書：総合分析業務に必要なAI機能の調査・実証",
-            "url": "https://www.mod.go.jp/atla/soubiseisaku/newentry/startup_proc_r080306.pdf"
-          },
-          {
-            "title": "Sakana AI Defense Policy",
-            "url": "https://sakana.ai/company-info/defense-policy.html"
           }
         ]
       }
