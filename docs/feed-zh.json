@@ -13,6 +13,46 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/amd-threadripper-halo-ai-workstation.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/amd-threadripper-halo-ai-workstation.html",
+      "title": "AMD发布可运行万亿参数模型的AI工作站",
+      "summary": "AMD在IFA发布Threadripper Halo Station，把本地AI计算从迷你开发机推向万亿参数模型级工作站。",
+      "content_text": "## 本地AI工作站迈入更大体量\n\nAMD在柏林IFA 2026开幕主题演讲中发布Threadripper Halo Station，并称这款工作站能够运行参数规模超过一万亿的AI模型。AMD由此把“个人AI”布局从笔记本和紧凑型开发设备，延伸到面向超大规模本地负载的专业系统。\n\n首轮发布并未给出完整配置、售价或上市时间。因此，“万亿参数”目前主要代表模型装载能力，尚不能等同于实际运行效率。参数量无法直接说明生成速度、可用上下文长度，也没有解释系统是否需要激进量化、稀疏混合专家架构或多块加速卡才能达到这一规模。\n\nAMD此前已为这一产品方向铺路。锐龙AI Halo平台利用大容量统一内存，容纳超出普通消费级显卡显存上限的模型；Threadripper平台则可以提供更多处理器核心、更大的内存空间以及更丰富的PCIe连接能力。新工作站显然希望把这套思路推向更高性能层级。\n\n## 本地推理开始向高端市场延伸\n\n能够容纳万亿参数级模型的工作站，可能吸引研究机构、受严格监管的企业以及不愿把敏感素材上传云端的制作团队。开发者也有机会在本地检查、定制和评估大型开放权重模型，不必为每次实验单独租用云端集群。\n\n不过，模型“装得下”与“跑得实用”是两道不同门槛。AMD仍需公布加速器组合、内存带宽、整机功耗和实测词元吞吐量。软件生态同样关键：如果常用框架和量化格式支持不完整，这台机器可能只是展示性能上限的样板，而不是可持续使用的开发平台。\n\n这项发布的重要性在于，本地AI硬件正开始按照任务规模分层，而不再只是比较设备大小。若AMD能以工作站级成本提供可用吞吐量，一部分推理和模型开发支出可能从按量计费的云端GPU转向本地设备。但在基准测试和价格公布前，它的战略方向仍比商业优势更明确。",
+      "date_published": "2026-09-04T10:29:00.000Z",
+      "date_modified": "2026-09-04T11:00:03.233Z",
+      "tags": [
+        "产业",
+        "模型"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/amd-threadripper-halo-ai-workstation.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/amd-threadripper-halo-ai-workstation.html",
+        "source_published_at": "2026-09-04T10:29:00.000Z",
+        "site_published_at": "2026-09-04T11:00:03.233Z",
+        "sources": [
+          {
+            "title": "Jack Huynh Opening Keynote of IFA Berlin 2026",
+            "url": "https://www.amd.com/en/corporate/events/ifa.html"
+          },
+          {
+            "title": "AMD 公布 Threadripper Halo Station 工作站",
+            "url": "https://www.ithome.com/0/998/560.htm"
+          },
+          {
+            "title": "AMD at IFA Opening Keynote: Pushing Personal AI to the PC",
+            "url": "https://uk.investing.com/news/stock-market-news/amd-at-ifa-opening-keynote-pushing-personal-ai-to-the-pc-93CH-4858557"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/google-weathernext-three.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/google-weathernext-three.html",
       "title": "谷歌 WeatherNext 3 将 AI 天气预报接入核心产品",
@@ -313,9 +353,9 @@
     {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-lily-apple-silicon-inference.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-lily-apple-silicon-inference.html",
-      "title": "Perplexity 开源 Lily，本地千问推理提速最高1.35倍",
-      "summary": "据 Perplexity 测试，这款面向苹果芯片的开源 Rust 与 Metal 专用引擎，在 M5 Max 上运行千问模型的速度最高较 MLX-LM 提升1.35倍。",
-      "content_text": "## 为单一模型量身打造\n\nPerplexity 已发布本地推理服务器 Lily，专门用于在苹果芯片上运行 Qwen3.6-35B-A3B。其源代码、测试和基准复现说明已通过 Perplexity 的 pplx-garden GitHub 仓库公开，并采用 Apache 2.0 许可证。它以 Rust 管理模型加载、会话状态和生成流程，通过自定义 Metal 内核执行计算，并提供精简版 OpenAI 兼容聊天接口；整个推理链路不依赖 PyTorch，也不经过苹果的通用框架 MLX。\n\nLily 目前只接受一个指定的四位量化检查点。Qwen3.6-35B-A3B 总参数量为350亿，但每个词元仅激活约30亿参数：系统从256个专家中选择八个，并同时调用一个共享专家。量化后的模型文件为19.4GB，网络结构则由十层完整注意力与30层 Gated DeltaNet 循环层组成。Perplexity 据此固定结构，针对数据搬运、任务调度和计算内核逐项优化。\n\n## 提速明显，适用面仍窄\n\nPerplexity 在配备40核 GPU 和128GB统一内存的 M5 Max MacBook Pro 上测试称，在256至12.8万词元的不同长度下，Lily 的提示词处理吞吐量平均为 MLX-LM 的1.23倍，生成吞吐量平均为1.35倍。在提示词和生成上下文均约4000词元时，两项速度分别达到每秒5749.9和186.6词元；MLX-LM 对应成绩为4737.5和140.9。\n\n这些增益主要来自让专家路由和循环状态持续留在 GPU、融合运算以减少中间数据读写，并根据上下文长度切换注意力执行路径。一次失败尝试同样值得注意：推测解码在单请求场景下反而让速度下降18%，原因是候选词元形成了低效计算形状，并分散了对专家权重的访问。\n\n这仍是一项由开发者自行完成、范围严格受限的对比，但外部开发者现在已经可以检查实现并尝试复现。Lily 要求 M5 或更新的苹果 GPU、macOS 26 和指定量化模型，不支持其他尺寸的千问模型、稠密模型，也不兼容常见的 GGUF、AWQ 或 GPTQ 格式。其聊天接口也有意保持精简，仅支持文字消息和贪心解码，不支持流式输出、工具调用、采样参数或多模态输入。\n\n这项发布的意义在于，本地 AI 的下一阶段性能提升可能更多依赖模型架构、运行时与具体设备的协同设计，而非完全交给通用框架。Lily 的官方测试与公开代码让这条路线变得可以验证，但目前仅支持单一模型，它能否扩展为长期可用的平台仍有待观察。",
+      "title": "Perplexity 预告 Lily，称可加速 Mac 上的千问推理",
+      "summary": "Perplexity 称这款即将开源的 Rust 与 Metal 专用引擎，在 M5 Max 上运行 Qwen3.6-35B-A3B 的速度最高较 MLX-LM 提升1.35倍。",
+      "content_text": "## 为单一模型量身打造\n\nPerplexity 预告了本地推理服务器 Lily，专门用于在苹果芯片上运行 Qwen3.6-35B-A3B。公司表示该引擎将于近期开放源代码，但截至9月4日，其公开的 pplx-garden 仓库尚未包含 Lily 的实现或基准复现材料。Lily 以 Rust 管理运行流程，通过自定义 Metal 内核执行计算，并提供兼容 OpenAI 的聊天补全接口；整个推理链路不依赖 PyTorch，也不经过苹果的通用框架 MLX。\n\nLily 目前面向一个指定的四位量化检查点。Qwen3.6-35B-A3B 总参数量为350亿，但每个词元仅激活约30亿参数：系统从256个专家中选择八个，并同时调用一个共享专家。量化后的模型文件为19.4GB，网络结构由十层完整注意力与30层 Gated DeltaNet 循环层组成。Perplexity 据此针对数据搬运、任务调度和计算内核逐项优化。\n\n## 提速明显，适用面仍窄\n\nPerplexity 在配备40核 GPU 和128GB统一内存的 M5 Max MacBook Pro 上测试称，在256至12.8万词元的不同长度下，Lily 的提示词处理吞吐量平均为 MLX-LM 的1.23倍，生成吞吐量平均为1.35倍。在提示词和生成上下文均约4000词元时，两项速度分别达到每秒5749.9和186.6词元；MLX-LM 对应成绩为4737.5和140.9。\n\n这些增益主要来自让专家路由和循环状态持续留在 GPU、融合运算以减少中间数据读写，并根据上下文长度切换注意力执行路径。Perplexity 还称，推测解码在单请求场景下反而让速度下降18%，原因是候选词元形成了低效的计算形状，并分散了对专家权重的访问。\n\n这仍是一项由开发者自行完成且范围严格受限的对比。在承诺的代码和复现材料正式发布前，外部开发者还无法仅凭当前公开仓库完整检查和复现 Lily。Perplexity 表示，Lily 要求 M5 或更新的苹果 GPU、macOS 26 和指定量化模型，不支持其他尺寸的千问模型、稠密模型，也不兼容常见的 GGUF、AWQ 或 GPTQ 格式。\n\n这项预告的意义在于，本地 AI 的性能提升可能越来越依赖模型架构、运行时与具体设备的协同设计，而非完全交给通用框架。Lily 的官方测试让这条路线值得关注，但独立验证及其作为开源项目的实际价值，仍需等待代码发布。",
       "date_published": "2026-09-03T06:57:00.000Z",
       "date_modified": "2026-09-03T11:00:00.000Z",
       "tags": [
@@ -341,8 +381,8 @@
             "url": "https://www.perplexity.ai/hub/blog/optimizing-on-device-inference-for-apple-silicon"
           },
           {
-            "title": "Lily source code and reproduction instructions",
-            "url": "https://github.com/perplexityai/pplx-garden/tree/main/lily"
+            "title": "Perplexity pplx-garden repository",
+            "url": "https://github.com/perplexityai/pplx-garden"
           }
         ]
       }
@@ -459,9 +499,9 @@
     {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-astra-cyber-critical.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-astra-cyber-critical.html",
-      "title": "OpenAI 将 Astra 列为关键级网络安全模型",
-      "summary": "尚未发布的 Astra 据称可自主发现未知漏洞并设计利用方式，OpenAI 因此推迟部分开发并收紧敏感能力访问。",
-      "content_text": "## 首次跨入“关键级”门槛\n\nOpenAI 宣布，即将推出的 Astra 已达到其《准备框架》所定义的“关键级”网络安全能力门槛，这是该公司首次把自家模型归入这一级别。按照 OpenAI 的评估，Astra 在获得适当工具和系统权限后，可以在缺少持续人工指挥的情况下发现未知漏洞，并针对防护较强的系统设计利用方式。\n\n这是一项安全评估，而非模型正式发布。OpenAI 表示 Astra 将于近期开放，但最高级别的网络安全能力最初只提供给部分测试者，之后再通过 Daybreak Blue 计划扩大到防御用途。包含完整能力与安全评测的系统卡，要到模型上线时才会公布。\n\nOpenAI 同时披露，为加强安全措施，公司曾推迟 Astra 的部分开发和发布进度。新增措施包括提高对恶意请求的拒绝可靠性、监测并中止疑似未授权操作，以及对敏感功能实施更严格的访问控制。公司还把近期智能体攻击 Hugging Face 基础设施事件所得的教训纳入设计，但强调 Astra 并未参与该事件。\n\n目前仍有关键证据没有公开。OpenAI 尚未披露完整评测项目、测试期间发现了哪些漏洞，也没有提供独立证据支持其“生产环境防护能够阻止 Hugging Face 事件”的判断。确切发布日期同样缺席。因此，现阶段这项声明更能说明 OpenAI 如何判断风险，尚不足以全面衡量 Astra 的实际能力。\n\n## 为何重要\n\n一家前沿模型开发商首次公开承认，其模型已经从辅助安全人员跨入可规模化发现并利用未知弱点的阶段。这会改变以往围绕接口权限与内容过滤建立的安全假设：当模型能够串联工具自主行动，仅拦截恶意提示词可能远远不够。Astra 上线后，真正需要验证的是这类能力能否安全地交给防御者，而不演变成可复用的攻击服务。",
+      "title": "OpenAI 发布关键级网络安全模型 GPT-6 Astra",
+      "summary": "OpenAI 已广泛发布 GPT-6 Astra，同时以更严格的防护措施限制其最高级别网络安全能力。",
+      "content_text": "## “关键级”模型正式上线\n\nOpenAI 于9月3日发布 GPT-6 Astra。两天前，公司刚宣布该模型达到《准备框架》所定义的“关键级”网络安全能力门槛。这是 OpenAI 首次把自家模型归入这一级别。按照公司的评估，Astra 在获得适当工具和系统权限后，可以在无需人工逐步指挥的情况下发现未知漏洞，并针对多个防护较强的系统开发利用方式。\n\n此次上线取代了此前“Astra 即将发布”的状态。OpenAI 目前称其为公司迄今广泛部署的最强模型，并已发布安全概览和完整系统卡。Astra 最高级别的网络安全能力仍受到比普通使用更严格的访问限制；OpenAI 计划随后通过 Daybreak 计划扩大限制较少的防御用途访问。\n\nOpenAI 表示，为加强安全措施，公司曾推迟 Astra 的部分开发和发布进度。相关措施包括更严格的隔离、检查点加密、对完整行动轨迹的监测、内部使用前的对齐检查、更可靠地拒绝恶意网络安全请求，以及自动中止疑似未授权行为的系统。公司也把 OpenAI 与 Hugging Face 基础设施事件的教训纳入设计，但 Astra 本身并未参与该事件。\n\n新公开的材料补充了最初公告中缺少的评测信息。OpenAI 称 Astra 在 ExploitBench 上取得100%的成绩，并在内部基准测试中发现两个此前未知的 V8 漏洞。这些结果仍由开发者自行报告；由于漏洞正在向维护者披露，部分敏感细节没有公开。OpenAI 同时提醒，新增防护可能把合法工作误判为滥用或未授权行为，导致任务被减速、暂停或终止。\n\n## 为何重要\n\n一家前沿模型开发商已经广泛部署一款据称能够自主发现并利用未知弱点的模型，同时把最敏感的能力置于额外访问控制之下。Astra 因此不再只是尚待验证的发布计划，而成为一项现实测试：关键级网络安全能力能否交给用户，而不演变成可普遍复用的攻击服务。外界接下来需要同时检验其真实能力，以及安全措施误伤合法防御工作的频率。",
       "date_published": "2026-09-01T13:00:00.000Z",
       "date_modified": "2026-09-01T23:00:04.179Z",
       "tags": [
@@ -484,6 +524,14 @@
           {
             "title": "Path to Astra: critical capabilities and frontier safeguards",
             "url": "https://openai.com/index/path-to-astra"
+          },
+          {
+            "title": "GPT-6 Astra: A new generation of intelligence",
+            "url": "https://openai.com/index/gpt-6-astra/"
+          },
+          {
+            "title": "Safety overview: GPT-6 Astra",
+            "url": "https://openai.com/index/safety-overview-gpt-6-astra/"
           }
         ]
       }
@@ -1843,42 +1891,6 @@
           {
             "title": "Stability AI, maker of image generator Stable Diffusion, raises $76 million in fresh funding",
             "url": "https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/generalist-raises-robotics-capital.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/generalist-raises-robotics-capital.html",
-      "title": "机器人模型公司Generalist再融资2亿美元",
-      "summary": "这家机器人基础模型开发商据报在两个月内完成第二笔大额融资，具身智能正成为资本追逐的新平台赛道。",
-      "content_text": "## 两个月内连续完成大额融资\n\n据 Axios 报道，机器人模型公司 Generalist 新近融资约2亿美元，距离其上一轮4亿美元融资仅过去两个月。最新一轮由8VC领投，多家现有投资方参与；Generalist 尚未公开完整交易条款及新的估值。\n\nGeneralist 的创始团队拥有谷歌 DeepMind 和波士顿动力背景。与制造自有机器人整机的公司不同，它主要开发可供不同机器人使用的基础模型。这种路线有机会成为跨硬件的平台层，但也意味着公司必须依靠外部伙伴获得机器人设备、真实交互数据和部署场景。\n\n此次融资紧随 GEN-1.5 的公布。Generalist 称，这套系统只需把一段3至12秒的操作示范放入上下文，就能尝试执行一项简单的新任务。在公司对十项短流程任务的内部测试中，单次示范的平均成功率为59%；加入五分钟任务数据并进行十次梯度更新后，成绩升至83%。这些结果尚未得到独立复现，公司也承认测试任务仍较简单、持续时间较短。\n\n## 为何重要\n\n两个月内获得约6亿美元资金，表明投资者正在重押一种可能性：可复用的机器人智能将成为独立于硬件的平台。其核心商业价值，是减少机器人每遇到新物体、新任务或新环境时所需的昂贵数据采集和重新训练。\n\n巨额融资也同步抬高了交付门槛。Generalist 必须证明，依靠短示范学习的能力能够适应陌生硬件、混乱工作环境以及误差会不断累积的长流程。没有自有大规模机器人终端有利于保持硬件中立，却也意味着它缺少稳定的封闭部署网络来持续获取真实世界数据。",
-      "date_published": "2026-08-24T20:54:21.000Z",
-      "date_modified": "2026-08-24T23:00:03.309Z",
-      "tags": [
-        "融资",
-        "研究"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/generalist-raises-robotics-capital.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/generalist-raises-robotics-capital.html",
-        "source_published_at": "2026-08-24T20:54:21.000Z",
-        "site_published_at": "2026-08-24T23:00:03.309Z",
-        "sources": [
-          {
-            "title": "Scoop: Generalist raises another $200 million for AI robotics",
-            "url": "https://www.axios.com/2026/08/24/robotics-ai-generalist-200m"
-          },
-          {
-            "title": "GEN-1.5: Embodied Foundation Models are One-Shot Learners",
-            "url": "https://generalistai.com/blog/gen-1.5"
           }
         ]
       }

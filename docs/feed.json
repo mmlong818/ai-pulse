@@ -13,6 +13,46 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/amd-threadripper-halo-ai-workstation.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/amd-threadripper-halo-ai-workstation.html",
+      "title": "AMD Unveils Workstation for Trillion-Parameter AI",
+      "summary": "AMD’s Threadripper Halo Station targets local execution of trillion-parameter AI models, pushing private compute beyond compact AI PCs.",
+      "content_text": "## A larger class of local AI machine\n\nAMD unveiled the Threadripper Halo Station at its IFA 2026 opening keynote in Berlin, describing the system as a workstation capable of running AI models containing more than one trillion parameters. The announcement moves AMD’s personal-AI pitch beyond laptops and compact developer boxes toward hardware intended for exceptionally large local workloads.\n\nThe company did not publish a complete specification, price or shipping schedule during the initial presentation. Those omissions make the trillion-parameter figure a capacity claim rather than a demonstrated performance result. Model size alone does not reveal generation speed, usable context length or whether a workload depends on aggressive quantization, sparse mixture-of-experts architecture or multiple accelerators.\n\nAMD has nevertheless been building toward this tier. Its Ryzen AI Halo platform uses large pools of unified memory to accommodate models that exceed ordinary consumer GPU memory, while Threadripper systems offer more processor cores, memory capacity and PCIe connectivity. The new station appears designed to extend that approach into a substantially higher performance envelope.\n\n## Local inference moves upmarket\n\nA workstation with enough memory for trillion-parameter-class models could appeal to laboratories, regulated businesses and studios that cannot routinely send sensitive material to hosted services. It may also let developers inspect, customize or evaluate very large open-weight models without reserving cloud clusters for every experiment.\n\nYet fitting a model into memory and operating it productively are different thresholds. AMD still needs to disclose the accelerator configuration, memory bandwidth, power draw and measured token throughput. Software support will matter just as much: broad compatibility with frameworks and quantized model formats will determine whether the machine becomes a practical development platform or a specialized showcase.\n\nThe announcement matters because local AI hardware is beginning to segment by workload rather than merely by device size. If AMD can deliver useful throughput at workstation economics, some inference and model-development spending could shift away from metered cloud GPUs. Until benchmarks and pricing arrive, however, the Station’s strategic direction is clearer than its commercial advantage.",
+      "date_published": "2026-09-04T10:29:00.000Z",
+      "date_modified": "2026-09-04T11:00:03.233Z",
+      "tags": [
+        "Industry",
+        "Models"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/amd-threadripper-halo-ai-workstation.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/amd-threadripper-halo-ai-workstation.html",
+        "source_published_at": "2026-09-04T10:29:00.000Z",
+        "site_published_at": "2026-09-04T11:00:03.233Z",
+        "sources": [
+          {
+            "title": "Jack Huynh Opening Keynote of IFA Berlin 2026",
+            "url": "https://www.amd.com/en/corporate/events/ifa.html"
+          },
+          {
+            "title": "AMD 公布 Threadripper Halo Station 工作站",
+            "url": "https://www.ithome.com/0/998/560.htm"
+          },
+          {
+            "title": "AMD at IFA Opening Keynote: Pushing Personal AI to the PC",
+            "url": "https://uk.investing.com/news/stock-market-news/amd-at-ifa-opening-keynote-pushing-personal-ai-to-the-pc-93CH-4858557"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/google-weathernext-three.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/google-weathernext-three.html",
       "title": "Google WeatherNext 3 Moves AI Forecasts Into Products",
@@ -313,9 +353,9 @@
     {
       "id": "https://mmlong818.github.io/ai-pulse/articles/perplexity-lily-apple-silicon-inference.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/perplexity-lily-apple-silicon-inference.html",
-      "title": "Perplexity Releases Lily for Faster Qwen Inference on Macs",
-      "summary": "The open-source Rust and Metal engine runs Qwen3.6-35B-A3B up to 1.35 times faster than MLX-LM on an M5 Max, according to Perplexity.",
-      "content_text": "## A purpose-built local engine\n\nPerplexity has released Lily, a compact inference server designed exclusively for the Qwen3.6-35B-A3B model on Apple silicon. Its source code, tests and benchmark reproduction instructions are publicly available under the Apache 2.0 license in Perplexity’s pplx-garden GitHub repository. Lily combines a Rust runtime with custom Metal kernels and exposes a minimal OpenAI-compatible chat-completions interface. PyTorch and Apple’s general-purpose MLX framework are not part of its execution path.\n\nLily currently accepts one specific 4-bit checkpoint. Qwen3.6-35B-A3B has 35 billion parameters but activates roughly 3 billion per token, routing each token through eight of 256 experts plus a shared expert. Its checkpoint occupies 19.4 GB, while the model mixes ten full-attention layers with 30 Gated DeltaNet recurrent layers. Perplexity tailored Lily’s data movement, scheduling and kernels around those fixed characteristics.\n\n## Faster, within narrow boundaries\n\nOn a MacBook Pro equipped with a 40-core M5 Max GPU and 128 GB of unified memory, Perplexity says Lily averaged 1.23 times MLX-LM’s prompt-processing throughput and 1.35 times its token-generation throughput across contexts ranging from 256 to 128,000 tokens. At a 4,000-token prompt and context, it processed prompts at 5,749.9 tokens per second and generated 186.6 tokens per second, versus 4,737.5 and 140.9 for MLX-LM.\n\nThe gains came from keeping expert routing and recurrent state on the GPU, fusing operations to avoid intermediate memory traffic, and changing attention paths as context length grows. Perplexity also reported an instructive failure: speculative decoding made this batch-one workload 18% slower because proposed tokens created inefficient execution shapes and scattered expert access.\n\nThe comparison remains vendor-run and deliberately narrow, although outside developers can now inspect the implementation and attempt to reproduce it. Lily requires an M5 or newer Apple GPU, macOS 26 and the designated quantized Qwen checkpoint; it does not support other Qwen sizes, dense models or common GGUF, AWQ and GPTQ formats. Its chat interface is also intentionally limited to text messages and greedy decoding, without streaming, tool calls, sampling controls or multimodal input.\n\nThe release matters because local AI performance may increasingly depend on co-designing runtimes for a particular model architecture and device, rather than relying entirely on portable frameworks. Lily’s reported results and public code make that approach testable, but its limited compatibility leaves open whether the optimizations can become a durable platform rather than a one-model showcase.",
+      "title": "Perplexity Previews Lily for Faster Qwen Inference on Macs",
+      "summary": "Perplexity says its forthcoming Rust and Metal engine runs Qwen3.6-35B-A3B up to 1.35 times faster than MLX-LM on an M5 Max.",
+      "content_text": "## A purpose-built local engine\n\nPerplexity has previewed Lily, a compact inference server designed exclusively for the Qwen3.6-35B-A3B model on Apple silicon. The company says the engine will be open-sourced soon, but as of September 4 its public pplx-garden repository does not contain the announced Lily implementation or benchmark reproduction package. Lily combines a Rust runtime with custom Metal kernels and exposes an OpenAI-compatible chat-completions interface. PyTorch and Apple’s general-purpose MLX framework are not part of its execution path.\n\nLily currently targets one specific 4-bit checkpoint. Qwen3.6-35B-A3B has 35 billion parameters but activates roughly 3 billion per token, routing each token through eight of 256 experts plus a shared expert. Its checkpoint occupies 19.4 GB, while the model mixes ten full-attention layers with 30 Gated DeltaNet recurrent layers. Perplexity tailored Lily’s data movement, scheduling and kernels around those fixed characteristics.\n\n## Faster, within narrow boundaries\n\nOn a MacBook Pro equipped with a 40-core M5 Max GPU and 128 GB of unified memory, Perplexity says Lily averaged 1.23 times MLX-LM’s prompt-processing throughput and 1.35 times its token-generation throughput across contexts ranging from 256 to 128,000 tokens. At a 4,000-token prompt and context, it processed prompts at 5,749.9 tokens per second and generated 186.6 tokens per second, versus 4,737.5 and 140.9 for MLX-LM.\n\nThe gains came from keeping expert routing and recurrent state on the GPU, fusing operations to avoid intermediate memory traffic, and changing attention paths as context length grows. Perplexity also reported that speculative decoding made this batch-one workload 18% slower because proposed tokens created inefficient execution shapes and scattered expert access.\n\nThe comparison remains vendor-run and deliberately narrow. Until the promised source and reproduction materials are published, outside developers cannot fully inspect or reproduce Lily itself from the cited public repository. Perplexity says Lily requires an M5 or newer Apple GPU, macOS 26 and the designated quantized Qwen checkpoint; it does not support other Qwen sizes, dense models or common GGUF, AWQ and GPTQ formats.\n\nThe preview matters because local AI performance may increasingly depend on co-designing runtimes for a particular model architecture and device rather than relying entirely on portable frameworks. Lily’s reported results make that approach notable, but independent verification and its value as an open-source release must wait for the promised code.",
       "date_published": "2026-09-03T06:57:00.000Z",
       "date_modified": "2026-09-03T11:00:00.000Z",
       "tags": [
@@ -341,8 +381,8 @@
             "url": "https://www.perplexity.ai/hub/blog/optimizing-on-device-inference-for-apple-silicon"
           },
           {
-            "title": "Lily source code and reproduction instructions",
-            "url": "https://github.com/perplexityai/pplx-garden/tree/main/lily"
+            "title": "Perplexity pplx-garden repository",
+            "url": "https://github.com/perplexityai/pplx-garden"
           }
         ]
       }
@@ -459,9 +499,9 @@
     {
       "id": "https://mmlong818.github.io/ai-pulse/articles/openai-astra-cyber-critical.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/openai-astra-cyber-critical.html",
-      "title": "OpenAI Classifies Astra as Cyber-Critical Model",
-      "summary": "OpenAI says its unreleased Astra model can autonomously discover and exploit unknown flaws, prompting tighter release controls.",
-      "content_text": "## A new capability threshold\n\nOpenAI said its forthcoming Astra model has reached the “Critical” cybersecurity threshold under the company’s Preparedness Framework—the first OpenAI model to receive that classification. According to the laboratory, Astra can, when equipped with appropriate tools and access, discover previously unknown vulnerabilities and develop exploits against well-protected systems without continuous human direction.\n\nThe announcement is a safety assessment, not a model release. OpenAI says Astra will become available soon, but the most advanced cybersecurity functions will initially be restricted to selected testers and later expanded to defensive users through its Daybreak Blue program. A system card containing fuller capability and safety evaluations is due when the model launches.\n\nOpenAI disclosed that it delayed parts of Astra’s development and release while strengthening safeguards. Those measures include training intended to improve refusals of harmful requests, monitoring capable of halting potentially unauthorized activity, and tighter controls over sensitive access. The company also incorporated lessons from a recent incident involving agents attacking Hugging Face infrastructure, although it says Astra itself was not used in that episode.\n\nImportant evidence remains unpublished. OpenAI has not yet provided the complete benchmark suite, details of the vulnerabilities found during testing, or independent verification of its claim that production safeguards would have stopped the Hugging Face incident. Nor has it announced a firm availability date. The designation therefore documents OpenAI’s internal risk judgment more clearly than Astra’s practical performance.\n\n## Why it matters\n\nA frontier developer has now publicly stated that one of its models crosses from assisting security professionals into autonomously finding and operationalizing unknown weaknesses at scale. That raises the cost of conventional API access and monitoring assumptions: limiting harmful prompts alone may be inadequate when a model can chain tools and actions. Astra’s eventual release will test whether powerful cyber capability can be segmented for defenders without creating a broadly reusable offensive service.",
+      "title": "OpenAI Launches Cyber-Critical GPT-6 Astra",
+      "summary": "OpenAI has broadly released GPT-6 Astra with tighter safeguards and restricted access to its most advanced cybersecurity capabilities.",
+      "content_text": "## A critical-capability model reaches users\n\nOpenAI released GPT-6 Astra on September 3, two days after announcing that it had reached the “Critical” cybersecurity threshold under the company’s Preparedness Framework. It is the first OpenAI model to receive that classification. According to OpenAI, Astra can, with appropriate tools and access, discover previously unknown vulnerabilities and develop exploits across many well-protected systems without a person guiding every step.\n\nThe release supersedes OpenAI’s earlier description of Astra as forthcoming. The company now calls it its most capable broadly deployed model and has published a safety overview and full system card. Access to Astra’s most advanced cybersecurity capabilities remains more limited than ordinary use, with less restrictive defensive access expected to expand through OpenAI’s Daybreak program.\n\nOpenAI says it delayed parts of Astra’s development and release while strengthening safeguards. Measures include stricter isolation, checkpoint encryption, monitoring of complete action trajectories, alignment checks before internal use, stronger refusals of harmful cyber requests and systems capable of stopping potentially unauthorized activity. The company also incorporated lessons from the OpenAI–Hugging Face infrastructure incident, although Astra itself was not used in that episode.\n\nThe newly published material adds evidence absent from the initial announcement. OpenAI reports that Astra scored 100% on ExploitBench and discovered two previously unknown V8 vulnerabilities while working through an internal benchmark. Those results remain developer-reported, and sensitive details are necessarily withheld while disclosure to maintainers proceeds. OpenAI also warns that added safeguards may slow, pause or stop legitimate work when activity is flagged as possible misuse or unauthorized behavior.\n\n## Why it matters\n\nA frontier developer has now broadly deployed a model it says can autonomously find and operationalize unknown weaknesses, while segmenting the most sensitive capabilities behind additional controls. This shifts Astra from a prospective safety case to a live test of whether cyber-critical capability can be distributed without becoming a broadly reusable offensive service. Independent scrutiny will now focus on both real-world capability and the rate at which safeguards interrupt legitimate defensive work.",
       "date_published": "2026-09-01T13:00:00.000Z",
       "date_modified": "2026-09-01T23:00:04.179Z",
       "tags": [
@@ -484,6 +524,14 @@
           {
             "title": "Path to Astra: critical capabilities and frontier safeguards",
             "url": "https://openai.com/index/path-to-astra"
+          },
+          {
+            "title": "GPT-6 Astra: A new generation of intelligence",
+            "url": "https://openai.com/index/gpt-6-astra/"
+          },
+          {
+            "title": "Safety overview: GPT-6 Astra",
+            "url": "https://openai.com/index/safety-overview-gpt-6-astra/"
           }
         ]
       }
@@ -1843,42 +1891,6 @@
           {
             "title": "Stability AI, maker of image generator Stable Diffusion, raises $76 million in fresh funding",
             "url": "https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/generalist-raises-robotics-capital.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/generalist-raises-robotics-capital.html",
-      "title": "Generalist Raises Another $200M for Robot Intelligence",
-      "summary": "The robot-model developer reportedly secured its second major financing in two months as capital crowds into embodied AI.",
-      "content_text": "## Two large rounds in two months\n\nGeneralist has raised approximately $200 million in fresh financing, Axios reported, only two months after the robotics-model company collected $400 million. The latest round was led by 8VC with participation from existing investors, according to the report; Generalist has not publicly disclosed full terms or a new valuation.\n\nFounded by researchers with experience at Google DeepMind and Boston Dynamics, Generalist develops foundation models for robots rather than manufacturing a proprietary robot platform. That distinction lets it pursue a horizontal role across different machines, but it also makes the company dependent on access to hardware, physical-interaction data and deployment partners.\n\nThe financing follows Generalist’s recent presentation of GEN-1.5, a system that the company says can attempt a simple new manipulation task after receiving a single three-to-12-second demonstration as context. In its internal evaluation across ten short tasks, the one-demonstration method achieved a 59% average success rate. Five minutes of task data and ten gradient updates increased the reported result to 83%. Those figures have not been independently reproduced, and the company acknowledges that the tested activities are simple and short-horizon.\n\n## Why it matters\n\nRaising roughly $600 million within two months shows how aggressively investors are pricing the possibility that reusable robot intelligence becomes a separate platform layer. The wager is that a broadly pretrained model can reduce the costly collection and retraining normally required whenever a robot encounters a new object, task or environment.\n\nThe funding also raises the execution threshold. Generalist must demonstrate that learning from brief examples survives unfamiliar hardware, messy workplaces and long sequences where errors accumulate. A model company without its own mass-market robot fleet may offer broader compatibility, but it has fewer captive deployments from which to collect the real-world data needed to improve.",
-      "date_published": "2026-08-24T20:54:21.000Z",
-      "date_modified": "2026-08-24T23:00:03.309Z",
-      "tags": [
-        "Funding",
-        "Research"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/generalist-raises-robotics-capital.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/generalist-raises-robotics-capital.html",
-        "source_published_at": "2026-08-24T20:54:21.000Z",
-        "site_published_at": "2026-08-24T23:00:03.309Z",
-        "sources": [
-          {
-            "title": "Scoop: Generalist raises another $200 million for AI robotics",
-            "url": "https://www.axios.com/2026/08/24/robotics-ai-generalist-200m"
-          },
-          {
-            "title": "GEN-1.5: Embodied Foundation Models are One-Shot Learners",
-            "url": "https://generalistai.com/blog/gen-1.5"
           }
         ]
       }

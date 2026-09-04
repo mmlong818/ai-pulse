@@ -19,6 +19,40 @@
 
 ## Recent briefings
 
+### AMD Unveils Workstation for Trillion-Parameter AI
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/amd-threadripper-halo-ai-workstation.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/amd-threadripper-halo-ai-workstation.html
+- Source timestamp: 2026-09-04T10:29:00.000Z
+- Site timestamp: 2026-09-04T11:00:03.233Z
+- Tags: Industry, Models
+
+AMD’s Threadripper Halo Station targets local execution of trillion-parameter AI models, pushing private compute beyond compact AI PCs.
+
+## A larger class of local AI machine
+
+AMD unveiled the Threadripper Halo Station at its IFA 2026 opening keynote in Berlin, describing the system as a workstation capable of running AI models containing more than one trillion parameters. The announcement moves AMD’s personal-AI pitch beyond laptops and compact developer boxes toward hardware intended for exceptionally large local workloads.
+
+The company did not publish a complete specification, price or shipping schedule during the initial presentation. Those omissions make the trillion-parameter figure a capacity claim rather than a demonstrated performance result. Model size alone does not reveal generation speed, usable context length or whether a workload depends on aggressive quantization, sparse mixture-of-experts architecture or multiple accelerators.
+
+AMD has nevertheless been building toward this tier. Its Ryzen AI Halo platform uses large pools of unified memory to accommodate models that exceed ordinary consumer GPU memory, while Threadripper systems offer more processor cores, memory capacity and PCIe connectivity. The new station appears designed to extend that approach into a substantially higher performance envelope.
+
+## Local inference moves upmarket
+
+A workstation with enough memory for trillion-parameter-class models could appeal to laboratories, regulated businesses and studios that cannot routinely send sensitive material to hosted services. It may also let developers inspect, customize or evaluate very large open-weight models without reserving cloud clusters for every experiment.
+
+Yet fitting a model into memory and operating it productively are different thresholds. AMD still needs to disclose the accelerator configuration, memory bandwidth, power draw and measured token throughput. Software support will matter just as much: broad compatibility with frameworks and quantized model formats will determine whether the machine becomes a practical development platform or a specialized showcase.
+
+The announcement matters because local AI hardware is beginning to segment by workload rather than merely by device size. If AMD can deliver useful throughput at workstation economics, some inference and model-development spending could shift away from metered cloud GPUs. Until benchmarks and pricing arrive, however, the Station’s strategic direction is clearer than its commercial advantage.
+
+Chinese title: AMD发布可运行万亿参数模型的AI工作站
+Chinese summary: AMD在IFA发布Threadripper Halo Station，把本地AI计算从迷你开发机推向万亿参数模型级工作站。
+
+Sources:
+  - Jack Huynh Opening Keynote of IFA Berlin 2026: https://www.amd.com/en/corporate/events/ifa.html
+  - AMD 公布 Threadripper Halo Station 工作站: https://www.ithome.com/0/998/560.htm
+  - AMD at IFA Opening Keynote: Pushing Personal AI to the PC: https://uk.investing.com/news/stock-market-news/amd-at-ifa-opening-keynote-pushing-personal-ai-to-the-pc-93CH-4858557
+
 ### Google WeatherNext 3 Moves AI Forecasts Into Products
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/google-weathernext-three.html
@@ -283,7 +317,7 @@ Sources:
   - Meta AI Announces Muse Spark 1.3: https://x.com/AIatMeta/status/2095234385129963666
   - Artificial Analysis Muse Spark 1.3 Results: https://x.com/ArtificialAnlys/status/2095247793183166917
 
-### Perplexity Releases Lily for Faster Qwen Inference on Macs
+### Perplexity Previews Lily for Faster Qwen Inference on Macs
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/perplexity-lily-apple-silicon-inference.html
 - Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-lily-apple-silicon-inference.html
@@ -291,30 +325,30 @@ Sources:
 - Site timestamp: 2026-09-03T11:00:00.000Z
 - Tags: Open Source, Models, Industry
 
-The open-source Rust and Metal engine runs Qwen3.6-35B-A3B up to 1.35 times faster than MLX-LM on an M5 Max, according to Perplexity.
+Perplexity says its forthcoming Rust and Metal engine runs Qwen3.6-35B-A3B up to 1.35 times faster than MLX-LM on an M5 Max.
 
 ## A purpose-built local engine
 
-Perplexity has released Lily, a compact inference server designed exclusively for the Qwen3.6-35B-A3B model on Apple silicon. Its source code, tests and benchmark reproduction instructions are publicly available under the Apache 2.0 license in Perplexity’s pplx-garden GitHub repository. Lily combines a Rust runtime with custom Metal kernels and exposes a minimal OpenAI-compatible chat-completions interface. PyTorch and Apple’s general-purpose MLX framework are not part of its execution path.
+Perplexity has previewed Lily, a compact inference server designed exclusively for the Qwen3.6-35B-A3B model on Apple silicon. The company says the engine will be open-sourced soon, but as of September 4 its public pplx-garden repository does not contain the announced Lily implementation or benchmark reproduction package. Lily combines a Rust runtime with custom Metal kernels and exposes an OpenAI-compatible chat-completions interface. PyTorch and Apple’s general-purpose MLX framework are not part of its execution path.
 
-Lily currently accepts one specific 4-bit checkpoint. Qwen3.6-35B-A3B has 35 billion parameters but activates roughly 3 billion per token, routing each token through eight of 256 experts plus a shared expert. Its checkpoint occupies 19.4 GB, while the model mixes ten full-attention layers with 30 Gated DeltaNet recurrent layers. Perplexity tailored Lily’s data movement, scheduling and kernels around those fixed characteristics.
+Lily currently targets one specific 4-bit checkpoint. Qwen3.6-35B-A3B has 35 billion parameters but activates roughly 3 billion per token, routing each token through eight of 256 experts plus a shared expert. Its checkpoint occupies 19.4 GB, while the model mixes ten full-attention layers with 30 Gated DeltaNet recurrent layers. Perplexity tailored Lily’s data movement, scheduling and kernels around those fixed characteristics.
 
 ## Faster, within narrow boundaries
 
 On a MacBook Pro equipped with a 40-core M5 Max GPU and 128 GB of unified memory, Perplexity says Lily averaged 1.23 times MLX-LM’s prompt-processing throughput and 1.35 times its token-generation throughput across contexts ranging from 256 to 128,000 tokens. At a 4,000-token prompt and context, it processed prompts at 5,749.9 tokens per second and generated 186.6 tokens per second, versus 4,737.5 and 140.9 for MLX-LM.
 
-The gains came from keeping expert routing and recurrent state on the GPU, fusing operations to avoid intermediate memory traffic, and changing attention paths as context length grows. Perplexity also reported an instructive failure: speculative decoding made this batch-one workload 18% slower because proposed tokens created inefficient execution shapes and scattered expert access.
+The gains came from keeping expert routing and recurrent state on the GPU, fusing operations to avoid intermediate memory traffic, and changing attention paths as context length grows. Perplexity also reported that speculative decoding made this batch-one workload 18% slower because proposed tokens created inefficient execution shapes and scattered expert access.
 
-The comparison remains vendor-run and deliberately narrow, although outside developers can now inspect the implementation and attempt to reproduce it. Lily requires an M5 or newer Apple GPU, macOS 26 and the designated quantized Qwen checkpoint; it does not support other Qwen sizes, dense models or common GGUF, AWQ and GPTQ formats. Its chat interface is also intentionally limited to text messages and greedy decoding, without streaming, tool calls, sampling controls or multimodal input.
+The comparison remains vendor-run and deliberately narrow. Until the promised source and reproduction materials are published, outside developers cannot fully inspect or reproduce Lily itself from the cited public repository. Perplexity says Lily requires an M5 or newer Apple GPU, macOS 26 and the designated quantized Qwen checkpoint; it does not support other Qwen sizes, dense models or common GGUF, AWQ and GPTQ formats.
 
-The release matters because local AI performance may increasingly depend on co-designing runtimes for a particular model architecture and device, rather than relying entirely on portable frameworks. Lily’s reported results and public code make that approach testable, but its limited compatibility leaves open whether the optimizations can become a durable platform rather than a one-model showcase.
+The preview matters because local AI performance may increasingly depend on co-designing runtimes for a particular model architecture and device rather than relying entirely on portable frameworks. Lily’s reported results make that approach notable, but independent verification and its value as an open-source release must wait for the promised code.
 
-Chinese title: Perplexity 开源 Lily，本地千问推理提速最高1.35倍
-Chinese summary: 据 Perplexity 测试，这款面向苹果芯片的开源 Rust 与 Metal 专用引擎，在 M5 Max 上运行千问模型的速度最高较 MLX-LM 提升1.35倍。
+Chinese title: Perplexity 预告 Lily，称可加速 Mac 上的千问推理
+Chinese summary: Perplexity 称这款即将开源的 Rust 与 Metal 专用引擎，在 M5 Max 上运行 Qwen3.6-35B-A3B 的速度最高较 MLX-LM 提升1.35倍。
 
 Sources:
   - Optimizing On-Device Inference for Apple Silicon: https://www.perplexity.ai/hub/blog/optimizing-on-device-inference-for-apple-silicon
-  - Lily source code and reproduction instructions: https://github.com/perplexityai/pplx-garden/tree/main/lily
+  - Perplexity pplx-garden repository: https://github.com/perplexityai/pplx-garden
 
 ### Gemini Adds Agentic Video Search With Fewer Tokens
 
@@ -411,7 +445,7 @@ Sources:
   - Meta introduces Muse Voice Transcribe: https://x.com/AIatMeta/status/2094839236016976028
   - Muse Voice Transcribe architecture details: https://x.com/AIatMeta/status/2094839238495801457
 
-### OpenAI Classifies Astra as Cyber-Critical Model
+### OpenAI Launches Cyber-Critical GPT-6 Astra
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-astra-cyber-critical.html
 - Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-astra-cyber-critical.html
@@ -419,27 +453,29 @@ Sources:
 - Site timestamp: 2026-09-01T23:00:04.179Z
 - Tags: Models, Safety
 
-OpenAI says its unreleased Astra model can autonomously discover and exploit unknown flaws, prompting tighter release controls.
+OpenAI has broadly released GPT-6 Astra with tighter safeguards and restricted access to its most advanced cybersecurity capabilities.
 
-## A new capability threshold
+## A critical-capability model reaches users
 
-OpenAI said its forthcoming Astra model has reached the “Critical” cybersecurity threshold under the company’s Preparedness Framework—the first OpenAI model to receive that classification. According to the laboratory, Astra can, when equipped with appropriate tools and access, discover previously unknown vulnerabilities and develop exploits against well-protected systems without continuous human direction.
+OpenAI released GPT-6 Astra on September 3, two days after announcing that it had reached the “Critical” cybersecurity threshold under the company’s Preparedness Framework. It is the first OpenAI model to receive that classification. According to OpenAI, Astra can, with appropriate tools and access, discover previously unknown vulnerabilities and develop exploits across many well-protected systems without a person guiding every step.
 
-The announcement is a safety assessment, not a model release. OpenAI says Astra will become available soon, but the most advanced cybersecurity functions will initially be restricted to selected testers and later expanded to defensive users through its Daybreak Blue program. A system card containing fuller capability and safety evaluations is due when the model launches.
+The release supersedes OpenAI’s earlier description of Astra as forthcoming. The company now calls it its most capable broadly deployed model and has published a safety overview and full system card. Access to Astra’s most advanced cybersecurity capabilities remains more limited than ordinary use, with less restrictive defensive access expected to expand through OpenAI’s Daybreak program.
 
-OpenAI disclosed that it delayed parts of Astra’s development and release while strengthening safeguards. Those measures include training intended to improve refusals of harmful requests, monitoring capable of halting potentially unauthorized activity, and tighter controls over sensitive access. The company also incorporated lessons from a recent incident involving agents attacking Hugging Face infrastructure, although it says Astra itself was not used in that episode.
+OpenAI says it delayed parts of Astra’s development and release while strengthening safeguards. Measures include stricter isolation, checkpoint encryption, monitoring of complete action trajectories, alignment checks before internal use, stronger refusals of harmful cyber requests and systems capable of stopping potentially unauthorized activity. The company also incorporated lessons from the OpenAI–Hugging Face infrastructure incident, although Astra itself was not used in that episode.
 
-Important evidence remains unpublished. OpenAI has not yet provided the complete benchmark suite, details of the vulnerabilities found during testing, or independent verification of its claim that production safeguards would have stopped the Hugging Face incident. Nor has it announced a firm availability date. The designation therefore documents OpenAI’s internal risk judgment more clearly than Astra’s practical performance.
+The newly published material adds evidence absent from the initial announcement. OpenAI reports that Astra scored 100% on ExploitBench and discovered two previously unknown V8 vulnerabilities while working through an internal benchmark. Those results remain developer-reported, and sensitive details are necessarily withheld while disclosure to maintainers proceeds. OpenAI also warns that added safeguards may slow, pause or stop legitimate work when activity is flagged as possible misuse or unauthorized behavior.
 
 ## Why it matters
 
-A frontier developer has now publicly stated that one of its models crosses from assisting security professionals into autonomously finding and operationalizing unknown weaknesses at scale. That raises the cost of conventional API access and monitoring assumptions: limiting harmful prompts alone may be inadequate when a model can chain tools and actions. Astra’s eventual release will test whether powerful cyber capability can be segmented for defenders without creating a broadly reusable offensive service.
+A frontier developer has now broadly deployed a model it says can autonomously find and operationalize unknown weaknesses, while segmenting the most sensitive capabilities behind additional controls. This shifts Astra from a prospective safety case to a live test of whether cyber-critical capability can be distributed without becoming a broadly reusable offensive service. Independent scrutiny will now focus on both real-world capability and the rate at which safeguards interrupt legitimate defensive work.
 
-Chinese title: OpenAI 将 Astra 列为关键级网络安全模型
-Chinese summary: 尚未发布的 Astra 据称可自主发现未知漏洞并设计利用方式，OpenAI 因此推迟部分开发并收紧敏感能力访问。
+Chinese title: OpenAI 发布关键级网络安全模型 GPT-6 Astra
+Chinese summary: OpenAI 已广泛发布 GPT-6 Astra，同时以更严格的防护措施限制其最高级别网络安全能力。
 
 Sources:
   - Path to Astra: critical capabilities and frontier safeguards: https://openai.com/index/path-to-astra
+  - GPT-6 Astra: A new generation of intelligence: https://openai.com/index/gpt-6-astra/
+  - Safety overview: GPT-6 Astra: https://openai.com/index/safety-overview-gpt-6-astra/
 
 ### Alibaba’s Qwen3.8-Max-0902 Takes Code Arena Lead
 
@@ -959,41 +995,6 @@ Sources:
   - Using OpenAI models in Cursor: https://help.openai.com/en/articles/20001506-using-openai-models-in-cursor
   - Cursor is now a part of SpaceX: https://cursor.com/blog/joining-spacex
 
-### OpenAI Adds Rosalind Workbench for Life Sciences
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-rosalind-science-workbench.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-rosalind-science-workbench.html
-- Source timestamp: 2026-08-28T18:29:00.000Z
-- Site timestamp: 2026-08-28T23:00:03.631Z
-- Tags: Research, Agents, Industry
-
-The new workspace connects specialized models, biological tools and reviewable evidence in a governed research workflow.
-
-## From model access to a research workspace
-
-OpenAI has introduced Rosalind Workbench, a research-preview environment that connects life-science questions with specialized models, databases and computational tools. It extends the company’s existing GPT-Rosalind offering beyond a standalone model by organizing multi-step scientific work inside a reviewable workspace.
-
-Researchers can use the system to inspect sequencing data, synthesize literature and biological evidence, compare therapeutic targets, examine proteins and variants, assess molecular candidates and plan follow-up experiments. A guided next-generation sequencing workflow checks uploaded files, proposes an analysis plan and exposes quality-control measurements and saved outputs before the user selects the next question.
-
-The workbench can run directly through Codex, while eligible organizations may request GPT-Rosalind API access. OpenAI says workflows can be saved, shared and reused, an important distinction from chat sessions whose reasoning and tool calls are difficult for a scientific team to reconstruct. The broader Rosalind package connects to more than 50 public multi-omics databases, literature sources and biology tools.
-
-OpenAI reports performance-per-token improvements of 53.7% on GeneBench, 18% on Medchem Bench and 19.6% on Labworkbench, with a smaller 4.42% gain on LifeSci Bench. These are company-selected evaluations and do not establish that the system improves laboratory success rates or drug-development outcomes.
-
-## Controlled availability
-
-Rosalind Workbench remains a research preview. Specialized GPT-Rosalind access is reviewed at the organizational level, with initial deployment governed by eligibility, security and biological-misuse controls. Mainline models and some connectors are more broadly available, but the most capable research mode is not an unrestricted public product.
-
-## Why it matters
-
-Scientific AI is shifting from question answering toward orchestration: selecting tools, carrying evidence between stages and preserving an inspectable record of decisions. Rosalind Workbench brings that approach into genomics, protein analysis and experimental planning, where provenance and human approval are essential. Its importance will depend less on benchmark gains than on whether research teams can reproduce its intermediate steps and demonstrate better experimental choices. Until prospective laboratory evidence appears, it should be regarded as a governed workflow system with promising reasoning support, not an autonomous scientist.
-
-Chinese title: OpenAI推出Rosalind生命科学研究工作台
-Chinese summary: 新工作台把专用模型、生物数据库、科研工具和可复核结果接入同一套受控研究流程。
-
-Sources:
-  - Rosalind: https://openai.com/rosalind/
-  - OpenAI Developers Rosalind Workbench announcement: https://x.com/OpenAIDevs/status/2093405504433447257
-
 ## Recent radar items
 
 ### 2026-09-04
@@ -1015,6 +1016,20 @@ Sources:
 - 2026-09-03T19:13Z | X (@awsdevelopers) | AWS demonstrated a Strands agent creating and validating a missing similarity tool before continuing its assigned article-comparison task. | 中文：AWS 展示 Strands 智能体在缺少相似度工具时自行编写、验证该工具，并继续完成文章比较任务。 | https://x.com/awsdevelopers/status/2095590905314938964
 - 2026-09-03T15:18Z | X (@ElevenLabs) | ElevenLabs partnered with Genesys to integrate ElevenAgents into enterprise customer journeys alongside Genesys Cloud Agent Copilot. | 中文：ElevenLabs 与 Genesys 合作，将 ElevenAgents 接入企业客户旅程，并与 Genesys Cloud Agent Copilot 配合使用。 | https://x.com/ElevenLabs/status/2095531787808084223
 - 2026-09-03T13:36Z | X (@weaviate_io) | Weaviate 1.38 introduced a Boost API for query-time rescoring when hard filters would otherwise exclude potentially useful search results. | 中文：Weaviate 1.38 新增 Boost API，可在硬过滤可能排除有用结果时进行查询时重排序。 | https://x.com/weaviate_io/status/2095506120181682342
+- 2026-09-04T10:51Z | X @baseten | Baseten highlighted OpenEvidence’s specialized medical model family as a leading system for answering healthcare questions. | 中文：Baseten重点展示了OpenEvidence医疗专用模型家族，称其面向医疗问答达到领先水平。 | https://x.com/baseten/status/2095827023713259543
+- 2026-09-04T09:21Z | InfoQ 中文 | Google Cloud introduced agents for database onboarding and observability, supporting natural-language setup, telemetry correlation, root-cause analysis, and approved remediation. | 中文：Google Cloud推出数据库上线与可观测性智能体，可用自然语言配置、关联遥测、定位根因并经确认执行修复。 | https://www.infoq.cn/article/iV0rsPyO5XZDJ7797hLJ
+- 2026-09-04T09:19Z | 量子位 | Astribot released SmoothRL, an online reinforcement-learning system designed to keep robot training synchronized with asynchronous large-model inference. | 中文：星尘智能发布SmoothRL在线强化学习系统，旨在让机器人训练跟上大模型的异步推理节奏。 | https://www.qbitai.com/2026/09/484437.html
+- 2026-09-04T08:57Z | 量子位 | Jiuwen ScienceDiscovery demonstrated tree-search-driven recursive self-improvement, producing a general integrator within hours and identifying physical laws at low cost. | 中文：九问ScienceDiscovery展示树搜索驱动的递归自我改进，可在数小时内写出通用积分器并低成本发现物理规律。 | https://www.qbitai.com/2026/09/484293.html
+- 2026-09-04T01:38Z | SiliconANGLE | Nvidia’s beta PAIR software distributes agent subtasks across idle home PCs and Macs running Ollama or LM Studio. | 中文：英伟达推出PAIR测试版，可把智能体子任务分发给家庭网络中运行Ollama或LM Studio的闲置电脑。 | https://siliconangle.com/2026/09/03/nvidia-pair-makes-it-easy-to-create-a-household-data-center-for-running-agentic-ai-tasks/
+- 2026-09-04T07:09Z | 量子位 | AFAC’s annual financial-AI competition concluded after attracting 20,000 participants and over 30 institutions, with tens of billions of data points opened. | 中文：AFAC年度金融AI赛事完成评审，吸引两万名选手及三十多家机构，并开放百亿级数据。 | https://www.qbitai.com/2026/09/484203.html
+- 2026-09-04T05:48Z | 量子位 | Alibaba’s Qwen Office surpassed 30 million users during its first month, with enterprise users accounting for more than half. | 中文：阿里千问办公上线首月用户突破三千万，其中企业用户占比超过一半。 | https://www.qbitai.com/2026/09/484155.html
+- 2026-09-04T04:21Z | TechCrunch | TechCrunch examined how stylistic convergence makes AI-generated restaurant menu images repetitive and often visually unappetizing. | 中文：TechCrunch调查发现，风格趋同正使AI生成的餐厅菜单图片显得重复且缺乏食欲。 | https://techcrunch.com/2026/09/03/the-sameness-problem-behind-those-unappetizing-ai-generated-menus/
+- 2026-09-04T00:48Z | TechCrunch | Crusoe reportedly raised $3 billion at a $30 billion valuation as demand for AI infrastructure continued driving capital investment. | 中文：据报道，AI基础设施公司Crusoe以三百亿美元估值融资三十亿美元。 | https://techcrunch.com/2026/09/03/crusoe-reportedly-raises-3b-at-a-30b-valuation/
+- 2026-09-04T00:06Z | X @ArtificialAnlys | Meta’s Muse Image debuted fourth for image editing and fifth for text-to-image on Artificial Analysis, costing one cent per image. | 中文：Meta的Muse Image在Artificial Analysis图像编辑榜排名第四、文生图榜第五，每张图成本一美分。 | https://x.com/ArtificialAnlys/status/2095664864689811616
+- 2026-09-03T23:35Z | SiliconANGLE | UiPath reported quarterly revenue of $410 million, up 13%, while annual recurring revenue reached $1.94 billion and net retention rose to 109%. | 中文：UiPath季度营收达4.10亿美元、同比增长13%，年度经常性收入升至19.4亿美元，净留存率为109%。 | https://siliconangle.com/2026/09/03/uipath-beats-on-revenue-but-its-stock-tanks-after-hours/
+- 2026-09-04T04:00Z | arXiv | Speculative Macro Commit reduced tool-agent wall time by 44.9% versus sequential execution on AppWorld, with a small task-completion decline. | 中文：Speculative Macro Commit在AppWorld上较顺序执行缩短44.9%的智能体耗时，但任务完成率略有下降。 | https://arxiv.org/abs/2609.03236
+- 2026-09-04T04:00Z | arXiv | DuplexSpeechBench-IFEval introduced 1,038 tests across eight roles, finding full-duplex voice agents follow explicit behavior better than persona-implied instructions. | 中文：DuplexSpeechBench-IFEval发布覆盖八种角色的1038项测试，发现全双工语音智能体更善于遵循明确指令而非角色暗示。 | https://arxiv.org/abs/2609.03423
+- 2026-09-04T04:00Z | arXiv | Dude’s multi-agent paper-code discrepancy detector improved recall and precision by up to 22.8%, raising F1 by up to 18.7%. | 中文：多智能体论文代码差异检测系统Dude将召回率和精确率最高提升22.8%，F1最高提升18.7%。 | https://arxiv.org/abs/2609.03416
 
 ### 2026-09-03
 
