@@ -1,0 +1,29 @@
+{
+  "slug": "github-hydrafusion-model-routing",
+  "title": "GitHub HydraFusion Routes Coding Work Across Models",
+  "summary": "GitHub’s experimental coding agent selects single, cascade or critique workflows to trade model cost against verified task quality.",
+  "body": "## One request, several possible workflows\n\nGitHub has opened a research preview of Project HydraFusion, a Copilot runtime that decides both which AI models should handle a coding task and how they should collaborate. Instead of sending every request to one chosen model, HydraFusion can use a single-model response, let a cheaper model attempt the work before escalating, or have a second model critique a draft before revision.\n\nThe preview is available across Copilot plans through the experimental menu in GitHub Copilot CLI. Users select HydraFusion as if it were an ordinary model, while GitHub’s runtime constructs the workflow. Charges reflect the tokens consumed by every participating model at its standard rate, including drafting, review, revision and escalation.\n\nGitHub says HydraFusion improved verified task quality by 4.9 percentage points on TerminalBench 2.1 while cutting estimated cost by 67% relative to Claude Opus 5. Its policies were refined against TerminalBench, DeepSWE and a GitHub dataset derived from real Copilot sessions. The system applies timeouts, validates model bindings and runs critics without tools so that reviewers cannot modify the shared repository. Failed or cancelled workflows are designed to apply no patch.\n\nThe evidence remains bounded: these are controlled offline evaluations, and GitHub recommends starting with substantial, single-prompt tasks. Multi-turn sessions, latency and behavior on messy production repositories still require broader testing.\n\n## Why it matters\n\nHydraFusion turns model selection into an infrastructure decision rather than a choice repeatedly imposed on developers. If its routing survives real workloads, coding-agent vendors could combine inexpensive drafts with selective frontier-model calls instead of tying product quality and margins to one provider. That also gives GitHub greater control over the interface between model suppliers and Copilot customers—a strategically valuable position as capable models become more interchangeable.",
+  "title_zh": "GitHub推出多模型编程调度系统HydraFusion",
+  "summary_zh": "HydraFusion可按任务选择单模型、逐级升级或交叉审查流程，在编程质量、成本和延迟之间动态取舍。",
+  "body_zh": "## 一次请求，动态组合多种模型\n\nGitHub开放了Project HydraFusion研究预览。这套Copilot运行时不仅判断哪款模型适合当前编程任务，还会决定模型之间如何协作。它可以让单一模型直接处理，也可以先由成本较低的模型尝试、未达标准后再升级，或安排另一模型审查初稿，再由原模型修订。\n\n所有Copilot套餐用户都可通过GitHub Copilot CLI的实验功能调用HydraFusion。使用者像选择普通模型一样选择它，实际工作流则由系统自动构建。计费会覆盖起草、审查、修订和升级过程中各模型消耗的全部词元，并按对应模型的标准价格计算。\n\nGitHub称，在TerminalBench 2.1上，HydraFusion相较Claude Opus 5将验证任务质量提高4.9个百分点，同时把估算成本降低67%。其调度策略还使用DeepSWE以及源自真实Copilot会话的数据集进行调整。为控制风险，系统会设置超时、预先验证模型配置，并让审查模型在没有工具权限的隔离环境中工作；流程失败或取消时，不会向代码仓库应用未完成的修改。\n\n这些结果仍主要来自离线受控测试。GitHub目前建议从范围明确、一次提示即可描述的大型任务开始，多轮协作的稳定性、额外延迟以及复杂真实代码库中的表现仍待验证。\n\n## 为什么重要\n\nHydraFusion把“选哪个模型”从开发者的重复选择变成底层基础设施问题。如果动态调度在生产环境中同样有效，编程智能体就能用便宜模型完成多数工作，仅在必要时调用最强模型，不再把质量与利润完全押在单一供应商身上。更深一层看，GitHub由此掌握了模型厂商与Copilot用户之间的调度入口；当不同模型逐渐可以相互替换时，这个入口本身会成为重要的平台权力。",
+  "tags": [
+    "Agents",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Project HydraFusion: Frontier quality via multi-model orchestration",
+      "url": "https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/"
+    },
+    {
+      "title": "GitHub Copilot CLI",
+      "url": "https://github.com/github/copilot-cli"
+    }
+  ],
+  "featured": false,
+  "cat_take_zh": "节省67%成本很亮眼，但GitHub真正得到的是决定哪些模型获得调用量的调度权。",
+  "cat_take_en": "The 67% saving is notable, but GitHub’s larger prize is control over which models receive developer traffic.",
+  "date": "2026-09-05",
+  "published": "2026-09-04T16:09:00Z",
+  "published_at": "2026-09-04T23:00:03.050Z"
+}
