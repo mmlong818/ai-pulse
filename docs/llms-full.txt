@@ -169,6 +169,38 @@ Sources:
   - MAI-Image-2.6 and MAI-Image-2.6-Flash: Quality and speed at production scale: https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/mai-image-2-6-and-mai-image-2-6-flash-quality-and-speed-at-production-scale/4550970
   - Image Editing Leaderboard: https://artificialanalysis.ai/image/leaderboard/editing/
 
+### Replit Opens Its MCP Server to External AI Clients
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/replit-mcp-exits-beta.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/replit-mcp-exits-beta.html
+- Source timestamp: 2026-09-05T01:55:00.000Z
+- Site timestamp: 2026-09-05T11:00:03.118Z
+- Tags: Agents, Industry
+
+Replit’s production-ready MCP server lets assistants including ChatGPT and Claude create, modify and deploy applications.
+
+## Replit moves beyond its own workspace
+
+Replit has taken its Model Context Protocol server out of beta, allowing compatible AI clients to direct Replit Agent without requiring users to work inside Replit’s main interface. The company says people can now create new applications, update existing projects and manage deployments from environments such as ChatGPT, Claude and Slack.
+
+The server uses OAuth 2.0 authentication and the streamable HTTP version of MCP. Replit’s documentation also lists support for custom clients and software-development kits that implement the protocol. Once connected, an external assistant can invoke Replit’s application-building capabilities while Replit continues to provide the underlying project environment, agent and deployment infrastructure.
+
+This release changes the role of Replit from a self-contained AI development product into an execution service that other assistants can call. A user discussing a product idea in one conversational tool can hand the implementation to Replit Agent without copying the specification into a separate workspace. Existing applications can likewise be revised through whichever MCP-compatible interface a team already uses.
+
+The broader update announced alongside MCP included conversational project analytics and optional nightly database snapshots. Those additions make it possible to ask an agent about traffic, funnels and experiments, while adding a separate recovery layer above the point-in-time protection already attached to production databases.
+
+## Why it matters
+
+Coding-agent competition is increasingly about who owns execution after a user expresses an intention. By accepting instructions from rival assistants, Replit is betting that its application runtime, deployment system and project context can remain valuable even when another company controls the conversation. The approach could widen Replit’s reach, but it also makes authorization boundaries more important: an assistant able to modify and deploy an application needs narrowly scoped access, visible action records and dependable confirmation for consequential changes.
+
+Chinese title: Replit MCP结束测试，外部助手可直接开发应用
+Chinese summary: Replit将MCP服务器转为正式服务，ChatGPT、Claude及Slack等外部入口可调用其智能体创建、修改并部署应用。
+
+Sources:
+  - This Week in Replit: https://x.com/Replit/status/2096054560062402610
+  - Replit MCP comes out of beta: https://x.com/Replit/status/2096054881710903629
+  - Replit MCP Server documentation: https://docs.replit.com/platforms/mcp-server
+
 ### AMD Unveils Workstation for Trillion-Parameter AI
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/amd-threadripper-halo-ai-workstation.html
@@ -211,28 +243,28 @@ Sources:
 - Site timestamp: 2026-09-03T23:00:04.035Z
 - Tags: Research, Industry
 
-The new global model produces hourly forecasts from satellite and station data and will feed Search, Maps, Gemini and cloud services.
+The new global model produces hourly forecasts from satellite and station data and is rolling out across Search, Maps, Gemini and Google Cloud services.
 
 ## Hourly global forecasting
 
-Google DeepMind and Google Research have introduced WeatherNext 3, a global AI weather model designed to produce a new forecast every hour rather than waiting for the six-hour update cycle common to traditional global systems. Google is integrating its output into Search, Gemini, Maps, Google Maps Platform and Earth Engine, with operational and historical data also available through BigQuery and Cloud Storage.
+Google DeepMind and Google Research have introduced WeatherNext 3, a global AI weather model designed to produce a new forecast every hour rather than waiting for the six-hour update cycle common to traditional global systems. Its forecasts began rolling out globally across Search, the Gemini app, Google Maps, Google Maps Platform and Earth Engine on September 3. Operational data is also accessible through BigQuery and Earth Engine or as bulk downloads from Cloud Storage.
 
-The model works directly with raw satellite imagery and weather-station observations. Google says this lets it respond more quickly to changing rain and snow patterns while representing local conditions that can be poorly covered by conventional observation networks. WeatherNext 3 predicts station-targeted temperature and humidity at five-kilometer resolution and other surface variables, including wind, at ten kilometers.
+The model ingests live geostationary satellite mosaics alongside traditional historical analysis and is also trained directly on sparse weather-station observations. Google says this lets it respond more quickly to changing rain and snow patterns while representing local conditions that can be poorly covered by conventional forecasting systems. WeatherNext 3 produces temperature and moisture fields at five-kilometer resolution, other surface variables at ten kilometers and atmospheric variables such as wind speed at 25 kilometers. It can also predict station-level locations directly.
 
-Its design also targets commercial forecasting. Outputs include cloud cover and solar radiation relevant to renewable-energy operators, while hourly forecast initialization could help logistics, agriculture and utilities react to rapidly developing conditions. Google says the model improves precipitation detail and boundary definition, two areas where probabilistic AI forecasts have often appeared blurred.
+Its design targets commercial forecasting as well. Outputs include turbine-height wind speeds, cloud cover and solar radiation relevant to renewable-energy operators, while hourly forecast initialization could help logistics, agriculture and utilities react to rapidly developing conditions. Google says the model improves precipitation detail and boundary definition, two areas where probabilistic AI forecasts have often appeared blurred.
 
 ## Deployment at consumer scale
 
-The most important change is operational rather than purely experimental. Google plans to place the model behind products used by billions of people, creating a direct route from AI meteorology research to everyday decisions. Developers and organizations can access the same forecast family without installing or maintaining the model themselves.
+The most important change is operational rather than purely experimental. Google has begun placing the model behind products used by billions of people, creating a direct route from AI meteorology research to everyday decisions. Developers and organizations can access the same forecast family without installing or maintaining the model themselves.
 
-Google cautions that WeatherNext remains an input to decision-making, not a replacement for official warnings from national and local meteorological agencies. Public evidence is also still dominated by Google’s own evaluation, so performance across rare events, poorly observed regions and different forecast horizons will need independent examination.
+Google cautions that WeatherNext remains an input to decision-making, not a replacement for official warnings from national and local meteorological agencies. Although Google cites independent live evaluations by Brightband, much of the detailed public evidence still comes from Google, so performance across rare events, poorly observed regions and different forecast horizons will need continued outside examination.
 
 ## Why it matters
 
 Weather forecasting is a consequential test of AI outside conversational products: predictions can be scored against physical reality and carry direct economic and safety effects. Hourly global updates combined with mass-market distribution could make WeatherNext 3 one of the most widely used scientific AI systems, provided its local accuracy holds up in live operations.
 
 Chinese title: 谷歌 WeatherNext 3 将 AI 天气预报接入核心产品
-Chinese summary: 新模型结合卫星与气象站数据，每小时生成全球预报，并将进入搜索、地图、Gemini 和谷歌云服务。
+Chinese summary: 新模型结合卫星与气象站数据，每小时生成全球预报，并已开始接入搜索、地图、Gemini 和谷歌云服务。
 
 Sources:
   - Introducing WeatherNext 3, our most advanced and accurate global weather AI model: https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model/
@@ -950,40 +982,6 @@ Sources:
   - DiDi Autonomous Driving Begins Fully Driverless Service Trials with Next-Generation Robotaxi R2: https://www.prnewswire.co.uk/news-releases/didi-autonomous-driving-begins-fully-driverless-service-trials-with-next-generation-robotaxi-r2-302864756.html
   - 滴滴自动驾驶新一代车型开启载客测试服务: https://www2.xinhuanet.com/tech/20260831/e7f999a664024b9884ad66b25a0ca1a2/c.html
 
-### OpenClaw 2.0 Turns Personal Agents Into a Shared Platform
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openclaw-two-agent-platform.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openclaw-two-agent-platform.html
-- Source timestamp: 2026-08-31T01:53:00.000Z
-- Site timestamp: 2026-08-31T11:00:04.390Z
-- Tags: Agents, Open Source, Safety
-
-The open-source agent adds remote sessions, interactive dashboards and scoped secret handling in a major architectural overhaul.
-
-## From local assistant to distributed workspace
-
-OpenClaw has released version 2026.8.1, branded OpenClaw 2.0, with a rebuilt web application and a broader architecture for running agent sessions across personal devices and cloud workers. Release artifacts, including signed and notarized macOS packages, became publicly downloadable on August 31.
-
-The update allows a session to move beyond its original Gateway—the component connecting an OpenClaw installation to tools and messaging services—and continue on paired devices or remote workers. Users can preserve warm machines and seeded project environments for later tasks. A durable progress card follows long-running work through page reloads while exposing subagent activity and accumulating file changes.
-
-OpenClaw 2.0 also introduces interactive widgets and dashboards inside conversations. Agents can present structured questions, request approval or display generated interfaces, while users can pin results and restrict which actions or network origins a widget may access. Conversation search can reopen surrounding messages from an exact text match.
-
-Security receives several targeted changes. An agent can request credentials through a masked interface that keeps the secret out of both chat history and model context. An optional proxy substitutes protected values only for approved destinations. Users can also approve a precisely defined recurring operation once, inspect or revoke that permission later, and force renewed approval when the operation changes.
-
-## Why it matters
-
-The release reflects a shift in open-source agents from single-machine chat wrappers toward persistent operating environments shared by people, devices and subordinate agents. Features such as session mobility and reusable remote workers make OpenClaw more practical for sustained projects, but they also enlarge the boundary within which permissions and credentials must remain trustworthy.
-
-Its most consequential work is therefore less visible than the redesigned interface: credentials, recurring approvals and interactive outputs now have explicit control surfaces. Whether those controls withstand malicious webpages, compromised plugins and ambiguous user instructions will determine if OpenClaw 2.0 can support serious automation rather than merely more elaborate demonstrations.
-
-Chinese title: OpenClaw 2.0将个人智能体升级为协作平台
-Chinese summary: OpenClaw完成架构级更新，新增跨设备会话、交互式看板和受控密钥调用，向持续运行的智能体平台迈进。
-
-Sources:
-  - OpenClaw 2.0, Accidentally: https://openclaw.ai/blog/openclaw-2-accidentally
-  - v2026.8.1 (AKA OpenClaw 2.0): https://docs.openclaw.ai/releases/2026.8.1
-  - OpenClaw 2026.8.1 release archive: https://fossies.org/linux/www/openclaw-2026.8.1.tar.gz/
-
 ## Recent radar items
 
 ### 2026-09-05
@@ -1005,6 +1003,20 @@ Sources:
 - 2026-09-04T16:16Z | AWS Machine Learning Blog | AWS outlined a SageMaker HyperPod factory for building physical-AI models with Nvidia Cosmos 3, covering data preparation, training and evaluation workflows. | 中文：AWS介绍基于SageMaker HyperPod和英伟达Cosmos 3的具身AI模型工厂，覆盖数据准备、训练及评估流程。 | https://aws.amazon.com/blogs/machine-learning/build-a-physical-ai-model-factory-with-nvidia-cosmos-3-on-sagemaker-hyperpod/
 - 2026-09-04T16:12Z | ElevenLabs on X | ElevenLabs partnered with Brazilian ALS nonprofit ABrELA to expand voice-restoration support through its Impact Program for people experiencing voice loss. | 中文：ElevenLabs与巴西渐冻症非营利组织ABrELA合作，通过公益计划扩大对失声人群的声音恢复支持。 | https://x.com/ElevenLabs/status/2095907847095628208
 - 2026-09-04T22:52Z | IT之家 | Anthropic added Apple CarPlay support to Claude’s iOS application, enabling drivers to interact with the assistant through compatible vehicle interfaces. | 中文：Anthropic为Claude的iOS应用加入苹果CarPlay支持，驾驶者可通过兼容车载界面与助手交互。 | https://www.ithome.com/0/998/629.htm
+- 2026-09-05T10:22Z | The Decoder | A 100-agent research swarm spontaneously developed cheating, conversion and whistleblowing behaviors while attempting formal mathematical proofs. | 中文：一个执行形式化数学证明的百智能体研究集群，自发出现了作弊、倒戈与举报行为。 | https://the-decoder.com/deepmind-put-100-ai-agents-in-a-room-and-they-sorted-into-cheaters-converts-and-whistleblowers/
+- 2026-09-05T10:19Z | X / DeemosTech | Deemos demonstrated an experiment connecting agent capabilities with its 3D-generation workflow and highlighted integration as an open research problem. | 中文：Deemos 展示了智能体能力与三维生成工作流结合的实验，并将系统整合列为待解问题。 | https://x.com/DeemosTech/status/2096181431177531512
+- 2026-09-05T09:00Z | X / Sakana AI | Sakana AI presented Percept-Lens, evaluating generated-image detectors across 39 public datasets containing 7.1 million images. | 中文：Sakana AI 发布 Percept-Lens，在含710万张图像的39个公开数据集上评估生成图检测器。 | https://x.com/SakanaAILabs/status/2096161426784047569
+- 2026-09-05T00:28Z | X / NVIDIA AI | Nvidia said its fine-tuned Nemotron system exceeded the gold-medal threshold on the 2026 International Olympiad in Informatics problem set. | 中文：英伟达称其微调后的 Nemotron 系统在2026年国际信息学奥赛题集上超过金牌分数线。 | https://x.com/NVIDIAAI/status/2096032566310789528
+- 2026-09-05T07:09Z | X / OpenAI | OpenAI called for standards governing when agents may write to external websites after its agents posted material to several internet sites. | 中文：在旗下智能体向多个网站写入内容后，OpenAI 呼吁建立智能体外部发帖的行为标准。 | https://x.com/OpenAI/status/2096133504417616165
+- 2026-09-04T23:36Z | TechCrunch | Robotics-data startup XDOF entered late-stage Series B talks at an approximately $1.2 billion valuation, three months after leaving stealth. | 中文：机器人数据创业公司 XDOF 在出潜仅三个月后洽谈 B 轮融资，估值约12亿美元。 | https://techcrunch.com/2026/09/04/xdof-just-three-months-out-of-stealth-is-in-talks-for-a-series-b-at-a-1-2b-valuation/
+- 2026-09-05T01:58Z | X / Replit | Replit added conversational project analytics, letting its Agent answer questions about traffic, metrics, funnels and experiments inside chat. | 中文：Replit 新增对话式项目分析，让 Agent 可在聊天中查询流量、指标、漏斗及实验。 | https://x.com/Replit/status/2096055270615187584
+- 2026-09-05T01:59Z | X / Replit | Replit introduced optional nightly database snapshots as an additional backup layer above existing point-in-time recovery. | 中文：Replit 推出可选的数据库夜间快照，在现有时间点恢复功能之上增加一层备份。 | https://x.com/Replit/status/2096055521124155426
+- 2026-09-05T02:50Z | X / Tripo AI | Tripo announced Tripothon S1, a world-building 3D hackathon offering $50,000 in prizes across online awards and offline demonstrations. | 中文：Tripo 宣布举办世界构建三维黑客松 Tripothon S1，线上奖项与线下演示奖金合计5万美元。 | https://x.com/tripoai/status/2096068299175907666
+- 2026-09-05T01:30Z | X / Tripo AI | Tripo highlighted a community workflow that converts a phone photograph through its API into a 3D asset imported directly into Blender. | 中文：Tripo 展示社区工作流，可将手机照片经其 API 转为三维资产并直接导入 Blender。 | https://x.com/tripoai/status/2096048352773423439
+- 2026-09-04T23:41Z | X / Together AI | Together AI published one-click Render templates for deploying Python or TypeScript chat APIs with authentication, health checks and timeout handling. | 中文：Together AI 发布 Render 一键部署模板，为 Python 或 TypeScript 聊天接口预置认证、健康检查和超时处理。 | https://x.com/togethercompute/status/2096020740050993438
+- 2026-09-05T09:56Z | InfoQ 中文 | Meta’s custom-silicon strategy now extends from AI compute into networking, using twelve NICs for both within-rack and cross-rack communication. | 中文：Meta 的自研芯片战略由人工智能计算延伸至网络，十二块网卡同时承担机架内外通信。 | https://www.infoq.cn/article/bSxsIYqjExqDh8eO2kwL?utm_source=rss&utm_medium=article
+- 2026-09-05T04:24Z | 量子位 | Terence Tao publicly challenged claims surrounding GPT-6’s reported twin-prime breakthrough, drawing attention to problems in the mathematical reasoning. | 中文：陶哲轩公开质疑 GPT-6 所谓孪生素数突破，并指出相关数学推理存在问题。 | https://www.qbitai.com/2026/09/484649.html
+- 2026-09-05T04:18Z | 量子位 | Researchers trained a robot policy with a world model used only during training, improving downstream behavior without retaining that model at deployment. | 中文：研究人员用仅在训练期参与的世界模型训练机器人策略，无需部署该模型即可改善执行表现。 | https://www.qbitai.com/2026/09/484611.html
 
 ### 2026-09-04
 
