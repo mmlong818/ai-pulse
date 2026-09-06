@@ -19,6 +19,37 @@
 
 ## Recent briefings
 
+### Claude Fable 5.1 Tops Agent Arena on 6,796 Sessions
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/fable-5-1-agent-arena-lead.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/fable-5-1-agent-arena-lead.html
+- Source timestamp: 2026-09-06T00:44:00.000Z
+- Site timestamp: 2026-09-06T11:00:03.518Z
+- Tags: Models, Agents, Industry
+
+Anthropic’s model leads a live agent benchmark, although its strong task results come with the board’s highest median cost.
+
+## A lead built on live usage
+
+Claude Fable 5.1 Max has entered Agent Arena in first place, posting a 15.87% net improvement over the benchmark’s average model across 6,796 real-world agent sessions. The September 5 leaderboard snapshot places it ahead of Claude Opus 5 High, which records 12.68% from a substantially larger sample of 22,594 sessions.
+
+Agent Arena derives its rankings from models operating tools in deployed workflows rather than from a fixed collection of laboratory questions. Its composite result incorporates verified task completion, user praise and complaints, responsiveness to user steering, recovery after shell-command failures and apparent tool hallucinations. This makes the comparison relevant to developers choosing the reasoning engine inside an agent, while also introducing variables—such as task mix and user behavior—that are harder to control than in a conventional benchmark.
+
+Fable 5.1’s strongest signals are a 22.45% improvement in confirmed success and 42.45% in praise relative to complaints. The latter carries a wide confidence interval of plus or minus 10.94 percentage points. Its measured steerability improvement is only 0.58%, with an interval spanning both positive and negative values, so the current data do not establish a meaningful advantage on that dimension.
+
+## Performance carries a premium
+
+The live leaderboard lists a median cost of about $4.19 per task and 51,500 output tokens, making Fable 5.1 Max the most expensive model among the leading entries. Claude Opus 5 High, ranked second, costs about $2.35 per median task and produces roughly 30,200 output tokens. Fable’s top ranking therefore reflects higher observed effectiveness, not superior economy across every workload.
+
+The result matters because agent buyers increasingly need evidence from lengthy, tool-using sessions rather than isolated answer-quality tests. Fable 5.1 now has an early production-facing lead, but its smaller sample, uncertain steerability score and unusually heavy token use leave room for the ranking to change as more traces arrive—including results from the newly released GPT-6 Astra.
+
+Chinese title: Claude Fable 5.1登顶智能体实战榜单
+Chinese summary: Claude Fable 5.1在6796次真实智能体会话中排名第一，但领先表现伴随着榜单最高的单任务成本。
+
+Sources:
+  - Claude Fable 5.1 Lands at No. 1 in Agent Arena: https://x.com/arena/status/2096398986383184269
+  - Agent Arena Overall Leaderboard: https://arena.ai/leaderboard/agent?lctg=586d9e571e560373298b467c&stream=top
+
 ### DeepSeek Plans 160,000-Chip Huawei AI Cluster
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-huawei-chip-cluster.html
@@ -201,7 +232,7 @@ Sources:
   - Replit MCP comes out of beta: https://x.com/Replit/status/2096054881710903629
   - Replit MCP Server documentation: https://docs.replit.com/platforms/mcp-server
 
-### AMD Unveils Workstation for Trillion-Parameter AI
+### AMD Details Prototype Workstation for Trillion-Parameter AI
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/amd-threadripper-halo-ai-workstation.html
 - Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/amd-threadripper-halo-ai-workstation.html
@@ -209,29 +240,30 @@ Sources:
 - Site timestamp: 2026-09-04T11:00:03.233Z
 - Tags: Industry, Models
 
-AMD’s Threadripper Halo Station targets local execution of trillion-parameter AI models, pushing private compute beyond compact AI PCs.
+AMD’s Threadripper Halo Station prototype pairs a 96-core Threadripper PRO processor with four Instinct accelerators and up to 2.6 TB of combined memory, with availability planned for 2027.
 
 ## A larger class of local AI machine
 
-AMD unveiled the Threadripper Halo Station at its IFA 2026 opening keynote in Berlin, describing the system as a workstation capable of running AI models containing more than one trillion parameters. The announcement moves AMD’s personal-AI pitch beyond laptops and compact developer boxes toward hardware intended for exceptionally large local workloads.
+AMD unveiled the Threadripper Halo Station at its IFA 2026 opening keynote in Berlin. The company now describes it as a prototype deskside workstation intended to train, fine-tune and run frontier-class AI models locally, including models with more than one trillion parameters. AMD says the system is coming in 2027, but has not announced a price or a more specific release date.
 
-The company did not publish a complete specification, price or shipping schedule during the initial presentation. Those omissions make the trillion-parameter figure a capacity claim rather than a demonstrated performance result. Model size alone does not reveal generation speed, usable context length or whether a workload depends on aggressive quantization, sparse mixture-of-experts architecture or multiple accelerators.
+AMD’s published reference configuration combines a 96-core, 192-thread Ryzen Threadripper PRO 9995WX processor with four Instinct MI350P accelerators. Each accelerator provides 144 GB of HBM3e memory, producing as much as 576 GB of aggregate GPU memory and 16 TB/s of aggregate GPU memory bandwidth. With up to 2 TB of RDIMM system memory, the workstation reaches approximately 2.6 TB of combined memory and 16.4 TB/s of total advertised memory bandwidth.
 
-AMD has nevertheless been building toward this tier. Its Ryzen AI Halo platform uses large pools of unified memory to accommodate models that exceed ordinary consumer GPU memory, while Threadripper systems offer more processor cores, memory capacity and PCIe connectivity. The new station appears designed to extend that approach into a substantially higher performance envelope.
+Those figures clarify how AMD expects the machine to accommodate trillion-parameter-class workloads, but they remain capacity and peak-bandwidth specifications rather than measured model performance. Parameter count alone does not reveal generation speed, usable context length or the effects of quantization and sparse mixture-of-experts architectures. AMD has not yet published model-specific token-throughput, power-consumption or pricing data for the prototype.
 
 ## Local inference moves upmarket
 
-A workstation with enough memory for trillion-parameter-class models could appeal to laboratories, regulated businesses and studios that cannot routinely send sensitive material to hosted services. It may also let developers inspect, customize or evaluate very large open-weight models without reserving cloud clusters for every experiment.
+A workstation with this amount of memory could appeal to laboratories, regulated businesses and studios that cannot routinely send sensitive material to hosted services. It may also let developers inspect, customize or evaluate very large open-weight models without reserving cloud clusters for every experiment. AMD additionally positions the system for training, fine-tuning and running hundreds of agentic workflows locally.
 
-Yet fitting a model into memory and operating it productively are different thresholds. AMD still needs to disclose the accelerator configuration, memory bandwidth, power draw and measured token throughput. Software support will matter just as much: broad compatibility with frameworks and quantized model formats will determine whether the machine becomes a practical development platform or a specialized showcase.
+Yet fitting a model into memory and operating it productively are different thresholds. Four data-center-derived accelerators place the Halo Station in a different class from compact AI PCs, and its eventual power, cooling and price requirements will help determine whether it functions as an accessible workstation or a deskside alternative to server infrastructure. Software compatibility and measured throughput will matter as much as headline capacity.
 
-The announcement matters because local AI hardware is beginning to segment by workload rather than merely by device size. If AMD can deliver useful throughput at workstation economics, some inference and model-development spending could shift away from metered cloud GPUs. Until benchmarks and pricing arrive, however, the Station’s strategic direction is clearer than its commercial advantage.
+The announcement matters because local AI hardware is beginning to segment by workload rather than merely by device size. If AMD can deliver useful performance at workstation economics in 2027, some inference and model-development spending could shift away from metered cloud GPUs. For now, the prototype’s architecture and launch year are clearer, while its commercial advantage still awaits benchmarks and pricing.
 
-Chinese title: AMD发布可运行万亿参数模型的AI工作站
-Chinese summary: AMD在IFA发布Threadripper Halo Station，把本地AI计算从迷你开发机推向万亿参数模型级工作站。
+Chinese title: AMD公布万亿参数AI原型工作站详细配置
+Chinese summary: Threadripper Halo Station原型机采用96核Threadripper PRO处理器、四块Instinct加速卡和最高约2.6TB综合内存，计划于2027年推出。
 
 Sources:
   - Jack Huynh Opening Keynote of IFA Berlin 2026: https://www.amd.com/en/corporate/events/ifa.html
+  - AMD Threadripper Halo Station: https://www.amd.com/en/products/workstations/amd-threadripper-halo-station.html
   - AMD 公布 Threadripper Halo Station 工作站: https://www.ithome.com/0/998/560.htm
   - AMD at IFA Opening Keynote: Pushing Personal AI to the PC: https://uk.investing.com/news/stock-market-news/amd-at-ifa-opening-keynote-pushing-personal-ai-to-the-pc-93CH-4858557
 
@@ -949,39 +981,6 @@ Sources:
   - Commission designates ChatGPT, Reddit, Roblox under Digital Services Act: https://digital-strategy.ec.europa.eu/en/news/commission-designates-chatgpt-reddit-roblox-under-digital-services-act
   - ChatGPT, Reddit, Roblox receive designations under EU’s DSA: https://www.mlex.com/mlex/articles/2519476/chatgpt-reddit-roblox-receive-designations-under-eu-s-dsa
 
-### DiDi Starts Driverless Passenger Trials With R2 Robotaxi
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/didi-r2-driverless-passenger-trials.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/didi-r2-driverless-passenger-trials.html
-- Source timestamp: 2026-08-31T07:14:00.000Z
-- Site timestamp: 2026-08-31T11:00:04.390Z
-- Tags: Industry, Agents
-
-Passengers in parts of Beijing and Guangzhou can now summon DiDi’s purpose-built R2, equipped with 33 sensors and redundant controls.
-
-## A purpose-built vehicle enters passenger service
-
-DiDi Autonomous Driving has begun fully driverless passenger trials with its next-generation R2 robotaxi in designated areas of Beijing and Guangzhou. Eligible users can request the vehicle through DiDi’s service, moving the R2 from road qualification and closed testing into public-facing operation without a safety driver inside.
-
-Developed jointly with GAC Aion, the R2 is a dedicated robotaxi rather than a consumer car retrofitted after production. It uses DiDi’s full-stack Level 4 driving system and carries 33 sensors, including lidar, cameras, 4D millimetre-wave radar, infrared cameras and acoustic sensors. Their inputs are combined through sensor fusion to provide coverage around the vehicle and additional visibility in difficult lighting or weather.
-
-A three-domain integrated computing platform coordinates autonomous-driving, cockpit and vehicle-control functions. DiDi says the vehicle incorporates redundant braking, steering, communications and power systems, while the underlying vehicle platform was designed to meet five-star Chinese and European safety standards. The passenger compartment has been optimized for rear-seat use, including seats with a wider reclining range.
-
-The service remains geographically constrained and is still described as a trial, so the announcement does not amount to broad commercial deployment. DiDi has not disclosed the fleet size, daily ride capacity, intervention rate or timetable for expansion. Those figures will be necessary to compare the R2’s operating maturity with established robotaxi fleets.
-
-## Why it matters
-
-DiDi controls one of the world’s largest ride-hailing networks, giving it a potentially powerful route from autonomous-vehicle testing to customer demand, dispatch data and fleet operations. Introducing a purpose-built vehicle in two major cities tests whether that network can become an advantage in driverless transport rather than simply a source of app traffic.
-
-The important threshold is operational replication. If DiDi can add vehicles and service zones without proportionally increasing remote assistance, maintenance and safety staffing, the R2 could strengthen China’s already crowded robotaxi sector. Until fleet and intervention data are published, however, public availability demonstrates product integration more clearly than commercial scalability.
-
-Chinese title: 滴滴新一代R2 Robotaxi开启无人载客测试
-Chinese summary: 滴滴与广汽埃安联合打造的R2已在北京、广州部分区域开放呼叫，搭载33个传感器及多重安全冗余系统。
-
-Sources:
-  - DiDi Autonomous Driving Begins Fully Driverless Service Trials with Next-Generation Robotaxi R2: https://www.prnewswire.co.uk/news-releases/didi-autonomous-driving-begins-fully-driverless-service-trials-with-next-generation-robotaxi-r2-302864756.html
-  - 滴滴自动驾驶新一代车型开启载客测试服务: https://www2.xinhuanet.com/tech/20260831/e7f999a664024b9884ad66b25a0ca1a2/c.html
-
 ## Recent radar items
 
 ### 2026-09-06
@@ -1003,6 +1002,16 @@ Sources:
 - 2026-09-05T17:00Z | InfoQ 中文 | FreeToken reportedly ran Qwen3.6-35B at about 39 tokens per second on an 8GB RTX 4060 laptop using adaptive CPU-GPU MoE scheduling. | 中文：FreeToken通过自适应CPU-GPU混合专家调度，据称在8GB显存RTX 4060笔记本上以约39 Token每秒运行Qwen3.6-35B。 | https://www.infoq.cn/article/tij5T0vJ1Yk0s7Uov7SE
 - 2026-09-05T17:40Z | Arena | GPT-6 Astra Max reached first place on Arena’s WebDev leaderboard, scoring 1,758 from 261 votes while matching Claude Fable 5.1’s listed pricing. | 中文：GPT-6 Astra Max以261票、1758分登上Arena网页开发榜首，标示价格与Claude Fable 5.1相同。 | https://x.com/arena/status/2096292448960217449
 - 2026-09-05T15:07Z | 量子位 | A Chinese analysis highlighted Alibaba’s earlier work on recurrent Transformer architectures as GPT-6 renewed industry interest in iterative computation. | 中文：一篇中国行业分析指出，GPT-6重新带动循环Transformer关注，而阿里此前已在相关架构上布局。 | https://www.qbitai.com/2026/09/484726.html
+- 2026-09-06T10:55Z | X @lovart_ai | Lovart showcased AI-generated advertisements designed around playful, surreal creative concepts. | 中文：Lovart 展示了以趣味和超现实创意为核心的 AI 生成广告。 | https://x.com/lovart_ai/status/2096552809659589111
+- 2026-09-06T10:51Z | IT之家 | Microsoft is reshaping Windows 11 around “unmetered intelligence,” aiming to run more AI workloads locally on PCs. | 中文：微软正以“无计量智能”重塑 Windows 11，计划让更多 AI 任务在电脑本地运行。 | https://www.ithome.com/0/999/014.htm
+- 2026-09-06T10:41Z | X @tripoai | Tripo highlighted a workflow that hides inactive AI-generated facial expressions inside a 3D character’s head for later use. | 中文：Tripo 展示了一种把暂未启用的 AI 生成表情藏进三维角色头部、供后续调用的工作流。 | https://x.com/tripoai/status/2096549424260579728
+- 2026-09-06T10:15Z | The Decoder | An OpenAI developer said Astra improved internal productivity enough to bring some planned releases forward by six months. | 中文：一名 OpenAI 开发者称，Astra 提升内部生产力，使部分发布计划提前了六个月。 | https://the-decoder.com/openai-developer-claims-astra-boosted-productivity-so-much-it-pulled-some-plans-forward-by-six-months/
+- 2026-09-06T09:45Z | The Decoder | Meta introduced a real-time audio model intended as a foundation for continuously listening AI assistants. | 中文：Meta 推出一款实时音频模型，作为持续聆听型 AI 助手的基础。 | https://the-decoder.com/metas-new-real-time-audio-model-is-the-foundation-for-ai-assistants-that-never-stop-listening/
+- 2026-09-06T09:30Z | IT之家 | China unveiled an embodied-intelligence version of the breeding robot Ji’er that can identify stamens, pollinate flowers and collect samples. | 中文：中国发布育种机器人“吉儿”的具身智能版本，可识别花蕊、完成授粉并采集样本。 | https://www.ithome.com/0/999/001.htm
+- 2026-09-06T08:55Z | The Decoder | Removing safety guardrails from open-weight AI models is now being offered as a turnkey commercial service. | 中文：移除开放权重 AI 模型安全护栏如今已成为可直接购买的商业服务。 | https://the-decoder.com/stripping-safety-guardrails-from-open-weight-ai-models-is-now-a-turnkey-commercial-service/
+- 2026-09-06T04:40Z | 量子位 | Bilibili concluded its first AI Creation Open Competition, with solo creators representing more than 80% of participants. | 中文：B站首届 AI 创造公开赛收官，超过八成参赛者是单人团队。 | https://www.qbitai.com/2026/09/484890.html
+- 2026-09-06T01:52Z | RoboCurve | A demonstration connected GPT-6 Astra to robotic arms for planning and executing physical manipulation tasks. | 中文：一项演示把 GPT-6 Astra 接入机械臂，用于规划并执行实体操作任务。 | https://openai.robocurve.org/gpt-6-astra/
+- 2026-09-05T23:04Z | X @ollama | Ollama introduced half-price off-peak token rates for DeepSeek-V4-Flash and Pro outside weekday peak hours and throughout weekends. | 中文：Ollama 推出错峰费率：DeepSeek-V4-Flash 与 Pro 在工作日非高峰及周末半价。 | https://x.com/ollama/status/2096374001119744190
 
 ### 2026-09-05
 
