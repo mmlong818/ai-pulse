@@ -13,6 +13,42 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/hidream-embodied-robot-world-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/hidream-embodied-robot-world-model.html",
+      "title": "智象发布具身世界模型，强化机器人抗干扰能力",
+      "summary": "HiDream-O1-Embodied统一表征图像、视频、三维与动作信息，瞄准复杂环境下更稳定的机器人感知和执行。",
+      "content_text": "## 面向物理环境中的各种意外\n\n中国人工智能公司智象未来（HiDream.ai）发布具身世界模型HiDream-O1-Embodied，目标是让机器人在环境持续变化时完成感知、物理状态预判和任务执行。该模型沿用公司的原生全模态架构，把图像、视频、三维信息和动作放入统一表征空间，而非拼接彼此独立训练的感知与控制模块。\n\n智象称，这种设计可以让信息在理解、推演和执行环节之间直接流动。语言模块着重识别不同表达背后的任务意图；视觉模块则融合多个视角，即使部分画面受损或被遮挡，机器人仍有机会继续执行任务。\n\n训练阶段主动加入光照、材质、视角和图像质量变化，并模拟画面污损与视野遮挡。数据方面，智象与动作捕捉厂商诺亦腾合作，以真人动作数据为基础，再通过生成方法把训练样本扩充至原来的约百倍。\n\n## 榜首成绩仍有明确边界\n\nHiDream-O1-Embodied首次参加具身智能评测平台RoboColiseum，便在扰动适应项目取得0.692的平均分并位列第一。相关测试会改变背景、照明、表面材质、相机位置、机器人初始状态及指令说法；平台整体评测包含78项高保真仿真任务。\n\n不过，这项成绩主要反映模型面对受控扰动时的稳定性，不能直接等同于机器人在真实场地长时间运行的表现。目前披露的信息尚不足以判断其硬件适配范围、机械故障后的恢复能力，以及长期运行需要人工介入的频率。\n\n此次发布的重要性，在于智象正把此前的图像生成和交互式世界模型延伸至机器人动作。如果统一架构能够顺利从仿真迁移到实体设备，开发者连接感知、预测与控制模块的工程成本可能下降。现阶段，0.692分证明的是一条具备潜力的技术路线，而不是已经成熟的生产级自主能力。",
+      "date_published": "2026-09-07T06:03:00.000Z",
+      "date_modified": "2026-09-07T11:00:04.188Z",
+      "tags": [
+        "模型",
+        "研究"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/hidream-embodied-robot-world-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/hidream-embodied-robot-world-model.html",
+        "source_published_at": "2026-09-07T06:03:00.000Z",
+        "site_published_at": "2026-09-07T11:00:04.188Z",
+        "sources": [
+          {
+            "title": "原生全模态技术战略闭环，智象发布具身世界模型HiDream-O1-Embodied",
+            "url": "https://www.qbitai.com/2026/09/485056.html"
+          },
+          {
+            "title": "智象发布具身世界模型：专门训练机器人应对各种意外",
+            "url": "https://tech.ifeng.com/c/8wDydiIYQNY"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/fable-5-1-agent-arena-lead.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/fable-5-1-agent-arena-lead.html",
       "title": "Claude Fable 5.1登顶智能体实战榜单",
@@ -1854,43 +1890,6 @@
           {
             "title": "Gemini 3.5 Transcribe API documentation",
             "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/glm-flash-multimodal-release.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/glm-flash-multimodal-release.html",
-      "title": "智谱开源GLM-5.3-Flash，主打多模态低成本推理",
-      "summary": "这款3200亿参数混合专家模型支持原生多模态和百万词元上下文，并以激进价格提供托管推理服务。",
-      "content_text": "## 更低的单次激活规模\n\n智谱发布GLM-5.3-Flash。这是一款总参数3200亿、激活参数180亿的原生多模态混合专家模型，官方权重同步公开。其托管API标准价格为每百万输入词元0.15美元、输出词元0.50美元，缓存输入则为0.03美元。\n\n模型将线性注意力与稀疏注意力结合，以降低长上下文处理成本。名为IndexPool的机制会先压缩索引键，再执行检索；流形约束超连接则用于改善信息传递和扩展稳定性。GLM-5.3-Flash支持最长100万个词元，并使用包含30万亿词元的多模态语料进行预训练。\n\n## 编程、视觉与国产算力\n\n智谱称，新模型在编程和智能体评测中明显超过GLM-5.2。官方公布的DeepSWE 1.1成绩为63.4，而GLM-5.2为46.2；AutomationBench成绩则从26.2提升至48.8。模型也针对文档、图表和可视化界面任务加强训练，可在生成网页后观察渲染结果，再迭代修正代码。不过这些仍是厂商数据，成绩可能受到测试框架、推理预算及上下文管理方式影响。\n\n正式发布前，该模型曾以Ox Alpha的匿名身份在OpenCode和OpenRouter接受测试。智谱表示，相关流量全部由中国AI芯片集群承载。其生产系统把多模态编码、提示词预填充和逐词元解码拆分为独立资源池，在数万张国产加速卡上调度，并称端到端性能相较最初基线提高三倍。\n\n## 为什么重要\n\nGLM-5.3-Flash把开放权重、低价智能体推理和非英伟达硬件的大规模部署放进了同一个产品。权重开放使外界能够检查架构，而托管价格可能迫使编程和电脑操作智能体的供应商降价——这类长任务会迅速消耗大量词元。相比单项榜单成绩，更关键的主张是：一款有竞争力的多模态智能体模型，已经能够在超大规模国产加速器集群上经济运行。",
-      "date_published": "2026-08-26T14:12:00.000Z",
-      "date_modified": "2026-08-26T23:00:03.019Z",
-      "tags": [
-        "模型",
-        "开源",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/glm-flash-multimodal-release.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/glm-flash-multimodal-release.html",
-        "source_published_at": "2026-08-26T14:12:00.000Z",
-        "site_published_at": "2026-08-26T23:00:03.019Z",
-        "sources": [
-          {
-            "title": "GLM-5.3-Flash: Frontier Intelligence, Flash Cost",
-            "url": "https://z.ai/blog/glm-5.3-flash"
-          },
-          {
-            "title": "Introducing GLM-5.3-Flash",
-            "url": "https://x.com/Zai_org/status/2092616204787626030"
           }
         ]
       }
