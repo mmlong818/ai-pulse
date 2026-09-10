@@ -54,6 +54,47 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v41-flash.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v41-flash.html",
+      "title": "DeepSeek发布V4.1 Flash，主打百万Token长上下文",
+      "summary": "DeepSeek推出V4.1 Flash，支持原生多模态和百万Token上下文，并通过缓存优化大幅降低长上下文推理成本。",
+      "content_text": "DeepSeek已通过API发布V4.1 Flash，重点解决长上下文推理中的显存、存储和服务成本问题。官方介绍称，该模型采用5520亿参数混合专家骨干网络，并引入因果编码器—解码器架构；输入阶段约激活80亿参数，解码阶段约激活160亿参数。\n\n## 长上下文成本成为主战场\n\nV4.1 Flash延续了DeepSeek以效率换规模的路线。官方称，新模型的KV缓存需求较上一代大幅下降，HBM占用降至四分之一，SSD存储需求降至八分之一。模型支持百万Token上下文，并通过API提供原生多模态能力。\n\n价格也同步下调。DeepSeek公布的空闲时段价格为：缓存命中输入每百万Token 0.02元，未命中输入1元，输出4元；高峰时段价格翻倍。公司还表示，将与开源社区合作推进V4.1 Flash的推理支持，并探索更多部署方式。\n\n## Flash取代Pro成为当前主力\n\n这次发布不仅是一次模型升级，也重排了DeepSeek的产品线。V4 Flash和V4 Flash Vision Experimental将退出服务；9月14日之后，在下一代Pro模型发布前，面向V4 Pro的请求将被路由至V4.1 Flash，并按Flash价格计费。DeepSeek称，内部和外部测试显示，V4.1 Flash在性能、价格、速度和总耗时上均超过V4 Pro，但这些对比尚未经过独立机构复核。\n\n## 为什么值得关注\n\n这条消息的核心价值，在于它直接瞄准了实际部署中最昂贵的环节：持续处理超长上下文。如果缓存占用的下降能够在第三方环境中复现，文档分析、代码助手和智能体系统有望减少显存与存储投入。尚未确定的是，这些效率是否同样适用于DeepSeek自有服务栈之外的部署和工作负载。",
+      "date_published": "2026-09-10T06:10:00.000Z",
+      "date_modified": "2026-09-10T11:00:03.762Z",
+      "tags": [
+        "模型",
+        "产业",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-v41-flash.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v41-flash.html",
+        "source_published_at": "2026-09-10T06:10:00.000Z",
+        "site_published_at": "2026-09-10T11:00:03.762Z",
+        "sources": [
+          {
+            "title": "DeepSeek official launch posts for V4.1 Flash",
+            "url": "https://x.com/deepseek_ai/status/2097930620680941732"
+          },
+          {
+            "title": "DeepSeek API updates",
+            "url": "https://api-docs.deepseek.com/updates/"
+          },
+          {
+            "title": "DeepSeek V4.1 Flash release report",
+            "url": "https://www.ithome.com/1/000/692.htm"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/paul-christiano-openai-safety-board.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/paul-christiano-openai-safety-board.html",
       "title": "对齐研究先驱Paul Christiano加入OpenAI基金会董事会",
@@ -90,6 +131,47 @@
           {
             "title": "OpenAI newsroom",
             "url": "https://openai.com/news/company-announcements/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-auk-audio-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-auk-audio-model.html",
+      "title": "腾讯混元开源AuK，统一支持语音与音频编辑",
+      "summary": "腾讯混元联合上海交大等机构发布开源基础模型AuK，尝试用自然语言统一生成和编辑语音、音频与音乐。",
+      "content_text": "腾讯混元发布AuK开源基础模型，面向语音、通用音频和音乐的生成与编辑，并支持通过自然语言描述创作意图。这一项目在亚洲白天时段公布，同时开放了代码仓库和项目页面。\n\n## 从语音合成走向统一音频模型\n\nAuK并非只做语音合成，而是试图把多类音频任务放进同一套架构。项目介绍称，模型由负责语义控制的多模态大语言模型、同时在语音、通用音频和音乐上训练的音频变分自编码器，以及混合Rectified Flow Transformer组成。后者先使用双流多模态模块，再转入统一的单流结构完成生成。\n\n这套设计的目标，是让用户同时用文字描述“要生成什么”和“如何修改”。AuK既可用于语音生成和编辑，也试图覆盖音效、音乐以及混合声音场景。项目由腾讯混元、上海交通大学和上海人工智能实验室相关机构共同推进。\n\n## 开源音频仍缺一块基础设施\n\n相比文本和图像，音频生成对开源开发者一直更不友好。传统语音系统往往把语义规划、声学建模、音色保持和后期处理拆成多个组件，改造和组合成本较高。AuK若能提供足够完整的权重、数据说明和许可条款，有机会成为开发自然语言音频工具的共同底座。\n\n不过，现阶段还不能据此判断它已达到商业闭源系统的最佳水平。公开信息尚未证明其在自然度、节奏、歌声、说话人保持和安全控制方面的表现，也没有完全回答训练数据来源、声音滥用防护以及本地运行所需硬件等问题。\n\n## 为什么值得关注\n\nAuK的意义，不在于今天就击败某个商业产品，而在于开源模型生态开始补上音频这一关键拼图。若模型和评测能够复现，配音、游戏音效、无障碍工具以及交互式智能体都可能获得更低的试错门槛。真正决定其影响力的，将是开放权重的完整程度，以及编辑已有录音时能否同时保住音色、语义和上下文。",
+      "date_published": "2026-09-10T10:33:00.000Z",
+      "date_modified": "2026-09-10T11:00:03.762Z",
+      "tags": [
+        "AIGC",
+        "开源",
+        "模型"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-auk-audio-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-auk-audio-model.html",
+        "source_published_at": "2026-09-10T10:33:00.000Z",
+        "site_published_at": "2026-09-10T11:00:03.762Z",
+        "sources": [
+          {
+            "title": "Tencent Hunyuan AuK announcement",
+            "url": "https://x.com/TencentHunyuan/status/2097996926876795197"
+          },
+          {
+            "title": "AuK project page",
+            "url": "https://auk-project.github.io/"
+          },
+          {
+            "title": "AuK open-source repository",
+            "url": "https://github.com/Tencent-Hunyuan/AuK"
           }
         ]
       }
@@ -1819,84 +1901,6 @@
           {
             "title": "Cursor is now a part of SpaceX",
             "url": "https://cursor.com/blog/joining-spacex"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-rosalind-science-workbench.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-rosalind-science-workbench.html",
-      "title": "OpenAI推出Rosalind生命科学研究工作台",
-      "summary": "新工作台把专用模型、生物数据库、科研工具和可复核结果接入同一套受控研究流程。",
-      "content_text": "## 从专用模型走向研究工作台\n\nOpenAI 推出 Rosalind Workbench 研究预览版，把生命科学问题、专用模型、数据库和计算工具连接到同一环境。与此前单独提供 GPT-Rosalind 模型不同，新产品强调在可复核的工作区内组织多步骤科研任务。\n\n研究人员可用它检查测序数据，汇总论文与生物学证据，比较治疗靶点，分析蛋白质和变异，评估候选分子，并规划后续实验。以二代测序流程为例，系统会检查上传文件、提出分析计划，并展示质量控制指标和已保存结果，再由使用者决定下一步研究问题。\n\n工作台可以通过 Codex 直接运行，符合条件的机构还可申请 GPT-Rosalind API。OpenAI 表示，研究流程可以保存、共享和复用。对于需要团队复查的科学工作，这比难以重建工具调用与推理过程的普通聊天记录更有价值。Rosalind 整体工具包可连接 50 多个公共多组学数据库、文献来源和生物学工具。\n\n公司公布的每 Token 性能数据显示，系统在 GeneBench、Medchem Bench 和 Labworkbench 上分别提高 53.7%、18% 和 19.6%，在 LifeSci Bench 上提高 4.42%。这些仍是企业自行选择的评测，不能证明它已经提高湿实验成功率或新药研发产出。\n\n## 受控开放\n\nRosalind Workbench 目前仍处于研究预览阶段。专用 GPT-Rosalind 的访问资格以机构为单位审核，初期部署受安全、治理和生物滥用防护要求约束。部分连接器和通用模型开放范围更广，但能力最完整的研究模式并非任何人都能直接使用。\n\n## 为何重要\n\n科研 AI 正从回答问题转向编排完整流程：选择工具、在多个环节之间传递证据，并保留可检查的决策记录。Rosalind Workbench 把这一思路带入基因组、蛋白质分析和实验规划，而这些领域尤其依赖证据来源与人工审批。它最终是否重要，不取决于跑分涨幅，而取决于科研团队能否复现中间步骤，并证明确实作出了更好的实验选择。在出现前瞻性实验数据前，它更适合被视为一套带有推理能力的受控工作流，而不是“自主科学家”。",
-      "date_published": "2026-08-28T18:29:00.000Z",
-      "date_modified": "2026-08-28T23:00:03.631Z",
-      "tags": [
-        "研究",
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-rosalind-science-workbench.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-rosalind-science-workbench.html",
-        "source_published_at": "2026-08-28T18:29:00.000Z",
-        "site_published_at": "2026-08-28T23:00:03.631Z",
-        "sources": [
-          {
-            "title": "Rosalind",
-            "url": "https://openai.com/rosalind/"
-          },
-          {
-            "title": "OpenAI Developers Rosalind Workbench announcement",
-            "url": "https://x.com/OpenAIDevs/status/2093405504433447257"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/ai-cyber-defense-letter.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/ai-cyber-defense-letter.html",
-      "title": "逾150家机构联署呼吁加码AI网络防御",
-      "summary": "逾150家机构警告AI网络攻击将在数月内扩散，并呼吁立即支援关键基础设施防御者。",
-      "content_text": "## 广泛共识尚未变成约束性行动\n\nOpenAI、Anthropic、谷歌、AWS和微软等逾150家机构联署，呼吁全球加大网络防御投入。签署方涵盖网络安全厂商、银行、工业企业、技术供应商和专业服务公司。公开信认为，随着模型能力增强，复杂攻击将在未来数月变得更普遍，医院、供水系统和互联网基础设施尤其容易受到冲击。\n\n当前联署名单还包括AMD、Arm、博通、Cloudflare、CrowdStrike、德国电信、Hugging Face、IBM、万事达卡、甲骨文、SAP和Visa等。这是政策公开信的联署名单，并非新联盟的成员名册；名单仍可能随页面更新而变化。\n\n公开信要求各类组织把网络防御提升为管理层优先事项，收紧过度权限、修补高风险系统，并验证AI生成代码。技术供应商应共享威胁情报和经过测试的修复方案；政府应资助资源不足的公共服务机构、协调事件响应，并提高攻击者成本。前沿模型公司则被要求提供负责任的模型访问、资金、培训、监控工具和实际部署支持。\n\n文件没有设置支出额度、完成期限、强制机制或共同执行机构，因此体现的是罕见的行业紧迫共识，而不是一项具有约束力的防御计划。发稿前，本刊已重新核对OpenAI页面上的动态名单，上述机构当时仍在列。\n\n## 为什么重要\n\n相互竞争的模型实验室、基础设施供应商和关键行业运营者共同联署，为警告增加了政策分量，也表明高阶网络攻击能力已被视为近期部署问题，而非遥远的安全假设。不过，医院和水务系统无法靠宣言修复老旧设备。真正决定这封信价值的，是签署方能否把模型权限、资金和专业人员转化为可衡量的防护，并送到没有专职AI安全团队的机构手中。",
-      "date_published": "2026-08-27T17:43:00.000Z",
-      "date_modified": "2026-08-27T23:00:03.363Z",
-      "tags": [
-        "安全",
-        "政策",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/ai-cyber-defense-letter.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/ai-cyber-defense-letter.html",
-        "source_published_at": "2026-08-27T17:43:00.000Z",
-        "site_published_at": "2026-08-27T23:00:03.363Z",
-        "sources": [
-          {
-            "title": "A call for collective action on cyber defense",
-            "url": "https://openai.com/collective-cyberdefense/"
-          },
-          {
-            "title": "OpenAI, Anthropic issue dire cyber threat warning",
-            "url": "https://www.axios.com/2026/08/27/openai-anthropic-issue-dire-cyber-threat-warning"
-          },
-          {
-            "title": "OpenAI collective cyber-defense announcement",
-            "url": "https://x.com/OpenAI/status/2093074192636018977"
           }
         ]
       }

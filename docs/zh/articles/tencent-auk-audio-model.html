@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>腾讯混元开源AuK，统一支持语音与音频编辑 — Uncle Cat AI Radar</title>
+<meta name="description" content="腾讯混元联合上海交大等机构发布开源基础模型AuK，尝试用自然语言统一生成和编辑语音、音频与音乐。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/tencent-auk-audio-model.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/tencent-auk-audio-model.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/tencent-auk-audio-model.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/tencent-auk-audio-model.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="腾讯混元开源AuK，统一支持语音与音频编辑 — Uncle Cat AI Radar">
+<meta property="og:description" content="腾讯混元联合上海交大等机构发布开源基础模型AuK，尝试用自然语言统一生成和编辑语音、音频与音乐。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/tencent-auk-audio-model.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="腾讯混元开源AuK，统一支持语音与音频编辑 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="腾讯混元联合上海交大等机构发布开源基础模型AuK，尝试用自然语言统一生成和编辑语音、音频与音乐。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="腾讯混元开源AuK，统一支持语音与音频编辑 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"腾讯混元开源AuK，统一支持语音与音频编辑","item":"https://mmlong818.github.io/ai-pulse/zh/articles/tencent-auk-audio-model.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/tencent-auk-audio-model.html#article","headline":"腾讯混元开源AuK，统一支持语音与音频编辑","description":"腾讯混元联合上海交大等机构发布开源基础模型AuK，尝试用自然语言统一生成和编辑语音、音频与音乐。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/tencent-auk-audio-model.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/tencent-auk-audio-model.html"},"datePublished":"2026-09-10T10:33:00.000Z","dateModified":"2026-09-10T11:00:03.762Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["AIGC","开源","模型"],"keywords":"AIGC, 开源, 模型","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://x.com/TencentHunyuan/status/2097996926876795197","https://auk-project.github.io/","https://github.com/Tencent-Hunyuan/AuK"],"about":[{"@type":"Thing","name":"AIGC"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"模型"}]}]}</script>
+</head>
+<body data-slug="tencent-auk-audio-model" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/tencent-auk-audio-model.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-09-10T10:33:00Z">2026年9月10日 18:33</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/aigc.html">AIGC</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>腾讯混元开源AuK，统一支持语音与音频编辑</h1>
+  <p class="standfirst">腾讯混元联合上海交大等机构发布开源基础模型AuK，尝试用自然语言统一生成和编辑语音、音频与音乐。</p>
+  <p>腾讯混元发布AuK开源基础模型，面向语音、通用音频和音乐的生成与编辑，并支持通过自然语言描述创作意图。这一项目在亚洲白天时段公布，同时开放了代码仓库和项目页面。</p><h2>从语音合成走向统一音频模型</h2><p>AuK并非只做语音合成，而是试图把多类音频任务放进同一套架构。项目介绍称，模型由负责语义控制的多模态大语言模型、同时在语音、通用音频和音乐上训练的音频变分自编码器，以及混合Rectified Flow Transformer组成。后者先使用双流多模态模块，再转入统一的单流结构完成生成。</p><p>这套设计的目标，是让用户同时用文字描述“要生成什么”和“如何修改”。AuK既可用于语音生成和编辑，也试图覆盖音效、音乐以及混合声音场景。项目由腾讯混元、上海交通大学和上海人工智能实验室相关机构共同推进。</p><h2>开源音频仍缺一块基础设施</h2><p>相比文本和图像，音频生成对开源开发者一直更不友好。传统语音系统往往把语义规划、声学建模、音色保持和后期处理拆成多个组件，改造和组合成本较高。AuK若能提供足够完整的权重、数据说明和许可条款，有机会成为开发自然语言音频工具的共同底座。</p><p>不过，现阶段还不能据此判断它已达到商业闭源系统的最佳水平。公开信息尚未证明其在自然度、节奏、歌声、说话人保持和安全控制方面的表现，也没有完全回答训练数据来源、声音滥用防护以及本地运行所需硬件等问题。</p><h2>为什么值得关注</h2><p>AuK的意义，不在于今天就击败某个商业产品，而在于开源模型生态开始补上音频这一关键拼图。若模型和评测能够复现，配音、游戏音效、无障碍工具以及交互式智能体都可能获得更低的试错门槛。真正决定其影响力的，将是开放权重的完整程度，以及编辑已有录音时能否同时保住音色、语义和上下文。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://x.com/TencentHunyuan/status/2097996926876795197" rel="noopener" target="_blank">Tencent Hunyuan AuK announcement</a></li><li><a href="https://auk-project.github.io/" rel="noopener" target="_blank">AuK project page</a></li><li><a href="https://github.com/Tencent-Hunyuan/AuK" rel="noopener" target="_blank">AuK open-source repository</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/alphagenome-atlas-maps-dna-variants.html">谷歌发布图谱，预测90亿种DNA变异影响</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-images-2-5.html">OpenAI发布Images 2.5，强化精准编辑能力</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-navier-stokes-proof.html">OpenAI称人工智能模型提出纳维–斯托克斯证明</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
