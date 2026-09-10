@@ -19,6 +19,104 @@
 
 ## Recent briefings
 
+### Cognition Releases SWE-2 Coding Model at Lower Cost
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/cognition-swe-2-coding-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cognition-swe-2-coding-model.html
+- Source timestamp: 2026-09-10T15:29:00.000Z
+- Site timestamp: 2026-09-10T23:00:03.488Z
+- Tags: Models, Agents
+
+Cognition’s SWE-2 reaches near-frontier coding scores while claiming sharply lower cost and fewer turns on long software tasks.
+
+Cognition has released SWE-2, a coding model designed for its Devin software-engineering agent and positioned as a lower-cost alternative to larger frontier systems.
+
+## Performance and training
+
+Cognition reports that SWE-2 scores 50.0% on FrontierCode 1.1 Main, within one point of Claude Fable 5.1 in the company’s comparison, while costing 64% less. On DeepSWE 1.1 it scores 73.0%, and on Terminal-Bench 2.1 it reaches 92.8%.
+
+The company says the model is post-trained from Kimi K3, a 2.8-trillion-parameter base model, using reinforcement learning at what it calls the multi-trillion-parameter scale. Its training method applies cost penalties across different reasoning-effort levels in one run, aiming to improve the entire cost-performance curve instead of optimizing only for a single maximum score.
+
+Cognition also reports a substantial reduction in agent activity. On its 100-task FrontierCode evaluation, SWE-2 medium used 53 mean steps compared with 127 for SWE-1.7, and the company says average cost fell 81% on that comparison.
+
+## Why it matters
+
+The release adds pressure to the idea that coding-agent progress must come from ever-larger general models. If Cognition’s results hold outside its own evaluations, better reinforcement learning and more efficient agent behavior could make sustained software work more economical.
+
+The caveat is that nearly all headline numbers come from Cognition’s benchmarks and deployment environment. SWE-2’s real importance will depend on performance across unfamiliar repositories, failure recovery and the price users actually pay in Devin.
+
+Chinese title: Cognition发布SWE-2，主打更低成本编码智能体
+Chinese summary: Cognition发布SWE-2编码模型，称其接近前沿模型表现，同时显著减少任务步骤并降低软件开发成本。
+
+Sources:
+  - Introducing SWE-2: Pushing the Pareto Frontier: https://cognition.com/blog/swe-2
+
+### Universal Music and ElevenLabs Form AI Music Partnership
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/elevenlabs-universal-music-partnership.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/elevenlabs-universal-music-partnership.html
+- Source timestamp: 2026-09-10T14:01:00.000Z
+- Site timestamp: 2026-09-10T23:00:03.488Z
+- Tags: AIGC, Industry
+
+Universal Music and ElevenLabs announce a multi-year partnership to develop licensed AI music tools with artists, labels and publishers.
+
+Universal Music Group and ElevenLabs have announced a multi-year strategic partnership focused on developing AI music products with artists, labels and publishers involved from the outset.
+
+## A licensed product strategy
+
+ElevenLabs said its music models were built with rights holders from the beginning, while Universal presented the partnership as a way to explore generative music under a more structured licensing framework. The companies have not disclosed the full product roadmap, commercial terms or which artists and catalogs will participate.
+
+The announcement matters because it places one of the world’s largest music companies alongside a generative-audio specialist at a moment when the industry is still negotiating how training data, voice likeness, composition rights and revenue sharing should work.
+
+Rather than treating licensing as a legal cleanup step after model development, the partnership suggests that rights holders may seek influence over the design and distribution of AI music systems. That could include authorized voices, artist-controlled participation and products aimed at professional creators.
+
+## Why it matters
+
+Music is one of the clearest tests of whether generative AI can become a durable commercial category without relying on ambiguous training rights. A partnership with Universal gives ElevenLabs access to a major rights network, but it also raises the standard for what the company must prove about consent, attribution and payment.
+
+The deal is not yet evidence that licensed AI music has solved its hardest problems. Until the partners reveal how artists opt in, how outputs are labeled and how compensation is calculated, the announcement is best read as an important commercial framework still awaiting a public operating model.
+
+Chinese title: 环球音乐与ElevenLabs达成生成式音乐合作
+Chinese summary: 环球音乐与ElevenLabs宣布多年战略合作，计划与艺人、唱片公司和出版商共同开发授权AI音乐产品。
+
+Sources:
+  - ElevenLabs announces partnership with Universal Music Group: https://x.com/ElevenLabs/status/2098049234465620251
+  - Universal Music is launching an AI music platform with ElevenLabs: https://www.theverge.com/ai-artificial-intelligence/993465/universal-music-elevenlabs-ai
+
+### OpenAI Opens Agents API With Managed Sandboxes
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-agents-api-managed-sandboxes.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-agents-api-managed-sandboxes.html
+- Source timestamp: 2026-09-10T19:24:00.000Z
+- Site timestamp: 2026-09-10T23:00:03.488Z
+- Tags: Agents, Industry
+
+OpenAI’s public-beta Agents API lets developers run Codex-style agents with hosted sandboxes, tools, files and configurable compute.
+
+OpenAI has put its Agents API into public beta, offering a managed way to build and run software agents that can coordinate model calls, tool use and context on OpenAI’s infrastructure.
+
+## What launched
+
+The API includes OpenAI-hosted sandboxes where agents can execute code, manipulate files, install packages and produce artifacts. Developers can also bring their own sandbox or connect an external provider, with options for CPU, GPU and memory capacity.
+
+The important architectural choice is that OpenAI operates the agent loop: it coordinates model calls, tool invocation and context while developers define the agent’s capabilities and execution environment. That reduces the amount of orchestration code required to move from a prototype to a persistent cloud workflow.
+
+The launch arrives alongside a broader shift in OpenAI’s developer stack toward long-running, tool-using systems rather than single-turn text generation. Agents can now be deployed with more of the operational layer—execution, files, package installation and artifacts—already attached.
+
+## Why it matters
+
+The API could make Codex-style agents easier to ship inside enterprise products, but it also gives OpenAI control over a valuable layer of application infrastructure. Developers gain speed and convenience; they may also become more dependent on OpenAI’s runtime, pricing and safety boundaries.
+
+The unresolved question is whether managed sandboxes can support reliable production workloads at predictable cost. Public beta availability demonstrates a platform direction, not yet a mature operating model.
+
+Chinese title: OpenAI开放智能体API，提供托管沙箱运行环境
+Chinese summary: OpenAI推出公开测试版智能体API，开发者可直接调用托管沙箱，让具备工具和文件能力的智能体在云端运行。
+
+Sources:
+  - OpenAI Developers announcement on Agents API: https://x.com/OpenAIDevs/status/2098130570048045453
+  - OpenAI-hosted sandboxes for agents: https://x.com/OpenAIDevs/status/2098130625144451444
+
 ### Anthropic Opens Four Claude Cyber Incidents to METR
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-metr-cyber-incident-review.html
@@ -129,28 +227,28 @@ Sources:
 - Site timestamp: 2026-09-10T11:00:03.762Z
 - Tags: AIGC, Open Source, Models
 
-Tencent Hunyuan and research partners have released AuK, an open-source foundation model for controllable speech, audio and music generation.
+Tencent Hunyuan and research partners have released AuK, an open-source foundation model for controllable speech and audio generation and editing.
 
-Tencent Hunyuan has released AuK, an open-source foundation model designed to generate and edit speech, general audio and music through natural-language instructions. The project was announced during the Asian daytime cycle and is accompanied by a public code repository and project page.
+Tencent Hunyuan has released AuK, an open-source foundation model designed to generate and edit speech and other audio through natural-language instructions. The project was announced during the Asian daytime cycle and is accompanied by public code, model weights and a project page.
 
-## One model across several audio types
+## One model across several audio tasks
 
 AuK is positioned as a unified system rather than a speech-only synthesizer. Its public description combines a multimodal language model for semantic conditioning with an audio variational autoencoder trained jointly on speech, general audio and music. A hybrid rectified-flow Transformer then handles generation through dual-stream multimodal blocks followed by a unified single-stream architecture.
 
-That design is intended to let users describe both what should be heard and how it should change. The model can be used for speech generation and editing, while the broader training mix is meant to support sound effects, music and mixed audio scenes. The project materials show the system being developed by Tencent Hunyuan, Shanghai Jiao Tong University and the Shanghai Innovation Institute.
+The released system supports speech generation, content and acoustic editing, paralinguistic editing, speech enhancement and source separation through natural-language instructions. Its task list also includes lyric editing and music separation, but the public materials primarily describe AuK as a model for speech generation and editing rather than a general-purpose music-generation system. The project materials show the system being developed by Tencent Hunyuan, Shanghai Jiao Tong University and Shanghai Innovation Institute.
 
 ## Why open source matters here
 
-Audio generation has generally been less accessible to open-source developers than text and image generation. Speech systems often separate semantic planning, acoustic modeling, voice identity and post-processing into different components, making them difficult to adapt or combine. AuK’s unified framing could give researchers a common base for instruction-following audio tools, provided the released weights, data disclosures and licensing terms are sufficient for real deployment.
+Audio generation and editing have generally been less accessible to open-source developers than text and image generation. Speech systems often separate semantic planning, acoustic modeling, voice identity and post-processing into different components, making them difficult to adapt or combine. AuK’s unified framing could give researchers a common base for instruction-following audio tools, provided the released weights, data disclosures and licensing terms are sufficient for real deployment.
 
 The project is still early. The announcement does not establish that AuK matches the strongest proprietary systems on naturalness, timing, singing, speaker preservation or safety. It also leaves practical questions around training-data provenance, voice misuse controls and the hardware needed for local inference.
 
 ## Why it matters
 
-AuK is important less because it immediately dethrones a commercial product than because it expands the open model stack into a strategically valuable medium. A capable, adaptable audio foundation model could lower the barrier for dubbing, game sound design, accessibility tools and interactive agents. The decisive evidence will come from the weights, reproducible evaluations and whether developers can reliably edit existing recordings without damaging identity or context.
+AuK is important less because it immediately dethrones a commercial product than because it expands the open model stack into a strategically valuable medium. A capable, adaptable audio foundation model could lower the barrier for dubbing, sound design, accessibility tools and interactive agents. The decisive evidence will come from the released weights, reproducible evaluations and whether developers can reliably edit existing recordings without damaging identity or context.
 
 Chinese title: 腾讯混元开源AuK，统一支持语音与音频编辑
-Chinese summary: 腾讯混元联合上海交大等机构发布开源基础模型AuK，尝试用自然语言统一生成和编辑语音、音频与音乐。
+Chinese summary: 腾讯混元联合上海交大等机构发布开源基础模型AuK，尝试用自然语言统一生成和编辑语音与其他音频。
 
 Sources:
   - Tencent Hunyuan AuK announcement: https://x.com/TencentHunyuan/status/2097996926876795197
@@ -918,103 +1016,27 @@ Sources:
   - Run Cloud Agents on Machines You Manage: https://cursor.com/blog/self-hosted-machines
   - Self-Hosted Machines: https://cursor.com/changelog/self-hosted-machines
 
-### Google Launches Gemini 3.8 Flash and Cyber Model
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-flash-cyber-launch.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gemini-flash-cyber-launch.html
-- Source timestamp: 2026-09-02T16:18:00.000Z
-- Site timestamp: 2026-09-02T23:00:04.105Z
-- Tags: Models, Agents, Safety
-
-Google pairs a broadly available agent model with a restricted cyber variant built for vulnerability discovery and automated patching.
-
-## One core model, two access tiers
-
-Google released Gemini 3.8 Flash, a production model aimed at coding, professional analysis and long-running agent workflows, alongside Gemini 3.8 Flash Cyber, a security-specialized version reserved for vetted defenders. The general model is available through the Gemini API, AI Studio, Gemini Enterprise, Google Search’s AI Mode, Sheets and paid Gemini plans. It supports multimodal input, a one-million-token context window and up to 64,000 output tokens.
-
-Google kept the introductory API price at $0.75 per million input tokens and $3.75 per million output tokens, matching Gemini 3.7 Flash. That rate expires after December 31, when both prices are scheduled to double. Google also cautions that the model may consume more tokens on difficult work because higher effort settings trigger additional reasoning and tool calls.
-
-## Cyber capability reaches deployment
-
-The restricted Cyber variant uses the same underlying intelligence but has more permissive security controls for defensive work. Google says it exceeded a 70% success rate on an internal vulnerability-discovery test spanning 20 programming languages and scored 47.2% pass@1 on the external CWE-Bench patching benchmark. Chrome’s security team reported 2.6 times as many correct patches as it obtained from larger commercial models. In another internal deployment, the model reportedly identified a critical foundational vulnerability in under two hours.
-
-Access is being managed through Google’s new Fairwind Program, initially serving national cyber authorities, critical-infrastructure operators and software maintainers. This separates a mass-market agent model from a more capable security configuration whose offensive potential requires tighter distribution.
-
-The release matters because Google is putting frontier-adjacent reasoning into its high-volume Flash tier while simultaneously demonstrating why model access may increasingly depend on the task, customer and safeguards. The scheduled price increase and potentially higher token use, however, mean developers must validate total task cost rather than rely on the headline API rate.
-
-Chinese title: 谷歌发布Gemini 3.8 Flash及网络安全版
-Chinese summary: 谷歌同步推出面向大众的智能体模型与受限开放的网络安全版本，覆盖漏洞发现、自动修复和长流程编程任务。
-
-Sources:
-  - Introducing Gemini 3.8 Flash and 3.8 Flash Cyber: https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/
-  - Gemini 3.8 Flash Model Card: https://deepmind.google/models/model-cards/gemini-3-8-flash/
-
-### Meta Releases Muse Spark 1.3 for Coding Agents
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-muse-spark-update.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-spark-update.html
-- Source timestamp: 2026-09-02T19:36:00.000Z
-- Site timestamp: 2026-09-02T23:00:04.105Z
-- Tags: Models, Agents
-
-Muse Spark 1.3 targets sustained coding and agent workflows, while Meta postpones both open weights and its highest reasoning setting.
-
-## An agent-focused model update
-
-Meta released Muse Spark 1.3 through Muse Code and the Meta Model API, positioning the update around sustained coding, tool use and real-world agent tasks. The release is immediately usable as a hosted model, but it is not yet an open-weight release: Meta said downloadable weights will follow later, without giving a firm publication time.
-
-The rollout also separates the model’s currently available reasoning settings from its most compute-intensive configuration. Meta said the “max” reasoning mode will arrive only after additional safety testing. That distinction matters because some of the strongest third-party results disclosed on launch day came from the unreleased max setting, rather than the configuration developers can deploy immediately.
-
-Artificial Analysis reported that Muse Spark 1.3 max scored 52% on Tau3-Bench Banking, the highest result it had measured on that evaluation. The available xhigh setting reached 47%, while the evaluator described the model as unusually cost-efficient at its intelligence level. Meta kept API pricing at $1.25 per million input tokens and $4.25 per million output tokens. The reported improvements were concentrated in agentic evaluations rather than spread evenly across every category.
-
-## Availability tempers the headline numbers
-
-Muse Spark 1.3 strengthens Meta’s attempt to compete in coding agents through both a first-party harness and an API, while preserving the prospect of a later local ecosystem around open weights. That staged strategy can generate adoption quickly without releasing the most sensitive or expensive configuration on day one.
-
-Its significance will depend on what Meta ultimately publishes. Hosted access gives developers a practical new option now, but the open-source community cannot yet inspect, fine-tune or independently serve the weights. Likewise, results from the pending max mode should not be treated as the performance of today’s generally accessible product. The consequential milestone will be whether Meta delivers the promised weights with capabilities close to the hosted release and terms broad enough for serious deployment.
-
-Chinese title: Meta发布Muse Spark 1.3，主攻编程智能体
-Chinese summary: Muse Spark 1.3强化长流程编程和智能体任务，但开放权重与最高推理档位均未在发布当天提供。
-
-Sources:
-  - Muse Spark 1.3: https://developer.meta.com/ai/models/muse-spark/
-  - Meta AI Announces Muse Spark 1.3: https://x.com/AIatMeta/status/2095234385129963666
-  - Artificial Analysis Muse Spark 1.3 Results: https://x.com/ArtificialAnlys/status/2095247793183166917
-
-### Perplexity Open-Sources Lily for Faster Qwen Inference on Macs
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/perplexity-lily-apple-silicon-inference.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-lily-apple-silicon-inference.html
-- Source timestamp: 2026-09-03T06:57:00.000Z
-- Site timestamp: 2026-09-03T11:00:00.000Z
-- Tags: Open Source, Models, Industry
-
-Perplexity has released the Rust and Metal source, tests and reproduction materials for an engine it says runs Qwen3.6-35B-A3B up to 1.35 times faster than MLX-LM on an M5 Max.
-
-## A purpose-built local engine
-
-Perplexity has open-sourced Lily, a compact inference server designed exclusively for the Qwen3.6-35B-A3B model on Apple silicon. The implementation, tests and benchmark reproduction materials are now available in the company’s public pplx-garden repository under the Apache 2.0 license. Lily combines a Rust runtime with Metal kernels compiled from source and exposes a deliberately limited subset of the OpenAI chat-completions interface. PyTorch and Apple’s general-purpose MLX framework are not part of its execution path, although Lily loads a checkpoint converted to MLX affine 4-bit weights.
-
-Lily targets one specific 4-bit checkpoint. Qwen3.6-35B-A3B has 35 billion parameters but activates roughly 3 billion per token, routing each token through eight of 256 experts plus a shared expert. Its checkpoint occupies 19.4 GB, while the model mixes ten full-attention layers with 30 Gated DeltaNet recurrent layers. Perplexity tailored Lily’s data movement, scheduling and kernels around those fixed characteristics.
-
-## Faster, within narrow boundaries
-
-On a MacBook Pro equipped with a 40-core M5 Max GPU and 128 GB of unified memory, Perplexity says Lily averaged 1.23 times MLX-LM’s prompt-processing throughput and 1.35 times its token-generation throughput across contexts ranging from 256 to 128,000 tokens. At a 4,000-token prompt and context, it processed prompts at 5,749.9 tokens per second and generated 186.6 tokens per second, versus 4,737.5 and 140.9 for MLX-LM.
-
-The gains came from keeping expert routing and recurrent state on the GPU, fusing operations to avoid intermediate memory traffic, and changing attention paths as context length grows. Perplexity also reported that speculative decoding made this batch-one workload 18% slower because proposed tokens created inefficient execution shapes and scattered expert access.
-
-The comparison remains vendor-run and deliberately narrow, but outside developers can now inspect the implementation and attempt to reproduce the published results. The repository includes dated MLX comparison reports, benchmark harnesses, CPU-reference kernel tests, shader and API tests, and optional end-to-end tests requiring the designated checkpoint. Lily requires an M5 or newer Apple GPU, macOS 26 and the specified quantized Qwen checkpoint; it does not support other Qwen sizes, dense or BF16 checkpoints, or GGUF, AWQ, GPTQ, int8 and fp8 formats. It also supports only text messages and greedy, non-streaming generation, rejecting tools, sampling controls, multimodal input and speculative decoding.
-
-The release matters because local AI performance may increasingly depend on co-designing runtimes for a particular model architecture and device rather than relying entirely on portable frameworks. Lily’s narrow scope limits its immediate audience, but the published code and reproduction materials turn its reported performance from a preview into a result that independent developers can now test.
-
-Chinese title: Perplexity 开源 Lily，加速 Mac 上的千问推理
-Chinese summary: Perplexity 已公开这款 Rust 与 Metal 专用引擎的源代码、测试和复现材料，并称其在 M5 Max 上运行 Qwen3.6-35B-A3B 的速度最高为 MLX-LM 的1.35倍。
-
-Sources:
-  - Optimizing On-Device Inference for Apple Silicon: https://www.perplexity.ai/hub/blog/optimizing-on-device-inference-for-apple-silicon
-  - Perplexity pplx-garden repository: https://github.com/perplexityai/pplx-garden
-
 ## Recent radar items
+
+### 2026-09-11
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-11.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-11.html
+
+- 2026-09-10T22:50:00Z | Google Research | Google Research introduced ToolGrad, a method that generates tool-use datasets with textual gradients to improve training efficiency. | 中文：Google Research发布ToolGrad，用“文本梯度”生成工具调用数据集，提升训练效率。 | https://research.google/blog/toolgrad-efficient-tool-use-dataset-generation-with-textual-gradients/
+- 2026-09-10T21:31:00Z | X @cursor_ai | Cursor introduced Projects, persistent workspaces where agents share memory, artifacts, reminders, scheduled tasks, and automated issue handling. | 中文：Cursor推出Projects，让多个智能体共享记忆与产物，并自动处理提醒、定时任务和问题修复。 | https://x.com/cursor_ai/status/2098162488013455784
+- 2026-09-10T22:25:00Z | X @krea_ai | Krea launched Flux Video Edit, enabling fast, precise replacement of objects and regions within generated or existing videos. | 中文：Krea推出Flux Video Edit，可快速精准替换生成视频或现有视频中的对象与区域。 | https://x.com/krea_ai/status/2098175952354435387
+- 2026-09-10T22:07:00Z | X @togethercompute | Together AI introduced preemptible GPU clusters priced at 50% of on-demand rates for evaluations, fine-tuning, and batch inference. | 中文：Together AI推出可抢占GPU集群，评测、微调和批量推理价格降至按需实例的一半。 | https://x.com/togethercompute/status/2098171482408956223
+- 2026-09-10T21:57:00Z | MarkTechPost | NVIDIA detailed BioNeMo Inference Runtime, reporting 2.90x higher Boltz-2 folding throughput and 58.5K residues per GPU-hour on eight H100s. | 中文：NVIDIA公布BioNeMo推理运行时，在八张H100上实现Boltz-2折叠吞吐提升2.90倍。 | https://www.marktechpost.com/2026/09/10/nvidia-details-bionemo-inference-runtime-bioir-2-90x-higher-boltz-2-folding-throughput-and-58-5k-residues-per-gpu-hour-on-8xh100/
+- 2026-09-10T15:00:00Z | OpenAI | OpenAI launched a Data agent in ChatGPT Work that connects governed enterprise data to natural-language analysis, dashboards, and approved actions. | 中文：OpenAI在ChatGPT Work中推出Data agent，把受治理的企业数据连接到自然语言分析、仪表盘和获批操作。 | https://openai.com/index/put-data-to-work/
+- 2026-09-10T18:16:00Z | AWS Machine Learning | Amazon made Quick generally available on Windows and macOS, extending its agentic workplace assistant beyond browser-based access. | 中文：亚马逊宣布Quick在Windows和macOS桌面端正式可用，将智能办公助手扩展到浏览器之外。 | https://aws.amazon.com/blogs/machine-learning/amazon-quick-is-now-generally-available-on-desktop/
+- 2026-09-10T16:10:00Z | X @cohere | Cohere released North Small Translate, supporting more than 50 languages and reporting an 83.6 average WMT score. | 中文：Cohere发布North Small Translate，支持50多种语言，并报告WMT平均得分83.6。 | https://x.com/cohere/status/2098081809170940114
+- 2026-09-10T16:06:00Z | X @genspark_ai | Genspark introduced Gen-1 Slides, an open-weight-based model trained with Fireworks AI to power its automated presentation tools. | 中文：Genspark推出Gen-1 Slides，这是与Fireworks AI合作训练、基于开放权重模型的演示文稿生成模型。 | https://x.com/genspark_ai/status/2098080790903243009
+- 2026-09-10T17:59:00Z | X @cognition | Cognition acquired the Dioxus team, adding maintainers of a popular open-source Rust framework used extensively in Devin. | 中文：Cognition收购Dioxus团队，将维护这一流行开源Rust框架的成员纳入旗下；Devin已大量使用该框架。 | https://x.com/cognition/status/2098109121169883237
+- 2026-09-10T17:55:00Z | X @HeyGen | HeyGen said its real-time AI experience framework, built with OpenAI, is now solved and open sourced for developers. | 中文：HeyGen宣布，与OpenAI合作构建的实时AI体验框架现已开源，面向开发者开放。 | https://x.com/HeyGen/status/2098108031276134776
+- 2026-09-10T13:14:00Z | X @Gradio | Gradio introduced Workflow1111, letting users run eleven AI pipelines online without downloading large checkpoints or local environments. | 中文：Gradio推出Workflow1111，用户无需下载大型模型权重或配置本地环境，即可在线运行11条AI流水线。 | https://x.com/Gradio/status/2098037459309449411
+- 2026-09-10T13:00:00Z | SiliconANGLE | CoreWeave launched an engineering service to help enterprises implement physical AI systems, including robotics and industrial workloads. | 中文：CoreWeave推出工程服务，帮助企业落地涵盖机器人和工业负载的物理AI系统。 | https://siliconangle.com/2026/09/10/coreweave-launches-new-engineering-service-to-help-enterprises-implement-physical-ai/
+- 2026-09-10T21:49:00Z | X @NVIDIAAI | NVIDIA said Nemotron 3 Embed 8B ranked first on Q2D-Web’s combined nDCG@10 leaderboard across 190 million web documents. | 中文：NVIDIA称Nemotron 3 Embed 8B在覆盖1.9亿网页文档的Q2D-Web综合nDCG@10榜单中排名第一。 | https://x.com/NVIDIAAI/status/2098167118806372669
 
 ### 2026-09-10
 
@@ -1156,33 +1178,3 @@ Sources:
 - 2026-09-07T10:08Z | Lovart | Lovart showcased user-made artwork to position its generative design platform beyond producing conventional marketing assets. | 中文：Lovart展示用户创作的艺术作品，试图将其生成式设计平台定位拓展至常规营销素材之外。 | https://x.com/lovart_ai/status/2096903549116649978
 - 2026-09-07T08:51Z | 量子位 | GOSIM Shenzhen published its 2026 agenda featuring more than 150 speakers from Nvidia, Microsoft, Hugging Face and other technology organizations. | 中文：GOSIM深圳公布2026年议程，汇集来自英伟达、微软、Hugging Face等机构的逾150位嘉宾。 | https://www.qbitai.com/2026/09/485154.html
 - 2026-09-07T07:44Z | Dreamina | Dreamina selected ten weekly community-giveaway winners, each receiving 25,000 credits for its generative creative tools. | 中文：Dreamina公布社区周度赠送活动的十名获奖者，每人获得2.5万点生成式创作额度。 | https://x.com/dreamina_ai/status/2096867197356511673
-
-### 2026-09-06
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-06.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-06.html
-
-- 2026-09-05T22:49Z | TechCrunch | Seattle Times and Newsday sued OpenAI and Microsoft, alleging their journalism was copied and reproduced without authorization in AI products. | 中文：《西雅图时报》和《新闻日报》起诉OpenAI与微软，指控其AI产品未经授权复制并复现新闻内容。 | https://techcrunch.com/2026/09/05/seattle-times-and-newsday-are-the-latest-publications-to-sue-openai-and-microsoft/
-- 2026-09-05T19:35Z | TechCrunch | Rescuers aided hikers who reportedly relied on Google Gemini for route planning before becoming stranded in Colorado’s mountains. | 中文：救援人员救出了在科罗拉多山区受困的徒步者；据报道，他们此前依赖Google Gemini规划路线。 | https://techcrunch.com/2026/09/05/hikers-rescued-after-using-google-gemini-for-planning/
-- 2026-09-05T18:23Z | Arena | Grok Imagine Video 1.5 Agent entered Arena’s text-to-video leaderboard fifth with 1,491 points, roughly matching Wan 3.0 and FLUX 3 Video. | 中文：Grok Imagine Video 1.5 Agent以1491分登上Arena文生视频榜第五，表现大致追平Wan 3.0和FLUX 3 Video。 | https://x.com/arena/status/2096303158880620682
-- 2026-09-05T18:21Z | The Decoder | Artificial Analysis launched Intelligence Index v4.2, adding harder private evaluations after GPT-6 Astra’s disputed scores exposed weaknesses in model comparisons. | 中文：GPT-6 Astra评分引发质疑后，Artificial Analysis推出含更难私有评测的智能指数v4.2。 | https://the-decoder.com/artificial-analysis-overhauls-its-intelligence-index-after-gpt-6-astra-scoring-drew-skepticism/
-- 2026-09-05T16:17Z | Meta AI | Meta said its decentralized AIRA₃ research-agent ensemble earned a gold-medal result in a live Kaggle competition and can generalize across domains. | 中文：Meta称，去中心化研究智能体集群AIRA₃在Kaggle实时竞赛中取得金牌成绩，并可跨领域泛化。 | https://x.com/AIatMeta/status/2096271545589190927
-- 2026-09-05T15:51Z | Simon Willison’s Weblog | Simon Willison demonstrated a coding agent controlling Blender’s Python API on macOS to iteratively create and render a detailed 3D scene. | 中文：Simon Willison展示了编码智能体在macOS上调用Blender Python接口，迭代创建并渲染复杂三维场景。 | https://simonwillison.net/2026/Sep/5/blender-coding-agents-macos/
-- 2026-09-05T15:20Z | Databricks | Databricks promoted Lakebase as a rapidly provisioned operational database for developers building applications, agents and other AI products. | 中文：Databricks将Lakebase定位为可快速开通的运营数据库，面向应用、智能体及其他AI产品开发。 | https://x.com/databricks/status/2096257131305398292
-- 2026-09-05T15:01Z | Latent Space | A five-day Grok Bot test found browser sign-ins simplified recurring automations, while separate bots still shared one computer, files and login sessions. | 中文：一项为期五天的Grok Bot体验发现，浏览器登录简化了定时自动化，但不同机器人仍共享电脑、文件和会话。 | https://www.latent.space/p/grok-bot
-- 2026-09-05T14:46Z | 量子位 | Feidu Technology’s Zhengrong spatial-intelligence model won first prize at HICOOL for combining spatial data, physical simulation and decision-oriented agents. | 中文：飞渡科技的峥嵘空间智能大模型凭借空间数据、物理仿真和决策智能体结合，获HICOOL一等奖。 | https://www.qbitai.com/2026/09/484683.html
-- 2026-09-05T13:31Z | The Decoder | OpenAI published GPT-6 Astra prompting guidance that includes an explicit blocklist of formulaic words intended to reduce generic AI prose. | 中文：OpenAI发布GPT-6 Astra提示指南，其中提供程式化词语禁用清单，以减少泛化的AI腔写作。 | https://the-decoder.com/openai-shares-prompting-tips-for-gpt-6-astra-including-a-blocklist-of-slop-words/
-- 2026-09-05T12:39Z | The Decoder | Two experiments found a roughly seven-minute Gemini conversation reduced crisis-related conspiracy beliefs more than a static fact sheet, with effects persisting weeks later. | 中文：两项实验发现，与Gemini交谈约七分钟比阅读静态资料更能降低危机阴谋论信念，效果数周后仍存在。 | https://the-decoder.com/seven-minutes-with-a-chatbot-beat-a-fact-sheet-at-reducing-conspiracy-beliefs-in-two-experiments/
-- 2026-09-05T17:00Z | InfoQ 中文 | FreeToken reportedly ran Qwen3.6-35B at about 39 tokens per second on an 8GB RTX 4060 laptop using adaptive CPU-GPU MoE scheduling. | 中文：FreeToken通过自适应CPU-GPU混合专家调度，据称在8GB显存RTX 4060笔记本上以约39 Token每秒运行Qwen3.6-35B。 | https://www.infoq.cn/article/tij5T0vJ1Yk0s7Uov7SE
-- 2026-09-05T17:40Z | Arena | GPT-6 Astra Max reached first place on Arena’s WebDev leaderboard, scoring 1,758 from 261 votes while matching Claude Fable 5.1’s listed pricing. | 中文：GPT-6 Astra Max以261票、1758分登上Arena网页开发榜首，标示价格与Claude Fable 5.1相同。 | https://x.com/arena/status/2096292448960217449
-- 2026-09-05T15:07Z | 量子位 | A Chinese analysis highlighted Alibaba’s earlier work on recurrent Transformer architectures as GPT-6 renewed industry interest in iterative computation. | 中文：一篇中国行业分析指出，GPT-6重新带动循环Transformer关注，而阿里此前已在相关架构上布局。 | https://www.qbitai.com/2026/09/484726.html
-- 2026-09-06T10:55Z | X @lovart_ai | Lovart showcased AI-generated advertisements designed around playful, surreal creative concepts. | 中文：Lovart 展示了以趣味和超现实创意为核心的 AI 生成广告。 | https://x.com/lovart_ai/status/2096552809659589111
-- 2026-09-06T10:51Z | IT之家 | Microsoft is reshaping Windows 11 around “unmetered intelligence,” aiming to run more AI workloads locally on PCs. | 中文：微软正以“无计量智能”重塑 Windows 11，计划让更多 AI 任务在电脑本地运行。 | https://www.ithome.com/0/999/014.htm
-- 2026-09-06T10:41Z | X @tripoai | Tripo highlighted a workflow that hides inactive AI-generated facial expressions inside a 3D character’s head for later use. | 中文：Tripo 展示了一种把暂未启用的 AI 生成表情藏进三维角色头部、供后续调用的工作流。 | https://x.com/tripoai/status/2096549424260579728
-- 2026-09-06T10:15Z | The Decoder | An OpenAI developer said Astra improved internal productivity enough to bring some planned releases forward by six months. | 中文：一名 OpenAI 开发者称，Astra 提升内部生产力，使部分发布计划提前了六个月。 | https://the-decoder.com/openai-developer-claims-astra-boosted-productivity-so-much-it-pulled-some-plans-forward-by-six-months/
-- 2026-09-06T09:45Z | The Decoder | Meta introduced a real-time audio model intended as a foundation for continuously listening AI assistants. | 中文：Meta 推出一款实时音频模型，作为持续聆听型 AI 助手的基础。 | https://the-decoder.com/metas-new-real-time-audio-model-is-the-foundation-for-ai-assistants-that-never-stop-listening/
-- 2026-09-06T09:30Z | IT之家 | China unveiled an embodied-intelligence version of the breeding robot Ji’er that can identify stamens, pollinate flowers and collect samples. | 中文：中国发布育种机器人“吉儿”的具身智能版本，可识别花蕊、完成授粉并采集样本。 | https://www.ithome.com/0/999/001.htm
-- 2026-09-06T08:55Z | The Decoder | Removing safety guardrails from open-weight AI models is now being offered as a turnkey commercial service. | 中文：移除开放权重 AI 模型安全护栏如今已成为可直接购买的商业服务。 | https://the-decoder.com/stripping-safety-guardrails-from-open-weight-ai-models-is-now-a-turnkey-commercial-service/
-- 2026-09-06T04:40Z | 量子位 | Bilibili concluded its first AI Creation Open Competition, with solo creators representing more than 80% of participants. | 中文：B站首届 AI 创造公开赛收官，超过八成参赛者是单人团队。 | https://www.qbitai.com/2026/09/484890.html
-- 2026-09-06T01:52Z | RoboCurve | A demonstration connected GPT-6 Astra to robotic arms for planning and executing physical manipulation tasks. | 中文：一项演示把 GPT-6 Astra 接入机械臂，用于规划并执行实体操作任务。 | https://openai.robocurve.org/gpt-6-astra/
-- 2026-09-05T23:04Z | X @ollama | Ollama introduced half-price off-peak token rates for DeepSeek-V4-Flash and Pro outside weekday peak hours and throughout weekends. | 中文：Ollama 推出错峰费率：DeepSeek-V4-Flash 与 Pro 在工作日非高峰及周末半价。 | https://x.com/ollama/status/2096374001119744190
