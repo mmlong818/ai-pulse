@@ -33,7 +33,7 @@ Cognition has released SWE-2, a coding model designed for its Devin software-eng
 
 ## Performance and training
 
-Cognition reports that SWE-2 scores 50.0% on FrontierCode 1.1 Main, within one point of Claude Fable 5.1 in the company’s comparison, while costing 64% less. On DeepSWE 1.1 it scores 73.0%, and on Terminal-Bench 2.1 it reaches 92.8%.
+Cognition reports that SWE-2 scores 50.0% on FrontierCode 1.1 Main, within one point of Fable 5.1 in the company’s comparison, while costing 64% less. On DeepSWE 1.1 it scores 73.0%, and on Terminal-Bench 2.1 it reaches 92.8%.
 
 The company says the model is post-trained from Kimi K3, a 2.8-trillion-parameter base model, using reinforcement learning at what it calls the multi-trillion-parameter scale. Its training method applies cost penalties across different reasoning-effort levels in one run, aiming to improve the entire cost-performance curve instead of optimizing only for a single maximum score.
 
@@ -116,6 +116,37 @@ Chinese summary: OpenAI推出公开测试版智能体API，开发者可直接调
 Sources:
   - OpenAI Developers announcement on Agents API: https://x.com/OpenAIDevs/status/2098130570048045453
   - OpenAI-hosted sandboxes for agents: https://x.com/OpenAIDevs/status/2098130625144451444
+
+### Sakana Fugu Max Targets Frontier AI at Lower Cost
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/sakana-fugu-orchestration-cost-frontier.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/sakana-fugu-orchestration-cost-frontier.html
+- Source timestamp: 2026-09-11T02:15:00.000Z
+- Site timestamp: 2026-09-11T11:00:03.382Z
+- Tags: Agents, Open Source, Industry
+
+Sakana AI released Fugu Max and Fugu Ultra v2, using model orchestration to pursue cheaper agent performance and higher autonomous-task scores.
+
+## Two releases, one orchestration strategy
+
+Sakana AI has released Fugu Max and Fugu Ultra v2, two versions of its multi-agent orchestration system aimed at different points on the capability-cost curve. Fugu Max is designed to route each task to the least expensive model capable of solving it, while Fugu Ultra v2 is optimized for maximum performance on demanding, multi-step workloads.
+
+The system combines open-weight and specialized models rather than depending on one proprietary frontier model. Sakana says the pool now includes NVIDIA’s Nemotron family and can be swapped as models, prices, or access conditions change. Both releases are available through an OpenAI-compatible API, allowing existing Fugu users to switch with a parameter change.
+
+Sakana reports that Fugu Max scores best overall on six internal or external benchmarks, including Terminal Bench 2.1, GPQAD, AutomationBench and SWEFish. It lists pricing of $2 per million input tokens and $6 per million output tokens, claiming performance within reach of leading models at two to six times lower cost. Fugu Ultra v2 is positioned at the high end: Sakana reports a 48.3 score on Chartography and 74.3 on DeepSWE, ahead of the comparison models cited in its release.
+
+Those results remain vendor-reported, and the model pool excludes newer systems such as GPT-6 Astra and Claude Fable 5.1. That makes direct comparisons difficult, especially for tasks where routing overhead, tool reliability and latency matter as much as benchmark accuracy.
+
+## Why it matters
+
+The important shift is architectural. If Sakana’s numbers hold outside its own evaluation setup, model orchestration could become a practical way to reduce dependence on a single frontier provider while preserving strong agent performance. The unresolved question is whether a dynamic collection of smaller models can remain dependable in production, where failures in routing or coordination may erase the apparent savings.
+
+Chinese title: Sakana发布Fugu Max与Ultra v2，押注编排降低智能体成本
+Chinese summary: Sakana AI推出Fugu Max和Fugu Ultra v2，通过动态调度多种模型，同时冲击更低成本与更高阶智能体性能。
+
+Sources:
+  - Introducing Fugu Max and Fugu Ultra v2: Orchestrating the Pareto Frontier: https://secret-test-staging.sakana.ai/fugu-max-release/
+  - Sakana AI announcement on X: https://x.com/SakanaAILabs/status/2098233826816205275
 
 ### Anthropic Opens Four Claude Cyber Incidents to METR
 
@@ -985,37 +1016,6 @@ Sources:
   - Introducing GWM Worlds 2: https://runway.com/research/introducing-gwm-worlds-2
   - Runway GWM Worlds 2 announcement: https://x.com/runwayml/status/2095540014645920040
 
-### Cursor Lets Cloud Agents Run on Managed Machines
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/cursor-self-hosted-agent-pools.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cursor-self-hosted-agent-pools.html
-- Source timestamp: 2026-09-02T21:07:00.000Z
-- Site timestamp: 2026-09-02T23:00:04.105Z
-- Tags: Agents, Industry
-
-Cursor adds scalable worker pools across corporate infrastructure while retaining its cloud-based planning, inference and orchestration layer.
-
-## Execution moves inside the customer network
-
-Cursor introduced Self-Hosted Machines that allow its cloud agents to execute commands on customer-managed laptops, servers and dynamically scaled worker pools. The agent interface, inference and planning remain in Cursor’s cloud, but repositories, build systems and command execution can sit inside an organization’s existing network.
-
-A worker establishes an outbound HTTPS connection to Cursor, avoiding inbound firewall access. When an agent requests an action, Cursor sends the tool call to a dedicated worker, which edits files, runs commands and returns results. Cursor says it never initiates a connection into the customer network. However, tool outputs and transcripts still travel through its service for inference and may contain source code, so the architecture is not equivalent to a fully local agent.
-
-Teams can attach an individual machine or create pools shared across repositories. A controller can start more workers when requests queue, release idle capacity and restore hibernated workspaces when follow-up instructions arrive. Cursor lists AWS Lambda, Coder, Cloudflare, Daytona, E2B, Modal, Namespace and Vercel among supported infrastructure and sandbox providers. Linux workers also gain browser control, joining existing Mac support and enabling agents to click, capture screenshots and test web applications.
-
-## The environment becomes part of the agent platform
-
-Cursor says cloud agents now generate more than 60% of the pull requests merged internally. Giving comparable agents access to private services, bespoke build pipelines, GPUs and Apple hardware addresses a practical barrier to enterprise adoption: many valuable software tasks cannot be reproduced inside a generic hosted sandbox.
-
-The move matters because coding-agent competition is expanding from model quality into workload placement, isolation and fleet operations. Cursor retains the high-value control plane while customers supply the machines and absorb more responsibility for credentials, capacity and containment. Enterprises considering the feature will therefore need to examine exactly what leaves each worker. Keeping execution inside the network reduces one class of exposure, but transmitted tool results mean it does not eliminate the data-governance boundary.
-
-Chinese title: Cursor云端智能体可在客户自管机器上运行
-Chinese summary: Cursor新增可弹性扩缩的自管工作节点，代码执行留在企业网络内，推理、规划和调度仍由其云端负责。
-
-Sources:
-  - Run Cloud Agents on Machines You Manage: https://cursor.com/blog/self-hosted-machines
-  - Self-Hosted Machines: https://cursor.com/changelog/self-hosted-machines
-
 ## Recent radar items
 
 ### 2026-09-11
@@ -1037,6 +1037,20 @@ Sources:
 - 2026-09-10T13:14:00Z | X @Gradio | Gradio introduced Workflow1111, letting users run eleven AI pipelines online without downloading large checkpoints or local environments. | 中文：Gradio推出Workflow1111，用户无需下载大型模型权重或配置本地环境，即可在线运行11条AI流水线。 | https://x.com/Gradio/status/2098037459309449411
 - 2026-09-10T13:00:00Z | SiliconANGLE | CoreWeave launched an engineering service to help enterprises implement physical AI systems, including robotics and industrial workloads. | 中文：CoreWeave推出工程服务，帮助企业落地涵盖机器人和工业负载的物理AI系统。 | https://siliconangle.com/2026/09/10/coreweave-launches-new-engineering-service-to-help-enterprises-implement-physical-ai/
 - 2026-09-10T21:49:00Z | X @NVIDIAAI | NVIDIA said Nemotron 3 Embed 8B ranked first on Q2D-Web’s combined nDCG@10 leaderboard across 190 million web documents. | 中文：NVIDIA称Nemotron 3 Embed 8B在覆盖1.9亿网页文档的Q2D-Web综合nDCG@10榜单中排名第一。 | https://x.com/NVIDIAAI/status/2098167118806372669
+- 2026-09-11T00:19Z | SiliconANGLE AI | Salesforce previewed an Enterprise AI Harness to ground multiple models and agents in shared business context, with broad availability planned for early 2027. | 中文：Salesforce预览企业级AI Harness，让多模型和多智能体共享业务上下文，计划2027年初普及。 | https://siliconangle.com/2026/09/10/salesforce-introduces-enterprise-ai-harness-ai-control-plane/
+- 2026-09-11T01:35Z | X / Replit | Replit announced general availability of native Databricks deployment, carrying Databricks security and governance into AI-built applications. | 中文：Replit宣布原生部署到Databricks正式可用，AI生成应用可继承Databricks的安全与治理能力。 | https://x.com/Replit/status/2098223938920960353
+- 2026-09-11T01:00Z | X / MongoDB | MongoDB showcased a CrewAI-powered shopping agent that checks inventory and completes checkout inside an application. | 中文：MongoDB展示由CrewAI驱动的购物智能体，可在应用内理解需求、核验库存并完成结账。 | https://x.com/MongoDB/status/2098214946085470313
+- 2026-09-11T00:56Z | X / MiniMax | MiniMax joined Nebius’s AI Builder Program, giving developers access to MiniMax alongside partner models, infrastructure, and tooling. | 中文：MiniMax加入Nebius AI Builder计划，开发者可在同一项目中调用其模型及配套基础设施与工具。 | https://x.com/MiniMax_AI/status/2098214090099556548
+- 2026-09-11T01:14Z | X / Ollama | Ollama said ChatGPT users can select local or cloud models, with plugins, web search, and computer use working through its app. | 中文：Ollama表示，ChatGPT用户可在应用中选择本地或云端模型，并直接使用插件、网页搜索和电脑操作。 | https://x.com/ollama/status/2098218696804368455
+- 2026-09-11T01:08Z | X / Fara Research | Fara Research updated its AI Security Leaderboard and reported zero universal jailbreaks across the latest OpenAI and Anthropic models. | 中文：Fara Research更新AI安全排行榜称，在最新OpenAI和Anthropic模型上未发现通用越狱。 | https://x.com/farairesearch/status/2098216964711714929
+- 2026-09-11T00:18Z | X / Artificial Analysis | Artificial Analysis ranked Octen Search third on its Search Index, with 16.9-second task time and about $9 per 1,000 tasks. | 中文：Artificial Analysis称，Octen Search在搜索指数排名第三，单任务耗时16.9秒，每千任务成本约9美元。 | https://x.com/ArtificialAnlys/status/2098204521503834350
+- 2026-09-11T08:43Z | X / Hailuo AI | Hailuo AI promoted a September 24 creator event in Lisbon featuring films, creator talks, and new generative-video ideas. | 中文：Hailuo AI预告9月24日在里斯本举办创作者活动，内容包括影片、创作者分享和生成视频新想法。 | https://x.com/Hailuo_AI/status/2098331606650073360
+- 2026-09-11T01:42Z | X / MeshyAI | Meshy showed an API workflow in which every asset in a project was generated through its service. | 中文：Meshy展示了一套完全通过其API生成项目内全部资产的工作流。 | https://x.com/MeshyAI/status/2098225571247563147
+- 2026-09-11T04:00Z | arXiv | OpenDiscoveryTrace proposes process traces for evaluating AI-scientist workflows rather than judging only their final discoveries. | 中文：OpenDiscoveryTrace提出用过程轨迹评估AI科学家工作流，而不只看最终发现。 | https://arxiv.org/abs/2609.09203
+- 2026-09-11T04:00Z | arXiv | Subagents vs Agent Skills studies how reusable knowledge execution affects long-horizon agentic tasks. | 中文：Subagents vs Agent Skills研究可复用知识执行方式如何影响长程智能体任务。 | https://arxiv.org/abs/2609.09233
+- 2026-09-11T04:00Z | arXiv | HuRo proposes robotizing human videos to create scalable training data for vision-language-action pretraining. | 中文：HuRo提出将人类视频机器人化，为视觉-语言-动作模型预训练生成可规模化数据。 | https://arxiv.org/abs/2609.10706
+- 2026-09-11T04:00Z | arXiv | ReactHuman introduces a physics-grounded benchmark for human-like reactive decisions in embodied multimodal language models. | 中文：ReactHuman提出物理约束基准，用于评估具身多模态语言模型类人反应决策。 | https://arxiv.org/abs/2609.10895
+- 2026-09-11T04:00Z | arXiv | The Menu Is an Execution Prior models online agents with state-path tool menus to guide action selection. | 中文：The Menu Is an Execution Prior用状态路径工具菜单引导在线智能体选择行动。 | https://arxiv.org/abs/2609.09395
 
 ### 2026-09-10
 
