@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>英伟达开源OSMO，统一编排物理AI训练与机器人测试 — Uncle Cat AI Radar</title>
+<meta name="description" content="英伟达开源OSMO，用YAML连接机器人数据、仿真、模型训练和真实硬件测试，覆盖云端与本地算力。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-osmo-physical-ai.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/nvidia-osmo-physical-ai.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-osmo-physical-ai.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/nvidia-osmo-physical-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="英伟达开源OSMO，统一编排物理AI训练与机器人测试 — Uncle Cat AI Radar">
+<meta property="og:description" content="英伟达开源OSMO，用YAML连接机器人数据、仿真、模型训练和真实硬件测试，覆盖云端与本地算力。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-osmo-physical-ai.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="英伟达开源OSMO，统一编排物理AI训练与机器人测试 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="英伟达开源OSMO，用YAML连接机器人数据、仿真、模型训练和真实硬件测试，覆盖云端与本地算力。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="英伟达开源OSMO，统一编排物理AI训练与机器人测试 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"英伟达开源OSMO，统一编排物理AI训练与机器人测试","item":"https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-osmo-physical-ai.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-osmo-physical-ai.html#article","headline":"英伟达开源OSMO，统一编排物理AI训练与机器人测试","description":"英伟达开源OSMO，用YAML连接机器人数据、仿真、模型训练和真实硬件测试，覆盖云端与本地算力。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-osmo-physical-ai.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-osmo-physical-ai.html"},"datePublished":"2026-09-14T08:04:00.000Z","dateModified":"2026-09-14T11:00:05.890Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["产业","开源","Agent"],"keywords":"产业, 开源, Agent","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://developer.nvidia.com/osmo","https://github.com/NVIDIA/OSMO","https://www.marktechpost.com/2026/09/14/nvidia-open-sources-osmo-one-yaml-orchestrates-physical-ai-training-simulation-and-robot-testing/"],"about":[{"@type":"Thing","name":"产业"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"Agent"}]}]}</script>
+</head>
+<body data-slug="nvidia-osmo-physical-ai" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/nvidia-osmo-physical-ai.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-09-14T08:04:00Z">2026年9月14日 16:04</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>英伟达开源OSMO，统一编排物理AI训练与机器人测试</h1>
+  <p class="standfirst">英伟达开源OSMO，用YAML连接机器人数据、仿真、模型训练和真实硬件测试，覆盖云端与本地算力。</p>
+  <h2>发生了什么</h2><p>英伟达开源了物理AI与机器人工作流编排平台OSMO。该消息于世界标准时间9月14日08:04发布，处于本期选题窗口内；英伟达开发者文档将OSMO定义为面向提示驱动机器人开发的开源智能体编排器。</p><p>OSMO试图打通机器人团队通常分开使用的三类计算环境：大型训练集群、仿真系统，以及边缘设备或硬件在环测试设备。开发者可以用YAML描述完整流程，由OSMO负责数据集、任务依赖、资源调度和跨云端或本地基础设施执行。英伟达称，该平台可覆盖合成数据生成、分布式策略训练、强化学习、仿真评估，以及真实机器人测试。</p><p>它的独特之处，是把基础设施本身暴露给编程智能体。OSMO提供智能体上下文文件和相关接口，让AI编程助手能够检查工作流、查询GPU容量、监控任务，并理解当前开发环境。这样一来，OSMO处在传统集群调度器与负责搭建机器人系统的新一代软件智能体之间。</p><p>英伟达表示，OSMO源自GR00T、Isaac Lab、Isaac Sim和Isaac ROS等内部项目，并且每天处理数千GPU小时。不过，这些说法属于厂商披露，并非独立性能评测。平台能否在英伟达主推的软件栈之外，以及不同的Kubernetes和机器人环境中顺利运行，也将决定实际采用速度。</p><h2>为什么重要</h2><p>物理AI长期受制于数据、仿真、训练和真实硬件之间繁琐的交接。开放的编排层有机会减少重复基础设施工作，让机器人研发流程更容易复现。对英伟达而言，OSMO还把软件影响力从模型和仿真工具，延伸到了机器人项目真正被组装和运行的控制层。</p><h3>猫叔判断</h3><p>OSMO的战略价值不在YAML语法，而在于英伟达把能理解智能体的控制层，放到了从Isaac仿真走向真实机器人测试的昂贵过渡环节上。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://developer.nvidia.com/osmo" rel="noopener" target="_blank">NVIDIA OSMO Developer Documentation</a></li><li><a href="https://github.com/NVIDIA/OSMO" rel="noopener" target="_blank">NVIDIA OSMO GitHub repository</a></li><li><a href="https://www.marktechpost.com/2026/09/14/nvidia-open-sources-osmo-one-yaml-orchestrates-physical-ai-training-simulation-and-robot-testing/" rel="noopener" target="_blank">NVIDIA OSMO release report</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-nasdaq-ipo-plan.html">Anthropic据报选定纳斯达克，筹备潜在IPO</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-agents-rubygems-campaign.html">OpenAI智能体曾向RubyGems批量发布约2000个包</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-delays-ipo-plans.html">奥尔特曼称OpenAI 2026年上市并不明智</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

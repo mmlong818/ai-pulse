@@ -55,6 +55,75 @@ Sources:
   - Nvidia in talks to invest up to $10 billion in Anthropic IPO: https://ph.investing.com/news/company-news/nvidia-in-talks-to-invest-up-to-10-billion-in-anthropic-ipo--reuters-2585971
   - Nvidia in talks to invest in Anthropic's mega IPO, sources say: https://ca.marketscreener.com/news/nvidia-in-talks-to-invest-in-anthropic-s-mega-ipo-sources-say-ce785bdfd18ff127
 
+### Shanghai AI Lab Releases Intern-S2-Preview-397B for Science
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/intern-s2-scientific-agent.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/intern-s2-scientific-agent.html
+- Source timestamp: 2026-09-14T09:09:00.000Z
+- Site timestamp: 2026-09-14T11:00:05.890Z
+- Tags: Models, Research, Open Source, Agents
+
+Shanghai AI Lab introduces Intern-S2-Preview-397B, a 397B multimodal model built for scientific reasoning, long-horizon agents, and research workflows.
+
+## What happened
+
+Shanghai AI Lab introduced Intern-S2-Preview-397B, a 397-billion-parameter multimodal foundation model aimed at scientific intelligence and long-horizon agent work. The announcement appeared on the lab’s official account at 09:09 UTC on September 14, inside this edition’s window. The model is presented alongside a smaller 35B version and is available through the InternLM model ecosystem.
+
+Intern-S2-Preview is designed to process scientific material in its original visual form rather than relying entirely on text extracted from papers. The lab says its training combines visual pre-training, reinforcement learning across more than 20 scientific domains, and agent environments that require extended interaction with tools and sandboxes. Claimed target capabilities include general reasoning, scientific problem solving, biomolecular interaction design, material-structure generation, and long-horizon task execution.
+
+The release also matters because it is positioned as an open model rather than a closed research preview. The official repository lists Intern-S2-Preview-397B checkpoints for Hugging Face and ModelScope, Apache 2.0 licensing, and deployment paths through supported inference frameworks including LMDeploy. That gives research groups a route to inspect, adapt, and host the system, although the 397B scale makes practical deployment expensive and highly infrastructure-dependent.
+
+## Why it matters
+
+The important shift is strategic: Chinese open-model work is moving from general chat benchmarks toward models trained around scientific workflows and tool use. The claims still require independent reproduction, especially for agent reliability and domain-specific results, but the combination of multimodal scientific data, large-scale reinforcement learning, and open checkpoints makes this more consequential than a routine model refresh.
+
+### Uncle Cat take
+
+A 397B checkpoint is less interesting than the decision to train across 20-plus scientific domains; that breadth will determine whether Intern-S2-Preview becomes research infrastructure or just another leaderboard entry.
+
+Chinese title: 上海AI实验室发布Intern-S2-Preview-397B科学智能模型
+Chinese summary: 上海AI实验室推出面向科学推理与长程智能体的3970亿参数多模态模型，并开放模型权重与部署路径。
+
+Sources:
+  - Intern-S2-397B announcement: https://x.com/intern_lm/status/2099425184587370976
+  - Intern-S2 official repository: https://github.com/InternLM/Intern-S1
+
+### NVIDIA Open-Sources OSMO for Physical AI Workflows
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-osmo-physical-ai.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-osmo-physical-ai.html
+- Source timestamp: 2026-09-14T08:04:00.000Z
+- Site timestamp: 2026-09-14T11:00:05.890Z
+- Tags: Industry, Open Source, Agents
+
+NVIDIA releases OSMO, a YAML-driven orchestrator linking robot data, simulation, training, and hardware testing across mixed compute.
+
+## What happened
+
+NVIDIA open-sourced OSMO, a workflow orchestration platform for physical AI and robotics. The release was reported at 08:04 UTC on September 14, within the edition window, and NVIDIA’s developer documentation describes the system as an open-source, agentic orchestrator for prompt-driven robotics development.
+
+OSMO is designed to connect the separate computing environments typically used by robotics teams: large training clusters, simulation systems, and edge or hardware-in-the-loop devices. A workflow can be described in YAML, with OSMO managing datasets, dependencies, scheduling, and execution across cloud or on-premises infrastructure. NVIDIA says the platform can cover synthetic-data generation, distributed policy training, reinforcement learning, simulation evaluation, and tests on physical robots.
+
+The platform’s distinctive feature is its attempt to make infrastructure itself legible to coding agents. OSMO includes agent context files and interfaces that allow an AI coding assistant to inspect workflows, query GPU capacity, monitor jobs, and reason about the development environment. That places orchestration between conventional cluster schedulers and the increasingly autonomous software agents used to build robot systems.
+
+NVIDIA says OSMO grew out of internal workloads associated with projects including GR00T, Isaac Lab, Isaac Sim, and Isaac ROS, and that it has handled thousands of GPU-hours daily. Those claims indicate production lineage, but they are not independent performance measurements. Adoption will also depend on how well the system works beyond NVIDIA’s preferred stack and across varied Kubernetes and robotics environments.
+
+## Why it matters
+
+Physical AI remains constrained by the messy handoff between data, simulation, training, and real hardware. An open orchestration layer could reduce repeated infrastructure work and make robot-development pipelines easier to reproduce. NVIDIA also gains a way to extend its software influence from model and simulation tools into the control plane where robotics projects are assembled.
+
+### Uncle Cat take
+
+OSMO’s strategic value is not the YAML syntax; it is NVIDIA placing an agent-aware control layer above the expensive transition from Isaac simulation to real robot testing.
+
+Chinese title: 英伟达开源OSMO，统一编排物理AI训练与机器人测试
+Chinese summary: 英伟达开源OSMO，用YAML连接机器人数据、仿真、模型训练和真实硬件测试，覆盖云端与本地算力。
+
+Sources:
+  - NVIDIA OSMO Developer Documentation: https://developer.nvidia.com/osmo
+  - NVIDIA OSMO GitHub repository: https://github.com/NVIDIA/OSMO
+  - NVIDIA OSMO release report: https://www.marktechpost.com/2026/09/14/nvidia-open-sources-osmo-one-yaml-orchestrates-physical-ai-training-simulation-and-robot-testing/
+
 ### Anthropic CEO Calls for Limits on Frontier AI Progress
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-calls-for-ai-speed-limits.html
@@ -124,11 +193,11 @@ Sources:
 - Site timestamp: 2026-09-12T23:00:03.779Z
 - Tags: Industry, Funding
 
-Sam Altman says taking OpenAI public in 2026 would be unwise, even as the company has reportedly filed confidentially for an IPO and may consider a later listing.
+Sam Altman says taking OpenAI public in 2026 would be unwise, pushing any potential listing beyond this year.
 
 ## What happened
 
-OpenAI CEO Sam Altman said that taking the company public in 2026 would be “ill-advised,” according to comments reported by The Verge and TechCrunch. OpenAI has reportedly filed confidentially for an IPO, but Altman said the company is not rushing and would not go public in 2026. The statement delays, rather than permanently rules out, a future listing.
+OpenAI CEO Sam Altman said that taking the company public in 2026 would be “ill-advised,” according to reports on his interview with Fortune. He said OpenAI would not go public this year. The statement delays, rather than permanently rules out, a future listing.
 
 OpenAI’s capital requirements have grown alongside the cost of training and serving frontier systems. A public listing could provide access to a broader pool of capital, but it would also introduce quarterly reporting, shareholder pressure, and a more formal obligation to explain strategic decisions. Altman’s position suggests that management currently values flexibility and control over the visibility and financing advantages of a listing.
 
@@ -141,7 +210,7 @@ The immediate effect is limited for users, but the signal is important for the A
 The statement should not be read as evidence that OpenAI no longer needs outside capital or that an IPO is permanently off the table. It is a timing and governance judgment, not a financing plan. The next meaningful indicator will be how OpenAI funds infrastructure and manages investor expectations while remaining private. If spending continues to rise faster than product revenue, postponing a listing may buy flexibility but will not remove the underlying financial test.
 
 Chinese title: 奥尔特曼称OpenAI 2026年上市并不明智
-Chinese summary: 奥尔特曼表示OpenAI在2026年上市并不明智；尽管公司据报道已秘密提交IPO文件，但更可能考虑推迟到之后上市。
+Chinese summary: 奥尔特曼表示OpenAI不会在2026年上市，任何潜在IPO都将推迟到今年之后。
 
 Sources:
   - Sam Altman says OpenAI going public in 2026 would be ‘ill-advised’: https://www.theverge.com/ai-artificial-intelligence/994384/sam-altman-no-openai-ipo-ill-advised
@@ -946,67 +1015,6 @@ Sources:
   - Claude Fable 5.1 Lands at No. 1 in Agent Arena: https://x.com/arena/status/2096398986383184269
   - Agent Arena Overall Leaderboard: https://arena.ai/leaderboard/agent?lctg=586d9e571e560373298b467c&stream=top
 
-### DeepSeek Plans 160,000-Chip Huawei AI Cluster
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-huawei-chip-cluster.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-huawei-chip-cluster.html
-- Source timestamp: 2026-09-04T14:19:00.000Z
-- Site timestamp: 2026-09-04T23:00:03.050Z
-- Tags: Industry, Models
-
-DeepSeek reportedly plans a vast Ascend deployment in Inner Mongolia, testing whether Chinese hardware can sustain frontier-scale inference.
-
-## A domestic cluster at unprecedented scale
-
-DeepSeek plans to deploy at least 160,000 Huawei Ascend 950DT accelerators at a data center under construction in Ulanqab, Inner Mongolia, according to a Bloomberg report summarized by The Decoder. If completed, it would be the largest publicly known concentration of Huawei AI processors and a major test of China’s ability to build frontier-scale computing systems without Nvidia’s leading accelerators.
-
-The installation is reportedly intended primarily for inference—the computing required to serve trained models—rather than model training. That distinction reflects DeepSeek’s rapidly expanding demand for deployed capacity and the company’s emphasis on models that can be offered broadly at comparatively low prices. The planned facility would also be far larger than the roughly 10,000-chip Huawei clusters disclosed earlier in China.
-
-Important uncertainties remain. Neither DeepSeek nor Huawei has confirmed the reported order, delivery schedule or final configuration. Supplying 160,000 high-end processors would strain Huawei’s manufacturing capacity and its access to high-bandwidth memory, while operating them as one system would require networking, software and power infrastructure that can prevent individual bottlenecks from eroding aggregate performance.
-
-## Why it matters
-
-The project would shift the debate over Chinese AI hardware from isolated benchmark comparisons to a systems-level deployment measured in hundreds of thousands of chips. Even if each Ascend processor trails Nvidia’s best hardware, a cluster of this size could give DeepSeek a durable domestic base for serving models at enormous volume. It would also make Huawei’s software stack, interconnects and manufacturing yield strategically important to the economics of globally available Chinese models. Until delivery and operation are confirmed, however, the 160,000-chip figure should be treated as an ambitious plan rather than installed capacity.
-
-Chinese title: DeepSeek拟建16万颗昇腾芯片超大集群
-Chinese summary: DeepSeek据报计划在内蒙古部署至少16万颗华为昇腾芯片，检验国产算力能否支撑前沿模型的大规模推理。
-
-Sources:
-  - Deepseek plans the largest known Huawei chip cluster with 160,000 processors in Inner Mongolia: https://the-decoder.com/deepseek-plans-the-largest-known-huawei-chip-cluster-with-160000-processors-in-inner-mongolia/
-  - DeepSeek Plans Major Huawei AI Chip Deployment for New Data Centre: https://www.reutersconnect.com/item/uncaptioned-deepseek-plans-major-huawei-ai-chip-deployment-for-new-data-centre/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX09XQ1ZNQzQ0NjAwOC1WSURFTw
-
-### Gimlet Labs Raises $300M for Distributed AI Inference
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/gimlet-disaggregated-inference-funding.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gimlet-disaggregated-inference-funding.html
-- Source timestamp: 2026-09-04T22:59:00.000Z
-- Site timestamp: 2026-09-04T23:00:03.050Z
-- Tags: Funding, Industry
-
-Gimlet’s large Series B backs software that pools heterogeneous accelerators as inference buyers seek alternatives to fixed GPU clusters.
-
-## A large bet on separating inference from servers
-
-Gimlet Labs has raised a $300 million Series B led by Andreessen Horowitz, with participation from investors and strategic backers including Arm, Microsoft’s M12, Samsung Ventures, Sapphire Ventures and Tiger Global. The company is building a disaggregated inference platform intended to combine processors and memory across machines instead of requiring every model workload to fit within a conventional, tightly coupled GPU server.
-
-Gimlet says it has added billions of dollars in contracted revenue since March, assembled a gigawatt-scale data-center pipeline and is moving toward hundreds of megawatts of managed capacity. It did not publish customer-by-customer commitments, valuation, recognized revenue or a detailed delivery schedule, so those figures describe forward contracts and planned infrastructure rather than operating scale already reached.
-
-The platform’s premise is that inference workloads contain different computational stages and do not always need identical accelerators. Separating prefill, token generation and other operations can allow operators to use a mix of hardware, reclaim stranded capacity and avoid sizing every server for the most demanding portion of a request. Strategic participation from Arm and Samsung underscores the opportunity for non-Nvidia processors and memory suppliers if heterogeneous inference becomes practical.
-
-Execution will be difficult. Moving data between disaggregated components can introduce latency and networking costs, while serving large models reliably requires scheduling software to respond to rapidly changing demand. Gimlet must also convert contracted projects into installed capacity without being overwhelmed by construction and hardware financing.
-
-## Why it matters
-
-The round is unusually large for a Series B because inference infrastructure is becoming a capital-intensive market in its own right. If Gimlet can make mixed hardware behave like a coherent pool, model providers could buy useful compute rather than standardized GPU boxes, improving utilization and widening the supplier base. The unresolved issue is whether its software savings remain meaningful after networking, power and financing costs are included at hundreds-of-megawatts scale.
-
-Chinese title: Gimlet Labs融资3亿美元押注解耦式AI推理
-Chinese summary: Gimlet以超大额B轮融资扩张异构推理平台，试图把不同芯片和内存资源组织成可统一调度的算力池。
-
-Sources:
-  - Announcing Gimlet Labs’ Series B: https://gimletlabs.ai/blog/announcing-series-b
-  - Investing in Gimlet: https://a16z.com/announcement/investing-in-gimlet/
-  - Gimlet Labs nabs $300M for its disaggregated inference platform: https://siliconangle.com/2026/09/04/gimlet-labs-nabs-300m-for-its-disaggregated-inference-platform/
-
 ## Recent radar items
 
 ### 2026-09-14
@@ -1029,6 +1037,21 @@ Sources:
 - 2026-09-13T18:44:00Z | X @figma | Figma announced a new episode featuring designer and creative technologist Aitana Picó in its Source Material series. | 中文：Figma 宣布其 Source Material 系列将推出设计师兼创意技术专家 Aitana Picó 参与的新一期内容。 | https://x.com/figma/status/2099207692636021212
 - 2026-09-13T14:28:00Z | LessWrong | Astra and Fable were reported to remain vulnerable to simple variants of alignment evaluations introduced in 2025. | 中文：报告称，Astra 和 Fable 仍会受到 2025 年对齐评测简单变体的影响。 | https://www.lesswrong.com/posts/munJKF7iWMsWJLAH2/astra-and-fable-still-hack-on-simple-variants-of-alignment
 - 2026-09-13T14:25:00Z | GitHub | A GitHub project called CUDA for AMD on Windows appeared as a community effort to make CUDA-oriented workloads more accessible on AMD hardware. | 中文：名为 CUDA for AMD on Windows 的 GitHub 项目出现，试图让 AMD 硬件更容易运行面向 CUDA 的工作负载。 | https://github.com/Speedstu/CUDA-for-AMD-Windows
+- 2026-09-14T10:55:00Z | X / Tripo | Tripo launched a Tripo–Astra challenge for turning a character reference into a rigged, animated 3D asset. | 中文：Tripo 发起与 Astra 联动的挑战赛，可将角色参考图变成带绑定和动画的 3D 资产。 | https://x.com/tripoai/status/2099451942691074337
+- 2026-09-14T10:24:00Z | X / Recraft | Recraft published a side-by-side comparison of GPT Image 2.5 Flare and Recraft V4.1 Pro across several image-generation prompts. | 中文：Recraft 发布 GPT Image 2.5 Flare 与 Recraft V4.1 Pro 的多组图像生成对比。 | https://x.com/recraftai/status/2099443527318954219
+- 2026-09-14T10:34:00Z | X / Dreamina | Dreamina shared a Seedance 2.5 short video built around an Italian-mafia-family perspective. | 中文：Dreamina 分享了一段以意大利黑手党家族视角创作的 Seedance 2.5 短视频。 | https://x.com/dreamina_ai/status/2099446799849365592
+- 2026-09-14T10:30:00Z | X / Meshy | Meshy announced a free webinar on AI-assisted environment and prop workflows connecting Meshy with Unreal Engine. | 中文：Meshy 宣布举办免费网络研讨会，介绍 Meshy 与虚幻引擎结合的环境和道具工作流。 | https://x.com/MeshyAI/status/2099445555873346018
+- 2026-09-14T00:00:00Z | OpenAI | OpenAI said Perplexity uses GPT-6 Astra to write communications, modify software, and monitor production systems with fewer check-ins. | 中文：OpenAI 称，Perplexity 已用 GPT-6 Astra 撰写沟通内容、修改软件并监控生产系统，所需人工检查更少。 | https://openai.com/index/perplexity-improving-accuracy-with-astra/
+- 2026-09-14T06:14:00Z | X / MiniMax | MiniMax said its open-weight H3 model targets video generation with native stereo audio and multimodal reference control. | 中文：MiniMax 表示，其开放权重 H3 模型面向视频生成，原生支持立体声音频和多模态参考控制。 | https://x.com/MiniMax_AI/status/2099381310733328784
+- 2026-09-14T08:17:00Z | 量子位 | QuantaMind’s molecular-structure research was published in Science Advances, using AI to model molecular dynamics as cinematic trajectories. | 中文：分子之心 QuantaMind 的分子结构研究发表于 Science Advances，用 AI 将分子动力学建模为连续轨迹。 | https://www.qbitai.com/2026/09/489023.html
+- 2026-09-14T07:55:00Z | 量子位 | A Chinese financial-AI company reportedly raised more than 300 million yuan in a Series B after completing three rounds in one year. | 中文：一家中国金融 AI 公司据报道一年完成三轮融资，并在 B 轮再获超 3 亿元。 | https://www.qbitai.com/2026/09/488912.html
+- 2026-09-14T00:28:00Z | Simon Willison | Simon Willison released commit-rewriter 0.1, a small tool for rewriting Git commits with AI-assisted development workflows. | 中文：Simon Willison 发布 commit-rewriter 0.1，这是一个面向 AI 辅助开发流程的 Git 提交重写工具。 | https://simonwillison.net/2026/Sep/14/commit-rewriter/
+- 2026-09-13T23:49:00Z | X / Cohere | Cohere CEO Aidan Gomez argued that AI rules should rely on evidenced standards rather than a cartel of companies. | 中文：Cohere CEO 艾丹·戈麦斯主张，AI 规则应建立在有证据的标准上，而不是少数公司的联盟上。 | https://x.com/cohere/status/2099284354731999680
+- 2026-09-13T23:16:00Z | X / Fireworks AI | Fireworks AI said it would continue its Alibaba Cloud partnership by bringing the latest Qwen flagship model to its platform. | 中文：Fireworks AI 表示将继续与阿里云合作，把最新 Qwen 旗舰模型带到其平台。 | https://x.com/FireworksAI_HQ/status/2099276173910147352
+- 2026-09-13T23:13:00Z | X / Artificial Analysis | Artificial Analysis said it signed an MOU to support South Korea’s Sovereign AI Model Foundation project as an evaluation partner. | 中文：Artificial Analysis 表示已签署谅解备忘录，作为评测伙伴支持韩国主权 AI 模型基础项目。 | https://x.com/ArtificialAnlys/status/2099275327012999193
+- 2026-09-14T03:45:00Z | 量子位 | QbitAI reported that MetaRSI explores AI systems improving the methods used to improve themselves, describing a possible recursive-self-improvement loop. | 中文：量子位报道，MetaRSI 探索让 AI 改进自身改进方法，提出可能的递归自我改进循环。 | https://www.qbitai.com/2026/09/488832.html
+- 2026-09-14T03:26:00Z | X / Luma AI | Luma described generative media in entertainment as infrastructure rather than a collection of standalone creator tools. | 中文：Luma 表示，娱乐行业的生成式媒体已从一组独立工具变成需要建设的基础设施。 | https://x.com/LumaLabsAI/status/2099339083919040725
+- 2026-09-14T00:00:00Z | X / AWS Developers | AWS Developers promoted a $10,000 competition for building an AI agent that handles everyday tasks, with submissions closing the next day. | 中文：AWS Developers 推广一项 1 万美元竞赛，鼓励开发能处理日常事务的 AI 代理，投稿截止时间为次日。 | https://x.com/awsdevelopers/status/2099287013534920707
 
 ### 2026-09-13
 
