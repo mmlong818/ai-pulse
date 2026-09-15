@@ -13,6 +13,47 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/aef-1-ai-evaluation-standard.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/aef-1-ai-evaluation-standard.html",
+      "title": "AI Labs Back AEF-1 Standard for Independent Evaluators",
+      "summary": "A new evaluator standard backed by OpenAI, Anthropic and xAI sets minimum expectations for access, conflicts, autonomy, transparency and safe harbor.",
+      "content_text": "## A process standard emerges\n\nThe AI Evaluator Forum has published AEF-1, a proposed standard for independent third-party evaluations of advanced AI systems. The framework is backed by major model developers including OpenAI, Anthropic and xAI, while also involving external evaluation organizations.\n\nAEF-1 defines five operating areas: sufficient technical access and resources; minimized conflicts of interest; analytic autonomy; transparent methods and results; and protection of sensitive information. It asks evaluators to disclose the model configurations they examined, the resources available to them, relevant conflicts, publication restrictions and any departures from the standard. The document also recommends legal safe harbor for actions conducted within an agreed evaluation scope.\n\n## Why the details matter\n\nThe standard addresses a recurring weakness in frontier-model safety work: public claims often describe what was tested without clearly explaining how much access the evaluator had or whether the developer could influence the result. AEF-1 attempts to turn those questions into an auditable checklist.\n\nThe document recommends that assessments of substantially novel systems generally receive enough time for access debugging, test design, execution, analysis and iteration. It cites 20 business days as a common minimum for many novel evaluations, though the appropriate period depends on the system and risk.\n\n## The unresolved issue\n\nAEF-1 is voluntary, and the same industry that controls model access is helping define the conditions under which access is judged adequate. That creates a real independence question even if the checklist is useful. The standard will matter only if evaluators publish compliance and exceptions, labs grant meaningful access to near-deployment systems, and buyers or regulators begin treating those disclosures as evidence rather than marketing.\n\nFor now, its significance is institutional: it gives independent evaluators a common language for describing whether a safety result was genuinely independent, reproducible and properly resourced.",
+      "date_published": "2026-09-15T04:50:00.000Z",
+      "date_modified": "2026-09-15T11:00:03.768Z",
+      "tags": [
+        "Safety",
+        "Policy",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/aef-1-ai-evaluation-standard.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/aef-1-ai-evaluation-standard.html",
+        "source_published_at": "2026-09-15T04:50:00.000Z",
+        "site_published_at": "2026-09-15T11:00:03.768Z",
+        "sources": [
+          {
+            "title": "AEF-1 Standard Emerges for Third Party Evaluators",
+            "url": "https://www.latent.space/p/ainews-aef-1-standard-emerges-for"
+          },
+          {
+            "title": "AEF-1: Minimum Operating Conditions for Independent Third Party AI Evaluations",
+            "url": "https://aievaluatorforum.org/AEF_1_Minimum_Operating_Conditions_for_Independent_AI_Evaluations.pdf"
+          },
+          {
+            "title": "AI Evaluator Forum: Minimum Operating Conditions",
+            "url": "https://aievaluatorforum.org/initiatives/minimum-operating-conditions"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/ai-slowdown-splits-industry.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/ai-slowdown-splits-industry.html",
       "title": "Nvidia Rejects Calls to Slow AI Development Race",
@@ -49,6 +90,42 @@
           {
             "title": "Nvidia CEO Jensen Huang tells Trump ‘we’re not going to let [an AI slowdown] happen’",
             "url": "https://techcrunch.com/2026/09/14/nvidia-ceo-jensen-huang-tells-trump-were-not-going-to-let-an-ai-slowdown-happen/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/meta-byte-level-distillation.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/meta-byte-level-distillation.html",
+      "title": "Meta Study Predicts Byte Models Can Outscale Token Models",
+      "summary": "Meta and Washington researchers report that byte-level distillation may eventually beat token-based students, while requiring less stored teacher-distribution data.",
+      "content_text": "## The proposal\n\nResearchers from Meta FAIR and the University of Washington are studying whether a smaller language model should learn from a teacher one byte at a time rather than through the teacher’s token vocabulary. Their paper addresses a practical problem in knowledge distillation: token vocabularies can contain more than 100,000 candidates, making it expensive to preserve the teacher’s full probability distribution.\n\nThe proposed methods convert token probabilities into byte-level targets. One approach marginalizes probabilities over matching byte prefixes; another adds explicit end-of-token markers so that the student can retain information about where a teacher token ends. Because a byte has only 256 possible values, the complete distribution is easier to store than a large top-k token approximation.\n\n## What the experiments suggest\n\nUsing Llama 3 8B as the teacher, the team compared token and byte students under supervised training and distillation. Byte models learned more slowly at lower compute, but the paper’s scaling analysis projects that end-of-token distillation could reach a higher downstream accuracy ceiling than conventional token distillation. The reported projection is roughly four percentage points above the token-distilled baseline.\n\nThe result is a forecast, not a demonstrated deployment advantage. Byte-level systems produce more prediction steps, and the paper reports higher training computation for one of its strongest variants. Inference cost was not yet compared on an equal-cost basis.\n\n## Why it matters\n\nThe work challenges the assumption that tokenization is merely an implementation detail. If the projected scaling behavior survives larger runs, byte-level students could make distillation data easier to preserve and reduce dependence on a teacher’s proprietary tokenizer. The immediate implication is not that token models are obsolete, but that future small-model training may trade early efficiency for a better long-run scaling curve.",
+      "date_published": "2026-09-15T06:37:00.000Z",
+      "date_modified": "2026-09-15T11:00:03.768Z",
+      "tags": [
+        "Research",
+        "Models"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/meta-byte-level-distillation.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-byte-level-distillation.html",
+        "source_published_at": "2026-09-15T06:37:00.000Z",
+        "site_published_at": "2026-09-15T11:00:03.768Z",
+        "sources": [
+          {
+            "title": "Meta新研究：字节模型蒸馏后，天花板破了",
+            "url": "https://www.qbitai.com/2026/09/489337.html"
+          },
+          {
+            "title": "Meta新研究：字节模型蒸馏后，天花板破了",
+            "url": "https://aitntnews.com/newDetail.html?newId=29367"
           }
         ]
       }
@@ -122,6 +199,44 @@
           {
             "title": "Glass Imaging",
             "url": "https://www.glass-imaging.com/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/zgcm-1-open-7b-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/zgcm-1-open-7b-model.html",
+      "title": "ZGCM-1 Opens a Full 7B Training Pipeline",
+      "summary": "Seven doctoral students released a 7B model with weights, data recipes, checkpoints and logs, offering an unusually complete blueprint for agentic model training.",
+      "content_text": "## What happened\n\nA team from Beijing Zhongguancun Academy has released ZGCM-1, a 7B dense language model trained from scratch. The release includes model weights from multiple training stages, intermediate checkpoints, training code, stage-specific data and recipes, and Weights & Biases logs. The project was developed by seven doctoral students over roughly three months, with hundreds of software agents supporting data work, experiments, cluster operations and evaluation.\n\nThe accompanying paper describes a 256K-context design combining gated sliding-window attention with full attention, an FP8 Muon optimizer, progressive context expansion and a mid-training setup that treats interaction traces as Markov decision processes. The team reports roughly 4.2 times better 16K pre-training time-to-loss under its design.\n\n## Why it matters\n\nZGCM-1 is not important because a 7B model has suddenly displaced frontier systems. Its value is that it exposes the normally hidden engineering path behind a model release. The published checkpoints and logs let researchers inspect where capability emerged, where training failed, and how agent assistance affected the workflow.\n\nThe team also reports competitive results with other 7B models on general benchmarks and surprisingly strong performance on selected mathematical reasoning and agentic-search tests, including comparisons with much larger systems. Those comparisons still need independent replication, and benchmark selection remains a material limitation.\n\nThe broader signal is operational: agent swarms are beginning to compress parts of model-development work that once required large teams. ZGCM-1 therefore gives the open-source community a reproducible case study in AI-assisted AI research, rather than another opaque scorecard.",
+      "date_published": "2026-09-15T10:17:00.000Z",
+      "date_modified": "2026-09-15T11:00:03.768Z",
+      "tags": [
+        "Open Source",
+        "Models",
+        "Agents",
+        "Research"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/zgcm-1-open-7b-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/zgcm-1-open-7b-model.html",
+        "source_published_at": "2026-09-15T10:17:00.000Z",
+        "site_published_at": "2026-09-15T11:00:03.768Z",
+        "sources": [
+          {
+            "title": "7名博士生仅用3个月从零训练7B大模型：代码+数据+训练日志全公开",
+            "url": "https://www.qbitai.com/2026/09/489227.html"
+          },
+          {
+            "title": "ZGCM-1: A Fully Open and Extremely Efficient Foundation Model for Math and Agentic Search",
+            "url": "https://arxiv.org/abs/2609.13356"
           }
         ]
       }
@@ -1780,119 +1895,6 @@
           {
             "title": "Gemini 3.8 Flash Model Card",
             "url": "https://deepmind.google/models/model-cards/gemini-3-8-flash/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-spark-update.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-spark-update.html",
-      "title": "Meta Releases Muse Spark 1.3 for Coding Agents",
-      "summary": "Muse Spark 1.3 targets sustained coding and agent workflows, while Meta postpones both open weights and its highest reasoning setting.",
-      "content_text": "## An agent-focused model update\n\nMeta released Muse Spark 1.3 through Muse Code and the Meta Model API, positioning the update around sustained coding, tool use and real-world agent tasks. The release is immediately usable as a hosted model, but it is not yet an open-weight release: Meta said downloadable weights will follow later, without giving a firm publication time.\n\nThe rollout also separates the model’s currently available reasoning settings from its most compute-intensive configuration. Meta said the “max” reasoning mode will arrive only after additional safety testing. That distinction matters because some of the strongest third-party results disclosed on launch day came from the unreleased max setting, rather than the configuration developers can deploy immediately.\n\nArtificial Analysis reported that Muse Spark 1.3 max scored 52% on Tau3-Bench Banking, the highest result it had measured on that evaluation. The available xhigh setting reached 47%, while the evaluator described the model as unusually cost-efficient at its intelligence level. Meta kept API pricing at $1.25 per million input tokens and $4.25 per million output tokens. The reported improvements were concentrated in agentic evaluations rather than spread evenly across every category.\n\n## Availability tempers the headline numbers\n\nMuse Spark 1.3 strengthens Meta’s attempt to compete in coding agents through both a first-party harness and an API, while preserving the prospect of a later local ecosystem around open weights. That staged strategy can generate adoption quickly without releasing the most sensitive or expensive configuration on day one.\n\nIts significance will depend on what Meta ultimately publishes. Hosted access gives developers a practical new option now, but the open-source community cannot yet inspect, fine-tune or independently serve the weights. Likewise, results from the pending max mode should not be treated as the performance of today’s generally accessible product. The consequential milestone will be whether Meta delivers the promised weights with capabilities close to the hosted release and terms broad enough for serious deployment.",
-      "date_published": "2026-09-02T19:36:00.000Z",
-      "date_modified": "2026-09-02T23:00:04.105Z",
-      "tags": [
-        "Models",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-spark-update.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-spark-update.html",
-        "source_published_at": "2026-09-02T19:36:00.000Z",
-        "site_published_at": "2026-09-02T23:00:04.105Z",
-        "sources": [
-          {
-            "title": "Muse Spark 1.3",
-            "url": "https://developer.meta.com/ai/models/muse-spark/"
-          },
-          {
-            "title": "Meta AI Announces Muse Spark 1.3",
-            "url": "https://x.com/AIatMeta/status/2095234385129963666"
-          },
-          {
-            "title": "Artificial Analysis Muse Spark 1.3 Results",
-            "url": "https://x.com/ArtificialAnlys/status/2095247793183166917"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/perplexity-lily-apple-silicon-inference.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/perplexity-lily-apple-silicon-inference.html",
-      "title": "Perplexity Open-Sources Lily for Faster Qwen Inference on Macs",
-      "summary": "Perplexity has released the Rust and Metal source, tests and reproduction materials for an engine it says runs Qwen3.6-35B-A3B up to 1.35 times faster than MLX-LM on an M5 Max.",
-      "content_text": "## A purpose-built local engine\n\nPerplexity has open-sourced Lily, a compact inference server designed exclusively for the Qwen3.6-35B-A3B model on Apple silicon. The implementation, tests and benchmark reproduction materials are now available in the company’s public pplx-garden repository under the Apache 2.0 license. Lily combines a Rust runtime with Metal kernels compiled from source and exposes a deliberately limited subset of the OpenAI chat-completions interface. PyTorch and Apple’s general-purpose MLX framework are not part of its execution path, although Lily loads a checkpoint converted to MLX affine 4-bit weights.\n\nLily targets one specific 4-bit checkpoint. Qwen3.6-35B-A3B has 35 billion parameters but activates roughly 3 billion per token, routing each token through eight of 256 experts plus a shared expert. Its checkpoint occupies 19.4 GB, while the model mixes ten full-attention layers with 30 Gated DeltaNet recurrent layers. Perplexity tailored Lily’s data movement, scheduling and kernels around those fixed characteristics.\n\n## Faster, within narrow boundaries\n\nOn a MacBook Pro equipped with a 40-core M5 Max GPU and 128 GB of unified memory, Perplexity says Lily averaged 1.23 times MLX-LM’s prompt-processing throughput and 1.35 times its token-generation throughput across contexts ranging from 256 to 128,000 tokens. At a 4,000-token prompt and context, it processed prompts at 5,749.9 tokens per second and generated 186.6 tokens per second, versus 4,737.5 and 140.9 for MLX-LM.\n\nThe gains came from keeping expert routing and recurrent state on the GPU, fusing operations to avoid intermediate memory traffic, and changing attention paths as context length grows. Perplexity also reported that speculative decoding made this batch-one workload 18% slower because proposed tokens created inefficient execution shapes and scattered expert access.\n\nThe comparison remains vendor-run and deliberately narrow, but outside developers can now inspect the implementation and attempt to reproduce the published results. The repository includes dated MLX comparison reports, benchmark harnesses, CPU-reference kernel tests, shader and API tests, and optional end-to-end tests requiring the designated checkpoint. Lily requires an M5 or newer Apple GPU, macOS 26 and the specified quantized Qwen checkpoint; it does not support other Qwen sizes, dense or BF16 checkpoints, or GGUF, AWQ, GPTQ, int8 and fp8 formats. It also supports only text messages and greedy, non-streaming generation, rejecting tools, sampling controls, multimodal input and speculative decoding.\n\nThe release matters because local AI performance may increasingly depend on co-designing runtimes for a particular model architecture and device rather than relying entirely on portable frameworks. Lily’s narrow scope limits its immediate audience, but the published code and reproduction materials turn its reported performance from a preview into a result that independent developers can now test.",
-      "date_published": "2026-09-03T06:57:00.000Z",
-      "date_modified": "2026-09-03T11:00:00.000Z",
-      "tags": [
-        "Open Source",
-        "Models",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/perplexity-lily-apple-silicon-inference.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-lily-apple-silicon-inference.html",
-        "source_published_at": "2026-09-03T06:57:00.000Z",
-        "site_published_at": "2026-09-03T11:00:00.000Z",
-        "sources": [
-          {
-            "title": "Optimizing On-Device Inference for Apple Silicon",
-            "url": "https://www.perplexity.ai/hub/blog/optimizing-on-device-inference-for-apple-silicon"
-          },
-          {
-            "title": "Perplexity pplx-garden repository",
-            "url": "https://github.com/perplexityai/pplx-garden"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/gemini-agentic-video-understanding.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/gemini-agentic-video-understanding.html",
-      "title": "Gemini Adds Agentic Video Search With Fewer Tokens",
-      "summary": "Google’s Gemini models can now choose which moments of a video to inspect, reducing token use while improving retrieval accuracy.",
-      "content_text": "## The model decides where to look\n\nGoogle DeepMind introduced agentic video understanding for Gemini 3.7 Flash, Gemini 3.6 Flash and Gemini 3.5 Flash-Lite. Instead of sampling an entire recording at a fixed frame rate, the models first reason over available audio, transcript and visual context, then dynamically inspect the sections and frames most relevant to a question.\n\nThe process resembles tool use. Gemini can seek to particular timestamps, increase sampling around a suspected event and revisit the recording when its initial evidence is insufficient. Google says this selective approach improves accuracy while consuming up to 88% fewer tokens than static video processing. Lower token use can translate into lower cost and longer practical reach for applications examining meetings, surveillance archives, sports footage or instructional recordings.\n\nThe feature matters because fixed-rate sampling imposes an awkward compromise. Sampling densely captures brief events but makes long videos expensive; sampling sparsely saves tokens but may miss a single gesture, object or line of text. An adaptive system can devote computation to uncertain or information-rich moments, although its initial routing decision introduces another failure mode: a model that looks in the wrong place may never collect the evidence needed to correct itself.\n\nGoogle is making the capability available through its latest Flash models and has published developer guidance for building agentic video-analysis workflows. The announcement concerns video understanding rather than generation, and it does not turn Gemini into an autonomous surveillance product by itself. Developers remain responsible for storage, permissions, tool access and any actions taken from the model’s conclusions.\n\n## Why it matters\n\nLong-form video is one of the most expensive multimodal inputs because most frames add little value to a specific question. Allowing a model to control its own inspection schedule makes video analysis look more like information retrieval than exhaustive vision processing. If developers can measure when the search strategy misses decisive moments, the approach could make large video libraries economically searchable without preprocessing every frame.",
-      "date_published": "2026-09-01T17:08:00.000Z",
-      "date_modified": "2026-09-01T23:00:04.179Z",
-      "tags": [
-        "Models",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gemini-agentic-video-understanding.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-agentic-video-understanding.html",
-        "source_published_at": "2026-09-01T17:08:00.000Z",
-        "site_published_at": "2026-09-01T23:00:04.179Z",
-        "sources": [
-          {
-            "title": "Introducing agentic video understanding with Gemini",
-            "url": "https://deepmind.google/blog/introducing-agentic-video-in-gemini/"
-          },
-          {
-            "title": "Google DeepMind agentic video announcement",
-            "url": "https://x.com/GoogleDeepMind/status/2094840179676660097"
           }
         ]
       }

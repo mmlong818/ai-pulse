@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>七名博士生开源完整7B大模型训练链路 — Uncle Cat AI Radar</title>
+<meta name="description" content="北京中关村学院团队公开ZGCM-1的权重、数据配方、代码、检查点和训练日志，展示代理群协作训练大模型的完整流程。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/zgcm-1-open-7b-model.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/zgcm-1-open-7b-model.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/zgcm-1-open-7b-model.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/zgcm-1-open-7b-model.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="七名博士生开源完整7B大模型训练链路 — Uncle Cat AI Radar">
+<meta property="og:description" content="北京中关村学院团队公开ZGCM-1的权重、数据配方、代码、检查点和训练日志，展示代理群协作训练大模型的完整流程。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/zgcm-1-open-7b-model.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="七名博士生开源完整7B大模型训练链路 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="北京中关村学院团队公开ZGCM-1的权重、数据配方、代码、检查点和训练日志，展示代理群协作训练大模型的完整流程。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="七名博士生开源完整7B大模型训练链路 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"七名博士生开源完整7B大模型训练链路","item":"https://mmlong818.github.io/ai-pulse/zh/articles/zgcm-1-open-7b-model.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/zgcm-1-open-7b-model.html#article","headline":"七名博士生开源完整7B大模型训练链路","description":"北京中关村学院团队公开ZGCM-1的权重、数据配方、代码、检查点和训练日志，展示代理群协作训练大模型的完整流程。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/zgcm-1-open-7b-model.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/zgcm-1-open-7b-model.html"},"datePublished":"2026-09-15T10:17:00.000Z","dateModified":"2026-09-15T11:00:03.768Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["开源","模型","Agent","研究"],"keywords":"开源, 模型, Agent, 研究","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://www.qbitai.com/2026/09/489227.html","https://arxiv.org/abs/2609.13356"],"about":[{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"模型"},{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"研究"}]}]}</script>
+</head>
+<body data-slug="zgcm-1-open-7b-model" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/zgcm-1-open-7b-model.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-09-15T10:17:00Z">2026年9月15日 18:17</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>七名博士生开源完整7B大模型训练链路</h1>
+  <p class="standfirst">北京中关村学院团队公开ZGCM-1的权重、数据配方、代码、检查点和训练日志，展示代理群协作训练大模型的完整流程。</p>
+  <h2>发生了什么</h2><p>北京中关村学院团队发布了从零训练的7B稠密语言模型ZGCM-1。此次开源不仅包括模型权重，还覆盖预训练、中期训练和后训练阶段的检查点、训练代码、分阶段数据与配方，以及Weights &amp; Biases训练日志。项目由7名博士生在约3个月内完成，数据处理、实验运行、集群管理和评测等环节由数百个软件代理协助完成。</p><p>论文介绍了支持256K上下文的训练方案，包括门控滑动窗口与全注意力交错结构、FP8 Muon优化器、逐步扩展上下文长度，以及把交互轨迹改写成马尔可夫决策过程的中期训练方法。团队称，该设计让16K预训练的达到目标损失速度提升约4.2倍。</p><h2>为什么重要</h2><p>ZGCM-1的意义不在于一款7B模型已经取代前沿系统，而在于它把通常隐藏在技术报告背后的工程过程完整摊开。公开的检查点和日志让研究者能够追踪能力在哪个阶段形成、训练在哪些环节失败，以及代理究竟怎样参与研发。</p><p>团队称，ZGCM-1在通用基准上接近同规模模型，并在部分数学推理和代理搜索测试中与更大得多的模型竞争。不过，这些结果仍需要独立复现，测试集选择也会影响结论。</p><p>更大的信号来自研发方式本身：代理群正在压缩过去需要大团队完成的一部分模型开发工作。ZGCM-1为开源社区提供了一个可复盘的“AI研发AI”案例，而不只是又一张难以解释的成绩单。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://www.qbitai.com/2026/09/489227.html" rel="noopener" target="_blank">7名博士生仅用3个月从零训练7B大模型：代码+数据+训练日志全公开</a></li><li><a href="https://arxiv.org/abs/2609.13356" rel="noopener" target="_blank">ZGCM-1: A Fully Open and Extremely Efficient Foundation Model for Math and Agentic Search</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/meta-byte-level-distillation.html">Meta研究：字节级蒸馏或在扩展后超越Token模型</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-humanist-ai-code.html">微软发布“人本AI”准则，强调模型不得脱离人类控制</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/intern-s2-scientific-agent.html">上海AI实验室发布Intern-S2-Preview-397B科学智能模型</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

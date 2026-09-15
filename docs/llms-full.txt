@@ -19,6 +19,42 @@
 
 ## Recent briefings
 
+### AI Labs Back AEF-1 Standard for Independent Evaluators
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/aef-1-ai-evaluation-standard.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/aef-1-ai-evaluation-standard.html
+- Source timestamp: 2026-09-15T04:50:00.000Z
+- Site timestamp: 2026-09-15T11:00:03.768Z
+- Tags: Safety, Policy, Industry
+
+A new evaluator standard backed by OpenAI, Anthropic and xAI sets minimum expectations for access, conflicts, autonomy, transparency and safe harbor.
+
+## A process standard emerges
+
+The AI Evaluator Forum has published AEF-1, a proposed standard for independent third-party evaluations of advanced AI systems. The framework is backed by major model developers including OpenAI, Anthropic and xAI, while also involving external evaluation organizations.
+
+AEF-1 defines five operating areas: sufficient technical access and resources; minimized conflicts of interest; analytic autonomy; transparent methods and results; and protection of sensitive information. It asks evaluators to disclose the model configurations they examined, the resources available to them, relevant conflicts, publication restrictions and any departures from the standard. The document also recommends legal safe harbor for actions conducted within an agreed evaluation scope.
+
+## Why the details matter
+
+The standard addresses a recurring weakness in frontier-model safety work: public claims often describe what was tested without clearly explaining how much access the evaluator had or whether the developer could influence the result. AEF-1 attempts to turn those questions into an auditable checklist.
+
+The document recommends that assessments of substantially novel systems generally receive enough time for access debugging, test design, execution, analysis and iteration. It cites 20 business days as a common minimum for many novel evaluations, though the appropriate period depends on the system and risk.
+
+## The unresolved issue
+
+AEF-1 is voluntary, and the same industry that controls model access is helping define the conditions under which access is judged adequate. That creates a real independence question even if the checklist is useful. The standard will matter only if evaluators publish compliance and exceptions, labs grant meaningful access to near-deployment systems, and buyers or regulators begin treating those disclosures as evidence rather than marketing.
+
+For now, its significance is institutional: it gives independent evaluators a common language for describing whether a safety result was genuinely independent, reproducible and properly resourced.
+
+Chinese title: OpenAI、Anthropic与xAI支持独立评测标准AEF-1
+Chinese summary: AI评测论坛发布AEF-1标准，要求第三方披露模型访问权限、利益冲突、分析自主性、方法透明度与法律安全港。
+
+Sources:
+  - AEF-1 Standard Emerges for Third Party Evaluators: https://www.latent.space/p/ainews-aef-1-standard-emerges-for
+  - AEF-1: Minimum Operating Conditions for Independent Third Party AI Evaluations: https://aievaluatorforum.org/AEF_1_Minimum_Operating_Conditions_for_Independent_AI_Evaluations.pdf
+  - AI Evaluator Forum: Minimum Operating Conditions: https://aievaluatorforum.org/initiatives/minimum-operating-conditions
+
 ### Nvidia Rejects Calls to Slow AI Development Race
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/ai-slowdown-splits-industry.html
@@ -54,6 +90,39 @@ Sources:
   - Jensen Huang puts Trump on speakerphone onstage to announce robots won’t take over the world: https://www.theverge.com/tech/995079/president-donald-trump-calls-nvidia-ceo-jensen-huang-all-in-summit
   - Trump and Huang unite against AI doomers in surprise on-stage call: https://www.axios.com/2026/09/14/trump-jensen-huang-nvidia-ai-all-in-summit
   - Nvidia CEO Jensen Huang tells Trump ‘we’re not going to let [an AI slowdown] happen’: https://techcrunch.com/2026/09/14/nvidia-ceo-jensen-huang-tells-trump-were-not-going-to-let-an-ai-slowdown-happen/
+
+### Meta Study Predicts Byte Models Can Outscale Token Models
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-byte-level-distillation.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meta-byte-level-distillation.html
+- Source timestamp: 2026-09-15T06:37:00.000Z
+- Site timestamp: 2026-09-15T11:00:03.768Z
+- Tags: Research, Models
+
+Meta and Washington researchers report that byte-level distillation may eventually beat token-based students, while requiring less stored teacher-distribution data.
+
+## The proposal
+
+Researchers from Meta FAIR and the University of Washington are studying whether a smaller language model should learn from a teacher one byte at a time rather than through the teacher’s token vocabulary. Their paper addresses a practical problem in knowledge distillation: token vocabularies can contain more than 100,000 candidates, making it expensive to preserve the teacher’s full probability distribution.
+
+The proposed methods convert token probabilities into byte-level targets. One approach marginalizes probabilities over matching byte prefixes; another adds explicit end-of-token markers so that the student can retain information about where a teacher token ends. Because a byte has only 256 possible values, the complete distribution is easier to store than a large top-k token approximation.
+
+## What the experiments suggest
+
+Using Llama 3 8B as the teacher, the team compared token and byte students under supervised training and distillation. Byte models learned more slowly at lower compute, but the paper’s scaling analysis projects that end-of-token distillation could reach a higher downstream accuracy ceiling than conventional token distillation. The reported projection is roughly four percentage points above the token-distilled baseline.
+
+The result is a forecast, not a demonstrated deployment advantage. Byte-level systems produce more prediction steps, and the paper reports higher training computation for one of its strongest variants. Inference cost was not yet compared on an equal-cost basis.
+
+## Why it matters
+
+The work challenges the assumption that tokenization is merely an implementation detail. If the projected scaling behavior survives larger runs, byte-level students could make distillation data easier to preserve and reduce dependence on a teacher’s proprietary tokenizer. The immediate implication is not that token models are obsolete, but that future small-model training may trade early efficiency for a better long-run scaling curve.
+
+Chinese title: Meta研究：字节级蒸馏或在扩展后超越Token模型
+Chinese summary: Meta与华盛顿大学研究者发现，字节级蒸馏模型起步较慢，却可能在更大训练规模下取得更高能力上限并降低教师分布存储压力。
+
+Sources:
+  - Meta新研究：字节模型蒸馏后，天花板破了: https://www.qbitai.com/2026/09/489337.html
+  - Meta新研究：字节模型蒸馏后，天花板破了: https://aitntnews.com/newDetail.html?newId=29367
 
 ### Microsoft Drafts Humanist Code for Future AI Systems
 
@@ -124,6 +193,37 @@ Chinese summary: OpenAI据报以超过3亿美元收购Glass Imaging，把计算�
 Sources:
   - OpenAI buys smartphone camera maker Glass Imaging for $300 million, report says: https://techcrunch.com/2026/09/14/openai-buys-smartphone-camera-maker-glass-imaging-for-300-million-report-says/
   - Glass Imaging: https://www.glass-imaging.com/
+
+### ZGCM-1 Opens a Full 7B Training Pipeline
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/zgcm-1-open-7b-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/zgcm-1-open-7b-model.html
+- Source timestamp: 2026-09-15T10:17:00.000Z
+- Site timestamp: 2026-09-15T11:00:03.768Z
+- Tags: Open Source, Models, Agents, Research
+
+Seven doctoral students released a 7B model with weights, data recipes, checkpoints and logs, offering an unusually complete blueprint for agentic model training.
+
+## What happened
+
+A team from Beijing Zhongguancun Academy has released ZGCM-1, a 7B dense language model trained from scratch. The release includes model weights from multiple training stages, intermediate checkpoints, training code, stage-specific data and recipes, and Weights & Biases logs. The project was developed by seven doctoral students over roughly three months, with hundreds of software agents supporting data work, experiments, cluster operations and evaluation.
+
+The accompanying paper describes a 256K-context design combining gated sliding-window attention with full attention, an FP8 Muon optimizer, progressive context expansion and a mid-training setup that treats interaction traces as Markov decision processes. The team reports roughly 4.2 times better 16K pre-training time-to-loss under its design.
+
+## Why it matters
+
+ZGCM-1 is not important because a 7B model has suddenly displaced frontier systems. Its value is that it exposes the normally hidden engineering path behind a model release. The published checkpoints and logs let researchers inspect where capability emerged, where training failed, and how agent assistance affected the workflow.
+
+The team also reports competitive results with other 7B models on general benchmarks and surprisingly strong performance on selected mathematical reasoning and agentic-search tests, including comparisons with much larger systems. Those comparisons still need independent replication, and benchmark selection remains a material limitation.
+
+The broader signal is operational: agent swarms are beginning to compress parts of model-development work that once required large teams. ZGCM-1 therefore gives the open-source community a reproducible case study in AI-assisted AI research, rather than another opaque scorecard.
+
+Chinese title: 七名博士生开源完整7B大模型训练链路
+Chinese summary: 北京中关村学院团队公开ZGCM-1的权重、数据配方、代码、检查点和训练日志，展示代理群协作训练大模型的完整流程。
+
+Sources:
+  - 7名博士生仅用3个月从零训练7B大模型：代码+数据+训练日志全公开: https://www.qbitai.com/2026/09/489227.html
+  - ZGCM-1: A Fully Open and Extremely Efficient Foundation Model for Math and Agentic Search: https://arxiv.org/abs/2609.13356
 
 ### Anthropic Reportedly Picks Nasdaq for Potential IPO
 
@@ -922,106 +1022,6 @@ Sources:
   - Introducing ChatGPT Images 2.5: https://openai.com/index/introducing-chatgpt-images-2-5/
   - ChatGPT Images 2.5 release notes: https://help.openai.com/en/articles/6825453
 
-### OpenAI Claims AI-Generated Proof for Navier–Stokes
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-navier-stokes-proof.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-navier-stokes-proof.html
-- Source timestamp: 2026-09-09T05:04:00.000Z
-- Site timestamp: 2026-09-09T11:00:03.464Z
-- Tags: Research, Models, Agents, Safety
-
-OpenAI says an unreleased model and 10,000 agents produced a Lean-verified Navier–Stokes proof, but mathematicians have yet to validate it independently.
-
-OpenAI says an internal system has produced a proposed solution to the Navier–Stokes existence and smoothness problem, one of the seven Clay Millennium Prize problems. The company says the result establishes that a smooth three-dimensional fluid can develop a finite-time singularity while retaining finite energy.
-
-## A large coordinated search
-
-The proof was generated by a model OpenAI describes as significantly more capable than GPT-6 Astra. According to the company’s account, roughly 10,000 software agents worked concurrently for about 88 hours, using cached web material, code execution and formalisation tools. OpenAI also released a Lean version intended to make the argument machine-checkable.
-
-The reported method focuses on a vortex that spirals inward while becoming increasingly elongated. The system first found a related blow-up construction for the Euler equations before extending the approach to the Navier–Stokes setting. That distinction matters because the Clay problem concerns the equations with viscosity and requires a globally valid mathematical argument, not merely a convincing numerical experiment.
-
-## The proof is not yet a prize
-
-OpenAI has called the result a solution, but the mathematical community has not independently certified it. External scrutiny is especially important because the announcement followed reports that NYU mathematician Tristan Buckmaster and Anthropic researcher Levent Alpöge had made closely related progress. OpenAI denies using their private work, while acknowledging that it cannot completely rule out indirect influence from public or model-accessible material.
-
-The significance is therefore twofold. If the proof survives review, it would be the first major Millennium problem resolved with decisive assistance from an AI system and a striking demonstration of long-horizon agent coordination. If it fails, the episode will still expose how difficult it is to assess frontier-model claims when the producing lab controls the model, compute trail and initial presentation.
-
-## Uncle Cat take
-
-The 10,000-agent figure is less important than the missing independent referee: until mathematicians verify the Lean proof, this is an extraordinary claim, not a solved prize problem.
-
-Chinese title: OpenAI称人工智能模型提出纳维–斯托克斯证明
-Chinese summary: OpenAI称一款未公开模型协同约1万名智能体生成并形式化验证纳维–斯托克斯证明，但外部数学家尚未独立确认。
-
-Sources:
-  - On the Navier–Stokes Millennium Prize Problem: https://openai.com/index/navier-stokes-solution/
-  - OpenAI's historic math solution overshadowed by credit controversy: https://www.axios.com/2026/09/08/openai-math-solution-navier-stokes-credit
-
-### Mistral Raises €3 Billion to Expand Sovereign AI
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/mistral-3b-sovereign-ai-bet.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/mistral-3b-sovereign-ai-bet.html
-- Source timestamp: 2026-09-08T05:06:00.000Z
-- Site timestamp: 2026-09-08T11:00:03.171Z
-- Tags: Funding, Open Source, Industry
-
-Mistral’s record European funding round gives its open-weight strategy unprecedented capital, while tying Samsung and Europe more closely to frontier AI.
-
-Mistral AI has raised €3 billion in a Series D round led by Samsung Electronics, valuing the French company at more than €21 billion. EQT’s Scaleup Europe Fund and existing investor PSG Equity co-led the financing, with additional participation from industrial, financial and technology investors.
-
-## Capital for a sovereign model strategy
-
-Mistral says the money will support frontier-model research, expanded computing capacity, infrastructure, products and international growth. The company now operates in 20 countries and says it serves more than 125 large enterprises, including Airbus, ASML and HSBC.
-
-The round is notable not only for its size but for the identity of its lead investor. Samsung brings manufacturing scale, semiconductor expertise and a major Asian industrial footprint to a company whose pitch has centered on open-weight models and European control over AI infrastructure. ASML, Nvidia, Salesforce Ventures and other strategic investors also remain involved.
-
-Mistral’s valuation has risen sharply from its previous financing, but the company still faces a difficult commercial gap. American rivals have raised substantially larger sums and can spend more aggressively on training, distribution and cloud capacity. Open weights can widen adoption, yet they also make it harder to capture the full economic value of a model through exclusive access.
-
-## Why it matters
-
-This is the strongest financial signal yet that sovereign and open-weight AI is becoming an industrial policy project rather than a narrow software bet. Samsung’s leadership gives Mistral additional credibility in Asia and hardware markets, but the new capital will matter only if it produces models and products that customers choose over better-funded alternatives.
-
-## Uncle Cat take
-
-Samsung’s lead is more consequential than the headline valuation: Mistral is becoming an industrial alliance, not merely Europe’s well-funded model lab.
-
-Chinese title: Mistral获30亿欧元融资，押注主权开放权重AI
-Chinese summary: 这笔欧洲科技公司史上最大股权融资，将为Mistral的开放权重路线注入巨额算力资本，并把三星更深地拉入前沿AI竞争。
-
-Sources:
-  - Mistral raises €3B to make sovereign, open-weight AI the technology frontier: https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/
-  - Mistral AI raises €3 billion in response to doubts over its strategic direction: https://www.lemonde.fr/en/economy/article/2026/09/08/mistral-ai-raises-3-billion-euros-in-response-to-doubts-over-its-strategic-direction_6757278_19.html
-
-### AI-Designed Drug Shifts Six Biological-Age Clocks
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/rentosertib-shifts-aging-clocks.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/rentosertib-shifts-aging-clocks.html
-- Source timestamp: 2026-09-07T16:34:00.000Z
-- Site timestamp: 2026-09-07T23:00:03.185Z
-- Tags: Research, Industry
-
-A small lung-disease trial links rentosertib to younger proteomic readings, but cannot yet distinguish treatment effects from slower aging.
-
-## Six clocks move in the same direction
-
-An experimental drug discovered and designed with artificial intelligence produced younger biological-age estimates across six independently developed proteomic clocks, according to a study published in Nature Biotechnology. Rentosertib, developed by Insilico Medicine, inhibits TNIK and is being tested primarily as a treatment for idiopathic pulmonary fibrosis, an incurable disease that progressively scars the lungs.
-
-Researchers applied the clocks to longitudinal blood-protein data from 42 participants in a randomized Phase 2a trial. After 12 weeks, every clock detected shifts consistent with lower predicted biological age among treated patients. The strongest reported readings suggested reductions of several years, while placebo recipients generally showed little improvement. The analysis also found dose-related changes in forced vital capacity, a standard measure of lung function.
-
-The result does not establish that rentosertib slows aging. All participants had pulmonary fibrosis, so improvements in inflammation, lung function or disease burden could have made their blood profiles appear younger without changing the underlying aging process. The cohort was small, the clocks measure biomarkers rather than lifespan or healthspan, and the drug has not been tested as a longevity treatment in healthy people. The authors explicitly say those effects cannot be disentangled without further trials.
-
-## Why it matters
-
-The study nevertheless advances two parts of AI-enabled medicine beyond laboratory prediction. Rentosertib combines an AI-identified target with an AI-designed molecule that has reached human testing, while the deposited proteomic data and analysis pipelines offer a reproducible method for adding aging-related endpoints to conventional drug trials. If larger studies validate the approach, developers could evaluate disease treatment and possible geroprotective effects simultaneously. For now, the durable milestone is methodological: an AI-originated drug has generated measurable human biomarker data, not evidence that artificial intelligence has produced an anti-aging medicine.
-
-Chinese title: AI设计药物令六种生物年龄时钟同步回调
-Chinese summary: 一项小规模肺病试验显示，Rentosertib令六种蛋白质组年龄指标下降，但尚无法排除疾病改善带来的影响。
-
-Sources:
-  - Integration of proteomic aging clocks in a phase 2a clinical trial supports simultaneous geroprotective assessment: https://www.nature.com/articles/s41587-026-03286-y
-  - AI-designed drug appears to turn back the body's biological clock in early trial: https://the-decoder.com/ai-designed-drug-appears-to-turn-back-the-bodys-biological-clock-in-early-trial/
-  - Nature Biotechnology: Insilico's AI-Driven IPF Candidate Rentosertib Shows Potential for Biological Age Reversal: https://www.prnewswire.com/news-releases/nature-biotechnology--insilicos-ai-driven-ipf-candidate-rentosertib-shows-potential-for-biological-age-reversal-as-assessed-by-six-proteomic-aging-clocks-302871277.html
-
 ## Recent radar items
 
 ### 2026-09-15
@@ -1043,6 +1043,20 @@ Sources:
 - 2026-09-14T21:08:00Z | MarkTechPost | Reward AI released OM-1, a robot policy trained entirely on human demonstrations without teleoperation or on-robot data. | 中文：Reward AI发布OM-1，完全通过人类示范训练机器人策略，不使用遥操作或机器人本体数据。 | https://www.marktechpost.com/2026/09/14/reward-ai-releases-om-1-a-robot-policy-trained-on-human-demonstrations-only-with-no-teleoperation-or-on-robot-data/
 - 2026-09-14T19:34:00Z | X / OpenAI Developers | OpenAI Developers announced official Codex app support for Arch Linux, distributed through an Arch installer and maintained with pacman. | 中文：OpenAI Developers宣布Codex应用正式支持Arch Linux，可通过Arch安装器部署并用pacman维护更新。 | https://x.com/OpenAIDevs/status/2099582651229450749
 - 2026-09-14T20:35:00Z | AWS Machine Learning | AWS described Bedrock AgentCore support for managing end-user OAuth consent when AI agents access connected applications. | 中文：AWS介绍Bedrock AgentCore的终端用户OAuth授权管理能力，用于智能体访问关联应用。 | https://aws.amazon.com/blogs/machine-learning/manage-end-user-oauth-consent-for-ai-agents-with-amazon-bedrock-agentcore/
+- 2026-09-15T01:56Z | SiliconANGLE AI | Nuance Labs raised $50 million to make AI avatars feel more natural and less awkward. | 中文：Nuance Labs 融资 5000 万美元，旨在让 AI 虚拟人表现更自然、减少违和感。 | https://siliconangle.com/2026/09/14/nuance-labs-bags-50m-in-funding-to-fix-the-awkwardness-of-ai-avatars/
+- 2026-09-15T00:10Z | SiliconANGLE AI | Aron launched an AI procurement-automation startup with $8 million in funding. | 中文：采购自动化初创公司 Aron 获得 800 万美元融资并正式启动。 | https://siliconangle.com/2026/09/14/procurement-automation-startup-aron-launches-with-8m-in-funding/
+- 2026-09-15T04:03Z | MarkTechPost | Agent-net open-sourced Webagent, a Go harness for turning websites into guarded AI agents. | 中文：Agent-net 开源 Webagent，这是一个用 Go 构建、可将网站变成受控 AI Agent 的工具。 | https://www.marktechpost.com/2026/09/14/agent-net-open-sources-webagent-a-go-harness-that-turns-any-website-into-a-guarded-ai-agent/
+- 2026-09-15T03:14Z | Artificial Analysis | Artificial Analysis placed GPT-Live-1 Sol low at #3 in conversational preference with 1,053 Elo and a 90.9% task-success rate. | 中文：Artificial Analysis 将 GPT-Live-1 Sol low 排在对话偏好第 3，Elo 为 1053，任务成功率为 90.9%。 | https://x.com/ArtificialAnlys/status/2099698259812139317
+- 2026-09-15T06:34Z | Tencent Hunyuan | Tencent Hunyuan introduced EvolveScaler, which tests whether an agent can use a long RPG history to answer counterfactual questions. | 中文：腾讯混元展示 EvolveScaler，让 Agent 阅读 40 天 RPG 日志并回答跳过关键节点后的反事实问题。 | https://x.com/TencentHunyuan/status/2099748549281939558
+- 2026-09-15T07:36Z | Hailuo AI | Hailuo showcased MiniMax Design as a workflow where one brief and one canvas can coordinate an entire production crew. | 中文：海螺展示 MiniMax Design：只需一份创意简报和一块画布，就能协同完成整套制作流程。 | https://x.com/Hailuo_AI/status/2099764177036583304
+- 2026-09-15T10:34Z | Recraft | Recraft demonstrated six coordinated product icons in its V4 style, covering furniture, fashion, and futuristic objects. | 中文：Recraft 展示 V4 风格的六枚成套产品图标，覆盖家具、时尚和未来感物件。 | https://x.com/recraftai/status/2099809062447718511
+- 2026-09-15T10:15Z | Meshy | Meshy showed an Odyssey-inspired scene generated inside a treasure chest through GPT-6 Astra and the Meshy API. | 中文：Meshy 展示了一个藏在宝箱内的《奥德赛》主题场景，由 GPT-6 Astra 与 Meshy API 共同生成。 | https://x.com/MeshyAI/status/2099804182551429209
+- 2026-09-15T01:05Z | Canva | Canva posted a three-step workflow using personal photos and Magic Layers to create magazine-style covers. | 中文：Canva 发布三步流程，利用个人照片和 Magic Layers 制作杂志风格封面。 | https://x.com/canva/status/2099665809274732839
+- 2026-09-15T07:16Z | Qdrant | Qdrant previewed a research agent that improves from its own run history through an n8n workflow. | 中文：Qdrant 预告一种能通过自身运行历史持续改进的研究 Agent，并接入 n8n 工作流。 | https://x.com/qdrant_engine/status/2099759236326842486
+- 2026-09-15T03:11Z | Alibaba Wan | Alibaba Wan argued that effective AI video production iterates from 360p to 1080p instead of relying on a perfect prompt. | 中文：阿里通义万相表示，高效 AI 视频制作应从 360p 逐步迭代到 1080p，而非依赖完美提示词。 | https://x.com/Alibaba_Wan/status/2099697688044560810
+- 2026-09-15T02:19Z | Tripo | Tripo showed a dark-fantasy prototype built in one day in Unreal Engine using Astra and Tripo. | 中文：Tripo 展示了一个由 Astra 与 Tripo 在一天内于虚幻引擎中完成的黑暗奇幻原型。 | https://x.com/tripoai/status/2099684583524704271
+- 2026-09-15T10:33Z | The Decoder | Apple is reportedly rebuilding Siri on Google Gemini, with the revamped assistant unavailable in the European Union. | 中文：据报道，苹果正基于 Google Gemini 重做 Siri，但新版助手不会在欧盟提供。 | https://the-decoder.com/apple-brings-a-fully-revamped-siri-built-on-googles-gemini-but-not-to-the-eu/
+- 2026-09-15T10:08Z | InfoQ 中文 | InfoQ described production-scale observability practices that use traces to evaluate real-time AI-agent traffic. | 中文：InfoQ 介绍了通过 Trace 对生产流量进行实时评估的 Agent 可观测实践。 | https://www.infoq.cn/article/556HrGKWUqWSg7NM3YT3?utm_source=rss&utm_medium=article
 
 ### 2026-09-14
 
