@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TabPFN-3.5 发布，表格基础模型迈向企业生产环境 — Uncle Cat AI Radar</title>
+<meta name="description" content="Prior Labs 发布新一代表格基础模型，称其在多项评测中领先，并能以更少调参处理原始企业数据。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/tabpfn-35-structured-prediction.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/tabpfn-35-structured-prediction.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/tabpfn-35-structured-prediction.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/tabpfn-35-structured-prediction.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="TabPFN-3.5 发布，表格基础模型迈向企业生产环境 — Uncle Cat AI Radar">
+<meta property="og:description" content="Prior Labs 发布新一代表格基础模型，称其在多项评测中领先，并能以更少调参处理原始企业数据。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/tabpfn-35-structured-prediction.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TabPFN-3.5 发布，表格基础模型迈向企业生产环境 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Prior Labs 发布新一代表格基础模型，称其在多项评测中领先，并能以更少调参处理原始企业数据。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="TabPFN-3.5 发布，表格基础模型迈向企业生产环境 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"TabPFN-3.5 发布，表格基础模型迈向企业生产环境","item":"https://mmlong818.github.io/ai-pulse/zh/articles/tabpfn-35-structured-prediction.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/tabpfn-35-structured-prediction.html#article","headline":"TabPFN-3.5 发布，表格基础模型迈向企业生产环境","description":"Prior Labs 发布新一代表格基础模型，称其在多项评测中领先，并能以更少调参处理原始企业数据。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/tabpfn-35-structured-prediction.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/tabpfn-35-structured-prediction.html"},"datePublished":"2026-09-16T06:52:00.000Z","dateModified":"2026-09-16T11:00:03.952Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["模型","产业","研究"],"keywords":"模型, 产业, 研究","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://priorlabs.ai/tabpfn-3-5","https://news.sap.com/2026/09/tabpfn-35-plus-now-available-sap-ai-core-instant-business-predictions/","https://priorlabs.ai/technical-reports"],"about":[{"@type":"Thing","name":"模型"},{"@type":"Thing","name":"产业"},{"@type":"Thing","name":"研究"}]}]}</script>
+</head>
+<body data-slug="tabpfn-35-structured-prediction" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/tabpfn-35-structured-prediction.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-09-16T06:52:00Z">2026年9月16日 14:52</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>TabPFN-3.5 发布，表格基础模型迈向企业生产环境</h1>
+  <p class="standfirst">Prior Labs 发布新一代表格基础模型，称其在多项评测中领先，并能以更少调参处理原始企业数据。</p>
+  <p>Prior Labs 发布 TabPFN-3.5，这是其面向结构化数据的基础模型最新版本。与通用语言模型不同，TabPFN 专门服务于预测、欺诈识别、定价、客户流失分析和风险评分等表格数据任务。</p><p>公司称，TabPFN-3.5 在 TabArena 和 BeyondArena 两项表格数据评测中排名第一；在启用“思考”模式后，相比传统机器学习方法的胜率达到 99%。这些成绩来自厂商披露，仍需要结合独立评测细节和具体任务构成解读。</p><h2>减少预处理，加快推理</h2><p>TabPFN-3.5 试图直接处理真实业务数据中的复杂情况，包括缺失值、类别字段、异常值、自由文本列，以及包含大量不同 ID 的数据集。Prior Labs 表示，新模型原生支持最多 100 万行数据，预测速度也较此前版本明显提升。</p><p>公司重点展示了缓存推理能力：在重复预测场景中，缓存可以减少等待时间。其一项对比显示，处理 1000 行数据时，模型延迟可低至 0.5 秒。对企业而言，这一产品逻辑很直接：面对一个新的预测任务时，可以先跳过繁琐的特征工程、算法选择和长时间调参，快速验证数据是否有预测价值。</p><p>SAP 同时宣布，TabPFN-3.5 Plus 已进入 SAP AI Core，可用于现金流预测、供应商风险评分和付款延迟预测等企业场景。</p><h2>为什么值得关注</h2><p>结构化业务数据仍是传统机器学习最具优势的领域之一。如果模型能以较少准备工作适应新表格，就可能缩短从原始运营数据到可用预测结果的时间，尤其适合数据科学团队规模较小的企业。</p><p>但评测领先并不等于能够应对数据分布变化、监管审查或高风险决策。企业仍需建立数据校验、持续监控、可解释性和领域治理机制。因此，TabPFN-3.5 更像是让表格建模变得可复用、易上手的一次重要尝试，而不是对现有机器学习体系的直接替代。</p><h2>猫叔判断</h2><p>TabPFN-3.5 最关键的信号是进入 SAP AI Core：它正从评测新奇物走向采购清单，但能否普及仍取决于治理能力。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://priorlabs.ai/tabpfn-3-5" rel="noopener" target="_blank">TabPFN-3.5</a></li><li><a href="https://news.sap.com/2026/09/tabpfn-35-plus-now-available-sap-ai-core-instant-business-predictions/" rel="noopener" target="_blank">TabPFN-3.5 Plus Now Available in SAP AI Core</a></li><li><a href="https://priorlabs.ai/technical-reports" rel="noopener" target="_blank">TabPFN-3.5: Technical Report</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/google-gemini-live-voice-agents.html">谷歌发布 Gemini 3.8 Live 实时语音模型</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/stepaudio-3-unified-audio-family.html">阶跃星辰发布 StepAudio 3 五模型音频家族</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/aef-1-ai-evaluation-standard.html">OpenAI、Anthropic与xAI支持独立评测标准AEF-1</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
