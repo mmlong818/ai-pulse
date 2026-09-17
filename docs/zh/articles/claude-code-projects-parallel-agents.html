@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic重做Claude Code Projects，让多智能体并行协作 — Uncle Cat AI Radar</title>
+<meta name="description" content="Anthropic推出重做版Projects，让Claude协调云端编码会话、共享记忆，并跨多个代码库并行提交修改。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-projects-parallel-agents.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/claude-code-projects-parallel-agents.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-projects-parallel-agents.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/claude-code-projects-parallel-agents.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Anthropic重做Claude Code Projects，让多智能体并行协作 — Uncle Cat AI Radar">
+<meta property="og:description" content="Anthropic推出重做版Projects，让Claude协调云端编码会话、共享记忆，并跨多个代码库并行提交修改。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-projects-parallel-agents.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anthropic重做Claude Code Projects，让多智能体并行协作 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Anthropic推出重做版Projects，让Claude协调云端编码会话、共享记忆，并跨多个代码库并行提交修改。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="Anthropic重做Claude Code Projects，让多智能体并行协作 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"Anthropic重做Claude Code Projects，让多智能体并行协作","item":"https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-projects-parallel-agents.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-projects-parallel-agents.html#article","headline":"Anthropic重做Claude Code Projects，让多智能体并行协作","description":"Anthropic推出重做版Projects，让Claude协调云端编码会话、共享记忆，并跨多个代码库并行提交修改。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-projects-parallel-agents.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-projects-parallel-agents.html"},"datePublished":"2026-09-17T17:07:00.000Z","dateModified":"2026-09-17T23:00:04.236Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["Agent","产业"],"keywords":"Agent, 产业","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://claude.com/blog/projects-redesigned","https://www.theverge.com/ai-artificial-intelligence/997134/anthropic-claude-code-projects"],"about":[{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"产业"}]}]}</script>
+</head>
+<body data-slug="claude-code-projects-parallel-agents" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/claude-code-projects-parallel-agents.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-09-17T17:07:00Z">2026年9月18日 01:07</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>Anthropic重做Claude Code Projects，让多智能体并行协作</h1>
+  <p class="standfirst">Anthropic推出重做版Projects，让Claude协调云端编码会话、共享记忆，并跨多个代码库并行提交修改。</p>
+  <h2>发生了什么</h2><p>Anthropic将Claude Code Projects从“文件夹加对话”重做成面向长期软件任务的协调层。用户只需描述目标，Claude便会把工作拆分到多个并行线程中执行。</p><p>每个线程都是独立的Claude Code云端会话，拥有自己的代码分支和工作副本。协调器负责分派任务、检查结果、处理依赖关系，并汇总最终成果。比如，针对结账接口延迟，Claude可以同时让不同线程分析各个端点、测试优化方案并准备拉取请求。</p><p>新版Projects还加入共享项目记忆。不同线程产生的决定、限制条件和工作偏好会持续沉淀，Claude可以记住发布日期为何推迟、某项改动需要谁批准等背景。项目同时提供文件与产物库，用户可以在主对话中查看、调整进度，也可以通过手机介入。</p><h2>开放范围与限制</h2><p>该功能以测试版形式首先开放给使用Claude Code云端会话的部分Pro和Max订阅者。原有Projects仍可继续使用，后续将扩大到Claude、Team和Enterprise用户。目前线程运行在Anthropic云端，不能访问用户本地网络中的文件和工具。</p><p>并行运行也会更快消耗用量额度。共享记忆和分支机制降低了交接成本，但多个智能体同时修改同一代码区域时，仍会产生普通的合并冲突。</p><h2>为什么重要</h2><p>这次更新把编码智能体从逐条请求推进到项目级委派。真正值得关注的不是多了一个界面，而是多个自治工作流开始被包装成软件生产的基本单元。它能否减少人工协调、审查和返工，最终仍取决于编排质量与使用成本。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://claude.com/blog/projects-redesigned" rel="noopener" target="_blank">Projects redesigned: from folder to conversation</a></li><li><a href="https://www.theverge.com/ai-artificial-intelligence/997134/anthropic-claude-code-projects" rel="noopener" target="_blank">Claude Code relaunches Projects to manage multiple AI agents in the cloud</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/un-global-data-commons-ai-agents.html">联合国与谷歌推出面向AI的全球数据平台</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-one-claude-workspace.html">Anthropic将Claude聊天与Cowork合并为统一工作台</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cohere-aleph-alpha-merger.html">Cohere与Aleph Alpha签署主权AI最终合并协议</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

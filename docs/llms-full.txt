@@ -19,6 +19,113 @@
 
 ## Recent briefings
 
+### Anthropic Open-Sources Claude’s Biology Model Optimizations
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-claude-biomolecular-models.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-claude-biomolecular-models.html
+- Source timestamp: 2026-09-17T21:41:00.000Z
+- Site timestamp: 2026-09-17T23:00:04.236Z
+- Tags: Research, Open Source
+
+Anthropic says Claude optimized more than 30 open biology models, delivering roughly fourfold speedups and a lower-memory operating mode.
+
+## The result
+
+Anthropic says an internal general-purpose research model optimized more than 30 open-source deep-learning models used in biomolecular research. Across structure prediction, protein design, genomics and protein-language tasks, the company reports roughly fourfold average speedups with minimal precision loss, and nearly twofold acceleration while preserving identical outputs.
+
+The work also produced a low-memory mode for systems containing more than 10,000 tokens of biological input, including amino acids, nucleotides and atoms from small molecules and ions. Anthropic says these workloads can run on a single NVIDIA GPU node, potentially lowering the hardware barrier for research teams that cannot afford large clusters.
+
+The announcement follows an earlier demonstration in which Claude orchestrated open-source tools to design de novo protein binders. Anthropic acknowledges that experiment required up to $10,000 of infrastructure per target, equivalent to about 2,500 H100 GPU hours. The new optimization work is presented as a way to make similar workflows materially more accessible.
+
+## From benchmark to wet lab
+
+Anthropic is open-sourcing the optimized code and launching a protein-design competition with Adaptyv Bio. The program covers five challenging problems and includes up to $1 million in Claude credits, $250,000 in Modal compute credits and experimental validation for more than 5,000 designs.
+
+The wet-lab component matters because faster inference alone does not establish that generated proteins work outside simulation. Experimental screening can expose failures in binding, stability or manufacturability that software metrics miss.
+
+## Why it matters
+
+This is a notable example of a general AI model improving the efficiency of specialized scientific software rather than merely generating scientific prose. If the reported gains survive independent reproduction and laboratory testing, the effect could be felt in research budgets and iteration speed across drug discovery. For now, the strongest evidence is an engineering result from Anthropic; biological value remains to be demonstrated experimentally.
+
+Chinese title: Anthropic开源Claude优化生物模型的代码
+Chinese summary: Anthropic称Claude已优化30多个开源生物模型，平均提速约4倍，并支持更低显存运行模式。
+
+Sources:
+  - How Claude is uplifting biomolecular modeling: https://www.anthropic.com/research/claude-uplifts-biomolecular-modeling
+  - Anthropic opens protein design competition with Adaptyv Bio: https://www.anthropic.com/news/life-sciences-verification-program
+
+### Anthropic Rebuilds Claude Code Projects Around Parallel Agents
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/claude-code-projects-parallel-agents.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-projects-parallel-agents.html
+- Source timestamp: 2026-09-17T17:07:00.000Z
+- Site timestamp: 2026-09-17T23:00:04.236Z
+- Tags: Agents, Industry
+
+Anthropic’s redesigned Projects let Claude coordinate cloud coding sessions, shared memory and pull requests across repositories.
+
+## What changed
+
+Anthropic has redesigned Claude Code Projects as a coordination layer for long-running software work. Instead of treating a project as a folder of files and a single conversation, the beta lets users describe a goal while Claude breaks the work into parallel threads.
+
+Each thread runs as a separate Claude Code cloud session with its own repository branch and working copy. The coordinator can assign tasks, inspect results, resolve dependencies and assemble the output. A project targeting checkout latency, for example, could ask different threads to profile endpoints, test optimizations and prepare pull requests simultaneously.
+
+The system also introduces shared project memory. Decisions, constraints and working preferences accumulate across threads, allowing Claude to recall details such as a postponed release or a service owner who must approve a change. Projects include a library for uploaded files and generated artifacts, while users can monitor or redirect work from the main conversation, including from a phone.
+
+## Access and limits
+
+The feature launched in beta for selected Pro and Max subscribers using cloud sessions in Claude Code. Existing Projects remain available during the rollout, with wider access planned for Claude, Team and Enterprise users. Threads currently operate in Anthropic’s cloud and cannot reach files or tools on a user’s local network.
+
+Parallel execution can also consume usage limits faster. Shared memory and branch-based work reduce coordination overhead, but merge conflicts remain ordinary engineering problems when agents touch the same code.
+
+## Why it matters
+
+The launch moves coding agents toward project-level delegation rather than turn-by-turn assistance. Its significance is less about adding another coding interface than about making multiple autonomous workstreams a normal unit of software production. The unresolved question is whether coordination quality, review burden and usage economics improve enough to justify giving an orchestrator control over several agents at once.
+
+Chinese title: Anthropic重做Claude Code Projects，让多智能体并行协作
+Chinese summary: Anthropic推出重做版Projects，让Claude协调云端编码会话、共享记忆，并跨多个代码库并行提交修改。
+
+Sources:
+  - Projects redesigned: from folder to conversation: https://claude.com/blog/projects-redesigned
+  - Claude Code relaunches Projects to manage multiple AI agents in the cloud: https://www.theverge.com/ai-artificial-intelligence/997134/anthropic-claude-code-projects
+
+### UN and Google Launch an AI-Ready Global Data Commons
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/un-global-data-commons-ai-agents.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/un-global-data-commons-ai-agents.html
+- Source timestamp: 2026-09-17T20:00:00.000Z
+- Site timestamp: 2026-09-17T23:00:04.236Z
+- Tags: Industry, Agents, Research
+
+The UN and Google launched an open knowledge graph that lets AI agents query linked official statistics and produce grounded research outputs.
+
+## A shared statistical layer
+
+The United Nations system and Google have launched the UN System Data Commons, an open-source platform intended to unify global statistics that have historically been scattered across agencies, formats and geographic definitions.
+
+Built on Google’s Data Commons, the platform connects metrics, timelines and locations into an AI-ready knowledge graph. The participating datasets are validated by UN statisticians and technical experts, according to Google. The goal is to let researchers and policymakers compare issues such as health, education, poverty and climate exposure without first spending months reconciling spreadsheets.
+
+The launch also adds natural-language exploration and agent access. Through open standards including the Model Context Protocol, AI systems can retrieve authoritative figures, connect information across domains and assemble charts, infographics or draft reports. Google emphasizes that users should still inspect the underlying sources before citing critical numbers.
+
+## Why the infrastructure matters
+
+Most AI systems can already summarize public information, but they remain vulnerable when data is fragmented, inconsistently defined or weakly sourced. A structured statistical layer gives agents a more reliable place to retrieve facts and preserves links back to provenance.
+
+The project is not a universal guarantee against errors. Coverage, update schedules, conflicting definitions and the quality of an agent’s reasoning will still shape the answer. The platform’s usefulness will also depend on whether the UN can maintain consistent metadata as more agencies join.
+
+Google and the UN say the system aims to include 80 percent of UN statistical datasets by 2027. That target makes the project more than a searchable website: it is an attempt to turn a major international data estate into machine-readable public infrastructure.
+
+## Why it matters
+
+The immediate product is modest compared with a new frontier model, but its institutional reach is broader. If widely adopted, the Commons could influence how AI systems answer questions about global development and how researchers audit those answers. The important test will be whether citations, definitions and update histories remain visible when agents turn the data into polished conclusions.
+
+Chinese title: 联合国与谷歌推出面向AI的全球数据平台
+Chinese summary: 联合国与谷歌发布开放知识图谱，让AI代理查询关联的官方统计数据并生成可追溯的研究结果。
+
+Sources:
+  - Making global data easier to explore: https://blog.google/innovation-and-ai/technology/ai/google-un-data-commons-platform/
+  - UN Secretary-General's remarks on the launch of the UN System Data Commons: https://easterncaribbean.un.org/en/322845-un-secretary-generals-remarks-member-states-launch-united-nations-system-data-commons
+
 ### Anthropic Merges Claude Chat and Cowork Into One Workspace
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-one-claude-workspace.html
@@ -891,105 +998,27 @@ Sources:
   - Runway enterprise model licensing announcement: https://x.com/runwayml/status/2098409679974228275
   - Runway enterprise bespoke model workflow: https://x.com/runwayml/status/2098409692196438435
 
-### Cognition Releases SWE-2 Coding Model at Lower Cost
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/cognition-swe-2-coding-model.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cognition-swe-2-coding-model.html
-- Source timestamp: 2026-09-10T15:29:00.000Z
-- Site timestamp: 2026-09-10T23:00:03.488Z
-- Tags: Models, Agents
-
-Cognition’s SWE-2 reaches near-frontier coding scores while claiming sharply lower cost and fewer turns on long software tasks.
-
-Cognition has released SWE-2, a coding model designed for its Devin software-engineering agent and positioned as a lower-cost alternative to larger frontier systems.
-
-## Performance and training
-
-Cognition reports that SWE-2 scores 50.0% on FrontierCode 1.1 Main, within one point of Fable 5.1 in the company’s comparison, while costing 64% less. On DeepSWE 1.1 it scores 73.0%, and on Terminal-Bench 2.1 it reaches 92.8%.
-
-The company says the model is post-trained from Kimi K3, a 2.8-trillion-parameter base model, using reinforcement learning at what it calls the multi-trillion-parameter scale. Its training method applies cost penalties across different reasoning-effort levels in one run, aiming to improve the entire cost-performance curve instead of optimizing only for a single maximum score.
-
-Cognition also reports a substantial reduction in agent activity. On its 100-task FrontierCode evaluation, SWE-2 medium used 53 mean steps compared with 127 for SWE-1.7, and the company says average cost fell 81% on that comparison.
-
-## Why it matters
-
-The release adds pressure to the idea that coding-agent progress must come from ever-larger general models. If Cognition’s results hold outside its own evaluations, better reinforcement learning and more efficient agent behavior could make sustained software work more economical.
-
-The caveat is that nearly all headline numbers come from Cognition’s benchmarks and deployment environment. SWE-2’s real importance will depend on performance across unfamiliar repositories, failure recovery and the price users actually pay in Devin.
-
-Chinese title: Cognition发布SWE-2，主打更低成本编码智能体
-Chinese summary: Cognition发布SWE-2编码模型，称其接近前沿模型表现，同时显著减少任务步骤并降低软件开发成本。
-
-Sources:
-  - Introducing SWE-2: Pushing the Pareto Frontier: https://cognition.com/blog/swe-2
-
-### Universal Music and ElevenLabs Form AI Music Partnership
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/elevenlabs-universal-music-partnership.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/elevenlabs-universal-music-partnership.html
-- Source timestamp: 2026-09-10T14:01:00.000Z
-- Site timestamp: 2026-09-10T23:00:03.488Z
-- Tags: AIGC, Industry
-
-Universal Music and ElevenLabs announce a multi-year partnership to develop licensed AI music tools with artists, labels and publishers.
-
-Universal Music Group and ElevenLabs have announced a multi-year strategic partnership focused on developing AI music products with artists, labels and publishers involved from the outset.
-
-## A licensed product strategy
-
-ElevenLabs said its music models were built with rights holders from the beginning, while Universal presented the partnership as a way to explore generative music under a more structured licensing framework. The companies have not disclosed the full product roadmap, commercial terms or which artists and catalogs will participate.
-
-The announcement matters because it places one of the world’s largest music companies alongside a generative-audio specialist at a moment when the industry is still negotiating how training data, voice likeness, composition rights and revenue sharing should work.
-
-Rather than treating licensing as a legal cleanup step after model development, the partnership suggests that rights holders may seek influence over the design and distribution of AI music systems. That could include authorized voices, artist-controlled participation and products aimed at professional creators.
-
-## Why it matters
-
-Music is one of the clearest tests of whether generative AI can become a durable commercial category without relying on ambiguous training rights. A partnership with Universal gives ElevenLabs access to a major rights network, but it also raises the standard for what the company must prove about consent, attribution and payment.
-
-The deal is not yet evidence that licensed AI music has solved its hardest problems. Until the partners reveal how artists opt in, how outputs are labeled and how compensation is calculated, the announcement is best read as an important commercial framework still awaiting a public operating model.
-
-Chinese title: 环球音乐与ElevenLabs达成生成式音乐合作
-Chinese summary: 环球音乐与ElevenLabs宣布多年战略合作，计划与艺人、唱片公司和出版商共同开发授权AI音乐产品。
-
-Sources:
-  - ElevenLabs announces partnership with Universal Music Group: https://x.com/ElevenLabs/status/2098049234465620251
-  - Universal Music is launching an AI music platform with ElevenLabs: https://www.theverge.com/ai-artificial-intelligence/993465/universal-music-elevenlabs-ai
-
-### OpenAI Opens Agents API With Managed Sandboxes
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-agents-api-managed-sandboxes.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-agents-api-managed-sandboxes.html
-- Source timestamp: 2026-09-10T19:24:00.000Z
-- Site timestamp: 2026-09-10T23:00:03.488Z
-- Tags: Agents, Industry
-
-OpenAI’s public-beta Agents API lets developers run Codex-style agents with hosted sandboxes, tools, files and configurable compute.
-
-OpenAI has put its Agents API into public beta, offering a managed way to build and run software agents that can coordinate model calls, tool use and context on OpenAI’s infrastructure.
-
-## What launched
-
-The API includes OpenAI-hosted sandboxes where agents can execute code, manipulate files, install packages and produce artifacts. Developers can also bring their own sandbox or connect an external provider, with options for CPU, GPU and memory capacity.
-
-The important architectural choice is that OpenAI operates the agent loop: it coordinates model calls, tool invocation and context while developers define the agent’s capabilities and execution environment. That reduces the amount of orchestration code required to move from a prototype to a persistent cloud workflow.
-
-The launch arrives alongside a broader shift in OpenAI’s developer stack toward long-running, tool-using systems rather than single-turn text generation. Agents can now be deployed with more of the operational layer—execution, files, package installation and artifacts—already attached.
-
-## Why it matters
-
-The API could make Codex-style agents easier to ship inside enterprise products, but it also gives OpenAI control over a valuable layer of application infrastructure. Developers gain speed and convenience; they may also become more dependent on OpenAI’s runtime, pricing and safety boundaries.
-
-The unresolved question is whether managed sandboxes can support reliable production workloads at predictable cost. Public beta availability demonstrates a platform direction, not yet a mature operating model.
-
-Chinese title: OpenAI开放智能体API，提供托管沙箱运行环境
-Chinese summary: OpenAI推出公开测试版智能体API，开发者可直接调用托管沙箱，让具备工具和文件能力的智能体在云端运行。
-
-Sources:
-  - OpenAI Developers announcement on Agents API: https://x.com/OpenAIDevs/status/2098130570048045453
-  - OpenAI-hosted sandboxes for agents: https://x.com/OpenAIDevs/status/2098130625144451444
-
 ## Recent radar items
+
+### 2026-09-18
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-18.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-18.html
+
+- 2026-09-17T17:50:00Z | X / Pika | Pika relaunched its AI-video platform with lower pricing, consolidated model access, and migrated legacy accounts. | 中文：Pika 重做 AI 视频平台，主打更低价格、统一模型入口，并平滑迁移旧账户。 | https://x.com/pika_labs/status/2100643556788699194
+- 2026-09-17T16:18:00Z | X / Runway | Runway introduced Enhance Frame Rate, which converts footage to 25, 30, 48, 60, or 120 frames per second. | 中文：Runway 推出 Enhance Frame Rate，可将素材转换为 25、30、48、60 或 120 帧。 | https://x.com/runwayml/status/2100620377005203564
+- 2026-09-17T20:10:00Z | X / Krea | Krea added a video editor to Krea Agent for assembling generated clips, extending scenes, and adding audio. | 中文：Krea Agent 新增视频编辑器，可拼接生成片段、延展场景并添加音频。 | https://x.com/krea_ai/status/2100678711448334709
+- 2026-09-17T20:08:00Z | X / Character AI | Character AI announced an open-source image system designed to preserve characters across styles, scenes, and camera positions. | 中文：Character AI 宣布一套开源图像系统，旨在跨风格、场景和机位保持角色一致。 | https://x.com/character_ai/status/2100678357616930976
+- 2026-09-17T17:31:00Z | X / Cognition | Cognition said Devin was given a Ramp card and instructed to generate revenue through outreach, product building, and payments. | 中文：Cognition 称曾给 Devin 一张 Ramp 卡，让它通过外联、做产品和收款尝试自行赚钱。 | https://x.com/cognition/status/2100638797851513215
+- 2026-09-17T16:46:00Z | X / Goodfire AI | Goodfire reported that probes monitoring Kimi K3 reduced LLM-monitoring costs by 90% with an approximately 1% precision loss. | 中文：Goodfire 称，监测 Kimi K3 的探针可将大模型监控成本降低 90%，精度损失约 1%。 | https://x.com/GoodfireAI/status/2100627343027130610
+- 2026-09-17T17:02:00Z | X / World Labs | World Labs showed Atlas using 32 images of NVIDIA’s Voyager headquarters to enable real-time spatial flight through the building. | 中文：World Labs 展示 Atlas 仅凭 32 张英伟达 Voyager 总部图像实现建筑内实时空间飞行。 | https://x.com/theworldlabs/status/2100631511703920763
+- 2026-09-17T18:04:00Z | X / Sakana AI | Sakana AI released Fugu Max and Fugu Ultra v2, describing them as systems for orchestrating the Pareto frontier. | 中文：Sakana AI 发布 Fugu Max 与 Fugu Ultra v2，定位为探索性能与成本 Pareto 前沿的编排系统。 | https://x.com/SakanaAILabs/status/2100647118859886906
+- 2026-09-17T15:03:00Z | X / Unsloth AI | Unsloth released a Docker image supporting local training and inference for more than 500 models through GUI and notebook workflows. | 中文：Unsloth 发布 Docker 镜像，支持通过图形界面和 Notebook 本地训练、运行 500 多个模型。 | https://x.com/UnslothAI/status/2100601458458804381
+- 2026-09-17T15:00:00Z | X / Weaviate | Weaviate 1.39 added 4-bit Rotational Quantization to reduce vector memory use while maintaining strong recall. | 中文：Weaviate 1.39 加入 4-bit 旋转量化，在保持较强召回率的同时降低向量内存占用。 | https://x.com/weaviate_io/status/2100600774170399089
+- 2026-09-17T14:04:00Z | X / Google DeepMind | Google DeepMind said AlphaGenome Atlas mapped more than 2,500 regulatory patterns and is freely accessible to researchers. | 中文：Google DeepMind 表示，AlphaGenome Atlas 已绘制 2500 多种基因调控模式，并向研究人员免费开放。 | https://x.com/GoogleDeepMind/status/2100586770572177551
+- 2026-09-17T14:03:00Z | X / ElevenLabs | ElevenLabs said Cadence uses ElevenAgents to manage chronic-care workflows across more than 20 U.S. health systems. | 中文：ElevenLabs 称，Cadence 正在 20 多个美国医疗系统中用 ElevenAgents 管理慢病照护流程。 | https://x.com/ElevenLabs/status/2100586333643149708
+- 2026-09-17T18:00:00Z | X / Replit | Replit introduced Custom Connectors, allowing workspace administrators to connect supported public services without waiting for first-party integrations. | 中文：Replit 推出 Custom Connectors，允许工作区管理员连接受支持的公共服务，无需等待官方集成。 | https://x.com/Replit/status/2100645969138213077
+- 2026-09-17T16:33:00Z | X / Figma | Figma introduced a node that connects any Figma frame into Weave workflows for branded content creation, iteration, translation, and transformation. | 中文：Figma 为 Weave 推出节点，可把任意 Figma 画面接入品牌内容生成、迭代、翻译和改造流程。 | https://x.com/figma/status/2100624143188394161
 
 ### 2026-09-17
 
@@ -1133,39 +1162,3 @@ Sources:
 - 2026-09-14T03:26:00Z | X / Luma AI | Luma described generative media in entertainment as infrastructure rather than a collection of standalone creator tools. | 中文：Luma 表示，娱乐行业的生成式媒体已从一组独立工具变成需要建设的基础设施。 | https://x.com/LumaLabsAI/status/2099339083919040725
 - 2026-09-14T00:00:00Z | X / AWS Developers | AWS Developers promoted a $10,000 competition for building an AI agent that handles everyday tasks, with submissions closing the next day. | 中文：AWS Developers 推广一项 1 万美元竞赛，鼓励开发能处理日常事务的 AI 代理，投稿截止时间为次日。 | https://x.com/awsdevelopers/status/2099287013534920707
 - 2026-09-14 | OpenAI | OpenAI profiled Fyxer, whose email assistant uses 30–50 specialized models and reports 53% of AI drafts accepted unchanged. | 中文：OpenAI介绍了Fyxer：其邮件助手采用30至50个专用模型，生成草稿原样发送率达53%。 | https://openai.com/index/fyxer/
-
-### 2026-09-13
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-13.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-13.html
-
-- 2026-09-12T21:53:00Z | X / Ollama | Ollama says Amp users can route requests to its cloud models through BYOK, enabling remotely controlled agents without usage limits or fees. | 中文：Ollama称Amp用户现可通过自带密钥路由其云端模型，远程控制代理且不受用量或BYOK费用限制。 | https://x.com/ollama/status/2098892877388714179
-- 2026-09-12T18:51:00Z | MarkTechPost | The Fly Language Model embeds a fruit-fly connectome into a frozen 1.2B-parameter LLM, while controls found that the wiring provided no benefit. | 中文：Fly Language Model将果蝇完整神经连接组嵌入冻结的12亿参数大模型，但对照实验发现这种接线并未带来收益。 | https://www.marktechpost.com/2026/09/12/fly-language-model-flm-wires-the-full-fruit-fly-connectome-into-a-frozen-1-2b-llm-and-its-own-controls-show-the-wiring-does-not-help/
-- 2026-09-12T16:41:00Z | X / Arena | LMSYS Arena published WebDev Code Arena leaderboard details and a year-long visualization of leading models’ progress. | 中文：LMSYS Arena发布WebDev代码竞技场排行榜详情，并用视频展示近一年领先模型的进步轨迹。 | https://x.com/arena/status/2098814381458907375
-- 2026-09-12T19:45:00Z | X / Databricks | Databricks highlighted Genie One, which uses unified enterprise context to make AI answers reflect how a business actually operates. | 中文：Databricks展示Genie One，利用统一企业上下文，让AI回答更贴合企业实际运营方式。 | https://x.com/databricks/status/2098860472288137504
-- 2026-09-12T15:00:00Z | X / Tripo | Tripo announced the 2026 Tripothon S1 global online kickoff, featuring presentations, 3D workflows, and live demonstrations. | 中文：Tripo宣布2026 Tripothon S1全球线上启动活动，内容包括演讲、3D工作流与现场演示。 | https://x.com/tripoai/status/2098788735781331372
-- 2026-09-12T11:44:00Z | X / Meshy | Meshy reported a Kyoto workshop where participants used AI 3D creation, creative challenges, and a game jam to turn ideas into assets. | 中文：Meshy称其京都工作坊通过AI 3D创作、创意挑战和游戏开发赛，帮助参与者把想法转成资产。 | https://x.com/MeshyAI/status/2098739576865276402
-- 2026-09-12T15:28:00Z | X / Sakana AI | Sakana AI said Fugu Ultra v2 is live on OpenRouter and reported best or joint-best results on five of eight difficult benchmarks. | 中文：Sakana AI称Fugu Ultra v2已上线OpenRouter，并在八项高难基准中的五项取得最佳或并列最佳成绩。 | https://x.com/SakanaAILabs/status/2098795892895580512
-- 2026-09-12T15:27:00Z | X / ElevenLabs | ElevenLabs described forward-deployed engineers as part of the product team, tasked with solving customer problems and stretching product capabilities. | 中文：ElevenLabs将前线部署工程师定义为产品团队成员，负责解决客户问题并推动产品能力边界。 | https://x.com/ElevenLabs/status/2098795591082156184
-- 2026-09-12T14:00:00Z | X / AWS Developers | AWS Developers promoted an agent toolkit for developers, signaling continued investment in reusable infrastructure for building and deploying AI agents. | 中文：AWS Developers推广一套代理工具包，显示其继续投入可复用的AI代理开发与部署基础设施。 | https://x.com/awsdevelopers/status/2098773682948575295
-- 2026-09-12T17:33:00Z | X / OpenAI Developers | OpenAI Developers posted guidance on GPT-6 Astra skills and prompts, emphasizing specific triggers, progressive disclosure, and explicit completion criteria. | 中文：OpenAI Developers发布GPT-6 Astra技能与提示词指南，强调明确触发条件、渐进式披露和清晰完成标准。 | https://x.com/OpenAIDevs/status/2098827327832822014
-- 2026-09-12T11:38:00Z | 量子位 | China’s QbitAI reported that Taichu’s integrated intelligent-computing system was selected for an annual national excellence achievement award. | 中文：量子位报道，太初元碁超智融合计算系统入选“算力中国·年度卓越成就”。 | https://www.qbitai.com/2026/09/487860.html
-- 2026-09-12T16:06:00Z | InfoQ 中文 | Google Mantis is described as an agent-based vulnerability-scanning framework designed to reduce false positives through reproduction, patching, and re-attack. | 中文：Google Mantis是一套旨在减少误报的代理漏洞扫描框架，可执行复现、修补、再次攻击和风险评分。 | https://www.infoq.cn/article/mF8WwkbQRUS7ZKprE3Ku
-- 2026-09-12T14:41:00Z | The Verge | The Verge reported that proposed US data-center rules would give facilities more latitude to pollute, raising health concerns around AI infrastructure. | 中文：The Verge报道，美国拟议数据中心规则将给予设施更大污染空间，引发对AI基础设施健康影响的担忧。 | https://www.theverge.com/ai-artificial-intelligence/994112/ai-data-center-pollution-health-epa
-- 2026-09-12T14:05:00Z | The Decoder | The Decoder reported that Nvidia may invest up to $10 billion in Anthropic’s planned IPO, potentially becoming a major strategic backer. | 中文：The Decoder报道，英伟达可能向Anthropic计划中的IPO投资最多100亿美元，或成为其重要战略支持者。 | https://the-decoder.com/nvidia-wants-to-pour-up-to-10-billion-into-anthropics-record-breaking-ipo/
-- 2026-09-12T11:00:00Z | The Verge | OpenAI promoted a competition around the Millennium Prize Problems, inviting AI systems to pursue solutions to famous mathematical challenges. | 中文：OpenAI推广围绕千禧年大奖难题的竞赛，邀请AI系统尝试解决著名数学挑战。 | https://www.theverge.com/ai-artificial-intelligence/994255/openai-millennium-prize-problem-tristan-buckmaster-competition
-- 2026-09-13T08:10:00Z | MarkTechPost | AWS introduced Pizza Bot, an open-source inbox for background AI agents that lets asynchronous tasks communicate through messages. | 中文：AWS 推出开源 Pizza Bot 收件箱，让后台 AI 代理通过消息协作处理异步任务。 | https://www.marktechpost.com/2026/09/13/aws-introduces-pizza-bot-an-open-source-inbox-for-background-ai-agents/
-- 2026-09-13T10:00:00Z | InfoQ 中文 | Figma described how AI agents are being used to improve security workflows, including automated investigation and remediation support. | 中文：Figma 介绍了 AI 代理如何用于安全流程，包括自动调查与修复支持。 | https://www.infoq.cn/article/eS4M9XEPmLbkxksCyAye?utm_source=rss&utm_medium=article
-- 2026-09-13T10:00:00Z | InfoQ 中文 | A QCon presentation proposed probe-based, fully automated evaluation pipelines that continuously evolve instead of relying on fixed large-language-model test sets. | 中文：QCon 分享提出探测式全自动评测管线，可持续进化，不再依赖固定的大模型测试集。 | https://www.infoq.cn/article/0kYhxXxhOXhxGATe64ec?utm_source=rss&utm_medium=article
-- 2026-09-13T07:38:00Z | 量子位 | A navigation model reportedly handled more than 2,000 simulated real-world scenarios across four robot embodiments without task-specific retraining. | 中文：一个导航模型在仿真中覆盖 2000 多个真实场景，并零样本适配四种机器人本体。 | https://www.qbitai.com/2026/09/488672.html
-- 2026-09-13T06:40:00Z | 量子位 | A Shanghai Bund demonstration featured an agent that could work, chat, and autonomously remove people from its social-media circle. | 中文：外滩展示了一款能干活、陪聊，还会自主将用户拉黑的智能代理。 | https://www.qbitai.com/2026/09/488447.html
-- 2026-09-13T05:56:00Z | MarkTechPost | A new analysis outlined four harness mechanisms that reduce context overflow and goal loss during long-horizon agent tasks. | 中文：一篇新分析总结了四种机制，用于缓解长时代理任务中的上下文溢出与目标丢失。 | https://www.marktechpost.com/2026/09/12/context-engineering-inside-the-harness-4-mechanisms-that-beat-context-overflow-and-goal-loss-on-long-horizon-tasks/
-- 2026-09-13T07:20:00Z | 量子位 | QbitAI profiled an engineer whose project reached the top three GitHub trending lists after a decade-long path from vocational college to software development. | 中文：量子位报道一名专升本工程师，经过十年积累后，其项目登上 GitHub 三榜第一。 | https://www.qbitai.com/2026/09/488519.html
-- 2026-09-13T01:57:00Z | X @tripoai | Tripo showcased a Codex plugin that combines its API with an Astra workflow to run a complete customizable 3D modeling studio. | 中文：Tripo 展示了 Codex 插件，可结合 API 与 Astra 工作流运行完整的可定制 3D 建模工作室。 | https://x.com/tripoai/status/2098954222947729590
-- 2026-09-13T00:00:00Z | X @SakanaAILabs | Sakana AI shared a Royal Society discussion arguing that world models may be central to understanding whether current systems approach human-like intelligence. | 中文：Sakana AI 分享英国皇家学会讨论，认为世界模型可能是判断 AI 是否接近人类智能的关键。 | https://x.com/SakanaAILabs/status/2098924630002000056
-- 2026-09-13T07:17:00Z | X @awscloud | AWS said NFL Next Gen Stats in Melbourne are powered by its cloud infrastructure and AI-driven sports analytics. | 中文：AWS 表示，墨尔本 NFL Next Gen Stats 由其云基础设施与 AI 体育分析能力驱动。 | https://x.com/awscloud/status/2099034664161718384
-- 2026-09-13T09:27:00Z | The Decoder | A two-year university study found that banning AI from classrooms left students worse off than guided, accountable use. | 中文：一项为期两年的大学研究发现，禁止课堂使用 AI 反而让学生处境更差。 | https://the-decoder.com/two-year-university-study-finds-banning-ai-from-classrooms-leaves-students-worse-off/
-- 2026-09-13T10:29:00Z | IT之家 | Nvidia employee departures reportedly included a founder whom Jensen Huang advised and invested in, underscoring the chipmaker’s startup influence. | 中文：据报道，一名英伟达员工离职创业并获黄仁勋建议与投资，凸显芯片巨头对创业生态的影响。 | https://www.ithome.com/1/001/830.htm
-- 2026-09-13T01:16:00Z | X @OpenAIDevs | OpenAI Developers promoted an 800-number ChatGPT service, extending conversational access beyond conventional apps and websites. | 中文：OpenAI Developers 推出 1-800-ChatGPT，让用户不依赖常规应用或网站即可对话。 | https://x.com/OpenAIDevs/status/2098913661993603215
-- 2026-09-13T10:52:00Z | The Decoder | OpenAI’s GPT-6 Astra reportedly piloted a surveillance drone and operated a small business autonomously in demonstrations. | 中文：据报道，OpenAI 的 GPT-6 Astra 在演示中操控监视无人机，并自主运营一家小型企业。 | https://the-decoder.com/gpt-6-astra-pilots-a-surveillance-drone-and-runs-a-business-on-its-own/
-- 2026-09-13T09:54:00Z | IT之家 | China’s University of Science and Technology team reported quantum-secure positioning with provable security and accuracy better than 75 meters. | 中文：中国科大等团队实现具备可证明安全性的量子安全定位，精度优于 75 米。 | https://www.ithome.com/1/001/825.htm

@@ -13,6 +13,115 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-claude-biomolecular-models.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-claude-biomolecular-models.html",
+      "title": "Anthropic开源Claude优化生物模型的代码",
+      "summary": "Anthropic称Claude已优化30多个开源生物模型，平均提速约4倍，并支持更低显存运行模式。",
+      "content_text": "## 成果是什么\n\nAnthropic表示，其内部通用研究模型已经优化了30多个用于生物分子研究的开源深度学习模型，覆盖结构预测、蛋白质设计、基因组学和蛋白质语言模型等任务。公司称，在仅有极小精度损失的情况下，整体平均速度提升约4倍；若要求输出完全一致，速度也接近提升一倍。\n\n这项工作还实现了低内存模式，可处理超过1万个生物学输入标记，包括氨基酸、核苷酸以及小分子和离子的原子。Anthropic称，相关任务现在可以在单个英伟达GPU节点上运行，有望降低无法负担大型集群的研究团队的硬件门槛。\n\n此前，Anthropic曾展示Claude调用多个开源工具设计全新蛋白质结合剂。但那次实验每个目标最多消耗1万美元基础设施费用，相当于约2500个H100 GPU小时。此次优化的目标，正是让这类研究流程更容易被普通实验室采用。\n\n## 从基准测试走向湿实验\n\nAnthropic将开源优化代码，并与Adaptyv Bio共同发起蛋白质设计竞赛。项目围绕五个高难度问题展开，提供最高100万美元Claude额度、25万美元Modal算力额度，并为超过5000个设计提供实验验证。\n\n湿实验环节至关重要，因为推理速度变快并不等于生成的蛋白质有效。真实实验可能发现结合能力、稳定性或可制造性方面的问题，而这些往往无法从软件指标中看出。\n\n## 为什么重要\n\n这次发布展示了通用AI模型如何直接改进专业科学软件的效率，而不只是生成科研文字。如果这些提速结果能够被独立复现，并在实验室中转化为有效设计，药物研发的计算预算和迭代速度都可能受到影响。现阶段最确定的是工程优化，真正的生物学价值仍需实验结果证明。",
+      "date_published": "2026-09-17T21:41:00.000Z",
+      "date_modified": "2026-09-17T23:00:04.236Z",
+      "tags": [
+        "研究",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-claude-biomolecular-models.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-claude-biomolecular-models.html",
+        "source_published_at": "2026-09-17T21:41:00.000Z",
+        "site_published_at": "2026-09-17T23:00:04.236Z",
+        "sources": [
+          {
+            "title": "How Claude is uplifting biomolecular modeling",
+            "url": "https://www.anthropic.com/research/claude-uplifts-biomolecular-modeling"
+          },
+          {
+            "title": "Anthropic opens protein design competition with Adaptyv Bio",
+            "url": "https://www.anthropic.com/news/life-sciences-verification-program"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-projects-parallel-agents.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-projects-parallel-agents.html",
+      "title": "Anthropic重做Claude Code Projects，让多智能体并行协作",
+      "summary": "Anthropic推出重做版Projects，让Claude协调云端编码会话、共享记忆，并跨多个代码库并行提交修改。",
+      "content_text": "## 发生了什么\n\nAnthropic将Claude Code Projects从“文件夹加对话”重做成面向长期软件任务的协调层。用户只需描述目标，Claude便会把工作拆分到多个并行线程中执行。\n\n每个线程都是独立的Claude Code云端会话，拥有自己的代码分支和工作副本。协调器负责分派任务、检查结果、处理依赖关系，并汇总最终成果。比如，针对结账接口延迟，Claude可以同时让不同线程分析各个端点、测试优化方案并准备拉取请求。\n\n新版Projects还加入共享项目记忆。不同线程产生的决定、限制条件和工作偏好会持续沉淀，Claude可以记住发布日期为何推迟、某项改动需要谁批准等背景。项目同时提供文件与产物库，用户可以在主对话中查看、调整进度，也可以通过手机介入。\n\n## 开放范围与限制\n\n该功能以测试版形式首先开放给使用Claude Code云端会话的部分Pro和Max订阅者。原有Projects仍可继续使用，后续将扩大到Claude、Team和Enterprise用户。目前线程运行在Anthropic云端，不能访问用户本地网络中的文件和工具。\n\n并行运行也会更快消耗用量额度。共享记忆和分支机制降低了交接成本，但多个智能体同时修改同一代码区域时，仍会产生普通的合并冲突。\n\n## 为什么重要\n\n这次更新把编码智能体从逐条请求推进到项目级委派。真正值得关注的不是多了一个界面，而是多个自治工作流开始被包装成软件生产的基本单元。它能否减少人工协调、审查和返工，最终仍取决于编排质量与使用成本。",
+      "date_published": "2026-09-17T17:07:00.000Z",
+      "date_modified": "2026-09-17T23:00:04.236Z",
+      "tags": [
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/claude-code-projects-parallel-agents.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-code-projects-parallel-agents.html",
+        "source_published_at": "2026-09-17T17:07:00.000Z",
+        "site_published_at": "2026-09-17T23:00:04.236Z",
+        "sources": [
+          {
+            "title": "Projects redesigned: from folder to conversation",
+            "url": "https://claude.com/blog/projects-redesigned"
+          },
+          {
+            "title": "Claude Code relaunches Projects to manage multiple AI agents in the cloud",
+            "url": "https://www.theverge.com/ai-artificial-intelligence/997134/anthropic-claude-code-projects"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/un-global-data-commons-ai-agents.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/un-global-data-commons-ai-agents.html",
+      "title": "联合国与谷歌推出面向AI的全球数据平台",
+      "summary": "联合国与谷歌发布开放知识图谱，让AI代理查询关联的官方统计数据并生成可追溯的研究结果。",
+      "content_text": "## 统一全球统计数据\n\n联合国系统与谷歌推出联合国系统数据公共平台，试图整合长期分散在不同机构、格式和地理口径中的全球统计数据。\n\n该平台建立在Google Data Commons之上，将指标、时间线和地理位置连接成面向AI的知识图谱。谷歌表示，参与接入的数据集会由联合国统计人员和技术专家验证。研究人员和政策制定者因此可以直接比较健康、教育、贫困和气候风险等议题，而不必先花数月清理表格、统一口径。\n\n平台同时支持自然语言查询和智能体访问。借助包括Model Context Protocol在内的开放标准，AI系统可以从联合国系统数据中提取权威数字，跨领域关联信息，并生成图表、信息图或报告草稿。谷歌也提醒用户，在引用关键数字前仍应检查底层来源。\n\n## 为什么这类基础设施重要\n\n多数AI系统已经能总结公开信息，但一旦数据分散、定义不一致或来源薄弱，答案就容易出错。结构化统计层为智能体提供了更稳定的事实入口，也保留了回溯数据来源的路径。\n\n这并不意味着错误会自动消失。数据覆盖范围、更新周期、统计口径冲突以及智能体自身的推理质量，都会影响最终答案。随着更多机构加入，平台能否持续维护一致的元数据同样关键。\n\n谷歌与联合国表示，目标是在2027年前纳入联合国系统80%的统计数据集。这使项目不再只是一个搜索网站，而是在尝试把庞大的国际数据体系转化为机器可读的公共基础设施。\n\n## 为什么重要\n\n与新一代前沿模型相比，这次发布并不轰动，但它的制度影响范围更大。如果被广泛采用，数据公共平台可能改变AI回答全球发展问题的方式，也会改变研究人员审计这些答案的路径。真正重要的是，智能体把数据加工成漂亮结论时，引用、定义和更新时间是否仍然清晰可见。",
+      "date_published": "2026-09-17T20:00:00.000Z",
+      "date_modified": "2026-09-17T23:00:04.236Z",
+      "tags": [
+        "产业",
+        "Agent",
+        "研究"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/un-global-data-commons-ai-agents.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/un-global-data-commons-ai-agents.html",
+        "source_published_at": "2026-09-17T20:00:00.000Z",
+        "site_published_at": "2026-09-17T23:00:04.236Z",
+        "sources": [
+          {
+            "title": "Making global data easier to explore",
+            "url": "https://blog.google/innovation-and-ai/technology/ai/google-un-data-commons-platform/"
+          },
+          {
+            "title": "UN Secretary-General's remarks on the launch of the UN System Data Commons",
+            "url": "https://easterncaribbean.un.org/en/322845-un-secretary-generals-remarks-member-states-launch-united-nations-system-data-commons"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-one-claude-workspace.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-one-claude-workspace.html",
       "title": "Anthropic将Claude聊天与Cowork合并为统一工作台",
@@ -1796,115 +1905,6 @@
           {
             "title": "Gimlet Labs nabs $300M for its disaggregated inference platform",
             "url": "https://siliconangle.com/2026/09/04/gimlet-labs-nabs-300m-for-its-disaggregated-inference-platform/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/github-hydrafusion-model-routing.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/github-hydrafusion-model-routing.html",
-      "title": "GitHub推出多模型编程调度系统HydraFusion",
-      "summary": "HydraFusion可按任务选择单模型、逐级升级或交叉审查流程，在编程质量、成本和延迟之间动态取舍。",
-      "content_text": "## 一次请求，动态组合多种模型\n\nGitHub开放了Project HydraFusion研究预览。这套Copilot运行时不仅判断哪款模型适合当前编程任务，还会决定模型之间如何协作。它可以让单一模型直接处理，也可以先由成本较低的模型尝试、未达标准后再升级，或安排另一模型审查初稿，再由原模型修订。\n\n所有Copilot套餐用户都可通过GitHub Copilot CLI的实验功能调用HydraFusion。使用者像选择普通模型一样选择它，实际工作流则由系统自动构建。计费会覆盖起草、审查、修订和升级过程中各模型消耗的全部词元，并按对应模型的标准价格计算。\n\nGitHub称，在TerminalBench 2.1上，HydraFusion相较Claude Opus 5将验证任务质量提高4.9个百分点，同时把估算成本降低67%。其调度策略还使用DeepSWE以及源自真实Copilot会话的数据集进行调整。为控制风险，系统会设置超时、预先验证模型配置，并让审查模型在没有工具权限的隔离环境中工作；流程失败或取消时，不会向代码仓库应用未完成的修改。\n\n这些结果仍主要来自离线受控测试。GitHub目前建议从范围明确、一次提示即可描述的大型任务开始，多轮协作的稳定性、额外延迟以及复杂真实代码库中的表现仍待验证。\n\n## 为什么重要\n\nHydraFusion把“选哪个模型”从开发者的重复选择变成底层基础设施问题。如果动态调度在生产环境中同样有效，编程智能体就能用便宜模型完成多数工作，仅在必要时调用最强模型，不再把质量与利润完全押在单一供应商身上。更深一层看，GitHub由此掌握了模型厂商与Copilot用户之间的调度入口；当不同模型逐渐可以相互替换时，这个入口本身会成为重要的平台权力。",
-      "date_published": "2026-09-04T16:09:00.000Z",
-      "date_modified": "2026-09-04T23:00:03.050Z",
-      "tags": [
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/github-hydrafusion-model-routing.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/github-hydrafusion-model-routing.html",
-        "source_published_at": "2026-09-04T16:09:00.000Z",
-        "site_published_at": "2026-09-04T23:00:03.050Z",
-        "sources": [
-          {
-            "title": "Project HydraFusion: Frontier quality via multi-model orchestration",
-            "url": "https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/"
-          },
-          {
-            "title": "GitHub Copilot CLI",
-            "url": "https://github.com/github/copilot-cli"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/google-lyria-global-expansion.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/google-lyria-global-expansion.html",
-      "title": "谷歌将Lyria 3.5推向Gemini及开发者平台",
-      "summary": "谷歌把Lyria 3.5从早期Flow Music入口扩展至全球Gemini用户、AI Studio和API，显著扩大音乐生成覆盖面。",
-      "content_text": "## 从专业入口走向谷歌全产品体系\n\n谷歌已向全球Gemini应用用户开放Lyria 3.5，并通过Google AI Studio和Gemini API提供这款音乐生成模型。它同时进入Google Vids和Flow Music，使普通用户、开发者及办公场景能够从不同入口调用同一套音乐能力。\n\nLyria 3.5本身早在7月就已率先登陆Flow Music，因此本次并非模型首次发布，而是发生在本期时间窗口内的一次大范围渠道扩张。网页端和移动端Gemini用户可以选择或描述曲风、指定人声或纯音乐、套用模板，并控制曲目长短。API开放后，开发者还可以把模型嵌入自己的应用以及自动化创意流程。\n\n谷歌称，Lyria 3.5相较此前产品能生成更丰富的编曲、更具表现力的人声和更高保真的音频，同时改善发音、歌词结构以及节奏和时长控制。这些升级针对了生成音乐的常见短板：短片段听起来不错，但完整歌曲容易在结构、歌词和人声清晰度上失控。此次公告没有提供新的详细独立评测，也未进一步披露训练数据构成，因此模型之间的真实质量差距及版权治理仍有待观察。\n\n## 为什么重要\n\nGemini全球开放加上API接入，让Lyria获得了专业音乐生成平台很难复制的分发组合：消费级助手、开发者平台和办公视频工具可以同时导流。生成音乐因此可能从需要专门访问的产品，变成视频、广告和个性化内容中的常规素材。谷歌能否把庞大入口转化为持续创作，还取决于它是否能向音乐人和商业客户清楚说明内容来源、使用边界及合成人声规则。",
-      "date_published": "2026-09-04T16:02:00.000Z",
-      "date_modified": "2026-09-04T23:00:03.050Z",
-      "tags": [
-        "AIGC",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-lyria-global-expansion.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-lyria-global-expansion.html",
-        "source_published_at": "2026-09-04T16:02:00.000Z",
-        "site_published_at": "2026-09-04T23:00:03.050Z",
-        "sources": [
-          {
-            "title": "Create your best tracks yet with Lyria 3.5 in Gemini",
-            "url": "https://blog.google/innovation-and-ai/products/gemini-app/better-tracks-lyria-gemini/"
-          },
-          {
-            "title": "Introducing Lyria 3.5 in Google Flow Music",
-            "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/lyria-3-5/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-mai-image-flash.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-mai-image-flash.html",
-      "title": "微软在Foundry上线MAI-Image-2.6双模型",
-      "summary": "微软以完整版争夺图像编辑质量榜首，并用Flash版本降低生成成本，强化Foundry的企业图像生产能力。",
-      "content_text": "## 面向生产场景的两档图像模型\n\n微软在Microsoft Foundry公开预览MAI-Image-2.6和速度更快的MAI-Image-2.6-Flash。两款模型均由微软自研，目标是为需要稳定成本、生成速度和编辑能力的企业提供可直接部署的图像生成方案。\n\nMAI-Image-2.6新增多参考图编辑、网络信息支撑，以及更细致的格式和分辨率控制。微软称，新模型相较MAI-Image-2.5改善了文字生成、指令遵循和跨画面一致性。Flash版本则把这些能力压缩到更适合高并发应用的成本档位。按微软数据，它的速度超过GPT-Image-2-Medium的两倍，效率高出78%；不过这类厂商对比仍需在独立真实工作负载中验证。\n\nFoundry中，MAI-Image-2.6的图像输出价格为每百万词元38美元起，Flash为19美元起，文字和图片输入另行计费。在Artificial Analysis图像编辑榜上，完整版以1325分排名第一；Flash获得1311分，也进入统计区间高度重叠的第一梯队。该平台估算，两款模型每千张图片分别约为38.9美元和19.5美元，而高质量档GPT Image 2约为211美元。\n\n## 为什么重要\n\n微软正在争夺企业最容易量化的图像生成指标：编辑一致性、吞吐量和单张成本。Flash尤其值得关注，因为它在接近头部质量的同时，把完整版的输出价格大致减半。公开预览意味着稳定性、区域覆盖以及品牌敏感场景中的可靠性尚未完全确定，但微软已经拥有一套能与Foundry治理、权限和采购体系直接打包的图像模型，不必在这一层完全依赖外部供应商。",
-      "date_published": "2026-09-04T16:23:00.000Z",
-      "date_modified": "2026-09-04T23:00:03.050Z",
-      "tags": [
-        "模型",
-        "AIGC",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/microsoft-mai-image-flash.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-mai-image-flash.html",
-        "source_published_at": "2026-09-04T16:23:00.000Z",
-        "site_published_at": "2026-09-04T23:00:03.050Z",
-        "sources": [
-          {
-            "title": "MAI-Image-2.6 and MAI-Image-2.6-Flash: Quality and speed at production scale",
-            "url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/mai-image-2-6-and-mai-image-2-6-flash-quality-and-speed-at-production-scale/4550970"
-          },
-          {
-            "title": "Image Editing Leaderboard",
-            "url": "https://artificialanalysis.ai/image/leaderboard/editing/"
           }
         ]
       }
