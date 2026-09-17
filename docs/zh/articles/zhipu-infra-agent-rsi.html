@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>智谱公布早期RSI实践：GLM智能体优化自身推理系统 — Uncle Cat AI Radar</title>
+<meta name="description" content="智谱称，GLM-5.3驱动的基础设施智能体参与优化十万级国产算力集群，使GLM-5.3-Flash服务性能提升约3.2倍。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-infra-agent-rsi.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/zhipu-infra-agent-rsi.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-infra-agent-rsi.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/zhipu-infra-agent-rsi.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="智谱公布早期RSI实践：GLM智能体优化自身推理系统 — Uncle Cat AI Radar">
+<meta property="og:description" content="智谱称，GLM-5.3驱动的基础设施智能体参与优化十万级国产算力集群，使GLM-5.3-Flash服务性能提升约3.2倍。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-infra-agent-rsi.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="智谱公布早期RSI实践：GLM智能体优化自身推理系统 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="智谱称，GLM-5.3驱动的基础设施智能体参与优化十万级国产算力集群，使GLM-5.3-Flash服务性能提升约3.2倍。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="智谱公布早期RSI实践：GLM智能体优化自身推理系统 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"智谱公布早期RSI实践：GLM智能体优化自身推理系统","item":"https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-infra-agent-rsi.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-infra-agent-rsi.html#article","headline":"智谱公布早期RSI实践：GLM智能体优化自身推理系统","description":"智谱称，GLM-5.3驱动的基础设施智能体参与优化十万级国产算力集群，使GLM-5.3-Flash服务性能提升约3.2倍。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-infra-agent-rsi.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-infra-agent-rsi.html"},"datePublished":"2026-09-17T08:28:00.000Z","dateModified":"2026-09-17T11:00:03.637Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["Agent","研究","产业","模型"],"keywords":"Agent, 研究, 产业, 模型","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://www.aitokentria.com/news/mkv6ij47kp","https://x.com/Zai_org/status/2100481236364079277","https://www.qbitai.com/2026/09/491357.html"],"about":[{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"研究"},{"@type":"Thing","name":"产业"},{"@type":"Thing","name":"模型"}]}]}</script>
+</head>
+<body data-slug="zhipu-infra-agent-rsi" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/zhipu-infra-agent-rsi.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-09-17T08:28:00Z">2026年9月17日 16:28</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>智谱公布早期RSI实践：GLM智能体优化自身推理系统</h1>
+  <p class="standfirst">智谱称，GLM-5.3驱动的基础设施智能体参与优化十万级国产算力集群，使GLM-5.3-Flash服务性能提升约3.2倍。</p>
+  <h2>智谱公布了什么</h2><p>智谱发布了一项被其称为递归自我改进早期形态的实践：由 GLM-5.3 驱动的基础设施智能体，参与优化承载 GLM-5.3-Flash 的推理系统。该系统从模型首次在国产加速器集群上成功运行，到能够承载生产流量，用时约两周。</p><p>智谱表示，优化完成后端到端吞吐能力提升约3.2倍。集群规模超过10万颗国产 AI 加速器，同时需要支持百万级上下文、多模态请求，以及仍在完善中的国产芯片软件和通信生态。</p><h2>智能体具体做了什么</h2><p>这套系统并不是让模型自主决定训练路线，也不是让它直接重写模型。基础设施团队先搭建了工程闭环，再让智能体分析瓶颈、提出修改方案、完成部分代码调整，并通过正确性和性能实验验证结果。</p><p>智谱披露的案例包括：发现长上下文并行路径中的数值误差累积，定位 KV Transfer 与 DeepEP 调度未能有效重叠的问题，以及发现 Decode Kernel 重复执行归一化计算。公司称，其中一项调度修复将传输额外开销从超过30%降至1%以下；另一项内核优化则让特定负载性能提升1.71倍。</p><p>智谱将这套方法称为“稠密反馈”：智能体拿到的不是一个笼统的吞吐指标，而是与具体代码路径、算子、输入条件和执行过程相关，且能够快速验证的局部反馈。工程师仍负责设定目标、搭建实验环境，并审核高风险改动。</p><h2>为什么重要</h2><p>这项工作的意义不只是模型能够编写基础设施代码，而是部分工程判断被组织成了机器可以执行的流程。如果这种方法能够推广，生产 Trace、微基准测试和正确性检查，都可能成为下一代智能体训练与评测的数据来源。</p><p>不过，这还不是完整意义上的递归自我改进。当前智能体只是在人工设定边界和监督下，优化一套具体的部署系统，并没有自主修改自身权重或提出新的目标。它仍然值得关注，因为推理效率、国产硬件适配能力和系统调试经验，正在成为中国模型规模化部署的关键约束。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://www.aitokentria.com/news/mkv6ij47kp" rel="noopener" target="_blank">刚刚，智谱首个 RSI 成果发布，10 万国产卡用 GLM 造 GLM</a></li><li><a href="https://x.com/Zai_org/status/2100481236364079277" rel="noopener" target="_blank">Zhipu AI infrastructure update on GLM-5.3-Flash</a></li><li><a href="https://www.qbitai.com/2026/09/491357.html" rel="noopener" target="_blank">刚刚，唐杰发布智谱 RSI 首个成果</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-one-claude-workspace.html">Anthropic将Claude聊天与Cowork合并为统一工作台</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cohere-aleph-alpha-merger.html">Cohere与Aleph Alpha签署主权AI最终合并协议</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/google-home-agent-control.html">Google向第三方AI智能体开放Home设备控制</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

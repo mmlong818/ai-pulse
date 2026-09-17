@@ -119,6 +119,44 @@ Sources:
   - Our framework for reporting model misalignment: https://openai.com/index/model-misalignment-reporting-framework
   - The AI policy window is open. We need to act.: https://openai.com/index/ai-policy-window/
 
+### Zhipu’s GLM-5.3 Agent Optimizes Its Own Inference Stack
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/zhipu-infra-agent-rsi.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-infra-agent-rsi.html
+- Source timestamp: 2026-09-17T08:28:00.000Z
+- Site timestamp: 2026-09-17T11:00:03.637Z
+- Tags: Agents, Research, Industry, Models
+
+Zhipu says a GLM-5.3-powered infrastructure agent helped triple serving performance on a 100,000-accelerator Chinese cluster.
+
+## The claim
+
+Zhipu has published what it describes as an early recursive-self-improvement result: a GLM-5.3-powered infrastructure agent helped optimize the inference system serving GLM-5.3-Flash. The deployment moved from the model’s first successful run on a domestic accelerator cluster to carrying production traffic in roughly two weeks.
+
+Zhipu says end-to-end throughput improved by about 3.2 times during the process. The cluster contained more than 100,000 Chinese AI accelerators and had to support a million-token context window, multimodal requests, and an evolving software stack with less mature kernel and interconnect support than mainstream Nvidia systems.
+
+## What the agent actually did
+
+The agent was not allowed to redesign the model or independently decide the company’s training strategy. It worked inside an engineering loop built by human infrastructure teams. It analyzed bottlenecks, proposed changes, edited parts of the code, and ran experiments against correctness and performance checks.
+
+Reported examples include identifying accumulated numerical error in a long-context parallel path, finding that KV transfer failed to overlap properly with DeepEP dispatch, and detecting repeated normalization work in a decode kernel. Zhipu says one scheduling fix reduced transfer overhead from above 30% to below 1%, while a kernel change improved a targeted workload by 1.71 times.
+
+The company calls the underlying method “dense feedback”: the agent receives local, timely and experimentally verifiable signals rather than a single broad throughput metric. Engineers still defined the objectives, built the test environment and reviewed risky changes.
+
+## Why it matters
+
+The significance is less that a model wrote infrastructure code than that the surrounding system made engineering judgment partially machine-operable. If the approach generalizes, model developers may turn production traces, microbenchmarks and correctness tests into training and evaluation data for future agents.
+
+But this is not yet full recursive self-improvement. The agent optimized a bounded deployment loop under human supervision; it did not independently improve its own weights or establish new objectives. The result is nevertheless important because inference efficiency, domestic hardware compatibility and debugging expertise are becoming strategic constraints for Chinese model deployment.
+
+Chinese title: 智谱公布早期RSI实践：GLM智能体优化自身推理系统
+Chinese summary: 智谱称，GLM-5.3驱动的基础设施智能体参与优化十万级国产算力集群，使GLM-5.3-Flash服务性能提升约3.2倍。
+
+Sources:
+  - 刚刚，智谱首个 RSI 成果发布，10 万国产卡用 GLM 造 GLM: https://www.aitokentria.com/news/mkv6ij47kp
+  - Zhipu AI infrastructure update on GLM-5.3-Flash: https://x.com/Zai_org/status/2100481236364079277
+  - 刚刚，唐杰发布智谱 RSI 首个成果: https://www.qbitai.com/2026/09/491357.html
+
 ### Factory Raises $200 Million at a $5 Billion Valuation
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/factory-raises-200m.html
@@ -951,37 +989,6 @@ Sources:
   - OpenAI Developers announcement on Agents API: https://x.com/OpenAIDevs/status/2098130570048045453
   - OpenAI-hosted sandboxes for agents: https://x.com/OpenAIDevs/status/2098130625144451444
 
-### Sakana Fugu Max Targets Frontier AI at Lower Cost
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/sakana-fugu-orchestration-cost-frontier.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/sakana-fugu-orchestration-cost-frontier.html
-- Source timestamp: 2026-09-11T02:15:00.000Z
-- Site timestamp: 2026-09-11T11:00:03.382Z
-- Tags: Agents, Open Source, Industry
-
-Sakana AI released Fugu Max and Fugu Ultra v2, using model orchestration to pursue cheaper agent performance and higher autonomous-task scores.
-
-## Two releases, one orchestration strategy
-
-Sakana AI has released Fugu Max and Fugu Ultra v2, two versions of its multi-agent orchestration system aimed at different points on the capability-cost curve. Fugu Max is designed to route each task to the least expensive model capable of solving it, while Fugu Ultra v2 is optimized for maximum performance on demanding, multi-step workloads.
-
-The system combines open-weight and specialized models rather than depending on one proprietary frontier model. Sakana says the pool now includes NVIDIA’s Nemotron family and can be swapped as models, prices, or access conditions change. Both releases are available through an OpenAI-compatible API, allowing existing Fugu users to switch with a parameter change.
-
-Sakana reports that Fugu Max scores best overall on six benchmarks, including Terminal Bench 2.1, GPQAD, AA-LCR, GDP.pdf, AutomationBench and SWEFish. It lists pricing of $2 per million input tokens and $6 per million output tokens, claiming performance within reach of leading models at two to six times lower cost. Fugu Ultra v2 is positioned at the high end: Sakana reports a 48.3 score on Chartography and 74.3 on DeepSWE, ahead of the comparison models cited in its release.
-
-Those results remain vendor-reported, and the model pool excludes newer systems such as GPT-6 Astra and Claude Fable 5.1. That makes direct comparisons difficult, especially for tasks where routing overhead, tool reliability and latency matter as much as benchmark accuracy.
-
-## Why it matters
-
-The important shift is architectural. If Sakana’s numbers hold outside its own evaluation setup, model orchestration could become a practical way to reduce dependence on a single frontier provider while preserving strong agent performance. The unresolved question is whether a dynamic collection of smaller models can remain dependable in production, where failures in routing or coordination may erase the apparent savings.
-
-Chinese title: Sakana发布Fugu Max与Ultra v2，押注编排降低智能体成本
-Chinese summary: Sakana AI推出Fugu Max和Fugu Ultra v2，通过动态调度多种模型，同时冲击更低成本与更高阶智能体性能。
-
-Sources:
-  - Introducing Fugu Max and Fugu Ultra v2: Orchestrating the Pareto Frontier: https://sakana.ai/fugu-max-release/
-  - Sakana AI announcement on X: https://x.com/SakanaAILabs/status/2098233826816205275
-
 ## Recent radar items
 
 ### 2026-09-17
@@ -1004,6 +1011,21 @@ Sources:
 - 2026-09-16T15:00:00Z | X / Tripo | Tripo launched a ChatGPT plugin that turns prompts into 3D assets for gameplay and animation workflows. | 中文：Tripo推出ChatGPT插件，可将提示词直接转成用于游戏和动画流程的3D资产。 | https://x.com/tripoai/status/2100238277131276549
 - 2026-09-16T15:01:00Z | The Decoder | Mozilla’s new Smart Window assistant uses Mistral models to provide AI help inside the browser. | 中文：Mozilla的新Smart Window助手采用Mistral模型，在浏览器内部提供人工智能辅助。 | https://the-decoder.com/mozillas-new-smart-window-assistant-runs-on-mistrals-models/
 - 2026-09-16T13:00:00Z | OpenAI | OpenAI published a campaign describing how advertisers can use AI to create and personalize marketing materials. | 中文：OpenAI发布案例，介绍广告主如何利用人工智能制作并个性化营销素材。 | https://openai.com/index/reimagining-advertising-with-ai
+- 2026-09-17T09:45:00Z | The Decoder | OpenAI’s GPT-6 Astra reportedly decrypted a Nazi radio message in ten hours after 83 years of unsuccessful human analysis. | 中文：据报道，OpenAI 的 GPT-6 Astra 用十小时破译了一份搁置 83 年的纳粹无线电密文。 | https://the-decoder.com/openais-gpt-6-astra-decrypts-a-nazi-radio-message-in-ten-hours-that-went-unsolved-for-83-years/
+- 2026-09-17T10:24:00Z | The Decoder | OpenRouter’s latest token chart shows explosive usage growth, intensifying debate over whether AI demand reflects durable utility or speculative overbuilding. | 中文：OpenRouter 最新代币图表显示用量激增，再度引发 AI 需求究竟来自真实价值还是泡沫建设的争论。 | https://the-decoder.com/openrouters-staggering-token-chart-is-the-ai-bubble-debate-in-a-single-image/
+- 2026-09-17T09:42:00Z | 量子位 | Graphics researcher Xin Tong joined Meshy to lead its push toward playful, consumer-facing AI-generated 3D creation tools. | 中文：图形学研究者童欣加盟 Meshy，负责推动面向消费者的趣味化 AI 三维创作工具。 | https://www.qbitai.com/2026/09/491522.html
+- 2026-09-17T09:39:00Z | 量子位 | A Chinese state-owned enterprise’s general-purpose agent reportedly ranked among IDC’s top three in practical evaluations. | 中文：一家中国央企打造的通用 Agent 据称在 IDC 实测中进入前三。 | https://www.qbitai.com/2026/09/491454.html
+- 2026-09-17T06:51:00Z | Alibaba Wan | Alibaba’s Wan3.0 demonstrated a single 30-second generated video shot, extending its earlier five- and fifteen-second production milestones. | 中文：阿里 Wan3.0 展示了单条 30 秒生成视频，延续此前五秒和十五秒时长的迭代。 | https://x.com/Alibaba_Wan/status/2100477707058618835
+- 2026-09-17T05:00:00Z | TechCrunch | Icelandic voice-simulation startup Treble raised $18 million to expand its platform for generating realistic synthetic speech data. | 中文：冰岛语音模拟初创公司 Treble 筹集 1800 万美元，用于扩展逼真合成语音数据平台。 | https://techcrunch.com/2026/09/16/iceland-based-treble-raises-18-million-for-its-voice-simulation-platform/
+- 2026-09-17T02:26:00Z | SiliconANGLE | Open-weight model developer Arcee AI reached a valuation above $1 billion through a new undisclosed Series B financing round. | 中文：开放权重模型开发商 Arcee AI 通过一轮未披露金额的 B 轮融资，估值突破 10 亿美元。 | https://siliconangle.com/2026/09/16/open-weight-model-developer-arcee-ai-reaches-1b-plus-valuation-with-undisclosed-series-b-funding/
+- 2026-09-17T02:38:00Z | SiliconANGLE | Hang Ten Systems raised another $53 million to deliver enterprise AI services using agentic code generation and reusable skills libraries. | 中文：Hang Ten Systems 追加融资 5300 万美元，利用智能体代码生成和可复用技能库提供企业 AI 服务。 | https://siliconangle.com/2026/09/16/ex-infosys-chief-vishal-sikkas-hang-ten-raises-another-53m-for-enterprise-ai-services/
+- 2026-09-16T23:40:00Z | The Verge | Snap introduced Specs Intelligence, an AI assistant for its smart glasses that will also be available on iOS and Mac. | 中文：Snap 推出 Specs Intelligence 智能助手，为其智能眼镜提供 AI 能力，并将登陆 iOS 和 Mac。 | https://www.theverge.com/tech/996078/snap-specs-intelligence-ai-agent-ios-mac
+- 2026-09-17T00:45:00Z | MarkTechPost | Nunchux AI introduced VC-Attention, a training-free low-bit attention kernel designed to accelerate video diffusion transformers. | 中文：Nunchux AI 发布 VC-Attention，一种无需训练的低比特注意力内核，旨在加速视频扩散 Transformer。 | https://www.marktechpost.com/2026/09/16/nunchux-ai-introduces-vc-attention-a-training-free-low-bit-attention-kernel-that-speeds-up-video-diffusion-transformers/
+- 2026-09-17T10:00:00Z | InfoQ 中文 | Researchers presented RhymeRL, a reinforcement-learning system that improves performance by learning from historical experience. | 中文：研究者介绍 RhymeRL，一套通过学习历史经验来提升性能的强化学习系统。 | https://www.infoq.cn/article/CbZGXuTBMFJPZ7WNtH9h
+- 2026-09-17T04:00:00Z | arXiv | GraphEcho proposes structural redundancy and evidence provenance mechanisms for improving reliability in LLM-based graph agents. | 中文：GraphEcho 提出结构冗余与证据溯源机制，以提升基于大模型的图智能体可靠性。 | https://arxiv.org/abs/2609.17695
+- 2026-09-17T00:30:00Z | Sakana AI | Sakana AI upgraded Sakana Chat with a newer orchestrator model and added memory capabilities. | 中文：Sakana AI 为 Sakana Chat 更换最新编排模型，并新增记忆功能。 | https://x.com/SakanaAILabs/status/2100381722147721724
+- 2026-09-17T03:20:00Z | Kling AI | Kling AI previewed Odysseus: The Fall, a feature film directed by Ash Koosha and powered by Kling AI’s video-generation technology. | 中文：Kling AI 预告由 Ash Koosha 执导、使用 Kling AI 视频生成技术制作的长片《Odysseus：The Fall》。 | https://x.com/Kling_ai/status/2100424655840387292
+- 2026-09-17T10:31:00Z | IT之家 | OpenAI developer tools reportedly helped decode an 83-year-old German military radio message in ten hours. | 中文：据报道，OpenAI 开发者工具十小时内协助破译了一份存在 83 年的德国军用无线电密文。 | https://www.ithome.com/1/003/789.htm
 
 ### 2026-09-16
 

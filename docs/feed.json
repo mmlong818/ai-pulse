@@ -160,6 +160,48 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/zhipu-infra-agent-rsi.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/zhipu-infra-agent-rsi.html",
+      "title": "Zhipu’s GLM-5.3 Agent Optimizes Its Own Inference Stack",
+      "summary": "Zhipu says a GLM-5.3-powered infrastructure agent helped triple serving performance on a 100,000-accelerator Chinese cluster.",
+      "content_text": "## The claim\n\nZhipu has published what it describes as an early recursive-self-improvement result: a GLM-5.3-powered infrastructure agent helped optimize the inference system serving GLM-5.3-Flash. The deployment moved from the model’s first successful run on a domestic accelerator cluster to carrying production traffic in roughly two weeks.\n\nZhipu says end-to-end throughput improved by about 3.2 times during the process. The cluster contained more than 100,000 Chinese AI accelerators and had to support a million-token context window, multimodal requests, and an evolving software stack with less mature kernel and interconnect support than mainstream Nvidia systems.\n\n## What the agent actually did\n\nThe agent was not allowed to redesign the model or independently decide the company’s training strategy. It worked inside an engineering loop built by human infrastructure teams. It analyzed bottlenecks, proposed changes, edited parts of the code, and ran experiments against correctness and performance checks.\n\nReported examples include identifying accumulated numerical error in a long-context parallel path, finding that KV transfer failed to overlap properly with DeepEP dispatch, and detecting repeated normalization work in a decode kernel. Zhipu says one scheduling fix reduced transfer overhead from above 30% to below 1%, while a kernel change improved a targeted workload by 1.71 times.\n\nThe company calls the underlying method “dense feedback”: the agent receives local, timely and experimentally verifiable signals rather than a single broad throughput metric. Engineers still defined the objectives, built the test environment and reviewed risky changes.\n\n## Why it matters\n\nThe significance is less that a model wrote infrastructure code than that the surrounding system made engineering judgment partially machine-operable. If the approach generalizes, model developers may turn production traces, microbenchmarks and correctness tests into training and evaluation data for future agents.\n\nBut this is not yet full recursive self-improvement. The agent optimized a bounded deployment loop under human supervision; it did not independently improve its own weights or establish new objectives. The result is nevertheless important because inference efficiency, domestic hardware compatibility and debugging expertise are becoming strategic constraints for Chinese model deployment.",
+      "date_published": "2026-09-17T08:28:00.000Z",
+      "date_modified": "2026-09-17T11:00:03.637Z",
+      "tags": [
+        "Agents",
+        "Research",
+        "Industry",
+        "Models"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/zhipu-infra-agent-rsi.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-infra-agent-rsi.html",
+        "source_published_at": "2026-09-17T08:28:00.000Z",
+        "site_published_at": "2026-09-17T11:00:03.637Z",
+        "sources": [
+          {
+            "title": "刚刚，智谱首个 RSI 成果发布，10 万国产卡用 GLM 造 GLM",
+            "url": "https://www.aitokentria.com/news/mkv6ij47kp"
+          },
+          {
+            "title": "Zhipu AI infrastructure update on GLM-5.3-Flash",
+            "url": "https://x.com/Zai_org/status/2100481236364079277"
+          },
+          {
+            "title": "刚刚，唐杰发布智谱 RSI 首个成果",
+            "url": "https://www.qbitai.com/2026/09/491357.html"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/factory-raises-200m.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/factory-raises-200m.html",
       "title": "Factory Raises $200 Million at a $5 Billion Valuation",
@@ -1863,46 +1905,6 @@
           {
             "title": "Image Editing Leaderboard",
             "url": "https://artificialanalysis.ai/image/leaderboard/editing/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/replit-mcp-exits-beta.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/replit-mcp-exits-beta.html",
-      "title": "Replit Opens Its MCP Server to External AI Clients",
-      "summary": "Replit’s production-ready MCP server lets assistants including ChatGPT and Claude create, modify and deploy applications.",
-      "content_text": "## Replit moves beyond its own workspace\n\nReplit has taken its Model Context Protocol server out of beta, allowing compatible AI clients to direct Replit Agent without requiring users to work inside Replit’s main interface. The company says people can now create new applications, update existing projects and manage deployments from environments such as ChatGPT, Claude and Slack.\n\nThe server uses OAuth 2.0 authentication and the streamable HTTP version of MCP. Replit’s documentation also lists support for custom clients and software-development kits that implement the protocol. Once connected, an external assistant can invoke Replit’s application-building capabilities while Replit continues to provide the underlying project environment, agent and deployment infrastructure.\n\nThis release changes the role of Replit from a self-contained AI development product into an execution service that other assistants can call. A user discussing a product idea in one conversational tool can hand the implementation to Replit Agent without copying the specification into a separate workspace. Existing applications can likewise be revised through whichever MCP-compatible interface a team already uses.\n\nThe broader update announced alongside MCP included conversational project analytics and optional nightly database snapshots. Those additions make it possible to ask an agent about traffic, funnels and experiments, while adding a separate recovery layer above the point-in-time protection already attached to production databases.\n\n## Why it matters\n\nCoding-agent competition is increasingly about who owns execution after a user expresses an intention. By accepting instructions from rival assistants, Replit is betting that its application runtime, deployment system and project context can remain valuable even when another company controls the conversation. The approach could widen Replit’s reach, but it also makes authorization boundaries more important: an assistant able to modify and deploy an application needs narrowly scoped access, visible action records and dependable confirmation for consequential changes.",
-      "date_published": "2026-09-05T01:55:00.000Z",
-      "date_modified": "2026-09-05T11:00:03.118Z",
-      "tags": [
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/replit-mcp-exits-beta.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/replit-mcp-exits-beta.html",
-        "source_published_at": "2026-09-05T01:55:00.000Z",
-        "site_published_at": "2026-09-05T11:00:03.118Z",
-        "sources": [
-          {
-            "title": "This Week in Replit",
-            "url": "https://x.com/Replit/status/2096054560062402610"
-          },
-          {
-            "title": "Replit MCP comes out of beta",
-            "url": "https://x.com/Replit/status/2096054881710903629"
-          },
-          {
-            "title": "Replit MCP Server documentation",
-            "url": "https://docs.replit.com/platforms/mcp-server"
           }
         ]
       }

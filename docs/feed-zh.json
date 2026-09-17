@@ -160,6 +160,48 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-infra-agent-rsi.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-infra-agent-rsi.html",
+      "title": "智谱公布早期RSI实践：GLM智能体优化自身推理系统",
+      "summary": "智谱称，GLM-5.3驱动的基础设施智能体参与优化十万级国产算力集群，使GLM-5.3-Flash服务性能提升约3.2倍。",
+      "content_text": "## 智谱公布了什么\n\n智谱发布了一项被其称为递归自我改进早期形态的实践：由 GLM-5.3 驱动的基础设施智能体，参与优化承载 GLM-5.3-Flash 的推理系统。该系统从模型首次在国产加速器集群上成功运行，到能够承载生产流量，用时约两周。\n\n智谱表示，优化完成后端到端吞吐能力提升约3.2倍。集群规模超过10万颗国产 AI 加速器，同时需要支持百万级上下文、多模态请求，以及仍在完善中的国产芯片软件和通信生态。\n\n## 智能体具体做了什么\n\n这套系统并不是让模型自主决定训练路线，也不是让它直接重写模型。基础设施团队先搭建了工程闭环，再让智能体分析瓶颈、提出修改方案、完成部分代码调整，并通过正确性和性能实验验证结果。\n\n智谱披露的案例包括：发现长上下文并行路径中的数值误差累积，定位 KV Transfer 与 DeepEP 调度未能有效重叠的问题，以及发现 Decode Kernel 重复执行归一化计算。公司称，其中一项调度修复将传输额外开销从超过30%降至1%以下；另一项内核优化则让特定负载性能提升1.71倍。\n\n智谱将这套方法称为“稠密反馈”：智能体拿到的不是一个笼统的吞吐指标，而是与具体代码路径、算子、输入条件和执行过程相关，且能够快速验证的局部反馈。工程师仍负责设定目标、搭建实验环境，并审核高风险改动。\n\n## 为什么重要\n\n这项工作的意义不只是模型能够编写基础设施代码，而是部分工程判断被组织成了机器可以执行的流程。如果这种方法能够推广，生产 Trace、微基准测试和正确性检查，都可能成为下一代智能体训练与评测的数据来源。\n\n不过，这还不是完整意义上的递归自我改进。当前智能体只是在人工设定边界和监督下，优化一套具体的部署系统，并没有自主修改自身权重或提出新的目标。它仍然值得关注，因为推理效率、国产硬件适配能力和系统调试经验，正在成为中国模型规模化部署的关键约束。",
+      "date_published": "2026-09-17T08:28:00.000Z",
+      "date_modified": "2026-09-17T11:00:03.637Z",
+      "tags": [
+        "Agent",
+        "研究",
+        "产业",
+        "模型"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/zhipu-infra-agent-rsi.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-infra-agent-rsi.html",
+        "source_published_at": "2026-09-17T08:28:00.000Z",
+        "site_published_at": "2026-09-17T11:00:03.637Z",
+        "sources": [
+          {
+            "title": "刚刚，智谱首个 RSI 成果发布，10 万国产卡用 GLM 造 GLM",
+            "url": "https://www.aitokentria.com/news/mkv6ij47kp"
+          },
+          {
+            "title": "Zhipu AI infrastructure update on GLM-5.3-Flash",
+            "url": "https://x.com/Zai_org/status/2100481236364079277"
+          },
+          {
+            "title": "刚刚，唐杰发布智谱 RSI 首个成果",
+            "url": "https://www.qbitai.com/2026/09/491357.html"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/factory-raises-200m.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/factory-raises-200m.html",
       "title": "Factory 获 2 亿美元融资，估值升至 50 亿美元",
@@ -1863,46 +1905,6 @@
           {
             "title": "Image Editing Leaderboard",
             "url": "https://artificialanalysis.ai/image/leaderboard/editing/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/replit-mcp-exits-beta.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/replit-mcp-exits-beta.html",
-      "title": "Replit MCP结束测试，外部助手可直接开发应用",
-      "summary": "Replit将MCP服务器转为正式服务，ChatGPT、Claude及Slack等外部入口可调用其智能体创建、修改并部署应用。",
-      "content_text": "## Replit走出自有工作区\n\nReplit宣布MCP服务器结束测试阶段。支持模型上下文协议的AI客户端由此可以直接调度Replit Agent，用户不再必须进入Replit主界面操作。按照公司公布的能力，用户可从ChatGPT、Claude、Slack等入口创建新应用、修改已有项目，并管理部署流程。\n\n这项服务采用OAuth 2.0完成授权，并使用可流式传输的HTTP版MCP。Replit文档显示，实现该协议的自建客户端和开发工具包同样可以接入。连接完成后，外部助手负责理解和传递用户意图，项目环境、开发智能体以及部署基础设施则继续由Replit提供。\n\n这意味着Replit正在由相对封闭的AI开发产品转向可被其他助手调用的执行服务。用户可以在惯用的对话工具里讨论产品需求，再把实际开发交给Replit Agent，无需将说明重新复制到另一个工作区。团队也能通过现有的MCP入口继续维护已经上线的应用。\n\nReplit同期还公布了对话式项目分析和可选的数据库夜间快照。前者允许用户直接询问流量、转化漏斗和实验表现；后者则在生产数据库原有的时间点恢复能力之外，再增加一层独立保护。\n\n## 为何重要\n\n编程智能体的竞争正逐渐转向一个关键环节：用户提出目标后，谁来掌握真正的执行过程。Replit允许竞争对手的助手调用自身能力，押注即使对话入口属于别家公司，其应用运行环境、部署系统和项目上下文仍具有不可替代的价值。这种开放方式有望扩大Replit的触达范围，但也会放大权限风险；能够修改并部署应用的助手，需要更细的授权范围、清晰的操作记录，以及针对高影响动作的可靠确认机制。",
-      "date_published": "2026-09-05T01:55:00.000Z",
-      "date_modified": "2026-09-05T11:00:03.118Z",
-      "tags": [
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/replit-mcp-exits-beta.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/replit-mcp-exits-beta.html",
-        "source_published_at": "2026-09-05T01:55:00.000Z",
-        "site_published_at": "2026-09-05T11:00:03.118Z",
-        "sources": [
-          {
-            "title": "This Week in Replit",
-            "url": "https://x.com/Replit/status/2096054560062402610"
-          },
-          {
-            "title": "Replit MCP comes out of beta",
-            "url": "https://x.com/Replit/status/2096054881710903629"
-          },
-          {
-            "title": "Replit MCP Server documentation",
-            "url": "https://docs.replit.com/platforms/mcp-server"
           }
         ]
       }

@@ -1,0 +1,37 @@
+{
+  "slug": "zhipu-infra-agent-rsi",
+  "title": "Zhipu’s GLM-5.3 Agent Optimizes Its Own Inference Stack",
+  "summary": "Zhipu says a GLM-5.3-powered infrastructure agent helped triple serving performance on a 100,000-accelerator Chinese cluster.",
+  "body": "## The claim\n\nZhipu has published what it describes as an early recursive-self-improvement result: a GLM-5.3-powered infrastructure agent helped optimize the inference system serving GLM-5.3-Flash. The deployment moved from the model’s first successful run on a domestic accelerator cluster to carrying production traffic in roughly two weeks.\n\nZhipu says end-to-end throughput improved by about 3.2 times during the process. The cluster contained more than 100,000 Chinese AI accelerators and had to support a million-token context window, multimodal requests, and an evolving software stack with less mature kernel and interconnect support than mainstream Nvidia systems.\n\n## What the agent actually did\n\nThe agent was not allowed to redesign the model or independently decide the company’s training strategy. It worked inside an engineering loop built by human infrastructure teams. It analyzed bottlenecks, proposed changes, edited parts of the code, and ran experiments against correctness and performance checks.\n\nReported examples include identifying accumulated numerical error in a long-context parallel path, finding that KV transfer failed to overlap properly with DeepEP dispatch, and detecting repeated normalization work in a decode kernel. Zhipu says one scheduling fix reduced transfer overhead from above 30% to below 1%, while a kernel change improved a targeted workload by 1.71 times.\n\nThe company calls the underlying method “dense feedback”: the agent receives local, timely and experimentally verifiable signals rather than a single broad throughput metric. Engineers still defined the objectives, built the test environment and reviewed risky changes.\n\n## Why it matters\n\nThe significance is less that a model wrote infrastructure code than that the surrounding system made engineering judgment partially machine-operable. If the approach generalizes, model developers may turn production traces, microbenchmarks and correctness tests into training and evaluation data for future agents.\n\nBut this is not yet full recursive self-improvement. The agent optimized a bounded deployment loop under human supervision; it did not independently improve its own weights or establish new objectives. The result is nevertheless important because inference efficiency, domestic hardware compatibility and debugging expertise are becoming strategic constraints for Chinese model deployment.",
+  "title_zh": "智谱公布早期RSI实践：GLM智能体优化自身推理系统",
+  "summary_zh": "智谱称，GLM-5.3驱动的基础设施智能体参与优化十万级国产算力集群，使GLM-5.3-Flash服务性能提升约3.2倍。",
+  "body_zh": "## 智谱公布了什么\n\n智谱发布了一项被其称为递归自我改进早期形态的实践：由 GLM-5.3 驱动的基础设施智能体，参与优化承载 GLM-5.3-Flash 的推理系统。该系统从模型首次在国产加速器集群上成功运行，到能够承载生产流量，用时约两周。\n\n智谱表示，优化完成后端到端吞吐能力提升约3.2倍。集群规模超过10万颗国产 AI 加速器，同时需要支持百万级上下文、多模态请求，以及仍在完善中的国产芯片软件和通信生态。\n\n## 智能体具体做了什么\n\n这套系统并不是让模型自主决定训练路线，也不是让它直接重写模型。基础设施团队先搭建了工程闭环，再让智能体分析瓶颈、提出修改方案、完成部分代码调整，并通过正确性和性能实验验证结果。\n\n智谱披露的案例包括：发现长上下文并行路径中的数值误差累积，定位 KV Transfer 与 DeepEP 调度未能有效重叠的问题，以及发现 Decode Kernel 重复执行归一化计算。公司称，其中一项调度修复将传输额外开销从超过30%降至1%以下；另一项内核优化则让特定负载性能提升1.71倍。\n\n智谱将这套方法称为“稠密反馈”：智能体拿到的不是一个笼统的吞吐指标，而是与具体代码路径、算子、输入条件和执行过程相关，且能够快速验证的局部反馈。工程师仍负责设定目标、搭建实验环境，并审核高风险改动。\n\n## 为什么重要\n\n这项工作的意义不只是模型能够编写基础设施代码，而是部分工程判断被组织成了机器可以执行的流程。如果这种方法能够推广，生产 Trace、微基准测试和正确性检查，都可能成为下一代智能体训练与评测的数据来源。\n\n不过，这还不是完整意义上的递归自我改进。当前智能体只是在人工设定边界和监督下，优化一套具体的部署系统，并没有自主修改自身权重或提出新的目标。它仍然值得关注，因为推理效率、国产硬件适配能力和系统调试经验，正在成为中国模型规模化部署的关键约束。",
+  "tags": [
+    "Agents",
+    "Research",
+    "Industry",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "刚刚，智谱首个 RSI 成果发布，10 万国产卡用 GLM 造 GLM",
+      "url": "https://www.aitokentria.com/news/mkv6ij47kp"
+    },
+    {
+      "title": "Zhipu AI infrastructure update on GLM-5.3-Flash",
+      "url": "https://x.com/Zai_org/status/2100481236364079277"
+    },
+    {
+      "title": "刚刚，唐杰发布智谱 RSI 首个成果",
+      "url": "https://www.qbitai.com/2026/09/491357.html"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "It is the edition’s clearest fresh Asian example of an AI system improving the infrastructure that serves AI models at production scale.",
+  "featured_reason_zh": "这是本版亚洲时段最具代表性的新闻：AI智能体首次在十万级国产算力生产系统中参与优化承载自身的基础设施。",
+  "cat_take_zh": "智谱展示的不是模型自我训练，而是把基础设施调优拆成了可验证的机器流程。",
+  "cat_take_en": "Zhipu has not shown autonomous self-training; it has shown that infrastructure debugging can be made machine-verifiable.",
+  "date": "2026-09-17",
+  "published": "2026-09-17T08:28:00Z",
+  "published_at": "2026-09-17T11:00:03.637Z"
+}
