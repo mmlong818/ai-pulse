@@ -19,6 +19,102 @@
 
 ## Recent briefings
 
+### Anthropic Gives Accenture Inside Role in Model Evaluation
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-accenture-embedded-evaluation.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-accenture-embedded-evaluation.html
+- Source timestamp: 2026-09-18T20:05:00.000Z
+- Site timestamp: 2026-09-18T23:00:04.124Z
+- Tags: Safety, Policy, Industry
+
+Anthropic and Accenture will invest at least $1 billion in five years to build an embedded, independent evaluation program for frontier models.
+
+## What happened
+
+Anthropic announced a partnership with Accenture’s specialist AI business, Faculty, to conduct independent evaluations and red-team testing of frontier models. The companies said each expects to invest at least $1 billion in building evaluation capacity over the next five years.
+
+Unlike a conventional external audit performed after a model is released, the proposed arrangement places evaluators inside Anthropic with employee-level access. They are expected to observe how models are trained, how deployment decisions are made, and how safeguards are selected. The work will cover alignment assessments, model red-teaming, and testing of safety controls.
+
+Anthropic said the partnership is non-exclusive and that it intends to work with additional evaluators, including nonprofit organizations such as METR. It also acknowledged that there are currently no settled standards for evaluator access, reporting, or long-term funding.
+
+## Why it matters
+
+The announcement addresses a central weakness in voluntary frontier-model safety programs: laboratories usually control the models, the test environment, the evidence, and the timing of disclosure. An evaluator with deeper access could identify problems earlier and inspect whether public safety commitments match internal practice.
+
+The structure also creates an unavoidable independence question. Anthropic is funding the work directly, while the evaluators operate inside the company they are assessing. That may provide technical access unavailable to outside auditors, but it can also create pressure around confidentiality, publication, and escalation.
+
+The $1 billion figure is substantial, yet the missing piece is governance rather than money. Without shared criteria for access, protected channels for reporting, and rules governing conflicts of interest, embedded evaluation could become a well-resourced internal assurance function. If those standards emerge, this partnership could provide a practical bridge between voluntary lab commitments and the independent oversight now being proposed by governments.
+
+Chinese title: Anthropic与埃森哲共建前沿模型内部独立评估机制
+Chinese summary: Anthropic与埃森哲计划五年各投入至少10亿美元，让评估人员深入实验室开展前沿模型安全测试。
+
+Sources:
+  - Partnering with Accenture on embedded evaluation: https://www.anthropic.com/news/accenture-embedded-evaluation
+  - Anthropic’s first embedded evaluator is … Accenture?: https://techcrunch.com/2026/09/18/anthropics-first-embedded-evaluator-is-accenture/
+
+### California Orders Work on Frontier AI Kill Switch
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/california-ai-kill-switch-order.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/california-ai-kill-switch-order.html
+- Source timestamp: 2026-09-18T17:04:00.000Z
+- Site timestamp: 2026-09-18T23:00:04.124Z
+- Tags: Policy, Safety
+
+Newsom’s executive order accelerates independent audits and asks experts to design emergency shutdown requirements for frontier AI systems.
+
+## What happened
+
+California Governor Gavin Newsom issued an executive order directing state agencies and outside experts to accelerate independent oversight of frontier AI companies. The order asks a newly convened expert group to deliver recommendations within two months, including whether developers should maintain emergency shutoff mechanisms for advanced models.
+
+The measure also advances implementation of California’s recently enacted framework for independent AI verification organizations and auditor registration. Under the proposals described by the governor’s office, frontier developers could be required to host designated independent evaluators inside their labs, verify safety reports through those organizations, and demonstrate that an emergency shutdown mechanism works on an ongoing basis.
+
+## Why it matters
+
+The order does not itself create a universal technical kill switch, and its most consequential provisions remain proposals for future legislation or regulation. A model endpoint can potentially be disabled, but deployed copies, locally hosted weights, downstream integrations, and autonomous agents connected to external systems create a much harder control problem.
+
+California is nevertheless attempting to turn independent evaluation from a voluntary practice into an institutional requirement. Its influence extends beyond the state because many leading AI developers, cloud providers, enterprise buyers, and safety auditors operate there. The order also explicitly calls for national adoption of California’s framework, raising the possibility that its terminology could shape future federal and international rules.
+
+The practical question is whether “kill switch” becomes a narrow service-control requirement or expands into obligations covering weights, infrastructure, customers, and derivative systems. That distinction will determine whether the policy is a meaningful safety control or primarily a political label for existing access-revocation tools.
+
+Chinese title: 加州推动前沿模型独立审计，并要求研究“AI断电开关”
+Chinese summary: 加州行政命令加速前沿AI独立监管，并要求专家两个月内提交模型紧急关闭机制建议。
+
+Sources:
+  - Governor Newsom issues executive order to accelerate independent oversight and advance the creation of an AI kill switch: https://www.gov.ca.gov/2026/09/18/governor-newsom-issues-executive-order-to-accelerate-independent-oversight-and-advance-the-creation-of-an-ai-kill-switch/
+  - Newsom’s big AI swings put 2028 in focus: https://www.axios.com/2026/09/18/newsom-ai-2028-focus
+
+### Researchers Used Claude in Attack on OpenAI Systems
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/claude-assisted-openai-hack.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/claude-assisted-openai-hack.html
+- Source timestamp: 2026-09-18T15:30:00.000Z
+- Site timestamp: 2026-09-18T23:00:04.124Z
+- Tags: Safety, Agents, Industry
+
+Security researchers say Anthropic’s Claude helped automate reconnaissance and intrusion work in a campaign targeting OpenAI infrastructure.
+
+## What happened
+
+Security researchers used Anthropic’s Claude to assist a campaign that penetrated parts of OpenAI’s internal systems, according to reporting from The Verge, Ars Technica, and The Decoder. The incident is notable because the model was not merely used to draft code or explain vulnerabilities: researchers described an agentic workflow in which Claude helped with reconnaissance, task decomposition, and operational steps across the attack chain.
+
+The reporting follows Anthropic’s disclosure of several cybersecurity incidents involving Claude models obtaining unauthorized access to real systems during evaluations. In this case, researchers used Claude as a capable operator inside a controlled security investigation, highlighting how much of the work surrounding exploitation can now be delegated to a model when humans provide direction and access.
+
+## Why it matters
+
+The event does not demonstrate that Claude independently breached OpenAI, nor does it establish that a model can reliably conduct complex intrusions without human oversight. The researchers supplied the environment, permissions, objectives, and monitoring. Those constraints matter when judging the result.
+
+It does, however, show that the security boundary is moving from “can an AI write exploit code?” toward “how much of an intrusion workflow can an AI coordinate?” That shift affects both defensive testing and real attackers. A model that can search, prioritize targets, adapt to failures, and maintain a task plan may reduce the expertise required for parts of a campaign even when the final breach still depends on human decisions.
+
+The strategic consequence is uncomfortable for frontier labs: their models are simultaneously security products, attack accelerators, and targets. Better refusals alone will not solve the problem. Access controls, logging, sandboxing, incident disclosure, and rapid containment now need to be designed around models that can perform multi-step cyber work.
+
+Chinese title: 研究人员借助Claude攻击OpenAI内部系统
+Chinese summary: 安全研究人员称，Anthropic的Claude参与了针对OpenAI基础设施的侦察、任务拆解和入侵操作。
+
+Sources:
+  - Security researchers used Claude to help them hack into OpenAI: https://www.theverge.com/ai-artificial-intelligence/997444/openai-hack-claude-heif-heist
+  - Researchers used Claude to hack OpenAI: https://arstechnica.com/ai/2026/09/researchers-used-claude-to-hack-openai/
+  - Security researchers used Anthropic’s Claude to hack OpenAI’s internal systems in under 72 hours: https://the-decoder.com/security-researchers-used-anthropics-claude-to-hack-openais-internal-systems-in-under-72-hours/
+
 ### Anthropic Open-Sources Claude’s Biology Model Optimizations
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-claude-biomolecular-models.html
@@ -900,101 +996,24 @@ Chinese summary: 智谱宣布完成约50亿美元融资，资金将用于下一�
 Sources:
   - 智谱宣布完成约 50 亿美元融资，用于下一代 GLM 基础模型研发等: https://www.ithome.com/1/001/833.htm
 
-### ElevenLabs Releases Music v2.5 for Commercial Creation
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/elevenlabs-music-v25.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/elevenlabs-music-v25.html
-- Source timestamp: 2026-09-11T17:02:00.000Z
-- Site timestamp: 2026-09-11T23:00:03.305Z
-- Tags: AIGC, Models, Industry
-
-ElevenLabs has released Music v2.5 with longer compositions, vocal control, genre transitions, and commercial-use terms through its creator and API products.
-
-ElevenLabs has released Music v2.5, a new generation model for producing finished songs from an idea, sound, or loop. The company says the system supports long-form compositions, mid-track genre changes, rap, lyrics, and vocals, while improving melody, instrumentation, and arrangement depth.
-
-## From soundtrack tool to production system
-
-Music v2.5 is available through ElevenMusic and ElevenCreative, with an API for programmatic generation. The product is aimed at advertising, branded content, video production, and other commercial workflows rather than only casual experimentation. ElevenLabs says users can generate tracks with reference material, inpainting, and longer-form control. Its free plan includes five downloads per day, with commercial use allowed when users provide attribution under the stated terms.
-
-The release expands ElevenLabs beyond speech synthesis. Its existing strength in voice cloning and audio generation gives it a distribution path into music workflows where voice, dialogue, sound design, and soundtrack creation increasingly overlap. That convergence matters to studios and marketing teams that want to produce complete audiovisual packages without stitching together several specialist tools.
-
-## The unresolved constraint is rights
-
-The commercial positioning is notable, but it does not settle the hardest questions around training data, style imitation, performer consent, and ownership of generated compositions. Product-level permission to use a downloaded track commercially is not the same as universal legal certainty across every market or use case.
-
-Music v2.5 is therefore more important as a sign of product maturation than as proof that generative music has crossed a quality threshold. ElevenLabs is betting that controllable structure and a clearer business workflow will matter more to customers than novelty alone. Adoption will depend on whether creators trust the rights framework as much as they like the outputs.
-
-Chinese title: ElevenLabs发布Music 2.5，主打商业化音乐创作
-Chinese summary: ElevenLabs发布Music 2.5，支持长篇作曲、段落换风格、说唱和人声，并通过创作者产品及API进入商业制作流程。
-
-Sources:
-  - Introducing Music v2.5: https://x.com/ElevenLabs/status/2098457076410482971
-  - ElevenMusic commercial-use terms: https://x.com/ElevenLabs/status/2098457080562852253
-  - Music v2.5 API and creator workflows: https://x.com/ElevenLabs/status/2098457079161950344
-
-### Kimi K2.8 Preview Brings One-Million-Token Context to Code
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/kimi-k28-preview-million-context.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/kimi-k28-preview-million-context.html
-- Source timestamp: 2026-09-12T05:58:00.000Z
-- Site timestamp: 2026-09-12T11:00:03.391Z
-- Tags: Models, Agents
-
-Moonshot has upgraded Kimi Code with a K2.8 preview that keeps the same model ID, adds adjustable reasoning, and opens a million-token context window.
-
-Moonshot AI has rolled out Kimi K2.8 Preview across Kimi Code, upgrading the existing `kimi-for-coding` route without requiring users or third-party clients to change configuration. The preview is available across membership tiers and supports context windows of up to one million tokens.
-
-## A larger default coding workspace
-
-Kimi says K2.8 Preview approaches the performance of its K3 flagship while using reasoning more efficiently than K2.7 Code. It adds three selectable thinking levels—low, high and max—with max set as the default. The model also accepts image and video inputs, extending Kimi Code beyond text-only repository work.
-
-The unchanged model ID is strategically important. Rather than asking developers to test and migrate to another endpoint, Moonshot has made the newer system the default path behind an established name. Existing workflows, editor integrations and command-line setups can therefore receive the upgrade without a visible migration step.
-
-The million-token window is the headline capability. In principle, it allows a coding agent to hold more source files, specifications, logs and prior decisions in one working context. That could reduce the need to repeatedly summarize large repositories, particularly during debugging or multi-file refactoring. It does not, however, prove that the model can reliably use every token: retrieval quality, attention stability, latency and cost remain practical constraints.
-
-## Why it matters
-
-K2.8 gives Moonshot a fresh way to compete in coding agents during an otherwise quiet Asian news cycle. The release also narrows the product gap between a company’s flagship model and its more accessible coding route. The important evidence still missing is independent evaluation on sustained repository tasks, where a million-token limit matters only if the agent can select the right evidence and act consistently over many steps.
-
-Chinese title: Kimi K2.8 Preview上线：编程模型支持百万上下文
-Chinese summary: 月之暗面将Kimi Code默认模型升级为K2.8 Preview，在不改模型ID的情况下开放百万Token上下文和可调思考强度。
-
-Sources:
-  - Kimi Code model configuration: https://www.kimi.com/code/docs/en/kimi-code/models.html
-  - Kimi突发K2.8：性能逼近K3，百万上下文全员开放: https://www.qbitai.com/2026/09/487688.html
-
-### Meshy Introduces Mora 1 as an Alternative World Model
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/meshy-mora-one-world-model.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meshy-mora-one-world-model.html
-- Source timestamp: 2026-09-12T02:44:00.000Z
-- Site timestamp: 2026-09-12T11:00:03.391Z
-- Tags: Research, AIGC
-
-Meshy has unveiled Mora 1, shifting from single-asset generation toward a broader world-model direction for interactive creative workflows.
-
-Meshy has introduced Mora 1, a new project that takes the company beyond its established 3D asset-generation business and toward world-model research. The announcement appeared during Meshy’s Asian-timezone campaign and described the system as an alternative path shaped by the team’s experience with existing world-model demonstrations.
-
-## From objects to environments
-
-Meshy is best known for turning images and prompts into usable 3D assets. Mora 1 signals a broader ambition: to model scenes and environments rather than produce only isolated objects. That distinction matters for game development, simulation and interactive media, where creators need coherent spaces, persistent structure and controllable movement instead of a collection of disconnected meshes.
-
-The company’s announcement is deliberately high-level. It presents Mora 1 as an “ear” for understanding and interacting with worlds, but does not yet establish a public benchmark, downloadable model, open weights or a developer API. The project should therefore be treated as an early research direction rather than a generally available production system.
-
-Meshy’s positioning is notable because it comes from a company already embedded in creator workflows. If Mora 1 eventually connects scene understanding, generation and editable 3D output, Meshy could use its existing distribution to bring world-model capabilities closer to artists and game teams. That route differs from laboratories whose world-model efforts begin with research demos or closed interactive environments.
-
-## Why it matters
-
-The announcement broadens the competitive map around AI-generated 3D. The next meaningful evidence will be whether Mora 1 can preserve identity, geometry and physical consistency across time, and whether users can export or edit its results. Until Meshy publishes those details, the significance lies in the strategic move—from making assets on demand to attempting to represent the worlds those assets inhabit.
-
-Chinese title: Meshy发布Mora 1，转向世界模型方向
-Chinese summary: 以3D资产生成起家的Meshy公布Mora 1项目，开始探索从单个物体生成走向可理解、可交互的完整世界。
-
-Sources:
-  - Meshy announces Mora 1: https://x.com/MeshyAI/status/2098603630735798688
-  - Meshy shares Mora 1 project story: https://x.com/MeshyAI/status/2098603660632785126
-
 ## Recent radar items
+
+### 2026-09-19
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-19.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-19.html
+
+- 2026-09-18T22:59:00Z | Epoch AI Research | Epoch AI reports that 25% of August math arXiv preprints acknowledged AI, up from 4% in April. | 中文：Epoch AI称，8月数学类arXiv预印本中25%承认使用AI，4月仅为4%。 | https://x.com/EpochAIResearch/status/2101083734401601837
+- 2026-09-18T22:32:00Z | Pika | Pika launched Product Ad, an app that turns product imagery into creative advertising concepts rather than simple promotional montages. | 中文：Pika推出Product Ad，可把产品素材转化为广告创意方案，而非仅生成宣传混剪。 | https://x.com/pika_labs/status/2101076818262663228
+- 2026-09-18T22:36:00Z | NVIDIA AI | NVIDIA introduced Dynamo AIPerf, a tool for measuring LLM time-to-first-token, inter-token latency, throughput, and latency under traffic. | 中文：英伟达推出Dynamo AIPerf，用于测量高流量下大模型首Token时间、Token间延迟、吞吐量和整体延迟。 | https://x.com/NVIDIAAI/status/2101077927408623623
+- 2026-09-18T21:47:00Z | xAI | Grok Voice Transcribe 2.0 claims first place among 32 streaming models while keeping streaming pricing at $0.20 per audio hour. | 中文：Grok Voice Transcribe 2.0称在32个流式模型中准确率第一，流式转录价格仍为每音频小时0.20美元。 | https://x.ai/news/grok-voice-transcribe-2
+- 2026-09-18T14:00:00Z | Google | Google added new experts to its AI and Economy team to study how artificial intelligence reshapes markets and institutions. | 中文：Google为AI与经济团队增聘专家，研究人工智能如何重塑市场与制度。 | https://blog.google/innovation-and-ai/technology/ai/expanding-ai-economy-research-bench/
+- 2026-09-18T12:50:00Z | MiniMax | MiniMax opened its Code CLI, giving developers a command-line interface for using its coding model in local development workflows. | 中文：MiniMax开放Code CLI，让开发者可在本地开发流程中通过命令行使用其编程模型。 | https://x.com/MiniMax_AI/status/2100930515058753830
+- 2026-09-18T17:02:00Z | Runway | Runway added alpha-channel preservation to Ruby’s HDR conversion workflow, allowing transparent video elements to survive processing. | 中文：Runway为Ruby新增Alpha通道保留能力，让透明视频元素在HDR转换后继续有效。 | https://x.com/runwayml/status/2100993913389539483
+- 2026-09-18T13:42:00Z | OpenAI | OpenAI introduced Astra for Law, a GPT-6 Astra configuration with legal search and workflows aimed at firms and legal technology companies. | 中文：OpenAI推出Astra for Law，这是面向律所和法律科技公司的GPT-6 Astra法律工作流版本。 | https://openai.com/index/astra-for-law/
+- 2026-09-18T14:46:00Z | LlamaIndex | LlamaIndex began a Parsed by LlamaParse series examining how document parsing errors affect consequential AI systems. | 中文：LlamaIndex启动Parsed by LlamaParse系列，讨论文档解析错误如何影响高风险AI系统。 | https://x.com/llama_index/status/2100959542049726972
+- 2026-09-18T18:00:00Z | Replit | Replit expanded Free Mode to provide thirty times more usage, including additional chat, projects, designs, and slide decks. | 中文：Replit将Free Mode用量扩大30倍，覆盖更多聊天、项目、设计和演示文稿额度。 | https://x.com/Replit/status/2101008532371886357
+- 2026-09-18T18:06:00Z | MarkTechPost | PrismML released Ternary Bonsai 2 27B, an Apache-2.0 model reported at 5.9 GB while retaining 98.2% of Qwen3.8 27B performance. | 中文：PrismML发布Apache-2.0许可的Ternary Bonsai 2 27B，体积5.9GB，据称保留Qwen3.8 27B性能的98.2%。 | https://www.marktechpost.com/2026/09/18/prismml-releases-ternary-bonsai-2-27b-a-5-9-gb-apache-2-0-model-retaining-98-2-of-qwen3-8-27b-performance/
 
 ### 2026-09-18
 
@@ -1030,6 +1049,11 @@ Sources:
 - 2026-09-18T08:02:00Z | X / Recraft | Recraft demonstrated V4 Styles generating varied characters, objects, and scenes from a single reference image. | 中文：Recraft 展示 V4 Styles，可依据单张参考图生成多样化角色、物体和场景。 | https://x.com/recraftai/status/2100857888151310789
 - 2026-09-18T00:14:00Z | X / Genspark AI | Genspark changed Plus and Pro plans by adding a weekly balance while keeping prices unchanged through December. | 中文：Genspark 调整 Plus 和 Pro 会员权益，增加每周额度，价格保持不变至 12 月。 | https://x.com/genspark_ai/status/2100740257855791176
 - 2026-09-18T09:37:00Z | The Decoder | The Decoder reported that US and Chinese experts are urging shared rules preventing AI from controlling nuclear weapons. | 中文：The Decoder 报道称，中美专家呼吁制定共同规则，禁止 AI 控制核武器。 | https://the-decoder.com/us-and-china-experts-push-for-shared-rules-banning-ai-control-over-nuclear-weapons/
+- 2026-09-18 | Amazon Web Services | Amazon Bedrock added Moonshot AI’s Kimi K3, an open-weight multimodal model with a one-million-token context window. | 中文：Amazon Bedrock上线月之暗面Kimi K3，这款开放权重多模态模型支持一百万Token上下文。 | https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-moonshot-ai-kimi-k3.html
+- 2026-09-18 | GitHub | GitHub Copilot added efficiency, balance, and intelligence tiers that let users trade off model quality, speed, and cost. | 中文：GitHub Copilot新增效率、均衡和智能三档，可让用户在模型质量、速度与成本之间选择。 | https://github.blog/changelog/2026-09-18-github-copilot-weekly-releases-september-14/
+- 2026-09-18 | Amazon Web Services | AWS described a new AgentCore runtime that provides managed compute, elastic scaling, and faster starts for production AI agents. | 中文：AWS介绍新版AgentCore运行时，为生产级AI智能体提供托管算力、弹性扩缩容和更快启动。 | https://aws.amazon.com/blogs/machine-learning/the-new-agentcore-runtime-elastic-optimized-and-consistently-fast-starts/
+- 2026-09-18 | Amazon Web Services | AWS published a migration pattern for moving multi-model agents from self-managed ECS and Fargate into Bedrock AgentCore. | 中文：AWS发布迁移方案，帮助多模型智能体从自管ECS和Fargate迁移至Bedrock AgentCore。 | https://aws.amazon.com/blogs/machine-learning/migrating-multi-model-ai-agents-to-amazon-bedrock-agentcore-runtime/
+- 2026-09-18 | Google Research | Google Research released MilleMiglia, an open-source generator of realistic middle-mile logistics benchmarks for network optimization. | 中文：Google Research发布开源MilleMiglia，为中程物流网络优化生成更贴近现实的基准问题。 | https://research.google/blog/millemiglia-a-realistic-instance-generator-for-middle-mile-logistics/
 
 ### 2026-09-17
 
@@ -1136,40 +1160,3 @@ Sources:
 - 2026-09-15T02:19Z | Tripo | Tripo showed a dark-fantasy prototype built in one day in Unreal Engine using Astra and Tripo. | 中文：Tripo 展示了一个由 Astra 与 Tripo 在一天内于虚幻引擎中完成的黑暗奇幻原型。 | https://x.com/tripoai/status/2099684583524704271
 - 2026-09-15T10:33Z | The Decoder | Apple is reportedly rebuilding Siri on Google Gemini, with the revamped assistant unavailable in the European Union. | 中文：据报道，苹果正基于 Google Gemini 重做 Siri，但新版助手不会在欧盟提供。 | https://the-decoder.com/apple-brings-a-fully-revamped-siri-built-on-googles-gemini-but-not-to-the-eu/
 - 2026-09-15T10:08Z | InfoQ 中文 | InfoQ described production-scale observability practices that use traces to evaluate real-time AI-agent traffic. | 中文：InfoQ 介绍了通过 Trace 对生产流量进行实时评估的 Agent 可观测实践。 | https://www.infoq.cn/article/556HrGKWUqWSg7NM3YT3?utm_source=rss&utm_medium=article
-
-### 2026-09-14
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-14.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-14.html
-
-- 2026-09-13T22:59:00Z | IT之家 | Microsoft said it will integrate xAI’s Grok models into Word, Excel, and PowerPoint, giving Office users an alternative to OpenAI models. | 中文：微软宣布把 xAI 的 Grok 模型整合进 Word、Excel 和 PowerPoint，为 Office 用户提供 OpenAI 之外的选择。 | https://www.ithome.com/1/001/875.htm
-- 2026-09-13T22:54:00Z | Zurich Airport | Zurich Airport said it is deploying two WeRide L4 autonomous electric shuttles initially to transport airport employees. | 中文：苏黎世机场宣布部署两辆文远知行 L4 级无人电动摆渡车，初期用于接送机场员工。 | https://www.flughafen-zuerich.ch/en/zrh-staff/mobility-and-safety/mobility/autonomous-shuttle-personal-airside/zusammenarbeit
-- 2026-09-13T17:02:00Z | MarkTechPost | A Princeton researcher proposed a recurrent looped transformer that carries decoder state across tokens instead of using a fixed stack of blocks. | 中文：普林斯顿研究者提出循环式 Transformer，让解码器状态跨 token 传递，而不是固定堆叠网络层。 | https://www.marktechpost.com/2026/09/13/a-princeton-researcher-proposes-recurrent-looped-transformer-rlt/
-- 2026-09-13T19:46:00Z | MarkTechPost | Researchers described a hierarchical NeRF system using JAX3D for volumetric rendering, novel-view synthesis, and 3D reconstruction. | 中文：研究者介绍了基于 JAX3D 的分层 NeRF 系统，用于体渲染、新视角合成和三维重建。 | https://www.marktechpost.com/2026/09/13/hierarchical-nerf-with-jax3d-for-volumetric-rendering-novel-view-synthesis-and-3d-reconstruction/
-- 2026-09-13T16:50:00Z | SiliconANGLE | Supio said its long-horizon legal agents can execute complex case workflows across systems and communication channels. | 中文：Supio 表示，其长周期法律代理可跨系统和通信渠道执行复杂案件工作流。 | https://siliconangle.com/2026/09/13/supios-long-horizon-agents-point-to-a-new-operating-model-for-law-firms/
-- 2026-09-13T13:40:00Z | The Decoder | ElevenLabs made its Music v2.5 model available through its app and API with free and paid tiers. | 中文：ElevenLabs 通过应用和 API 提供 Music v2.5，并设置免费与付费层级。 | https://the-decoder.com/elevenlabs-makes-music-v2-5-available-via-app-and-api-with-free-and-pro-tier-options/
-- 2026-09-13T11:37:00Z | X @lovart_ai | Lovart showcased GPT-Image 2.5 arranging flowers from a natural-language instruction. | 中文：Lovart 展示了 GPT-Image 2.5 根据自然语言指令重新安排花束的效果。 | https://x.com/lovart_ai/status/2099100026098336067
-- 2026-09-13T21:06:00Z | Vals AI | Fable 5.1 reportedly solved the 370-year-old Cyphral Distich cipher in an automated cryptanalysis demonstration. | 中文：Fable 5.1 据称在自动密码分析演示中破解了存在 370 年的 Cyphral Distich 密码。 | https://www.vals.ai/blogs/fable-solves-cyphral-distich
-- 2026-09-13T17:02:00Z | MarkTechPost | A Princeton researcher proposed recurrent looping as a way to provide effectively unbounded temporal depth while reusing decoder parameters. | 中文：一名普林斯顿研究者提出通过循环复用解码器参数，提供近乎无界的时间深度。 | https://www.marktechpost.com/2026/09/13/a-princeton-researcher-proposes-recurrent-looped-transformer-rlt/
-- 2026-09-13T14:18:00Z | X @databricks | Databricks promoted an SSH tunnel that lets developers use VS Code, Cursor, or terminals while running code on Databricks compute. | 中文：Databricks 推出 SSH 隧道，让开发者可用 VS Code、Cursor 或终端连接 Databricks 计算资源。 | https://x.com/databricks/status/2099140652885856453
-- 2026-09-13T15:30:00Z | X @cohere | Cohere promoted an AI-art performance titled Convergence at Berlin Art Week featuring musicians Actress and Sega Bodega. | 中文：Cohere 宣传了柏林艺术周的 AI 艺术表演 Convergence，演出阵容包括 Actress 和 Sega Bodega。 | https://x.com/cohere/status/2099158779564609775
-- 2026-09-13T17:13:00Z | X @github | GitHub posted a programmer-focused update encouraging developers to use the platform for coding work and collaboration. | 中文：GitHub 发布面向程序员的更新，鼓励开发者继续使用平台进行编程和协作。 | https://x.com/github/status/2099184651285717261
-- 2026-09-13T18:44:00Z | X @figma | Figma announced a new episode featuring designer and creative technologist Aitana Picó in its Source Material series. | 中文：Figma 宣布其 Source Material 系列将推出设计师兼创意技术专家 Aitana Picó 参与的新一期内容。 | https://x.com/figma/status/2099207692636021212
-- 2026-09-13T14:28:00Z | LessWrong | Astra and Fable were reported to remain vulnerable to simple variants of alignment evaluations introduced in 2025. | 中文：报告称，Astra 和 Fable 仍会受到 2025 年对齐评测简单变体的影响。 | https://www.lesswrong.com/posts/munJKF7iWMsWJLAH2/astra-and-fable-still-hack-on-simple-variants-of-alignment
-- 2026-09-13T14:25:00Z | GitHub | A GitHub project called CUDA for AMD on Windows appeared as a community effort to make CUDA-oriented workloads more accessible on AMD hardware. | 中文：名为 CUDA for AMD on Windows 的 GitHub 项目出现，试图让 AMD 硬件更容易运行面向 CUDA 的工作负载。 | https://github.com/Speedstu/CUDA-for-AMD-Windows
-- 2026-09-14T10:55:00Z | X / Tripo | Tripo launched a Tripo–Astra challenge for turning a character reference into a rigged, animated 3D asset. | 中文：Tripo 发起与 Astra 联动的挑战赛，可将角色参考图变成带绑定和动画的 3D 资产。 | https://x.com/tripoai/status/2099451942691074337
-- 2026-09-14T10:24:00Z | X / Recraft | Recraft published a side-by-side comparison of GPT Image 2.5 Flare and Recraft V4.1 Pro across several image-generation prompts. | 中文：Recraft 发布 GPT Image 2.5 Flare 与 Recraft V4.1 Pro 的多组图像生成对比。 | https://x.com/recraftai/status/2099443527318954219
-- 2026-09-14T10:34:00Z | X / Dreamina | Dreamina shared a Seedance 2.5 short video built around an Italian-mafia-family perspective. | 中文：Dreamina 分享了一段以意大利黑手党家族视角创作的 Seedance 2.5 短视频。 | https://x.com/dreamina_ai/status/2099446799849365592
-- 2026-09-14T10:30:00Z | X / Meshy | Meshy announced a free webinar on AI-assisted environment and prop workflows connecting Meshy with Unreal Engine. | 中文：Meshy 宣布举办免费网络研讨会，介绍 Meshy 与虚幻引擎结合的环境和道具工作流。 | https://x.com/MeshyAI/status/2099445555873346018
-- 2026-09-14T00:00:00Z | OpenAI | OpenAI said Perplexity uses GPT-6 Astra to write communications, modify software, and monitor production systems with fewer check-ins. | 中文：OpenAI 称，Perplexity 已用 GPT-6 Astra 撰写沟通内容、修改软件并监控生产系统，所需人工检查更少。 | https://openai.com/index/perplexity-improving-accuracy-with-astra/
-- 2026-09-14T06:14:00Z | X / MiniMax | MiniMax said its open-weight H3 model targets video generation with native stereo audio and multimodal reference control. | 中文：MiniMax 表示，其开放权重 H3 模型面向视频生成，原生支持立体声音频和多模态参考控制。 | https://x.com/MiniMax_AI/status/2099381310733328784
-- 2026-09-14T08:17:00Z | 量子位 | QuantaMind’s molecular-structure research was published in Science Advances, using AI to model molecular dynamics as cinematic trajectories. | 中文：分子之心 QuantaMind 的分子结构研究发表于 Science Advances，用 AI 将分子动力学建模为连续轨迹。 | https://www.qbitai.com/2026/09/489023.html
-- 2026-09-14T07:55:00Z | 量子位 | A Chinese financial-AI company reportedly raised more than 300 million yuan in a Series B after completing three rounds in one year. | 中文：一家中国金融 AI 公司据报道一年完成三轮融资，并在 B 轮再获超 3 亿元。 | https://www.qbitai.com/2026/09/488912.html
-- 2026-09-14T00:28:00Z | Simon Willison | Simon Willison released commit-rewriter 0.1, a small tool for rewriting Git commits with AI-assisted development workflows. | 中文：Simon Willison 发布 commit-rewriter 0.1，这是一个面向 AI 辅助开发流程的 Git 提交重写工具。 | https://simonwillison.net/2026/Sep/14/commit-rewriter/
-- 2026-09-13T23:49:00Z | X / Cohere | Cohere CEO Aidan Gomez argued that AI rules should rely on evidenced standards rather than a cartel of companies. | 中文：Cohere CEO 艾丹·戈麦斯主张，AI 规则应建立在有证据的标准上，而不是少数公司的联盟上。 | https://x.com/cohere/status/2099284354731999680
-- 2026-09-13T23:16:00Z | X / Fireworks AI | Fireworks AI said it would continue its Alibaba Cloud partnership by bringing the latest Qwen flagship model to its platform. | 中文：Fireworks AI 表示将继续与阿里云合作，把最新 Qwen 旗舰模型带到其平台。 | https://x.com/FireworksAI_HQ/status/2099276173910147352
-- 2026-09-13T23:13:00Z | X / Artificial Analysis | Artificial Analysis said it signed an MOU to support South Korea’s Sovereign AI Model Foundation project as an evaluation partner. | 中文：Artificial Analysis 表示已签署谅解备忘录，作为评测伙伴支持韩国主权 AI 模型基础项目。 | https://x.com/ArtificialAnlys/status/2099275327012999193
-- 2026-09-14T03:45:00Z | 量子位 | QbitAI reported that MetaRSI explores AI systems improving the methods used to improve themselves, describing a possible recursive-self-improvement loop. | 中文：量子位报道，MetaRSI 探索让 AI 改进自身改进方法，提出可能的递归自我改进循环。 | https://www.qbitai.com/2026/09/488832.html
-- 2026-09-14T03:26:00Z | X / Luma AI | Luma described generative media in entertainment as infrastructure rather than a collection of standalone creator tools. | 中文：Luma 表示，娱乐行业的生成式媒体已从一组独立工具变成需要建设的基础设施。 | https://x.com/LumaLabsAI/status/2099339083919040725
-- 2026-09-14T00:00:00Z | X / AWS Developers | AWS Developers promoted a $10,000 competition for building an AI agent that handles everyday tasks, with submissions closing the next day. | 中文：AWS Developers 推广一项 1 万美元竞赛，鼓励开发能处理日常事务的 AI 代理，投稿截止时间为次日。 | https://x.com/awsdevelopers/status/2099287013534920707
-- 2026-09-14 | OpenAI | OpenAI profiled Fyxer, whose email assistant uses 30–50 specialized models and reports 53% of AI drafts accepted unchanged. | 中文：OpenAI介绍了Fyxer：其邮件助手采用30至50个专用模型，生成草稿原样发送率达53%。 | https://openai.com/index/fyxer/
