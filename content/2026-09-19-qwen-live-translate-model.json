@@ -1,0 +1,32 @@
+{
+  "slug": "qwen-live-translate-model",
+  "title": "Qwen Releases LiveTranslate for Real-Time Interpretation",
+  "summary": "Alibaba’s Qwen team introduced a streaming interpretation model that combines speaker attribution, translation, and voice synthesis across dozens of languages.",
+  "body": "Alibaba’s Qwen team has introduced Qwen3.8-LiveTranslate, a real-time interpretation model designed to process audio and visual context while producing translated text and speech.\n\nThe model uses a two-part Thinker–Talker architecture. The Thinker processes source audio, video, text, and translation in a single interleaved sequence, while the Talker generates translated speech and attempts to preserve the original speaker’s vocal identity. Qwen says the system supports 60 input languages and 29 spoken output languages, including Chinese, English, Japanese, Korean, Cantonese, Arabic, and Vietnamese.\n\nQwen reports results on two evaluation settings. On Omnilingua-MSpeaker, a long-audio, multi-speaker benchmark covering 14 language directions, it says LiveTranslate improves translation faithfulness, fluency, concision, and diarization error rate against mainstream real-time systems. On the FLEURS test set, covering 70 language directions, Qwen reports gains in translation quality, speech recognition accuracy, average lagging, and speech synthesis quality.\n\nThe model is available through Alibaba Cloud’s real-time API rather than as a public weight release. The commercial service accepts audio and images, returns text and audio, and is exposed through a WebSocket interface. Alibaba’s documentation lists a 2.3-second end-to-end latency for the Flash Realtime version.\n\nThe technical direction matters because simultaneous interpretation is constrained by several linked decisions: when to stop listening, how to preserve context across speakers, how to avoid translating names incorrectly, and how to produce speech before the full sentence is known. Qwen’s interleaved design tries to address those problems jointly instead of stitching together independent speech-recognition, translation, and text-to-speech systems.\n\nWhy it matters: the release strengthens China’s position in a commercially important multimodal category, though Qwen’s benchmark claims still need independent testing under noisy, overlapping, and low-resource language conditions.\n\n## Uncle Cat take\n\nThe significant detail is the 60-to-29 language path; Qwen is selling an interpretation pipeline, not merely a better speech translator.",
+  "title_zh": "通义发布实时同传模型Qwen3.8-LiveTranslate",
+  "summary_zh": "阿里通义推出实时同传模型，整合说话人识别、翻译和语音合成，覆盖数十种语言与多说话人场景。",
+  "body_zh": "阿里通义团队推出Qwen3.8-LiveTranslate，这是一款面向实时同声传译的模型，能够处理音频和视觉上下文，并输出翻译文本与语音。\n\n模型采用Thinker–Talker双模块架构。Thinker把源音频、视频、文本和译文放进同一条交错序列中处理，Talker则生成译后语音，并尝试保留原说话人的声音特征。通义称，该模型支持60种输入语言和29种语音输出语言，涵盖中文、英语、日语、韩语、粤语、阿拉伯语和越南语等。\n\n通义公布了两组评测结果。在覆盖14个语言方向的长音频、多说话人Omnilingua-MSpeaker数据集上，通义称LiveTranslate在翻译忠实度、流畅度、简洁度和说话人分离错误率方面优于主流实时系统。在覆盖70个语言方向的FLEURS测试集上，通义报告其翻译质量、语音识别准确率、平均延迟和语音合成质量均有提升。\n\n该模型目前通过阿里云实时API提供，并非公开权重模型。商业服务支持音频和图像输入，返回文本与音频，并通过WebSocket接口调用。阿里云文档显示，Flash Realtime版本的端到端延迟约为2.3秒。\n\n实时同传的难点并不只是翻译本身，还包括何时停止聆听、如何保持多人对话上下文、如何避免人名误译，以及在句子尚未说完时提前生成自然语音。通义采用交错式架构，试图把这些问题放在一个模型流程中共同处理，而不是简单拼接语音识别、机器翻译和语音合成系统。\n\n为什么重要：这项发布强化了中国厂商在多模态实时交互领域的竞争力。不过，在嘈杂环境、多人抢话和低资源语言条件下，通义的性能仍需要独立验证。\n\n## Uncle Cat take\n\n真正值得注意的是“60种输入、29种输出”的完整链路，通义卖的是同传系统而非单纯翻译器。",
+  "tags": [
+    "Models",
+    "AIGC",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Qwen3.8-LiveTranslate: Names the speaker. Carries the meaning.",
+      "url": "https://qwen.ai/blog?id=qwen3.8-livetranslate"
+    },
+    {
+      "title": "Qwen3.8-LiveTranslate-Flash-Realtime model information",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/qwen3-8-livetranslate-flash-realtime"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "60种输入接29种输出，通义发布的是完整同传链路而非单点翻译升级",
+  "cat_take_en": "The 60-to-29 language pipeline makes Qwen’s release an interpretation system, not merely a translation upgrade.",
+  "date": "2026-09-19",
+  "published": "2026-09-19T07:08:00Z",
+  "published_at": "2026-09-19T11:00:04.118Z"
+}
