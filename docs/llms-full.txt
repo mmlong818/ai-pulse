@@ -19,6 +19,154 @@
 
 ## Recent briefings
 
+### AWS Releases Open-Source Strands Agent Harness
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/aws-strands-agent-harness.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/aws-strands-agent-harness.html
+- Source timestamp: 2026-09-21T16:00:00.000Z
+- Site timestamp: 2026-09-21T23:00:04.116Z
+- Tags: Agents, Open Source, Industry
+
+AWS launches Strands Harness as a ready-made open-source agent stack, claiming lower token use at comparable task accuracy.
+
+## AWS packages the agent runtime
+
+AWS has released Strands Harness, an open-source agent harness intended to provide a ready-made starting point for building and deploying AI agents. The package combines defaults for tool use, context management, sessions, memory, hooks and system prompting, allowing developers to create an agent with a single import rather than assembling each layer independently.
+
+The project supports Python and TypeScript and can be connected to a model of the developer’s choice. AWS positions it alongside the broader Strands toolkit, which includes lower-level harness components, evaluation tools and a shell designed for safer agent interaction with operating systems.
+
+## A cost claim with practical consequences
+
+AWS says Strands Harness delivers comparable accuracy to competing setups while using 28% fewer tokens. The company’s launch materials frame this as an efficiency improvement for agents that repeatedly call tools, maintain context and recover from intermediate failures. AWS has not yet published all benchmark details in the announcement, including the full task mix, model configurations and the cost of any additional latency or infrastructure.
+
+The project is also designed to run outside a single AWS deployment path. Developers can use the open-source harness with different models and customize the tools, memory and context policies. That matters because agent developers increasingly need portable application logic while still retaining control over deployment, data handling and model selection.
+
+## Why it matters
+
+Agent development is shifting from prompt design toward runtime engineering. Tool permissions, memory behavior, context compression and failure recovery often determine whether an agent is affordable and dependable in production. By publishing a preassembled harness, AWS is competing for the layer that sits between foundation models and business applications. The immediate impact will depend on whether developers trust its defaults and whether the token savings hold across workloads outside AWS’s evaluation setup.
+
+## Uncle Cat take
+
+The 28% token reduction is attractive, but AWS’s missing benchmark detail makes the real product today its opinionated defaults, not proven universal efficiency.
+
+Chinese title: AWS开源Strands Harness，打包智能体运行基础设施
+Chinese summary: AWS发布开源Strands Harness，预置工具、记忆和上下文管理，并声称在准确率相近时节省28% Token。
+
+Sources:
+  - Strands Harness: https://strandsagents.com/docs/user-guide/harness/
+  - AWS launches Strands Harness: https://www.theregister.com/ai-and-ml/2026/09/21/aws-bolts-together-open-source-agent-harness-says-it-sips-fewer-tokens-than-rivals/5297915
+
+### xAI Releases Grok 4.7 for Coding and Knowledge Work
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/grok-47-cuts-frontier-model-prices.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/grok-47-cuts-frontier-model-prices.html
+- Source timestamp: 2026-09-21T16:56:00.000Z
+- Site timestamp: 2026-09-21T23:00:04.116Z
+- Tags: Models, Agents, Industry
+
+xAI says Grok 4.7 improves long-running coding and professional tasks while launching at $2 per million input tokens.
+
+## A larger model at a lower price
+
+xAI has released Grok 4.7, describing it as the company’s strongest model so far for coding and knowledge work. The model uses a larger base model than Grok 4.6 and was trained with a longer reinforcement-learning run focused on tasks that require sustained reasoning over several hours.
+
+The release is available through the Grok API, Grok Build, Cursor, third-party coding harnesses, model routers and cloud platforms. xAI lists pricing at $2 per million input tokens and $6 per million output tokens for prompts below 200,000 tokens. The API version has a 500,000-token context window and accepts text and image inputs, while producing text output.
+
+## Better on long tasks, but not universally ahead
+
+xAI reports meaningful gains over Grok 4.6 on several evaluations. Its CursorBench 4.0 score rose from 40.4% to 46.3%, while its Terminal-Bench 4.0 score increased from 20.3% to 38%. Grok 4.7 also improved on legal work, clinical reasoning and electrical-engineering tests. On DeepSWE, it reached 71% using high effort.
+
+The results do not put it first across the board. xAI’s own table shows the model behind Anthropic’s Fable 5.1 on some software and terminal tasks, while remaining competitive with other frontier systems. The company also presents a new safeguard stack, reporting lower success rates on risky cyber prompts and stronger performance on its biosafety test.
+
+## Why it matters
+
+Grok 4.7 matters less as a simple leaderboard event than as a price-and-availability move. A frontier model aimed at multi-hour work is entering coding tools and agent platforms at prices that could encourage more persistent workloads. Whether the claimed gains survive independent testing, especially outside xAI’s selected benchmarks, will determine if this is a durable shift or an aggressive launch position.
+
+## Uncle Cat take
+
+The important number is the 38% Terminal-Bench score: xAI is buying credibility in sustained tool use, but independent agent runs still decide whether the discount is real value.
+
+Chinese title: xAI发布Grok 4.7，主攻长时编码与知识工作
+Chinese summary: Grok 4.7面向长时间编码和专业任务推出，输入每百万Token起价2美元，重点押注持续推理能力。
+
+Sources:
+  - Introducing Grok 4.7: https://x.ai/news/grok-4-7
+  - Grok 4.7 Release Notes: https://docs.x.ai/developers/release-notes
+
+### OpenAI Forms Independent Mathematics Advisory Group
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-math-advisory-group.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-math-advisory-group.html
+- Source timestamp: 2026-09-21T12:00:00.000Z
+- Site timestamp: 2026-09-21T23:00:04.116Z
+- Tags: Research, Industry, Safety
+
+OpenAI creates an external mathematician group to advise on sharing AI-generated results and responsible mathematical research.
+
+## An external check on AI mathematics
+
+OpenAI has formed an independent advisory group of mathematicians to help the company decide how to share advances produced with AI systems. The group will advise on responsible disclosure, attribution and communication of mathematical results, according to OpenAI’s announcement.
+
+The move follows a series of claims from OpenAI that its models have contributed to progress on more than 100 open mathematical problems. The company has already published collections of results involving geometry, coding theory, graph theory, complexity and other areas. It has also described model-assisted work on difficult problems including Navier–Stokes-related mathematics and the Erdős problem programme.
+
+## Why attribution is becoming operational
+
+AI-generated mathematical work creates a problem that is more specific than ordinary software assistance. A model may propose a conjecture, discover a proof strategy, generate formal proof code, or produce an argument that still requires human checking. Those contributions have different scientific meanings, yet a public announcement can easily collapse them into a single claim that “AI solved a problem.”
+
+An outside panel gives OpenAI a way to consult domain experts before releasing results that could affect research priorities or public expectations. It may also help establish conventions for credit, verification and the division between model output and human mathematical judgment. OpenAI has not presented the group as an independent certification body, and the announcement does not disclose a full operating charter or decision process.
+
+## Why it matters
+
+The group is significant because AI mathematics is moving from benchmark demonstrations toward institutional questions. If models regularly generate candidate proofs or useful research directions, laboratories will need processes for checking novelty, preserving attribution and explaining what was actually automated. An advisory group cannot settle those questions alone, but it signals that the bottleneck is becoming scientific governance as much as model capability.
+
+## Uncle Cat take
+
+OpenAI’s unresolved issue is not the headline count of 100 problems; it is whether mathematicians can audit the chain from model suggestion to publishable proof.
+
+Chinese title: OpenAI成立数学顾问组，监督AI成果发布方式
+Chinese summary: OpenAI邀请数学家组成独立顾问组，协助判断AI数学成果的披露、署名和研究责任边界。
+
+Sources:
+  - Advisory Group on Mathematics and Artificial Intelligence: https://openai.com/index/advisory-group-on-mathematics-and-ai
+  - Ten advances in mathematics and theoretical computer science: https://openai.com/index/ten-advances-in-mathematics/
+
+### Xiaomi Open-Sources MiMo-V2.6 After Large-Scale RL
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/xiaomi-mimo-v26-open-weights.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/xiaomi-mimo-v26-open-weights.html
+- Source timestamp: 2026-09-21T20:11:00.000Z
+- Site timestamp: 2026-09-21T23:00:04.116Z
+- Tags: Open Source, Models, Research, Agents
+
+Xiaomi releases MiMo-V2.6 Pro and Flash with open weights, RL environments and training tools for agent research.
+
+## Xiaomi opens the full training stack
+
+Xiaomi has released and open-sourced the MiMo-V2.6 family, consisting of the multimodal MiMo-V2.6-Pro and MiMo-V2.6-Flash. The company says both models were improved through a six-day live reinforcement-learning run, with approximately 750,000 training trajectories and reported costs of about $850,000 for Flash and $2.62 million for Pro.
+
+The release includes model weights, a technical report, more than 7,000 reinforcement-learning environments, an end-to-end training framework, and lightweight agent harnesses. The environments cover software engineering, vulnerability reproduction, knowledge-intensive work, and web design and development. Xiaomi also released MiMo-V2.6-Distill-Qwen-9B and related research resources.
+
+## A stronger open-weight contender
+
+Xiaomi reports that MiMo-V2.6-Pro reached 46 on the Artificial Analysis Intelligence Index, making it the highest-ranked open-weight model on that index at launch. It says the model is competitive with leading closed systems on several agent benchmarks, while still trailing the strongest proprietary models overall.
+
+The most notable claim is about improvement during reinforcement learning. Xiaomi says Pro’s out-of-sample DeepSWE v1.1 score rose from 58.4 to 72.6, while Flash increased from 48.8 to 65.7. The smaller distillation release also improved across all 11 listed evaluation metrics after reinforcement-learning training.
+
+## Why it matters
+
+The strategic importance is broader than another open model joining the leaderboard. Xiaomi is publishing the environments, harnesses and training components needed for others to reproduce or extend agentic reinforcement learning. That lowers the barrier for laboratories that have capable base models but lack task environments and evaluation infrastructure. The claims still depend heavily on Xiaomi’s own measurements, and the release date difference between the announcement page and public artifacts should be tracked carefully, but the openness of the surrounding stack gives this launch unusual research value.
+
+## Uncle Cat take
+
+The 7,000-plus task environments may matter more than the 46-point index score: Xiaomi is exporting the machinery that can make agent training repeatable.
+
+Chinese title: 小米开源MiMo-V2.6，公开强化学习全套资源
+Chinese summary: 小米开源MiMo-V2.6 Pro与Flash，并同步开放强化学习环境、训练框架和智能体工具链。
+
+Sources:
+  - MiMo-V2.6: Scaling Up Reinforcement Learning for Self-Improvement: https://mimo.mi.com/docs/en-US/news/latest/v2-6
+  - Xiaomi MiMo on Hugging Face: https://huggingface.co/XiaomiMiMo
+
 ### Amazon Blocks Meta’s Muse From Shopping on Its Marketplace
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/amazon-blocks-meta-muse-shopping.html
@@ -856,152 +1004,28 @@ Sources:
   - StepAudio 3 Gen Technical Report: https://arxiv.org/abs/2609.12945
   - StepFun StepAudio 3 announcement: https://x.com/StepFun_ai/status/2099916376274313630
 
-### TabPFN-3.5 Pushes Tabular AI Toward Production Use
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/tabpfn-35-structured-prediction.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/tabpfn-35-structured-prediction.html
-- Source timestamp: 2026-09-16T06:52:00.000Z
-- Site timestamp: 2026-09-16T11:00:03.952Z
-- Tags: Models, Industry, Research
-
-Prior Labs says its new tabular foundation model leads major benchmarks while handling raw enterprise data faster and with less manual tuning.
-
-Prior Labs has released TabPFN-3.5, the latest version of its foundation-model approach to structured data. Unlike general-purpose language models, TabPFN is designed for tables used in forecasting, fraud detection, pricing, churn analysis and risk scoring.
-
-The company says the model ranks first on TabArena and BeyondArena, two benchmarks focused on tabular prediction and real-world data-science tasks. Prior Labs also reports a 99% win rate against classic machine-learning methods when its “thinking” mode is enabled, though these figures are vendor-reported and should be read alongside independent benchmark details and task selection.
-
-## Less preprocessing, faster inference
-
-TabPFN-3.5 is designed to work directly with messy business datasets, including missing values, categorical fields, outliers, free-text columns and datasets containing many distinct identifiers. Prior Labs says the model can now process up to one million rows natively and deliver predictions substantially faster than earlier versions.
-
-The company highlights a cached-inference configuration that can accelerate repeated predictions, as well as a reported 0.5-second latency for 1,000-row inference in one comparison. The practical proposition is straightforward: teams can test a prediction task without first building a separate feature-engineering pipeline, selecting an algorithm and spending hours tuning it.
-
-SAP has also announced that TabPFN-3.5 Plus is available through SAP AI Core, placing the model inside an enterprise platform used for workloads such as cash-flow forecasting, supplier-risk scoring and payment-delay prediction.
-
-## Why it matters
-
-The release is significant because structured business data remains one of the largest areas where conventional machine learning still dominates. A model that can adapt to new tables with little preparation could shorten the path from raw operational data to a usable prediction, particularly for smaller data-science teams.
-
-The limits are equally important. Benchmark leadership does not prove robustness under distribution shifts, regulatory review or high-stakes decisions. Enterprises will still need data validation, monitoring, explainability and domain controls. TabPFN-3.5 is therefore less a replacement for the machine-learning stack than a credible attempt to make tabular modeling more reusable and accessible.
-
-## Uncle Cat take
-
-TabPFN-3.5’s strongest signal is SAP AI Core availability: the model is moving from benchmark novelty toward procurement, but governance will decide adoption.
-
-Chinese title: TabPFN-3.5 发布，表格基础模型迈向企业生产环境
-Chinese summary: Prior Labs 发布新一代表格基础模型，称其在多项评测中领先，并能以更少调参处理原始企业数据。
-
-Sources:
-  - TabPFN-3.5: https://priorlabs.ai/tabpfn-3-5
-  - TabPFN-3.5 Plus Now Available in SAP AI Core: https://news.sap.com/2026/09/tabpfn-35-plus-now-available-sap-ai-core-instant-business-predictions/
-  - TabPFN-3.5: Technical Report: https://priorlabs.ai/technical-reports
-
-### AI Labs Back AEF-1 Standard for Independent Evaluators
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/aef-1-ai-evaluation-standard.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/aef-1-ai-evaluation-standard.html
-- Source timestamp: 2026-09-15T04:50:00.000Z
-- Site timestamp: 2026-09-15T11:00:03.768Z
-- Tags: Safety, Policy, Industry
-
-A new evaluator standard backed by OpenAI, Anthropic and xAI sets minimum expectations for access, conflicts, autonomy, transparency and safe harbor.
-
-## A process standard emerges
-
-The AI Evaluator Forum has published AEF-1, a proposed standard for independent third-party evaluations of advanced AI systems. The framework is backed by major model developers including OpenAI, Anthropic and xAI, while also involving external evaluation organizations.
-
-AEF-1 defines five operating areas: sufficient technical access and resources; minimized conflicts of interest; analytic autonomy; transparent methods and results; and protection of sensitive information. It asks evaluators to disclose the model configurations they examined, the resources available to them, relevant conflicts, publication restrictions and any departures from the standard. The document also recommends legal safe harbor for actions conducted within an agreed evaluation scope.
-
-## Why the details matter
-
-The standard addresses a recurring weakness in frontier-model safety work: public claims often describe what was tested without clearly explaining how much access the evaluator had or whether the developer could influence the result. AEF-1 attempts to turn those questions into an auditable checklist.
-
-The document recommends that assessments of substantially novel systems generally receive enough time for access debugging, test design, execution, analysis and iteration. It cites 20 business days as a common minimum for many novel evaluations, though the appropriate period depends on the system and risk.
-
-## The unresolved issue
-
-AEF-1 is voluntary, and the same industry that controls model access is helping define the conditions under which access is judged adequate. That creates a real independence question even if the checklist is useful. The standard will matter only if evaluators publish compliance and exceptions, labs grant meaningful access to near-deployment systems, and buyers or regulators begin treating those disclosures as evidence rather than marketing.
-
-For now, its significance is institutional: it gives independent evaluators a common language for describing whether a safety result was genuinely independent, reproducible and properly resourced.
-
-Chinese title: OpenAI、Anthropic与xAI支持独立评测标准AEF-1
-Chinese summary: AI评测论坛发布AEF-1标准，要求第三方披露模型访问权限、利益冲突、分析自主性、方法透明度与法律安全港。
-
-Sources:
-  - AEF-1 Standard Emerges for Third Party Evaluators: https://www.latent.space/p/ainews-aef-1-standard-emerges-for
-  - AEF-1: Minimum Operating Conditions for Independent Third Party AI Evaluations: https://aievaluatorforum.org/AEF_1_Minimum_Operating_Conditions_for_Independent_AI_Evaluations.pdf
-  - AI Evaluator Forum: Minimum Operating Conditions: https://aievaluatorforum.org/initiatives/minimum-operating-conditions
-
-### Nvidia Rejects Calls to Slow AI Development Race
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/ai-slowdown-splits-industry.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/ai-slowdown-splits-industry.html
-- Source timestamp: 2026-09-14T21:51:00.000Z
-- Site timestamp: 2026-09-14T23:00:03.675Z
-- Tags: Policy, Industry, Safety
-
-Jensen Huang pushed back against a proposed AI slowdown, exposing a widening split between infrastructure sellers and safety-focused model builders.
-
-Nvidia CEO Jensen Huang rejected calls for a broad slowdown in AI development during an appearance at the All-In Summit on September 14, saying the company would not allow such a pause to derail the industry’s momentum. President Donald Trump joined the conversation by phone and also dismissed the idea that AI development should be halted because of existential-risk concerns.
-
-## A visible industry divide
-
-The remarks followed a weekend in which Anthropic CEO Dario Amodei argued that frontier-model progress should be paced more carefully. OpenAI CEO Sam Altman and other industry figures also acknowledged the need for stronger safeguards. Huang’s position was materially different: he characterized extreme AI-doom claims as unsupported and emphasized the economic and national-security benefits of continued deployment.
-
-The disagreement is not simply philosophical. Nvidia supplies the accelerators and networking systems that make large-scale model training and inference possible. Its commercial interests are therefore tied to continued spending by cloud providers, labs and governments. A slower development cycle could reduce near-term demand for the infrastructure ecosystem, even if it improved safety evaluation.
-
-## Why it matters
-
-The exchange makes the policy conflict unusually explicit. Model developers are warning that capability gains may be arriving faster than testing and governance systems can absorb, while the leading hardware supplier is arguing that slowing progress could weaken competitiveness, particularly against China. The result is a debate over whether safety should be achieved through a coordinated pause, incremental controls or continued deployment with stronger safeguards.
-
-No government-wide slowdown was announced, and Huang’s comments do not change Nvidia’s product roadmap. But the public disagreement matters because it shows that “AI safety” is no longer a unified industry position. The companies building models, selling infrastructure and setting policy now have visibly different incentives.
-
-## Uncle Cat take
-
-Huang’s “no slowdown” stance carries unusual weight because Nvidia benefits from every additional training cluster. That does not make his warning wrong, but it makes his preferred timetable impossible to treat as neutral evidence.
-
-Chinese title: 黄仁勋反对放慢AI竞赛，产业安全立场公开分裂
-Chinese summary: 英伟达CEO黄仁勋公开反对放慢AI发展，凸显基础设施供应商与安全派模型公司之间不断扩大的利益分歧。
-
-Sources:
-  - Jensen Huang puts Trump on speakerphone onstage to announce robots won’t take over the world: https://www.theverge.com/tech/995079/president-donald-trump-calls-nvidia-ceo-jensen-huang-all-in-summit
-  - Trump and Huang unite against AI doomers in surprise on-stage call: https://www.axios.com/2026/09/14/trump-jensen-huang-nvidia-ai-all-in-summit
-  - Nvidia CEO Jensen Huang tells Trump ‘we’re not going to let [an AI slowdown] happen’: https://techcrunch.com/2026/09/14/nvidia-ceo-jensen-huang-tells-trump-were-not-going-to-let-an-ai-slowdown-happen/
-
-### Meta Study Predicts Byte Models Can Outscale Token Models
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-byte-level-distillation.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meta-byte-level-distillation.html
-- Source timestamp: 2026-09-15T06:37:00.000Z
-- Site timestamp: 2026-09-15T11:00:03.768Z
-- Tags: Research, Models
-
-Meta and Washington researchers report that byte-level distillation may eventually beat token-based students, while requiring less stored teacher-distribution data.
-
-## The proposal
-
-Researchers from Meta FAIR and the University of Washington are studying whether a smaller language model should learn from a teacher one byte at a time rather than through the teacher’s token vocabulary. Their paper addresses a practical problem in knowledge distillation: token vocabularies can contain more than 100,000 candidates, making it expensive to preserve the teacher’s full probability distribution.
-
-The proposed methods convert token probabilities into byte-level targets. One approach marginalizes probabilities over matching byte prefixes; another adds explicit end-of-token markers so that the student can retain information about where a teacher token ends. Because a byte has only 256 possible values, the complete distribution is easier to store than a large top-k token approximation.
-
-## What the experiments suggest
-
-Using Llama 3 8B as the teacher, the team compared token and byte students under supervised training and distillation. Byte models learned more slowly at lower compute, but the paper’s scaling analysis projects that end-of-token distillation could reach a higher downstream accuracy ceiling than conventional token distillation. The reported projection is roughly four percentage points above the token-distilled baseline.
-
-The result is a forecast, not a demonstrated deployment advantage. Byte-level systems produce more prediction steps, and the paper reports higher training computation for one of its strongest variants. Inference cost was not yet compared on an equal-cost basis.
-
-## Why it matters
-
-The work challenges the assumption that tokenization is merely an implementation detail. If the projected scaling behavior survives larger runs, byte-level students could make distillation data easier to preserve and reduce dependence on a teacher’s proprietary tokenizer. The immediate implication is not that token models are obsolete, but that future small-model training may trade early efficiency for a better long-run scaling curve.
-
-Chinese title: Meta研究：字节级蒸馏或在扩展后超越Token模型
-Chinese summary: Meta与华盛顿大学研究者发现，字节级蒸馏模型起步较慢，却可能在更大训练规模下取得更高能力上限并降低教师分布存储压力。
-
-Sources:
-  - Meta新研究：字节模型蒸馏后，天花板破了: https://www.qbitai.com/2026/09/489337.html
-  - Meta新研究：字节模型蒸馏后，天花板破了: https://aitntnews.com/newDetail.html?newId=29367
-
 ## Recent radar items
+
+### 2026-09-22
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-22.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-22.html
+
+- 2026-09-21T15:30:00Z | Microsoft Research | Microsoft Research open-sourced RetroChimera, a retrosynthesis model whose routes received 90% expert acceptance in tests. | 中文：微软研究院开源RetroChimera逆合成模型，测试中其完整合成路线获化学专家90%的接受率。 | https://www.microsoft.com/en-us/research/blog/improving-synthesis-prediction-of-small-molecules-at-scale-with-retrochimera/
+- 2026-09-21T12:00:00Z | OpenAI | OpenAI said Higgsfield used GPT-6 Astra to ship video features within a day, with one engineer handling the implementation. | 中文：OpenAI称，Higgsfield借助GPT-6 Astra在一天内上线视频功能，且仅由一名工程师完成实现。 | https://openai.com/index/higgsfield-from-prompt-to-production-with-astra
+- 2026-09-21T16:01:00Z | The Decoder | ByteDance launched Dramagic, a platform designed to take short dramas from scripts through production with AI. | 中文：字节跳动推出Dramagic，目标是用AI把短剧从剧本一路推进到成片制作。 | https://the-decoder.com/bytedance-launches-dramagic-a-full-pipeline-ai-platform-for-producing-short-dramas-from-script-to-screen/
+- 2026-09-21T14:35:00Z | The Decoder | SoftBank reportedly plans to borrow more than $11 billion through bonds to finance its investment in OpenAI. | 中文：据报道，软银计划通过发行债券借款逾110亿美元，为其对OpenAI的投资融资。 | https://the-decoder.com/softbank-to-borrow-over-11-billion-in-risky-bonds-for-openai-stake/
+- 2026-09-21T14:06:00Z | The Decoder | Bristol researchers argued that medicine’s established methods for handling black-box decisions could inform explainable AI design. | 中文：布里斯托尔研究人员认为，医学处理黑箱决策的成熟方法可为可解释AI设计提供借鉴。 | https://the-decoder.com/bristol-researchers-say-medicine-already-knows-how-to-handle-black-boxes-and-ai-could-learn-from-it/
+- 2026-09-21T13:44:00Z | Hugging Face | Hugging Face published a method that treats LLM block pruning as an Ising optimization problem to reduce model size. | 中文：Hugging Face发布一种把大语言模型模块剪枝视为伊辛优化问题的方法，以减少模型规模。 | https://huggingface.co/blog/MultiverseComputingCAI/pruning-llms-like-a-physicist-block-removal-as-an
+- 2026-09-21T18:30:00Z | AWS Machine Learning | AWS announced that xAI’s Grok 4.6 is available through Amazon Bedrock for managed enterprise model access. | 中文：AWS宣布，xAI的Grok 4.6已通过Amazon Bedrock提供托管式企业模型访问。 | https://aws.amazon.com/blogs/machine-learning/xais-grok-4-6-is-now-available-in-amazon-bedrock/
+- 2026-09-21T16:52:00Z | X / ElevenLabs | ElevenLabs released Studio 4.0 with multi-track editing, comments, model access, and an AI co-editor called Studio Agent. | 中文：ElevenLabs发布Studio 4.0，加入多轨编辑、评论、模型调用和AI协作编辑器Studio Agent。 | https://x.com/ElevenLabs/status/2102078515600630154
+- 2026-09-21T16:33:00Z | X / Krea | Krea made its Agent available through MCP, enabling agents to generate assets and automate video pipelines inside workflows. | 中文：Krea通过MCP开放其Agent，使智能体能在工作流中生成素材并自动化视频管线。 | https://x.com/krea_ai/status/2102073752142090367
+- 2026-09-21T16:25:00Z | X / Perplexity AI | Perplexity Computer can generate videos using MiniMax H3 and ByteDance Seedance 2.5, according to Perplexity’s announcement. | 中文：Perplexity宣布，Computer现可调用MiniMax H3和字节Seedance 2.5生成视频。 | https://x.com/perplexity_ai/status/2102071798179434966
+- 2026-09-21T15:21:00Z | X / Hyper3D | Hyper3D introduced Agentic Mode for editable N-GON models, natural-language revisions, animation presets, and multi-view reconstruction. | 中文：Hyper3D推出Agentic Mode，支持可编辑N-GON模型、自然语言修改、动画预设和多视图重建。 | https://x.com/DeemosTech/status/2102055632887324775
+- 2026-09-21T18:32:00Z | X / GitHub | GitHub said one engineer and a team of agents ported its Copilot agent runtime to Rust, shipping 800,000 lines of production code. | 中文：GitHub称，一名工程师与一组智能体将Copilot Agent运行时移植到Rust，交付了80万行生产代码。 | https://x.com/github/status/2102103572867358977
+- 2026-09-21T17:03:00Z | X / LlamaIndex | LlamaIndex added Grounded Confidence to Extract so agents can estimate the reliability of extracted data in workflows. | 中文：LlamaIndex为Extract加入Grounded Confidence，让智能体能估计工作流中抽取数据的可靠性。 | https://x.com/llama_index/status/2102081253335785825
+- 2026-09-21T20:04:00Z | X / Runway | Runway expanded Workflows with compositing, alpha, HDR, depth-map, and RGB-depth tools for more complete creative pipelines. | 中文：Runway扩展Workflows，加入合成、Alpha、HDR、深度图和RGB深度工具，覆盖更完整的创作管线。 | https://x.com/runwayml/status/2102126749622345858
+- 2026-09-21T18:01:00Z | X / HeyGen | HeyGen introduced Code2Video, a benchmark developed with Google DeepMind to measure whether generated code renders into watchable video. | 中文：HeyGen推出Code2Video，与Google DeepMind合作评估生成代码能否渲染出值得观看的视频。 | https://x.com/HeyGen/status/2102095873782288617
 
 ### 2026-09-21
 
@@ -1146,39 +1170,3 @@ Sources:
 - 2026-09-18 | Amazon Web Services | AWS described a new AgentCore runtime that provides managed compute, elastic scaling, and faster starts for production AI agents. | 中文：AWS介绍新版AgentCore运行时，为生产级AI智能体提供托管算力、弹性扩缩容和更快启动。 | https://aws.amazon.com/blogs/machine-learning/the-new-agentcore-runtime-elastic-optimized-and-consistently-fast-starts/
 - 2026-09-18 | Amazon Web Services | AWS published a migration pattern for moving multi-model agents from self-managed ECS and Fargate into Bedrock AgentCore. | 中文：AWS发布迁移方案，帮助多模型智能体从自管ECS和Fargate迁移至Bedrock AgentCore。 | https://aws.amazon.com/blogs/machine-learning/migrating-multi-model-ai-agents-to-amazon-bedrock-agentcore-runtime/
 - 2026-09-18 | Google Research | Google Research released MilleMiglia, an open-source generator of realistic middle-mile logistics benchmarks for network optimization. | 中文：Google Research发布开源MilleMiglia，为中程物流网络优化生成更贴近现实的基准问题。 | https://research.google/blog/millemiglia-a-realistic-instance-generator-for-middle-mile-logistics/
-
-### 2026-09-17
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-17.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-17.html
-
-- 2026-09-16T22:58:00Z | SiliconANGLE | Noetive launched with $41 million to build self-improving AI systems for factories and logistics. | 中文：Noetive获4100万美元融资，推出面向工厂与物流的自我改进型人工智能系统。 | https://siliconangle.com/2026/09/16/noetive-launches-with-41m-to-bring-self-improving-ai-to-factories-and-logistics/
-- 2026-09-16T22:36:00Z | SiliconANGLE | CADDi raised $114 million at a $1.2 billion valuation to expand its manufacturing-data platform into North America. | 中文：CADDi获1.14亿美元融资，估值达12亿美元，并将制造业数据平台拓展至北美。 | https://siliconangle.com/2026/09/16/caddi-raises-114m-at-1-2b-valuation-to-bring-manufacturing-ai-to-north-america/
-- 2026-09-16T22:51:00Z | X / GitHub Copilot | GitHub detailed a new Copilot Inline Suggestions model that unifies completions and next-edit predictions. | 中文：GitHub详解新版Copilot行内建议模型，将代码补全与下一步编辑预测统一起来。 | https://x.com/code/status/2100356818627067932
-- 2026-09-16T21:59:00Z | MarkTechPost | Stanford researchers released Paper2Agent, which turns research papers into agents that reproduce results and run on new data. | 中文：斯坦福研究人员发布Paper2Agent，可将论文转化为复现实验并处理新数据的智能体。 | https://www.marktechpost.com/2026/09/16/stanford-researchers-release-paper2agent-turning-research-papers-into-ai-agents-that-reproduce-results-and-run-on-new-data/
-- 2026-09-16T21:19:00Z | MarkTechPost | Knowledgator released GLiFormer, a 575-million-parameter encoder reporting 91.10 F1 on nested JSON extraction without token generation. | 中文：Knowledgator发布5.75亿参数的GLiFormer，在嵌套JSON抽取上报告91.10的F1分数且无需生成文本。 | https://www.marktechpost.com/2026/09/16/knowledgator-releases-gliformer-a-575m-parameter-encoder-that-hits-91-10-f1-on-nested-json-extraction-without-generating-tokens/
-- 2026-09-16T20:00:00Z | X / Baseten | Baseten introduced hosted web search and grounded inference for open models, removing manual orchestration and separate search keys. | 中文：Baseten为开放模型推出托管网页搜索与基于检索的推理，免去手工编排和独立搜索密钥。 | https://x.com/baseten/status/2100313863455727673
-- 2026-09-16T17:30:00Z | X / Runway | Runway introduced Flux Video Edit for adding, removing, replacing, or restyling objects in existing footage, plus 2K and 4K upscaling. | 中文：Runway推出Flux Video Edit，可修改现有视频中的物体与场景，并支持2K和4K放大。 | https://x.com/runwayml/status/2100276170600358091
-- 2026-09-16T16:37:00Z | X / ElevenLabs | ElevenLabs launched Reception, an AI receptionist platform for small businesses built on its ElevenAgents technology. | 中文：ElevenLabs推出Reception，基于ElevenAgents为小企业提供人工智能前台服务。 | https://x.com/ElevenLabs/status/2100262886916358361
-- 2026-09-16T17:00:00Z | The Decoder | Google DeepMind launched an interdisciplinary institute focused on major scientific and philosophical questions surrounding AGI. | 中文：Google DeepMind成立跨学科研究院，聚焦通用人工智能相关的重大科学与哲学问题。 | https://the-decoder.com/google-deepmind-launches-interdisciplinary-institute-to-tackle-the-big-questions-around-agi/
-- 2026-09-16T19:00:00Z | AWS Machine Learning Blog | AWS published open-source agent skills for improving AI reasoning in healthcare and life-science workflows. | 中文：AWS发布面向医疗与生命科学工作流的开源智能体技能，用于提升人工智能推理能力。 | https://aws.amazon.com/blogs/machine-learning/improving-hcls-ai-reasoning-with-open-source-agent-skills/
-- 2026-09-16T18:50:00Z | Rohan Bansal | A new 4-billion-parameter model reportedly produced query plans 81% faster than PostgreSQL in benchmark testing. | 中文：一款40亿参数模型据称在基准测试中生成查询计划的速度比PostgreSQL快81%。 | https://rohanbansal.com/qorl
-- 2026-09-16T16:00:00Z | X / Cognition | Cognition introduced Devin Code Scans for finding slow paths, untested flows, dead code, and accessibility issues across repositories. | 中文：Cognition推出Devin Code Scans，可跨代码库查找慢路径、未测试流程、死代码和无障碍问题。 | https://x.com/cognition/status/2100253548885803404
-- 2026-09-16T15:00:00Z | X / Tripo | Tripo launched a ChatGPT plugin that turns prompts into 3D assets for gameplay and animation workflows. | 中文：Tripo推出ChatGPT插件，可将提示词直接转成用于游戏和动画流程的3D资产。 | https://x.com/tripoai/status/2100238277131276549
-- 2026-09-16T15:01:00Z | The Decoder | Mozilla’s new Smart Window assistant uses Mistral models to provide AI help inside the browser. | 中文：Mozilla的新Smart Window助手采用Mistral模型，在浏览器内部提供人工智能辅助。 | https://the-decoder.com/mozillas-new-smart-window-assistant-runs-on-mistrals-models/
-- 2026-09-16T13:00:00Z | OpenAI | OpenAI published a campaign describing how advertisers can use AI to create and personalize marketing materials. | 中文：OpenAI发布案例，介绍广告主如何利用人工智能制作并个性化营销素材。 | https://openai.com/index/reimagining-advertising-with-ai
-- 2026-09-17T09:45:00Z | The Decoder | OpenAI’s GPT-6 Astra reportedly decrypted a Nazi radio message in ten hours after 83 years of unsuccessful human analysis. | 中文：据报道，OpenAI 的 GPT-6 Astra 用十小时破译了一份搁置 83 年的纳粹无线电密文。 | https://the-decoder.com/openais-gpt-6-astra-decrypts-a-nazi-radio-message-in-ten-hours-that-went-unsolved-for-83-years/
-- 2026-09-17T10:24:00Z | The Decoder | OpenRouter’s latest token chart shows explosive usage growth, intensifying debate over whether AI demand reflects durable utility or speculative overbuilding. | 中文：OpenRouter 最新代币图表显示用量激增，再度引发 AI 需求究竟来自真实价值还是泡沫建设的争论。 | https://the-decoder.com/openrouters-staggering-token-chart-is-the-ai-bubble-debate-in-a-single-image/
-- 2026-09-17T09:42:00Z | 量子位 | Graphics researcher Xin Tong joined Meshy to lead its push toward playful, consumer-facing AI-generated 3D creation tools. | 中文：图形学研究者童欣加盟 Meshy，负责推动面向消费者的趣味化 AI 三维创作工具。 | https://www.qbitai.com/2026/09/491522.html
-- 2026-09-17T09:39:00Z | 量子位 | A Chinese state-owned enterprise’s general-purpose agent reportedly ranked among IDC’s top three in practical evaluations. | 中文：一家中国央企打造的通用 Agent 据称在 IDC 实测中进入前三。 | https://www.qbitai.com/2026/09/491454.html
-- 2026-09-17T06:51:00Z | Alibaba Wan | Alibaba’s Wan3.0 demonstrated a single 30-second generated video shot, extending its earlier five- and fifteen-second production milestones. | 中文：阿里 Wan3.0 展示了单条 30 秒生成视频，延续此前五秒和十五秒时长的迭代。 | https://x.com/Alibaba_Wan/status/2100477707058618835
-- 2026-09-17T05:00:00Z | TechCrunch | Icelandic voice-simulation startup Treble raised $18 million to expand its platform for generating realistic synthetic speech data. | 中文：冰岛语音模拟初创公司 Treble 筹集 1800 万美元，用于扩展逼真合成语音数据平台。 | https://techcrunch.com/2026/09/16/iceland-based-treble-raises-18-million-for-its-voice-simulation-platform/
-- 2026-09-17T02:26:00Z | SiliconANGLE | Open-weight model developer Arcee AI reached a valuation above $1 billion through a new undisclosed Series B financing round. | 中文：开放权重模型开发商 Arcee AI 通过一轮未披露金额的 B 轮融资，估值突破 10 亿美元。 | https://siliconangle.com/2026/09/16/open-weight-model-developer-arcee-ai-reaches-1b-plus-valuation-with-undisclosed-series-b-funding/
-- 2026-09-17T02:38:00Z | SiliconANGLE | Hang Ten Systems raised another $53 million to deliver enterprise AI services using agentic code generation and reusable skills libraries. | 中文：Hang Ten Systems 追加融资 5300 万美元，利用智能体代码生成和可复用技能库提供企业 AI 服务。 | https://siliconangle.com/2026/09/16/ex-infosys-chief-vishal-sikkas-hang-ten-raises-another-53m-for-enterprise-ai-services/
-- 2026-09-16T23:40:00Z | The Verge | Snap introduced Specs Intelligence, an AI assistant for its smart glasses that will also be available on iOS and Mac. | 中文：Snap 推出 Specs Intelligence 智能助手，为其智能眼镜提供 AI 能力，并将登陆 iOS 和 Mac。 | https://www.theverge.com/tech/996078/snap-specs-intelligence-ai-agent-ios-mac
-- 2026-09-17T00:45:00Z | MarkTechPost | Nunchux AI introduced VC-Attention, a training-free low-bit attention kernel designed to accelerate video diffusion transformers. | 中文：Nunchux AI 发布 VC-Attention，一种无需训练的低比特注意力内核，旨在加速视频扩散 Transformer。 | https://www.marktechpost.com/2026/09/16/nunchux-ai-introduces-vc-attention-a-training-free-low-bit-attention-kernel-that-speeds-up-video-diffusion-transformers/
-- 2026-09-17T10:00:00Z | InfoQ 中文 | Researchers presented RhymeRL, a reinforcement-learning system that improves performance by learning from historical experience. | 中文：研究者介绍 RhymeRL，一套通过学习历史经验来提升性能的强化学习系统。 | https://www.infoq.cn/article/CbZGXuTBMFJPZ7WNtH9h
-- 2026-09-17T04:00:00Z | arXiv | GraphEcho proposes structural redundancy and evidence provenance mechanisms for improving reliability in LLM-based graph agents. | 中文：GraphEcho 提出结构冗余与证据溯源机制，以提升基于大模型的图智能体可靠性。 | https://arxiv.org/abs/2609.17695
-- 2026-09-17T00:30:00Z | Sakana AI | Sakana AI upgraded Sakana Chat with a newer orchestrator model and added memory capabilities. | 中文：Sakana AI 为 Sakana Chat 更换最新编排模型，并新增记忆功能。 | https://x.com/SakanaAILabs/status/2100381722147721724
-- 2026-09-17T03:20:00Z | Kling AI | Kling AI previewed Odysseus: The Fall, a feature film directed by Ash Koosha and powered by Kling AI’s video-generation technology. | 中文：Kling AI 预告由 Ash Koosha 执导、使用 Kling AI 视频生成技术制作的长片《Odysseus：The Fall》。 | https://x.com/Kling_ai/status/2100424655840387292
-- 2026-09-17T10:31:00Z | IT之家 | OpenAI developer tools reportedly helped decode an 83-year-old German military radio message in ten hours. | 中文：据报道，OpenAI 开发者工具十小时内协助破译了一份存在 83 年的德国军用无线电密文。 | https://www.ithome.com/1/003/789.htm

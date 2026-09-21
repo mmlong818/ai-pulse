@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AWS开源Strands Harness，打包智能体运行基础设施 — Uncle Cat AI Radar</title>
+<meta name="description" content="AWS发布开源Strands Harness，预置工具、记忆和上下文管理，并声称在准确率相近时节省28% Token。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/aws-strands-agent-harness.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/aws-strands-agent-harness.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/aws-strands-agent-harness.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/aws-strands-agent-harness.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="AWS开源Strands Harness，打包智能体运行基础设施 — Uncle Cat AI Radar">
+<meta property="og:description" content="AWS发布开源Strands Harness，预置工具、记忆和上下文管理，并声称在准确率相近时节省28% Token。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/aws-strands-agent-harness.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AWS开源Strands Harness，打包智能体运行基础设施 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="AWS发布开源Strands Harness，预置工具、记忆和上下文管理，并声称在准确率相近时节省28% Token。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="AWS开源Strands Harness，打包智能体运行基础设施 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"AWS开源Strands Harness，打包智能体运行基础设施","item":"https://mmlong818.github.io/ai-pulse/zh/articles/aws-strands-agent-harness.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/aws-strands-agent-harness.html#article","headline":"AWS开源Strands Harness，打包智能体运行基础设施","description":"AWS发布开源Strands Harness，预置工具、记忆和上下文管理，并声称在准确率相近时节省28% Token。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/aws-strands-agent-harness.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/aws-strands-agent-harness.html"},"datePublished":"2026-09-21T16:00:00.000Z","dateModified":"2026-09-21T23:00:04.116Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["Agent","开源","产业"],"keywords":"Agent, 开源, 产业","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://strandsagents.com/docs/user-guide/harness/","https://www.theregister.com/ai-and-ml/2026/09/21/aws-bolts-together-open-source-agent-harness-says-it-sips-fewer-tokens-than-rivals/5297915"],"about":[{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"产业"}]}]}</script>
+</head>
+<body data-slug="aws-strands-agent-harness" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/aws-strands-agent-harness.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-09-21T16:00:00Z">2026年9月22日 00:00</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>AWS开源Strands Harness，打包智能体运行基础设施</h1>
+  <p class="standfirst">AWS发布开源Strands Harness，预置工具、记忆和上下文管理，并声称在准确率相近时节省28% Token。</p>
+  <h2>AWS开始打包智能体运行时</h2><p>AWS发布Strands Harness，这是一个开源智能体Harness，旨在为开发者提供可直接使用的智能体构建和部署起点。该项目预置工具调用、上下文管理、会话、记忆、钩子和系统提示词等能力，开发者无需逐层拼装即可通过一次导入创建智能体。</p><p>项目支持Python和TypeScript，并允许开发者连接自行选择的模型。AWS将其放在更大的Strands工具链中，后者还包括底层Harness组件、评测工具，以及面向更安全操作系统交互的Shell。</p><h2>成本主张仍需更多细节</h2><p>AWS称，Strands Harness在任务准确率接近竞争方案的情况下，可减少28%的Token使用量。公司将其定位为面向工具调用、上下文维护和中间失败恢复场景的效率升级。不过，发布材料尚未披露完整评测细节，包括任务构成、模型配置，以及节省Token是否会换来额外延迟或基础设施成本。</p><p>该项目并不限定在单一AWS部署路径中运行。开发者可以搭配不同模型使用开源Harness，并自行调整工具、记忆和上下文策略。这一点很重要，因为智能体开发者越来越需要可迁移的应用逻辑，同时保留对部署方式、数据处理和模型选择的控制权。</p><h2>为什么重要</h2><p>智能体开发正从提示词设计转向运行时工程。工具权限、记忆行为、上下文压缩和失败恢复，往往决定一个智能体能否以可接受的成本稳定投入生产。AWS通过发布预组装Harness，争夺的是基础模型与业务应用之间的中间层。短期影响取决于开发者是否信任其默认设置，以及28%的节省能否在AWS评测之外的工作负载中重现。</p><h2>猫叔判断</h2><p>28%的Token节省很诱人，但评测细节尚不完整；当前更确定的产品价值是默认方案，而非普适效率结论。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://strandsagents.com/docs/user-guide/harness/" rel="noopener" target="_blank">Strands Harness</a></li><li><a href="https://www.theregister.com/ai-and-ml/2026/09/21/aws-bolts-together-open-source-agent-harness-says-it-sips-fewer-tokens-than-rivals/5297915" rel="noopener" target="_blank">AWS launches Strands Harness</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-math-advisory-group.html">OpenAI成立数学顾问组，监督AI成果发布方式</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/xiaomi-mimo-v26-open-weights.html">小米开源MiMo-V2.6，公开强化学习全套资源</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/amazon-blocks-meta-muse-shopping.html">亚马逊封锁Meta Muse，AI代理购物遭遇平台边界</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
