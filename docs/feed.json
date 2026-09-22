@@ -13,6 +13,47 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/alibaba-plans-qwen-10-trillion-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/alibaba-plans-qwen-10-trillion-model.html",
+      "title": "Alibaba Plans Qwen Model Reaching 10 Trillion Parameters",
+      "summary": "Alibaba says future Qwen models could reach 5–10 trillion parameters as it links model scaling to domestic chips, cloud capacity and agent deployment.",
+      "content_text": "Alibaba has outlined plans to train a future Qwen model with between 5 trillion and 10 trillion parameters, a major escalation in the company’s long-term AI ambitions. Chief executive Eddie Wu made the announcement at Alibaba’s Apsara Conference in Hangzhou, where the company also presented new AI chips, cloud infrastructure and agent-focused products.\n\n## A full-stack bet\n\nThe proposed model would be several times larger than Alibaba’s current Qwen3.8-Max, which is reported to contain about 2.4 trillion parameters. The announcement concerns a future training target, not a released model: Alibaba has not provided a launch date, architecture, training dataset, compute requirement or expected benchmark results.\n\nThat distinction matters because parameter count alone does not determine capability. Sparse architectures, routing efficiency, training data quality and inference economics will shape whether a model of this scale produces a meaningful improvement or simply creates a larger engineering burden.\n\nAlibaba presented the model roadmap alongside its Zhenwu V900 AI chip, which the company described as substantially faster than its previous generation. It also discussed expanding data-centre capacity and building an agent-oriented cloud platform. Together, the announcements suggest that Alibaba is treating frontier models, silicon, cloud services and applications as one connected system rather than separate businesses.\n\n## Why it matters\n\nThe plan is significant because it is one of the clearest public signals that a major Chinese technology company intends to compete at the very largest training scales while reducing dependence on imported infrastructure. It also raises the strategic stakes for open model development: Qwen’s previous releases have circulated widely among developers, but Alibaba has not said whether a 5–10 trillion-parameter successor would be open-weight.\n\nThe immediate story is therefore not a new model available to users. It is a commitment of capital, chips and organisational capacity that could reshape the next phase of China’s frontier-model race.",
+      "date_published": "2026-09-22T10:48:00.000Z",
+      "date_modified": "2026-09-22T11:00:04.265Z",
+      "tags": [
+        "Models",
+        "Industry",
+        "Open Source"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/alibaba-plans-qwen-10-trillion-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-plans-qwen-10-trillion-model.html",
+        "source_published_at": "2026-09-22T10:48:00.000Z",
+        "site_published_at": "2026-09-22T11:00:04.265Z",
+        "sources": [
+          {
+            "title": "Alibaba Plans AI Model with 5 Trillion to 10 Trillion Parameters, Unveils New Chip",
+            "url": "https://www.infoq.cn/article/L9QQKUgo3DEjschVRKD9"
+          },
+          {
+            "title": "China's Alibaba Unveils New Powerful Chip and Ambitious AI Model Plans",
+            "url": "https://apnews.com/article/b29908e516faff9f5a82b201ba954aab"
+          },
+          {
+            "title": "Alibaba Unveils Roadmap on Full-Stack AI Strategy",
+            "url": "https://www.aseangazette.com/newswires/media-outreach/2026/09/22/alibaba-unveils-roadmap-on-full-stack-ai-strategy-from-chips-cloud-infrastructure-models-to-agents/124888/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/aws-strands-agent-harness.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/aws-strands-agent-harness.html",
       "title": "AWS Releases Open-Source Strands Agent Harness",
@@ -87,6 +128,47 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/nvidia-sol-pi-coding-agent-efficiency.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/nvidia-sol-pi-coding-agent-efficiency.html",
+      "title": "NVIDIA Open-Sources SoL-Pi for Leaner Coding Agents",
+      "summary": "NVIDIA’s SoL-Pi extension uses automated research loops to reduce coding-agent token traffic by up to 49% while preserving task performance.",
+      "content_text": "Researchers from NVIDIA, MIT and NTU have released SoL-Pi, an open-source extension for the Pi coding-agent harness that targets a less visible bottleneck in agent deployment: repeated context and tool traffic. The project applies automated research loops to discover ways to reduce unnecessary model work during long-running coding tasks.\n\n## Optimising the harness\n\nSoL-Pi packages four mechanisms covering action execution, context compaction, observation handling and delegated reading. The goal is not to make the underlying language model larger or smarter. It is to prevent an agent from repeatedly replaying completed subtasks, sending oversized logs back to the model or spending a full request reading information that will not affect its next decision.\n\nOn the reported 51-task EdgeBench evaluation, the system reduced recorded token traffic by 44.7% to 49.0% compared with the baseline Pi setup. The researchers said task performance remained comparable when using GPT-5.6 Sol and Opus 5, while estimated API costs fell by roughly one third. The extension runs on an unmodified Pi release and is distributed under the MIT license, with the mechanisms opt-in.\n\n## Why it matters\n\nThe project is important because coding agents are increasingly used for long sessions in which infrastructure overhead can rival the cost of the model’s core reasoning. If the reported savings transfer to production workloads, agent vendors and developers could improve margins without immediately switching to a weaker model or waiting for cheaper hardware.\n\nThere are limits to the claim. EdgeBench contains 51 tasks, and the measured reduction concerns the tested harness and model combinations rather than every agent workflow. Aggressive context trimming can also remove evidence an agent needs later. Still, SoL-Pi points to a growing research direction: agent efficiency may come from redesigning the surrounding control loop, not only from compressing model weights or lowering token prices.",
+      "date_published": "2026-09-22T05:04:00.000Z",
+      "date_modified": "2026-09-22T11:00:04.265Z",
+      "tags": [
+        "Agents",
+        "Research",
+        "Open Source"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/nvidia-sol-pi-coding-agent-efficiency.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-sol-pi-coding-agent-efficiency.html",
+        "source_published_at": "2026-09-22T05:04:00.000Z",
+        "site_published_at": "2026-09-22T11:00:04.265Z",
+        "sources": [
+          {
+            "title": "NVIDIA Introduces SoL-Pi: Auto-Research Loops for Coding Agents",
+            "url": "https://www.marktechpost.com/2026/09/21/nvidia-researchers-have-released-sol-pi/"
+          },
+          {
+            "title": "SoL-Pi GitHub Repository",
+            "url": "https://github.com/NVlabs/SoL-Pi"
+          },
+          {
+            "title": "SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness",
+            "url": "https://arxiv.org/abs/2609.20519"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/openai-math-advisory-group.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/openai-math-advisory-group.html",
       "title": "OpenAI Forms Independent Mathematics Advisory Group",
@@ -119,6 +201,47 @@
           {
             "title": "Ten advances in mathematics and theoretical computer science",
             "url": "https://openai.com/index/ten-advances-in-mathematics/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy-image-35-preview.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy-image-35-preview.html",
+      "title": "Tencent Releases Hy Image3.5 Preview for Iterative Creation",
+      "summary": "Tencent’s Hy Image3.5 preview adds multi-turn image editing and reference inputs, targeting production workflows rather than one-shot generation.",
+      "content_text": "Tencent has released a preview of Hy Image3.5, its latest image-generation model, with support for text-to-image, image-to-image and multi-turn conversational editing. The model is being introduced through Tencent’s Yuanbao and ima applications, as well as developer-facing access, giving users a way to refine an image across successive instructions instead of restarting from scratch.\n\n## From prompts to revision loops\n\nTencent says an internal blind evaluation involving hundreds of professional designers produced a 30% higher win rate than Hy Image3.0. The company also said the preview performed roughly on par with ByteDance’s Seedream 5.0 Pro and slightly ahead of Qwen-Image-3.0 Pro and Google’s Nano Banana Pro in that internal comparison. Those figures are company-reported and should not be treated as an independent leaderboard result.\n\nThe product supports reference-image inputs and conversational context, allowing a creator to alter composition, lighting, subjects or details over multiple turns. Tencent has also promoted high-resolution output and API access, positioning the model for design and content-production workflows rather than casual experimentation alone.\n\n## Why it matters\n\nThe significance is less about another model entering an already crowded image-generation field than about where Tencent is competing. The company is pairing model quality with direct placement inside a large consumer ecosystem and with a workflow built around repeated edits. That could make the model useful to designers who need controlled variations, not merely attractive first drafts.\n\nThe unresolved issue is independent evidence. Tencent’s comparison is based on an internal designer test, and the preview status means reliability, pricing and access limits may still change. Even so, the launch shows Chinese platforms are increasingly treating image generation as an integrated creative tool, with conversational editing and application distribution becoming as important as raw image quality.",
+      "date_published": "2026-09-22T02:40:00.000Z",
+      "date_modified": "2026-09-22T11:00:04.265Z",
+      "tags": [
+        "AIGC",
+        "Models",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy-image-35-preview.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-image-35-preview.html",
+        "source_published_at": "2026-09-22T02:40:00.000Z",
+        "site_published_at": "2026-09-22T11:00:04.265Z",
+        "sources": [
+          {
+            "title": "Tencent Hunyuan Hy Image3.5 Preview Released",
+            "url": "https://www.ithome.com/1/005/589.htm"
+          },
+          {
+            "title": "Hy Image3.5 Preview Is Live",
+            "url": "https://x.com/TencentHunyuan/status/2102226552310419473"
+          },
+          {
+            "title": "Tencent Shares Jump After Unveiling New AI Image Model",
+            "url": "https://www.investing.com/news/stock-market-news/tencent-shares-jump-after-unveiling-new-ai-image-model-4909849"
           }
         ]
       }
@@ -1774,116 +1897,6 @@
           {
             "title": "Meshy shares Mora 1 project story",
             "url": "https://x.com/MeshyAI/status/2098603660632785126"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt-rosalind-life-sciences.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt-rosalind-life-sciences.html",
-      "title": "OpenAI Moves GPT-Rosalind Into Trusted Global Access",
-      "summary": "OpenAI has moved GPT-Rosalind beyond research preview for eligible organizations, pairing biological reasoning with governed access through its API, Codex, and ChatGPT Enterprise.",
-      "content_text": "OpenAI has expanded GPT-Rosalind from a research preview into trusted access for eligible organizations worldwide, making the life-sciences model available through the API, Codex, and ChatGPT Enterprise. The company is also offering dedicated Life Sciences plugins that connect Codex to genomic, protein-structure, literature, and translational-research tools.\n\n## A model built around workflows\n\nGPT-Rosalind is positioned less as a general chatbot than as a research system for evidence synthesis, hypothesis generation, sequence analysis, experimental planning, and data interpretation. OpenAI says it is intended to connect papers, databases, internal findings, and experimental results inside a reviewable workflow. The access model remains selective: organizations must demonstrate legitimate research goals, governance, and safeguards against misuse.\n\nOpenAI’s product material cites gains across several life-sciences evaluations, including higher performance per token on Genebench, Medchem Bench, and Labworkbench. The company lists pharmaceutical, biotechnology, healthcare, and research customers or partners including Novo Nordisk, Moderna, Thermo Fisher Scientific, and the Allen Institute.\n\n## Why the access model matters\n\nThe important change is not simply another specialized model announcement. OpenAI is tying model access to a controlled environment in which tools, evidence, and organizational permissions are part of the product. That structure could make advanced biological reasoning easier to deploy inside regulated research groups, while also limiting open experimentation in a domain where misuse risks are unusually consequential.\n\nThe claims still depend heavily on vendor-run evaluations and trusted-access selection. The decisive question will be whether researchers can reproduce useful gains in real discovery programs, where data are incomplete, experiments are expensive, and plausible scientific language is not the same as a validated result.",
-      "date_published": "2026-09-11T20:29:00.000Z",
-      "date_modified": "2026-09-11T23:00:03.305Z",
-      "tags": [
-        "Models",
-        "Research",
-        "Safety"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt-rosalind-life-sciences.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-rosalind-life-sciences.html",
-        "source_published_at": "2026-09-11T20:29:00.000Z",
-        "site_published_at": "2026-09-11T23:00:03.305Z",
-        "sources": [
-          {
-            "title": "Introducing GPT-Rosalind for life sciences research",
-            "url": "https://openai.com/index/introducing-gpt-rosalind/"
-          },
-          {
-            "title": "GPT-Rosalind research access program",
-            "url": "https://openai.com/form/life-sciences-access/"
-          },
-          {
-            "title": "GPT-Rosalind availability announcement",
-            "url": "https://x.com/OpenAIDevs/status/2098509255947293035"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/runway-licenses-frontier-model-weights.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/runway-licenses-frontier-model-weights.html",
-      "title": "Runway Offers Frontier Model Weights for Enterprise Hosting",
-      "summary": "Runway says enterprises can license its frontier model weights, fine-tune them on private data, and self-host bespoke systems under their own infrastructure controls.",
-      "content_text": "Runway has announced an enterprise offering that lets customers license its frontier model weights, fine-tune them on proprietary data, and self-host the resulting systems. The company presents the move as a way for enterprises to build bespoke generative models while retaining greater control over data, deployment, and operating environments.\n\n## A different route to enterprise customization\n\nMost generative-video products keep the core model behind a hosted interface or API. Runway’s offer moves closer to an enterprise software and infrastructure model: customers can adapt the weights to their own visual domain and run the system inside infrastructure they control. The approach is aimed at organizations that need private data boundaries, predictable integration with existing production tools, or tighter control over latency and availability.\n\nThe announcement comes as generative-video companies compete on more than public-facing creative demos. Model access, customization, and deployment rights are becoming commercial differentiators. Runway’s enterprise proposition also connects with broader changes in content production, where studios, retailers, game companies, and brands want repeatable visual systems rather than one-off clips.\n\n## Licensing is not the same as open release\n\nRunway is not publishing the weights as open source. Customers receive a commercial license with deployment conditions, and the economics, hardware requirements, update policy, and permitted uses will matter as much as the model’s benchmark quality. Self-hosting can improve governance, but it also transfers responsibility for serving, monitoring, security, and model updates to the buyer.\n\nThe strategic significance is that a leading video-model company is treating weight access as an enterprise product in its own right. If the offer proves workable, it could pressure other labs to separate model access from centralized inference. The unresolved issue is whether enough customers will value control and customization to justify the operational burden and licensing cost.",
-      "date_published": "2026-09-11T13:53:00.000Z",
-      "date_modified": "2026-09-11T23:00:03.305Z",
-      "tags": [
-        "AIGC",
-        "Industry",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/runway-licenses-frontier-model-weights.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-licenses-frontier-model-weights.html",
-        "source_published_at": "2026-09-11T13:53:00.000Z",
-        "site_published_at": "2026-09-11T23:00:03.305Z",
-        "sources": [
-          {
-            "title": "Runway enterprise model licensing announcement",
-            "url": "https://x.com/runwayml/status/2098409679974228275"
-          },
-          {
-            "title": "Runway enterprise bespoke model workflow",
-            "url": "https://x.com/runwayml/status/2098409692196438435"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/cognition-swe-2-coding-model.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/cognition-swe-2-coding-model.html",
-      "title": "Cognition Releases SWE-2 Coding Model at Lower Cost",
-      "summary": "Cognition’s SWE-2 reaches near-frontier coding scores while claiming sharply lower cost and fewer turns on long software tasks.",
-      "content_text": "Cognition has released SWE-2, a coding model designed for its Devin software-engineering agent and positioned as a lower-cost alternative to larger frontier systems.\n\n## Performance and training\n\nCognition reports that SWE-2 scores 50.0% on FrontierCode 1.1 Main, within one point of Fable 5.1 in the company’s comparison, while costing 64% less. On DeepSWE 1.1 it scores 73.0%, and on Terminal-Bench 2.1 it reaches 92.8%.\n\nThe company says the model is post-trained from Kimi K3, a 2.8-trillion-parameter base model, using reinforcement learning at what it calls the multi-trillion-parameter scale. Its training method applies cost penalties across different reasoning-effort levels in one run, aiming to improve the entire cost-performance curve instead of optimizing only for a single maximum score.\n\nCognition also reports a substantial reduction in agent activity. On its 100-task FrontierCode evaluation, SWE-2 medium used 53 mean steps compared with 127 for SWE-1.7, and the company says average cost fell 81% on that comparison.\n\n## Why it matters\n\nThe release adds pressure to the idea that coding-agent progress must come from ever-larger general models. If Cognition’s results hold outside its own evaluations, better reinforcement learning and more efficient agent behavior could make sustained software work more economical.\n\nThe caveat is that nearly all headline numbers come from Cognition’s benchmarks and deployment environment. SWE-2’s real importance will depend on performance across unfamiliar repositories, failure recovery and the price users actually pay in Devin.",
-      "date_published": "2026-09-10T15:29:00.000Z",
-      "date_modified": "2026-09-10T23:00:03.488Z",
-      "tags": [
-        "Models",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cognition-swe-2-coding-model.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cognition-swe-2-coding-model.html",
-        "source_published_at": "2026-09-10T15:29:00.000Z",
-        "site_published_at": "2026-09-10T23:00:03.488Z",
-        "sources": [
-          {
-            "title": "Introducing SWE-2: Pushing the Pareto Frontier",
-            "url": "https://cognition.com/blog/swe-2"
           }
         ]
       }

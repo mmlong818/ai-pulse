@@ -19,6 +19,40 @@
 
 ## Recent briefings
 
+### Alibaba Plans Qwen Model Reaching 10 Trillion Parameters
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/alibaba-plans-qwen-10-trillion-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-plans-qwen-10-trillion-model.html
+- Source timestamp: 2026-09-22T10:48:00.000Z
+- Site timestamp: 2026-09-22T11:00:04.265Z
+- Tags: Models, Industry, Open Source
+
+Alibaba says future Qwen models could reach 5–10 trillion parameters as it links model scaling to domestic chips, cloud capacity and agent deployment.
+
+Alibaba has outlined plans to train a future Qwen model with between 5 trillion and 10 trillion parameters, a major escalation in the company’s long-term AI ambitions. Chief executive Eddie Wu made the announcement at Alibaba’s Apsara Conference in Hangzhou, where the company also presented new AI chips, cloud infrastructure and agent-focused products.
+
+## A full-stack bet
+
+The proposed model would be several times larger than Alibaba’s current Qwen3.8-Max, which is reported to contain about 2.4 trillion parameters. The announcement concerns a future training target, not a released model: Alibaba has not provided a launch date, architecture, training dataset, compute requirement or expected benchmark results.
+
+That distinction matters because parameter count alone does not determine capability. Sparse architectures, routing efficiency, training data quality and inference economics will shape whether a model of this scale produces a meaningful improvement or simply creates a larger engineering burden.
+
+Alibaba presented the model roadmap alongside its Zhenwu V900 AI chip, which the company described as substantially faster than its previous generation. It also discussed expanding data-centre capacity and building an agent-oriented cloud platform. Together, the announcements suggest that Alibaba is treating frontier models, silicon, cloud services and applications as one connected system rather than separate businesses.
+
+## Why it matters
+
+The plan is significant because it is one of the clearest public signals that a major Chinese technology company intends to compete at the very largest training scales while reducing dependence on imported infrastructure. It also raises the strategic stakes for open model development: Qwen’s previous releases have circulated widely among developers, but Alibaba has not said whether a 5–10 trillion-parameter successor would be open-weight.
+
+The immediate story is therefore not a new model available to users. It is a commitment of capital, chips and organisational capacity that could reshape the next phase of China’s frontier-model race.
+
+Chinese title: 阿里拟训练5万亿至10万亿参数规模千问模型
+Chinese summary: 阿里披露下一代千问模型或扩展至5万亿至10万亿参数，并把模型扩张与自研芯片、云算力和智能体部署绑定。
+
+Sources:
+  - Alibaba Plans AI Model with 5 Trillion to 10 Trillion Parameters, Unveils New Chip: https://www.infoq.cn/article/L9QQKUgo3DEjschVRKD9
+  - China's Alibaba Unveils New Powerful Chip and Ambitious AI Model Plans: https://apnews.com/article/b29908e516faff9f5a82b201ba954aab
+  - Alibaba Unveils Roadmap on Full-Stack AI Strategy: https://www.aseangazette.com/newswires/media-outreach/2026/09/22/alibaba-unveils-roadmap-on-full-stack-ai-strategy-from-chips-cloud-infrastructure-models-to-agents/124888/
+
 ### AWS Releases Open-Source Strands Agent Harness
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/aws-strands-agent-harness.html
@@ -93,6 +127,38 @@ Sources:
   - Introducing Grok 4.7: https://x.ai/news/grok-4-7
   - Grok 4.7 Release Notes: https://docs.x.ai/developers/release-notes
 
+### NVIDIA Open-Sources SoL-Pi for Leaner Coding Agents
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-sol-pi-coding-agent-efficiency.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-sol-pi-coding-agent-efficiency.html
+- Source timestamp: 2026-09-22T05:04:00.000Z
+- Site timestamp: 2026-09-22T11:00:04.265Z
+- Tags: Agents, Research, Open Source
+
+NVIDIA’s SoL-Pi extension uses automated research loops to reduce coding-agent token traffic by up to 49% while preserving task performance.
+
+Researchers from NVIDIA, MIT and NTU have released SoL-Pi, an open-source extension for the Pi coding-agent harness that targets a less visible bottleneck in agent deployment: repeated context and tool traffic. The project applies automated research loops to discover ways to reduce unnecessary model work during long-running coding tasks.
+
+## Optimising the harness
+
+SoL-Pi packages four mechanisms covering action execution, context compaction, observation handling and delegated reading. The goal is not to make the underlying language model larger or smarter. It is to prevent an agent from repeatedly replaying completed subtasks, sending oversized logs back to the model or spending a full request reading information that will not affect its next decision.
+
+On the reported 51-task EdgeBench evaluation, the system reduced recorded token traffic by 44.7% to 49.0% compared with the baseline Pi setup. The researchers said task performance remained comparable when using GPT-5.6 Sol and Opus 5, while estimated API costs fell by roughly one third. The extension runs on an unmodified Pi release and is distributed under the MIT license, with the mechanisms opt-in.
+
+## Why it matters
+
+The project is important because coding agents are increasingly used for long sessions in which infrastructure overhead can rival the cost of the model’s core reasoning. If the reported savings transfer to production workloads, agent vendors and developers could improve margins without immediately switching to a weaker model or waiting for cheaper hardware.
+
+There are limits to the claim. EdgeBench contains 51 tasks, and the measured reduction concerns the tested harness and model combinations rather than every agent workflow. Aggressive context trimming can also remove evidence an agent needs later. Still, SoL-Pi points to a growing research direction: agent efficiency may come from redesigning the surrounding control loop, not only from compressing model weights or lowering token prices.
+
+Chinese title: 英伟达开源SoL-Pi，降低编程智能体令牌开销
+Chinese summary: 英伟达开源SoL-Pi扩展，通过自动研究循环减少编程智能体的重复上下文和工具调用，令牌流量最高下降49%。
+
+Sources:
+  - NVIDIA Introduces SoL-Pi: Auto-Research Loops for Coding Agents: https://www.marktechpost.com/2026/09/21/nvidia-researchers-have-released-sol-pi/
+  - SoL-Pi GitHub Repository: https://github.com/NVlabs/SoL-Pi
+  - SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness: https://arxiv.org/abs/2609.20519
+
 ### OpenAI Forms Independent Mathematics Advisory Group
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-math-advisory-group.html
@@ -129,6 +195,38 @@ Chinese summary: OpenAI邀请数学家组成独立顾问组，协助判断AI数�
 Sources:
   - Advisory Group on Mathematics and Artificial Intelligence: https://openai.com/index/advisory-group-on-mathematics-and-ai
   - Ten advances in mathematics and theoretical computer science: https://openai.com/index/ten-advances-in-mathematics/
+
+### Tencent Releases Hy Image3.5 Preview for Iterative Creation
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/tencent-hy-image-35-preview.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-image-35-preview.html
+- Source timestamp: 2026-09-22T02:40:00.000Z
+- Site timestamp: 2026-09-22T11:00:04.265Z
+- Tags: AIGC, Models, Industry
+
+Tencent’s Hy Image3.5 preview adds multi-turn image editing and reference inputs, targeting production workflows rather than one-shot generation.
+
+Tencent has released a preview of Hy Image3.5, its latest image-generation model, with support for text-to-image, image-to-image and multi-turn conversational editing. The model is being introduced through Tencent’s Yuanbao and ima applications, as well as developer-facing access, giving users a way to refine an image across successive instructions instead of restarting from scratch.
+
+## From prompts to revision loops
+
+Tencent says an internal blind evaluation involving hundreds of professional designers produced a 30% higher win rate than Hy Image3.0. The company also said the preview performed roughly on par with ByteDance’s Seedream 5.0 Pro and slightly ahead of Qwen-Image-3.0 Pro and Google’s Nano Banana Pro in that internal comparison. Those figures are company-reported and should not be treated as an independent leaderboard result.
+
+The product supports reference-image inputs and conversational context, allowing a creator to alter composition, lighting, subjects or details over multiple turns. Tencent has also promoted high-resolution output and API access, positioning the model for design and content-production workflows rather than casual experimentation alone.
+
+## Why it matters
+
+The significance is less about another model entering an already crowded image-generation field than about where Tencent is competing. The company is pairing model quality with direct placement inside a large consumer ecosystem and with a workflow built around repeated edits. That could make the model useful to designers who need controlled variations, not merely attractive first drafts.
+
+The unresolved issue is independent evidence. Tencent’s comparison is based on an internal designer test, and the preview status means reliability, pricing and access limits may still change. Even so, the launch shows Chinese platforms are increasingly treating image generation as an integrated creative tool, with conversational editing and application distribution becoming as important as raw image quality.
+
+Chinese title: 腾讯发布混元Hy Image3.5预览版，强化多轮生图
+Chinese summary: 腾讯混元Hy Image3.5预览版支持文生图、图生图和多轮对话编辑，并已接入元宝、ima等产品。
+
+Sources:
+  - Tencent Hunyuan Hy Image3.5 Preview Released: https://www.ithome.com/1/005/589.htm
+  - Hy Image3.5 Preview Is Live: https://x.com/TencentHunyuan/status/2102226552310419473
+  - Tencent Shares Jump After Unveiling New AI Image Model: https://www.investing.com/news/stock-market-news/tencent-shares-jump-after-unveiling-new-ai-image-model-4909849
 
 ### Xiaomi Open-Sources MiMo-V2.6 After Large-Scale RL
 
@@ -902,108 +1000,6 @@ Sources:
   - Zhipu AI infrastructure update on GLM-5.3-Flash: https://x.com/Zai_org/status/2100481236364079277
   - 刚刚，唐杰发布智谱 RSI 首个成果: https://www.qbitai.com/2026/09/491357.html
 
-### Factory Raises $200 Million at a $5 Billion Valuation
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/factory-raises-200m.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/factory-raises-200m.html
-- Source timestamp: 2026-09-16T00:19:00.000Z
-- Site timestamp: 2026-09-16T11:00:03.952Z
-- Tags: Agents, Funding, Industry
-
-The coding-agent startup is expanding from task automation into a model-flexible software factory spanning enterprise development, testing, security and release.
-
-Factory has raised $200 million at a $5 billion valuation, more than tripling its reported $1.5 billion valuation from an April financing. The round brings the company’s total funding above $400 million and was backed by Blackstone, Khosla Ventures, Sequoia Capital, Insight Partners, Evantic Capital, Sound Ventures, NEA, Mantis VC and Clearlake.
-
-## From coding agent to software factory
-
-Factory’s product is built around “Droids,” software agents that can handle multiple stages of the development lifecycle rather than only generating code. The company says its platform can support triage, planning, implementation, code review, testing, documentation, security checks and release workflows.
-
-A key design choice is model routing. Factory says its system can assign individual tasks to different models, including models from competing vendors, instead of tying customers to one provider. Its April-launched Factory Router reportedly reduced token spending by more than 60% while preserving frontier-level performance, although that figure comes from the company and has not been independently audited.
-
-The platform can run in cloud, self-hosted and air-gapped environments. Factory says customers include Nvidia, Adobe, Palo Alto Networks, T-Mobile, Blackstone and Royal Bank of Canada, and that hundreds of thousands of developers use the product.
-
-## Why the financing matters
-
-The round is less notable as another large AI cheque than as a signal about where enterprise buyers believe coding agents are heading. The pitch is shifting from “an assistant that writes code” to an operational layer that coordinates work across repositories, infrastructure and review systems. That broadens the potential budget, but it also raises the bar: reliability, security controls and measurable business output matter more than impressive code samples.
-
-Factory’s valuation jump also shows how aggressively investors are pricing the software-agent category. The unresolved question is whether self-improvement and multi-agent coordination will produce durable productivity gains, or simply add another management layer around unreliable automation.
-
-## Uncle Cat take
-
-Factory’s real advantage is its model-routing and air-gapped deployment story; the $5 billion valuation still assumes enterprise reliability that has not been publicly demonstrated at scale.
-
-Chinese title: Factory 获 2 亿美元融资，估值升至 50 亿美元
-Chinese summary: 这家编码智能体公司正从单点代码生成扩展到覆盖开发全流程的软件工厂，押注可切换模型的企业级自动化平台。
-
-Sources:
-  - Factory Raises $200M at a $5B Valuation: https://factory.com/news/5-billion-valuation
-  - Factory raises $200M for its self-improving software development platform: https://siliconangle.com/2026/09/15/factory-raises-200m-for-its-self-improving-software-development-platform/
-  - AI coding agent startup Factory triples valuation to $5 billion: https://www.investing.com/news/stock-market-news/ai-coding-agent-startup-factory-triples-valuation-to-5-billion-in-latest-funding-round-4902392
-
-### Google launches Gemini 3.8 Live voice models
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/google-gemini-live-voice-agents.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/google-gemini-live-voice-agents.html
-- Source timestamp: 2026-09-15T17:05:00.000Z
-- Site timestamp: 2026-09-15T23:00:03.508Z
-- Tags: Models, Agents
-
-Google’s Gemini 3.8 Live models target production voice agents with faster responses, visual understanding, 97-language switching, and lower operating costs.
-
-Google has launched Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking, a pair of native audio models aimed at production-grade voice agents rather than simple conversational demos. The models are rolling out to consumers through Search Live, to developers in public preview through the Gemini API and AI Studio, and to enterprises through private preview channels.
-
-## Built for continuous interaction
-
-Google says both models combine conversational reasoning with near-real-time audio and visual understanding. They are designed to listen, decide when to respond, maintain context through interruptions, and execute tasks during a conversation. The Extended Thinking version adds a slower reasoning mode for cases where the agent must plan before speaking or acting.
-
-The launch also emphasizes multilingual interaction. Google says the models can switch between 97 languages, a capability that matters for customer-service and travel scenarios where users may move between languages in the same session. The release is accompanied by a model card covering intended uses, evaluation results, safety mitigations, and distribution terms.
-
-## A cost and latency contest
-
-Independent measurements cited in the launch cycle place Gemini 3.8 Live at roughly $0.84 per hour of input audio, compared with about $1.75 for Gemini 3.1 Flash Live. Artificial Analysis also reported a 1.18-second average time to first audio on its Big Bench Audio benchmark, with the Extended Thinking configuration at 1.35 seconds. Those figures, if sustained in production, make the model more relevant to high-volume call handling than a model that is merely strong in isolated conversations.
-
-The release matters because voice agents are moving from a feature layer into an operating layer for support, sales, tutoring, and task execution. Lower audio cost reduces the penalty for keeping conversations open, while lower latency makes interruptions and turn-taking feel less mechanical. The open question is whether benchmark speed and language coverage survive noisy environments, long calls, tool failures, and business-specific safety constraints. Google is now competing on the full economics of spoken interaction, not only on model intelligence.
-
-Chinese title: 谷歌发布 Gemini 3.8 Live 实时语音模型
-Chinese summary: Gemini 3.8 Live 面向生产级语音代理，主打更低延迟、视觉理解、97种语言切换与更低音频成本。
-
-Sources:
-  - Introducing Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking: https://deepmind.google/blog/introducing-gemini-3-8-live-and-gemini-3-8-live-extended-thinking/
-  - Gemini 3.8 Audio Model Card: https://deepmind.google/models/model-cards/gemini-3-8-audio/
-  - Artificial Analysis Gemini 3.8 Live comparison: https://x.com/ArtificialAnlys/status/2099977691172888709
-
-### StepFun releases five-model StepAudio 3 family
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/stepaudio-3-unified-audio-family.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/stepaudio-3-unified-audio-family.html
-- Source timestamp: 2026-09-15T17:40:00.000Z
-- Site timestamp: 2026-09-15T23:00:03.508Z
-- Tags: Models, AIGC, Open Source
-
-China’s StepFun releases five StepAudio 3 models spanning realtime speech, recognition, synthesis, audio generation, and music through one platform.
-
-Chinese AI company StepFun has released the StepAudio 3 family, a five-model lineup covering realtime conversation, automatic speech recognition, text-to-speech, general audio generation, and music creation. The models are available through StepFun’s open platform, making the release broader than a research preview or a single voice model.
-
-## One family, five audio jobs
-
-The lineup includes StepAudio 3 Realtime, StepAudio 3 ASR, StepAudio 3 TTS, StepAudio 3 Gen, and StepAudio 3 Music. StepFun positions the realtime model around full-duplex interaction: it can handle interruptions while continuing to interpret the conversation, reason about the next action, and respond. The separate ASR and TTS models target production pipelines that need control over recognition and voice output independently.
-
-StepAudio 3 Gen is designed to combine several types of sound in one generation framework, including speech, voice design, vocals, sound effects, music, and mixed audio scenes. Its technical report describes a unified architecture trained through progressive pretraining, multitask instruction training, and supervised fine-tuning. That breadth gives developers a route from a spoken prompt to a more complete audio asset rather than requiring a separate service for every media type.
-
-## Why the packaging matters
-
-The release arrives as competition in AI audio becomes more fragmented. Major labs are improving realtime dialogue, while specialist providers focus on voice cloning, music, or post-production. StepFun’s choice to ship five connected models through one platform is an attempt to turn a collection of capabilities into an integrated audio stack, particularly for Chinese-language and Asia-based developers.
-
-StepFun says several models rank first globally on Artificial Analysis evaluations, but those claims should be read as benchmark-specific rather than a universal judgment. The more consequential fact is availability: all five models are exposed as usable services at launch. That can shorten the path from prototype to a multimodal product, but it also leaves unresolved questions around voice consent, copyright for music and training data, watermarking, and cross-border access. StepAudio 3 is important because it treats speech, sound design, and music as one product surface; its durability will depend on governance and creator workflow, not leaderboard position alone.
-
-Chinese title: 阶跃星辰发布 StepAudio 3 五模型音频家族
-Chinese summary: 阶跃星辰推出覆盖实时语音、识别、合成、音频生成和音乐创作的五模型家族，并同步接入开放平台。
-
-Sources:
-  - 阶跃发布 StepAudio 3 系列语音大模型，拿下多个全球第一: https://www.ithome.com/1/002/602.htm
-  - StepAudio 3 Gen Technical Report: https://arxiv.org/abs/2609.12945
-  - StepFun StepAudio 3 announcement: https://x.com/StepFun_ai/status/2099916376274313630
-
 ## Recent radar items
 
 ### 2026-09-22
@@ -1026,6 +1022,21 @@ Sources:
 - 2026-09-21T17:03:00Z | X / LlamaIndex | LlamaIndex added Grounded Confidence to Extract so agents can estimate the reliability of extracted data in workflows. | 中文：LlamaIndex为Extract加入Grounded Confidence，让智能体能估计工作流中抽取数据的可靠性。 | https://x.com/llama_index/status/2102081253335785825
 - 2026-09-21T20:04:00Z | X / Runway | Runway expanded Workflows with compositing, alpha, HDR, depth-map, and RGB-depth tools for more complete creative pipelines. | 中文：Runway扩展Workflows，加入合成、Alpha、HDR、深度图和RGB深度工具，覆盖更完整的创作管线。 | https://x.com/runwayml/status/2102126749622345858
 - 2026-09-21T18:01:00Z | X / HeyGen | HeyGen introduced Code2Video, a benchmark developed with Google DeepMind to measure whether generated code renders into watchable video. | 中文：HeyGen推出Code2Video，与Google DeepMind合作评估生成代码能否渲染出值得观看的视频。 | https://x.com/HeyGen/status/2102095873782288617
+- 2026-09-22T09:27:00Z | The Decoder | Anthropic is setting up a biology lab where Claude guides robots through drug experiments. | 中文：Anthropic正筹建生物学实验室，让Claude指导机器人进行药物实验。 | https://the-decoder.com/anthropic-is-setting-up-a-biology-lab-where-claude-guides-robots-through-drug-experiments/
+- 2026-09-22T10:44:00Z | InfoQ 中文 | NVIDIA introduced Personal AI Router to assign AI tasks across local computing resources. | 中文：NVIDIA推出Personal AI Router，可将AI任务分配到本地计算资源。 | https://www.infoq.cn/article/ZSAtWPoOgIDcANYa8CXc
+- 2026-09-22T10:00:00Z | InfoQ 中文 | Kuaishou described a Harness Loop for continuously improving its e-commerce recommendation agent. | 中文：快手介绍了用于持续改进电商导购Agent的Harness Loop实践。 | https://www.infoq.cn/article/jeG84GGVYvIHaQKQfIo2
+- 2026-09-22T10:02:00Z | X @tripoai | Tripo showcased a fully playable dark-fantasy game built in seven hours using Tripo3D assets, Fable 5.1, and Godot. | 中文：Tripo展示了一款七小时完成的可玩黑暗奇幻游戏，采用Tripo3D、Fable 5.1和Godot。 | https://x.com/tripoai/status/2102337686707269930
+- 2026-09-22T08:53:00Z | X @TencentHunyuan | Tencent Hunyuan introduced WebCraftBench to test whether agents can build functional websites rather than merely claim completion. | 中文：腾讯混元推出WebCraftBench，测试Agent能否真正构建可用网站，而非只宣称完成。 | https://x.com/TencentHunyuan/status/2102320407860977861
+- 2026-09-22T03:51:00Z | X @Kimi_Moonshot | Kimi K3 became available on Amazon Bedrock for coding, document analysis, and extended agent workflows. | 中文：Kimi K3登陆Amazon Bedrock，支持编程、文档分析和长流程Agent任务。 | https://x.com/Kimi_Moonshot/status/2102244258531213596
+- 2026-09-22T00:30:00Z | X @pika_labs | Pika launched Relight Media, which rebuilds lighting and shadows in photos or videos after capture. | 中文：Pika推出Relight Media，可对拍摄后的照片或视频重新构建光线与阴影。 | https://x.com/pika_labs/status/2102193685429625112
+- 2026-09-22T00:20:00Z | X @FireworksAI_HQ | Fireworks evaluated 18 models across 113 coding tasks to study routing each task to its strongest model. | 中文：Fireworks在113项真实编程任务上评测18个模型，研究按任务匹配最强模型的效果。 | https://x.com/FireworksAI_HQ/status/2102191315375345774
+- 2026-09-22T00:00:00Z | Hugging Face | Hugging Face made Transformers run llama.cpp quantized models, simplifying access to compressed local checkpoints. | 中文：Hugging Face让Transformers支持运行llama.cpp量化模型，简化压缩本地模型的使用。 | https://huggingface.co/blog/transformers-llama-cpp-quants
+- 2026-09-22T00:00:00Z | Hugging Face | Hugging Face hired oMLX creator Jun Kim to support the MLX community. | 中文：Hugging Face聘请oMLX创作者Jun Kim，负责支持MLX社区发展。 | https://huggingface.co/blog/omlx
+- 2026-09-22T05:26:00Z | X @ollama | Ollama said some DeepSeek-V4.1-Flash requests were incorrectly charged, consuming more usage than expected. | 中文：Ollama称部分DeepSeek-V4.1-Flash请求被错误计费，导致用户消耗超出预期。 | https://x.com/ollama/status/2102268230052274300
+- 2026-09-22T02:26:00Z | X @ArtificialAnlys | Artificial Analysis found Gemini 3.1 Flash TTS leading its benchmark at 88.1%, while SpaceXAI TTS offered a lower price above 80%. | 中文：Artificial Analysis评测显示Gemini 3.1 Flash TTS以88.1%领先，SpaceXAI TTS则以更低价格超过80%。 | https://x.com/ArtificialAnlys/status/2102223011533484394
+- 2026-09-22T08:49:00Z | 量子位 | The AI MediaKit team introduced an entertainment production and management platform called WhaleSharp AI. | 中文：虎鲸文娱推出影视制作与管理平台“鲸锐AI”。 | https://www.qbitai.com/2026/09/493865.html
+- 2026-09-22T02:54:00Z | X @OpenAIDevs | OpenAI highlighted a surgeon using Codex to build personal tools and review scientific literature on PubMed. | 中文：OpenAI展示了一名外科医生使用Codex开发个人工具并检索PubMed科研文献。 | https://x.com/OpenAIDevs/status/2102230071046258739
+- 2026-09-22T10:45:00Z | X @tripoai | Tripo announced an additional $10,000 prize pool for its Tripothon S1 challenge with Jupiter SR hardware and software. | 中文：Tripo宣布为Tripothon S1增加1万美元奖金池，鼓励使用Jupiter SR软硬件进行创作。 | https://x.com/tripoai/status/2102348544133018021
 
 ### 2026-09-21
 

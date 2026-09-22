@@ -13,6 +13,47 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-plans-qwen-10-trillion-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-plans-qwen-10-trillion-model.html",
+      "title": "阿里拟训练5万亿至10万亿参数规模千问模型",
+      "summary": "阿里披露下一代千问模型或扩展至5万亿至10万亿参数，并把模型扩张与自研芯片、云算力和智能体部署绑定。",
+      "content_text": "阿里巴巴在杭州举行的云栖大会上披露，未来千问模型的规模可能扩展至5万亿至10万亿参数。阿里巴巴集团首席执行官吴泳铭同时介绍了新一代AI芯片、云基础设施和面向智能体的产品布局。\n\n## 这不是新模型发布\n\n这一目标远超目前约2.4万亿参数的千问3.8-Max，但阿里尚未公布具体发布时间、模型架构、训练数据、算力需求或评测成绩。换言之，这是训练规划，而不是用户今天可以下载或调用的产品。\n\n参数规模本身也不能直接等同于模型能力。稀疏架构、专家路由效率、训练数据质量和推理成本，都会决定超大模型能否带来实际收益。如果规模增长没有同步改善训练效率和服务经济性，参数扩张也可能转化为更沉重的工程负担。\n\n阿里把这一模型路线与平头哥芯片、数据中心扩容及智能体云平台放在同一套战略中发布。公司释放的信号是，前沿模型、芯片、云服务和应用不再是相互独立的业务，而是需要协同建设的完整系统。\n\n## 为什么值得关注\n\n这项计划的重要性在于，它是中国头部科技公司准备冲击超大训练规模的明确信号，也意味着国产算力和数据中心能力将承受更高压力。与此同时，千问此前的开放模型对开发者生态影响较大，但阿里没有说明未来5万亿至10万亿参数模型是否会开放权重。\n\n今天真正发生的并不是一个新模型上线，而是阿里公开押注下一轮前沿模型竞赛，并准备以芯片、云和智能体产品共同承接这项投入。",
+      "date_published": "2026-09-22T10:48:00.000Z",
+      "date_modified": "2026-09-22T11:00:04.265Z",
+      "tags": [
+        "模型",
+        "产业",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/alibaba-plans-qwen-10-trillion-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/alibaba-plans-qwen-10-trillion-model.html",
+        "source_published_at": "2026-09-22T10:48:00.000Z",
+        "site_published_at": "2026-09-22T11:00:04.265Z",
+        "sources": [
+          {
+            "title": "Alibaba Plans AI Model with 5 Trillion to 10 Trillion Parameters, Unveils New Chip",
+            "url": "https://www.infoq.cn/article/L9QQKUgo3DEjschVRKD9"
+          },
+          {
+            "title": "China's Alibaba Unveils New Powerful Chip and Ambitious AI Model Plans",
+            "url": "https://apnews.com/article/b29908e516faff9f5a82b201ba954aab"
+          },
+          {
+            "title": "Alibaba Unveils Roadmap on Full-Stack AI Strategy",
+            "url": "https://www.aseangazette.com/newswires/media-outreach/2026/09/22/alibaba-unveils-roadmap-on-full-stack-ai-strategy-from-chips-cloud-infrastructure-models-to-agents/124888/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/aws-strands-agent-harness.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/aws-strands-agent-harness.html",
       "title": "AWS开源Strands Harness，打包智能体运行基础设施",
@@ -87,6 +128,47 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-sol-pi-coding-agent-efficiency.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-sol-pi-coding-agent-efficiency.html",
+      "title": "英伟达开源SoL-Pi，降低编程智能体令牌开销",
+      "summary": "英伟达开源SoL-Pi扩展，通过自动研究循环减少编程智能体的重复上下文和工具调用，令牌流量最高下降49%。",
+      "content_text": "英伟达、麻省理工学院和南洋理工大学研究人员发布SoL-Pi，这是一个面向Pi编程智能体框架的开源扩展，目标是减少长时间编码任务中反复出现的上下文和工具调用开销。项目通过自动化研究循环，寻找更高效的智能体控制方式。\n\n## 优化模型外的控制环\n\nSoL-Pi包含四类机制，分别涉及动作执行、上下文压缩、观察结果处理和委派式阅读。它并不改变底层语言模型，而是尽量避免智能体反复回放已完成的子任务、把过大的日志重新发送给模型，或花费完整请求阅读对下一步决策没有帮助的信息。\n\n在研究团队公布的51项EdgeBench测试中，SoL-Pi相较基础版Pi减少了44.7%至49.0%的记录令牌流量。研究人员称，在GPT-5.6 Sol和Opus 5上，任务表现基本保持可比，同时估算API成本下降约三分之一。该扩展可以运行在未经修改的Pi版本之上，采用MIT许可证，相关机制默认需要用户选择启用。\n\n## 为什么值得关注\n\n编程智能体正在从几分钟的辅助问答转向持续数小时的工作流程。在这类场景中，重复传输上下文和工具结果可能成为重要成本。如果SoL-Pi的节省幅度能在生产环境中复现，开发者就有机会在不更换较弱模型的情况下改善利润和响应效率。\n\n但目前的数据仍有限。EdgeBench只有51项任务，结果也来自特定框架、模型和工作方式，不能直接代表所有智能体。过度压缩上下文还可能让系统丢失后续需要的证据。\n\nSoL-Pi的真正价值在于提出了一条清晰路线：智能体效率不一定只能靠压缩模型或降低单价，也可以从重做外围控制循环入手。",
+      "date_published": "2026-09-22T05:04:00.000Z",
+      "date_modified": "2026-09-22T11:00:04.265Z",
+      "tags": [
+        "Agent",
+        "研究",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/nvidia-sol-pi-coding-agent-efficiency.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-sol-pi-coding-agent-efficiency.html",
+        "source_published_at": "2026-09-22T05:04:00.000Z",
+        "site_published_at": "2026-09-22T11:00:04.265Z",
+        "sources": [
+          {
+            "title": "NVIDIA Introduces SoL-Pi: Auto-Research Loops for Coding Agents",
+            "url": "https://www.marktechpost.com/2026/09/21/nvidia-researchers-have-released-sol-pi/"
+          },
+          {
+            "title": "SoL-Pi GitHub Repository",
+            "url": "https://github.com/NVlabs/SoL-Pi"
+          },
+          {
+            "title": "SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness",
+            "url": "https://arxiv.org/abs/2609.20519"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-math-advisory-group.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-math-advisory-group.html",
       "title": "OpenAI成立数学顾问组，监督AI成果发布方式",
@@ -119,6 +201,47 @@
           {
             "title": "Ten advances in mathematics and theoretical computer science",
             "url": "https://openai.com/index/ten-advances-in-mathematics/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-image-35-preview.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-image-35-preview.html",
+      "title": "腾讯发布混元Hy Image3.5预览版，强化多轮生图",
+      "summary": "腾讯混元Hy Image3.5预览版支持文生图、图生图和多轮对话编辑，并已接入元宝、ima等产品。",
+      "content_text": "腾讯发布混元Hy Image3.5预览版，支持文生图、图生图以及基于对话上下文的连续编辑。模型已逐步接入元宝、ima等腾讯产品，同时面向开发者提供调用入口，让用户可以在同一张图片上连续修改，而不必每次重新开始。\n\n## 从一次生成转向连续修改\n\n腾讯称，内部数百名专业设计师参与的盲测显示，Hy Image3.5相较Hy Image3.0的胜出率提升约30%。公司还表示，该模型在这项内部比较中与字节Seedream 5.0 Pro大致相当，并略高于Qwen-Image-3.0 Pro和Google Nano Banana Pro。由于测试由腾讯组织，这些结果不能直接视为独立榜单成绩。\n\n模型支持参考图输入，并能保留多轮对话中的创作意图，适合连续调整构图、光线、主体和细节。腾讯还强调了高分辨率输出和API能力，目标显然不只是让用户偶尔生成一张图片，而是进入设计和内容生产流程。\n\n## 为什么值得关注\n\n这次发布的重点不只是又增加一个图像模型，而是腾讯选择把模型能力嵌入庞大的消费产品体系，并围绕反复修改来设计使用方式。对设计师而言，可控的变化和连续的修订往往比一张惊艳的首图更有价值。\n\n目前仍需观察第三方评测、稳定性、价格和开放范围。Hy Image3.5仍处于预览阶段，但它说明中国互联网平台正在把生图产品从单次提示词工具，推进为带有对话编辑和应用分发能力的完整创作工具。",
+      "date_published": "2026-09-22T02:40:00.000Z",
+      "date_modified": "2026-09-22T11:00:04.265Z",
+      "tags": [
+        "AIGC",
+        "模型",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy-image-35-preview.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-image-35-preview.html",
+        "source_published_at": "2026-09-22T02:40:00.000Z",
+        "site_published_at": "2026-09-22T11:00:04.265Z",
+        "sources": [
+          {
+            "title": "Tencent Hunyuan Hy Image3.5 Preview Released",
+            "url": "https://www.ithome.com/1/005/589.htm"
+          },
+          {
+            "title": "Hy Image3.5 Preview Is Live",
+            "url": "https://x.com/TencentHunyuan/status/2102226552310419473"
+          },
+          {
+            "title": "Tencent Shares Jump After Unveiling New AI Image Model",
+            "url": "https://www.investing.com/news/stock-market-news/tencent-shares-jump-after-unveiling-new-ai-image-model-4909849"
           }
         ]
       }
@@ -1774,116 +1897,6 @@
           {
             "title": "Meshy shares Mora 1 project story",
             "url": "https://x.com/MeshyAI/status/2098603660632785126"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-rosalind-life-sciences.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-rosalind-life-sciences.html",
-      "title": "OpenAI扩大GPT-Rosalind全球可信访问范围",
-      "summary": "OpenAI将GPT-Rosalind从研究预览推进至全球符合条件机构的可信访问，并通过API、Codex和ChatGPT Enterprise接入生命科学工作流。",
-      "content_text": "OpenAI宣布扩大GPT-Rosalind的访问范围，符合条件的全球机构可通过API、Codex和ChatGPT Enterprise使用这款生命科学模型。公司同时推出专门的生命科学插件，把Codex连接到基因组学、蛋白质结构、文献检索和转化医学等工具。\n\n## 围绕科研流程打造\n\nGPT-Rosalind并非单纯面向问答的通用聊天机器人，而是被定位为科研系统，用于证据整合、假设生成、序列分析、实验规划和数据解读。OpenAI希望它能在可审查的流程中，把论文、数据库、内部研究结果和实验数据串联起来。访问仍然受到限制，申请机构需要证明研究目的正当，并具备相应治理和滥用防范机制。\n\nOpenAI公布的材料显示，GPT-Rosalind在Genebench、Medchem Bench和Labworkbench等生命科学评测中提升了单位token表现。公司列出的客户或合作方包括诺和诺德、莫德纳、赛默飞世尔和艾伦研究所等制药、生物科技、医疗及科研机构。\n\n## 访问机制本身更值得关注\n\n这次变化并不只是又发布了一款垂直模型。OpenAI正在把模型、科研工具、证据链和机构权限打包成一个受控系统。这可能降低先进生物推理能力进入受监管研发团队的门槛，同时也限制开放式试用；对于潜在滥用后果更严重的生命科学领域，这种取舍尤其关键。\n\n不过，现阶段的效果仍主要来自厂商评测和筛选后的访问计划。真正决定其价值的，是研究团队能否在真实药物研发项目中持续复现收益，因为现实中的数据往往不完整，实验成本高昂，而听起来合理的科学表述并不等于经过验证的结果。",
-      "date_published": "2026-09-11T20:29:00.000Z",
-      "date_modified": "2026-09-11T23:00:03.305Z",
-      "tags": [
-        "模型",
-        "研究",
-        "安全"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt-rosalind-life-sciences.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-rosalind-life-sciences.html",
-        "source_published_at": "2026-09-11T20:29:00.000Z",
-        "site_published_at": "2026-09-11T23:00:03.305Z",
-        "sources": [
-          {
-            "title": "Introducing GPT-Rosalind for life sciences research",
-            "url": "https://openai.com/index/introducing-gpt-rosalind/"
-          },
-          {
-            "title": "GPT-Rosalind research access program",
-            "url": "https://openai.com/form/life-sciences-access/"
-          },
-          {
-            "title": "GPT-Rosalind availability announcement",
-            "url": "https://x.com/OpenAIDevs/status/2098509255947293035"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-licenses-frontier-model-weights.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-licenses-frontier-model-weights.html",
-      "title": "Runway向企业开放前沿视频模型权重授权",
-      "summary": "Runway宣布企业可授权其前沿模型权重，在私有数据上微调并自行部署，获得更强的数据、基础设施和生产控制权。",
-      "content_text": "Runway宣布推出面向企业的模型权重授权方案。客户可以获得其前沿模型权重，在自有数据上进行微调，并在自身基础设施中部署定制系统。公司将此定位为一种让企业更好控制数据、部署环境和运营方式的生成式模型方案。\n\n## 企业定制不再只靠API\n\n目前多数生成视频产品仍把核心模型放在托管服务或API背后。Runway的新方案进一步靠近企业软件和基础设施模式：客户可以针对自身视觉领域调整模型，并在受控环境内运行。目标客户包括需要私有数据边界、稳定接入现有生产工具，或希望更好控制延迟和可用性的组织。\n\n这项发布也说明，生成视频公司的竞争重点正在从公开演示扩展到模型访问、定制能力和部署权。对制片公司、零售商、游戏企业和品牌方而言，真正有价值的往往不是一次生成一段视频，而是建立能够反复使用、持续维护的视觉生产系统。\n\n## 权重授权并不等于开源\n\nRunway并未把模型权重以开源方式公开。客户获得的是带有部署条件的商业授权，实际价值还取决于价格、硬件需求、更新策略和允许的使用范围。自行部署可能加强治理能力，但也会把服务、监控、安全和版本升级责任转移给购买方。\n\n这项业务的战略意义在于，一家领先的视频模型公司正在把“获得权重并自行运行”本身变成企业产品。如果方案运行顺利，其他实验室可能被迫把模型使用权与集中式推理解耦。尚未确定的是，究竟有多少客户愿意为控制权和定制能力承担额外的运维负担与授权成本。",
-      "date_published": "2026-09-11T13:53:00.000Z",
-      "date_modified": "2026-09-11T23:00:03.305Z",
-      "tags": [
-        "AIGC",
-        "产业",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/runway-licenses-frontier-model-weights.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/runway-licenses-frontier-model-weights.html",
-        "source_published_at": "2026-09-11T13:53:00.000Z",
-        "site_published_at": "2026-09-11T23:00:03.305Z",
-        "sources": [
-          {
-            "title": "Runway enterprise model licensing announcement",
-            "url": "https://x.com/runwayml/status/2098409679974228275"
-          },
-          {
-            "title": "Runway enterprise bespoke model workflow",
-            "url": "https://x.com/runwayml/status/2098409692196438435"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cognition-swe-2-coding-model.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cognition-swe-2-coding-model.html",
-      "title": "Cognition发布SWE-2，主打更低成本编码智能体",
-      "summary": "Cognition发布SWE-2编码模型，称其接近前沿模型表现，同时显著减少任务步骤并降低软件开发成本。",
-      "content_text": "Cognition发布SWE-2编码模型，面向其Devin软件工程智能体，目标是在接近前沿模型表现的同时降低持续开发任务的成本。\n\n## 性能与训练方式\n\nCognition称，SWE-2在FrontierCode 1.1 Main上的得分为50.0%，与Fable 5.1相差不到一个百分点，同时成本低64%。在DeepSWE 1.1上，模型得分为73.0%；在Terminal-Bench 2.1上则达到92.8%。\n\n公司表示，该模型基于拥有2.8万亿参数的Kimi K3进行后训练，并首次将多万亿参数规模的强化学习训练用于这一系列模型。其方法在一次训练中对不同推理力度施加成本惩罚，试图整体改善成本—性能曲线，而不是只追求某个最高分。\n\nCognition还报告称，SWE-2能够减少智能体执行过程中的无效步骤。在包含100项任务的FrontierCode评测中，SWE-2 medium平均使用53步，而SWE-1.7为127步；在这一对比中，公司称平均成本下降了81%。\n\n## 为什么重要\n\n这次发布挑战了“编码智能体进步必须依赖更大通用模型”的看法。如果Cognition的结果能在其自有评测之外成立，更有效的强化学习和更克制的执行行为，可能让长期软件开发任务更容易负担。\n\n但需要保留判断：目前几乎所有关键数字都来自Cognition自己的基准和部署环境。SWE-2的真正价值，仍要看它面对陌生代码库时的稳定性、失败恢复能力，以及Devin用户最终实际支付的价格。",
-      "date_published": "2026-09-10T15:29:00.000Z",
-      "date_modified": "2026-09-10T23:00:03.488Z",
-      "tags": [
-        "模型",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cognition-swe-2-coding-model.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cognition-swe-2-coding-model.html",
-        "source_published_at": "2026-09-10T15:29:00.000Z",
-        "site_published_at": "2026-09-10T23:00:03.488Z",
-        "sources": [
-          {
-            "title": "Introducing SWE-2: Pushing the Pareto Frontier",
-            "url": "https://cognition.com/blog/swe-2"
           }
         ]
       }
