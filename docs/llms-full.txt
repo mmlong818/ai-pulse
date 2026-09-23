@@ -85,6 +85,70 @@ Sources:
   - Better prompt caching for GPT-6: https://openai.com/index/better-prompt-caching-for-gpt-6
   - GPT-6 Sol and Luna on Amazon Bedrock: https://aws.amazon.com/blogs/machine-learning/bring-more-intelligence-to-everyday-work-with-gpt-6-sol-and-gpt-6-luna/
 
+### Qwen-Audio 3.1 Expands Alibaba’s Full-Stack Voice Offering
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/qwen-audio-31-expands-voice-stack.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/qwen-audio-31-expands-voice-stack.html
+- Source timestamp: 2026-09-23T09:11:00.000Z
+- Site timestamp: 2026-09-23T11:00:04.772Z
+- Tags: Models, AIGC, Industry
+
+Alibaba’s Qwen-Audio 3.1 adds specialized creation and understanding models while sharply cutting prices for speech workloads.
+
+## What changed
+
+Alibaba’s Qwen team announced Qwen-Audio 3.1, a five-model update spanning automatic speech recognition, text-to-speech and real-time voice interaction. The release also adds two distinct models: TTS-Next for audio creation and ASR-Next for deeper audio understanding. Alibaba describes the lineup as a complete stack covering speech understanding, generation, interaction and creative production.
+
+The update arrives alongside substantial price reductions. Alibaba-linked reporting says TTS prices fall by roughly 70%, real-time audio by about 85%, and ASR by as much as 95%. Model Studio documentation lists Qwen-Audio 3.1 Realtime Plus with text-and-audio input and output, function calling, web search and voice cloning, with a context limit of 262,144 tokens.
+
+## Why it matters
+
+The important shift is not simply another speech-model release. Qwen is packaging voice as a general application layer rather than a single conversion capability. A developer can use one family for transcription, spoken responses, real-time conversation, audio generation and audio analysis, while connecting those functions to tools and web retrieval.
+
+The price cuts could matter even more than the model names. Speech systems are frequently invoked in long sessions and high-volume customer workflows, where audio-token costs quickly dominate. Lower inference prices make persistent voice interfaces, call analysis and multilingual assistants easier to operate at scale, particularly in markets where budgets are tighter.
+
+The remaining question is independent quality. Alibaba’s announcement establishes broader coverage and cheaper access, but it does not by itself prove that Qwen-Audio 3.1 leads on latency, pronunciation, emotional control or noisy multi-speaker recognition. Even so, the combination of a broader product surface and aggressive pricing makes this one of the day’s clearest Asian-cycle signals: voice AI is moving toward a bundled, tool-using platform layer.
+
+Chinese title: 通义千问发布 Audio 3.1，语音模型全面扩容并降价
+Chinese summary: 阿里通义千问推出覆盖识别、合成、实时交互与音频创作的 Audio 3.1 系列，并大幅下调语音调用价格。
+
+Sources:
+  - Alibaba Qwen announcement: https://x.com/Alibaba_Qwen/status/2102687258990026993
+  - Qwen-Audio 3.1 Realtime Plus documentation: https://www.alibabacloud.com/help/en/model-studio/qwen-audio-3-1-realtime-plus
+  - Qwen-Audio 3.1 release report: https://www.nbd.com.cn/articles/2026-09-23/4590060.html
+
+### Seedance 2.5 Adds Cheap Drafts Before Final Video Renders
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/seedance-25-draft-mode-cuts-video-costs.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/seedance-25-draft-mode-cuts-video-costs.html
+- Source timestamp: 2026-09-23T00:23:00.000Z
+- Site timestamp: 2026-09-23T11:00:04.772Z
+- Tags: AIGC, Industry
+
+ByteDance’s Seedance 2.5 now lets creators test shots at 480p before committing to a 1080p render, targeting wasted generation spend.
+
+## What changed
+
+ByteDance has added Draft Mode to Seedance 2.5, splitting AI-video generation into a low-cost preview stage and a final-render stage. Creators first generate a 480p draft to inspect composition, camera movement, subject motion, dialogue and pacing. If the shot works, they can promote that draft to a 1080p final using its task ID rather than starting a completely independent generation.
+
+The workflow carries forward the draft’s key conditions, including the prompt, reference assets, duration, aspect ratio and seed. ByteDance’s published examples claim that producing four five-second attempts can cut costs by 57% and nearly double speed. Other reporting cites savings of up to 77% in particular usage patterns, so the exact benefit depends on how many iterations a creator would otherwise discard.
+
+## Why it matters
+
+AI video production has an awkward cost structure: creators often spend most of their budget discovering that a shot’s basic motion or framing is wrong. Rendering every failed experiment at delivery resolution makes the technology expensive even when the final clip is short. Draft Mode moves those decisions into a cheaper stage, closer to a film-production workflow in which rough blocking precedes final rendering.
+
+This is a meaningful product change because it treats model uncertainty as part of the production pipeline. The service is no longer just selling isolated generations; it is helping users manage selection, revision and finalization. That can make Seedance more attractive to agencies, short-drama teams, advertisers and API customers running many variations.
+
+The limitation is consistency. A 1080p promotion remains a second inference pass, so it may alter fine details, text, product geometry or character features. Draft Mode reduces the price of experimentation, but it cannot guarantee that the approved composition will survive unchanged. Its real test will be whether professional users accept that trade-off in batch production.
+
+Chinese title: Seedance 2.5上线草稿模式，先低成本试片再生成终版
+Chinese summary: 字节跳动为 Seedance 2.5 增加 480p 草稿流程，创作者可先验证镜头，再生成 1080p 正式视频以减少试错成本。
+
+Sources:
+  - Pika announcement on Seedance 2.5 Draft Mode: https://x.com/pika_labs/status/2102554475496198163
+  - Seedance 2.5 Draft Mode report: https://www.openai-hub.net/news/1690/
+  - Seedance 2.5 Preview mode explainer: https://mlllm.io/articles/3288-dreamina-adds-preview-mode-for-seedance-2-5-cheap-480p-draft-first-paid-1080p-final/
+
 ### StepFun open-sources Step Code for end-to-end development
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/step-code-open-source-agent.html
@@ -962,56 +1026,6 @@ Sources:
   - Making global data easier to explore: https://blog.google/innovation-and-ai/technology/ai/google-un-data-commons-platform/
   - UN Secretary-General's remarks on the launch of the UN System Data Commons: https://easterncaribbean.un.org/en/322845-un-secretary-generals-remarks-member-states-launch-united-nations-system-data-commons
 
-### Anthropic Merges Claude Chat and Cowork Into One Workspace
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-one-claude-workspace.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-one-claude-workspace.html
-- Source timestamp: 2026-09-16T16:30:00.000Z
-- Site timestamp: 2026-09-16T23:00:03.769Z
-- Tags: Agents, Industry
-
-Anthropic is combining Claude’s conversational and task-execution products, adding native document, presentation, and design workflows inside one interface.
-
-Anthropic has merged Claude Chat and Claude Cowork into a single Claude experience, allowing users to move from short questions to longer-running work without switching products. The unified workspace keeps existing chats, projects, artifacts, connectors, and skills while adding native workflows for documents, presentations, and design mockups.
-
-The product change reflects a shift in how AI assistants are being packaged. Chat remains the entry point, but the commercial value increasingly comes from delegated work: drafting a report, converting it into slides, editing individual elements, and continuing after the user closes the laptop. Anthropic says users can comment on a slide, modify a document directly, and present the finished deck from the same environment.
-
-This is not a new foundation model release, but it is a significant platform decision. By collapsing separate surfaces, Anthropic is trying to make Claude a persistent work environment rather than a model accessed through a chat window. It also puts the company more directly against Google’s integrated productivity stack and Microsoft’s Copilot products, where documents, presentations, and collaboration are already connected to organizational data.
-
-The important constraint is that product unification does not automatically solve trust, permissions, or workflow quality. A single interface can reduce friction, but it also concentrates more actions and data in one agent. Anthropic’s bet will be judged by whether users can understand what Claude changed, which connectors it used, and where approval is still required. The launch matters because the assistant market is moving from model selection toward control of the work surface around the model.
-
-Chinese title: Anthropic将Claude聊天与Cowork合并为统一工作台
-Chinese summary: Anthropic把Claude聊天、Cowork以及文档、演示文稿和设计工作流整合到同一产品界面。
-
-Sources:
-  - Anthropic merges Claude chat and Cowork in one interface: https://techcrunch.com/2026/09/16/anthropic-merges-claude-chat-and-cowork-in-one-interface/
-  - Claude comes for Gemini with its own take on Docs and Slides: https://www.theverge.com/ai-artificial-intelligence/996234/anthropic-one-claude-cowork-docs-slides
-
-### Cohere and Aleph Alpha Sign Definitive Sovereign AI Merger Agreement
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/cohere-aleph-alpha-merger.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cohere-aleph-alpha-merger.html
-- Source timestamp: 2026-09-16T22:57:00.000Z
-- Site timestamp: 2026-09-16T23:00:03.769Z
-- Tags: Industry, Funding, Policy
-
-Cohere and Aleph Alpha have signed a definitive merger agreement, creating a Canada-Germany AI group aimed at regulated and sovereign deployments; final financial terms were not disclosed.
-
-Cohere and Germany’s Aleph Alpha have signed a definitive business-combination agreement, converting an earlier plan into a formal transaction. The combined company will keep the Cohere name and operate with headquarters in Toronto and Berlin, while Aleph Alpha’s Heidelberg site is expected to remain a research center.
-
-The companies position the deal around sovereign AI: models and enterprise systems that governments and regulated industries can deploy with stronger control over data, infrastructure, and jurisdiction. The transaction remains subject to final regulatory approvals and other closing conditions. Earlier reports placed the prospective combination’s valuation at about $20 billion, but the definitive announcement did not disclose final financial terms.
-
-The strategic logic is broader than adding model capabilities. Cohere brings a larger international enterprise business and model-development platform; Aleph Alpha contributes European government relationships and a strong emphasis on controlled deployment. Schwarz Group, Aleph Alpha’s major backer, is also advancing its partnership with the combined company around Germany’s STACKIT sovereign cloud ecosystem.
-
-The merger matters because sovereign AI is becoming a purchasing requirement rather than a political slogan. Middle powers increasingly want alternatives to dependence on American hyperscalers or Chinese providers, especially in public administration, defense, finance, and healthcare. The unresolved question is whether a cross-border company can deliver genuinely local control while still achieving the scale needed to compete with frontier labs. Its first test will be turning governance assurances and regional infrastructure into contracts that customers can actually deploy.
-
-Chinese title: Cohere与Aleph Alpha签署主权AI最终合并协议
-Chinese summary: Cohere与Aleph Alpha签署正式业务合并协议，将组建总部横跨加拿大与德国的企业级主权AI公司；正式公告未披露最终交易金额。
-
-Sources:
-  - Cohere and Aleph Alpha Sign Agreement to Become the First Transatlantic Sovereign AI Solution: https://www.prnewswire.com/news-releases/cohere-and-aleph-alpha-sign-agreement-to-become-the-first-transatlantic-sovereign-ai-solution-302880732.html
-  - Cohere, Aleph Alpha combine to target enterprise AI market: https://www.investing.com/news/stock-market-news/cohere-aleph-alpha-combine-to-target-enterprise-ai-market-4903867
-
 ## Recent radar items
 
 ### 2026-09-23
@@ -1033,6 +1047,20 @@ Sources:
 - 2026-09-22T13:00:00Z | SiliconANGLE | Baselayer raised $35 million to build an identity and trust layer for autonomous agents conducting transactions. | 中文：Baselayer融资3500万美元，专注为执行交易的自主智能体构建身份与信任层。 | https://siliconangle.com/2026/09/22/with-35m-in-series-a-funding-baselayer-is-building-the-trust-layer-for-the-agentic-economy/
 - 2026-09-22T13:00:00Z | SiliconANGLE | Heidi Health raised $340 million to expand AI agents across global healthcare systems. | 中文：Heidi Health融资3.4亿美元，计划扩大AI智能体在全球医疗系统中的应用。 | https://siliconangle.com/2026/09/22/heidi-health-nabs-340m-to-deepen-adoption-of-ai-agents-within-health-systems-globally/
 - 2026-09-22T12:00:00Z | SiliconANGLE | Kantata launched Agent Studio, allowing users to build custom business agents through plain-language instructions. | 中文：Kantata推出Agent Studio，用户可用自然语言创建定制化业务智能体。 | https://siliconangle.com/2026/09/22/kantata-debuts-agent-studio-for-building-custom-ai-agents-in-plain-language/
+- 2026-09-23T10:05:00.000Z | InfoQ 中文 | Alibaba released Open Code Review, an open-source agent that has reportedly validated millions of review tasks. | 中文：阿里发布开源 Open Code Review 智能体，已据称完成百万级代码审查任务。 | https://www.infoq.cn/article/ekVtt3hgufw4wCvP7Zb5
+- 2026-09-23T10:04:00.000Z | The Decoder | OpenAI hired Patreon co-founder Sam Yam to lead a new Creator Product division. | 中文：OpenAI 聘请 Patreon 联合创始人 Sam Yam，负责新成立的创作者产品部门。 | https://the-decoder.com/openai-hires-patreon-co-founder-sam-yam-to-lead-a-new-creator-product-division/
+- 2026-09-23T10:30:00.000Z | X @MeshyAI | Meshy announced a partnership with Chrona to turn AI-generated 3D assets into explorable interactive worlds. | 中文：Meshy 宣布与 Chrona 合作，把 AI 生成的 3D 资产变成可探索的互动世界。 | https://x.com/MeshyAI/status/2102707044046528633
+- 2026-09-23T07:29:00.000Z | 量子位 | DeepSeek researchers published a paper on training agents, with Liang Wenfeng listed as a co-author. | 中文：DeepSeek 研究团队公开智能体训练论文，梁文锋列为共同作者。 | https://www.qbitai.com/2026/09/496393.html
+- 2026-09-23T07:27:00.000Z | 量子位 | Alibaba appointed Liu Dayiheng to lead Qwen, according to Chinese technology reporting. | 中文：据中国科技媒体报道，阿里已由刘大一恒接任 Qwen 负责人。 | https://www.qbitai.com/2026/09/496384.html
+- 2026-09-23T07:09:00.000Z | MarkTechPost | Nokia open-sourced AnyJev, a training-free layer that turns open language models into calibrated decision models. | 中文：诺基亚开源 AnyJev，无需训练即可把开放语言模型转换为校准型决策模型。 | https://www.marktechpost.com/2026/09/23/nokia-open-sources-anyjev-a-training-free-layer-that-turns-any-open-llm-into-a-calibrated-decision-model/
+- 2026-09-23T06:33:00.000Z | MarkTechPost | Kyutai released Voice of Reason, a speech-native model trained with reinforcement learning to solve spoken mathematics. | 中文：Kyutai 发布 Voice of Reason，用强化学习训练语音原生模型解决口述数学问题。 | https://www.marktechpost.com/2026/09/22/kyutai-releases-voice-of-reason-a-speech-native-model-that-solves-spoken-math-with-reinforcement-learning/
+- 2026-09-23T01:30:00.000Z | SiliconANGLE | Known Systems AI spun out of Identity Digital to build accountability infrastructure for autonomous agents. | 中文：Known Systems AI 从 Identity Digital 分拆，专注为自主智能体构建责任追踪基础设施。 | https://siliconangle.com/2026/09/22/known-systems-ai-spins-out-of-identity-digital-to-make-ai-agents-accountable-to-their-owners/
+- 2026-09-23T01:24:00.000Z | X @Alibaba_Qwen | Qwen-Image-2.1 ranked first in both the Image Edit and Text-to-Image arenas, according to Alibaba’s announcement. | 中文：阿里称，Qwen-Image-2.1 在图像编辑和文生图竞技场均排名第一。 | https://x.com/Alibaba_Qwen/status/2102569821997346912
+- 2026-09-22T23:53:00.000Z | X @togethercompute | Together AI introduced canary rollouts that move traffic between model deployments without taking live endpoints offline. | 中文：Together AI 推出金丝雀发布，可在不停机情况下把流量切换到新的模型部署。 | https://x.com/togethercompute/status/2102546938361262380
+- 2026-09-23T09:50:00.000Z | 量子位 | HuiZhi Intelligence launched Hellome, a direct-connected agent platform that claims to compress AI delivery cycles into weeks. | 中文：汇智智能发布 Hellome 直连智能体平台，称可将 AI 交付周期压缩至数周。 | https://www.qbitai.com/2026/09/496493.html
+- 2026-09-23T07:26:00.000Z | NobodyWho.ai | Jev was presented in a 25-line Python implementation as a compact decision-focused AI system. | 中文：Jev 被展示为一个仅 25 行 Python 实现的紧凑型决策 AI 系统。 | https://www.nobodywho.ai/posts/jev-in-25-lines/
+- 2026-09-23T08:54:00.000Z | 量子位 | QbitAI reported that Itstone’s embodied-intelligence team is leading Chinese efforts toward scaled deployment. | 中文：量子位报道，它石智航团队正推动中国具身智能率先迈向规模化落地。 | https://www.qbitai.com/2026/09/496481.html
+- 2026-09-23T08:45:00.000Z | 量子位 | QbitAI reported that Zebra Smart released AutoOmni2.0, an edge model designed to better understand users’ personal environments. | 中文：量子位报道，斑马智能发布端模型 AutoOmni2.0，旨在更好理解用户的个人环境。 | https://www.qbitai.com/2026/09/496471.html
 
 ### 2026-09-22
 
@@ -1069,6 +1097,7 @@ Sources:
 - 2026-09-22T08:49:00Z | 量子位 | The AI MediaKit team introduced an entertainment production and management platform called WhaleSharp AI. | 中文：虎鲸文娱推出影视制作与管理平台“鲸锐AI”。 | https://www.qbitai.com/2026/09/493865.html
 - 2026-09-22T02:54:00Z | X @OpenAIDevs | OpenAI highlighted a surgeon using Codex to build personal tools and review scientific literature on PubMed. | 中文：OpenAI展示了一名外科医生使用Codex开发个人工具并检索PubMed科研文献。 | https://x.com/OpenAIDevs/status/2102230071046258739
 - 2026-09-22T10:45:00Z | X @tripoai | Tripo announced an additional $10,000 prize pool for its Tripothon S1 challenge with Jupiter SR hardware and software. | 中文：Tripo宣布为Tripothon S1增加1万美元奖金池，鼓励使用Jupiter SR软硬件进行创作。 | https://x.com/tripoai/status/2102348544133018021
+- 2026-09-22 | Waymo | Waymo launched a San Francisco Bay Area program that rewards riders with $2.85 in Waymo Cash when they combine rides with transit. | 中文：Waymo 在旧金山湾区推出奖励计划，乘客将网约车与公共交通衔接可获 2.85 美元 Waymo Cash。 | https://waymo.com/blog/2026/09/transit-rewards/
 
 ### 2026-09-21
 
