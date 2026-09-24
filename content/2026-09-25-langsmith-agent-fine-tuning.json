@@ -1,0 +1,32 @@
+{
+  "slug": "langsmith-agent-fine-tuning",
+  "title": "LangChain Turns Agent Traces Into Fine-Tuning Data",
+  "summary": "LangChain has launched LangSmith Fine-Tuning and smithtune, linking agent traces, managed training and evaluation into one workflow for custom models.",
+  "body": "LangChain has launched LangSmith Fine-Tuning and an open-source command-line tool called smithtune, allowing developers to turn recorded agent trajectories into datasets for supervised fine-tuning. The workflow connects production traces in LangSmith with training on Fireworks or Baseten, then sends evaluation results back into LangSmith.\n\n## From logs to model updates\n\nAgent systems generate more than final answers: they produce tool calls, retries, intermediate decisions and handoffs between sub-agents. LangChain’s new workflow treats those trajectories as training material. Developers can select useful sessions, prepare the data, start a managed fine-tuning run and inspect evaluation results without moving between unrelated systems.\n\nThe company says smithtune handles dataset creation and preparation, while the connected training providers supply the compute and deployment layer. LangSmith remains the place for tracing and evaluation. The initial integrations with Fireworks and Baseten therefore create a relatively direct path from an agent’s observed behavior to a customized model intended to reproduce or improve that behavior.\n\n## Why it matters\n\nThe release reflects a broader change in agent development. As model quality becomes less differentiated and agent workflows become longer, the valuable data is increasingly the record of how a system solved a task, where it failed and what a human reviewer corrected. Making those traces usable for training could shorten the feedback loop for specialized coding, support, research and operations agents.\n\nThere are important caveats. A trace is not automatically a good teaching example: it may contain tool errors, accidental shortcuts, private data or behavior that succeeded once but will not generalize. Fine-tuning on noisy trajectories can also make a model imitate brittle workflow habits. The evaluation link is therefore as important as the training link.\n\nLangSmith’s move is consequential because it makes agent improvement look more like a continuous data pipeline than a one-off model project. Its success will depend on whether teams can filter real-world traces well enough to teach reliable behavior instead of merely replaying past mistakes.",
+  "title_zh": "LangChain把智能体轨迹接入模型微调流程",
+  "summary_zh": "LangChain推出LangSmith Fine-Tuning与开源命令行工具smithtune，把智能体轨迹、托管训练和评估串成一条工作流。",
+  "body_zh": "LangChain推出LangSmith Fine-Tuning及开源命令行工具smithtune，允许开发者把记录下来的智能体执行轨迹转换为监督微调数据。该流程将LangSmith中的生产轨迹连接到Fireworks或Baseten的训练服务，再把评估结果回传到LangSmith。\n\n## 从日志到模型更新\n\n智能体产生的不只是最终答案，还包括工具调用、重试、中间决策和子智能体之间的交接。LangChain的新工作流把这些完整轨迹视为训练材料。开发者可以挑选有价值的会话、准备数据、启动托管微调，并在同一套体系里查看评估结果。\n\n据LangChain介绍，smithtune负责数据集创建和准备，合作训练平台提供算力与部署能力，而LangSmith继续承担追踪和评估。Fireworks与Baseten的初始接入，建立了一条从智能体真实行为到定制模型的直接路径，目标是复现或改进特定工作流中的表现。\n\n## 为什么值得关注\n\n这项发布体现了智能体开发正在发生的变化。随着底层模型差距缩小、工作流变长，真正有价值的数据越来越多地来自“系统如何完成任务、在哪里失败、人工如何修正”的过程记录。若这些轨迹能够被有效利用，编码、客服、研究和运营智能体的迭代周期都可能缩短。\n\n但轨迹并不天然适合训练。它可能包含工具错误、偶然捷径、隐私数据，或者只在某次任务中有效、无法泛化的行为。对噪声轨迹微调，还可能让模型学会脆弱的流程习惯。因此，评估闭环和训练连接同样重要。\n\nLangChain这次动作的意义在于，它把智能体改进从一次性模型项目，推向持续的数据管线。最终成败取决于团队能否筛选真实世界轨迹，让模型学到可靠行为，而不是机械重放过去的错误。",
+  "tags": [
+    "Agents",
+    "Industry",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "Introducing LangSmith Fine-Tuning",
+      "url": "https://www.langchain.com/blog/langsmith-fine-tuning"
+    },
+    {
+      "title": "Trajectories now in LangSmith",
+      "url": "https://www.langchain.com/blog/langsmith-trajectories-tracing"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "smithtune的价值不在一键微调，而在把失败轨迹变成可审计的训练资产。",
+  "cat_take_en": "smithtune matters less for one-click training than for making agent failures auditable training assets.",
+  "date": "2026-09-25",
+  "published": "2026-09-24T19:00:00Z",
+  "published_at": "2026-09-24T23:00:04.268Z"
+}

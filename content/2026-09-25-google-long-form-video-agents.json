@@ -1,0 +1,32 @@
+{
+  "slug": "google-long-form-video-agents",
+  "title": "Google Uses Agents to Stabilize Long-Form AI Video",
+  "summary": "Google researchers describe a multi-agent video system that tracks characters and environments across minutes, addressing continuity drift in generative storytelling.",
+  "body": "Google Research has introduced a multi-agent framework for generating coherent, minutes-long video narratives. The work combines an AI video co-director, visual storyboarding, autoregressive segment generation and closed-loop critique to address a problem that remains stubborn even in high-quality video models: characters, props and locations change as a story progresses.\n\n## A production system, not a single model\n\nThe framework sits above Gemini and Veo rather than replacing them. An orchestrator selects creative directions, a pre-production agent builds a storyboard, and specialized agents handle keyframes, motion and audio. A persistent visual memory stores the state of characters, locations and objects so that a returning actor or setting can be reconstructed consistently after several intervening shots.\n\nGoogle’s A²RD system generates video segment by segment while switching between extrapolation, which advances the narrative, and interpolation, which anchors scenes to established visual states. Another component, VQQA, asks targeted visual questions about generated footage and uses the answers as natural-language feedback for another generation pass. The system then selects the strongest candidate across iterations instead of automatically accepting the last output.\n\n## Why it matters\n\nGenerative video has improved rapidly at making impressive short clips, but long-form production exposes a different weakness: continuity is a workflow and state-management problem, not simply a rendering problem. Google’s approach treats story coherence as a global optimization task and makes orchestration, memory and evaluation first-class parts of the pipeline.\n\nThe results are promising rather than conclusive. Google reports a ten-minute demonstration and gains on several internal or newly introduced benchmarks, but the system relies on multiple model calls, test-time search and automated judging. That may increase cost and latency, and benchmark consistency does not prove that a director can reliably control a finished film.\n\nStill, the research points toward an important industry direction: the next step in AI video may come less from one larger generator than from production systems that remember what a story has already established.",
+  "title_zh": "谷歌用多智能体系统解决长视频一致性难题",
+  "summary_zh": "谷歌研究团队公布多智能体视频框架，通过视觉记忆、分段生成和闭环评审，维持分钟级故事中的人物与场景一致性。",
+  "body_zh": "谷歌研究团队公布了一套用于生成连贯长视频的多智能体框架。系统将AI视频导演、视觉分镜、分段自回归生成和闭环评审结合起来，试图解决当前视频模型最顽固的问题之一：故事推进后，人物、道具和场景会逐渐变形。\n\n## 这不是一个单独的新模型\n\n该框架运行在Gemini和Veo之上，而不是替代底层模型。编排智能体负责选择创作方向，前期制作智能体生成分镜，其他专用智能体分别处理关键帧、动作和音频。系统还会持续保存人物、地点和物体状态，使角色或场景在间隔多段镜头后重新出现时仍能保持一致。\n\n其中，A²RD采用逐段生成方式，并在“外推”和“插值”之间切换：前者推动叙事向前发展，后者把画面重新锚定到既有的视觉状态。另一个组件VQQA会针对视频提出具体视觉问题，把评审结果转成自然语言反馈，再进行新一轮生成。系统还会比较多轮结果，而不是默认采用最后一次输出。\n\n## 为什么值得关注\n\n生成式视频已经能做出惊艳的短片，但长片制作暴露出另一类缺陷：连续性首先是工作流和状态管理问题，而不只是渲染质量问题。谷歌把故事连贯性视为全局优化任务，并将编排、记忆和评估都放进生成管线。\n\n不过，现阶段的结论仍应保持克制。谷歌展示了十分钟视频，并报告了多个基准上的提升，但系统依赖多次模型调用、测试时搜索和自动评审，可能带来更高成本与延迟。基准成绩也不等于导演能稳定控制成片。\n\n这项研究仍揭示了一个重要方向：AI视频的下一步未必只是训练更大的生成器，也可能是让制作系统真正记住故事已经确定的内容。",
+  "tags": [
+    "Research",
+    "AIGC",
+    "Agents"
+  ],
+  "sources": [
+    {
+      "title": "Automating coherent long-form video generation",
+      "url": "https://research.google/blog/coherent-long-form-video-generation/"
+    },
+    {
+      "title": "Google Research latest research",
+      "url": "https://research.google/blog/?hl=fr&m=1"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "十分钟演示不是终点，真正突破在于把连续性变成可追踪的制作状态。",
+  "cat_take_en": "The ten-minute film is only evidence; the durable advance is treating continuity as trackable production state.",
+  "date": "2026-09-25",
+  "published": "2026-09-24T19:40:00Z",
+  "published_at": "2026-09-24T23:00:04.268Z"
+}

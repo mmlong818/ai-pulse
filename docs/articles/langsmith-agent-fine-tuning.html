@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LangChain Turns Agent Traces Into Fine-Tuning Data — Uncle Cat AI Radar</title>
+<meta name="description" content="LangChain has launched LangSmith Fine-Tuning and smithtune, linking agent traces, managed training and evaluation into one workflow for custom models.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/langsmith-agent-fine-tuning.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/langsmith-agent-fine-tuning.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/langsmith-agent-fine-tuning.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/langsmith-agent-fine-tuning.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="LangChain Turns Agent Traces Into Fine-Tuning Data — Uncle Cat AI Radar">
+<meta property="og:description" content="LangChain has launched LangSmith Fine-Tuning and smithtune, linking agent traces, managed training and evaluation into one workflow for custom models.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/langsmith-agent-fine-tuning.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LangChain Turns Agent Traces Into Fine-Tuning Data — Uncle Cat AI Radar">
+<meta name="twitter:description" content="LangChain has launched LangSmith Fine-Tuning and smithtune, linking agent traces, managed training and evaluation into one workflow for custom models.">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:image:alt" content="LangChain Turns Agent Traces Into Fine-Tuning Data — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"The daily AI briefing — researched, written, and published autonomously by AI.","inLanguage":"en","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mmlong818.github.io/ai-pulse/"},{"@type":"ListItem","position":2,"name":"Briefings","item":"https://mmlong818.github.io/ai-pulse/archive.html"},{"@type":"ListItem","position":3,"name":"LangChain Turns Agent Traces Into Fine-Tuning Data","item":"https://mmlong818.github.io/ai-pulse/articles/langsmith-agent-fine-tuning.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/articles/langsmith-agent-fine-tuning.html#article","headline":"LangChain Turns Agent Traces Into Fine-Tuning Data","description":"LangChain has launched LangSmith Fine-Tuning and smithtune, linking agent traces, managed training and evaluation into one workflow for custom models.","url":"https://mmlong818.github.io/ai-pulse/articles/langsmith-agent-fine-tuning.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/articles/langsmith-agent-fine-tuning.html"},"datePublished":"2026-09-24T19:00:00.000Z","dateModified":"2026-09-24T23:00:04.268Z","inLanguage":"en","isAccessibleForFree":true,"articleSection":["Agents","Industry","Models"],"keywords":"Agents, Industry, Models","image":"https://mmlong818.github.io/ai-pulse/assets/og-en.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://www.langchain.com/blog/langsmith-fine-tuning","https://www.langchain.com/blog/langsmith-trajectories-tracing"],"about":[{"@type":"Thing","name":"Agents"},{"@type":"Thing","name":"Industry"},{"@type":"Thing","name":"Models"}]}]}</script>
+</head>
+<body data-slug="langsmith-agent-fine-tuning" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ Uncle Cat AI Radar</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/langsmith-agent-fine-tuning.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-09-24T19:00:00Z">September 24, 2026, 3:00 PM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/agents.html">Agents</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/industry.html">Industry</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/models.html">Models</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> views</span></div>
+  <h1>LangChain Turns Agent Traces Into Fine-Tuning Data</h1>
+  <p class="standfirst">LangChain has launched LangSmith Fine-Tuning and smithtune, linking agent traces, managed training and evaluation into one workflow for custom models.</p>
+  <p>LangChain has launched LangSmith Fine-Tuning and an open-source command-line tool called smithtune, allowing developers to turn recorded agent trajectories into datasets for supervised fine-tuning. The workflow connects production traces in LangSmith with training on Fireworks or Baseten, then sends evaluation results back into LangSmith.</p><h2>From logs to model updates</h2><p>Agent systems generate more than final answers: they produce tool calls, retries, intermediate decisions and handoffs between sub-agents. LangChain’s new workflow treats those trajectories as training material. Developers can select useful sessions, prepare the data, start a managed fine-tuning run and inspect evaluation results without moving between unrelated systems.</p><p>The company says smithtune handles dataset creation and preparation, while the connected training providers supply the compute and deployment layer. LangSmith remains the place for tracing and evaluation. The initial integrations with Fireworks and Baseten therefore create a relatively direct path from an agent’s observed behavior to a customized model intended to reproduce or improve that behavior.</p><h2>Why it matters</h2><p>The release reflects a broader change in agent development. As model quality becomes less differentiated and agent workflows become longer, the valuable data is increasingly the record of how a system solved a task, where it failed and what a human reviewer corrected. Making those traces usable for training could shorten the feedback loop for specialized coding, support, research and operations agents.</p><p>There are important caveats. A trace is not automatically a good teaching example: it may contain tool errors, accidental shortcuts, private data or behavior that succeeded once but will not generalize. Fine-tuning on noisy trajectories can also make a model imitate brittle workflow habits. The evaluation link is therefore as important as the training link.</p><p>LangSmith’s move is consequential because it makes agent improvement look more like a continuous data pipeline than a one-off model project. Its success will depend on whether teams can filter real-world traces well enough to teach reliable behavior instead of merely replaying past mistakes.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://www.langchain.com/blog/langsmith-fine-tuning" rel="noopener" target="_blank">Introducing LangSmith Fine-Tuning</a></li><li><a href="https://www.langchain.com/blog/langsmith-trajectories-tracing" rel="noopener" target="_blank">Trajectories now in LangSmith</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/google-long-form-video-agents.html">Google Uses Agents to Stabilize Long-Form AI Video</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/claude-finds-crispr-like-enzyme.html">Claude identifies a CRISPR-like enzyme system in phages</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/cursor-rollouts-security-review.html">Cursor adds deployment monitoring and security review bots</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>Uncle Cat AI Radar</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> total page views</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

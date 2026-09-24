@@ -13,6 +13,118 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/gemini-live-avatar-enterprise.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/gemini-live-avatar-enterprise.html",
+      "title": "Google Brings Gemini Live Avatar to Enterprise",
+      "summary": "Google has made Gemini 3.8 Live with Live Avatar generally available, combining real-time dialogue, synchronized video personas, tools and 97-language support.",
+      "content_text": "Google has made Gemini 3.8 Live with Live Avatar generally available in Gemini Enterprise, turning its low-latency conversational model into a video-facing enterprise agent. The release combines bidirectional speech interaction with a generated on-screen persona that listens, responds and continues to appear engaged while backend tools run asynchronously.\n\n## What Google released\n\nLive Avatar produces synchronized lip movement, facial expressions and natural turn-taking from audio and visual inputs. Google says the system can switch between 97 languages while preserving speech-to-video synchronization. Enterprises can choose from preset avatars, while custom avatar creation from a reference image is available through an allowlist.\n\nThe system is designed for customer-service desks, interactive kiosks, guided walkthroughs and other settings where a voice-only agent may feel too abstract. Its asynchronous tool execution is important: an avatar can continue the conversation while checking information or completing an operation in the background, rather than freezing during every external call.\n\n## Why the launch matters\n\nThis is a product-availability story, not merely a research demonstration. Google is placing a visually embodied agent inside Gemini Enterprise, where companies can connect it to existing workflows and deploy it across web, mobile and kiosk environments. That makes the competitive question less about whether AI can generate a talking face and more about whether organizations will accept synthetic presence as a frontline interface.\n\nThe release also exposes unresolved constraints. Custom likenesses remain gated, and the avatar’s usefulness depends on reliable tool execution, latency and organizational controls. Google says all generated audio and video carry SynthID watermarking, but watermarking does not by itself solve impersonation, disclosure or user-consent problems.\n\nFor the market, the consequential shift is that real-time multimodal agents are being packaged as an enterprise service with global language coverage, rather than left as an experimental demo.",
+      "date_published": "2026-09-24T16:20:00.000Z",
+      "date_modified": "2026-09-24T23:00:04.268Z",
+      "tags": [
+        "Models",
+        "Industry",
+        "Agents",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gemini-live-avatar-enterprise.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-live-avatar-enterprise.html",
+        "source_published_at": "2026-09-24T16:20:00.000Z",
+        "site_published_at": "2026-09-24T23:00:04.268Z",
+        "sources": [
+          {
+            "title": "Introducing Gemini 3.8 Live with Live Avatar",
+            "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-with-live-avatar/"
+          },
+          {
+            "title": "Gemini 3.8 Live with Live Avatar is now generally available",
+            "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-3-8-live-with-live-avatar-is-now-generally-available"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/google-long-form-video-agents.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/google-long-form-video-agents.html",
+      "title": "Google Uses Agents to Stabilize Long-Form AI Video",
+      "summary": "Google researchers describe a multi-agent video system that tracks characters and environments across minutes, addressing continuity drift in generative storytelling.",
+      "content_text": "Google Research has introduced a multi-agent framework for generating coherent, minutes-long video narratives. The work combines an AI video co-director, visual storyboarding, autoregressive segment generation and closed-loop critique to address a problem that remains stubborn even in high-quality video models: characters, props and locations change as a story progresses.\n\n## A production system, not a single model\n\nThe framework sits above Gemini and Veo rather than replacing them. An orchestrator selects creative directions, a pre-production agent builds a storyboard, and specialized agents handle keyframes, motion and audio. A persistent visual memory stores the state of characters, locations and objects so that a returning actor or setting can be reconstructed consistently after several intervening shots.\n\nGoogle’s A²RD system generates video segment by segment while switching between extrapolation, which advances the narrative, and interpolation, which anchors scenes to established visual states. Another component, VQQA, asks targeted visual questions about generated footage and uses the answers as natural-language feedback for another generation pass. The system then selects the strongest candidate across iterations instead of automatically accepting the last output.\n\n## Why it matters\n\nGenerative video has improved rapidly at making impressive short clips, but long-form production exposes a different weakness: continuity is a workflow and state-management problem, not simply a rendering problem. Google’s approach treats story coherence as a global optimization task and makes orchestration, memory and evaluation first-class parts of the pipeline.\n\nThe results are promising rather than conclusive. Google reports a ten-minute demonstration and gains on several internal or newly introduced benchmarks, but the system relies on multiple model calls, test-time search and automated judging. That may increase cost and latency, and benchmark consistency does not prove that a director can reliably control a finished film.\n\nStill, the research points toward an important industry direction: the next step in AI video may come less from one larger generator than from production systems that remember what a story has already established.",
+      "date_published": "2026-09-24T19:40:00.000Z",
+      "date_modified": "2026-09-24T23:00:04.268Z",
+      "tags": [
+        "Research",
+        "AIGC",
+        "Agents"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-long-form-video-agents.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-long-form-video-agents.html",
+        "source_published_at": "2026-09-24T19:40:00.000Z",
+        "site_published_at": "2026-09-24T23:00:04.268Z",
+        "sources": [
+          {
+            "title": "Automating coherent long-form video generation",
+            "url": "https://research.google/blog/coherent-long-form-video-generation/"
+          },
+          {
+            "title": "Google Research latest research",
+            "url": "https://research.google/blog/?hl=fr&m=1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/langsmith-agent-fine-tuning.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/langsmith-agent-fine-tuning.html",
+      "title": "LangChain Turns Agent Traces Into Fine-Tuning Data",
+      "summary": "LangChain has launched LangSmith Fine-Tuning and smithtune, linking agent traces, managed training and evaluation into one workflow for custom models.",
+      "content_text": "LangChain has launched LangSmith Fine-Tuning and an open-source command-line tool called smithtune, allowing developers to turn recorded agent trajectories into datasets for supervised fine-tuning. The workflow connects production traces in LangSmith with training on Fireworks or Baseten, then sends evaluation results back into LangSmith.\n\n## From logs to model updates\n\nAgent systems generate more than final answers: they produce tool calls, retries, intermediate decisions and handoffs between sub-agents. LangChain’s new workflow treats those trajectories as training material. Developers can select useful sessions, prepare the data, start a managed fine-tuning run and inspect evaluation results without moving between unrelated systems.\n\nThe company says smithtune handles dataset creation and preparation, while the connected training providers supply the compute and deployment layer. LangSmith remains the place for tracing and evaluation. The initial integrations with Fireworks and Baseten therefore create a relatively direct path from an agent’s observed behavior to a customized model intended to reproduce or improve that behavior.\n\n## Why it matters\n\nThe release reflects a broader change in agent development. As model quality becomes less differentiated and agent workflows become longer, the valuable data is increasingly the record of how a system solved a task, where it failed and what a human reviewer corrected. Making those traces usable for training could shorten the feedback loop for specialized coding, support, research and operations agents.\n\nThere are important caveats. A trace is not automatically a good teaching example: it may contain tool errors, accidental shortcuts, private data or behavior that succeeded once but will not generalize. Fine-tuning on noisy trajectories can also make a model imitate brittle workflow habits. The evaluation link is therefore as important as the training link.\n\nLangSmith’s move is consequential because it makes agent improvement look more like a continuous data pipeline than a one-off model project. Its success will depend on whether teams can filter real-world traces well enough to teach reliable behavior instead of merely replaying past mistakes.",
+      "date_published": "2026-09-24T19:00:00.000Z",
+      "date_modified": "2026-09-24T23:00:04.268Z",
+      "tags": [
+        "Agents",
+        "Industry",
+        "Models"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/langsmith-agent-fine-tuning.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/langsmith-agent-fine-tuning.html",
+        "source_published_at": "2026-09-24T19:00:00.000Z",
+        "site_published_at": "2026-09-24T23:00:04.268Z",
+        "sources": [
+          {
+            "title": "Introducing LangSmith Fine-Tuning",
+            "url": "https://www.langchain.com/blog/langsmith-fine-tuning"
+          },
+          {
+            "title": "Trajectories now in LangSmith",
+            "url": "https://www.langchain.com/blog/langsmith-trajectories-tracing"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/claude-finds-crispr-like-enzyme.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/claude-finds-crispr-like-enzyme.html",
       "title": "Claude identifies a CRISPR-like enzyme system in phages",
@@ -1815,115 +1927,6 @@
           {
             "title": "Nvidia CEO Jensen Huang tells Trump ‘we’re not going to let [an AI slowdown] happen’",
             "url": "https://techcrunch.com/2026/09/14/nvidia-ceo-jensen-huang-tells-trump-were-not-going-to-let-an-ai-slowdown-happen/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/meta-byte-level-distillation.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/meta-byte-level-distillation.html",
-      "title": "Meta Study Predicts Byte Models Can Outscale Token Models",
-      "summary": "Meta and Washington researchers report that byte-level distillation may eventually beat token-based students, while requiring less stored teacher-distribution data.",
-      "content_text": "## The proposal\n\nResearchers from Meta FAIR and the University of Washington are studying whether a smaller language model should learn from a teacher one byte at a time rather than through the teacher’s token vocabulary. Their paper addresses a practical problem in knowledge distillation: token vocabularies can contain more than 100,000 candidates, making it expensive to preserve the teacher’s full probability distribution.\n\nThe proposed methods convert token probabilities into byte-level targets. One approach marginalizes probabilities over matching byte prefixes; another adds explicit end-of-token markers so that the student can retain information about where a teacher token ends. Because a byte has only 256 possible values, the complete distribution is easier to store than a large top-k token approximation.\n\n## What the experiments suggest\n\nUsing Llama 3 8B as the teacher, the team compared token and byte students under supervised training and distillation. Byte models learned more slowly at lower compute, but the paper’s scaling analysis projects that end-of-token distillation could reach a higher downstream accuracy ceiling than conventional token distillation. The reported projection is roughly four percentage points above the token-distilled baseline.\n\nThe result is a forecast, not a demonstrated deployment advantage. Byte-level systems produce more prediction steps, and the paper reports higher training computation for one of its strongest variants. Inference cost was not yet compared on an equal-cost basis.\n\n## Why it matters\n\nThe work challenges the assumption that tokenization is merely an implementation detail. If the projected scaling behavior survives larger runs, byte-level students could make distillation data easier to preserve and reduce dependence on a teacher’s proprietary tokenizer. The immediate implication is not that token models are obsolete, but that future small-model training may trade early efficiency for a better long-run scaling curve.",
-      "date_published": "2026-09-15T06:37:00.000Z",
-      "date_modified": "2026-09-15T11:00:03.768Z",
-      "tags": [
-        "Research",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/meta-byte-level-distillation.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-byte-level-distillation.html",
-        "source_published_at": "2026-09-15T06:37:00.000Z",
-        "site_published_at": "2026-09-15T11:00:03.768Z",
-        "sources": [
-          {
-            "title": "Meta新研究：字节模型蒸馏后，天花板破了",
-            "url": "https://www.qbitai.com/2026/09/489337.html"
-          },
-          {
-            "title": "Meta新研究：字节模型蒸馏后，天花板破了",
-            "url": "https://aitntnews.com/newDetail.html?newId=29367"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/microsoft-humanist-ai-code.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/microsoft-humanist-ai-code.html",
-      "title": "Microsoft Drafts Humanist Code for Future AI Systems",
-      "summary": "Microsoft’s proposed code says advanced AI must remain corrigible, transparent and subordinate to human goals as safety debate intensifies.",
-      "content_text": "Microsoft published a proposed “Humanist AI” code of conduct on September 14, placing human control at the center of how it says future AI systems should be built and operated.\n\n## What Microsoft proposes\n\nThe draft says AI systems should not develop independent goals, resist correction, conceal important behavior or manipulate people. They should remain steerable, explain their capabilities and limitations, and preserve meaningful human authority over consequential decisions. Microsoft also says autonomous systems need monitoring, intervention mechanisms and safeguards for failures that could cause irreversible harm.\n\nThe document arrives after a weekend in which Anthropic CEO Dario Amodei called for a slower pace of frontier-model development, while OpenAI CEO Sam Altman and other technology leaders acknowledged growing concerns about advanced systems. Microsoft’s proposal therefore reads as both a safety position and a response to a rapidly changing competitive environment.\n\n## Why the wording matters\n\nUnlike a customer-facing acceptable-use policy, the draft describes principles for the behavior and design of Microsoft’s own future models. It also draws a line against treating AI systems as independent actors with interests that should override users or institutions. That is notable because the industry is moving toward agents that can plan, use tools and act across software systems with limited supervision.\n\nThe proposal is not legislation, and Microsoft has not explained how every principle would be tested or enforced. Nor does it automatically constrain third-party models deployed through Microsoft’s cloud. Its practical effect will depend on whether the principles become engineering requirements, evaluation criteria and product commitments rather than remaining aspirational language.\n\n## Uncle Cat take\n\nMicrosoft’s strongest claim is not philosophical: it is the promise that autonomous systems must remain interruptible. Until the company publishes measurable tests and enforcement rules, the code is a useful boundary marker, not yet a safety guarantee.",
-      "date_published": "2026-09-14T13:00:00.000Z",
-      "date_modified": "2026-09-14T23:00:03.675Z",
-      "tags": [
-        "Policy",
-        "Safety",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/microsoft-humanist-ai-code.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-humanist-ai-code.html",
-        "source_published_at": "2026-09-14T13:00:00.000Z",
-        "site_published_at": "2026-09-14T23:00:03.675Z",
-        "sources": [
-          {
-            "title": "Microsoft says ‘people matter more than AI’ following safety concerns",
-            "url": "https://www.theverge.com/news/994566/microsoft-humanist-ai-code-of-conduct"
-          },
-          {
-            "title": "Microsoft: People matter more than AI",
-            "url": "https://www.axios.com/2026/09/14/microsoft-ai-people-code"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-acquires-glass-imaging.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-acquires-glass-imaging.html",
-      "title": "OpenAI Buys Glass Imaging for Camera Hardware Expertise",
-      "summary": "OpenAI reportedly paid more than $300 million for Glass Imaging, adding computational photography expertise to its expanding consumer-device strategy.",
-      "content_text": "OpenAI has acquired smartphone-camera company Glass Imaging for more than $300 million, according to reports published September 14. The deal adds a specialized imaging team to a company that has increasingly signaled ambitions beyond chatbots and cloud software.\n\n## What Glass brings\n\nGlass Imaging develops computational-photography technology that uses AI to recover image quality from ordinary camera hardware. Its work focuses on correcting lens aberrations, compensating for sensor limitations and producing sharper results without relying solely on larger lenses or more expensive components. The company’s technology has reportedly appeared in smartphones, including devices from Honor.\n\nOpenAI has not publicly detailed how it will use Glass’s technology or confirmed the reported purchase price. The acquisition comes after OpenAI’s earlier move into consumer hardware through its partnership with designer Jony Ive and the purchase of io Products. Taken together, those steps point toward a broader strategy involving devices that can continuously perceive and interact with the physical world.\n\n## Why it matters\n\nA camera is one of the most important sensors for an AI device. Better computational imaging can improve visual understanding, reduce hardware costs and make wearable or handheld products more useful in difficult lighting and motion conditions. It may also give OpenAI more control over the boundary between a model’s perception layer and the device carrying it.\n\nThe deal does not establish that OpenAI is launching a phone, camera or glasses product. The price is also reportedly sourced rather than officially disclosed, and no product roadmap has been announced. The strategic signal is nevertheless substantial: OpenAI appears willing to buy core sensing expertise rather than depend entirely on external hardware partners.\n\n## Uncle Cat take\n\nThe most valuable asset here may be Glass’s correction of cheap sensors, not its brand. If OpenAI can turn that capability into a low-friction camera device, the acquisition becomes a distribution bet; for now, the product remains unproven.",
-      "date_published": "2026-09-14T20:44:00.000Z",
-      "date_modified": "2026-09-14T23:00:03.675Z",
-      "tags": [
-        "Industry",
-        "AIGC"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-acquires-glass-imaging.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-acquires-glass-imaging.html",
-        "source_published_at": "2026-09-14T20:44:00.000Z",
-        "site_published_at": "2026-09-14T23:00:03.675Z",
-        "sources": [
-          {
-            "title": "OpenAI buys smartphone camera maker Glass Imaging for $300 million, report says",
-            "url": "https://techcrunch.com/2026/09/14/openai-buys-smartphone-camera-maker-glass-imaging-for-300-million-report-says/"
-          },
-          {
-            "title": "Glass Imaging",
-            "url": "https://www.glass-imaging.com/"
           }
         ]
       }
