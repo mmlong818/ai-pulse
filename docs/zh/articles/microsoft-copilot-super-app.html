@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>微软重构Copilot：办公、编程与自动代理合一 — Uncle Cat AI Radar</title>
+<meta name="description" content="微软将Office、编程和持续运行的Autopilot智能体纳入新版Copilot，并推动企业AI转向按实际使用量计费。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-copilot-super-app.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/microsoft-copilot-super-app.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-copilot-super-app.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/microsoft-copilot-super-app.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="微软重构Copilot：办公、编程与自动代理合一 — Uncle Cat AI Radar">
+<meta property="og:description" content="微软将Office、编程和持续运行的Autopilot智能体纳入新版Copilot，并推动企业AI转向按实际使用量计费。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-copilot-super-app.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="微软重构Copilot：办公、编程与自动代理合一 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="微软将Office、编程和持续运行的Autopilot智能体纳入新版Copilot，并推动企业AI转向按实际使用量计费。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="微软重构Copilot：办公、编程与自动代理合一 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"微软重构Copilot：办公、编程与自动代理合一","item":"https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-copilot-super-app.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-copilot-super-app.html#article","headline":"微软重构Copilot：办公、编程与自动代理合一","description":"微软将Office、编程和持续运行的Autopilot智能体纳入新版Copilot，并推动企业AI转向按实际使用量计费。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-copilot-super-app.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-copilot-super-app.html"},"datePublished":"2026-09-25T12:00:00.000Z","dateModified":"2026-09-25T23:00:06.338Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["产业","Agent"],"keywords":"产业, Agent","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://partner.microsoft.com/en-us/blog/article/ai-at-work-marketing-moment","https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits","https://the-decoder.com/microsoft-gives-copilot-another-makeover-adding-an-autopilot-agent-and-usage-based-billing/"],"about":[{"@type":"Thing","name":"产业"},{"@type":"Thing","name":"Agent"}]}]}</script>
+</head>
+<body data-slug="microsoft-copilot-super-app" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/microsoft-copilot-super-app.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-09-25T12:00:00Z">2026年9月25日 20:00</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>微软重构Copilot：办公、编程与自动代理合一</h1>
+  <p class="standfirst">微软将Office、编程和持续运行的Autopilot智能体纳入新版Copilot，并推动企业AI转向按实际使用量计费。</p>
+  <p>微软正在把Copilot重新定位为更完整的工作平台，把传统聊天功能与软件创建和持续执行任务的能力合并起来。新版应用主要分为三个区域：Home负责汇集对话和Microsoft 365上下文；Code把类似GitHub Copilot的开发能力扩展到更多知识工作者；Autopilot则是一个可以在用户离开后继续执行任务的主动式智能体。</p><p>这不只是界面更新。微软试图让Copilot成为连接文档、应用、数据和软件项目的工作入口。Code缩短了“提出问题”与“生成可运行应用”之间的距离，Autopilot则把产品从问答式助手推向任务委托式工作流。</p><p>微软同时改变了收费方式。自11月2日起，通过渠道购买的新Microsoft 365 Copilot Business许可证将默认采用按量计费。用量以Copilot Credits计算，微软可以根据AI活动的数量和复杂程度收费，而不再把所有用户视为相同的订阅席位。</p><p>这种方式可能让低频用户付费更低，但也会带来预算和治理难题。企业需要掌握的不只是“谁能使用”，还包括哪些智能体工作流消耗最多额度，以及这些消耗是否真正产生了价值。</p><p>这项更新的战略意义在于，微软正把智能体转型同时绑定到生产力套件和收入模型上。如果Autopilot成为覆盖Office、软件开发和企业数据的日常工作层，Copilot就可能成为知识工作的操作入口；但如果计量收费先于可靠性和控制能力成熟，企业也可能把这种自主性视为成本风险。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://partner.microsoft.com/en-us/blog/article/ai-at-work-marketing-moment" rel="noopener" target="_blank">The new Copilot is here: The opportunity for Microsoft partners</a></li><li><a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits" rel="noopener" target="_blank">Usage-Based Billing and Cost Management for Copilot Credits</a></li><li><a href="https://the-decoder.com/microsoft-gives-copilot-another-makeover-adding-an-autopilot-agent-and-usage-based-billing/" rel="noopener" target="_blank">Microsoft gives Copilot another makeover, adding an Autopilot agent and usage-based billing</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-cloud-computer.html">Meta扩展Muse：每位用户配备Linux云端电脑</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/nscale-secures-ai-financing.html">英国AI云厂商Nscale获33.6亿美元可转债融资</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-akamai-cloud-deal.html">Anthropic与Akamai签署116亿美元云计算协议</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
