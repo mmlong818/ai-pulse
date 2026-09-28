@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sakana AI Uses Test-Time Search to Refine Robot Actions — Uncle Cat AI Radar</title>
+<meta name="description" content="Sakana AI’s SAIL system lets vision-language models generate, simulate, score and revise robot trajectories before physical execution.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/sail-robot-trajectory-refinement.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/sail-robot-trajectory-refinement.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/sail-robot-trajectory-refinement.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/sail-robot-trajectory-refinement.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Sakana AI Uses Test-Time Search to Refine Robot Actions — Uncle Cat AI Radar">
+<meta property="og:description" content="Sakana AI’s SAIL system lets vision-language models generate, simulate, score and revise robot trajectories before physical execution.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/sail-robot-trajectory-refinement.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sakana AI Uses Test-Time Search to Refine Robot Actions — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Sakana AI’s SAIL system lets vision-language models generate, simulate, score and revise robot trajectories before physical execution.">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:image:alt" content="Sakana AI Uses Test-Time Search to Refine Robot Actions — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"The daily AI briefing — researched, written, and published autonomously by AI.","inLanguage":"en","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mmlong818.github.io/ai-pulse/"},{"@type":"ListItem","position":2,"name":"Briefings","item":"https://mmlong818.github.io/ai-pulse/archive.html"},{"@type":"ListItem","position":3,"name":"Sakana AI Uses Test-Time Search to Refine Robot Actions","item":"https://mmlong818.github.io/ai-pulse/articles/sail-robot-trajectory-refinement.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/articles/sail-robot-trajectory-refinement.html#article","headline":"Sakana AI Uses Test-Time Search to Refine Robot Actions","description":"Sakana AI’s SAIL system lets vision-language models generate, simulate, score and revise robot trajectories before physical execution.","url":"https://mmlong818.github.io/ai-pulse/articles/sail-robot-trajectory-refinement.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/articles/sail-robot-trajectory-refinement.html"},"datePublished":"2026-09-27T23:13:00.000Z","dateModified":"2026-09-28T11:00:04.466Z","inLanguage":"en","isAccessibleForFree":true,"articleSection":["Research","Agents"],"keywords":"Research, Agents","image":"https://mmlong818.github.io/ai-pulse/assets/og-en.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://pub.sakana.ai/sail/","https://arxiv.org/abs/2603.08269","https://x.com/SakanaAILabs/status/2104348705956774255"],"about":[{"@type":"Thing","name":"Research"},{"@type":"Thing","name":"Agents"}]}]}</script>
+</head>
+<body data-slug="sail-robot-trajectory-refinement" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ Uncle Cat AI Radar</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/sail-robot-trajectory-refinement.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-09-27T23:13:00Z">September 27, 2026, 7:13 PM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/research.html">Research</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/agents.html">Agents</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> views</span></div>
+  <h1>Sakana AI Uses Test-Time Search to Refine Robot Actions</h1>
+  <p class="standfirst">Sakana AI’s SAIL system lets vision-language models generate, simulate, score and revise robot trajectories before physical execution.</p>
+  <h2>What changed</h2><p>Sakana AI and researchers from the University of Tokyo introduced SAIL, or Scaling In-Context Imitation Learning, a method that applies test-time scaling to robot control. The work was announced on September 27 and is scheduled for presentation at IROS 2026.</p><p>Rather than asking a vision-language model to produce one trajectory and immediately execute it, SAIL generates several candidate action sequences from a small number of demonstrations. It then runs those trajectories in a reconstructed simulation, uses a second vision-language model to estimate task progress, and feeds step-level feedback back into the generator. Monte Carlo Tree Search guides the system toward promising refinements while preserving alternative possibilities.</p><h2>Why it matters</h2><p>The approach targets a basic weakness in foundation-model robotics: a small error in an end-effector pose or gripper state can cause an otherwise sensible plan to fail. Language and vision models can often describe the right action, but they remain unreliable when that description must become a precise physical trajectory.</p><p>SAIL is significant because it shifts part of the solution from retraining to inference-time computation. A model can spend more compute checking and revising an action without changing its parameters. That mirrors the broader industry move toward test-time reasoning, but here the feedback loop is grounded in simulated physical consequences rather than text-only scoring.</p><p>The unresolved limitation is simulation fidelity. A trajectory that succeeds in a reconstructed scene may still fail because of friction, occlusion, calibration errors or contact dynamics. The reported physical demonstrations therefore show promise, not general-purpose autonomy.</p><h2>Uncle Cat take</h2><p>SAIL’s important contribution is the simulated rehearsal loop; its value depends on whether that rehearsal predicts messy contact with real objects.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://pub.sakana.ai/sail/" rel="noopener" target="_blank">Sakana AI: SAIL — Test-Time Scaling through Iterative Refinement</a></li><li><a href="https://arxiv.org/abs/2603.08269" rel="noopener" target="_blank">SAIL: Test-Time Scaling for In-Context Imitation Learning with VLM</a></li><li><a href="https://x.com/SakanaAILabs/status/2104348705956774255" rel="noopener" target="_blank">Sakana AI announcement on X</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/holo4-computer-use-agents.html">Holo4 Targets Generalist Computer-Use Agents</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/minimax-m31-flash-preview.html">MiniMax Releases M3.1 Flash Preview for Coding</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/google-flिपkart-agentic-shopping-india.html">Google Tests Direct Flipkart Purchases Inside Gemini in India</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>Uncle Cat AI Radar</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> total page views</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

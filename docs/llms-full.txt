@@ -19,6 +19,78 @@
 
 ## Recent briefings
 
+### Holo4 Targets Generalist Computer-Use Agents
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/holo4-computer-use-agents.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/holo4-computer-use-agents.html
+- Source timestamp: 2026-09-28T09:44:00.000Z
+- Site timestamp: 2026-09-28T11:00:04.466Z
+- Tags: Agents, Open Source
+
+H Company’s Holo4 pushes computer-use agents toward broader interface skills, extending the open model race beyond chat and coding.
+
+## A broader computer-use bet
+
+H Company introduced Holo4 in a Hugging Face article published during the edition window, positioning the system as a generalist computer-use agent. The release follows the company’s earlier Holo family of models, which focused on visual interface understanding and browser or desktop interaction.
+
+Computer-use models translate screenshots, interface state and task instructions into actions such as clicking, typing, scrolling and navigating across applications. The central challenge is not recognizing a button in isolation, but maintaining a reliable plan while interfaces change, errors accumulate and the task crosses several services.
+
+Holo4’s significance lies in that broader ambition. Instead of treating computer use as a narrow benchmark or a browser novelty, H Company is presenting it as a general capability that can sit underneath agents operating across different software environments. That places the model in a competitive field spanning open-weight releases, hosted agents and developer platforms.
+
+## Why this matters now
+
+The computer-use market is moving from demonstrations toward execution economics. An agent that can operate a wider range of interfaces may reduce the need for bespoke integrations, but it also inherits the risks of acting inside systems that contain payments, private data and irreversible settings. Generality therefore increases both addressable use cases and the cost of mistakes.
+
+The announcement should be read carefully. A broad model description is not the same as independently verified reliability across long, adversarial workflows. Questions about licensing, weights, latency, safety controls and performance outside the company’s evaluation setup will determine whether Holo4 changes deployment choices.
+
+Even so, its timing is notable: open computer-use models are becoming a distinct strategic category, not merely a feature attached to language models.
+
+## Uncle Cat take
+
+Holo4 matters less for the label “generalist” than for whether it can survive changing interfaces without turning every workflow into a fragile demo.
+
+Chinese title: H Company发布Holo4，押注通用型电脑操作智能体
+Chinese summary: H Company推出Holo4，试图让电脑操作智能体适应更多软件界面，开源模型竞争由聊天和编程延伸至执行层。
+
+Sources:
+  - Hugging Face: Holo4 — powering generalist computer-use agents: https://huggingface.co/blog/Hcompany/holo4
+  - H Company model and research page: https://huggingface.co/Hcompany
+
+### Meshy and Chrona Build Multiplayer Worlds From AI Assets
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/meshy-chrona-ai-worlds.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meshy-chrona-ai-worlds.html
+- Source timestamp: 2026-09-28T10:30:00.000Z
+- Site timestamp: 2026-09-28T11:00:04.466Z
+- Tags: AIGC, Industry
+
+Meshy is partnering with Chrona to turn generated 3D assets into explorable multiplayer worlds, extending generative AI toward interactive spaces.
+
+## From assets to places
+
+Meshy announced a collaboration with Chrona to build multiplayer 3D worlds from AI-generated assets. The announcement, posted during San Francisco Tech Week, frames the next step after AI-generated video as spaces that people can enter, explore and share.
+
+Meshy is known for generating 3D models and related production assets from text and images. Chrona’s role in the collaboration is to provide a multiplayer environment in which those assets can become part of an interactive world rather than remain isolated exports. The combination links asset generation with scene assembly and social presence.
+
+## Why it matters
+
+Generative media has largely optimized for outputs that are watched or downloaded. Interactive worlds require a different production stack: objects need usable geometry, materials and scale; scenes need persistent state; and multiplayer experiences need synchronization, moderation and predictable performance. AI can lower the cost of creating content, but it does not remove the systems work required to make a world coherent and enjoyable.
+
+That distinction makes the announcement more consequential than a routine model showcase, while also limiting what can be claimed. The post signals a product direction and a partnership, not a demonstrated breakthrough in world simulation or a finished consumer platform. It remains unclear how much of the workflow is automated, how generated assets perform at runtime and who owns or moderates the resulting spaces.
+
+Still, the move is strategically important for the 3D-generation market. If model companies can connect generation directly to persistent environments, they may compete for the place where users spend time, not only for the tool used to make an object.
+
+## Uncle Cat take
+
+The interesting asset here is not another 3D model; it is Chrona’s multiplayer container, which could expose whether generated geometry works beyond screenshots.
+
+Chinese title: Meshy携手Chrona，把AI生成资产变成多人3D世界
+Chinese summary: Meshy与Chrona合作，将AI生成的3D资产放入可探索的多人世界，生成式AI开始从内容走向互动空间。
+
+Sources:
+  - Meshy announcement on X: https://x.com/MeshyAI/status/2104518986755092831
+  - Meshy AI platform: https://www.meshy.ai/
+
 ### MiniMax Releases M3.1 Flash Preview for Coding
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/minimax-m31-flash-preview.html
@@ -51,6 +123,42 @@ Chinese summary: MiniMax将M3.1 Flash预览版接入自家编程工具MiniMax Co
 Sources:
   - MiniMax-M3.1 Flash Preview is now live on the Token Plan: https://x.com/MiniMax_AI/status/2104256406786547800
   - MiniMax M3.1 Flash Preview Model Specs & Sources: https://benchlm.ai/models/minimax-m3-1-flash-preview
+
+### Sakana AI Uses Test-Time Search to Refine Robot Actions
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/sail-robot-trajectory-refinement.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/sail-robot-trajectory-refinement.html
+- Source timestamp: 2026-09-27T23:13:00.000Z
+- Site timestamp: 2026-09-28T11:00:04.466Z
+- Tags: Research, Agents
+
+Sakana AI’s SAIL system lets vision-language models generate, simulate, score and revise robot trajectories before physical execution.
+
+## What changed
+
+Sakana AI and researchers from the University of Tokyo introduced SAIL, or Scaling In-Context Imitation Learning, a method that applies test-time scaling to robot control. The work was announced on September 27 and is scheduled for presentation at IROS 2026.
+
+Rather than asking a vision-language model to produce one trajectory and immediately execute it, SAIL generates several candidate action sequences from a small number of demonstrations. It then runs those trajectories in a reconstructed simulation, uses a second vision-language model to estimate task progress, and feeds step-level feedback back into the generator. Monte Carlo Tree Search guides the system toward promising refinements while preserving alternative possibilities.
+
+## Why it matters
+
+The approach targets a basic weakness in foundation-model robotics: a small error in an end-effector pose or gripper state can cause an otherwise sensible plan to fail. Language and vision models can often describe the right action, but they remain unreliable when that description must become a precise physical trajectory.
+
+SAIL is significant because it shifts part of the solution from retraining to inference-time computation. A model can spend more compute checking and revising an action without changing its parameters. That mirrors the broader industry move toward test-time reasoning, but here the feedback loop is grounded in simulated physical consequences rather than text-only scoring.
+
+The unresolved limitation is simulation fidelity. A trajectory that succeeds in a reconstructed scene may still fail because of friction, occlusion, calibration errors or contact dynamics. The reported physical demonstrations therefore show promise, not general-purpose autonomy.
+
+## Uncle Cat take
+
+SAIL’s important contribution is the simulated rehearsal loop; its value depends on whether that rehearsal predicts messy contact with real objects.
+
+Chinese title: Sakana AI让视觉模型先“排练”再控制机器人
+Chinese summary: Sakana AI发布SAIL，让视觉语言模型生成、模拟、评估并反复修正机器人轨迹后再执行。
+
+Sources:
+  - Sakana AI: SAIL — Test-Time Scaling through Iterative Refinement: https://pub.sakana.ai/sail/
+  - SAIL: Test-Time Scaling for In-Context Imitation Learning with VLM: https://arxiv.org/abs/2603.08269
+  - Sakana AI announcement on X: https://x.com/SakanaAILabs/status/2104348705956774255
 
 ### Google Tests Direct Flipkart Purchases Inside Gemini in India
 
@@ -869,112 +977,6 @@ Sources:
   - China's Alibaba Unveils New Powerful Chip and Ambitious AI Model Plans: https://apnews.com/article/b29908e516faff9f5a82b201ba954aab
   - Alibaba Unveils Roadmap on Full-Stack AI Strategy: https://www.aseangazette.com/newswires/media-outreach/2026/09/22/alibaba-unveils-roadmap-on-full-stack-ai-strategy-from-chips-cloud-infrastructure-models-to-agents/124888/
 
-### AWS Releases Open-Source Strands Agent Harness
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/aws-strands-agent-harness.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/aws-strands-agent-harness.html
-- Source timestamp: 2026-09-21T16:00:00.000Z
-- Site timestamp: 2026-09-21T23:00:04.116Z
-- Tags: Agents, Open Source, Industry
-
-AWS launches Strands Harness as a ready-made open-source agent stack, claiming lower token use at comparable task accuracy.
-
-## AWS packages the agent runtime
-
-AWS has released Strands Harness, an open-source agent harness intended to provide a ready-made starting point for building and deploying AI agents. The package combines defaults for tool use, context management, sessions, memory, hooks and system prompting, allowing developers to create an agent with a single import rather than assembling each layer independently.
-
-The project supports Python and TypeScript and can be connected to a model of the developer’s choice. AWS positions it alongside the broader Strands toolkit, which includes lower-level harness components, evaluation tools and a shell designed for safer agent interaction with operating systems.
-
-## A cost claim with practical consequences
-
-AWS says Strands Harness delivers comparable accuracy to competing setups while using 28% fewer tokens. The company’s launch materials frame this as an efficiency improvement for agents that repeatedly call tools, maintain context and recover from intermediate failures. AWS has not yet published all benchmark details in the announcement, including the full task mix, model configurations and the cost of any additional latency or infrastructure.
-
-The project is also designed to run outside a single AWS deployment path. Developers can use the open-source harness with different models and customize the tools, memory and context policies. That matters because agent developers increasingly need portable application logic while still retaining control over deployment, data handling and model selection.
-
-## Why it matters
-
-Agent development is shifting from prompt design toward runtime engineering. Tool permissions, memory behavior, context compression and failure recovery often determine whether an agent is affordable and dependable in production. By publishing a preassembled harness, AWS is competing for the layer that sits between foundation models and business applications. The immediate impact will depend on whether developers trust its defaults and whether the token savings hold across workloads outside AWS’s evaluation setup.
-
-## Uncle Cat take
-
-The 28% token reduction is attractive, but AWS’s missing benchmark detail makes the real product today its opinionated defaults, not proven universal efficiency.
-
-Chinese title: AWS开源Strands Harness，打包智能体运行基础设施
-Chinese summary: AWS发布开源Strands Harness，预置工具、记忆和上下文管理，并声称在准确率相近时节省28% Token。
-
-Sources:
-  - Strands Harness: https://strandsagents.com/docs/user-guide/harness/
-  - AWS launches Strands Harness: https://www.theregister.com/ai-and-ml/2026/09/21/aws-bolts-together-open-source-agent-harness-says-it-sips-fewer-tokens-than-rivals/5297915
-
-### xAI Releases Grok 4.7 for Coding and Knowledge Work
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/grok-47-cuts-frontier-model-prices.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/grok-47-cuts-frontier-model-prices.html
-- Source timestamp: 2026-09-21T16:56:00.000Z
-- Site timestamp: 2026-09-21T23:00:04.116Z
-- Tags: Models, Agents, Industry
-
-xAI says Grok 4.7 improves long-running coding and professional tasks while launching at $2 per million input tokens.
-
-## A larger model at a lower price
-
-xAI has released Grok 4.7, describing it as the company’s strongest model so far for coding and knowledge work. The model uses a larger base model than Grok 4.6 and was trained with a longer reinforcement-learning run focused on tasks that require sustained reasoning over several hours.
-
-The release is available through the Grok API, Grok Build, Cursor, third-party coding harnesses, model routers and cloud platforms. xAI lists pricing at $2 per million input tokens and $6 per million output tokens for prompts below 200,000 tokens. The API version has a 500,000-token context window and accepts text and image inputs, while producing text output.
-
-## Better on long tasks, but not universally ahead
-
-xAI reports meaningful gains over Grok 4.6 on several evaluations. Its CursorBench 4.0 score rose from 40.4% to 46.3%, while its Terminal-Bench 4.0 score increased from 20.3% to 38%. Grok 4.7 also improved on legal work, clinical reasoning and electrical-engineering tests. On DeepSWE, it reached 71% using high effort.
-
-The results do not put it first across the board. xAI’s own table shows the model behind Anthropic’s Fable 5.1 on some software and terminal tasks, while remaining competitive with other frontier systems. The company also presents a new safeguard stack, reporting lower success rates on risky cyber prompts and stronger performance on its biosafety test.
-
-## Why it matters
-
-Grok 4.7 matters less as a simple leaderboard event than as a price-and-availability move. A frontier model aimed at multi-hour work is entering coding tools and agent platforms at prices that could encourage more persistent workloads. Whether the claimed gains survive independent testing, especially outside xAI’s selected benchmarks, will determine if this is a durable shift or an aggressive launch position.
-
-## Uncle Cat take
-
-The important number is the 38% Terminal-Bench score: xAI is buying credibility in sustained tool use, but independent agent runs still decide whether the discount is real value.
-
-Chinese title: xAI发布Grok 4.7，主攻长时编码与知识工作
-Chinese summary: Grok 4.7面向长时间编码和专业任务推出，输入每百万Token起价2美元，重点押注持续推理能力。
-
-Sources:
-  - Introducing Grok 4.7: https://x.ai/news/grok-4-7
-  - Grok 4.7 Release Notes: https://docs.x.ai/developers/release-notes
-
-### NVIDIA Open-Sources SoL-Pi for Leaner Coding Agents
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-sol-pi-coding-agent-efficiency.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-sol-pi-coding-agent-efficiency.html
-- Source timestamp: 2026-09-22T05:04:00.000Z
-- Site timestamp: 2026-09-22T11:00:04.265Z
-- Tags: Agents, Research, Open Source
-
-NVIDIA’s SoL-Pi extension uses automated research loops to reduce coding-agent token traffic by up to 49% while preserving task performance.
-
-Researchers from NVIDIA, MIT and NTU have released SoL-Pi, an open-source extension for the Pi coding-agent harness that targets a less visible bottleneck in agent deployment: repeated context and tool traffic. The project applies automated research loops to discover ways to reduce unnecessary model work during long-running coding tasks.
-
-## Optimising the harness
-
-SoL-Pi packages four mechanisms covering action execution, context compaction, observation handling and delegated reading. The goal is not to make the underlying language model larger or smarter. It is to prevent an agent from repeatedly replaying completed subtasks, sending oversized logs back to the model or spending a full request reading information that will not affect its next decision.
-
-On the reported 51-task EdgeBench evaluation, the system reduced recorded token traffic by 44.7% to 49.0% compared with the baseline Pi setup. The researchers said task performance remained comparable when using GPT-5.6 Sol and Opus 5, while estimated API costs fell by roughly one third. The extension runs on an unmodified Pi release and is distributed under the MIT license, with the mechanisms opt-in.
-
-## Why it matters
-
-The project is important because coding agents are increasingly used for long sessions in which infrastructure overhead can rival the cost of the model’s core reasoning. If the reported savings transfer to production workloads, agent vendors and developers could improve margins without immediately switching to a weaker model or waiting for cheaper hardware.
-
-There are limits to the claim. EdgeBench contains 51 tasks, and the measured reduction concerns the tested harness and model combinations rather than every agent workflow. Aggressive context trimming can also remove evidence an agent needs later. Still, SoL-Pi points to a growing research direction: agent efficiency may come from redesigning the surrounding control loop, not only from compressing model weights or lowering token prices.
-
-Chinese title: 英伟达开源SoL-Pi，降低编程智能体令牌开销
-Chinese summary: 英伟达开源SoL-Pi扩展，通过自动研究循环减少编程智能体的重复上下文和工具调用，令牌流量最高下降49%。
-
-Sources:
-  - NVIDIA Introduces SoL-Pi: Auto-Research Loops for Coding Agents: https://www.marktechpost.com/2026/09/21/nvidia-researchers-have-released-sol-pi/
-  - SoL-Pi GitHub Repository: https://github.com/NVlabs/SoL-Pi
-  - SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness: https://arxiv.org/abs/2609.20519
-
 ## Recent radar items
 
 ### 2026-09-28
@@ -997,6 +999,20 @@ Sources:
 - 2026-09-27T18:26:00Z | X / NVIDIA AI | NVIDIA said it collaborated with Meta to improve the efficiency of Meta’s Muse Realtime Avatar model. | 中文：英伟达表示，已与 Meta 合作提升 Meta Muse 实时数字人模型的运行效率。 | https://x.com/NVIDIAAI/status/2104276562644463892
 - 2026-09-27T16:30:00Z | TechCrunch | Anthropic’s CEO received a humorous Saturday Night Live treatment as the company’s public profile expanded beyond technology circles. | 中文：随着 Anthropic 的公众影响力扩展到科技圈之外，其 CEO 在《周六夜现场》中成为调侃对象。 | https://techcrunch.com/2026/09/27/anthropics-dario-amodei-gets-the-snl-treatment/
 - 2026-09-27T22:57:00Z | IT之家 | A report said underground sellers were offering stolen AI-model access for as little as three percent of legitimate subscription prices. | 中文：一份报告称，暗网卖家正以正版订阅价最低百分之三的价格兜售被盗 AI 模型访问权限。 | https://www.ithome.com/1/007/619.htm
+- 2026-09-28T10:59:00Z | IT之家 | Coolpad launched a 699-yuan AI smart glasses with an 8-megapixel camera, Douyin livestreaming, video calls, and online translation. | 中文：酷派推出699元AI智能眼镜，配备800万像素摄像头，支持抖音直播、视频通话和在线翻译。 | https://www.ithome.com/1/007/982.htm
+- 2026-09-28T10:00:00Z | InfoQ中文 | QCon Shanghai highlighted insurance back-office digital twins as a transition from generative AI toward agentic automation. | 中文：QCon上海聚焦保险后援数字分身，讨论生成式AI向代理式自动化的转变。 | https://www.infoq.cn/article/9UvorlMxKgjEoFauQ4py
+- 2026-09-28T09:26:00Z | X / Baseten | Baseten announced participation in NVIDIA’s Open Agent Safety Platform and the Open Secure AI Alliance. | 中文：Baseten宣布加入NVIDIA开放代理安全平台及Open Secure AI Alliance。 | https://x.com/baseten/status/2104502892329685190
+- 2026-09-28T09:01:00Z | X / AI21 Labs | AI21 Labs published recordings of talks on reducing chunking in retrieval systems and debugging vLLM deployments. | 中文：AI21 Labs发布两场演讲回放，主题包括减少检索分块和调试vLLM部署。 | https://x.com/AI21Labs/status/2104496631882342821
+- 2026-09-28T08:54:00Z | X / Recraft | Recraft showcased a stylized portrait prompt featuring a cobalt pompadour, pink glasses, and a foldable smartphone. | 中文：Recraft展示一条风格化肖像提示词，画面包含钴蓝色飞机头、粉色眼镜和折叠手机。 | https://x.com/recraftai/status/2104494854210306530
+- 2026-09-28T08:53:00Z | X / Recraft | Recraft presented Bauhaus-style tile pictograms generated with its V4 model. | 中文：Recraft展示使用V4模型生成的包豪斯风格瓷砖图标作品。 | https://x.com/recraftai/status/2104494727223509057
+- 2026-09-28T08:06:00Z | MIT Technology Review | MIT Technology Review examined who may be liable when autonomous AI agents cause harm. | 中文：《麻省理工科技评论》探讨自主AI代理造成损害时应由谁承担责任。 | https://www.technologyreview.com/2026/09/28/1145197/whos-liable-when-ai-agents-go-rogue/
+- 2026-09-28T07:33:00Z | Anthropic | Anthropic’s documentation published prompting guidance for Claude Opus 5.5. | 中文：Anthropic文档发布Claude Opus 5.5提示工程指南。 | https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5
+- 2026-09-28T07:22:00Z | MarkTechPost | Fireworks AI released Ember-1, a post-trained Kimi K3 model claimed to use about 40% fewer tokens. | 中文：Fireworks AI发布Ember-1，这是后训练版Kimi K3，宣称可减少约40%的token使用量。 | https://www.marktechpost.com/2026/09/28/fireworks-ai-releases-ember-1-a-post-trained-kimi-k3-that-uses-about-40-fewer-tokens/
+- 2026-09-28T04:01:00Z | Simon Willison | Simon Willison discussed Muse AI Agent, highlighting a new agentic software-development experiment. | 中文：Simon Willison介绍Muse AI Agent，聚焦一次新的代理式软件开发实验。 | https://simonwillison.net/2026/Sep/28/muse-ai-agent/
+- 2026-09-28T02:06:00Z | SiliconANGLE | AWS CloudWatch Omni targets the question of why an AI agent took a particular action. | 中文：AWS CloudWatch Omni瞄准代理可观测性的核心问题：AI代理为何采取某个具体行动。 | https://siliconangle.com/2026/09/27/aws-cloudwatch-omni-goes-after-the-hardest-question-in-agentic-ai-why-did-the-agent-do-that/
+- 2026-09-28T03:07:00Z | MarkTechPost | TypeSafe AI’s Jev was profiled through twenty agentic use cases. | 中文：TypeSafe AI的Jev因二十个代理式应用案例受到介绍。 | https://www.marktechpost.com/2026/09/27/20-agentic-use-cases-of-typesafe-ais-jev/
+- 2026-09-27T23:54:00Z | Simon Willison | Simon Willison published a roundup reviewing the state of large language models in 2026 so far. | 中文：Simon Willison发布文章，回顾2026年以来大型语言模型的发展状况。 | https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/
+- 2026-09-28T03:56:00Z | X / Dreamina | Dreamina announced the final winners of its Summer Discord server credit giveaway, awarding each winner 25,000 credits. | 中文：Dreamina公布夏季Discord社区积分抽奖最终获奖者，每位获奖者将获得25,000积分。 | https://x.com/dreamina_ai/status/2104420004531937487
 
 ### 2026-09-27
 
