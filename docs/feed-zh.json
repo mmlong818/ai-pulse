@@ -13,6 +13,152 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html",
+      "title": "DeepSeek 开源昇腾算子，补强国产推理软件栈",
+      "summary": "DeepSeek 面向华为昇腾 950 开源稀疏注意力算子，显示国产 AI 硬件能否竞争，关键也在软件优化。",
+      "content_text": "## 软件成为关键战略层\n\nDeepSeek 面向华为昇腾平台开源了一批推理基础组件，包括针对昇腾 950 NPU 优化的稀疏注意力 Prefill 和 Decoding 算子。相关代码已进入 FlashMLA 仓库，目标是让 DeepSeek V4.1 能够更高效地运行在 NVIDIA CUDA 生态之外。\n\nDeepSeek 给出的数据显示，这些昇腾算子在 Prefill 阶段最高达到 410 万亿次浮点运算，相当于硬件理论峰值的约 95%；在 Decoding 阶段达到 360 万亿次，相当于约 83%。项目还包含融合算子，并称其中一条解码路径的性能提升约为 10% 至 15%。\n\n这些数字目前仍属于厂商披露，尚未经过独立的系统级评测，而且存在明确限制。新版移除了对 NVIDIA Hopper 和部分旧版 DeepSeek 模型的支持，并修改 FP8、FP4 KV Cache 格式；在昇腾平台运行还需要特定版本的 CANN 和 torch_npu 软件环境。\n\n## 为什么重要\n\n这次发布的意义不止于一个代码仓库。高端 AI 硬件只有在软件栈能充分释放芯片性能时才真正有用。通过公开优化后的算子，DeepSeek 正在降低模型部署到华为硬件上的工程门槛，也让昇腾成为研究者和基础设施团队更可信的目标平台。\n\n它还显示，中国头部模型公司与国产加速器生态正在进一步靠拢。这并不能证明昇腾已在所有工作负载、开发工具和全球供货能力上追平 NVIDIA，但它削弱了“换芯片就能解决问题”的简单判断：持续的软件优化，确实可能改变替代平台的部署经济性。",
+      "date_published": "2026-09-30T14:37:00.000Z",
+      "date_modified": "2026-09-30T23:00:05.129Z",
+      "tags": [
+        "开源",
+        "产业",
+        "模型"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html",
+        "source_published_at": "2026-09-30T14:37:00.000Z",
+        "site_published_at": "2026-09-30T23:00:05.129Z",
+        "sources": [
+          {
+            "title": "DeepSeek FlashMLA repository",
+            "url": "https://github.com/deepseek-ai/FlashMLA"
+          },
+          {
+            "title": "DeepSeek Ascend prefill deep dive",
+            "url": "https://github.com/deepseek-ai/FlashMLA/blob/main/docs/20260930-ascend-prefill-deep-dive.md"
+          },
+          {
+            "title": "China’s AI industry closes ranks as DeepSeek ships Ascend software",
+            "url": "https://the-decoder.com/chinas-ai-industry-closes-ranks-as-deepseek-ships-open-source-software-for-huaweis-ascend-chips/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-4-argon-frontier-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-4-argon-frontier-model.html",
+      "title": "谷歌发布 Gemini 4 Argon，前沿模型竞争再加码",
+      "summary": "Gemini 4 Argon 缩小了与 OpenAI、Anthropic 的性能差距，但目前更像强势追赶者，而非已经确立领先地位。",
+      "content_text": "## 更强的追赶者，还不是明确赢家\n\nGoogle DeepMind 发布 Gemini 4 Argon，这是其新一代前沿模型，重点提升推理、编程、多模态理解和工具调用能力。此次发布正值大模型竞争重新升温之际，OpenAI 与 Anthropic 仍是高端通用模型的主要参照。\n\n《The Decoder》援引早期对比结果称，Argon 已缩小与 OpenAI、Anthropic 旗舰模型之间的差距。它的表现足以巩固 Google 在前沿模型第一梯队的位置，但尚未形成全面领先。这一点很关键：如今市场越来越少由单一总榜决定，任务专项能力、推理成本和部署覆盖同样影响模型选择。\n\nGoogle 的优势在于完整的平台体系。Gemini 可以直接连接搜索、云服务、办公软件和开发者产品，让一款高能力模型拥有更短的分发路径。接下来真正需要观察的是，Argon 的质量提升能否在延迟、价格、上下文限制和工具调用稳定性等现实条件下转化为更好的用户结果。\n\n## 为什么重要\n\nGemini 4 Argon 抬高了前沿模型的竞争基准，也发生在企业客户越来越不愿为细小榜单差距更换平台的阶段。如果 Argon 能覆盖足够多的商业工作流，Google 不必在每项评测中夺冠，也可能凭借企业关系和产品入口扩大使用量。\n\n这次发布的战略意义因此大于单纯的技术排名：Google 继续稳居第一梯队，模型市场也更难出现一家独大的局面。尚未证实的是，Argon 的真实可靠性和成本表现，能否把较小的评测差距转化为持续采用。",
+      "date_published": "2026-09-30T20:01:00.000Z",
+      "date_modified": "2026-09-30T23:00:05.129Z",
+      "tags": [
+        "模型",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gemini-4-argon-frontier-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-4-argon-frontier-model.html",
+        "source_published_at": "2026-09-30T20:01:00.000Z",
+        "site_published_at": "2026-09-30T23:00:05.129Z",
+        "sources": [
+          {
+            "title": "Gemini 4 Argon: our next era of frontier intelligence",
+            "url": "https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/"
+          },
+          {
+            "title": "Google Gemini 4 Argon closes the gap with OpenAI and Anthropic",
+            "url": "https://the-decoder.com/google-gemini-4-argon-closes-the-gap-with-openai-and-anthropic-but-doesnt-take-a-clear-lead/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-synopsys-chip-design.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-synopsys-chip-design.html",
+      "title": "OpenAI 携手 Synopsys，开发芯片设计专用模型",
+      "summary": "OpenAI 与 Synopsys 将共同开发 GPT-Synopsys，让智能体直接操作 EDA 工具并迭代优化芯片设计。",
+      "content_text": "## 围绕工程工具打造模型\n\nOpenAI 与电子设计自动化软件公司 Synopsys 宣布建立多年合作关系，共同开发芯片设计专用模型 GPT-Synopsys。该模型将使用 Synopsys 的 EDA 工具，读取工具输出，并围绕工程师设定的目标反复迭代设计。\n\n这套工作流并非普通的问答助手。工程师可以交给系统功耗、性能和面积优化、时序收敛或验证等目标，再由智能体运行设计工具、分析结果、修改方案并持续迭代，最后交由工程师审核。\n\n合作将 OpenAI 的前沿模型与 Synopsys 的专有工具和工程数据结合起来。双方计划提供包含算力、模型和软件许可的一体化服务，并采用收入分成模式。两家公司表示，GPT-Synopsys 将运行在 OpenAI 托管的基础设施上，配备加密、可配置的数据保留、权限管理和审计功能，客户数据不会用于训练模型。\n\n不过，这还不是一款普遍可用的产品。公告只称双方已与部分芯片客户开展早期技术合作，实际性能、上线时间和价格仍有待验证。\n\n## 为什么重要\n\n芯片设计直接关系到 AI 的算力供给，但长期受到工具昂贵、专业人才稀缺和验证周期漫长等限制。如果智能体能够稳定接管部分 EDA 流程，工程团队或许能在不同比例增加人员的情况下探索更多设计方案。\n\n更深层的变化在于，模型被设计成围绕可信的工程环境工作，而不是单独生成一段芯片设计文本。这可能提高实际价值，却也意味着系统必须接受专有工具和严格验证的约束。GPT-Synopsys 可能成为前沿模型进入工业自动化的重要接口，但最终价值要看流片成功率和经验证的功耗、性能、面积改善，而不是合作公告本身。",
+      "date_published": "2026-09-30T19:12:00.000Z",
+      "date_modified": "2026-09-30T23:00:05.129Z",
+      "tags": [
+        "Agent",
+        "产业",
+        "研究"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-synopsys-chip-design.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-synopsys-chip-design.html",
+        "source_published_at": "2026-09-30T19:12:00.000Z",
+        "site_published_at": "2026-09-30T23:00:05.129Z",
+        "sources": [
+          {
+            "title": "OpenAI and Synopsys announce GPT-Synopsys",
+            "url": "https://news.synopsys.com/2026-09-30-OpenAI-and-Synopsys-Announce-GPT-Synopsys-Frontier-Intelligence-to-Revolutionize-Chip-Design"
+          },
+          {
+            "title": "OpenAI and Synopsys team up to build chip-design model",
+            "url": "https://the-decoder.com/openai-and-synopsys-team-up-to-build-an-ai-model-that-designs-chips-like-a-seasoned-engineer/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/synthid-bio-protein-watermarking.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/synthid-bio-protein-watermarking.html",
+      "title": "Google DeepMind 推出 SynthID Bio，为 AI 蛋白质加水印",
+      "summary": "SynthID Bio 可在蛋白质序列和结构中嵌入可检测标记，实验显示其未明显影响结合能力与生物功能。",
+      "content_text": "## 从数字溯源走向实体分子\n\nGoogle DeepMind 发布 SynthID Bio，这是一套面向合成生物学的水印方法。它试图在 AI 生成的蛋白质序列或预测出的三维结构中嵌入肉眼不可见、但可被检测的标记，让研究者即使在蛋白质完成合成后，也能判断其是否源自 AI 设计。\n\n这解决的是普通数字水印无法覆盖的问题。蛋白质设计从模型文件进入实验室后，来源往往难以追踪；与此同时，AI 生成的生物设计可能绕过传统 DNA 筛查，或向公共数据库引入误标和错误结构。\n\nDeepMind 表示，SynthID Bio 会调整序列设计中的氨基酸选择，也会改变预测结构中的原子坐标。针对蛋白质结合剂，团队在 VEGF-A、新冠病毒刺突蛋白受体结合域和 PD-L1 三个目标上进行了测试，并称加水印设计在命中率、结合亲和力和天然序列多样性方面与未加水印版本相当。\n\n在结构预测方面，团队微调 AlphaFold 3 扩散网络的一部分，让模型权重本身具备生成水印的能力。DeepMind 称，该方案保持预测准确率，并在数字噪声和轻微坐标改动下维持接近完美的可检测性。\n\n## 为什么重要\n\n这仍是早期概念验证，不是一套完整的生物安全体系。它不能直接阻止有害设计，也不能保证每个实验室都会检查水印，更没有解决检测基础设施由谁运营的问题。实际价值取决于模型开发商、合成服务商、数据库和研究者是否共同采用。\n\n但这项工作把 AI 内容溯源从数字文件推进到了实体分子。如果水印能够穿过合成过程，同时不损害生物功能，未来或可用于审计、归因和更安全地共享 AI 设计。其最大约束也正是核心考验：一旦水印影响功能或降低设计质量，科学家就不会为它牺牲可用性。",
+      "date_published": "2026-09-30T15:03:00.000Z",
+      "date_modified": "2026-09-30T23:00:05.129Z",
+      "tags": [
+        "研究",
+        "安全"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/synthid-bio-protein-watermarking.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/synthid-bio-protein-watermarking.html",
+        "source_published_at": "2026-09-30T15:03:00.000Z",
+        "site_published_at": "2026-09-30T23:00:05.129Z",
+        "sources": [
+          {
+            "title": "Introducing SynthID Bio",
+            "url": "https://deepmind.google/blog/introducing-synthid-bio/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-dots-always-on-agents.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-dots-always-on-agents.html",
       "title": "OpenAI推出Dots，让智能体持续替用户工作",
@@ -1745,154 +1891,6 @@
           {
             "title": "Xiaomi MiMo on Hugging Face",
             "url": "https://huggingface.co/XiaomiMiMo"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/amazon-blocks-meta-muse-shopping.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/amazon-blocks-meta-muse-shopping.html",
-      "title": "亚马逊封锁Meta Muse，AI代理购物遭遇平台边界",
-      "summary": "亚马逊切断Meta Muse的购物访问，代理能否未经商家授权浏览并下单，正成为智能体商业化的关键冲突。",
-      "content_text": "## 亚马逊划出红线\n\n亚马逊已阻止Meta的个人AI智能体Muse在Amazon.com上购物，理由是Meta没有获得平台授权。亚马逊称，Muse没有明确表明自己是自动化智能体，并疑似捕获或保存用户凭证，由此带来隐私与安全风险。\n\n用户通过Muse购物时会看到提示，称未经授权的AI智能体继续访问违反亚马逊使用条款。Meta此前则表示，Muse会安全保存凭证，无法看到用户密码或支付信息。\n\n## 争夺交易入口\n\n这场冲突并不只是一个助手被封锁。Muse的设计是：当服务没有公开API时，通过虚拟浏览器像用户一样访问网站，从而完成比价、加入购物车，并在用户确认后下单。亚马逊认为，第三方智能体应公开自己的自动化身份，也应尊重商家是否愿意参与。\n\n争议背后还有商业利益冲突。亚马逊正在开发自己的购物智能体，包括能够主动表明身份、并为商家提供退出机制的工具；与此同时，其广告业务高度依赖对用户浏览过程和赞助商品曝光的控制。\n\n这次封锁也是亚马逊限制外部智能体行动的一部分，此前Perplexity等公司也曾与其发生争议。美国近期一项上诉法院裁决削弱了亚马逊依据反黑客法律维权的路径，但合同和使用条款仍可能成为平台限制智能体的依据。\n\n## 猫叔判断\n\n最关键的事实是：Muse最醒目的购物能力，可以因一个大型市场撤回访问而立刻失效。对代理式电商而言，眼下真正的瓶颈不是模型会不会下单，而是平台是否允许它进入交易现场。Meta拥有强大的消费者分发能力，但在智能体做到可识别、可审计并获得商家认可之前，它的自主性始终是有条件的。",
-      "date_published": "2026-09-20T23:05:00.000Z",
-      "date_modified": "2026-09-21T11:00:04.120Z",
-      "tags": [
-        "Agent",
-        "产业",
-        "安全"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/amazon-blocks-meta-muse-shopping.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/amazon-blocks-meta-muse-shopping.html",
-        "source_published_at": "2026-09-20T23:05:00.000Z",
-        "site_published_at": "2026-09-21T11:00:04.120Z",
-        "sources": [
-          {
-            "title": "Amazon blocks Meta’s Muse AI assistant in new standoff over agentic shopping",
-            "url": "https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-from-shopping-on-its-platform/"
-          },
-          {
-            "title": "Meta just introduced Muse — a personal AI agent designed to actually get things done",
-            "url": "https://about.fb.com/news/2026/09/meta-muse-personal-ai-agent/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/jianying-hub-ai-assistant.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/jianying-hub-ai-assistant.html",
-      "title": "剪映推出 Hub 与助手，打通 AI 生视频和剪辑",
-      "summary": "字节跳动旗下剪映发布 Hub 与 AI 助手，并推出 AI Ultra，试图把生成素材直接纳入完整后期流程。",
-      "content_text": "## 发生了什么\n\n字节跳动旗下剪映在 9 月 20 日的产品发布活动中推出剪映 Hub 和剪映助手，重点解决 AI 视频生成与传统剪辑之间的衔接问题。剪映还发布了新的 AI Ultra 订阅层级，继续把产品向端到端创作平台推进。\n\n这次更新的重点并不是单独推出某个生成模型，而是围绕生成结果重新组织创作流程。剪映此前已经覆盖视频生成、抠像、关键帧、调色、人声分离、字幕和 AI 音乐等功能。Hub 更像是统一管理素材和项目的入口，AI 助手则嵌入剪辑环节，帮助用户从创意或生成片段继续完成成片。\n\n这正面回应了生成式视频长期存在的问题：模型可以生成好看的镜头，但创作者仍要挑选素材、编排场景、修复连续性、同步声音、适配不同画幅，并作出最终判断。如果生成工具和剪辑环境彼此分离，每次修改都会产生导出、上传和重新整理的成本。\n\n## 为什么重要\n\n剪映的动作之所以值得关注，是因为它来自一款面向大众的剪辑产品，而不是单纯的模型实验室。庞大的现有用户和成熟工作流，为字节跳动测试生成式视频能否变成稳定生产习惯提供了直接渠道。把 AI 功能放到时间线和后期控制旁边，也可能比单独展示模型能力更容易形成持续使用。\n\n当然，这次发布还不能证明剪映已经解决生成视频的一致性、可控性和版权管理问题。公开信息对助手底层模型披露有限，也没有说明哪些环节能够稳定自动完成。订阅定价同样会影响高级创作能力究竟能否普及，还是主要服务专业用户。\n\n即便如此，这次发布仍显示出一个重要变化：竞争焦点正在从“哪个模型能生成最好的镜头”，转向“哪个平台能掌握从构思到发布的完整路径”。这是一场更持久的竞争，而剪映已经拥有现成的编辑入口。\n\n## Uncle Cat 观点\n\n真正重要的是剪映已有的时间线，而不是 Hub 这个名称；控制修改流程的平台，可能比赢得首个生成演示的平台更能留住价值。",
-      "date_published": "2026-09-20T14:30:00.000Z",
-      "date_modified": "2026-09-20T23:00:04.136Z",
-      "tags": [
-        "AIGC",
-        "产业",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/jianying-hub-ai-assistant.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/jianying-hub-ai-assistant.html",
-        "source_published_at": "2026-09-20T14:30:00.000Z",
-        "site_published_at": "2026-09-20T23:00:04.136Z",
-        "sources": [
-          {
-            "title": "剪映刚刚发布 AI Hub 与剪映助手",
-            "url": "https://www.qbitai.com/2026/09/492973.html"
-          },
-          {
-            "title": "剪映 AI 创作平台",
-            "url": "https://www.jianying.com/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/un-panel-urges-early-ai-agent-safeguards.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/un-panel-urges-early-ai-agent-safeguards.html",
-      "title": "联合国专家警告：AI智能体治理不能等风险明朗",
-      "summary": "联合国支持的科学 panel 呼吁各国提前管控自主AI智能体，不应把风险尚未厘清当作延后治理的理由。",
-      "content_text": "## 核心建议\n\n联合国支持的科学专家组呼吁各国政府，在自主AI智能体的风险尚未被完全厘清之前就启动管控。专家组采取的是预防性立场：不确定性不应成为拖延行动的理由，反而应促使监管者先建立基本防线。\n\n这里所说的智能体，主要是能够规划任务、调用工具、访问在线服务，并在有限人工监督下完成多步骤工作的系统。随着消费级助手和企业级智能体从问答走向浏览、购物、编程和业务流程管理，这一类别正在快速扩大。\n\n## 为什么现在重要\n\n这份建议发布之际，智能体开发商正越来越多地依赖浏览器自动化以及对敏感账户的访问。近期围绕AI购物代理的争议表明，系统替用户采取行动的能力，可能先于平台规则、授权机制和责任边界成熟。\n\n专家组并非主张全面禁止自主系统，而是要求提前建立测试、监控、人工确认、事故报告和责任认定机制。对于接入金融、医疗、公共服务和关键基础设施的智能体，这些要求尤其关键。\n\n## 猫叔判断\n\n最值得注意的是，专家组拒绝把“风险已经被完美测量”作为行动前提。这会推动国际AI治理从事后观察转向事前设防，但建议本身没有执法工具，也没有说明什么才算“足够可控”。它能否产生实际影响，取决于各国能否把这套预防性表述转化为适用于跨境智能体的统一要求。",
-      "date_published": "2026-09-21T10:18:00.000Z",
-      "date_modified": "2026-09-21T11:00:04.120Z",
-      "tags": [
-        "政策",
-        "安全",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/un-panel-urges-early-ai-agent-safeguards.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/un-panel-urges-early-ai-agent-safeguards.html",
-        "source_published_at": "2026-09-21T10:18:00.000Z",
-        "site_published_at": "2026-09-21T11:00:04.120Z",
-        "sources": [
-          {
-            "title": "UN says AI safeguards can’t wait for certainty",
-            "url": "https://www.theverge.com/ai-artificial-intelligence/998090/un-ai-panel-hugging-face-hack"
-          },
-          {
-            "title": "United Nations Global Digital Compact AI Scientific Panel",
-            "url": "https://www.un.org/global-digital-compact/sites/default/files/2026-05/report_of_the_town_hall_on_the_ai_scientific_panel_under_the_global_digital_compact_1_1_0.pdf"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/stepfun-step5-preview-agent-model.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/stepfun-step5-preview-agent-model.html",
-      "title": "阶跃星辰发布 Step 5 Preview，主攻长程智能体任务",
-      "summary": "阶跃星辰推出面向软件、研究和金融工作的 Step 5 Preview，采用 6000 亿参数稀疏架构并支持百万字上下文。",
-      "content_text": "阶跃星辰发布新旗舰模型 Step 5 Preview，面向智能体工作场景，发布时间落在本期覆盖的亚洲白天时段。官方介绍称，该模型采用总参数量 6000 亿的稀疏混合专家架构，每个 Token 激活约 270 亿参数，支持百万 Token 上下文和原生图像输入。\n\n## 面向持续数小时的专业工作\n\nStepFun 将 Step 5 Preview 定位为处理复杂、多步骤任务的模型，覆盖软件工程、大规模研究、结构化分析和交互式报告等场景。金融工作是其重点方向之一，官方强调了信息核验、估值分析以及持续完成长链路调查的能力。\n\n不过，这次发布需要区分“可调用预览”和“开放权重”。目前用户可以通过 StepFun 的预览入口和文档体验模型，但它还不是已经完成的开源权重发布。StepFun 的公开材料显示，模型权重计划在稍后开放。对于准备把模型接入生产系统的团队来说，这一差别直接关系到可控性、迁移成本和供应稳定性。\n\n## 为什么重要\n\nStep 5 Preview 体现出中国模型公司竞争重点的变化：行业关注点正从单项榜单成绩，转向智能体能否稳定完成真实工作。长上下文、视觉输入和长程执行能力，正好对应美国和欧洲实验室争夺的企业级工作流市场。\n\n它当前最重要的意义，是阶跃星辰试图在权重开放前，先把一个中国开发的模型放进全球智能体工具链。真正决定其影响力的，还包括独立评测结果、预览服务的稳定性，以及未来权重是否采用足够宽松的许可证并具备实际部署条件。",
-      "date_published": "2026-09-20T03:15:00.000Z",
-      "date_modified": "2026-09-20T11:00:04.063Z",
-      "tags": [
-        "模型",
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/stepfun-step5-preview-agent-model.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/stepfun-step5-preview-agent-model.html",
-        "source_published_at": "2026-09-20T03:15:00.000Z",
-        "site_published_at": "2026-09-20T11:00:04.063Z",
-        "sources": [
-          {
-            "title": "StepFun official announcement on X",
-            "url": "https://x.com/StepFun_ai/status/2101510462685003786"
-          },
-          {
-            "title": "Step 5 Preview: what StepFun's 600B flagship really ships",
-            "url": "https://www.orcarouter.ai/blog/step-5-preview-open-weights"
           }
         ]
       }

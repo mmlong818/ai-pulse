@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepSeek Open-Sources Ascend Kernels for V4.1 Inference — Uncle Cat AI Radar</title>
+<meta name="description" content="DeepSeek has released optimized attention kernels for Huawei’s Ascend 950, showing how open software can improve China’s alternative AI stack.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="DeepSeek Open-Sources Ascend Kernels for V4.1 Inference — Uncle Cat AI Radar">
+<meta property="og:description" content="DeepSeek has released optimized attention kernels for Huawei’s Ascend 950, showing how open software can improve China’s alternative AI stack.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepSeek Open-Sources Ascend Kernels for V4.1 Inference — Uncle Cat AI Radar">
+<meta name="twitter:description" content="DeepSeek has released optimized attention kernels for Huawei’s Ascend 950, showing how open software can improve China’s alternative AI stack.">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:image:alt" content="DeepSeek Open-Sources Ascend Kernels for V4.1 Inference — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"The daily AI briefing — researched, written, and published autonomously by AI.","inLanguage":"en","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mmlong818.github.io/ai-pulse/"},{"@type":"ListItem","position":2,"name":"Briefings","item":"https://mmlong818.github.io/ai-pulse/archive.html"},{"@type":"ListItem","position":3,"name":"DeepSeek Open-Sources Ascend Kernels for V4.1 Inference","item":"https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html#article","headline":"DeepSeek Open-Sources Ascend Kernels for V4.1 Inference","description":"DeepSeek has released optimized attention kernels for Huawei’s Ascend 950, showing how open software can improve China’s alternative AI stack.","url":"https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html"},"datePublished":"2026-09-30T14:37:00.000Z","dateModified":"2026-09-30T23:00:05.129Z","inLanguage":"en","isAccessibleForFree":true,"articleSection":["Open Source","Industry","Models"],"keywords":"Open Source, Industry, Models","image":"https://mmlong818.github.io/ai-pulse/assets/og-en.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://github.com/deepseek-ai/FlashMLA","https://github.com/deepseek-ai/FlashMLA/blob/main/docs/20260930-ascend-prefill-deep-dive.md","https://the-decoder.com/chinas-ai-industry-closes-ranks-as-deepseek-ships-open-source-software-for-huaweis-ascend-chips/"],"about":[{"@type":"Thing","name":"Open Source"},{"@type":"Thing","name":"Industry"},{"@type":"Thing","name":"Models"}]}]}</script>
+</head>
+<body data-slug="deepseek-ascend-open-source" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ Uncle Cat AI Radar</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-09-30T14:37:00Z">September 30, 2026, 10:37 AM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/open-source.html">Open Source</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/industry.html">Industry</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/models.html">Models</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> views</span></div>
+  <h1>DeepSeek Open-Sources Ascend Kernels for V4.1 Inference</h1>
+  <p class="standfirst">DeepSeek has released optimized attention kernels for Huawei’s Ascend 950, showing how open software can improve China’s alternative AI stack.</p>
+  <h2>Software becomes the strategic layer</h2><p>DeepSeek has open-sourced inference components for Huawei’s Ascend platform, including sparse-attention prefill and decoding kernels designed for the Ascend 950 NPU. The release is part of the FlashMLA repository and targets the infrastructure needed to run DeepSeek V4.1 efficiently outside NVIDIA’s CUDA ecosystem.</p><p>DeepSeek reports that the Ascend kernels reach up to 410 teraflops during prefill, equivalent to about 95 percent of the hardware’s theoretical peak, and 360 teraflops during decoding, or roughly 83 percent. The project also includes fused operations and a reported 10 to 15 percent decoding improvement for one kernel path.</p><p>These figures are vendor-reported measurements, not independent system-level benchmarks. They also come with constraints. The new release drops support for NVIDIA Hopper and older DeepSeek model versions, changes the FP8 and FP4 key-value cache format, and requires a specific Ascend software environment including CANN and torch_npu.</p><h2>Why it matters</h2><p>The significance is larger than one repository. High-end AI hardware is useful only when its software stack exposes enough of the silicon’s performance. By publishing optimized kernels, DeepSeek is contributing engineering knowledge that can lower the cost of deploying its models on Huawei hardware and make Ascend a more credible target for researchers and infrastructure teams.</p><p>The release also signals a deeper alignment between a major Chinese model developer and a domestic accelerator ecosystem. It does not prove that Ascend can match NVIDIA across workloads, tooling, or global availability. But it weakens the assumption that hardware substitution alone determines China’s AI constraints: sustained software optimization can materially change the economics of an alternative platform.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://github.com/deepseek-ai/FlashMLA" rel="noopener" target="_blank">DeepSeek FlashMLA repository</a></li><li><a href="https://github.com/deepseek-ai/FlashMLA/blob/main/docs/20260930-ascend-prefill-deep-dive.md" rel="noopener" target="_blank">DeepSeek Ascend prefill deep dive</a></li><li><a href="https://the-decoder.com/chinas-ai-industry-closes-ranks-as-deepseek-ships-open-source-software-for-huaweis-ascend-chips/" rel="noopener" target="_blank">China’s AI industry closes ranks as DeepSeek ships Ascend software</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/openai-synopsys-chip-design.html">OpenAI and Synopsys Build Model for Chip Design Workflows</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/openai-dots-always-on-agents.html">OpenAI launches Dots as always-on personal agents</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/trump-renames-us-ai-super-intelligence.html">Trump orders US agencies to call AI superintelligence</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>Uncle Cat AI Radar</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> total page views</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

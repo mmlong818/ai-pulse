@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepSeek 开源昇腾算子，补强国产推理软件栈 — Uncle Cat AI Radar</title>
+<meta name="description" content="DeepSeek 面向华为昇腾 950 开源稀疏注意力算子，显示国产 AI 硬件能否竞争，关键也在软件优化。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="DeepSeek 开源昇腾算子，补强国产推理软件栈 — Uncle Cat AI Radar">
+<meta property="og:description" content="DeepSeek 面向华为昇腾 950 开源稀疏注意力算子，显示国产 AI 硬件能否竞争，关键也在软件优化。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepSeek 开源昇腾算子，补强国产推理软件栈 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="DeepSeek 面向华为昇腾 950 开源稀疏注意力算子，显示国产 AI 硬件能否竞争，关键也在软件优化。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="DeepSeek 开源昇腾算子，补强国产推理软件栈 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"DeepSeek 开源昇腾算子，补强国产推理软件栈","item":"https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html#article","headline":"DeepSeek 开源昇腾算子，补强国产推理软件栈","description":"DeepSeek 面向华为昇腾 950 开源稀疏注意力算子，显示国产 AI 硬件能否竞争，关键也在软件优化。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html"},"datePublished":"2026-09-30T14:37:00.000Z","dateModified":"2026-09-30T23:00:05.129Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["开源","产业","模型"],"keywords":"开源, 产业, 模型","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://github.com/deepseek-ai/FlashMLA","https://github.com/deepseek-ai/FlashMLA/blob/main/docs/20260930-ascend-prefill-deep-dive.md","https://the-decoder.com/chinas-ai-industry-closes-ranks-as-deepseek-ships-open-source-software-for-huaweis-ascend-chips/"],"about":[{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"产业"},{"@type":"Thing","name":"模型"}]}]}</script>
+</head>
+<body data-slug="deepseek-ascend-open-source" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-09-30T14:37:00Z">2026年9月30日 22:37</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>DeepSeek 开源昇腾算子，补强国产推理软件栈</h1>
+  <p class="standfirst">DeepSeek 面向华为昇腾 950 开源稀疏注意力算子，显示国产 AI 硬件能否竞争，关键也在软件优化。</p>
+  <h2>软件成为关键战略层</h2><p>DeepSeek 面向华为昇腾平台开源了一批推理基础组件，包括针对昇腾 950 NPU 优化的稀疏注意力 Prefill 和 Decoding 算子。相关代码已进入 FlashMLA 仓库，目标是让 DeepSeek V4.1 能够更高效地运行在 NVIDIA CUDA 生态之外。</p><p>DeepSeek 给出的数据显示，这些昇腾算子在 Prefill 阶段最高达到 410 万亿次浮点运算，相当于硬件理论峰值的约 95%；在 Decoding 阶段达到 360 万亿次，相当于约 83%。项目还包含融合算子，并称其中一条解码路径的性能提升约为 10% 至 15%。</p><p>这些数字目前仍属于厂商披露，尚未经过独立的系统级评测，而且存在明确限制。新版移除了对 NVIDIA Hopper 和部分旧版 DeepSeek 模型的支持，并修改 FP8、FP4 KV Cache 格式；在昇腾平台运行还需要特定版本的 CANN 和 torch_npu 软件环境。</p><h2>为什么重要</h2><p>这次发布的意义不止于一个代码仓库。高端 AI 硬件只有在软件栈能充分释放芯片性能时才真正有用。通过公开优化后的算子，DeepSeek 正在降低模型部署到华为硬件上的工程门槛，也让昇腾成为研究者和基础设施团队更可信的目标平台。</p><p>它还显示，中国头部模型公司与国产加速器生态正在进一步靠拢。这并不能证明昇腾已在所有工作负载、开发工具和全球供货能力上追平 NVIDIA，但它削弱了“换芯片就能解决问题”的简单判断：持续的软件优化，确实可能改变替代平台的部署经济性。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://github.com/deepseek-ai/FlashMLA" rel="noopener" target="_blank">DeepSeek FlashMLA repository</a></li><li><a href="https://github.com/deepseek-ai/FlashMLA/blob/main/docs/20260930-ascend-prefill-deep-dive.md" rel="noopener" target="_blank">DeepSeek Ascend prefill deep dive</a></li><li><a href="https://the-decoder.com/chinas-ai-industry-closes-ranks-as-deepseek-ships-open-source-software-for-huaweis-ascend-chips/" rel="noopener" target="_blank">China’s AI industry closes ranks as DeepSeek ships Ascend software</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-synopsys-chip-design.html">OpenAI 携手 Synopsys，开发芯片设计专用模型</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-dots-always-on-agents.html">OpenAI推出Dots，让智能体持续替用户工作</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/trump-renames-us-ai-super-intelligence.html">特朗普要求美国政府将AI改称“超级智能”</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

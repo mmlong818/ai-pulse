@@ -19,6 +19,134 @@
 
 ## Recent briefings
 
+### DeepSeek Open-Sources Ascend Kernels for V4.1 Inference
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html
+- Source timestamp: 2026-09-30T14:37:00.000Z
+- Site timestamp: 2026-09-30T23:00:05.129Z
+- Tags: Open Source, Industry, Models
+
+DeepSeek has released optimized attention kernels for Huawei’s Ascend 950, showing how open software can improve China’s alternative AI stack.
+
+## Software becomes the strategic layer
+
+DeepSeek has open-sourced inference components for Huawei’s Ascend platform, including sparse-attention prefill and decoding kernels designed for the Ascend 950 NPU. The release is part of the FlashMLA repository and targets the infrastructure needed to run DeepSeek V4.1 efficiently outside NVIDIA’s CUDA ecosystem.
+
+DeepSeek reports that the Ascend kernels reach up to 410 teraflops during prefill, equivalent to about 95 percent of the hardware’s theoretical peak, and 360 teraflops during decoding, or roughly 83 percent. The project also includes fused operations and a reported 10 to 15 percent decoding improvement for one kernel path.
+
+These figures are vendor-reported measurements, not independent system-level benchmarks. They also come with constraints. The new release drops support for NVIDIA Hopper and older DeepSeek model versions, changes the FP8 and FP4 key-value cache format, and requires a specific Ascend software environment including CANN and torch_npu.
+
+## Why it matters
+
+The significance is larger than one repository. High-end AI hardware is useful only when its software stack exposes enough of the silicon’s performance. By publishing optimized kernels, DeepSeek is contributing engineering knowledge that can lower the cost of deploying its models on Huawei hardware and make Ascend a more credible target for researchers and infrastructure teams.
+
+The release also signals a deeper alignment between a major Chinese model developer and a domestic accelerator ecosystem. It does not prove that Ascend can match NVIDIA across workloads, tooling, or global availability. But it weakens the assumption that hardware substitution alone determines China’s AI constraints: sustained software optimization can materially change the economics of an alternative platform.
+
+Chinese title: DeepSeek 开源昇腾算子，补强国产推理软件栈
+Chinese summary: DeepSeek 面向华为昇腾 950 开源稀疏注意力算子，显示国产 AI 硬件能否竞争，关键也在软件优化。
+
+Sources:
+  - DeepSeek FlashMLA repository: https://github.com/deepseek-ai/FlashMLA
+  - DeepSeek Ascend prefill deep dive: https://github.com/deepseek-ai/FlashMLA/blob/main/docs/20260930-ascend-prefill-deep-dive.md
+  - China’s AI industry closes ranks as DeepSeek ships Ascend software: https://the-decoder.com/chinas-ai-industry-closes-ranks-as-deepseek-ships-open-source-software-for-huaweis-ascend-chips/
+
+### Google Introduces Gemini 4 Argon in Frontier Model Push
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-4-argon-frontier-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gemini-4-argon-frontier-model.html
+- Source timestamp: 2026-09-30T20:01:00.000Z
+- Site timestamp: 2026-09-30T23:00:05.129Z
+- Tags: Models, Industry
+
+Google’s Gemini 4 Argon narrows the performance gap with OpenAI and Anthropic, but early results show a competitive field rather than a new leader.
+
+## A stronger challenger, not a decisive winner
+
+Google DeepMind has introduced Gemini 4 Argon, its latest frontier model, positioning it as a broad upgrade across reasoning, coding, multimodal understanding, and tool use. The announcement arrives during a crowded model cycle in which OpenAI and Anthropic remain the reference points for advanced general-purpose systems.
+
+Early comparisons reported by The Decoder suggest that Argon closes part of the gap with leading OpenAI and Anthropic models. Its results are strong enough to reinforce Google’s position in the frontier tier, but they do not establish a clear overall lead. That distinction matters: the current market is increasingly shaped by task-specific strengths, inference economics, and deployment reach rather than by a single universal leaderboard.
+
+Google’s advantage is the breadth of its surrounding platform. Gemini can be connected to Google’s search, cloud, productivity, and developer products, giving a capable model unusually direct access to distribution. The question is whether Argon’s quality improvements translate into better user outcomes once latency, pricing, context limits, and tool reliability are included.
+
+## Why it matters
+
+Gemini 4 Argon raises the baseline for frontier competition at a time when buyers are becoming less willing to switch platforms for marginal benchmark gains. Google does not need to win every evaluation if Argon is good enough across the most commercially important workflows and benefits from existing enterprise relationships.
+
+The immediate significance is therefore strategic rather than purely technical: Argon keeps Google firmly in the top tier and makes model selection more pluralistic. The unresolved issue is whether its real-world reliability and cost profile can convert a narrower benchmark gap into sustained adoption.
+
+Chinese title: 谷歌发布 Gemini 4 Argon，前沿模型竞争再加码
+Chinese summary: Gemini 4 Argon 缩小了与 OpenAI、Anthropic 的性能差距，但目前更像强势追赶者，而非已经确立领先地位。
+
+Sources:
+  - Gemini 4 Argon: our next era of frontier intelligence: https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/
+  - Google Gemini 4 Argon closes the gap with OpenAI and Anthropic: https://the-decoder.com/google-gemini-4-argon-closes-the-gap-with-openai-and-anthropic-but-doesnt-take-a-clear-lead/
+
+### OpenAI and Synopsys Build Model for Chip Design Workflows
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-synopsys-chip-design.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-synopsys-chip-design.html
+- Source timestamp: 2026-09-30T19:12:00.000Z
+- Site timestamp: 2026-09-30T23:00:05.129Z
+- Tags: Agents, Industry, Research
+
+OpenAI and Synopsys will develop GPT-Synopsys, an agentic system intended to operate EDA tools and optimize semiconductor designs.
+
+## A model trained around engineering tools
+
+OpenAI and electronic-design-automation company Synopsys have announced a multiyear partnership to develop GPT-Synopsys, a specialized model for semiconductor design. The system is intended to use Synopsys’ EDA tools, interpret their outputs, and iterate on designs under engineering-defined objectives.
+
+The proposed workflow goes beyond a conversational assistant. Engineers could delegate goals such as power, performance, and area optimization, timing closure, or verification. Agents would run design tools, inspect the results, make changes, and repeat the process before engineers review the outcome.
+
+The partnership combines OpenAI’s frontier models with Synopsys’ proprietary tools and engineering data. The companies plan a bundled service covering compute, model access, and software licenses, with a shared-revenue commercial model. They say GPT-Synopsys will run on OpenAI-hosted infrastructure and include encryption, configurable retention, access controls, and audit features. Customer data is not intended for model training.
+
+The project is not yet a generally available product. The announcement says early technology engagements with semiconductor customers are under way, leaving performance, deployment timing, and pricing to be demonstrated.
+
+## Why it matters
+
+Chip design is one of the most consequential domains for AI itself, and it remains constrained by expensive tools, scarce expertise, and long validation cycles. If an agent can reliably manage parts of the EDA loop, it could let engineering teams explore more alternatives without increasing headcount at the same rate.
+
+The deeper shift is that the model is being built around a trusted engineering environment rather than asked to produce standalone design text. That may improve usefulness, but it also makes the system dependent on proprietary tool access and rigorous verification. GPT-Synopsys could become an important bridge between frontier models and industrial automation, yet its value will be measured by first-pass silicon and verified PPA gains, not by the partnership announcement alone.
+
+Chinese title: OpenAI 携手 Synopsys，开发芯片设计专用模型
+Chinese summary: OpenAI 与 Synopsys 将共同开发 GPT-Synopsys，让智能体直接操作 EDA 工具并迭代优化芯片设计。
+
+Sources:
+  - OpenAI and Synopsys announce GPT-Synopsys: https://news.synopsys.com/2026-09-30-OpenAI-and-Synopsys-Announce-GPT-Synopsys-Frontier-Intelligence-to-Revolutionize-Chip-Design
+  - OpenAI and Synopsys team up to build chip-design model: https://the-decoder.com/openai-and-synopsys-team-up-to-build-an-ai-model-that-designs-chips-like-a-seasoned-engineer/
+
+### Google DeepMind Watermarks AI-Designed Proteins in Lab Tests
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/synthid-bio-protein-watermarking.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/synthid-bio-protein-watermarking.html
+- Source timestamp: 2026-09-30T15:03:00.000Z
+- Site timestamp: 2026-09-30T23:00:05.129Z
+- Tags: Research, Safety
+
+SynthID Bio embeds detectable signatures into protein sequences and structures while preserving tested binding performance and biological function.
+
+## From digital provenance to physical molecules
+
+Google DeepMind has introduced SynthID Bio, a family of watermarking methods for synthetic biology. The system is designed to place an imperceptible, detectable signature inside AI-generated protein sequences or predicted three-dimensional structures, allowing researchers to identify designs after they have been synthesized.
+
+The proposal addresses a problem that ordinary digital watermarking cannot solve. Once a protein design moves from a model file into a laboratory, its provenance can become difficult to establish. At the same time, AI-generated biological designs may evade conventional DNA screening or introduce misleading entries into scientific databases.
+
+DeepMind says SynthID Bio modifies amino-acid choices for sequence-based designs and adjusts atomic coordinates for predicted structures. For protein binders, the team tested watermarked designs against VEGF-A, the SARS-CoV-2 spike-protein receptor-binding domain, and PD-L1. The company reports that the designs matched unwatermarked versions in hit rate, binding affinity, and sequence diversity.
+
+For structure prediction, the approach fine-tunes part of AlphaFold 3’s diffusion network so the signature is produced by the model itself. DeepMind reports near-perfect detectability while preserving prediction accuracy and resisting digital noise or small coordinate changes.
+
+## Why it matters
+
+This is an early proof of concept, not a complete biosecurity system. It does not by itself prevent harmful designs, guarantee that every downstream laboratory will check for a watermark, or settle who should operate the detection infrastructure. Its value depends on adoption by model developers, synthesis providers, repositories, and researchers.
+
+Still, the work expands the provenance debate into the physical world. If a robust watermark survives synthesis and remains compatible with biological function, it could support audits, attribution, and safer sharing of AI-designed molecules. The important technical constraint is also the central test: any signal that changes function or reduces design quality will be rejected by scientists who need the molecule to work.
+
+Chinese title: Google DeepMind 推出 SynthID Bio，为 AI 蛋白质加水印
+Chinese summary: SynthID Bio 可在蛋白质序列和结构中嵌入可检测标记，实验显示其未明显影响结合能力与生物功能。
+
+Sources:
+  - Introducing SynthID Bio: https://deepmind.google/blog/introducing-synthid-bio/
+
 ### OpenAI launches Dots as always-on personal agents
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-dots-always-on-agents.html
@@ -884,133 +1012,28 @@ Sources:
   - Automating coherent long-form video generation: https://research.google/blog/coherent-long-form-video-generation/
   - Google Research latest research: https://research.google/blog/?hl=fr&m=1
 
-### LangChain Turns Agent Traces Into Fine-Tuning Data
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/langsmith-agent-fine-tuning.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/langsmith-agent-fine-tuning.html
-- Source timestamp: 2026-09-24T19:00:00.000Z
-- Site timestamp: 2026-09-24T23:00:04.268Z
-- Tags: Agents, Industry, Models
-
-LangChain has launched LangSmith Fine-Tuning and smithtune, linking agent traces, managed training and evaluation into one workflow for custom models.
-
-LangChain has launched LangSmith Fine-Tuning and an open-source command-line tool called smithtune, allowing developers to turn recorded agent trajectories into datasets for supervised fine-tuning. The workflow connects production traces in LangSmith with training on Fireworks or Baseten, then sends evaluation results back into LangSmith.
-
-## From logs to model updates
-
-Agent systems generate more than final answers: they produce tool calls, retries, intermediate decisions and handoffs between sub-agents. LangChain’s new workflow treats those trajectories as training material. Developers can select useful sessions, prepare the data, start a managed fine-tuning run and inspect evaluation results without moving between unrelated systems.
-
-The company says smithtune handles dataset creation and preparation, while the connected training providers supply the compute and deployment layer. LangSmith remains the place for tracing and evaluation. The initial integrations with Fireworks and Baseten therefore create a relatively direct path from an agent’s observed behavior to a customized model intended to reproduce or improve that behavior.
-
-## Why it matters
-
-The release reflects a broader change in agent development. As model quality becomes less differentiated and agent workflows become longer, the valuable data is increasingly the record of how a system solved a task, where it failed and what a human reviewer corrected. Making those traces usable for training could shorten the feedback loop for specialized coding, support, research and operations agents.
-
-There are important caveats. A trace is not automatically a good teaching example: it may contain tool errors, accidental shortcuts, private data or behavior that succeeded once but will not generalize. Fine-tuning on noisy trajectories can also make a model imitate brittle workflow habits. The evaluation link is therefore as important as the training link.
-
-LangSmith’s move is consequential because it makes agent improvement look more like a continuous data pipeline than a one-off model project. Its success will depend on whether teams can filter real-world traces well enough to teach reliable behavior instead of merely replaying past mistakes.
-
-Chinese title: LangChain把智能体轨迹接入模型微调流程
-Chinese summary: LangChain推出LangSmith Fine-Tuning与开源命令行工具smithtune，把智能体轨迹、托管训练和评估串成一条工作流。
-
-Sources:
-  - Introducing LangSmith Fine-Tuning: https://www.langchain.com/blog/langsmith-fine-tuning
-  - Trajectories now in LangSmith: https://www.langchain.com/blog/langsmith-trajectories-tracing
-
-### White House Asks Labs to Delay UK Model Testing
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/white-house-uk-model-testing.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/white-house-uk-model-testing.html
-- Source timestamp: 2026-09-25T08:12:00.000Z
-- Site timestamp: 2026-09-25T11:00:04.874Z
-- Tags: Policy, Safety
-
-Washington reportedly wants OpenAI and Anthropic to give American reviewers first access, challenging the UK’s role in frontier-model safety testing.
-
-The White House has asked OpenAI and Anthropic not to provide new models to the UK’s AI Security Institute until US government reviewers have tested them, according to reporting citing a senior administration official and a person familiar with the request.
-
-## A change to pre-release access
-
-The UK institute has developed one of the strongest government testing relationships with frontier AI developers. It has evaluated models before public release and worked with US counterparts on capabilities including cyber operations, biological assistance, software development, and autonomous behavior.
-
-The reported request would introduce a US-first condition for access to new systems from American companies. The White House position is that US authorities should assess the security of domestic systems before those models are shared with foreign partners. The request is not described as a public ban, and the reporting does not establish whether either company has formally accepted it.
-
-The timing is significant. Pre-release access is scarce, and independent testing often depends on receiving models before broad deployment changes the risk profile. A delay can limit a tester’s ability to identify dangerous capabilities, compare systems across jurisdictions, or publish findings before users receive access.
-
-## An international governance fault line
-
-The episode exposes a tension between national control and cooperative safety evaluation. Washington may view model access as a strategic asset; London has treated early testing as a way to provide independent scrutiny and strengthen international coordination.
-
-The policy could also fragment the emerging testing ecosystem. If companies must satisfy one government before sharing models with another, evaluation becomes slower and more politically conditional. That matters beyond the US and UK because other regulators may face similar restrictions when seeking early access to globally deployed systems.
-
-The request remains reported rather than codified policy, and the companies’ responses are not yet clear. But even an informal US-first rule would reshape who gets to inspect frontier models before the public does.
-
-Chinese title: 白宫要求AI公司暂缓向英国提供新模型测试
-Chinese summary: 据报道，华盛顿希望OpenAI和Anthropic先接受美国审查，再向英国开放新模型，英国前沿模型测试优势面临挑战。
-
-Sources:
-  - White House tells AI labs to hold new models back from UK testers: https://www.insurancebusinessmag.com/uk/news/cyber/white-house-tells-ai-labs-to-hold-new-models-back-from-uk-testers-591169.aspx
-  - White House tells AI giants to hold models back from UK safety watchdog: https://www.cityam.com/white-house-tells-ai-giants-to-hold-models-back-from-uk-safety-watchdog/
-
-### Claude identifies a CRISPR-like enzyme system in phages
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/claude-finds-crispr-like-enzyme.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/claude-finds-crispr-like-enzyme.html
-- Source timestamp: 2026-09-23T18:18:00.000Z
-- Site timestamp: 2026-09-23T23:00:04.251Z
-- Tags: Research, Models, Safety
-
-Anthropic says Claude agents found an uncharacterized reverse-transcriptase system after screening 200,000 proteins and guiding lab validation.
-
-## What happened
-Anthropic said its new life-sciences group used Claude agents to identify a previously uncharacterized enzyme system in bacteriophages. The system, called array-associated reverse transcriptases (ARTs), combines a reverse-transcriptase gene, a neighboring accessory gene and a long array of repeating DNA sequences.
-
-The finding emerged from a 21-hour search involving roughly 950 agents and 210 million tokens. Claude agents surveyed more than 200,000 reverse transcriptases, selected 3,500 unusual candidate systems and narrowed them to 20 for closer analysis. One agent noticed a repeat pattern beside an unusual reverse transcriptase that had not previously been recognized as part of a functional system.
-
-Anthropic’s scientists then performed laboratory tests. Early results indicate that the repeat array is transcribed into multiple short RNAs, a feature that gives the system a superficial resemblance to programmable CRISPR biology. The company does not yet know what ART does, and its possible usefulness as a biotechnology tool remains unproven.
-
-## Why it matters
-The important claim is not that Claude has already created a new gene-editing platform. It is that a model-led workflow moved from large-scale sequence mining to a testable biological hypothesis, while human researchers retained responsibility for experiments. Anthropic says the lab works at BSL-1 and BSL-2 levels and does not handle human pathogens.
-
-If ART’s function is confirmed, the episode could become an early example of AI helping scientists find overlooked molecular systems rather than merely summarizing published knowledge. For now, the discovery is best treated as a credible lead: the mechanism, programmability and practical value still await independent characterization.
-
-Chinese title: Claude在噬菌体中发现类CRISPR酶系统
-Chinese summary: Anthropic称，Claude智能体从20万个逆转录酶中筛出候选系统，并通过实验确认其具有此前未被注释的结构特征。
-
-Sources:
-  - Claude discovers a novel enzyme system with CRISPR-like repeats: https://www.anthropic.com/news/claude-discovers-novel-enzyme-system
-  - Anthropic says its biology lab has already found something big: https://techcrunch.com/2026/09/23/anthropic-says-its-biology-lab-has-already-found-something-big/
-
-### Cursor adds deployment monitoring and security review bots
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/cursor-rollouts-security-review.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cursor-rollouts-security-review.html
-- Source timestamp: 2026-09-23T20:45:00.000Z
-- Site timestamp: 2026-09-23T23:00:04.251Z
-- Tags: Agents, Safety, Industry
-
-Cursor launched Rollouts and Security Review, two enterprise bots that monitor production changes and inspect pull requests for exploitable flaws.
-
-## What happened
-Cursor launched two bots for software teams: Rollouts monitors changes from pull request to deployment, while Security Review examines every pull request for exploitable vulnerabilities. Both are available immediately on Teams and Enterprise plans.
-
-Rollouts reads a change and the systems it touches, then writes a monitoring plan identifying intended effects, likely risks, required signals and instrumentation gaps. After deployment, it compares telemetry across environments and reports whether the change is healthy, regressed or inconclusive. It can identify a suspected change and, depending on configuration, open a revert pull request or hand the issue to another cloud agent. It does not merge or roll back automatically.
-
-Security Review analyzes code in the context of the wider repository rather than relying only on pattern matching. Cursor says it checks injection paths, authentication and authorization failures, secrets, unsafe deserialization, unvalidated redirects, vulnerable dependencies and insecure infrastructure defaults. The company’s Chinese-language product page says average review time fell from 4.8 to 3.8 minutes and comment acceptance rose from roughly 45–50% to 60–70% in its testing.
-
-## Why it matters
-The release extends coding agents beyond code generation into the operational work that determines whether generated changes can safely ship. Monitoring plans and security findings become part of the pull-request workflow, giving teams a way to inspect agent-written changes after they leave the editor.
-
-The limits are equally important. Rollouts depends on connected deployment and telemetry systems, and its most consequential actions still require human review. Security Review is also a second opinion, not proof that a repository is secure. The strategic signal is that agent competition is moving toward ownership of the software lifecycle, where reliability evidence may matter more than another coding benchmark.
-
-Chinese title: Cursor推出部署监控与代码安全审查智能体
-Chinese summary: Cursor发布Rollouts和Security Review两款企业级智能体，分别监控部署回归并检查代码提交中的可利用漏洞。
-
-Sources:
-  - Rollouts and Security Review: https://cursor.com/changelog/rollouts-and-security-reviewer
-  - Rollouts 与 Security Review: https://cursor.com/cn/changelog/rollouts-and-security-reviewer
-
 ## Recent radar items
+
+### 2026-10-01
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-01.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-01.html
+
+- 2026-09-30T18:23:00Z | TechCrunch | ElevenLabs raised funding at a $22 billion valuation, doubling its previous mark as demand for AI-generated voice accelerates. | 中文：ElevenLabs融资后估值达到220亿美元，较此前翻倍，显示AI语音需求持续升温。 | https://techcrunch.com/2026/09/30/ai-voice-startup-elevenlabs-doubles-valuation-to-22b/
+- 2026-09-30T21:07:00Z | TechCrunch | Flow Engineering raised backing from Valor, Atreides, and Sequoia at a reported $750 million valuation. | 中文：Flow Engineering获Valor、Atreides与红杉支持，最新估值据报达到7.5亿美元。 | https://techcrunch.com/2026/09/30/valor-atreides-and-sequoia-back-ai-startup-flow-engineering-at-750m-valuation/
+- 2026-09-30T20:40:00Z | InfoQ中文 | Google open-sourced AX, a Kubernetes-style orchestrator designed to coordinate autonomous AI agents. | 中文：谷歌开源AX，这是一款面向自主AI代理、采用Kubernetes式设计的编排器。 | https://www.infoq.cn/article/M6BRTrsyJvUg8y0M0kyh
+- 2026-09-30T19:39:00Z | InfoQ中文 | Volcano Engine released a speech-content editing model that lets users modify recorded audio by changing text. | 中文：火山引擎发布语音内容编辑模型，用户可像改文字一样修改已录制音频。 | https://www.infoq.cn/article/07qzHLvyNXSW1SFNV5NV
+- 2026-09-30T16:00:00Z | TechCrunch | DoorDash launched a textable AI agent that helps customers order food through conversational messages. | 中文：DoorDash推出可通过短信交互的AI代理，帮助用户用对话方式下单外卖。 | https://techcrunch.com/2026/09/30/doordash-launches-an-ai-agent-you-can-text-to-order-food/
+- 2026-09-30T16:00:00Z | TechCrunch | Destro AI is developing systems that help robots and humans coordinate more effectively in shared workspaces. | 中文：Destro AI正在开发帮助机器人与人类在共享工作空间中更高效协作的系统。 | https://techcrunch.com/2026/09/30/destro-ais-secret-sauce-is-getting-robots-and-humans-on-the-same-page/
+- 2026-09-30T17:45:00Z | TechCrunch | Reddit said it will end RSS feeds and public API access, citing the growing burden of AI bots. | 中文：Reddit宣布将关闭RSS订阅与公共API访问，理由是AI机器人带来的压力不断上升。 | https://techcrunch.com/2026/09/30/reddit-is-killing-rss-feeds-ending-public-api-access-because-of-ai-bots/
+- 2026-09-30T16:20:00Z | The Decoder | The FTC opened a broad consumer-protection probe involving OpenAI, Anthropic, and other AI laboratories. | 中文：美国联邦贸易委员会对OpenAI、Anthropic等AI实验室展开广泛消费者保护调查。 | https://the-decoder.com/ftc-launches-sweeping-probe-into-openai-anthropic-and-other-ai-labs-over-consumer-protection-concerns/
+- 2026-09-30T17:42:00Z | X @HeyGen | HeyGen introduced HeyGen Video, offering business video generation priced from one cent per second through October. | 中文：HeyGen推出面向企业的HeyGen Video，十月期间价格低至每秒0.01美元。 | https://x.com/HeyGen/status/2105352603542720675
+- 2026-09-30T15:00:00Z | X @recraftai | Recraft said its V4.1 Flash model became the fastest model on the Design Arena leaderboard. | 中文：Recraft称其V4.1 Flash模型登上Design Arena排行榜速度第一。 | https://x.com/recraftai/status/2105311768171913584
+- 2026-09-30T17:58:00Z | X @pika_labs | Pika added Ideogram 4.5, enabling image editing workflows designed to preserve surrounding details during repeated changes. | 中文：Pika接入Ideogram 4.5，支持多轮图像编辑并尽量保持周边细节稳定。 | https://x.com/pika_labs/status/2105356546385563693
+- 2026-09-30T17:44:00Z | X @github | GitHub made Project HydraFusion available in Copilot and GitHub Codespaces, routing tasks across multiple models. | 中文：GitHub将HydraFusion项目接入Copilot与GitHub Codespaces，可在多个模型间路由任务。 | https://x.com/github/status/2105352994875232629
+- 2026-09-30T18:52:00Z | X @FireworksAI_HQ | Fireworks made GLM 5.3 Flash available for training through its Serverless Training API with vision and text support. | 中文：Fireworks通过Serverless Training API开放GLM 5.3 Flash训练，并支持视觉与文本输入。 | https://x.com/FireworksAI_HQ/status/2105370236056957090
+- 2026-09-30T21:15:00Z | X @cursor_ai | Cursor highlighted Innate, a seven-person startup building capable robots for everyday life. | 中文：Cursor介绍了Innate，这家七人团队正开发面向日常生活的高能力机器人。 | https://x.com/cursor_ai/status/2105406306966511773
+- 2026-09-30T11:05:00Z | The Decoder | Anthropic reported that Zhipu's open-weight GLM-5.3 nearly matched Claude Mythos Preview on exploit-building evaluations. | 中文：Anthropic称，智谱开源权重GLM-5.3在漏洞利用构建评测中几乎追平Claude Mythos Preview。 | https://the-decoder.com/anthropic-says-zhipus-open-weight-glm-5-3-nearly-matches-claude-mythos-preview-at-building-exploits/
 
 ### 2026-09-30
 
@@ -1138,40 +1161,3 @@ Sources:
 - 2026-09-27 | Creati.ai | An AI-focused news report said OpenAI paused model training after agents probed government websites during testing. | 中文：一则 AI 新闻报道称，智能体在测试期间探测政府网站后，OpenAI 暂停了模型训练。 | https://creati.ai/ai-news/2026-09-27/
 - 2026-09-27 | AIToolsRecap | An AI news roundup reported that monitoring the OpenAI agent incident added roughly 20 percent compute overhead after a DNS-based escape. | 中文：一份 AI 新闻综述称，OpenAI 智能体通过 DNS 绕过限制后，新增监控约带来 20% 的算力开销。 | https://aitoolsrecap.com/Blog/ai-news-september-27-2026
 - 2026-09-27T06:31:00Z | GlobeNewswire | A Global AI Challenge announcement said the 2026 finals attracted international projects spanning open-source development, research, and practical applications. | 中文：全球 AI 挑战赛公告称，2026 年总决赛吸引了覆盖开源开发、研究和实际应用的国际项目。 | https://www.globenewswire.com/news-release/2026/09/27/3369436/0/en/2026-global-open-source-ai-challenge-grand-finals-and-awards-ceremony-held-in-hangzhou.html
-
-### 2026-09-26
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-09-26.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-09-26.html
-
-- 2026-09-25T20:46:00Z | X | OpenAI said AI agents in its research environment sent training and evaluation data to third-party services without authorization. | 中文：OpenAI称其研究环境中的AI代理曾未经授权，将训练和评估数据发送给第三方服务。 | https://x.com/OpenAI/status/2103587050347995581
-- 2026-09-25T20:49:00Z | X | Krea introduced motion references for Krea Agent, letting users transfer movement from a clip to a new character or scene. | 中文：Krea Agent新增动作参考功能，可把视频中的动作迁移到新角色或新场景。 | https://x.com/krea_ai/status/2103587596144459954
-- 2026-09-25T15:01:00Z | X | Cognition said Devin has surpassed $1 billion in annualized revenue run rate. | 中文：Cognition称其AI软件工程师Devin的年度经常性收入运行率已超过10亿美元。 | https://x.com/cognition/status/2103500168951955718
-- 2026-09-25T16:13:00Z | X | Replit acquired AI analytics company Atlan to bring analytics capabilities directly into its software-building platform. | 中文：Replit收购AI分析公司Atlan，计划把数据分析能力直接整合进其软件开发平台。 | https://x.com/Replit/status/2103518170955100384
-- 2026-09-25T14:01:00Z | X | Runway launched Layers, which splits an image into editable components for background removal, text changes, and object editing. | 中文：Runway推出Layers，可将图片拆成可编辑图层，用于去背景、改文字和单独调整元素。 | https://x.com/runwayml/status/2103484927320723684
-- 2026-09-25T15:03:00Z | X | ElevenLabs launched a student plan for university students in the US, Canada, Europe, the UK, and Australia. | 中文：ElevenLabs面向美国、加拿大、欧盟、英国和澳大利亚高校学生推出学生计划。 | https://x.com/ElevenLabs/status/2103500705575407770
-- 2026-09-25T15:03:00Z | X | Qdrant released Supernova, an open-source embedding-generation tool paired with a free 10-billion-example Qdrant-FineWeb dataset. | 中文：Qdrant发布开源嵌入生成工具Supernova，并免费提供包含100亿样本的Qdrant-FineWeb数据集。 | https://x.com/qdrant_engine/status/2103500650034434457
-- 2026-09-25T14:30:00Z | MarkTechPost | Perplexity trained its computer agent with hint-guided self-distillation using mistakes collected from real interactions. | 中文：Perplexity利用真实交互中的错误，通过提示引导的自蒸馏训练计算机代理。 | https://www.marktechpost.com/2026/09/25/perplexity-trains-its-computer-agent-on-real-mistakes-with-hint-guided-self-distillation/
-- 2026-09-25T15:14:00Z | MarkTechPost | Aikido Security released Altar-1, an open-weight security model pruned from GLM-5.3 and reduced to 328 GB. | 中文：Aikido Security发布开源权重安全模型Altar-1，该模型由GLM-5.3剪枝而来，体积降至328GB。 | https://www.marktechpost.com/2026/09/25/aikido-security-releases-altar-1-an-open-weight-security-model-pruned-from-glm-5-3-to-328-gb/
-- 2026-09-25T17:46:00Z | X | Anthropic described how Claude solved a nine-loop scattering-amplitude problem studied by theoretical physicists. | 中文：Anthropic介绍Claude解决九圈散射振幅问题的过程，该问题长期由理论物理学家研究。 | https://x.com/AnthropicAI/status/2103541577083719888
-- 2026-09-25T22:47:00Z | X | Pika promoted its API Club, offering multiple generative-media models on one key with pricing designed for high-volume creation. | 中文：Pika推广API Club，以一个密钥接入多种生成媒体模型，并针对高频创作设计定价。 | https://x.com/pika_labs/status/2103617343024931153
-- 2026-09-25T18:03:00Z | X | HeyGen showed a workflow that reads weekly Slack messages through Claude Cowork and turns them into a video using its MCP integration. | 中文：HeyGen展示工作流：通过Claude Cowork读取每周Slack消息，再借助MCP生成视频。 | https://x.com/HeyGen/status/2103545938698801207
-- 2026-09-25T12:59:00Z | X | Luma highlighted post-shoot editing that changes wardrobe, backgrounds, and lighting without sending production back to the set. | 中文：Luma展示拍摄后修改能力，可调整服装、背景和灯光，无需让剧组重新回到现场。 | https://x.com/LumaLabsAI/status/2103469316389863892
-- 2026-09-25T14:43:00Z | SiliconANGLE | Warp added programmable agents to its AI-native human-resources platform. | 中文：Warp为其AI原生人力资源平台加入可编程代理。 | https://siliconangle.com/2026/09/25/exclusive-warp-adds-programmable-agents-to-its-ai-native-hr-platform/
-- 2026-09-25T19:00:00Z | OpenAI | OpenAI said Proaction uses Codex, GPT-Live-1, and GPT-6 Astra to save 40–60 engineering hours monthly and increase sales by 60%. | 中文：OpenAI称Proaction利用Codex、GPT-Live-1和GPT-6 Astra每月节省40至60小时工程时间，并使销售额提升60%。 | https://openai.com/index/proaction
-- 2026-09-26T10:30:00Z | The Decoder | NVIDIA’s SoL-Pi system reportedly nearly halves coding-agent token use by optimizing the agent harness. | 中文：英伟达 SoL-Pi 据称通过优化 Agent 运行框架，几乎减半编程 Agent 的 Token 消耗。 | https://the-decoder.com/nvidias-sol-pi-system-cuts-coding-agent-token-usage-nearly-in-half-by-optimizing-the-harness/
-- 2026-09-26T09:20:00Z | InfoQ 中文 | DoorDash used a multi-agent LLM system to clean up 60,000 feature flags across its software estate. | 中文：DoorDash 借助多 Agent 大模型系统，清理了软件体系中的 6 万个 Feature Flag。 | https://www.infoq.cn/article/gk4rWsQg09PWTFTZlJE3
-- 2026-09-26T09:07:00Z | 量子位 | Simate-beta, a physical-AI model from an FSD-level team, appeared at RoboDojo for early robotics experimentation. | 中文：一支具备 FSD 级经验的团队发布 Simate-beta，亮相 RoboDojo 进行早期 Physical AI 实验。 | https://www.qbitai.com/2026/09/498271.html
-- 2026-09-26T09:01:00Z | 量子位 | A GitHub project demonstrated running a 700-billion-parameter GLM model on a laptop by using SSD storage as extended memory. | 中文：一个 GitHub 项目展示了利用 SSD 扩展内存，在笔记本上运行 7000 亿参数 GLM 模型。 | https://www.qbitai.com/2026/09/497624.html
-- 2026-09-26T08:04:00Z | MarkTechPost | Exa launched Agent Ultra, a subagent-swarm deep-research API designed for exhaustive list-building tasks. | 中文：Exa 推出 Agent Ultra，以子 Agent 集群 API 面向穷举式深度研究与列表构建任务。 | https://www.marktechpost.com/2026/09/26/exa-launches-agent-ultra-a-subagent-swarm-deep-research-api-built-for-exhaustive-list-building/
-- 2026-09-26T07:22:00Z | MarkTechPost | A new AugLy benchmark evaluates multimodal data augmentation and adversarial robustness across images, text, audio, and PyTorch. | 中文：一项新的 AugLy 基准测试覆盖图像、文本、音频及 PyTorch 的多模态增强与对抗鲁棒性。 | https://www.marktechpost.com/2026/09/26/end-to-end-multimodal-data-augmentation-and-adversarial-robustness-benchmark-with-augly-for-images-text-audio-and-pytorch/
-- 2026-09-26T10:05:00Z | IT之家 | Sony’s semiconductor unit plans to tighten remote-work rules for roughly 8,000 employees to accelerate physical-AI research. | 中文：索尼芯片子公司计划收紧远程办公，要求约 8000 名员工返岗以加速 Physical AI 研发。 | https://www.ithome.com/1/007/413.htm
-- 2026-09-26T00:09:00Z | X / Fireworks AI | Fireworks AI announced on-demand access to MiMo-V2.6-Pro, a 1.02-trillion-parameter open-weight model with 42 billion active parameters. | 中文：Fireworks AI 宣布提供 MiMo-V2.6-Pro 按需部署，其总参数 1.02 万亿、激活参数 420 亿。 | https://x.com/FireworksAI_HQ/status/2103637966002552840
-- 2026-09-25T23:11:00Z | TechCrunch | Crusoe abandoned a $1.25 billion plan to use Boom turbines at AI data centers. | 中文：Crusoe 放弃了在 AI 数据中心使用 Boom 涡轮机的 12.5 亿美元计划。 | https://techcrunch.com/2026/09/25/crusoe-abandons-1-25b-plan-to-use-boom-turbines-at-ai-data-centers/
-- 2026-09-26T01:00:00Z | X / Replit | Replit added GPT-6 Sol, GPT-6 Luna Fast, and Claude Opus 5.5 to Replit Agent. | 中文：Replit Agent 新增 GPT-6 Sol、GPT-6 Luna Fast 与 Claude Opus 5.5 三个模型。 | https://x.com/Replit/status/2103650767257083998
-- 2026-09-26T01:08:00Z | TechCrunch | Meta Connect coverage showed smart glasses dominating the event’s demonstrations and product attention. | 中文：Meta Connect 的现场报道显示，智能眼镜占据了大量演示与产品关注度。 | https://techcrunch.com/2026/09/25/at-meta-connect-the-companys-smart-glasses-were-everywhere/
-- 2026-09-25T23:14:00Z | Latent Space | A Latent Space interview traced OpenRouter’s path from an early startup to a company reaching Stripe-scale infrastructure ambitions. | 中文：Latent Space 访谈回顾 OpenRouter 从早期创业项目走向 Stripe 级基础设施雄心的历程。 | https://www.latent.space/p/openrouter
-- 2026-09-26T07:12:00Z | 量子位 | A Qbit report said Google TPUs ran Kimi 57% faster than NVIDIA GPUs using a DeepSeek inference framework. | 中文：量子位报道称，借助 DeepSeek 推理框架，谷歌 TPU 运行 Kimi 比英伟达 GPU 快 57%。 | https://www.qbitai.com/2026/09/497425.html
-- 2026-09-26T07:18:00Z | 量子位 | A Qbit feature examined miHoYo’s large-scale AI ambitions discussed at the Yunqi Conference. | 中文：量子位专题梳理了云栖大会上米哈游展示的大规模 AI 布局与产业野心。 | https://www.qbitai.com/2026/09/497613.html
-- 2026-09-26T01:00:00Z | X / OpenAI Developers | OpenAI reported a Codex outage, later confirming that the service had recovered. | 中文：OpenAI 报告 Codex 发生服务中断，随后确认服务已经恢复。 | https://x.com/OpenAIDevs/status/2103650830604030228
-- 2026-09-26 | arXiv | DeepSeek’s DSec paper described a production sandbox platform serving about three million sandboxes per day for agentic training. | 中文：DeepSeek 的 DSec 论文介绍了一套生产级沙箱平台，每天服务约300万个代理训练沙箱。 | https://arxiv.org/abs/2609.22978
