@@ -13,6 +13,81 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-clef-decision-models.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-clef-decision-models.html",
+      "title": "Cloudflare开源Clef决策模型，专为智能体快速判断",
+      "summary": "Cloudflare发布两款开放权重决策模型，直接输出带概率的结构化判断，为智能体提供更快、更便宜的控制环节。",
+      "content_text": "## 发生了什么\n\nCloudflare发布Clef和Clef-flash两款决策模型，由其Workers AI团队训练。模型接收输入状态和带类型的问题，随后返回一组有概率的限定答案，例如判断客服请求是否紧急、应该交给哪个团队处理。与传统语言模型不同，Clef不生成自由文本，也不需要消耗推理token再让应用解析结果。\n\nCloudflare表示，Clef系列已经通过Workers AI提供服务，同时在Hugging Face以Apache 2.0许可证开放权重。公司还推出了强化学习微调服务，首批面向希望将模型适配到内部判断标准的设计合作伙伴。\n\n## 对开发者意味着什么\n\nClef瞄准的是智能体工作流中的“热路径”：工单路由、工具调用前的风险检查、内容分类，以及决定是否升级给人工。Cloudflare称，Clef中位延迟为209.3毫秒，Clef-flash为38.8毫秒，而对比中的Typesafe AI Jev为524.1毫秒；在十项决策基准中，Clef有一款模型拿下七项第一。\n\n这些数字来自Cloudflare自测，未必能代表所有业务场景。更值得关注的是产品形态：一个输出受约束概率分布的小模型，可以放在大模型之前，减少不必要的生成，并让应用行为更容易审计。借助Cloudflare的全球网络，这些判断也能靠近用户和现有Workers工作负载执行。\n\n## 为什么重要\n\n随着智能体获得真实操作权限，生产事故往往不是“写得不好”，而是“选错了动作”。Clef把这一层中间判断做成可部署的开放权重产品，可能推动决策模型成为智能体路由和安全护栏的基础组件。",
+      "date_published": "2026-10-01T16:18:00.000Z",
+      "date_modified": "2026-10-01T23:00:06.415Z",
+      "tags": [
+        "模型",
+        "开源",
+        "Agent",
+        "安全"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cloudflare-clef-decision-models.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-clef-decision-models.html",
+        "source_published_at": "2026-10-01T16:18:00.000Z",
+        "site_published_at": "2026-10-01T23:00:06.415Z",
+        "sources": [
+          {
+            "title": "Introducing Clef: our open-source decision models, and new RL fine-tuning platform",
+            "url": "https://blog.cloudflare.com/clef-decision-models/"
+          },
+          {
+            "title": "Introducing Clef: Cloudflare's first open-source decision models",
+            "url": "https://developers.cloudflare.com/changelog/post/2026-10-01-clef-workers-ai/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cohere-embed-five-retrieval.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cohere-embed-five-retrieval.html",
+      "title": "Cohere发布Embed 5，检索模型可在速度与质量间切换",
+      "summary": "Cohere推出Embed 5 Pro与Fast，两者共享向量空间，企业无需重建索引即可在检索质量和延迟之间调整。",
+      "content_text": "## 发生了什么\n\nCohere发布Embed 5系列嵌入模型，面向企业搜索、检索增强生成和智能体工作流。此次包括追求最高检索质量的Embed 5 Pro，以及面向低延迟、低成本场景的Embed 5 Fast。两款模型共享同一向量空间，企业可以用Pro建立索引，之后切换Fast进行查询，而不必重新处理已有文档。\n\nCohere将Pro定位于多模态、多语言、金融、代码和结构化文档检索。公司表示，这一系列模型的目标是在内容交给下游语言模型之前提高上下文相关性、过滤噪声，从而改善回答质量并减少昂贵的生成调用。\n\n## 它改变了什么\n\n嵌入模型升级往往比表面看起来更麻烦。只要负责生成文档向量的模型发生变化，企业就可能需要重新处理整个语料库、重建索引，并重新测试多语言和不同文档类型下的排序结果。Cohere强调的兼容性，正面回应了这项迁移成本：企业可以用质量更高的模型建库，再用速度更快的模型处理在线查询，也能根据流量和预算在不同档位之间调整。\n\n因此，这次发布的重点并不是聊天机器人新增了什么功能，而是检索环节的经济性。更好的第一阶段排序既能减少无关上下文，也可能降低下游模型调用次数。共享向量空间还让部署策略更容易回退和调整，不过客户仍需用自己的数据验证召回率、排序稳定性和领域表现。\n\n## 为什么重要\n\n企业AI越来越依赖一个不显眼却关键的环节：决定智能体或语言模型究竟能看到哪些资料。Embed 5的Pro/Fast设计，把这个环节从一次性建库选择变成可持续调节的服务。如果兼容性不只存在于Cohere公布的测试中，它对大型部署的价值可能超过公共榜单上的小幅领先。",
+      "date_published": "2026-10-01T17:13:00.000Z",
+      "date_modified": "2026-10-01T23:00:06.415Z",
+      "tags": [
+        "模型",
+        "产业",
+        "Agent"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cohere-embed-five-retrieval.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cohere-embed-five-retrieval.html",
+        "source_published_at": "2026-10-01T17:13:00.000Z",
+        "site_published_at": "2026-10-01T23:00:06.415Z",
+        "sources": [
+          {
+            "title": "Cohere Releases Embed 5 with Pro and Fast Tiers for Enterprise AI",
+            "url": "https://www.hpcwire.com/bigdatawire/this-just-in/cohere-releases-embed-5-with-pro-and-fast-tiers-for-enterprise-ai/"
+          },
+          {
+            "title": "Cohere Releases Embed 5: How It Compares to Voyage 4 Large, Gemini Embedding 2, and OpenAI",
+            "url": "https://www.marktechpost.com/2026/10/01/cohere-releases-embed-5/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html",
       "title": "DeepSeek 开源昇腾算子，补强国产推理软件栈",
@@ -1812,85 +1887,6 @@
           {
             "title": "Ten advances in mathematics and theoretical computer science",
             "url": "https://openai.com/index/ten-advances-in-mathematics/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-image-35-preview.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-image-35-preview.html",
-      "title": "腾讯发布混元Hy Image3.5预览版，强化多轮生图",
-      "summary": "腾讯混元Hy Image3.5预览版支持文生图、图生图和多轮对话编辑，并已接入元宝、ima等产品。",
-      "content_text": "腾讯发布混元Hy Image3.5预览版，支持文生图、图生图以及基于对话上下文的连续编辑。模型已逐步接入元宝、ima等腾讯产品，同时面向开发者提供调用入口，让用户可以在同一张图片上连续修改，而不必每次重新开始。\n\n## 从一次生成转向连续修改\n\n腾讯称，内部数百名专业设计师参与的盲测显示，Hy Image3.5相较Hy Image3.0的胜出率提升约30%。公司还表示，该模型在这项内部比较中与字节Seedream 5.0 Pro大致相当，并略高于Qwen-Image-3.0 Pro和Google Nano Banana Pro。由于测试由腾讯组织，这些结果不能直接视为独立榜单成绩。\n\n模型支持参考图输入，并能保留多轮对话中的创作意图，适合连续调整构图、光线、主体和细节。腾讯还强调了高分辨率输出和API能力，目标显然不只是让用户偶尔生成一张图片，而是进入设计和内容生产流程。\n\n## 为什么值得关注\n\n这次发布的重点不只是又增加一个图像模型，而是腾讯选择把模型能力嵌入庞大的消费产品体系，并围绕反复修改来设计使用方式。对设计师而言，可控的变化和连续的修订往往比一张惊艳的首图更有价值。\n\n目前仍需观察第三方评测、稳定性、价格和开放范围。Hy Image3.5仍处于预览阶段，但它说明中国互联网平台正在把生图产品从单次提示词工具，推进为带有对话编辑和应用分发能力的完整创作工具。",
-      "date_published": "2026-09-22T02:40:00.000Z",
-      "date_modified": "2026-09-22T11:00:04.265Z",
-      "tags": [
-        "AIGC",
-        "模型",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy-image-35-preview.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-image-35-preview.html",
-        "source_published_at": "2026-09-22T02:40:00.000Z",
-        "site_published_at": "2026-09-22T11:00:04.265Z",
-        "sources": [
-          {
-            "title": "Tencent Hunyuan Hy Image3.5 Preview Released",
-            "url": "https://www.ithome.com/1/005/589.htm"
-          },
-          {
-            "title": "Hy Image3.5 Preview Is Live",
-            "url": "https://x.com/TencentHunyuan/status/2102226552310419473"
-          },
-          {
-            "title": "Tencent Shares Jump After Unveiling New AI Image Model",
-            "url": "https://www.investing.com/news/stock-market-news/tencent-shares-jump-after-unveiling-new-ai-image-model-4909849"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/xiaomi-mimo-v26-open-weights.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/xiaomi-mimo-v26-open-weights.html",
-      "title": "小米开源MiMo-V2.6，公开强化学习全套资源",
-      "summary": "小米开源MiMo-V2.6 Pro与Flash，并同步开放强化学习环境、训练框架和智能体工具链。",
-      "content_text": "## 小米公开完整训练栈\n\n小米发布并开源MiMo-V2.6系列，包括原生多模态模型MiMo-V2.6-Pro和MiMo-V2.6-Flash。公司称，两款模型都经过为期6天的直播强化学习训练，累计生成约75万条训练轨迹，Flash和Pro的训练成本分别约为85万美元和262万美元。\n\n此次开放内容包括模型权重、技术报告、7000多个强化学习环境、端到端训练框架，以及轻量级智能体Harness。训练环境覆盖软件工程、漏洞复现、知识密集型工作和网页设计开发。小米还发布了MiMo-V2.6-Distill-Qwen-9B及相关研究资源。\n\n## 更强的开放权重选手\n\n小米称，MiMo-V2.6-Pro在Artificial Analysis Intelligence Index中获得46分，发布时成为该指数排名最高的开放权重模型。公司表示，Pro在多项智能体测试中已接近头部闭源系统，但综合能力仍落后于最强的专有模型。\n\n更值得关注的是强化学习过程中的增益。小米称，Pro在样本外DeepSWE v1.1测试中的得分从58.4升至72.6，Flash则从48.8升至65.7。较小的蒸馏模型经过强化学习后，在公布的11项指标上也全部超过监督微调基线。\n\n## 为什么重要\n\n这次发布的战略价值不只是又一个开放模型进入榜单。小米同时开放环境、Harness和训练组件，使其他团队能够复现或扩展智能体强化学习实验。对于拥有基础模型、却缺少任务环境和评测设施的研究机构而言，这显著降低了门槛。需要注意的是，部分成绩仍来自小米自测，公告页面与公开权重的时间差也应继续核对，但完整开放的配套资源让这次发布具有罕见的研究价值。\n\n## 猫叔判断\n\n7000多个任务环境可能比46分榜单更重要：小米正在把智能体训练变成别人可以重复尝试的工程体系。",
-      "date_published": "2026-09-21T20:11:00.000Z",
-      "date_modified": "2026-09-21T23:00:04.116Z",
-      "tags": [
-        "开源",
-        "模型",
-        "研究",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/xiaomi-mimo-v26-open-weights.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/xiaomi-mimo-v26-open-weights.html",
-        "source_published_at": "2026-09-21T20:11:00.000Z",
-        "site_published_at": "2026-09-21T23:00:04.116Z",
-        "sources": [
-          {
-            "title": "MiMo-V2.6: Scaling Up Reinforcement Learning for Self-Improvement",
-            "url": "https://mimo.mi.com/docs/en-US/news/latest/v2-6"
-          },
-          {
-            "title": "Xiaomi MiMo on Hugging Face",
-            "url": "https://huggingface.co/XiaomiMiMo"
           }
         ]
       }

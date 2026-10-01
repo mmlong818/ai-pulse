@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cloudflare开源Clef决策模型，专为智能体快速判断 — Uncle Cat AI Radar</title>
+<meta name="description" content="Cloudflare发布两款开放权重决策模型，直接输出带概率的结构化判断，为智能体提供更快、更便宜的控制环节。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-clef-decision-models.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/cloudflare-clef-decision-models.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-clef-decision-models.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/cloudflare-clef-decision-models.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Cloudflare开源Clef决策模型，专为智能体快速判断 — Uncle Cat AI Radar">
+<meta property="og:description" content="Cloudflare发布两款开放权重决策模型，直接输出带概率的结构化判断，为智能体提供更快、更便宜的控制环节。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-clef-decision-models.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cloudflare开源Clef决策模型，专为智能体快速判断 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Cloudflare发布两款开放权重决策模型，直接输出带概率的结构化判断，为智能体提供更快、更便宜的控制环节。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="Cloudflare开源Clef决策模型，专为智能体快速判断 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"Cloudflare开源Clef决策模型，专为智能体快速判断","item":"https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-clef-decision-models.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-clef-decision-models.html#article","headline":"Cloudflare开源Clef决策模型，专为智能体快速判断","description":"Cloudflare发布两款开放权重决策模型，直接输出带概率的结构化判断，为智能体提供更快、更便宜的控制环节。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-clef-decision-models.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-clef-decision-models.html"},"datePublished":"2026-10-01T16:18:00.000Z","dateModified":"2026-10-01T23:00:06.415Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["模型","开源","Agent","安全"],"keywords":"模型, 开源, Agent, 安全","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://blog.cloudflare.com/clef-decision-models/","https://developers.cloudflare.com/changelog/post/2026-10-01-clef-workers-ai/"],"about":[{"@type":"Thing","name":"模型"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"安全"}]}]}</script>
+</head>
+<body data-slug="cloudflare-clef-decision-models" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/cloudflare-clef-decision-models.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-10-01T16:18:00Z">2026年10月2日 00:18</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/safety.html">安全</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>Cloudflare开源Clef决策模型，专为智能体快速判断</h1>
+  <p class="standfirst">Cloudflare发布两款开放权重决策模型，直接输出带概率的结构化判断，为智能体提供更快、更便宜的控制环节。</p>
+  <h2>发生了什么</h2><p>Cloudflare发布Clef和Clef-flash两款决策模型，由其Workers AI团队训练。模型接收输入状态和带类型的问题，随后返回一组有概率的限定答案，例如判断客服请求是否紧急、应该交给哪个团队处理。与传统语言模型不同，Clef不生成自由文本，也不需要消耗推理token再让应用解析结果。</p><p>Cloudflare表示，Clef系列已经通过Workers AI提供服务，同时在Hugging Face以Apache 2.0许可证开放权重。公司还推出了强化学习微调服务，首批面向希望将模型适配到内部判断标准的设计合作伙伴。</p><h2>对开发者意味着什么</h2><p>Clef瞄准的是智能体工作流中的“热路径”：工单路由、工具调用前的风险检查、内容分类，以及决定是否升级给人工。Cloudflare称，Clef中位延迟为209.3毫秒，Clef-flash为38.8毫秒，而对比中的Typesafe AI Jev为524.1毫秒；在十项决策基准中，Clef有一款模型拿下七项第一。</p><p>这些数字来自Cloudflare自测，未必能代表所有业务场景。更值得关注的是产品形态：一个输出受约束概率分布的小模型，可以放在大模型之前，减少不必要的生成，并让应用行为更容易审计。借助Cloudflare的全球网络，这些判断也能靠近用户和现有Workers工作负载执行。</p><h2>为什么重要</h2><p>随着智能体获得真实操作权限，生产事故往往不是“写得不好”，而是“选错了动作”。Clef把这一层中间判断做成可部署的开放权重产品，可能推动决策模型成为智能体路由和安全护栏的基础组件。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://blog.cloudflare.com/clef-decision-models/" rel="noopener" target="_blank">Introducing Clef: our open-source decision models, and new RL fine-tuning platform</a></li><li><a href="https://developers.cloudflare.com/changelog/post/2026-10-01-clef-workers-ai/" rel="noopener" target="_blank">Introducing Clef: Cloudflare's first open-source decision models</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cohere-embed-five-retrieval.html">Cohere发布Embed 5，检索模型可在速度与质量间切换</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html">DeepSeek 开源昇腾算子，补强国产推理软件栈</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/gemini-4-argon-frontier-model.html">谷歌发布 Gemini 4 Argon，前沿模型竞争再加码</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

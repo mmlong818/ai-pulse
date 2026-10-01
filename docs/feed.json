@@ -13,6 +13,81 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/cloudflare-clef-decision-models.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/cloudflare-clef-decision-models.html",
+      "title": "Cloudflare Releases Open-Weight Clef Decision Models",
+      "summary": "Cloudflare released two open-weight models that return calibrated decisions instead of text, targeting faster and cheaper control loops for AI agents.",
+      "content_text": "## What happened\n\nCloudflare released Clef and Clef-flash, two decision models trained by its Workers AI team. The models accept an input state and typed questions, then return probabilities for bounded answers such as whether a support request is urgent or which team should handle it. Unlike a conventional language model, they do not generate free-form text or require reasoning tokens that an application must parse.\n\nCloudflare says Clef is available through Workers AI and that both models are open-sourced on Hugging Face under the Apache 2.0 license. The company also introduced an reinforcement-learning fine-tuning service, initially aimed at design partners that want to adapt the models to internal decision rubrics.\n\n## Why developers may care\n\nThe release is aimed at the hot path of agent systems: routing tickets, checking whether a tool call should proceed, classifying content, or deciding when to escalate to a person. Cloudflare reports median latency of 209.3 milliseconds for Clef and 38.8 milliseconds for Clef-flash, compared with 524.1 milliseconds for Typesafe AI’s Jev in its comparison. It also says a Clef model ranked first on seven of ten decision benchmarks.\n\nThose figures are company-reported, and the benchmark advantage may not transfer to every domain. The more durable proposition is architectural. A small model that emits a constrained probability distribution can sit before a larger model, reducing unnecessary generation and making application behavior easier to audit. Cloudflare’s global network further lets it place these decisions near users and existing Workers workloads.\n\n## Why it matters\n\nAs agents gain permission to act, many production failures will involve choosing the wrong action rather than writing poor prose. Clef makes that intermediate control layer a directly deployable, open-weight product, potentially turning decision models into standard infrastructure for agent routing and guardrails.",
+      "date_published": "2026-10-01T16:18:00.000Z",
+      "date_modified": "2026-10-01T23:00:06.415Z",
+      "tags": [
+        "Models",
+        "Open Source",
+        "Agents",
+        "Safety"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cloudflare-clef-decision-models.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-clef-decision-models.html",
+        "source_published_at": "2026-10-01T16:18:00.000Z",
+        "site_published_at": "2026-10-01T23:00:06.415Z",
+        "sources": [
+          {
+            "title": "Introducing Clef: our open-source decision models, and new RL fine-tuning platform",
+            "url": "https://blog.cloudflare.com/clef-decision-models/"
+          },
+          {
+            "title": "Introducing Clef: Cloudflare's first open-source decision models",
+            "url": "https://developers.cloudflare.com/changelog/post/2026-10-01-clef-workers-ai/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/cohere-embed-five-retrieval.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/cohere-embed-five-retrieval.html",
+      "title": "Cohere Launches Embed 5 for Enterprise Retrieval",
+      "summary": "Cohere introduced Pro and Fast versions of Embed 5, sharing one embedding space so enterprises can trade retrieval quality for latency without reindexing.",
+      "content_text": "## What happened\n\nCohere released Embed 5, a new family of embedding models designed for enterprise search, retrieval-augmented generation and agent workflows. The launch includes Embed 5 Pro, aimed at maximum retrieval quality, and Embed 5 Fast, aimed at latency- and cost-sensitive applications. Both versions use a shared embedding space, allowing a company to index documents with Pro and later query them with Fast without rebuilding the index.\n\nCohere positions Pro for multimodal, multilingual, financial, code and parsed-document retrieval. The company says the family is intended to improve the relevance of context supplied to downstream language models while filtering noise before expensive generation takes place.\n\n## The operational change\n\nEmbedding upgrades are often more disruptive than they appear. Changing the model used to create document vectors can force teams to reprocess an entire corpus, update indexes and test ranking behavior across multiple languages and document types. Cohere’s compatibility claim addresses that migration cost directly. It gives teams a way to use a high-quality model for indexing while selecting a faster model for live queries, or to shift tiers as traffic and budgets change.\n\nThe release is therefore less about a chatbot-facing capability than about retrieval economics. Better first-stage ranking can reduce irrelevant context, which may lower downstream model calls and improve answer quality at the same time. A shared space also makes deployment choices more reversible, although customers still need to validate recall, ranking stability and domain-specific performance on their own data.\n\n## Why it matters\n\nEnterprise AI increasingly depends on the unglamorous layer that decides which documents an agent or language model sees. Embed 5’s Pro/Fast design treats that layer as a continuously tunable service rather than a one-time indexing decision. That could matter more to large deployments than a small improvement on a public leaderboard, provided the compatibility holds beyond Cohere’s published tests.",
+      "date_published": "2026-10-01T17:13:00.000Z",
+      "date_modified": "2026-10-01T23:00:06.415Z",
+      "tags": [
+        "Models",
+        "Industry",
+        "Agents"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cohere-embed-five-retrieval.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cohere-embed-five-retrieval.html",
+        "source_published_at": "2026-10-01T17:13:00.000Z",
+        "site_published_at": "2026-10-01T23:00:06.415Z",
+        "sources": [
+          {
+            "title": "Cohere Releases Embed 5 with Pro and Fast Tiers for Enterprise AI",
+            "url": "https://www.hpcwire.com/bigdatawire/this-just-in/cohere-releases-embed-5-with-pro-and-fast-tiers-for-enterprise-ai/"
+          },
+          {
+            "title": "Cohere Releases Embed 5: How It Compares to Voyage 4 Large, Gemini Embedding 2, and OpenAI",
+            "url": "https://www.marktechpost.com/2026/10/01/cohere-releases-embed-5/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html",
       "title": "DeepSeek Open-Sources Ascend Kernels for V4.1 Inference",
@@ -1812,85 +1887,6 @@
           {
             "title": "Ten advances in mathematics and theoretical computer science",
             "url": "https://openai.com/index/ten-advances-in-mathematics/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy-image-35-preview.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy-image-35-preview.html",
-      "title": "Tencent Releases Hy Image3.5 Preview for Iterative Creation",
-      "summary": "Tencent’s Hy Image3.5 preview adds multi-turn image editing and reference inputs, targeting production workflows rather than one-shot generation.",
-      "content_text": "Tencent has released a preview of Hy Image3.5, its latest image-generation model, with support for text-to-image, image-to-image and multi-turn conversational editing. The model is being introduced through Tencent’s Yuanbao and ima applications, as well as developer-facing access, giving users a way to refine an image across successive instructions instead of restarting from scratch.\n\n## From prompts to revision loops\n\nTencent says an internal blind evaluation involving hundreds of professional designers produced a 30% higher win rate than Hy Image3.0. The company also said the preview performed roughly on par with ByteDance’s Seedream 5.0 Pro and slightly ahead of Qwen-Image-3.0 Pro and Google’s Nano Banana Pro in that internal comparison. Those figures are company-reported and should not be treated as an independent leaderboard result.\n\nThe product supports reference-image inputs and conversational context, allowing a creator to alter composition, lighting, subjects or details over multiple turns. Tencent has also promoted high-resolution output and API access, positioning the model for design and content-production workflows rather than casual experimentation alone.\n\n## Why it matters\n\nThe significance is less about another model entering an already crowded image-generation field than about where Tencent is competing. The company is pairing model quality with direct placement inside a large consumer ecosystem and with a workflow built around repeated edits. That could make the model useful to designers who need controlled variations, not merely attractive first drafts.\n\nThe unresolved issue is independent evidence. Tencent’s comparison is based on an internal designer test, and the preview status means reliability, pricing and access limits may still change. Even so, the launch shows Chinese platforms are increasingly treating image generation as an integrated creative tool, with conversational editing and application distribution becoming as important as raw image quality.",
-      "date_published": "2026-09-22T02:40:00.000Z",
-      "date_modified": "2026-09-22T11:00:04.265Z",
-      "tags": [
-        "AIGC",
-        "Models",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy-image-35-preview.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-image-35-preview.html",
-        "source_published_at": "2026-09-22T02:40:00.000Z",
-        "site_published_at": "2026-09-22T11:00:04.265Z",
-        "sources": [
-          {
-            "title": "Tencent Hunyuan Hy Image3.5 Preview Released",
-            "url": "https://www.ithome.com/1/005/589.htm"
-          },
-          {
-            "title": "Hy Image3.5 Preview Is Live",
-            "url": "https://x.com/TencentHunyuan/status/2102226552310419473"
-          },
-          {
-            "title": "Tencent Shares Jump After Unveiling New AI Image Model",
-            "url": "https://www.investing.com/news/stock-market-news/tencent-shares-jump-after-unveiling-new-ai-image-model-4909849"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/xiaomi-mimo-v26-open-weights.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/xiaomi-mimo-v26-open-weights.html",
-      "title": "Xiaomi Open-Sources MiMo-V2.6 After Large-Scale RL",
-      "summary": "Xiaomi releases MiMo-V2.6 Pro and Flash with open weights, RL environments and training tools for agent research.",
-      "content_text": "## Xiaomi opens the full training stack\n\nXiaomi has released and open-sourced the MiMo-V2.6 family, consisting of the multimodal MiMo-V2.6-Pro and MiMo-V2.6-Flash. The company says both models were improved through a six-day live reinforcement-learning run, with approximately 750,000 training trajectories and reported costs of about $850,000 for Flash and $2.62 million for Pro.\n\nThe release includes model weights, a technical report, more than 7,000 reinforcement-learning environments, an end-to-end training framework, and lightweight agent harnesses. The environments cover software engineering, vulnerability reproduction, knowledge-intensive work, and web design and development. Xiaomi also released MiMo-V2.6-Distill-Qwen-9B and related research resources.\n\n## A stronger open-weight contender\n\nXiaomi reports that MiMo-V2.6-Pro reached 46 on the Artificial Analysis Intelligence Index, making it the highest-ranked open-weight model on that index at launch. It says the model is competitive with leading closed systems on several agent benchmarks, while still trailing the strongest proprietary models overall.\n\nThe most notable claim is about improvement during reinforcement learning. Xiaomi says Pro’s out-of-sample DeepSWE v1.1 score rose from 58.4 to 72.6, while Flash increased from 48.8 to 65.7. The smaller distillation release also improved across all 11 listed evaluation metrics after reinforcement-learning training.\n\n## Why it matters\n\nThe strategic importance is broader than another open model joining the leaderboard. Xiaomi is publishing the environments, harnesses and training components needed for others to reproduce or extend agentic reinforcement learning. That lowers the barrier for laboratories that have capable base models but lack task environments and evaluation infrastructure. The claims still depend heavily on Xiaomi’s own measurements, and the release date difference between the announcement page and public artifacts should be tracked carefully, but the openness of the surrounding stack gives this launch unusual research value.\n\n## Uncle Cat take\n\nThe 7,000-plus task environments may matter more than the 46-point index score: Xiaomi is exporting the machinery that can make agent training repeatable.",
-      "date_published": "2026-09-21T20:11:00.000Z",
-      "date_modified": "2026-09-21T23:00:04.116Z",
-      "tags": [
-        "Open Source",
-        "Models",
-        "Research",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/xiaomi-mimo-v26-open-weights.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/xiaomi-mimo-v26-open-weights.html",
-        "source_published_at": "2026-09-21T20:11:00.000Z",
-        "site_published_at": "2026-09-21T23:00:04.116Z",
-        "sources": [
-          {
-            "title": "MiMo-V2.6: Scaling Up Reinforcement Learning for Self-Improvement",
-            "url": "https://mimo.mi.com/docs/en-US/news/latest/v2-6"
-          },
-          {
-            "title": "Xiaomi MiMo on Hugging Face",
-            "url": "https://huggingface.co/XiaomiMiMo"
           }
         ]
       }
