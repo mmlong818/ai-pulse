@@ -85,6 +85,73 @@ Sources:
   - Cohere Releases Embed 5 with Pro and Fast Tiers for Enterprise AI: https://www.hpcwire.com/bigdatawire/this-just-in/cohere-releases-embed-5-with-pro-and-fast-tiers-for-enterprise-ai/
   - Cohere Releases Embed 5: How It Compares to Voyage 4 Large, Gemini Embedding 2, and OpenAI: https://www.marktechpost.com/2026/10/01/cohere-releases-embed-5/
 
+### DeepSeek Opens Harness Desktop Agent for Local Work
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-harness-desktop-agent.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-harness-desktop-agent.html
+- Source timestamp: 2026-10-02T03:11:00.000Z
+- Site timestamp: 2026-10-02T11:00:05.140Z
+- Tags: Agents, Industry, Open Source, Safety
+
+DeepSeek has released Harness for macOS and Windows, combining local file access, coding, background tasks and extensible agent plugins.
+
+## DeepSeek moves beyond chat
+
+DeepSeek has made Harness available as a desktop application for macOS and Windows, positioning it as a locally oriented environment for running agents across everyday work, coding and research. The product can work with local files, execute background tasks, inspect repositories and expose a web interface from code. DeepSeek describes it as open source and says the desktop release is available worldwide in public preview.
+
+Harness is built around Cordis, an architecture in which capabilities are packaged as composable plugins. The product includes plugins for tasks such as document and spreadsheet work, code editing, terminal operations and scheduled jobs. It also offers a creator mode that can generate and install new plugins through conversation. DeepSeek’s examples include a Pomodoro timer, file analysis and code changes verified through a development workflow.
+
+## A different kind of model release
+
+Unlike a new foundation-model checkpoint, Harness is a distribution and execution layer. Its importance comes from placing an agent directly on a user’s computer, where it can access files, run commands and continue work in the background. That makes it potentially more useful than a browser chatbot for long-running tasks, while also raising a more serious security question: the agent’s mistakes can affect the local machine rather than only a conversation window.
+
+DeepSeek’s own safe-use guidance recommends a dedicated virtual machine or container with limited privileges, especially when the system processes untrusted web content. The preview status also means its plugin and API surfaces are still changing. Users will need to manage permissions, credentials and network access themselves.
+
+## Why it matters
+
+Harness gives DeepSeek a product foothold in the agent runtime layer, where the strategic contest is increasingly about persistence, tools and local execution rather than model chat alone. Its open plugin architecture could attract developers, but adoption will depend on whether DeepSeek can make powerful local actions safe enough for routine use.
+
+Chinese title: DeepSeek推出Harness桌面智能体，支持本地长期任务
+Chinese summary: DeepSeek面向macOS和Windows发布Harness桌面智能体，整合本地文件、编程、后台任务和可扩展插件。
+
+Sources:
+  - DeepSeek Harness: https://www.deepseek.com/en/harness/
+  - DeepSeek Harness for desktop: https://www.deepseek.com/en/download/
+  - DeepSeek Harness Safe Use Policy: https://deepseek.com/harness/privacy/
+
+### AWS Releases Open Strands Decider 2B for Agent Decisions
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/strands-decider-2b-open-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/strands-decider-2b-open-model.html
+- Source timestamp: 2026-10-02T06:35:00.000Z
+- Site timestamp: 2026-10-02T11:00:05.140Z
+- Tags: Agents, Open Source, Models
+
+AWS has open-sourced a 2-billion-parameter decision model that returns calibrated choices in roughly 115 milliseconds for agent workflows.
+
+## A model built to choose
+
+AWS Strands Labs has released Strands Decider 2B, an open-weight model designed for bounded decisions rather than conversational text generation. Given a state and typed questions, it can select among options, answer yes-or-no prompts, or assign scores with probabilities. The weights, training data and training scripts are available under Apache 2.0, with local use supported on CPUs, consumer GPUs and Apple silicon.
+
+The model is built from a Qwen3.5-2B torso whose language-model head has been replaced with a pointer head. That design removes the need to generate token sequences. Instead, the model compares hidden representations for the available answers and produces a structured result. AWS says the released version is the 19th major iteration of the architecture.
+
+## Why agents are the target
+
+Strands Decider 2B is intended to sit inside an agent workflow as a low-latency control layer. It could decide whether an agent should call a tool, route a support request, classify an input, or escalate an uncertain case to a person. AWS reports a median local latency of about 115 milliseconds on an RTX 3090, while small tasks on an M3 MacBook averaged roughly 153 milliseconds. The model ranked third among 33 models in its 2B class on JevBench, and first when models slightly above two billion parameters were excluded.
+
+The limitations are equally important: it cannot write arbitrary text, solve open-ended problems, or replace a general reasoning model. Its value depends on developers defining the decision space correctly and validating the confidence scores outside AWS’s own testing.
+
+## Why it matters
+
+The release gives developers a permissively licensed, locally deployable component for making agent systems faster and more predictable. If decision models become a standard companion to generative models, agent architectures may shift from asking one large model to do everything toward using specialized models for generation, control and escalation.
+
+Chinese title: AWS开源Strands Decider 2B，专为智能体决策而生
+Chinese summary: AWS开源一款20亿参数决策模型，可在约115毫秒内返回带校准概率的选项结果，面向智能体工作流部署。
+
+Sources:
+  - Introducing Strands Decider 2B: a small, open source, decision model: https://strandsagents.com/blog/introducing-strands-decider/
+  - AWS Strands Labs Releases Strands Decider 2B: https://www.marktechpost.com/2026/10/01/aws-strands-labs-releases-strands-decider-2b/
+
 ### DeepSeek Open-Sources Ascend Kernels for V4.1 Inference
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html
@@ -943,75 +1010,6 @@ Sources:
   - Sakana AI RSI Lab — Japanese announcement: https://sakana.ai/rsi-lab-jp/
   - Recursive Self-Improvement Since 1987: https://people.idsia.ch/~juergen/recursive-self-improvement.html
 
-### Anthropic Signs $11.6 Billion Akamai Cloud Deal
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-akamai-cloud-deal.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-akamai-cloud-deal.html
-- Source timestamp: 2026-09-25T10:43:00.000Z
-- Site timestamp: 2026-09-25T11:00:04.874Z
-- Tags: Industry, Funding
-
-A seven-year CPU-heavy infrastructure contract gives Anthropic more capacity while tying Akamai’s future growth directly to Claude demand.
-
-Anthropic has agreed to spend $11.6 billion on Akamai cloud services over seven years, in one of the largest disclosed infrastructure commitments by an AI model developer. The agreement expands an earlier relationship and is intended to support Anthropic’s growing CPU workloads for training, inference, and enterprise deployment.
-
-## A cloud deal with equity attached
-
-Akamai issued Anthropic a warrant that could convert into roughly 7.7 million common shares, equivalent to about 5% of the company if the full relationship expands. Around 2% is linked to the initial commitment; the remaining portion depends on as much as $9 billion in additional purchases. Anthropic therefore does not currently own a 5% stake.
-
-Akamai estimates that fulfilling the initial contract will require approximately $5.5 billion in capital expenditure. It plans to spend more on servers, memory, networking, and related components, with much of that investment expected next year. The agreement is unusually large for a company whose traditional business is content delivery and cybersecurity.
-
-## Why the infrastructure mix matters
-
-The contract is notable because it centers on CPU capacity rather than a publicly disclosed dedicated GPU training cluster. As AI products become persistent services used by businesses, inference, orchestration, retrieval, and agent workloads can create substantial demand for general-purpose compute alongside accelerators.
-
-For Anthropic, the deal diversifies its infrastructure base beyond hyperscalers and specialist data-center providers. For Akamai, it is a bet that its distributed cloud network can become a meaningful home for frontier-model workloads. The companies have not disclosed capacity by region, service-level commitments, margins, or whether Akamai will replace other suppliers.
-
-The headline amount is a contractual commitment spread across seven years, not immediate revenue. Its significance lies in the scale of infrastructure being reserved before the next generation of agentic software fully arrives—and in the financial entanglement between a model maker and the provider building the capacity it needs.
-
-Chinese title: Anthropic与Akamai签署116亿美元云计算协议
-Chinese summary: 这份为期七年的协议以CPU算力为重点，让Anthropic锁定更多基础设施，也把Akamai的增长前景绑定到Claude需求上。
-
-Sources:
-  - Akamai signs $11.6 billion cloud deal with Anthropic, grants warrant for up to 5% stake: https://www.ksl.com/article/51628317/akamai-anthropic-sign-116-billion-cloud-services-deal
-  - Akamai Announces $11.6 Billion Multi-year Agreement with Anthropic: https://www.akamai.com/newsroom/press-release/akamai-announces-11-6-billion-multi-year-agreement-with-anthropic-to-support-growing-demand
-
-### Black Forest Labs Releases Open-Weight FLUX 3 Action
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/flux-3-action-robot-model.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/flux-3-action-robot-model.html
-- Source timestamp: 2026-09-25T04:24:00.000Z
-- Site timestamp: 2026-09-25T11:00:04.874Z
-- Tags: Models, Open Source, AIGC
-
-The 7B model predicts video and robot actions together, placing a visual-generation lab inside the race to build open physical-AI systems.
-
-Black Forest Labs has released FLUX 3 Action, a 7-billion-parameter open-weight world-action model for robotics. The system takes camera frames, robot state, and a textual instruction, then predicts both future visual frames and the next sequence of physical actions.
-
-## From visual generation to robot control
-
-The release extends the FLUX family beyond image and video generation. BFL’s approach treats visual prediction as part of a robot-control problem: a model that can represent how scenes evolve may also be able to infer what a robot should do next.
-
-On the RoboLab-120 benchmark, the released system reportedly achieved a 42.92% task-success rate, ahead of the 36.8% score cited for NVIDIA’s Cosmos 3 Nano. Those results are useful but narrow. They measure a defined set of simulated or laboratory tasks, not broad reliability in homes, factories, or unstructured environments.
-
-The model is open-weight, but access does not mean unrestricted commercial deployment. BFL’s license permits non-commercial and limited qualifying commercial use while excluding military applications, surveillance, biometric processing, and other prohibited uses. The DROID policy reportedly needs about 32GB of GPU memory in BF16, although quantized configurations can reduce the hardware requirement.
-
-## Why the release matters
-
-FLUX 3 Action is strategically important because it connects two markets that have usually developed separately. The same foundation-model lineage can support creative generation and physical action prediction, while researchers receive weights, policy variants, and recipes they can inspect and adapt.
-
-The constraints are equally important. Hardware requirements remain substantial, the license limits some real-world deployments, and benchmark leadership does not establish robustness under changing objects, lighting, contact forces, or safety constraints.
-
-Still, the release lowers the barrier for researchers to experiment with visual world models as robot policies. It also signals that major generative-media labs increasingly view physical AI as a natural extension of multimodal modeling rather than a separate discipline.
-
-Chinese title: Black Forest Labs开源权重机器人模型FLUX 3 Action
-Chinese summary: 这款70亿参数模型同时预测视频与机器人动作，让视觉生成实验室正式进入开放式具身智能竞争。
-
-Sources:
-  - Black Forest Labs Releases FLUX 3 Action: A 7B Open-Weights World Action Model That Tops RoboLab-120: https://www.marktechpost.com/2026/09/24/black-forest-labs-releases-flux-3-action/amp/
-  - FLUX 3 Action model collection: https://huggingface.co/collections/black-forest-labs/flux-3-action
-  - FLUX 3 Action license: https://huggingface.co/black-forest-labs/flux-3-action-base/blob/main/LICENSE.md
-
 ## Recent radar items
 
 ### 2026-10-02
@@ -1023,6 +1021,11 @@ Sources:
 - 2026-10-01T19:24:00Z | earendil.com | Pi Durable added persistence features intended to keep AI coding tasks alive across interruptions and sessions. | 中文：Pi Durable增加持久化能力，让AI编程任务可跨中断和会话持续运行。 | https://earendil.com/posts/pi-durable/
 - 2026-10-01T13:35:00Z | Coindar | Elastos released Runtime v0.7.1 with local AI models and updates to its Home, Browser, and Services components. | 中文：Elastos发布Runtime v0.7.1，加入本地AI模型并更新Home、Browser和Services组件。 | https://coindar.org/en/event/elastos-released-elastos-runtime-v071-154548
 - 2026-10-01T16:07:00Z | Business Wire | Acumatica made its 2026 R2 ERP release generally available with embedded AI, analytics, and industry-specific workflow improvements. | 中文：Acumatica正式发布2026 R2 ERP，加入嵌入式AI、分析能力和行业工作流改进。 | https://www.aol.com/articles/acumatica-2026-r2-enables-mid-160700000.html
+- 2026-10-02T00:32:00Z | MarkTechPost | Google Research’s Kauldron offers a readable JAX training framework built from plain-data configs and string-wired components. | 中文：Google Research 的 Kauldron 用纯数据配置和字符串组件连接，提供易读的 JAX 训练框架。 | https://www.marktechpost.com/2026/10/01/a-coding-guide-to-google-researchs-kauldron-configs-that-are-plain-data-components-wired-by-string-and-a-jax-trainer-you-can-read-end-to-end/
+- 2026-10-02 | Rundowns AI | ServiceNow reported that synthetic data raised Gemma’s score to 27.18% on IT service-management agent tasks. | 中文：ServiceNow 称，合成数据将 Gemma 在 IT 服务管理智能体任务上的得分提升至 27.18%。 | https://rundownsai.com/
+- 2026-10-02 | AGI Hunt | Halluminate, a sub-ten-person reinforcement-learning startup, raised $30 million after partnering with four of five leading AI labs. | 中文：不到十人的强化学习初创公司 Halluminate 在与五大 AI 实验室中四家合作后融资 3000 万美元。 | https://agihunt.info/en/daily/2026-10-02
+- 2026-10-02 | Hugging Face Papers | Hugging Face highlighted SILSA, which compresses high-resolution 3D generation into 384 sliding-window slice latents while preserving topology. | 中文：Hugging Face 展示 SILSA，将高分辨率 3D 生成压缩为 384 个滑窗切片潜变量，同时保持拓扑结构。 | https://huggingface.co/papers
+- 2026-10-02 | AI Pulse | OpenAI completed a reported $10 billion SoftBank tranche, bringing SoftBank’s total investment to about $64.6 billion. | 中文：据报道，OpenAI 完成软银 100 亿美元追加投资，使软银累计投入约 646 亿美元。 | https://aipulsen.com/dag/2026-10-02?lang=en
 
 ### 2026-10-01
 
@@ -1059,6 +1062,14 @@ Sources:
 - 2026-10-01 | OnAirToday | Restate raised $20 million in Series A funding to build durable infrastructure for AI-agent workflows. | 中文：Restate完成2000万美元A轮融资，建设面向AI代理工作流的持久化基础设施。 | https://onairtoday.com/daily-ai-briefing/2026-10-01
 - 2026-10-01 | WorldAttention | Inworld acquired Ultravox, combining a real-time voice-agent platform with speech generation capabilities. | 中文：Inworld收购Ultravox，将实时语音代理平台与语音生成能力合并。 | https://worldattention.com/daily-briefing/2026-10-01
 - 2026-10-01 | Nature | A Nature study reported that Ataraxos defeated a top Stratego player 15–1 with four draws using less than $8,000 of training compute. | 中文：《自然》论文称Ataraxos以不到8000美元训练成本击败顶尖战略棋手，战绩为15胜1负4和。 | https://www.nature.com/
+- 2026-10-01 | TechCrunch | Shopify introduced Canvas, a Sidekick-powered surface that edits live storefront code through conversation. | 中文：Shopify 推出 Canvas，由 Sidekick 驱动，可通过对话直接编辑线上店铺代码。 | https://techcrunch.com/
+- 2026-10-01 | CoreWeave | CoreWeave launched Forge, connecting training, inference, evaluation, observability, data curation, and agent development in one loop. | 中文：CoreWeave 推出 Forge，把训练、推理、评测、观测、数据整理和智能体开发连接成闭环。 | https://www.coreweave.com/
+- 2026-10-01 | Schmidt Sciences | Schmidt Sciences awarded $16 million to 28 AI2050 fellows working across alignment, interpretability, and governance. | 中文：Schmidt Sciences 向 28 名 AI2050 学者提供 1600 万美元，支持对齐、可解释性和治理研究。 | https://www.schmidtsciences.org/
+- 2026-10-01 | NVIDIA Research | NVIDIA released Kumo Tabular, a structured-data model that predicts new rows in one forward pass. | 中文：NVIDIA 发布 Kumo Tabular，一种可通过单次前向计算预测新数据行的结构化数据模型。 | https://www.nvidia.com/en-us/research/
+- 2026-10-01 | Hugging Face Papers | A new paper introduced DockSmith, an agentic Docker builder achieving 39.72% fail-to-pass and 58.28% commit rates. | 中文：新论文提出 DockSmith 智能 Docker 构建器，达到 39.72% 修复失败测试和 58.28% 提交率。 | https://huggingface.co/papers
+- 2026-10-01 | Hugging Face Papers | A paper proposed UniMax, which caps repeated language-corpus sampling to improve multilingual pretraining balance. | 中文：一篇论文提出 UniMax，通过限制语言语料重复采样，改善多语言预训练的平衡性。 | https://huggingface.co/papers
+- 2026-10-01 | Hugging Face Papers | A new study found benchmark users’ real climate-information needs often diverge from what LLM evaluations measure. | 中文：一项新研究发现，用户真实的气候信息需求经常偏离现有大模型评测所衡量的内容。 | https://huggingface.co/papers
+- 2026-10-01 | Hugging Face Papers | A study proposed Agent-as-a-Proxy attacks that bypass monitoring protocols by using one agent to deliver malicious instructions to another. | 中文：一项研究提出 Agent-as-a-Proxy 攻击，利用一个智能体向另一个智能体传递恶意指令以绕过监控协议。 | https://huggingface.co/papers
 
 ### 2026-09-30
 

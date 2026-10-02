@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AWS开源Strands Decider 2B，专为智能体决策而生 — Uncle Cat AI Radar</title>
+<meta name="description" content="AWS开源一款20亿参数决策模型，可在约115毫秒内返回带校准概率的选项结果，面向智能体工作流部署。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/strands-decider-2b-open-model.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/strands-decider-2b-open-model.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/strands-decider-2b-open-model.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/strands-decider-2b-open-model.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="AWS开源Strands Decider 2B，专为智能体决策而生 — Uncle Cat AI Radar">
+<meta property="og:description" content="AWS开源一款20亿参数决策模型，可在约115毫秒内返回带校准概率的选项结果，面向智能体工作流部署。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/strands-decider-2b-open-model.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AWS开源Strands Decider 2B，专为智能体决策而生 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="AWS开源一款20亿参数决策模型，可在约115毫秒内返回带校准概率的选项结果，面向智能体工作流部署。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="AWS开源Strands Decider 2B，专为智能体决策而生 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"AWS开源Strands Decider 2B，专为智能体决策而生","item":"https://mmlong818.github.io/ai-pulse/zh/articles/strands-decider-2b-open-model.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/strands-decider-2b-open-model.html#article","headline":"AWS开源Strands Decider 2B，专为智能体决策而生","description":"AWS开源一款20亿参数决策模型，可在约115毫秒内返回带校准概率的选项结果，面向智能体工作流部署。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/strands-decider-2b-open-model.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/strands-decider-2b-open-model.html"},"datePublished":"2026-10-02T06:35:00.000Z","dateModified":"2026-10-02T11:00:05.140Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["Agent","开源","模型"],"keywords":"Agent, 开源, 模型","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://strandsagents.com/blog/introducing-strands-decider/","https://www.marktechpost.com/2026/10/01/aws-strands-labs-releases-strands-decider-2b/"],"about":[{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"模型"}]}]}</script>
+</head>
+<body data-slug="strands-decider-2b-open-model" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/strands-decider-2b-open-model.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-10-02T06:35:00Z">2026年10月2日 14:35</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>AWS开源Strands Decider 2B，专为智能体决策而生</h1>
+  <p class="standfirst">AWS开源一款20亿参数决策模型，可在约115毫秒内返回带校准概率的选项结果，面向智能体工作流部署。</p>
+  <h2>专门负责“选答案”的模型</h2><p>AWS旗下Strands Labs发布了Strands Decider 2B。这是一款面向有限决策的开放权重模型，不以生成对话文本为目标。开发者可以向它提供一段状态信息和若干结构化问题，由模型返回选项、是非判断或评分，并同时给出概率。模型采用Apache 2.0许可，权重、训练数据和训练脚本均已公开，可在CPU、消费级GPU以及苹果芯片设备上本地运行。</p><p>Strands Decider 2B以Qwen3.5-2B为基础，移除了传统语言模型的输出头，换成用于比较候选答案的指针头。它不需要逐个生成token，而是直接评估给定选项与输入状态的匹配程度。AWS表示，当前公开版本已经历19轮主要架构迭代。</p><h2>它要进入智能体的“控制层”</h2><p>这款模型的定位，是嵌入智能体工作流，承担低延迟的判断任务。例如，它可以决定是否调用工具、把客服请求分配给哪个团队、是否拦截请求，或在不确定时转交人工。AWS称，模型在RTX 3090上的本地中位延迟约为115毫秒；在M3 MacBook上处理小任务时约为153毫秒。在JevBench测试中，它在33款同级模型中排名第三；如果排除略高于20亿参数的模型，则排名第一。</p><p>它也有明确边界：不能自由写作，无法独立处理开放式复杂问题，也不是通用推理模型的替代品。开发者必须先定义好决策空间，并在真实业务中验证概率是否可靠。</p><h2>为什么值得关注</h2><p>这次发布为开发者提供了一个许可宽松、可本地部署的智能体决策组件。若这类模型逐渐成为生成模型的固定搭档，智能体架构可能从“一个大模型包办所有工作”，转向由生成、控制和升级处理等多个专用模型协同完成。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://strandsagents.com/blog/introducing-strands-decider/" rel="noopener" target="_blank">Introducing Strands Decider 2B: a small, open source, decision model</a></li><li><a href="https://www.marktechpost.com/2026/10/01/aws-strands-labs-releases-strands-decider-2b/" rel="noopener" target="_blank">AWS Strands Labs Releases Strands Decider 2B</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-clef-decision-models.html">Cloudflare开源Clef决策模型，专为智能体快速判断</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cohere-embed-five-retrieval.html">Cohere发布Embed 5，检索模型可在速度与质量间切换</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-harness-desktop-agent.html">DeepSeek推出Harness桌面智能体，支持本地长期任务</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

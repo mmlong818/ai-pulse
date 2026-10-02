@@ -88,6 +88,85 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-harness-desktop-agent.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-harness-desktop-agent.html",
+      "title": "DeepSeek推出Harness桌面智能体，支持本地长期任务",
+      "summary": "DeepSeek面向macOS和Windows发布Harness桌面智能体，整合本地文件、编程、后台任务和可扩展插件。",
+      "content_text": "## DeepSeek从聊天产品走向桌面智能体\n\nDeepSeek现已面向macOS和Windows推出Harness桌面应用，将其定位为一个以本地执行为核心的智能体环境，可用于日常办公、编程和研究。它能够访问本地文件、执行后台任务、检查代码仓库，也可以通过代码启动网页界面。DeepSeek称，Harness已在全球进入公开预览阶段，并以开源方式提供。\n\nHarness建立在Cordis架构之上，核心思路是把不同能力封装成可组合的插件。产品目前覆盖文档和表格处理、代码编辑、终端操作以及定时任务等场景，还提供Creator模式，允许用户通过对话生成并安装新插件。DeepSeek展示的示例包括制作番茄钟、分析文件，以及在开发流程中修改代码并完成验证。\n\n## 这不是又一个基础模型发布\n\nHarness的重点不在于推出新的模型权重，而在于成为模型的分发和执行层。它把智能体直接放到用户电脑上，使其能够读取文件、运行命令，并在后台持续处理任务。对于长时间运行的工作，这种方式可能比浏览器聊天机器人更实用；但相应地，错误也可能直接影响本地设备，而不只是造成一次错误回答。\n\nDeepSeek的安全说明建议用户在处理不可信网页内容时，使用权限受限的虚拟机或容器。由于目前仍是预览版，插件和API接口也可能继续变化。用户需要自行管理权限、账号凭据和网络访问范围。\n\n## 为什么值得关注\n\nHarness让DeepSeek进入了智能体运行时这一关键层面。如今的竞争已不只是聊天模型谁更强，还包括谁能让智能体持续工作、调用更多工具，并在本地完成任务。它的开放插件架构有机会吸引开发者，但能否被日常采用，最终取决于DeepSeek能否把本地执行带来的风险控制在可接受范围内。",
+      "date_published": "2026-10-02T03:11:00.000Z",
+      "date_modified": "2026-10-02T11:00:05.140Z",
+      "tags": [
+        "Agent",
+        "产业",
+        "开源",
+        "安全"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-harness-desktop-agent.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-harness-desktop-agent.html",
+        "source_published_at": "2026-10-02T03:11:00.000Z",
+        "site_published_at": "2026-10-02T11:00:05.140Z",
+        "sources": [
+          {
+            "title": "DeepSeek Harness",
+            "url": "https://www.deepseek.com/en/harness/"
+          },
+          {
+            "title": "DeepSeek Harness for desktop",
+            "url": "https://www.deepseek.com/en/download/"
+          },
+          {
+            "title": "DeepSeek Harness Safe Use Policy",
+            "url": "https://deepseek.com/harness/privacy/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/strands-decider-2b-open-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/strands-decider-2b-open-model.html",
+      "title": "AWS开源Strands Decider 2B，专为智能体决策而生",
+      "summary": "AWS开源一款20亿参数决策模型，可在约115毫秒内返回带校准概率的选项结果，面向智能体工作流部署。",
+      "content_text": "## 专门负责“选答案”的模型\n\nAWS旗下Strands Labs发布了Strands Decider 2B。这是一款面向有限决策的开放权重模型，不以生成对话文本为目标。开发者可以向它提供一段状态信息和若干结构化问题，由模型返回选项、是非判断或评分，并同时给出概率。模型采用Apache 2.0许可，权重、训练数据和训练脚本均已公开，可在CPU、消费级GPU以及苹果芯片设备上本地运行。\n\nStrands Decider 2B以Qwen3.5-2B为基础，移除了传统语言模型的输出头，换成用于比较候选答案的指针头。它不需要逐个生成token，而是直接评估给定选项与输入状态的匹配程度。AWS表示，当前公开版本已经历19轮主要架构迭代。\n\n## 它要进入智能体的“控制层”\n\n这款模型的定位，是嵌入智能体工作流，承担低延迟的判断任务。例如，它可以决定是否调用工具、把客服请求分配给哪个团队、是否拦截请求，或在不确定时转交人工。AWS称，模型在RTX 3090上的本地中位延迟约为115毫秒；在M3 MacBook上处理小任务时约为153毫秒。在JevBench测试中，它在33款同级模型中排名第三；如果排除略高于20亿参数的模型，则排名第一。\n\n它也有明确边界：不能自由写作，无法独立处理开放式复杂问题，也不是通用推理模型的替代品。开发者必须先定义好决策空间，并在真实业务中验证概率是否可靠。\n\n## 为什么值得关注\n\n这次发布为开发者提供了一个许可宽松、可本地部署的智能体决策组件。若这类模型逐渐成为生成模型的固定搭档，智能体架构可能从“一个大模型包办所有工作”，转向由生成、控制和升级处理等多个专用模型协同完成。",
+      "date_published": "2026-10-02T06:35:00.000Z",
+      "date_modified": "2026-10-02T11:00:05.140Z",
+      "tags": [
+        "Agent",
+        "开源",
+        "模型"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/strands-decider-2b-open-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/strands-decider-2b-open-model.html",
+        "source_published_at": "2026-10-02T06:35:00.000Z",
+        "site_published_at": "2026-10-02T11:00:05.140Z",
+        "sources": [
+          {
+            "title": "Introducing Strands Decider 2B: a small, open source, decision model",
+            "url": "https://strandsagents.com/blog/introducing-strands-decider/"
+          },
+          {
+            "title": "AWS Strands Labs Releases Strands Decider 2B",
+            "url": "https://www.marktechpost.com/2026/10/01/aws-strands-labs-releases-strands-decider-2b/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html",
       "title": "DeepSeek 开源昇腾算子，补强国产推理软件栈",
@@ -1809,84 +1888,6 @@
           {
             "title": "Grok 4.7 Release Notes",
             "url": "https://docs.x.ai/developers/release-notes"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-sol-pi-coding-agent-efficiency.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-sol-pi-coding-agent-efficiency.html",
-      "title": "英伟达开源SoL-Pi，降低编程智能体令牌开销",
-      "summary": "英伟达开源SoL-Pi扩展，通过自动研究循环减少编程智能体的重复上下文和工具调用，令牌流量最高下降49%。",
-      "content_text": "英伟达、麻省理工学院和南洋理工大学研究人员发布SoL-Pi，这是一个面向Pi编程智能体框架的开源扩展，目标是减少长时间编码任务中反复出现的上下文和工具调用开销。项目通过自动化研究循环，寻找更高效的智能体控制方式。\n\n## 优化模型外的控制环\n\nSoL-Pi包含四类机制，分别涉及动作执行、上下文压缩、观察结果处理和委派式阅读。它并不改变底层语言模型，而是尽量避免智能体反复回放已完成的子任务、把过大的日志重新发送给模型，或花费完整请求阅读对下一步决策没有帮助的信息。\n\n在研究团队公布的51项EdgeBench测试中，SoL-Pi相较基础版Pi减少了44.7%至49.0%的记录令牌流量。研究人员称，在GPT-5.6 Sol和Opus 5上，任务表现基本保持可比，同时估算API成本下降约三分之一。该扩展可以运行在未经修改的Pi版本之上，采用MIT许可证，相关机制默认需要用户选择启用。\n\n## 为什么值得关注\n\n编程智能体正在从几分钟的辅助问答转向持续数小时的工作流程。在这类场景中，重复传输上下文和工具结果可能成为重要成本。如果SoL-Pi的节省幅度能在生产环境中复现，开发者就有机会在不更换较弱模型的情况下改善利润和响应效率。\n\n但目前的数据仍有限。EdgeBench只有51项任务，结果也来自特定框架、模型和工作方式，不能直接代表所有智能体。过度压缩上下文还可能让系统丢失后续需要的证据。\n\nSoL-Pi的真正价值在于提出了一条清晰路线：智能体效率不一定只能靠压缩模型或降低单价，也可以从重做外围控制循环入手。",
-      "date_published": "2026-09-22T05:04:00.000Z",
-      "date_modified": "2026-09-22T11:00:04.265Z",
-      "tags": [
-        "Agent",
-        "研究",
-        "开源"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/nvidia-sol-pi-coding-agent-efficiency.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-sol-pi-coding-agent-efficiency.html",
-        "source_published_at": "2026-09-22T05:04:00.000Z",
-        "site_published_at": "2026-09-22T11:00:04.265Z",
-        "sources": [
-          {
-            "title": "NVIDIA Introduces SoL-Pi: Auto-Research Loops for Coding Agents",
-            "url": "https://www.marktechpost.com/2026/09/21/nvidia-researchers-have-released-sol-pi/"
-          },
-          {
-            "title": "SoL-Pi GitHub Repository",
-            "url": "https://github.com/NVlabs/SoL-Pi"
-          },
-          {
-            "title": "SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness",
-            "url": "https://arxiv.org/abs/2609.20519"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-math-advisory-group.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-math-advisory-group.html",
-      "title": "OpenAI成立数学顾问组，监督AI成果发布方式",
-      "summary": "OpenAI邀请数学家组成独立顾问组，协助判断AI数学成果的披露、署名和研究责任边界。",
-      "content_text": "## 为AI数学成果增加外部把关\n\nOpenAI成立由数学家组成的独立顾问组，协助公司判断如何发布由AI系统产生的数学进展。根据公司公告，顾问组将就成果披露、署名归属和数学研究的负责任传播提供建议。\n\n这一举措发生在OpenAI多次宣称其模型已参与推进100多个开放数学问题之后。公司此前已经发布涉及几何、编码理论、图论、复杂性等领域的成果，也介绍过模型参与Navier–Stokes相关数学问题和Erdős问题研究的案例。\n\n## 署名问题正在变成实际流程\n\nAI生成数学成果带来的问题，比普通软件辅助更具体。模型可能提出猜想、找到证明思路、生成形式化证明代码，也可能给出仍需人工核查的完整论证。这些贡献的科学含义并不相同，但公开宣传很容易把它们压缩成一句“AI解决了问题”。\n\n外部顾问组为OpenAI提供了在发布成果前咨询领域专家的机制，有助于讨论研究优先级、成果新颖性、署名和验证方式。它也可能推动形成新的规范：哪些工作属于模型贡献，哪些判断必须由人类数学家完成。不过，OpenAI并未把该小组定位为独立认证机构，也没有公开完整的工作章程和决策流程。\n\n## 为什么重要\n\n这件事的重要性在于，AI数学正在从基准演示走向制度建设。如果模型持续生成候选证明或有价值的研究方向，实验室就必须建立检查新颖性、保留贡献记录和解释自动化边界的流程。顾问组无法单独解决这些问题，但它说明下一阶段的瓶颈不只是模型能力，也包括科学治理。\n\n## 猫叔判断\n\n真正难审计的不是“100个问题”这个数字，而是模型建议如何一步步变成可发表、可复核的数学证明。",
-      "date_published": "2026-09-21T12:00:00.000Z",
-      "date_modified": "2026-09-21T23:00:04.116Z",
-      "tags": [
-        "研究",
-        "产业",
-        "安全"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-math-advisory-group.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-math-advisory-group.html",
-        "source_published_at": "2026-09-21T12:00:00.000Z",
-        "site_published_at": "2026-09-21T23:00:04.116Z",
-        "sources": [
-          {
-            "title": "Advisory Group on Mathematics and Artificial Intelligence",
-            "url": "https://openai.com/index/advisory-group-on-mathematics-and-ai"
-          },
-          {
-            "title": "Ten advances in mathematics and theoretical computer science",
-            "url": "https://openai.com/index/ten-advances-in-mathematics/"
           }
         ]
       }

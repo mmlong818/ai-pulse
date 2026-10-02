@@ -1,0 +1,32 @@
+{
+  "slug": "strands-decider-2b-open-model",
+  "title": "AWS Releases Open Strands Decider 2B for Agent Decisions",
+  "summary": "AWS has open-sourced a 2-billion-parameter decision model that returns calibrated choices in roughly 115 milliseconds for agent workflows.",
+  "body": "## A model built to choose\n\nAWS Strands Labs has released Strands Decider 2B, an open-weight model designed for bounded decisions rather than conversational text generation. Given a state and typed questions, it can select among options, answer yes-or-no prompts, or assign scores with probabilities. The weights, training data and training scripts are available under Apache 2.0, with local use supported on CPUs, consumer GPUs and Apple silicon.\n\nThe model is built from a Qwen3.5-2B torso whose language-model head has been replaced with a pointer head. That design removes the need to generate token sequences. Instead, the model compares hidden representations for the available answers and produces a structured result. AWS says the released version is the 19th major iteration of the architecture.\n\n## Why agents are the target\n\nStrands Decider 2B is intended to sit inside an agent workflow as a low-latency control layer. It could decide whether an agent should call a tool, route a support request, classify an input, or escalate an uncertain case to a person. AWS reports a median local latency of about 115 milliseconds on an RTX 3090, while small tasks on an M3 MacBook averaged roughly 153 milliseconds. The model ranked third among 33 models in its 2B class on JevBench, and first when models slightly above two billion parameters were excluded.\n\nThe limitations are equally important: it cannot write arbitrary text, solve open-ended problems, or replace a general reasoning model. Its value depends on developers defining the decision space correctly and validating the confidence scores outside AWS’s own testing.\n\n## Why it matters\n\nThe release gives developers a permissively licensed, locally deployable component for making agent systems faster and more predictable. If decision models become a standard companion to generative models, agent architectures may shift from asking one large model to do everything toward using specialized models for generation, control and escalation.",
+  "title_zh": "AWS开源Strands Decider 2B，专为智能体决策而生",
+  "summary_zh": "AWS开源一款20亿参数决策模型，可在约115毫秒内返回带校准概率的选项结果，面向智能体工作流部署。",
+  "body_zh": "## 专门负责“选答案”的模型\n\nAWS旗下Strands Labs发布了Strands Decider 2B。这是一款面向有限决策的开放权重模型，不以生成对话文本为目标。开发者可以向它提供一段状态信息和若干结构化问题，由模型返回选项、是非判断或评分，并同时给出概率。模型采用Apache 2.0许可，权重、训练数据和训练脚本均已公开，可在CPU、消费级GPU以及苹果芯片设备上本地运行。\n\nStrands Decider 2B以Qwen3.5-2B为基础，移除了传统语言模型的输出头，换成用于比较候选答案的指针头。它不需要逐个生成token，而是直接评估给定选项与输入状态的匹配程度。AWS表示，当前公开版本已经历19轮主要架构迭代。\n\n## 它要进入智能体的“控制层”\n\n这款模型的定位，是嵌入智能体工作流，承担低延迟的判断任务。例如，它可以决定是否调用工具、把客服请求分配给哪个团队、是否拦截请求，或在不确定时转交人工。AWS称，模型在RTX 3090上的本地中位延迟约为115毫秒；在M3 MacBook上处理小任务时约为153毫秒。在JevBench测试中，它在33款同级模型中排名第三；如果排除略高于20亿参数的模型，则排名第一。\n\n它也有明确边界：不能自由写作，无法独立处理开放式复杂问题，也不是通用推理模型的替代品。开发者必须先定义好决策空间，并在真实业务中验证概率是否可靠。\n\n## 为什么值得关注\n\n这次发布为开发者提供了一个许可宽松、可本地部署的智能体决策组件。若这类模型逐渐成为生成模型的固定搭档，智能体架构可能从“一个大模型包办所有工作”，转向由生成、控制和升级处理等多个专用模型协同完成。",
+  "tags": [
+    "Agents",
+    "Open Source",
+    "Models"
+  ],
+  "sources": [
+    {
+      "title": "Introducing Strands Decider 2B: a small, open source, decision model",
+      "url": "https://strandsagents.com/blog/introducing-strands-decider/"
+    },
+    {
+      "title": "AWS Strands Labs Releases Strands Decider 2B",
+      "url": "https://www.marktechpost.com/2026/10/01/aws-strands-labs-releases-strands-decider-2b/"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "It is the edition’s clearest open-source move toward making specialized decision models a practical control layer for AI agents.",
+  "featured_reason_zh": "这是本期最清晰的开源信号：专用决策模型正从概念走向智能体的实际控制层。",
+  "cat_take_zh": "115毫秒和Apache许可，比“推理模型更强”更可能改变智能体架构",
+  "cat_take_en": "Its 115-millisecond latency and Apache license may reshape agent architecture more than another benchmark-winning reasoner.",
+  "date": "2026-10-02",
+  "published": "2026-10-02T06:35:00Z",
+  "published_at": "2026-10-02T11:00:05.140Z"
+}

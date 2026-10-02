@@ -88,6 +88,85 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/deepseek-harness-desktop-agent.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/deepseek-harness-desktop-agent.html",
+      "title": "DeepSeek Opens Harness Desktop Agent for Local Work",
+      "summary": "DeepSeek has released Harness for macOS and Windows, combining local file access, coding, background tasks and extensible agent plugins.",
+      "content_text": "## DeepSeek moves beyond chat\n\nDeepSeek has made Harness available as a desktop application for macOS and Windows, positioning it as a locally oriented environment for running agents across everyday work, coding and research. The product can work with local files, execute background tasks, inspect repositories and expose a web interface from code. DeepSeek describes it as open source and says the desktop release is available worldwide in public preview.\n\nHarness is built around Cordis, an architecture in which capabilities are packaged as composable plugins. The product includes plugins for tasks such as document and spreadsheet work, code editing, terminal operations and scheduled jobs. It also offers a creator mode that can generate and install new plugins through conversation. DeepSeek’s examples include a Pomodoro timer, file analysis and code changes verified through a development workflow.\n\n## A different kind of model release\n\nUnlike a new foundation-model checkpoint, Harness is a distribution and execution layer. Its importance comes from placing an agent directly on a user’s computer, where it can access files, run commands and continue work in the background. That makes it potentially more useful than a browser chatbot for long-running tasks, while also raising a more serious security question: the agent’s mistakes can affect the local machine rather than only a conversation window.\n\nDeepSeek’s own safe-use guidance recommends a dedicated virtual machine or container with limited privileges, especially when the system processes untrusted web content. The preview status also means its plugin and API surfaces are still changing. Users will need to manage permissions, credentials and network access themselves.\n\n## Why it matters\n\nHarness gives DeepSeek a product foothold in the agent runtime layer, where the strategic contest is increasingly about persistence, tools and local execution rather than model chat alone. Its open plugin architecture could attract developers, but adoption will depend on whether DeepSeek can make powerful local actions safe enough for routine use.",
+      "date_published": "2026-10-02T03:11:00.000Z",
+      "date_modified": "2026-10-02T11:00:05.140Z",
+      "tags": [
+        "Agents",
+        "Industry",
+        "Open Source",
+        "Safety"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-harness-desktop-agent.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-harness-desktop-agent.html",
+        "source_published_at": "2026-10-02T03:11:00.000Z",
+        "site_published_at": "2026-10-02T11:00:05.140Z",
+        "sources": [
+          {
+            "title": "DeepSeek Harness",
+            "url": "https://www.deepseek.com/en/harness/"
+          },
+          {
+            "title": "DeepSeek Harness for desktop",
+            "url": "https://www.deepseek.com/en/download/"
+          },
+          {
+            "title": "DeepSeek Harness Safe Use Policy",
+            "url": "https://deepseek.com/harness/privacy/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/strands-decider-2b-open-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/strands-decider-2b-open-model.html",
+      "title": "AWS Releases Open Strands Decider 2B for Agent Decisions",
+      "summary": "AWS has open-sourced a 2-billion-parameter decision model that returns calibrated choices in roughly 115 milliseconds for agent workflows.",
+      "content_text": "## A model built to choose\n\nAWS Strands Labs has released Strands Decider 2B, an open-weight model designed for bounded decisions rather than conversational text generation. Given a state and typed questions, it can select among options, answer yes-or-no prompts, or assign scores with probabilities. The weights, training data and training scripts are available under Apache 2.0, with local use supported on CPUs, consumer GPUs and Apple silicon.\n\nThe model is built from a Qwen3.5-2B torso whose language-model head has been replaced with a pointer head. That design removes the need to generate token sequences. Instead, the model compares hidden representations for the available answers and produces a structured result. AWS says the released version is the 19th major iteration of the architecture.\n\n## Why agents are the target\n\nStrands Decider 2B is intended to sit inside an agent workflow as a low-latency control layer. It could decide whether an agent should call a tool, route a support request, classify an input, or escalate an uncertain case to a person. AWS reports a median local latency of about 115 milliseconds on an RTX 3090, while small tasks on an M3 MacBook averaged roughly 153 milliseconds. The model ranked third among 33 models in its 2B class on JevBench, and first when models slightly above two billion parameters were excluded.\n\nThe limitations are equally important: it cannot write arbitrary text, solve open-ended problems, or replace a general reasoning model. Its value depends on developers defining the decision space correctly and validating the confidence scores outside AWS’s own testing.\n\n## Why it matters\n\nThe release gives developers a permissively licensed, locally deployable component for making agent systems faster and more predictable. If decision models become a standard companion to generative models, agent architectures may shift from asking one large model to do everything toward using specialized models for generation, control and escalation.",
+      "date_published": "2026-10-02T06:35:00.000Z",
+      "date_modified": "2026-10-02T11:00:05.140Z",
+      "tags": [
+        "Agents",
+        "Open Source",
+        "Models"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/strands-decider-2b-open-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/strands-decider-2b-open-model.html",
+        "source_published_at": "2026-10-02T06:35:00.000Z",
+        "site_published_at": "2026-10-02T11:00:05.140Z",
+        "sources": [
+          {
+            "title": "Introducing Strands Decider 2B: a small, open source, decision model",
+            "url": "https://strandsagents.com/blog/introducing-strands-decider/"
+          },
+          {
+            "title": "AWS Strands Labs Releases Strands Decider 2B",
+            "url": "https://www.marktechpost.com/2026/10/01/aws-strands-labs-releases-strands-decider-2b/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html",
       "title": "DeepSeek Open-Sources Ascend Kernels for V4.1 Inference",
@@ -1809,84 +1888,6 @@
           {
             "title": "Grok 4.7 Release Notes",
             "url": "https://docs.x.ai/developers/release-notes"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/nvidia-sol-pi-coding-agent-efficiency.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/nvidia-sol-pi-coding-agent-efficiency.html",
-      "title": "NVIDIA Open-Sources SoL-Pi for Leaner Coding Agents",
-      "summary": "NVIDIA’s SoL-Pi extension uses automated research loops to reduce coding-agent token traffic by up to 49% while preserving task performance.",
-      "content_text": "Researchers from NVIDIA, MIT and NTU have released SoL-Pi, an open-source extension for the Pi coding-agent harness that targets a less visible bottleneck in agent deployment: repeated context and tool traffic. The project applies automated research loops to discover ways to reduce unnecessary model work during long-running coding tasks.\n\n## Optimising the harness\n\nSoL-Pi packages four mechanisms covering action execution, context compaction, observation handling and delegated reading. The goal is not to make the underlying language model larger or smarter. It is to prevent an agent from repeatedly replaying completed subtasks, sending oversized logs back to the model or spending a full request reading information that will not affect its next decision.\n\nOn the reported 51-task EdgeBench evaluation, the system reduced recorded token traffic by 44.7% to 49.0% compared with the baseline Pi setup. The researchers said task performance remained comparable when using GPT-5.6 Sol and Opus 5, while estimated API costs fell by roughly one third. The extension runs on an unmodified Pi release and is distributed under the MIT license, with the mechanisms opt-in.\n\n## Why it matters\n\nThe project is important because coding agents are increasingly used for long sessions in which infrastructure overhead can rival the cost of the model’s core reasoning. If the reported savings transfer to production workloads, agent vendors and developers could improve margins without immediately switching to a weaker model or waiting for cheaper hardware.\n\nThere are limits to the claim. EdgeBench contains 51 tasks, and the measured reduction concerns the tested harness and model combinations rather than every agent workflow. Aggressive context trimming can also remove evidence an agent needs later. Still, SoL-Pi points to a growing research direction: agent efficiency may come from redesigning the surrounding control loop, not only from compressing model weights or lowering token prices.",
-      "date_published": "2026-09-22T05:04:00.000Z",
-      "date_modified": "2026-09-22T11:00:04.265Z",
-      "tags": [
-        "Agents",
-        "Research",
-        "Open Source"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/nvidia-sol-pi-coding-agent-efficiency.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-sol-pi-coding-agent-efficiency.html",
-        "source_published_at": "2026-09-22T05:04:00.000Z",
-        "site_published_at": "2026-09-22T11:00:04.265Z",
-        "sources": [
-          {
-            "title": "NVIDIA Introduces SoL-Pi: Auto-Research Loops for Coding Agents",
-            "url": "https://www.marktechpost.com/2026/09/21/nvidia-researchers-have-released-sol-pi/"
-          },
-          {
-            "title": "SoL-Pi GitHub Repository",
-            "url": "https://github.com/NVlabs/SoL-Pi"
-          },
-          {
-            "title": "SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness",
-            "url": "https://arxiv.org/abs/2609.20519"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-math-advisory-group.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-math-advisory-group.html",
-      "title": "OpenAI Forms Independent Mathematics Advisory Group",
-      "summary": "OpenAI creates an external mathematician group to advise on sharing AI-generated results and responsible mathematical research.",
-      "content_text": "## An external check on AI mathematics\n\nOpenAI has formed an independent advisory group of mathematicians to help the company decide how to share advances produced with AI systems. The group will advise on responsible disclosure, attribution and communication of mathematical results, according to OpenAI’s announcement.\n\nThe move follows a series of claims from OpenAI that its models have contributed to progress on more than 100 open mathematical problems. The company has already published collections of results involving geometry, coding theory, graph theory, complexity and other areas. It has also described model-assisted work on difficult problems including Navier–Stokes-related mathematics and the Erdős problem programme.\n\n## Why attribution is becoming operational\n\nAI-generated mathematical work creates a problem that is more specific than ordinary software assistance. A model may propose a conjecture, discover a proof strategy, generate formal proof code, or produce an argument that still requires human checking. Those contributions have different scientific meanings, yet a public announcement can easily collapse them into a single claim that “AI solved a problem.”\n\nAn outside panel gives OpenAI a way to consult domain experts before releasing results that could affect research priorities or public expectations. It may also help establish conventions for credit, verification and the division between model output and human mathematical judgment. OpenAI has not presented the group as an independent certification body, and the announcement does not disclose a full operating charter or decision process.\n\n## Why it matters\n\nThe group is significant because AI mathematics is moving from benchmark demonstrations toward institutional questions. If models regularly generate candidate proofs or useful research directions, laboratories will need processes for checking novelty, preserving attribution and explaining what was actually automated. An advisory group cannot settle those questions alone, but it signals that the bottleneck is becoming scientific governance as much as model capability.\n\n## Uncle Cat take\n\nOpenAI’s unresolved issue is not the headline count of 100 problems; it is whether mathematicians can audit the chain from model suggestion to publishable proof.",
-      "date_published": "2026-09-21T12:00:00.000Z",
-      "date_modified": "2026-09-21T23:00:04.116Z",
-      "tags": [
-        "Research",
-        "Industry",
-        "Safety"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-math-advisory-group.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-math-advisory-group.html",
-        "source_published_at": "2026-09-21T12:00:00.000Z",
-        "site_published_at": "2026-09-21T23:00:04.116Z",
-        "sources": [
-          {
-            "title": "Advisory Group on Mathematics and Artificial Intelligence",
-            "url": "https://openai.com/index/advisory-group-on-mathematics-and-ai"
-          },
-          {
-            "title": "Ten advances in mathematics and theoretical computer science",
-            "url": "https://openai.com/index/ten-advances-in-mathematics/"
           }
         ]
       }
