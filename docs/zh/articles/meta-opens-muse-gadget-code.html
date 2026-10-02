@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meta 开放 Muse 设备代码，试水社区自制 AI 硬件 — Uncle Cat AI Radar</title>
+<meta name="description" content="Meta 开放 Muse 设备代码，支持 ESP32 和树莓派，让开发者把个人 AI 代理接入屏幕、传感器与家用设备。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/meta-opens-muse-gadget-code.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/meta-opens-muse-gadget-code.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/meta-opens-muse-gadget-code.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/meta-opens-muse-gadget-code.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Meta 开放 Muse 设备代码，试水社区自制 AI 硬件 — Uncle Cat AI Radar">
+<meta property="og:description" content="Meta 开放 Muse 设备代码，支持 ESP32 和树莓派，让开发者把个人 AI 代理接入屏幕、传感器与家用设备。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/meta-opens-muse-gadget-code.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Meta 开放 Muse 设备代码，试水社区自制 AI 硬件 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Meta 开放 Muse 设备代码，支持 ESP32 和树莓派，让开发者把个人 AI 代理接入屏幕、传感器与家用设备。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="Meta 开放 Muse 设备代码，试水社区自制 AI 硬件 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"Meta 开放 Muse 设备代码，试水社区自制 AI 硬件","item":"https://mmlong818.github.io/ai-pulse/zh/articles/meta-opens-muse-gadget-code.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/meta-opens-muse-gadget-code.html#article","headline":"Meta 开放 Muse 设备代码，试水社区自制 AI 硬件","description":"Meta 开放 Muse 设备代码，支持 ESP32 和树莓派，让开发者把个人 AI 代理接入屏幕、传感器与家用设备。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/meta-opens-muse-gadget-code.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/meta-opens-muse-gadget-code.html"},"datePublished":"2026-10-02T21:08:00.000Z","dateModified":"2026-10-02T23:00:04.118Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["Agent","开源","产业"],"keywords":"Agent, 开源, 产业","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://www.theverge.com/tech/1004330/meta-muse-ai-gadgets-home-link","https://github.com/facebookresearch/muse-gadgets"],"about":[{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"产业"}]}]}</script>
+</head>
+<body data-slug="meta-opens-muse-gadget-code" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/meta-opens-muse-gadget-code.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-10-02T21:08:00Z">2026年10月3日 05:08</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>Meta 开放 Muse 设备代码，试水社区自制 AI 硬件</h1>
+  <p class="standfirst">Meta 开放 Muse 设备代码，支持 ESP32 和树莓派，让开发者把个人 AI 代理接入屏幕、传感器与家用设备。</p>
+  <h2>发生了什么</h2><p>Meta 开放了一套代码，让开发者可以为个人 AI 代理 Muse 自制硬件设备。项目支持常见的 ESP32 开发板和树莓派，并可连接显示屏、按钮、传感器及执行器。</p><p>Meta 展示的用途包括电子墨水提醒屏、通过 HDMI 连接的大屏，以及类似自制 Muse Charm 的小型触摸设备。公司还公布了 Muse Home Link，这是 Meta 自行制造的一款小批量设备，共生产 5000 台。根据用户的具体配置，Home Link 可以让 Muse 控制灯光、电视和打印机等家庭设备。</p><h2>为什么重要</h2><p>这次开放意味着 Meta 正在把 Muse 从应用和桌面客户端，扩展为可运行在实验性硬件上的软件层。代理只有在能够感知并影响现实环境时，才可能真正超越聊天窗口中的问答工具。</p><p>开放策略也能帮助 Meta 吸引爱好者和开发者，创造公司自身不会优先开发的硬件形态。如果社区技能不断增加，Muse 可能成为一个平台，而不只是一个封闭的消费级助手。</p><p>限制同样明显。Meta 提醒用户自行承担风险，而接入传感器、家居控制和打印机的社区设备，也会继承桌面代理面临的隐私和权限问题。Meta 很难监控每一个自制设备的故障与误操作。</p><p>短期内，5000 台 Home Link 的产品影响有限，但战略意义更大：Meta 正在测试个人代理能否成为横跨屏幕、传感器和执行器的通用软件层。如果开发者积极参与，Muse 就能通过 Meta 没有制造的设备获得分发。</p><p><strong>猫叔判断：</strong> 5000 台 Home Link 只是试验规模，真正有想象力的是 ESP32 和树莓派接口，它可能让 Meta 把硬件创新外包给社区。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://www.theverge.com/tech/1004330/meta-muse-ai-gadgets-home-link" rel="noopener" target="_blank">Meta open sources code to let you make Muse AI gadgets</a></li><li><a href="https://github.com/facebookresearch/muse-gadgets" rel="noopener" target="_blank">Muse Gadgets</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/stability-ai-pivots-to-music.html">Stability AI 转向音乐，押注授权数据与专业工具</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cloudflare-clef-decision-models.html">Cloudflare开源Clef决策模型，专为智能体快速判断</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cohere-embed-five-retrieval.html">Cohere发布Embed 5，检索模型可在速度与质量间切换</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
