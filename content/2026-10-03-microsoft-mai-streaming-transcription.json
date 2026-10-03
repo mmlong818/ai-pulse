@@ -1,0 +1,31 @@
+{
+  "slug": "microsoft-mai-streaming-transcription",
+  "title": "Microsoft Releases MAI-Transcribe-2 for Live Speech",
+  "summary": "Microsoft’s new streaming model transcribes speech continuously in 60 languages, targeting voice agents that must reason before a speaker finishes.",
+  "body": "Microsoft has released MAI-Transcribe-2-Streaming, a low-latency speech-to-text model available through Microsoft Foundry and Azure Speech. The model continuously produces partial transcripts, revises them as more audio arrives and commits a stable result when an utterance ends.\n\n## Designed for interruption-free voice systems\n\nThe model supports 60 languages with automatic language detection. Microsoft says it can produce initial hypotheses within the low hundreds of milliseconds and that words generally appear around 320 milliseconds after being spoken, compared with more than 500 milliseconds for the closest competing systems in its cited evaluation.\n\nThe distinction between partial and final transcription is important for voice agents. A system can begin classifying a request, preparing a tool call or selecting a response while the speaker is still talking. That reduces the dead time created by the traditional pipeline, in which an application waits for the full utterance before passing text to a language model.\n\nMicrosoft positions the model for call centers, voice assistants, meetings, lectures and live captions. It is offered through an OpenAI Realtime-compatible WebSocket interface as well as the Azure Speech SDK, giving developers both a lower-level integration path and managed connection handling.\n\n## Why it matters\n\nThe release is less about a dramatic new speech benchmark than about moving voice-agent latency into the application architecture. Faster partial transcripts can allow reasoning and tool preparation to overlap with speech, but early hypotheses can also be wrong and may trigger premature actions. Microsoft’s public preview status means production reliability and error behavior remain to be established. Still, the combination of multilingual coverage, streaming output and agent-oriented interfaces makes speech recognition a more active control surface for AI systems rather than a passive transcription step.",
+  "title_zh": "微软发布MAI-Transcribe-2流式语音模型",
+  "summary_zh": "微软新模型支持60种语言的连续转写，让语音代理能在用户说完之前开始理解请求、准备工具调用。",
+  "body_zh": "微软发布MAI-Transcribe-2-Streaming流式语音识别模型，可通过Microsoft Foundry和Azure Speech使用。模型会持续生成阶段性转写，随着音频输入不断修正，并在一句话结束后提交稳定结果。\n\n## 为连续对话而设计\n\n该模型支持60种语言和自动语言检测。微软称，它能在接收音频后的数百毫秒内给出初始结果，通常约在语音发出320毫秒后显示文字；在微软引用的评测中，最接近的竞争系统需要超过500毫秒。\n\n阶段性结果与最终结果的区别，对语音代理尤其关键。系统可以在用户尚未说完时开始判断意图、准备工具调用或选择回复，从而减少传统流程中的空等时间：过去，应用通常要等完整句子结束，再把文字交给语言模型。\n\n微软将其定位于呼叫中心、语音助手、会议、课堂和实时字幕等场景。开发者既可以通过兼容OpenAI Realtime的WebSocket接口接入，也可以使用Azure Speech SDK，由后者处理连接管理等工作。\n\n## 为什么重要\n\n这次发布的重点不只是语音识别榜单上的新成绩，而是把语音代理的延迟问题推进到应用架构层面。更快的阶段性转写能让推理和工具准备与说话过程重叠，但早期结果也可能出错，甚至诱发过早操作。由于目前仍是公开预览版，稳定性和错误处理方式尚待验证。不过，多语言覆盖、流式输出和面向代理的接口组合，正在把语音识别从被动转录步骤变成AI系统的主动控制入口。",
+  "tags": [
+    "Models",
+    "Agents"
+  ],
+  "sources": [
+    {
+      "title": "MAI-Transcribe-2-Streaming overview",
+      "url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/mai-transcribe-2-streaming"
+    },
+    {
+      "title": "Build expressive voice experiences with new MAI models in Microsoft Foundry",
+      "url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/build-expressive-voice-experiences-with-new-mai-models-in-microsoft-foundry/4524637"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "320毫秒级反馈会改变语音代理节奏，但误触发工具调用仍是最大隐患",
+  "cat_take_en": "At roughly 320 milliseconds, partial speech becomes actionable—but premature tool calls remain the central deployment risk.",
+  "date": "2026-10-03",
+  "published": "2026-10-03T05:09:00Z",
+  "published_at": "2026-10-03T11:00:04.127Z"
+}
