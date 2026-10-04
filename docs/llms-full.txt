@@ -19,6 +19,67 @@
 
 ## Recent briefings
 
+### Aleph Alpha Releases 78B Kolibri Open-Weight Model
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/aleph-alpha-kolibri-open-weight-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/aleph-alpha-kolibri-open-weight-model.html
+- Source timestamp: 2026-10-04T07:01:00.000Z
+- Site timestamp: 2026-10-04T11:00:03.750Z
+- Tags: Models, Open Source, Industry
+
+Aleph Alpha releases a German-English MoE model with 78.1 billion parameters, 3.46 billion active per token and Apache 2.0 licensing.
+
+Aleph Alpha has released Kolibri, a German-English mixture-of-experts model that combines 78.1 billion total parameters with only about 3.46 billion active for each token. The company has published the full weights on Hugging Face under the Apache 2.0 license, making the model available for commercial and self-hosted deployment.
+
+## Built for controlled deployment
+
+Kolibri supports adjustable reasoning modes, tool calls and context windows of up to one million tokens, although Aleph Alpha recommends 262,144 tokens for practical operation. The model was trained on roughly 20 trillion tokens and uses a 384-expert architecture, with six experts activated per token. Its knowledge cutoff for both English and German is June 18, 2026.
+
+Aleph Alpha is positioning the release around sovereign AI: organizations can run the model on their own infrastructure, keep sensitive data away from external inference providers and inspect the model’s licensing and supply-chain terms. The company lists minimum hardware requirements ranging from two A100 80GB GPUs to one H200, B200 or B300, depending on the deployment configuration.
+
+## Why it matters
+
+Kolibri does not by itself establish that Europe has produced a frontier model matching the strongest global systems. Its bilingual scope is narrower than that of leading general-purpose models, and the full FP8 weights still require substantial hardware. But the release gives European governments and regulated companies a commercially permissive alternative that is explicitly designed for local control. The important signal is less the headline parameter count than the combination of open weights, Apache licensing and a small active-parameter footprint. Those choices could make Kolibri useful as infrastructure for European enterprise and public-sector deployments, even if independent evaluations have yet to confirm its broader competitiveness.
+
+**Uncle Cat take:** Kolibri’s 3.46B active parameters improve serving economics, but its roughly 78GB weight file still keeps “sovereign” deployment out of reach for ordinary teams.
+
+Chinese title: Aleph Alpha发布78B开源权重模型Kolibri
+Chinese summary: Aleph Alpha发布德英双语MoE模型Kolibri，总参数78.1B、单次激活约3.46B，并采用Apache 2.0许可。
+
+Sources:
+  - Kolibri Has Landed: A Sovereign Open-Weight Model: https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/
+  - Aleph-Alpha/Kolibri-1-BF16: https://huggingface.co/Aleph-Alpha/Kolibri-1-BF16
+
+### Study Finds Chinese Models Echo Official Views on Taboo Topics
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/chinese-models-political-bias-study.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/chinese-models-political-bias-study.html
+- Source timestamp: 2026-10-04T08:47:00.000Z
+- Site timestamp: 2026-10-04T11:00:03.750Z
+- Tags: Safety, Policy, Research
+
+An Aleph Alpha benchmark finds Qwen, DeepSeek and Kimi often refuse or reproduce official positions across 967 politically sensitive prompts.
+
+A benchmark released by Aleph Alpha says leading Chinese language models frequently avoid politically sensitive questions or answer them through an official state-aligned framing. The evaluation covered Alibaba’s Qwen, DeepSeek and Moonshot AI’s Kimi across 967 hand-selected topics involving Tiananmen, Taiwan, Xinjiang and other contentious issues.
+
+## Refusal and narrative steering
+
+According to the study, only 17% to 41% of responses were judged balanced by Aleph Alpha’s scoring system. The remaining answers either refused to engage, deflected the question or repeated positions consistent with Beijing’s official doctrine. In one example reported by The Decoder, a request for a speech supporting recognition of Taiwan was rejected and replaced with a defense of the One-China principle.
+
+The study comes from a company that markets sovereign AI alongside Cohere, so its commercial incentives should be considered when interpreting the results. It is not an independent audit of every model version, deployment region or system prompt. Performance can also vary between a provider’s domestic chatbot, overseas API and locally hosted weights.
+
+## Why it matters
+
+The findings nevertheless matter because model behavior is becoming part of international AI procurement. Open weights and low-cost APIs make Chinese models attractive outside China, but political conditioning can affect search, education, compliance, journalism and public-sector use in ways that ordinary capability benchmarks do not reveal. The benchmark also highlights a wider governance problem: “open” model weights do not necessarily mean open information behavior. Buyers need tests that distinguish safety refusals, factual uncertainty and deliberate political framing before deploying models across jurisdictions.
+
+**Uncle Cat take:** The 17–41% balanced-response range is too provider-linked for a final verdict, but it makes political-behavior testing a procurement requirement.
+
+Chinese title: 研究称多款中国模型对敏感议题复述官方立场
+Chinese summary: Aleph Alpha测试Qwen、DeepSeek和Kimi在967个敏感议题上的表现，发现它们频繁拒答、回避或复述官方叙事。
+
+Sources:
+  - Chinese AI models parrot state doctrine or refuse to answer on sensitive topics: https://the-decoder.com/chinese-ai-models-parrot-state-doctrine-or-refuse-to-answer-on-sensitive-topics/
+
 ### OpenAI Safety Lead Resigns, Citing a Broken Culture
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-safety-culture-resignation.html
@@ -951,75 +1012,6 @@ Sources:
   - Meshy announcement on X: https://x.com/MeshyAI/status/2104518986755092831
   - Meshy AI platform: https://www.meshy.ai/
 
-### MiniMax Releases M3.1 Flash Preview for Coding
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/minimax-m31-flash-preview.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/minimax-m31-flash-preview.html
-- Source timestamp: 2026-09-27T17:06:00.000Z
-- Site timestamp: 2026-09-27T23:00:03.784Z
-- Tags: Models, Agents, Industry
-
-MiniMax has released M3.1 Flash Preview inside MiniMax Code, emphasizing fast, sustained software-development workflows rather than a broad public API launch.
-
-## A focused coding release
-
-MiniMax has put M3.1 Flash Preview into MiniMax Code, its own coding product, presenting the model as a tool for everyday development tasks ranging from quick bug fixes to larger feature work. The company’s announcement describes the model as fast and reliable, but provides little public technical detail beyond its product positioning.
-
-The release is available inside MiniMax Code rather than as a broadly documented model endpoint. MiniMax has not published a model card, benchmark table, public pricing page, or open weights for M3.1 Flash Preview. That makes this a product launch with a deliberately narrow distribution, not yet a fully transparent model release comparable with an open checkpoint or a generally available API.
-
-The model picker exposes several reasoning-effort settings, allowing users to trade response speed against more extensive internal deliberation. Reports tracking the launch also identify a one-million-token context window in the product configuration, although MiniMax has not yet published a detailed technical specification explaining how that capacity performs on long coding sessions.
-
-## Why it matters
-
-The strategic signal is MiniMax’s decision to place the model inside an end-to-end coding environment. That lets the company control the interface, usage limits, evaluation loop and user feedback before exposing the model more widely. It also puts pressure on coding-assistant vendors that compete on sustained task completion rather than isolated code generation.
-
-The evidence remains incomplete. There are no independently published benchmarks, no confirmed API model ID and no public price comparison with MiniMax’s earlier M3 model. For now, M3.1 Flash Preview is best understood as a controlled coding-product rollout whose importance will depend on whether MiniMax later opens access and demonstrates measurable gains on real repositories.
-
-**Uncle Cat take:** MiniMax’s biggest move is the gated distribution, but without benchmarks or API access, the “Flash” advantage remains an assertion rather than a market fact.
-
-Chinese title: MiniMax在Code上线M3.1 Flash预览版
-Chinese summary: MiniMax将M3.1 Flash预览版接入自家编程工具MiniMax Code，主打快速、连续的软件开发流程，暂未开放完整API。
-
-Sources:
-  - MiniMax-M3.1 Flash Preview is now live on the Token Plan: https://x.com/MiniMax_AI/status/2104256406786547800
-  - MiniMax M3.1 Flash Preview Model Specs & Sources: https://benchlm.ai/models/minimax-m3-1-flash-preview
-
-### Sakana AI Uses Test-Time Search to Refine Robot Actions
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/sail-robot-trajectory-refinement.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/sail-robot-trajectory-refinement.html
-- Source timestamp: 2026-09-27T23:13:00.000Z
-- Site timestamp: 2026-09-28T11:00:04.466Z
-- Tags: Research, Agents
-
-Sakana AI’s SAIL system lets vision-language models generate, simulate, score and revise robot trajectories before physical execution.
-
-## What changed
-
-Sakana AI and researchers from the University of Tokyo introduced SAIL, or Scaling In-Context Imitation Learning, a method that applies test-time scaling to robot control. The work was announced on September 27 and is scheduled for presentation at IROS 2026.
-
-Rather than asking a vision-language model to produce one trajectory and immediately execute it, SAIL generates several candidate action sequences from a small number of demonstrations. It then runs those trajectories in a reconstructed simulation, uses a second vision-language model to estimate task progress, and feeds step-level feedback back into the generator. Monte Carlo Tree Search guides the system toward promising refinements while preserving alternative possibilities.
-
-## Why it matters
-
-The approach targets a basic weakness in foundation-model robotics: a small error in an end-effector pose or gripper state can cause an otherwise sensible plan to fail. Language and vision models can often describe the right action, but they remain unreliable when that description must become a precise physical trajectory.
-
-SAIL is significant because it shifts part of the solution from retraining to inference-time computation. A model can spend more compute checking and revising an action without changing its parameters. That mirrors the broader industry move toward test-time reasoning, but here the feedback loop is grounded in simulated physical consequences rather than text-only scoring.
-
-The unresolved limitation is simulation fidelity. A trajectory that succeeds in a reconstructed scene may still fail because of friction, occlusion, calibration errors or contact dynamics. The reported physical demonstrations therefore show promise, not general-purpose autonomy.
-
-## Uncle Cat take
-
-SAIL’s important contribution is the simulated rehearsal loop; its value depends on whether that rehearsal predicts messy contact with real objects.
-
-Chinese title: Sakana AI让视觉模型先“排练”再控制机器人
-Chinese summary: Sakana AI发布SAIL，让视觉语言模型生成、模拟、评估并反复修正机器人轨迹后再执行。
-
-Sources:
-  - Sakana AI: SAIL — Test-Time Scaling through Iterative Refinement: https://pub.sakana.ai/sail/
-  - SAIL: Test-Time Scaling for In-Context Imitation Learning with VLM: https://arxiv.org/abs/2603.08269
-  - Sakana AI announcement on X: https://x.com/SakanaAILabs/status/2104348705956774255
-
 ## Recent radar items
 
 ### 2026-10-04
@@ -1041,6 +1033,19 @@ Sources:
 - 2026-10-03T18:56:00Z | The Decoder | The Decoder reported that OpenAI is describing its ambition less as “magic intelligence in the sky” and more as practical systems. | 中文：The Decoder 报道称，OpenAI 正少谈“天空中的魔法智能”，转而强调更务实的系统。 | https://the-decoder.com/apparently-openai-isnt-trying-to-build-magic-intelligence-in-the-sky-anymore/
 - 2026-10-03T18:43:00Z | TechCrunch | Amazon said it no longer uses nondisclosure agreements in response to backlash over its data-center expansion. | 中文：面对数据中心扩张引发的反弹，亚马逊表示已不再使用保密协议。 | https://techcrunch.com/2026/10/03/amazon-responds-to-data-center-backlash-says-it-no-longer-uses-ndas/
 - 2026-10-03T20:08:00Z | SiliconANGLE | A SiliconANGLE panel argued that vertical AI is becoming a major growth engine for private technology companies. | 中文：SiliconANGLE 论坛认为，垂直 AI 正成为私营科技公司的重要增长引擎。 | https://siliconangle.com/2026/10/03/private-tech-trailblazers-vertical-ai-becomes-growth-engine-privatetechtrailblazersconference/
+- 2026-10-04T10:30:00Z | X | Meshy will sponsor Unity’s AI Game Jam at G-STAR 2026, pairing OpenAI ideation with Meshy 3D assets for 50 developers over 24 hours. | 中文：Meshy将赞助G-STAR 2026的Unity AI游戏创作赛，50名开发者将在24小时内结合OpenAI构思与Meshy三维资产完成作品。 | https://x.com/MeshyAI/status/2106693310546841723
+- 2026-10-04T10:10:00Z | The Decoder | NASA and IBM released an open-source lunar foundation model trained on 17 years of orbiter data to support scientific analysis of the Moon. | 中文：NASA与IBM发布开源月球基础模型，利用17年轨道器数据支持月球科学分析。 | https://the-decoder.com/nasa-and-ibms-open-source-lunar-model-turns-17-years-of-orbiter-data-into-a-foundation-for-lunar-science/
+- 2026-10-04T10:04:00Z | IT之家 | President Trump’s rebranding of artificial intelligence as “super intelligence” prompted Elon Musk to confirm that SpaceXAI will become SpaceXSI. | 中文：特朗普将“人工智能”改称“超级智能”后，马斯克确认SpaceXAI将更名为SpaceXSI。 | https://www.ithome.com/1/009/688.htm
+- 2026-10-04T10:00:00Z | InfoQ 中文 | An enterprise-data architecture session argued that agents should use governed shared semantic memory built from corporate warehouses rather than conversation histories alone. | 中文：一场企业数据架构分享提出，智能体应使用从企业数仓构建、可治理的共享语义记忆，而不能只依赖对话历史。 | https://www.infoq.cn/article/M4mgbKf4RDv5AKTwQvFH?utm_source=rss&utm_medium=article
+- 2026-10-04T03:00:00Z | X | Kling AI will present at Advertising Week New York on October 6 in a panel about how generative video is changing professional advertising. | 中文：可灵AI将在10月6日纽约广告周登台，参与讨论生成式视频如何改变专业广告制作。 | https://x.com/Kling_ai/status/2106580068499939470
+- 2026-10-04T00:53:00Z | 量子位 | QbitAI reported that a fast-growing 3D company multiplied ARR one hundredfold in under two years and surpassed $100 million, amid GPT-6 disruption concerns. | 中文：量子位报道，一家快速增长的三维公司不到两年ARR增长百倍并突破1亿美元，市场同时担忧GPT-6可能冲击三维软件。 | https://www.qbitai.com/2026/10/501451.html
+- 2026-10-04T00:19:00Z | MarkTechPost | NVIDIA’s IsaacTeleop uses hand and controller tracking with graph-based retargeting to convert human demonstrations into robot actions. | 中文：英伟达IsaacTeleop利用手部与控制器追踪，并通过基于图的重定向引擎将人类示范转换为机器人动作。 | https://www.marktechpost.com/2026/10/03/inside-nvidias-isaacteleop-from-hand-and-controller-tracking-to-robot-actions-with-the-graph-based-retargeting-engine/
+- 2026-10-03T23:34:00Z | Simon Willison | Simon Willison argued that AI systems and agents need default hard budget caps to prevent uncontrolled spending and runaway tool use. | 中文：Simon Willison提出，AI系统与智能体应默认设置严格预算上限，以防止失控消费和工具调用失控。 | https://simonwillison.net/2026/Oct/3/default-hard-budget-caps/
+- 2026-10-04T06:05:00Z | 量子位 | QbitAI described FDE roles as among the hottest AI jobs, with monthly salaries reaching 50,000 yuan and responsibilities spanning deployment and customer problem-solving. | 中文：量子位称FDE是当前最热门的AI岗位之一，月薪可达5万元，工作覆盖部署与客户问题解决。 | https://www.qbitai.com/2026/10/501506.html
+- 2026-10-04T07:29:00Z | MarkTechPost | Google research moved federated learning into trusted execution environments so Gboard training can use externally verifiable differential privacy. | 中文：谷歌研究将联邦学习置于可信执行环境中，使Gboard训练能够采用外部可验证的差分隐私。 | https://www.marktechpost.com/2026/10/04/google-research-moves-federated-learning-into-tees-gboard-now-trains-with-externally-verifiable-differential-privacy/
+- 2026-10-04T07:28:00Z | The Decoder | Google’s revised Gemini tiers reportedly give free users the weakest model while a $5 subscription no longer includes Pro access. | 中文：据报道，谷歌调整Gemini分层后，免费用户只能使用最弱模型，5美元订阅也不再包含Pro访问权限。 | https://the-decoder.com/googles-new-gemini-tiers-cut-free-users-to-its-weakest-model-and-lock-5-month-subscribers-out-of-pro/
+- 2026-10-04T10:10:00Z | The Decoder | NASA and IBM’s lunar model and NVIDIA’s IsaacTeleop show open scientific models and robot-learning infrastructure expanding beyond chat-focused AI. | 中文：NASA与IBM的月球模型、英伟达IsaacTeleop共同显示，AI产业正从聊天模型扩展到科学计算与机器人学习基础设施。 | https://the-decoder.com/nasa-and-ibms-open-source-lunar-model-turns-17-years-of-orbiter-data-into-a-foundation-for-lunar-science/
+- 2026-10-04T06:12:00Z | 量子位 | A Chinese report said Musk increasingly favors Chinese manufacturing for AI-compute hardware, highlighting supply-chain competition beyond model benchmarks. | 中文：中国媒体称马斯克越来越看重中国制造的AI算力硬件，凸显模型基准之外的供应链竞争。 | https://www.qbitai.com/2026/10/501605.html
 
 ### 2026-10-03
 

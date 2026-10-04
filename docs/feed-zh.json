@@ -13,6 +13,76 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/aleph-alpha-kolibri-open-weight-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/aleph-alpha-kolibri-open-weight-model.html",
+      "title": "Aleph Alpha发布78B开源权重模型Kolibri",
+      "summary": "Aleph Alpha发布德英双语MoE模型Kolibri，总参数78.1B、单次激活约3.46B，并采用Apache 2.0许可。",
+      "content_text": "Aleph Alpha发布Kolibri，这是一款面向德语和英语的混合专家模型，总参数量达到781亿，但每个Token仅激活约34.6亿参数。公司已在Hugging Face公开完整权重，并采用Apache 2.0许可，允许商业使用和本地部署。\n\n## 面向可控部署\n\nKolibri支持可调节推理模式、工具调用，以及最长100万Token的上下文窗口；不过，Aleph Alpha建议实际运行时使用最多262,144个Token。模型使用约20万亿Token训练，架构包含384个专家，每个Token调用其中6个。英德两种语言的知识截止时间均为2026年6月18日。\n\nAleph Alpha将这次发布放在“主权AI”框架下：政府和受监管企业可以在自有基础设施上运行模型，避免敏感数据流向外部推理服务，同时保留对许可和供应链的控制。公司列出的最低硬件要求从两张A100 80GB显卡，到一张H200、B200或B300不等，取决于部署配置。\n\n## 为什么重要\n\nKolibri目前还不能证明欧洲已经拥有可与全球最强模型抗衡的前沿系统。它的双语范围比通用型模型更窄，而完整FP8权重仍需要相当规模的硬件。不过，这一发布为欧洲政府和受监管行业提供了一个许可更开放、强调本地控制的选择。真正值得关注的并非78B这个参数数字，而是开放权重、Apache许可和较小激活规模的组合。即使独立评测尚未验证其整体竞争力，Kolibri仍可能成为欧洲企业和公共部门部署本地AI的基础设施。\n\n**猫叔判断：** Kolibri每次只激活34.6亿参数，但约78GB权重仍让“主权部署”远离普通团队。",
+      "date_published": "2026-10-04T07:01:00.000Z",
+      "date_modified": "2026-10-04T11:00:03.750Z",
+      "tags": [
+        "模型",
+        "开源",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/aleph-alpha-kolibri-open-weight-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/aleph-alpha-kolibri-open-weight-model.html",
+        "source_published_at": "2026-10-04T07:01:00.000Z",
+        "site_published_at": "2026-10-04T11:00:03.750Z",
+        "sources": [
+          {
+            "title": "Kolibri Has Landed: A Sovereign Open-Weight Model",
+            "url": "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/"
+          },
+          {
+            "title": "Aleph-Alpha/Kolibri-1-BF16",
+            "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1-BF16"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/chinese-models-political-bias-study.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/chinese-models-political-bias-study.html",
+      "title": "研究称多款中国模型对敏感议题复述官方立场",
+      "summary": "Aleph Alpha测试Qwen、DeepSeek和Kimi在967个敏感议题上的表现，发现它们频繁拒答、回避或复述官方叙事。",
+      "content_text": "Aleph Alpha发布的一项基准测试称，多款中国大语言模型在政治敏感问题上经常拒绝回答，或采用与官方立场一致的叙事。测试覆盖阿里通义千问、DeepSeek和月之暗面Kimi，围绕“六四”、台湾、新疆等争议议题设置了967个问题。\n\n## 拒答与叙事引导并存\n\n按照该研究的评分体系，只有17%至41%的回答被认为较为平衡，其余回答要么拒绝作答，要么绕开问题，要么复述与北京官方论述一致的观点。The Decoder报道的一个例子显示，当模型被要求起草支持承认台湾的演讲时，它拒绝执行，并改为阐述一个中国原则。\n\n不过，这项研究来自同时推广主权AI的Aleph Alpha，其商业利益应纳入解读。它也不是对所有模型版本、部署地区或系统提示词的独立审计。同一供应商的国内聊天机器人、海外API和本地权重，实际表现可能并不相同。\n\n## 为什么重要\n\n这项研究仍然值得关注，因为模型行为正在成为国际采购的一部分。中国模型的开放权重和低价API使其在海外具有吸引力，但政治条件化可能影响搜索、教育、合规、新闻和公共部门应用，而这些问题通常不会出现在普通能力榜单中。它也提醒市场，“开放权重”并不等于信息行为开放。跨国部署前，采购方需要区分安全拒答、事实不确定性和主动政治引导。\n\n**猫叔判断：** 17%至41%的平衡回答区间仍受发布方影响，但已足以把政治行为测试列为采购必做项。",
+      "date_published": "2026-10-04T08:47:00.000Z",
+      "date_modified": "2026-10-04T11:00:03.750Z",
+      "tags": [
+        "安全",
+        "政策",
+        "研究"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/chinese-models-political-bias-study.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/chinese-models-political-bias-study.html",
+        "source_published_at": "2026-10-04T08:47:00.000Z",
+        "site_published_at": "2026-10-04T11:00:03.750Z",
+        "sources": [
+          {
+            "title": "Chinese AI models parrot state doctrine or refuse to answer on sensitive topics",
+            "url": "https://the-decoder.com/chinese-ai-models-parrot-state-doctrine-or-refuse-to-answer-on-sensitive-topics/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-safety-culture-resignation.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-safety-culture-resignation.html",
       "title": "OpenAI安全负责人离职，称公司文化已经“崩坏”",
@@ -1781,87 +1851,6 @@
           {
             "title": "Meta Connect 2026: Everything We Announced",
             "url": "https://about.fb.com/ja/news/2026/09/meta-connect-2026-everything-we-announced/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen-intelligence-mobile-agents.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen-intelligence-mobile-agents.html",
-      "title": "阿里推出Qwen Intelligence布局手机智能体",
-      "summary": "阿里Qwen团队发布Qwen Intelligence，围绕手机规划、操作和创作推出三款智能体，试图让助手跨应用执行任务。",
-      "content_text": "## 发生了什么\n阿里Qwen团队发布了面向手机的智能体套件Qwen Intelligence，包含Mobile Planner Agent、Mobile-Use Agent和Mobile Creative Agent三套系统。Qwen官方账号随后分别公布了三者的评测和性能页面。\n\n这套产品的目标不再只是让用户在聊天窗口里提问。规划智能体负责把需求拆成多个步骤，手机操作智能体可以控制界面和应用，创作智能体则面向手机上的内容生产任务。阿里把它描述为将“个人智能”带到手机，而不是又一次发布通用聊天机器人。\n\n手机智能体面临的限制与浏览器助手不同：屏幕更小、界面变化更频繁，还要处理权限弹窗、延迟、电量，以及在应用中执行不可逆操作的风险。阿里目前强调了基准测试成绩，但公开材料尚不足以让外部观察者判断这些智能体在复杂、冗长的真实任务中能否稳定工作。\n\n## 为什么重要\n如果Qwen Intelligence能够达到消费级可靠性，手机就不再只是用户向AI提问的终端，而会变成AI实际执行任务的操作面。这会把竞争推向操作系统权限、应用接口和手机厂商合作，也迫使移动平台明确智能体可以读取、点击、购买或发送什么。\n\n眼下更值得关注的是战略方向，而不是技术已经被充分证明。阿里正在把Qwen与设备级行动绑定，而全球主要助手都在争夺外部服务接入。真正未解的问题是：当一个计划跨越多个应用时，Qwen Intelligence能否维持用户信任，尤其是在本地服务和设备生态决定智能体能力边界的市场。",
-      "date_published": "2026-09-23T11:50:00.000Z",
-      "date_modified": "2026-09-23T23:00:04.251Z",
-      "tags": [
-        "Agent",
-        "产业",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/qwen-intelligence-mobile-agents.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/qwen-intelligence-mobile-agents.html",
-        "source_published_at": "2026-09-23T11:50:00.000Z",
-        "site_published_at": "2026-09-23T23:00:04.251Z",
-        "sources": [
-          {
-            "title": "Qwen Intelligence announcement",
-            "url": "https://x.com/Alibaba_Qwen/status/2102727405198876753"
-          },
-          {
-            "title": "Mobile Agent benchmark suite",
-            "url": "https://x.com/Alibaba_Qwen/status/2102727421128810774"
-          },
-          {
-            "title": "Alibaba launches Qwen Intelligence mobile agents",
-            "url": "https://www.reddit.com/r/aicuriosity/comments/1wo72uj/2026_09_23_alibaba_qwen_release_mobile_agents/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-translation-offline-app.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-translation-offline-app.html",
-      "title": "腾讯推出Hy翻译：33种语言支持端侧离线互译",
-      "summary": "腾讯上线Hy翻译App，基于Hy-MT2提供33种语言及多种汉语方言的文字、语音和图片离线翻译。",
-      "content_text": "腾讯推出Hy翻译App，基于Hy-MT2翻译模型打造，并强调可在手机端完全离线运行。腾讯称，该应用支持33种语言互译，同时覆盖5种中国少数民族语言及方言，可处理文字、语音和图片内容。\n\nHy翻译采用的Hy-MT2模型系列于今年5月开源，包含1.8B、7B和30B-A3B混合专家版本。因此，这次上线不只是新增一个消费级界面，也是在尝试把开源模型体系转化为无需持续联网的跨境实用工具。\n\n离线能力对旅行、现场工作、隐私敏感沟通以及网络条件不稳定地区尤其有价值。翻译过程可以不上传录音或图片，延迟和可用性也不再完全受网络影响。但端侧部署必须在翻译质量、模型体积、电池消耗和小语种支持之间做取舍。\n\n从亚洲时区的新闻周期看，这是本版最清晰的区域性产品新闻之一。腾讯正在用今年早些时候发布的模型展示一条具体路径：多语言能力只有被封装成可在本地运行的产品，才更容易转化为日常价值。接下来仍需观察它在方言、嘈杂语音和专业领域文本上的实际表现，这些场景往往比演示环境更能暴露端侧翻译的边界。",
-      "date_published": "2026-09-24T07:15:00.000Z",
-      "date_modified": "2026-09-24T11:00:03.331Z",
-      "tags": [
-        "模型",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy-translation-offline-app.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-translation-offline-app.html",
-        "source_published_at": "2026-09-24T07:15:00.000Z",
-        "site_published_at": "2026-09-24T11:00:03.331Z",
-        "sources": [
-          {
-            "title": "腾讯Hy翻译APP上线：模型本地离线翻译",
-            "url": "https://news.17173.com/content/09242026/150134820.shtml"
-          },
-          {
-            "title": "Hy-MT2: A Family of Fast, Efficient and Powerful Multilingual Translation Models in the Wild",
-            "url": "https://arxiv.org/abs/2605.22064"
-          },
-          {
-            "title": "Tencent Hunyuan announces Hy Translation",
-            "url": "https://x.com/TencentHunyuan/status/2103020524192542766"
           }
         ]
       }
