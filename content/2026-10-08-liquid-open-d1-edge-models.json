@@ -1,0 +1,36 @@
+{
+  "slug": "liquid-open-d1-edge-models",
+  "title": "Liquid AI Releases Open d1 Models for Edge Decisions",
+  "summary": "Liquid AI has released open-weight multimodal decision models designed to make fast structured choices on phones, PCs and edge hardware.",
+  "body": "## What happened\n\nLiquid AI released two open-weight decision models, d1-3B and d1-omni-600M, through Hugging Face. The models are designed to output structured decisions rather than long natural-language explanations, accepting text and, in the larger model’s case, visual inputs. The company positions them for classification, routing and other situations where an AI system must choose an action quickly.\n\nIn testing conducted with NVIDIA, d1-3B answered a single question in under 50 milliseconds on the measured edge devices, including the Jetson AGX Thor, Jetson AGX Orin and Orin Nano. On an RTX 4090, Liquid AI reported response times below 10 milliseconds. The model can also process multiple questions with limited additional latency, a property that could matter for high-frequency control loops.\n\nLiquid AI says d1-3B delivers the strongest decision quality in the release while d1-omni-600M is intended for environments where memory and compute are more constrained. Both models are downloadable from Hugging Face and require custom model code when loaded through Transformers.\n\n## Why it matters\n\nDecision models are a narrower direction than general chat models, but that narrowness is precisely their appeal. A system that returns a calibrated choice or action can be cheaper and easier to validate than a model that generates open-ended text and then requires another component to interpret it. The unresolved question is generality: the reported latency and benchmark results show attractive edge behavior, but they do not establish that d1 models can safely handle ambiguous, high-stakes decisions outside the tested tasks. Their importance will be determined by whether developers use them as dependable control components rather than miniature chatbots.",
+  "title_zh": "Liquid AI开源d1系列，面向边缘设备快速决策",
+  "summary_zh": "Liquid AI发布两款开放权重多模态决策模型，主打在手机、电脑和边缘硬件上快速输出结构化选择。",
+  "body_zh": "## 发生了什么\n\nLiquid AI通过Hugging Face发布两款开放权重决策模型：d1-3B和d1-omni-600M。它们的目标不是生成长篇自然语言，而是输出结构化决策；模型可处理文字输入，较大的版本还支持视觉输入，适用于分类、路由及其他需要快速选择动作的场景。\n\nLiquid AI与英伟达合作测试称，d1-3B在Jetson AGX Thor、Jetson AGX Orin和Orin Nano等边缘设备上处理单个问题的时间都低于50毫秒。在RTX 4090上，单次响应时间低于10毫秒。模型还可以处理连续问题，同时只增加有限延迟，这对高频控制环路可能有价值。\n\nLiquid AI表示，d1-3B在本次发布中提供更高的决策质量，d1-omni-600M则面向内存和算力更加受限的环境。两款模型均可从Hugging Face下载，但通过Transformers加载时需要启用自定义模型代码。\n\n## 为什么重要\n\n决策模型的方向比通用聊天模型更窄，但窄正是它的优势。输出校准后的选择或动作，通常比生成开放式文本再交给另一组件解释更便宜，也更容易验证。尚未解决的问题是泛化能力：当前延迟和基准结果说明它们适合边缘部署，却不能证明模型能在测试任务之外安全处理含糊或高风险决策。它们最终的重要性，取决于开发者是否把它们当作可靠的控制组件，而不是缩小版聊天机器人。",
+  "tags": [
+    "Open Source",
+    "Models",
+    "Agents"
+  ],
+  "sources": [
+    {
+      "title": "Multimodal open d1 decision models for the edge",
+      "url": "https://huggingface.co/blog/LiquidAI/open-d1"
+    },
+    {
+      "title": "LiquidAI/d1-3B",
+      "url": "https://huggingface.co/LiquidAI/d1-3B"
+    },
+    {
+      "title": "Liquid AI announces open d1 decision models",
+      "url": "https://www.liquid.ai/blog/open-d1"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "d1的价值在毫秒级结构化决策，能否跨出演示场景仍没有答案。",
+  "cat_take_en": "d1’s edge is millisecond-scale structured decisions; its value beyond the demonstrated tasks remains unproven.",
+  "date": "2026-10-08",
+  "published": "2026-10-07T16:54:00Z",
+  "published_at": "2026-10-07T23:00:05.932Z"
+}
