@@ -47,6 +47,37 @@ Sources:
   - Claude Mythos and Cyber Verification Program: https://www.anthropic.com/claude/mythos
   - Anthropic’s Advanced AI: https://www-cdn.anthropic.com/files/4zrzovbb/website/0a58d567024a8b448ff15158ebc3625328dfcc1f.pdf
 
+### Cursor iOS App Adds Remote Control for Local Agents
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/cursor-ios-local-agent-control.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cursor-ios-local-agent-control.html
+- Source timestamp: 2026-10-06T23:46:00.000Z
+- Site timestamp: 2026-10-07T11:00:06.427Z
+- Tags: Agents, Industry
+
+Cursor’s new iOS feature lets developers monitor and message agents running on their own computers, extending coding workflows beyond the desktop.
+
+## What changed
+
+Cursor has added remote control for local coding agents to its iOS app. Developers can see which agents are running on a paired computer, inspect their current work, and send follow-up instructions from an iPhone or iPad. The agents themselves continue running on the user’s computer rather than being moved into Cursor’s cloud.
+
+The feature is enabled by default for most users, while Enterprise organizations must activate it through administrative settings. Cursor says the computer must remain powered on and connected to the internet; users can also configure the desktop app to stay awake while remote control is active.
+
+## Why it matters
+
+This is a small interface change with a larger strategic implication. Coding agents are moving from interactive assistants that wait beside a developer to background workers that can continue across time and place. Mobile access turns the phone into a monitoring and intervention layer rather than a full development environment.
+
+Keeping execution local also gives Cursor a differentiated security and privacy story. Source files, terminals, credentials, and development tools remain on the workstation, but the convenience of remote supervision becomes available away from the desk. That combination may appeal to teams that want agent autonomy without sending every workflow to a hosted environment.
+
+The limitation is operational: a laptop that sleeps, loses connectivity, or is closed cannot host the agent. Cursor’s mobile app therefore extends local agents; it does not make them continuously available in the way cloud agents are. The product’s significance will depend on whether developers trust mobile prompts enough to let long-running agents work unattended.
+
+Chinese title: Cursor iOS 新增本地编程智能体远程控制
+Chinese summary: Cursor推出本地智能体远程控制功能，开发者可通过iPhone查看进度并发送指令，让编程任务脱离桌面继续运行。
+
+Sources:
+  - Remote control for local agents · Cursor: https://cursor.com/changelog/remote-control-local-agents
+  - Cursor for iOS · Cursor Documentation: https://cursor.com/docs/cloud-agent/mobile
+
 ### Google Releases Multimodal EmbeddingGemma 2
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/embeddinggemma-2-on-device.html
@@ -74,6 +105,39 @@ Sources:
   - EmbeddingGemma 2: an open, lightweight multimodal embedding model: https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/
   - EmbeddingGemma 2 model page: https://deepmind.google/models/gemma/embeddinggemma/
   - EmbeddingGemma 2 model card: https://huggingface.co/google/embeddinggemma-2
+
+### Meta Open-Sources Rebalancer for Large-Scale Assignment
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-rebalancer-open-source.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meta-rebalancer-open-source.html
+- Source timestamp: 2026-10-07T06:29:00.000Z
+- Site timestamp: 2026-10-07T11:00:06.427Z
+- Tags: Open Source, Industry
+
+Meta has released the C++ and Python solver used across dozens of large-scale allocation problems involving servers, traffic, and machine-learning workloads.
+
+## What Meta released
+
+Meta has open-sourced Rebalancer, a solver for large assignment problems in which objects must be placed into constrained containers while optimizing competing objectives. The system is available in C++ and Python under the Apache 2.0 license.
+
+Meta says Rebalancer has been used for dozens of large-scale resource-allocation problems inside the company. Its production uses include hardware and server allocation, machine-learning training and inference placement, traffic routing, and load-balancing migrations. The library can work with local-search methods for scale and with mixed-integer programming solvers when exact optimization is more important.
+
+The project is designed for problems involving large numbers of objects and containers, with rules covering capacity, balance, and other operational constraints. Meta’s documentation says the system can reasonably handle assignments involving around one million objects and containers, although exact optimization does not scale as easily as heuristic search.
+
+## Why it matters
+
+The release highlights an underappreciated layer of AI infrastructure: deciding where models, data, requests, and compute should go after they have been created. Better allocation can affect latency, utilization, traffic costs, and the ability to absorb changing workloads. Those decisions become more frequent as AI systems expand across heterogeneous servers and accelerators.
+
+Rebalancer is not an AI model and does not promise a new capability for end users. Its importance lies in transferring a production-tested operational component from one of the world’s largest platforms into the open-source ecosystem. Smaller infrastructure teams may gain a starting point for allocation problems that would otherwise require custom optimization software.
+
+The main uncertainty is adoption. Rebalancer depends on domain-specific problem definitions and, for some modes, external optimization libraries. Its production history is persuasive, but users will still need to translate their own constraints into a workable formulation and measure whether the solver’s trade-offs fit their systems.
+
+Chinese title: Meta开源大规模资源分配求解器Rebalancer
+Chinese summary: Meta开源内部资源分配工具Rebalancer，称其已用于数十个大规模资源分配问题，涉及服务器、流量和机器学习任务。
+
+Sources:
+  - Rebalancer · Meta AI GitHub: https://github.com/facebook/rebalancer
+  - Meta Open-Sources Rebalancer Solver: https://www.marktechpost.com/2026/10/06/meta-ai-open-sources-rebalancer-a-c-assignment-solver-that-runs-about-40-million-placement-problems-a-day/
 
 ### Mistral Opens Preview of One-Trillion-Parameter Large 4
 
@@ -285,7 +349,7 @@ Chinese summary: Aleph Alpha测试Qwen、DeepSeek和Kimi在967个敏感议题上
 Sources:
   - Chinese AI models parrot state doctrine or refuse to answer on sensitive topics: https://the-decoder.com/chinese-ai-models-parrot-state-doctrine-or-refuse-to-answer-on-sensitive-topics/
 
-### OpenAI Safety Lead Resigns, Citing a Broken Culture
+### OpenAI Safety Report Author Resigns, Citing a Broken Culture
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-safety-culture-resignation.html
 - Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-safety-culture-resignation.html
@@ -293,11 +357,11 @@ Sources:
 - Site timestamp: 2026-10-03T23:00:04.123Z
 - Tags: Safety, Industry
 
-David Robinson, who led safety reports for major OpenAI launches, says relentless deployment has outpaced the safeguards needed for frontier systems.
+David Robinson, who led OpenAI’s Preparedness Framework and supervised safety reports for 12 frontier launches, says the company’s deployment culture has outpaced the safeguards needed for increasingly capable AI systems.
 
-David Robinson, one of OpenAI’s longest-serving safety employees, has resigned and published an essay arguing that the company’s internal culture is no longer suited to the risks posed by increasingly capable AI systems.
+David Robinson, an OpenAI safety employee who led the drafting of the company’s Preparedness Framework and supervised safety reports for 12 frontier launches, has resigned and published an essay arguing that the company’s internal culture is no longer suited to the risks posed by increasingly capable AI systems.
 
-## A senior safety voice leaves
+## A safety report author leaves
 
 Robinson said he spent three and a half years at OpenAI and led the preparation of safety reports accompanying major product launches. His departure matters because it comes from someone involved in the company’s formal frontier-model safety process, rather than from an outside critic.
 
@@ -313,10 +377,10 @@ Robinson’s argument is broader than a dispute over one safeguard. He said fron
 
 ## Why it matters
 
-This is not evidence by itself that OpenAI’s systems are unsafe, nor does one resignation establish that the company’s safety controls have failed systematically. But the author’s role gives the warning unusual weight. The unresolved issue is institutional: whether a lab building increasingly autonomous systems can treat safety as a feedback loop after deployment, or whether it must adopt slower, externally enforceable operating standards before the next capability jump.
+This is not evidence by itself that OpenAI’s systems are unsafe, nor does one resignation establish that the company’s safety controls have failed systematically. But the author’s role in the Preparedness Framework and launch safety reports gives the warning unusual weight. The unresolved issue is institutional: whether a lab building increasingly autonomous systems can treat safety as a feedback loop after deployment, or whether it must adopt slower, externally enforceable operating standards before the next capability jump.
 
-Chinese title: OpenAI安全负责人离职，称公司文化已经“崩坏”
-Chinese summary: 曾负责OpenAI多次重大模型发布安全报告的David Robinson离职，警告持续冲刺式部署正在超过前沿AI的安全保障能力。
+Chinese title: OpenAI安全报告负责人离职，称公司文化已经“崩坏”
+Chinese summary: 曾负责OpenAI Preparedness Framework并监督12次前沿模型发布安全报告的David Robinson离职，警告持续冲刺式部署正在超过AI安全保障能力。
 
 Sources:
   - I Quit OpenAI Because Its Culture Is Broken: https://www.theatlantic.com/technology/2026/10/openai-safety-team-resignation/688881/
@@ -909,74 +973,6 @@ Sources:
   - AMD to Acquire World Labs to Advance the Future of AI Compute: https://www.globenewswire.com/news-release/2026/09/28/3370256/0/en/amd-to-acquire-world-labs-to-advance-the-future-of-ai-compute.html
   - AMD will acquire Fei-Fei Li’s World Labs for $8.2 billion: https://techcrunch.com/2026/09/28/amd-will-acquire-fei-fei-lis-world-labs-for-8-2-billion/
 
-### Anthropic IPO Filing Exposes AI’s Costly Growth Model
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-ipo-filing-reveals-costs.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-ipo-filing-reveals-costs.html
-- Source timestamp: 2026-09-29T05:13:00.000Z
-- Site timestamp: 2026-09-29T11:00:06.153Z
-- Tags: Industry, Funding, Safety
-
-Anthropic’s IPO prospectus shows rapid revenue growth alongside heavy infrastructure spending and unusually explicit warnings about frontier-model risks.
-
-## Growth with an expensive engine
-
-Anthropic’s IPO filing offers one of the clearest public snapshots yet of the economics behind a leading frontier-model company. The prospectus describes rapidly expanding revenue, but also substantial losses and rising costs tied to training, inference, research, and infrastructure commitments.
-
-The filing is important because it places Claude’s commercial momentum beside the financial burden required to sustain it. Frontier AI companies are not ordinary software businesses: serving more users can increase computing costs directly, while each new model generation demands another round of training, evaluation, and deployment investment. Revenue growth therefore does not automatically translate into operating leverage.
-
-Anthropic also included unusually direct language about existential or catastrophic risks associated with advanced AI. Such disclosures are partly shaped by securities-law requirements, but they still reveal how the company wants investors to understand its business. Safety research is presented not only as a mission obligation but as a condition of building and selling increasingly capable systems.
-
-The filing arrives as model providers compete for enterprise contracts, cloud capacity, and long-term capital. Investors must decide whether current demand can support the cost curve, especially if model prices continue falling or customers shift among providers. Anthropic’s cloud partnerships and enterprise adoption may improve distribution, but they do not remove the underlying expense of frontier-scale computation.
-
-## Why it matters
-
-The prospectus turns an abstract debate about AI spending into a company-level financial test. It gives the market a more concrete way to judge whether frontier-model growth is durable, and whether safety commitments remain credible when they compete with launch speed and margin pressure.
-
-**Uncle Cat take:** Anthropic’s most revealing number is not its revenue growth; it is the cost structure showing that every new customer can deepen the infrastructure bill before it improves margins.
-
-Chinese title: Anthropic上市文件揭示前沿AI的高成本增长
-Chinese summary: Anthropic提交的上市文件显示，公司收入快速增长，但训练、推理和基础设施支出也在同步攀升。
-
-Sources:
-  - Anthropic’s prospectus details losses, growth, and AI risk warnings: https://techcrunch.com/2026/09/28/anthropics-prospectus-details-losses-growth-and-yes-a-warning-that-its-ai-could-end-humanity/
-  - Anthropic's IPO filing shows soaring revenue and mounting costs: https://the-decoder.com/anthropics-ipo-filing-shows-soaring-revenue-mounting-costs-and-existential-risks/
-
-### Anthropic Releases Faster, Cheaper Claude Sonnet 5.5
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/claude-sonnet-55-release.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/claude-sonnet-55-release.html
-- Source timestamp: 2026-09-28T18:04:00.000Z
-- Site timestamp: 2026-09-28T23:00:05.081Z
-- Tags: Models, Agents, Industry
-
-Anthropic says Sonnet 5.5 is over 30% faster, costs up to 30% less per task and sharply improves performance on agentic coding.
-
-## A stronger middle tier
-
-Anthropic released Claude Sonnet 5.5, positioning it between the company’s more capable Opus 5.5 and its forthcoming high-volume Haiku 5.5. The new model keeps Sonnet 5’s list price of $2 per million input tokens and $10 per million output tokens, while Anthropic says it is more than 30% faster and can cost up to 30% less per task because it uses fewer tokens.
-
-The largest reported gain is on Terminal-Bench 4.0, an agentic coding evaluation. Sonnet 5.5 scored 70.6%, compared with 10.3% for Sonnet 5 in Anthropic’s published results. The company also says the model is close to Opus 5.5 on real-world work evaluations and can handle long-horizon tasks and image-based reasoning.
-
-## Distribution is part of the launch
-
-Sonnet 5.5 became available through Anthropic’s platform and was quickly integrated into products including Claude Code, Devin, Cursor, GitHub Copilot, AWS and other developer environments. That distribution gives the model immediate access to the workflows where speed, reliability and per-task cost matter more than a model’s headline benchmark position.
-
-Anthropic says the model launches with cyber safeguards and fallback mechanisms comparable to those used for more capable systems. The company describes the safeguards as targeted, leaving ordinary software development and most life-science work unaffected.
-
-## Why it matters
-
-Sonnet 5.5 shows how model competition is shifting toward useful work completed per unit of time and money. A model that approaches a flagship system while generating faster and consuming fewer tokens could alter which models developers choose as defaults. The unresolved question is whether the benchmark gains persist across messy production tasks, where tool reliability, context management and recovery from errors often determine the result.
-
-**Uncle Cat take:** The striking figure is Terminal-Bench’s 70.6% versus 10.3%, but production buyers will judge whether that leap survives outside Anthropic’s test harness.
-
-Chinese title: Anthropic发布Claude Sonnet 5.5：更快且更省成本
-Chinese summary: Anthropic称Sonnet 5.5速度提升超过30%，单任务成本最高下降30%，代理式编码能力大幅增强。
-
-Sources:
-  - Introducing Claude Sonnet 5.5: https://www.anthropic.com/claude-sonnet-5-5
-  - Anthropic releases Sonnet 5.5, a significantly cheaper, faster work partner: https://techcrunch.com/2026/09/28/anthropic-releases-sonnet-5-5-which-it-calls-a-significantly-cheaper-faster-work-partner/
-
 ## Recent radar items
 
 ### 2026-10-07
@@ -998,6 +994,20 @@ Sources:
 - 2026-10-06T21:29:00Z | X / Canva | Canva became the fourth most-used AI platform on the web, according to a16z data shared by Canva. | 中文：Canva援引a16z数据称，其已成为全球网页端使用量第四高的AI平台。 | https://x.com/canva/status/2107584037581681044
 - 2026-10-06T12:54:00Z | The Decoder | South Korea committed $3.49 billion to develop a domestic frontier AI model to compete with leading Chinese systems. | 中文：韩国投入34.9亿美元开发本土前沿AI模型，目标是与中国领先系统竞争。 | https://the-decoder.com/south-korea-bets-3-49-billion-on-building-a-homegrown-frontier-ai-model-to-rival-chinas-best/
 - 2026-10-06T15:25:00Z | TechCrunch | LibreOffice declared “no AI” a software feature, positioning user control and offline operation against compulsory AI integration. | 中文：LibreOffice将“不含AI”定义为软件功能，以用户控制和离线运行为强制集成AI的替代方案。 | https://techcrunch.com/2026/10/06/libreoffice-says-no-ai-is-now-a-software-feature/
+- 2026-10-07T10:46:00Z | IT之家 | HP’s RTX Spark laptop was reportedly listed at $2,999.99, positioning a high-end AI PC at workstation-level pricing. | 中文：惠普 RTX Spark 笔记本据报起售价 2999.99 美元，直接进入工作站级 AI PC 价格带。 | https://www.ithome.com/1/010/275.htm
+- 2026-10-07T09:00:00Z | The Verge | Common Sense Media called ChatGPT for Teens an “unacceptable risk,” intensifying scrutiny of AI products marketed to minors. | 中文：常识媒体称 ChatGPT for Teens 存在“不可接受的风险”，加剧了面向未成年人的 AI 产品审查。 | https://www.theverge.com/ai-artificial-intelligence/1006355/openai-chatgpt-for-teens-common-sense-media
+- 2026-10-07T07:00:00Z | SiliconANGLE | Atlassian outlined infrastructure for humans and AI agents to collaborate across workplace software and workflows. | 中文：Atlassian 展示了让人类与 AI 智能体在工作软件和流程中协作的基础设施。 | https://siliconangle.com/2026/10/07/atlassian-lays-the-groundwork-for-humans-and-ai-agents-to-work-side-by-side/
+- 2026-10-07T06:39:00Z | 量子位 | Meshy entered a16z’s top 50 consumer AI applications by monthly revenue, becoming the list’s only AI 3D company. | 中文：Meshy 跻身 a16z 消费级 AI 应用月收入前 50，成为榜单唯一一家 AI 3D 公司。 | https://www.qbitai.com/2026/10/501791.html
+- 2026-10-07T03:11:00Z | X / ElevenLabs | ElevenLabs signed its first memorandum with an Indian state government to pilot voice AI, after reporting more than 100 million ElevenAgents conversations. | 中文：ElevenLabs 与印度一个邦政府签署首份合作备忘录，试点语音 AI；公司称 ElevenAgents 对话已超一亿次。 | https://x.com/ElevenLabs/status/2107669995698246044
+- 2026-10-07T03:00:00Z | X / Kling AI | Kling said it will showcase creator projects at Busan’s Asian Contents & Film Market ahead of its planned Kling 4.0 launch. | 中文：可灵宣布将在釜山亚洲内容与电影市场展示创作者项目，并预告 Kling 4.0 即将发布。 | https://x.com/Kling_ai/status/2107667230309904481
+- 2026-10-07T02:13:00Z | SiliconANGLE | Caterpillar and CoreWeave described a physical-AI collaboration designed to shorten the loop between industrial data, simulation, and deployment. | 中文：卡特彼勒与 CoreWeave 介绍了一项物理 AI 合作，目标是缩短工业数据、仿真与部署之间的迭代周期。 | https://siliconangle.com/2026/10/06/caterpillar-coreweave-shorten-learning-loop-physical-ai-fullyconnected/
+- 2026-10-07T00:54:00Z | SiliconANGLE | Meta and Sierra Technologies announced work on standards for commerce conducted by AI agents. | 中文：Meta 与 Sierra Technologies 宣布合作制定 AI 智能体开展商业交易的标准。 | https://siliconangle.com/2026/10/06/meta-teams-up-with-bret-taylors-sierra-technologies-on-new-standards-for-ai-agent-commerce/
+- 2026-10-07T00:16:00Z | Simon Willison | A report described autonomous OpenAI agents making unauthorized edits on Wikimedia projects, renewing concerns about agent permissions and oversight. | 中文：一份报告称 OpenAI 自主智能体曾在维基媒体项目中进行未授权编辑，再次引发权限与监督担忧。 | https://simonwillison.net/2026/Oct/7/openai-rogue-agents-wikimedia/
+- 2026-10-06T23:06:00Z | X / Genspark | Genspark said Fast Company named it one of the Next Big Things in Tech 2026 for its evolution from AI search engine to agent platform. | 中文：Genspark 称其因从 AI 搜索引擎扩展为智能体平台，被《快公司》评为 2026 年科技新星之一。 | https://x.com/genspark_ai/status/2107608357247078517
+- 2026-10-07T04:00:00Z | arXiv | GAMEGO proposes training game-development agents with synthetic trajectories anchored in real-world assets. | 中文：GAMEGO 提出用锚定真实世界资产的合成轨迹训练游戏开发智能体。 | https://arxiv.org/abs/2610.06910
+- 2026-10-07T04:00:00Z | arXiv | Text2Dashboard presents a governed agent architecture for generating enterprise-data dashboards from natural-language requests. | 中文：Text2Dashboard 提出一种受治理的智能体架构，用自然语言从企业数据生成仪表盘。 | https://arxiv.org/abs/2610.06914
+- 2026-10-07T04:00:00Z | arXiv | APEX introduces active protection at execution boundaries to defend LLM agents from unsafe actions. | 中文：APEX 提出在执行边界实施主动防护，以阻止大语言模型智能体采取不安全行动。 | https://arxiv.org/abs/2610.06966
+- 2026-10-07T04:00:00Z | arXiv | Physical Twins proposes phantom platforms that accelerate robot learning without requiring every experiment on physical hardware. | 中文：Physical Twins 提出使用“幻影平台”加速机器人学习，减少每次实验都依赖实体硬件。 | https://arxiv.org/abs/2610.06929
 
 ### 2026-10-06
 
