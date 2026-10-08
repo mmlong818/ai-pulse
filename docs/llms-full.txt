@@ -19,6 +19,32 @@
 
 ## Recent briefings
 
+### AI Agents Linked to Breaches at South Korean Banks
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/ai-agents-south-korean-bank-breaches.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/ai-agents-south-korean-bank-breaches.html
+- Source timestamp: 2026-10-08T09:46:00.000Z
+- Site timestamp: 2026-10-08T11:00:05.916Z
+- Tags: Safety, Agents, Industry
+
+CrowdStrike says an attacker used an open-source penetration agent and several language models in intrusions across South Korean financial institutions.
+
+CrowdStrike has linked a suspected campaign against South Korean financial institutions to ARTEX, an open-source AI-assisted penetration-testing tool, together with several large language models. The company said the activity affected multiple organisations between late September and early October, while the findings were disclosed in a report released during the current edition window.
+
+The attacker allegedly combined ARTEX with DeepSeek V4.1-Flash, GLM-5.3 and Grok 4.6 through Claude Code sessions. CrowdStrike’s analysis of exposed infrastructure reportedly included tool configuration files, model-session histories and memory files. The operator appears to have used AI for reconnaissance, vulnerability discovery, attack-path planning and operational scripting rather than for a single isolated task.
+
+South Korean banks had already reported breaches involving peripheral systems, including a loan-inquiry service used by brokers and an employee-support application. Shinhan Bank said roughly 25,000 customers were affected, while other institutions reported smaller exposures. Investigators have not confirmed the attacker’s identity, the total number of victims or whether every incident in the wider wave came from the same operator.
+
+The significance is less about proving that AI independently hacked a bank than about documenting a plausible workflow in which one operator can coordinate specialised tools and general-purpose models across several targets. It also exposes a defensive weakness: externally reachable business-support systems may be less protected than core banking infrastructure. The campaign remains an attribution case, not a settled verdict on model responsibility, but it gives financial-sector defenders a concrete playbook to test against.
+
+Chinese title: 韩国多家银行遭袭，调查指向AI渗透工具
+Chinese summary: CrowdStrike称，一名攻击者将开源AI渗透工具ARTEX与多款大模型结合，入侵韩国多家金融机构。
+
+Sources:
+  - Chinese-speaking hacker possibly linked to AI-driven attacks on S. Korean banks: report: https://en.yna.co.kr/view/AEN20261008002200320?section=national%2Fnational
+  - CrowdStrike finds AI-driven hacks on South Korean banks: https://securitybrief.asia/story/crowdstrike-finds-ai-driven-hacks-on-south-korean-banks
+  - AI-powered attacks on banks expose technological lag in Korea's financial cyber defenses: https://www.koreatimes.co.kr/business/banking-finance/20261007/explainer-how-ai-emerged-in-koreas-bank-hacking-crisis
+
 ### Biohub Leads $1.8 Billion Push for AI Virtual Cells
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/biohub-virtual-cell-investment.html
@@ -168,6 +194,32 @@ Sources:
   - GPT-6 and Intelligent UI for everyone: https://openai.com/index/gpt-6-for-everyone/
   - ChatGPT release notes: https://help.openai.com/en/articles/6825453-chatgpt-release-notes
   - ChatGPT is getting a lot more visual, with the launch of a new interface: https://techcrunch.com/2026/10/07/chatgpt-is-getting-a-lot-more-visual-with-the-launch-of-a-new-interface/
+
+### Perplexity Releases Multimodal Late-Interaction Embeddings
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/perplexity-multimodal-embedding-models.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-multimodal-embedding-models.html
+- Source timestamp: 2026-10-08T05:39:00.000Z
+- Site timestamp: 2026-10-08T11:00:05.916Z
+- Tags: Models, Research, Open Source
+
+Perplexity’s new 0.6B and 9B embedding models match text and images in one space, targeting more precise retrieval across rendered documents.
+
+Perplexity has released pplx-embed-v2-late, a pair of late-interaction embedding models designed to retrieve text, images and rendered document pages through a shared representation space. The release follows the company’s earlier contextual embedding model and broadens its push beyond answer generation into the retrieval layer that feeds search and agent systems.
+
+The models use multiple vectors per input instead of compressing an entire document or query into one embedding. That allows different parts of a query to match different parts of a page, preserving local detail that can disappear in single-vector retrieval. Perplexity says the system can also perform text-to-image retrieval, including searches over rendered PDF pages without first converting every page into machine-readable text.
+
+The release includes a 0.6-billion-parameter query encoder and a 9-billion-parameter index model. Perplexity’s published material positions the smaller model for query-side use and the larger model for building the searchable index. That division is important for deployment economics: query infrastructure can remain relatively light while the heavier model is used offline or at indexing time.
+
+This is not a headline model release, but it targets a bottleneck that increasingly determines whether AI search and agents are trustworthy: finding the right evidence before generation begins. Multimodal retrieval could improve access to charts, layouts and image-heavy reports, although the practical gains will depend on indexing cost, latency, licensing and evaluation outside Perplexity’s own tests. The strategic signal is that competition is moving deeper into the retrieval stack, where better representations can influence every downstream model call.
+
+Chinese title: Perplexity发布支持图文检索的新嵌入模型
+Chinese summary: Perplexity推出0.6B和9B两款迟交互嵌入模型，让文本、图像与渲染PDF页面进入同一检索空间。
+
+Sources:
+  - Multimodal embeddings beyond a single vector: https://www.perplexity.ai/sr-Cyrl-ME/hub/blog/multimodal-embeddings-beyond-a-single-vector
+  - We're releasing pplx-embed-v2-late: https://community.perplexity.ai/c/announcements/9
+  - Perplexity AI Releases pplx-embed-v2-late: https://www.marktechpost.com/2026/10/07/perplexity-ai-releases-pplx-embed-v2-late-a-0-6b-edge-model-and-a-9b-model-scoring-92-4-on-madqa/
 
 ### Anthropic Expands Verified Access to Cyber Models
 
@@ -888,69 +940,6 @@ Sources:
   - Introducing Strands Decider 2B: a small, open source, decision model: https://strandsagents.com/blog/introducing-strands-decider/
   - AWS Strands Labs Releases Strands Decider 2B: https://www.marktechpost.com/2026/10/01/aws-strands-labs-releases-strands-decider-2b/
 
-### DeepSeek Open-Sources Ascend Kernels for V4.1 Inference
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-ascend-open-source.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-ascend-open-source.html
-- Source timestamp: 2026-09-30T14:37:00.000Z
-- Site timestamp: 2026-09-30T23:00:05.129Z
-- Tags: Open Source, Industry, Models
-
-DeepSeek has released optimized attention kernels for Huawei’s Ascend 950, showing how open software can improve China’s alternative AI stack.
-
-## Software becomes the strategic layer
-
-DeepSeek has open-sourced inference components for Huawei’s Ascend platform, including sparse-attention prefill and decoding kernels designed for the Ascend 950 NPU. The release is part of the FlashMLA repository and targets the infrastructure needed to run DeepSeek V4.1 efficiently outside NVIDIA’s CUDA ecosystem.
-
-DeepSeek reports that the Ascend kernels reach up to 410 teraflops during prefill, equivalent to about 95 percent of the hardware’s theoretical peak, and 360 teraflops during decoding, or roughly 83 percent. The project also includes fused operations and a reported 10 to 15 percent decoding improvement for one kernel path.
-
-These figures are vendor-reported measurements, not independent system-level benchmarks. They also come with constraints. The new release drops support for NVIDIA Hopper and older DeepSeek model versions, changes the FP8 and FP4 key-value cache format, and requires a specific Ascend software environment including CANN and torch_npu.
-
-## Why it matters
-
-The significance is larger than one repository. High-end AI hardware is useful only when its software stack exposes enough of the silicon’s performance. By publishing optimized kernels, DeepSeek is contributing engineering knowledge that can lower the cost of deploying its models on Huawei hardware and make Ascend a more credible target for researchers and infrastructure teams.
-
-The release also signals a deeper alignment between a major Chinese model developer and a domestic accelerator ecosystem. It does not prove that Ascend can match NVIDIA across workloads, tooling, or global availability. But it weakens the assumption that hardware substitution alone determines China’s AI constraints: sustained software optimization can materially change the economics of an alternative platform.
-
-Chinese title: DeepSeek 开源昇腾算子，补强国产推理软件栈
-Chinese summary: DeepSeek 面向华为昇腾 950 开源稀疏注意力算子，显示国产 AI 硬件能否竞争，关键也在软件优化。
-
-Sources:
-  - DeepSeek FlashMLA repository: https://github.com/deepseek-ai/FlashMLA
-  - DeepSeek Ascend prefill deep dive: https://github.com/deepseek-ai/FlashMLA/blob/main/docs/20260930-ascend-prefill-deep-dive.md
-  - China’s AI industry closes ranks as DeepSeek ships Ascend software: https://the-decoder.com/chinas-ai-industry-closes-ranks-as-deepseek-ships-open-source-software-for-huaweis-ascend-chips/
-
-### Google Introduces Gemini 4 Argon in Frontier Model Push
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-4-argon-frontier-model.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gemini-4-argon-frontier-model.html
-- Source timestamp: 2026-09-30T20:01:00.000Z
-- Site timestamp: 2026-09-30T23:00:05.129Z
-- Tags: Models, Industry
-
-Google’s Gemini 4 Argon narrows the performance gap with OpenAI and Anthropic, but early results show a competitive field rather than a new leader.
-
-## A stronger challenger, not a decisive winner
-
-Google DeepMind has introduced Gemini 4 Argon, its latest frontier model, positioning it as a broad upgrade across reasoning, coding, multimodal understanding, and tool use. The announcement arrives during a crowded model cycle in which OpenAI and Anthropic remain the reference points for advanced general-purpose systems.
-
-Early comparisons reported by The Decoder suggest that Argon closes part of the gap with leading OpenAI and Anthropic models. Its results are strong enough to reinforce Google’s position in the frontier tier, but they do not establish a clear overall lead. That distinction matters: the current market is increasingly shaped by task-specific strengths, inference economics, and deployment reach rather than by a single universal leaderboard.
-
-Google’s advantage is the breadth of its surrounding platform. Gemini can be connected to Google’s search, cloud, productivity, and developer products, giving a capable model unusually direct access to distribution. The question is whether Argon’s quality improvements translate into better user outcomes once latency, pricing, context limits, and tool reliability are included.
-
-## Why it matters
-
-Gemini 4 Argon raises the baseline for frontier competition at a time when buyers are becoming less willing to switch platforms for marginal benchmark gains. Google does not need to win every evaluation if Argon is good enough across the most commercially important workflows and benefits from existing enterprise relationships.
-
-The immediate significance is therefore strategic rather than purely technical: Argon keeps Google firmly in the top tier and makes model selection more pluralistic. The unresolved issue is whether its real-world reliability and cost profile can convert a narrower benchmark gap into sustained adoption.
-
-Chinese title: 谷歌发布 Gemini 4 Argon，前沿模型竞争再加码
-Chinese summary: Gemini 4 Argon 缩小了与 OpenAI、Anthropic 的性能差距，但目前更像强势追赶者，而非已经确立领先地位。
-
-Sources:
-  - Gemini 4 Argon: our next era of frontier intelligence: https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/
-  - Google Gemini 4 Argon closes the gap with OpenAI and Anthropic: https://the-decoder.com/google-gemini-4-argon-closes-the-gap-with-openai-and-anthropic-but-doesnt-take-a-clear-lead/
-
 ## Recent radar items
 
 ### 2026-10-08
@@ -971,6 +960,21 @@ Sources:
 - 2026-10-07T15:02:00Z | X / Manus | Manus introduced Game Dev, letting users build and customize playable games from templates without coding. | 中文：Manus 推出 Game Dev，用户无需编程即可基于模板创建并定制可玩的游戏。 | https://x.com/ManusAI/status/2107849080076472626
 - 2026-10-07T15:00:00Z | X / Krea | Krea launched a Photoshop plugin that brings Nano Banana, Krea 2, GPT Image, and other models into the editor. | 中文：Krea 发布 Photoshop 插件，将 Nano Banana、Krea 2、GPT Image 等模型带入编辑器。 | https://x.com/krea_ai/status/2107848434128752777
 - 2026-10-07T12:00:00Z | Google AI | Google introduced Playground, an experimental platform for creating and playing custom games with AI. | 中文：Google 推出实验性 Playground 平台，允许用户借助 AI 创建并游玩自定义游戏。 | https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform/
+- 2026-10-08T08:53:00Z | MarkTechPost | Architect launched Liquid Inference, a real-time auction that dynamically allocates LLM inference capacity. | 中文：Architect推出Liquid Inference，以实时竞价方式动态分配大模型推理容量。 | https://www.marktechpost.com/2026/10/08/architect-launches-liquid-inference-a-real-time-auction-for-llm-inference/
+- 2026-10-08T10:00:00Z | InfoQ中文 | Mooncake was presented as infrastructure for synchronizing rollout data and model weights in high-performance reinforcement learning systems. | 中文：Mooncake被介绍为支撑高性能强化学习系统中轨迹数据与模型权重同步的基础设施。 | https://www.infoq.cn/article/akexM07HzNrRJzmjYNml?utm_source=rss&utm_medium=article
+- 2026-10-08T10:00:00Z | InfoQ中文 | Perplexity engineers built a Rust-based replacement for DynamoDB after finding the service too expensive and slow for their workloads. | 中文：Perplexity工程师因DynamoDB成本和性能不理想，耗时两个月用Rust自研替代系统。 | https://www.infoq.cn/article/4AMw7Bt3UHqw48qmQTpS?utm_source=rss&utm_medium=article
+- 2026-10-08T09:30:00Z | 量子位 | Manus restarted its Beijing office and began large-scale hiring, signaling renewed investment in China operations. | 中文：Manus重启北京办公室并大规模招聘，释放出重新加码中国业务的信号。 | https://www.qbitai.com/2026/10/502009.html
+- 2026-10-08T09:57:00Z | The Decoder | A report said AI-guided navigation led a teenager’s mountain hike into trouble before a helicopter rescue. | 中文：一名少年在AI导航建议下登山遇险，最终由直升机实施救援。 | https://the-decoder.com/teens-ai-guided-mountain-hike-ends-with-a-helicopter-rescue-and-a-lesson-in-common-sense/
+- 2026-10-08T02:15:00Z | 量子位 | StepFun announced that its agent-native smartphone STEPX Neo will officially launch on October 13. | 中文：阶跃星辰宣布原生智能体手机STEPX Neo将于10月13日正式发布。 | https://www.qbitai.com/2026/10/501915.html
+- 2026-10-08T01:49:00Z | MarkTechPost | Unsloth Studio now re-checks trusted model repositories before execution when repository contents change. | 中文：Unsloth Studio会在可信模型仓库内容发生变化后，重新检查再执行。 | https://www.marktechpost.com/2026/10/07/what-happens-when-a-trusted-model-repo-changes-unsloth-studio-re-checks-before-it-runs/
+- 2026-10-08T09:39:00Z | X | Lovart showed Nano Banana 2.1 producing more refined portrait lighting and skin texture than GPT Images 2.5 in a side-by-side comparison. | 中文：Lovart对比展示称，Nano Banana 2.1的人像光照和皮肤纹理优于GPT Images 2.5。 | https://x.com/lovart_ai/status/2108130028882165910
+- 2026-10-08T08:38:00Z | X | Dreamina highlighted a creator event in La Ciotat featuring 100 creators and 100 different visions of cinema. | 中文：Dreamina在电影发源地拉西约塔举办活动，邀请100位创作者展示100种电影想象。 | https://x.com/dreamina_ai/status/2108114711086854301
+- 2026-10-08T07:43:00Z | X | Tripo promoted a workflow that generates 3D assets and places them into Quest 3 experiences with hand tracking. | 中文：Tripo展示了生成3D资产并导入Quest 3、通过手部追踪进行交互的工作流。 | https://x.com/tripoai/status/2108101078084706616
+- 2026-10-08T01:19:00Z | X | Artificial Analysis added derived-model labels and hide controls to its video-model leaderboards. | 中文：Artificial Analysis在视频模型排行榜中新增衍生模型标签及隐藏选项。 | https://x.com/ArtificialAnlys/status/2108004212290490705
+- 2026-10-08T09:00:00Z | MIT Technology Review | MIT Technology Review argued that recent AI breakthroughs in robotics are unlikely to change everyday life soon. | 中文：《麻省理工科技评论》认为，近期机器人AI突破短期内不太可能改变日常生活。 | https://www.technologyreview.com/2026/10/08/1145923/ai-breakthroughs-in-robotics-wont-change-your-life-any-time-soon/
+- 2026-10-08T08:17:00Z | MIT Technology Review | MIT Technology Review examined how autonomous industrial AI could be developed along a safer deployment path. | 中文：《麻省理工科技评论》探讨了如何为自主工业AI建立更安全的部署路径。 | https://www.technologyreview.com/2026/10/08/1144020/building-a-safer-path-to-autonomous-industrial-ai/
+- 2026-10-08T03:09:00Z | X | ElevenLabs announced hiring in Singapore as it expanded its regional presence. | 中文：ElevenLabs宣布在新加坡招聘，继续扩大其区域布局。 | https://x.com/ElevenLabs/status/2108032066118131978
+- 2026-10-08T05:27:00Z | X | MiniMax teased further developments after highlighting the continued popularity of motion generated by MiniMax H3. | 中文：MiniMax称H3生成的动作效果两个月后仍受欢迎，并预告后续更新。 | https://x.com/MiniMax_AI/status/2108066697353801907
 
 ### 2026-10-07
 
