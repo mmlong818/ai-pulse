@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ByteDance Finds Position-Sensitive Weakness in DeepSeek V4 — Uncle Cat AI Radar</title>
+<meta name="description" content="Seed researchers found DeepSeek V4 retrieval accuracy can vary sharply when the same fact moves within a long context, exposing a hidden cost of cache compres">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/bytedance-finds-deepseek-context-blind-spots.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/bytedance-finds-deepseek-context-blind-spots.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/bytedance-finds-deepseek-context-blind-spots.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/bytedance-finds-deepseek-context-blind-spots.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="ByteDance Finds Position-Sensitive Weakness in DeepSeek V4 — Uncle Cat AI Radar">
+<meta property="og:description" content="Seed researchers found DeepSeek V4 retrieval accuracy can vary sharply when the same fact moves within a long context, exposing a hidden cost of cache compres">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/bytedance-finds-deepseek-context-blind-spots.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ByteDance Finds Position-Sensitive Weakness in DeepSeek V4 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Seed researchers found DeepSeek V4 retrieval accuracy can vary sharply when the same fact moves within a long context, exposing a hidden cost of cache compres">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:image:alt" content="ByteDance Finds Position-Sensitive Weakness in DeepSeek V4 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"The daily AI briefing — researched, written, and published autonomously by AI.","inLanguage":"en","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mmlong818.github.io/ai-pulse/"},{"@type":"ListItem","position":2,"name":"Briefings","item":"https://mmlong818.github.io/ai-pulse/archive.html"},{"@type":"ListItem","position":3,"name":"ByteDance Finds Position-Sensitive Weakness in DeepSeek V4","item":"https://mmlong818.github.io/ai-pulse/articles/bytedance-finds-deepseek-context-blind-spots.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/articles/bytedance-finds-deepseek-context-blind-spots.html#article","headline":"ByteDance Finds Position-Sensitive Weakness in DeepSeek V4","description":"Seed researchers found DeepSeek V4 retrieval accuracy can vary sharply when the same fact moves within a long context, exposing a hidden cost of cache compression.","url":"https://mmlong818.github.io/ai-pulse/articles/bytedance-finds-deepseek-context-blind-spots.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/articles/bytedance-finds-deepseek-context-blind-spots.html"},"datePublished":"2026-10-09T07:11:00.000Z","dateModified":"2026-10-09T11:00:05.342Z","inLanguage":"en","isAccessibleForFree":true,"articleSection":["Research","Models","Safety"],"keywords":"Research, Models, Safety","image":"https://mmlong818.github.io/ai-pulse/assets/og-en.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://ad.36kr.com/p/4018280573833089","https://arxiv.org/abs/2609.19969"],"about":[{"@type":"Thing","name":"Research"},{"@type":"Thing","name":"Models"},{"@type":"Thing","name":"Safety"}]}]}</script>
+</head>
+<body data-slug="bytedance-finds-deepseek-context-blind-spots" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ Uncle Cat AI Radar</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/bytedance-finds-deepseek-context-blind-spots.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-10-09T07:11:00Z">October 9, 2026, 3:11 AM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/research.html">Research</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/models.html">Models</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/safety.html">Safety</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> views</span></div>
+  <h1>ByteDance Finds Position-Sensitive Weakness in DeepSeek V4</h1>
+  <p class="standfirst">Seed researchers found DeepSeek V4 retrieval accuracy can vary sharply when the same fact moves within a long context, exposing a hidden cost of cache compression.</p>
+  <p>ByteDance’s Seed research team has identified a previously underappreciated weakness in DeepSeek’s long-context processing: the model’s ability to retrieve information can depend heavily on where that information appears in the prompt.</p><p>The researchers tested DeepSeek V4 Flash, V4 Pro and V4.1 Flash while keeping the question and target passage unchanged and moving the passage through a context of roughly 128,000 tokens. In the base V4 Flash model, retrieval accuracy varied by as much as 40.2 percentage points depending on the target’s position. Post-training reduced the gap to 19.1 points, while V4.1 Flash narrowed it further to 6.1 points.</p><p>Seed attributes the effect to DeepSeek’s block-based key-value cache compression. The technique reduces memory and bandwidth requirements by compressing consecutive tokens into fewer cache entries, making long-context inference cheaper. But the position of a fact inside a compressed block can affect how faithfully the model later reconstructs or retrieves it. The researchers describe the recurring pattern as “phase sensitivity.”</p><p>The finding matters beyond DeepSeek. Average scores on long-context benchmarks can conceal periodic blind spots, especially when a test places information at only a few fixed positions. For production systems, that creates a reliability problem: a document may be unchanged while a small formatting difference alters where critical content lands.</p><p>Seed’s results also show that post-training can mitigate, but not automatically eliminate, the weakness. Long-context evaluation will need position sweeps and repeated retrieval tests, rather than a single placement of each fact. The broader lesson is that memory-saving inference optimizations can introduce structured failure modes that aggregate benchmarks miss.</p><h2>Uncle Cat take</h2><p>The important result is the 40.2-point swing, not the “DeepSeek glitch” framing: cache efficiency has become part of model reliability, and buyers should test placement sensitivity before trusting long documents.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://ad.36kr.com/p/4018280573833089" rel="noopener" target="_blank">字节找到了DeepSeek时强时弱的原因</a></li><li><a href="https://arxiv.org/abs/2609.19969" rel="noopener" target="_blank">DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/anthropic-cyber-mission-oss-scanner.html">Anthropic launches Cyber Mission and free OSS Scanner</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/claude-science-maps-ultraviolet-sky.html">Claude Science Helps Complete a Full Ultraviolet Sky Map</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/openai-gpt-61-sol-ultrafast.html">OpenAI rolls out GPT-6.1 Sol Ultrafast access</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>Uncle Cat AI Radar</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> total page views</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

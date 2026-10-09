@@ -33,11 +33,11 @@ Anthropic has launched the Cyber Mission, a long-term program that combines fron
 
 ## What is launching
 
-The company’s Critical Infrastructure Defense Program will provide frontier Claude models, on-site engineering support and threat research to organizations defending operational technology and government systems. Anthropic also launched OSS Scanner, an opt-in service that periodically scans enrolled open-source projects for vulnerabilities at no cost.
+The company’s Critical Infrastructure Defense Program will provide frontier Claude models, on-site engineering support and threat research to trusted providers and organizations defending operational technology and government systems. Anthropic also launched OSS Scanner, an opt-in service that periodically scans enrolled open-source projects for vulnerabilities at no cost.
 
 Scanner reports include a proof of concept, an explanation of the flaw and a suggested fix when available. Unlike Anthropic’s coordinated-disclosure work, the reports are model-generated and sent without human review. Anthropic expects a true-positive rate above 90%, while acknowledging that severity ratings and proposed fixes can still be wrong.
 
-The program grew out of Project Glasswing, in which Anthropic scanned widely used open-source projects and had humans triage many findings before disclosure. The company says its broader work has uncovered thousands of verified vulnerabilities, but the new service is designed to shorten the gap between discovery and maintainer action.
+The program grew out of Project Glasswing, in which Anthropic scanned hundreds of widely used open-source projects and had humans triage many potential findings before disclosure. Anthropic separately says that, through Project Glasswing and related partner efforts, organizations uncovered at least 129,000 verified software vulnerabilities between April and July 2026, while Anthropic’s own open-source scanning efforts found an additional 5,500 verified vulnerabilities between April and October 2026. More than 33,000 of these had been rated critical or high severity, although Anthropic describes the figures as an undercount based on partial data.
 
 ## Why it matters
 
@@ -52,6 +52,37 @@ Sources:
   - Introducing the Anthropic Cyber Mission: https://www.anthropic.com/news/anthropic-cyber-mission
   - Launching an opt-in vulnerability-finding service for open-source software: https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source
   - Anthropic launches Cyber Mission and OSS Scanner: https://x.com/AnthropicAI/status/2108302539498414208
+
+### ByteDance Finds Position-Sensitive Weakness in DeepSeek V4
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/bytedance-finds-deepseek-context-blind-spots.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/bytedance-finds-deepseek-context-blind-spots.html
+- Source timestamp: 2026-10-09T07:11:00.000Z
+- Site timestamp: 2026-10-09T11:00:05.342Z
+- Tags: Research, Models, Safety
+
+Seed researchers found DeepSeek V4 retrieval accuracy can vary sharply when the same fact moves within a long context, exposing a hidden cost of cache compression.
+
+ByteDance’s Seed research team has identified a previously underappreciated weakness in DeepSeek’s long-context processing: the model’s ability to retrieve information can depend heavily on where that information appears in the prompt.
+
+The researchers tested DeepSeek V4 Flash, V4 Pro and V4.1 Flash while keeping the question and target passage unchanged and moving the passage through a context of roughly 128,000 tokens. In the base V4 Flash model, retrieval accuracy varied by as much as 40.2 percentage points depending on the target’s position. Post-training reduced the gap to 19.1 points, while V4.1 Flash narrowed it further to 6.1 points.
+
+Seed attributes the effect to DeepSeek’s block-based key-value cache compression. The technique reduces memory and bandwidth requirements by compressing consecutive tokens into fewer cache entries, making long-context inference cheaper. But the position of a fact inside a compressed block can affect how faithfully the model later reconstructs or retrieves it. The researchers describe the recurring pattern as “phase sensitivity.”
+
+The finding matters beyond DeepSeek. Average scores on long-context benchmarks can conceal periodic blind spots, especially when a test places information at only a few fixed positions. For production systems, that creates a reliability problem: a document may be unchanged while a small formatting difference alters where critical content lands.
+
+Seed’s results also show that post-training can mitigate, but not automatically eliminate, the weakness. Long-context evaluation will need position sweeps and repeated retrieval tests, rather than a single placement of each fact. The broader lesson is that memory-saving inference optimizations can introduce structured failure modes that aggregate benchmarks miss.
+
+## Uncle Cat take
+
+The important result is the 40.2-point swing, not the “DeepSeek glitch” framing: cache efficiency has become part of model reliability, and buyers should test placement sensitivity before trusting long documents.
+
+Chinese title: 字节Seed揭示DeepSeek长上下文的“位置敏感”弱点
+Chinese summary: Seed研究发现，同一信息仅因在长文本中的位置变化，DeepSeek V4检索准确率最高可相差40.2个百分点。
+
+Sources:
+  - 字节找到了DeepSeek时强时弱的原因: https://ad.36kr.com/p/4018280573833089
+  - DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression: https://arxiv.org/abs/2609.19969
 
 ### Anthropic makes Claude Docs, Slides and Design free
 
@@ -87,6 +118,33 @@ Sources:
   - Claude Dashboards and Claude Motion: https://x.com/claudeai/status/2108271552991252810
   - Claude can now generate animated explainer videos and live data dashboards: https://the-decoder.com/claude-can-now-generate-animated-explainer-videos-and-live-data-dashboards-from-text-prompts/
 
+### Claude Science Helps Complete a Full Ultraviolet Sky Map
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/claude-science-maps-ultraviolet-sky.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/claude-science-maps-ultraviolet-sky.html
+- Source timestamp: 2026-10-09T00:00:00.000Z
+- Site timestamp: 2026-10-09T11:00:05.342Z
+- Tags: Research, Agents
+
+An astrophysicist used Claude Science agents to harmonize decades of ultraviolet surveys and estimate the third of the sky never observed by a telescope.
+
+Anthropic says Claude Science helped astrophysicist Brice Ménard produce the first detailed ultraviolet map covering the entire sky. The project combines observations from NASA’s GALEX and Swift missions, South Korea’s FIMS/SPEAR instrument, Europe’s TD-1 survey, and additional Gaia, Planck and infrared data.
+
+The challenge was not simply drawing a picture. GALEX mapped roughly two-thirds of the sky between 2003 and 2013 but avoided areas around very bright stars, including much of the Milky Way’s plane. Other surveys filled some gaps, yet the datasets differed in calibration, resolution and observing conditions. Ménard used Claude Science to search for public datasets, standardize them, remove residual artifacts, align them on a common coordinate system and merge them into a single map.
+
+About one-third of the ultraviolet sky has never been directly observed. Claude estimated those regions through an inpainting process trained on the relationship between ultraviolet measurements and observations at visible, infrared and radio wavelengths. The team tested the method by hiding known ultraviolet regions and asking the system to reconstruct them; the predictions came within about 10% of the measured values in the reported validation.
+
+The workflow was not autonomous in the strongest sense. Ménard set the scientific direction, inspected outputs and identified errors. In one example, faint circular patterns remained from individual GALEX exposures because atmospheric glow had not been fully removed. After the issue was pointed out, Claude traced the artifact to its source and recalibrated all 38,000 observations.
+
+The result is primarily an educational and visualization resource, not a new telescope survey. Predicted pixels are labelled and uncertainty estimates are included, which is essential because a model-generated estimate cannot substitute for direct observation. Its significance lies in showing how agentic systems can complete neglected, technically tedious scientific infrastructure projects while leaving the scientist responsible for interpretation and validation.
+
+Chinese title: Claude Science协助完成首张全天紫外线天空地图
+Chinese summary: 天体物理学家借助Claude Science整合数十年紫外线观测，并估算望远镜从未观测的约三分之一天空。
+
+Sources:
+  - Using Claude Science to produce the first complete map of the sky in UV light: https://www.anthropic.com/research/the-missing-map-of-the-sky
+  - The full sky in the ultraviolet: https://menard.pha.jhu.edu/uvmap/
+
 ### OpenAI rolls out GPT-6.1 Sol Ultrafast access
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-gpt-61-sol-ultrafast.html
@@ -120,6 +178,35 @@ Sources:
   - Ultrafast is rolling out today for GPT-6.1 Sol: https://community.openai.com/t/ultrafast-is-rolling-out-today-for-gpt-6-1-sol-in-the-api-codex-and-chatgpt-work/1404475
   - Introducing GPT-6.1 Sol: https://openai.com/index/introducing-gpt-6-1-sol/
   - OpenAI Developers announces GPT-6.1 Sol Ultrafast: https://x.com/OpenAIDevs/status/2108262812489531498
+
+### ByteDance Merges TRAE’s Work and Code Products
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/trae-merges-agent-and-ide-workflows.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/trae-merges-agent-and-ide-workflows.html
+- Source timestamp: 2026-10-09T09:19:00.000Z
+- Site timestamp: 2026-10-09T11:00:05.342Z
+- Tags: Agents, Industry
+
+ByteDance is combining TraeWork and TraeCode into one cross-device platform, joining autonomous task execution with a conventional development environment.
+
+ByteDance has merged its TraeWork and TraeCode products into a unified TRAE platform, according to an announcement on the company’s Chinese developer community. The move gives users one entry point for requirements breakdown, planning, coding, testing, documentation and delivery.
+
+The new product is organized around two modes. Agent mode is designed for higher-level work, including decomposing a request, coordinating multiple agents across projects and producing deliverables. IDE mode retains the deeper editing, debugging and project-level control expected from a software development environment. The company says desktop, web and mobile clients will synchronize task status, conversations and outputs.
+
+TRAE will also bring automation jobs, templates, a personal assistant and project artifacts into the same workflow. The supported output set extends beyond source code to HTML, presentations, Word documents, images, videos and reports. Existing accounts, local data and credits are expected to migrate, while the new version is being released gradually.
+
+The product decision reflects a broader shift in AI software. Early coding assistants were built around an editor and a chat panel; newer agent products are trying to own the entire path from an ambiguous request to a completed result. ByteDance is betting that users do not want to choose between a work assistant and a coding tool when a single project may involve research, implementation, testing and communication.
+
+The risk is product complexity. Agent mode promises parallel execution and cross-project coordination, but users still need visibility into which agent changed which file, what was tested and where human approval is required. The community announcement also shows that some early users encountered migration and synchronization issues during the rollout.
+
+The significance is regional and strategic rather than a new model breakthrough. ByteDance is positioning TRAE as an integrated agent workspace that spans professional development and general knowledge work. If it can make the handoff between planning and code reliable, it could compete for workflow ownership; if not, the merger may simply combine two crowded interfaces under one brand.
+
+Chinese title: 字节合并TraeWork与TraeCode，统一为TRAE平台
+Chinese summary: 字节将TraeWork与TraeCode合并为统一平台，把自主任务执行、代码开发和跨设备协作纳入同一工作流。
+
+Sources:
+  - TRAE 全面升级：双端融合，打造全链路开发平台: https://forum.trae.cn/t/topic/183224
+  - ByteDance's TRAE Merges TraeWork and TraeCode Into One Platform: https://pandaily.com/bytedance-trae-merges-traework-traecode-agent-ide-modes-traework-shutdown-oct-23
 
 ### AI Agents Linked to Breaches at South Korean Banks
 
@@ -850,101 +937,6 @@ Sources:
   - Robotics AI developer FieldAI reportedly raising $700M in funding: https://siliconangle.com/2026/10/02/robotics-ai-developer-fieldai-reportedly-raising-700m-in-funding/
   - FieldAI raises $700M at $10B valuation for its robot brain: https://dealroom.co/news/158623-fieldai-raises-700m-at-10b-valuation-for-its-robot-brain/
 
-### Meta Opens Muse Gadget Code for DIY AI Hardware
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-opens-muse-gadget-code.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meta-opens-muse-gadget-code.html
-- Source timestamp: 2026-10-02T21:08:00.000Z
-- Site timestamp: 2026-10-02T23:00:04.118Z
-- Tags: Agents, Open Source, Industry
-
-Meta is opening Muse gadget software for ESP32 boards and Raspberry Pi devices, extending its personal agent beyond phones and computers.
-
-## What happened
-Meta has open-sourced code that lets developers build their own hardware interfaces for Muse, the company’s personal AI agent. The project supports off-the-shelf ESP32 boards and Raspberry Pi computers, which can be connected to displays, buttons, sensors and actuators.
-
-Meta described possible uses including an e-ink reminder display, an HDMI-connected screen and a small touchscreen device resembling a homemade Muse Charm. The company also announced Muse Home Link, a device it produced in a limited run of 5,000 units. Home Link is designed to let Muse control connected household devices and services, such as lights, televisions and printers, depending on the user’s setup.
-
-## Why it matters
-The release broadens Meta’s strategy from delivering Muse through an app or desktop client to making the agent a software layer for experimental hardware. That matters because agents become more useful when they can sense and affect the physical environment, rather than merely answer questions in a chat window.
-
-The open approach could help Meta recruit hobbyists and developers to create interfaces the company would not build itself. It also gives Muse a chance to become a platform with community-built skills, rather than remaining a closed consumer assistant.
-
-There are clear constraints. Meta warns users to proceed at their own risk, and the hardware experiments may inherit the same privacy and permission problems that affect desktop agents. A community device connected to sensors, household controls or printers can create new failure modes that are difficult for Meta to monitor.
-
-The immediate product impact will be modest, especially because Home Link is limited to 5,000 units. The strategic signal is larger: Meta is testing whether a personal agent can become an extensible operating layer across screens, sensors and actuators. If developers adopt it, Muse could gain distribution through devices Meta does not manufacture.
-
-**Uncle Cat take:** The 5,000-unit Home Link batch is a small experiment, but the open ESP32 and Raspberry Pi layer is the part that could let Meta outsource hardware invention to its community.
-
-Chinese title: Meta 开放 Muse 设备代码，试水社区自制 AI 硬件
-Chinese summary: Meta 开放 Muse 设备代码，支持 ESP32 和树莓派，让开发者把个人 AI 代理接入屏幕、传感器与家用设备。
-
-Sources:
-  - Meta open sources code to let you make Muse AI gadgets: https://www.theverge.com/tech/1004330/meta-muse-ai-gadgets-home-link
-  - Muse Gadgets: https://github.com/facebookresearch/muse-gadgets
-
-### Microsoft Releases MAI-Transcribe-2 for Live Speech
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/microsoft-mai-streaming-transcription.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-mai-streaming-transcription.html
-- Source timestamp: 2026-10-03T05:09:00.000Z
-- Site timestamp: 2026-10-03T11:00:04.127Z
-- Tags: Models, Agents
-
-Microsoft’s new streaming model transcribes speech continuously in 60 languages, targeting voice agents that must reason before a speaker finishes.
-
-Microsoft has released MAI-Transcribe-2-Streaming, a low-latency speech-to-text model available through Microsoft Foundry and Azure Speech. The model continuously produces partial transcripts, revises them as more audio arrives and commits a stable result when an utterance ends.
-
-## Designed for interruption-free voice systems
-
-The model supports 60 languages with automatic language detection. Microsoft says it can produce initial hypotheses within the low hundreds of milliseconds and that words generally appear around 320 milliseconds after being spoken, compared with more than 500 milliseconds for the closest competing systems in its cited evaluation.
-
-The distinction between partial and final transcription is important for voice agents. A system can begin classifying a request, preparing a tool call or selecting a response while the speaker is still talking. That reduces the dead time created by the traditional pipeline, in which an application waits for the full utterance before passing text to a language model.
-
-Microsoft positions the model for call centers, voice assistants, meetings, lectures and live captions. It is offered through an OpenAI Realtime-compatible WebSocket interface as well as the Azure Speech SDK, giving developers both a lower-level integration path and managed connection handling.
-
-## Why it matters
-
-The release is less about a dramatic new speech benchmark than about moving voice-agent latency into the application architecture. Faster partial transcripts can allow reasoning and tool preparation to overlap with speech, but early hypotheses can also be wrong and may trigger premature actions. Microsoft’s public preview status means production reliability and error behavior remain to be established. Still, the combination of multilingual coverage, streaming output and agent-oriented interfaces makes speech recognition a more active control surface for AI systems rather than a passive transcription step.
-
-Chinese title: 微软发布MAI-Transcribe-2流式语音模型
-Chinese summary: 微软新模型支持60种语言的连续转写，让语音代理能在用户说完之前开始理解请求、准备工具调用。
-
-Sources:
-  - MAI-Transcribe-2-Streaming overview: https://learn.microsoft.com/en-us/azure/ai-services/speech-service/mai-transcribe-2-streaming
-  - Build expressive voice experiences with new MAI models in Microsoft Foundry: https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/build-expressive-voice-experiences-with-new-mai-models-in-microsoft-foundry/4524637
-
-### Prime Intellect Launches Serving Layer for Open Models
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/prime-inference-open-model-serving.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/prime-inference-open-model-serving.html
-- Source timestamp: 2026-10-03T05:37:00.000Z
-- Site timestamp: 2026-10-03T11:00:04.127Z
-- Tags: Industry, Open Source, Agents
-
-Prime Inference offers serverless and reserved hosting for frontier open models, linking deployment traffic with the company’s continual-training loop.
-
-Prime Intellect has launched Prime Inference, a serving platform for frontier open models that combines serverless endpoints with reserved GPU capacity across multiple data centers. The company describes the system as the missing production layer in its broader training and reinforcement-learning stack.
-
-## From training to deployment
-
-Prime Intellect’s stated objective is to let trained models serve real users, collect production traces and feed those experiences back into future training. Prime Inference separates the public API from the underlying model fleet, allowing capacity to move, fail over or scale without forcing customers to change endpoints.
-
-The platform supports both on-demand usage and reserved capacity. That distinction matters for agentic workloads, where long prompts and repeated context can make reliability and scheduling as important as raw token price. Prime says a typical agent turn may add roughly 6,000 tokens to a 140,000-token prompt, making prompt reuse and distributed serving central to economics.
-
-The release also reflects a broader shift in the open-model market. Open weights alone do not create a usable alternative to closed APIs; developers need predictable inference, operational isolation and a path from deployment data back into model improvement. Prime is attempting to package those layers together, alongside its existing reinforcement-learning tools, verifiers and sandboxes.
-
-## Why it matters
-
-The announcement does not establish that Prime Inference is cheaper or more capable than hyperscaler infrastructure, and the company provides limited independent performance evidence. Its significance lies in the architecture: open-model builders are increasingly treating serving as part of the learning system rather than a final hosting step. If Prime can turn that loop into dependable infrastructure, it could give smaller labs a more credible route from open research release to continuously improving production agent.
-
-Chinese title: Prime Intellect推出开源前沿模型托管平台
-Chinese summary: Prime Inference同时提供无服务器和预留容量服务，试图把开源模型部署、用户反馈与持续训练连接成一条闭环。
-
-Sources:
-  - Prime Inference: Fast, Reliable Serving for Frontier Open Models: https://www.primeintellect.ai/blog/prime-inference
-  - Prime Intellect Blog: https://www.primeintellect.ai/blog
-
 ## Recent radar items
 
 ### 2026-10-09
@@ -968,6 +960,21 @@ Sources:
 - 2026-10-08T19:17:00Z | X / Luma AI | Runway and Luma AI announced workflows that let users move Claude Motion animations into Luma for resizing and further refinement. | 中文：Runway与Luma AI宣布相关工作流，让用户把Claude Motion动画导入Luma后继续调整尺寸和精修。 | https://x.com/LumaLabsAI/status/2108275523755413970
 - 2026-10-08T18:33:00Z | AWS Machine Learning Blog | AWS described pay-per-inference payments for AI agents through Bedrock AgentCore, demonstrated with BlockRun and Incarna. | 中文：AWS介绍通过Bedrock AgentCore实现智能体按推理付费，并以BlockRun和Incarna为例展示。 | https://aws.amazon.com/blogs/machine-learning/pay-per-inference-for-ai-agents-how-blockrun-and-incarna-use-amazon-bedrock-agentcore-payments/
 - 2026-10-08T20:16:00Z | X / Anthropic | Anthropic said Claude Science helped an astrophysicist create the first complete ultraviolet map of the sky. | 中文：Anthropic表示，Claude Science协助天体物理学家完成了首张完整紫外线天空地图。 | https://x.com/AnthropicAI/status/2108290395599667700
+- 2026-10-09T08:53:00Z | 量子位 | Lenovo’s TianxiCode reportedly ranked first globally on SWE-bench-Live, a benchmark for real-world software-engineering tasks. | 中文：联想天禧自研代码智能体据称登顶SWE-bench-Live全球榜单。 | https://www.qbitai.com/2026/10/502422.html
+- 2026-10-09T04:15:00Z | 量子位 | Sharpa demonstrated tactile sensing that expands robotic manipulation from fingertip feedback toward whole-body physical perception. | 中文：Sharpa展示将机器人触觉从指尖反馈扩展到全身感知的灵巧操作方案。 | https://www.qbitai.com/2026/10/502330.html
+- 2026-10-09T08:45:00Z | The Decoder | OpenAI said Russian and Iranian influence operations planted fabricated stories inside real news outlets to shape public narratives. | 中文：OpenAI称俄罗斯和伊朗影响行动曾把虚假故事植入真实新闻媒体。 | https://the-decoder.com/openai-uncovers-russian-and-iranian-influence-ops-that-planted-fake-stories-in-real-news-outlets/
+- 2026-10-09T07:00:00Z | OpenAI | OpenAI highlighted Sophos’s Daybreak deployment, which reportedly cut threat-investigation time by 96%. | 中文：OpenAI称Sophos部署Daybreak后，将威胁调查耗时降低了96%。 | https://openai.com/index/sophos
+- 2026-10-09T03:49:00Z | X @claudeai | Claude Startups paused its program after Anthropic underestimated demand from founders seeking access and support. | 中文：Claude Startups因低估创业者需求而暂停项目申请。 | https://x.com/claudeai/status/2108404561413349695
+- 2026-10-09T08:20:00Z | X @qdrant_engine | Qdrant and LangGraph promoted long-term agent memory that stores and recalls information across conversations. | 中文：Qdrant与LangGraph推广可跨对话存储和调用信息的长期智能体记忆。 | https://x.com/qdrant_engine/status/2108472741745873046
+- 2026-10-09T02:34:00Z | X @SakanaAILabs | Sakana AI said its technology powers evidence search and cited answer generation in Iris’s tool for physicians. | 中文：Sakana AI称其技术已用于Iris面向医生的证据检索与引用生成工具。 | https://x.com/SakanaAILabs/status/2108385649648939287
+- 2026-10-09T00:12:00Z | SiliconANGLE | Gallatin AI raised $50 million for a military-logistics platform designed to support planning and operations. | 中文：Gallatin AI为军事物流平台融资5000万美元，用于支持规划与运营。 | https://siliconangle.com/2026/10/08/gallatin-ai-raises-50m-in-funding-for-its-military-logistics-platform/
+- 2026-10-09T00:34:00Z | Simon Willison | Simon Willison released ttok 1.0, a command-line tool for counting and inspecting tokens in text and files. | 中文：Simon Willison发布ttok 1.0，用于在命令行统计和检查文本及文件的令牌。 | https://simonwillison.net/2026/Oct/9/ttok/
+- 2026-10-09T06:11:00Z | X @Hailuo_AI | Hailuo AI teased an effect that makes a person disappear from a generated video scene. | 中文：海螺AI预告了一种让人物从生成视频场景中消失的特效。 | https://x.com/Hailuo_AI/status/2108440238813241422
+- 2026-10-09T03:36:00Z | X @Alibaba_Qwen | Alibaba Qwen offered a week of free access to Qwen3.8-Max, Qwen3.8-Flash, and Wan3.0 through GMI Cloud. | 中文：阿里通义宣布通过GMI Cloud限时免费开放Qwen3.8-Max、Qwen3.8-Flash和Wan3.0一周。 | https://x.com/Alibaba_Qwen/status/2108401307577090259
+- 2026-10-09T00:00:00Z | X @LumaLabsAI | Luma showed how AI helped produce Moses with real actors on a Manhattan Beach stage while extending scenes into other worlds. | 中文：Luma展示了用真实演员拍摄《Moses》，再借助AI将场景延展到不同世界的制作方式。 | https://x.com/LumaLabsAI/status/2108346707562094614
+- 2026-10-09T01:29:00Z | X @dreamina_ai | Lovart invited creators to join a Creative Partner Program aimed at expanding collaboration around AI-generated visual work. | 中文：Lovart邀请创作者加入创意合作伙伴计划，以扩大AI视觉创作协作。 | https://x.com/dreamina_ai/status/2108369178898125148
+- 2026-10-09T03:56:00Z | X @milvusio | Milvus announced a San Francisco meetup as it expands beyond vector search toward broader AI infrastructure discussions. | 中文：Milvus宣布将在旧金山举办线下活动，并推动从向量搜索走向更广泛的AI基础设施讨论。 | https://x.com/milvusio/status/2108406261490593980
+- 2026-10-09T09:22:00Z | The Decoder | Anthropic’s Claude Science reportedly helped create the first complete ultraviolet map of the sky with an astrophysicist. | 中文：据报道，Anthropic的Claude Science协助天体物理学家完成首张完整紫外线天空地图。 | https://the-decoder.com/anthropics-claude-science-creates-the-first-complete-ultraviolet-map-of-the-sky/
 
 ### 2026-10-08
 
