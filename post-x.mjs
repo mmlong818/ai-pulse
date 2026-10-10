@@ -8,7 +8,7 @@ import { join } from 'node:path';
 const ROOT = new URL('.', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const CONTENT = join(ROOT, 'content');
 const BASE = 'https://mmlong818.github.io/ai-pulse';
-const EB_ANCHOR = 11 * 3600000;
+const EB_ANCHOR = 13 * 3600000;
 const EB_HALF = 12 * 3600000;
 const forcedEdition = (process.env.AIPULSE_FORCE_EDITION || process.env.AIPULSE_EDITION || '').toLowerCase();
 const forcedEditionDate = process.env.AIPULSE_EDITION_DATE || new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
@@ -19,7 +19,7 @@ function currentBeijingDate() {
 
 function forcedEditionInstant() {
   if (forcedEdition !== 'morning' && forcedEdition !== 'evening') return null;
-  const localTime = forcedEdition === 'morning' ? '07:00:00+08:00' : '19:00:00+08:00';
+  const localTime = forcedEdition === 'morning' ? '09:00:00+08:00' : '21:00:00+08:00';
   return new Date(`${forcedEditionDate}T${localTime}`);
 }
 

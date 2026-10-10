@@ -371,8 +371,8 @@ function radarItemLi(i, lang) {
   return `<li>${time ? `<time class="radar-time" datetime="${esc(i.published)}">${esc(time)}</time>` : ''}<a class="tag" href="${tagUrl(i.tag, lang)}">${esc(tagLabel(i.tag, lang))}</a> <span class="radar-text">${esc(lang === 'zh' && i.text_zh ? i.text_zh : i.text)}</span> <a class="radar-src" href="${esc(i.url)}" rel="noopener" target="_blank">${esc(i.source || 'source')} ↗</a></li>`;
 }
 
-// 班次（edition）：北京 07:00 / 19:00 为界（= UTC 前日 23:00 / 当日 11:00），以 UTC 11:00 为锚每 12 小时一个边界
-const EB_ANCHOR = 11 * 3600000, EB_HALF = 12 * 3600000;
+// 班次（edition）：北京 09:00 / 21:00 为界（= UTC 前日 01:00 / 当日 13:00），以 UTC 13:00 为锚每 12 小时一个边界
+const EB_ANCHOR = 13 * 3600000, EB_HALF = 12 * 3600000;
 const floorEdition = (ms) => Math.floor((ms - EB_ANCHOR) / EB_HALF) * EB_HALF + EB_ANCHOR; // 文章：发布时刻之前最近的边界
 const ceilEdition = (ms) => Math.ceil((ms - EB_ANCHOR) / EB_HALF) * EB_HALF + EB_ANCHOR;   // 快讯：发布时刻之后最近的截稿边界
 const editionDayOf = (eb) => new Date(eb + 8 * 3600000).toISOString().slice(0, 10);        // 班次所属的北京刊期日

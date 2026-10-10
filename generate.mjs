@@ -12,7 +12,7 @@ const COUNT = Number(process.argv[2] || 6);
 const RADAR_COUNT = Number(process.env.AIPULSE_RADAR_COUNT || 14);
 const WINDOW_H = Number(process.env.AIPULSE_WINDOW_HOURS || 24); // 采集时间窗（小时），与站点「过去 24 小时」口径一致
 const SKIP_RADAR = process.env.AIPULSE_SKIP_RADAR === '1';
-// 按北京日期归档：早班（7:00）与晚班（19:00）落到同一天的文件里；补跑时服从指定刊期。
+// 按北京日期归档：早班（9:00）与晚班（21:00）落到同一天的文件里；补跑时服从指定刊期。
 const actualToday = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
 const forcedEdition = (process.env.AIPULSE_FORCE_EDITION || process.env.AIPULSE_EDITION || '').toLowerCase();
 const forcedEditionDate = process.env.AIPULSE_EDITION_DATE || actualToday;
@@ -31,7 +31,7 @@ const isEvening = forcedEdition === 'evening'
     : new Date(Date.now() + 8 * 3600000).getUTCHours() >= 12;
 const editionPublishedAt = (() => {
   if (forcedEdition === 'morning' || forcedEdition === 'evening') {
-    const localTime = forcedEdition === 'morning' ? '07:00:00+08:00' : '19:00:00+08:00';
+    const localTime = forcedEdition === 'morning' ? '09:00:00+08:00' : '21:00:00+08:00';
     return new Date(`${forcedEditionDate}T${localTime}`).toISOString();
   }
   return new Date().toISOString();
@@ -41,8 +41,8 @@ const editionEnd = useEditionWindow ? (CUTOFF || new Date(editionPublishedAt)) :
 const editionStart = (() => {
   if (!useEditionWindow) return null;
   const date = forcedEditionDate || today;
-  if (isEvening) return new Date(`${date}T07:00:00+08:00`);
-  return new Date(new Date(`${date}T07:00:00+08:00`).getTime() - 12 * 3600000);
+  if (isEvening) return new Date(`${date}T09:00:00+08:00`);
+  return new Date(new Date(`${date}T09:00:00+08:00`).getTime() - 12 * 3600000);
 })();
 const EDITION_WINDOW_NOTE = editionStart
   ? `\nEDITION WINDOW: only include stories whose ORIGINAL publication moment is at or after ${editionStart.toISOString()} and before ${(editionEnd || new Date()).toISOString()}. For deep briefings, date-only sources are not enough — if the exact original publication time cannot be verified, leave it to the radar.`
@@ -266,10 +266,10 @@ OUTPUT: Reply with ONLY a JSON array (no markdown fence, no commentary). Each el
       const age = (Date.parse(a.date) - Date.parse(a.published)) / 86400000;
       if (isNaN(age) || age > 7 || age < -1) delete a.published;
     }
-    // 归档日 = 源头时间的刊期日（与快讯同规则：北京 19:00 前归当天、之后归次日），不晚于 today
+    // 归档日 = 源头时间的刊期日（与快讯同规则：北京 21:00 前归当天、之后归次日），不晚于 today
     if (a.published) {
       const day = a.published.includes('T')
-        ? new Date(Date.parse(a.published) + 13 * 3600000).toISOString().slice(0, 10)
+        ? new Date(Date.parse(a.published) + 11 * 3600000).toISOString().slice(0, 10)
         : a.published;
       a.date = day > today ? today : day;
     }
@@ -345,13 +345,13 @@ OUTPUT: ONLY a JSON object (no fence, no commentary):
       return true;
     });
   if (!radar.items.length) throw new Error('雷达 0 条');
-  // 按刊期归档：北京时间 19:00 为界，19:00 前发布的归当天，之后归次日（次日早班首发）
+  // 按刊期归档：北京时间 21:00 为界，21:00 前发布的归当天，之后归次日（次日早班首发）
   // 早班从时间窗里捞到的前天/昨天白天条目，并入对应旧刊而不是混进今天
   const editionDay = (p) => {
     if (!p) return today;
     const day = p.includes('T')
-      ? new Date(new Date(p).getTime() + 13 * 3600000).toISOString().slice(0, 10) // UTC+8 再加 5h：19:00 后翻篇
-      : p; // 只有日期：视为当天 19:00 前
+      ? new Date(new Date(p).getTime() + 11 * 3600000).toISOString().slice(0, 10) // UTC+8 再加 3h：21:00 后翻篇
+      : p; // 只有日期：视为当天 21:00 前
     return day > today ? today : day;
   };
   const byDay = new Map();

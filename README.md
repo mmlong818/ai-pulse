@@ -13,7 +13,7 @@ An AI work by [Uncle Cat (猫叔)](https://x.com/mmlong8).
 
 ## 它每天做什么 / What it does
 
-每天北京时间 **7:00 与 19:00** 各运行一班，每班产出：
+每天北京时间 **9:00 与 21:00** 各运行一班，每班产出：
 
 - **深度简报 ≤6**：250-450 词原创新闻分析，中英双语，每篇附 1-3 个原始信源链接；宁缺毋滥，晚班（覆盖亚洲白天）主动倾斜亚洲时段动态、不回锅美国旧闻凑数
 - **每日雷达 ×14**：一句话快讯扫全圈（同日两班自动合并去重）
@@ -43,7 +43,7 @@ build.mjs      静态站构建 → docs/（双语页面、分类、存档、雷�
 serve.mjs      本地预览（http://127.0.0.1:3898/ai-pulse/）
 zhihu-evening.mjs 知乎晚报草稿生成（晚班输出标题、正文专用稿、Markdown/HTML/JSON）
 wait-pages.mjs 推送后等待 GitHub Pages 确认已上线本次版本，避免向外发布旧页面
-run-daily.bat  定时班次入口（Windows 计划任务每日 7:00 / 19:00）
+run-daily.bat  定时班次入口（Windows 计划任务每日 9:00 / 21:00）
 refresh-72h.bat 全量重刷（72 小时窗口）
 ```
 

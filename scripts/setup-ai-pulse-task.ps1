@@ -14,8 +14,8 @@ if (-not (Test-Path -LiteralPath $Bat)) {
 
 $Action = New-ScheduledTaskAction -Execute $Bat -WorkingDirectory $Root
 $Triggers = @(
-  New-ScheduledTaskTrigger -Daily -At '07:00'
-  New-ScheduledTaskTrigger -Daily -At '19:00'
+  New-ScheduledTaskTrigger -Daily -At '09:00'
+  New-ScheduledTaskTrigger -Daily -At '21:00'
 )
 $Settings = New-ScheduledTaskSettingsSet `
   -StartWhenAvailable `

@@ -83,7 +83,7 @@ node serve.mjs
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup-ai-pulse-task.ps1
 ```
 
-这会创建 `AI Pulse Daily`，每天北京时间本机时间 `07:00` 和 `19:00` 运行 `run-daily.bat`。
+这会创建 `AI Pulse Daily`，每天北京时间本机时间 `09:00` 和 `21:00` 运行 `run-daily.bat`。
 
 如果希望机器重启后即使无人登录也能运行，用：
 
