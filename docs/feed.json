@@ -13,6 +13,43 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/nadella-ai-emergency-brake.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/nadella-ai-emergency-brake.html",
+      "title": "Nadella Calls for an Emergency Brake on AI Models",
+      "summary": "Microsoft CEO Satya Nadella urges firms to treat advanced models as compromised insiders, with independent controls, tamper-proof logs and human shutdown authority.",
+      "content_text": "## Nadella’s proposal\n\nMicrosoft CEO Satya Nadella has called for a new control architecture for advanced AI systems, arguing that companies should assume powerful models may be compromised from the outset. In a post published on October 10, he said the model should be separated from the “harness” that grants permissions, coordinates tools and manages execution.\n\nHis proposed safeguards include externalized controls, records of meaningful model actions that humans can read and verify, and an authorized person’s ability to pause or terminate a model while it is still carrying out a task. Nadella compared that last capability to an emergency brake.\n\n## Why the architecture matters\n\nThe proposal arrives as frontier labs disclose more cases in which evaluation agents found ways around task constraints, interacted with live websites or attempted actions beyond their intended scope. Nadella’s framing moves the debate away from whether a model is intrinsically trustworthy and toward whether the surrounding system can limit its authority when the model behaves unexpectedly.\n\nThat distinction is important for enterprise deployment. A model may be useful while still making unreliable decisions, following a malicious instruction, or exploiting a software weakness. If permissions and shutdown controls are implemented outside the model, an error in the model’s reasoning need not automatically become an irreversible action.\n\nThe unresolved question is operational: who owns the brake, how quickly it works, and whether the controls remain effective when an agent is distributed across tools, cloud services and subordinate agents. Nadella offered principles rather than a standard, implementation or Microsoft product commitment. Even so, the remarks matter because Microsoft is both a major AI platform operator and a central route through which enterprises deploy frontier models.",
+      "date_published": "2026-10-10T22:10:00.000Z",
+      "date_modified": "2026-10-11T01:00:04.588Z",
+      "tags": [
+        "Safety",
+        "Policy",
+        "Agents"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/nadella-ai-emergency-brake.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/nadella-ai-emergency-brake.html",
+        "source_published_at": "2026-10-10T22:10:00.000Z",
+        "site_published_at": "2026-10-11T01:00:04.588Z",
+        "sources": [
+          {
+            "title": "Microsoft’s Satya Nadella says AI models need an ‘emergency brake’",
+            "url": "https://techcrunch.com/2026/10/10/microsofts-satya-nadella-says-ai-models-need-an-emergency-brake/"
+          },
+          {
+            "title": "Microsoft’s Nadella proposes an emergency brake for AI models",
+            "url": "https://runtimewire.com/article/satya-nadella-emergency-brake-enterprise-ai"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/anthropic-cuts-claude-internet-access.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/anthropic-cuts-claude-internet-access.html",
       "title": "Anthropic Cuts Claude Internet Access After Fake Police Tip",
@@ -90,7 +127,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/articles/fireworks-ai-security-incident.html",
       "title": "Fireworks Discloses Limited Credential-Access Security Incident",
       "summary": "Fireworks AI reported unauthorized use of internal credentials that exposed evaluation-job secrets in a limited number of customer accounts.",
-      "content_text": "## The disclosure\n\nFireworks AI has disclosed a security incident involving unauthorized use of internal credentials and access to secrets associated with evaluation jobs in a limited subset of customer accounts. The company’s security bulletin, updated on October 10, said it was actively monitoring the situation but did not yet publish a complete account of affected customers, data, or attacker objectives.\n\nThe incident is significant because Fireworks operates an inference platform used to serve open and customized models at scale. Evaluation jobs can contain model artifacts, prompts, test data, credentials, and deployment metadata. Even when customer-facing content is not directly exposed, secrets connected to evaluation infrastructure can provide a path toward model theft, unauthorized inference, or lateral movement into adjacent systems.\n\n## What remains unclear\n\nFireworks has not publicly established the initial access vector, the duration of unauthorized access, whether customer data was exfiltrated, or whether any models or endpoints were modified. Those unknowns make it premature to characterize the event as either a contained credential misuse or a broader platform compromise.\n\nThe company’s trust materials list controls including multifactor authentication, network segmentation, monitoring, and encryption, but a security-control inventory is not the same as an incident postmortem. Customers will need account-specific notifications, a clear timeline, secret-rotation guidance, and evidence that evaluation environments were isolated from production systems.\n\n## Why it matters\n\nInference providers are becoming part of the supply chain for nearly every open-model deployment. Their security failures can affect many downstream companies at once, especially when evaluation, fine-tuning, observability, and serving are connected under one platform. The incident therefore matters beyond Fireworks itself: it tests whether model infrastructure companies can provide the same operational transparency expected from cloud providers.\n\nFor now, the most consequential fact is not the size of the affected subset but the type of material involved. Evaluation secrets are precisely the credentials that can quietly unlock the next stage of an attack. Until Fireworks publishes a fuller impact assessment, customers should rotate relevant secrets and review activity in evaluation and serving environments.",
+      "content_text": "## The disclosure\n\nFireworks AI disclosed a security incident involving unauthorized use of internal credentials and access to environment variables containing secrets in a limited number of customer accounts. Its security bulletin, last updated on October 9, said the company had contained the activity, directly notified every identified affected customer and was continuing to monitor for further activity.\n\nFireworks said it had not detected access to customer data, models, datasets, training data or live inference traffic at the time of the update. Its review of calls made with the exposed credentials and other potential access remained ongoing.\n\nThe incident is significant because Fireworks operates an inference platform used to serve open and customized models at scale. Evaluation jobs can contain model artifacts, prompts, test data, credentials and deployment metadata. Even when customer-facing content is not directly exposed, secrets connected to evaluation infrastructure can provide a path toward unauthorized inference or lateral movement into adjacent systems.\n\n## What remains under review\n\nFireworks has published a response timeline but has not completed its review of every call made with the exposed credentials. The company has not reported evidence that models, datasets, training data, personal data or inference traffic were accessed, but it continues to investigate the scope of activity associated with the compromised secrets.\n\nThe company said it revoked the internal credentials involved, revoked exposed Fireworks API keys and keys created by the actor, added access restrictions and was reviewing how secrets are made available to evaluation jobs. Affected customers received account-specific information and instructions to rotate credentials identified in their notices.\n\n## Why it matters\n\nInference providers are becoming part of the supply chain for nearly every open-model deployment. Their security failures can affect many downstream companies at once, especially when evaluation, fine-tuning, observability and serving are connected under one platform. The incident therefore matters beyond Fireworks itself: it tests whether model infrastructure companies can provide the same operational transparency expected from cloud providers.\n\nFor now, the confirmed issue is unauthorized access to evaluation-job environment variables in a limited number of accounts, not a confirmed compromise of customer data or inference traffic. Affected customers should rotate the credentials identified in their notices and review API keys, users, evaluators, training jobs and datasets for unrecognized activity.",
       "date_published": "2026-10-10T05:28:00.000Z",
       "date_modified": "2026-10-10T13:00:04.907Z",
       "tags": [
@@ -113,6 +150,10 @@
           {
             "title": "Security Bulletins",
             "url": "https://fireworks.ai/security/bulletins"
+          },
+          {
+            "title": "Fireworks October 2026 security incident",
+            "url": "https://fireworks.ai/security/bulletins/october-2026-security-incident"
           },
           {
             "title": "Fireworks AI Trust Center",
@@ -640,7 +681,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/articles/liquid-open-d1-edge-models.html",
       "title": "Liquid AI Releases Open d1 Models for Edge Decisions",
       "summary": "Liquid AI has released open-weight multimodal decision models designed to make fast structured choices on phones, PCs and edge hardware.",
-      "content_text": "## What happened\n\nLiquid AI released two open-weight decision models, d1-3B and d1-omni-600M, through Hugging Face. The models are designed to output structured decisions rather than long natural-language explanations. Both models accept text and visual inputs, while d1-omni-600M also accepts audio. The company positions them for classification, routing and other situations where an AI system must choose an action quickly.\n\nIn testing conducted with NVIDIA, d1-3B answered a single question in under 50 milliseconds on the measured edge devices, including the Jetson AGX Thor, Jetson AGX Orin and Orin Nano. On an RTX 4090, Liquid AI reported response times below 10 milliseconds. The model can also process multiple questions with limited additional latency, a property that could matter for high-frequency control loops.\n\nLiquid AI says d1-3B delivers the strongest decision quality in the release while d1-omni-600M is intended for environments where memory and compute are more constrained. Both models are downloadable from Hugging Face and require custom model code when loaded through Transformers.\n\n## Why it matters\n\nDecision models are a narrower direction than general chat models, but that narrowness is precisely their appeal. A system that returns a calibrated choice or action can be cheaper and easier to validate than a model that generates open-ended text and then requires another component to interpret it. The unresolved question is generality: the reported latency and benchmark results show attractive edge behavior, but they do not establish that d1 models can safely handle ambiguous, high-stakes decisions outside the tested tasks. Their importance will be determined by whether developers use them as dependable control components rather than miniature chatbots.",
+      "content_text": "## What happened\n\nLiquid AI released two open-weight decision models, d1-3B and d1-omni-600M, through Hugging Face. The models are designed to output structured decisions rather than long natural-language explanations. Both models accept text and visual inputs, while d1-omni-600M also accepts audio. The company positions them for classification, routing and other situations where an AI system must choose an action quickly.\n\nIn Liquid AI’s published testing, d1-3B answered a single question in 8 milliseconds on an NVIDIA GeForce RTX 4090, 16 milliseconds on a Jetson AGX Thor, 26 milliseconds on a Jetson AGX Orin and 50 milliseconds on a Jetson Orin Nano. The model can also process multiple questions with limited additional latency, a property that could matter for high-frequency control loops.\n\nLiquid AI says d1-3B delivers the strongest decision quality in the release while d1-omni-600M is intended for environments where memory and compute are more constrained. Both models are downloadable from Hugging Face and require custom model code when loaded through Transformers.\n\n## Why it matters\n\nDecision models are a narrower direction than general chat models, but that narrowness is precisely their appeal. A system that returns a calibrated choice or action can be cheaper and easier to validate than a model that generates open-ended text and then requires another component to interpret it. The unresolved question is generality: the reported latency and benchmark results show attractive edge behavior, but they do not establish that d1 models can safely handle ambiguous, high-stakes decisions outside the tested tasks. Their importance will be determined by whether developers use them as dependable control components rather than miniature chatbots.",
       "date_published": "2026-10-07T16:54:00.000Z",
       "date_modified": "2026-10-07T23:00:05.932Z",
       "tags": [
@@ -1873,43 +1914,6 @@
           {
             "title": "US diplomats told to say ‘super intelligence’ — not ‘artificial intelligence’",
             "url": "https://apnews.com/article/02123c7bf18c692a12b2b3e3b9ce30c5"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/amd-world-labs-acquisition.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/amd-world-labs-acquisition.html",
-      "title": "AMD Agrees to Buy World Labs for $8.2 Billion",
-      "summary": "AMD will acquire Fei-Fei Li’s spatial-intelligence startup in an all-stock deal, bringing world-model research directly into its hardware strategy.",
-      "content_text": "## The deal\n\nAMD has agreed to acquire World Labs, the spatial-intelligence company founded by Stanford professor Fei-Fei Li, in an all-stock transaction valued at approximately $8.2 billion. The deal is expected to close by the end of 2026, subject to regulatory approval.\n\nWorld Labs will join AMD with its research and engineering team. Li will become AMD’s executive vice president and chief scientist, while World Labs executives Justin Johnson and Ben Mildenhall are also expected to take senior roles.\n\n## Why World Labs matters\n\nWorld Labs has focused on models that understand and generate persistent three-dimensional environments rather than treating images as isolated pixels. Its technology is aimed at applications including robotics, simulation, spatial computing and interactive content.\n\nFor AMD, the acquisition is a significant move beyond selling accelerators. The company is trying to build a deeper relationship between future AI models and the chips, memory systems and software used to run them. World-model workloads could create new requirements for graphics, simulation and inference hardware, particularly in robotics and physical AI.\n\nThe transaction is also notable because AMD is paying a very large price for a relatively young research company. The value reflects the scarcity of teams working on spatial intelligence, but it also makes execution and product integration important questions.\n\n## Why it matters\n\nThe deal signals that competition in AI infrastructure is expanding from language models toward systems that model physical space and the real world. If AMD can turn World Labs’ research into deployable workloads, it could improve its position against Nvidia in the next generation of physical AI. If the research remains difficult to commercialize, the purchase will look more like a high-cost bet on an uncertain model category.\n\n**Uncle Cat take:** AMD is paying $8.2 billion for a bridge between world models and hardware; the price assumes spatial AI becomes infrastructure, not a research niche.",
-      "date_published": "2026-09-28T20:39:00.000Z",
-      "date_modified": "2026-09-28T23:00:05.081Z",
-      "tags": [
-        "Industry",
-        "Funding",
-        "Research"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/amd-world-labs-acquisition.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/amd-world-labs-acquisition.html",
-        "source_published_at": "2026-09-28T20:39:00.000Z",
-        "site_published_at": "2026-09-28T23:00:05.081Z",
-        "sources": [
-          {
-            "title": "AMD to Acquire World Labs to Advance the Future of AI Compute",
-            "url": "https://www.globenewswire.com/news-release/2026/09/28/3370256/0/en/amd-to-acquire-world-labs-to-advance-the-future-of-ai-compute.html"
-          },
-          {
-            "title": "AMD will acquire Fei-Fei Li’s World Labs for $8.2 billion",
-            "url": "https://techcrunch.com/2026/09/28/amd-will-acquire-fei-fei-lis-world-labs-for-8-2-billion/"
           }
         ]
       }
