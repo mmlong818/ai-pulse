@@ -13,6 +13,42 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/huawei-memento-recursive-game-learning.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/huawei-memento-recursive-game-learning.html",
+      "title": "华为 Memento 3 靠递归学习通关 25 款游戏",
+      "summary": "华为 Memento 3 通关 ARC-AGI-3 全部 25 款游戏，以外部世界模型学习规则，操作次数比人类少约 56%。",
+      "content_text": "华为诺亚方舟实验室与伦敦大学学院研究团队表示，智能体系统 Memento 3 已完成 ARC-AGI-3 公共测试集中的 25 款游戏、183 个关卡，并拿到 100 分的 RHAE 成绩。系统总计执行 7518 次操作，而人类完成同一批关卡需要 17135 次；此前最强基线则用了 8347 次。\n\n## 把学习放到模型之外\n\nMemento 3 的核心方法被称为“代码即模型”。智能体探索陌生游戏时，会持续维护一份规则手册，同时把对环境的假设写成可执行的 Python 代码。它先在内部世界模型中推演动作，再把预测画面与真实观察逐格比较；一旦出现偏差，就修改规则和代码。\n\n这种递归自我改进并不依赖重新训练底层模型，而是通过积累、校正外部知识实现。在一项实验中，同时维护两个相互竞争的世界模型后，某款游戏的通关操作次数从 899 次降至 597 次。研究团队还使用类似 Git 的版本管理记录每次修改，必要时可以回滚错误假设。\n\n## 探索完成后交给程序执行\n\n最有说服力的演示来自 Atari《乒乓》。Claude Opus 5 先探索游戏规律并完善运动模型，之后由基于该模型生成的程序独立运行，不再调用语言模型，连续三局均以 21 比 0 获胜。没有世界模型、只根据画面逐步决策的基线，表现几乎和随机操作一样。\n\n这项工作的重要性，在于它把智能体学习的重点从参数更新转向可检查的任务记忆与模拟器。但它还不能证明递归自我改进已具备普适性：实验环境规则紧凑，探索阶段仍依赖昂贵的前沿模型。更现实的价值，是为“先学习、再验证、最后低成本执行”的智能体架构提供了一个可复现案例。",
+      "date_published": "2026-10-12T05:48:36.000Z",
+      "date_modified": "2026-10-12T13:00:05.085Z",
+      "tags": [
+        "研究",
+        "Agent"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/huawei-memento-recursive-game-learning.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/huawei-memento-recursive-game-learning.html",
+        "source_published_at": "2026-10-12T05:48:36.000Z",
+        "site_published_at": "2026-10-12T13:00:05.085Z",
+        "sources": [
+          {
+            "title": "华为AI靠RSI通关25款游戏！操作次数比人类少56%",
+            "url": "https://www.qbitai.com/2026/10/502654.html"
+          },
+          {
+            "title": "Memento 3 research paper",
+            "url": "https://arxiv.org/abs/2610.11794"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-reflection-ai-talks.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-reflection-ai-talks.html",
       "title": "英伟达考虑加深与Reflection AI的绑定",
@@ -79,6 +115,39 @@
           {
             "title": "vllm-sr/d3 model card",
             "url": "https://huggingface.co/vllm-sr/d3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-glm-highspeed-gray-release.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-glm-highspeed-gray-release.html",
+      "title": "智谱灰度测试 GLM-5.3-Highspeed，传输速度达 490 tokens/s",
+      "summary": "智谱据报在 Zcode 灰度开放 GLM-5.3-Highspeed，用户实测接近每秒 490 tokens，但尚未正式发布模型。",
+      "content_text": "智谱似乎正在其编程产品 Zcode 中灰度测试新模型 GLM-5.3-Highspeed。量子位报道称，部分订阅用户已获得体验资格；一名用户晒出的测试结果显示，模型生成速度接近每秒 490 tokens。\n\n## 这是速度信号，不是正式发布\n\n如果这一吞吐量能够稳定复现，它将明显高于智谱近期推出的 GLM-5.3-FlashX。后者此前宣称最高速度为每秒 200 tokens；按 490 tokens/s 计算，生成 1 万 tokens 的纯输出阶段约需 20 秒，可能改变长代码任务和智能体工作流的交互节奏。\n\n但目前证据仍然有限。490 tokens/s 来自用户截图，而非统一公开基准；量子位用自己的账号测试时也没有获得访问权限。报道所称模型只向随机抽中的 Zcode 用户开放，智谱尚未公开权重、API 文档、价格或可复现实测。\n\n模型目录信息显示，它可能拥有 100 万 tokens 上下文、131072 tokens 最大输出，以及低、高、最高三档思考强度。不过，这些规格与普通版 GLM-5.3 的信息相近，暂时只能视为待确认配置，不能当作正式产品文档。\n\n## 为什么仍值得关注\n\n如果高速度不是局部演示效果，而能在真实调用中维持，它会特别适合需要反复调用模型、且单次输出较长的编程智能体。当模型质量已经够用时，缩短等待时间可能比再提高一点榜单分数更直接地影响使用体验，也会迫使竞争对手围绕“多久得到可用结果”展开竞争。\n\n现阶段真正可靠的事实，是智谱正在尝试把高速推理能力嵌入编码产品。490 tokens/s 仍是未经独立验证的灰度数据；在官方公布访问条件和第三方测量前，它代表技术方向，而不是已经成熟的市场能力。",
+      "date_published": "2026-10-12T02:37:00.000Z",
+      "date_modified": "2026-10-12T13:00:05.085Z",
+      "tags": [
+        "模型",
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/zhipu-glm-highspeed-gray-release.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-glm-highspeed-gray-release.html",
+        "source_published_at": "2026-10-12T02:37:00.000Z",
+        "site_published_at": "2026-10-12T13:00:05.085Z",
+        "sources": [
+          {
+            "title": "智谱新模型，490 tokens/s！",
+            "url": "https://www.qbitai.com/2026/10/502649.html"
           }
         ]
       }
@@ -1843,75 +1912,6 @@
           {
             "title": "Google Gemini 4 Argon closes the gap with OpenAI and Anthropic",
             "url": "https://the-decoder.com/google-gemini-4-argon-closes-the-gap-with-openai-and-anthropic-but-doesnt-take-a-clear-lead/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-synopsys-chip-design.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-synopsys-chip-design.html",
-      "title": "OpenAI 携手 Synopsys，开发芯片设计专用模型",
-      "summary": "OpenAI 与 Synopsys 将共同开发 GPT-Synopsys，让智能体直接操作 EDA 工具并迭代优化芯片设计。",
-      "content_text": "## 围绕工程工具打造模型\n\nOpenAI 与电子设计自动化软件公司 Synopsys 宣布建立多年合作关系，共同开发芯片设计专用模型 GPT-Synopsys。该模型将使用 Synopsys 的 EDA 工具，读取工具输出，并围绕工程师设定的目标反复迭代设计。\n\n这套工作流并非普通的问答助手。工程师可以交给系统功耗、性能和面积优化、时序收敛或验证等目标，再由智能体运行设计工具、分析结果、修改方案并持续迭代，最后交由工程师审核。\n\n合作将 OpenAI 的前沿模型与 Synopsys 的专有工具和工程数据结合起来。双方计划提供包含算力、模型和软件许可的一体化服务，并采用收入分成模式。两家公司表示，GPT-Synopsys 将运行在 OpenAI 托管的基础设施上，配备加密、可配置的数据保留、权限管理和审计功能，客户数据不会用于训练模型。\n\n不过，这还不是一款普遍可用的产品。公告只称双方已与部分芯片客户开展早期技术合作，实际性能、上线时间和价格仍有待验证。\n\n## 为什么重要\n\n芯片设计直接关系到 AI 的算力供给，但长期受到工具昂贵、专业人才稀缺和验证周期漫长等限制。如果智能体能够稳定接管部分 EDA 流程，工程团队或许能在不同比例增加人员的情况下探索更多设计方案。\n\n更深层的变化在于，模型被设计成围绕可信的工程环境工作，而不是单独生成一段芯片设计文本。这可能提高实际价值，却也意味着系统必须接受专有工具和严格验证的约束。GPT-Synopsys 可能成为前沿模型进入工业自动化的重要接口，但最终价值要看流片成功率和经验证的功耗、性能、面积改善，而不是合作公告本身。",
-      "date_published": "2026-09-30T19:12:00.000Z",
-      "date_modified": "2026-09-30T23:00:05.129Z",
-      "tags": [
-        "Agent",
-        "产业",
-        "研究"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-synopsys-chip-design.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-synopsys-chip-design.html",
-        "source_published_at": "2026-09-30T19:12:00.000Z",
-        "site_published_at": "2026-09-30T23:00:05.129Z",
-        "sources": [
-          {
-            "title": "OpenAI and Synopsys announce GPT-Synopsys",
-            "url": "https://news.synopsys.com/2026-09-30-OpenAI-and-Synopsys-Announce-GPT-Synopsys-Frontier-Intelligence-to-Revolutionize-Chip-Design"
-          },
-          {
-            "title": "OpenAI and Synopsys team up to build chip-design model",
-            "url": "https://the-decoder.com/openai-and-synopsys-team-up-to-build-an-ai-model-that-designs-chips-like-a-seasoned-engineer/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/synthid-bio-protein-watermarking.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/synthid-bio-protein-watermarking.html",
-      "title": "Google DeepMind 推出 SynthID Bio，为 AI 蛋白质加水印",
-      "summary": "SynthID Bio 可在蛋白质序列和结构中嵌入可检测标记，实验显示其未明显影响结合能力与生物功能。",
-      "content_text": "## 从数字溯源走向实体分子\n\nGoogle DeepMind 发布 SynthID Bio，这是一套面向合成生物学的水印方法。它试图在 AI 生成的蛋白质序列或预测出的三维结构中嵌入肉眼不可见、但可被检测的标记，让研究者即使在蛋白质完成合成后，也能判断其是否源自 AI 设计。\n\n这解决的是普通数字水印无法覆盖的问题。蛋白质设计从模型文件进入实验室后，来源往往难以追踪；与此同时，AI 生成的生物设计可能绕过传统 DNA 筛查，或向公共数据库引入误标和错误结构。\n\nDeepMind 表示，SynthID Bio 会调整序列设计中的氨基酸选择，也会改变预测结构中的原子坐标。针对蛋白质结合剂，团队在 VEGF-A、新冠病毒刺突蛋白受体结合域和 PD-L1 三个目标上进行了测试，并称加水印设计在命中率、结合亲和力和天然序列多样性方面与未加水印版本相当。\n\n在结构预测方面，团队微调 AlphaFold 3 扩散网络的一部分，让模型权重本身具备生成水印的能力。DeepMind 称，该方案保持预测准确率，并在数字噪声和轻微坐标改动下维持接近完美的可检测性。\n\n## 为什么重要\n\n这仍是早期概念验证，不是一套完整的生物安全体系。它不能直接阻止有害设计，也不能保证每个实验室都会检查水印，更没有解决检测基础设施由谁运营的问题。实际价值取决于模型开发商、合成服务商、数据库和研究者是否共同采用。\n\n但这项工作把 AI 内容溯源从数字文件推进到了实体分子。如果水印能够穿过合成过程，同时不损害生物功能，未来或可用于审计、归因和更安全地共享 AI 设计。其最大约束也正是核心考验：一旦水印影响功能或降低设计质量，科学家就不会为它牺牲可用性。",
-      "date_published": "2026-09-30T15:03:00.000Z",
-      "date_modified": "2026-09-30T23:00:05.129Z",
-      "tags": [
-        "研究",
-        "安全"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/synthid-bio-protein-watermarking.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/synthid-bio-protein-watermarking.html",
-        "source_published_at": "2026-09-30T15:03:00.000Z",
-        "site_published_at": "2026-09-30T23:00:05.129Z",
-        "sources": [
-          {
-            "title": "Introducing SynthID Bio",
-            "url": "https://deepmind.google/blog/introducing-synthid-bio/"
           }
         ]
       }

@@ -13,6 +13,42 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/huawei-memento-recursive-game-learning.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/huawei-memento-recursive-game-learning.html",
+      "title": "Huawei’s Memento 3 clears 25 games through recursive learning",
+      "summary": "Huawei’s Memento 3 solved 183 ARC-AGI-3 levels with fewer actions than humans, using external world models instead of updating model weights.",
+      "content_text": "Huawei Noah’s Ark Lab and University College London say their Memento 3 agent completed all 25 games and 183 levels in the public ARC-AGI-3 set, earning a perfect 100 RHAE score. The system used 7,518 actions, compared with 17,135 for human participants and 8,347 for the strongest reported baseline.\n\n## Learning outside the weights\n\nMemento 3 was built around a “Code as Model” strategy. While exploring an unfamiliar game, the agent maintains a written rulebook and converts its hypotheses about the environment into executable Python code. It then tests possible actions against that internal world model, compares predicted frames with real observations, and revises the model when the two diverge.\n\nThe process is recursive in a practical sense: the system accumulates and corrects external knowledge rather than retraining the underlying language model. In one experiment, two competing world models reduced the actions needed in a game from 899 to 597. The researchers also used Git-style versioning so that mistaken rules could be inspected or rolled back.\n\n## From exploration to a controller\n\nThe most striking demonstration came from Atari Pong. After Claude Opus 5 explored the game and refined a motion model, a program derived from that model played three separate matches without further language-model calls, winning each 21–0. A vision-to-action baseline without the world model scored close to random play.\n\nThe result matters because it shifts attention from parameter updates to inspectable, task-specific memory and simulation. It does not show that recursive self-improvement works broadly: the environments were compact and rule-bound, and the exploratory phase still relied on an expensive frontier model. But it offers a credible architecture for agents that learn once, verify their own abstractions, and execute cheaply thereafter.",
+      "date_published": "2026-10-12T05:48:36.000Z",
+      "date_modified": "2026-10-12T13:00:05.085Z",
+      "tags": [
+        "Research",
+        "Agents"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/huawei-memento-recursive-game-learning.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/huawei-memento-recursive-game-learning.html",
+        "source_published_at": "2026-10-12T05:48:36.000Z",
+        "site_published_at": "2026-10-12T13:00:05.085Z",
+        "sources": [
+          {
+            "title": "华为AI靠RSI通关25款游戏！操作次数比人类少56%",
+            "url": "https://www.qbitai.com/2026/10/502654.html"
+          },
+          {
+            "title": "Memento 3 research paper",
+            "url": "https://arxiv.org/abs/2610.11794"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/nvidia-reflection-ai-talks.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/nvidia-reflection-ai-talks.html",
       "title": "Nvidia Weighs Deeper Tie-Up With Reflection AI",
@@ -79,6 +115,39 @@
           {
             "title": "vllm-sr/d3 model card",
             "url": "https://huggingface.co/vllm-sr/d3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/zhipu-glm-highspeed-gray-release.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/zhipu-glm-highspeed-gray-release.html",
+      "title": "Zhipu quietly tests GLM-5.3-Highspeed at 490 tokens per second",
+      "summary": "Zhipu is reportedly gray-testing GLM-5.3-Highspeed inside Zcode, promising unusually fast generation but offering no public model release yet.",
+      "content_text": "Zhipu appears to be quietly testing a new GLM-5.3-Highspeed model in its Zcode coding product. QbitAI reported that selected subscribers could access the model through a gray rollout, while one user measurement showed generation approaching 490 tokens per second.\n\n## A speed claim, not a launch\n\nThe reported throughput would be a major jump over Zhipu’s recently introduced GLM-5.3-FlashX, which was advertised at up to 200 tokens per second. At 490 tokens per second, generating 10,000 tokens would take roughly 20 seconds once the response stream begins, potentially changing the feel of long coding and agentic tasks.\n\nThe evidence remains limited. The figure comes from a user screenshot rather than a standardized public benchmark, and QbitAI was unable to obtain access through its own account. The model is reportedly available only to randomly selected Zcode users, with no public weights, API documentation, pricing, or reproducible evaluation disclosed.\n\nDirectory listings suggest a one-million-token context window, a maximum output of 131,072 tokens, and selectable low, high, and maximum reasoning modes. Those specifications appear similar to the regular GLM-5.3 listing, so they should be treated as provisional rather than confirmed product documentation.\n\n## Why the rollout matters\n\nIf sustained outside a narrow demo path, high generation speed could lower latency for coding agents that repeatedly call a model, especially when responses are long but reasoning quality is already adequate. It could also pressure rival providers to compete on time-to-useful-output rather than only benchmark scores.\n\nFor now, the important fact is the uncertainty: this is a gray-tested service configuration, not a verified model release. Until Zhipu publishes official access terms and independent measurements, the 490-token figure is a signal of engineering ambition, not yet a dependable market capability.",
+      "date_published": "2026-10-12T02:37:00.000Z",
+      "date_modified": "2026-10-12T13:00:05.085Z",
+      "tags": [
+        "Models",
+        "Agents",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/zhipu-glm-highspeed-gray-release.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-glm-highspeed-gray-release.html",
+        "source_published_at": "2026-10-12T02:37:00.000Z",
+        "site_published_at": "2026-10-12T13:00:05.085Z",
+        "sources": [
+          {
+            "title": "智谱新模型，490 tokens/s！",
+            "url": "https://www.qbitai.com/2026/10/502649.html"
           }
         ]
       }
@@ -1843,75 +1912,6 @@
           {
             "title": "Google Gemini 4 Argon closes the gap with OpenAI and Anthropic",
             "url": "https://the-decoder.com/google-gemini-4-argon-closes-the-gap-with-openai-and-anthropic-but-doesnt-take-a-clear-lead/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-synopsys-chip-design.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-synopsys-chip-design.html",
-      "title": "OpenAI and Synopsys Build Model for Chip Design Workflows",
-      "summary": "OpenAI and Synopsys will develop GPT-Synopsys, an agentic system intended to operate EDA tools and optimize semiconductor designs.",
-      "content_text": "## A model trained around engineering tools\n\nOpenAI and electronic-design-automation company Synopsys have announced a multiyear partnership to develop GPT-Synopsys, a specialized model for semiconductor design. The system is intended to use Synopsys’ EDA tools, interpret their outputs, and iterate on designs under engineering-defined objectives.\n\nThe proposed workflow goes beyond a conversational assistant. Engineers could delegate goals such as power, performance, and area optimization, timing closure, or verification. Agents would run design tools, inspect the results, make changes, and repeat the process before engineers review the outcome.\n\nThe partnership combines OpenAI’s frontier models with Synopsys’ proprietary tools and engineering data. The companies plan a bundled service covering compute, model access, and software licenses, with a shared-revenue commercial model. They say GPT-Synopsys will run on OpenAI-hosted infrastructure and include encryption, configurable retention, access controls, and audit features. Customer data is not intended for model training.\n\nThe project is not yet a generally available product. The announcement says early technology engagements with semiconductor customers are under way, leaving performance, deployment timing, and pricing to be demonstrated.\n\n## Why it matters\n\nChip design is one of the most consequential domains for AI itself, and it remains constrained by expensive tools, scarce expertise, and long validation cycles. If an agent can reliably manage parts of the EDA loop, it could let engineering teams explore more alternatives without increasing headcount at the same rate.\n\nThe deeper shift is that the model is being built around a trusted engineering environment rather than asked to produce standalone design text. That may improve usefulness, but it also makes the system dependent on proprietary tool access and rigorous verification. GPT-Synopsys could become an important bridge between frontier models and industrial automation, yet its value will be measured by first-pass silicon and verified PPA gains, not by the partnership announcement alone.",
-      "date_published": "2026-09-30T19:12:00.000Z",
-      "date_modified": "2026-09-30T23:00:05.129Z",
-      "tags": [
-        "Agents",
-        "Industry",
-        "Research"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-synopsys-chip-design.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-synopsys-chip-design.html",
-        "source_published_at": "2026-09-30T19:12:00.000Z",
-        "site_published_at": "2026-09-30T23:00:05.129Z",
-        "sources": [
-          {
-            "title": "OpenAI and Synopsys announce GPT-Synopsys",
-            "url": "https://news.synopsys.com/2026-09-30-OpenAI-and-Synopsys-Announce-GPT-Synopsys-Frontier-Intelligence-to-Revolutionize-Chip-Design"
-          },
-          {
-            "title": "OpenAI and Synopsys team up to build chip-design model",
-            "url": "https://the-decoder.com/openai-and-synopsys-team-up-to-build-an-ai-model-that-designs-chips-like-a-seasoned-engineer/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/synthid-bio-protein-watermarking.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/synthid-bio-protein-watermarking.html",
-      "title": "Google DeepMind Watermarks AI-Designed Proteins in Lab Tests",
-      "summary": "SynthID Bio embeds detectable signatures into protein sequences and structures while preserving tested binding performance and biological function.",
-      "content_text": "## From digital provenance to physical molecules\n\nGoogle DeepMind has introduced SynthID Bio, a family of watermarking methods for synthetic biology. The system is designed to place an imperceptible, detectable signature inside AI-generated protein sequences or predicted three-dimensional structures, allowing researchers to identify designs after they have been synthesized.\n\nThe proposal addresses a problem that ordinary digital watermarking cannot solve. Once a protein design moves from a model file into a laboratory, its provenance can become difficult to establish. At the same time, AI-generated biological designs may evade conventional DNA screening or introduce misleading entries into scientific databases.\n\nDeepMind says SynthID Bio modifies amino-acid choices for sequence-based designs and adjusts atomic coordinates for predicted structures. For protein binders, the team tested watermarked designs against VEGF-A, the SARS-CoV-2 spike-protein receptor-binding domain, and PD-L1. The company reports that the designs matched unwatermarked versions in hit rate, binding affinity, and sequence diversity.\n\nFor structure prediction, the approach fine-tunes part of AlphaFold 3’s diffusion network so the signature is produced by the model itself. DeepMind reports near-perfect detectability while preserving prediction accuracy and resisting digital noise or small coordinate changes.\n\n## Why it matters\n\nThis is an early proof of concept, not a complete biosecurity system. It does not by itself prevent harmful designs, guarantee that every downstream laboratory will check for a watermark, or settle who should operate the detection infrastructure. Its value depends on adoption by model developers, synthesis providers, repositories, and researchers.\n\nStill, the work expands the provenance debate into the physical world. If a robust watermark survives synthesis and remains compatible with biological function, it could support audits, attribution, and safer sharing of AI-designed molecules. The important technical constraint is also the central test: any signal that changes function or reduces design quality will be rejected by scientists who need the molecule to work.",
-      "date_published": "2026-09-30T15:03:00.000Z",
-      "date_modified": "2026-09-30T23:00:05.129Z",
-      "tags": [
-        "Research",
-        "Safety"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/synthid-bio-protein-watermarking.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/synthid-bio-protein-watermarking.html",
-        "source_published_at": "2026-09-30T15:03:00.000Z",
-        "site_published_at": "2026-09-30T23:00:05.129Z",
-        "sources": [
-          {
-            "title": "Introducing SynthID Bio",
-            "url": "https://deepmind.google/blog/introducing-synthid-bio/"
           }
         ]
       }

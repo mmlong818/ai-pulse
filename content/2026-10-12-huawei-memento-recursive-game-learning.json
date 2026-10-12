@@ -1,0 +1,31 @@
+{
+  "slug": "huawei-memento-recursive-game-learning",
+  "title": "Huawei’s Memento 3 clears 25 games through recursive learning",
+  "summary": "Huawei’s Memento 3 solved 183 ARC-AGI-3 levels with fewer actions than humans, using external world models instead of updating model weights.",
+  "body": "Huawei Noah’s Ark Lab and University College London say their Memento 3 agent completed all 25 games and 183 levels in the public ARC-AGI-3 set, earning a perfect 100 RHAE score. The system used 7,518 actions, compared with 17,135 for human participants and 8,347 for the strongest reported baseline.\n\n## Learning outside the weights\n\nMemento 3 was built around a “Code as Model” strategy. While exploring an unfamiliar game, the agent maintains a written rulebook and converts its hypotheses about the environment into executable Python code. It then tests possible actions against that internal world model, compares predicted frames with real observations, and revises the model when the two diverge.\n\nThe process is recursive in a practical sense: the system accumulates and corrects external knowledge rather than retraining the underlying language model. In one experiment, two competing world models reduced the actions needed in a game from 899 to 597. The researchers also used Git-style versioning so that mistaken rules could be inspected or rolled back.\n\n## From exploration to a controller\n\nThe most striking demonstration came from Atari Pong. After Claude Opus 5 explored the game and refined a motion model, a program derived from that model played three separate matches without further language-model calls, winning each 21–0. A vision-to-action baseline without the world model scored close to random play.\n\nThe result matters because it shifts attention from parameter updates to inspectable, task-specific memory and simulation. It does not show that recursive self-improvement works broadly: the environments were compact and rule-bound, and the exploratory phase still relied on an expensive frontier model. But it offers a credible architecture for agents that learn once, verify their own abstractions, and execute cheaply thereafter.",
+  "title_zh": "华为 Memento 3 靠递归学习通关 25 款游戏",
+  "summary_zh": "华为 Memento 3 通关 ARC-AGI-3 全部 25 款游戏，以外部世界模型学习规则，操作次数比人类少约 56%。",
+  "body_zh": "华为诺亚方舟实验室与伦敦大学学院研究团队表示，智能体系统 Memento 3 已完成 ARC-AGI-3 公共测试集中的 25 款游戏、183 个关卡，并拿到 100 分的 RHAE 成绩。系统总计执行 7518 次操作，而人类完成同一批关卡需要 17135 次；此前最强基线则用了 8347 次。\n\n## 把学习放到模型之外\n\nMemento 3 的核心方法被称为“代码即模型”。智能体探索陌生游戏时，会持续维护一份规则手册，同时把对环境的假设写成可执行的 Python 代码。它先在内部世界模型中推演动作，再把预测画面与真实观察逐格比较；一旦出现偏差，就修改规则和代码。\n\n这种递归自我改进并不依赖重新训练底层模型，而是通过积累、校正外部知识实现。在一项实验中，同时维护两个相互竞争的世界模型后，某款游戏的通关操作次数从 899 次降至 597 次。研究团队还使用类似 Git 的版本管理记录每次修改，必要时可以回滚错误假设。\n\n## 探索完成后交给程序执行\n\n最有说服力的演示来自 Atari《乒乓》。Claude Opus 5 先探索游戏规律并完善运动模型，之后由基于该模型生成的程序独立运行，不再调用语言模型，连续三局均以 21 比 0 获胜。没有世界模型、只根据画面逐步决策的基线，表现几乎和随机操作一样。\n\n这项工作的重要性，在于它把智能体学习的重点从参数更新转向可检查的任务记忆与模拟器。但它还不能证明递归自我改进已具备普适性：实验环境规则紧凑，探索阶段仍依赖昂贵的前沿模型。更现实的价值，是为“先学习、再验证、最后低成本执行”的智能体架构提供了一个可复现案例。",
+  "tags": [
+    "Research",
+    "Agents"
+  ],
+  "sources": [
+    {
+      "title": "华为AI靠RSI通关25款游戏！操作次数比人类少56%",
+      "url": "https://www.qbitai.com/2026/10/502654.html"
+    },
+    {
+      "title": "Memento 3 research paper",
+      "url": "https://arxiv.org/abs/2610.11794"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "It is the edition’s clearest fresh evidence that agents can improve through verified external models rather than weight updates.",
+  "featured_reason_zh": "这是本期最清晰的新证据，显示智能体可依靠可验证的外部模型改进，而不必更新权重。",
+  "cat_take_zh": "Memento 3 的突破在于把昂贵推理变成可回滚的程序资产",
+  "cat_take_en": "Memento 3’s meaningful advance is turning costly exploration into a rollback-capable program asset.",
+  "date": "2026-10-12",
+  "published": "2026-10-12T05:48:36Z",
+  "published_at": "2026-10-12T13:00:05.085Z"
+}

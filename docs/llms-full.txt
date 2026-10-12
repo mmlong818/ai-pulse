@@ -19,6 +19,37 @@
 
 ## Recent briefings
 
+### Huawei’s Memento 3 clears 25 games through recursive learning
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/huawei-memento-recursive-game-learning.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/huawei-memento-recursive-game-learning.html
+- Source timestamp: 2026-10-12T05:48:36.000Z
+- Site timestamp: 2026-10-12T13:00:05.085Z
+- Tags: Research, Agents
+
+Huawei’s Memento 3 solved 183 ARC-AGI-3 levels with fewer actions than humans, using external world models instead of updating model weights.
+
+Huawei Noah’s Ark Lab and University College London say their Memento 3 agent completed all 25 games and 183 levels in the public ARC-AGI-3 set, earning a perfect 100 RHAE score. The system used 7,518 actions, compared with 17,135 for human participants and 8,347 for the strongest reported baseline.
+
+## Learning outside the weights
+
+Memento 3 was built around a “Code as Model” strategy. While exploring an unfamiliar game, the agent maintains a written rulebook and converts its hypotheses about the environment into executable Python code. It then tests possible actions against that internal world model, compares predicted frames with real observations, and revises the model when the two diverge.
+
+The process is recursive in a practical sense: the system accumulates and corrects external knowledge rather than retraining the underlying language model. In one experiment, two competing world models reduced the actions needed in a game from 899 to 597. The researchers also used Git-style versioning so that mistaken rules could be inspected or rolled back.
+
+## From exploration to a controller
+
+The most striking demonstration came from Atari Pong. After Claude Opus 5 explored the game and refined a motion model, a program derived from that model played three separate matches without further language-model calls, winning each 21–0. A vision-to-action baseline without the world model scored close to random play.
+
+The result matters because it shifts attention from parameter updates to inspectable, task-specific memory and simulation. It does not show that recursive self-improvement works broadly: the environments were compact and rule-bound, and the exploratory phase still relied on an expensive frontier model. But it offers a credible architecture for agents that learn once, verify their own abstractions, and execute cheaply thereafter.
+
+Chinese title: 华为 Memento 3 靠递归学习通关 25 款游戏
+Chinese summary: 华为 Memento 3 通关 ARC-AGI-3 全部 25 款游戏，以外部世界模型学习规则，操作次数比人类少约 56%。
+
+Sources:
+  - 华为AI靠RSI通关25款游戏！操作次数比人类少56%: https://www.qbitai.com/2026/10/502654.html
+  - Memento 3 research paper: https://arxiv.org/abs/2610.11794
+
 ### Nvidia Weighs Deeper Tie-Up With Reflection AI
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-reflection-ai-talks.html
@@ -79,6 +110,38 @@ Chinese summary: vLLM Semantic Router发布0.6B至26.09B参数的Decision 3.0模
 Sources:
   - What is Decision 3.0? vLLM Semantic Router’s New Open Decision Models: https://www.marktechpost.com/2026/10/11/what-is-decision-3-0-vllm-semantic-routers-new-open-decision-models/
   - vllm-sr/d3 model card: https://huggingface.co/vllm-sr/d3
+
+### Zhipu quietly tests GLM-5.3-Highspeed at 490 tokens per second
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/zhipu-glm-highspeed-gray-release.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-glm-highspeed-gray-release.html
+- Source timestamp: 2026-10-12T02:37:00.000Z
+- Site timestamp: 2026-10-12T13:00:05.085Z
+- Tags: Models, Agents, Industry
+
+Zhipu is reportedly gray-testing GLM-5.3-Highspeed inside Zcode, promising unusually fast generation but offering no public model release yet.
+
+Zhipu appears to be quietly testing a new GLM-5.3-Highspeed model in its Zcode coding product. QbitAI reported that selected subscribers could access the model through a gray rollout, while one user measurement showed generation approaching 490 tokens per second.
+
+## A speed claim, not a launch
+
+The reported throughput would be a major jump over Zhipu’s recently introduced GLM-5.3-FlashX, which was advertised at up to 200 tokens per second. At 490 tokens per second, generating 10,000 tokens would take roughly 20 seconds once the response stream begins, potentially changing the feel of long coding and agentic tasks.
+
+The evidence remains limited. The figure comes from a user screenshot rather than a standardized public benchmark, and QbitAI was unable to obtain access through its own account. The model is reportedly available only to randomly selected Zcode users, with no public weights, API documentation, pricing, or reproducible evaluation disclosed.
+
+Directory listings suggest a one-million-token context window, a maximum output of 131,072 tokens, and selectable low, high, and maximum reasoning modes. Those specifications appear similar to the regular GLM-5.3 listing, so they should be treated as provisional rather than confirmed product documentation.
+
+## Why the rollout matters
+
+If sustained outside a narrow demo path, high generation speed could lower latency for coding agents that repeatedly call a model, especially when responses are long but reasoning quality is already adequate. It could also pressure rival providers to compete on time-to-useful-output rather than only benchmark scores.
+
+For now, the important fact is the uncertainty: this is a gray-tested service configuration, not a verified model release. Until Zhipu publishes official access terms and independent measurements, the 490-token figure is a signal of engineering ambition, not yet a dependable market capability.
+
+Chinese title: 智谱灰度测试 GLM-5.3-Highspeed，传输速度达 490 tokens/s
+Chinese summary: 智谱据报在 Zcode 灰度开放 GLM-5.3-Highspeed，用户实测接近每秒 490 tokens，但尚未正式发布模型。
+
+Sources:
+  - 智谱新模型，490 tokens/s！: https://www.qbitai.com/2026/10/502649.html
 
 ### Nadella Calls for an Emergency Brake on AI Models
 
@@ -876,65 +939,6 @@ Sources:
   - Mistral Documentation Changelog: https://docs.mistral.ai/resources/changelogs
   - Mistral AI Governance and Model Documentation: https://legal.mistral.ai/
 
-### OpenAI Publishes Frontier Model Mathematics Results
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-mathematics-results.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-mathematics-results.html
-- Source timestamp: 2026-10-06T12:00:00.000Z
-- Site timestamp: 2026-10-06T23:00:05.173Z
-- Tags: Research, Models
-
-OpenAI released new mathematical results, Lean formalizations and compute disclosures while outlining a more transparent path for AI-assisted science.
-
-OpenAI has published a broad set of mathematical results produced by an internal frontier model, making the work available through a public GitHub repository. The release includes research write-ups, citation and revision protocols, and formalizations of many proofs in Lean, a proof assistant that allows mathematical arguments to be checked by computer.
-
-The company also disclosed unusually concrete information about the process behind the results. It published ten summaries of the model’s reasoning, estimates of compute expressed in ChatGPT Pro usage, and statistics on attempted problems. OpenAI says the average result required compute equivalent to roughly three hours of ChatGPT Pro thinking.
-
-The release was shaped with advice from an independent Advisory Group on Mathematics and Artificial Intelligence at the Institute for Advanced Study. OpenAI said it is still exploring community-hosted publication options and intends to improve exposition, citation practice and disclosure standards in future releases.
-
-The announcement does not amount to a public release of the model itself. OpenAI said it is working toward responsible release of the system that produced the results, but gave no timetable. That distinction matters: the immediate contribution is a set of potentially useful mathematical claims and formal proof artifacts, not a generally available research assistant.
-
-Why it matters: AI-generated mathematics is moving from benchmark demonstrations toward a workflow that researchers can inspect, formalize and build upon. The unresolved question is whether independent mathematicians will validate the results and whether the publication format can keep pace with increasingly capable systems.
-
-Chinese title: OpenAI公布前沿模型生成的数学研究成果
-Chinese summary: OpenAI发布一批由内部前沿模型产出的数学成果，同时公开Lean形式化证明、推理摘要与计算量信息。
-
-Sources:
-  - Sharing AI progress in mathematics: https://openai.com/index/sharing-ai-progress-in-mathematics/
-  - Advisory Group on Mathematics and Artificial Intelligence: https://openai.com/index/advisory-group-on-mathematics-and-ai/
-  - OpenAI mathematics results repository: https://github.com/openai
-
-### DeepSeek reportedly seeks $12 billion before 2027 IPO
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-funding-ipo.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-funding-ipo.html
-- Source timestamp: 2026-10-06T10:50:00.000Z
-- Site timestamp: 2026-10-06T11:00:04.410Z
-- Tags: Funding, Industry, Models
-
-DeepSeek is reportedly nearing an $12 billion funding round backed by Tencent and CATL, underscoring the capital race behind Chinese AI.
-
-## Financing expands beyond the original target
-
-DeepSeek is reportedly close to raising at least 80 billion yuan, or about $12 billion, in a new financing round ahead of a potential early-2027 initial public offering. The Business Times, citing people familiar with the matter, said the company originally sought roughly 50 billion yuan but attracted stronger-than-expected investor interest.
-
-Tencent and Contemporary Amperex Technology are among the largest reported backers. The round is said to be nearing completion, although the final amount and terms remain private. Other reporting has described the possibility of a total approaching 100 billion yuan if additional commitments are included.
-
-The reported financing would mark a major change in DeepSeek’s financial scale. The company became globally prominent after releasing models that challenged assumptions about the cost of competitive AI development. A much larger capital base would allow it to invest in training runs, inference capacity, data infrastructure and domestic-chip optimization, while preparing the governance and financial systems required for a public listing.
-
-The numbers should still be treated as reported rather than finalized. Neither the final investor list nor the IPO timetable has been publicly confirmed in the cited accounts. A large round also creates a demanding test: DeepSeek would need to convert model attention and strategic backing into durable revenue while preserving the research pace and relatively open model strategy that made it influential.
-
-## Why it matters
-
-This is not simply another startup financing story. Tencent’s participation and CATL’s reported commitment would connect DeepSeek to two powerful industrial ecosystems, while the possible scale of the round suggests that China’s AI competition is becoming an infrastructure and capital-allocation contest as much as a model race. The prospective IPO would make that contest visible to public-market investors.
-
-Chinese title: DeepSeek据报拟融资120亿美元，冲刺2027年IPO
-Chinese summary: 据报道，DeepSeek正接近完成一轮至少800亿元人民币融资，腾讯和宁德时代是主要支持者，目标或指向2027年上市。
-
-Sources:
-  - DeepSeek to raise at least US$12 billion in Tencent-backed funding: https://www.businesstimes.com.sg/companies-markets/telcos-media-tech/deepseek-raise-least-us12-billion-tencent-backed-funding/
-  - DeepSeek reportedly nears $12bn funding round backed by Tencent and CATL: https://thenextweb.com/news/deepseek-12bn-funding-round-tencent-catl
-
 ## Recent radar items
 
 ### 2026-10-12
@@ -957,6 +961,21 @@ Sources:
 - 2026-10-11T21:14:00Z | TechCrunch | Apple’s rumored HomeView product could become the company’s first serious attempt at an AI-enabled smart-home hub. | 中文：据TechCrunch报道，传闻中的HomeView可能成为苹果首次认真进军AI智能家居中枢的产品。 | https://techcrunch.com/2026/10/11/will-the-homeview-be-apples-first-smart-home-success/
 - 2026-10-11T19:59:00Z | SiliconANGLE | SiliconANGLE questioned whether AI agents are appropriate for every organization and workflow. | 中文：SiliconANGLE质疑，AI智能体是否适合所有组织与工作流程。 | https://siliconangle.com/2026/10/11/why-ai-agents-might-not-be-right-for-you/
 - 2026-10-11T15:00:00Z | X / Tripo | Tripo’s September update added P2.0 Official, Smart UV, text-to-motion, upgraded textures, and a creator-growth system. | 中文：Tripo九月更新加入P2.0 Official、Smart UV、文本转动作、升级纹理和创作者增长系统。 | https://x.com/tripoai/status/2109297980310204547
+- 2026-10-12T12:51:00Z | The Decoder | Andrej Karpathy said the public has only seen a preview of AI’s capabilities, suggesting much stronger systems remain ahead. | 中文：Andrej Karpathy称，公众目前只看到人工智能能力的预告，真正更强的系统仍在后面。 | https://the-decoder.com/anthropics-andrej-karpathy-says-the-external-world-has-seen-the-preview-of-what-ai-can-actually-do/
+- 2026-10-12T12:47:00Z | TechCrunch | Former Plaud executive Matt Mullenweg raised $26 million for an AI application that continuously listens in the background. | 中文：前Plaud高管为一款可在后台持续聆听的人工智能应用融资2600万美元。 | https://techcrunch.com/2026/10/12/former-plaud-exec-raises-26m-for-ai-app-that-listens-to-you-in-the-background/
+- 2026-10-12T12:02:00Z | Kling AI | Kling highlighted a PROMPTR Studios music video created with its AI video workflow and early-access production tools. | 中文：可灵展示了PROMPTR Studios使用其人工智能视频流程和抢先体验工具制作的音乐视频。 | https://x.com/Kling_ai/status/2109615624985219203
+- 2026-10-12T09:35:00Z | The Decoder | Google DeepMind’s AlphaProof Nexus reportedly solved dozens of open mathematics problems and received peer review. | 中文：据报道，Google DeepMind的AlphaProof Nexus解决了数十个开放数学问题，并获得同行评审。 | https://the-decoder.com/google-deepminds-alphaproof-nexus-solved-dozens-of-open-math-problems-and-actually-got-peer-reviewed/
+- 2026-10-12T07:32:00Z | Sakana AI | Sakana AI introduced recursive self-improvement through multi-agent self-supervision in collaboration with UC Berkeley researchers. | 中文：Sakana AI联合加州大学伯克利研究人员提出通过多智能体自监督实现递归式自我改进。 | https://x.com/SakanaAILabs/status/2109547739034108168
+- 2026-10-12T03:16:00Z | MarkTechPost | TII released Falcon-ASR, a 1.6-billion-parameter Arabic speech model reporting a 20.92% word-error rate. | 中文：技术创新研究院发布Falcon-ASR阿拉伯语语音模型，参数量16亿，报告词错误率20.92%。 | https://www.marktechpost.com/2026/10/11/tii-falcon-asr-arabic-speech-recognition/
+- 2026-10-12T01:46:00Z | SiliconANGLE | BotMan AI is using knowledge graphs to modernize legacy systems and connect enterprise data during software migrations. | 中文：BotMan AI利用知识图谱改造遗留系统，并在软件迁移过程中连接企业数据。 | https://siliconangle.com/2026/10/11/botman-ai-uses-knowledge-graphs-for-legacy-modernization-neo4jdatatoknowledge/
+- 2026-10-12 | arXiv | SWE-Duel proposes a self-scaling arena for evaluating coding agents through increasingly difficult software-engineering tasks. | 中文：SWE-Duel提出可自扩展竞技场，通过不断加难的软件工程任务评估编程智能体。 | https://arxiv.org/abs/2610.12569
+- 2026-10-12 | arXiv | SpireBench evaluates long-horizon strategic play by testing agentic models in the game Slay the Spire. | 中文：SpireBench通过测试智能体模型在《杀戮尖塔》中的表现，评估长期战略决策能力。 | https://arxiv.org/abs/2610.12596
+- 2026-10-12 | arXiv | A new paper studies self-preservation behaviors in language models, examining whether systems resist shutdown or replacement. | 中文：一篇新论文研究语言模型的自我保全行为，考察系统是否会抵抗关闭或替换。 | https://arxiv.org/abs/2610.12602
+- 2026-10-12 | arXiv | Researchers surveyed attack techniques against AI agent systems, covering vulnerabilities created by tool use and autonomous execution. | 中文：研究人员系统梳理针对人工智能智能体的攻击方式，涵盖工具调用和自主执行带来的漏洞。 | https://arxiv.org/abs/2610.12524
+- 2026-10-12 | arXiv | EliteTable presents self-improving program search for executable control policies, targeting more capable automated decision systems. | 中文：EliteTable提出用于可执行控制策略的自我改进程序搜索，目标是提升自动决策系统能力。 | https://arxiv.org/abs/2610.12536
+- 2026-10-12 | arXiv | Know What You Don’t Know introduces agentic data synthesis that evolves its generation space for closed-loop learning. | 中文：Know What You Don’t Know提出演化生成空间的智能体数据合成方法，用于闭环学习。 | https://arxiv.org/abs/2610.12593
+- 2026-10-12 | arXiv | Fly-by-Code proposes embodied coding agents for aerial manipulation using active visual and physical feedback. | 中文：Fly-by-Code提出用于空中操作的具身编程智能体，结合主动视觉与物理反馈。 | https://arxiv.org/abs/2610.12549
+- 2026-10-12 | arXiv | SpireBench, SWE-Duel, and related papers show researchers shifting agent evaluation toward persistence, strategy, and real-world interaction. | 中文：SpireBench、SWE-Duel等论文显示，智能体评测正转向持久性、策略性和现实交互能力。 | https://arxiv.org/abs/2610.12561
 
 ### 2026-10-11
 
