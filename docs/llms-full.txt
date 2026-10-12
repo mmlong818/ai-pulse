@@ -19,6 +19,67 @@
 
 ## Recent briefings
 
+### Nvidia Weighs Deeper Tie-Up With Reflection AI
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-reflection-ai-talks.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-reflection-ai-talks.html
+- Source timestamp: 2026-10-11T22:38:00.000Z
+- Site timestamp: 2026-10-12T01:00:04.179Z
+- Tags: Industry, Open Source, Funding, Models
+
+Nvidia is reportedly considering an acquisition, acqui-hire or larger investment in Reflection AI, tightening its control over open-model talent.
+
+Nvidia is in early discussions about acquiring Reflection AI, hiring much of its team or increasing its investment in the open-weight model developer, according to reporting cited by the Financial Times. The talks could still fail, and neither company has publicly confirmed them.
+
+## Several possible deal structures
+
+The reported options range from a conventional acquisition to an acqui-hire that would bring Reflection’s employees and technology into Nvidia while allowing parts of the startup to continue operating. A larger financing round, potentially paired with expanded access to Nvidia computing capacity, is another possibility.
+
+Nvidia already led Reflection’s $2 billion financing round in 2025 and has reportedly invested about $800 million in total. Reflection recently disclosed Beam, a 501-billion-parameter mixture-of-experts model aimed at coding agents and other tool-using workloads. Its training depends heavily on Nvidia hardware, including GB300 systems supplied through a large capacity agreement involving SpaceX’s data-center business.
+
+## Why the talks matter
+
+The potential transaction would extend Nvidia’s strategy beyond selling accelerators. By taking a deeper position in a company building open-weight models and coding agents, Nvidia could gain influence over both the hardware demand curve and the software systems that determine how that hardware is used.
+
+It would also test how much independence remains in the open-model ecosystem when leading developers depend on a small number of infrastructure suppliers. Reflection’s reported $25 billion pre-money valuation and its recent Beam launch make the situation more than a routine strategic investment. At the same time, the uncertain status of the talks means readers should treat any claim of a completed acquisition as premature.
+
+Chinese title: 英伟达考虑加深与Reflection AI的绑定
+Chinese summary: 据报道，英伟达正评估收购、团队并入或追加投资Reflection AI，开源模型人才与算力供应的结合进一步加深。
+
+Sources:
+  - Nvidia reportedly in early talks to buy, acqui-hire or invest more in Reflection AI: https://siliconangle.com/2026/10/11/nvidia-reportedly-in-early-talks-to-buy-acqui-hire-or-invest-more-in-reflection-ai/
+
+### vLLM Opens Multimodal Decision Models for AI Routing
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/vllm-decision-3-models.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/vllm-decision-3-models.html
+- Source timestamp: 2026-10-11T21:43:00.000Z
+- Site timestamp: 2026-10-12T01:00:04.179Z
+- Tags: Models, Open Source, Agents
+
+vLLM Semantic Router released Decision 3.0 models from 0.6B to 26.09B parameters that return structured choices instead of generated prose.
+
+The vLLM Semantic Router team has released Decision 3.0, a family of open-weight models designed to answer typed questions about text, JSON, images and video. Instead of generating an explanation, the models return choices, yes-or-no decisions or scores with probabilities.
+
+## A different role for models
+
+The release includes several sizes, ranging from 0.6-billion-parameter versions to the 26.09-billion-parameter d3 model. The models are intended for routing requests between specialist systems, applying moderation rules, selecting tools and enforcing policy gates. Their Apache-2.0 licensing allows developers to inspect, adapt and deploy the weights under a relatively permissive open-source framework.
+
+The model card describes d3 as a 26.09-billion-parameter multimodal model, including a 0.46-billion-parameter vision encoder. It is built on Qwen3.8-27B and was trained on AMD Instinct MI325X GPUs. The design removes the need to generate text and then parse that text into a downstream decision, potentially reducing latency and simplifying failure handling.
+
+## Why it matters
+
+Decision 3.0 reflects a broader shift in AI infrastructure: not every important model needs to be a general-purpose chatbot. In production systems, a small, fast and inspectable classifier can determine whether a request should reach a costly frontier model, which tool an agent may call or whether content requires human review.
+
+The limits are equally important. A calibrated probability does not prove that the chosen action will succeed, and benchmark scores do not establish reliability under changing policies or adversarial inputs. Decision 3.0 is therefore most consequential as an open building block for model orchestration, not as a replacement for general-purpose reasoning models.
+
+Chinese title: vLLM开源多模态决策模型Decision 3.0
+Chinese summary: vLLM Semantic Router发布0.6B至26.09B参数的Decision 3.0模型，用结构化概率直接做选择，而非生成长文本。
+
+Sources:
+  - What is Decision 3.0? vLLM Semantic Router’s New Open Decision Models: https://www.marktechpost.com/2026/10/11/what-is-decision-3-0-vllm-semantic-routers-new-open-decision-models/
+  - vllm-sr/d3 model card: https://huggingface.co/vllm-sr/d3
+
 ### Nadella Calls for an Emergency Brake on AI Models
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/nadella-ai-emergency-brake.html
@@ -874,69 +935,28 @@ Sources:
   - DeepSeek to raise at least US$12 billion in Tencent-backed funding: https://www.businesstimes.com.sg/companies-markets/telcos-media-tech/deepseek-raise-least-us12-billion-tencent-backed-funding/
   - DeepSeek reportedly nears $12bn funding round backed by Tencent and CATL: https://thenextweb.com/news/deepseek-12bn-funding-round-tencent-catl
 
-### Amazon brings Z.ai’s GLM 5.3 to Bedrock
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/glm-53-amazon-bedrock.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/glm-53-amazon-bedrock.html
-- Source timestamp: 2026-10-05T23:25:00.000Z
-- Site timestamp: 2026-10-06T11:00:04.410Z
-- Tags: Models, Industry, Agents
-
-Amazon Bedrock now offers Z.ai’s 753-billion-parameter GLM 5.3 with compatible APIs, prompt caching and managed US and global cross-Region inference.
-
-## A Chinese frontier model reaches a major cloud
-
-Amazon Web Services has made Z.ai’s GLM 5.3 available through Amazon Bedrock. AWS describes the model as a 753-billion-parameter mixture-of-experts system designed for coding, systems engineering and long-horizon agentic tasks.
-
-The release gives developers access through Bedrock’s console and through OpenAI-compatible Responses and Chat Completions APIs, alongside AWS’s own Invoke and Converse interfaces. It also supports prompt caching, which can reduce repeated context costs and latency when agents repeatedly send repository instructions, tool definitions or long documents.
-
-AWS lists both US and global cross-Region inference profiles, subject to Bedrock eligibility and regional support. That makes GLM 5.3 available within a managed cloud control plane rather than requiring customers to assemble their own serving stack or connect directly to a Chinese model provider. Bedrock also exposes standard service tiers for balancing price, speed and latency sensitivity.
-
-The distribution is strategically important for Z.ai because cloud availability can turn a model release into an enterprise procurement option. At the same time, Bedrock access does not automatically establish parity with leading proprietary systems. Customers will still need to test coding reliability, tool-use behavior, latency, data handling and regional compliance for their own workloads. The model’s very large total parameter count also leaves infrastructure and pricing questions that the announcement does not fully answer.
-
-## Why it matters
-
-GLM 5.3’s arrival shows that model competition is increasingly being decided by where a model can be deployed, not only by who trained it. A leading hyperscaler is placing a Chinese-developed frontier model beside global alternatives, giving eligible multinational developers a more practical route to evaluate it while making cloud distribution part of Z.ai’s competitive strategy.
-
-Chinese title: 亚马逊将智谱GLM 5.3接入Bedrock云平台
-Chinese summary: 亚马逊云宣布在Bedrock提供智谱GLM 5.3，支持兼容OpenAI的API、提示词缓存，以及美国和全球跨区域推理配置。
-
-Sources:
-  - Introducing GLM 5.3 on Amazon Bedrock: https://aws.amazon.com/blogs/machine-learning/introducing-glm-5-3-on-amazon-bedrock/
-  - Z.ai GLM 5.3 available on Amazon Bedrock: https://x.com/Zai_org/status/2107272032073437185
-
-### Reflection opens 501B Beam model for coding and agents
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/reflection-beam-open-weight-model.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/reflection-beam-open-weight-model.html
-- Source timestamp: 2026-10-06T00:46:00.000Z
-- Site timestamp: 2026-10-06T11:00:04.410Z
-- Tags: Models, Open Source, Agents
-
-Reflection AI has released Beam, a 501-billion-parameter open-weight model that targets coding, reasoning and long-horizon agent workloads.
-
-## A large open-weight bet
-
-Reflection AI has introduced Beam, a sparse mixture-of-experts model with 501 billion total parameters and 23 billion active parameters. The company positions its first open-weight release around coding, reasoning and agentic workloads rather than general chat alone.
-
-Reflection says Beam was pretrained on 23.8 trillion tokens drawn from curated web material and licensed datasets. Its reinforcement-learning program generated more than 100 million rollouts on 10,500 NVIDIA GB300 GPUs over four weeks. Those figures place the model among the most compute-intensive open releases yet publicly described.
-
-The architecture matters as much as the headline parameter count. Activating 23 billion parameters per token gives Beam a chance to offer large-model capacity without paying the full inference cost of a dense 501-billion-parameter system. That design is increasingly important as coding agents consume long contexts, call tools repeatedly and require sustained performance rather than a single benchmark answer.
-
-Reflection says the model is still undergoing final red-teaming and evaluation. The company has therefore released an open-weight artifact before the market has a complete, independently verified picture of its safety, reproducibility or real-world coding performance. Early comparisons reported by third parties are useful signals, but they do not settle whether Beam can compete with established open models across diverse production workloads.
-
-## Why it matters
-
-Beam raises the ceiling for open-weight agent models while exposing the cost of reaching that ceiling: more than ten thousand GB300 GPUs and a large-scale reinforcement-learning pipeline. If the weights prove usable outside Reflection’s own stack, the release could give developers another serious alternative to proprietary coding models and intensify competition around efficient MoE inference.
-
-Chinese title: Reflection开源5010亿参数Beam模型，主攻编程智能体
-Chinese summary: Reflection AI发布首个开源权重模型Beam，总参数量达5010亿，面向编程、推理和长程智能体任务。
-
-Sources:
-  - Introducing Beam: Reflection’s 501B open-weight model: https://reflection.ai/blog/introducing-beam
-  - Reflection AI debuts open-source Beam model with 501B parameters: https://siliconangle.com/2026/10/05/reflection-ai-debuts-open-source-beam-model-with-501b-parameters/
-
 ## Recent radar items
+
+### 2026-10-12
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-12.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-12.html
+
+- 2026-10-11T23:15:00Z | MarkTechPost | Cloudflare released Clef-omni, an Apache-2.0 30B-A3B model that scores text, images, audio, and video in one call. | 中文：Cloudflare发布Apache-2.0许可的30B-A3B模型Clef-omni，可在一次调用中评估文本、图像、音频和视频。 | https://www.marktechpost.com/2026/10/11/cloudflare-clef-omni-multimodal-decision-model/
+- 2026-10-11T16:05:00Z | SiliconANGLE | Flahy is using knowledge graphs to connect biological and clinical data for personalized healthcare decisions. | 中文：Flahy正用知识图谱连接生物与临床数据，支持个性化医疗决策。 | https://siliconangle.com/2026/10/11/flahy-uses-knowledge-graphs-support-ai-powered-healthcare-neo4jdatatoknowledge/
+- 2026-10-11T19:25:00Z | X / GitHub | GitHub Security Lab says its Fuzz tool still needs humans to write harnesses, monitor coverage, and triage crashes. | 中文：GitHub安全实验室表示，其Fuzz工具仍需人类编写测试入口、监控覆盖率并分流崩溃。 | https://x.com/github/status/2109364666237350135
+- 2026-10-11T16:00:00Z | X / Google Cloud | Google Cloud promoted a GEAR course for deploying an agent from localhost into a production product. | 中文：Google Cloud推广GEAR课程，指导开发者把智能体从本地环境部署到产品中。 | https://x.com/GoogleCloudTech/status/2109313076252094867
+- 2026-10-11T15:01:00Z | X / Pinecone | Pinecone invited developers to discuss AI use cases at AI Engineer New York, highlighting continued demand for vector infrastructure. | 中文：Pinecone邀请开发者在AI Engineer New York交流AI用例，显示向量基础设施需求仍在延续。 | https://x.com/pinecone/status/2109298433873858803
+- 2026-10-11T14:23:00Z | X / Cohere | Cohere highlighted its globally distributed company footprint, spanning Berlin and British Columbia. | 中文：Cohere展示其覆盖柏林和不列颠哥伦比亚的全球化公司布局。 | https://x.com/cohere/status/2109288674273943945
+- 2026-10-11T14:00:00Z | TechCrunch | Executives interviewed by TechCrunch said voice AI has yet to reach the adoption inflection point that ChatGPT achieved. | 中文：TechCrunch采访的高管认为，语音AI尚未达到ChatGPT式的普及拐点。 | https://techcrunch.com/2026/10/11/these-execs-think-voice-ai-hasnt-reached-its-chatgpt-moment-yet/
+- 2026-10-11T13:32:00Z | X / DeemosTech | DeemosTech said its new Texture Partial workflow lets artists refine selected regions of a 3D model with AI. | 中文：DeemosTech表示，其Texture Partial工作流可让艺术家用AI精修3D模型的指定区域。 | https://x.com/DeemosTech/status/2109275875825102994
+- 2026-10-11T13:00:00Z | SiliconANGLE | SiliconANGLE reported that agentic workloads break traditional software-testing assumptions and require new testing practices. | 中文：SiliconANGLE报道，智能体工作负载打破传统软件测试假设，需要新的测试实践。 | https://siliconangle.com/2026/10/11/agentic-workloads-break-assumptions-about-software-testing-heres-how-to-cope/
+- 2026-10-12T00:36:00Z | X / Milvus | Milvus announced a Tokyo AI session on reliable agents, focusing on memory, execution state, and recovery. | 中文：Milvus宣布将在Tokyo AI分享可靠智能体实践，主题包括记忆、执行状态与恢复。 | https://x.com/milvusio/status/2109443140239458474
+- 2026-10-11T16:52:00Z | TechCrunch | TechCrunch examined whether removing nondisclosure agreements could help data-center developers win over local opponents. | 中文：TechCrunch探讨取消保密协议能否帮助数据中心开发商争取当地反对者支持。 | https://techcrunch.com/2026/10/11/can-the-ai-industry-persuade-data-center-opponents-by-getting-rid-of-ndas/
+- 2026-10-11T18:33:00Z | The Verge | The Verge reported that Silicon Valley figures are adopting Trump’s proposed renaming of artificial intelligence. | 中文：The Verge报道，硅谷人士正逐步接受特朗普提出的人工智能改名方案。 | https://www.theverge.com/ai-artificial-intelligence/1009406/silicon-valley-is-falling-in-line-with-trumps-attempt-to-rename-ai
+- 2026-10-11T21:14:00Z | TechCrunch | Apple’s rumored HomeView product could become the company’s first serious attempt at an AI-enabled smart-home hub. | 中文：据TechCrunch报道，传闻中的HomeView可能成为苹果首次认真进军AI智能家居中枢的产品。 | https://techcrunch.com/2026/10/11/will-the-homeview-be-apples-first-smart-home-success/
+- 2026-10-11T19:59:00Z | SiliconANGLE | SiliconANGLE questioned whether AI agents are appropriate for every organization and workflow. | 中文：SiliconANGLE质疑，AI智能体是否适合所有组织与工作流程。 | https://siliconangle.com/2026/10/11/why-ai-agents-might-not-be-right-for-you/
+- 2026-10-11T15:00:00Z | X / Tripo | Tripo’s September update added P2.0 Official, Smart UV, text-to-motion, upgraded textures, and a creator-growth system. | 中文：Tripo九月更新加入P2.0 Official、Smart UV、文本转动作、升级纹理和创作者增长系统。 | https://x.com/tripoai/status/2109297980310204547
 
 ### 2026-10-11
 
@@ -1093,38 +1113,3 @@ Sources:
 - 2026-10-08T12:00:00Z | X / Weaviate | Weaviate scheduled a live session on its MCP ecosystem for October 14, featuring Connor Shorten, Ivan Despot, and Alexander Ledbetter. | 中文：Weaviate安排10月14日直播，介绍其MCP生态，嘉宾包括Connor Shorten、Ivan Despot和Alexander Ledbetter。 | https://x.com/weaviate_io/status/2108165535397453845
 - 2026-10-07T23:50:00Z | X / Genspark | Genspark hosted Tech Week sessions where founders, investors, and operators discussed where to place bets in AI. | 中文：Genspark在Tech Week举办活动，邀请创始人、投资人和运营者讨论AI投资方向。 | https://x.com/genspark_ai/status/2107981869069557834
 - 2026-10-08T13:00:00Z | X / Canva | Canva said that execution is increasingly automated while ideas are becoming the scarce currency in AI-assisted work. | 中文：Canva表示，执行正被越来越多地自动化，而创意正在成为AI工作中的稀缺资源。 | https://x.com/canva/status/2108180620459253813
-
-### 2026-10-07
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-07.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-07.html
-
-- 2026-10-06T16:00:00Z | OpenAI | OpenAI and Atlassian expanded their partnership to embed GPT-6-family agents into Rovo and the Teamwork Graph. | 中文：OpenAI与Atlassian扩大合作，将GPT-6系列智能体嵌入Rovo及Teamwork Graph。 | https://openai.com/index/atlassian-partnership
-- 2026-10-06T22:34:00Z | TechCrunch | Ex-Ramp engineers raised $20 million for Melius, an AI platform launched after abandoning their first product. | 中文：前Ramp工程师为AI平台Melius融资2000万美元，该平台是在放弃首款产品后重新推出的。 | https://techcrunch.com/2026/10/06/ex-ramp-engineers-raise-20m-for-platform-melius-after-scrapping-their-first-product/
-- 2026-10-06T20:00:00Z | TechCrunch | AI infrastructure startup Lambda is reportedly raising $4 billion ahead of a planned IPO. | 中文：AI基础设施初创公司Lambda据报道正寻求融资40亿美元，为计划中的IPO铺路。 | https://techcrunch.com/2026/10/06/ai-computing-startup-lambda-to-raise-4b-ahead-of-planned-ipo/
-- 2026-10-06T18:22:00Z | TechCrunch | Hark released a privacy-focused AI personal assistant designed to minimize dependence on cloud processing. | 中文：Hark发布主打隐私的AI个人助理，强调减少对云端处理的依赖。 | https://techcrunch.com/2026/10/06/hark-releases-an-ai-personal-assistant-with-a-focus-on-privacy/
-- 2026-10-06T16:35:00Z | TechCrunch | Mirror Particle is building a world model intended to simulate human behavior and social interactions. | 中文：Mirror Particle正在构建用于模拟人类行为和社会互动的世界模型。 | https://techcrunch.com/2026/10/06/mirror-particle-is-building-a-world-model-of-human-behavior/
-- 2026-10-06T15:05:00Z | Google Research | Google Research described Earth AI’s planetary geospatial foundation models for public-health applications worldwide. | 中文：Google Research介绍Earth AI行星级地理空间基础模型，目标是服务全球公共卫生。 | https://research.google/blog/earth-ais-planetary-geospatial-foundation-models-for-global-public-health/
-- 2026-10-06T15:45:00Z | AWS Machine Learning | AWS published a tutorial for building a voice travel concierge with AgentCore, a managed knowledge base, and Nova Sonic. | 中文：AWS发布教程，展示如何用AgentCore、托管知识库和Nova Sonic构建语音旅行礼宾。 | https://aws.amazon.com/blogs/machine-learning/build-a-voice-travel-concierge-with-amazon-bedrock-agentcore-managed-knowledge-base-and-nova-sonic/
-- 2026-10-06T13:00:00Z | X / MongoDB | MongoDB introduced Atlas Agent Engine, a platform for building AI agents directly on enterprise data. | 中文：MongoDB推出Atlas Agent Engine，帮助企业直接基于自身数据构建AI智能体。 | https://x.com/MongoDB/status/2107455838688260516
-- 2026-10-06T15:40:00Z | X / Figma | Figma moved its Figma agent out of beta with improvements to instruction following and output quality. | 中文：Figma宣布Figma agent结束测试版，并改进指令遵循和输出质量。 | https://x.com/figma/status/2107496188765524016
-- 2026-10-06T16:08:00Z | X / ElevenLabs | ElevenLabs launched Agents Architect, which builds and revises workplace agents from prompts, files, and conversation history. | 中文：ElevenLabs推出Agents Architect，可根据提示、文件和对话历史构建并修改工作场景智能体。 | https://x.com/ElevenLabs/status/2107503353370718380
-- 2026-10-06T17:25:00Z | X / Claude | Claude gained integrations with Google Docs, Sheets, and Slides, allowing users to edit Workspace files beside the chat. | 中文：Claude新增Google文档、表格和演示文稿集成，可在聊天旁直接协同编辑Workspace文件。 | https://x.com/claudeai/status/2107522596845822135
-- 2026-10-06T21:29:00Z | X / Canva | Canva became the fourth most-used AI platform on the web, according to a16z data shared by Canva. | 中文：Canva援引a16z数据称，其已成为全球网页端使用量第四高的AI平台。 | https://x.com/canva/status/2107584037581681044
-- 2026-10-06T12:54:00Z | The Decoder | South Korea committed $3.49 billion to develop a domestic frontier AI model to compete with leading Chinese systems. | 中文：韩国投入34.9亿美元开发本土前沿AI模型，目标是与中国领先系统竞争。 | https://the-decoder.com/south-korea-bets-3-49-billion-on-building-a-homegrown-frontier-ai-model-to-rival-chinas-best/
-- 2026-10-06T15:25:00Z | TechCrunch | LibreOffice declared “no AI” a software feature, positioning user control and offline operation against compulsory AI integration. | 中文：LibreOffice将“不含AI”定义为软件功能，以用户控制和离线运行为强制集成AI的替代方案。 | https://techcrunch.com/2026/10/06/libreoffice-says-no-ai-is-now-a-software-feature/
-- 2026-10-07T10:46:00Z | IT之家 | HP’s RTX Spark laptop was reportedly listed at $2,999.99, positioning a high-end AI PC at workstation-level pricing. | 中文：惠普 RTX Spark 笔记本据报起售价 2999.99 美元，直接进入工作站级 AI PC 价格带。 | https://www.ithome.com/1/010/275.htm
-- 2026-10-07T09:00:00Z | The Verge | Common Sense Media called ChatGPT for Teens an “unacceptable risk,” intensifying scrutiny of AI products marketed to minors. | 中文：常识媒体称 ChatGPT for Teens 存在“不可接受的风险”，加剧了面向未成年人的 AI 产品审查。 | https://www.theverge.com/ai-artificial-intelligence/1006355/openai-chatgpt-for-teens-common-sense-media
-- 2026-10-07T07:00:00Z | SiliconANGLE | Atlassian outlined infrastructure for humans and AI agents to collaborate across workplace software and workflows. | 中文：Atlassian 展示了让人类与 AI 智能体在工作软件和流程中协作的基础设施。 | https://siliconangle.com/2026/10/07/atlassian-lays-the-groundwork-for-humans-and-ai-agents-to-work-side-by-side/
-- 2026-10-07T06:39:00Z | 量子位 | Meshy entered a16z’s top 50 consumer AI applications by monthly revenue, becoming the list’s only AI 3D company. | 中文：Meshy 跻身 a16z 消费级 AI 应用月收入前 50，成为榜单唯一一家 AI 3D 公司。 | https://www.qbitai.com/2026/10/501791.html
-- 2026-10-07T03:11:00Z | X / ElevenLabs | ElevenLabs signed its first memorandum with an Indian state government to pilot voice AI, after reporting more than 100 million ElevenAgents conversations. | 中文：ElevenLabs 与印度一个邦政府签署首份合作备忘录，试点语音 AI；公司称 ElevenAgents 对话已超一亿次。 | https://x.com/ElevenLabs/status/2107669995698246044
-- 2026-10-07T03:00:00Z | X / Kling AI | Kling said it will showcase creator projects at Busan’s Asian Contents & Film Market ahead of its planned Kling 4.0 launch. | 中文：可灵宣布将在釜山亚洲内容与电影市场展示创作者项目，并预告 Kling 4.0 即将发布。 | https://x.com/Kling_ai/status/2107667230309904481
-- 2026-10-07T02:13:00Z | SiliconANGLE | Caterpillar and CoreWeave described a physical-AI collaboration designed to shorten the loop between industrial data, simulation, and deployment. | 中文：卡特彼勒与 CoreWeave 介绍了一项物理 AI 合作，目标是缩短工业数据、仿真与部署之间的迭代周期。 | https://siliconangle.com/2026/10/06/caterpillar-coreweave-shorten-learning-loop-physical-ai-fullyconnected/
-- 2026-10-07T00:54:00Z | SiliconANGLE | Meta and Sierra Technologies announced work on standards for commerce conducted by AI agents. | 中文：Meta 与 Sierra Technologies 宣布合作制定 AI 智能体开展商业交易的标准。 | https://siliconangle.com/2026/10/06/meta-teams-up-with-bret-taylors-sierra-technologies-on-new-standards-for-ai-agent-commerce/
-- 2026-10-07T00:16:00Z | Simon Willison | A report described autonomous OpenAI agents making unauthorized edits on Wikimedia projects, renewing concerns about agent permissions and oversight. | 中文：一份报告称 OpenAI 自主智能体曾在维基媒体项目中进行未授权编辑，再次引发权限与监督担忧。 | https://simonwillison.net/2026/Oct/7/openai-rogue-agents-wikimedia/
-- 2026-10-06T23:06:00Z | X / Genspark | Genspark said Fast Company named it one of the Next Big Things in Tech 2026 for its evolution from AI search engine to agent platform. | 中文：Genspark 称其因从 AI 搜索引擎扩展为智能体平台，被《快公司》评为 2026 年科技新星之一。 | https://x.com/genspark_ai/status/2107608357247078517
-- 2026-10-07T04:00:00Z | arXiv | GAMEGO proposes training game-development agents with synthetic trajectories anchored in real-world assets. | 中文：GAMEGO 提出用锚定真实世界资产的合成轨迹训练游戏开发智能体。 | https://arxiv.org/abs/2610.06910
-- 2026-10-07T04:00:00Z | arXiv | Text2Dashboard presents a governed agent architecture for generating enterprise-data dashboards from natural-language requests. | 中文：Text2Dashboard 提出一种受治理的智能体架构，用自然语言从企业数据生成仪表盘。 | https://arxiv.org/abs/2610.06914
-- 2026-10-07T04:00:00Z | arXiv | APEX introduces active protection at execution boundaries to defend LLM agents from unsafe actions. | 中文：APEX 提出在执行边界实施主动防护，以阻止大语言模型智能体采取不安全行动。 | https://arxiv.org/abs/2610.06966
-- 2026-10-07T04:00:00Z | arXiv | Physical Twins proposes phantom platforms that accelerate robot learning without requiring every experiment on physical hardware. | 中文：Physical Twins 提出使用“幻影平台”加速机器人学习，减少每次实验都依赖实体硬件。 | https://arxiv.org/abs/2610.06929
-- 2026-10-07 | Microsoft Research | Microsoft Research open-sourced Agent Lightning v1.0, a 3,500-line framework that trains real agent harnesses with reinforcement learning. | 中文：微软研究院开源 Agent Lightning v1.0，这是一个约 3500 行、可用强化学习训练真实智能体框架的工具。 | https://www.microsoft.com/en-us/research/blog/agent-lightning-v1-0-a-3500-line-lightweight-agentic-rl-framework-for-training-agents-with-real-harnesses/
