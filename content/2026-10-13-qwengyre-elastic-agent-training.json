@@ -1,0 +1,36 @@
+{
+  "slug": "qwengyre-elastic-agent-training",
+  "title": "Alibaba introduces elastic RL for long-horizon agents",
+  "summary": "Alibaba’s QwenGyre framework reallocates training resources across difficult rollouts, reporting gains on long-horizon software-engineering tasks.",
+  "body": "Alibaba’s Qwen team has introduced QwenGyre, a reinforcement-learning framework designed for training agents on extremely long-horizon tasks. The work targets a growing bottleneck in agent development: a single failed or unfinished rollout can consume substantial compute without producing a useful learning signal.\n\n## Elastic training for difficult tasks\n\nQwenGyre uses an elastic scheduler to reallocate training resources according to the difficulty and progress of individual rollouts. Rather than assigning every episode the same budget, the framework can give more capacity to tasks that need additional reasoning or execution time, while avoiding excessive spending on trajectories that are clearly unproductive.\n\nThe accompanying research describes a second design for handling long-horizon reinforcement learning, where credit assignment becomes difficult because success may depend on a sequence of actions spread across hundreds of thousands of tokens. The framework was evaluated on software-engineering and other agentic tasks, including settings that require an agent to plan, use tools and recover from intermediate failures.\n\nScaled to Qwen’s 2.4-trillion-parameter flagship model, the authors report a gain on NL2RepoBench from 52.5% to 58.5% after 48 training steps, with rollouts reaching 700,000 tokens. Those figures come from the authors’ evaluation and should not be read as a general ranking of Qwen against other frontier systems.\n\n## Why the method matters\n\nLong-horizon agents are expensive partly because their training process has to preserve useful feedback across long, uneven trajectories. If QwenGyre’s scheduling approach generalizes, it could make agent training less wasteful and improve the economics of teaching models to complete multi-step coding, research or operational tasks.\n\nThe release is also notable for coming from Alibaba’s open research ecosystem at a time when leading laboratories are competing over agent reliability rather than only short-answer benchmarks. The remaining question is reproducibility: the reported gains depend on large-scale infrastructure and task-specific training details, and it is not yet clear how well the method transfers across models, environments and failure modes. Still, QwenGyre addresses a practical constraint that will shape whether long-running agents can move beyond demonstrations into routine work.",
+  "title_zh": "阿里Qwen推出面向长程智能体的弹性强化学习",
+  "summary_zh": "阿里Qwen发布QwenGyre框架，按任务难度动态分配训练资源，并在长程软件工程任务上报告明显提升。",
+  "body_zh": "阿里Qwen团队推出QwenGyre，这是一套面向超长程任务智能体训练的强化学习框架。它针对智能体研发中的一个现实瓶颈：一次失败或未完成的长轨迹可能消耗大量算力，却无法提供有效学习信号。\n\n## 为困难任务动态分配算力\n\nQwenGyre通过弹性调度器，根据每条训练轨迹的难度和进展重新分配资源。与所有任务使用相同预算不同，系统会把更多计算投入仍有希望完成、但需要额外推理或执行时间的任务，同时减少对明显无效轨迹的浪费。\n\n相关论文还提出了处理超长程强化学习的配套设计。此类任务通常包含数十万Token和数百个连续动作，最终成功往往取决于整个行动链条，因此如何把结果反馈分配到早期决策，是训练中的核心难题。测试场景包括软件工程任务，要求模型规划、调用工具，并从中间错误中恢复。\n\n研究者将QwenGyre扩展到24000亿参数的旗舰模型后，报告NL2RepoBench得分从52.5%提升至58.5%，训练使用了最长70万Token的轨迹和48个训练步骤。这些数字来自作者自己的实验，并不等同于Qwen对其他前沿模型的总体排名。\n\n## 为什么值得关注\n\n长程智能体之所以昂贵，部分原因在于训练必须从很长、而且质量不均的行动轨迹中提取反馈。如果QwenGyre的调度方法能够迁移到更多任务，它可能减少智能体训练中的无效计算，并改善多步骤编程、研究和业务流程的训练成本。\n\n这项工作也说明，模型竞争的重点正从短答案基准转向智能体能否稳定完成长期任务。当前仍需观察其可复现性：增益依赖大规模基础设施和特定训练细节，能否跨模型、环境和失败类型迁移尚不明确。但QwenGyre抓住了一个决定智能体能否从演示走向日常工作的关键约束。",
+  "tags": [
+    "Research",
+    "Agents",
+    "Open Source"
+  ],
+  "sources": [
+    {
+      "title": "QwenGyre: An Elastic Reinforcement Learning Framework for Training xLong-Horizon Agents",
+      "url": "https://arxiv.org/abs/2609.33848"
+    },
+    {
+      "title": "Introducing QwenGyre, bringing elastic RL to extreme-long-horizon agent training",
+      "url": "https://x.com/Alibaba_Qwen/status/2109633085658808515"
+    },
+    {
+      "title": "QwenGyre addresses two challenges of XLong-horizon agentic RL",
+      "url": "https://x.com/Alibaba_Qwen/status/2109633089211416820"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "QwenGyre的价值在于把70万Token轨迹变成可管理的训练预算，而非单纯堆大模型",
+  "cat_take_en": "QwenGyre’s practical contribution is budgeting 700,000-token trajectories intelligently, not merely scaling the model again.",
+  "date": "2026-10-13",
+  "published": "2026-10-12T13:11:00Z",
+  "published_at": "2026-10-13T01:00:04.247Z"
+}
