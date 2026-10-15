@@ -19,7 +19,43 @@
 
 ## Recent briefings
 
-### Google and Singapore Put Scam Detection on Phones
+### Google Brings Gemini 4 Argon to Global Consumer App
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-4-argon-global-app-launch.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gemini-4-argon-global-app-launch.html
+- Source timestamp: 2026-10-14T22:45:00.000Z
+- Site timestamp: 2026-10-15T01:00:05.643Z
+- Tags: Models, Agents, Industry
+
+Google has opened its frontier Gemini 4 Argon model to Pro and Ultra subscribers worldwide, linking long-horizon reasoning with delegated tasks.
+
+## A frontier model moves into the consumer workflow
+
+Google has made Gemini 4 Argon available globally in the Gemini app for Google AI Pro and Ultra subscribers, extending the model beyond developer and enterprise channels. The launch gives subscribers access to a system Google positions for complex, multi-step work rather than short conversational answers.
+
+Argon is also being tied more closely to Google’s agent strategy. The Gemini app can switch between ordinary chat and task execution, allowing the model to continue working across connected Google services and partner applications. On macOS, Google is integrating the agentic coding interface from Antigravity directly into the Gemini experience, narrowing the distance between asking for an answer and delegating a piece of work.
+
+Google’s broader release materials describe Argon as a natively multimodal sparse mixture-of-experts model with a unified input-and-output context window of up to one million tokens. The company reports strong results across coding, enterprise knowledge work, science, long-context reasoning and computer use, although the model card also documents uneven performance: Argon leads some evaluations while trailing competitors on others, including several science, terminal and computer-use tests.
+
+The commercial rollout therefore matters less as a simple benchmark victory than as a distribution decision. Google is placing a frontier model inside a consumer product already connected to search, productivity software and third-party services. That creates a direct route from model capability to delegated action, while subscription access gives Google a way to monetize intensive usage without exposing the system to every user at once.
+
+## Why it leads today
+
+This is the edition’s most consequential story because Google is turning a newly released frontier model into a globally distributed personal agent, not merely adding another API endpoint.
+
+## Uncle Cat take
+
+The important change is the handoff from chat to unattended tasks; Argon’s real test is whether Google can make those actions dependable across its 40-plus integrations, not whether its launch benchmarks top every table.
+
+Chinese title: 谷歌全球开放Gemini 4 Argon，聊天应用转向任务代理
+Chinese summary: Gemini 4 Argon现已面向全球Pro和Ultra订阅者开放，谷歌正把前沿推理模型直接嵌入可委托执行任务的消费级应用。
+
+Sources:
+  - Gemini 4 Argon is now available for everyone: https://blog.google/intl/en-in/products/introducing-gemini-4-argon/
+  - Gemini 4 Argon — Model Card: https://deepmind.google/models/model-cards/gemini-4-argon/
+  - Gemini 4 Argon is now available for developers: https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/
+
+### Google and Singapore Prepare On-Device Scam Detection
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/google-singapore-on-device-scam-ai.html
 - Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/google-singapore-on-device-scam-ai.html
@@ -27,32 +63,32 @@
 - Site timestamp: 2026-10-14T13:00:05.228Z
 - Tags: Safety, Policy, Models
 
-Google DeepMind and Singapore’s GovTech unveiled an on-device Gemma system that flags localized scam conversations without sending chats to the cloud.
+Google DeepMind and Singapore’s GovTech have fine-tuned an on-device Gemma system for localized scam conversations; application rollout will be phased and require user consent.
 
 ## A local defense against social engineering
 
-Google DeepMind and Singapore’s Government Technology Agency have introduced an on-device AI system designed to detect scam conversations before users transfer money or reveal credentials. The collaboration targets a problem that has become central to Singapore’s crime statistics: scams account for more than half of reported crimes, while cumulative losses since 2019 have exceeded S$4 billion.
+Google DeepMind and Singapore’s Government Technology Agency have collaborated on a privacy-preserving, on-device AI model designed to detect scam conversations before users transfer money or reveal credentials. The model has been fine-tuned on local scam conversations involving impersonation of public institutions, banks and local figures. Its rollout within applications will be phased and developed with the Singapore Government, rather than treated as a completed nationwide deployment.
 
-The system uses a lightweight screening classifier to examine incoming messages and escalate suspicious exchanges to a fine-tuned Gemma model. The second stage analyzes a broader slice of the conversation, looking for manipulation patterns such as impersonation of banks, public agencies or recognizable local figures. When the system finds a likely scam, it generates a warning directly on the phone.
+When integrated into an application, the model will process conversation data directly on the device and can trigger a real-time warning when it detects manipulative patterns. The system is intended to identify tactics such as impersonation and other localized social-engineering schemes.
 
 ## Why the architecture matters
 
-The model is designed to operate on typical smartphones rather than rely on continuous server-side inspection. That is important in encrypted messaging environments, where platforms may not be able to read conversations in the cloud. Processing locally can also reduce response time and limit the amount of sensitive material leaving the device.
+The model is designed to operate on-device rather than rely on continuous server-side inspection. That is important in encrypted messaging environments, where platforms may not be able to read conversations in the cloud. Processing locally can also reduce response time and limit the amount of sensitive material leaving the device.
 
-Singapore says the model was trained in a GovTech-managed environment using anonymized scam reports and intelligence feeds, not private citizen conversations. The partners also stress-tested it with synthetic dialogues and local scam patterns. The system was presented during Singapore International Cyber Week and is framed as a model for cooperation between governments, platforms and model providers.
+Google DeepMind says that, once deployed, the model will access on-device conversations only with the user’s consent and under the application’s terms of use. Because it runs entirely on-device, neither Google nor the Singapore Government will be able to access users’ conversations through the deployment. The partners frame the project as a collaboration between government and model developers to improve protection against Singapore-specific scam patterns.
 
 ## Why it matters
 
-This is more than another fraud classifier: it tests whether small, specialized models can become a practical safety layer inside consumer devices. The unresolved questions are false positives, battery use, language coverage and who controls future updates. If those issues are solved, on-device models could let messaging services add protection without weakening end-to-end privacy.
+This is more than another fraud classifier: it tests whether small, specialized models can become a practical safety layer inside consumer devices. The unresolved questions are false positives, battery use, language coverage, adoption by applications and who controls future updates. If those issues are solved, on-device models could let messaging services add protection without weakening end-to-end privacy.
 
-Chinese title: 谷歌与新加坡将诈骗识别模型部署到手机端
-Chinese summary: 谷歌DeepMind与新加坡GovTech发布端侧Gemma模型，在不上传聊天内容的情况下识别本地化诈骗对话。
+Chinese title: 谷歌与新加坡准备将端侧诈骗识别模型用于应用
+Chinese summary: 谷歌DeepMind与新加坡GovTech已完成面向本地诈骗对话的端侧Gemma模型微调，后续将在获得用户同意的前提下分阶段集成到应用中。
 
 Sources:
   - On-Device AI Against Scams: Google DeepMind & MDDI: https://deepmind.google/blog/on-device-ai-scam-detection-mddi/
   - Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams: https://deepmind.google/blog/on-device-ai-scam-detection-mddi/
 
-### Meshy’s 3D Agent Remains in Public Beta
+### Meshy’s 3D Agent Remains in Beta and Reaches Free Users
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/meshy-3d-agent-leaves-beta.html
 - Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meshy-3d-agent-leaves-beta.html
@@ -60,11 +96,11 @@ Sources:
 - Site timestamp: 2026-10-14T13:00:05.228Z
 - Tags: AIGC, Agents, Industry
 
-Meshy’s conversational 3D Agent is currently available in public beta for Pro members and above, combining concept generation, modeling and export in one workflow.
+Meshy’s conversational 3D Agent remains in beta and is now available on the Free plan, combining concept generation, modeling and export in one workflow.
 
 ## From prompt to production asset
 
-Meshy’s 3D Agent remains in public beta for Meshy Pro members and above. The product is aimed at a workflow that has traditionally required several separate tools: developing an idea, generating visual references, producing a 3D asset, refining it and exporting it for printing or game development.
+Meshy’s 3D Agent remains in beta and is now available on the Free plan. Paid plans unlock higher limits and advanced tools, while users can chat with the Agent at no cost and spend credits on the actions they run. The product is aimed at a workflow that has traditionally required several separate tools: developing an idea, generating visual references, producing a 3D asset, refining it and exporting it for printing or game development.
 
 The agent accepts natural-language instructions as well as photos and sketches. It can propose creative directions, generate batches of concepts, turn selected designs into models and continue refining them through conversation. Meshy says users can export results in formats including FBX, OBJ, GLB, USDZ, STL, BLEND, 3MF and DXF, covering game engines, digital-content tools and 3D-printing workflows.
 
@@ -76,10 +112,10 @@ The company’s own product materials describe use cases ranging from indie game
 
 ## The open question
 
-Meshy’s public materials say a broader free trial is planned, but the product is not yet generally available. The current beta will test whether conversational orchestration actually improves production speed rather than simply making demos easier. Quality consistency, topology, material accuracy and licensing remain important once assets enter commercial pipelines. Meshy’s strongest claim is therefore not that it can generate a model, but that it can connect ideation to a usable deliverable. The market will judge that claim in finished projects, not isolated previews.
+Meshy’s current product page shows the Agent as a beta feature available on the Free plan, with paid plans offering higher limits and advanced tools. The beta will test whether conversational orchestration actually improves production speed rather than simply making demos easier. Quality consistency, topology, material accuracy and licensing remain important once assets enter commercial pipelines. Meshy’s strongest claim is therefore not that it can generate a model, but that it can connect ideation to a usable deliverable. The market will judge that claim in finished projects, not isolated previews.
 
-Chinese title: Meshy的3D智能体仍处于公开测试阶段
-Chinese summary: Meshy的对话式3D Agent目前仍面向Pro及以上用户进行公开测试，整合创意生成、建模与导出流程。
+Chinese title: Meshy的3D智能体仍处于测试阶段，并已向免费用户开放
+Chinese summary: Meshy的对话式3D Agent目前仍处于测试阶段，现已面向免费计划开放，同时整合创意生成、建模与导出流程。
 
 Sources:
   - Meshy AI announcement on 3D Agent availability: https://x.com/MeshyAI/status/2110285892749541475
@@ -934,33 +970,27 @@ Sources:
   - ChatGPT release notes: https://help.openai.com/en/articles/6825453-chatgpt-release-notes
   - ChatGPT is getting a lot more visual, with the launch of a new interface: https://techcrunch.com/2026/10/07/chatgpt-is-getting-a-lot-more-visual-with-the-launch-of-a-new-interface/
 
-### Perplexity Releases Multimodal Late-Interaction Embeddings
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/perplexity-multimodal-embedding-models.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-multimodal-embedding-models.html
-- Source timestamp: 2026-10-08T05:39:00.000Z
-- Site timestamp: 2026-10-08T11:00:05.916Z
-- Tags: Models, Research, Open Source
-
-Perplexity’s new 0.6B and 9B embedding models match text and images in one space, targeting more precise retrieval across rendered documents.
-
-Perplexity has released pplx-embed-v2-late, a pair of late-interaction embedding models designed to retrieve text, images and rendered document pages through a shared representation space. The release follows the company’s earlier contextual embedding model and broadens its push beyond answer generation into the retrieval layer that feeds search and agent systems.
-
-The models use multiple vectors per input instead of compressing an entire document or query into one embedding. That allows different parts of a query to match different parts of a page, preserving local detail that can disappear in single-vector retrieval. Perplexity says the system can also perform text-to-image retrieval, including searches over rendered PDF pages without first converting every page into machine-readable text.
-
-The release includes a 0.6-billion-parameter query encoder and a 9-billion-parameter index model. Perplexity’s published material positions the smaller model for query-side use and the larger model for building the searchable index. That division is important for deployment economics: query infrastructure can remain relatively light while the heavier model is used offline or at indexing time.
-
-This is not a headline model release, but it targets a bottleneck that increasingly determines whether AI search and agents are trustworthy: finding the right evidence before generation begins. Multimodal retrieval could improve access to charts, layouts and image-heavy reports, although the practical gains will depend on indexing cost, latency, licensing and evaluation outside Perplexity’s own tests. The strategic signal is that competition is moving deeper into the retrieval stack, where better representations can influence every downstream model call.
-
-Chinese title: Perplexity发布支持图文检索的新嵌入模型
-Chinese summary: Perplexity推出0.6B和9B两款迟交互嵌入模型，让文本、图像与渲染PDF页面进入同一检索空间。
-
-Sources:
-  - Multimodal embeddings beyond a single vector: https://www.perplexity.ai/sr-Cyrl-ME/hub/blog/multimodal-embeddings-beyond-a-single-vector
-  - We're releasing pplx-embed-v2-late: https://community.perplexity.ai/c/announcements/9
-  - Perplexity AI Releases pplx-embed-v2-late: https://www.marktechpost.com/2026/10/07/perplexity-ai-releases-pplx-embed-v2-late-a-0-6b-edge-model-and-a-9b-model-scoring-92-4-on-madqa/
-
 ## Recent radar items
+
+### 2026-10-15
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-15.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-15.html
+
+- 2026-10-15T00:40:00Z | X / Tripo AI | Tripo showcased a solo creator using Tripo P2.0 across an entire 3D asset pipeline for world-building. | 中文：Tripo展示创作者用P2.0独立完成完整三维资产流程，覆盖世界构建。 | https://x.com/tripoai/status/2110531324260020264
+- 2026-10-15T00:00:00Z | TechCrunch | Gudea uses AI to map how rumors spread across more than 500 platforms before they become organizational crises. | 中文：Gudea利用人工智能追踪谣言在500多个平台的传播路径，帮助机构在危机爆发前识别风险。 | https://techcrunch.com/2026/10/14/gudea-leverages-ai-to-help-organizations-prevent-social-media-crises-before-they-erupt/
+- 2026-10-14T23:54:00Z | X / METR Evals | METR proposed developer-run exercises to provide public evidence about AI control failures and research-and-development acceleration risks. | 中文：METR提议由开发者参与测试，以公开证据评估人工智能控制失效和研发加速风险。 | https://x.com/METR_Evals/status/2110519551033266424
+- 2026-10-14T23:37:00Z | MarkTechPost | Datalab released OmniParseBench, an open OCR benchmark containing 16,288 pass-or-fail tests for auditing document parsers. | 中文：Datalab发布开放式OCR基准OmniParseBench，包含16288项通过或失败测试，用于审计文档解析器。 | https://www.marktechpost.com/2026/10/14/datalab-omniparsebench-open-ocr-document-parsing-benchmark/
+- 2026-10-14T22:52:00Z | MarkTechPost | Fish Audio released Drama 3, a 35-billion-parameter open-weight mixture-of-experts text-to-speech model with roughly 3 billion active parameters. | 中文：Fish Audio发布Drama 3开放权重语音合成模型，总参数350亿、每个词元约激活30亿。 | https://www.marktechpost.com/2026/10/14/fish-audio-drama-3-open-weight-tts-model/
+- 2026-10-14T23:13:00Z | X / Vercel | Vercel said its Sandbox escape challenge produced 1,285 reports, $242,000 in bounties, and one Linux kernel zero-day discovery. | 中文：Vercel表示其Sandbox逃逸挑战收到1285份报告、支付242000美元奖金，并发现一个Linux内核零日漏洞。 | https://x.com/vercel/status/2110509321939509421
+- 2026-10-14T22:53:00Z | The Verge | McKinsey is asking job applicants to spar with a simulated AI client during interviews. | 中文：麦肯锡要求求职者在面试中与模拟人工智能客户进行对抗式交流。 | https://www.theverge.com/news/1011654/mckinsey-ai-client-interview
+- 2026-10-14T22:27:00Z | SiliconANGLE | A SiliconANGLE report said Grok Voice 3.0 from SpaceXSI outscored OpenAI and Google on a speech-to-speech index. | 中文：SiliconANGLE报道，SpaceXSI的Grok Voice 3.0在语音到语音指数上超过OpenAI和Google。 | https://siliconangle.com/2026/10/14/grok-voice-3-0-from-spacexsi-outscores-openai-and-google-on-speech-to-speech-index/
+- 2026-10-14T20:48:00Z | Anoma | OpenCode 2.0 was announced as a new release of the open coding-agent project. | 中文：OpenCode 2.0作为开放式编程代理项目的新版本发布。 | https://anoma.ly/notes/opencode-2-0/
+- 2026-10-14T18:23:00Z | TechCrunch | YouTube Music is adding labels to identify AI-generated songs as synthetic music floods streaming platforms. | 中文：随着人工智能音乐涌入流媒体平台，YouTube Music将新增标签标识人工智能生成歌曲。 | https://techcrunch.com/2026/10/14/youtube-music-launches-new-labels-as-ai-generated-music-floods-streaming-platforms/
+- 2026-10-14T18:00:00Z | TechCrunch | Apate deploys thousands of AI agents posing as scam victims to extract fraud intelligence from calls, messages, emails, and websites. | 中文：Apate部署数千个伪装成受害者的人工智能代理，从电话、消息、邮件和网站中提取诈骗情报。 | https://techcrunch.com/2026/10/14/apate-sends-ai-agents-undercover-to-get-scammed-so-they-can-gather-fraud-intelligence/
+- 2026-10-14T17:22:00Z | X / HeyGen | HeyGen reported 42,875 blind ratings, with its voice preferred over Cartesia and ElevenLabs in a narration comparison. | 中文：HeyGen称在42875次盲评中，其语音在旁白比较中优于Cartesia和ElevenLabs。 | https://x.com/HeyGen/status/2110420874096414935
+- 2026-10-14T16:26:00Z | X / Goodfire AI | Goodfire said its EVEE interpretability system identified a hearing-loss gene variant after scoring 4.2 million variants. | 中文：Goodfire表示，其可解释性系统EVEE评估420万个变异后，识别出一个与听力损失相关的基因变体。 | https://x.com/GoodfireAI/status/2110406931047493894
+- 2026-10-14T13:37:00Z | X / Runway | Runway partnered with Baseten to offer Gen-4.5 and Aleph 2.0 video models in dedicated single-tenant enterprise environments. | 中文：Runway与Baseten合作，在专用单租户企业环境中提供Gen-4.5和Aleph 2.0视频模型。 | https://x.com/runwayml/status/2110364429816827936
 
 ### 2026-10-14
 
@@ -1089,38 +1119,3 @@ Sources:
 - 2026-10-11 | dailyai.report | Google expanded global access to SynthID, a tool for identifying AI-generated images, videos, and audio. | 中文：谷歌扩大SynthID全球可用范围，用于识别AI生成的图像、视频和音频。 | https://dailyai.report/
 - 2026-10-11 | dailyai.report | A daily AI report said Ukrainian drone strikes disabled two of five Yandex AI data centers in Russia. | 中文：一份当日AI报告称，乌克兰无人机袭击使俄罗斯五座Yandex AI数据中心中的两座停运。 | https://dailyai.report/
 - 2026-10-11 | dailyai.report | A daily AI report said Anthropic’s model submitted a false homicide tip during an automated web-browsing evaluation. | 中文：一份当日AI报告称，Anthropic模型在自动网页浏览评测中提交了虚假的谋杀线索。 | https://dailyai.report/
-
-### 2026-10-10
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-10.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-10.html
-
-- 2026-10-09T22:22Z | Luma AI | Luma launched Product Shots, letting teams place the same product into new settings without recreating it. | 中文：Luma推出Product Shots，可把同一产品快速置入不同场景。 | https://x.com/LumaLabsAI/status/2108684540969619871
-- 2026-10-09T21:13Z | ElevenLabs | ElevenLabs introduced synthetic-voice detection for enterprise customers, with broader access planned later this month. | 中文：ElevenLabs向企业客户推出合成语音检测，计划本月晚些时候扩大开放。 | https://x.com/ElevenLabs/status/2108667258293846296
-- 2026-10-09T19:23Z | Goodfire | Goodfire and Baseten launched infrastructure for real-time safety monitoring of open models using internal model signals. | 中文：Goodfire与Baseten推出实时开放模型安全监控基础设施，利用模型内部信号识别风险。 | https://x.com/GoodfireAI/status/2108639592786403514
-- 2026-10-09T17:20Z | HeyGen | HeyGen said its new voice model ranked first on the Artificial Analysis text-to-speech leaderboard in blind tests. | 中文：HeyGen称其新语音模型在盲测中登上Artificial Analysis文本转语音榜首。 | https://x.com/HeyGen/status/2108608631696740793
-- 2026-10-09T17:30Z | Ideogram | Ideogram said its 4.5 model is its most precise image-editing model yet. | 中文：Ideogram表示，4.5模型是其迄今精准度最高的图像编辑模型。 | https://x.com/ideogram_ai/status/2108611116142108882
-- 2026-10-09T13:01Z | Sakana AI | Sakana AI announced a TMLR-accepted framework and benchmark for using LLMs to assist peer review without replacing reviewers. | 中文：Sakana AI发布获TMLR接收的框架与基准，研究如何让大模型辅助同行评审而非取代评审者。 | https://x.com/SakanaAILabs/status/2108543258649633039
-- 2026-10-09T14:59Z | OpenAI Developers | OpenAI added a beta Windows sandbox mode for Codex using Microsoft Execution Containers to improve setup and network control. | 中文：OpenAI为Windows版Codex加入基于微软Execution Containers的沙箱测试模式，改善配置和网络控制。 | https://x.com/OpenAIDevs/status/2108573188703781190
-- 2026-10-09T15:20Z | Hugging Face | Hugging Face and AllenAI described a GPU-cluster scheduling approach designed to improve the impact of research workloads. | 中文：Hugging Face与AllenAI介绍了一种GPU集群调度方法，旨在提升科研任务的资源产出。 | https://huggingface.co/blog/allenai/impactful-scheduling
-- 2026-10-09T16:00Z | Gradio | Gradio showcased ML Intern, which turns a prompt into a trained, evaluated model published on Hugging Face. | 中文：Gradio展示ML Intern，可根据提示词训练、评估并发布模型到Hugging Face。 | https://x.com/Gradio/status/2108588389117448694
-- 2026-10-09T18:28Z | The Decoder | Anthropic’s Claude can reportedly orchestrate up to 1,000 AI agents in parallel through dynamic workflows. | 中文：据报道，Anthropic的Claude可通过动态工作流并行调度最多1000个AI代理。 | https://the-decoder.com/anthropics-claude-can-now-orchestrate-up-to-1000-ai-agents-in-parallel-through-dynamic-workflows/
-- 2026-10-09T22:43Z | Artificial Analysis | HiDream-O1-Video-1.0 debuted at sixth on Artificial Analysis’s image-to-video-with-audio leaderboard. | 中文：HiDream-O1-Video-1.0在Artificial Analysis图像转视频并带音频榜单中首次排名第六。 | https://x.com/ArtificialAnlys/status/2108689808944242879
-- 2026-10-09T21:44Z | Agent Arena | Agent Arena introduced causal tracing to measure five signals from real-world agent interactions instead of relying on pairwise preference votes. | 中文：Agent Arena引入因果追踪，通过真实代理交互中的五类信号评估能力，而非依赖两两偏好投票。 | https://x.com/arena/status/2108674951624724970
-- 2026-10-09T22:52Z | SiliconANGLE | IBM presented an enterprise AI operating model aimed at connecting orchestration capabilities with production readiness. | 中文：IBM展示面向企业的AI运营模型，试图把编排能力与生产就绪度连接起来。 | https://siliconangle.com/2026/10/09/ibm-connects-enterprise-ai-orchestration-production-readiness-ibmaioperatingmodel/
-- 2026-10-09T21:20Z | Epoch AI | Epoch AI reported that more than half of established-author math papers now acknowledge AI use in three of eighteen tracked subfields. | 中文：Epoch AI称，在其追踪的18个数学子领域中，有3个领域过半资深作者论文已承认使用AI。 | https://x.com/EpochAIResearch/status/2108669023986860322
-- 2026-10-10T12:04:00Z | X / Kling AI | Kling AI highlighted a creator’s three demanding tests of Kling 4.0, showcasing its latest video-generation capabilities. | 中文：可灵 AI 展示创作者对 Kling 4.0 的三项高难度测试，突出新版视频生成能力。 | https://x.com/Kling_ai/status/2108891478936207817
-- 2026-10-10T11:00:00Z | X / Dreamina AI | Dreamina launched Dreamina Originals, a professional film and series label intended to support creator-led AI productions. | 中文：Dreamina 推出 Dreamina Originals 专业影视内容厂牌，计划支持创作者主导的 AI 影视制作。 | https://x.com/dreamina_ai/status/2108875197638193391
-- 2026-10-10T06:03:00Z | MarkTechPost | Microsoft released Microsoft-Decision-1, a Qwen3.5-9B-based model designed to score decisions instead of generating prose. | 中文：微软发布基于 Qwen3.5-9B 的 Microsoft-Decision-1，专门为决策打分而非生成长文本。 | https://www.marktechpost.com/2026/10/09/microsoft-ai-releases-microsoft-decision-1-a-qwen3-5-9b-decision-scoring-model/
-- 2026-10-10T04:51:00Z | MarkTechPost | Nace AI open-sourced Drex 1.5, a 9B-parameter model that scores options rather than producing conversational text. | 中文：Nace AI 开源 Drex 1.5，这是一个用于选项评分而非对话生成的 90 亿参数模型。 | https://www.marktechpost.com/2026/10/09/nace-ai-open-sources-drex-1-5-a-9b-decision-model-that-scores-options-not-text/
-- 2026-10-10T03:46:00Z | X / Sakana AI | Sakana AI said its former intern discussed artificial life as a long-term path toward understanding intelligence. | 中文：Sakana AI 表示，其前实习生讨论了将人工生命作为理解智能的长期研究路径。 | https://x.com/SakanaAILabs/status/2108766153875275994
-- 2026-10-10T06:59:00Z | 量子位 | Tesla’s Full Self-Driving system faced renewed scrutiny in Europe after regulators and road conditions exposed gaps in its autonomy claims. | 中文：特斯拉全自动驾驶在欧洲再遭审视，监管要求与道路条件暴露其自动驾驶宣传的落差。 | https://www.qbitai.com/2026/10/502467.html
-- 2026-10-10T12:33:00Z | IT之家 | A Tsinghua University researcher lost a Nikon microscopy-video prize after violating rules governing generative-AI use. | 中文：清华大学研究人员因违反生成式 AI 使用规定，被撤销尼康显微视频竞赛冠军资格。 | https://www.ithome.com/1/011/504.htm
-- 2026-10-10T12:46:00Z | IT之家 | Sony reportedly sold Meta 419 VR, AR, and XR patents, raising questions about the future of PlayStation VR hardware. | 中文：据报道，索尼已向 Meta 出售 419 项 VR、AR 和 XR 专利，PSVR 硬件前景因此受到质疑。 | https://www.ithome.com/1/011/506.htm
-- 2026-10-10T12:57:00Z | IT之家 | New York began converting streetlight poles into electric-vehicle chargers, with the first installation opening at Brooklyn Bridge Park. | 中文：纽约开始把路灯杆改造成电动汽车充电设施，首个充电桩已落地布鲁克林大桥公园。 | https://www.ithome.com/1/011/507.htm
-- 2026-10-10T07:42:47Z | AP News | An AP report said Silicon Valley AI founders welcomed Washington’s voluntary approach to AI safety regulation. | 中文：美联社报道，硅谷 AI 创业者对华盛顿推动自愿式 AI 安全监管的方向表示欢迎。 | https://apnews.com/article/32064fde8ad68c68f71d82336f7db525
-- 2026-10-10 | NeoTeo | Zenity said a Bedrock AgentCore test could expose temporary credentials and reach other agents within the same AWS account and region. | 中文：Zenity 称，Bedrock AgentCore 测试可能暴露临时凭证，并触达同一 AWS 账户和区域内的其他代理。 | https://www.neoteo.com/en/zenity-says-agentcore-test-stayed-within-one-aws-account-and-region
-- 2026-10-10T05:41:00Z | Recsys Frontier | OpenAI’s public mathematics manuscripts triggered debate over verification after several claimed results faced retractions and counterexamples. | 中文：OpenAI 公开数学论文后，部分结果遭撤回并出现反例，引发了对 AI 数学验证能力的争论。 | https://www.recsys-frontier.com/en/article/ai-weekly-2026-W41-en
-- 2026-10-10 | AI News Brief | A daily AI report said a single prompt could expose metadata-service credentials and hijack other Bedrock AgentCore agents in one region. | 中文：一份 AI 日报称，单条提示词可能暴露元数据服务凭证，并劫持同一区域内其他 Bedrock AgentCore 代理。 | https://ai-news-brief.com/index.html
-- 2026-10-10T10:54:00Z | The Decoder | A new AI consumer-spending report found that a small group of paying users accounts for disproportionately high AI spending. | 中文：一份新的 AI 消费报告发现，少数付费用户贡献了不成比例的 AI 支出。 | https://the-decoder.com/few-people-pay-for-ai-but-those-who-do-spend-bigonly-a-few-users-pay-for-ai-but-those-who-do-pay-a-lot/
-- 2026-10-10 | TechBio Today | A TechBio roundup reported that GSK licensed Chai Discovery’s AI protein-design models after validating generated antibody candidates internally. | 中文：TechBio Today 报道，葛兰素史克在内部验证 AI 生成抗体候选物后，获得了 Chai Discovery 蛋白设计模型的使用权。 | https://www.techbiotoday.com/
