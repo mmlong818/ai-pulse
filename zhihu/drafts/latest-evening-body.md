@@ -1,94 +1,120 @@
-这是「猫叔的AI资讯雷达」10月14日晚报。
+这是「猫叔的AI资讯雷达」10月15日晚报。
 
 本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
 
-**今晚重点**：谷歌DeepMind与新加坡GovTech发布端侧Gemma模型，在不上传聊天内容的情况下识别本地化诈骗对话。
+**今晚重点**：阶跃星辰公开Step 5 Preview权重，推出6000亿参数稀疏MoE模型及配套智能体工作流工具。
 
 ## 深度简报目录
 
-- 谷歌与新加坡将诈骗识别模型部署到手机端
-- Meshy的3D智能体仍处于公开测试阶段
+- 阶跃星辰开源Step 5 Preview，面向长程智能体任务
+- 亚马逊推出两款Bee设备，个人AI接入购物场景
+- Skywork发布Matrix-Game 4.0，单张消费级显卡实时运行
 
 ## 快讯预览
 
-- 研究人员称，OpenAI和Google的新AI模型仍可能被诱导生成非自愿裸照。
-- Scimplify融资2500万美元，利用AI挑战中国在关键材料供应链中的主导地位。
-- Adobe借助Prometheus查明一块GPU连续空转11天的原因。
-- SolarWinds推出Avior，将AI代理与确定性执行结合，用于企业IT运维。
-- Recraft展示Recraft V4.1生成的视觉作品，涵盖冰湖、野生动物和电影感景观。
-- 阶跃星辰发布首款原生智能体手机STEPX Neo，先面向创客和早期用户。
-- Liquid AI发布LFM2.5-24B-A2B，采用20亿激活参数的混合专家架构，面向端侧代理。
-- 无问芯穹完成高密度大容量1T4R 1Gb RRAM芯片流片，并称其为国际首款。
+- Mistral 与 CERN 开始探索用 AI 模型进行粒子碰撞重建、粒子识别和异常信号检测。
+- 据报道，Modal 年经常性收入达到 10 亿美元，并在五个月内使用量增长三倍后完成 160 亿美元 D 轮融资。
+- 亚马逊云科技在 QCon 上海介绍代理原生规模化实践，讨论从应用向自主工作流转变。
+- Figma 宣布新增 20 个 MCP 合作伙伴，包括 Linear、Mistral、Notion、OpenCode 和 JetBrains Junie。
+- Genspark 表示其代理现可通过 iMessage、WhatsApp、Slack 和 LINE 使用，并支持总结 PDF 等任务。
+- Artificial Analysis 称，两款 AI 模型离线构建了 3D 埃菲尔铁塔，并凭记忆复现全部 72 位科学家姓名。
+- 量子位报道，阿里通义办公电商版可借助 AI 低成本启动线上店铺并辅助运营。
+- 据报道，Anthropic 向投资者披露第三季度收入环比增长 45%，达到 168 亿美元。
+- Ricursive Intelligence 正开发由 AI 设计的芯片，试图缓解算力短缺并减少对传统芯片设计流程的依赖。
+- Tripo展示创作者用P2.0独立完成完整三维资产流程，覆盖世界构建。
 
-## 1. 谷歌与新加坡将诈骗识别模型部署到手机端
+## 1. 阶跃星辰开源Step 5 Preview，面向长程智能体任务
 
-谷歌DeepMind与新加坡GovTech发布端侧Gemma模型，在不上传聊天内容的情况下识别本地化诈骗对话。
+阶跃星辰公开Step 5 Preview权重，推出6000亿参数稀疏MoE模型及配套智能体工作流工具。
 
-### 把反诈骗能力放进手机
+### 发生了什么
 
-谷歌DeepMind与新加坡政府科技局推出一套端侧人工智能系统，用于在用户转账或泄露凭据前识别诈骗对话。双方瞄准的是新加坡日益严重的社会工程诈骗：诈骗案件已占当地报案总数的一半以上，自2019年以来造成的损失超过40亿新加坡元。
+阶跃星辰宣布开放Step 5 Preview权重，BF16和FP8版本已上线Hugging Face与ModelScope。该模型采用6000亿参数稀疏混合专家架构，每个词元约激活270亿参数。公司同时发布了架构与训练技术博客，并将开源智能体工具Step Code更新至0.1.4，用于帮助智能体在复杂、长流程任务中持续追踪目标。
 
-系统采用两阶段流程。第一阶段由轻量分类器快速筛查收到的信息，发现可疑内容后，再交给经过本地诈骗语料微调的Gemma模型进行更大范围的上下文分析。模型重点识别冒充银行、政府机构和本地知名人物等操纵手法。一旦判断风险较高，手机会直接向用户发出警告。
-
-### 为什么端侧架构值得关注
-
-模型面向普通智能手机运行，不依赖持续的云端扫描。在端到端加密消息环境中，平台往往无法在服务器侧读取聊天内容；端侧分析既能缩短响应时间，也能减少敏感数据离开设备的机会。
-
-据介绍，模型训练在GovTech管理的云环境中完成，使用的是匿名化诈骗报告和情报数据，不包含公民私人信息。合作方还通过合成对话和本地诈骗样本进行压力测试。该项目在新加坡国际网络安全周期间公布，被定位为政府、平台与模型供应商协作保护用户的示范。
+这次发布并不止于研究展示。阶跃星辰称，开发者可以通过vLLM或SGLang以兼容OpenAI的接口部署，也可以用Transformers离线推理，并针对多种芯片平台进行适配。对开放权重模型而言，这些部署路径决定了模型能否真正进入开发者工作流。
 
 ### 为什么重要
 
-这不只是一个新的诈骗分类器，而是在验证小型专用模型能否成为消费设备内置的安全层。它仍面临误报、电量消耗、语言覆盖和更新权归属等问题。若这些限制能够解决，端侧模型有望在不削弱端到端隐私的前提下，为即时通信增加一层防护。
+这次发布最值得关注的地方，是模型与智能体工具被作为一个整体推出。阶跃星辰将长程任务视为系统工程：模型能力、目标记忆、工具调用和硬件部署需要共同设计。开放权重也让开发者获得了一个新的大规模替代方案，尤其是在前沿模型API受到商业和地缘限制的背景下。
+
+但参数规模并不等于实际能力。阶跃星辰尚未给出覆盖广泛智能体基准的独立评测，6000亿总参数模型即使采用稀疏激活，运行成本仍然不低。真正的影响取决于社区能否稳定部署，并验证它在长流程编码和工具执行中的可靠性。尽管如此，这仍是一次重要发布：阶跃星辰把智能体战略从产品预告变成了可下载、可修改的模型资产。
 
 **原始信源**
 
-- [On-Device AI Against Scams: Google DeepMind & MDDI](https://deepmind.google/blog/on-device-ai-scam-detection-mddi/)
-- [Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams](https://deepmind.google/blog/on-device-ai-scam-detection-mddi/)
+- [StepFun announces Step 5 Preview open weights](https://x.com/StepFun_ai/status/2110717330657616092)
+- [Inside Step 5 Preview: Architecture and Training for Agentic Work](https://x.com/StepFun_ai/status/2110717331798454534)
+- [Step Code 0.1.4 update](https://x.com/StepFun_ai/status/2110717332301779186)
 
-原文链接：[谷歌与新加坡将诈骗识别模型部署到手机端｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/google-singapore-on-device-scam-ai.html)
+原文链接：[阶跃星辰开源Step 5 Preview，面向长程智能体任务｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/step5-preview-open-weights.html)
 
 ---
 
-## 2. Meshy的3D智能体仍处于公开测试阶段
+## 2. 亚马逊推出两款Bee设备，个人AI接入购物场景
 
-Meshy的对话式3D Agent目前仍面向Pro及以上用户进行公开测试，整合创意生成、建模与导出流程。
+亚马逊发布Bee Frontier可穿戴设备和Bee Eclipse手机配件，将环境式AI连接到提醒、Alexa+和个性化购物。
 
-### 从一句话走到可用资产
+### 发生了什么
 
-Meshy的3D Agent目前仍处于公开测试阶段，面向Meshy Pro及以上用户开放。该产品试图整合过去需要多个软件完成的流程：提出创意、生成视觉参考、制作三维模型、持续修改，最后导出到打印或游戏开发工具中。
+亚马逊发布Bee Frontier个人AI可穿戴设备，并公布磁吸式手机配件Bee Eclipse，后者将在稍后上市。两款设备都在用户授权后监听对话，将音频处理为摘要、提醒和待办事项，并接入Alexa+，支持免手操作。亚马逊还加入Amazon.com集成，让助手能够根据个人语境提供购物服务。
 
-用户可以用自然语言，也可以上传照片或草图。智能体能够先提出创作方向，再批量生成概念图，把选中的方案转成三维模型，并通过对话继续调整。Meshy称，生成结果支持FBX、OBJ、GLB、USDZ、STL、BLEND、3MF和DXF等格式，覆盖游戏引擎、数字内容工具和3D打印场景。
+Bee Frontier售价74.99美元，Bee Eclipse起售价99.99美元。配套的Bee Pro订阅每月11.99美元。亚马逊表示，音频会实时处理后删除；文字记录通过由用户设备控制的密钥加密，设备上的指示灯则会提醒用户录音已经开启。由于产品会在他人身边工作，这些隐私设计是其核心卖点。
 
-### 它与普通文生3D有什么区别
+### 为什么重要
 
-真正值得关注的是产品边界发生了变化。早期的生成式3D工具往往只负责一次性生成一个资产，而Meshy的智能体试图连续协调多个步骤，并在步骤之间保留上下文。这使它更接近面向创作者的专业助手，而不是挂在模型前面的提示词输入框。
+这次发布说明亚马逊希望把环境式AI嵌入自己的零售和助手生态，而不是只做一个独立的录音整理工具。真正的战略变化在于把“记住”与“行动”连接起来：Bee可以记住谈话内容，通过Alexa+提示任务，并可能把一个意图直接转化为Amazon.com上的交易。这为亚马逊打通对话语境和电商提供了入口。
 
-官方展示的应用范围包括独立游戏、产品概念、可打印物体和批量资产制作。同一套流程还可以从参考图中识别多个对象，并将它们拆分成独立模型，减少小型创作团队在前期整理素材时的手工工作。
-
-### 仍待验证的地方
-
-Meshy官方资料称，面向更多用户的免费试用正在筹备，但该产品目前尚未全面开放。当前测试阶段的真正考验，是对话式编排能否提升生产效率，而不只是让演示更顺滑。模型拓扑、材质准确度、结果稳定性和商业授权，都会影响它进入真实项目。Meshy最重要的主张并不是“能生成模型”，而是能把创意直接连接到可交付资产；这个主张最终要靠成品项目验证。
+但用户是否愿意接受身边长期存在的麦克风，仍是最大问题。授权提示、删除控制和加密记录可以降低风险，却无法消除社交压力，也不能保证系统不会误解上下文。手机、耳机和软件助手也已经覆盖了其中部分功能。Bee的重要性在于，它正在验证个人AI能否因为嵌入购物和家庭日常而变得更持久。
 
 **原始信源**
 
-- [Meshy AI announcement on 3D Agent availability](https://x.com/MeshyAI/status/2110285892749541475)
-- [Meshy 3D Agent: Conversational 3D Creation](https://www.meshy.ai/features/3d-agent)
+- [Bee Frontier and Bee Eclipse: Introducing new AI wearable and phone attachment](https://www.aboutamazon.com/news/devices/amazon-personal-ai-bee-frontier-bee-eclipse)
+- [Amazon’s Bee launches two new personal AI devices](https://techcrunch.com/2026/10/15/amazons-bee-launches-two-new-personal-ai-devices-starting-at-75/)
 
-原文链接：[Meshy的3D智能体仍处于公开测试阶段｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/meshy-3d-agent-leaves-beta.html)
+原文链接：[亚马逊推出两款Bee设备，个人AI接入购物场景｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/amazon-bee-frontier-eclipse.html)
+
+---
+
+## 3. Skywork发布Matrix-Game 4.0，单张消费级显卡实时运行
+
+Skywork推出开源Matrix-Game 4.0，主打在单张消费级显卡上实时运行的互动视频模型。
+
+### 发生了什么
+
+Skywork发布Matrix-Game 4.0，并称这是一个可以在单张消费级显卡上实时运行的开源视频模型游戏。它并非传统的文本生成视频工具，而是被设计成可交互的世界模型：用户或智能体可以在生成环境中行动，模型则随着交互持续生成下一步视觉状态。
+
+这一区别很重要。普通视频模型的目标是生成一段完成的视频，而互动模型必须在连续帧之间保持足够一致，才能支持移动、决策和反馈。若能在消费级硬件本地运行，研究人员和开发者就能在不租用大型推理集群的情况下，检查模型、搭建游戏化环境，并测试具身或智能体行为。
+
+### 为什么重要
+
+Matrix-Game 4.0释放出的信号是，开源视频研究正从单次生成转向可用的互动循环。能够在一张消费级显卡上运行的实时模型，有望成为世界模型研究、游戏原型和模拟环境智能体训练的低门槛试验场，也让开发者可以研究“根据行动生成视频”，而不只是被动渲染画面。
+
+当然，Skywork的公告还无法证明模型能否长时间保持世界一致性，也没有说明实际延迟，或环境是否支持超越短演示的复杂规划。“实时运行”还会受到硬件和分辨率影响。它仍值得关注，是因为它针对的是一个明确瓶颈：把互动生成世界从数据中心带到普通开发者的工作站上。
+
+**原始信源**
+
+- [Skywork introduces Matrix-Game 4.0](https://x.com/Skywork_ai/status/2110615377088745817)
+
+原文链接：[Skywork发布Matrix-Game 4.0，单张消费级显卡实时运行｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/skywork-matrix-game-4.html)
 
 ## 一句话快讯
-- 研究人员称，OpenAI和Google的新AI模型仍可能被诱导生成非自愿裸照。（[Ars Technica](https://arstechnica.com/tech-policy/2026/10/openai-google-pushing-new-ai-models-easily-tricked-into-making-nudes-researchers-say/)）
-- Scimplify融资2500万美元，利用AI挑战中国在关键材料供应链中的主导地位。（[TechCrunch](https://techcrunch.com/2026/10/14/scimplify-raises-25m-to-challenge-chinas-grip-on-critical-materials-with-ai/)）
-- Adobe借助Prometheus查明一块GPU连续空转11天的原因。（[InfoQ中文](https://www.infoq.cn/article/AO4MbiBaYqwwCubevkpD)）
-- SolarWinds推出Avior，将AI代理与确定性执行结合，用于企业IT运维。（[SiliconANGLE](https://siliconangle.com/2026/10/14/solarwinds-avior-pairs-ai-agents-with-deterministic-execution-for-enterprise-it/)）
-- Recraft展示Recraft V4.1生成的视觉作品，涵盖冰湖、野生动物和电影感景观。（[X / Recraft](https://x.com/recraftai/status/2110288363706290329)）
-- 阶跃星辰发布首款原生智能体手机STEPX Neo，先面向创客和早期用户。（[量子位](https://www.qbitai.com/2026/10/503244.html)）
-- Liquid AI发布LFM2.5-24B-A2B，采用20亿激活参数的混合专家架构，面向端侧代理。（[MarkTechPost](https://www.marktechpost.com/2026/10/14/liquid-ai-lfm2-5-24b-a2b/)）
-- 无问芯穹完成高密度大容量1T4R 1Gb RRAM芯片流片，并称其为国际首款。（[量子位](https://www.qbitai.com/2026/10/503198.html)）
+- Mistral 与 CERN 开始探索用 AI 模型进行粒子碰撞重建、粒子识别和异常信号检测。（[X / Mistral AI](https://x.com/MistralAI/status/2110684732103041474)）
+- 据报道，Modal 年经常性收入达到 10 亿美元，并在五个月内使用量增长三倍后完成 160 亿美元 D 轮融资。（[Latent Space](https://www.latent.space/p/ainews-modals-1b-arr-16b-series-d)）
+- 亚马逊云科技在 QCon 上海介绍代理原生规模化实践，讨论从应用向自主工作流转变。（[InfoQ 中文](https://www.infoq.cn/article/kvzkXDXpKOXILlfirftW?utm_source=rss&utm_medium=article)）
+- Figma 宣布新增 20 个 MCP 合作伙伴，包括 Linear、Mistral、Notion、OpenCode 和 JetBrains Junie。（[X / Figma](https://x.com/figma/status/2110613762030063799)）
+- Genspark 表示其代理现可通过 iMessage、WhatsApp、Slack 和 LINE 使用，并支持总结 PDF 等任务。（[X / Genspark](https://x.com/genspark_ai/status/2110604338116825593)）
+- Artificial Analysis 称，两款 AI 模型离线构建了 3D 埃菲尔铁塔，并凭记忆复现全部 72 位科学家姓名。（[X / Artificial Analysis](https://x.com/ArtificialAnlys/status/2110570099602280475)）
+- 量子位报道，阿里通义办公电商版可借助 AI 低成本启动线上店铺并辅助运营。（[量子位](https://www.qbitai.com/2026/10/503303.html)）
+- 据报道，Anthropic 向投资者披露第三季度收入环比增长 45%，达到 168 亿美元。（[SiliconANGLE](https://siliconangle.com/2026/10/14/ahead-of-ipo-anthropic-reveals-its-revenue-grow-45-sequentially-to-16-8b-in-q3/)）
+- Ricursive Intelligence 正开发由 AI 设计的芯片，试图缓解算力短缺并减少对传统芯片设计流程的依赖。（[TechCrunch](https://techcrunch.com/2026/10/14/ricursive-intelligence-is-betting-on-ai-designed-chips-to-help-solve-the-compute-crisis/)）
+- Tripo展示创作者用P2.0独立完成完整三维资产流程，覆盖世界构建。（[X / Tripo AI](https://x.com/tripoai/status/2110531324260020264)）
+- Gudea利用人工智能追踪谣言在500多个平台的传播路径，帮助机构在危机爆发前识别风险。（[TechCrunch](https://techcrunch.com/2026/10/14/gudea-leverages-ai-to-help-organizations-prevent-social-media-crises-before-they-erupt/)）
+- METR提议由开发者参与测试，以公开证据评估人工智能控制失效和研发加速风险。（[X / METR Evals](https://x.com/METR_Evals/status/2110519551033266424)）
+- Datalab发布开放式OCR基准OmniParseBench，包含16288项通过或失败测试，用于审计文档解析器。（[MarkTechPost](https://www.marktechpost.com/2026/10/14/datalab-omniparsebench-open-ocr-document-parsing-benchmark/)）
+- Vercel表示其Sandbox逃逸挑战收到1285份报告、支付242000美元奖金，并发现一个Linux内核零日漏洞。（[X / Vercel](https://x.com/vercel/status/2110509321939509421)）
 
 ---
 
-完整日报：[10月14日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-10-14.html)
+完整日报：[10月15日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-10-15.html)
 
 历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
 
