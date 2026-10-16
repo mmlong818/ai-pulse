@@ -1,0 +1,32 @@
+{
+  "slug": "perplexity-space-agent-sandbox",
+  "title": "Perplexity open-sources SPACE for safer AI agents",
+  "summary": "Perplexity has open-sourced a persistent sandbox designed to contain computer-using agents while preserving state across long-running tasks.",
+  "body": "Perplexity has open-sourced SPACE, a sandboxing component for agentic products that execute commands, install packages and call external services. The company presents it as the first component of its Agentic Runtime Platform, aimed at making computer-using agents safer to deploy.\n\nSPACE is designed for agents whose work is long-running, stateful and branching. A sandbox can outlive the request that created it and the connection that initiated it, allowing an agent to resume after interruptions rather than restarting from scratch. Inside the guest environment, agents receive root access; the host system remains isolated from that guest.\n\nPerplexity says it tested the design against frontier models. Its report evaluated nine model configurations across 216 total runs. The VM-escape task accounted for 108 of those runs, and no model reached the host from the guest VM. The report separately tested network confinement, where some partial-network bypasses were initially observed and then reevaluated. The company’s accompanying security write-up argues that isolation has to be treated as a persistent runtime property, not merely as a permission attached to a single tool call.\n\nThe release arrives as more products move from chat responses toward computer operation. That shift changes the security problem: an agent can install software, manipulate files and interact with third-party services over a period long enough for a small mistake or malicious instruction to compound. A disposable request container is poorly suited to that pattern.\n\nWhy it matters: SPACE tackles a foundational bottleneck in agent deployment rather than adding another model interface. Open-sourcing the component could give developers a common reference for durable agent isolation, but the public evidence remains narrow. Testing across the reported VM and network boundaries does not establish safety against every host, kernel, supply-chain or credential failure, so adoption will depend on independent audits and operational evidence.",
+  "title_zh": "Perplexity开源SPACE，为长程智能体提供安全沙箱",
+  "summary_zh": "Perplexity开源SPACE沙箱，试图在保留任务状态的同时隔离可执行命令、安装软件和调用外部服务的智能体。",
+  "body_zh": "Perplexity开源了SPACE，这是面向智能体产品的沙箱组件，用来隔离那些能够执行命令、安装软件并调用外部服务的系统。公司称，SPACE是其智能体运行平台的第一个组成部分，目标是提升计算机操作型智能体的部署安全性。\n\nSPACE针对的是持续时间长、状态复杂且会不断分支的任务。沙箱可以在创建它的请求和连接结束后继续存在，使智能体在中断后恢复工作，而不是从头开始。在虚拟机内部，智能体拥有根权限；宿主系统则与来宾环境隔离。\n\nPerplexity表示，公司使用前沿模型对这一设计进行了测试。报告让9种模型配置完成总计216次实验，其中虚拟机逃逸任务占108次；没有模型从来宾虚拟机进入宿主机。报告还单独测试了网络隔离，部分网络访问条件下曾观察到绕过现象，随后又进行了重新评估。Perplexity在配套文章中强调，隔离不应只是某一次工具调用附带的权限，而应成为贯穿智能体生命周期的运行时属性。\n\n随着更多产品从回答问题转向直接操作电脑，安全问题也随之改变。智能体可能连续安装软件、修改文件并访问第三方服务，微小错误或恶意指令会在足够长的执行过程中不断放大。一次性请求容器很难适应这种工作模式。\n\nSPACE的价值在于，它试图解决智能体规模化部署的基础障碍，而不是再增加一个模型接口。开源后，它可能成为持久化智能体隔离的共同参考，但现有证据仍然有限。针对虚拟机和网络边界的测试并不能证明系统能够抵御所有宿主机、内核、供应链或凭据风险，后续能否被广泛采用，取决于独立审计和真实运营数据。",
+  "tags": [
+    "Agents",
+    "Safety",
+    "Open Source"
+  ],
+  "sources": [
+    {
+      "title": "Perplexity announces SPACE",
+      "url": "https://x.com/perplexity_ai/status/2110778525565534464"
+    },
+    {
+      "title": "Escaping SPACE: Part I",
+      "url": "https://www.perplexity.ai/hub/blog/escaping-space-part-i"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "108次虚拟机逃逸测试未发现进入宿主机的结果，但报告中的网络边界问题说明隔离仍需分层评估。",
+  "cat_take_en": "The 108 VM-escape runs produced no host escape, but the report’s network-boundary findings show that containment must be evaluated layer by layer.",
+  "date": "2026-10-16",
+  "published": "2026-10-15T17:03:00Z",
+  "published_at": "2026-10-16T01:00:04.495Z"
+}
