@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>英伟达开源印地语系AI预训练数据管线 — Uncle Cat AI Radar</title>
+<meta name="description" content="英伟达公布覆盖2.8万亿词元的印地语系预训练项目，并开放数据生成管线，推动区域语言模型扩展。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-indic-pretraining-pipeline.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/nvidia-indic-pretraining-pipeline.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-indic-pretraining-pipeline.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/nvidia-indic-pretraining-pipeline.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="英伟达开源印地语系AI预训练数据管线 — Uncle Cat AI Radar">
+<meta property="og:description" content="英伟达公布覆盖2.8万亿词元的印地语系预训练项目，并开放数据生成管线，推动区域语言模型扩展。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-indic-pretraining-pipeline.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="英伟达开源印地语系AI预训练数据管线 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="英伟达公布覆盖2.8万亿词元的印地语系预训练项目，并开放数据生成管线，推动区域语言模型扩展。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="英伟达开源印地语系AI预训练数据管线 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"英伟达开源印地语系AI预训练数据管线","item":"https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-indic-pretraining-pipeline.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-indic-pretraining-pipeline.html#article","headline":"英伟达开源印地语系AI预训练数据管线","description":"英伟达公布覆盖2.8万亿词元的印地语系预训练项目，并开放数据生成管线，推动区域语言模型扩展。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-indic-pretraining-pipeline.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-indic-pretraining-pipeline.html"},"datePublished":"2026-10-16T01:44:00.000Z","dateModified":"2026-10-16T13:00:04.341Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["研究","开源","模型"],"keywords":"研究, 开源, 模型","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://huggingface.co/blog/nvidia/scaling-indic-pretraining"],"about":[{"@type":"Thing","name":"研究"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"模型"}]}]}</script>
+</head>
+<body data-slug="nvidia-indic-pretraining-pipeline" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/nvidia-indic-pretraining-pipeline.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-10-16T01:44:00Z">2026年10月16日 09:44</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>英伟达开源印地语系AI预训练数据管线</h1>
+  <p class="standfirst">英伟达公布覆盖2.8万亿词元的印地语系预训练项目，并开放数据生成管线，推动区域语言模型扩展。</p>
+  <h2>发生了什么</h2><p>英伟达公布了一项面向印地语系语言的预训练项目，使用规模达2.8万亿词元的数据，同时开放数据生成与处理管线。该项目针对全球人工智能长期存在的结构性短板：主流模型往往在英语及少数高资源语言上表现最好，而南亚语言受到数据稀缺、质量不一和授权困难等因素限制。</p><p>这次发布的价值不只在于某一个新模型，而在于公开了区域语言扩展背后的基础设施。英伟达介绍了一套数据采集、清洗、翻译、合成和评测流程，覆盖多种印度语言。对于研究机构来说，这种流程有助于建立更大规模语料，也避免把未经治理的网络抓取数据直接当成高质量训练材料。</p><h2>为什么重要</h2><p>印度及更广泛的南亚地区拥有庞大用户群和数百种语言，但即使是领先的多语言系统，语言覆盖仍然很不均衡。一套可复用的数据生成管线，可能降低大学、初创公司和公共部门构建大规模语料的门槛。英伟达也因此不再只是芯片供应商，而是在影响哪些语言能够获得持续模型投入。</p><p>不过，这次披露并没有证明相关系统已经超过最强商业模型，也没有解决合成数据污染、用户授权、版权、方言覆盖和评测质量等问题。语言扩展可能带来漂亮的基准分数，却仍让真实用户得到生硬、脆弱或文化语境失真的回答。</p><p>尽管如此，这仍是一个具有战略意义的动作。未来决定人工智能是否继续集中在少数英语生态中的，可能不仅是开放权重，也包括开放的区域语言数据工具。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://huggingface.co/blog/nvidia/scaling-indic-pretraining" rel="noopener" target="_blank">Scaling Indic Pretraining: 2.8 Trillion Tokens and an Open Data Generation Pipeline</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-spark-open.html">Meta发布8160亿参数开放权重模型Muse Spark Open</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-rosalind-academic-plan.html">OpenAI向高校实验室开放GPT-Rosalind生物研究计划</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-space-agent-sandbox.html">Perplexity开源SPACE，为长程智能体提供安全沙箱</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
