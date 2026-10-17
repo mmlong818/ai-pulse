@@ -19,6 +19,42 @@
 
 ## Recent briefings
 
+### DeepSeek Releases V4.1 Flash-1017 With Open Weights
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-v41-flash-1017.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v41-flash-1017.html
+- Source timestamp: 2026-10-17T08:35:00.000Z
+- Site timestamp: 2026-10-17T13:00:04.453Z
+- Tags: Models, Open Source, Agents
+
+DeepSeek has released a refreshed open-weight model and opened its search and fetch APIs, extending its push into low-cost agent infrastructure.
+
+## What happened
+
+DeepSeek released DeepSeek-V4.1-Flash-1017 on October 17, updating the company’s website and app models at the same time. The checkpoint is available through Hugging Face and ModelScope under the MIT license, making this a public weight release rather than an API-only refresh.
+
+The model card describes the update as a targeted improvement over the earlier V4.1 Flash. DeepSeek reports gains across reasoning, coding, agentic workloads and visual benchmarks, while also claiming shorter outputs and faster task completion. Reported results include 42.3 on Terminal-Bench 4.0, 77.0 on DeepSWE v1.1, 68.2 on NL2Repo-Bench and 60.5 on Automation-Bench. The model retains a one-million-token context window and supports multimodal inputs.
+
+## Why the release matters
+
+The release is strategically important because it combines three layers that are often announced separately: a frontier-scale model update, downloadable weights and an operational search stack. The model card lists roughly 763 billion total parameters, with the architecture designed to activate only a small fraction during token generation. That makes the system expensive to host, but its MIT licensing and local inference instructions give providers, researchers and large enterprises a path outside DeepSeek’s hosted service.
+
+DeepSeek also announced that its in-house Search and Fetch APIs are open to everyone. The company says its search engine handles hundreds of millions of requests daily and is designed to filter SEO spam, manipulated content and low-quality synthetic pages. The announcement does not independently verify those claims, and the practical quality of the service will depend on latency, regional availability and ranking accuracy.
+
+For the open-model market, the key development is not a single benchmark jump. It is DeepSeek linking model weights, agent-oriented evaluation and first-party retrieval into one deployable stack. That could pressure providers that compete mainly on model access or inference pricing, although the 763-billion-parameter footprint leaves serious hardware and serving constraints unresolved.
+
+## Uncle Cat take
+
+DeepSeek’s strongest move is pairing MIT weights with Search and Fetch; the unresolved weakness is whether anyone outside hyperscale operators can serve a 763B checkpoint economically.
+
+Chinese title: DeepSeek发布V4.1 Flash-1017并开放模型权重
+Chinese summary: DeepSeek上线V4.1 Flash-1017开放权重版本，同时开放搜索与抓取API，把模型升级延伸到智能体基础设施。
+
+Sources:
+  - DeepSeek API Docs Change Log: https://api-docs.deepseek.com/updates/
+  - DeepSeek-V4.1-Flash-1017 Model Card: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017
+  - DeepSeek-V4.1-Flash-1017 Repository: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017/tree/main
+
 ### Meta Terms Could Permit Training on Linked Business Sites
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-commercial-ai-terms.html
@@ -932,40 +968,6 @@ Sources:
   - Investing in TypeSafe AI: https://a16z.com/announcement/investing-in-typesafe-ai/
   - The maker of non-text AI model Jev valued at $7.5B: https://techcrunch.com/2026/10/09/the-maker-of-non-text-ai-model-jev-valued-at-7-5b-just-weeks-after-launch/
 
-### Anthropic launches Cyber Mission and free OSS Scanner
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-cyber-mission-oss-scanner.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-cyber-mission-oss-scanner.html
-- Source timestamp: 2026-10-08T21:04:00.000Z
-- Site timestamp: 2026-10-08T23:00:05.582Z
-- Tags: Safety, Open Source, Policy
-
-Anthropic is pairing frontier models with critical-infrastructure support and free vulnerability scans, turning AI cyber defense into a public deployment program.
-
-Anthropic has launched the Cyber Mission, a long-term program that combines frontier-model research, security tooling and direct support for defenders of critical systems. Its first initiatives target two areas: operational technology used by power, water and transport networks, and the open-source software supply chain.
-
-## What is launching
-
-The company’s Critical Infrastructure Defense Program will provide frontier Claude models, on-site engineering support and threat research to trusted providers and organizations defending operational technology and government systems. Anthropic also launched OSS Scanner, an opt-in service that periodically scans enrolled open-source projects for vulnerabilities at no cost.
-
-Scanner reports include a proof of concept, an explanation of the flaw and a suggested fix when available. Unlike Anthropic’s coordinated-disclosure work, the reports are model-generated and sent without human review. Anthropic expects a true-positive rate above 90%, while acknowledging that severity ratings and proposed fixes can still be wrong.
-
-The program grew out of Project Glasswing, in which Anthropic scanned hundreds of widely used open-source projects and had humans triage many potential findings before disclosure. Anthropic separately says that, through Project Glasswing and related partner efforts, organizations uncovered at least 129,000 verified software vulnerabilities between April and July 2026, while Anthropic’s own open-source scanning efforts found an additional 5,500 verified vulnerabilities between April and October 2026. More than 33,000 of these had been rated critical or high severity, although Anthropic describes the figures as an undercount based on partial data.
-
-## Why it matters
-
-The strategic shift is from demonstrating that models can find vulnerabilities to placing them inside the maintenance loop of software that other systems depend on. That could make AI-assisted security useful to small projects that cannot afford professional auditing, while also creating a new burden: maintainers must process a potentially continuous stream of machine-generated findings.
-
-Anthropic’s own warning is important. Critical infrastructure may take years or decades to patch safely, so a model that finds bugs faster does not automatically make physical systems safer. The Cyber Mission will be judged by verified fixes and reduced exposure, not by the number of vulnerabilities reported.
-
-Chinese title: Anthropic启动网络使命，免费扫描开源软件漏洞
-Chinese summary: Anthropic推出网络使命计划，为关键基础设施提供模型与工程支持，并向开源项目免费开放定期漏洞扫描。
-
-Sources:
-  - Introducing the Anthropic Cyber Mission: https://www.anthropic.com/news/anthropic-cyber-mission
-  - Launching an opt-in vulnerability-finding service for open-source software: https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source
-  - Anthropic launches Cyber Mission and OSS Scanner: https://x.com/AnthropicAI/status/2108302539498414208
-
 ## Recent radar items
 
 ### 2026-10-17
@@ -986,6 +988,21 @@ Sources:
 - 2026-10-16T20:19:00Z | SiliconANGLE | RapidCanvas raised $29 million to develop custom AI applications for enterprises. | 中文：RapidCanvas 融资2900万美元，用于开发面向企业的定制 AI 应用。 | https://siliconangle.com/2026/10/16/rapidcanvas-raises-29m-to-develop-custom-ai-applications-for-enterprises/
 - 2026-10-16T16:01:00Z | TechCrunch | Elorian introduced an AI model designed to reason with images rather than merely answer questions about them. | 中文：Elorian 推出一款面向图像内在推理的 AI 模型，不再只回答关于图像的问题。 | https://techcrunch.com/2026/10/16/elorians-first-ai-model-wants-to-reason-with-images-not-just-about-them/
 - 2026-10-16T23:54:00Z | X / UnslothAI | NVIDIA’s RTX Spark drew attention after Unsloth said it could locally run and train models exceeding 120 billion parameters. | 中文：Unsloth 称，NVIDIA RTX Spark 可在笔记本本地运行并训练超过1200亿参数的模型，引发关注。 | https://x.com/UnslothAI/status/2111244381969863115
+- 2026-10-17T12:13:00Z | X / Kling AI | Kling joined WPP and Adobe at Advertising Week New York to discuss how AI is reshaping creative production. | 中文：可灵在纽约广告周与WPP、Adobe讨论人工智能如何重塑创意生产。 | https://x.com/Kling_ai/status/2111430491358339480
+- 2026-10-17T10:00:00Z | InfoQ 中文 | A QCon Shanghai session examined AI systems that continuously learn from reality rather than relying only on static datasets. | 中文：QCon上海一场演讲探讨了持续从现实学习、而非只依赖静态数据集的人工智能系统。 | https://www.infoq.cn/article/JMZ6WUx4a4cVqAwhwviU
+- 2026-10-17 | AI Open Wire | Vals AI launched the Vals Science Index, combining three agentic tests for biology analysis, mechanism discovery, and scientific workflows. | 中文：Vals AI推出科学指数，将生物数据分析、机制发现和科学工作流三项智能体测试合并评估。 | https://www.aiopenwire.com/
+- 2026-10-17 | AI Open Wire | RapidCanvas raised $29 million to expand managed enterprise AI applications, bringing its total funding to $52.5 million. | 中文：RapidCanvas融资2900万美元扩展企业托管人工智能应用，累计融资达到5250万美元。 | https://www.aiopenwire.com/
+- 2026-10-17 | AI Open Wire | Channel Works launched an AI Edition with credit-based pricing after moving CoS and ALF Marketing out of beta. | 中文：Channel Works推出AI版产品，并在CoS和ALF Marketing结束测试后采用按额度计费。 | https://www.aiopenwire.com/
+- 2026-10-17 | AI Open Wire | IBM released Granite Switch 4.1, combining chat, decision, safety, and English speech-transcription checkpoints under Apache 2.0. | 中文：IBM发布Granite Switch 4.1，在Apache 2.0许可下整合聊天、决策、安全和英语语音转写模型。 | https://www.aiopenwire.com/
+- 2026-10-17 | AI Open Wire | Google launched Universal Cart in U.S. Search and Gemini to track product prices, availability, and checkout options across retailers. | 中文：Google在美国搜索和Gemini中推出Universal Cart，可跨零售商追踪价格、库存和结账选项。 | https://www.aiopenwire.com/
+- 2026-10-17 | AI Open Wire | AstraZeneca agreed to pay insitro $40 million upfront for an AI drug-discovery partnership worth up to $1.46 billion. | 中文：阿斯利康向insitro支付4000万美元首付款，开展最高价值14.6亿美元的人工智能药物发现合作。 | https://www.aiopenwire.com/
+- 2026-10-17 | AI Open Wire | Anthropic opened a Singapore office and signed a government AI-safety memorandum covering evaluations, incident response, skills, and adoption. | 中文：Anthropic在新加坡设立办公室，并与政府签署涵盖评估、事故响应、人才和采用的人工智能安全备忘录。 | https://www.aiopenwire.com/
+- 2026-10-17 | AI Open Wire | Bind AI launched an insurance workflow service after raising $10 million to automate submissions, quotes, proposals, and binding. | 中文：Bind AI融资1000万美元后推出保险工作流服务，自动处理投保、报价、方案和承保流程。 | https://www.aiopenwire.com/
+- 2026-10-17 | AI Open Wire | Othello raised $8 million for an AI sales coach that overlays real-time prompts during calls without joining meetings as a participant. | 中文：Othello融资800万美元，开发不加入会议、而是在通话中实时叠加提示的人工智能销售教练。 | https://www.aiopenwire.com/
+- 2026-10-17 | AI Open Wire | Morgen launched Kai, an assistant for email, meetings, and calendars on web, Mac, iPhone, and Android starting at $20 monthly. | 中文：Morgen推出Kai助手，覆盖网页、Mac、iPhone和Android上的邮件、会议及日历，月费20美元起。 | https://www.aiopenwire.com/
+- 2026-10-17T04:27:00Z | X / Kling AI | Kling published a new Kling 4 video clip showing a torch-free cooking effect in a short social post. | 中文：可灵发布短视频，展示无需喷枪即可完成烹饪火焰效果。 | https://x.com/Kling_ai/status/2111313170900160528
+- 2026-10-17T04:21:00Z | X / Kling AI | Kling shared another Kling 4 clip blending fantasy imagery with nostalgic visual motifs. | 中文：可灵分享另一段Kling 4短片，将奇幻意象与怀旧视觉元素结合。 | https://x.com/Kling_ai/status/2111311579371143636
+- 2026-10-17T07:47:00Z | Latent Space | Latent Space’s latest AI News episode focused on high-taste testers and how expert users shape product quality. | 中文：Latent Space最新一期AI News讨论高品位测试者，以及专家用户如何塑造产品质量。 | https://www.latent.space/p/ainews-high-taste-testers-ep-1
 
 ### 2026-10-16
 

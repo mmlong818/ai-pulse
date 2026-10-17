@@ -1,94 +1,75 @@
-这是「猫叔的AI资讯雷达」10月16日晚报。
+这是「猫叔的AI资讯雷达」10月17日晚报。
 
 本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
 
-**今晚重点**：英伟达公布覆盖2.8万亿词元的印地语系预训练项目，并开放数据生成管线，推动区域语言模型扩展。
+**今晚重点**：DeepSeek上线V4.1 Flash-1017开放权重版本，同时开放搜索与抓取API，把模型升级延伸到智能体基础设施。
 
 ## 深度简报目录
 
-- 英伟达开源印地语系AI预训练数据管线
-- Replit CEO提出“自动驾驶公司”构想
+- DeepSeek发布V4.1 Flash-1017并开放模型权重
 
 ## 快讯预览
 
-- 阿里手淘 TEKO 介绍了一个自主“写—验—修”闭环，用于检查并修正 AI 生成的代码。
-- 《Agentic Scientist》介绍了协调编码工作的代理系统，用于自动化科学共发现与可解释性实验。
-- RealtimeBench 在六类游戏的 180 项任务中评估推理期间仍持续变化环境里的代理。
-- 一项基准饱和研究发现，解题过程仍保留能力信号；成对评判比只看分数的基线将预测误差降低 5.3 倍。
-- VISTA 用动态规划选择扩散引导时间步，并将有害文本生成延迟从 204.23 秒降至 38.16 秒。
-- AlphaDiana 提出了一套用于评估可验证推理任务中代理表现的测量系统。
-- 一项 Verus 研究指出，正确性反馈可能抹除证据，因此需要分阶段审计形式化验证代码的完整性。
-- Counterfactual Neighborhood Risk Fields 为视觉语言模型提供基于证据的选择性安全机制。
-- IneqAgent 将代理式搜索与符号计算结合，用于在 Lean 中证明不等式定理。
-- L2G-SR 研究如何引导基于大语言模型的符号回归发现可解释方程。
+- QCon上海一场演讲探讨了持续从现实学习、而非只依赖静态数据集的人工智能系统。
+- Latent Space最新一期AI News讨论高品位测试者，以及专家用户如何塑造产品质量。
+- 可灵发布短视频，展示无需喷枪即可完成烹饪火焰效果。
+- 可灵分享另一段Kling 4短片，将奇幻意象与怀旧视觉元素结合。
+- 微软公布据称拥有2万亿参数的 MAI-Base-2，旨在推进其前沿 AI 布局。
+- Vals AI推出科学指数，将生物数据分析、机制发现和科学工作流三项智能体测试合并评估。
+- RapidCanvas融资2900万美元扩展企业托管人工智能应用，累计融资达到5250万美元。
+- Channel Works推出AI版产品，并在CoS和ALF Marketing结束测试后采用按额度计费。
+- IBM发布Granite Switch 4.1，在Apache 2.0许可下整合聊天、决策、安全和英语语音转写模型。
+- Google在美国搜索和Gemini中推出Universal Cart，可跨零售商追踪价格、库存和结账选项。
 
-## 1. 英伟达开源印地语系AI预训练数据管线
+## 1. DeepSeek发布V4.1 Flash-1017并开放模型权重
 
-英伟达公布覆盖2.8万亿词元的印地语系预训练项目，并开放数据生成管线，推动区域语言模型扩展。
+DeepSeek上线V4.1 Flash-1017开放权重版本，同时开放搜索与抓取API，把模型升级延伸到智能体基础设施。
 
 ### 发生了什么
 
-英伟达公布了一项面向印地语系语言的预训练项目，使用规模达2.8万亿词元的数据，同时开放数据生成与处理管线。该项目针对全球人工智能长期存在的结构性短板：主流模型往往在英语及少数高资源语言上表现最好，而南亚语言受到数据稀缺、质量不一和授权困难等因素限制。
+DeepSeek于10月17日发布DeepSeek-V4.1-Flash-1017，并同步更新官网和App中的模型。新版本已在Hugging Face和ModelScope开放下载，采用MIT许可证，性质上是一次公开权重发布，而不只是API服务端更新。
 
-这次发布的价值不只在于某一个新模型，而在于公开了区域语言扩展背后的基础设施。英伟达介绍了一套数据采集、清洗、翻译、合成和评测流程，覆盖多种印度语言。对于研究机构来说，这种流程有助于建立更大规模语料，也避免把未经治理的网络抓取数据直接当成高质量训练材料。
+模型卡显示，这是一轮针对V4.1 Flash的定向升级。DeepSeek称，新模型在推理、编程、智能体任务和视觉基准上均有提升，同时减少输出长度、缩短任务完成时间。其公布的成绩包括Terminal-Bench 4.0的42.3分、DeepSWE v1.1的77.0分、NL2Repo-Bench的68.2分，以及Automation-Bench的60.5分。模型继续支持百万上下文和多模态输入。
 
-### 为什么重要
+### 为什么值得关注
 
-印度及更广泛的南亚地区拥有庞大用户群和数百种语言，但即使是领先的多语言系统，语言覆盖仍然很不均衡。一套可复用的数据生成管线，可能降低大学、初创公司和公共部门构建大规模语料的门槛。英伟达也因此不再只是芯片供应商，而是在影响哪些语言能够获得持续模型投入。
+这次发布的战略意义在于，DeepSeek把通常分开宣布的三层能力放到了一起：大规模模型升级、可下载权重，以及自有搜索基础设施。模型卡显示，该模型总参数规模约7630亿，但架构只在生成过程中激活其中一小部分。部署它仍然需要很强的硬件条件，不过MIT许可证和本地推理说明，为模型服务商、研究机构和大型企业提供了绕开DeepSeek托管服务的选择。
 
-不过，这次披露并没有证明相关系统已经超过最强商业模型，也没有解决合成数据污染、用户授权、版权、方言覆盖和评测质量等问题。语言扩展可能带来漂亮的基准分数，却仍让真实用户得到生硬、脆弱或文化语境失真的回答。
+DeepSeek还宣布向所有用户开放自研Search与Fetch API。公司称，其搜索引擎每天处理数亿次请求，并通过机制过滤SEO垃圾、搜索操纵和低质量生成内容。不过，这些规模和质量说法尚缺乏独立验证，服务的实际价值仍取决于延迟、地区可用性和排序准确率。
 
-尽管如此，这仍是一个具有战略意义的动作。未来决定人工智能是否继续集中在少数英语生态中的，可能不仅是开放权重，也包括开放的区域语言数据工具。
+对开放模型市场而言，真正重要的并非某一个基准分数的上涨，而是DeepSeek把模型权重、面向智能体的评测，以及第一方检索能力连接成了一套可部署方案。这可能进一步压低只靠模型访问或推理价格竞争的服务商空间；但7630亿参数的体量，也意味着经济可行的部署仍可能集中在超大规模算力运营者手中。
 
-**原始信源**
+### 猫叔判断
 
-- [Scaling Indic Pretraining: 2.8 Trillion Tokens and an Open Data Generation Pipeline](https://huggingface.co/blog/nvidia/scaling-indic-pretraining)
-
-原文链接：[英伟达开源印地语系AI预训练数据管线｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-indic-pretraining-pipeline.html)
-
----
-
-## 2. Replit CEO提出“自动驾驶公司”构想
-
-Replit CEO认为，AI代理将接管更多软件团队和业务流程，企业竞争焦点也将从编程工具转向工作方式重构。
-
-### 核心观点
-
-Replit CEO阿姆贾德·马萨德提出“自动驾驶公司”概念，认为未来的软件代理将接手大量目前由员工、工具和内部流程共同完成的日常工作。这一设想并不局限于AI辅助编程，代理还可能负责创建应用、维护工作流、响应运营请求，并在企业系统之间彼此协作。
-
-Replit的产品定位使其适合提出这一判断。公司一直在推动用自然语言创建和部署小型应用，让非传统程序员也能参与软件开发。马萨德进一步把企业本身视为一种可执行系统：其中越来越多的流程可以交给代理完成。
-
-### 会改变什么
-
-如果这一模式成立，自动化的单位就会从单项任务转向完整业务流程。例如，一条客服请求可能触发代理检查记录、编写小工具、请求审批，并更新客户系统。一个产品想法也可能更少经过人工交接，就完成原型、测试和部署。这对缺少专职工程和运营团队的小公司尤其有吸引力。
-
-但这一主张明显大于目前的证据。代理仍然难以处理含糊目标、隐藏依赖、权限边界，以及行动造成后果后的责任归属。真正的自动化还需要监控、回滚、身份控制和可追溯的行动记录；这些成本不会因为界面变成聊天窗口就自动消失。
-
-马萨德的说法更像是一个战略判断，而不是短期预测。AI软件竞争正在从“让一个人更快”转向“重新设计工作如何组织”。最终胜负取决于代理能否在真实企业约束下稳定运行，而不是“自动驾驶”这个比喻是否足够有感染力。
+DeepSeek把MIT权重和Search、Fetch放进同一套产品里，棋下得很重；但7630亿参数能否被大规模经济部署，仍是硬门槛。
 
 **原始信源**
 
-- [Replit’s CEO says the future of work is the ‘self-driving company’](https://techcrunch.com/2026/10/16/replits-ceo-says-the-future-of-work-is-the-self-driving-company/)
+- [DeepSeek API Docs Change Log](https://api-docs.deepseek.com/updates/)
+- [DeepSeek-V4.1-Flash-1017 Model Card](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- [DeepSeek-V4.1-Flash-1017 Repository](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017/tree/main)
 
-原文链接：[Replit CEO提出“自动驾驶公司”构想｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/replit-self-driving-company.html)
+原文链接：[DeepSeek发布V4.1 Flash-1017并开放模型权重｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v41-flash-1017.html)
 
 ## 一句话快讯
-- 阿里手淘 TEKO 介绍了一个自主“写—验—修”闭环，用于检查并修正 AI 生成的代码。（[InfoQ 中文](https://www.infoq.cn/article/t3XbHewuN37fsodaprUC)）
-- 《Agentic Scientist》介绍了协调编码工作的代理系统，用于自动化科学共发现与可解释性实验。（[Latent Space](https://www.latent.space/p/ainews-agents-disprove-polysemanticity)）
-- RealtimeBench 在六类游戏的 180 项任务中评估推理期间仍持续变化环境里的代理。（[arXiv](https://arxiv.org/abs/2610.20665)）
-- 一项基准饱和研究发现，解题过程仍保留能力信号；成对评判比只看分数的基线将预测误差降低 5.3 倍。（[arXiv](https://arxiv.org/abs/2610.20667)）
-- VISTA 用动态规划选择扩散引导时间步，并将有害文本生成延迟从 204.23 秒降至 38.16 秒。（[arXiv](https://arxiv.org/abs/2610.20669)）
-- AlphaDiana 提出了一套用于评估可验证推理任务中代理表现的测量系统。（[arXiv](https://arxiv.org/abs/2610.20675)）
-- 一项 Verus 研究指出，正确性反馈可能抹除证据，因此需要分阶段审计形式化验证代码的完整性。（[arXiv](https://arxiv.org/abs/2610.20676)）
-- Counterfactual Neighborhood Risk Fields 为视觉语言模型提供基于证据的选择性安全机制。（[arXiv](https://arxiv.org/abs/2610.20679)）
-- IneqAgent 将代理式搜索与符号计算结合，用于在 Lean 中证明不等式定理。（[arXiv](https://arxiv.org/abs/2610.20681)）
-- L2G-SR 研究如何引导基于大语言模型的符号回归发现可解释方程。（[arXiv](https://arxiv.org/abs/2610.20685)）
-- 一项机器人基础模型研究通过因果分析寻找效率收益，而不是只依赖更大规模训练。（[arXiv](https://arxiv.org/abs/2610.20750)）
-- 多维特征提取器让机器人基础模型能够进行更细粒度的控制与数据塑形。（[arXiv](https://arxiv.org/abs/2610.20767)）
+- QCon上海一场演讲探讨了持续从现实学习、而非只依赖静态数据集的人工智能系统。（[InfoQ 中文](https://www.infoq.cn/article/JMZ6WUx4a4cVqAwhwviU)）
+- Latent Space最新一期AI News讨论高品位测试者，以及专家用户如何塑造产品质量。（[Latent Space](https://www.latent.space/p/ainews-high-taste-testers-ep-1)）
+- 可灵发布短视频，展示无需喷枪即可完成烹饪火焰效果。（[X / Kling AI](https://x.com/Kling_ai/status/2111313170900160528)）
+- 可灵分享另一段Kling 4短片，将奇幻意象与怀旧视觉元素结合。（[X / Kling AI](https://x.com/Kling_ai/status/2111311579371143636)）
+- 微软公布据称拥有2万亿参数的 MAI-Base-2，旨在推进其前沿 AI 布局。（[SiliconANGLE](https://siliconangle.com/2026/10/16/microsoft-reveals-cutting-edge-mai-base-2-model-with-2t-parameters/)）
+- Vals AI推出科学指数，将生物数据分析、机制发现和科学工作流三项智能体测试合并评估。（[AI Open Wire](https://www.aiopenwire.com/)）
+- RapidCanvas融资2900万美元扩展企业托管人工智能应用，累计融资达到5250万美元。（[AI Open Wire](https://www.aiopenwire.com/)）
+- Channel Works推出AI版产品，并在CoS和ALF Marketing结束测试后采用按额度计费。（[AI Open Wire](https://www.aiopenwire.com/)）
+- IBM发布Granite Switch 4.1，在Apache 2.0许可下整合聊天、决策、安全和英语语音转写模型。（[AI Open Wire](https://www.aiopenwire.com/)）
+- Google在美国搜索和Gemini中推出Universal Cart，可跨零售商追踪价格、库存和结账选项。（[AI Open Wire](https://www.aiopenwire.com/)）
+- 阿斯利康向insitro支付4000万美元首付款，开展最高价值14.6亿美元的人工智能药物发现合作。（[AI Open Wire](https://www.aiopenwire.com/)）
+- Anthropic在新加坡设立办公室，并与政府签署涵盖评估、事故响应、人才和采用的人工智能安全备忘录。（[AI Open Wire](https://www.aiopenwire.com/)）
+- Bind AI融资1000万美元后推出保险工作流服务，自动处理投保、报价、方案和承保流程。（[AI Open Wire](https://www.aiopenwire.com/)）
+- Othello融资800万美元，开发不加入会议、而是在通话中实时叠加提示的人工智能销售教练。（[AI Open Wire](https://www.aiopenwire.com/)）
 
 ---
 
-完整日报：[10月16日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-10-16.html)
+完整日报：[10月17日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-10-17.html)
 
 历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
 
