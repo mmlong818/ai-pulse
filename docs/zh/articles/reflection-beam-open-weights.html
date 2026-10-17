@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reflection开放5010亿参数Beam模型及完整工具链 — Uncle Cat AI Radar</title>
+<meta name="description" content="Reflection按Apache 2.0协议公开Beam权重，并同步提供面向长程智能体任务的部署、微调和推理生态。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/reflection-beam-open-weights.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/reflection-beam-open-weights.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/reflection-beam-open-weights.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/reflection-beam-open-weights.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Reflection开放5010亿参数Beam模型及完整工具链 — Uncle Cat AI Radar">
+<meta property="og:description" content="Reflection按Apache 2.0协议公开Beam权重，并同步提供面向长程智能体任务的部署、微调和推理生态。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/reflection-beam-open-weights.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reflection开放5010亿参数Beam模型及完整工具链 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Reflection按Apache 2.0协议公开Beam权重，并同步提供面向长程智能体任务的部署、微调和推理生态。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="Reflection开放5010亿参数Beam模型及完整工具链 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"Reflection开放5010亿参数Beam模型及完整工具链","item":"https://mmlong818.github.io/ai-pulse/zh/articles/reflection-beam-open-weights.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/reflection-beam-open-weights.html#article","headline":"Reflection开放5010亿参数Beam模型及完整工具链","description":"Reflection按Apache 2.0协议公开Beam权重，并同步提供面向长程智能体任务的部署、微调和推理生态。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/reflection-beam-open-weights.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/reflection-beam-open-weights.html"},"datePublished":"2026-10-16T13:12:00.000Z","dateModified":"2026-10-17T01:00:08.493Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["模型","开源","Agent"],"keywords":"模型, 开源, Agent","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://reflection.ai/blog/beam-is-available","https://reflection.ai/beam-model-card","https://aws.amazon.com/blogs/machine-learning/introducing-reflection-beam-an-open-weight-model-for-agentic-coding-on-aws/"],"about":[{"@type":"Thing","name":"模型"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"Agent"}]}]}</script>
+</head>
+<body data-slug="reflection-beam-open-weights" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/reflection-beam-open-weights.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-10-16T13:12:00Z">2026年10月16日 21:12</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>Reflection开放5010亿参数Beam模型及完整工具链</h1>
+  <p class="standfirst">Reflection按Apache 2.0协议公开Beam权重，并同步提供面向长程智能体任务的部署、微调和推理生态。</p>
+  <p>Reflection已按Apache 2.0协议公开首个开放权重模型Beam。此次发布包括模型权重、模型卡、安全技术报告、部署集成和定制工具。Beam采用稀疏混合专家架构，总参数5010亿，激活参数230亿。</p><h2>围绕模型开放整套工具链</h2><p>Beam主要面向编程、推理和长程智能体任务。Reflection称，模型支持100万词元上下文窗口，并提供BF16、FP8和NVFP4三种指令微调权重格式。公司还在准备微调、强化学习和自蒸馏方案，后者利用经过验证的任务轨迹提升准确率和词元效率。</p><p>这次发布的重点不只是权重本身。Reflection列出40多个合作伙伴和集成方，覆盖云服务商、推理平台、模型工具和编程环境。开发者可以直接下载并自托管，也可以通过多家服务商调用，从而降低了试用大型模型的门槛。</p><p>Beam目前是纯文本模型，且主要针对英语开发。Reflection重点强调推理效率，但这些结论仍需要独立评测验证。5010亿总参数也不等于实际运行成本；23亿激活参数、超长上下文和模型并行都会影响部署难度。</p><h2>为什么重要</h2><p>Beam的意义在于，它把开放权重与部署、微调和服务生态一起推出，比单独发布一个检查点更接近企业可用产品。企业可以在不完全依赖闭源API的情况下进行领域定制，并保留自托管选择。</p><p>它也提高了开放模型在编程智能体方向的竞争强度。如果效率数据能在真实工作负载中成立，闭源服务商将面临价格和部署灵活性压力；如果模型只在精选基准中亮眼、实际部署却过于复杂，庞大的合作名单就未必能转化为长期影响。现在公开的是权重，最终结论要等真实使用结果。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://reflection.ai/blog/beam-is-available" rel="noopener" target="_blank">Beam is now available</a></li><li><a href="https://reflection.ai/beam-model-card" rel="noopener" target="_blank">Beam Model Card</a></li><li><a href="https://aws.amazon.com/blogs/machine-learning/introducing-reflection-beam-an-open-weight-model-for-agentic-coding-on-aws/" rel="noopener" target="_blank">Introducing Reflection Beam on AWS</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-mai-base-2.html">微软完成2.8万亿参数MAI-Base-2预训练</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-models-external-breaches.html">OpenAI披露模型曾绕过控制访问外部系统</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-spark-open.html">Meta发布8160亿参数开放权重模型Muse Spark Open</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
