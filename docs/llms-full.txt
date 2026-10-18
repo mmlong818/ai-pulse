@@ -19,6 +19,40 @@
 
 ## Recent briefings
 
+### Anthropic Says AI Is Reshaping Its Workforce
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-workforce-shifts-less-junior.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-workforce-shifts-less-junior.html
+- Source timestamp: 2026-10-17T20:21:00.000Z
+- Site timestamp: 2026-10-18T01:00:04.473Z
+- Tags: Industry, Agents
+
+Anthropic says its workforce is becoming less junior and spending more time in meetings, offering a rare glimpse into how AI changes AI labs.
+
+Anthropic says its own workforce is becoming less junior and devoting more time to meetings, a revealing internal signal as the company builds increasingly capable AI systems.
+
+## What changed
+
+The company described the shift in comments reported by TechCrunch on October 17. Anthropic’s workforce is reportedly relying more heavily on AI-assisted work, while junior roles represent a smaller share of the organization than before. At the same time, employees are spending more time in meetings, suggesting that coordination, review and decision-making are expanding even as some execution work becomes easier.
+
+The pattern is important because Anthropic is both an AI developer and an unusually concentrated test case. Its employees work close to the frontier of coding, research and product development, where AI tools should have an early and visible effect. A workforce becoming less junior may indicate that automation is absorbing some entry-level tasks, or that the company is hiring more experienced specialists to manage a faster and more complex development cycle.
+
+## Why meetings matter
+
+More meetings do not necessarily mean AI has failed to improve productivity. They may reflect a reallocation of work: fewer people producing first drafts, and more people checking outputs, setting priorities, handling risk and coordinating across teams. That transition can raise the value of experienced judgment while making the traditional apprenticeship path harder to enter.
+
+The evidence remains qualitative, and Anthropic has not published a complete breakdown of headcount, role mix or productivity. Still, the company’s own labor mix is a more useful indicator than broad claims about AI replacing jobs. It points toward a near-term workplace shaped by fewer routine junior tasks, more oversight and heavier coordination costs.
+
+## Uncle Cat take
+
+Anthropic’s juniorization reversal matters more than the meeting count: if frontier labs need fewer apprentices, the industry may be quietly weakening its own talent pipeline.
+
+Chinese title: Anthropic称自身团队正变得更资深
+Chinese summary: Anthropic表示，公司员工队伍中的初级岗位占比下降、会议时间增加，显示 AI 正在改变前沿实验室的工作结构。
+
+Sources:
+  - Anthropic says its workforce has become less junior and is spending more time in meetings: https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/
+
 ### DeepSeek Releases V4.1 Flash-1017 With Open Weights
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-v41-flash-1017.html
@@ -280,24 +314,24 @@ Sources:
 - Site timestamp: 2026-10-16T01:00:04.495Z
 - Tags: Agents, Safety, Open Source
 
-Perplexity has open-sourced a persistent sandbox designed to contain computer-using agents while preserving state across long-running tasks.
+Perplexity has open-sourced SPACE, a sandbox platform that isolates computer-using agents while preserving task state through snapshots.
 
-Perplexity has open-sourced SPACE, a sandboxing component for agentic products that execute commands, install packages and call external services. The company presents it as the first component of its Agentic Runtime Platform, aimed at making computer-using agents safer to deploy.
+Perplexity has open-sourced SPACE, a sandbox platform for agentic products that execute commands, install packages and call external services. The company presents it as the sandbox platform behind Perplexity Computer, aimed at making computer-using agents safer to deploy.
 
-SPACE is designed for agents whose work is long-running, stateful and branching. A sandbox can outlive the request that created it and the connection that initiated it, allowing an agent to resume after interruptions rather than restarting from scratch. Inside the guest environment, agents receive root access; the host system remains isolated from that guest.
+SPACE is designed for agents whose work is long-running, stateful and branching. Each task runs in an isolated Firecracker microVM that is destroyed when the task ends, while rolling snapshots preserve session state for pause, resume and forking. This lets an agent continue after interruptions without implying that the underlying sandbox remains permanently alive. The platform also provides per-session credential isolation, protocol forwarding and node-level outbound network controls.
 
 Perplexity says it tested the design against frontier models. Its report evaluated nine model configurations across 216 total runs. The VM-escape task accounted for 108 of those runs, and no model reached the host from the guest VM. The report separately tested network confinement, where some partial-network bypasses were initially observed and then reevaluated. The company’s accompanying security write-up argues that isolation has to be treated as a persistent runtime property, not merely as a permission attached to a single tool call.
 
-The release arrives as more products move from chat responses toward computer operation. That shift changes the security problem: an agent can install software, manipulate files and interact with third-party services over a period long enough for a small mistake or malicious instruction to compound. A disposable request container is poorly suited to that pattern.
+The release arrives as more products move from chat responses toward computer operation. That shift changes the security problem: an agent can install software, manipulate files and interact with third-party services over a period long enough for a small mistake or malicious instruction to compound. Ephemeral execution combined with snapshots is intended to support this pattern without treating a long-lived guest environment as inherently safe.
 
-Why it matters: SPACE tackles a foundational bottleneck in agent deployment rather than adding another model interface. Open-sourcing the component could give developers a common reference for durable agent isolation, but the public evidence remains narrow. Testing across the reported VM and network boundaries does not establish safety against every host, kernel, supply-chain or credential failure, so adoption will depend on independent audits and operational evidence.
+Why it matters: SPACE tackles a foundational bottleneck in agent deployment rather than adding another model interface. Open-sourcing the component could give developers a reference for durable agent sessions and layered isolation, but the public evidence remains narrow. Testing across the reported VM and network boundaries does not establish safety against every host, kernel, supply-chain or credential failure, so adoption will depend on independent audits and operational evidence.
 
-Chinese title: Perplexity开源SPACE，为长程智能体提供安全沙箱
-Chinese summary: Perplexity开源SPACE沙箱，试图在保留任务状态的同时隔离可执行命令、安装软件和调用外部服务的智能体。
+Chinese title: Perplexity开源SPACE，为智能体提供更安全的沙箱
+Chinese summary: Perplexity开源SPACE沙箱平台，通过快照保留任务状态，同时隔离执行命令、安装软件和调用外部服务的计算机操作型智能体。
 
 Sources:
-  - Perplexity announces SPACE: https://x.com/perplexity_ai/status/2110778525565534464
-  - Escaping SPACE: Part I: https://www.perplexity.ai/hub/blog/escaping-space-part-i
+  - Open-sourcing SPACE, the sandbox platform behind Computer: https://www.perplexity.ai/is/hub/blog/open-sourcing-space
+  - Secure Sandboxes for Agents: https://www.perplexity.ai/en-GB/hub/blog/secure-sandboxes-for-agents
 
 ### Replit CEO Pitches the Rise of Self-Driving Companies
 
@@ -936,39 +970,27 @@ Sources:
   - Qwen-Image-2.1-Turbo model release announcement: https://x.com/Alibaba_Qwen/status/2108549075218120949
   - Qwen model release changelog: https://docs.qwencloud.com/changelog/models
 
-### TypeSafe Raises $870 Million at a $7.5 Billion Valuation
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/typesafe-jev-funding.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/typesafe-jev-funding.html
-- Source timestamp: 2026-10-09T21:41:00.000Z
-- Site timestamp: 2026-10-09T23:00:04.468Z
-- Tags: Funding, Models, Industry
-
-TypeSafe secured a huge Series A weeks after launching Jev, betting that structured decision models can automate software more efficiently than chat models.
-
-TypeSafe AI has raised $870 million at a $7.5 billion valuation only weeks after launching Jev, a model designed to return calibrated decisions rather than natural-language answers. Andreessen Horowitz led the round, with Sequoia, DCVC and other investors participating. Martin Casado is joining TypeSafe’s board.
-
-Jev is built around the company’s System One approach. Instead of producing text or code as its primary output, the model returns structured values and probabilities that software can consume directly. TypeSafe argues that this design is better suited to classification, routing, ranking and other automation tasks where a system needs a reliable typed result rather than a conversational explanation.
-
-The company said a third of Fortune 500 companies are already using Jev and that the model reached one trillion generated tokens within three days of launch. Those figures are company claims, not independently audited adoption data. The financing nevertheless signals that investors see a potentially large market for models optimized around software actions rather than human-facing conversation.
-
-The bet is strategically important because it challenges the assumption that every major AI workload should be handled by a general-purpose language model. A specialized decision model could reduce latency, token usage and integration complexity in high-volume workflows. It may also make it easier to attach explicit confidence thresholds and deterministic downstream rules.
-
-The unresolved question is whether Jev’s advantage survives outside early adopters and carefully selected workloads. TypeSafe has not publicly established how its calibrated outputs compare with leading language models across messy, changing business data, nor how much engineering is required to translate real-world ambiguity into typed decisions. The valuation prices in rapid expansion before that evidence is fully available.
-
-## Why it matters
-
-TypeSafe’s round is a major market signal for non-chat architectures. If Jev can convert its early enterprise interest into dependable automation, model competition may increasingly be organized around the shape of the output, not just the size of the model.
-
-Chinese title: TypeSafe获8.7亿美元融资，估值升至75亿美元
-Chinese summary: Jev发布数周后，开发商TypeSafe以75亿美元估值完成8.7亿美元融资，押注结构化决策模型取代部分聊天式自动化。
-
-Sources:
-  - TypeSafe AI raises Series AI: https://typesafe.ai/blog/series-ai
-  - Investing in TypeSafe AI: https://a16z.com/announcement/investing-in-typesafe-ai/
-  - The maker of non-text AI model Jev valued at $7.5B: https://techcrunch.com/2026/10/09/the-maker-of-non-text-ai-model-jev-valued-at-7-5b-just-weeks-after-launch/
-
 ## Recent radar items
+
+### 2026-10-18
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-18.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-18.html
+
+- 2026-10-17T22:36:00Z | X | Ollama says its cloud service offers zero data retention, US and EU hosting, and no training on user data. | 中文：Ollama称其云服务支持零数据保留、欧美托管，且不会用用户数据训练。 | https://x.com/ollama/status/2111587278271426605
+- 2026-10-17T22:29:00Z | X | OpenAI Developers highlighted community weekend projects and linked instructions for recreating them. | 中文：OpenAI开发者账号展示了社区周末项目，并附上复现指南。 | https://x.com/OpenAIDevs/status/2111585491237650691
+- 2026-10-17T20:22:00Z | MarkTechPost | Kyutai released REKI, a 2.4-billion-parameter open VLA with lightweight temporal memory for robot manipulation. | 中文：Kyutai发布24亿参数开源视觉语言动作模型REKI，以轻量时序记忆提升机器人操作。 | https://www.marktechpost.com/2026/10/17/meet-kyutai-reki-the-2-4b-vla-model-bringing-efficient-memory-to-robot-manipulation/
+- 2026-10-17T20:00:00Z | X | Pika introduced Product Shot, which turns a kitchen-counter photo into a polished studio product image inside ChatGPT. | 中文：Pika推出Product Shot，可在ChatGPT内把厨房台面照片变成棚拍风格的产品图。 | https://x.com/pika_labs/status/2111547800844415066
+- 2026-10-17T19:47:00Z | X | Cohere claimed Embed 5 Fast led Google’s EmbeddingGemma 2 on more than 95% of 163 datasets. | 中文：Cohere称Embed 5 Fast在163个数据集中的95%以上领先Google的EmbeddingGemma 2。 | https://x.com/cohere/status/2111544722535645187
+- 2026-10-17T19:00:00Z | X | Pika’s Product Ad generated a complete commercial, including voiceover, from an armchair photo inside ChatGPT. | 中文：Pika的Product Ad可在ChatGPT内根据扶手椅照片生成包含配音的完整广告。 | https://x.com/pika_labs/status/2111532703652745255
+- 2026-10-17T17:50:00Z | X | GitHub announced direct integration between its AI-oriented workflow setup and Logitech’s new MX Keypad. | 中文：GitHub宣布将其AI工作流设置与Logitech新款MX Keypad直接整合。 | https://x.com/github/status/2111515160766550057
+- 2026-10-17T18:00:00Z | X | Pika said Camera Director turns a user idea into a cinematic short through ChatGPT. | 中文：Pika称Camera Director可通过ChatGPT把用户想法转成完整电影感短片。 | https://x.com/pika_labs/status/2111517604472865060
+- 2026-10-17T15:25:00Z | X | Arena updated its Alignment Index with new labs and models, measuring unauthorized action, deception, and user-control signals from real agent sessions. | 中文：Arena更新Alignment Index，加入新实验室和模型，并用真实代理会话衡量越权、欺骗与用户控制信号。 | https://x.com/arena/status/2111478594732167527
+- 2026-10-17T15:00:00Z | X | Bolt made its app-building platform free for the weekend and offered a $10,000 competition prize for submissions by October 20. | 中文：Bolt宣布周末免费开放应用构建平台，并为10月20日前提交的作品提供1万美元奖金。 | https://x.com/boltdotnew/status/2111472357105672652
+- 2026-10-17T15:00:00Z | InfoQ中文 | Akka reported testing specification-based AI delivery across 65 open-source projects. | 中文：Akka称已在65个开源项目中测试基于规格的AI交付流程。 | https://www.infoq.cn/article/uGNQwpOt5GGAKm2XlEZC?utm_source=rss&utm_medium=article
+- 2026-10-17T14:49:00Z | SiliconANGLE | ServiceNow’s AI Control Tower is being positioned as an enterprise governance layer while its underlying operating model is still developing. | 中文：ServiceNow将AI Control Tower定位为企业治理层，但底层运营模式仍在建设中。 | https://siliconangle.com/2026/10/17/servicenow-ai-control-tower-selling-a-penthouse-while-building-the-frame/
+- 2026-10-17T13:00:00Z | The Verge | A new report said websites are increasingly blocking AI agents from crawling, acting, or completing tasks on their pages. | 中文：一篇新报道指出，越来越多网站开始阻止AI代理抓取、操作或完成页面任务。 | https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web
+- 2026-10-17T15:25:00Z | X | Arena described its Alignment Index as being built from more than 90,000 real-world agent sessions across 30 models. | 中文：Arena称其Alignment Index基于30个模型、超过9万次真实代理会话构建。 | https://x.com/arena/status/2111478597643055131
 
 ### 2026-10-17
 
@@ -1094,37 +1116,3 @@ Sources:
 - 2026-10-14T11:00:00Z | TechCrunch | Scimplify raised $25 million to use AI in challenging China’s dominance of critical-material supply chains. | 中文：Scimplify融资2500万美元，利用AI挑战中国在关键材料供应链中的主导地位。 | https://techcrunch.com/2026/10/14/scimplify-raises-25m-to-challenge-chinas-grip-on-critical-materials-with-ai/
 - 2026-10-14T11:00:00Z | InfoQ中文 | Adobe used Prometheus to identify why a GPU had remained idle for 11 days in its AI infrastructure. | 中文：Adobe借助Prometheus查明一块GPU连续空转11天的原因。 | https://www.infoq.cn/article/AO4MbiBaYqwwCubevkpD
 - 2026-10-14T11:46:00Z | InfoQ中文 | Anthropic reportedly rebuilt a version-control system with seven people in five months because Claude generated code too quickly for Git workflows. | 中文：据报道，Anthropic仅用7人、5个月重造版本控制系统，因为Claude生成代码的速度超过Git工作流承载能力。 | https://www.infoq.cn/article/6iRATYfkqF7aITPaFR2R?utm_source=rss&utm_medium=article
-
-### 2026-10-13
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-13.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-13.html
-
-- 2026-10-12T23:58:00Z | X / Anthropic | Anthropic says it has reduced Claude’s vulnerability to model-distillation attacks through new detection and defensive techniques. | 中文：Anthropic称已通过检测与防御技术降低Claude遭模型蒸馏攻击的有效性。 | https://x.com/AnthropicAI/status/2109795898909950247
-- 2026-10-12T23:40:00Z | X / Artificial Analysis | Artificial Analysis launched AA-3D, ranking models that autonomously build web pages from briefs through human voting and task-specific evaluation. | 中文：Artificial Analysis推出AA-3D，通过人工投票和任务评测排名自主根据需求构建网页的模型。 | https://x.com/ArtificialAnlys/status/2109791351328084097
-- 2026-10-12T23:10:00Z | X / Cursor | Cursor became part of X’s subscription, letting subscribers share a usage pool across Cursor and other included services. | 中文：Cursor加入X订阅体系，订阅者可在Cursor及其他服务之间共享用量池。 | https://x.com/cursor_ai/status/2109783879490191502
-- 2026-10-12T23:30:00Z | X / Sakana AI | Sakana AI shared technical details of MASS, a system designed to improve models through recursive problem-solving and judging. | 中文：Sakana AI分享MASS技术细节，该系统通过递归解决问题与评判来改进模型。 | https://x.com/SakanaAILabs/status/2109788707645517865
-- 2026-10-12T19:32:00Z | X / Cognition | Cognition released FrontierCode 1.1, an open-source-maintainer-built benchmark measuring end-to-end code quality and merge readiness. | 中文：Cognition发布FrontierCode 1.1，由开源维护者参与构建，评测端到端代码质量与合并准备度。 | https://x.com/cognition/status/2109729058745725037
-- 2026-10-12T19:17:00Z | SiliconANGLE AI | Deepgram is targeting voice AI that runs on air-gapped laptops, bringing speech capabilities to disconnected enterprise environments. | 中文：Deepgram瞄准可在隔离网络笔记本运行的语音AI，把语音能力带入断网企业环境。 | https://siliconangle.com/2026/10/12/deepgram-targets-voice-ai-air-gapped-laptops-dellaileadershipsymposium/
-- 2026-10-12T16:10:00Z | X / Zhipu AI | Zhipu introduced GLM-Legal, built on GLM-5.3-Flash and designed to match frontier models on mainstream legal benchmarks. | 中文：智谱推出GLM-Legal，基于GLM-5.3-Flash，目标是在主流法律基准上达到前沿模型水平。 | https://x.com/Zai_org/status/2109678174468534511
-- 2026-10-12T15:27:00Z | TechCrunch | Blueprints AI says its software can generate permit-ready construction blueprints in minutes from natural-language descriptions. | 中文：Blueprints AI称其软件可根据自然语言描述，在几分钟内生成可提交审批的建筑蓝图。 | https://techcrunch.com/2026/10/12/this-ai-startup-says-it-can-generate-permit-ready-blueprints-in-minutes/
-- 2026-10-12T13:00:00Z | SiliconANGLE AI | Mistlabs took its Ambi AI assistant out of beta on Apple devices after raising $26 million. | 中文：Mistlabs在融资2600万美元后，正式结束Ambi AI助手在苹果设备上的测试阶段。 | https://siliconangle.com/2026/10/12/mistlabs-takes-its-ambi-ai-system-out-of-beta-on-apple-devices-with-26m-in-funding/
-- 2026-10-12T13:00:00Z | X / Luma AI | Luma launched Relight Studio, allowing creators to change a shot’s lighting direction without regenerating the scene. | 中文：Luma推出Relight Studio，创作者无需重生成场景即可改变镜头的布光方向。 | https://x.com/LumaLabsAI/status/2109630178163151205
-- 2026-10-12T16:49:00Z | X / Mistral AI | Mistral highlighted Large 4’s visual-grounding result of 42% on Dense 200, ahead of several closed frontier models. | 中文：Mistral称Large 4在Dense 200视觉定位测试中达到42%，领先多个闭源前沿模型。 | https://x.com/MistralAI/status/2109687906751086628
-- 2026-10-12T15:31:00Z | TechCrunch | Microsoft president Brad Smith said the UK is best placed to lead global AI regulation and advocated external testing and kill switches. | 中文：微软总裁Brad Smith称英国最适合主导全球AI监管，并支持外部测试与紧急停机机制。 | https://techcrunch.com/2026/10/12/microsoft-president-says-uk-is-best-placed-to-drive-ai-regulation/
-- 2026-10-12T17:52:00Z | AWS Machine Learning | AWS expanded access to OpenAI GPT models on Bedrock through global cross-Region inference in Thailand, Malaysia, Singapore, Indonesia, and Taiwan. | 中文：AWS通过全球跨区域推理，将Bedrock上的OpenAI GPT模型扩展至泰国、马来西亚、新加坡、印尼和台湾。 | https://aws.amazon.com/blogs/machine-learning/accessing-openai-gpt-models-on-amazon-bedrock-with-global-cross-region-inference-in-thailand-malaysia-singapore-indonesia-and-taiwan/
-- 2026-10-13T12:33:00Z | IT之家 | Alibaba is developing a Qwen office-and-commerce product with nearly 100 people, targeting release before Singles’ Day presales. | 中文：阿里正由近百人团队开发千问办公电商版，计划在双十一预售前夕发布。 | https://www.ithome.com/1/012/558.htm
-- 2026-10-13T11:45:00Z | InfoQ 中文 | Meta, OpenAI, and Google are pushing personal agents as YC’s CEO argues that practical AGI is already arriving on personal computers. | 中文：Meta、OpenAI和Google集体推进个人Agent，YC CEO称实用型AGI已出现在个人电脑上。 | https://www.infoq.cn/article/pkFg3POvaTwJt9lei8Vj
-- 2026-10-13T11:40:00Z | InfoQ 中文 | GitHub’s rising REA project explores how large models can reverse-engineer software systems. | 中文：GitHub新晋项目REA探索大模型如何逆向理解和重建软件系统。 | https://www.infoq.cn/article/BEJ6IXREBoXspGmXRQHj
-- 2026-10-13T11:06:00Z | InfoQ 中文 | Chinese robotics company Stardust Intelligence completed a new funding round at a reported valuation of 15 billion yuan. | 中文：中国机器人公司星尘智能完成新一轮融资，公司估值据报达到150亿元。 | https://www.infoq.cn/article/z9ORbE470QJDHDiBCC8S
-- 2026-10-13T11:05:00Z | 量子位 | Magic Atom’s embodied-agent framework ranked first globally on the MolmoSpaces benchmark. | 中文：魔法原子的具身Agent框架在MolmoSpaces评测中取得全球第一。 | https://www.qbitai.com/2026/10/503107.html
-- 2026-10-13T09:15:00Z | InfoQ 中文 | Cursor uses an S3-based write-ahead log to scale Git storage beyond 300 pushes per second. | 中文：Cursor采用基于S3的预写日志，将Git存储扩展到每秒300多次推送。 | https://www.infoq.cn/article/QPf1GXbpDxhcCHHP4xfo
-- 2026-10-13T09:00:00Z | MIT Technology Review | AI labs are buying data from failed startups to obtain training material that might otherwise disappear. | 中文：AI实验室正从倒闭初创公司购买数据，以获取原本可能消失的训练材料。 | https://www.technologyreview.com/2026/10/13/1145755/ai-labs-buying-data-from-dead-startups-to-train-models/
-- 2026-10-13T08:24:00Z | X @MeshyAI | Meshy is showcasing a custom-skill workflow in its 3D Agent that turns one reference image into a character design. | 中文：Meshy展示了3D Agent的定制技能流程，可从一张参考图生成角色设计。 | https://x.com/MeshyAI/status/2109923106877833407
-- 2026-10-13T06:19:00Z | 量子位 | Claude researchers reportedly demonstrated an AI system autonomously replicating itself into smart-home devices. | 中文：Claude团队据报实测了AI自主复制进智能家电的能力。 | https://www.qbitai.com/2026/10/502920.html
-- 2026-10-13T04:42:00Z | X @tripoai | Tripo’s San Francisco Demo Day brought together more than 50 teams and 900 participants building with creative AI. | 中文：Tripo旧金山Demo Day汇聚50多支团队和900多名参与者，展示创意AI项目。 | https://x.com/tripoai/status/2109867444592677048
-- 2026-10-13T04:04:00Z | 量子位 | QwenGo is being positioned as an agent that can handle refunds, maintenance bookings, sports reservations, and customer-service disputes. | 中文：千问Go被定位为可处理退款、保养预约、球场预订及客服赔偿协商的综合Agent。 | https://www.qbitai.com/2026/10/502849.html
-- 2026-10-13T04:00:00Z | arXiv | CLEAT proposes learning when interactive agents should ask clarifying questions instead of acting immediately. | 中文：CLEAT提出让交互式Agent学习何时应澄清问题，而不是立即执行。 | https://arxiv.org/abs/2610.12655
-- 2026-10-13T04:00:00Z | arXiv | Behavioral Self-Rewarding proposes moving SWE agents beyond binary verifiable rewards toward richer self-evaluation signals. | 中文：Behavioral Self-Rewarding提出让SWE Agent超越二元可验证奖励，采用更丰富的自评信号。 | https://arxiv.org/abs/2610.12598
-- 2026-10-13T09:36:00Z | X @recraftai | Recraft demonstrated an end-to-end AI-avatar workflow combining Recraft V4.1 Pro with Nano Banana inside Recraft Studio. | 中文：Recraft展示了在Studio内结合Recraft V4.1 Pro与Nano Banana的端到端AI头像流程。 | https://x.com/recraftai/status/2109941281174483187
-- 2026-10-13T09:29:00Z | X @qdrant_engine | Qdrant reported search latency falling from 780 milliseconds to 4.3 milliseconds after background optimizer work completed. | 中文：Qdrant报告称后台优化完成后，搜索延迟从780毫秒降至4.3毫秒。 | https://x.com/qdrant_engine/status/2109939556170768727
