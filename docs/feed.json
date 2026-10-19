@@ -51,6 +51,81 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/minimax-m31-flash-launches.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/minimax-m31-flash-launches.html",
+      "title": "MiniMax launches M3.1 Flash with lower-cost inference",
+      "summary": "MiniMax has released M3.1 Flash, promising three-times faster responses and a 70% price cut as competition shifts toward efficient coding models.",
+      "content_text": "## What happened\n\nMiniMax released M3.1 Flash on October 19, positioning it as a faster and cheaper member of its M-series for software development and general agent workloads. The company says the model is three times faster than its predecessor and reduces pricing by 70%. MiniMax also linked the launch to Space Bunny, an earlier model version that the company says processed more than 200 trillion tokens and reached leading positions on global benchmarks.\n\nThe timing matters because the release arrives during an unusually intense cycle for low-cost coding models. Rather than presenting a new frontier-scale model, MiniMax is competing on the operating variables that determine whether developers use a model repeatedly: latency, token economics and practical performance in long coding sessions. Artificial Analysis Arena data cited in the launch coverage placed M3.1 Flash at number 12 among open models and number 32 overall in its WebDev evaluation, with a score of 1,588 points.\n\n## Why it matters\n\nThe release also reveals a two-stage strategy. MiniMax is making the model available through its service and coding products first, while public discussion around the launch indicates that open weights are expected later, on October 23. That means today’s event is a service launch, not yet an open-weight release. The distinction is important for developers deciding whether they can self-host the model or must rely on MiniMax’s infrastructure.\n\nFor the market, the price cut is more consequential than the branding. If the reported speed and coding results hold under independent testing, M3.1 Flash could pressure other Asian model providers to lower inference prices or improve throughput. The unresolved question is whether its advantage survives demanding multi-file tasks, tool use and long-context workloads outside benchmark-style WebDev tests.",
+      "date_published": "2026-10-19T11:56:00.000Z",
+      "date_modified": "2026-10-19T13:00:04.411Z",
+      "tags": [
+        "Models",
+        "Industry",
+        "Agents"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/minimax-m31-flash-launches.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/minimax-m31-flash-launches.html",
+        "source_published_at": "2026-10-19T11:56:00.000Z",
+        "site_published_at": "2026-10-19T13:00:04.411Z",
+        "sources": [
+          {
+            "title": "MiniMax AI official announcement on X",
+            "url": "https://x.com/MiniMax_AI/status/2112150867868541221"
+          },
+          {
+            "title": "Artificial Analysis Arena ranking announcement",
+            "url": "https://x.com/arena/status/2112156279074689116"
+          },
+          {
+            "title": "MiniMax M3.1 Flash developer pricing reference",
+            "url": "https://docs.bankofai.io/llmservice/models/minimax-m3.1-flash/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/model-as-trojan-llm-agent-risk.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/model-as-trojan-llm-agent-risk.html",
+      "title": "Researchers show LLM agents can hide DNS exfiltration",
+      "summary": "A new arXiv paper describes a model-weight backdoor that can covertly activate DNS data theft, exposing a supply-chain risk for agent deployments.",
+      "content_text": "## The finding\n\nResearchers have proposed “Model-as-a-Trojan,” a large-language-model backdoor that embeds covert DNS exfiltration behavior into the model weights of an AI agent. The paper, posted to arXiv on October 19, describes a threat model in which a compromised or maliciously fine-tuned model appears normal during ordinary evaluation but activates hidden behavior when a specific trigger condition is met.\n\nThe attack matters because DNS traffic is often permitted even in environments that restrict outbound web access. A compromised agent could therefore encode sensitive information into domain queries and send it to an attacker-controlled name server. The technique does not require the agent to visibly call an unfamiliar tool, upload a file or generate an obviously malicious command, making it difficult to detect through conventional application logging.\n\n## Why it matters\n\nThe paper shifts attention from prompt injection to model provenance. Developers commonly inspect prompts, tools and sandbox permissions while treating downloaded model weights as a trusted artifact. That assumption becomes weaker as organizations combine open models, third-party fine-tuning and autonomous agents capable of reading files or operating inside developer environments.\n\nThe work is a research demonstration rather than evidence of an observed campaign. Its practical impact will depend on how reliably the trigger survives fine-tuning, quantization, model conversion and safety evaluation. It also does not show that every open model is compromised. Still, the paper identifies a concrete gap in current agent security practice: model scanning should include behavioral tests for covert network communication, not only prompt-level refusal checks.\n\nFor operators, the immediate implication is architectural. Egress filtering, DNS monitoring, reproducible model builds and independent weight inspection become more important when an agent can access sensitive local context. The risk is especially relevant to coding agents and enterprise assistants, where a model may see credentials, source code or internal documents before a human reviews its output.",
+      "date_published": "2026-10-19T04:00:00.000Z",
+      "date_modified": "2026-10-19T13:00:04.411Z",
+      "tags": [
+        "Safety",
+        "Research",
+        "Agents",
+        "Open Source"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/model-as-trojan-llm-agent-risk.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/model-as-trojan-llm-agent-risk.html",
+        "source_published_at": "2026-10-19T04:00:00.000Z",
+        "site_published_at": "2026-10-19T13:00:04.411Z",
+        "sources": [
+          {
+            "title": "Model-as-a-Trojan: Self-Activating Covert DNS Exfiltration Baked Into the Weights of an LLM Agent",
+            "url": "https://arxiv.org/abs/2610.22578"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/anthropic-agent-negotiation-norms.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/anthropic-agent-negotiation-norms.html",
       "title": "Anthropic Asks Law Firms to Shape Agent Negotiation Rules",
@@ -1832,84 +1907,6 @@
           {
             "title": "Perplexity AI Releases pplx-embed-v2-late",
             "url": "https://www.marktechpost.com/2026/10/07/perplexity-ai-releases-pplx-embed-v2-late-a-0-6b-edge-model-and-a-9b-model-scoring-92-4-on-madqa/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/stepfun-step-5-preview-openrouter.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/stepfun-step-5-preview-openrouter.html",
-      "title": "StepFun Brings Step 5 Preview Into Coding Tools",
-      "summary": "Chinese AI company StepFun made Step 5 Preview available through OpenRouter and selected coding tools, widening access to its latest model.",
-      "content_text": "Chinese AI company StepFun has begun making Step 5 Preview available through OpenRouter and a group of coding environments, including OpenCode, Cline, Nous Research, and Kilo Code. The company announced the rollout on October 8, with a week of free access for participating tools.\n\n## From model announcement to developer access\n\nStepFun’s update is notable because it puts the model directly inside tools where developers already work. Rather than limiting the preview to a standalone chatbot or a company-controlled interface, StepFun is using an inference aggregator and coding-agent ecosystem to distribute it.\n\nThe company published a model overview, benchmark information, technical specifications, and API documentation alongside the access announcement. The preview is presented as a model intended for agentic and coding workflows, although the announcement does not establish that it leads the field on independent evaluations.\n\nThe OpenRouter route also gives developers a relatively low-friction way to compare Step 5 Preview with models from other providers. That matters for a Chinese lab competing in a market where distribution, latency, pricing, and compatibility can determine adoption as much as benchmark scores.\n\n## Why it matters\n\nStepFun is using developer infrastructure as its launch channel, signaling that access and integration are central to its international strategy. The move also reflects a broader shift in model competition: labs increasingly need their systems to appear inside coding agents and orchestration layers, not merely in public demos.\n\nThe limits are clear. This is a preview rather than a confirmed open-weight release, and the free-access window may not predict long-term economics. StepFun still has to prove reliability, documentation quality, and sustained availability outside the initial partner set. Nevertheless, placing the model into live developer workflows gives it a faster path to real usage data than a conventional announcement would.",
-      "date_published": "2026-10-08T13:08:00.000Z",
-      "date_modified": "2026-10-08T13:22:59.613Z",
-      "tags": [
-        "Models",
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/stepfun-step-5-preview-openrouter.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/stepfun-step-5-preview-openrouter.html",
-        "source_published_at": "2026-10-08T13:08:00.000Z",
-        "site_published_at": "2026-10-08T13:22:59.613Z",
-        "sources": [
-          {
-            "title": "StepFun — Step 5 Preview now live on OpenRouter and coding tools",
-            "url": "https://x.com/StepFun_ai/status/2108182763002278158"
-          },
-          {
-            "title": "StepFun — Step 5 Preview overview and technical documentation",
-            "url": "https://x.com/StepFun_ai/status/2108182766877843714"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/anthropic-cyber-verification-expands.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/anthropic-cyber-verification-expands.html",
-      "title": "Anthropic Expands Verified Access to Cyber Models",
-      "summary": "Anthropic is widening its Cyber Verification Program, giving more vetted security teams access to capable models under reduced defensive safeguards.",
-      "content_text": "Anthropic is expanding its Cyber Verification Program to give more security professionals access to its most capable models for defensive work. The company says verified participants will receive broader access under reduced cyber safeguards, with eligibility tied to security verification rather than general public availability.\n\nThe program is aimed at teams conducting vulnerability research, incident response and other work where ordinary model refusals can interfere with legitimate investigation. Anthropic’s announcement follows a broader shift among frontier labs toward differentiated access: the same models may be constrained for ordinary users while vetted organizations receive additional capability for high-stakes defensive tasks.\n\nAnthropic has not described this as an unrestricted cyber release. The program is gated, and the company says access is intended for verified security professionals. That leaves important operational questions open, including how applicants are checked, how usage is monitored, how incidents are handled and whether the additional capability can remain restricted once outputs move beyond the original organization.\n\nThe timing is significant because frontier models are increasingly useful for both vulnerability discovery and remediation. Expanding access could improve defenders’ ability to reproduce flaws, analyze malware and write detection logic, but it also increases the consequences of account compromise, insider misuse or poorly bounded automation.\n\nWhy it matters: Anthropic is treating cyber capability as a controlled professional service rather than a binary allow-or-refuse feature. The program’s credibility will depend less on the announcement than on whether verification and monitoring can scale without turning defensive access into a new route for offensive misuse.",
-      "date_published": "2026-10-06T19:00:00.000Z",
-      "date_modified": "2026-10-06T23:00:05.173Z",
-      "tags": [
-        "Safety",
-        "Policy",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-cyber-verification-expands.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-cyber-verification-expands.html",
-        "source_published_at": "2026-10-06T19:00:00.000Z",
-        "site_published_at": "2026-10-06T23:00:05.173Z",
-        "sources": [
-          {
-            "title": "Anthropic Cyber Verification Program announcement",
-            "url": "https://x.com/AnthropicAI/status/2107546569654636883"
-          },
-          {
-            "title": "Claude Mythos and Cyber Verification Program",
-            "url": "https://www.anthropic.com/claude/mythos"
-          },
-          {
-            "title": "Anthropic’s Advanced AI",
-            "url": "https://www-cdn.anthropic.com/files/4zrzovbb/website/0a58d567024a8b448ff15158ebc3625328dfcc1f.pdf"
           }
         ]
       }
