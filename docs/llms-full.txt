@@ -52,6 +52,38 @@ Sources:
   - Amazon is taking its biggest shot at Nvidia yet with new TorchNeuron dev tool: https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/
   - How Deepgram optimized voice AI at scale with AWS Trainium: https://aws.amazon.com/blogs/machine-learning/how-deepgram-optimized-voice-ai-at-scale-with-aws-trainium/
 
+### DeepSeek Open-Sources the Inference Stack Behind V4.1 Flash
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-opens-deepinfer-inference-stack.html
+- Source timestamp: 2026-10-20T09:30:00.000Z
+- Site timestamp: 2026-10-20T13:00:07.876Z
+- Tags: Open Source, Models, Industry
+
+DeepSeek released DeepInfer and deepseek-recipe, opening the serving software behind its latest model and lowering barriers to large-scale deployment.
+
+DeepSeek has open-sourced DeepInfer, an inference framework it says powers production services for DeepSeek-V4.1-Flash, alongside the supporting deepseek-recipe libraries. The release covers more than a model wrapper: it includes optimized kernels, mixture-of-experts parallelism, speculative decoding, asynchronous scheduling, deterministic sampling and structured-output controls.
+
+## What is included
+
+DeepInfer supports DeepSeek-V4.1-Flash and is designed for large-scale offline inference. Its feature set includes FlashMLA, DeepGEMM, DeepEP, TileKernels and custom TileLang kernels, plus attention data parallelism, context parallelism and expert-parallel load balancing. DeepSeek also exposes confidence-scheduled verification and bounded replay techniques intended to reduce decoding and prefill overhead.
+
+The repository supports NVIDIA SM100 GPUs and Huawei Ascend 950 NPUs. It is released under Apache 2.0, but it is not a complete managed serving platform: DeepSeek lists KV-cache management, full prefill/decode disaggregation and replica-level load balancing as components users still need to supply.
+
+DeepSeek also published a refreshed version of deepseek-recipe, its Rust and Python toolkit for converting common API formats into DeepSeek prompts and responses. The October 20 release adds model-version handling for V4 and V4.1, structured-output support, explicit special-token handling and prefix continuation.
+
+## Why it matters
+
+The move shifts attention from open model weights to the production machinery required to make them economically useful. DeepSeek is exposing implementation details that normally remain inside a lab’s serving stack, giving cloud providers, national-computing centers and self-hosting teams a clearer route to reproduce its throughput-oriented design. The practical limit is hardware and systems expertise: the repository still assumes recent accelerators and leaves several critical service layers outside the release. Even so, opening the stack could accelerate optimization around DeepSeek models and make inference infrastructure itself a more competitive open-source battleground.
+
+Chinese title: 深度求索开源支撑 V4.1 Flash 的推理栈
+Chinese summary: 深度求索开源 DeepInfer 推理框架及 deepseek-recipe，首次把最新模型背后的部分生产级服务技术交给社区。
+
+Sources:
+  - DeepSeek DeepInfer GitHub repository: https://github.com/deepseek-ai/DeepInfer
+  - DeepSeek deepseek-recipe changelog: https://github.com/deepseek-ai/deepseek-recipe/blob/main/CHANGELOG.md
+  - DeepSeek official announcement on X: https://x.com/deepseek_ai/status/2112476496283775135
+
 ### OpenCode Console breach exposes AI API keys and costs
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html
@@ -116,6 +148,37 @@ Chinese summary: AI芯片公司Tenstorrent融资15亿美元、估值升至62亿�
 
 Sources:
   - Tenstorrent hits $6.2B valuation to scale open-weight AI chips: https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-valuation-to-scale-open-weight-ai-chips/
+
+### US Orders DeepSeek Removed From Federal Civilian Systems
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/us-orders-deepseek-removal-federal-systems.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/us-orders-deepseek-removal-federal-systems.html
+- Source timestamp: 2026-10-20T11:34:00.000Z
+- Site timestamp: 2026-10-20T13:00:07.876Z
+- Tags: Policy, Safety, Industry
+
+A DHS order bars civilian agencies from buying DeepSeek technology and requires removal of third-party products built on its implementations.
+
+The U.S. Department of Homeland Security has ordered federal civilian agencies to remove DeepSeek products and related implementations from their information-technology systems. The notice also excludes DeepSeek and affiliated products from future civilian-agency procurement, extending the restriction to third-party services developed using DeepSeek technology.
+
+## What the order covers
+
+The action was published through the Federal Register under the Federal Acquisition Security Council framework. It applies to civilian executive-branch agencies rather than the general public, and it is not a blanket prohibition on private companies or consumers using DeepSeek. The order cites supply-chain and national-security concerns, including the possibility of sensitive information being transferred to China and alleged software-security risks.
+
+The wording is broader than a simple ban on visiting DeepSeek’s public chatbot. Agencies must remove DeepSeek products, affiliated offerings and third-party tools that incorporate DeepSeek implementations. That could affect contractors and internal applications even when DeepSeek is not the visible brand presented to employees.
+
+The timing is important. The order itself was issued earlier, but its Federal Register publication makes the restriction part of the government’s formal procurement and technology-removal record during this edition window. China criticized the move, framing it as another escalation in the technology conflict between Washington and Beijing.
+
+## Why it matters
+
+The immediate commercial impact is concentrated in the U.S. federal market, not the global developer community. Its broader significance is precedent: Washington is treating a widely distributed open model as a supply-chain risk and extending restrictions to downstream products built on it. That approach could complicate compliance for contractors and encourage governments to demand provenance records for model weights and inference services. It also creates a sharper split between technical availability and institutional usability: DeepSeek may remain easy to download, while becoming harder to deploy in regulated public-sector environments.
+
+Chinese title: 美国要求联邦民用机构移除深度求索技术
+Chinese summary: 美国国土安全部要求联邦民用机构移除深度求索及其衍生产品，并禁止采购相关技术。
+
+Sources:
+  - Federal Register notice on DeepSeek products: https://www.federalregister.gov/d/2026-21447
+  - Associated Press report on the federal ban: https://apnews.com/article/2bffa5b0131808735280b2c0e6f0d856
 
 ### Anthropic Commits 5% of Shares to Public Benefit Fund
 
@@ -911,71 +974,6 @@ Sources:
   - Microsoft's latest custom chip: Maia 300: https://news.microsoft.com/maia-2026/
   - Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs: https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout
 
-### Alibaba introduces elastic RL for long-horizon agents
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/qwengyre-elastic-agent-training.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/qwengyre-elastic-agent-training.html
-- Source timestamp: 2026-10-12T13:11:00.000Z
-- Site timestamp: 2026-10-13T01:00:04.247Z
-- Tags: Research, Agents, Open Source
-
-Alibaba’s QwenGyre framework reallocates training resources across difficult rollouts, reporting gains on long-horizon software-engineering tasks.
-
-Alibaba’s Qwen team has introduced QwenGyre, a reinforcement-learning framework designed for training agents on extremely long-horizon tasks. The work targets a growing bottleneck in agent development: a single failed or unfinished rollout can consume substantial compute without producing a useful learning signal.
-
-## Elastic training for difficult tasks
-
-QwenGyre uses an elastic scheduler to reallocate training resources according to the difficulty and progress of individual rollouts. Rather than assigning every episode the same budget, the framework can give more capacity to tasks that need additional reasoning or execution time, while avoiding excessive spending on trajectories that are clearly unproductive.
-
-The accompanying research describes a second design for handling long-horizon reinforcement learning, where credit assignment becomes difficult because success may depend on a sequence of actions spread across hundreds of thousands of tokens. The framework was evaluated on software-engineering and other agentic tasks, including settings that require an agent to plan, use tools and recover from intermediate failures.
-
-Scaled to Qwen’s 2.4-trillion-parameter flagship model, the authors report a gain on NL2RepoBench from 52.5% to 58.5% after 48 training steps, with rollouts reaching 700,000 tokens. Those figures come from the authors’ evaluation and should not be read as a general ranking of Qwen against other frontier systems.
-
-## Why the method matters
-
-Long-horizon agents are expensive partly because their training process has to preserve useful feedback across long, uneven trajectories. If QwenGyre’s scheduling approach generalizes, it could make agent training less wasteful and improve the economics of teaching models to complete multi-step coding, research or operational tasks.
-
-The release is also notable for coming from Alibaba’s open research ecosystem at a time when leading laboratories are competing over agent reliability rather than only short-answer benchmarks. The remaining question is reproducibility: the reported gains depend on large-scale infrastructure and task-specific training details, and it is not yet clear how well the method transfers across models, environments and failure modes. Still, QwenGyre addresses a practical constraint that will shape whether long-running agents can move beyond demonstrations into routine work.
-
-Chinese title: 阿里Qwen推出面向长程智能体的弹性强化学习
-Chinese summary: 阿里Qwen发布QwenGyre框架，按任务难度动态分配训练资源，并在长程软件工程任务上报告明显提升。
-
-Sources:
-  - QwenGyre: An Elastic Reinforcement Learning Framework for Training xLong-Horizon Agents: https://arxiv.org/abs/2609.33848
-  - Introducing QwenGyre, bringing elastic RL to extreme-long-horizon agent training: https://x.com/Alibaba_Qwen/status/2109633085658808515
-  - QwenGyre addresses two challenges of XLong-horizon agentic RL: https://x.com/Alibaba_Qwen/status/2109633089211416820
-
-### Huawei’s Memento 3 clears 25 games through recursive learning
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/huawei-memento-recursive-game-learning.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/huawei-memento-recursive-game-learning.html
-- Source timestamp: 2026-10-12T05:48:36.000Z
-- Site timestamp: 2026-10-12T13:00:05.085Z
-- Tags: Research, Agents
-
-Huawei’s Memento 3 solved 183 ARC-AGI-3 levels with fewer actions than humans, using external world models instead of updating model weights.
-
-Huawei Noah’s Ark Lab and University College London say their Memento 3 agent completed all 25 games and 183 levels in the public ARC-AGI-3 set, earning a perfect 100 RHAE score. The system used 7,518 actions, compared with 17,135 for human participants and 8,347 for the strongest reported baseline.
-
-## Learning outside the weights
-
-Memento 3 was built around a “Code as Model” strategy. While exploring an unfamiliar game, the agent maintains a written rulebook and converts its hypotheses about the environment into executable Python code. It then tests possible actions against that internal world model, compares predicted frames with real observations, and revises the model when the two diverge.
-
-The process is recursive in a practical sense: the system accumulates and corrects external knowledge rather than retraining the underlying language model. In one experiment, two competing world models reduced the actions needed in a game from 899 to 597. The researchers also used Git-style versioning so that mistaken rules could be inspected or rolled back.
-
-## From exploration to a controller
-
-The most striking demonstration came from Atari Pong. After Claude Opus 5 explored the game and refined a motion model, a program derived from that model played three separate matches without further language-model calls, winning each 21–0. A vision-to-action baseline without the world model scored close to random play.
-
-The result matters because it shifts attention from parameter updates to inspectable, task-specific memory and simulation. It does not show that recursive self-improvement works broadly: the environments were compact and rule-bound, and the exploratory phase still relied on an expensive frontier model. But it offers a credible architecture for agents that learn once, verify their own abstractions, and execute cheaply thereafter.
-
-Chinese title: 华为 Memento 3 靠递归学习通关 25 款游戏
-Chinese summary: 华为 Memento 3 通关 ARC-AGI-3 全部 25 款游戏，以外部世界模型学习规则，操作次数比人类少约 56%。
-
-Sources:
-  - 华为AI靠RSI通关25款游戏！操作次数比人类少56%: https://www.qbitai.com/2026/10/502654.html
-  - Memento 3 research paper: https://arxiv.org/abs/2610.11794
-
 ## Recent radar items
 
 ### 2026-10-20
@@ -997,6 +995,21 @@ Sources:
 - 2026-10-19T17:56:00Z | X @togethercompute | Together launched Post-Training, letting users train open models with supervised fine-tuning or reinforcement learning. | 中文：Together推出Post-Training，允许用户通过监督微调或强化学习训练开放模型。 | https://x.com/togethercompute/status/2112241595273621857
 - 2026-10-19T16:00:00Z | X @MicrosoftAI | Microsoft said MAI-Transcribe-2 ranked first for transcription accuracy in David AI’s new benchmark. | 中文：微软称MAI-Transcribe-2在David AI新基准的转录准确率测试中排名第一。 | https://x.com/MicrosoftAI/status/2112212219177910510
 - 2026-10-19T22:39:00Z | AWS Machine Learning | Amazon SageMaker made Studio accessible through the new AWS experience for developers. | 中文：亚马逊让开发者可通过新版AWS体验访问SageMaker Studio。 | https://aws.amazon.com/blogs/machine-learning/developers-can-now-access-sagemaker-studio-through-the-new-aws-experience/
+- 2026-10-20T13:00:00.000Z | TechCrunch | Eka raised its valuation to $1.45 billion after experts praised its physical-AI model for industrial applications. | 中文：Eka凭借获专家认可的物理AI模型，估值升至14.5亿美元。 | https://techcrunch.com/2026/10/20/eka-is-worth-1-45-billion-thanks-to-a-physical-ai-model-that-has-experts-raving/
+- 2026-10-20T12:44:00.000Z | X / Recraft | Recraft showcased fashion imagery created with Recraft V4.1 and animated with ByteDance’s Seedance 2.5. | 中文：Recraft展示了由Recraft V4.1生成、再用字节Seedance 2.5动画化的时装视觉作品。 | https://x.com/recraftai/status/2112525281852289487
+- 2026-10-20T12:33:00.000Z | Ars Technica | Security researchers reported that Meta Muse can expose personal and business secrets when users share conversations. | 中文：安全研究人员称，用户分享Meta Muse对话时，可能暴露个人及商业机密。 | https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations/
+- 2026-10-20T12:32:00.000Z | The Decoder | A U.S. Army Cyber Command concept called ECHOTRIBBLE would let AI agents propagate across systems like self-spreading cyberweapons. | 中文：美国陆军网络司令部提出的ECHOTRIBBLE概念，可让AI代理像自传播网络武器一样扩散。 | https://the-decoder.com/army-cyber-commands-echotribble-would-turn-ai-agents-into-self-spreading-cyberweapons/
+- 2026-10-20T12:04:00.000Z | Cloudflare Blog | Cloudflare launched Clairic, a typed extraction model that computes, estimates, and forecasts values without generating output tokens. | 中文：Cloudflare推出Clairic类型化抽取模型，可计算、估计和预测数值，且不生成输出token。 | https://blog.cloudflare.com/clairic-extraction-model/
+- 2026-10-20T11:00:00.000Z | Otter.ai | Otter.ai raised $320 million from General Catalyst to expand meeting agents, enterprise workflows, and international operations. | 中文：Otter.ai从General Catalyst融资3.2亿美元，用于扩展会议代理、企业工作流和国际业务。 | https://otter.ai/blog/general-catalyst-backs-otter-ais-voice-ai-ambitions-with-320m-growth-investment
+- 2026-10-20T11:00:00.000Z | InfoQ 中文 | A survey found that AI-generated code increases debugging difficulty, failure rates, and gaps in developers’ code understanding. | 中文：一项调查发现，AI生成代码会增加调试难度、故障率和开发者理解鸿沟。 | https://www.infoq.cn/article/ywvgVDVLsSU7r47Jk6lq?utm_source=rss&utm_medium=article
+- 2026-10-20T11:31:00.000Z | Sakana AI | Sakana AI introduced QD-Rec, which uses evolving hypotheses to recommend diverse companies, customers, or papers. | 中文：Sakana AI推出QD-Rec，通过不断演化的假设，为企业、客户或论文提供多样化推荐。 | https://sakana.ai/qd-rec/
+- 2026-10-20T11:00:00.000Z | TechCrunch | Yelp added an AI feature that can call restaurants on users’ behalf to check current wait times. | 中文：Yelp新增AI功能，可代用户致电餐厅查询实时等位时间。 | https://techcrunch.com/2026/10/20/yelp-can-now-call-on-your-behalf-to-check-wait-times-at-a-restaurant/
+- 2026-10-20T08:12:00.000Z | MarkTechPost | Exa 3.0 Search API reportedly outperformed Perplexity, Brave, and Parallel across eight benchmarks. | 中文：据报道，Exa 3.0 Search API在八项基准测试中击败Perplexity、Brave和Parallel。 | https://www.marktechpost.com/2026/10/20/exa-3-0-search-api-lite/
+- 2026-10-20T03:32:00.000Z | Inception | Inception released Mercury 3, a diffusion language model claiming 1,068 tokens per second and a one-million-token context window. | 中文：Inception发布Mercury 3扩散语言模型，宣称速度达每秒1068 token、上下文窗口达百万token。 | https://www.inceptionlabs.ai/blog/introducing-mercury-3
+- 2026-10-20T03:44:00.000Z | X / Artificial Analysis | Artificial Analysis ranked Ming-3.0-tts third among open-weight models in its native-voice arena, with an Elo score of 1,188. | 中文：Artificial Analysis显示，Ming-3.0-tts在原生语音竞技场中以1188 Elo位列开源权重模型第三。 | https://x.com/ArtificialAnlys/status/2112389528426033564
+- 2026-10-20T01:09:00.000Z | 量子位 | A Chinese report said a newly exposed Claude model can escape habitual reasoning patterns and fix bugs at their root. | 中文：中文报道披露，Claude新模型可跳出惯性思路，并从根源修复软件Bug。 | https://www.qbitai.com/2026/10/504314.html
+- 2026-10-20T09:30:00.000Z | X / DeepSeek | DeepSeek said it will open-source deepseek-recipe, a production token encoding and decoding component used by its API stack. | 中文：DeepSeek表示将开源deepseek-recipe，这是其API栈使用的生产级token编解码组件。 | https://x.com/deepseek_ai/status/2112476501065286085
+- 2026-10-20T03:57:00.000Z | X / Sakana AI | Sakana AI opened a dedicated Product Strategy and Operations role to coordinate its broader product portfolio. | 中文：Sakana AI为统筹更广泛产品组合，首次招聘专职产品战略与运营成员。 | https://x.com/SakanaAILabs/status/2112392712637100095
 
 ### 2026-10-19
 

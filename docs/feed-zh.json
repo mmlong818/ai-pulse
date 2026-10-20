@@ -49,6 +49,47 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-opens-deepinfer-inference-stack.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-opens-deepinfer-inference-stack.html",
+      "title": "深度求索开源支撑 V4.1 Flash 的推理栈",
+      "summary": "深度求索开源 DeepInfer 推理框架及 deepseek-recipe，首次把最新模型背后的部分生产级服务技术交给社区。",
+      "content_text": "深度求索开源了 DeepInfer 推理框架，并同步更新 deepseek-recipe。公司称，DeepInfer 正是支撑 DeepSeek-V4.1-Flash 生产服务的核心软件之一。此次开放的不只是一个模型适配器，还包括优化内核、混合专家并行、推测解码、异步调度、确定性采样和结构化输出等能力。\n\n## 开放了什么\n\nDeepInfer 面向 DeepSeek-V4.1-Flash 的大规模离线推理，集成 FlashMLA、DeepGEMM、DeepEP、TileKernels 和定制 TileLang 内核，同时支持注意力数据并行、上下文并行及专家并行负载均衡。项目还提供基于置信度的验证调度和有界重放机制，用于减少解码与预填充开销。\n\n目前支持 NVIDIA SM100 GPU 和华为昇腾 950 NPU，采用 Apache 2.0 许可证。不过它还不是完整的托管服务平台：KV 缓存管理、完整的预填充/解码分离，以及多副本之间的负载均衡，仍需要用户自行补齐。\n\n同步更新的 deepseek-recipe 是一套 Rust 与 Python 工具，用于把常见 API 请求转换为 DeepSeek 所需的提示和响应格式。10 月 20 日版本新增 V4、V4.1 模型版本识别、结构化输出、显式特殊 token 处理和前缀续写支持。\n\n## 为什么重要\n\n这次发布把竞争焦点从“谁开放了模型权重”进一步推向“谁能把模型稳定、低成本地跑起来”。深度求索公开了通常藏在内部的生产推理细节，为云厂商、国家级算力中心和自部署团队复现其吞吐设计提供了更直接的起点。限制也很明确：项目依赖新一代加速器和较强的系统工程能力，关键服务层并未全部包含。但它仍可能推动 DeepSeek 生态的性能优化，并让推理基础设施本身成为开源竞争的新战场。",
+      "date_published": "2026-10-20T09:30:00.000Z",
+      "date_modified": "2026-10-20T13:00:07.876Z",
+      "tags": [
+        "开源",
+        "模型",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-opens-deepinfer-inference-stack.html",
+        "source_published_at": "2026-10-20T09:30:00.000Z",
+        "site_published_at": "2026-10-20T13:00:07.876Z",
+        "sources": [
+          {
+            "title": "DeepSeek DeepInfer GitHub repository",
+            "url": "https://github.com/deepseek-ai/DeepInfer"
+          },
+          {
+            "title": "DeepSeek deepseek-recipe changelog",
+            "url": "https://github.com/deepseek-ai/deepseek-recipe/blob/main/CHANGELOG.md"
+          },
+          {
+            "title": "DeepSeek official announcement on X",
+            "url": "https://x.com/deepseek_ai/status/2112476496283775135"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/opencode-console-breach.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/opencode-console-breach.html",
       "title": "OpenCode控制台遭入侵，用户AI账户被刷费",
@@ -114,6 +155,43 @@
           {
             "title": "Tenstorrent hits $6.2B valuation to scale open-weight AI chips",
             "url": "https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-valuation-to-scale-open-weight-ai-chips/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/us-orders-deepseek-removal-federal-systems.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/us-orders-deepseek-removal-federal-systems.html",
+      "title": "美国要求联邦民用机构移除深度求索技术",
+      "summary": "美国国土安全部要求联邦民用机构移除深度求索及其衍生产品，并禁止采购相关技术。",
+      "content_text": "美国国土安全部要求联邦民用机构从信息技术系统中移除深度求索产品及相关实现，并禁止这些机构继续采购深度求索及其关联产品。禁令范围还延伸至使用深度求索技术开发的第三方服务。\n\n## 禁令覆盖范围\n\n这项措施通过《联邦公报》发布，依据的是联邦采购安全委员会相关机制。它针对的是联邦行政部门的民用机构，不适用于普通公众，也不是对私人企业或消费者使用深度求索的全面禁令。文件援引供应链和国家安全风险，包括敏感信息可能被传输至中国，以及软件安全方面的担忧。\n\n文件措辞明显超出“禁止访问聊天机器人”的范围。机构需要移除深度求索产品、关联方产品，以及集成深度求索实现的第三方工具。对于承包商和内部应用而言，即使最终用户看不到 DeepSeek 品牌，也可能需要重新审查底层模型来源。\n\n需要注意的是，相关命令此前已经签署，但在本期窗口内通过《联邦公报》正式公开，使其成为政府采购和技术清退体系中的正式记录。中国方面随后批评这一决定，认为这是华盛顿与北京技术竞争进一步升级的表现。\n\n## 为什么重要\n\n短期影响主要集中在美国联邦市场，并不会让全球开发者无法下载或运行深度求索模型。真正值得关注的是它形成的制度先例：美国政府正在把一个广泛传播的开放模型视作供应链风险，并将限制延伸到基于该模型构建的下游产品。此举可能迫使承包商建立更严格的模型来源记录，也会让各国政府更加重视权重、服务和衍生应用的技术溯源。深度求索仍然“可获得”，但在受监管公共部门中的“可使用性”正在下降。",
+      "date_published": "2026-10-20T11:34:00.000Z",
+      "date_modified": "2026-10-20T13:00:07.876Z",
+      "tags": [
+        "政策",
+        "安全",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/us-orders-deepseek-removal-federal-systems.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/us-orders-deepseek-removal-federal-systems.html",
+        "source_published_at": "2026-10-20T11:34:00.000Z",
+        "site_published_at": "2026-10-20T13:00:07.876Z",
+        "sources": [
+          {
+            "title": "Federal Register notice on DeepSeek products",
+            "url": "https://www.federalregister.gov/d/2026-21447"
+          },
+          {
+            "title": "Associated Press report on the federal ban",
+            "url": "https://apnews.com/article/2bffa5b0131808735280b2c0e6f0d856"
           }
         ]
       }
@@ -1810,87 +1888,6 @@
           {
             "title": "Claude Haiku 5.5",
             "url": "https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/google-gemini-agent-universal-work.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/google-gemini-agent-universal-work.html",
-      "title": "谷歌云推出 Gemini Agent，瞄准企业通用工作智能体",
-      "summary": "谷歌云发布 Gemini Agent，试图用一个统一入口协调知识工作、内容创作、编程及专用子智能体。",
-      "content_text": "谷歌云在 10 月 8 日举行的 Gemini at Work 活动上发布 Gemini Agent，将其定位为面向企业工作的通用智能体。\n\n## 从聊天助手转向任务代理\n\n谷歌称，用户可以直接给 Gemini Agent 设定目标，而不必逐步描述操作流程。它能够回答问题、处理知识工作、生成内容，并编写或运行代码；产品也将连接 Gemini Enterprise、Workspace 以及第三方服务。\n\n谷歌展示的案例已经超出传统问答。比如，经理收到要求制作项目进展演示文稿的邮件后，可以把任务交给 Gemini，由系统结合工作区上下文整理材料。若用户要求安排一次会议，智能体还可以根据聊天空间成员、历史邮件和日历信息推断参与者，并启动协调流程。\n\n谷歌同时强调 Gemini Agent 能调用专用子智能体。这意味着它试图成为企业工具和模型之上的编排层，而不只是又一个聊天窗口。\n\n## 为什么重要\n\n这次发布的战略意义在于，谷歌希望 Gemini 成为员工访问企业数据、软件和自动化流程的统一入口。它将直接挑战微软 Copilot、Salesforce 智能体平台，以及越来越多企业级工作流编排产品。\n\n真正的难点仍在执行。通用智能体必须准确理解公司语境、遵守权限边界，并在面对模糊指令时避免执行高成本或不可逆操作。谷歌拥有 Workspace 与云基础设施这一优势，但更大的行动权限也意味着更大的失误面。若 Gemini Agent 能稳定运行，企业 AI 的竞争重点将从单个助手的能力，转向谁能安全协调整条工作流程。",
-      "date_published": "2026-10-08T13:21:00.000Z",
-      "date_modified": "2026-10-08T13:22:59.613Z",
-      "tags": [
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-gemini-agent-universal-work.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-gemini-agent-universal-work.html",
-        "source_published_at": "2026-10-08T13:21:00.000Z",
-        "site_published_at": "2026-10-08T13:22:59.613Z",
-        "sources": [
-          {
-            "title": "Google Cloud Press Corner — Gemini at Work 2026",
-            "url": "https://www.googlecloudpresscorner.com/gemini-at-work-2026"
-          },
-          {
-            "title": "Google Cloud announces Gemini agent as universal AI agent for work",
-            "url": "https://9to5google.com/2026/10/08/gemini-agent-google-cloud/"
-          },
-          {
-            "title": "谷歌云发布 Gemini Agent",
-            "url": "https://www.ithome.com/1/010/706.htm"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/google-synthid-detector-public.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/google-synthid-detector-public.html",
-      "title": "Google向公众开放SynthID检测器，验证AI内容水印",
-      "summary": "Google全球开放SynthID检测器，任何人都可检查部分图像、视频和音频是否带有AI水印。",
-      "content_text": "## 发生了什么\n\nGoogle DeepMind宣布向所有人开放SynthID Detector公共验证门户。用户可以检查图像、视频或音频中是否存在与Google AI及合作伙伴生成或修改内容相关的隐形SynthID水印。\n\nGoogle称，SynthID水印经过设计，可以在滤镜等常见编辑后保留。检测器并不能识别所有合成媒体，只有在文件包含兼容水印时才能给出确认结果。Google表示，合作方包括OpenAI、英伟达和Kakao，苹果预计稍后加入。\n\nGoogle称，目前已有超过1800亿张图像和视频带有SynthID水印。此次公开上线此前面向记者和媒体专业人士的测试。用户可以把文件上传到检测门户，在部分场景下，Gemini、Google搜索和Chrome也能提供相关检测能力。\n\n## 为什么重要\n\n检测器公开后，内容溯源开始从实验室功能变成公共工具，但它并没有解决更广泛的识别难题。水印覆盖范围取决于生成工具是否采用SynthID，而检测结果更多只能说明文件是否经过参与计划的生产流程。即便如此，它仍为媒体机构、平台和调查人员提供了可实际使用的基础设施。最终影响力取决于更多图像、视频和音频服务是否采用兼容标记，以及行业能否把检测结果嵌入发布流程，而不是把它误当成绝对证据。",
-      "date_published": "2026-10-07T14:00:00.000Z",
-      "date_modified": "2026-10-07T23:00:05.932Z",
-      "tags": [
-        "政策",
-        "安全",
-        "AIGC"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-synthid-detector-public.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-synthid-detector-public.html",
-        "source_published_at": "2026-10-07T14:00:00.000Z",
-        "site_published_at": "2026-10-07T23:00:05.932Z",
-        "sources": [
-          {
-            "title": "Google rolls out improved SynthID AI content detector, now available globally",
-            "url": "https://arstechnica.com/ai/2026/10/google-rolls-out-improved-synthid-ai-content-detector-now-available-globally/"
-          },
-          {
-            "title": "Google SynthID",
-            "url": "https://deepmind.google/models/synthid/"
-          },
-          {
-            "title": "SynthID Detector is now available to everyone",
-            "url": "https://x.com/GoogleDeepMind/status/2107834249680499136"
           }
         ]
       }

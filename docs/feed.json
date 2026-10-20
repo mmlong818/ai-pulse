@@ -49,6 +49,47 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html",
+      "title": "DeepSeek Open-Sources the Inference Stack Behind V4.1 Flash",
+      "summary": "DeepSeek released DeepInfer and deepseek-recipe, opening the serving software behind its latest model and lowering barriers to large-scale deployment.",
+      "content_text": "DeepSeek has open-sourced DeepInfer, an inference framework it says powers production services for DeepSeek-V4.1-Flash, alongside the supporting deepseek-recipe libraries. The release covers more than a model wrapper: it includes optimized kernels, mixture-of-experts parallelism, speculative decoding, asynchronous scheduling, deterministic sampling and structured-output controls.\n\n## What is included\n\nDeepInfer supports DeepSeek-V4.1-Flash and is designed for large-scale offline inference. Its feature set includes FlashMLA, DeepGEMM, DeepEP, TileKernels and custom TileLang kernels, plus attention data parallelism, context parallelism and expert-parallel load balancing. DeepSeek also exposes confidence-scheduled verification and bounded replay techniques intended to reduce decoding and prefill overhead.\n\nThe repository supports NVIDIA SM100 GPUs and Huawei Ascend 950 NPUs. It is released under Apache 2.0, but it is not a complete managed serving platform: DeepSeek lists KV-cache management, full prefill/decode disaggregation and replica-level load balancing as components users still need to supply.\n\nDeepSeek also published a refreshed version of deepseek-recipe, its Rust and Python toolkit for converting common API formats into DeepSeek prompts and responses. The October 20 release adds model-version handling for V4 and V4.1, structured-output support, explicit special-token handling and prefix continuation.\n\n## Why it matters\n\nThe move shifts attention from open model weights to the production machinery required to make them economically useful. DeepSeek is exposing implementation details that normally remain inside a lab’s serving stack, giving cloud providers, national-computing centers and self-hosting teams a clearer route to reproduce its throughput-oriented design. The practical limit is hardware and systems expertise: the repository still assumes recent accelerators and leaves several critical service layers outside the release. Even so, opening the stack could accelerate optimization around DeepSeek models and make inference infrastructure itself a more competitive open-source battleground.",
+      "date_published": "2026-10-20T09:30:00.000Z",
+      "date_modified": "2026-10-20T13:00:07.876Z",
+      "tags": [
+        "Open Source",
+        "Models",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-opens-deepinfer-inference-stack.html",
+        "source_published_at": "2026-10-20T09:30:00.000Z",
+        "site_published_at": "2026-10-20T13:00:07.876Z",
+        "sources": [
+          {
+            "title": "DeepSeek DeepInfer GitHub repository",
+            "url": "https://github.com/deepseek-ai/DeepInfer"
+          },
+          {
+            "title": "DeepSeek deepseek-recipe changelog",
+            "url": "https://github.com/deepseek-ai/deepseek-recipe/blob/main/CHANGELOG.md"
+          },
+          {
+            "title": "DeepSeek official announcement on X",
+            "url": "https://x.com/deepseek_ai/status/2112476496283775135"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html",
       "title": "OpenCode Console breach exposes AI API keys and costs",
@@ -114,6 +155,43 @@
           {
             "title": "Tenstorrent hits $6.2B valuation to scale open-weight AI chips",
             "url": "https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-valuation-to-scale-open-weight-ai-chips/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/us-orders-deepseek-removal-federal-systems.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/us-orders-deepseek-removal-federal-systems.html",
+      "title": "US Orders DeepSeek Removed From Federal Civilian Systems",
+      "summary": "A DHS order bars civilian agencies from buying DeepSeek technology and requires removal of third-party products built on its implementations.",
+      "content_text": "The U.S. Department of Homeland Security has ordered federal civilian agencies to remove DeepSeek products and related implementations from their information-technology systems. The notice also excludes DeepSeek and affiliated products from future civilian-agency procurement, extending the restriction to third-party services developed using DeepSeek technology.\n\n## What the order covers\n\nThe action was published through the Federal Register under the Federal Acquisition Security Council framework. It applies to civilian executive-branch agencies rather than the general public, and it is not a blanket prohibition on private companies or consumers using DeepSeek. The order cites supply-chain and national-security concerns, including the possibility of sensitive information being transferred to China and alleged software-security risks.\n\nThe wording is broader than a simple ban on visiting DeepSeek’s public chatbot. Agencies must remove DeepSeek products, affiliated offerings and third-party tools that incorporate DeepSeek implementations. That could affect contractors and internal applications even when DeepSeek is not the visible brand presented to employees.\n\nThe timing is important. The order itself was issued earlier, but its Federal Register publication makes the restriction part of the government’s formal procurement and technology-removal record during this edition window. China criticized the move, framing it as another escalation in the technology conflict between Washington and Beijing.\n\n## Why it matters\n\nThe immediate commercial impact is concentrated in the U.S. federal market, not the global developer community. Its broader significance is precedent: Washington is treating a widely distributed open model as a supply-chain risk and extending restrictions to downstream products built on it. That approach could complicate compliance for contractors and encourage governments to demand provenance records for model weights and inference services. It also creates a sharper split between technical availability and institutional usability: DeepSeek may remain easy to download, while becoming harder to deploy in regulated public-sector environments.",
+      "date_published": "2026-10-20T11:34:00.000Z",
+      "date_modified": "2026-10-20T13:00:07.876Z",
+      "tags": [
+        "Policy",
+        "Safety",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/us-orders-deepseek-removal-federal-systems.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/us-orders-deepseek-removal-federal-systems.html",
+        "source_published_at": "2026-10-20T11:34:00.000Z",
+        "site_published_at": "2026-10-20T13:00:07.876Z",
+        "sources": [
+          {
+            "title": "Federal Register notice on DeepSeek products",
+            "url": "https://www.federalregister.gov/d/2026-21447"
+          },
+          {
+            "title": "Associated Press report on the federal ban",
+            "url": "https://apnews.com/article/2bffa5b0131808735280b2c0e6f0d856"
           }
         ]
       }
@@ -1810,87 +1888,6 @@
           {
             "title": "Claude Haiku 5.5",
             "url": "https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/google-gemini-agent-universal-work.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/google-gemini-agent-universal-work.html",
-      "title": "Google Cloud Introduces Gemini Agent for Enterprise Work",
-      "summary": "Google Cloud unveiled a universal work agent that can coordinate knowledge tasks, content creation, coding, and specialized sub-agents from one interface.",
-      "content_text": "Google Cloud has introduced Gemini agent, a general-purpose enterprise assistant positioned as a single entry point for workplace tasks. The announcement was made at Google’s Gemini at Work event on October 8.\n\n## One agent, many workflows\n\nGoogle describes Gemini agent as a system users can give objectives rather than step-by-step instructions. It can answer questions, perform knowledge work, create content, and write or run code. The agent is designed to operate across Gemini Enterprise, Workspace, and connected third-party services.\n\nThe examples Google provided move beyond chat-based assistance. A manager could delegate the creation of a project-update deck from an email. The system can infer relevant colleagues from workplace context, check calendars, and begin coordinating a meeting without requiring the user to provide every name or address.\n\nGoogle also says Gemini agent can work with specialized sub-agents. That suggests the product is intended to become an orchestration layer over enterprise tools and models, rather than simply another conversational interface.\n\n## Why it matters\n\nThe significance is strategic: Google is trying to make its workplace AI the operating surface through which employees access data, software, and delegated actions. That places Gemini directly against Microsoft’s Copilot ecosystem, Salesforce’s agent platform, and a growing field of enterprise orchestration products.\n\nThe unresolved issue is execution. A universal agent must reliably interpret company context, respect permissions, and avoid taking costly or irreversible actions on ambiguous instructions. Google’s advantage is its control of Workspace and cloud infrastructure; its risk is that broader authority creates a much larger failure surface. If the product works, enterprise AI competition may shift from isolated assistants to the platforms that can safely coordinate entire work processes.",
-      "date_published": "2026-10-08T13:21:00.000Z",
-      "date_modified": "2026-10-08T13:22:59.613Z",
-      "tags": [
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-gemini-agent-universal-work.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-gemini-agent-universal-work.html",
-        "source_published_at": "2026-10-08T13:21:00.000Z",
-        "site_published_at": "2026-10-08T13:22:59.613Z",
-        "sources": [
-          {
-            "title": "Google Cloud Press Corner — Gemini at Work 2026",
-            "url": "https://www.googlecloudpresscorner.com/gemini-at-work-2026"
-          },
-          {
-            "title": "Google Cloud announces Gemini agent as universal AI agent for work",
-            "url": "https://9to5google.com/2026/10/08/gemini-agent-google-cloud/"
-          },
-          {
-            "title": "谷歌云发布 Gemini Agent",
-            "url": "https://www.ithome.com/1/010/706.htm"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/google-synthid-detector-public.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/google-synthid-detector-public.html",
-      "title": "Google Opens SynthID Detector for Public AI Content Checks",
-      "summary": "Google is opening its SynthID verification portal globally, allowing anyone to check selected image, video and audio files for watermarks.",
-      "content_text": "## What happened\n\nGoogle DeepMind said SynthID Detector is now available to everyone through a public verification portal. The service checks whether images, video or audio contain an invisible SynthID watermark associated with content generated or altered by Google AI and participating partners.\n\nGoogle says SynthID watermarks are designed to survive common edits such as filters and other transformations. The detector does not identify every piece of synthetic media; it can only confirm the presence of a compatible watermark. Google said the partner set includes OpenAI, NVIDIA and Kakao, with Apple expected to join later.\n\nThe company said more than 180 billion images and videos now carry SynthID watermarks. The public launch follows an earlier period of restricted testing with journalists and media professionals. Users can upload content to the portal, while related detection is also available through Gemini, Search and Chrome in supported situations.\n\n## Why it matters\n\nOpening the detector turns provenance from a lab feature into a public utility, but it does not solve the broader identification problem. Watermark coverage depends on whether a generator embeds SynthID, and a positive result says more about participating production pipelines than about the entire history of a file. The move nevertheless establishes a practical infrastructure layer for newsrooms, platforms and investigators. Its influence will depend on whether major image, video and audio providers adopt compatible marks and whether verification results can be incorporated into publishing workflows without being treated as absolute proof.",
-      "date_published": "2026-10-07T14:00:00.000Z",
-      "date_modified": "2026-10-07T23:00:05.932Z",
-      "tags": [
-        "Policy",
-        "Safety",
-        "AIGC"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-synthid-detector-public.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-synthid-detector-public.html",
-        "source_published_at": "2026-10-07T14:00:00.000Z",
-        "site_published_at": "2026-10-07T23:00:05.932Z",
-        "sources": [
-          {
-            "title": "Google rolls out improved SynthID AI content detector, now available globally",
-            "url": "https://arstechnica.com/ai/2026/10/google-rolls-out-improved-synthid-ai-content-detector-now-available-globally/"
-          },
-          {
-            "title": "Google SynthID",
-            "url": "https://deepmind.google/models/synthid/"
-          },
-          {
-            "title": "SynthID Detector is now available to everyone",
-            "url": "https://x.com/GoogleDeepMind/status/2107834249680499136"
           }
         ]
       }

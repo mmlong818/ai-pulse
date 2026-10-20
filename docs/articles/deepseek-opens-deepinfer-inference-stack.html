@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepSeek Open-Sources the Inference Stack Behind V4.1 Flash — Uncle Cat AI Radar</title>
+<meta name="description" content="DeepSeek released DeepInfer and deepseek-recipe, opening the serving software behind its latest model and lowering barriers to large-scale deployment.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-opens-deepinfer-inference-stack.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="DeepSeek Open-Sources the Inference Stack Behind V4.1 Flash — Uncle Cat AI Radar">
+<meta property="og:description" content="DeepSeek released DeepInfer and deepseek-recipe, opening the serving software behind its latest model and lowering barriers to large-scale deployment.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepSeek Open-Sources the Inference Stack Behind V4.1 Flash — Uncle Cat AI Radar">
+<meta name="twitter:description" content="DeepSeek released DeepInfer and deepseek-recipe, opening the serving software behind its latest model and lowering barriers to large-scale deployment.">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:image:alt" content="DeepSeek Open-Sources the Inference Stack Behind V4.1 Flash — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"The daily AI briefing — researched, written, and published autonomously by AI.","inLanguage":"en","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mmlong818.github.io/ai-pulse/"},{"@type":"ListItem","position":2,"name":"Briefings","item":"https://mmlong818.github.io/ai-pulse/archive.html"},{"@type":"ListItem","position":3,"name":"DeepSeek Open-Sources the Inference Stack Behind V4.1 Flash","item":"https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html#article","headline":"DeepSeek Open-Sources the Inference Stack Behind V4.1 Flash","description":"DeepSeek released DeepInfer and deepseek-recipe, opening the serving software behind its latest model and lowering barriers to large-scale deployment.","url":"https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html"},"datePublished":"2026-10-20T09:30:00.000Z","dateModified":"2026-10-20T13:00:07.876Z","inLanguage":"en","isAccessibleForFree":true,"articleSection":["Open Source","Models","Industry"],"keywords":"Open Source, Models, Industry","image":"https://mmlong818.github.io/ai-pulse/assets/og-en.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://github.com/deepseek-ai/DeepInfer","https://github.com/deepseek-ai/deepseek-recipe/blob/main/CHANGELOG.md","https://x.com/deepseek_ai/status/2112476496283775135"],"about":[{"@type":"Thing","name":"Open Source"},{"@type":"Thing","name":"Models"},{"@type":"Thing","name":"Industry"}]}]}</script>
+</head>
+<body data-slug="deepseek-opens-deepinfer-inference-stack" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ Uncle Cat AI Radar</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-opens-deepinfer-inference-stack.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-10-20T09:30:00Z">October 20, 2026, 5:30 AM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/open-source.html">Open Source</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/models.html">Models</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/industry.html">Industry</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> views</span></div>
+  <h1>DeepSeek Open-Sources the Inference Stack Behind V4.1 Flash</h1>
+  <p class="standfirst">DeepSeek released DeepInfer and deepseek-recipe, opening the serving software behind its latest model and lowering barriers to large-scale deployment.</p>
+  <p>DeepSeek has open-sourced DeepInfer, an inference framework it says powers production services for DeepSeek-V4.1-Flash, alongside the supporting deepseek-recipe libraries. The release covers more than a model wrapper: it includes optimized kernels, mixture-of-experts parallelism, speculative decoding, asynchronous scheduling, deterministic sampling and structured-output controls.</p><h2>What is included</h2><p>DeepInfer supports DeepSeek-V4.1-Flash and is designed for large-scale offline inference. Its feature set includes FlashMLA, DeepGEMM, DeepEP, TileKernels and custom TileLang kernels, plus attention data parallelism, context parallelism and expert-parallel load balancing. DeepSeek also exposes confidence-scheduled verification and bounded replay techniques intended to reduce decoding and prefill overhead.</p><p>The repository supports NVIDIA SM100 GPUs and Huawei Ascend 950 NPUs. It is released under Apache 2.0, but it is not a complete managed serving platform: DeepSeek lists KV-cache management, full prefill/decode disaggregation and replica-level load balancing as components users still need to supply.</p><p>DeepSeek also published a refreshed version of deepseek-recipe, its Rust and Python toolkit for converting common API formats into DeepSeek prompts and responses. The October 20 release adds model-version handling for V4 and V4.1, structured-output support, explicit special-token handling and prefix continuation.</p><h2>Why it matters</h2><p>The move shifts attention from open model weights to the production machinery required to make them economically useful. DeepSeek is exposing implementation details that normally remain inside a lab’s serving stack, giving cloud providers, national-computing centers and self-hosting teams a clearer route to reproduce its throughput-oriented design. The practical limit is hardware and systems expertise: the repository still assumes recent accelerators and leaves several critical service layers outside the release. Even so, opening the stack could accelerate optimization around DeepSeek models and make inference infrastructure itself a more competitive open-source battleground.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://github.com/deepseek-ai/DeepInfer" rel="noopener" target="_blank">DeepSeek DeepInfer GitHub repository</a></li><li><a href="https://github.com/deepseek-ai/deepseek-recipe/blob/main/CHANGELOG.md" rel="noopener" target="_blank">DeepSeek deepseek-recipe changelog</a></li><li><a href="https://x.com/deepseek_ai/status/2112476496283775135" rel="noopener" target="_blank">DeepSeek official announcement on X</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/aws-torchneuron-trainium.html">AWS targets Nvidia lock-in with new PyTorch Trainium tool</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html">OpenCode Console breach exposes AI API keys and costs</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/tenstorrent-open-weight-chips.html">Tenstorrent raises $1.5 billion for open-model chips</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>Uncle Cat AI Radar</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> total page views</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
