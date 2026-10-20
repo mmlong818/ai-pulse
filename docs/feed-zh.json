@@ -13,6 +13,112 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/aws-torchneuron-trainium.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/aws-torchneuron-trainium.html",
+      "title": "AWS推出TorchNeuron，正面挑战英伟达软件壁垒",
+      "summary": "AWS发布TorchNeuron，试图让PyTorch开发者以极少代码改动迁移到Trainium，切入英伟达最牢固的软件优势。",
+      "content_text": "## 新工具做什么\n\n亚马逊云科技推出TorchNeuron，目标是降低初创公司和其他PyTorch用户在AWS Trainium芯片上运行AI应用的门槛。AWS称，部分工作负载只需修改一行配置，无需大规模重写代码即可迁移。\n\n这直接瞄准英伟达以CUDA为核心的软件生态。PyTorch广泛用于模型训练和推理，而英伟达多年来持续优化相关工具，使其硬件成为PyTorch应用的默认运行平台。AWS正在为Trainium适配PyTorch，并表示会把相关改动贡献回上游项目，让框架不再过度绑定某一家芯片厂商。\n\nAWS还把Trainium包装成完整云服务的一部分。开发者可以在同一平台上完成训练和推理，再接入存储、网络、部署等AWS服务。亚马逊以Deepgram为例称，其语音识别工作负载迁移后，在不同离线配置下每美元可处理的音频量提升了11%至70%。\n\n## 哪些地方仍待验证\n\n迁移更简单，确实能降低采用定制AI芯片的最大障碍之一，但不同加速器之间的工程差异不会因此消失。真实表现仍取决于模型结构、算子支持、编译器成熟度和具体工作负载。AWS目前公布的最好结果主要来自吞吐导向的语音任务，并不是覆盖前沿模型的通用基准。\n\n不过，这次发布的意义在于它从软件层挑战英伟达的护城河，而不是只在芯片参数或小时租用价格上竞争。如果PyTorch真正变得更具硬件中立性，云客户在英伟达、Trainium、AMD等方案之间的议价空间都会扩大。\n\n**猫叔判断：**TorchNeuron的一行迁移并非重点，AWS试图把硬件中立写进PyTorch上游，才是英伟达需要警惕的长期动作。",
+      "date_published": "2026-10-19T20:09:00.000Z",
+      "date_modified": "2026-10-20T01:00:06.421Z",
+      "tags": [
+        "产业",
+        "模型"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/aws-torchneuron-trainium.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/aws-torchneuron-trainium.html",
+        "source_published_at": "2026-10-19T20:09:00.000Z",
+        "site_published_at": "2026-10-20T01:00:06.421Z",
+        "sources": [
+          {
+            "title": "Amazon is taking its biggest shot at Nvidia yet with new TorchNeuron dev tool",
+            "url": "https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/"
+          },
+          {
+            "title": "How Deepgram optimized voice AI at scale with AWS Trainium",
+            "url": "https://aws.amazon.com/blogs/machine-learning/how-deepgram-optimized-voice-ai-at-scale-with-aws-trainium/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/opencode-console-breach.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/opencode-console-breach.html",
+      "title": "OpenCode控制台遭入侵，用户AI账户被刷费",
+      "summary": "一次影响1.4%控制台用户的入侵导致API密钥暴露和异常账单，也暴露了防御团队调用模型时的现实障碍。",
+      "content_text": "## 发生了什么\n\nOpenCode表示，攻击者入侵了与OpenCode Console相关的一套旧系统。Console是面向开发者的托管服务，用户可以在其中保存模型服务商凭证并运行编码工作流。公司称，受影响的是1.4%的Console用户，开源版OpenCode应用和命令行工具本身没有被攻破。\n\n多名用户报告OpenAI、Anthropic和Google账户突然触发消费预警，并出现未经授权的调用费用。部分损失达到数百美元，少数用户称金额超过1000美元。Anthropic和Google已封禁疑似暴露的密钥，OpenAI则与OpenCode合作恢复访问并处理退款。OpenCode建议受影响用户直接在各模型服务商处撤销并更换凭证。\n\n这起事件的性质仍存在争议。OpenCode最初将其描述为大规模模型蒸馏攻击，但外部观察者指出，目前公开证据能够确认的是凭证泄露，尚不足以证明攻击者的最终目的。OpenCode还称，攻击持续了约48小时，团队不得不让防御代理持续运行以分析入侵。\n\n## 为什么重要\n\n这不只是一个开发者平台的安全事故。随着AI编码工具成为用户与多个模型服务商之间的中间层，存储在其中的API密钥也变成了集中式攻击目标。一次平台入侵，可能同时造成多家模型公司的费用和访问风险。\n\n事件还暴露出一个实际的安全矛盾：模型在分析恶意载荷时可能触发安全拒答，即便操作者是在进行应急响应。OpenCode后来获得了OpenAI Daybreak Blue项目的访问权限，该项目提供更适合防御性安全工作的模型。对使用代理式编码系统的企业来说，这种经过审核的应急访问机制可能会成为基础设施的一部分。\n\n**猫叔判断：**1.4%的受影响用户并不能代表风险大小；一个控制台漏洞，就能把三家模型商的账单入口交给同一批攻击者。",
+      "date_published": "2026-10-19T19:28:00.000Z",
+      "date_modified": "2026-10-20T01:00:06.421Z",
+      "tags": [
+        "安全",
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/opencode-console-breach.html",
+        "source_published_at": "2026-10-19T19:28:00.000Z",
+        "site_published_at": "2026-10-20T01:00:06.421Z",
+        "sources": [
+          {
+            "title": "Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts",
+            "url": "https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/"
+          },
+          {
+            "title": "OpenCode",
+            "url": "https://opencode.ai/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tenstorrent-open-weight-chips.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tenstorrent-open-weight-chips.html",
+      "title": "Tenstorrent融资15亿美元，押注开放模型推理芯片",
+      "summary": "AI芯片公司Tenstorrent融资15亿美元、估值升至62亿美元，将扩大面向开放权重模型和视频生成的推理硬件。",
+      "content_text": "## 融资情况\n\nAI芯片初创公司Tenstorrent完成15亿美元融资，估值达到62亿美元，相比2024年底披露的26亿美元估值增长一倍以上。本轮由Trace Capital和Innovation X领投，Cadence Ventures、Eclipse、富达、SanDisk以及T. Rowe Price等机构跟投。\n\nTenstorrent希望成为英伟达之外的选择，重点开发面向推理的芯片和服务器。CEO吉姆·凯勒表示，公司在证明Galaxy服务器能够运行DeepSeek模型后，决定继续保持独立。新资金将用于扩大生产，并开发更适合开放权重模型和视频生成任务的硬件。\n\n这笔融资反映出加速器市场正在变化。AI行业的竞争不再只围绕训练最大规模的闭源模型展开，开放权重系统也在被云厂商、企业和开发者部署。它们更在意模型权重、数据位置和运营成本的控制，因此对推理经济性更好的专用硬件产生了新需求。\n\n## 仍然存在的限制\n\nTenstorrent获得高估值，并不意味着它已经具备与英伟达匹敌的软件生态、供应链和装机基础。公司展示DeepSeek模型的演示证明了可行性，却不能替代生产环境的大规模采用。接下来，它仍需把芯片架构和服务器能力转化为稳定的开发工具、可预测的供货能力和有竞争力的总体拥有成本。\n\n但这轮融资仍然重要：它让一家非英伟达加速器公司拥有足够资金，同时推进硬件和软件布局，而开放模型正在扩大潜在市场。如果Tenstorrent成功，模型开发者和不愿长期绑定单一供应商的客户都将获得更多选择。\n\n**猫叔判断：**62亿美元估值押注的是推理需求，但Tenstorrent真正要证明的，是DeepSeek演示能否变成可重复的生产部署。",
+      "date_published": "2026-10-19T18:37:00.000Z",
+      "date_modified": "2026-10-20T01:00:06.421Z",
+      "tags": [
+        "融资",
+        "产业",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tenstorrent-open-weight-chips.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tenstorrent-open-weight-chips.html",
+        "source_published_at": "2026-10-19T18:37:00.000Z",
+        "site_published_at": "2026-10-20T01:00:06.421Z",
+        "sources": [
+          {
+            "title": "Tenstorrent hits $6.2B valuation to scale open-weight AI chips",
+            "url": "https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-valuation-to-scale-open-weight-ai-chips/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-public-benefit-fund.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-public-benefit-fund.html",
       "title": "Anthropic承诺拿出5%股份设立公共利益基金",
@@ -1785,128 +1891,6 @@
           {
             "title": "SynthID Detector is now available to everyone",
             "url": "https://x.com/GoogleDeepMind/status/2107834249680499136"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/liquid-open-d1-edge-models.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/liquid-open-d1-edge-models.html",
-      "title": "Liquid AI开源d1系列，面向边缘设备快速决策",
-      "summary": "Liquid AI发布两款开放权重多模态决策模型，主打在手机、电脑和边缘硬件上快速输出结构化选择。",
-      "content_text": "## 发生了什么\n\nLiquid AI通过Hugging Face发布两款开放权重决策模型：d1-3B和d1-omni-600M。它们的目标不是生成长篇自然语言，而是输出结构化决策。两款模型都支持文字和视觉输入，其中d1-omni-600M还支持音频输入，适用于分类、路由及其他需要快速选择动作的场景。\n\nLiquid AI公布的测试数据显示，d1-3B在NVIDIA GeForce RTX 4090上的单问题响应时间为8毫秒，在Jetson AGX Thor上为16毫秒，在Jetson AGX Orin上为26毫秒，在Jetson Orin Nano上为50毫秒。模型还可以处理连续问题，同时只增加有限延迟，这对高频控制环路可能有价值。\n\nLiquid AI表示，d1-3B在本次发布中提供更高的决策质量，d1-omni-600M则面向内存和算力更加受限的环境。两款模型均可从Hugging Face下载，但通过Transformers加载时需要启用自定义模型代码。\n\n## 为什么重要\n\n决策模型的方向比通用聊天模型更窄，但窄正是它的优势。输出校准后的选择或动作，通常比生成开放式文本再交给另一组件解释更便宜，也更容易验证。尚未解决的问题是泛化能力：当前延迟和基准结果说明它们适合边缘部署，却不能证明模型能在测试任务之外安全处理含糊或高风险决策。它们最终的重要性，取决于开发者是否把它们当作可靠的控制组件，而不是缩小版聊天机器人。",
-      "date_published": "2026-10-07T16:54:00.000Z",
-      "date_modified": "2026-10-07T23:00:05.932Z",
-      "tags": [
-        "开源",
-        "模型",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/liquid-open-d1-edge-models.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/liquid-open-d1-edge-models.html",
-        "source_published_at": "2026-10-07T16:54:00.000Z",
-        "site_published_at": "2026-10-07T23:00:05.932Z",
-        "sources": [
-          {
-            "title": "Multimodal open d1 decision models for the edge",
-            "url": "https://huggingface.co/blog/LiquidAI/open-d1"
-          },
-          {
-            "title": "LiquidAI/d1-3B",
-            "url": "https://huggingface.co/LiquidAI/d1-3B"
-          },
-          {
-            "title": "Liquid AI announces open d1 decision models",
-            "url": "https://www.liquid.ai/blog/open-d1"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt6-intelligent-ui.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt6-intelligent-ui.html",
-      "title": "OpenAI推出GPT-6，聊天回答可直接生成交互界面",
-      "summary": "OpenAI让ChatGPT回答加入图表、按钮和小工具，聊天机器人开始从文字问答转向即时生成操作界面。",
-      "content_text": "## 发生了什么\n\nOpenAI开始向全球ChatGPT Plus、Pro、Business和Enterprise用户推送GPT-6及其新功能“智能界面”（Intelligent UI），Free和Go用户将在次日获得更新。付费用户使用GPT-6 Sol，低价套餐使用GPT-6 Luna；Codex和ChatGPT Work所用模型暂未改变。\n\n智能界面可以把文字与图形、图表、表单、按钮以及小型交互工具组合在同一条回答中。用户询问储蓄计算、旅行规划或复杂知识时，ChatGPT不再只能返回静态文字，而是可以在对话中即时生成针对任务的操作界面。OpenAI称，系统基于一套原生、可流式传输的组件库，并配有编译器，让界面随模型输出逐步呈现。\n\nGPT-6还能够在继续思考或调用工具的同时先开始回答，再补充后续发现。OpenAI在内部评测中称，GPT-6 Instant在需要网页搜索的问题上，平均比GPT-5.6 Instant早44%开始作答，但公司尚未公布针对交互界面质量的独立基准测试。\n\n## 为什么重要\n\n这不仅是一次模型升级，也是产品战略的变化。ChatGPT正在成为一个可以按需组装轻量软件的入口，可能把部分原本需要表格、仪表盘或专门应用完成的任务吸收到对话里。真正的限制在可靠性：如果界面看起来很有用，却算错数字或隐藏关键假设，风险可能高于普通文字回答。这次发布考验的是，生成式界面能否成为可信的工作层，而不只是更漂亮的展示方式。",
-      "date_published": "2026-10-07T18:00:00.000Z",
-      "date_modified": "2026-10-07T23:00:05.932Z",
-      "tags": [
-        "模型",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt6-intelligent-ui.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt6-intelligent-ui.html",
-        "source_published_at": "2026-10-07T18:00:00.000Z",
-        "site_published_at": "2026-10-07T23:00:05.932Z",
-        "sources": [
-          {
-            "title": "GPT-6 and Intelligent UI for everyone",
-            "url": "https://openai.com/index/gpt-6-for-everyone/"
-          },
-          {
-            "title": "ChatGPT release notes",
-            "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
-          },
-          {
-            "title": "ChatGPT is getting a lot more visual, with the launch of a new interface",
-            "url": "https://techcrunch.com/2026/10/07/chatgpt-is-getting-a-lot-more-visual-with-the-launch-of-a-new-interface/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-multimodal-embedding-models.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-multimodal-embedding-models.html",
-      "title": "Perplexity发布支持图文检索的新嵌入模型",
-      "summary": "Perplexity推出0.6B和9B两款迟交互嵌入模型，让文本、图像与渲染PDF页面进入同一检索空间。",
-      "content_text": "Perplexity发布pplx-embed-v2-late嵌入模型系列，包含两款迟交互模型，目标是在统一表示空间中检索文本、图像和渲染后的文档页面。该产品承接公司此前推出的上下文嵌入模型，进一步把竞争推进到搜索和智能体系统背后的检索层。\n\n与把整篇文档或查询压缩成单一向量的做法不同，这两款模型会为输入保留多个向量。这样一来，查询中的不同部分可以分别匹配页面中的不同区域，从而保留单向量检索容易丢失的局部细节。Perplexity还表示，模型支持文本到图像检索，包括直接搜索渲染后的PDF页面，而不必先把每一页完整转换成可读取文本。\n\n此次发布包含一款6亿参数的查询编码器和一款90亿参数的索引模型。Perplexity的设计明显将两者分工：较小模型负责查询侧调用，较大模型用于建立搜索索引。对实际部署而言，这意味着查询端可以保持较轻，而更昂贵的计算主要发生在离线或索引阶段。\n\n这不是一场显眼的通用大模型发布，却击中了AI搜索和智能体能否找到可靠证据的基础环节。多模态检索有望改善图表、页面布局和图像密集报告的访问效果，但最终收益仍取决于索引成本、延迟、授权和独立评测。它释放出的战略信号很明确：模型竞争正深入检索栈，而更好的表示方式会影响后续每一次生成调用。",
-      "date_published": "2026-10-08T05:39:00.000Z",
-      "date_modified": "2026-10-08T11:00:05.916Z",
-      "tags": [
-        "模型",
-        "研究",
-        "开源"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/perplexity-multimodal-embedding-models.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-multimodal-embedding-models.html",
-        "source_published_at": "2026-10-08T05:39:00.000Z",
-        "site_published_at": "2026-10-08T11:00:05.916Z",
-        "sources": [
-          {
-            "title": "Multimodal embeddings beyond a single vector",
-            "url": "https://www.perplexity.ai/sr-Cyrl-ME/hub/blog/multimodal-embeddings-beyond-a-single-vector"
-          },
-          {
-            "title": "We're releasing pplx-embed-v2-late",
-            "url": "https://community.perplexity.ai/c/announcements/9"
-          },
-          {
-            "title": "Perplexity AI Releases pplx-embed-v2-late",
-            "url": "https://www.marktechpost.com/2026/10/07/perplexity-ai-releases-pplx-embed-v2-late-a-0-6b-edge-model-and-a-9b-model-scoring-92-4-on-madqa/"
           }
         ]
       }

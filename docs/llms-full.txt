@@ -19,6 +19,104 @@
 
 ## Recent briefings
 
+### AWS targets Nvidia lock-in with new PyTorch Trainium tool
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/aws-torchneuron-trainium.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/aws-torchneuron-trainium.html
+- Source timestamp: 2026-10-19T20:09:00.000Z
+- Site timestamp: 2026-10-20T01:00:06.421Z
+- Tags: Industry, Models
+
+AWS introduced TorchNeuron to let PyTorch developers move workloads to Trainium with minimal code changes, challenging Nvidia’s software advantage.
+
+## The release
+
+Amazon Web Services introduced TorchNeuron, a development tool intended to make it easier for startups and other PyTorch users to run AI applications on AWS Trainium chips. AWS says many workloads can be moved with a one-line configuration change rather than a substantial rewrite.
+
+The strategic target is Nvidia’s CUDA-centered software ecosystem. PyTorch is widely used for training and inference, and Nvidia has spent years making its hardware the default destination for PyTorch applications. AWS is adapting PyTorch integration for Trainium while saying it plans to contribute changes upstream to make the framework less tied to any specific chip vendor.
+
+AWS also presents Trainium as part of a broader cloud proposition. Developers can use the same platform for training and inference, then connect those workloads to storage, networking, deployment and other AWS services. Amazon cited Deepgram as an example: after porting a speech-recognition workload, the company reported processing 11% to 70% more audio per dollar in different offline configurations.
+
+## What remains unproven
+
+A simpler migration path lowers one of the biggest barriers to custom AI hardware adoption, but it does not erase the engineering differences between accelerators. Performance depends on model architecture, operators, compiler maturity and workload shape. AWS’s strongest published results came from throughput-oriented speech workloads rather than a universal benchmark across frontier models.
+
+Still, the release matters because it attacks Nvidia’s moat at the software layer instead of competing only on chip specifications or hourly price. If PyTorch becomes genuinely more hardware-agnostic, cloud customers could gain more leverage when choosing between Nvidia, Trainium, AMD and other accelerators.
+
+**Uncle Cat take:** TorchNeuron matters less for its one-line migration claim than for AWS pushing hardware neutrality into PyTorch itself; that is the part Nvidia should watch.
+
+Chinese title: AWS推出TorchNeuron，正面挑战英伟达软件壁垒
+Chinese summary: AWS发布TorchNeuron，试图让PyTorch开发者以极少代码改动迁移到Trainium，切入英伟达最牢固的软件优势。
+
+Sources:
+  - Amazon is taking its biggest shot at Nvidia yet with new TorchNeuron dev tool: https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/
+  - How Deepgram optimized voice AI at scale with AWS Trainium: https://aws.amazon.com/blogs/machine-learning/how-deepgram-optimized-voice-ai-at-scale-with-aws-trainium/
+
+### OpenCode Console breach exposes AI API keys and costs
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/opencode-console-breach.html
+- Source timestamp: 2026-10-19T19:28:00.000Z
+- Site timestamp: 2026-10-20T01:00:06.421Z
+- Tags: Safety, Agents, Industry
+
+A breach affecting 1.4% of OpenCode Console users triggered unauthorized AI charges and exposed a difficult gap in defensive model access.
+
+## What happened
+
+OpenCode said attackers compromised an older system connected to OpenCode Console, its hosted service for developers who store provider credentials and run coding workflows. The company said 1.4% of Console users were affected and that the open-source OpenCode application and command-line tool were not compromised.
+
+Users reported sudden spending alerts and unauthorized charges across OpenAI, Anthropic and Google accounts. Some losses reached hundreds of dollars, with a few reports exceeding $1,000. Anthropic and Google blocked exposed keys, while OpenAI worked with OpenCode on access restoration and refunds. OpenCode advised affected customers to revoke and replace credentials directly with each provider.
+
+The incident became more complicated because OpenCode initially described it as a large-scale model-distillation attack, while outside observers said the evidence publicly available so far established a credential breach but not the attackers’ ultimate purpose. OpenCode also said the assault continued for roughly 48 hours, forcing its team to keep defensive agents operating around the clock.
+
+## Why it matters
+
+This is a security incident, but its significance extends beyond one developer platform. AI coding tools increasingly sit between users and several model providers, turning stored API keys into a concentrated target. A compromise can therefore create financial exposure across multiple vendors at once, even when the underlying coding tool remains intact.
+
+The episode also exposed a practical safety dilemma: models may refuse to inspect malicious payloads even when an incident-response team is investigating them. OpenCode later obtained access to OpenAI’s Daybreak Blue program, whose vetted models are designed to be more useful for defensive security work. That distinction could become an important operational requirement for companies deploying agentic coding systems.
+
+**Uncle Cat take:** OpenCode’s 1.4% figure understates the systemic risk: one console breach can turn three model providers into a single attacker-controlled billing surface.
+
+Chinese title: OpenCode控制台遭入侵，用户AI账户被刷费
+Chinese summary: 一次影响1.4%控制台用户的入侵导致API密钥暴露和异常账单，也暴露了防御团队调用模型时的现实障碍。
+
+Sources:
+  - Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts: https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/
+  - OpenCode: https://opencode.ai/
+
+### Tenstorrent raises $1.5 billion for open-model chips
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/tenstorrent-open-weight-chips.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/tenstorrent-open-weight-chips.html
+- Source timestamp: 2026-10-19T18:37:00.000Z
+- Site timestamp: 2026-10-20T01:00:06.421Z
+- Tags: Funding, Industry, Open Source
+
+Tenstorrent reached a $6.2 billion valuation after raising $1.5 billion to scale inference hardware for open-weight models and video generation.
+
+## The financing
+
+AI chip startup Tenstorrent raised $1.5 billion at a $6.2 billion valuation, more than doubling the company’s reported value from late 2024. The round was led by Trace Capital and Innovation X, with participation from Cadence Ventures, Eclipse, Fidelity, SanDisk and T. Rowe Price.
+
+Tenstorrent is positioning itself as an alternative to Nvidia, with a focus on chips and servers designed for inference. CEO Jim Keller said the company chose to remain independent after demonstrating that its Galaxy server systems could run DeepSeek models. The new capital will support production scale and hardware tailored to serving open-weight models and video-generation workloads.
+
+The company’s timing reflects a shift in the accelerator market. The AI industry is no longer defined only by training the largest closed models; open-weight systems are increasingly being deployed by cloud providers, enterprises and developers who want control over weights, data location and operating costs. That creates demand for hardware optimized around inference economics rather than only peak training performance.
+
+## The constraint
+
+Tenstorrent’s valuation is substantial, but funding does not establish that its products can compete broadly with Nvidia’s software, supply chain or installed base. Its reported DeepSeek demonstration is evidence of capability, not proof of production-scale adoption. The company must still turn architecture and server claims into reliable developer tools, predictable availability and competitive total cost of ownership.
+
+The round nevertheless matters because it gives a non-Nvidia accelerator company enough capital to pursue an integrated hardware and software strategy while open models are expanding the addressable market. If Tenstorrent succeeds, the beneficiaries would include model developers seeking alternatives and customers that need to run large models without committing to one dominant vendor.
+
+**Uncle Cat take:** The $6.2 billion valuation is a bet on inference demand, but Tenstorrent’s real test is whether DeepSeek demos become boring, repeatable production deployments.
+
+Chinese title: Tenstorrent融资15亿美元，押注开放模型推理芯片
+Chinese summary: AI芯片公司Tenstorrent融资15亿美元、估值升至62亿美元，将扩大面向开放权重模型和视频生成的推理硬件。
+
+Sources:
+  - Tenstorrent hits $6.2B valuation to scale open-weight AI chips: https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-valuation-to-scale-open-weight-ai-chips/
+
 ### Anthropic Commits 5% of Shares to Public Benefit Fund
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-public-benefit-fund.html
@@ -878,100 +976,27 @@ Sources:
   - 华为AI靠RSI通关25款游戏！操作次数比人类少56%: https://www.qbitai.com/2026/10/502654.html
   - Memento 3 research paper: https://arxiv.org/abs/2610.11794
 
-### Nvidia Weighs Deeper Tie-Up With Reflection AI
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-reflection-ai-talks.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-reflection-ai-talks.html
-- Source timestamp: 2026-10-11T22:38:00.000Z
-- Site timestamp: 2026-10-12T01:00:04.179Z
-- Tags: Industry, Open Source, Funding, Models
-
-Nvidia is reportedly considering an acquisition, acqui-hire or larger investment in Reflection AI, tightening its control over open-model talent.
-
-Nvidia is in early discussions about acquiring Reflection AI, hiring much of its team or increasing its investment in the open-weight model developer, according to reporting cited by the Financial Times. The talks could still fail, and neither company has publicly confirmed them.
-
-## Several possible deal structures
-
-The reported options range from a conventional acquisition to an acqui-hire that would bring Reflection’s employees and technology into Nvidia while allowing parts of the startup to continue operating. A larger financing round, potentially paired with expanded access to Nvidia computing capacity, is another possibility.
-
-Nvidia already led Reflection’s $2 billion financing round in 2025 and has reportedly invested about $800 million in total. Reflection recently disclosed Beam, a 501-billion-parameter mixture-of-experts model aimed at coding agents and other tool-using workloads. Its training depends heavily on Nvidia hardware, including GB300 systems supplied through a large capacity agreement involving SpaceX’s data-center business.
-
-## Why the talks matter
-
-The potential transaction would extend Nvidia’s strategy beyond selling accelerators. By taking a deeper position in a company building open-weight models and coding agents, Nvidia could gain influence over both the hardware demand curve and the software systems that determine how that hardware is used.
-
-It would also test how much independence remains in the open-model ecosystem when leading developers depend on a small number of infrastructure suppliers. Reflection’s reported $25 billion pre-money valuation and its recent Beam launch make the situation more than a routine strategic investment. At the same time, the uncertain status of the talks means readers should treat any claim of a completed acquisition as premature.
-
-Chinese title: 英伟达考虑加深与Reflection AI的绑定
-Chinese summary: 据报道，英伟达正评估收购、团队并入或追加投资Reflection AI，开源模型人才与算力供应的结合进一步加深。
-
-Sources:
-  - Nvidia reportedly in early talks to buy, acqui-hire or invest more in Reflection AI: https://siliconangle.com/2026/10/11/nvidia-reportedly-in-early-talks-to-buy-acqui-hire-or-invest-more-in-reflection-ai/
-
-### vLLM Opens Multimodal Decision Models for AI Routing
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/vllm-decision-3-models.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/vllm-decision-3-models.html
-- Source timestamp: 2026-10-11T21:43:00.000Z
-- Site timestamp: 2026-10-12T01:00:04.179Z
-- Tags: Models, Open Source, Agents
-
-vLLM Semantic Router released Decision 3.0 models from 0.6B to 26.09B parameters that return structured choices instead of generated prose.
-
-The vLLM Semantic Router team has released Decision 3.0, a family of open-weight models designed to answer typed questions about text, JSON, images and video. Instead of generating an explanation, the models return choices, yes-or-no decisions or scores with probabilities.
-
-## A different role for models
-
-The release includes several sizes, ranging from 0.6-billion-parameter versions to the 26.09-billion-parameter d3 model. The models are intended for routing requests between specialist systems, applying moderation rules, selecting tools and enforcing policy gates. Their Apache-2.0 licensing allows developers to inspect, adapt and deploy the weights under a relatively permissive open-source framework.
-
-The model card describes d3 as a 26.09-billion-parameter multimodal model, including a 0.46-billion-parameter vision encoder. It is built on Qwen3.8-27B and was trained on AMD Instinct MI325X GPUs. The design removes the need to generate text and then parse that text into a downstream decision, potentially reducing latency and simplifying failure handling.
-
-## Why it matters
-
-Decision 3.0 reflects a broader shift in AI infrastructure: not every important model needs to be a general-purpose chatbot. In production systems, a small, fast and inspectable classifier can determine whether a request should reach a costly frontier model, which tool an agent may call or whether content requires human review.
-
-The limits are equally important. A calibrated probability does not prove that the chosen action will succeed, and benchmark scores do not establish reliability under changing policies or adversarial inputs. Decision 3.0 is therefore most consequential as an open building block for model orchestration, not as a replacement for general-purpose reasoning models.
-
-Chinese title: vLLM开源多模态决策模型Decision 3.0
-Chinese summary: vLLM Semantic Router发布0.6B至26.09B参数的Decision 3.0模型，用结构化概率直接做选择，而非生成长文本。
-
-Sources:
-  - What is Decision 3.0? vLLM Semantic Router’s New Open Decision Models: https://www.marktechpost.com/2026/10/11/what-is-decision-3-0-vllm-semantic-routers-new-open-decision-models/
-  - vllm-sr/d3 model card: https://huggingface.co/vllm-sr/d3
-
-### Zhipu quietly tests GLM-5.3-Highspeed at 490 tokens per second
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/zhipu-glm-highspeed-gray-release.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-glm-highspeed-gray-release.html
-- Source timestamp: 2026-10-12T02:37:00.000Z
-- Site timestamp: 2026-10-12T13:00:05.085Z
-- Tags: Models, Agents, Industry
-
-Zhipu is reportedly gray-testing GLM-5.3-Highspeed inside Zcode, promising unusually fast generation but offering no public model release yet.
-
-Zhipu appears to be quietly testing a new GLM-5.3-Highspeed model in its Zcode coding product. QbitAI reported that selected subscribers could access the model through a gray rollout, while one user measurement showed generation approaching 490 tokens per second.
-
-## A speed claim, not a launch
-
-The reported throughput would be a major jump over Zhipu’s recently introduced GLM-5.3-FlashX, which was advertised at up to 200 tokens per second. At 490 tokens per second, generating 10,000 tokens would take roughly 20 seconds once the response stream begins, potentially changing the feel of long coding and agentic tasks.
-
-The evidence remains limited. The figure comes from a user screenshot rather than a standardized public benchmark, and QbitAI was unable to obtain access through its own account. The model is reportedly available only to randomly selected Zcode users, with no public weights, API documentation, pricing, or reproducible evaluation disclosed.
-
-Directory listings suggest a one-million-token context window, a maximum output of 131,072 tokens, and selectable low, high, and maximum reasoning modes. Those specifications appear similar to the regular GLM-5.3 listing, so they should be treated as provisional rather than confirmed product documentation.
-
-## Why the rollout matters
-
-If sustained outside a narrow demo path, high generation speed could lower latency for coding agents that repeatedly call a model, especially when responses are long but reasoning quality is already adequate. It could also pressure rival providers to compete on time-to-useful-output rather than only benchmark scores.
-
-For now, the important fact is the uncertainty: this is a gray-tested service configuration, not a verified model release. Until Zhipu publishes official access terms and independent measurements, the 490-token figure is a signal of engineering ambition, not yet a dependable market capability.
-
-Chinese title: 智谱灰度测试 GLM-5.3-Highspeed，传输速度达 490 tokens/s
-Chinese summary: 智谱据报在 Zcode 灰度开放 GLM-5.3-Highspeed，用户实测接近每秒 490 tokens，但尚未正式发布模型。
-
-Sources:
-  - 智谱新模型，490 tokens/s！: https://www.qbitai.com/2026/10/502649.html
-
 ## Recent radar items
+
+### 2026-10-20
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-20.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-20.html
+
+- 2026-10-20T00:41:00Z | SiliconANGLE | AI work assistant startup Town raised $108 million just weeks after launch, reaching unicorn status. | 中文：AI工作助手初创公司Town上线数周后融资1.08亿美元，估值达到独角兽水平。 | https://siliconangle.com/2026/10/19/ai-work-assistant-startup-town-secures-unicorn-status-after-raising-108m-just-weeks-after-launching/
+- 2026-10-20T00:03:00Z | MarkTechPost | Nace AI introduced Drex Max, a multimodal decision model for computer-use agents scoring 67.59. | 中文：Nace AI推出Drex Max多模态决策模型，计算机操作智能体评测得分为67.59。 | https://www.marktechpost.com/2026/10/19/nace-ai-drex-max-multimodal-decision-model/
+- 2026-10-19T23:32:00Z | AWS Machine Learning | Amazon Bedrock added structured outputs for Anthropic Claude models, enabling schema-constrained responses. | 中文：Amazon Bedrock为Anthropic Claude模型加入结构化输出，可按指定模式返回结果。 | https://aws.amazon.com/blogs/machine-learning/structured-outputs-for-anthropic-claude-models-on-amazon-bedrock/
+- 2026-10-19T19:33:00Z | X @AIatMeta | Meta published a technical report on Muse Glimmer, a 30-billion-parameter open-weight model designed for agentic tasks on consumer hardware. | 中文：Meta发布Muse Glimmer技术报告，这是一款面向消费级硬件智能体任务的300亿参数开放权重模型。 | https://x.com/AIatMeta/status/2112265822274302066
+- 2026-10-19T22:30:00Z | X @OpenAI | OpenAI said its latest models improve software development and migration in COBOL, Fortran, and Visual Basic. | 中文：OpenAI称其最新模型提升了COBOL、Fortran和Visual Basic等低资源语言的软件开发与迁移能力。 | https://x.com/OpenAI/status/2112310345863930168
+- 2026-10-19T22:49:00Z | SiliconANGLE | Nvidia and Dell backed a $200 million funding round for AI model developer doubleAI. | 中文：英伟达与戴尔参与AI模型开发商doubleAI的2亿美元融资。 | https://siliconangle.com/2026/10/19/nvidia-dell-back-200m-round-for-ai-model-developer-doubleai/
+- 2026-10-19T22:49:00Z | TechCrunch | Hugging Face’s policy chief warned that embedding AI evaluators inside companies will not provide an easy safety solution. | 中文：Hugging Face政策负责人警告，把AI评估人员嵌入公司并不能轻松解决安全问题。 | https://techcrunch.com/2026/10/19/embedded-ai-evaluators-wont-be-an-easy-solution-hugging-faces-policy-chief-says/
+- 2026-10-19T14:46:00Z | SiliconANGLE | Motive introduced agentic AI for physical operations that can act before fleet problems escalate. | 中文：Motive推出面向实体运营的智能体AI，可在车队问题升级前主动采取行动。 | https://siliconangle.com/2026/10/19/motive-brings-agentic-ai-to-physical-operations-with-agents-that-act-before-problems-escalate/
+- 2026-10-19T16:51:00Z | X @HeyGen | HeyGen said Video 1.0 can generate product close-ups and complete shots around an avatar. | 中文：HeyGen表示，Video 1.0可围绕数字人生成产品特写及完整镜头。 | https://x.com/HeyGen/status/2112225211739451794
+- 2026-10-19T17:18:00Z | X @lovart_ai | Lovart 2.0 introduced Arti, a design agent that remembers a user’s taste and can work asynchronously. | 中文：Lovart 2.0推出设计智能体Arti，可记住用户偏好并异步推进设计工作。 | https://x.com/lovart_ai/status/2112231902686167168
+- 2026-10-19T18:21:00Z | X @RunwayML | Runway made its MCP integration available in Grok Bot, bringing its generation tools into chat. | 中文：Runway将MCP集成接入Grok Bot，让用户可直接在聊天中调用其生成工具。 | https://x.com/runwayml/status/2112247791678541845
+- 2026-10-19T17:56:00Z | X @togethercompute | Together launched Post-Training, letting users train open models with supervised fine-tuning or reinforcement learning. | 中文：Together推出Post-Training，允许用户通过监督微调或强化学习训练开放模型。 | https://x.com/togethercompute/status/2112241595273621857
+- 2026-10-19T16:00:00Z | X @MicrosoftAI | Microsoft said MAI-Transcribe-2 ranked first for transcription accuracy in David AI’s new benchmark. | 中文：微软称MAI-Transcribe-2在David AI新基准的转录准确率测试中排名第一。 | https://x.com/MicrosoftAI/status/2112212219177910510
+- 2026-10-19T22:39:00Z | AWS Machine Learning | Amazon SageMaker made Studio accessible through the new AWS experience for developers. | 中文：亚马逊让开发者可通过新版AWS体验访问SageMaker Studio。 | https://aws.amazon.com/blogs/machine-learning/developers-can-now-access-sagemaker-studio-through-the-new-aws-experience/
 
 ### 2026-10-19
 
@@ -1096,39 +1121,3 @@ Sources:
 - 2026-10-16T04:00:00Z | arXiv | Multi-dimensional featurizers enable fine-grained steering and data shaping for robot foundation models. | 中文：多维特征提取器让机器人基础模型能够进行更细粒度的控制与数据塑形。 | https://arxiv.org/abs/2610.20767
 - 2026-10-16T04:16:00Z | Latent Space | The Agentic Scientist report describes agents coordinating coding work for automated scientific co-discovery and interpretability experiments. | 中文：《Agentic Scientist》介绍了协调编码工作的代理系统，用于自动化科学共发现与可解释性实验。 | https://www.latent.space/p/ainews-agents-disprove-polysemanticity
 - 2026-10-16 | AWS Machine Learning Blog | AWS published a production evaluation framework for Bedrock AgentCore covering regression gates, canary scoring, drift detection, and feedback loops. | 中文：AWS 发布 Bedrock AgentCore 生产评估框架，涵盖回归门禁、金丝雀评分、漂移检测和反馈闭环。 | https://aws.amazon.com/blogs/machine-learning/building-trust-in-ai-agents-a-production-ready-evaluation-framework-with-amazon-bedrock-agentcore/
-
-### 2026-10-15
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-15.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-15.html
-
-- 2026-10-15T00:40:00Z | X / Tripo AI | Tripo showcased a solo creator using Tripo P2.0 across an entire 3D asset pipeline for world-building. | 中文：Tripo展示创作者用P2.0独立完成完整三维资产流程，覆盖世界构建。 | https://x.com/tripoai/status/2110531324260020264
-- 2026-10-15T00:00:00Z | TechCrunch | Gudea uses AI to map how rumors spread across more than 500 platforms before they become organizational crises. | 中文：Gudea利用人工智能追踪谣言在500多个平台的传播路径，帮助机构在危机爆发前识别风险。 | https://techcrunch.com/2026/10/14/gudea-leverages-ai-to-help-organizations-prevent-social-media-crises-before-they-erupt/
-- 2026-10-14T23:54:00Z | X / METR Evals | METR proposed developer-run exercises to provide public evidence about AI control failures and research-and-development acceleration risks. | 中文：METR提议由开发者参与测试，以公开证据评估人工智能控制失效和研发加速风险。 | https://x.com/METR_Evals/status/2110519551033266424
-- 2026-10-14T23:37:00Z | MarkTechPost | Datalab released OmniParseBench, an open OCR benchmark containing 16,288 pass-or-fail tests for auditing document parsers. | 中文：Datalab发布开放式OCR基准OmniParseBench，包含16288项通过或失败测试，用于审计文档解析器。 | https://www.marktechpost.com/2026/10/14/datalab-omniparsebench-open-ocr-document-parsing-benchmark/
-- 2026-10-14T22:52:00Z | MarkTechPost | Fish Audio released Drama 3, a 35-billion-parameter open-weight mixture-of-experts text-to-speech model with roughly 3 billion active parameters. | 中文：Fish Audio发布Drama 3开放权重语音合成模型，总参数350亿、每个词元约激活30亿。 | https://www.marktechpost.com/2026/10/14/fish-audio-drama-3-open-weight-tts-model/
-- 2026-10-14T23:13:00Z | X / Vercel | Vercel said its Sandbox escape challenge produced 1,285 reports, $242,000 in bounties, and one Linux kernel zero-day discovery. | 中文：Vercel表示其Sandbox逃逸挑战收到1285份报告、支付242000美元奖金，并发现一个Linux内核零日漏洞。 | https://x.com/vercel/status/2110509321939509421
-- 2026-10-14T22:53:00Z | The Verge | McKinsey is asking job applicants to spar with a simulated AI client during interviews. | 中文：麦肯锡要求求职者在面试中与模拟人工智能客户进行对抗式交流。 | https://www.theverge.com/news/1011654/mckinsey-ai-client-interview
-- 2026-10-14T22:27:00Z | SiliconANGLE | A SiliconANGLE report said Grok Voice 3.0 from SpaceXSI outscored OpenAI and Google on a speech-to-speech index. | 中文：SiliconANGLE报道，SpaceXSI的Grok Voice 3.0在语音到语音指数上超过OpenAI和Google。 | https://siliconangle.com/2026/10/14/grok-voice-3-0-from-spacexsi-outscores-openai-and-google-on-speech-to-speech-index/
-- 2026-10-14T20:48:00Z | Anoma | OpenCode 2.0 was announced as a new release of the open coding-agent project. | 中文：OpenCode 2.0作为开放式编程代理项目的新版本发布。 | https://anoma.ly/notes/opencode-2-0/
-- 2026-10-14T18:23:00Z | TechCrunch | YouTube Music is adding labels to identify AI-generated songs as synthetic music floods streaming platforms. | 中文：随着人工智能音乐涌入流媒体平台，YouTube Music将新增标签标识人工智能生成歌曲。 | https://techcrunch.com/2026/10/14/youtube-music-launches-new-labels-as-ai-generated-music-floods-streaming-platforms/
-- 2026-10-14T18:00:00Z | TechCrunch | Apate deploys thousands of AI agents posing as scam victims to extract fraud intelligence from calls, messages, emails, and websites. | 中文：Apate部署数千个伪装成受害者的人工智能代理，从电话、消息、邮件和网站中提取诈骗情报。 | https://techcrunch.com/2026/10/14/apate-sends-ai-agents-undercover-to-get-scammed-so-they-can-gather-fraud-intelligence/
-- 2026-10-14T17:22:00Z | X / HeyGen | HeyGen reported 42,875 blind ratings, with its voice preferred over Cartesia and ElevenLabs in a narration comparison. | 中文：HeyGen称在42875次盲评中，其语音在旁白比较中优于Cartesia和ElevenLabs。 | https://x.com/HeyGen/status/2110420874096414935
-- 2026-10-14T16:26:00Z | X / Goodfire AI | Goodfire said its EVEE interpretability system identified a hearing-loss gene variant after scoring 4.2 million variants. | 中文：Goodfire表示，其可解释性系统EVEE评估420万个变异后，识别出一个与听力损失相关的基因变体。 | https://x.com/GoodfireAI/status/2110406931047493894
-- 2026-10-14T13:37:00Z | X / Runway | Runway partnered with Baseten to offer Gen-4.5 and Aleph 2.0 video models in dedicated single-tenant enterprise environments. | 中文：Runway与Baseten合作，在专用单租户企业环境中提供Gen-4.5和Aleph 2.0视频模型。 | https://x.com/runwayml/status/2110364429816827936
-- 2026-10-15T13:00:00Z | InfoQ 中文 | Amazon Web Services launched CloudWatch Omni to evaluate AI application reliability alongside conventional infrastructure monitoring. | 中文：亚马逊云科技推出 CloudWatch Omni，在传统系统监控之外评估 AI 应用是否可靠。 | https://www.infoq.cn/article/5GOXqmJaGKbukSIWU4Uf?utm_source=rss&utm_medium=article
-- 2026-10-15T12:53:00Z | X / Google DeepMind | Google DeepMind said SynthID has watermarked more than 180 billion images and videos and was named a TIME Best Invention of 2026. | 中文：Google DeepMind 表示 SynthID 已为超过 1800 亿张图片和视频添加水印，并入选《时代》2026 年最佳发明。 | https://x.com/GoogleDeepMind/status/2110715601454784965
-- 2026-10-15T11:26:00Z | X / Figma | Figma opened Code Layers beta, letting teams build and explore code-backed prototypes directly on the design canvas. | 中文：Figma 开放 Code Layers 测试，让团队直接在设计画布上构建和探索由代码驱动的原型。 | https://x.com/figma/status/2110693729262850209
-- 2026-10-15T06:08:00Z | X / Figma | Figma announced 20 MCP partners, including Linear, Mistral, Notion, OpenCode, and JetBrains’ Junie. | 中文：Figma 宣布新增 20 个 MCP 合作伙伴，包括 Linear、Mistral、Notion、OpenCode 和 JetBrains Junie。 | https://x.com/figma/status/2110613762030063799
-- 2026-10-15T10:50:00Z | X / Mistral AI | Mistral and CERN began exploring AI models for particle-collision reconstruction, particle identification, and anomaly detection. | 中文：Mistral 与 CERN 开始探索用 AI 模型进行粒子碰撞重建、粒子识别和异常信号检测。 | https://x.com/MistralAI/status/2110684732103041474
-- 2026-10-15T05:31:00Z | X / Genspark | Genspark said its agent can be reached through iMessage, WhatsApp, Slack, and LINE for tasks such as PDF summarization. | 中文：Genspark 表示其代理现可通过 iMessage、WhatsApp、Slack 和 LINE 使用，并支持总结 PDF 等任务。 | https://x.com/genspark_ai/status/2110604338116825593
-- 2026-10-15T10:08:00Z | Latent Space | Modal reportedly reached $1 billion in annual recurring revenue and raised a $16 billion Series D after tripling usage in five months. | 中文：据报道，Modal 年经常性收入达到 10 亿美元，并在五个月内使用量增长三倍后完成 160 亿美元 D 轮融资。 | https://www.latent.space/p/ainews-modals-1b-arr-16b-series-d
-- 2026-10-15T01:47:00Z | SiliconANGLE | Anthropic reportedly told investors that revenue grew 45% sequentially to $16.8 billion in the third quarter. | 中文：据报道，Anthropic 向投资者披露第三季度收入环比增长 45%，达到 168 亿美元。 | https://siliconangle.com/2026/10/14/ahead-of-ipo-anthropic-reveals-its-revenue-grow-45-sequentially-to-16-8b-in-q3/
-- 2026-10-15T01:01:00Z | TechCrunch | Ricursive Intelligence is developing AI-designed chips to address compute shortages and reduce dependence on conventional silicon workflows. | 中文：Ricursive Intelligence 正开发由 AI 设计的芯片，试图缓解算力短缺并减少对传统芯片设计流程的依赖。 | https://techcrunch.com/2026/10/14/ricursive-intelligence-is-betting-on-ai-designed-chips-to-help-solve-the-compute-crisis/
-- 2026-10-15T10:00:00Z | InfoQ 中文 | Amazon Web Services presented an agent-native scaling approach at QCon Shanghai, describing a transition from applications to autonomous workflows. | 中文：亚马逊云科技在 QCon 上海介绍代理原生规模化实践，讨论从应用向自主工作流转变。 | https://www.infoq.cn/article/kvzkXDXpKOXILlfirftW?utm_source=rss&utm_medium=article
-- 2026-10-15T12:01:00Z | InfoQ 中文 | A QCon Shanghai session described embodied-intelligence systems using data pipelines to move toward larger-scale deployment. | 中文：QCon 上海一场分享介绍了以数据管线推动具身智能规模化落地的方法。 | https://www.infoq.cn/article/a8LKxyL9AC4PWhB2r0XX?utm_source=rss&utm_medium=article
-- 2026-10-15T11:05:00Z | InfoQ 中文 | A QCon Shanghai talk argued that reliable agents need continuous loops beyond the initial harness, including delivery feedback and evolution. | 中文：QCon 上海一场演讲提出，可靠代理不能停留在初始 Harness，还需要交付反馈和持续进化闭环。 | https://www.infoq.cn/article/xKkEswgSftEcGrkK6oTY?utm_source=rss&utm_medium=article
-- 2026-10-15T01:56:00Z | 量子位 | Alibaba’s Qwen office-and-commerce edition was presented as enabling low-cost online-store launches with AI-assisted operations. | 中文：量子位报道，阿里通义办公电商版可借助 AI 低成本启动线上店铺并辅助运营。 | https://www.qbitai.com/2026/10/503303.html
-- 2026-10-15T03:14:00Z | X / Artificial Analysis | Artificial Analysis said two AI models built an offline 3D Eiffel Tower and reproduced all 72 scientists’ names from memory. | 中文：Artificial Analysis 称，两款 AI 模型离线构建了 3D 埃菲尔铁塔，并凭记忆复现全部 72 位科学家姓名。 | https://x.com/ArtificialAnlys/status/2110570099602280475
-- 2026-10-15T11:44:00Z | InfoQ 中文 | An InfoQ session examined architectural and distributed-engineering limits on AI infrastructure efficiency. | 中文：InfoQ 一场分享讨论了体系结构和分布式工程对 AI 基础设施效率的限制。 | https://www.infoq.cn/article/JbzA5yvzl2BkuTpkfdrU?utm_source=rss&utm_medium=article
-- 2026-10-15 | Microsoft Research | Microsoft Research introduced Magnetar, a hash-based zkVM that proves Rust, Go, and C programs 10 to 39 times faster than prior comparable systems. | 中文：微软研究院发布 Magnetar，基于哈希的 zkVM 可将 Rust、Go、C 程序证明速度提升至同类系统的十至三十九倍。 | https://www.microsoft.com/en-us/research/blog/proof-based-general-purpose-computing-with-magnetar/

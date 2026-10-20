@@ -13,6 +13,112 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/aws-torchneuron-trainium.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/aws-torchneuron-trainium.html",
+      "title": "AWS targets Nvidia lock-in with new PyTorch Trainium tool",
+      "summary": "AWS introduced TorchNeuron to let PyTorch developers move workloads to Trainium with minimal code changes, challenging Nvidia’s software advantage.",
+      "content_text": "## The release\n\nAmazon Web Services introduced TorchNeuron, a development tool intended to make it easier for startups and other PyTorch users to run AI applications on AWS Trainium chips. AWS says many workloads can be moved with a one-line configuration change rather than a substantial rewrite.\n\nThe strategic target is Nvidia’s CUDA-centered software ecosystem. PyTorch is widely used for training and inference, and Nvidia has spent years making its hardware the default destination for PyTorch applications. AWS is adapting PyTorch integration for Trainium while saying it plans to contribute changes upstream to make the framework less tied to any specific chip vendor.\n\nAWS also presents Trainium as part of a broader cloud proposition. Developers can use the same platform for training and inference, then connect those workloads to storage, networking, deployment and other AWS services. Amazon cited Deepgram as an example: after porting a speech-recognition workload, the company reported processing 11% to 70% more audio per dollar in different offline configurations.\n\n## What remains unproven\n\nA simpler migration path lowers one of the biggest barriers to custom AI hardware adoption, but it does not erase the engineering differences between accelerators. Performance depends on model architecture, operators, compiler maturity and workload shape. AWS’s strongest published results came from throughput-oriented speech workloads rather than a universal benchmark across frontier models.\n\nStill, the release matters because it attacks Nvidia’s moat at the software layer instead of competing only on chip specifications or hourly price. If PyTorch becomes genuinely more hardware-agnostic, cloud customers could gain more leverage when choosing between Nvidia, Trainium, AMD and other accelerators.\n\n**Uncle Cat take:** TorchNeuron matters less for its one-line migration claim than for AWS pushing hardware neutrality into PyTorch itself; that is the part Nvidia should watch.",
+      "date_published": "2026-10-19T20:09:00.000Z",
+      "date_modified": "2026-10-20T01:00:06.421Z",
+      "tags": [
+        "Industry",
+        "Models"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/aws-torchneuron-trainium.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/aws-torchneuron-trainium.html",
+        "source_published_at": "2026-10-19T20:09:00.000Z",
+        "site_published_at": "2026-10-20T01:00:06.421Z",
+        "sources": [
+          {
+            "title": "Amazon is taking its biggest shot at Nvidia yet with new TorchNeuron dev tool",
+            "url": "https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/"
+          },
+          {
+            "title": "How Deepgram optimized voice AI at scale with AWS Trainium",
+            "url": "https://aws.amazon.com/blogs/machine-learning/how-deepgram-optimized-voice-ai-at-scale-with-aws-trainium/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html",
+      "title": "OpenCode Console breach exposes AI API keys and costs",
+      "summary": "A breach affecting 1.4% of OpenCode Console users triggered unauthorized AI charges and exposed a difficult gap in defensive model access.",
+      "content_text": "## What happened\n\nOpenCode said attackers compromised an older system connected to OpenCode Console, its hosted service for developers who store provider credentials and run coding workflows. The company said 1.4% of Console users were affected and that the open-source OpenCode application and command-line tool were not compromised.\n\nUsers reported sudden spending alerts and unauthorized charges across OpenAI, Anthropic and Google accounts. Some losses reached hundreds of dollars, with a few reports exceeding $1,000. Anthropic and Google blocked exposed keys, while OpenAI worked with OpenCode on access restoration and refunds. OpenCode advised affected customers to revoke and replace credentials directly with each provider.\n\nThe incident became more complicated because OpenCode initially described it as a large-scale model-distillation attack, while outside observers said the evidence publicly available so far established a credential breach but not the attackers’ ultimate purpose. OpenCode also said the assault continued for roughly 48 hours, forcing its team to keep defensive agents operating around the clock.\n\n## Why it matters\n\nThis is a security incident, but its significance extends beyond one developer platform. AI coding tools increasingly sit between users and several model providers, turning stored API keys into a concentrated target. A compromise can therefore create financial exposure across multiple vendors at once, even when the underlying coding tool remains intact.\n\nThe episode also exposed a practical safety dilemma: models may refuse to inspect malicious payloads even when an incident-response team is investigating them. OpenCode later obtained access to OpenAI’s Daybreak Blue program, whose vetted models are designed to be more useful for defensive security work. That distinction could become an important operational requirement for companies deploying agentic coding systems.\n\n**Uncle Cat take:** OpenCode’s 1.4% figure understates the systemic risk: one console breach can turn three model providers into a single attacker-controlled billing surface.",
+      "date_published": "2026-10-19T19:28:00.000Z",
+      "date_modified": "2026-10-20T01:00:06.421Z",
+      "tags": [
+        "Safety",
+        "Agents",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/opencode-console-breach.html",
+        "source_published_at": "2026-10-19T19:28:00.000Z",
+        "site_published_at": "2026-10-20T01:00:06.421Z",
+        "sources": [
+          {
+            "title": "Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts",
+            "url": "https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/"
+          },
+          {
+            "title": "OpenCode",
+            "url": "https://opencode.ai/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/tenstorrent-open-weight-chips.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/tenstorrent-open-weight-chips.html",
+      "title": "Tenstorrent raises $1.5 billion for open-model chips",
+      "summary": "Tenstorrent reached a $6.2 billion valuation after raising $1.5 billion to scale inference hardware for open-weight models and video generation.",
+      "content_text": "## The financing\n\nAI chip startup Tenstorrent raised $1.5 billion at a $6.2 billion valuation, more than doubling the company’s reported value from late 2024. The round was led by Trace Capital and Innovation X, with participation from Cadence Ventures, Eclipse, Fidelity, SanDisk and T. Rowe Price.\n\nTenstorrent is positioning itself as an alternative to Nvidia, with a focus on chips and servers designed for inference. CEO Jim Keller said the company chose to remain independent after demonstrating that its Galaxy server systems could run DeepSeek models. The new capital will support production scale and hardware tailored to serving open-weight models and video-generation workloads.\n\nThe company’s timing reflects a shift in the accelerator market. The AI industry is no longer defined only by training the largest closed models; open-weight systems are increasingly being deployed by cloud providers, enterprises and developers who want control over weights, data location and operating costs. That creates demand for hardware optimized around inference economics rather than only peak training performance.\n\n## The constraint\n\nTenstorrent’s valuation is substantial, but funding does not establish that its products can compete broadly with Nvidia’s software, supply chain or installed base. Its reported DeepSeek demonstration is evidence of capability, not proof of production-scale adoption. The company must still turn architecture and server claims into reliable developer tools, predictable availability and competitive total cost of ownership.\n\nThe round nevertheless matters because it gives a non-Nvidia accelerator company enough capital to pursue an integrated hardware and software strategy while open models are expanding the addressable market. If Tenstorrent succeeds, the beneficiaries would include model developers seeking alternatives and customers that need to run large models without committing to one dominant vendor.\n\n**Uncle Cat take:** The $6.2 billion valuation is a bet on inference demand, but Tenstorrent’s real test is whether DeepSeek demos become boring, repeatable production deployments.",
+      "date_published": "2026-10-19T18:37:00.000Z",
+      "date_modified": "2026-10-20T01:00:06.421Z",
+      "tags": [
+        "Funding",
+        "Industry",
+        "Open Source"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tenstorrent-open-weight-chips.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tenstorrent-open-weight-chips.html",
+        "source_published_at": "2026-10-19T18:37:00.000Z",
+        "site_published_at": "2026-10-20T01:00:06.421Z",
+        "sources": [
+          {
+            "title": "Tenstorrent hits $6.2B valuation to scale open-weight AI chips",
+            "url": "https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-valuation-to-scale-open-weight-ai-chips/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/anthropic-public-benefit-fund.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/anthropic-public-benefit-fund.html",
       "title": "Anthropic Commits 5% of Shares to Public Benefit Fund",
@@ -1785,128 +1891,6 @@
           {
             "title": "SynthID Detector is now available to everyone",
             "url": "https://x.com/GoogleDeepMind/status/2107834249680499136"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/liquid-open-d1-edge-models.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/liquid-open-d1-edge-models.html",
-      "title": "Liquid AI Releases Open d1 Models for Edge Decisions",
-      "summary": "Liquid AI has released open-weight multimodal decision models designed to make fast structured choices on phones, PCs and edge hardware.",
-      "content_text": "## What happened\n\nLiquid AI released two open-weight decision models, d1-3B and d1-omni-600M, through Hugging Face. The models are designed to output structured decisions rather than long natural-language explanations. Both models accept text and visual inputs, while d1-omni-600M also accepts audio. The company positions them for classification, routing and other situations where an AI system must choose an action quickly.\n\nIn Liquid AI’s published testing, d1-3B answered a single question in 8 milliseconds on an NVIDIA GeForce RTX 4090, 16 milliseconds on a Jetson AGX Thor, 26 milliseconds on a Jetson AGX Orin and 50 milliseconds on a Jetson Orin Nano. The model can also process multiple questions with limited additional latency, a property that could matter for high-frequency control loops.\n\nLiquid AI says d1-3B delivers the strongest decision quality in the release while d1-omni-600M is intended for environments where memory and compute are more constrained. Both models are downloadable from Hugging Face and require custom model code when loaded through Transformers.\n\n## Why it matters\n\nDecision models are a narrower direction than general chat models, but that narrowness is precisely their appeal. A system that returns a calibrated choice or action can be cheaper and easier to validate than a model that generates open-ended text and then requires another component to interpret it. The unresolved question is generality: the reported latency and benchmark results show attractive edge behavior, but they do not establish that d1 models can safely handle ambiguous, high-stakes decisions outside the tested tasks. Their importance will be determined by whether developers use them as dependable control components rather than miniature chatbots.",
-      "date_published": "2026-10-07T16:54:00.000Z",
-      "date_modified": "2026-10-07T23:00:05.932Z",
-      "tags": [
-        "Open Source",
-        "Models",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/liquid-open-d1-edge-models.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/liquid-open-d1-edge-models.html",
-        "source_published_at": "2026-10-07T16:54:00.000Z",
-        "site_published_at": "2026-10-07T23:00:05.932Z",
-        "sources": [
-          {
-            "title": "Multimodal open d1 decision models for the edge",
-            "url": "https://huggingface.co/blog/LiquidAI/open-d1"
-          },
-          {
-            "title": "LiquidAI/d1-3B",
-            "url": "https://huggingface.co/LiquidAI/d1-3B"
-          },
-          {
-            "title": "Liquid AI announces open d1 decision models",
-            "url": "https://www.liquid.ai/blog/open-d1"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt6-intelligent-ui.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt6-intelligent-ui.html",
-      "title": "OpenAI Rolls Out GPT-6 With Interactive Chat Interfaces",
-      "summary": "OpenAI is turning ChatGPT answers into live interfaces with charts, controls and small tools, expanding the chatbot beyond text.",
-      "content_text": "## What happened\n\nOpenAI began rolling out GPT-6 with a feature called Intelligent UI to ChatGPT Plus, Pro, Business and Enterprise users worldwide. Free and Go users are scheduled to receive it the following day. The release is powered by GPT-6 Sol for paid plans and GPT-6 Luna for the lower-cost tiers, while Codex and ChatGPT Work remain on their existing models.\n\nIntelligent UI allows ChatGPT to combine prose with graphics, charts, forms, buttons and small interactive tools. A user asking for a savings calculation, trip plan or educational explanation can receive a purpose-built interface inside the conversation rather than a static answer. OpenAI says the system uses a library of native, streamable components and a compiler that renders them progressively as the model generates its response.\n\nThe model can also begin answering while it continues reasoning or using tools, then add further findings. OpenAI reports that GPT-6 Instant starts web-search answers 44% faster than GPT-5.6 Instant in an internal evaluation, although the company has not published an independent benchmark covering the new interface behavior.\n\n## Why it matters\n\nThis is a product-strategy shift as much as a model release. ChatGPT is being positioned as a surface that can assemble lightweight software on demand, potentially absorbing tasks that once required spreadsheets, dashboards or specialized apps. The constraint is reliability: an interface that looks useful but makes a faulty calculation or hides important assumptions can be more dangerous than plain text. OpenAI’s rollout therefore tests whether generated interfaces become a trusted working layer or remain an attractive presentation feature.",
-      "date_published": "2026-10-07T18:00:00.000Z",
-      "date_modified": "2026-10-07T23:00:05.932Z",
-      "tags": [
-        "Models",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt6-intelligent-ui.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt6-intelligent-ui.html",
-        "source_published_at": "2026-10-07T18:00:00.000Z",
-        "site_published_at": "2026-10-07T23:00:05.932Z",
-        "sources": [
-          {
-            "title": "GPT-6 and Intelligent UI for everyone",
-            "url": "https://openai.com/index/gpt-6-for-everyone/"
-          },
-          {
-            "title": "ChatGPT release notes",
-            "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
-          },
-          {
-            "title": "ChatGPT is getting a lot more visual, with the launch of a new interface",
-            "url": "https://techcrunch.com/2026/10/07/chatgpt-is-getting-a-lot-more-visual-with-the-launch-of-a-new-interface/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/perplexity-multimodal-embedding-models.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/perplexity-multimodal-embedding-models.html",
-      "title": "Perplexity Releases Multimodal Late-Interaction Embeddings",
-      "summary": "Perplexity’s new 0.6B and 9B embedding models match text and images in one space, targeting more precise retrieval across rendered documents.",
-      "content_text": "Perplexity has released pplx-embed-v2-late, a pair of late-interaction embedding models designed to retrieve text, images and rendered document pages through a shared representation space. The release follows the company’s earlier contextual embedding model and broadens its push beyond answer generation into the retrieval layer that feeds search and agent systems.\n\nThe models use multiple vectors per input instead of compressing an entire document or query into one embedding. That allows different parts of a query to match different parts of a page, preserving local detail that can disappear in single-vector retrieval. Perplexity says the system can also perform text-to-image retrieval, including searches over rendered PDF pages without first converting every page into machine-readable text.\n\nThe release includes a 0.6-billion-parameter query encoder and a 9-billion-parameter index model. Perplexity’s published material positions the smaller model for query-side use and the larger model for building the searchable index. That division is important for deployment economics: query infrastructure can remain relatively light while the heavier model is used offline or at indexing time.\n\nThis is not a headline model release, but it targets a bottleneck that increasingly determines whether AI search and agents are trustworthy: finding the right evidence before generation begins. Multimodal retrieval could improve access to charts, layouts and image-heavy reports, although the practical gains will depend on indexing cost, latency, licensing and evaluation outside Perplexity’s own tests. The strategic signal is that competition is moving deeper into the retrieval stack, where better representations can influence every downstream model call.",
-      "date_published": "2026-10-08T05:39:00.000Z",
-      "date_modified": "2026-10-08T11:00:05.916Z",
-      "tags": [
-        "Models",
-        "Research",
-        "Open Source"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/perplexity-multimodal-embedding-models.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/perplexity-multimodal-embedding-models.html",
-        "source_published_at": "2026-10-08T05:39:00.000Z",
-        "site_published_at": "2026-10-08T11:00:05.916Z",
-        "sources": [
-          {
-            "title": "Multimodal embeddings beyond a single vector",
-            "url": "https://www.perplexity.ai/sr-Cyrl-ME/hub/blog/multimodal-embeddings-beyond-a-single-vector"
-          },
-          {
-            "title": "We're releasing pplx-embed-v2-late",
-            "url": "https://community.perplexity.ai/c/announcements/9"
-          },
-          {
-            "title": "Perplexity AI Releases pplx-embed-v2-late",
-            "url": "https://www.marktechpost.com/2026/10/07/perplexity-ai-releases-pplx-embed-v2-late-a-0-6b-edge-model-and-a-9b-model-scoring-92-4-on-madqa/"
           }
         ]
       }
