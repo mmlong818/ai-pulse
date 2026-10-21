@@ -19,6 +19,112 @@
 
 ## Recent briefings
 
+### Anthropic Tests Claude on Scorpion-Toxin Protein Design
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-scorpion-binder-design.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-scorpion-binder-design.html
+- Source timestamp: 2026-10-20T16:18:00.000Z
+- Site timestamp: 2026-10-21T01:00:05.000Z
+- Tags: Research, Safety
+
+Claude generated and screened hundreds of thousands of protein designs, with 17 of 211 tested candidates binding scorpion neurotoxins in the lab.
+
+Anthropic says an internal research model operating within Claude Science designed protein binders against five scorpion neurotoxins in a campaign that ran largely autonomously for 64 hours.
+
+## From computational designs to laboratory tests
+
+The model generated 318,484 candidate proteins and screened 553,052 design-toxin pairs using structure-prediction and protein-design tools. It selected 180 designs for testing, while Anthropic added 31 more. Adaptyv Bio and Twist Bioscience produced and tested all 211 candidates.
+
+Seventeen met Anthropic’s criteria for binding a toxin. The successful designs targeted four toxins from Mexico, North Africa, and the Middle East. The strongest candidates against the Mexican toxin Cn2 bound in the single-digit nanomolar range and appeared to compete for a site also targeted by an antibody previously reported to neutralize the toxin in mice.
+
+The result is notable because the campaign addressed multiple difficult targets and included an attempt at multitoxin binders. That attempt failed: none of the designs aimed at more than one toxin met the stated threshold for binding multiple toxins. The successful rate among single-toxin designs was 11 out of 60, which Anthropic says is consistent with typical protein-design campaigns.
+
+## The important limitation
+
+Anthropic is not claiming to have produced an antivenom. The binders have not been tested in cells or live animals to establish that they neutralize venom, remain stable in the body, or are safe. They would still need optimization, formulation, manufacturing, and clinical development.
+
+The significance is therefore methodological rather than medical. A model was able to manage a long design loop, select targets and thresholds, use a collection of specialized tools, and produce experimentally credible candidates in days. That compresses the early discovery phase, particularly for neglected diseases where commercial incentives are weak.
+
+It also clarifies where the bottleneck has moved. Generating plausible binding molecules is becoming faster; proving that they work as affordable, deployable treatments remains the harder problem. Anthropic has released the 211 designs and their data, giving outside researchers a chance to test whether the result generalizes beyond this campaign.
+
+Chinese title: Anthropic让Claude设计蝎毒蛋白结合剂并完成实验验证
+Chinese summary: Claude生成超过31万种蛋白设计，实验测试的211个候选物中有17个能结合蝎毒神经毒素。
+
+Sources:
+  - How Claude designed protein binders against scorpion neurotoxins: https://www.anthropic.com/research/claude-scorpion-toxin-binder-design
+  - Anthropic releases tested protein designs and lab data: https://x.com/AnthropicAI/status/2112579263039725659
+
+### Mistral Launches Voxtral 3 Voice-Agent Model Family
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/mistral-voxtral-3-voice-agents.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/mistral-voxtral-3-voice-agents.html
+- Source timestamp: 2026-10-20T16:02:00.000Z
+- Site timestamp: 2026-10-21T01:00:05.000Z
+- Tags: Models, Agents, AIGC
+
+Mistral’s Voxtral 3 combines multilingual speech models with a LiveKit-based agent SDK for systems that listen, reason, call tools, and speak.
+
+Mistral has launched Voxtral 3, a voice-focused model family and software stack designed to let agents listen to users, reason over requests, call tools, and respond with synthesized speech in real time.
+
+## A stack rather than a single model
+
+The release includes models for transcription and text-to-speech, plus a voice-agent SDK built on LiveKit. Mistral describes the system as a pipeline in which transcription listens, a reasoning model decides what to do and can invoke tools, and speech generation returns the answer as a streamed interaction.
+
+Voxtral Small Transcribe 3 is positioned for multilingual transcription, speaker separation, and context-aware recognition. Mistral says it can detect when a speaker has finished talking, an important detail for reducing the awkward pauses and interruptions common in voice agents. Voxtral Mini TTS 3 supports more than 35 languages and 50 dialects, with instructions for controlling emotion, pace, and emphasis.
+
+The company is also offering professional voice adaptation, allowing users to create a voice replica from up to 30 minutes of audio. That capability increases the product’s commercial usefulness for customer service, localization, and branded assistants, while making consent, impersonation, and abuse controls more important.
+
+## Why the release matters
+
+Voice agents have often required developers to stitch together separate speech-recognition, reasoning, tool-use, and speech-generation services. Mistral is trying to reduce that integration burden while preserving deployment flexibility. The company emphasizes sovereign deployment, consistent with its wider positioning around open and regionally controlled AI infrastructure.
+
+Independent Artificial Analysis measurements cited in the launch cycle put Voxtral Small Transcribe 3 near the top of its speech-recognition leaderboard, while the TTS model was measured at 112.3 characters per second in one comparison. Those figures are useful signals, but they do not establish reliability in noisy calls, difficult accents, interruptions, or long-running customer interactions.
+
+The strategic question is whether Mistral can turn strong component benchmarks into dependable conversations. A fast voice model is easy to demonstrate; a voice agent that knows when to listen, when to act, and when not to speak is much harder to deploy at scale.
+
+Chinese title: Mistral发布Voxtral 3，主打实时语音智能体
+Chinese summary: Mistral推出Voxtral 3语音模型家族和LiveKit智能体SDK，让系统实时听取、推理、调用工具并开口回应。
+
+Sources:
+  - Voxtral 3: Voice agent SDKs and speech models in more than 50 languages: https://mistral.ai/news/voxtral-3/
+  - Mistral Voxtral 3 model documentation: https://docs.mistral.ai/models/voxtral-mini-tts-3-0
+  - Artificial Analysis Voxtral 3 benchmarks: https://x.com/ArtificialAnlys/status/2112587924046815630
+
+### OpenAI Acquires Orchestra Bio to Build Drug-Development Agents
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-orchestra-bio-acquisition.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-orchestra-bio-acquisition.html
+- Source timestamp: 2026-10-20T18:10:00.000Z
+- Site timestamp: 2026-10-21T01:00:05.000Z
+- Tags: Industry, Agents
+
+OpenAI is combining Orchestra Bio with Rosalind to automate the coordination layer of drug development, extending AI from discovery into execution.
+
+OpenAI has acquired Orchestra Bio, a platform that coordinates complex drug-development programs, and will combine its team and technology with Rosalind, OpenAI’s life-sciences initiative.
+
+## From scientific answers to program execution
+
+Rosalind already provides models and tools for biology and chemistry research, including GPT-Rosalind and Rosalind Workbench. Orchestra adds a different layer: tracking studies, campaigns, dependencies, timelines, and decisions across internal teams and external partners.
+
+OpenAI says agents will monitor drug programs and identify downstream effects when something changes. A failed manufacturing batch, for example, can delay a clinical trial; an agent could map the affected activities, collect relevant information, and compare response options for scientists and program leaders.
+
+That is a meaningful change in product ambition. The system is not being positioned only as a research assistant that proposes molecules or summarizes papers. It is intended to sit inside the operational machinery that moves a candidate from discovery through development. OpenAI cites partnerships with Novo Nordisk and Moderna as examples of the broader life-sciences workflow it wants to support.
+
+## Why the acquisition matters
+
+Drug development commonly takes roughly 10 to 15 years from target discovery to regulatory approval in the United States. Much of that time is not spent on a single scientific question, but on coordinating experiments, manufacturing, clinical work, documentation, and decisions made by different organizations.
+
+The acquisition therefore gives OpenAI a route into a high-value bottleneck that is less crowded than general-purpose scientific chat. It also creates a stronger feedback loop between models and real operational data, although the company has not disclosed the transaction value, deployment schedule, or how it will handle validation and accountability in regulated workflows.
+
+The immediate result is a strategic signal rather than a new medicine. OpenAI is betting that the durable advantage in AI-enabled drug development will come from owning the workflow connecting scientific insight to execution.
+
+Chinese title: OpenAI收购Orchestra Bio，进军药物研发智能体
+Chinese summary: OpenAI将Orchestra Bio并入生命科学项目Rosalind，目标是让AI从辅助发现扩展到药物研发的全流程协调。
+
+Sources:
+  - OpenAI acquires Orchestra Bio: https://openai.com/index/openai-to-acquire-orchestra-bio/
+  - OpenAI acquires startup Orchestra Bio to beef up its biotech business: https://techcrunch.com/2026/10/20/openai-acquires-startup-orchestra-bio%e2%81%a0-to-beef-up-its-biotech-business/
+
 ### AWS targets Nvidia lock-in with new PyTorch Trainium tool
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/aws-torchneuron-trainium.html
@@ -872,109 +978,28 @@ Sources:
   - Meshy AI announcement on 3D Agent availability: https://x.com/MeshyAI/status/2110285892749541475
   - Meshy 3D Agent: Conversational 3D Creation: https://www.meshy.ai/features/3d-agent
 
-### Character.AI Files for Bankruptcy as Disney Deal Emerges
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/character-ai-bankruptcy-disney-deal.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/character-ai-bankruptcy-disney-deal.html
-- Source timestamp: 2026-10-13T10:32:00.000Z
-- Site timestamp: 2026-10-13T13:00:05.790Z
-- Tags: Industry, Funding, Agents
-
-Character.AI has filed for bankruptcy while pursuing a Disney transaction, exposing the financial strain facing consumer AI platforms built on costly engagement.
-
-Character.AI has filed for bankruptcy protection while seeking a transaction with Disney, according to The Verge. The development places one of the best-known consumer chatbot companies at the center of a restructuring process and highlights the difficulty of converting viral usage into a durable business.
-
-## What happened
-
-Character.AI was founded by former Google researchers and built a large audience around user-created characters and open-ended conversations. Its platform encouraged lengthy sessions, but those interactions also required substantial inference capacity. The company’s bankruptcy filing comes alongside discussions involving Disney, suggesting that the entertainment group may be evaluating a strategic transaction or asset purchase rather than treating Character.AI as a conventional standalone software investment.
-
-The precise structure and conditions of the proposed deal remain important. A transaction could involve Character.AI’s technology, user community, intellectual property, or selected staff, while leaving creditors and other obligations inside a formal restructuring process. The bankruptcy filing therefore does not by itself mean that the service will disappear, but it does indicate that the company’s existing financing and operating model is under serious pressure.
-
-## Why it matters
-
-Consumer AI services have often been valued on growth, retention, and user attention before demonstrating reliable monetization. Character.AI’s predicament tests whether conversational entertainment can support the cost of always-on model serving, safety operations, moderation, and product development. Disney, if it proceeds, would gain access to a community and technology stack that could strengthen character-based interactive experiences, but it would also inherit difficult questions around minors, copyrighted characters, moderation, and model behavior.
-
-The case is significant beyond one company because it may accelerate consolidation in consumer AI. Platforms with strong communities but weak economics could become acquisition targets, while independent services may need sharper subscription, advertising, or licensing models to survive. The next decisive fact will be whether a buyer can turn Character.AI’s engagement into a lower-risk, commercially defensible product rather than simply preserve its user numbers.
-
-## Uncle Cat take
-
-Disney may value Character.AI’s character community more than its chatbot margins; the bankruptcy makes that distinction impossible to ignore.
-
-Chinese title: Character.AI申请破产保护，迪士尼交易浮出水面
-Chinese summary: Character.AI在寻求与迪士尼交易之际申请破产保护，暴露出消费级AI平台高成本运营与变现之间的矛盾。
-
-Sources:
-  - Character.AI files for bankruptcy: https://www.theverge.com/ai-artificial-intelligence/1009802/character-ai-files-for-bankruptcy-disney
-
-### Meta launches Muse Wonder for long-running AI agents
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-muse-wonder-frontier-agents.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-wonder-frontier-agents.html
-- Source timestamp: 2026-10-12T17:56:00.000Z
-- Site timestamp: 2026-10-13T01:00:04.247Z
-- Tags: Models, Agents, Industry
-
-Meta’s first frontier-class models target persistent memory, computer use and complex coding, putting its consumer-agent strategy on a new footing.
-
-Meta has released Muse Wonder and Muse Wonder Full, its first models explicitly positioned as frontier competitors to leading systems from OpenAI, Anthropic and Google. The launch is the clearest result yet of Meta’s 14-month restructuring of its artificial-intelligence effort under Meta Superintelligence Labs.
-
-## Built for work that continues
-
-Meta says Muse Wonder is available through its Model API and Muse Code, while Muse Wonder Full is restricted to Muse Code subscribers. Both models support a one-million-token context window and are designed for long-running, multi-step tasks. The company highlights “Active Memory,” which carries relevant information across conversations, and “Active Focus,” which lets a model change strategy, recover from errors and ask for clarification before taking consequential action.
-
-The target workloads go beyond chat: navigating insurance claims, understanding leases, handling financial information, building applications and operating browsers or desktop software. Meta’s model page also describes parallel delegation to sub-agents and continued execution over hours.
-
-## A strategic shift for Meta
-
-The release matters because Meta is no longer presenting itself mainly as the distributor of other laboratories’ advances. Muse Wonder gives the company a proprietary top-tier model to power Muse, its personal-agent product, while the API gives developers an independent route into the stack. TechCrunch reported pricing of $4 per million input tokens and $20 per million output tokens for Wonder, placing it near other premium models.
-
-Meta has not announced open weights for the Wonder family. That leaves a sharp distinction between its frontier research strategy and its earlier open-model identity. The company also says that a fuller safety report will follow, an important gap for systems designed to access messages, calendars, documents and other private data.
-
-The significance is therefore broader than another benchmark launch: Meta is trying to connect frontier intelligence, persistent personal context and billions of consumer touchpoints in one product strategy. Whether users will trust an agent that remembers enough to be useful remains unresolved.
-
-Chinese title: Meta发布Muse Wonder，押注长时运行智能体
-Chinese summary: Meta首次推出面向前沿竞争的Muse Wonder系列，主打持久记忆、电脑操作和复杂编程，个人智能体战略由此进入新阶段。
-
-Sources:
-  - Introducing Muse Wonder and Muse Wonder Full: Frontier Models for Agents: https://about.fb.com/news/2026/10/introducing-muse-wonder-models/
-  - Meta releases its first frontier model, Muse Wonder: https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/
-  - Muse Wonder | Meta: https://dev.meta.ai/models/muse-wonder
-
-### Microsoft targets multi-gigawatt scale for Maia 300
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/microsoft-maia-300-multi-gigawatt.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-maia-300-multi-gigawatt.html
-- Source timestamp: 2026-10-12T13:00:00.000Z
-- Site timestamp: 2026-10-13T01:00:04.247Z
-- Tags: Industry, Models
-
-Microsoft says its Maia 300 inference system will reach multi-gigawatt deployments in 2027, challenging Nvidia’s role in its largest AI workloads.
-
-Microsoft has announced Maia 300, the next generation of its in-house AI accelerator, and said it plans to scale the Azure Maia family to multi-gigawatt deployments beginning in 2027. The announcement turns a custom-chip program into a central part of Microsoft’s infrastructure strategy rather than a limited experiment.
-
-## Designed around inference
-
-Microsoft describes Maia 300 as an inference-first system for long-context reasoning, latency-sensitive conversations and sustained agentic workloads. A full rack is planned to combine 96 accelerators within a 167-kilowatt power envelope, with 27.6 terabytes of HBM capacity and 1.7 petabytes per second of aggregate HBM bandwidth.
-
-The company claims Maia 300 will deliver 40% more tokens per megawatt than leading GPU-based systems and up to seven times the rack-scale token throughput of Maia 200. Maia 200 is already serving Microsoft production workloads, including Copilot. Microsoft says GitHub Copilot and Microsoft Foundry will follow by the end of 2026, while Maia-based infrastructure is also intended to support future workloads such as Dragon Copilot.
-
-Microsoft’s design emphasizes data movement and memory efficiency as much as raw compute. The chip uses HBM4, a multi-chiplet architecture and lower-precision formats intended to reduce bandwidth and power requirements for large models and long context windows. Microsoft says Maia 300 will begin production deployments in 2027.
-
-## What changes for the market
-
-The announcement does not mean Microsoft is abandoning Nvidia. Azure will continue to offer a broad mixture of hardware, and the Maia system is being built to support Microsoft’s own services and selected model workloads. But the scale is strategically meaningful: multi-gigawatt deployment gives Microsoft a way to optimize cost, power and software behavior around its own services instead of accepting every constraint of general-purpose GPU infrastructure.
-
-The open question is execution. Maia 300 is still a future production system, and Microsoft’s performance-per-watt comparisons are company claims rather than independent benchmarks. Even so, the plan signals that custom inference silicon is moving from a defensive procurement tactic to a core competitive layer for hyperscalers running agents at global volume.
-
-Chinese title: 微软计划2027年将Maia 300扩至多吉瓦规模
-Chinese summary: 微软公布Maia 300推理系统，计划从2027年起部署多吉瓦规模，云厂商自研芯片对英伟达的替代压力进一步上升。
-
-Sources:
-  - Microsoft to expand Azure Maia system to multi-gigawatt deployments: https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/
-  - Microsoft's latest custom chip: Maia 300: https://news.microsoft.com/maia-2026/
-  - Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs: https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout
-
 ## Recent radar items
+
+### 2026-10-21
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-21.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-21.html
+
+- 2026-10-20T23:56:00.000Z | X | Replit is opening a Japan office and will host a Tokyo user event in November. | 中文：Replit 将在日本开设办公室，并计划于 11 月在东京举办用户活动。 | https://x.com/Replit/status/2112694410328838181
+- 2026-10-20T23:30:00.000Z | X | Krea says Krea 3 delivers pixel-perfect product consistency for e-commerce images at high generation speed. | 中文：Krea 表示，Krea 3 可高速生成具备像素级产品一致性的电商图片。 | https://x.com/krea_ai/status/2112687858003960046
+- 2026-10-20T22:47:00.000Z | X | NVIDIA, Adobe, and the European Broadcasting Union are working on tools to help media teams search footage while retaining data control. | 中文：英伟达、Adobe 与欧洲广播联盟合作，帮助媒体团队检索素材并保留数据控制权。 | https://x.com/NVIDIAAI/status/2112677152735076822
+- 2026-10-20T21:14:00.000Z | X | Vercel launched durable-harness, enabling persistent deployments of Pi, OpenCode, Codex, Claude Code, and other agent runtimes. | 中文：Vercel 发布 durable-harness，让 Pi、OpenCode、Codex、Claude Code 等代理运行时可持久部署。 | https://x.com/vercel/status/2112653833382027729
+- 2026-10-20T14:25:00.000Z | X | ElevenLabs released Realtime v1 Mini and Max for low-cost conversation and more complex production voice-agent tasks. | 中文：ElevenLabs 发布 Realtime v1 Mini 与 Max，分别面向低成本对话和复杂生产级语音代理任务。 | https://x.com/ElevenLabs/status/2112550791508873271
+- 2026-10-20T16:40:00.000Z | GitHub | Google open-sourced TorchTPU, a native PyTorch backend for Cloud TPUs. | 中文：谷歌开源 TorchTPU，为云端 TPU 提供原生 PyTorch 后端。 | https://github.com/google-pytorch/torch_tpu
+- 2026-10-20T15:48:00.000Z | X | Perplexity Computer can now run fully locally on supported Apple-silicon Macs, using local files and native Mac applications. | 中文：Perplexity Computer 现可在兼容的 Apple 芯片 Mac 上完全本地运行，处理本地文件和原生应用。 | https://x.com/perplexity_ai/status/2112571597798461920
+- 2026-10-20T15:45:00.000Z | X | Tripo and Vast.ai Research open-sourced EdenLive and EdenGolem, an agent that turns prompts into playable worlds with rules and state. | 中文：Tripo 与 Vast.ai Research 开源 EdenLive 和 EdenGolem，可将提示词转换为带规则和状态的可玩世界。 | https://x.com/tripoai/status/2112570849798881606
+- 2026-10-20T16:09:00.000Z | Hugging Face | Hugging Face highlighted FairStress, an evaluation of fairness failures in large-language-model decision-making. | 中文：Hugging Face 介绍 FairStress，用于评估大语言模型在决策中的公平性失效。 | https://huggingface.co/blog/allenai/fairstress
+- 2026-10-20T17:35:00.000Z | X | Databricks introduced MemCurrent, a persistent-memory architecture combining episodic memory with decision context for production agents. | 中文：Databricks 发布 MemCurrent，将情景记忆与决策上下文结合，用于生产级代理。 | https://x.com/databricks/status/2112598568624165296
+- 2026-10-20T13:24:00.000Z | X | Luma introduced Art Style Match, which applies one to four reference images while preserving a product’s composition. | 中文：Luma 推出 Art Style Match，可使用一至四张参考图改变画风，同时保留产品构图。 | https://x.com/LumaLabsAI/status/2112535512535986422
+- 2026-10-20T18:53:00.000Z | X | v0 added Browser Use annotations to its iOS app, giving agents structured guidance for interacting with webpages. | 中文：v0 在 iOS 应用中加入 Browser Use 标注，为代理操作网页提供结构化指引。 | https://x.com/v0/status/2112618285900685530
+- 2026-10-20T16:22:00.000Z | AWS | AWS introduced Agent Registry, allowing agents to discover tools at runtime instead of relying only on fixed configurations. | 中文：AWS 推出 Agent Registry，让代理可在运行时发现工具，而不只依赖固定配置。 | https://aws.amazon.com/blogs/machine-learning/discover-tools-at-runtime-with-aws-agent-registry/
+- 2026-10-20T14:00:00.000Z | X | Qdrant 1.19 adds pinned, cached, and cold memory tiers so vector collections can exceed available RAM. | 中文：Qdrant 1.19 增加固定、缓存和冷内存层，让向量集合可超出可用内存规模。 | https://x.com/qdrant_engine/status/2112544373028380747
+- 2026-10-20T21:14:00.000Z | AWS | AWS described training and serving i14’s Laplace 3B linear-attention model on Trainium2 using native PyTorch. | 中文：AWS 展示如何用原生 PyTorch 在 Trainium2 上训练和部署 i14 的 Laplace 3B 线性注意力模型。 | https://aws.amazon.com/blogs/machine-learning/beyond-the-kv-cache-training-and-serving-i14s-laplace-3b-linear-attention-model-on-aws-trainium2-with-native-pytorch/
 
 ### 2026-10-20
 
@@ -1099,38 +1124,3 @@ Sources:
 - 2026-10-17T04:27:00Z | X / Kling AI | Kling published a new Kling 4 video clip showing a torch-free cooking effect in a short social post. | 中文：可灵发布短视频，展示无需喷枪即可完成烹饪火焰效果。 | https://x.com/Kling_ai/status/2111313170900160528
 - 2026-10-17T04:21:00Z | X / Kling AI | Kling shared another Kling 4 clip blending fantasy imagery with nostalgic visual motifs. | 中文：可灵分享另一段Kling 4短片，将奇幻意象与怀旧视觉元素结合。 | https://x.com/Kling_ai/status/2111311579371143636
 - 2026-10-17T07:47:00Z | Latent Space | Latent Space’s latest AI News episode focused on high-taste testers and how expert users shape product quality. | 中文：Latent Space最新一期AI News讨论高品位测试者，以及专家用户如何塑造产品质量。 | https://www.latent.space/p/ainews-high-taste-testers-ep-1
-
-### 2026-10-16
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-16.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-16.html
-
-- 2026-10-15T20:04:00Z | X / NVIDIA AI | NVIDIA released Nemotron 3.5 Super VL, an open multimodal model designed for nonstop enterprise-agent workloads. | 中文：英伟达发布 Nemotron 3.5 Super VL 开放多模态模型，面向持续运行的企业智能体。 | https://x.com/NVIDIAAI/status/2110824076218605922
-- 2026-10-15T15:49:00Z | X / Krea | Krea opened its Krea 3 beta, promising native 2K image edits in under eight seconds with LoRA and style-reference support. | 中文：Krea 开放 Krea 3 测试版，支持原生 2K 图像编辑、LoRA 与风格参考，处理时间低于八秒。 | https://x.com/krea_ai/status/2110760037128012146
-- 2026-10-15T15:48:00Z | X / ElevenLabs | ElevenLabs said blind listeners preferred its Eleven v4 voice model over competing systems across eight languages. | 中文：ElevenLabs 表示，盲测听众在八种语言中都更偏好其 Eleven v4 语音模型。 | https://x.com/ElevenLabs/status/2110759737583345706
-- 2026-10-15T15:00:00Z | X / Kling AI | Kling 4.0 became fully available through Kling’s refreshed creation interface, expanding access to its latest video-generation tools. | 中文：Kling 4.0 通过全新创作界面正式全面开放，用户可直接使用最新视频生成工具。 | https://x.com/Kling_ai/status/2110747537187709424
-- 2026-10-15T13:08:00Z | X / Luma AI | Luma introduced Shot Coverage, which turns one video shot into additional moving camera angles for editing. | 中文：Luma 推出 Shot Coverage，可将单个视频镜头转换为多个可剪辑的运动机位。 | https://x.com/LumaLabsAI/status/2110719442338640147
-- 2026-10-15T14:25:00Z | X / Sakana AI | Sakana AI unveiled The Agentic Scientist, a system that orchestrates coding agents for automated scientific co-discovery. | 中文：Sakana AI 发布 Agentic Scientist，用编码智能体协同推进自动化科学发现。 | https://x.com/SakanaAILabs/status/2110738746304061491
-- 2026-10-15T17:49:00Z | X / Cognition | Cognition introduced Devin Oncall, which investigates alerts and bugs and connects with Datadog, Dynatrace, Sentry, and similar tools. | 中文：Cognition 推出 Devin Oncall，可调查告警与缺陷，并连接 Datadog、Dynatrace、Sentry 等工具。 | https://x.com/cognition/status/2110790097369010292
-- 2026-10-15T15:03:00Z | X / Manus | Manus launched Automations, allowing users to schedule agent runs or trigger them from connected-app events. | 中文：Manus 推出 Automations，支持按时间运行智能体，或由连接应用中的事件触发任务。 | https://x.com/ManusAI/status/2110748324105970111
-- 2026-10-15T17:18:00Z | X / World Labs | World Labs began rolling out Atlas beta access, including pixel-precise camera-path control for generated 3D worlds. | 中文：World Labs 开始推送 Atlas 测试资格，并提供对生成式三维世界的像素级镜头路径控制。 | https://x.com/theworldlabs/status/2110782427803341251
-- 2026-10-15T16:08:00Z | Google DeepMind | Google DeepMind described using Antigravity to accelerate antimicrobial-peptide discovery through AI-guided scientific search. | 中文：Google DeepMind 介绍 Antigravity 如何通过 AI 引导科学搜索，加速抗菌肽发现。 | https://deepmind.google/blog/accelerating-antimicrobial-discovery/
-- 2026-10-15T21:04:00Z | X / AWS Developers | AWS expanded Strands Decider with four Gemma sizes ranging from two billion to 26 billion parameters for agent routing decisions. | 中文：AWS 为 Strands Decider 增加四种 Gemma 规模，覆盖二十亿至二百六十亿参数，用于智能体路由决策。 | https://x.com/awsdevelopers/status/2110839130284233131
-- 2026-10-15T21:47:00Z | X / Ideogram | Ideogram 4.5 added multi-turn editing at every price tier, with native 2K output ranging from $0.008 to $0.22 per image. | 中文：Ideogram 4.5 在所有价格档位提供多轮编辑与原生 2K 输出，单张成本约为 0.008 至 0.22 美元。 | https://x.com/ideogram_ai/status/2110850066605068331
-- 2026-10-15T17:22:00Z | InfoQ 中文 | Archestra released OpenAPPA, a framework designed to reduce data leakage caused by prompt injection and model hallucinations. | 中文：Archestra 发布 OpenAPPA，旨在降低提示词注入和模型幻觉引发的数据泄露风险。 | https://www.infoq.cn/article/LQCqiPUzgZyB3v24rsNO
-- 2026-10-16T11:53:00Z | InfoQ 中文 | Pi introduced a new Agent Harness and integrated MCP into its core despite previously criticizing the protocol. | 中文：Pi 推出全新 Agent Harness，并将此前长期批评的 MCP 纳入核心架构。 | https://www.infoq.cn/article/hQOHf1ZXoBs7uMpWJQss
-- 2026-10-16T11:47:00Z | InfoQ 中文 | Linus Torvalds used Claude Code on the Linux kernel, but the generated patch still contained a bug that required manual correction. | 中文：Linus Torvalds 用 Claude Code 修改 Linux 内核，但生成的补丁仍包含需要人工修正的漏洞。 | https://www.infoq.cn/article/hRw4BZQQUW14sqYMo5F6
-- 2026-10-16T11:06:00Z | InfoQ 中文 | Pizza Bot is an open-source AI inbox designed to help teams process and respond to backend operational messages. | 中文：Pizza Bot 是一个开源后台 AI 收件箱，帮助团队处理并回复运营消息。 | https://www.infoq.cn/article/aMgWFmwZ2HoZDtw1g0MQ
-- 2026-10-16T10:00:00Z | InfoQ 中文 | Alibaba’s Taobao TEKO describes an autonomous write-verify-repair loop for checking and correcting AI-generated code. | 中文：阿里手淘 TEKO 介绍了一个自主“写—验—修”闭环，用于检查并修正 AI 生成的代码。 | https://www.infoq.cn/article/t3XbHewuN37fsodaprUC
-- 2026-10-16T04:00:00Z | arXiv | RealtimeBench evaluates agents on 180 tasks across six game types while environments continue changing during inference. | 中文：RealtimeBench 在六类游戏的 180 项任务中评估推理期间仍持续变化环境里的代理。 | https://arxiv.org/abs/2610.20665
-- 2026-10-16T04:00:00Z | arXiv | A benchmark-saturation study found that solving transcripts retain capability signals, with pairwise judging reducing prediction error 5.3 times versus score-only baselines. | 中文：一项基准饱和研究发现，解题过程仍保留能力信号；成对评判比只看分数的基线将预测误差降低 5.3 倍。 | https://arxiv.org/abs/2610.20667
-- 2026-10-16T04:00:00Z | arXiv | VISTA selects diffusion guidance timesteps with dynamic programming and cut toxic-text generation latency from 204.23 to 38.16 seconds. | 中文：VISTA 用动态规划选择扩散引导时间步，并将有害文本生成延迟从 204.23 秒降至 38.16 秒。 | https://arxiv.org/abs/2610.20669
-- 2026-10-16T04:00:00Z | arXiv | AlphaDiana proposes a measurement system for evaluating agents on verifiable reasoning tasks. | 中文：AlphaDiana 提出了一套用于评估可验证推理任务中代理表现的测量系统。 | https://arxiv.org/abs/2610.20675
-- 2026-10-16T04:00:00Z | arXiv | A Verus study reports that correctness feedback can erase evidence, motivating phase-separated completeness audits for formally verified code. | 中文：一项 Verus 研究指出，正确性反馈可能抹除证据，因此需要分阶段审计形式化验证代码的完整性。 | https://arxiv.org/abs/2610.20676
-- 2026-10-16T04:00:00Z | arXiv | Counterfactual Neighborhood Risk Fields provide evidence-grounded selective safety for vision-language models. | 中文：Counterfactual Neighborhood Risk Fields 为视觉语言模型提供基于证据的选择性安全机制。 | https://arxiv.org/abs/2610.20679
-- 2026-10-16T04:00:00Z | arXiv | IneqAgent combines agentic search with symbolic computation to prove inequality theorems in Lean. | 中文：IneqAgent 将代理式搜索与符号计算结合，用于在 Lean 中证明不等式定理。 | https://arxiv.org/abs/2610.20681
-- 2026-10-16T04:00:00Z | arXiv | L2G-SR studies how to guide LLM-based symbolic regression toward discovering interpretable equations. | 中文：L2G-SR 研究如何引导基于大语言模型的符号回归发现可解释方程。 | https://arxiv.org/abs/2610.20685
-- 2026-10-16T04:00:00Z | arXiv | Causal analysis of robot foundation models identifies efficiency gains without relying only on larger-scale training. | 中文：一项机器人基础模型研究通过因果分析寻找效率收益，而不是只依赖更大规模训练。 | https://arxiv.org/abs/2610.20750
-- 2026-10-16T04:00:00Z | arXiv | Multi-dimensional featurizers enable fine-grained steering and data shaping for robot foundation models. | 中文：多维特征提取器让机器人基础模型能够进行更细粒度的控制与数据塑形。 | https://arxiv.org/abs/2610.20767
-- 2026-10-16T04:16:00Z | Latent Space | The Agentic Scientist report describes agents coordinating coding work for automated scientific co-discovery and interpretability experiments. | 中文：《Agentic Scientist》介绍了协调编码工作的代理系统，用于自动化科学共发现与可解释性实验。 | https://www.latent.space/p/ainews-agents-disprove-polysemanticity
-- 2026-10-16 | AWS Machine Learning Blog | AWS published a production evaluation framework for Bedrock AgentCore covering regression gates, canary scoring, drift detection, and feedback loops. | 中文：AWS 发布 Bedrock AgentCore 生产评估框架，涵盖回归门禁、金丝雀评分、漂移检测和反馈闭环。 | https://aws.amazon.com/blogs/machine-learning/building-trust-in-ai-agents-a-production-ready-evaluation-framework-with-amazon-bedrock-agentcore/

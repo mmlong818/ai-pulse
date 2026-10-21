@@ -13,6 +13,119 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-scorpion-binder-design.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-scorpion-binder-design.html",
+      "title": "Anthropic让Claude设计蝎毒蛋白结合剂并完成实验验证",
+      "summary": "Claude生成超过31万种蛋白设计，实验测试的211个候选物中有17个能结合蝎毒神经毒素。",
+      "content_text": "Anthropic表示，其内部研究模型在Claude Science中运行了约64小时，基本自主完成了针对五种蝎毒神经毒素的蛋白结合剂设计。\n\n## 从计算设计走到实验室\n\n模型生成了318484种候选蛋白，并对553052组“设计—毒素”组合进行了结构预测与筛选，最终挑出180种设计。Anthropic团队又补充了31种候选物，交由Adaptyv Bio和Twist Bioscience全部生产并测试。\n\n其中17种达到Anthropic设定的结合标准，目标毒素来自墨西哥、北非和中东的四类蝎子。针对墨西哥Cn2毒素的最强候选物，结合亲和力达到个位数纳摩尔级；竞争实验还显示，它们可能占据与一种此前在小鼠实验中表现出中和能力的抗体相近的结合位点。\n\n这项工作尤其值得注意的地方，在于它同时尝试了多种毒素，并测试了多毒素结合剂。但后者没有成功：所有面向多种毒素设计的候选物，都没有达到对多个目标产生有效结合的标准。在只针对单一毒素的60种设计中，有11种成为结合剂，Anthropic称这一比例与典型蛋白设计项目相符。\n\n## 医疗意义仍需谨慎\n\nAnthropic没有声称已经制造出蝎毒抗毒素。这些结合剂尚未在细胞或活体动物中证明能够中和毒液，也没有完成稳定性、安全性、制剂、生产和临床开发验证。\n\n因此，这项成果的核心价值在于方法，而不是马上产生一种药物。模型能够在数天内管理较长的设计循环，选择靶点和筛选阈值，调用多种专业工具，并生成经过实验初筛的候选物；这可能压缩早期发现阶段，尤其适用于商业回报有限的被忽视疾病。\n\n它也说明瓶颈正在转移：生成可能有效的结合分子越来越快，但把它们变成安全、便宜、能够广泛使用的治疗方案，仍是更艰难的部分。Anthropic已公开211种设计及相关数据，外部研究者可以据此检验这套方法能否在其他任务上复现。",
+      "date_published": "2026-10-20T16:18:00.000Z",
+      "date_modified": "2026-10-21T01:00:05.000Z",
+      "tags": [
+        "研究",
+        "安全"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-scorpion-binder-design.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-scorpion-binder-design.html",
+        "source_published_at": "2026-10-20T16:18:00.000Z",
+        "site_published_at": "2026-10-21T01:00:05.000Z",
+        "sources": [
+          {
+            "title": "How Claude designed protein binders against scorpion neurotoxins",
+            "url": "https://www.anthropic.com/research/claude-scorpion-toxin-binder-design"
+          },
+          {
+            "title": "Anthropic releases tested protein designs and lab data",
+            "url": "https://x.com/AnthropicAI/status/2112579263039725659"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/mistral-voxtral-3-voice-agents.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/mistral-voxtral-3-voice-agents.html",
+      "title": "Mistral发布Voxtral 3，主打实时语音智能体",
+      "summary": "Mistral推出Voxtral 3语音模型家族和LiveKit智能体SDK，让系统实时听取、推理、调用工具并开口回应。",
+      "content_text": "Mistral发布Voxtral 3语音模型家族及配套软件栈，目标是让智能体实时听取用户请求、完成推理、调用工具，再通过合成语音回应。\n\n## 不只是一款模型\n\n此次发布包含语音转写和文本转语音模型，以及基于LiveKit构建的语音智能体SDK。Mistral描述的完整链路是：转写模型负责“听”，推理模型负责判断下一步并调用工具，语音模型再把结果流式说出来。\n\nVoxtral Small Transcribe 3面向多语言转写、说话人区分和上下文提示。Mistral称，它能够判断对方是否已经说完，这对于减少语音智能体常见的抢话、停顿和误切换非常关键。Voxtral Mini TTS 3支持35种以上语言和50多种方言，并可通过指令控制情绪、语速和重音。\n\nMistral还推出专业声音适配功能，用户最多上传30分钟音频即可生成高还原度的声音副本。这让产品更适合客服、本地化和品牌助手，但也同步放大了授权、冒用和滥用风险。\n\n## 为什么值得关注\n\n过去，开发者通常需要分别接入语音识别、推理、工具调用和语音合成服务，再自行处理它们之间的延迟与状态。Mistral试图把这些环节整合起来，同时保留较强的部署灵活性。公司还强调主权部署能力，这与其推动开放模型和区域化AI基础设施的战略一致。\n\n发布周期内，Artificial Analysis的测试将Voxtral Small Transcribe 3列入语音识别榜单前列；在一项速度比较中，Voxtral 3 TTS达到每秒112.3个字符。不过，这些数据尚不能证明它在嘈杂电话、复杂口音、多人插话或长时间客服任务中的稳定性。\n\nMistral真正要回答的问题，是能否把单项模型成绩变成可靠的连续对话。语音模型的速度容易展示，智能体何时倾听、何时行动、何时保持沉默，才决定它能否进入大规模业务。",
+      "date_published": "2026-10-20T16:02:00.000Z",
+      "date_modified": "2026-10-21T01:00:05.000Z",
+      "tags": [
+        "模型",
+        "Agent",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/mistral-voxtral-3-voice-agents.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/mistral-voxtral-3-voice-agents.html",
+        "source_published_at": "2026-10-20T16:02:00.000Z",
+        "site_published_at": "2026-10-21T01:00:05.000Z",
+        "sources": [
+          {
+            "title": "Voxtral 3: Voice agent SDKs and speech models in more than 50 languages",
+            "url": "https://mistral.ai/news/voxtral-3/"
+          },
+          {
+            "title": "Mistral Voxtral 3 model documentation",
+            "url": "https://docs.mistral.ai/models/voxtral-mini-tts-3-0"
+          },
+          {
+            "title": "Artificial Analysis Voxtral 3 benchmarks",
+            "url": "https://x.com/ArtificialAnlys/status/2112587924046815630"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-orchestra-bio-acquisition.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-orchestra-bio-acquisition.html",
+      "title": "OpenAI收购Orchestra Bio，进军药物研发智能体",
+      "summary": "OpenAI将Orchestra Bio并入生命科学项目Rosalind，目标是让AI从辅助发现扩展到药物研发的全流程协调。",
+      "content_text": "OpenAI宣布收购药物研发协调平台Orchestra Bio，并将其团队与技术并入生命科学项目Rosalind。后者目前提供GPT-Rosalind和Rosalind Workbench等生物、化学研究工具。\n\n## 从回答科学问题到推进项目\n\nOrchestra Bio补上的并不是另一个聊天界面，而是药物研发中的协调层：跟踪研究、实验、生产活动、时间表、依赖关系，以及内外部团队之间的决策。\n\nOpenAI表示，未来的智能体可以持续监测药物项目，判断一项变化会如何影响后续工作。例如，一批生产失败可能推迟临床试验；智能体可以找出受影响的环节，汇总相关信息，并比较不同的应对方案，供科学家和项目负责人决策。\n\n这意味着OpenAI的产品野心已经超出“帮研究人员找资料或提出分子建议”。它希望AI进入候选药物从发现走向开发的实际流程。公司还提到与诺和诺德、Moderna的合作，作为其生命科学业务方向的背景。\n\n## 为什么这笔收购重要\n\n在美国，从靶点发现到获得监管批准，药物研发平均需要约10至15年。时间成本并不只来自某一个科学难题，也来自实验、生产、临床、文档和跨机构协作之间的大量等待与错配。\n\n因此，Orchestra Bio让OpenAI接触到一个比通用科学问答更具商业价值、也更难替代的瓶颈。同时，工作流平台可能帮助模型获得更连续的真实业务反馈。不过，交易金额、具体上线时间，以及在监管场景中如何验证和追责，目前都没有公开。\n\n这笔交易暂时不会直接带来新药。它真正释放的信号是：OpenAI押注的并非单一科研助手，而是连接科学发现与药物执行的整套操作系统。",
+      "date_published": "2026-10-20T18:10:00.000Z",
+      "date_modified": "2026-10-21T01:00:05.000Z",
+      "tags": [
+        "产业",
+        "Agent"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-orchestra-bio-acquisition.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-orchestra-bio-acquisition.html",
+        "source_published_at": "2026-10-20T18:10:00.000Z",
+        "site_published_at": "2026-10-21T01:00:05.000Z",
+        "sources": [
+          {
+            "title": "OpenAI acquires Orchestra Bio",
+            "url": "https://openai.com/index/openai-to-acquire-orchestra-bio/"
+          },
+          {
+            "title": "OpenAI acquires startup Orchestra Bio to beef up its biotech business",
+            "url": "https://techcrunch.com/2026/10/20/openai-acquires-startup-orchestra-bio%e2%81%a0-to-beef-up-its-biotech-business/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/aws-torchneuron-trainium.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/aws-torchneuron-trainium.html",
       "title": "AWS推出TorchNeuron，正面挑战英伟达软件壁垒",
@@ -1765,129 +1878,6 @@
           {
             "title": "ByteDance's TRAE Merges TraeWork and TraeCode Into One Platform",
             "url": "https://pandaily.com/bytedance-trae-merges-traework-traecode-agent-ide-modes-traework-shutdown-oct-23"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/ai-agents-south-korean-bank-breaches.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/ai-agents-south-korean-bank-breaches.html",
-      "title": "韩国多家银行遭袭，调查指向AI渗透工具",
-      "summary": "CrowdStrike称，一名攻击者将开源AI渗透工具ARTEX与多款大模型结合，入侵韩国多家金融机构。",
-      "content_text": "CrowdStrike将一轮针对韩国金融机构的疑似攻击活动，与开源AI辅助渗透测试工具ARTEX及多款大语言模型联系起来。该公司称，相关活动发生在9月底至10月初，调查结果则在本期时间窗内公布。\n\n据CrowdStrike分析，攻击者把ARTEX与DeepSeek V4.1-Flash、GLM-5.3和Grok 4.6结合使用，并通过Claude Code开展操作。研究人员在暴露的攻击基础设施中发现了工具配置文件、模型会话记录和记忆文件。AI可能被用于侦察、漏洞发现、攻击路径规划及脚本执行，而不是只承担某一个孤立环节。\n\n韩国多家银行此前已报告外围系统遭入侵，包括面向贷款经纪人的查询服务和员工移动支持系统。新韩银行称约2.5万名客户受到影响，其他机构报告的泄露规模较小。目前，调查人员尚未确认攻击者身份、受影响总人数，也未证明这轮事件全部由同一操作者实施。\n\n这起事件的重要性，不在于证明AI能够独立攻破银行，而在于它展示了一种现实可行的攻击流程：单个操作者可以把专用工具与通用模型串联起来，同时推进多个目标。事件也暴露出一个防守盲区——面向外部的业务支持系统，往往比核心银行系统更薄弱。归因仍未定案，但金融机构已经获得了一份值得立即演练的攻击样本。",
-      "date_published": "2026-10-08T09:46:00.000Z",
-      "date_modified": "2026-10-08T11:00:05.916Z",
-      "tags": [
-        "安全",
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/ai-agents-south-korean-bank-breaches.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/ai-agents-south-korean-bank-breaches.html",
-        "source_published_at": "2026-10-08T09:46:00.000Z",
-        "site_published_at": "2026-10-08T11:00:05.916Z",
-        "sources": [
-          {
-            "title": "Chinese-speaking hacker possibly linked to AI-driven attacks on S. Korean banks: report",
-            "url": "https://en.yna.co.kr/view/AEN20261008002200320?section=national%2Fnational"
-          },
-          {
-            "title": "CrowdStrike finds AI-driven hacks on South Korean banks",
-            "url": "https://securitybrief.asia/story/crowdstrike-finds-ai-driven-hacks-on-south-korean-banks"
-          },
-          {
-            "title": "AI-powered attacks on banks expose technological lag in Korea's financial cyber defenses",
-            "url": "https://www.koreatimes.co.kr/business/banking-finance/20261007/explainer-how-ai-emerged-in-koreas-bank-hacking-crisis"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/biohub-virtual-cell-investment.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/biohub-virtual-cell-investment.html",
-      "title": "Biohub牵头18亿美元计划，打造AI“虚拟细胞”",
-      "summary": "Biohub联合Google、Meta及美国政府机构投入18亿美元，建设用于预测细胞行为的开放数据和AI模型。",
-      "content_text": "## 发生了什么\n\n由扎克伯格支持的Biohub宣布协调一项总额18亿美元的计划，为生物研究建设开放数据集和AI模型。该计划被称为“虚拟生物学计划”，参与方包括Biohub、Meta、Google DeepMind、Isomorphic Labs、美国能源部、美国国立卫生研究院以及多家科研机构。\n\nMeta、Google DeepMind和Isomorphic Labs将共同投入3亿美元。美国能源部将在五年内投入超过5亿美元，用于实验测量、建模和计算；NIH则负责协调和标准化由此前超过5亿美元联邦资金建设的数据集与数据库。Biohub此前还已作出另一笔5亿美元的慈善投入。\n\n该计划希望测量细胞在远超传统实验规模的不同条件下如何响应，再用这些观测结果训练预测模型。理论上，这类系统可以帮助研究人员筛选更值得验证的实验、寻找潜在药物候选物，并减少昂贵的实验室迭代。\n\n## 为什么重要\n\n这条新闻的核心不在某个新模型，而在数据和测量基础设施。生物模型经常受制于训练数据碎片化、不一致，或无法覆盖真实细胞差异。把开放数据、标准化数据库和新增实验结合起来，可能在国家级规模上缓解这一瓶颈。风险在于，“虚拟细胞”可能成为一个覆盖范围过大的名称，实际系统只能预测有限实验条件。只有当模型预测能稳定转化为湿实验结果，并适用于不同细胞类型、疾病和干预手段时，药物研发周期才会真正改变。",
-      "date_published": "2026-10-07T17:58:00.000Z",
-      "date_modified": "2026-10-07T23:00:05.932Z",
-      "tags": [
-        "研究",
-        "融资",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/biohub-virtual-cell-investment.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/biohub-virtual-cell-investment.html",
-        "source_published_at": "2026-10-07T17:58:00.000Z",
-        "site_published_at": "2026-10-07T23:00:05.932Z",
-        "sources": [
-          {
-            "title": "US government, Google join Zuckerberg-backed Biohub in $1.8 billion push for AI biology data",
-            "url": "https://www.investing.com/news/stock-market-news/usgovernment-google-join-zuckerbergbacked-biohub-in-18-billion-push-for-ai-biology-data-4936795"
-          },
-          {
-            "title": "Zuckerberg teams with Google, U.S. in push to map cells",
-            "url": "https://www.axios.com/2026/10/07/zuckerberg-biohub-ai-biology-data"
-          },
-          {
-            "title": "Google invests millions in Mark Zuckerberg’s efforts to create a virtual cell",
-            "url": "https://www.theverge.com/tech/1006766/google-meta-biohub-investment-virtual-cell"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-haiku-55-price-war.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-haiku-55-price-war.html",
-      "title": "Anthropic发布Claude Haiku 5.5，推理成本再降约75%",
-      "summary": "Claude Haiku 5.5面向高频任务推出，主打更低价格、更短延迟和可调推理强度。",
-      "content_text": "## 发生了什么\n\nAnthropic发布Claude Haiku 5.5，称其为公司速度最快、能力最强的小模型。模型现已通过Anthropic平台以及AWS、Google Cloud和Microsoft Azure提供，主要面向摘要、分类、数据库查询、客服和编程子智能体等重复性强、对延迟敏感的任务。\n\nAnthropic称，Haiku 5.5的平均运行成本比Haiku 4.5低约75%。对于不超过10万词元的提示词，输入价格为每百万词元0.10美元，输出价格为0.50美元；超过这一规模后价格上升。公司还首次在Haiku系列中加入可调推理强度，让开发者在速度、思考深度和成本之间自行取舍。\n\n同一公告还把Claude Sonnet 5.5的缓存读取价格减半至每百万词元0.10美元。Anthropic称，这会让Sonnet在许多智能体任务中的运行成本下降约20%。公司内部早期测试显示，Haiku 5.5得分比Haiku 4.5高11个百分点，延迟约减半，但这些比较仍属于厂商自报数据。\n\n## 为什么重要\n\n关键并不只是又出现了一个更便宜的小模型。Anthropic正在为智能体、子智能体和软件自动化产生的大量短请求定价。推理成本下降后，让智能体持续运行会更容易，同时也会加剧模型供应商之间的价格竞争，并重新压缩托管服务的利润空间。Haiku 5.5的行业意义，可能不在于单项榜单领先，而在于它继续把模型调用推向日常基础设施的价格区间。",
-      "date_published": "2026-10-07T18:01:00.000Z",
-      "date_modified": "2026-10-07T23:00:05.932Z",
-      "tags": [
-        "模型",
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/claude-haiku-55-price-war.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-haiku-55-price-war.html",
-        "source_published_at": "2026-10-07T18:01:00.000Z",
-        "site_published_at": "2026-10-07T23:00:05.932Z",
-        "sources": [
-          {
-            "title": "Introducing Claude Haiku 5.5",
-            "url": "https://www.anthropic.com/claude-haiku-5-5"
-          },
-          {
-            "title": "Introducing Claude Haiku 5.5 on AWS",
-            "url": "https://aws.amazon.com/blogs/machine-learning/introducing-claude-haiku-5-5-on-aws/"
-          },
-          {
-            "title": "Claude Haiku 5.5",
-            "url": "https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/"
           }
         ]
       }
