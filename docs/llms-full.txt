@@ -90,6 +90,40 @@ Sources:
   - Mistral Voxtral 3 model documentation: https://docs.mistral.ai/models/voxtral-mini-tts-3-0
   - Artificial Analysis Voxtral 3 benchmarks: https://x.com/ArtificialAnlys/status/2112587924046815630
 
+### NVIDIA Releases Kumo Forecast for Explainable Time-Series AI
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-kumo-forecast.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-kumo-forecast.html
+- Source timestamp: 2026-10-21T12:51:00.000Z
+- Site timestamp: 2026-10-21T13:00:04.839Z
+- Tags: Research, Industry
+
+NVIDIA’s Kumo Forecast combines pretrained time-series representations, historical-pattern retrieval and interpretability for forecasting workloads.
+
+## What happened
+
+NVIDIA has introduced Kumo Forecast, a time-series forecasting system that combines three capabilities often developed separately: pretrained representations of temporal data, retrieval of comparable historical patterns, and tools intended to make predictions easier to interpret. The announcement was published by Hugging Face on October 21 at 12:51 UTC.
+
+Rather than relying only on a model’s learned statistical patterns, Kumo Forecast can retrieve relevant historical examples and use them as additional context. That design is aimed at practical forecasting settings in which seasonal behavior, unusual events and domain-specific patterns can materially affect results. The interpretability layer is intended to help users understand which historical signals or temporal structures contributed to a forecast.
+
+## Why it matters
+
+Time-series AI is less visible than general-purpose language models, but it sits inside demand planning, logistics, energy management, financial operations and industrial monitoring. In those settings, accuracy alone is rarely sufficient: operators also need to investigate unexpected predictions, compare them with previous events and decide whether a forecast is safe to act on.
+
+Kumo Forecast’s importance therefore lies in its architecture and target workflow rather than in a headline benchmark claim. Retrieval can make forecasts more grounded in a company’s own history, while pretrained representations may reduce the amount of task-specific training required. The combination could be especially useful when historical data is abundant but labeled examples are limited.
+
+The open question is whether the added retrieval and explanation mechanisms consistently improve real-world decisions across industries, rather than simply producing more persuasive narratives around model outputs. If NVIDIA can demonstrate reliable gains under distribution shifts and rare events, Kumo Forecast would strengthen the case for foundation-model approaches beyond text and image generation.
+
+## Uncle Cat take
+
+NVIDIA is betting that forecast buyers will trust a model more when it can point to comparable past events; that practical traceability matters more than another opaque accuracy score.
+
+Chinese title: 英伟达发布可解释时间序列预测系统 Kumo Forecast
+Chinese summary: 英伟达推出 Kumo Forecast，将预训练时间序列表征、历史模式检索与可解释性结合，用于更贴近业务场景的预测任务。
+
+Sources:
+  - NVIDIA Kumo Forecast Combines Pretrained Time-Series Representations with Historical Pattern Retrieval and Interpretability: https://huggingface.co/blog/nvidia/kumo-forecast
+
 ### OpenAI Acquires Orchestra Bio to Build Drug-Development Agents
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-orchestra-bio-acquisition.html
@@ -235,7 +269,7 @@ Tenstorrent reached a $6.2 billion valuation after raising $1.5 billion to scale
 
 ## The financing
 
-AI chip startup Tenstorrent raised $1.5 billion at a $6.2 billion valuation, more than doubling the company’s reported value from late 2024. The round was led by Trace Capital and Innovation X, with participation from Cadence Ventures, Eclipse, Fidelity, SanDisk and T. Rowe Price.
+AI chip startup Tenstorrent raised $1.5 billion at a $6.2 billion valuation, more than doubling the company’s reported value from late 2024. The round was led by Trace Capital and Innovation X, with participation from new and existing investors including Agostinelli Group, ARK Invest, Brett Barna, Cadence Ventures, Eclipse, Fidelity Management & Research Company, Maverick Silicon, Morgan Stanley, Protagonist, Sandisk, T. Rowe Price, Tether Investments, Troluce Capital, Virtu Financial and XTX Markets.
 
 Tenstorrent is positioning itself as an alternative to Nvidia, with a focus on chips and servers designed for inference. CEO Jim Keller said the company chose to remain independent after demonstrating that its Galaxy server systems could run DeepSeek models. The new capital will support production scale and hardware tailored to serving open-weight models and video-generation workloads.
 
@@ -253,6 +287,7 @@ Chinese title: Tenstorrent融资15亿美元，押注开放模型推理芯片
 Chinese summary: AI芯片公司Tenstorrent融资15亿美元、估值升至62亿美元，将扩大面向开放权重模型和视频生成的推理硬件。
 
 Sources:
+  - Tenstorrent Series E official announcement: https://tenstorrent.com/newsroom/tenstorrent-announces-series-e
   - Tenstorrent hits $6.2B valuation to scale open-weight AI chips: https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-valuation-to-scale-open-weight-ai-chips/
 
 ### US Orders DeepSeek Removed From Federal Civilian Systems
@@ -945,39 +980,6 @@ Sources:
   - On-Device AI Against Scams: Google DeepMind & MDDI: https://deepmind.google/blog/on-device-ai-scam-detection-mddi/
   - Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams: https://deepmind.google/blog/on-device-ai-scam-detection-mddi/
 
-### Meshy’s 3D Agent Opens to Free-Plan Users
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/meshy-3d-agent-leaves-beta.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meshy-3d-agent-leaves-beta.html
-- Source timestamp: 2026-10-14T08:25:00.000Z
-- Site timestamp: 2026-10-14T13:00:05.228Z
-- Tags: AIGC, Agents, Industry
-
-Meshy’s conversational 3D Agent remains labeled beta but is now available on the Free plan, while paid plans unlock higher limits and advanced tools.
-
-## From prompt to production asset
-
-Meshy’s 3D Agent remains labeled beta, but it is now available on Meshy’s Free plan rather than being limited to Pro members and above. The product is aimed at a workflow that has traditionally required several separate tools: developing an idea, generating visual references, producing a 3D asset, refining it and exporting it for printing or game development.
-
-The agent accepts natural-language instructions as well as photos and sketches. It can propose creative directions, generate batches of concepts, turn selected designs into models and continue refining them through conversation. Meshy says users can export results in formats including FBX, OBJ, GLB, USDZ, STL, BLEND, 3MF and DXF, covering game engines, digital-content tools and 3D-printing workflows.
-
-## Why this is more than another text-to-3D feature
-
-The significant change is the product boundary. Earlier generative 3D tools typically stopped after producing a single asset. Meshy’s agent is designed to coordinate several steps and preserve context between them. That makes it closer to a specialized creative assistant than a prompt box attached to a model.
-
-The company’s own product materials describe use cases ranging from indie games and product concepts to printable objects and batch asset creation. The same workflow can also isolate multiple objects from a reference image and prepare them as separate models, reducing some of the manual setup work that slows down small creative teams.
-
-## The open question
-
-Meshy’s current product page labels the 3D Agent as beta and says it is available on the Free plan. Users can create a free Meshy account and chat with the Agent at no cost, while credits are consumed by actions they run and paid plans provide higher limits and advanced tools. The beta will test whether conversational orchestration actually improves production speed rather than simply making demos easier. Quality consistency, topology, material accuracy and licensing remain important once assets enter commercial pipelines. Meshy’s strongest claim is therefore not that it can generate a model, but that it can connect ideation to a usable deliverable. The market will judge that claim in finished projects, not isolated previews.
-
-Chinese title: Meshy的3D智能体向免费计划开放
-Chinese summary: Meshy的对话式3D Agent仍标注为测试版，但已向Free计划用户开放；付费计划提供更高额度和高级工具。
-
-Sources:
-  - Meshy AI announcement on 3D Agent availability: https://x.com/MeshyAI/status/2110285892749541475
-  - Meshy 3D Agent: Conversational 3D Creation: https://www.meshy.ai/features/3d-agent
-
 ## Recent radar items
 
 ### 2026-10-21
@@ -1000,6 +1002,21 @@ Sources:
 - 2026-10-20T16:22:00.000Z | AWS | AWS introduced Agent Registry, allowing agents to discover tools at runtime instead of relying only on fixed configurations. | 中文：AWS 推出 Agent Registry，让代理可在运行时发现工具，而不只依赖固定配置。 | https://aws.amazon.com/blogs/machine-learning/discover-tools-at-runtime-with-aws-agent-registry/
 - 2026-10-20T14:00:00.000Z | X | Qdrant 1.19 adds pinned, cached, and cold memory tiers so vector collections can exceed available RAM. | 中文：Qdrant 1.19 增加固定、缓存和冷内存层，让向量集合可超出可用内存规模。 | https://x.com/qdrant_engine/status/2112544373028380747
 - 2026-10-20T21:14:00.000Z | AWS | AWS described training and serving i14’s Laplace 3B linear-attention model on Trainium2 using native PyTorch. | 中文：AWS 展示如何用原生 PyTorch 在 Trainium2 上训练和部署 i14 的 Laplace 3B 线性注意力模型。 | https://aws.amazon.com/blogs/machine-learning/beyond-the-kv-cache-training-and-serving-i14s-laplace-3b-linear-attention-model-on-aws-trainium2-with-native-pytorch/
+- 2026-10-21T04:00:00Z | arXiv | Navalia generates verifiable financial-analysis tasks and uses them for long-horizon post-training, improving a Qwen3.6-35B-A3B agent across five benchmarks. | 中文：Navalia生成可验证的金融分析任务，用于长程后训练，并在五项基准上提升Qwen3.6-35B-A3B代理表现。 | https://arxiv.org/abs/2610.26887
+- 2026-10-21T04:00:00Z | arXiv | A new framework combines large language models and reinforcement learning to automate construction planning and progress updates. | 中文：一项新框架结合大语言模型与强化学习，自动完成施工规划和进度更新。 | https://arxiv.org/abs/2610.26899
+- 2026-10-21T04:00:00Z | arXiv | Pareto-RTL uses multi-objective reinforcement learning with language models to optimize hardware code across competing design goals. | 中文：Pareto-RTL利用结合大语言模型的多目标强化学习，在多项设计目标之间优化硬件代码。 | https://arxiv.org/abs/2610.26904
+- 2026-10-21T04:00:00Z | arXiv | MedPAO-Assist structures radiology reports offline with a 0.6B-parameter agent, using about 3.3GB RAM and 31 seconds on a laptop CPU. | 中文：MedPAO-Assist用约3.3GB内存和31秒，在笔记本CPU上离线完成影像报告结构化，模型仅约六亿参数。 | https://arxiv.org/abs/2610.26913
+- 2026-10-21T04:00:00Z | arXiv | DataPraxis builds 5,000 verified analytics trajectories through evolving workspaces, and its 27B model matches or exceeds several frontier systems. | 中文：DataPraxis通过不断演化的工作空间构建五千条验证分析轨迹，其27B模型追平或超过多款前沿系统。 | https://arxiv.org/abs/2610.26924
+- 2026-10-21T04:00:00Z | arXiv | A survey proposes industrial agentic AI architectures for smart manufacturing, covering large-model planning, tool use, and production execution. | 中文：一篇综述提出面向智能制造的工业代理架构，覆盖大模型规划、工具调用和生产执行。 | https://arxiv.org/abs/2610.26941
+- 2026-10-21T04:00:00Z | arXiv | A Lean 4 method combines compiler guidance and bounded repair to fix failed formal proofs instead of repeatedly resampling solutions. | 中文：一种Lean 4方法结合编译器引导与有界修复，直接修补失败的形式化证明，而非反复采样。 | https://arxiv.org/abs/2610.26942
+- 2026-10-21T04:00:00Z | arXiv | MAMath-Bench evaluates multimodal multi-agent mathematics across 1,003 problems and finds collaboration often adds reasoning coverage without improving final accuracy. | 中文：MAMath-Bench用1003道题评估多模态多代理数学推理，发现协作常增加过程覆盖，却未提升最终准确率。 | https://arxiv.org/abs/2610.26943
+- 2026-10-21T04:00:00Z | arXiv | H2DF introduces calibrated target bands for language-model unlearning, reducing gradient overshoot while preserving retained knowledge more consistently than basic gradient ascent. | 中文：H2DF为语言模型遗忘引入校准目标区间，减少梯度过冲，并比基础梯度上升更稳定地保留知识。 | https://arxiv.org/abs/2610.26864
+- 2026-10-21T04:00:00Z | arXiv | AutoTerm-SST adds adaptive terminology memory to streaming speech translation without requiring session-time setup. | 中文：AutoTerm-SST为流式语音翻译加入自适应术语记忆，无需在会话开始时额外配置。 | https://arxiv.org/abs/2610.26865
+- 2026-10-21T04:00:00Z | arXiv | WaveCommitments open-sources a private speech-agent marketplace using trusted execution environments and polynomial commitments, cutting proof size by up to 39 times. | 中文：WaveCommitments开源了私密语音代理市场方案，结合可信执行环境与多项式承诺，证明大小最多缩小39倍。 | https://arxiv.org/abs/2610.26867
+- 2026-10-21T04:00:00Z | arXiv | DexGraspFlow reaches 95.33% simulated grasp success across three robotic hands and lowers generation latency by about 49%. | 中文：DexGraspFlow在三种机械手上达到95.33%的模拟抓取成功率，并将生成延迟降低约49%。 | https://arxiv.org/abs/2610.26962
+- 2026-10-21T04:00:00Z | arXiv | Embodied Playground introduces 410 robotic task environments spanning manipulation, puzzles, and household activities with standardized long-horizon evaluation. | 中文：Embodied Playground推出410个机器人任务环境，覆盖操作、解谜和家务，并提供标准化长程评测。 | https://arxiv.org/abs/2610.27039
+- 2026-10-21T04:00:00Z | arXiv | CERTA estimates when quantized clinical models can replace BF16 references, reporting 4-bit deployment costs near 26% of baseline in two 72B models. | 中文：CERTA判断量化临床模型何时可替代BF16基准，并报告两款72B模型的四比特部署成本约为基线的26%。 | https://arxiv.org/abs/2610.26937
+- 2026-10-21T04:00:00Z | arXiv | A new RAG study finds retrieval, not reading, is the main bottleneck for multi-fact questions and proposes line-level evidence scoring. | 中文：一项新研究发现，多事实问题的主要瓶颈是检索而非阅读，并提出逐行证据评分。 | https://arxiv.org/abs/2610.26951
 
 ### 2026-10-20
 
