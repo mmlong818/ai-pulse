@@ -1,0 +1,32 @@
+{
+  "slug": "tencent-workforge-agent-training",
+  "title": "Tencent’s WorkForge Scales Verifiable Training for Work Agents",
+  "summary": "Tencent researchers introduce WorkForge, a framework that turns real-world files and workflows into verifiable environments for long-horizon agents.",
+  "body": "## From workflows to testable workspaces\n\nTencent and Fudan University researchers are presenting WorkForge as a way to address one of the least glamorous but most consequential bottlenecks in agent development: the shortage of realistic training environments where an agent’s work can be checked reliably.\n\nThe framework begins with professional workflows rather than isolated prompts. It identifies the resources, decisions and deliverables required for a job, then assembles workspaces from real-world files. WorkForge analyzes those workspaces to find factual anchors—observable details that can support both task construction and evaluation. It then creates instructions, solution plans and programmatic or semantic verifiers tied back to that evidence.\n\nThe team reports 16,700 verifiable environments spanning 40 professional domains and 60 file types. In post-training experiments, Qwen3.5-35B-A3B-Base improved its GDPVal score from 45.5 to 73.6 and its APEX score from 5.0 to 21.3. The paper also reports that a 27B model reached highly competitive results against stronger systems.\n\n## Why it matters\n\nMost agent benchmarks still reward a final answer without fully exposing whether the system followed a dependable process. WorkForge instead treats the workspace—the files, intermediate decisions and produced artifacts—as part of the supervision signal. That is a meaningful shift for agents expected to handle finance, research, operations or office work over dozens of steps.\n\nThe unresolved issue is whether automatically synthesized verifiers remain trustworthy outside the paper’s selected domains. Still, the approach points toward a more scalable training economy for agents: less hand-built simulation, more evidence-linked work.\n\n## Uncle Cat take\n\nWorkForge’s strongest contribution is not its Qwen score; it is tying evaluation to 60 file types, which gives enterprise agents a more credible path beyond toy tasks.",
+  "title_zh": "腾讯WorkForge扩展可验证工作智能体训练环境",
+  "summary_zh": "腾讯与复旦研究者推出WorkForge，把真实文件和专业流程转化为可验证的长程智能体训练环境。",
+  "body_zh": "## 从工作流程到可检验空间\n\n腾讯与复旦大学研究者发布的WorkForge，瞄准的是智能体发展中一个不够显眼、却极其关键的瓶颈：缺少真实、复杂，而且能够可靠验收的训练环境。\n\nWorkForge不是从孤立提示词出发，而是先分析专业工作流程，识别任务所需的资源、决策和交付物，再利用真实文件搭建工作空间。系统随后检查这些空间，提取其中可观察、可核验的事实锚点，并据此生成任务说明、解决方案和程序化或语义验证器。换言之，任务如何完成、结果是否正确，都尽量回到工作空间本身的证据。\n\n研究团队称，WorkForge已经构建出覆盖40个专业领域、60种文件类型的1.67万个可验证环境。在后训练实验中，Qwen3.5-35B-A3B-Base的GDPVal得分从45.5提升至73.6，APEX得分从5.0提升至21.3；27B模型也取得了对强竞争模型颇具竞争力的成绩。\n\n## 为什么重要\n\n许多智能体评测只看最后答案，很难判断系统是否经历了可靠的工作过程。WorkForge把文件、阶段性决策和最终产物都纳入监督信号，这对金融、研究、运营和办公等需要持续执行数十步的任务尤为重要。\n\n但自动生成的验证器能否在论文覆盖领域之外保持可信，仍待检验。即便如此，WorkForge展示了一条更可扩展的训练路径：减少手工搭建模拟环境，让任务、过程和证据彼此绑定。\n\n## Uncle Cat观点\n\nWorkForge最有价值的并非Qwen分数，而是覆盖60种文件类型；这让企业智能体终于有机会走出玩具任务。",
+  "tags": [
+    "Agents",
+    "Research",
+    "Open Source"
+  ],
+  "sources": [
+    {
+      "title": "Scaling Verifiable Environments for Long-horizon Work Agents",
+      "url": "https://arxiv.org/abs/2610.04906"
+    },
+    {
+      "title": "TencentHunyuan WorkForge announcement",
+      "url": "https://x.com/TencentHunyuan/status/2113196619667763211"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "WorkForge tackles the training-and-evaluation bottleneck that may determine whether long-horizon agents become dependable professional tools.",
+  "featured_reason_zh": "WorkForge直击长程智能体训练与评测瓶颈，可能决定这类系统能否真正进入专业工作场景。",
+  "cat_take_zh": "WorkForge的关键不是Qwen分数，而是把60种文件纳入可验证训练。",
+  "cat_take_en": "WorkForge matters less for its Qwen score than for grounding verification across 60 real file types.",
+  "date": "2026-10-22",
+  "published": "2026-10-22T09:11:00Z",
+  "published_at": "2026-10-22T13:00:04.708Z"
+}

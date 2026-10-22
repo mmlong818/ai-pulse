@@ -54,6 +54,43 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/ibm-granite-forecasting-ensemble.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/ibm-granite-forecasting-ensemble.html",
+      "title": "IBM Releases Open Granite Time-Series Ensemble Recipe",
+      "summary": "IBM Research publishes an open forecasting recipe that combines four Granite time-series models for zero-shot and probabilistic prediction.",
+      "content_text": "## Combining specialized forecasters\n\nIBM Research has published Granite Timeseries Ensemble R1, an open recipe that combines four Granite time-series models behind a common forecasting interface. The release is aimed at zero-shot forecasting and probabilistic forecasting experiments, allowing users to assemble predictions without first retraining a model on every new dataset.\n\nRather than presenting a single larger model as the answer, the recipe treats forecasting as an ensemble problem. Different Granite checkpoints can contribute distinct forecasts, while aggregation methods combine them into a final prediction. The implementation is available through Hugging Face, and the interface is designed to support additional compatible models and aggregation strategies.\n\nThe accompanying material positions the release as an experimental toolkit rather than a universal replacement for domain-specific forecasting systems. Its practical value lies in making model combination easier to reproduce, compare and adapt across workloads such as demand planning, operations and financial time series.\n\n## Why it matters\n\nThe release is smaller than a frontier-language-model launch, but it reflects an important shift in how applied AI is being built. Many forecasting problems do not need conversational generation; they need calibrated uncertainty, stable numerical output and a way to compare models under changing data conditions.\n\nAn ensemble can improve robustness when individual models fail on different patterns, but it also increases operational complexity. Users must manage checkpoint compatibility, aggregation choices and data leakage risks. The release does not by itself prove that Granite ensembles beat carefully tuned local baselines in production.\n\nStill, an open, composable recipe gives practitioners a lower-friction way to test whether combining compact forecasting models delivers better reliability than choosing one model by leaderboard position alone. That makes it a useful Asian-cycle open-model release, even if its significance is practical rather than headline-making.\n\n## Uncle Cat take\n\nGranite’s real bet is reproducibility: the value will show up only if users can swap models and aggregation rules without rebuilding the forecasting stack.",
+      "date_published": "2026-10-22T07:51:00.000Z",
+      "date_modified": "2026-10-22T13:00:04.708Z",
+      "tags": [
+        "Models",
+        "Open Source",
+        "Research"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/ibm-granite-forecasting-ensemble.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/ibm-granite-forecasting-ensemble.html",
+        "source_published_at": "2026-10-22T07:51:00.000Z",
+        "site_published_at": "2026-10-22T13:00:04.708Z",
+        "sources": [
+          {
+            "title": "Ensemble forecasting with IBM Granite time-series models",
+            "url": "https://huggingface.co/blog/ibm-research/granite-timeseries-ensemble-r1"
+          },
+          {
+            "title": "Granite Timeseries Ensemble R1 model repository",
+            "url": "https://huggingface.co/ibm-granite/granite-timeseries-ensemble-r1"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/openai-models-google-cloud.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/openai-models-google-cloud.html",
       "title": "OpenAI Brings Frontier Models and Codex to Google Cloud",
@@ -127,6 +164,43 @@
           {
             "title": "Recursive Flint on OpenHands",
             "url": "https://www.openhands.dev/blog/recursive-flint-on-openhands"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/tencent-workforge-agent-training.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/tencent-workforge-agent-training.html",
+      "title": "Tencent’s WorkForge Scales Verifiable Training for Work Agents",
+      "summary": "Tencent researchers introduce WorkForge, a framework that turns real-world files and workflows into verifiable environments for long-horizon agents.",
+      "content_text": "## From workflows to testable workspaces\n\nTencent and Fudan University researchers are presenting WorkForge as a way to address one of the least glamorous but most consequential bottlenecks in agent development: the shortage of realistic training environments where an agent’s work can be checked reliably.\n\nThe framework begins with professional workflows rather than isolated prompts. It identifies the resources, decisions and deliverables required for a job, then assembles workspaces from real-world files. WorkForge analyzes those workspaces to find factual anchors—observable details that can support both task construction and evaluation. It then creates instructions, solution plans and programmatic or semantic verifiers tied back to that evidence.\n\nThe team reports 16,700 verifiable environments spanning 40 professional domains and 60 file types. In post-training experiments, Qwen3.5-35B-A3B-Base improved its GDPVal score from 45.5 to 73.6 and its APEX score from 5.0 to 21.3. The paper also reports that a 27B model reached highly competitive results against stronger systems.\n\n## Why it matters\n\nMost agent benchmarks still reward a final answer without fully exposing whether the system followed a dependable process. WorkForge instead treats the workspace—the files, intermediate decisions and produced artifacts—as part of the supervision signal. That is a meaningful shift for agents expected to handle finance, research, operations or office work over dozens of steps.\n\nThe unresolved issue is whether automatically synthesized verifiers remain trustworthy outside the paper’s selected domains. Still, the approach points toward a more scalable training economy for agents: less hand-built simulation, more evidence-linked work.\n\n## Uncle Cat take\n\nWorkForge’s strongest contribution is not its Qwen score; it is tying evaluation to 60 file types, which gives enterprise agents a more credible path beyond toy tasks.",
+      "date_published": "2026-10-22T09:11:00.000Z",
+      "date_modified": "2026-10-22T13:00:04.708Z",
+      "tags": [
+        "Agents",
+        "Research",
+        "Open Source"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-workforge-agent-training.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-workforge-agent-training.html",
+        "source_published_at": "2026-10-22T09:11:00.000Z",
+        "site_published_at": "2026-10-22T13:00:04.708Z",
+        "sources": [
+          {
+            "title": "Scaling Verifiable Environments for Long-horizon Work Agents",
+            "url": "https://arxiv.org/abs/2610.04906"
+          },
+          {
+            "title": "TencentHunyuan WorkForge announcement",
+            "url": "https://x.com/TencentHunyuan/status/2113196619667763211"
           }
         ]
       }
@@ -1801,84 +1875,6 @@
           {
             "title": "The maker of non-text AI model Jev valued at $7.5B",
             "url": "https://techcrunch.com/2026/10/09/the-maker-of-non-text-ai-model-jev-valued-at-7-5b-just-weeks-after-launch/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/anthropic-cyber-mission-oss-scanner.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/anthropic-cyber-mission-oss-scanner.html",
-      "title": "Anthropic launches Cyber Mission and free OSS Scanner",
-      "summary": "Anthropic is pairing frontier models with critical-infrastructure support and free vulnerability scans, turning AI cyber defense into a public deployment program.",
-      "content_text": "Anthropic has launched the Cyber Mission, a long-term program that combines frontier-model research, security tooling and direct support for defenders of critical systems. Its first initiatives target two areas: operational technology used by power, water and transport networks, and the open-source software supply chain.\n\n## What is launching\n\nThe company’s Critical Infrastructure Defense Program will provide frontier Claude models, on-site engineering support and threat research to trusted providers and organizations defending operational technology and government systems. Anthropic also launched OSS Scanner, an opt-in service that periodically scans enrolled open-source projects for vulnerabilities at no cost.\n\nScanner reports include a proof of concept, an explanation of the flaw and a suggested fix when available. Unlike Anthropic’s coordinated-disclosure work, the reports are model-generated and sent without human review. Anthropic expects a true-positive rate above 90%, while acknowledging that severity ratings and proposed fixes can still be wrong.\n\nThe program grew out of Project Glasswing, in which Anthropic scanned hundreds of widely used open-source projects and had humans triage many potential findings before disclosure. Anthropic separately says that, through Project Glasswing and related partner efforts, organizations uncovered at least 129,000 verified software vulnerabilities between April and July 2026, while Anthropic’s own open-source scanning efforts found an additional 5,500 verified vulnerabilities between April and October 2026. More than 33,000 of these had been rated critical or high severity, although Anthropic describes the figures as an undercount based on partial data.\n\n## Why it matters\n\nThe strategic shift is from demonstrating that models can find vulnerabilities to placing them inside the maintenance loop of software that other systems depend on. That could make AI-assisted security useful to small projects that cannot afford professional auditing, while also creating a new burden: maintainers must process a potentially continuous stream of machine-generated findings.\n\nAnthropic’s own warning is important. Critical infrastructure may take years or decades to patch safely, so a model that finds bugs faster does not automatically make physical systems safer. The Cyber Mission will be judged by verified fixes and reduced exposure, not by the number of vulnerabilities reported.",
-      "date_published": "2026-10-08T21:04:00.000Z",
-      "date_modified": "2026-10-08T23:00:05.582Z",
-      "tags": [
-        "Safety",
-        "Open Source",
-        "Policy"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-cyber-mission-oss-scanner.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-cyber-mission-oss-scanner.html",
-        "source_published_at": "2026-10-08T21:04:00.000Z",
-        "site_published_at": "2026-10-08T23:00:05.582Z",
-        "sources": [
-          {
-            "title": "Introducing the Anthropic Cyber Mission",
-            "url": "https://www.anthropic.com/news/anthropic-cyber-mission"
-          },
-          {
-            "title": "Launching an opt-in vulnerability-finding service for open-source software",
-            "url": "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source"
-          },
-          {
-            "title": "Anthropic launches Cyber Mission and OSS Scanner",
-            "url": "https://x.com/AnthropicAI/status/2108302539498414208"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/bytedance-finds-deepseek-context-blind-spots.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/bytedance-finds-deepseek-context-blind-spots.html",
-      "title": "ByteDance Finds Position-Sensitive Weakness in DeepSeek V4",
-      "summary": "Seed researchers found DeepSeek V4 retrieval accuracy can vary sharply when the same fact moves within a long context, exposing a hidden cost of cache compression.",
-      "content_text": "ByteDance’s Seed research team has identified a previously underappreciated weakness in DeepSeek’s long-context processing: the model’s ability to retrieve information can depend heavily on where that information appears in the prompt.\n\nThe researchers tested DeepSeek V4 Flash, V4 Pro and V4.1 Flash while keeping the question and target passage unchanged and moving the passage through a context of roughly 128,000 tokens. In the base V4 Flash model, retrieval accuracy varied by as much as 40.2 percentage points depending on the target’s position. Post-training reduced the gap to 19.1 points, while V4.1 Flash narrowed it further to 6.1 points.\n\nSeed attributes the effect to DeepSeek’s block-based key-value cache compression. The technique reduces memory and bandwidth requirements by compressing consecutive tokens into fewer cache entries, making long-context inference cheaper. But the position of a fact inside a compressed block can affect how faithfully the model later reconstructs or retrieves it. The researchers describe the recurring pattern as “phase sensitivity.”\n\nThe finding matters beyond DeepSeek. Average scores on long-context benchmarks can conceal periodic blind spots, especially when a test places information at only a few fixed positions. For production systems, that creates a reliability problem: a document may be unchanged while a small formatting difference alters where critical content lands.\n\nSeed’s results also show that post-training can mitigate, but not automatically eliminate, the weakness. Long-context evaluation will need position sweeps and repeated retrieval tests, rather than a single placement of each fact. The broader lesson is that memory-saving inference optimizations can introduce structured failure modes that aggregate benchmarks miss.\n\n## Uncle Cat take\n\nThe important result is the 40.2-point swing, not the “DeepSeek glitch” framing: cache efficiency has become part of model reliability, and buyers should test placement sensitivity before trusting long documents.",
-      "date_published": "2026-10-09T07:11:00.000Z",
-      "date_modified": "2026-10-09T11:00:05.342Z",
-      "tags": [
-        "Research",
-        "Models",
-        "Safety"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/bytedance-finds-deepseek-context-blind-spots.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/bytedance-finds-deepseek-context-blind-spots.html",
-        "source_published_at": "2026-10-09T07:11:00.000Z",
-        "site_published_at": "2026-10-09T11:00:05.342Z",
-        "sources": [
-          {
-            "title": "字节找到了DeepSeek时强时弱的原因",
-            "url": "https://ad.36kr.com/p/4018280573833089"
-          },
-          {
-            "title": "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression",
-            "url": "https://arxiv.org/abs/2609.19969"
           }
         ]
       }

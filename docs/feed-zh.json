@@ -54,6 +54,43 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/ibm-granite-forecasting-ensemble.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/ibm-granite-forecasting-ensemble.html",
+      "title": "IBM开源Granite时序模型集成预测方案",
+      "summary": "IBM研究院发布Granite Timeseries Ensemble R1，将四款时序模型组合到统一接口中，支持零样本和概率预测。",
+      "content_text": "## 把多个预测器组合起来\n\nIBM研究院发布了Granite Timeseries Ensemble R1，这是一套将四款Granite时序模型置于统一预测接口下的开放方案，面向零样本预测和概率预测实验。用户无需为每个新数据集重新训练模型，就可以尝试组合不同预测器。\n\n这套方案没有把重点放在单一更大模型上，而是把时序预测视为集成问题。不同Granite检查点可以提供各自的预测结果，再通过聚合方法生成最终输出。实现已经通过Hugging Face提供，接口也预留了接入其他兼容模型和聚合策略的空间。\n\n相关材料将其定位为实验工具，而不是能够替代所有领域预测系统的通用方案。它的实际意义在于，让需求规划、运营管理和金融时序等场景更容易复现、比较和调整模型组合。\n\n## 为什么重要\n\n这次发布的影响力不如前沿语言模型，但它体现了应用型AI的一个重要方向。许多预测问题并不需要聊天式生成，而更需要经过校准的不确定性、稳定的数值输出，以及在数据变化后比较模型的能力。\n\n当不同模型在不同模式下失效时，集成可能提高稳健性；但它也会增加运维复杂度。用户仍需处理检查点兼容性、聚合策略和数据泄漏等问题，当前发布并不能证明集成模型在生产环境一定胜过经过调优的本地基线。\n\n不过，一个开放且可组合的方案，确实降低了验证成本：实践者可以测试组合紧凑型模型是否比单看排行榜挑一个模型更可靠。这使它成为今天亚洲时段值得关注的开放模型发布，意义更偏向工程实践，而非轰动性突破。\n\n## Uncle Cat观点\n\nGranite真正押注的是可复现性：只有当用户能自由替换模型和聚合规则，它的集成路线才会产生长期价值。",
+      "date_published": "2026-10-22T07:51:00.000Z",
+      "date_modified": "2026-10-22T13:00:04.708Z",
+      "tags": [
+        "模型",
+        "开源",
+        "研究"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/ibm-granite-forecasting-ensemble.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/ibm-granite-forecasting-ensemble.html",
+        "source_published_at": "2026-10-22T07:51:00.000Z",
+        "site_published_at": "2026-10-22T13:00:04.708Z",
+        "sources": [
+          {
+            "title": "Ensemble forecasting with IBM Granite time-series models",
+            "url": "https://huggingface.co/blog/ibm-research/granite-timeseries-ensemble-r1"
+          },
+          {
+            "title": "Granite Timeseries Ensemble R1 model repository",
+            "url": "https://huggingface.co/ibm-granite/granite-timeseries-ensemble-r1"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-models-google-cloud.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-models-google-cloud.html",
       "title": "OpenAI前沿模型与Codex将登陆Google Cloud",
@@ -127,6 +164,43 @@
           {
             "title": "Recursive Flint on OpenHands",
             "url": "https://www.openhands.dev/blog/recursive-flint-on-openhands"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-workforge-agent-training.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-workforge-agent-training.html",
+      "title": "腾讯WorkForge扩展可验证工作智能体训练环境",
+      "summary": "腾讯与复旦研究者推出WorkForge，把真实文件和专业流程转化为可验证的长程智能体训练环境。",
+      "content_text": "## 从工作流程到可检验空间\n\n腾讯与复旦大学研究者发布的WorkForge，瞄准的是智能体发展中一个不够显眼、却极其关键的瓶颈：缺少真实、复杂，而且能够可靠验收的训练环境。\n\nWorkForge不是从孤立提示词出发，而是先分析专业工作流程，识别任务所需的资源、决策和交付物，再利用真实文件搭建工作空间。系统随后检查这些空间，提取其中可观察、可核验的事实锚点，并据此生成任务说明、解决方案和程序化或语义验证器。换言之，任务如何完成、结果是否正确，都尽量回到工作空间本身的证据。\n\n研究团队称，WorkForge已经构建出覆盖40个专业领域、60种文件类型的1.67万个可验证环境。在后训练实验中，Qwen3.5-35B-A3B-Base的GDPVal得分从45.5提升至73.6，APEX得分从5.0提升至21.3；27B模型也取得了对强竞争模型颇具竞争力的成绩。\n\n## 为什么重要\n\n许多智能体评测只看最后答案，很难判断系统是否经历了可靠的工作过程。WorkForge把文件、阶段性决策和最终产物都纳入监督信号，这对金融、研究、运营和办公等需要持续执行数十步的任务尤为重要。\n\n但自动生成的验证器能否在论文覆盖领域之外保持可信，仍待检验。即便如此，WorkForge展示了一条更可扩展的训练路径：减少手工搭建模拟环境，让任务、过程和证据彼此绑定。\n\n## Uncle Cat观点\n\nWorkForge最有价值的并非Qwen分数，而是覆盖60种文件类型；这让企业智能体终于有机会走出玩具任务。",
+      "date_published": "2026-10-22T09:11:00.000Z",
+      "date_modified": "2026-10-22T13:00:04.708Z",
+      "tags": [
+        "Agent",
+        "研究",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-workforge-agent-training.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-workforge-agent-training.html",
+        "source_published_at": "2026-10-22T09:11:00.000Z",
+        "site_published_at": "2026-10-22T13:00:04.708Z",
+        "sources": [
+          {
+            "title": "Scaling Verifiable Environments for Long-horizon Work Agents",
+            "url": "https://arxiv.org/abs/2610.04906"
+          },
+          {
+            "title": "TencentHunyuan WorkForge announcement",
+            "url": "https://x.com/TencentHunyuan/status/2113196619667763211"
           }
         ]
       }
@@ -1801,84 +1875,6 @@
           {
             "title": "The maker of non-text AI model Jev valued at $7.5B",
             "url": "https://techcrunch.com/2026/10/09/the-maker-of-non-text-ai-model-jev-valued-at-7-5b-just-weeks-after-launch/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-cyber-mission-oss-scanner.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-cyber-mission-oss-scanner.html",
-      "title": "Anthropic启动网络使命，免费扫描开源软件漏洞",
-      "summary": "Anthropic推出网络使命计划，为关键基础设施提供模型与工程支持，并向开源项目免费开放定期漏洞扫描。",
-      "content_text": "Anthropic宣布启动“网络使命”（Cyber Mission），把前沿模型、安全工具和面向防御方的直接支持结合起来，优先服务关键基础设施与开源软件供应链。首批项目覆盖电力、供水、交通等运营技术，以及政府系统和广泛使用的开源代码。\n\n## 两项计划同时启动\n\n关键基础设施防御计划将向可信服务提供商及相关组织提供Claude前沿模型、现场工程师和威胁研究支持，帮助保护运营技术与政府系统。与此同时，Anthropic推出OSS Scanner，允许加入项目的开源维护者免费获得定期漏洞扫描。\n\n扫描报告会给出漏洞利用概念验证、问题解释，以及可行时的修复建议。与Anthropic此前采用协调披露机制的工作不同，OSS Scanner的报告由模型生成，不经过人工审核后再发送。公司预计真实漏洞命中率将超过90%，但也明确承认，严重性评级和修复建议仍可能出错。\n\n这项服务源于Project Glasswing。Anthropic此前扫描了数百个广泛使用的开源项目，并由人工对许多潜在漏洞进行分级和复核。Anthropic进一步披露，通过Project Glasswing及相关合作方项目，组织在2026年4月至7月间发现了至少129,000个经过验证的软件漏洞；Anthropic自身在2026年4月至10月的开源扫描工作中，另外发现了5,500个经过验证的漏洞。其中超过33,000个已被评为严重或高危，但Anthropic强调这些数字基于部分数据，属于保守估计。\n\n## 为什么重要\n\n这次发布的意义不只是证明模型能找漏洞，而是把模型放进软件维护流程本身。对于缺乏专业安全团队的小型开源项目，自动化扫描可能降低安全审计门槛；但持续出现的机器生成报告，也可能给维护者带来新的筛选和验证压力。\n\nAnthropic自己给出的限制同样关键：关键基础设施的补丁可能需要数年，甚至数十年才能安全部署。因此，发现漏洞更快，并不等于实体系统立刻更安全。Cyber Mission最终要用修复数量和风险暴露下降来证明价值，而不是用报告数量来证明成功。",
-      "date_published": "2026-10-08T21:04:00.000Z",
-      "date_modified": "2026-10-08T23:00:05.582Z",
-      "tags": [
-        "安全",
-        "开源",
-        "政策"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-cyber-mission-oss-scanner.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-cyber-mission-oss-scanner.html",
-        "source_published_at": "2026-10-08T21:04:00.000Z",
-        "site_published_at": "2026-10-08T23:00:05.582Z",
-        "sources": [
-          {
-            "title": "Introducing the Anthropic Cyber Mission",
-            "url": "https://www.anthropic.com/news/anthropic-cyber-mission"
-          },
-          {
-            "title": "Launching an opt-in vulnerability-finding service for open-source software",
-            "url": "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source"
-          },
-          {
-            "title": "Anthropic launches Cyber Mission and OSS Scanner",
-            "url": "https://x.com/AnthropicAI/status/2108302539498414208"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/bytedance-finds-deepseek-context-blind-spots.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/bytedance-finds-deepseek-context-blind-spots.html",
-      "title": "字节Seed揭示DeepSeek长上下文的“位置敏感”弱点",
-      "summary": "Seed研究发现，同一信息仅因在长文本中的位置变化，DeepSeek V4检索准确率最高可相差40.2个百分点。",
-      "content_text": "字节跳动Seed团队发现，DeepSeek在处理超长文本时存在一个容易被平均分掩盖的问题：同一条信息放在上下文的不同位置，模型能否准确找回它可能大不相同。\n\n研究人员对DeepSeek V4 Flash、V4 Pro和V4.1 Flash进行了测试，保持问题与目标信息不变，只改变目标信息在约12.8万词元上下文中的位置。基础版V4 Flash的检索准确率最高相差40.2个百分点；经过后训练后，差距缩小至19.1个百分点；V4.1 Flash则进一步降至6.1个百分点。\n\nSeed将这一现象归因于DeepSeek采用的分块式KV缓存压缩技术。该方法把连续的一段内容压缩成更少的缓存记录，从而降低长上下文推理所需的显存、带宽和计算开销。但信息落在压缩块中的哪个位置，会影响模型之后恢复和读取它的效果。研究团队将这种按固定间隔重复出现的表现波动称为“相位敏感性”。\n\n这项发现的影响并不局限于DeepSeek。长上下文基准通常只在少数固定位置放置目标信息，平均分因此可能掩盖模型周期性的“盲区”。在真实应用中，文档内容并未改变，哪怕只是格式调整导致关键信息前后移动，也可能改变模型的回答结果。\n\n研究同时显示，后训练能够缓解问题，却不能自动消除它。今后的长上下文评测需要系统地扫描信息位置，并重复测试同一条信息，而不是只看单一摆放位置的成绩。对产业而言，这说明节省推理成本的底层优化，也可能带来结构化的可靠性风险。\n\n## Uncle Cat 观点\n\n真正值得关注的是40.2个百分点的波动，而不是“模型抽风”的说法：缓存压缩已成为可靠性变量，长文档采购必须加入位置敏感性测试。",
-      "date_published": "2026-10-09T07:11:00.000Z",
-      "date_modified": "2026-10-09T11:00:05.342Z",
-      "tags": [
-        "研究",
-        "模型",
-        "安全"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/bytedance-finds-deepseek-context-blind-spots.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/bytedance-finds-deepseek-context-blind-spots.html",
-        "source_published_at": "2026-10-09T07:11:00.000Z",
-        "site_published_at": "2026-10-09T11:00:05.342Z",
-        "sources": [
-          {
-            "title": "字节找到了DeepSeek时强时弱的原因",
-            "url": "https://ad.36kr.com/p/4018280573833089"
-          },
-          {
-            "title": "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression",
-            "url": "https://arxiv.org/abs/2609.19969"
           }
         ]
       }
