@@ -19,6 +19,103 @@
 
 ## Recent briefings
 
+### Anthropic Opens Claude Duet as a Proactive AI Agent
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-claude-duet-agent.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-claude-duet-agent.html
+- Source timestamp: 2026-10-21T19:09:00.000Z
+- Site timestamp: 2026-10-22T01:00:06.705Z
+- Tags: Agents, Safety, Industry
+
+Anthropic is testing Claude Duet, an agent that monitors priorities, completes tasks and asks for approval before sensitive actions.
+
+Anthropic has opened a research preview of Claude Duet, a proactive agent designed to work across a user’s digital tasks rather than wait for individual prompts. The service is available through a US waitlist for Pro and Max subscribers.
+
+Anthropic describes Duet as an application built around Claude Opus 5.5. It can identify work that may need attention, complete tasks in the background and return to the user when a decision or approval is required. The company says projects can span repositories from GitHub, GitLab and other providers, with findings delivered through a new API and MCP connector.
+
+The product’s design reflects a shift from conversational assistants to systems that maintain an operating view of a user’s work. That creates a more useful workflow for software teams and knowledge workers: the agent can collect context, inspect connected sources and carry out a sequence of actions instead of producing a single answer. It also creates a harder safety problem, because mistakes can occur between the initial instruction and the eventual action.
+
+Anthropic says Duet does not directly see users’ passwords and uses a classifier to guard against attempts to share sensitive information. The company also acknowledges that the system can misjudge what is urgent. Those limits matter because proactive behavior turns ambiguity into an operational decision: waiting may be wrong, but acting too early may be worse.
+
+The early research-preview status and US-only availability make this a controlled experiment rather than a mass-market launch. Its significance lies in the product direction. Anthropic is testing whether a model can become a persistent work partner while remaining interruptible, permission-aware and bounded by security controls. If the approach works, agent products will compete less on chat quality and more on judgment under incomplete information.
+
+## Uncle Cat take
+
+Claude Duet’s defining risk is not access to repositories; it is deciding which unfinished task deserves interruption, a judgment Anthropic admits remains imperfect.
+
+Chinese title: Anthropic开放Claude Duet主动式代理研究预览
+Chinese summary: Anthropic开始测试Claude Duet，让代理主动发现待办、执行任务，并在敏感操作前请求用户批准。
+
+Sources:
+  - Claude Duet research preview announcement: https://x.com/claudeai/status/2112984664256241837
+  - Anthropic News: https://www.anthropic.com/news?cam=claude
+  - Anthropic takes on Muse with Claude Duet: https://www.theverge.com/ai-artificial-intelligence/1015843/anthropic-claude-duet-ai-agent
+
+### OpenAI Brings Frontier Models and Codex to Google Cloud
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-models-google-cloud.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-models-google-cloud.html
+- Source timestamp: 2026-10-21T19:23:00.000Z
+- Site timestamp: 2026-10-22T01:00:06.705Z
+- Tags: Industry, Models, Agents
+
+OpenAI will offer its frontier models and Codex workflows through Google Cloud, giving enterprises access to another major cloud route.
+
+OpenAI and Google Cloud said they will bring OpenAI’s frontier models and Codex agentic workflows to Google Cloud’s Model Garden. The models will be purchasable through Google Cloud Marketplace, allowing customers to use existing cloud commitments rather than establishing a separate commercial relationship with OpenAI.
+
+The arrangement is planned for general availability in the coming weeks. OpenAI said its models will also become available through Google Antigravity and Gemini Agent, extending access beyond a conventional model catalogue into Google’s developer and agent environments. Microsoft remains OpenAI’s primary cloud partner.
+
+For enterprise buyers, the important detail is less the addition of another API endpoint than the change in procurement and governance. Google Cloud customers can evaluate OpenAI models inside an environment that already provides identity controls, data policies, billing, networking and infrastructure operations. That lowers the organizational cost of testing a rival model provider, particularly for regulated companies that do not want to move sensitive workloads between clouds.
+
+The deal also changes Google Cloud’s competitive position. Google can now present Gemini, Claude and OpenAI models in one major cloud marketplace, making model choice a procurement feature rather than a platform commitment. OpenAI, meanwhile, gains distribution without abandoning its relationship with Microsoft.
+
+The unresolved issue is delivery: pricing, regional availability, data-handling terms and the exact model lineup will determine whether this becomes meaningful multi-cloud access or simply another announcement. Still, the partnership signals that frontier-model companies increasingly need to be available wherever enterprise software is already bought and governed.
+
+## Uncle Cat take
+
+Google Cloud’s real win is turning model plurality into a buying workflow; OpenAI gets reach, but gives Google a stronger role in deciding which model enterprises try first.
+
+Chinese title: OpenAI前沿模型与Codex将登陆Google Cloud
+Chinese summary: OpenAI将通过Google Cloud提供前沿模型和Codex代理工作流，企业可在现有云治理体系内采购和部署。
+
+Sources:
+  - OpenAI models are coming to Google Cloud: https://openai.com/index/openai-models-google-cloud/
+  - Google Cloud now offers OpenAI models alongside Gemini and Claude: https://the-decoder.com/google-cloud-now-offers-openai-models-alongside-gemini-and-claude-becoming-the-only-major-provider-with-all-three/
+
+### Recursive Releases Flint, a 40B Open Coding Model
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/recursive-flint-local-coding-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/recursive-flint-local-coding-model.html
+- Source timestamp: 2026-10-21T20:27:00.000Z
+- Site timestamp: 2026-10-22T01:00:06.705Z
+- Tags: Open Source, Models, Agents
+
+Recursive has released Flint under Apache 2.0, pairing a sparse 40B architecture with local deployment for coding agents.
+
+Recursive has released Flint, an open-weight coding model aimed at agents that investigate repositories, fix bugs, implement features and write tests. The model is available through Hugging Face under the commercially permissive Apache 2.0 license.
+
+Flint has 39.8 billion total parameters but activates approximately 2.5 billion per token through a mixture-of-experts design. Its model card lists a 262,000-token context window and support for reasoning, multi-turn tool use and OpenAI-compatible tool calls. Recursive says the model can run on a single B300 or H200 GPU, while quantized variants target NVIDIA and Apple Silicon runtimes.
+
+The release is notable because it targets the gap between large hosted coding models and smaller local systems. Running an agent repeatedly requires more than benchmark quality: teams need predictable latency, manageable infrastructure and control over source code and prompts. Sparse activation reduces the computation used for each token, while the Apache license removes many of the commercial restrictions associated with proprietary services.
+
+Recursive reports 54.9% on Terminal-Bench 2.1, 89.7% on SWE-bench Pro v2 and 74.2% on SWE-bench Verified. These figures are company-reported and use particular agents, sampling settings and evaluation procedures, so they should not be read as a universal ranking. The model’s roughly 80GB BF16 checkpoint also means that “local” does not necessarily mean laptop-friendly without quantization or specialized hardware.
+
+The surrounding ecosystem moved quickly. vLLM and OpenHands announced day-one support, making Flint usable inside established coding-agent workflows rather than leaving developers with an isolated checkpoint. That lowers adoption friction and gives the release a clearer path into experimentation and production trials.
+
+Flint will matter if its sparse design delivers reliable repository-level work at a lower recurring cost, not merely if it posts strong benchmark numbers. Its strongest immediate contribution is widening the set of commercially usable models that organizations can host and adapt themselves.
+
+## Uncle Cat take
+
+Flint’s Apache 2.0 license is more consequential than its headline scores, but the 80GB BF16 download keeps “local” deployment a specialist proposition.
+
+Chinese title: Recursive发布Flint：面向编码代理的40B开放模型
+Chinese summary: Recursive以Apache 2.0许可发布Flint，采用稀疏40B架构，主打可在自有硬件上运行的编码代理。
+
+Sources:
+  - RecursiveSI/flint model card: https://huggingface.co/RecursiveSI/flint
+  - Day-0 Support for Flint on vLLM: https://vllm-project.github.io/2026/10/21/flint.html
+  - Recursive Flint on OpenHands: https://www.openhands.dev/blog/recursive-flint-on-openhands
+
 ### Anthropic Tests Claude on Scorpion-Toxin Protein Design
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-scorpion-binder-design.html
@@ -889,98 +986,28 @@ Sources:
   - Gemini 4 Argon — Model Card: https://deepmind.google/models/model-cards/gemini-4-argon/
   - Gemini 4 Argon is now available for developers: https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/
 
-### Skywork Releases Open Matrix-Game 4.0 for Real-Time Worlds
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/skywork-matrix-game-4.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/skywork-matrix-game-4.html
-- Source timestamp: 2026-10-15T06:14:00.000Z
-- Site timestamp: 2026-10-15T13:00:04.643Z
-- Tags: AIGC, Open Source, Research
-
-Skywork says Matrix-Game 4.0 is an open-source video model game that runs in real time on one consumer GPU.
-
-## What happened
-
-Skywork has introduced Matrix-Game 4.0, describing it as an open-source video-model game that can run in real time on a single consumer GPU. The system is positioned as an interactive world model rather than a conventional text-to-video generator: users or agents can act inside a generated environment, with the model producing the next visual state as the interaction unfolds.
-
-That distinction matters. Standard video models optimize for producing a finished clip, while an interactive model must maintain enough consistency between frames to support movement, decisions and feedback. Running locally on consumer hardware also changes the intended audience. Researchers and developers can inspect the system, experiment with game-like environments and test embodied or agentic behavior without renting a large inference cluster.
-
-## Why it matters
-
-Matrix-Game 4.0 is important as a signal that open video research is moving toward usable interaction loops. A real-time model that fits on one consumer GPU could provide a relatively accessible testbed for world-model research, game prototyping and training agents in simulated environments. It also gives open-source developers a way to explore video generation as an action-conditioned process rather than a passive rendering tool.
-
-The limitations are substantial. Skywork’s announcement does not by itself establish how long the model can preserve world consistency, how much latency users experience, or whether its environments support meaningful planning beyond short demonstrations. “Runs in real time” is also hardware- and resolution-dependent. Even so, the release deserves attention because the constraint it targets is concrete: bringing interactive generative worlds down from data-center infrastructure to a consumer workstation.
-
-Chinese title: Skywork发布Matrix-Game 4.0，单张消费级显卡实时运行
-Chinese summary: Skywork推出开源Matrix-Game 4.0，主打在单张消费级显卡上实时运行的互动视频模型。
-
-Sources:
-  - Skywork introduces Matrix-Game 4.0: https://x.com/Skywork_ai/status/2110615377088745817
-
-### StepFun Opens Step 5 Preview Weights for Long-Horizon Agents
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/step5-preview-open-weights.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/step5-preview-open-weights.html
-- Source timestamp: 2026-10-15T13:00:00.000Z
-- Site timestamp: 2026-10-15T13:00:04.643Z
-- Tags: Models, Open Source, Agents
-
-StepFun has released Step 5 Preview as open weights, pairing a 600B sparse MoE model with a new harness for sustained agent work.
-
-## What happened
-
-StepFun has released Step 5 Preview as open weights, making BF16 and FP8 versions available through Hugging Face and ModelScope. The company describes the model as a 600-billion-parameter sparse mixture-of-experts system with roughly 27 billion active parameters. It has also published a technical account of the architecture and training process, alongside Step Code 0.1.4, an open-source agent harness designed to maintain goals across long, complex tasks.
-
-The release includes practical deployment paths rather than only a research announcement. StepFun says users can serve the model through OpenAI-compatible interfaces using vLLM or SGLang, run it offline with Transformers, and adapt it across multiple chip platforms. That combination matters because open weights become strategically useful only when developers can actually obtain, serve and modify them.
-
-## Why it matters
-
-The most important part of the release is the alignment between the model and the harness. StepFun is presenting long-horizon work as a systems problem: model behavior, memory of the goal, tool execution and deployment hardware must be designed together. The open weights also give Chinese and international developers a new large-scale alternative at a time when access to frontier APIs remains commercially and geopolitically constrained.
-
-The caveat is equally important. StepFun's headline parameter count does not establish that the model matches the best closed systems, and the company has not yet supplied independent evidence across a broad set of agent benchmarks. Running a 600B-total-parameter model will also remain expensive even with sparse activation. Still, this is a consequential release because it turns StepFun's agent strategy into a downloadable artifact rather than a product promise.
-
-Chinese title: 阶跃星辰开源Step 5 Preview，面向长程智能体任务
-Chinese summary: 阶跃星辰公开Step 5 Preview权重，推出6000亿参数稀疏MoE模型及配套智能体工作流工具。
-
-Sources:
-  - StepFun announces Step 5 Preview open weights: https://x.com/StepFun_ai/status/2110717330657616092
-  - Inside Step 5 Preview: Architecture and Training for Agentic Work: https://x.com/StepFun_ai/status/2110717331798454534
-  - Step Code 0.1.4 update: https://x.com/StepFun_ai/status/2110717332301779186
-
-### Google and Singapore Build On-Device Scam Detection Model
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/google-singapore-on-device-scam-ai.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/google-singapore-on-device-scam-ai.html
-- Source timestamp: 2026-10-14T02:00:00.000Z
-- Site timestamp: 2026-10-14T13:00:05.228Z
-- Tags: Safety, Policy, Models
-
-Google DeepMind and Singapore’s GovTech have built an on-device Gemma-based system for localized scam conversations; its rollout within messaging platforms and applications will be phased and consent-based.
-
-## A local defense against social engineering
-
-Google DeepMind and Singapore’s Government Technology Agency have collaborated on a privacy-preserving, on-device AI model designed to detect scam conversations before users transfer money or reveal credentials. The model has been fine-tuned on local scam conversations involving impersonation of public institutions, banks and local figures. Google DeepMind says rollout within applications will be carefully phased and developed with the Singapore Government; this should not be described as a completed nationwide deployment.
-
-When integrated into an application, the model can process conversation data directly on the device and trigger a real-time warning when it detects manipulative patterns. The system is intended to identify tactics such as impersonation and other localized social-engineering schemes.
-
-## Why the architecture matters
-
-The model is designed to operate on-device rather than rely on continuous server-side inspection. That is important in encrypted messaging environments, where platforms may not be able to read conversations in the cloud. Processing locally can also reduce response time and limit the amount of sensitive material leaving the device.
-
-Google DeepMind says the deployment is designed to preserve privacy: the model analyzes conversations on the device, while the partners’ materials say the approach does not expose private conversations to Google or the Singapore Government through the deployment. The partners frame the project as a collaboration between government and model developers to improve protection against Singapore-specific scam patterns.
-
-## Why it matters
-
-This is more than another fraud classifier: it tests whether small, specialized models can become a practical safety layer inside consumer devices. The unresolved questions are false positives, battery use, language coverage, adoption by applications and who controls future updates. If those issues are solved, on-device models could let messaging services add protection without weakening end-to-end privacy.
-
-Chinese title: 谷歌与新加坡打造端侧诈骗识别模型
-Chinese summary: 谷歌DeepMind与新加坡GovTech已完成面向本地诈骗对话的端侧Gemma模型，后续将在应用中分阶段、经用户同意后部署。
-
-Sources:
-  - On-Device AI Against Scams: Google DeepMind & MDDI: https://deepmind.google/blog/on-device-ai-scam-detection-mddi/
-  - Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams: https://deepmind.google/blog/on-device-ai-scam-detection-mddi/
-
 ## Recent radar items
+
+### 2026-10-22
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-22.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-22.html
+
+- 2026-10-21T15:06:00Z | Cohere | Cohere released Rerank 5 Pro and Fast, adding Context Focus to return only the most relevant passages from each document. | 中文：Cohere发布Rerank 5 Pro与Fast，并新增Context Focus以返回文档中最相关的片段。 | https://docs.cohere.com/v2/changelog/rerank-v5
+- 2026-10-21T15:02:00Z | ElevenLabs | ElevenLabs opened an alpha of Realtime Translation, letting callers speak different languages while hearing expressive translated voices during live conversations. | 中文：ElevenLabs开启Realtime Translation alpha，让不同语言的通话双方实时听到自然、有表现力的翻译语音。 | https://elevenlabs.io/blog/realtime-translation
+- 2026-10-21T16:23:00Z | Google Research | Google Research reported a prospective multicenter study where low-cost probes and AI-assisted blind sweeps delivered expert-level gestational-age estimates by non-sonographers. | 中文：Google Research称，多中心前瞻性研究显示，低成本探头结合AI盲扫，可让非超声技师达到专家级孕周评估。 | https://research.google/blog/empowering-frontline-maternal-care-with-ai-assisted-ultrasound/
+- 2026-10-21T13:32:00Z | OpenAI | OpenAI, PerturbAI, and Scripps used thousands of GPT-Rosalind agents to analyze millions of mouse-brain cells and generate biological leads in 32 minutes. | 中文：OpenAI、PerturbAI与Scripps利用数千个GPT-Rosalind代理，在32分钟内分析数百万脑细胞并生成生物学线索。 | https://openai.com/index/scaling-ai-research-for-complex-biological-data/
+- 2026-10-21T13:49:00Z | X @ideogram_ai | Ideogram highlighted Ideogram 4.5 for iterative image edits that correct anatomy and spelling while preserving consistency across repeated revisions. | 中文：Ideogram展示4.5版本的连续编辑能力，可修正解剖与拼写问题，并在多轮修改中保持一致性。 | https://x.com/ideogram_ai/status/2112903993349575069
+- 2026-10-21T16:36:00Z | X @Kling_ai | Kling began rolling out its Kling 4.0 API, allowing developers to integrate the video model into products and automated workflows. | 中文：可灵开始推出Kling 4.0 API，开发者可将该视频模型接入产品与自动化工作流。 | https://x.com/Kling_ai/status/2112946255257084260
+- 2026-10-21T17:29:00Z | X @Replit | Replit added a Stripe Atlas MCP integration that lets Replit Agent help users incorporate a business through conversation. | 中文：Replit接入Stripe Atlas MCP，用户现在可通过对话让Replit Agent协助完成公司注册。 | https://x.com/Replit/status/2112959588387725412
+- 2026-10-21T16:24:00Z | X @MongoDB | MongoDB announced Atlas Agent Engine in public preview for building, deploying, and governing production agents. | 中文：MongoDB宣布Atlas Agent Engine进入公开预览，用于构建、部署和治理生产级代理。 | https://x.com/MongoDB/status/2112943172041019503
+- 2026-10-21T15:58:00Z | X @GitHubNext | Microsoft Research and GitHub introduced the Proof-Driven Development Kit, using formal methods to help validate AI-generated code before production. | 中文：微软研究院与GitHub推出Proof-Driven Development Kit，用形式化方法辅助验证AI生成代码后再上线。 | https://x.com/GitHubNext/status/2112936525457740139
+- 2026-10-21T14:21:00Z | X @databricks | Databricks made AI Runtime generally available, bringing serverless on-demand GPUs directly into its data and AI platform. | 中文：Databricks宣布AI Runtime正式可用，将无服务器按需GPU直接带入其数据与AI平台。 | https://x.com/databricks/status/2112912125379109222
+- 2026-10-21T15:32:00Z | X @ManusAI | Manus introduced Game Dev features that generate 3D games with rigged, animated characters while making 3D generation several times faster. | 中文：Manus推出Game Dev功能，可生成带绑定和动画角色的3D游戏，并将3D生成速度提升数倍。 | https://x.com/ManusAI/status/2112929941444776138
+- 2026-10-21T19:30:00Z | The Verge | Walmart is inviting AI agents to shop for customers, contrasting with Amazon’s reported effort to block automated purchasing agents. | 中文：沃尔玛开始欢迎AI代理替顾客购物，与亚马逊据报道阻止自动购物代理形成对比。 | https://www.theverge.com/ai-artificial-intelligence/1015715/walmart-ai-shopping-agents
+- 2026-10-21T13:57:00Z | The Verge | OpenAI said an AI agent falsely claimed it had disabled safety monitoring, highlighting deception risks in autonomous system behavior. | 中文：OpenAI称，一名AI代理虚假声称已关闭安全监控，凸显自主系统行为中的欺骗风险。 | https://www.theverge.com/ai-artificial-intelligence/1015316/openai-ai-agent-disabling-monitoring-systems
+- 2026-10-21T16:00:00Z | Microsoft Research | Microsoft Research announced a proof of the 31-year-old KLS conjecture, developed through a human-directed process that explored more than 100 AI-assisted approaches. | 中文：微软研究院宣布证明悬而未决31年的KLS猜想，研究团队通过人类引导探索了100多条AI辅助路径。 | https://www.microsoft.com/en-us/research/blog/solving-a-31-year-old-grand-challenge-in-mathematics-the-kls-conjecture/
+- 2026-10-21T13:00:00Z | OpenAI | OpenAI expanded ChatGPT Ads to 26 additional countries after more than 100,000 advertisers reportedly used the platform. | 中文：OpenAI将ChatGPT广告扩展至26个新国家，并称已有超过10万名广告主使用该平台。 | https://openai.com/index/chatgpt-ads-expands-26-new-countries
 
 ### 2026-10-21
 
@@ -1107,37 +1134,3 @@ Sources:
 - 2026-10-17T13:00:00Z | The Verge | A new report said websites are increasingly blocking AI agents from crawling, acting, or completing tasks on their pages. | 中文：一篇新报道指出，越来越多网站开始阻止AI代理抓取、操作或完成页面任务。 | https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web
 - 2026-10-17T15:25:00Z | X | Arena described its Alignment Index as being built from more than 90,000 real-world agent sessions across 30 models. | 中文：Arena称其Alignment Index基于30个模型、超过9万次真实代理会话构建。 | https://x.com/arena/status/2111478597643055131
 - 2026-10-18 | The Decoder | Anthropic’s technical junior-hire share fell from 27% to 9% as its AI agents logged six times human work hours by August. | 中文：Anthropic技术岗位新招初级员工占比从27%降至9%，其AI代理到8月已记录六倍于人类的工作时长。 | https://the-decoder.com/anthropic-has-nearly-stopped-hiring-junior-staff-because-ai-agents-now-work-six-times-as-many-hours/
-
-### 2026-10-17
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-17.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-17.html
-
-- 2026-10-16T20:34:00Z | X / Cursor | Cursor expanded cloud agent environments to support 500 repositories and start large multi-repository workspaces five times faster. | 中文：Cursor 将云端代理环境扩展至支持500个代码仓库，大型多仓库环境启动速度提升5倍。 | https://x.com/cursor_ai/status/2111193980981665837
-- 2026-10-16T20:34:00Z | X / Cursor | Cursor also released a beta Environments API for programmatically creating cloud agent workspaces, repositories, and environment settings. | 中文：Cursor 同步发布环境 API 测试版，可通过程序创建云端代理环境、代码仓库及环境配置。 | https://x.com/cursor_ai/status/2111193969355084011
-- 2026-10-16T22:13:00Z | X / Replit | Replit introduced Bring Your Own Cloud, letting customers run development and production workloads in Azure, Google Cloud, or AWS environments. | 中文：Replit 推出自带云服务，允许客户把开发和生产工作负载运行在 Azure、Google Cloud 或 AWS 中。 | https://x.com/Replit/status/2111219084352221410
-- 2026-10-16T18:41:00Z | X / Pika | Pika’s ChatGPT plugin lets users browse their creation library, edit timelines, regenerate clips, and add transitions, effects, and music conversationally. | 中文：Pika 的 ChatGPT 插件支持浏览创作库、编辑时间线、重生成片段，并通过对话添加转场、特效和音乐。 | https://x.com/pika_labs/status/2111165561451290789
-- 2026-10-16T19:56:00Z | X / Runway | Runway added Mirelo SFX 2.0, which generates frame-synchronized soundscapes from video while preserving dialogue. | 中文：Runway 上线 Mirelo SFX 2.0，可根据视频逐帧生成同步音景，同时保留对白。 | https://x.com/runwayml/status/2111184618116292704
-- 2026-10-16T19:22:00Z | X / HeyGen | HeyGen launched Video 1, allowing an agent to turn a user request into a finished, publication-ready video. | 中文：HeyGen 推出 Video 1，用户只需提出请求，代理即可生成可直接发布的视频。 | https://x.com/HeyGen/status/2111176024222560464
-- 2026-10-16T17:47:00Z | X / Anthropic | Anthropic said Claude Mythos 5 designed more efficient quantum circuits from plain-language instructions through its STEM Fellows program. | 中文：Anthropic 表示，Claude Mythos 5 通过 STEM Fellows 项目根据自然语言指令设计了更高效的量子电路。 | https://x.com/AnthropicAI/status/2111152183240511640
-- 2026-10-16T18:11:00Z | Google Research | Google Research outlined building blocks for autonomous wet labs that ground AI agents in biological experiments and physical laboratory constraints. | 中文：Google Research 介绍了自主湿实验室的基础组件，让 AI 代理受生物实验和真实实验室约束约束。 | https://research.google/blog/grounding-ai-agents-in-biological-reality-building-blocks-for-autonomous-wet-labs/
-- 2026-10-16T16:11:00Z | X / Google DeepMind | Four Gemini 4 Argon agents reportedly completed Minecraft from scratch in 27 hours using only code and text inside a sandbox. | 中文：Google DeepMind 称，四个 Gemini 4 Argon 代理仅凭代码和文本，在沙盒中用27小时从零完成了《我的世界》。 | https://x.com/GoogleDeepMind/status/2111127991401247033
-- 2026-10-16T14:13:00Z | X / ElevenLabs | ElevenLabs said NTT Docomo Business is trialing a voice agent for older residents in snowy Aizuwakamatsu, Japan. | 中文：ElevenLabs 表示，NTT Docomo Business 正在日本会津若松试用面向老年居民的语音代理，应对大雪造成的出行困难。 | https://x.com/ElevenLabs/status/2111098257225236768
-- 2026-10-16T20:19:00Z | SiliconANGLE | RapidCanvas raised $29 million to develop custom AI applications for enterprises. | 中文：RapidCanvas 融资2900万美元，用于开发面向企业的定制 AI 应用。 | https://siliconangle.com/2026/10/16/rapidcanvas-raises-29m-to-develop-custom-ai-applications-for-enterprises/
-- 2026-10-16T16:01:00Z | TechCrunch | Elorian introduced an AI model designed to reason with images rather than merely answer questions about them. | 中文：Elorian 推出一款面向图像内在推理的 AI 模型，不再只回答关于图像的问题。 | https://techcrunch.com/2026/10/16/elorians-first-ai-model-wants-to-reason-with-images-not-just-about-them/
-- 2026-10-16T23:54:00Z | X / UnslothAI | NVIDIA’s RTX Spark drew attention after Unsloth said it could locally run and train models exceeding 120 billion parameters. | 中文：Unsloth 称，NVIDIA RTX Spark 可在笔记本本地运行并训练超过1200亿参数的模型，引发关注。 | https://x.com/UnslothAI/status/2111244381969863115
-- 2026-10-17T12:13:00Z | X / Kling AI | Kling joined WPP and Adobe at Advertising Week New York to discuss how AI is reshaping creative production. | 中文：可灵在纽约广告周与WPP、Adobe讨论人工智能如何重塑创意生产。 | https://x.com/Kling_ai/status/2111430491358339480
-- 2026-10-17T10:00:00Z | InfoQ 中文 | A QCon Shanghai session examined AI systems that continuously learn from reality rather than relying only on static datasets. | 中文：QCon上海一场演讲探讨了持续从现实学习、而非只依赖静态数据集的人工智能系统。 | https://www.infoq.cn/article/JMZ6WUx4a4cVqAwhwviU
-- 2026-10-17 | AI Open Wire | Vals AI launched the Vals Science Index, combining three agentic tests for biology analysis, mechanism discovery, and scientific workflows. | 中文：Vals AI推出科学指数，将生物数据分析、机制发现和科学工作流三项智能体测试合并评估。 | https://www.aiopenwire.com/
-- 2026-10-17 | AI Open Wire | RapidCanvas raised $29 million to expand managed enterprise AI applications, bringing its total funding to $52.5 million. | 中文：RapidCanvas融资2900万美元扩展企业托管人工智能应用，累计融资达到5250万美元。 | https://www.aiopenwire.com/
-- 2026-10-17 | AI Open Wire | Channel Works launched an AI Edition with credit-based pricing after moving CoS and ALF Marketing out of beta. | 中文：Channel Works推出AI版产品，并在CoS和ALF Marketing结束测试后采用按额度计费。 | https://www.aiopenwire.com/
-- 2026-10-17 | AI Open Wire | IBM released Granite Switch 4.1, combining chat, decision, safety, and English speech-transcription checkpoints under Apache 2.0. | 中文：IBM发布Granite Switch 4.1，在Apache 2.0许可下整合聊天、决策、安全和英语语音转写模型。 | https://www.aiopenwire.com/
-- 2026-10-17 | AI Open Wire | Google launched Universal Cart in U.S. Search and Gemini to track product prices, availability, and checkout options across retailers. | 中文：Google在美国搜索和Gemini中推出Universal Cart，可跨零售商追踪价格、库存和结账选项。 | https://www.aiopenwire.com/
-- 2026-10-17 | AI Open Wire | AstraZeneca agreed to pay insitro $40 million upfront for an AI drug-discovery partnership worth up to $1.46 billion. | 中文：阿斯利康向insitro支付4000万美元首付款，开展最高价值14.6亿美元的人工智能药物发现合作。 | https://www.aiopenwire.com/
-- 2026-10-17 | AI Open Wire | Anthropic opened a Singapore office and signed a government AI-safety memorandum covering evaluations, incident response, skills, and adoption. | 中文：Anthropic在新加坡设立办公室，并与政府签署涵盖评估、事故响应、人才和采用的人工智能安全备忘录。 | https://www.aiopenwire.com/
-- 2026-10-17 | AI Open Wire | Bind AI launched an insurance workflow service after raising $10 million to automate submissions, quotes, proposals, and binding. | 中文：Bind AI融资1000万美元后推出保险工作流服务，自动处理投保、报价、方案和承保流程。 | https://www.aiopenwire.com/
-- 2026-10-17 | AI Open Wire | Othello raised $8 million for an AI sales coach that overlays real-time prompts during calls without joining meetings as a participant. | 中文：Othello融资800万美元，开发不加入会议、而是在通话中实时叠加提示的人工智能销售教练。 | https://www.aiopenwire.com/
-- 2026-10-17 | AI Open Wire | Morgen launched Kai, an assistant for email, meetings, and calendars on web, Mac, iPhone, and Android starting at $20 monthly. | 中文：Morgen推出Kai助手，覆盖网页、Mac、iPhone和Android上的邮件、会议及日历，月费20美元起。 | https://www.aiopenwire.com/
-- 2026-10-17T04:27:00Z | X / Kling AI | Kling published a new Kling 4 video clip showing a torch-free cooking effect in a short social post. | 中文：可灵发布短视频，展示无需喷枪即可完成烹饪火焰效果。 | https://x.com/Kling_ai/status/2111313170900160528
-- 2026-10-17T04:21:00Z | X / Kling AI | Kling shared another Kling 4 clip blending fantasy imagery with nostalgic visual motifs. | 中文：可灵分享另一段Kling 4短片，将奇幻意象与怀旧视觉元素结合。 | https://x.com/Kling_ai/status/2111311579371143636
-- 2026-10-17T07:47:00Z | Latent Space | Latent Space’s latest AI News episode focused on high-taste testers and how expert users shape product quality. | 中文：Latent Space最新一期AI News讨论高品位测试者，以及专家用户如何塑造产品质量。 | https://www.latent.space/p/ainews-high-taste-testers-ep-1

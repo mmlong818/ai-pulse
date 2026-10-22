@@ -1,0 +1,36 @@
+{
+  "slug": "recursive-flint-local-coding-model",
+  "title": "Recursive Releases Flint, a 40B Open Coding Model",
+  "summary": "Recursive has released Flint under Apache 2.0, pairing a sparse 40B architecture with local deployment for coding agents.",
+  "body": "Recursive has released Flint, an open-weight coding model aimed at agents that investigate repositories, fix bugs, implement features and write tests. The model is available through Hugging Face under the commercially permissive Apache 2.0 license.\n\nFlint has 39.8 billion total parameters but activates approximately 2.5 billion per token through a mixture-of-experts design. Its model card lists a 262,000-token context window and support for reasoning, multi-turn tool use and OpenAI-compatible tool calls. Recursive says the model can run on a single B300 or H200 GPU, while quantized variants target NVIDIA and Apple Silicon runtimes.\n\nThe release is notable because it targets the gap between large hosted coding models and smaller local systems. Running an agent repeatedly requires more than benchmark quality: teams need predictable latency, manageable infrastructure and control over source code and prompts. Sparse activation reduces the computation used for each token, while the Apache license removes many of the commercial restrictions associated with proprietary services.\n\nRecursive reports 54.9% on Terminal-Bench 2.1, 89.7% on SWE-bench Pro v2 and 74.2% on SWE-bench Verified. These figures are company-reported and use particular agents, sampling settings and evaluation procedures, so they should not be read as a universal ranking. The model’s roughly 80GB BF16 checkpoint also means that “local” does not necessarily mean laptop-friendly without quantization or specialized hardware.\n\nThe surrounding ecosystem moved quickly. vLLM and OpenHands announced day-one support, making Flint usable inside established coding-agent workflows rather than leaving developers with an isolated checkpoint. That lowers adoption friction and gives the release a clearer path into experimentation and production trials.\n\nFlint will matter if its sparse design delivers reliable repository-level work at a lower recurring cost, not merely if it posts strong benchmark numbers. Its strongest immediate contribution is widening the set of commercially usable models that organizations can host and adapt themselves.\n\n## Uncle Cat take\n\nFlint’s Apache 2.0 license is more consequential than its headline scores, but the 80GB BF16 download keeps “local” deployment a specialist proposition.",
+  "title_zh": "Recursive发布Flint：面向编码代理的40B开放模型",
+  "summary_zh": "Recursive以Apache 2.0许可发布Flint，采用稀疏40B架构，主打可在自有硬件上运行的编码代理。",
+  "body_zh": "Recursive发布了开放权重编码模型Flint，面向能够检查代码库、修复Bug、实现功能和编写测试的代理。模型已通过Hugging Face提供，并采用商业限制较少的Apache 2.0许可证。\n\nFlint总参数量为398亿，但通过混合专家架构，每个token约激活25亿参数。模型卡显示，它支持26.2万token上下文、推理、多轮工具调用以及兼容OpenAI格式的工具调用。Recursive称，模型可以部署在单张B300或H200 GPU上，量化版本则面向英伟达和Apple Silicon运行环境。\n\n这次发布的价值，在于试图填补大型托管编码模型与小型本地系统之间的空档。代理要反复运行，除了基准成绩，还需要稳定延迟、可控基础设施，以及对源代码和提示词的控制。稀疏激活降低了每个token的计算量，Apache许可也避开了专有服务常见的商业限制。\n\nRecursive公布的成绩包括Terminal-Bench 2.1上的54.9%、SWE-bench Pro v2上的89.7%和SWE-bench Verified上的74.2%。这些数字由公司报告，并采用特定代理、采样设置和评测流程，不能直接视为统一排名。另一方面，约80GB的BF16权重也说明，“本地运行”并不等于普通笔记本无需额外条件即可运行，量化或专用硬件仍可能是必要条件。\n\n周边生态的跟进速度很快。vLLM和OpenHands均宣布提供首日支持，使Flint能够直接进入成熟的编码代理工作流，而不是停留在一个孤立的模型仓库里。这降低了尝试门槛，也让它更容易进入生产试验。\n\nFlint最终能否产生影响，取决于稀疏架构能否以更低的持续成本稳定完成代码库级任务，而不是单纯刷新基准成绩。它眼下最重要的贡献，是扩大了企业可以自行托管和改造的商业可用模型范围。\n\n## 猫叔判断\n\nFlint真正有分量的是Apache 2.0许可，而不是榜单数字；但80GB BF16权重仍让“本地化”更像专业部署选项。",
+  "tags": [
+    "Open Source",
+    "Models",
+    "Agents"
+  ],
+  "sources": [
+    {
+      "title": "RecursiveSI/flint model card",
+      "url": "https://huggingface.co/RecursiveSI/flint"
+    },
+    {
+      "title": "Day-0 Support for Flint on vLLM",
+      "url": "https://vllm-project.github.io/2026/10/21/flint.html"
+    },
+    {
+      "title": "Recursive Flint on OpenHands",
+      "url": "https://www.openhands.dev/blog/recursive-flint-on-openhands"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "Flint的Apache许可比榜单成绩更重要，但80GB权重仍限制了本地化的普及面",
+  "cat_take_en": "Flint’s Apache license matters more than its scores, but an 80GB checkpoint keeps local deployment specialized.",
+  "date": "2026-10-22",
+  "published": "2026-10-21T20:27:00Z",
+  "published_at": "2026-10-22T01:00:06.705Z"
+}
