@@ -1,0 +1,31 @@
+{
+  "slug": "openai-decisions-api-general-availability",
+  "title": "OpenAI Makes Decisions API Generally Available for Agents",
+  "summary": "OpenAI has released a low-cost endpoint for bounded choices, aiming to make real-time routing and agent control faster and cheaper.",
+  "body": "OpenAI has made its Decisions API generally available, introducing a dedicated endpoint for applications that need fast, bounded judgments rather than open-ended text generation.\n\n## A narrower model interface\n\nThe service is powered by GPT-6 Luna and accepts text, images and structured JSON. Developers define the possible decision space, then request one of three outputs: a probability, a choice from a supplied list, or a scored assessment. OpenAI says the endpoint can operate up to 10 times faster than using GPT-6 Luna through the general Responses API.\n\nThe release adds native integration with GPT-Live, allowing voice applications to decide whether to clarify, escalate or take an action while a conversation is in progress. It also supports prompt caching, US and EU inference residency, native JSON inputs and batches of up to 400 questions.\n\n## Economics matter more than the demo\n\nOpenAI prices the service at $0.10 per million input tokens, with cached input at $0.01 per million. There is no output-token charge. Those economics target the large number of small classifications that sit inside production systems: document routing, transaction categorisation, quality checks, moderation decisions and tool selection.\n\nThe deeper move is architectural. OpenAI is separating deliberative generation from repetitive control logic, giving developers a cheaper primitive for the decisions that determine whether an agent continues, retries, asks for help or stops.\n\n## Why it matters\n\nAgent deployments often fail economically because every minor branch invokes a full language-model response. A typed decision endpoint could reduce that overhead and make voice, customer-service and workflow agents more responsive. The unresolved question is calibration: a fast probability or choice is useful only when teams can measure its error costs and build reliable escalation paths around it.\n\n**Uncle Cat take:** OpenAI is pricing the control plane, not just the conversation; $0.10 per million input tokens could make tiny agent decisions economically invisible.",
+  "title_zh": "OpenAI正式开放决策API，瞄准实时代理控制",
+  "summary_zh": "OpenAI推出面向有限选项判断的低价API，让代理路由、分类和实时语音控制更快、更便宜。",
+  "body_zh": "OpenAI宣布，面向应用和智能体的 Decisions API 正式开放。这一独立接口不负责长篇生成，而是处理大量边界清晰、需要快速返回的判断。\n\n## 把模型输出收窄成决策\n\n该服务由 GPT-6 Luna 驱动，可接收文本、图像和结构化 JSON。开发者先定义问题及可选答案，再让模型返回三类结果之一：概率、预设选项或按等级计算的评分。OpenAI称，相比通过通用 Responses API 调用 GPT-6 Luna，专用接口速度最高可提升约10倍。\n\n本次正式版还加入 GPT-Live 原生集成，语音应用可以在对话进行时判断是否追问、转人工或执行下一步；同时支持提示缓存、美国和欧盟区域处理、原生 JSON 输入，以及单次最多400个问题。\n\n## 关键在成本，而非演示效果\n\nDecisions API 的输入价格为每百万 token 0.10美元，缓存输入为0.01美元，且不收取输出 token 费用。它瞄准的是生产系统里数量庞大的小判断：文档分流、交易分类、质量检查、内容审核和工具选择。\n\n更重要的变化是架构层面的。OpenAI正在把需要深度思考的生成，与反复出现的控制逻辑拆开，让开发者用更便宜的模型能力决定代理是继续、重试、求助还是停止。\n\n## 为什么重要\n\n许多代理项目的成本，恰恰来自每个微小分支都调用一次完整的语言模型。类型明确的决策接口有望降低这部分开销，让语音、客服和工作流代理反应更快。不过，概率和选项返回得再快，如果校准不准、没有清晰的升级机制，仍可能把错误更快地推入业务流程。\n\n**猫叔判断：** OpenAI卖的是代理控制平面；每百万输入token仅0.10美元，可能让微小决策几乎不再成为成本问题。",
+  "tags": [
+    "Agents",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Build more responsive apps with the Decisions API",
+      "url": "https://openai.com/index/decisions-api/"
+    },
+    {
+      "title": "OpenAI API Changelog",
+      "url": "https://developers.openai.com/api/docs/changelog"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "It turns a core bottleneck in production agents—millions of small decisions—into a cheaper, typed and latency-focused model primitive.",
+  "featured_reason_zh": "它把生产代理最常见的瓶颈——海量微小判断——变成更便宜、低延迟且结果类型明确的基础能力。",
+  "cat_take_zh": "OpenAI把代理控制平面压到每百万输入token一角钱",
+  "cat_take_en": "OpenAI is pricing the agent control plane so cheaply that routine decisions may disappear from infrastructure budgets.",
+  "date": "2026-10-23",
+  "published": "2026-10-22T19:00:00Z",
+  "published_at": "2026-10-23T01:00:04.834Z"
+}
