@@ -19,6 +19,41 @@
 
 ## Recent briefings
 
+### Apple Makes Xcode Projects Easier for Coding Agents
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/apple-xcode-json-agent-projects.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/apple-xcode-json-agent-projects.html
+- Source timestamp: 2026-10-23T13:00:00.000Z
+- Site timestamp: 2026-10-23T13:00:04.040Z
+- Tags: Industry, Agents
+
+Xcode 27.2 adopts a smaller JSON project format designed to reduce merge conflicts and make automated code editing safer.
+
+## A project file redesigned for automation
+
+Apple has introduced a new JSON-based project configuration format in Xcode 27.2, replacing the traditional property-list project file for new projects. The format uses the `.xcproj` extension and is hierarchical, self-describing and substantially easier to inspect than the older structure.
+
+The change addresses a long-standing problem in AI-assisted software development. Xcode project files contain build targets, file references, settings and dependencies, but the legacy format is difficult for both humans and coding agents to edit reliably. Small changes can produce noisy diffs, unstable identifiers and merge conflicts when several developers or automated tools touch the same project.
+
+Apple says the new format isolates configuration changes more cleanly in source control. That should make agent-generated edits easier to review and reduce the chance that an automated change silently damages unrelated parts of a project. Apple has also published an open-source JSON project format and supporting tooling for reading, writing and manipulating the files.
+
+## Why it matters
+
+The release is not a new model, but it changes the environment in which coding agents operate. An agent that can modify application code but cannot safely update the project graph remains dependent on brittle scripts or manual intervention. By making the project itself more structured and machine-readable, Apple is removing one of the least glamorous but most persistent obstacles to agentic development on its platforms.
+
+The limitation is compatibility: existing projects still use the older format unless developers convert them, and the new format is tied to Xcode 27 and later. Apple has not shown that the format eliminates every class of merge or agent error. Still, the decision signals that agent-friendly software development is becoming a concern at the file-format level, not merely a feature layered on top of an unchanged IDE.
+
+## Uncle Cat take
+
+Apple’s important move is changing the project graph agents must edit, not adding another coding assistant; fewer merge conflicts could matter more than another benchmark win.
+
+Chinese title: 苹果让 Xcode 项目文件更适合编程代理
+Chinese summary: Xcode 27.2 引入更小、更清晰的 JSON 项目格式，旨在减少合并冲突并提升自动化改项目的安全性。
+
+Sources:
+  - Updating your Xcode project configuration file format: https://developer.apple.com/documentation/xcode/updating-your-xcode-project-configuration-file-format
+  - Xcode 27.2 推出对智能体友好的 JSON 项目配置格式: https://www.infoq.cn/article/7ResdjAZYy8yltOh6drM?utm_source=rss&utm_medium=article
+
 ### Canva Releases Craft, Its First In-House Image Model
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/canva-craft-image-model.html
@@ -27,15 +62,15 @@
 - Site timestamp: 2026-10-23T01:00:04.834Z
 - Tags: AIGC, Models, Industry
 
-Canva has launched Craft, a design-focused image model that plans composition before rendering and is available in Dream Lab and an API.
+Canva has launched Craft, a design-focused image model that plans composition before rendering and is available in Canva and through a public API.
 
-Canva has released Craft, its first frontier image-generation model built specifically for design workflows. The model is available in Canva’s Dream Lab and through a public API, extending the company’s visual suite beyond model aggregation.
+Canva has released Craft, its first state-of-the-art image-generation model developed and trained by Canva Research. The model is available in Canva and through a public API, extending the company’s visual suite beyond model aggregation.
 
 ## Planning before pixels
 
 Canva says most image models move directly from a prompt to rendered pixels. Craft uses a two-stage architecture: it first plans the composition, then generates the image. That design is intended to improve relationships among objects, typography, layout and visual hierarchy—areas that matter more to a designer than isolated image realism.
 
-The company says Craft was trained and evaluated with professional designers and ranked fourth on Design Arena at launch, with an Elo score of 1,340. Canva’s public examples and announcement position the model for posters, marketing assets and other compositions where readable text and deliberate arrangement are essential.
+The company says Craft was developed and trained with professional design workflows in mind, and positions Canva Research as the world’s second most advanced AI lab for image generation according to DesignArena rankings. Canva’s public examples and announcement position the model for posters, marketing assets and other compositions where readable text and deliberate arrangement are essential.
 
 Making the model available through an API is strategically important. It allows external products and automated workflows to use Canva’s design-oriented generation without adopting the full Canva interface. The release also gives Canva a proprietary model layer as competition intensifies among general-purpose image providers.
 
@@ -43,7 +78,7 @@ Making the model available through an API is strategically important. It allows 
 
 The model’s significance is less about a new benchmark score than about where Canva places the boundary of AI assistance. A prompt-to-picture system produces a finished-looking artifact. A design system must preserve intent across revisions, keep brand elements coherent and accommodate human editing.
 
-Craft does not by itself prove that Canva has solved those broader problems. The company’s ranking is a company-reported signal, and independent testing of editability, text accuracy and consistency remains limited in the first hours of release.
+Craft does not by itself prove that Canva has solved those broader problems. The company’s DesignArena positioning is a company-reported signal, and independent testing of editability, text accuracy and consistency remains limited in the first hours of release.
 
 ## Why it matters
 
@@ -52,9 +87,10 @@ Canva distributes AI to a huge population of non-specialist creators, so a model
 **Uncle Cat take:** Craft’s two-stage planner is Canva’s real bet; the question is whether composition planning survives messy brand revisions outside its curated launch examples.
 
 Chinese title: Canva发布首款自研图像模型Craft，先规划后生成
-Chinese summary: Canva推出面向设计场景的Craft图像模型，在Dream Lab和公开API中上线，重点提升构图、文字与版式控制。
+Chinese summary: Canva推出面向设计场景的Craft图像模型，现已在Canva和公开API中提供，重点提升构图、文字与版式控制。
 
 Sources:
+  - Introducing Canva Craft: https://www.canva.com/newsroom/news/canva-craft/
   - Canva releases its first image generation model: https://techcrunch.com/2026/10/22/canva-releases-its-first-image-generation-model/
   - Introducing Canva Craft: https://x.com/canva/status/2113348707223753165
 
@@ -170,6 +206,44 @@ Chinese summary: Sakana AI推出Aquarium平台，以组织本体统一分散信�
 Sources:
   - Sakana Aquarium announcement: https://secret-test-staging.sakana.ai/aquarium-release/
   - Sakana AI announces Aquarium on X: https://x.com/SakanaAILabs/status/2113435148792598986
+
+### StartLux Open-Sources Prism for Faster Decision Models
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/startlux-prism-decision-inference.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/startlux-prism-decision-inference.html
+- Source timestamp: 2026-10-23T12:03:00.000Z
+- Site timestamp: 2026-10-23T13:00:04.040Z
+- Tags: Open Source, Models, Agents
+
+StartLux releases Prism, an open inference engine that reports up to 5.3x acceleration for its calibrated decision-model family.
+
+## A separate lane for machine decisions
+
+StartLux has open-sourced Prism, an inference engine built for its StartLux-Decision models. Unlike general-purpose language models that typically generate a sequence of tokens before producing an answer, the decision models return calibrated probabilities across predefined options. They are intended for classification, ranking, scoring and other workflows where uncertainty matters as much as the selected answer.
+
+The project supports common deployment stacks including vLLM, llama.cpp and MLX. StartLux says Prism can serve both its Instant models, which answer in a single forward pass, and AutoThink models, which generate a short reasoning trace when their confidence falls below a threshold.
+
+According to the release material, tests using the 27B model on a single NVIDIA H200 showed speedups ranging from 1.2x to 5.3x against a vLLM-based implementation, depending on the workload. The repository is released under Apache 2.0, making the engine available for commercial and research use.
+
+## Why it matters
+
+The significance is less about a headline throughput number than about treating decision inference as a distinct systems problem. Many production AI tasks do not require a conversational answer. They require a bounded choice, a probability estimate and predictable latency. Generating long explanations for those tasks can add cost and introduce another surface for failure.
+
+A specialized engine could make smaller models more attractive in fraud screening, routing, moderation, clinical evaluation and agent control loops. It could also make uncertainty easier to expose to downstream software instead of hiding it behind a single textual answer.
+
+The open questions are substantial. The reported acceleration comes from StartLux’s own workloads, and calibrated probabilities still need to be validated outside the company’s benchmarks. Decision models also depend on carefully typed options and well-designed labels; they are not a universal replacement for language models. Prism is nevertheless a notable attempt to move AI inference away from one-size-fits-all text generation and toward task-specific computation.
+
+## Uncle Cat take
+
+Prism’s 5.3x claim matters only if its Apache license and probability outputs survive real production workloads; the engine is more interesting than the multiplier.
+
+Chinese title: StartLux 开源 Prism，专为决策模型提速
+Chinese summary: StartLux 开源推理引擎 Prism，称其在单张 H200 上可让决策模型获得最高 5.3 倍加速。
+
+Sources:
+  - StartLux-Decision GitHub repository: https://github.com/StartLuxLabs/StartLux-Decision
+  - StartLux Open-Sources Prism Inference Engine with Up to 5.3x Speedup: https://promptsdeck.com/en/items/art-bd4d77d6-79d
+  - StartLux-Decision: AutoThink Decision Models with Reinforcement Learning: https://arxiv.org/abs/2610.17309
 
 ### Anthropic Opens Claude Duet as a Proactive AI Agent
 
@@ -969,68 +1043,6 @@ Sources:
   - OpenAI models hacked a crypto wallet and breached more websites: https://arstechnica.com/security/2026/10/openai-models-hacked-a-crypto-wallet-and-breached-more-websites/
   - OpenAI: The Hugging Face incident and the road ahead: https://openai.com/index/hugging-face-incident-and-the-road-ahead/
 
-### Reflection Releases 501B Beam Model Under Apache 2.0
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/reflection-beam-open-weights.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/reflection-beam-open-weights.html
-- Source timestamp: 2026-10-16T13:12:00.000Z
-- Site timestamp: 2026-10-17T01:00:08.493Z
-- Tags: Models, Open Source, Agents
-
-Reflection has released Beam’s weights and tooling, opening a 501-billion-parameter coding model built for long-horizon agent workloads.
-
-Reflection has released the weights for Beam, its first open-weight model, under the Apache 2.0 license. The release makes available a sparse mixture-of-experts model with 501 billion total parameters and 23 billion active parameters, alongside a model card, safety report, deployment integrations, and customization tooling.
-
-## An open stack around the model
-
-Beam is aimed at coding, reasoning, and long-horizon agent tasks. Reflection says the model supports a one-million-token context window and offers instruction-tuned checkpoints in BF16, FP8, and NVFP4 formats. The company is also publishing recipes for fine-tuning and reinforcement learning, with planned self-distillation workflows that use verified task traces to improve accuracy and token efficiency.
-
-The release is unusually broad at launch. Reflection lists more than 40 partners and integrations, including cloud providers, inference platforms, model tools, and coding environments. That gives developers several ways to test Beam without operating the full model themselves, while preserving the option to download and self-host the weights.
-
-The model is text-only and was developed predominantly for English. Reflection’s public claims emphasize inference efficiency, but independent evaluation remains important because the company’s headline comparisons rely on selected coding and reasoning benchmarks. The total parameter count also says little about the hardware and serving complexity required by a 23-billion-active-parameter model with a million-token context.
-
-## Why it matters
-
-Beam is significant because it combines open weights with a coordinated deployment and customization ecosystem. That makes it more commercially usable than an isolated checkpoint and gives enterprises a path to domain-specific tuning without surrendering all control to an API provider.
-
-The release also raises the bar for open models aimed at agentic coding. If Beam’s efficiency claims hold across independent workloads, it could pressure closed providers on price and deployment flexibility. If the model proves difficult to serve or underperforms outside curated evaluations, its partner list will matter less than expected. The weights are public now; the durable verdict depends on real-world operation.
-
-Chinese title: Reflection开放5010亿参数Beam模型及完整工具链
-Chinese summary: Reflection按Apache 2.0协议公开Beam权重，并同步提供面向长程智能体任务的部署、微调和推理生态。
-
-Sources:
-  - Beam is now available: https://reflection.ai/blog/beam-is-available
-  - Beam Model Card: https://reflection.ai/beam-model-card
-  - Introducing Reflection Beam on AWS: https://aws.amazon.com/blogs/machine-learning/introducing-reflection-beam-an-open-weight-model-for-agentic-coding-on-aws/
-
-### Meta releases 816B-parameter Muse Spark Open
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-muse-spark-open.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-spark-open.html
-- Source timestamp: 2026-10-15T17:08:00.000Z
-- Site timestamp: 2026-10-16T01:00:04.495Z
-- Tags: Models, Open Source, Agents
-
-Meta has released its largest open-weight model, pairing a 1M-token context window with coding, multimodal and long-running agent capabilities.
-
-Meta has released Muse Spark Open, an 816-billion-parameter mixture-of-experts model with roughly 42 billion parameters active per token. The company describes it as its most capable US open-weight model to date, targeting coding, multimodal reasoning and long-running agent work.
-
-The release is unusually broad. Meta says the model can handle text, images, video and audio, browse the web, coordinate subagents and use computers across desktop, mobile and web environments. Its one-million-token context window is designed for large repositories, extended research tasks and workflows that must preserve state over many steps.
-
-The weights are available through Amazon SageMaker JumpStart and several inference providers, including Baseten, Fireworks, Groq, Modal, Nebius, OpenRouter and Together AI. Meta also says the model is optimized to run on two Apple M5 Ultra Mac Studios through MLX, although that configuration remains far beyond ordinary consumer hardware.
-
-The economics are part of the announcement. Together AI is offering free access through October 18 before moving to paid pricing, while Ollama has made the model available to several paid plans. That gives developers an immediate way to test whether its long-context and agent claims survive practical workloads rather than benchmark demonstrations.
-
-Why it matters: Meta is making open weights a direct platform strategy, not merely a research gesture. A model this large is still expensive to operate, but broad provider support, local optimization and a million-token window could push coding agents toward longer, more autonomous sessions. The unresolved question is whether the active-parameter efficiency translates into dependable task completion outside curated evaluations.
-
-Chinese title: Meta发布8160亿参数开放权重模型Muse Spark Open
-Chinese summary: Meta发布迄今最强的美国开放权重模型，主打百万上下文、编码、多模态理解和长时间自主执行。
-
-Sources:
-  - Meta announces Muse Spark Open: https://x.com/AIatMeta/status/2110779754274292212
-  - Muse Spark Open on Amazon SageMaker JumpStart: https://aws.amazon.com/blogs/machine-learning/metas-muse-spark-open-now-available-in-amazon-sagemaker-jumpstart/
-  - Meta launches an open-weight AI model that runs on Macs: https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/
-
 ## Recent radar items
 
 ### 2026-10-23
@@ -1052,6 +1064,21 @@ Sources:
 - 2026-10-22T18:06:00Z | AWS Machine Learning | Amazon Polly announced a major upgrade to its generative text-to-speech engine. | 中文：Amazon Polly宣布对生成式文本转语音引擎进行重大升级。 | https://aws.amazon.com/blogs/machine-learning/amazon-polly-delivers-a-major-upgrade-to-its-generative-engine/
 - 2026-10-22T19:46:00Z | Cognition on X | Cognition open-sourced an agent plugin that helps secure systems against recent cybersecurity threats. | 中文：Cognition开源一个代理插件，帮助系统应对近期网络安全威胁。 | https://x.com/cognition/status/2113356319751119359
 - 2026-10-23T00:17:00Z | Artificial Analysis on X | Artificial Analysis released Coding Agent Index v2.0 with revised evaluations, new FrontierCode coverage, cost, and token-use metrics. | 中文：Artificial Analysis发布Coding Agent Index 2.0，更新评测、加入FrontierCode，并纳入成本与用量指标。 | https://x.com/ArtificialAnlys/status/2113424551396934134
+- 2026-10-23T02:06:00Z | X / MiniMax AI | MiniMax released M3.1 Flash weights, a 428B-parameter MoE model with 23B active parameters and a one-million-token context window. | 中文：MiniMax 开放 M3.1 Flash 权重：总参数4280亿、激活参数230亿，支持百万级上下文。 | https://x.com/MiniMax_AI/status/2113452026902589732
+- 2026-10-23T06:29:00Z | X / Hailuo AI | Hailuo launched MiniMax Design MCP, synchronizing creations into Design Canvas inside Codex and other agent environments. | 中文：海螺上线 MiniMax Design MCP，可在 Codex 等智能体环境中创作并自动同步到 Design Canvas。 | https://x.com/Hailuo_AI/status/2113518150440595501
+- 2026-10-23T06:05:00Z | Google Cloud Blog | Google Cloud introduced Agent Compute Engine, giving each AI agent an isolated microVM with integrated identity, governance, and auditability. | 中文：Google Cloud 推出 Agent Compute Engine，为每个 AI 智能体提供隔离微型虚拟机及身份、治理和审计能力。 | https://cloud.google.com/blog/topics/ai-infrastructure/introducing-agent-compute-engine-and-expanded-agent-governance
+- 2026-10-23T05:28:00Z | MarkTechPost | You.com launched an inference router covering 12 open-weight models with a claimed 99.9% uptime service-level agreement. | 中文：You.com 推出推理路由器，覆盖12个开放权重模型，并承诺99.9%正常运行时间。 | https://www.marktechpost.com/2026/10/22/you-com-launches-inference-router-open-weight-models-uptime-sla/
+- 2026-10-23T11:15:00Z | InfoQ 中文 | Gremlin made Foresight AI generally available, using supervised agents to predict failures, run reliability tests, propose fixes, and verify remediation. | 中文：Gremlin 正式推出 Foresight AI，以受监督智能体预测故障、执行可靠性测试、提出修复并验证结果。 | https://www.infoq.cn/article/2bKQkdiAcGEycHJLYPv5
+- 2026-10-23T08:58:00Z | MarkTechPost | TinyFish detailed a production agentic-search architecture built around planning, adaptive retrieval, evidence validation, observability, and explicit cost budgets. | 中文：TinyFish 详解生产级智能体搜索架构，强调规划、自适应检索、证据校验、可观测性和明确成本预算。 | https://www.marktechpost.com/2026/10/23/tinyfish-agentic-search-architecture-deep-research/
+- 2026-10-23T12:00:00Z | X / Kling AI | Kling highlighted creator workflows built with Kling 4.0, emphasizing cinematic detail, lifelike motion, and emotional everyday scenes. | 中文：可灵展示 Kling 4.0 创作者案例，突出电影级细节、逼真运动和日常场景中的情绪表现。 | https://x.com/Kling_ai/status/2113601348881002731
+- 2026-10-23T10:30:00Z | X / Meshy AI | Meshy showcased six creator-built worlds spanning survival islands, enchanted forests, yokai villages, fogbound towns, and AI classrooms. | 中文：Meshy 展示六个创作者生成世界，涵盖生存岛、魔法森林、妖怪村落、雾城和 AI 教室。 | https://x.com/MeshyAI/status/2113578682942120387
+- 2026-10-23T10:25:00Z | X / Recraft AI | Recraft demonstrated a workflow combining Recraft V4.1 image generation with Seedance 2.5 video animation for Halloween-themed product visuals. | 中文：Recraft 展示将 Recraft V4.1 图像生成与 Seedance 2.5 视频动画结合的万圣节产品视觉工作流。 | https://x.com/recraftai/status/2113577509644313081
+- 2026-10-23T08:46:00Z | X / Sakana AI Labs | Sakana AI presented its defense division’s role in dual-use security, focusing on Japan’s strengths, deployment challenges, and international policy analysis. | 中文：Sakana AI 介绍其防务部门在军民两用安全中的角色，聚焦日本优势、落地难题和国际政策分析。 | https://x.com/SakanaAILabs/status/2113552660100174172
+- 2026-10-23T11:39:00Z | InfoQ 中文 | iFlytek reported a new end-to-end interaction model, saying voice-model usage rose twentyfold and on-device capability reached about 70% of cloud performance. | 中文：科大讯飞发布新一代端到端交互模型，称语音大模型调用量增长20倍，端侧能力约达云端70%。 | https://www.infoq.cn/article/Md0kdMxGI6flIbZXH1yg
+- 2026-10-23T04:00:00Z | TechCrunch | inDrive plans 2027 robotaxi tests in Central Asia with Pony.ai and Nvidia, extending autonomous-vehicle pilots beyond major global markets. | 中文：网约车平台 inDrive 计划2027年与小马智行、英伟达在中亚测试自动驾驶出租车。 | https://techcrunch.com/2026/10/22/uber-rival-indrive-eyes-2027-robotaxi-tests-in-central-asia-with-pony-ai-and-nvidia/
+- 2026-10-23T02:01:00Z | SiliconANGLE | Zoom is repositioning from a video-conferencing company toward an AI data platform, according to a new strategy report. | 中文：Zoom 正从视频会议公司转向 AI 数据平台，最新战略报道披露了这一方向。 | https://siliconangle.com/2026/10/22/zooms-next-act-from-video-company-to-ai-data-platform/
+- 2026-10-23T09:05:00Z | InfoQ 中文 | A new context language-model report proposes autonomous context management to improve performance while reducing computation costs. | 中文：一项新研究提出上下文语言模型，通过自主管理上下文提升性能并降低计算成本。 | https://www.infoq.cn/article/Pwu4FNskSB2cbKV9BZKq
+- 2026-10-23T04:00:00Z | arXiv | Researchers released eight new robotics and agent papers, including work on future video representations, fault injection, memory placement, and embodied planning. | 中文：研究者集中发布多篇机器人与智能体论文，涵盖未来视频表征、故障注入、记忆位置和具身规划。 | https://arxiv.org/list/cs.RO/recent
 
 ### 2026-10-22
 
