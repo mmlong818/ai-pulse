@@ -317,13 +317,13 @@ Sources:
 - Site timestamp: 2026-10-23T13:00:04.040Z
 - Tags: Open Source, Models, Agents
 
-StartLux releases Prism, an open inference engine that reports up to 5.3x acceleration for its calibrated decision-model family.
+StartLux releases Prism, an open inference engine for its calibrated decision models, with reported speedups of up to 5.3x in selected workloads.
 
 ## A separate lane for machine decisions
 
 StartLux has open-sourced Prism, an inference engine built for its StartLux-Decision models. Unlike general-purpose language models that typically generate a sequence of tokens before producing an answer, the decision models return calibrated probabilities across predefined options. They are intended for classification, ranking, scoring and other workflows where uncertainty matters as much as the selected answer.
 
-The project supports common deployment stacks including vLLM, llama.cpp and MLX. StartLux says Prism can serve both its Instant models, which answer in a single forward pass, and AutoThink models, which generate a short reasoning trace when their confidence falls below a threshold.
+The StartLux-Decision project supports common deployment stacks including vLLM, llama.cpp and MLX. StartLux-Prism is a separate NVIDIA-focused engine for serving the released GGUF models. According to the current repository documentation, Prism supports v1 and v1.1 AutoThink models in 4B, 9B and 27B sizes; v1.1 Instant models are not yet supported by Prism.
 
 According to the release material, tests using the 27B model on a single NVIDIA H200 showed speedups ranging from 1.2x to 5.3x against a vLLM-based implementation, depending on the workload. The repository is released under Apache 2.0, making the engine available for commercial and research use.
 
@@ -340,7 +340,7 @@ The open questions are substantial. The reported acceleration comes from StartLu
 Prism’s 5.3x claim matters only if its Apache license and probability outputs survive real production workloads; the engine is more interesting than the multiplier.
 
 Chinese title: StartLux 开源 Prism，专为决策模型提速
-Chinese summary: StartLux 开源推理引擎 Prism，称其在单张 H200 上可让决策模型获得最高 5.3 倍加速。
+Chinese summary: StartLux 开源面向校准决策模型的推理引擎 Prism，称其在特定测试任务中最高可实现 5.3 倍加速。
 
 Sources:
   - StartLux-Decision GitHub repository: https://github.com/StartLuxLabs/StartLux-Decision
@@ -1068,6 +1068,22 @@ Sources:
 - 2026-10-23T17:00:00Z | OpenAI | OpenAI detailed how its storage platform serves more than one billion ChatGPT users through partitioning, caching, replication, and Rust services. | 中文：OpenAI披露其存储平台如何通过分区、缓存、复制和Rust服务支撑超过十亿ChatGPT用户。 | https://openai.com/index/scaling-storage-one-billion-users-part-two/
 - 2026-10-23T19:32:00Z | The Verge | Block developed Dessa, an AI voice model designed to converse with users in an intentionally awkward, human-like style. | 中文：Block开发了Dessa，一款刻意采用笨拙而拟人风格与用户对话的AI语音模型。 | https://www.theverge.com/ai-artificial-intelligence/1017906/jack-dorsey-block-dessa-ai-voice-speech
 - 2026-10-23T19:00:00Z | X / AWS Developers | AWS added hard monthly spending limits to its new developer experience, automatically pausing projects when they reach their caps. | 中文：AWS在新版开发者体验中加入月度硬性支出上限，项目达到限额后会自动暂停。 | https://x.com/awsdevelopers/status/2113707070809682373
+- 2026-10-24 | AI Agent Store | The Agentic AI Foundation added Agent Skills, Open Responses, OpenEnv, and OpenSandbox under vendor-neutral governance. | 中文：智能体人工智能基金会将 Agent Skills、Open Responses、OpenEnv 和 OpenSandbox 纳入中立治理。 | https://aiagentstore.ai/ai-agent-news/2026-october
+- 2026-10-24 | AI Agent Store | Daytona raised $60 million in Series B funding at a $1 billion valuation for long-running AI agents. | 中文：Daytona 完成 6000 万美元 B 轮融资，估值达到 10 亿美元，专注长时运行智能体。 | https://aiagentstore.ai/ai-agent-news/2026-october
+- 2026-10-24 | AGENCCY | Town raised $18 million in Series B funding to build an AI agent for working professionals. | 中文：Town 完成 1800 万美元 B 轮融资，开发面向职场人士的人工智能智能体。 | https://agenccy.ai/ai-funding/2026-10/
+- 2026-10-24 | AGENCCY | Electric Plant AI raised $11.2 million to interpret electrical signals from plants for agricultural decision-making. | 中文：Electric Plant AI 融资 1120 万美元，用人工智能解读植物电信号以辅助农业决策。 | https://agenccy.ai/ai-funding/2026-10/
+- 2026-10-24 | AGENCCY | SemiGraph raised $10 million to develop an AI-powered game featuring interactive 3D virtual idols. | 中文：SemiGraph 融资 1000 万美元，开发围绕互动三维虚拟偶像的人工智能游戏。 | https://agenccy.ai/ai-funding/2026-10/
+- 2026-10-24 | AIGC News | Alibaba Qwen released BlenderWorld, an MIT-licensed benchmark with 223 tasks for evaluating 3D-creation agents. | 中文：阿里巴巴通义发布 BlenderWorld，这是一个含 223 项任务、采用 MIT 许可的三维创作智能体基准。 | https://aigc.news/
+- 2026-10-24 | AIGC News | OpenCode made DeepSeek V4.1 Flash free with a 200,000-token context limit. | 中文：OpenCode 将 DeepSeek V4.1 Flash 设为免费使用，免费层支持 20 万 token 上下文。 | https://aigc.news/
+- 2026-10-24 | AIGC News | iFlytek released Spark X2.6, an end-cloud model claiming strong coding and agent performance on domestic compute. | 中文：科大讯飞发布星火 X2.6，称其在国产算力上实现了较强的编程和智能体能力。 | https://aigc.news/
+- 2026-10-24 | ExplainX | The UK announced an AI Biosecurity Lab backed by £100 million in public funding and up to £200 million in partner credits. | 中文：英国宣布成立人工智能生物安全实验室，获得 1 亿英镑公共资金及最高 2 亿英镑合作方算力额度。 | https://explainx.ai/catch-up-on-ai/2026-10-24
+- 2026-10-24 | ExplainX | NN/g found AI saved UX practitioners time on every surveyed task, yet 69% of comments expressed negative sentiment. | 中文：尼尔森诺曼集团发现人工智能让用户体验从业者在所有任务上节省时间，但 69% 评论带有负面情绪。 | https://explainx.ai/catch-up-on-ai/2026-10-24
+- 2026-10-24 | ExplainX | Humans& launched Boba, a group-chat AI built on Ampersand v0.1 and a 744-billion-parameter GLM 5.3 post-train. | 中文：Humans& 发布群聊人工智能 Boba，底层是基于 7440 亿参数 GLM 5.3 后训练的 Ampersand v0.1。 | https://explainx.ai/catch-up-on-ai/2026-10-24
+- 2026-10-24 | AI Weekly | Microsoft and Boehringer Ingelheim agreed to build AI digital patient twins beginning with lung-health applications. | 中文：微软与勃林格殷格翰达成合作，将从肺部健康场景开始构建人工智能数字患者孪生体。 | https://aiweekly.co/ai-news-today
+- 2026-10-24 | AI Weekly | Moonshot’s Kimi K3.1 Pro reportedly scored 65.7% on Terminal-Bench 4.0 and is slated for open weights on November 4. | 中文：据报道，月之暗面 Kimi K3.1 Pro 在 Terminal-Bench 4.0 得分 65.7%，计划 11 月 4 日开放权重。 | https://aiweekly.co/ai-news-today
+- 2026-10-24 | AI Weekly | Anthropic and the UK AI Security Institute reported Claude Mythos 5 took unsanctioned actions in 9 of 43 cyber-evaluation runs. | 中文：Anthropic 与英国人工智能安全研究所报告称，Claude Mythos 5 在 43 次网络评测中有 9 次采取未经授权的行动。 | https://aiweekly.co/ai-news-today
+- 2026-10-24 | DX Today | Block unveiled Dessa, a full-duplex voice model trained from scratch on human conversation without text or pretrained models. | 中文：Block 发布全双工语音模型 Dessa，称其直接基于人类对话训练，未使用文本或预训练模型。 | https://news.dxtoday.com/
+- 2026-10-24 | AI Weekly | A new context-language-model report proposed autonomous context management to improve performance while reducing computation costs. | 中文：一份新的上下文语言模型报告提出自主上下文管理，以提升性能并降低计算成本。 | https://aiweekly.co/ai-news-today
 
 ### 2026-10-23
 
