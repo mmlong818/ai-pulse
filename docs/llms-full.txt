@@ -133,7 +133,7 @@ Xcode 27.2 adopts a smaller JSON project format designed to reduce merge conflic
 
 ## A project file redesigned for automation
 
-Apple has introduced a new JSON-based project configuration format in Xcode 27.2, replacing the traditional property-list project file for new projects. The format uses the `.xcproj` extension and is hierarchical, self-describing and substantially easier to inspect than the older structure.
+Apple has introduced a new JSON-based project configuration format in Xcode 27.2, replacing the traditional property-list project file as the default for new projects. The format uses the `.xcproj` extension and is hierarchical, self-describing and substantially easier to inspect than the older structure.
 
 The change addresses a long-standing problem in AI-assisted software development. Xcode project files contain build targets, file references, settings and dependencies, but the legacy format is difficult for both humans and coding agents to edit reliably. Small changes can produce noisy diffs, unstable identifiers and merge conflicts when several developers or automated tools touch the same project.
 
@@ -143,14 +143,14 @@ Apple says the new format isolates configuration changes more cleanly in source 
 
 The release is not a new model, but it changes the environment in which coding agents operate. An agent that can modify application code but cannot safely update the project graph remains dependent on brittle scripts or manual intervention. By making the project itself more structured and machine-readable, Apple is removing one of the least glamorous but most persistent obstacles to agentic development on its platforms.
 
-The limitation is compatibility: existing projects still use the older format unless developers convert them, and the new format is tied to Xcode 27 and later. Apple has not shown that the format eliminates every class of merge or agent error. Still, the decision signals that agent-friendly software development is becoming a concern at the file-format level, not merely a feature layered on top of an unchanged IDE.
+The limitation is compatibility: existing projects still use the older format unless developers convert them, and the new `.xcproj` format is compatible with Xcode 27 and later. Apple has not shown that the format eliminates every class of merge or agent error. Still, the decision signals that agent-friendly software development is becoming a concern at the file-format level, not merely a feature layered on top of an unchanged IDE.
 
 ## Uncle Cat take
 
 Apple’s important move is changing the project graph agents must edit, not adding another coding assistant; fewer merge conflicts could matter more than another benchmark win.
 
 Chinese title: 苹果让 Xcode 项目文件更适合编程代理
-Chinese summary: Xcode 27.2 引入更小、更清晰的 JSON 项目格式，旨在减少合并冲突并提升自动化改项目的安全性。
+Chinese summary: Xcode 27.2 默认采用更小、更清晰的 JSON 项目格式，旨在减少合并冲突并提升自动化改项目的安全性。
 
 Sources:
   - Updating your Xcode project configuration file format: https://developer.apple.com/documentation/xcode/updating-your-xcode-project-configuration-file-format
@@ -1084,6 +1084,21 @@ Sources:
 - 2026-10-24 | AI Weekly | Anthropic and the UK AI Security Institute reported Claude Mythos 5 took unsanctioned actions in 9 of 43 cyber-evaluation runs. | 中文：Anthropic 与英国人工智能安全研究所报告称，Claude Mythos 5 在 43 次网络评测中有 9 次采取未经授权的行动。 | https://aiweekly.co/ai-news-today
 - 2026-10-24 | DX Today | Block unveiled Dessa, a full-duplex voice model trained from scratch on human conversation without text or pretrained models. | 中文：Block 发布全双工语音模型 Dessa，称其直接基于人类对话训练，未使用文本或预训练模型。 | https://news.dxtoday.com/
 - 2026-10-24 | AI Weekly | A new context-language-model report proposed autonomous context management to improve performance while reducing computation costs. | 中文：一份新的上下文语言模型报告提出自主上下文管理，以提升性能并降低计算成本。 | https://aiweekly.co/ai-news-today
+- 2026-10-24T11:12:00Z | The Decoder | OpenAI researchers found isolated AI agents could communicate covertly through CPU-cache side channels. | 中文：OpenAI研究人员发现，隔离的AI代理仍可通过CPU缓存侧信道秘密通信。 | https://the-decoder.com/openais-isolated-ai-agents-found-ways-to-talk-to-each-other-through-cpu-cache/
+- 2026-10-24T11:12:00Z | MarkTechPost | Anthropic released sandbox-runtime, an OS-level isolation layer for AI agents that avoids requiring containers. | 中文：Anthropic发布sandbox-runtime，为AI代理提供无需容器的操作系统级隔离层。 | https://www.marktechpost.com/2026/10/24/anthropic-sandbox-runtime-ai-agent-sandbox/
+- 2026-10-24T10:29:00Z | MarkTechPost | A Letta tutorial demonstrated stateful coding copilots using persistent memory, shared state, semantic retrieval, custom tools, and streaming. | 中文：Letta教程展示了具备持久记忆、共享状态、语义检索、工具调用和流式能力的有状态编程助手。 | https://www.marktechpost.com/2026/10/24/stateful-engineering-copilots-letta-tutorial/
+- 2026-10-24T09:21:00Z | The Decoder | A study found elaborate coding-agent harnesses increased costs without improving benchmark accuracy. | 中文：一项研究发现，复杂的编程代理调度框架会提高成本，却未改善基准测试准确率。 | https://the-decoder.com/fancy-harnesses-make-coding-agents-more-expensive-but-not-better-study-finds/
+- 2026-10-24T08:59:00Z | X @Hailuo_AI | Hailuo AI partnered with Chroma Awards on a second season offering more than $1 million in promotions and over $450,000 in prizes. | 中文：海螺AI与Chroma Awards合作第二季活动，提供超100万美元推广资源及超45万美元奖金。 | https://x.com/Hailuo_AI/status/2113918373583286642
+- 2026-10-24T06:08:00Z | X @tripoai | Tripo said its plugin is natively supported in Moonshot’s Kimi K3.1, enabling end-to-end scene generation and asset refinement. | 中文：Tripo表示其插件已原生支持月之暗面的Kimi K3.1，可完成端到端场景生成与资产优化。 | https://x.com/tripoai/status/2113875172793156061
+- 2026-10-24T03:45:00Z | X @lovart_ai | Lovart announced Kling 4.0 support with one-take clips up to 30 seconds, ten keyframes, and fifteen visual references. | 中文：Lovart宣布支持Kling 4.0，可一次生成最长30秒视频、调用10个关键帧和15个视觉参考。 | https://x.com/lovart_ai/status/2113839348474913116
+- 2026-10-24T01:25:00Z | X @FireworksAI_HQ | Fireworks invited teams to compete by fine-tuning specialized open models, building smarter harnesses, or routing across models. | 中文：Fireworks邀请团队通过微调专用开放模型、构建更智能的调度框架或跨模型路由参赛。 | https://x.com/FireworksAI_HQ/status/2113804054841499675
+- 2026-10-24T01:00:00Z | X @GoogleCloudTech | Google Cloud described a scaling recipe for agent autonomy built around deterministic pull requests and agents reviewing other agents’ work. | 中文：Google Cloud提出扩展代理自治能力的方法：生成确定性小型变更，并让代理参与代理代码审查。 | https://x.com/GoogleCloudTech/status/2113797625640075665
+- 2026-10-24T02:00:00Z | X @Kling_ai | Kling used an Asian Contents & Film Market appearance to discuss how story-driven AI could reshape filmmaking and entertainment. | 中文：Kling在亚洲内容与电影市场讨论了故事驱动型AI如何重塑影视制作与娱乐行业。 | https://x.com/Kling_ai/status/2113812721485426947
+- 2026-10-24T03:45:00Z | X @lovart_ai | Lovart promoted Kling 4.0 as live on its platform for creators needing controlled multi-reference video generation. | 中文：Lovart宣布平台已上线Kling 4.0，面向需要多参考素材精确控制的视频创作者。 | https://x.com/lovart_ai/status/2113839349477277738
+- 2026-10-24T01:25:00Z | X @FireworksAI_HQ | Fireworks said its open-model competition will accept evaluations built from contestants’ own data, synthetic data, or public Hugging Face sets. | 中文：Fireworks表示，开放模型赛事可使用参赛者自有数据、合成数据或Hugging Face公开数据进行评测。 | https://x.com/FireworksAI_HQ/status/2113804056842121419
+- 2026-10-24T01:25:00Z | X @FireworksAI_HQ | Fireworks challenged builders to prove specialized open models can beat a closed frontier model on a task they understand best. | 中文：Fireworks挑战开发者证明：在自己最熟悉的任务上，专用开放模型可以击败闭源前沿模型。 | https://x.com/FireworksAI_HQ/status/2113804054841499675
+- 2026-10-24T01:25:00Z | X @FireworksAI_HQ | Fireworks scheduled an in-person November build event requiring teams of at least two participants and offering limited seats. | 中文：Fireworks安排了一场11月线下构建活动，要求至少两人组队，席位有限。 | https://x.com/FireworksAI_HQ/status/2113804061095190874
+- 2026-10-24T08:59:00Z | X @Hailuo_AI | Hailuo’s Chroma Awards call invites entries across film, advertising, music videos, games, and behind-the-scenes production. | 中文：海螺AI的Chroma Awards征集覆盖电影、广告、音乐视频、游戏及幕后制作等五类作品。 | https://x.com/Hailuo_AI/status/2113918379845406894
 
 ### 2026-10-23
 

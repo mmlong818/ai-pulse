@@ -1,6 +1,7 @@
 @echo off
 chcp 65001 >nul
 cd /d "%~dp0"
+if exist "%~dp0.local\codex-ca.pem" set "CODEX_CA_CERTIFICATE=%~dp0.local\codex-ca.pem"
 echo [%date% %time%] The Attention Post daily run start >> daily.log
 
 git pull --ff-only origin main >> daily.log 2>&1

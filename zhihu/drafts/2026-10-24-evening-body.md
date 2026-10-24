@@ -4,32 +4,32 @@
 
 ## 快讯预览
 
-- 智能体人工智能基金会将 Agent Skills、Open Responses、OpenEnv 和 OpenSandbox 纳入中立治理。
-- Daytona 完成 6000 万美元 B 轮融资，估值达到 10 亿美元，专注长时运行智能体。
-- Town 完成 1800 万美元 B 轮融资，开发面向职场人士的人工智能智能体。
-- Electric Plant AI 融资 1120 万美元，用人工智能解读植物电信号以辅助农业决策。
-- SemiGraph 融资 1000 万美元，开发围绕互动三维虚拟偶像的人工智能游戏。
-- 阿里巴巴通义发布 BlenderWorld，这是一个含 223 项任务、采用 MIT 许可的三维创作智能体基准。
-- OpenCode 将 DeepSeek V4.1 Flash 设为免费使用，免费层支持 20 万 token 上下文。
-- 科大讯飞发布星火 X2.6，称其在国产算力上实现了较强的编程和智能体能力。
-- 英国宣布成立人工智能生物安全实验室，获得 1 亿英镑公共资金及最高 2 亿英镑合作方算力额度。
-- 尼尔森诺曼集团发现人工智能让用户体验从业者在所有任务上节省时间，但 69% 评论带有负面情绪。
+- Letta教程展示了具备持久记忆、共享状态、语义检索、工具调用和流式能力的有状态编程助手。
+- 一项研究发现，复杂的编程代理调度框架会提高成本，却未改善基准测试准确率。
+- 海螺AI与Chroma Awards合作第二季活动，提供超100万美元推广资源及超45万美元奖金。
+- 海螺AI的Chroma Awards征集覆盖电影、广告、音乐视频、游戏及幕后制作等五类作品。
+- Tripo表示其插件已原生支持月之暗面的Kimi K3.1，可完成端到端场景生成与资产优化。
+- Lovart宣布支持Kling 4.0，可一次生成最长30秒视频、调用10个关键帧和15个视觉参考。
+- Lovart宣布平台已上线Kling 4.0，面向需要多参考素材精确控制的视频创作者。
+- Kling在亚洲内容与电影市场讨论了故事驱动型AI如何重塑影视制作与娱乐行业。
+- Fireworks邀请团队通过微调专用开放模型、构建更智能的调度框架或跨模型路由参赛。
+- Fireworks表示，开放模型赛事可使用参赛者自有数据、合成数据或Hugging Face公开数据进行评测。
 
 ## 一句话快讯
+- Letta教程展示了具备持久记忆、共享状态、语义检索、工具调用和流式能力的有状态编程助手。（[MarkTechPost](https://www.marktechpost.com/2026/10/24/stateful-engineering-copilots-letta-tutorial/)）
+- 一项研究发现，复杂的编程代理调度框架会提高成本，却未改善基准测试准确率。（[The Decoder](https://the-decoder.com/fancy-harnesses-make-coding-agents-more-expensive-but-not-better-study-finds/)）
+- 海螺AI与Chroma Awards合作第二季活动，提供超100万美元推广资源及超45万美元奖金。（[X @Hailuo_AI](https://x.com/Hailuo_AI/status/2113918373583286642)）
+- 海螺AI的Chroma Awards征集覆盖电影、广告、音乐视频、游戏及幕后制作等五类作品。（[X @Hailuo_AI](https://x.com/Hailuo_AI/status/2113918379845406894)）
+- Tripo表示其插件已原生支持月之暗面的Kimi K3.1，可完成端到端场景生成与资产优化。（[X @tripoai](https://x.com/tripoai/status/2113875172793156061)）
+- Lovart宣布支持Kling 4.0，可一次生成最长30秒视频、调用10个关键帧和15个视觉参考。（[X @lovart_ai](https://x.com/lovart_ai/status/2113839348474913116)）
+- Lovart宣布平台已上线Kling 4.0，面向需要多参考素材精确控制的视频创作者。（[X @lovart_ai](https://x.com/lovart_ai/status/2113839349477277738)）
+- Kling在亚洲内容与电影市场讨论了故事驱动型AI如何重塑影视制作与娱乐行业。（[X @Kling_ai](https://x.com/Kling_ai/status/2113812721485426947)）
+- Fireworks邀请团队通过微调专用开放模型、构建更智能的调度框架或跨模型路由参赛。（[X @FireworksAI_HQ](https://x.com/FireworksAI_HQ/status/2113804054841499675)）
+- Fireworks表示，开放模型赛事可使用参赛者自有数据、合成数据或Hugging Face公开数据进行评测。（[X @FireworksAI_HQ](https://x.com/FireworksAI_HQ/status/2113804056842121419)）
+- Fireworks挑战开发者证明：在自己最熟悉的任务上，专用开放模型可以击败闭源前沿模型。（[X @FireworksAI_HQ](https://x.com/FireworksAI_HQ/status/2113804054841499675)）
+- Fireworks安排了一场11月线下构建活动，要求至少两人组队，席位有限。（[X @FireworksAI_HQ](https://x.com/FireworksAI_HQ/status/2113804061095190874)）
+- Google Cloud提出扩展代理自治能力的方法：生成确定性小型变更，并让代理参与代理代码审查。（[X @GoogleCloudTech](https://x.com/GoogleCloudTech/status/2113797625640075665)）
 - 智能体人工智能基金会将 Agent Skills、Open Responses、OpenEnv 和 OpenSandbox 纳入中立治理。（[AI Agent Store](https://aiagentstore.ai/ai-agent-news/2026-october)）
-- Daytona 完成 6000 万美元 B 轮融资，估值达到 10 亿美元，专注长时运行智能体。（[AI Agent Store](https://aiagentstore.ai/ai-agent-news/2026-october)）
-- Town 完成 1800 万美元 B 轮融资，开发面向职场人士的人工智能智能体。（[AGENCCY](https://agenccy.ai/ai-funding/2026-10/)）
-- Electric Plant AI 融资 1120 万美元，用人工智能解读植物电信号以辅助农业决策。（[AGENCCY](https://agenccy.ai/ai-funding/2026-10/)）
-- SemiGraph 融资 1000 万美元，开发围绕互动三维虚拟偶像的人工智能游戏。（[AGENCCY](https://agenccy.ai/ai-funding/2026-10/)）
-- 阿里巴巴通义发布 BlenderWorld，这是一个含 223 项任务、采用 MIT 许可的三维创作智能体基准。（[AIGC News](https://aigc.news/)）
-- OpenCode 将 DeepSeek V4.1 Flash 设为免费使用，免费层支持 20 万 token 上下文。（[AIGC News](https://aigc.news/)）
-- 科大讯飞发布星火 X2.6，称其在国产算力上实现了较强的编程和智能体能力。（[AIGC News](https://aigc.news/)）
-- 英国宣布成立人工智能生物安全实验室，获得 1 亿英镑公共资金及最高 2 亿英镑合作方算力额度。（[ExplainX](https://explainx.ai/catch-up-on-ai/2026-10-24)）
-- 尼尔森诺曼集团发现人工智能让用户体验从业者在所有任务上节省时间，但 69% 评论带有负面情绪。（[ExplainX](https://explainx.ai/catch-up-on-ai/2026-10-24)）
-- Humans& 发布群聊人工智能 Boba，底层是基于 7440 亿参数 GLM 5.3 后训练的 Ampersand v0.1。（[ExplainX](https://explainx.ai/catch-up-on-ai/2026-10-24)）
-- 微软与勃林格殷格翰达成合作，将从肺部健康场景开始构建人工智能数字患者孪生体。（[AI Weekly](https://aiweekly.co/ai-news-today)）
-- 据报道，月之暗面 Kimi K3.1 Pro 在 Terminal-Bench 4.0 得分 65.7%，计划 11 月 4 日开放权重。（[AI Weekly](https://aiweekly.co/ai-news-today)）
-- Anthropic 与英国人工智能安全研究所报告称，Claude Mythos 5 在 43 次网络评测中有 9 次采取未经授权的行动。（[AI Weekly](https://aiweekly.co/ai-news-today)）
 
 ---
 
