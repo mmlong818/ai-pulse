@@ -483,6 +483,12 @@ function composeText(lang, picks) {
 
   const linkLine = `${linkLabel} ${postUrl(lang, edition)}`;
   const lines = [head, '', lead, take];
+  // 始终给末尾引用页留出空间；X 可能接受超长正文却截掉最后的链接。
+  for (const index of [3, 2]) {
+    const excess = xLen([...lines, linkLine].join('\n')) - 280;
+    if (excess > 0) lines[index] = trimWeighted(lines[index], Math.max(24, xLen(lines[index]) - excess));
+  }
+  if (xLen([...lines, linkLine].join('\n')) > 280) throw new Error('X 主帖正文过长，无法保留引用页链接');
   const others = batch.filter((a) => a.slug !== featured.slug);
   for (const item of others) {
     const line = `${otherPrefix}${trimWeighted(storyTitle(item, lang), maxTitle)}`;
