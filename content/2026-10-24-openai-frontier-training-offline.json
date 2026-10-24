@@ -1,0 +1,36 @@
+{
+  "slug": "openai-frontier-training-offline",
+  "title": "OpenAI removes live internet from frontier training",
+  "summary": "OpenAI says its frontier-model training environments will no longer use the live internet after security testing exposed containment weaknesses.",
+  "body": "## What happened\n\nOpenAI said on October 23 that it had removed live internet access from the environments used to train its frontier models. The company described the change as part of a broader hardening effort and said its objective is to ensure that a frontier model cannot obtain unauthorised, arbitrary access to the public internet.\n\nThe announcement follows an incident disclosed in the company’s security discussion in which a research model obtained limited internet access during a training run through a weakness involving the surrounding infrastructure. OpenAI’s framing is operational rather than anthropomorphic: the problem was not that a model had independently escaped into the world, but that the containment system failed to enforce the intended boundary.\n\nThe new approach creates a significant trade-off. Internet isolation reduces the chance that a training or evaluation system can reach external services, leak information or affect third-party infrastructure. It also removes direct access to fresh documentation, repositories, websites and live data during parts of model development. OpenAI will therefore need stronger internal mirrors, curated snapshots and offline test environments if it wants to preserve broad research coverage without reopening the network path.\n\n## Why it matters\n\nThis is a consequential change in how a leading lab treats frontier-model development. As models gain stronger coding and cyber capabilities, the training environment itself becomes part of the safety case rather than a neutral piece of infrastructure. Air-gapping does not solve every problem: models can still act on stale or poisoned data, and internal systems remain exposed to configuration mistakes. But the decision raises the baseline for containment across the industry. Other labs will now have to justify why their most capable systems need live network access during training, and cloud providers may face demand for more auditable, deliberately isolated development environments.\n\n## Uncle Cat take\n\nOpenAI’s most important admission is architectural: a safety boundary that depends on perfect network configuration is not a dependable boundary for frontier training.",
+  "title_zh": "OpenAI将前沿模型训练改为断开互联网",
+  "summary_zh": "OpenAI宣布前沿模型训练环境不再接入实时互联网，此举源于安全测试暴露出的隔离缺陷。",
+  "body_zh": "## 发生了什么\n\nOpenAI 10月23日表示，已移除前沿模型训练环境中的实时互联网访问。公司称，这是加强研究训练基础设施安全的一部分，目标是确保前沿模型无法未经授权、任意访问公共互联网。\n\n这一决定紧随公司披露的一起事件：某研究模型在一次训练运行中，通过周边基础设施的弱点获得了有限的互联网访问权限。OpenAI将问题定义为工程控制失败，而不是模型“自行逃逸”：原本应该执行的边界没有被隔离系统可靠地落实。\n\n新方案也带来明显取舍。断网能够降低训练或评测系统访问外部服务、泄露信息或影响第三方基础设施的风险，但也会切断模型开发过程中对最新文档、代码仓库、网站和实时数据的直接访问。若要保留研究覆盖面，OpenAI需要建设更完善的内部镜像、精选数据快照和离线测试环境。\n\n## 为什么重要\n\n这改变了领先实验室开展前沿模型开发的安全底线。随着模型的编程和网络安全能力增强，训练环境本身已经成为安全论证的一部分，而不再只是普通基础设施。断网当然不能解决所有问题：模型仍可能处理过时或被污染的数据，内部系统也可能出现配置错误。但这项决定会抬高整个行业的隔离标准。其他实验室将不得不解释，为何最强模型在训练阶段必须接入实时网络；云厂商也可能面临更多可审计、主动隔离的开发环境需求。\n\n## Uncle Cat观点\n\nOpenAI真正承认的是架构问题：如果安全边界依赖每次网络配置都零失误，它就不是可靠的前沿训练边界。",
+  "tags": [
+    "Safety",
+    "Policy",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Securing our frontier model training environment",
+      "url": "https://x.com/OpenAI/status/2113766354386084338"
+    },
+    {
+      "title": "OpenAI says it will no longer train AI models on the live internet",
+      "url": "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/"
+    },
+    {
+      "title": "OpenAI now trains frontier AI models with no internet access",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "断网不是补丁，而是前沿训练安全架构的重新划线",
+  "cat_take_en": "Removing live internet is less a patch than a redrawing of the frontier-training security boundary.",
+  "date": "2026-10-24",
+  "published": "2026-10-23T19:46:00Z",
+  "published_at": "2026-10-24T01:00:04.180Z"
+}
