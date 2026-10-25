@@ -13,6 +13,47 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html",
+      "title": "英伟达开源Flora，机器人视频标注成本降125倍",
+      "summary": "英伟达开源机器人数据引擎Flora，称其每天可处理20万小时数据，标注成本约为GPT-6 Astra的八百分之一。",
+      "content_text": "## 发生了什么\n\n英伟达发布了Flora，一套面向机器人训练的数据引擎，目标是把机器人和人类示范视频转换为结构化训练数据。系统结合时间片段切分、视频描述和奖励标注，能够从长视频中识别动作、子任务与结果，而不是把整段素材当作无法拆分的序列。\n\n英伟达称，Flora已用于GR00T机器人模型的数据流程，并在512块GB300 GPU上达到每天处理约20万小时数据的规模。按照英伟达内部对比，Flora在多项标注任务上接近GPT-6 Astra，同时每小时机器人视频的标注成本约为0.72美元，而后者约为88美元。\n\n## 为什么重要\n\n机器人研发真正稀缺的并不只是原始视频，而是把视频转换成可靠动作标签的能力。更低的标注成本，可能让高校、中小型机器人公司和开放研究团队构建自己的专用数据集，不再完全依赖少数大模型实验室整理的数据。\n\n这次发布也把竞争推向了数据工程层。Flora并不是机器人控制器，输出用于安全关键训练前仍需人工或程序校验。它的许可证限制，以及在陌生机器人形态上的标注质量，也可能影响商业部署。不过，英伟达公开这套流程，为物理人工智能研究提供了可复现的起点，并可能降低机器人学习中长期被忽视的一项成本。\n\n## 猫叔判断\n\n比125倍便宜更值得关注的是每天20万小时的生产规模；若外部团队能复现其中一部分，机器人数据就不再只是大厂资源。\n",
+      "date_published": "2026-10-25T10:08:00.000Z",
+      "date_modified": "2026-10-25T13:00:04.886Z",
+      "tags": [
+        "研究",
+        "开源",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html",
+        "source_published_at": "2026-10-25T10:08:00.000Z",
+        "site_published_at": "2026-10-25T13:00:04.886Z",
+        "sources": [
+          {
+            "title": "Flora: An Open Model Suite for Scaling Robotics Data Engines",
+            "url": "https://research.nvidia.com/labs/gear/flora/"
+          },
+          {
+            "title": "nvidia/Flora-TempSeg model card",
+            "url": "https://huggingface.co/nvidia/Flora-TempSeg"
+          },
+          {
+            "title": "Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra",
+            "url": "https://the-decoder.com/nvidia-open-sources-flora-to-make-robot-video-labeling-125x-cheaper-than-gpt-6-astra/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-computer-use-desktop-agents.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-computer-use-desktop-agents.html",
       "title": "Cursor让编程代理接管桌面应用操作",
@@ -1855,42 +1896,6 @@
           {
             "title": "QwenGyre addresses two challenges of XLong-horizon agentic RL",
             "url": "https://x.com/Alibaba_Qwen/status/2109633089211416820"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/huawei-memento-recursive-game-learning.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/huawei-memento-recursive-game-learning.html",
-      "title": "华为 Memento 3 靠递归学习通关 25 款游戏",
-      "summary": "华为 Memento 3 通关 ARC-AGI-3 全部 25 款游戏，以外部世界模型学习规则，操作次数比人类少约 56%。",
-      "content_text": "华为诺亚方舟实验室与伦敦大学学院研究团队表示，智能体系统 Memento 3 已完成 ARC-AGI-3 公共测试集中的 25 款游戏、183 个关卡，并拿到 100 分的 RHAE 成绩。系统总计执行 7518 次操作，而人类完成同一批关卡需要 17135 次；此前最强基线则用了 8347 次。\n\n## 把学习放到模型之外\n\nMemento 3 的核心方法被称为“代码即模型”。智能体探索陌生游戏时，会持续维护一份规则手册，同时把对环境的假设写成可执行的 Python 代码。它先在内部世界模型中推演动作，再把预测画面与真实观察逐格比较；一旦出现偏差，就修改规则和代码。\n\n这种递归自我改进并不依赖重新训练底层模型，而是通过积累、校正外部知识实现。在一项实验中，同时维护两个相互竞争的世界模型后，某款游戏的通关操作次数从 899 次降至 597 次。研究团队还使用类似 Git 的版本管理记录每次修改，必要时可以回滚错误假设。\n\n## 探索完成后交给程序执行\n\n最有说服力的演示来自 Atari《乒乓》。Claude Opus 5 先探索游戏规律并完善运动模型，之后由基于该模型生成的程序独立运行，不再调用语言模型，连续三局均以 21 比 0 获胜。没有世界模型、只根据画面逐步决策的基线，表现几乎和随机操作一样。\n\n这项工作的重要性，在于它把智能体学习的重点从参数更新转向可检查的任务记忆与模拟器。但它还不能证明递归自我改进已具备普适性：实验环境规则紧凑，探索阶段仍依赖昂贵的前沿模型。更现实的价值，是为“先学习、再验证、最后低成本执行”的智能体架构提供了一个可复现案例。",
-      "date_published": "2026-10-12T05:48:36.000Z",
-      "date_modified": "2026-10-12T13:00:05.085Z",
-      "tags": [
-        "研究",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/huawei-memento-recursive-game-learning.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/huawei-memento-recursive-game-learning.html",
-        "source_published_at": "2026-10-12T05:48:36.000Z",
-        "site_published_at": "2026-10-12T13:00:05.085Z",
-        "sources": [
-          {
-            "title": "华为AI靠RSI通关25款游戏！操作次数比人类少56%",
-            "url": "https://www.qbitai.com/2026/10/502654.html"
-          },
-          {
-            "title": "Memento 3 research paper",
-            "url": "https://arxiv.org/abs/2610.11794"
           }
         ]
       }

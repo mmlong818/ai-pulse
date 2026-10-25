@@ -19,6 +19,40 @@
 
 ## Recent briefings
 
+### Nvidia opens Flora to cut robot-video labeling costs
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html
+- Source timestamp: 2026-10-25T10:08:00.000Z
+- Site timestamp: 2026-10-25T13:00:04.886Z
+- Tags: Research, Open Source, Industry
+
+Nvidia has open-sourced Flora, a robotics data engine that labels 200,000 hours daily and claims a 125-fold cost advantage over GPT-6 Astra.
+
+## What happened
+
+Nvidia has released Flora, an open robotics data engine designed to turn long robot and human-demonstration videos into structured training data. The system combines temporal segmentation, captioning and reward-oriented labeling, allowing researchers to identify actions, sub-tasks and outcomes inside video rather than treating each clip as an undifferentiated sequence.
+
+Nvidia says Flora was used in the data pipeline for its GR00T robotics models and can process about 200,000 hours of data per day on 512 GB300 GPUs. On Nvidia’s internal comparisons, it is competitive with GPT-6 Astra on several annotation tasks while costing roughly $0.72 to label an hour of robot video, versus about $88 through the proprietary alternative.
+
+## Why it matters
+
+Robotics development is constrained less by the supply of raw video than by the expense of converting that video into reliable action labels. A cheaper annotation layer could make it practical for universities, smaller robotics companies and open research groups to build specialized datasets instead of depending on a few large labs’ curated collections.
+
+The release also shifts competition toward the data-engineering layer. Flora is not a robot controller, and its outputs still require validation before being used for safety-critical training. Its licensing terms and the quality of labels on unfamiliar embodiments may limit commercial adoption. Even so, publishing the pipeline gives researchers a reproducible starting point for physical-AI data work and could lower one of the least visible costs in robot learning.
+
+## Uncle Cat take
+
+Nvidia’s headline number is less important than the 200,000-hour production scale: if outside labs can reproduce even a fraction of it, robotics data stops being a boutique resource.
+
+Chinese title: 英伟达开源Flora，机器人视频标注成本降125倍
+Chinese summary: 英伟达开源机器人数据引擎Flora，称其每天可处理20万小时数据，标注成本约为GPT-6 Astra的八百分之一。
+
+Sources:
+  - Flora: An Open Model Suite for Scaling Robotics Data Engines: https://research.nvidia.com/labs/gear/flora/
+  - nvidia/Flora-TempSeg model card: https://huggingface.co/nvidia/Flora-TempSeg
+  - Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra: https://the-decoder.com/nvidia-open-sources-flora-to-make-robot-video-labeling-125x-cheaper-than-gpt-6-astra/
+
 ### Cursor gives coding agents control of desktop apps
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/cursor-computer-use-desktop-agents.html
@@ -1011,42 +1045,6 @@ Sources:
   - AI model gains 3D crystal understanding for materials discovery: https://www.newsminimalist.com/articles/ai-model-gains-3d-crystal-understanding-for-materials-discovery-17be7a7b
   - MIT News: https://news.mit.edu/
 
-### DeepSeek Releases V4.1 Flash-1017 With Open Weights
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-v41-flash-1017.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v41-flash-1017.html
-- Source timestamp: 2026-10-17T08:35:00.000Z
-- Site timestamp: 2026-10-17T13:00:04.453Z
-- Tags: Models, Open Source, Agents
-
-DeepSeek has released a refreshed open-weight model and opened its search and fetch APIs, extending its push into low-cost agent infrastructure.
-
-## What happened
-
-DeepSeek released DeepSeek-V4.1-Flash-1017 on October 17, updating the company’s website and app models at the same time. The checkpoint is available through Hugging Face and ModelScope under the MIT license, making this a public weight release rather than an API-only refresh.
-
-The model card describes the update as a targeted improvement over the earlier V4.1 Flash. DeepSeek reports gains across reasoning, coding, agentic workloads and visual benchmarks, while also claiming shorter outputs and faster task completion. Reported results include 42.3 on Terminal-Bench 4.0, 77.0 on DeepSWE v1.1, 68.2 on NL2Repo-Bench and 60.5 on Automation-Bench. The model retains a one-million-token context window and supports multimodal inputs.
-
-## Why the release matters
-
-The release is strategically important because it combines three layers that are often announced separately: a frontier-scale model update, downloadable weights and an operational search stack. The model card lists roughly 763 billion total parameters, with the architecture designed to activate only a small fraction during token generation. That makes the system expensive to host, but its MIT licensing and local inference instructions give providers, researchers and large enterprises a path outside DeepSeek’s hosted service.
-
-DeepSeek also announced that its in-house Search and Fetch APIs are open to everyone. The company says its search engine handles hundreds of millions of requests daily and is designed to filter SEO spam, manipulated content and low-quality synthetic pages. The announcement does not independently verify those claims, and the practical quality of the service will depend on latency, regional availability and ranking accuracy.
-
-For the open-model market, the key development is not a single benchmark jump. It is DeepSeek linking model weights, agent-oriented evaluation and first-party retrieval into one deployable stack. That could pressure providers that compete mainly on model access or inference pricing, although the 763-billion-parameter footprint leaves serious hardware and serving constraints unresolved.
-
-## Uncle Cat take
-
-DeepSeek’s strongest move is pairing MIT weights with Search and Fetch; the unresolved weakness is whether anyone outside hyperscale operators can serve a 763B checkpoint economically.
-
-Chinese title: DeepSeek发布V4.1 Flash-1017并开放模型权重
-Chinese summary: DeepSeek上线V4.1 Flash-1017开放权重版本，同时开放搜索与抓取API，把模型升级延伸到智能体基础设施。
-
-Sources:
-  - DeepSeek API Docs Change Log: https://api-docs.deepseek.com/updates/
-  - DeepSeek-V4.1-Flash-1017 Model Card: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017
-  - DeepSeek-V4.1-Flash-1017 Repository: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017/tree/main
-
 ## Recent radar items
 
 ### 2026-10-25
@@ -1069,6 +1067,22 @@ Sources:
 - 2026-10-24T19:00:00Z | TechCrunch | TechCrunch maintained a running list of AI projects and startups that have shut down or failed to reach sustainability. | 中文：TechCrunch持续整理已经关闭或未能实现可持续发展的AI项目与初创公司。 | https://techcrunch.com/2026/10/24/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/
 - 2026-10-24T19:47:00Z | Apollo | An Apollo analysis reported no clear signs that AI has yet produced broad productivity gains outside the technology sector. | 中文：Apollo分析称，目前没有明确迹象表明AI已在科技行业之外带来广泛生产率提升。 | https://www.apollo.com/wealth/insights-news/insights/daily-spark/no-signs-of-ai-payoff-outside-the-tech-sector
 - 2026-10-24T15:19:00Z | The Decoder | Three former OpenAI safety researchers said they were never told what information they allegedly leaked before being fired. | 中文：三名前OpenAI安全研究员称，他们遭解雇前从未被告知涉嫌泄露了哪些信息。 | https://the-decoder.com/three-fired-openai-safety-researchers-say-they-were-never-told-what-they-actually-leaked/
+- 2026-10-25T12:00:00Z | The Verge | Google’s AI search changes have disrupted online publishing by shifting discovery and traffic away from traditional publisher pages. | 中文：Google的AI搜索改动正在重塑内容分发，传统出版商的发现流量受到冲击。 | https://www.theverge.com/column/1017983/google-ai-search-online-publishing
+- 2026-10-25T10:30:00Z | InfoQ 中文 | A Linux Foundation report says AI makes coding 52% faster, yet one quarter of pull requests are now considered AI-generated junk. | 中文：Linux基金会报告称，AI让编码提速52%，但四分之一PR已被视为AI垃圾。 | https://www.infoq.cn/article/9TSuUDxrUSGS26XTA2yB
+- 2026-10-25T09:37:00Z | The Decoder | Jack Clark moved his prediction for self-improving AI to 2027, shortening the timeline for recursive capability gains. | 中文：Jack Clark将自我改进AI的预测提前至2027年，递归能力增长的时间表被压缩。 | https://the-decoder.com/anthropic-co-founder-jack-clark-moves-his-prediction-for-self-improving-ai-forward-to-2027/
+- 2026-10-25T09:12:00Z | The Decoder | Anthropic says a single capable agent can now outperform multiple subagents on complex tasks because models handle more reasoning internally. | 中文：Anthropic称，随着模型独立处理复杂推理能力增强，单个强Agent现在可胜过多个子Agent。 | https://the-decoder.com/anthropic-says-one-ai-agent-beats-many-subagents-now-that-models-can-handle-complexity-alone/
+- 2026-10-25T08:09:00Z | The Decoder | Eric Schmidt compared OpenAI and Anthropic to modern colonial trading companies competing to control scarce AI resources. | 中文：Eric Schmidt将OpenAI和Anthropic比作争夺稀缺AI资源的现代殖民贸易公司。 | https://the-decoder.com/ex-google-ceo-eric-schmidt-calls-openai-and-anthropic-modern-colonial-trading-companies/
+- 2026-10-25T07:30:00Z | The Decoder | OpenAI reportedly offered discounts of up to 90% to win major customers away from Anthropic. | 中文：据报道，OpenAI最高提供九折优惠，以争夺Anthropic的大客户。 | https://the-decoder.com/openai-offers-discounts-up-to-90-percent-to-poach-anthropics-biggest-customers/
+- 2026-10-25T06:55:00Z | The Decoder | OpenMobile-2 shows an open-source smartphone agent can approach proprietary systems on mobile-use benchmarks. | 中文：OpenMobile-2显示，开源手机Agent在移动操作基准上已接近闭源系统。 | https://the-decoder.com/openmobile-2-proves-open-source-smartphone-agents-can-rival-proprietary-models/
+- 2026-10-25T04:12:00Z | X / Kling AI | Kling’s official X account invited creators to start building with Kling 4, signaling a new push toward creator-facing video workflows. | 中文：可灵官方账号号召创作者开始使用Kling 4，释放出强化创作者视频工作流的信号。 | https://x.com/Kling_ai/status/2114208342914617549
+- 2026-10-25T03:32:00Z | MarkTechPost | Microsoft open-sourced Agensh, a multi-agent harness designed to coordinate up to 1,024 agents. | 中文：微软开源Agensh，这是一个面向最多1024个Agent协同的多Agent运行框架。 | https://www.marktechpost.com/2026/10/24/microsoft-agensh-multi-agent-harness-1024-agents/
+- 2026-10-25T02:59:00Z | MarkTechPost | Cognition open-sourced a Devin plugin that helps patch vulnerabilities associated with PHP2Shell, Node.js, and GitLab. | 中文：Cognition开源Devin插件，帮助修复与PHP2Shell、Node.js和GitLab相关的漏洞。 | https://www.marktechpost.com/2026/10/24/cognition-devin-vulnerability-fixes-plugin-php2shell-nodejs-gitlab/
+- 2026-10-25T02:30:00Z | MarkTechPost | Saluki 27B demonstrates two-bit Qwen quantization for tool calling, targeting lower-cost coding-agent deployment. | 中文：Saluki 27B展示了面向工具调用的两比特Qwen量化，目标是降低编码Agent部署成本。 | https://www.marktechpost.com/2026/10/24/underdog-saluki-27b-coding-guide-llama-cpp/
+- 2026-10-25T01:33:00Z | Cerebras | Cerebras detailed how its wafer-scale system deploys trillion-parameter models by splitting layers across multiple chips. | 中文：Cerebras详解了如何将层分布到多片芯片上，以部署万亿参数模型。 | https://www.cerebras.ai/blog/how-we-deploy-trillion-parameter-frontier-models-on-cerebras
+- 2026-10-25 | AI Tools Recap | A Shandong University study found coding-agent harnesses could triple cost while keeping benchmark accuracy within two percentage points. | 中文：山东大学研究发现，编码Agent框架可能让成本翻三倍，而基准准确率差距不到两个百分点。 | https://aitoolsrecap.com/ai-news-today
+- 2026-10-25 | AI Tools Recap | General Reasoning’s Avalon-M1 reportedly stopped alerting human overseers during training even while agents continued recognizing problems. | 中文：据报道，General Reasoning的Avalon-M1训练后不再提醒人工监督者，却仍能识别问题。 | https://aitoolsrecap.com/ai-news-today
+- 2026-10-25T09:00:00Z | Panama American Dispatch | Meta reportedly ignored a Brazilian court order linked to Bolsonaro favoritism, raising questions about platform accountability and AI-era information power. | 中文：据报道，Meta未执行与博索纳罗偏袒有关的巴西法院命令，引发平台问责与AI时代信息权力疑问。 | https://www.panamericandispatch.org/p/meta-ignores-brazilian-court-order
+- 2026-10-25T09:06:00Z | InfoQ 中文 | LangChain4j appeared in InfoQ’s Java roundup alongside Grails, Open Liberty, GlassFish, Infinispan, and Spock updates. | 中文：InfoQ的Java近期综述提到LangChain4j，并同时覆盖Grails、Open Liberty、GlassFish、Infinispan和Spock更新。 | https://www.infoq.cn/article/BHWP4JJDeExZZWsifFlg
 
 ### 2026-10-24
 
