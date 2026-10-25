@@ -321,11 +321,11 @@ StartLux releases Prism, an open inference engine for its calibrated decision mo
 
 ## A separate lane for machine decisions
 
-StartLux has open-sourced Prism, an inference engine built for its StartLux-Decision models. Unlike general-purpose language models that typically generate a sequence of tokens before producing an answer, the decision models return calibrated probabilities across predefined options. They are intended for classification, ranking, scoring and other workflows where uncertainty matters as much as the selected answer.
+StartLux has released Prism, an inference engine built for its StartLux-Decision models. Unlike general-purpose language models that typically generate a sequence of tokens before producing an answer, the decision models return calibrated probabilities across predefined options. They are intended for classification, ranking, scoring and other workflows where uncertainty matters as much as the selected answer.
 
 The StartLux-Decision project supports common deployment stacks including vLLM, llama.cpp and MLX. StartLux-Prism is a separate NVIDIA-focused engine for serving the released GGUF models. According to the current repository documentation, Prism supports v1 and v1.1 AutoThink models in 4B, 9B and 27B sizes; v1.1 Instant models are not yet supported by Prism.
 
-According to the release material, tests using the 27B model on a single NVIDIA H200 showed speedups ranging from 1.2x to 5.3x against a vLLM-based implementation, depending on the workload. The repository is released under Apache 2.0, making the engine available for commercial and research use.
+According to the current repository benchmarks, tests using the 27B model on a single NVIDIA H200 showed speedups ranging from 1.2x to 5.3x against the reference engine, depending on the workload. The repository’s own code does not yet have a declared license. The vendored StartLux-Decision files are under Apache 2.0, while the released model weights are licensed CC BY-NC 4.0, so commercial use requires reviewing the applicable component licenses rather than assuming the whole project is Apache-licensed.
 
 ## Why it matters
 
@@ -337,10 +337,10 @@ The open questions are substantial. The reported acceleration comes from StartLu
 
 ## Uncle Cat take
 
-Prism’s 5.3x claim matters only if its Apache license and probability outputs survive real production workloads; the engine is more interesting than the multiplier.
+Prism’s 5.3x claim matters only if its benchmark advantage, licensing boundaries and probability outputs survive real production workloads; the engine is more interesting than the multiplier.
 
-Chinese title: StartLux 开源 Prism，专为决策模型提速
-Chinese summary: StartLux 开源面向校准决策模型的推理引擎 Prism，称其在特定测试任务中最高可实现 5.3 倍加速。
+Chinese title: StartLux发布 Prism，专为决策模型提速
+Chinese summary: StartLux发布面向校准决策模型的推理引擎 Prism，称其在特定测试任务中最高可实现 5.3 倍加速。
 
 Sources:
   - StartLux-Decision GitHub repository: https://github.com/StartLuxLabs/StartLux-Decision
@@ -359,17 +359,17 @@ Anthropic is testing Claude Duet, an agent that monitors priorities, completes t
 
 Anthropic has opened a research preview of Claude Duet, a proactive agent designed to work across a user’s digital tasks rather than wait for individual prompts. The service is available through a US waitlist for Pro and Max subscribers.
 
-Anthropic describes Duet as an application built around Claude Opus 5.5. It can identify work that may need attention, complete tasks in the background and return to the user when a decision or approval is required. The company says projects can span repositories from GitHub, GitLab and other providers, with findings delivered through a new API and MCP connector.
+Anthropic describes Duet as an application built around Claude Opus 5.5. It can identify work that may need attention, complete tasks in the background and return to the user when a decision or approval is required. Duet carries over a user’s Claude memory, skills and connected apps, and can use more than 6,000 connectors and plugins available through the Claude Marketplace.
 
 The product’s design reflects a shift from conversational assistants to systems that maintain an operating view of a user’s work. That creates a more useful workflow for software teams and knowledge workers: the agent can collect context, inspect connected sources and carry out a sequence of actions instead of producing a single answer. It also creates a harder safety problem, because mistakes can occur between the initial instruction and the eventual action.
 
-Anthropic says Duet does not directly see users’ passwords and uses a classifier to guard against attempts to share sensitive information. The company also acknowledges that the system can misjudge what is urgent. Those limits matter because proactive behavior turns ambiguity into an operational decision: waiting may be wrong, but acting too early may be worse.
+Anthropic says Duet does not directly see users’ passwords or sign-in tokens and uses dedicated safeguards to guard against attempts to share highly sensitive information. The company also acknowledges that the system can misjudge what is urgent. Those limits matter because proactive behavior turns ambiguity into an operational decision: waiting may be wrong, but acting too early may be worse.
 
 The early research-preview status and US-only availability make this a controlled experiment rather than a mass-market launch. Its significance lies in the product direction. Anthropic is testing whether a model can become a persistent work partner while remaining interruptible, permission-aware and bounded by security controls. If the approach works, agent products will compete less on chat quality and more on judgment under incomplete information.
 
 ## Uncle Cat take
 
-Claude Duet’s defining risk is not access to repositories; it is deciding which unfinished task deserves interruption, a judgment Anthropic admits remains imperfect.
+Claude Duet’s defining risk is not access to connected apps; it is deciding which unfinished task deserves interruption, a judgment Anthropic admits remains imperfect.
 
 Chinese title: Anthropic开放Claude Duet主动式代理研究预览
 Chinese summary: Anthropic开始测试Claude Duet，让代理主动发现待办、执行任务，并在敏感操作前请求用户批准。
@@ -1049,6 +1049,27 @@ Sources:
 
 ## Recent radar items
 
+### 2026-10-25
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-25.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-25.html
+
+- 2026-10-24T23:56:00Z | X / Pika | Pika showcased a stylish dollhouse video created inside ChatGPT, highlighting creator workflows that combine conversational prompting with generative video. | 中文：Pika展示了在ChatGPT内制作的风格化玩具屋视频，体现对话式提示与生成视频的结合。 | https://x.com/pika_labs/status/2114144082750771467
+- 2026-10-24T22:00:00Z | X / Google Cloud | Google Cloud promoted Gemini as a persistent cloud agent that can retain context across chat threads, documents, and Jira. | 中文：Google Cloud推广能跨聊天、文档和Jira保留上下文的Gemini持久云代理。 | https://x.com/GoogleCloudTech/status/2114114714997334403
+- 2026-10-24T20:53:00Z | X / Krea | Krea highlighted Krea 3 editing, letting users modify precise image regions while supporting up to 2,000 generations. | 中文：Krea强调Krea 3的精准编辑，可修改图像局部，并支持最多2000次生成。 | https://x.com/krea_ai/status/2114098082220519524
+- 2026-10-24T19:29:00Z | X / Together Compute | Together Compute emphasized production deployment of open models at scale, focusing on inference economics and enterprise workloads. | 中文：Together Compute强调大规模生产部署开放模型，重点放在推理经济性和企业工作负载。 | https://x.com/togethercompute/status/2114076798480724157
+- 2026-10-24T14:09:00Z | The Decoder | Block’s Dessa model was trained entirely on human speech to detect emotional cues that text-based models often miss. | 中文：Block的Dessa完全使用人类语音训练，旨在捕捉文本模型常忽略的情绪线索。 | https://the-decoder.com/blocks-new-ai-model-dessa-was-trained-entirely-on-human-speech-to-catch-emotions-text-based-models-miss/
+- 2026-10-24T18:23:00Z | X / Hyper3D | Hyper3D said a minor Rodin update further improves its ability to generate human heads. | 中文：Hyper3D表示，Rodin的小幅更新进一步提升了生成人头模型的能力。 | https://x.com/DeemosTech/status/2114060121638830339
+- 2026-10-24T14:57:00Z | X / Agent Arena | Moonshot’s Kimi K3.1 Pro ranked eleventh in Agent Arena, delivering a 7.6% net improvement across more than 4,000 agent sessions. | 中文：月之暗面Kimi K3.1 Pro在Agent Arena排名第11，在4000多次代理会话中净提升7.6%。 | https://x.com/arena/status/2114008313054527901
+- 2026-10-24T14:34:00Z | The Decoder | A study found AI instantly improved junior patent attorneys’ performance while potentially slowing the development of their professional judgment. | 中文：一项研究发现，AI能立即提升初级专利律师表现，却可能放慢其专业判断成长。 | https://the-decoder.com/ai-makes-junior-patent-attorneys-instantly-better-but-may-quietly-stunt-their-professional-growth/
+- 2026-10-24T14:24:00Z | X / Kling | Kling showcased art and design work made with Kling 4, emphasizing motion-oriented generative video workflows. | 中文：可灵展示了使用Kling 4制作的艺术与设计作品，突出面向动态内容的生成视频流程。 | https://x.com/Kling_ai/status/2114000152478490667
+- 2026-10-24T14:00:00Z | TechCrunch | TechCrunch surveyed AI agents that can operate inside text messages, bringing automated assistance into familiar conversational channels. | 中文：TechCrunch盘点了能运行在短信里的AI代理，把自动化协助带入熟悉的聊天渠道。 | https://techcrunch.com/2026/10/24/all-the-ai-agents-that-can-live-in-your-text-messages/
+- 2026-10-24T18:32:00Z | The Verge | Pennsylvania will require labels on AI-generated advertisements under a new deceptive-advertising measure. | 中文：宾夕法尼亚州将依据新的欺骗性广告措施，要求为AI生成广告添加标签。 | https://www.theverge.com/ai-artificial-intelligence/1018187/pennsylvania-ai-deceptive-advertising-act
+- 2026-10-24T15:00:00Z | TechCrunch | A TechCrunch analysis found Grok favored Republicans in forced-choice political prompts, while OpenAI’s model favored Democrats. | 中文：TechCrunch分析发现，在强制二选一政治提示中，Grok偏向共和党，OpenAI模型偏向民主党。 | https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/
+- 2026-10-24T19:00:00Z | TechCrunch | TechCrunch maintained a running list of AI projects and startups that have shut down or failed to reach sustainability. | 中文：TechCrunch持续整理已经关闭或未能实现可持续发展的AI项目与初创公司。 | https://techcrunch.com/2026/10/24/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/
+- 2026-10-24T19:47:00Z | Apollo | An Apollo analysis reported no clear signs that AI has yet produced broad productivity gains outside the technology sector. | 中文：Apollo分析称，目前没有明确迹象表明AI已在科技行业之外带来广泛生产率提升。 | https://www.apollo.com/wealth/insights-news/insights/daily-spark/no-signs-of-ai-payoff-outside-the-tech-sector
+- 2026-10-24T15:19:00Z | The Decoder | Three former OpenAI safety researchers said they were never told what information they allegedly leaked before being fired. | 中文：三名前OpenAI安全研究员称，他们遭解雇前从未被告知涉嫌泄露了哪些信息。 | https://the-decoder.com/three-fired-openai-safety-researchers-say-they-were-never-told-what-they-actually-leaked/
+
 ### 2026-10-24
 
 - English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-24.html
@@ -1205,38 +1226,3 @@ Sources:
 - 2026-10-21T04:00:00Z | arXiv | Embodied Playground introduces 410 robotic task environments spanning manipulation, puzzles, and household activities with standardized long-horizon evaluation. | 中文：Embodied Playground推出410个机器人任务环境，覆盖操作、解谜和家务，并提供标准化长程评测。 | https://arxiv.org/abs/2610.27039
 - 2026-10-21T04:00:00Z | arXiv | CERTA estimates when quantized clinical models can replace BF16 references, reporting 4-bit deployment costs near 26% of baseline in two 72B models. | 中文：CERTA判断量化临床模型何时可替代BF16基准，并报告两款72B模型的四比特部署成本约为基线的26%。 | https://arxiv.org/abs/2610.26937
 - 2026-10-21T04:00:00Z | arXiv | A new RAG study finds retrieval, not reading, is the main bottleneck for multi-fact questions and proposes line-level evidence scoring. | 中文：一项新研究发现，多事实问题的主要瓶颈是检索而非阅读，并提出逐行证据评分。 | https://arxiv.org/abs/2610.26951
-
-### 2026-10-20
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-20.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-20.html
-
-- 2026-10-20T00:41:00Z | SiliconANGLE | AI work assistant startup Town raised $108 million just weeks after launch, reaching unicorn status. | 中文：AI工作助手初创公司Town上线数周后融资1.08亿美元，估值达到独角兽水平。 | https://siliconangle.com/2026/10/19/ai-work-assistant-startup-town-secures-unicorn-status-after-raising-108m-just-weeks-after-launching/
-- 2026-10-20T00:03:00Z | MarkTechPost | Nace AI introduced Drex Max, a multimodal decision model for computer-use agents scoring 67.59. | 中文：Nace AI推出Drex Max多模态决策模型，计算机操作智能体评测得分为67.59。 | https://www.marktechpost.com/2026/10/19/nace-ai-drex-max-multimodal-decision-model/
-- 2026-10-19T23:32:00Z | AWS Machine Learning | Amazon Bedrock added structured outputs for Anthropic Claude models, enabling schema-constrained responses. | 中文：Amazon Bedrock为Anthropic Claude模型加入结构化输出，可按指定模式返回结果。 | https://aws.amazon.com/blogs/machine-learning/structured-outputs-for-anthropic-claude-models-on-amazon-bedrock/
-- 2026-10-19T19:33:00Z | X @AIatMeta | Meta published a technical report on Muse Glimmer, a 30-billion-parameter open-weight model designed for agentic tasks on consumer hardware. | 中文：Meta发布Muse Glimmer技术报告，这是一款面向消费级硬件智能体任务的300亿参数开放权重模型。 | https://x.com/AIatMeta/status/2112265822274302066
-- 2026-10-19T22:30:00Z | X @OpenAI | OpenAI said its latest models improve software development and migration in COBOL, Fortran, and Visual Basic. | 中文：OpenAI称其最新模型提升了COBOL、Fortran和Visual Basic等低资源语言的软件开发与迁移能力。 | https://x.com/OpenAI/status/2112310345863930168
-- 2026-10-19T22:49:00Z | SiliconANGLE | Nvidia and Dell backed a $200 million funding round for AI model developer doubleAI. | 中文：英伟达与戴尔参与AI模型开发商doubleAI的2亿美元融资。 | https://siliconangle.com/2026/10/19/nvidia-dell-back-200m-round-for-ai-model-developer-doubleai/
-- 2026-10-19T22:49:00Z | TechCrunch | Hugging Face’s policy chief warned that embedding AI evaluators inside companies will not provide an easy safety solution. | 中文：Hugging Face政策负责人警告，把AI评估人员嵌入公司并不能轻松解决安全问题。 | https://techcrunch.com/2026/10/19/embedded-ai-evaluators-wont-be-an-easy-solution-hugging-faces-policy-chief-says/
-- 2026-10-19T14:46:00Z | SiliconANGLE | Motive introduced agentic AI for physical operations that can act before fleet problems escalate. | 中文：Motive推出面向实体运营的智能体AI，可在车队问题升级前主动采取行动。 | https://siliconangle.com/2026/10/19/motive-brings-agentic-ai-to-physical-operations-with-agents-that-act-before-problems-escalate/
-- 2026-10-19T16:51:00Z | X @HeyGen | HeyGen said Video 1.0 can generate product close-ups and complete shots around an avatar. | 中文：HeyGen表示，Video 1.0可围绕数字人生成产品特写及完整镜头。 | https://x.com/HeyGen/status/2112225211739451794
-- 2026-10-19T17:18:00Z | X @lovart_ai | Lovart 2.0 introduced Arti, a design agent that remembers a user’s taste and can work asynchronously. | 中文：Lovart 2.0推出设计智能体Arti，可记住用户偏好并异步推进设计工作。 | https://x.com/lovart_ai/status/2112231902686167168
-- 2026-10-19T18:21:00Z | X @RunwayML | Runway made its MCP integration available in Grok Bot, bringing its generation tools into chat. | 中文：Runway将MCP集成接入Grok Bot，让用户可直接在聊天中调用其生成工具。 | https://x.com/runwayml/status/2112247791678541845
-- 2026-10-19T17:56:00Z | X @togethercompute | Together launched Post-Training, letting users train open models with supervised fine-tuning or reinforcement learning. | 中文：Together推出Post-Training，允许用户通过监督微调或强化学习训练开放模型。 | https://x.com/togethercompute/status/2112241595273621857
-- 2026-10-19T16:00:00Z | X @MicrosoftAI | Microsoft said MAI-Transcribe-2 ranked first for transcription accuracy in David AI’s new benchmark. | 中文：微软称MAI-Transcribe-2在David AI新基准的转录准确率测试中排名第一。 | https://x.com/MicrosoftAI/status/2112212219177910510
-- 2026-10-19T22:39:00Z | AWS Machine Learning | Amazon SageMaker made Studio accessible through the new AWS experience for developers. | 中文：亚马逊让开发者可通过新版AWS体验访问SageMaker Studio。 | https://aws.amazon.com/blogs/machine-learning/developers-can-now-access-sagemaker-studio-through-the-new-aws-experience/
-- 2026-10-20T13:00:00.000Z | TechCrunch | Eka raised its valuation to $1.45 billion after experts praised its physical-AI model for industrial applications. | 中文：Eka凭借获专家认可的物理AI模型，估值升至14.5亿美元。 | https://techcrunch.com/2026/10/20/eka-is-worth-1-45-billion-thanks-to-a-physical-ai-model-that-has-experts-raving/
-- 2026-10-20T12:44:00.000Z | X / Recraft | Recraft showcased fashion imagery created with Recraft V4.1 and animated with ByteDance’s Seedance 2.5. | 中文：Recraft展示了由Recraft V4.1生成、再用字节Seedance 2.5动画化的时装视觉作品。 | https://x.com/recraftai/status/2112525281852289487
-- 2026-10-20T12:33:00.000Z | Ars Technica | Security researchers reported that Meta Muse can expose personal and business secrets when users share conversations. | 中文：安全研究人员称，用户分享Meta Muse对话时，可能暴露个人及商业机密。 | https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations/
-- 2026-10-20T12:32:00.000Z | The Decoder | A U.S. Army Cyber Command concept called ECHOTRIBBLE would let AI agents propagate across systems like self-spreading cyberweapons. | 中文：美国陆军网络司令部提出的ECHOTRIBBLE概念，可让AI代理像自传播网络武器一样扩散。 | https://the-decoder.com/army-cyber-commands-echotribble-would-turn-ai-agents-into-self-spreading-cyberweapons/
-- 2026-10-20T12:04:00.000Z | Cloudflare Blog | Cloudflare launched Clairic, a typed extraction model that computes, estimates, and forecasts values without generating output tokens. | 中文：Cloudflare推出Clairic类型化抽取模型，可计算、估计和预测数值，且不生成输出token。 | https://blog.cloudflare.com/clairic-extraction-model/
-- 2026-10-20T11:00:00.000Z | Otter.ai | Otter.ai raised $320 million from General Catalyst to expand meeting agents, enterprise workflows, and international operations. | 中文：Otter.ai从General Catalyst融资3.2亿美元，用于扩展会议代理、企业工作流和国际业务。 | https://otter.ai/blog/general-catalyst-backs-otter-ais-voice-ai-ambitions-with-320m-growth-investment
-- 2026-10-20T11:00:00.000Z | InfoQ 中文 | A survey found that AI-generated code increases debugging difficulty, failure rates, and gaps in developers’ code understanding. | 中文：一项调查发现，AI生成代码会增加调试难度、故障率和开发者理解鸿沟。 | https://www.infoq.cn/article/ywvgVDVLsSU7r47Jk6lq?utm_source=rss&utm_medium=article
-- 2026-10-20T11:31:00.000Z | Sakana AI | Sakana AI introduced QD-Rec, which uses evolving hypotheses to recommend diverse companies, customers, or papers. | 中文：Sakana AI推出QD-Rec，通过不断演化的假设，为企业、客户或论文提供多样化推荐。 | https://sakana.ai/qd-rec/
-- 2026-10-20T11:00:00.000Z | TechCrunch | Yelp added an AI feature that can call restaurants on users’ behalf to check current wait times. | 中文：Yelp新增AI功能，可代用户致电餐厅查询实时等位时间。 | https://techcrunch.com/2026/10/20/yelp-can-now-call-on-your-behalf-to-check-wait-times-at-a-restaurant/
-- 2026-10-20T08:12:00.000Z | MarkTechPost | Exa 3.0 Search API reportedly outperformed Perplexity, Brave, and Parallel across eight benchmarks. | 中文：据报道，Exa 3.0 Search API在八项基准测试中击败Perplexity、Brave和Parallel。 | https://www.marktechpost.com/2026/10/20/exa-3-0-search-api-lite/
-- 2026-10-20T03:32:00.000Z | Inception | Inception released Mercury 3, a diffusion language model claiming 1,068 tokens per second and a one-million-token context window. | 中文：Inception发布Mercury 3扩散语言模型，宣称速度达每秒1068 token、上下文窗口达百万token。 | https://www.inceptionlabs.ai/blog/introducing-mercury-3
-- 2026-10-20T03:44:00.000Z | X / Artificial Analysis | Artificial Analysis ranked Ming-3.0-tts third among open-weight models in its native-voice arena, with an Elo score of 1,188. | 中文：Artificial Analysis显示，Ming-3.0-tts在原生语音竞技场中以1188 Elo位列开源权重模型第三。 | https://x.com/ArtificialAnlys/status/2112389528426033564
-- 2026-10-20T01:09:00.000Z | 量子位 | A Chinese report said a newly exposed Claude model can escape habitual reasoning patterns and fix bugs at their root. | 中文：中文报道披露，Claude新模型可跳出惯性思路，并从根源修复软件Bug。 | https://www.qbitai.com/2026/10/504314.html
-- 2026-10-20T09:30:00.000Z | X / DeepSeek | DeepSeek said it will open-source deepseek-recipe, a production token encoding and decoding component used by its API stack. | 中文：DeepSeek表示将开源deepseek-recipe，这是其API栈使用的生产级token编解码组件。 | https://x.com/deepseek_ai/status/2112476501065286085
-- 2026-10-20T03:57:00.000Z | X / Sakana AI | Sakana AI opened a dedicated Product Strategy and Operations role to coordinate its broader product portfolio. | 中文：Sakana AI为统筹更广泛产品组合，首次招聘专职产品战略与运营成员。 | https://x.com/SakanaAILabs/status/2112392712637100095
