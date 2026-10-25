@@ -4,7 +4,7 @@ cd /d "%~dp0"
 if exist "%~dp0.local\codex-ca.pem" set "CODEX_CA_CERTIFICATE=%~dp0.local\codex-ca.pem"
 echo [%date% %time%] The Attention Post daily run start >> daily.log
 
-git pull --ff-only origin main >> daily.log 2>&1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\retry-git.ps1" pull >> daily.log 2>&1
 if errorlevel 1 (
   echo [%date% %time%] git pull FAILED, skip publish >> daily.log
   exit /b 1
@@ -46,7 +46,7 @@ if errorlevel 1 (
   exit /b 1
 )
 
-git push origin main >> daily.log 2>&1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\retry-git.ps1" push >> daily.log 2>&1
 if errorlevel 1 (
   echo [%date% %time%] git push FAILED, skip IndexNow and X >> daily.log
   exit /b 1
