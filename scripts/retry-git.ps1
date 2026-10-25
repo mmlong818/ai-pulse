@@ -12,7 +12,7 @@ $gitArgs = if ($Operation -eq 'pull') {
 $delays = @(15, 30, 60, 120)
 
 for ($attempt = 1; $attempt -le ($delays.Count + 1); $attempt++) {
-  $output = @(& git @gitArgs 2>&1)
+  $output = @(& git @gitArgs 2>&1 | ForEach-Object { $_.ToString() })
   $result = $LASTEXITCODE
   $output | ForEach-Object { Write-Output $_ }
   if ($result -eq 0) { exit 0 }
