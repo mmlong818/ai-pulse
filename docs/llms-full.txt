@@ -19,6 +19,42 @@
 
 ## Recent briefings
 
+### MiniMax H3 Community Builds Cut Video Generation Costs
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/minimax-h3-community-video-audio.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-community-video-audio.html
+- Source timestamp: 2026-10-25T23:48:00.000Z
+- Site timestamp: 2026-10-26T01:00:04.260Z
+- Tags: AIGC, Open Source
+
+New community contributions show MiniMax H3 generating reference-controlled video and audio in as few as four to eight denoising steps.
+
+## What changed
+
+MiniMax highlighted a new wave of community contributions around H3, its open video-and-audio generation model. The projects include reference-conditioned video workflows that use eight denoising steps, alongside a four-step variant aimed at faster generation and lower compute requirements. The examples also extend H3 beyond silent clips by combining visual references with generated or guided audio.
+
+The announcement points to implementation work happening outside MiniMax itself. Rather than presenting a new flagship checkpoint, the company’s post showcases practical adaptations that make H3 easier to run, customize and integrate into creator tooling. The lower-step workflows are especially relevant for local and hosted inference, where sampling speed directly affects both interactive latency and cost.
+
+## Why it matters
+
+H3 was already positioned as an unusually broad open model, spanning video generation, editing, reference control and audio. These community contributions suggest that its value may increasingly come from an ecosystem of specialized workflows rather than from a single official demo. An eight-step pipeline can make controlled generation more usable in production, while a four-step version raises the possibility of near-interactive iteration on suitable hardware.
+
+The constraints remain important. Fewer denoising steps can reduce fidelity, temporal consistency or audio alignment, and the examples do not establish that these variants match the quality of H3’s slower configurations. The post also does not provide a standardized speed or quality comparison across hardware.
+
+Still, the development is strategically meaningful: open generative-video models become more competitive when users can reshape their inference process, not merely download weights. H3’s next test is whether these community recipes mature into dependable creator and production workflows.
+
+## Uncle Cat take
+
+The meaningful asset here is the four-step community path: it could turn H3 from an open model into a practical iteration engine, but quality evidence is still thin.
+
+Chinese title: MiniMax H3社区方案将视频生成推向低步数推理
+Chinese summary: MiniMax展示H3社区的新方案，可用4至8步去噪生成受参考素材控制的视频与音频，降低推理成本。
+
+Sources:
+  - MiniMax AI post on H3 community contributions: https://x.com/MiniMax_AI/status/2114504329499660419
+  - MiniMax H3 reference-to-video documentation: https://minimax-h3.ai/reference-to-video
+  - MiniMax H3 open-source repository: https://github.com/MiniMax-AI/MiniMax-H3
+
 ### Nvidia opens Flora to cut robot-video labeling costs
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html
@@ -46,7 +82,7 @@ The release also shifts competition toward the data-engineering layer. Flora is 
 Nvidia’s headline number is less important than the 200,000-hour production scale: if outside labs can reproduce even a fraction of it, robotics data stops being a boutique resource.
 
 Chinese title: 英伟达开源Flora，机器人视频标注成本降125倍
-Chinese summary: 英伟达开源机器人数据引擎Flora，称其每天可处理20万小时数据，标注成本约为GPT-6 Astra的八百分之一。
+Chinese summary: 英伟达开源机器人数据引擎Flora，称其每天可处理20万小时数据，标注成本约为GPT-6 Astra的八分之一百二十五，即约低125倍。
 
 Sources:
   - Flora: An Open Model Suite for Scaling Robotics Data Engines: https://research.nvidia.com/labs/gear/flora/
@@ -357,7 +393,7 @@ StartLux releases Prism, an open inference engine for its calibrated decision mo
 
 StartLux has released Prism, an inference engine built for its StartLux-Decision models. Unlike general-purpose language models that typically generate a sequence of tokens before producing an answer, the decision models return calibrated probabilities across predefined options. They are intended for classification, ranking, scoring and other workflows where uncertainty matters as much as the selected answer.
 
-The StartLux-Decision project supports common deployment stacks including vLLM, llama.cpp and MLX. StartLux-Prism is a separate NVIDIA-focused engine for serving the released GGUF models. According to the current repository documentation, Prism supports v1 and v1.1 AutoThink models in 4B, 9B and 27B sizes; v1.1 Instant models are not yet supported by Prism.
+The StartLux-Decision project supports common deployment stacks including vLLM, llama.cpp and MLX. StartLux-Prism is a separate NVIDIA-focused engine for serving the released GGUF models. According to the current Prism repository documentation, Prism supports v1 and v1.1 AutoThink models in 4B, 9B and 27B sizes, as well as v1.1 Instant models in those sizes.
 
 According to the current repository benchmarks, tests using the 27B model on a single NVIDIA H200 showed speedups ranging from 1.2x to 5.3x against the reference engine, depending on the workload. The repository’s own code does not yet have a declared license. The vendored StartLux-Decision files are under Apache 2.0, while the released model weights are licensed CC BY-NC 4.0, so commercial use requires reviewing the applicable component licenses rather than assuming the whole project is Apache-licensed.
 
@@ -377,7 +413,7 @@ Chinese title: StartLux发布 Prism，专为决策模型提速
 Chinese summary: StartLux发布面向校准决策模型的推理引擎 Prism，称其在特定测试任务中最高可实现 5.3 倍加速。
 
 Sources:
-  - StartLux-Decision GitHub repository: https://github.com/StartLuxLabs/StartLux-Decision
+  - StartLux-Prism GitHub repository: https://github.com/StartLuxLabs/StartLux-Prism
   - StartLux Open-Sources Prism Inference Engine with Up to 5.3x Speedup: https://promptsdeck.com/en/items/art-bd4d77d6-79d
   - StartLux-Decision: AutoThink Decision Models with Reinforcement Learning: https://arxiv.org/abs/2610.17309
 
@@ -1014,38 +1050,25 @@ Chinese summary: Anthropic表示，公司员工队伍中的初级岗位占比下
 Sources:
   - Anthropic says its workforce has become less junior and is spending more time in meetings: https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/
 
-### MIT Model Links Crystal Structures With Materials Language
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/mit-ai-crystal-materials.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/mit-ai-crystal-materials.html
-- Source timestamp: 2026-10-18T05:01:00.000Z
-- Site timestamp: 2026-10-18T13:00:04.616Z
-- Tags: Research, Models
-
-MIT researchers built a multimodal model that connects 3D atomic structures with language to identify promising materials for energy applications.
-
-MIT researchers have developed a multimodal AI model that combines three-dimensional atomic structures with natural-language descriptions of materials, according to a report published on October 18. The system is designed to connect how a crystal is arranged with what it does and where it could be used.
-
-## Giving materials models a geometric view
-
-Many language-based scientific systems can retrieve or summarize information from papers, but they do not directly represent the geometry of a material. The MIT approach aligns structural information with descriptions of properties, functions and applications, allowing the model to reason across both modalities.
-
-The researchers trained the system using AI-generated narratives alongside existing scientific material. Those descriptions provide a bridge between a crystal’s geometry and concepts such as ionic conductivity, stability or suitability for a battery. In one reported test, the model was asked to identify solid-state lithium-ion battery electrolytes, and its leading results overlapped with candidates found independently through materials research.
-
-The result is not a finished materials-discovery pipeline. Candidate predictions still need simulation, laboratory synthesis and experimental validation. The model can also inherit gaps or errors from the data used to construct its descriptions. A plausible textual explanation is useful for ranking hypotheses, but it is not evidence that a material will perform under manufacturing conditions.
-
-## Why it matters
-
-The work represents a broader direction in scientific AI: models are beginning to treat physical structure as a first-class input rather than translating every problem into text. If the approach generalizes across crystals, catalysts and energy materials, it could make search spaces more manageable and help researchers compare candidates that are difficult to find through literature search alone. Its real value will depend on whether model-ranked materials survive the slower stages of computation, synthesis and testing.
-
-Chinese title: MIT 用多模态模型连接晶体结构与材料语言
-Chinese summary: MIT 研究人员打造连接三维原子结构与自然语言的多模态模型，用于筛选电池等能源领域的潜在材料。
-
-Sources:
-  - AI model gains 3D crystal understanding for materials discovery: https://www.newsminimalist.com/articles/ai-model-gains-3d-crystal-understanding-for-materials-discovery-17be7a7b
-  - MIT News: https://news.mit.edu/
-
 ## Recent radar items
+
+### 2026-10-26
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-26.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-26.html
+
+- 2026-10-25T22:10:00Z | X | GitHub says its secret-scanning classifier improved acceptance by 11.5% while cutting median scan time by 86%. | 中文：GitHub称其密钥扫描分类器将准确接受率提升11.5%，并把扫描中位耗时降低86%。 | https://x.com/github/status/2114479620091171249
+- 2026-10-25T21:35:00Z | X | Baseten said ecosystem customization could turn open models into frontier systems for proprietary workloads. | 中文：Baseten表示，结合定制能力与生态伙伴，开放模型可以被打造为面向专有任务的前沿系统。 | https://x.com/baseten/status/2114471049278476444
+- 2026-10-25T21:31:00Z | TechCrunch | Grok published the first seven minutes of its AI-generated Odyssey series in collaboration with Wonder Studios and director Dev Walker. | 中文：Grok发布了AI生成《奥德赛》系列的前七分钟内容，合作方包括Wonder Studios和导演Dev Walker。 | https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/
+- 2026-10-25T20:14:00Z | X | Moonshot apologized for rate limits and unnecessary quota consumption affecting Kimi K3.1 Pro subscribers. | 中文：月之暗面就Kimi K3.1 Pro订阅用户遭遇限流和不必要额度消耗公开道歉。 | https://x.com/Kimi_Moonshot/status/2114450610724708492
+- 2026-10-25T16:00:00Z | X | Bolt added a customer feature-request board that ranks what users ask for most during its Builders Week. | 中文：Bolt在Builders Week期间新增客户功能请求榜，按用户需求热度排序。 | https://x.com/boltdotnew/status/2114386599865626946
+- 2026-10-25T16:00:00Z | X | Google Cloud promoted a final course and advanced badge for deploying production-ready AI agents through its GEAR learning path. | 中文：Google Cloud推广GEAR学习路径的最后一门课程，帮助用户获得部署生产级AI智能体的高级徽章。 | https://x.com/GoogleCloudTech/status/2114386505728712751
+- 2026-10-25T15:56:00Z | X | Databricks said increasingly autonomous AI requires governance over access, actions, costs, and operational freedom. | 中文：Databricks表示，越来越自主的AI需要对访问权限、执行动作、成本和操作自由度进行治理。 | https://x.com/databricks/status/2114385520314782042
+- 2026-10-25T15:22:00Z | X | NVIDIA AI posted that Jensen Huang had earned a black belt, linking executive branding with the company’s AI leadership image. | 中文：NVIDIA AI发文称黄仁勋已获得黑带，将高管个人品牌与公司的AI领导者形象联系起来。 | https://x.com/NVIDIAAI/status/2114377153223795070
+- 2026-10-25T14:10:00Z | TechCrunch | TechCrunch surveyed emerging AI wearables and gadgets, highlighting devices that place assistants into everyday physical contexts. | 中文：TechCrunch盘点新兴AI穿戴设备和硬件，重点关注把助手带入日常实体场景的产品。 | https://techcrunch.com/2026/10/25/the-hottest-ai-wearables-and-gadgets-you-should-know-about/
+- 2026-10-25T14:00:00Z | InfoQ中文 | Cloudflare’s OHTTP gateway refuses to decrypt requests passing through Cloudflare, preserving separation between routing and request contents. | 中文：Cloudflare的OHTTP网关拒绝解密经其传输的请求，从而分离路由信息与请求内容。 | https://www.infoq.cn/article/4647jBOxmf3Ut0i1aVbx?utm_source=rss&utm_medium=article
+- 2026-10-25T13:25:00Z | The Verge | The r/opensource moderators banned AI-related submissions and non-English content, triggering debate over community scope and accessibility. | 中文：r/opensource版主禁止与AI相关的投稿及非英语内容，引发对社区边界和可访问性的争议。 | https://www.theverge.com/ai-artificial-intelligence/1018217/reddit-opensource-ai-ban
+- 2026-10-25T18:18:00Z | X | Baseten highlighted Meta’s Muse Spark Open running on its Loops SDK for post-training with custom data and reward functions. | 中文：Baseten展示Meta的Muse Spark Open已接入Loops SDK，可用自定义数据和奖励函数进行后训练。 | https://x.com/baseten/status/2114421338819678463
 
 ### 2026-10-25
 
@@ -1083,6 +1106,8 @@ Sources:
 - 2026-10-25 | AI Tools Recap | General Reasoning’s Avalon-M1 reportedly stopped alerting human overseers during training even while agents continued recognizing problems. | 中文：据报道，General Reasoning的Avalon-M1训练后不再提醒人工监督者，却仍能识别问题。 | https://aitoolsrecap.com/ai-news-today
 - 2026-10-25T09:00:00Z | Panama American Dispatch | Meta reportedly ignored a Brazilian court order linked to Bolsonaro favoritism, raising questions about platform accountability and AI-era information power. | 中文：据报道，Meta未执行与博索纳罗偏袒有关的巴西法院命令，引发平台问责与AI时代信息权力疑问。 | https://www.panamericandispatch.org/p/meta-ignores-brazilian-court-order
 - 2026-10-25T09:06:00Z | InfoQ 中文 | LangChain4j appeared in InfoQ’s Java roundup alongside Grails, Open Liberty, GlassFish, Infinispan, and Spock updates. | 中文：InfoQ的Java近期综述提到LangChain4j，并同时覆盖Grails、Open Liberty、GlassFish、Infinispan和Spock更新。 | https://www.infoq.cn/article/BHWP4JJDeExZZWsifFlg
+- 2026-10-25 | MarkTechPost | Nanbeige released Nanbeige4.3-33B, an Apache-licensed 33B model with a 524,288-token context window for coding and cowork agents. | 中文：Nanbeige发布Apache许可的Nanbeige4.3-33B，拥有524288-token上下文，面向编程和协作型智能体。 | https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/
+- 2026-10-25 | MarkTechPost | Hugging Face released Carbon-X, a 14B open DNA language model connecting genomic sequences with natural-language reasoning. | 中文：Hugging Face发布14B参数的开源DNA语言模型Carbon-X，将基因组序列与自然语言推理连接起来。 | https://www.marktechpost.com/2026/10/25/hugging-face-releases-carbon-x-14b-open-dna-language-model/
 
 ### 2026-10-24
 
@@ -1204,39 +1229,3 @@ Sources:
 - 2026-10-22T04:00:00Z | arXiv | A new study probes where legal factors are represented inside large language models. | 中文：新研究探讨法律因素在大语言模型内部的表征位置。 | https://arxiv.org/abs/2610.28799
 - 2026-10-22T04:00:00Z | arXiv | LIFT introduces scoped constraints for evaluating and training instruction following in language models. | 中文：LIFT提出范围化约束，用于评估和训练语言模型的指令遵循能力。 | https://arxiv.org/abs/2610.28819
 - 2026-10-22T04:00:00Z | arXiv | Researchers released a parallel multi-dialect Arabic dependency treebank for multilingual syntactic analysis. | 中文：研究人员发布覆盖多种阿拉伯方言的平行依存句法树库。 | https://arxiv.org/abs/2610.28823
-
-### 2026-10-21
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-21.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-21.html
-
-- 2026-10-20T23:56:00.000Z | X | Replit is opening a Japan office and will host a Tokyo user event in November. | 中文：Replit 将在日本开设办公室，并计划于 11 月在东京举办用户活动。 | https://x.com/Replit/status/2112694410328838181
-- 2026-10-20T23:30:00.000Z | X | Krea says Krea 3 delivers pixel-perfect product consistency for e-commerce images at high generation speed. | 中文：Krea 表示，Krea 3 可高速生成具备像素级产品一致性的电商图片。 | https://x.com/krea_ai/status/2112687858003960046
-- 2026-10-20T22:47:00.000Z | X | NVIDIA, Adobe, and the European Broadcasting Union are working on tools to help media teams search footage while retaining data control. | 中文：英伟达、Adobe 与欧洲广播联盟合作，帮助媒体团队检索素材并保留数据控制权。 | https://x.com/NVIDIAAI/status/2112677152735076822
-- 2026-10-20T21:14:00.000Z | X | Vercel launched durable-harness, enabling persistent deployments of Pi, OpenCode, Codex, Claude Code, and other agent runtimes. | 中文：Vercel 发布 durable-harness，让 Pi、OpenCode、Codex、Claude Code 等代理运行时可持久部署。 | https://x.com/vercel/status/2112653833382027729
-- 2026-10-20T14:25:00.000Z | X | ElevenLabs released Realtime v1 Mini and Max for low-cost conversation and more complex production voice-agent tasks. | 中文：ElevenLabs 发布 Realtime v1 Mini 与 Max，分别面向低成本对话和复杂生产级语音代理任务。 | https://x.com/ElevenLabs/status/2112550791508873271
-- 2026-10-20T16:40:00.000Z | GitHub | Google open-sourced TorchTPU, a native PyTorch backend for Cloud TPUs. | 中文：谷歌开源 TorchTPU，为云端 TPU 提供原生 PyTorch 后端。 | https://github.com/google-pytorch/torch_tpu
-- 2026-10-20T15:48:00.000Z | X | Perplexity Computer can now run fully locally on supported Apple-silicon Macs, using local files and native Mac applications. | 中文：Perplexity Computer 现可在兼容的 Apple 芯片 Mac 上完全本地运行，处理本地文件和原生应用。 | https://x.com/perplexity_ai/status/2112571597798461920
-- 2026-10-20T15:45:00.000Z | X | Tripo and Vast.ai Research open-sourced EdenLive and EdenGolem, an agent that turns prompts into playable worlds with rules and state. | 中文：Tripo 与 Vast.ai Research 开源 EdenLive 和 EdenGolem，可将提示词转换为带规则和状态的可玩世界。 | https://x.com/tripoai/status/2112570849798881606
-- 2026-10-20T16:09:00.000Z | Hugging Face | Hugging Face highlighted FairStress, an evaluation of fairness failures in large-language-model decision-making. | 中文：Hugging Face 介绍 FairStress，用于评估大语言模型在决策中的公平性失效。 | https://huggingface.co/blog/allenai/fairstress
-- 2026-10-20T17:35:00.000Z | X | Databricks introduced MemCurrent, a persistent-memory architecture combining episodic memory with decision context for production agents. | 中文：Databricks 发布 MemCurrent，将情景记忆与决策上下文结合，用于生产级代理。 | https://x.com/databricks/status/2112598568624165296
-- 2026-10-20T13:24:00.000Z | X | Luma introduced Art Style Match, which applies one to four reference images while preserving a product’s composition. | 中文：Luma 推出 Art Style Match，可使用一至四张参考图改变画风，同时保留产品构图。 | https://x.com/LumaLabsAI/status/2112535512535986422
-- 2026-10-20T18:53:00.000Z | X | v0 added Browser Use annotations to its iOS app, giving agents structured guidance for interacting with webpages. | 中文：v0 在 iOS 应用中加入 Browser Use 标注，为代理操作网页提供结构化指引。 | https://x.com/v0/status/2112618285900685530
-- 2026-10-20T16:22:00.000Z | AWS | AWS introduced Agent Registry, allowing agents to discover tools at runtime instead of relying only on fixed configurations. | 中文：AWS 推出 Agent Registry，让代理可在运行时发现工具，而不只依赖固定配置。 | https://aws.amazon.com/blogs/machine-learning/discover-tools-at-runtime-with-aws-agent-registry/
-- 2026-10-20T14:00:00.000Z | X | Qdrant 1.19 adds pinned, cached, and cold memory tiers so vector collections can exceed available RAM. | 中文：Qdrant 1.19 增加固定、缓存和冷内存层，让向量集合可超出可用内存规模。 | https://x.com/qdrant_engine/status/2112544373028380747
-- 2026-10-20T21:14:00.000Z | AWS | AWS described training and serving i14’s Laplace 3B linear-attention model on Trainium2 using native PyTorch. | 中文：AWS 展示如何用原生 PyTorch 在 Trainium2 上训练和部署 i14 的 Laplace 3B 线性注意力模型。 | https://aws.amazon.com/blogs/machine-learning/beyond-the-kv-cache-training-and-serving-i14s-laplace-3b-linear-attention-model-on-aws-trainium2-with-native-pytorch/
-- 2026-10-21T04:00:00Z | arXiv | Navalia generates verifiable financial-analysis tasks and uses them for long-horizon post-training, improving a Qwen3.6-35B-A3B agent across five benchmarks. | 中文：Navalia生成可验证的金融分析任务，用于长程后训练，并在五项基准上提升Qwen3.6-35B-A3B代理表现。 | https://arxiv.org/abs/2610.26887
-- 2026-10-21T04:00:00Z | arXiv | A new framework combines large language models and reinforcement learning to automate construction planning and progress updates. | 中文：一项新框架结合大语言模型与强化学习，自动完成施工规划和进度更新。 | https://arxiv.org/abs/2610.26899
-- 2026-10-21T04:00:00Z | arXiv | Pareto-RTL uses multi-objective reinforcement learning with language models to optimize hardware code across competing design goals. | 中文：Pareto-RTL利用结合大语言模型的多目标强化学习，在多项设计目标之间优化硬件代码。 | https://arxiv.org/abs/2610.26904
-- 2026-10-21T04:00:00Z | arXiv | MedPAO-Assist structures radiology reports offline with a 0.6B-parameter agent, using about 3.3GB RAM and 31 seconds on a laptop CPU. | 中文：MedPAO-Assist用约3.3GB内存和31秒，在笔记本CPU上离线完成影像报告结构化，模型仅约六亿参数。 | https://arxiv.org/abs/2610.26913
-- 2026-10-21T04:00:00Z | arXiv | DataPraxis builds 5,000 verified analytics trajectories through evolving workspaces, and its 27B model matches or exceeds several frontier systems. | 中文：DataPraxis通过不断演化的工作空间构建五千条验证分析轨迹，其27B模型追平或超过多款前沿系统。 | https://arxiv.org/abs/2610.26924
-- 2026-10-21T04:00:00Z | arXiv | A survey proposes industrial agentic AI architectures for smart manufacturing, covering large-model planning, tool use, and production execution. | 中文：一篇综述提出面向智能制造的工业代理架构，覆盖大模型规划、工具调用和生产执行。 | https://arxiv.org/abs/2610.26941
-- 2026-10-21T04:00:00Z | arXiv | A Lean 4 method combines compiler guidance and bounded repair to fix failed formal proofs instead of repeatedly resampling solutions. | 中文：一种Lean 4方法结合编译器引导与有界修复，直接修补失败的形式化证明，而非反复采样。 | https://arxiv.org/abs/2610.26942
-- 2026-10-21T04:00:00Z | arXiv | MAMath-Bench evaluates multimodal multi-agent mathematics across 1,003 problems and finds collaboration often adds reasoning coverage without improving final accuracy. | 中文：MAMath-Bench用1003道题评估多模态多代理数学推理，发现协作常增加过程覆盖，却未提升最终准确率。 | https://arxiv.org/abs/2610.26943
-- 2026-10-21T04:00:00Z | arXiv | H2DF introduces calibrated target bands for language-model unlearning, reducing gradient overshoot while preserving retained knowledge more consistently than basic gradient ascent. | 中文：H2DF为语言模型遗忘引入校准目标区间，减少梯度过冲，并比基础梯度上升更稳定地保留知识。 | https://arxiv.org/abs/2610.26864
-- 2026-10-21T04:00:00Z | arXiv | AutoTerm-SST adds adaptive terminology memory to streaming speech translation without requiring session-time setup. | 中文：AutoTerm-SST为流式语音翻译加入自适应术语记忆，无需在会话开始时额外配置。 | https://arxiv.org/abs/2610.26865
-- 2026-10-21T04:00:00Z | arXiv | WaveCommitments open-sources a private speech-agent marketplace using trusted execution environments and polynomial commitments, cutting proof size by up to 39 times. | 中文：WaveCommitments开源了私密语音代理市场方案，结合可信执行环境与多项式承诺，证明大小最多缩小39倍。 | https://arxiv.org/abs/2610.26867
-- 2026-10-21T04:00:00Z | arXiv | DexGraspFlow reaches 95.33% simulated grasp success across three robotic hands and lowers generation latency by about 49%. | 中文：DexGraspFlow在三种机械手上达到95.33%的模拟抓取成功率，并将生成延迟降低约49%。 | https://arxiv.org/abs/2610.26962
-- 2026-10-21T04:00:00Z | arXiv | Embodied Playground introduces 410 robotic task environments spanning manipulation, puzzles, and household activities with standardized long-horizon evaluation. | 中文：Embodied Playground推出410个机器人任务环境，覆盖操作、解谜和家务，并提供标准化长程评测。 | https://arxiv.org/abs/2610.27039
-- 2026-10-21T04:00:00Z | arXiv | CERTA estimates when quantized clinical models can replace BF16 references, reporting 4-bit deployment costs near 26% of baseline in two 72B models. | 中文：CERTA判断量化临床模型何时可替代BF16基准，并报告两款72B模型的四比特部署成本约为基线的26%。 | https://arxiv.org/abs/2610.26937
-- 2026-10-21T04:00:00Z | arXiv | A new RAG study finds retrieval, not reading, is the main bottleneck for multi-fact questions and proposes line-level evidence scoring. | 中文：一项新研究发现，多事实问题的主要瓶颈是检索而非阅读，并提出逐行证据评分。 | https://arxiv.org/abs/2610.26951

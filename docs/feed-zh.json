@@ -13,10 +13,50 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-community-video-audio.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-community-video-audio.html",
+      "title": "MiniMax H3社区方案将视频生成推向低步数推理",
+      "summary": "MiniMax展示H3社区的新方案，可用4至8步去噪生成受参考素材控制的视频与音频，降低推理成本。",
+      "content_text": "## 发生了什么\n\nMiniMax公布了一批围绕H3开放视频与音频生成模型的社区贡献。相关项目包括采用8步去噪的参考条件视频工作流，以及面向更快生成、更低算力需求的4步版本。部分方案还把视觉参考与生成或引导音频结合起来，让H3不再局限于无声视频片段。\n\n这次更新的重点并不是新的官方旗舰检查点，而是MiniMax之外的开发者正在重塑H3的使用方式。低步数推理对本地部署和云端服务都很关键，因为采样速度会直接影响交互延迟与生成成本。\n\n## 为什么重要\n\nH3本身已经覆盖视频生成、视频编辑、参考控制和音频生成等多个方向。此次社区实践显示，它的价值可能越来越多地来自一套专用工作流生态，而不只是某个官方演示。8步流程有望让受控生成更接近生产环境，4步方案则进一步提高了在合适硬件上进行即时迭代的可能性。\n\n但限制同样明显。减少去噪步数可能牺牲画质、时间一致性或音画同步，而目前案例并没有证明这些方案能达到H3慢速配置的质量。MiniMax也尚未给出跨硬件的统一速度和质量对比。\n\n即便如此，这仍是一个值得关注的方向：开放式生成视频模型的竞争力，不只取决于用户能否下载权重，也取决于开发者能否改造推理过程。H3接下来要证明的，是这些社区配方能否变成稳定可靠的创作者与生产工作流。",
+      "date_published": "2026-10-25T23:48:00.000Z",
+      "date_modified": "2026-10-26T01:00:04.260Z",
+      "tags": [
+        "AIGC",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/minimax-h3-community-video-audio.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-community-video-audio.html",
+        "source_published_at": "2026-10-25T23:48:00.000Z",
+        "site_published_at": "2026-10-26T01:00:04.260Z",
+        "sources": [
+          {
+            "title": "MiniMax AI post on H3 community contributions",
+            "url": "https://x.com/MiniMax_AI/status/2114504329499660419"
+          },
+          {
+            "title": "MiniMax H3 reference-to-video documentation",
+            "url": "https://minimax-h3.ai/reference-to-video"
+          },
+          {
+            "title": "MiniMax H3 open-source repository",
+            "url": "https://github.com/MiniMax-AI/MiniMax-H3"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html",
       "title": "英伟达开源Flora，机器人视频标注成本降125倍",
-      "summary": "英伟达开源机器人数据引擎Flora，称其每天可处理20万小时数据，标注成本约为GPT-6 Astra的八百分之一。",
+      "summary": "英伟达开源机器人数据引擎Flora，称其每天可处理20万小时数据，标注成本约为GPT-6 Astra的八分之一百二十五，即约低125倍。",
       "content_text": "## 发生了什么\n\n英伟达发布了Flora，一套面向机器人训练的数据引擎，目标是把机器人和人类示范视频转换为结构化训练数据。系统结合时间片段切分、视频描述和奖励标注，能够从长视频中识别动作、子任务与结果，而不是把整段素材当作无法拆分的序列。\n\n英伟达称，Flora已用于GR00T机器人模型的数据流程，并在512块GB300 GPU上达到每天处理约20万小时数据的规模。按照英伟达内部对比，Flora在多项标注任务上接近GPT-6 Astra，同时每小时机器人视频的标注成本约为0.72美元，而后者约为88美元。\n\n## 为什么重要\n\n机器人研发真正稀缺的并不只是原始视频，而是把视频转换成可靠动作标签的能力。更低的标注成本，可能让高校、中小型机器人公司和开放研究团队构建自己的专用数据集，不再完全依赖少数大模型实验室整理的数据。\n\n这次发布也把竞争推向了数据工程层。Flora并不是机器人控制器，输出用于安全关键训练前仍需人工或程序校验。它的许可证限制，以及在陌生机器人形态上的标注质量，也可能影响商业部署。不过，英伟达公开这套流程，为物理人工智能研究提供了可复现的起点，并可能降低机器人学习中长期被忽视的一项成本。\n\n## 猫叔判断\n\n比125倍便宜更值得关注的是每天20万小时的生产规模；若外部团队能复现其中一部分，机器人数据就不再只是大厂资源。\n",
       "date_published": "2026-10-25T10:08:00.000Z",
       "date_modified": "2026-10-25T13:00:04.886Z",
@@ -365,7 +405,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/startlux-prism-decision-inference.html",
       "title": "StartLux发布 Prism，专为决策模型提速",
       "summary": "StartLux发布面向校准决策模型的推理引擎 Prism，称其在特定测试任务中最高可实现 5.3 倍加速。",
-      "content_text": "## 为机器决策单独做一套推理栈\n\nStartLux发布了 Prism 推理引擎，专门服务于 StartLux-Decision 决策模型。与通常需要连续生成 token 的语言模型不同，这类模型会针对预先定义的选项直接返回概率，面向分类、排序、评分以及其他需要表达不确定性的任务。\n\nStartLux-Decision 项目支持 vLLM、llama.cpp 和 MLX 等常见部署框架。StartLux-Prism 则是面向 NVIDIA 平台的独立推理引擎，用于运行已发布的 GGUF 模型。根据当前仓库文档，Prism 支持 4B、9B 和 27B 的 v1 与 v1.1 AutoThink 模型；v1.1 Instant 模型目前尚未获得 Prism 支持。\n\n根据当前仓库基准测试，在单张 NVIDIA H200 上运行 27B 模型时，Prism 相比参考引擎可获得 1.2 倍至 5.3 倍加速，具体幅度取决于任务类型。Prism 自有代码目前尚未声明许可证；仓库中随附的 StartLux-Decision 文件采用 Apache 2.0，而已发布的模型权重采用 CC BY-NC 4.0。因此，不能将整个项目笼统视为 Apache 许可，商业使用需要分别核对各组件的许可条件。\n\n## 为什么值得关注\n\n这项发布的价值不只在于最高 5.3 倍的数字，而在于它把“决策推理”当成了独立的系统问题。许多生产任务并不需要一段对话式回答，而是需要有限选项中的选择、概率估计和稳定延迟。为这些任务生成长文本，既增加成本，也增加错误入口。\n\n如果专用引擎成熟，它可能让更小的模型更适合欺诈筛查、路由、内容审核、临床评估和代理控制环路。概率输出也有机会直接交给下游系统使用，而不是被一段看似确定的文字掩盖。\n\n但这项技术仍有明显边界。加速数据来自 StartLux 自己的测试场景，概率校准也需要在外部任务中验证。决策模型还依赖清晰的选项定义和标签设计，不可能全面替代语言模型。Prism 的意义在于，它尝试把 AI 推理从“一套模型生成所有文本”推进到按任务定制计算。\n\n## 猫叔判断\n\n5.3 倍只有在真实生产任务、许可边界和概率输出都经得起验证时才有意义；真正值得看的是概率决策，而不是倍数本身。",
+      "content_text": "## 为机器决策单独做一套推理栈\n\nStartLux发布了 Prism 推理引擎，专门服务于 StartLux-Decision 决策模型。与通常需要连续生成 token 的语言模型不同，这类模型会针对预先定义的选项直接返回概率，面向分类、排序、评分以及其他需要表达不确定性的任务。\n\nStartLux-Decision 项目支持 vLLM、llama.cpp 和 MLX 等常见部署框架。StartLux-Prism 则是面向 NVIDIA 平台的独立推理引擎，用于运行已发布的 GGUF 模型。根据当前 Prism 仓库文档，Prism 支持 4B、9B 和 27B 的 v1 与 v1.1 AutoThink 模型，也支持相同尺寸的 v1.1 Instant 模型。\n\n根据当前仓库基准测试，在单张 NVIDIA H200 上运行 27B 模型时，Prism 相比参考引擎可获得 1.2 倍至 5.3 倍加速，具体幅度取决于任务类型。Prism 自有代码目前尚未声明许可证；仓库中随附的 StartLux-Decision 文件采用 Apache 2.0，而已发布的模型权重采用 CC BY-NC 4.0。因此，不能将整个项目笼统视为 Apache 许可，商业使用需要分别核对各组件的许可条件。\n\n## 为什么值得关注\n\n这项发布的价值不只在于最高 5.3 倍的数字，而在于它把“决策推理”当成了独立的系统问题。许多生产任务并不需要一段对话式回答，而是需要有限选项中的选择、概率估计和稳定延迟。为这些任务生成长文本，既增加成本，也增加错误入口。\n\n如果专用引擎成熟，它可能让更小的模型更适合欺诈筛查、路由、内容审核、临床评估和代理控制环路。概率输出也有机会直接交给下游系统使用，而不是被一段看似确定的文字掩盖。\n\n但这项技术仍有明显边界。加速数据来自 StartLux 自己的测试场景，概率校准也需要在外部任务中验证。决策模型还依赖清晰的选项定义和标签设计，不可能全面替代语言模型。Prism 的意义在于，它尝试把 AI 推理从“一套模型生成所有文本”推进到按任务定制计算。\n\n## 猫叔判断\n\n5.3 倍只有在真实生产任务、许可边界和概率输出都经得起验证时才有意义；真正值得看的是概率决策，而不是倍数本身。",
       "date_published": "2026-10-23T12:03:00.000Z",
       "date_modified": "2026-10-23T13:00:04.040Z",
       "tags": [
@@ -387,8 +427,8 @@
         "site_published_at": "2026-10-23T13:00:04.040Z",
         "sources": [
           {
-            "title": "StartLux-Decision GitHub repository",
-            "url": "https://github.com/StartLuxLabs/StartLux-Decision"
+            "title": "StartLux-Prism GitHub repository",
+            "url": "https://github.com/StartLuxLabs/StartLux-Prism"
           },
           {
             "title": "StartLux Open-Sources Prism Inference Engine with Up to 5.3x Speedup",
@@ -1855,47 +1895,6 @@
           {
             "title": "Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs",
             "url": "https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/qwengyre-elastic-agent-training.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/qwengyre-elastic-agent-training.html",
-      "title": "阿里Qwen推出面向长程智能体的弹性强化学习",
-      "summary": "阿里Qwen发布QwenGyre框架，按任务难度动态分配训练资源，并在长程软件工程任务上报告明显提升。",
-      "content_text": "阿里Qwen团队推出QwenGyre，这是一套面向超长程任务智能体训练的强化学习框架。它针对智能体研发中的一个现实瓶颈：一次失败或未完成的长轨迹可能消耗大量算力，却无法提供有效学习信号。\n\n## 为困难任务动态分配算力\n\nQwenGyre通过弹性调度器，根据每条训练轨迹的难度和进展重新分配资源。与所有任务使用相同预算不同，系统会把更多计算投入仍有希望完成、但需要额外推理或执行时间的任务，同时减少对明显无效轨迹的浪费。\n\n相关论文还提出了处理超长程强化学习的配套设计。此类任务通常包含数十万Token和数百个连续动作，最终成功往往取决于整个行动链条，因此如何把结果反馈分配到早期决策，是训练中的核心难题。测试场景包括软件工程任务，要求模型规划、调用工具，并从中间错误中恢复。\n\n研究者将QwenGyre扩展到24000亿参数的旗舰模型后，报告NL2RepoBench得分从52.5%提升至58.5%，训练使用了最长70万Token的轨迹和48个训练步骤。这些数字来自作者自己的实验，并不等同于Qwen对其他前沿模型的总体排名。\n\n## 为什么值得关注\n\n长程智能体之所以昂贵，部分原因在于训练必须从很长、而且质量不均的行动轨迹中提取反馈。如果QwenGyre的调度方法能够迁移到更多任务，它可能减少智能体训练中的无效计算，并改善多步骤编程、研究和业务流程的训练成本。\n\n这项工作也说明，模型竞争的重点正从短答案基准转向智能体能否稳定完成长期任务。当前仍需观察其可复现性：增益依赖大规模基础设施和特定训练细节，能否跨模型、环境和失败类型迁移尚不明确。但QwenGyre抓住了一个决定智能体能否从演示走向日常工作的关键约束。",
-      "date_published": "2026-10-12T13:11:00.000Z",
-      "date_modified": "2026-10-13T01:00:04.247Z",
-      "tags": [
-        "研究",
-        "Agent",
-        "开源"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/qwengyre-elastic-agent-training.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/qwengyre-elastic-agent-training.html",
-        "source_published_at": "2026-10-12T13:11:00.000Z",
-        "site_published_at": "2026-10-13T01:00:04.247Z",
-        "sources": [
-          {
-            "title": "QwenGyre: An Elastic Reinforcement Learning Framework for Training xLong-Horizon Agents",
-            "url": "https://arxiv.org/abs/2609.33848"
-          },
-          {
-            "title": "Introducing QwenGyre, bringing elastic RL to extreme-long-horizon agent training",
-            "url": "https://x.com/Alibaba_Qwen/status/2109633085658808515"
-          },
-          {
-            "title": "QwenGyre addresses two challenges of XLong-horizon agentic RL",
-            "url": "https://x.com/Alibaba_Qwen/status/2109633089211416820"
           }
         ]
       }

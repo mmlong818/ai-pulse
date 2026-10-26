@@ -13,6 +13,46 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/minimax-h3-community-video-audio.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/minimax-h3-community-video-audio.html",
+      "title": "MiniMax H3 Community Builds Cut Video Generation Costs",
+      "summary": "New community contributions show MiniMax H3 generating reference-controlled video and audio in as few as four to eight denoising steps.",
+      "content_text": "## What changed\n\nMiniMax highlighted a new wave of community contributions around H3, its open video-and-audio generation model. The projects include reference-conditioned video workflows that use eight denoising steps, alongside a four-step variant aimed at faster generation and lower compute requirements. The examples also extend H3 beyond silent clips by combining visual references with generated or guided audio.\n\nThe announcement points to implementation work happening outside MiniMax itself. Rather than presenting a new flagship checkpoint, the company’s post showcases practical adaptations that make H3 easier to run, customize and integrate into creator tooling. The lower-step workflows are especially relevant for local and hosted inference, where sampling speed directly affects both interactive latency and cost.\n\n## Why it matters\n\nH3 was already positioned as an unusually broad open model, spanning video generation, editing, reference control and audio. These community contributions suggest that its value may increasingly come from an ecosystem of specialized workflows rather than from a single official demo. An eight-step pipeline can make controlled generation more usable in production, while a four-step version raises the possibility of near-interactive iteration on suitable hardware.\n\nThe constraints remain important. Fewer denoising steps can reduce fidelity, temporal consistency or audio alignment, and the examples do not establish that these variants match the quality of H3’s slower configurations. The post also does not provide a standardized speed or quality comparison across hardware.\n\nStill, the development is strategically meaningful: open generative-video models become more competitive when users can reshape their inference process, not merely download weights. H3’s next test is whether these community recipes mature into dependable creator and production workflows.\n\n## Uncle Cat take\n\nThe meaningful asset here is the four-step community path: it could turn H3 from an open model into a practical iteration engine, but quality evidence is still thin.",
+      "date_published": "2026-10-25T23:48:00.000Z",
+      "date_modified": "2026-10-26T01:00:04.260Z",
+      "tags": [
+        "AIGC",
+        "Open Source"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/minimax-h3-community-video-audio.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-community-video-audio.html",
+        "source_published_at": "2026-10-25T23:48:00.000Z",
+        "site_published_at": "2026-10-26T01:00:04.260Z",
+        "sources": [
+          {
+            "title": "MiniMax AI post on H3 community contributions",
+            "url": "https://x.com/MiniMax_AI/status/2114504329499660419"
+          },
+          {
+            "title": "MiniMax H3 reference-to-video documentation",
+            "url": "https://minimax-h3.ai/reference-to-video"
+          },
+          {
+            "title": "MiniMax H3 open-source repository",
+            "url": "https://github.com/MiniMax-AI/MiniMax-H3"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html",
       "title": "Nvidia opens Flora to cut robot-video labeling costs",
@@ -365,7 +405,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/articles/startlux-prism-decision-inference.html",
       "title": "StartLux Open-Sources Prism for Faster Decision Models",
       "summary": "StartLux releases Prism, an open inference engine for its calibrated decision models, with reported speedups of up to 5.3x in selected workloads.",
-      "content_text": "## A separate lane for machine decisions\n\nStartLux has released Prism, an inference engine built for its StartLux-Decision models. Unlike general-purpose language models that typically generate a sequence of tokens before producing an answer, the decision models return calibrated probabilities across predefined options. They are intended for classification, ranking, scoring and other workflows where uncertainty matters as much as the selected answer.\n\nThe StartLux-Decision project supports common deployment stacks including vLLM, llama.cpp and MLX. StartLux-Prism is a separate NVIDIA-focused engine for serving the released GGUF models. According to the current repository documentation, Prism supports v1 and v1.1 AutoThink models in 4B, 9B and 27B sizes; v1.1 Instant models are not yet supported by Prism.\n\nAccording to the current repository benchmarks, tests using the 27B model on a single NVIDIA H200 showed speedups ranging from 1.2x to 5.3x against the reference engine, depending on the workload. The repository’s own code does not yet have a declared license. The vendored StartLux-Decision files are under Apache 2.0, while the released model weights are licensed CC BY-NC 4.0, so commercial use requires reviewing the applicable component licenses rather than assuming the whole project is Apache-licensed.\n\n## Why it matters\n\nThe significance is less about a headline throughput number than about treating decision inference as a distinct systems problem. Many production AI tasks do not require a conversational answer. They require a bounded choice, a probability estimate and predictable latency. Generating long explanations for those tasks can add cost and introduce another surface for failure.\n\nA specialized engine could make smaller models more attractive in fraud screening, routing, moderation, clinical evaluation and agent control loops. It could also make uncertainty easier to expose to downstream software instead of hiding it behind a single textual answer.\n\nThe open questions are substantial. The reported acceleration comes from StartLux’s own workloads, and calibrated probabilities still need to be validated outside the company’s benchmarks. Decision models also depend on carefully typed options and well-designed labels; they are not a universal replacement for language models. Prism is nevertheless a notable attempt to move AI inference away from one-size-fits-all text generation and toward task-specific computation.\n\n## Uncle Cat take\n\nPrism’s 5.3x claim matters only if its benchmark advantage, licensing boundaries and probability outputs survive real production workloads; the engine is more interesting than the multiplier.",
+      "content_text": "## A separate lane for machine decisions\n\nStartLux has released Prism, an inference engine built for its StartLux-Decision models. Unlike general-purpose language models that typically generate a sequence of tokens before producing an answer, the decision models return calibrated probabilities across predefined options. They are intended for classification, ranking, scoring and other workflows where uncertainty matters as much as the selected answer.\n\nThe StartLux-Decision project supports common deployment stacks including vLLM, llama.cpp and MLX. StartLux-Prism is a separate NVIDIA-focused engine for serving the released GGUF models. According to the current Prism repository documentation, Prism supports v1 and v1.1 AutoThink models in 4B, 9B and 27B sizes, as well as v1.1 Instant models in those sizes.\n\nAccording to the current repository benchmarks, tests using the 27B model on a single NVIDIA H200 showed speedups ranging from 1.2x to 5.3x against the reference engine, depending on the workload. The repository’s own code does not yet have a declared license. The vendored StartLux-Decision files are under Apache 2.0, while the released model weights are licensed CC BY-NC 4.0, so commercial use requires reviewing the applicable component licenses rather than assuming the whole project is Apache-licensed.\n\n## Why it matters\n\nThe significance is less about a headline throughput number than about treating decision inference as a distinct systems problem. Many production AI tasks do not require a conversational answer. They require a bounded choice, a probability estimate and predictable latency. Generating long explanations for those tasks can add cost and introduce another surface for failure.\n\nA specialized engine could make smaller models more attractive in fraud screening, routing, moderation, clinical evaluation and agent control loops. It could also make uncertainty easier to expose to downstream software instead of hiding it behind a single textual answer.\n\nThe open questions are substantial. The reported acceleration comes from StartLux’s own workloads, and calibrated probabilities still need to be validated outside the company’s benchmarks. Decision models also depend on carefully typed options and well-designed labels; they are not a universal replacement for language models. Prism is nevertheless a notable attempt to move AI inference away from one-size-fits-all text generation and toward task-specific computation.\n\n## Uncle Cat take\n\nPrism’s 5.3x claim matters only if its benchmark advantage, licensing boundaries and probability outputs survive real production workloads; the engine is more interesting than the multiplier.",
       "date_published": "2026-10-23T12:03:00.000Z",
       "date_modified": "2026-10-23T13:00:04.040Z",
       "tags": [
@@ -387,8 +427,8 @@
         "site_published_at": "2026-10-23T13:00:04.040Z",
         "sources": [
           {
-            "title": "StartLux-Decision GitHub repository",
-            "url": "https://github.com/StartLuxLabs/StartLux-Decision"
+            "title": "StartLux-Prism GitHub repository",
+            "url": "https://github.com/StartLuxLabs/StartLux-Prism"
           },
           {
             "title": "StartLux Open-Sources Prism Inference Engine with Up to 5.3x Speedup",
@@ -1855,47 +1895,6 @@
           {
             "title": "Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs",
             "url": "https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/qwengyre-elastic-agent-training.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/qwengyre-elastic-agent-training.html",
-      "title": "Alibaba introduces elastic RL for long-horizon agents",
-      "summary": "Alibaba’s QwenGyre framework reallocates training resources across difficult rollouts, reporting gains on long-horizon software-engineering tasks.",
-      "content_text": "Alibaba’s Qwen team has introduced QwenGyre, a reinforcement-learning framework designed for training agents on extremely long-horizon tasks. The work targets a growing bottleneck in agent development: a single failed or unfinished rollout can consume substantial compute without producing a useful learning signal.\n\n## Elastic training for difficult tasks\n\nQwenGyre uses an elastic scheduler to reallocate training resources according to the difficulty and progress of individual rollouts. Rather than assigning every episode the same budget, the framework can give more capacity to tasks that need additional reasoning or execution time, while avoiding excessive spending on trajectories that are clearly unproductive.\n\nThe accompanying research describes a second design for handling long-horizon reinforcement learning, where credit assignment becomes difficult because success may depend on a sequence of actions spread across hundreds of thousands of tokens. The framework was evaluated on software-engineering and other agentic tasks, including settings that require an agent to plan, use tools and recover from intermediate failures.\n\nScaled to Qwen’s 2.4-trillion-parameter flagship model, the authors report a gain on NL2RepoBench from 52.5% to 58.5% after 48 training steps, with rollouts reaching 700,000 tokens. Those figures come from the authors’ evaluation and should not be read as a general ranking of Qwen against other frontier systems.\n\n## Why the method matters\n\nLong-horizon agents are expensive partly because their training process has to preserve useful feedback across long, uneven trajectories. If QwenGyre’s scheduling approach generalizes, it could make agent training less wasteful and improve the economics of teaching models to complete multi-step coding, research or operational tasks.\n\nThe release is also notable for coming from Alibaba’s open research ecosystem at a time when leading laboratories are competing over agent reliability rather than only short-answer benchmarks. The remaining question is reproducibility: the reported gains depend on large-scale infrastructure and task-specific training details, and it is not yet clear how well the method transfers across models, environments and failure modes. Still, QwenGyre addresses a practical constraint that will shape whether long-running agents can move beyond demonstrations into routine work.",
-      "date_published": "2026-10-12T13:11:00.000Z",
-      "date_modified": "2026-10-13T01:00:04.247Z",
-      "tags": [
-        "Research",
-        "Agents",
-        "Open Source"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/qwengyre-elastic-agent-training.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/qwengyre-elastic-agent-training.html",
-        "source_published_at": "2026-10-12T13:11:00.000Z",
-        "site_published_at": "2026-10-13T01:00:04.247Z",
-        "sources": [
-          {
-            "title": "QwenGyre: An Elastic Reinforcement Learning Framework for Training xLong-Horizon Agents",
-            "url": "https://arxiv.org/abs/2609.33848"
-          },
-          {
-            "title": "Introducing QwenGyre, bringing elastic RL to extreme-long-horizon agent training",
-            "url": "https://x.com/Alibaba_Qwen/status/2109633085658808515"
-          },
-          {
-            "title": "QwenGyre addresses two challenges of XLong-horizon agentic RL",
-            "url": "https://x.com/Alibaba_Qwen/status/2109633089211416820"
           }
         ]
       }
