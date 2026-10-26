@@ -147,15 +147,13 @@ async function pickToday() {
     articles.push(a);
     if (!fallback || String(a.published_at || '') > String(fallback.published_at || '')) fallback = a;
   }
-  // 当班 = 一次生成的时间簇。强制指定早/晚报时，必须取对应班次，避免标题与内容错位。
+  // 以实际运行班次为准；晚班即使没有新深度稿，也不能误选早班文章作为刊期。
   const forced = forcedEditionInstant();
-  const articleTimes = articles.filter((a) => a.date === today).map((a) => Date.parse(a.published_at) || 0).filter(Boolean);
-  const anchor = forced ? forced.getTime() : (articleTimes.length ? Math.max(...articleTimes) : floorEdition(Date.now()));
+  const anchor = forced ? forced.getTime() : floorEdition(Date.now());
   const edition = new Date(anchor);
   const boundary = floorEdition(anchor);
-  const bjHour = Number(edition.toLocaleString('en-US', { timeZone: 'Asia/Shanghai', hour: 'numeric', hour12: false }));
-  // 早报聚合最近两个班次（约 24 小时）；晚报只发布本班新增，避免与早报重复。
-  const boundaries = new Set(bjHour < 12 ? [boundary, boundary - EB_HALF] : [boundary]);
+  // X 每天只发晚报：聚合当天早、晚两班，覆盖完整一天。
+  const boundaries = new Set([boundary, boundary - EB_HALF]);
   const batch = articles.filter((a) => boundaries.has(floorEdition(Date.parse(a.published_at || '') || 0)));
   const currentBatch = batch.filter((a) => floorEdition(Date.parse(a.published_at || '') || 0) === boundary);
   const radarBatch = radars.flatMap((radar) => (radar.items || []).filter((item) => {
@@ -544,16 +542,22 @@ if (cmd === 'verify') {
   const lang = arg2 === 'en' ? 'en' : 'zh';
   await checkPostedTweet({ id: arg, lang, expectedUrl: postUrl(lang) });
 } else if (cmd === 'daily') {
-  const picks = await pickToday();
-  const pendingChecks = [];
-  await publishLang('zh', picks, pendingChecks);
-  if (env('AIPULSE_POST_EN') !== '0') {
-    const gapMin = Number(env('AIPULSE_POST_GAP_MIN') || 10);
-    console.log(`[post-x] ${gapMin} 分钟后发布英文帖…`);
-    await waitWithChecks(gapMin * 60000, pendingChecks);
-    await publishLang('en', picks, pendingChecks);
+  const edition = forcedEditionInstant() || new Date(floorEdition(Date.now()));
+  const bjHour = Number(edition.toLocaleString('en-US', { timeZone: 'Asia/Shanghai', hour: 'numeric', hour12: false }));
+  if (bjHour < 12) {
+    console.log('[post-x] 早班不发布 X，留待晚班汇总全天内容');
+  } else {
+    const picks = await pickToday();
+    const pendingChecks = [];
+    await publishLang('zh', picks, pendingChecks);
+    if (env('AIPULSE_POST_EN') !== '0') {
+      const gapMin = Number(env('AIPULSE_POST_GAP_MIN') || 10);
+      console.log(`[post-x] ${gapMin} 分钟后发布英文帖…`);
+      await waitWithChecks(gapMin * 60000, pendingChecks);
+      await publishLang('en', picks, pendingChecks);
+    }
+    await drainChecks(pendingChecks);
   }
-  await drainChecks(pendingChecks);
 } else if (cmd === 'preview') {
   const picks = await pickToday();
   console.log('[中文主帖]\n' + composeText('zh', picks));
