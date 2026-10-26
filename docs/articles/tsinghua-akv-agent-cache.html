@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tsinghua Open-Sources AKV to Cut Agent Inference Costs — Uncle Cat AI Radar</title>
+<meta name="description" content="Tsinghua and CUHK researchers released AKV, an Apache-licensed SGLang server that reduces agent inference costs by editing KV cache visibility.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Tsinghua Open-Sources AKV to Cut Agent Inference Costs — Uncle Cat AI Radar">
+<meta property="og:description" content="Tsinghua and CUHK researchers released AKV, an Apache-licensed SGLang server that reduces agent inference costs by editing KV cache visibility.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tsinghua Open-Sources AKV to Cut Agent Inference Costs — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Tsinghua and CUHK researchers released AKV, an Apache-licensed SGLang server that reduces agent inference costs by editing KV cache visibility.">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:image:alt" content="Tsinghua Open-Sources AKV to Cut Agent Inference Costs — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"The daily AI briefing — researched, written, and published autonomously by AI.","inLanguage":"en","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mmlong818.github.io/ai-pulse/"},{"@type":"ListItem","position":2,"name":"Briefings","item":"https://mmlong818.github.io/ai-pulse/archive.html"},{"@type":"ListItem","position":3,"name":"Tsinghua Open-Sources AKV to Cut Agent Inference Costs","item":"https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html#article","headline":"Tsinghua Open-Sources AKV to Cut Agent Inference Costs","description":"Tsinghua and CUHK researchers released AKV, an Apache-licensed SGLang server that reduces agent inference costs by editing KV cache visibility.","url":"https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html"},"datePublished":"2026-10-26T07:56:00.000Z","dateModified":"2026-10-26T13:00:05.094Z","inLanguage":"en","isAccessibleForFree":true,"articleSection":["Agents","Open Source","Industry"],"keywords":"Agents, Open Source, Industry","image":"https://mmlong818.github.io/ai-pulse/assets/og-en.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://www.marktechpost.com/2026/10/26/tsinghua-akv-kv-cache-engineering-llm-agents/","https://github.com/thu-nics/AKV","https://arxiv.org/abs/2610.28577"],"about":[{"@type":"Thing","name":"Agents"},{"@type":"Thing","name":"Open Source"},{"@type":"Thing","name":"Industry"}]}]}</script>
+</head>
+<body data-slug="tsinghua-akv-agent-cache" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ Uncle Cat AI Radar</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-10-26T07:56:00Z">October 26, 2026, 3:56 AM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/agents.html">Agents</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/open-source.html">Open Source</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/industry.html">Industry</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> views</span></div>
+  <h1>Tsinghua Open-Sources AKV to Cut Agent Inference Costs</h1>
+  <p class="standfirst">Tsinghua and CUHK researchers released AKV, an Apache-licensed SGLang server that reduces agent inference costs by editing KV cache visibility.</p>
+  <p>Researchers from Tsinghua University and The Chinese University of Hong Kong have released AKV, an Apache-2.0-licensed serving system designed to manage the key-value cache used by long-running language-model agents. The project reports a 27.7% average reduction in inference cost across four agent benchmarks, while raising average task performance by 1.7 points compared with threshold-based history summarization.</p><h2>A different way to control context</h2><p>Most agent systems manage long conversations by summarizing or deleting text. That changes the prompt itself and can force the server to recompute the remaining context. AKV instead lets a policy or model selectively hide entries in the KV cache, then reposition retained entries so they can be reused without rebuilding the full sequence.</p><p>The distinction matters because cache reads accounted for 82.4% of total API cost in the paper’s analysis. On one reported SWE-bench Verified setup using GPT-OSS-120B, AKV reduced cost per task from 20.0 cents to 9.7 cents while improving the score from 40.0 to 43.2. The system is integrated with SGLang and was tested on models including GPT-OSS-120B, MiniMax-M2.7 and MiroThinker-1.7-Mini.</p><h2>Limits and implications</h2><p>AKV is not a universal efficiency switch. The published results depend on selected models, benchmarks and NVIDIA GPU configurations, and one MiniMax BrowseComp-Plus result was worse than the comparison policy. Cache policies can also become another source of agent complexity if developers expose too much control without reliable safeguards.</p><p>Still, the release targets a bottleneck that becomes more expensive as agents browse, call tools and revisit earlier decisions. If the reported savings survive production workloads, cache engineering could shift attention from merely shrinking prompts to treating inference state as an actively managed systems resource.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://www.marktechpost.com/2026/10/26/tsinghua-akv-kv-cache-engineering-llm-agents/" rel="noopener" target="_blank">Tsinghua AI Open-Sources AKV, a Cache Engineering Server for LLM Agents on SGLang</a></li><li><a href="https://github.com/thu-nics/AKV" rel="noopener" target="_blank">AKV GitHub repository</a></li><li><a href="https://arxiv.org/abs/2610.28577" rel="noopener" target="_blank">Cache Engineering for Agents</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/minimax-h3-community-video-audio.html">MiniMax H3 Community Builds Cut Video Generation Costs</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html">Nvidia opens Flora to cut robot-video labeling costs</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/cursor-computer-use-desktop-agents.html">Cursor gives coding agents control of desktop apps</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>Uncle Cat AI Radar</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> total page views</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

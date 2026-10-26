@@ -55,6 +55,69 @@ Sources:
   - MiniMax H3 reference-to-video documentation: https://minimax-h3.ai/reference-to-video
   - MiniMax H3 open-source repository: https://github.com/MiniMax-AI/MiniMax-H3
 
+### Tencent Open-Sources Low-Latency Simultaneous Translation Model
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/tencent-hy-simulmt-open-source.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-simulmt-open-source.html
+- Source timestamp: 2026-10-26T12:52:00.000Z
+- Site timestamp: 2026-10-26T13:00:05.094Z
+- Tags: Models, Open Source, AIGC
+
+Tencent has released Hy-SimulMT, an open Chinese-English simultaneous interpretation model designed to deliver accurate speech translation with roughly three seconds of latency.
+
+Tencent’s Hunyuan team has open-sourced Hy-SimulMT, a Chinese-English simultaneous interpretation model intended for conversations where translation must begin before a speaker has finished talking. The company says the system targets roughly three seconds of latency while preserving accuracy, placing it closer to live meeting and event use than conventional speech-to-text translation pipelines.
+
+## Why the release matters
+
+Simultaneous interpretation is difficult because the model must decide when it has heard enough language to translate without waiting for a complete sentence. Waiting improves context but creates uncomfortable delays; speaking too early risks mistranslation, especially in Chinese-English exchanges where sentence structure and meaning can arrive late. An open implementation gives developers a way to inspect, adapt and deploy that trade-off rather than relying entirely on a closed API.
+
+The release is also notable because it comes from Tencent’s Hunyuan ecosystem, which has increasingly published models, benchmarks and infrastructure across language, multimodal and safety research. Hy-SimulMT could be useful in online meetings, bilingual customer service, education and international events, but the announcement does not yet establish performance across accents, noisy rooms, overlapping speakers or specialist terminology.
+
+## What remains unproven
+
+A latency claim alone does not show how often the system revises or abandons an early translation, how much hardware it needs, or whether its quality holds when speakers interrupt one another. Those operational details will determine whether the model becomes a practical building block or mainly a research release.
+
+For the wider open-model market, however, the direction is important: real-time speech systems are moving from hosted demonstrations toward downloadable components that regional developers can tune for their own languages and deployment constraints.
+
+Chinese title: 腾讯开源低延迟中英同传模型 Hy-SimulMT
+Chinese summary: 腾讯混元开源 Hy-SimulMT，面向中英实时同声传译，主打约三秒延迟和可部署的开放模型能力。
+
+Sources:
+  - Tencent Hunyuan Hy-SimulMT GitHub repository: https://github.com/Tencent-Hunyuan/Hy-SimulMT
+  - Tencent Hunyuan announcement on X: https://x.com/TencentHunyuan/status/2114701815807947159
+
+### Tsinghua Open-Sources AKV to Cut Agent Inference Costs
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html
+- Source timestamp: 2026-10-26T07:56:00.000Z
+- Site timestamp: 2026-10-26T13:00:05.094Z
+- Tags: Agents, Open Source, Industry
+
+Tsinghua and CUHK researchers released AKV, an Apache-licensed SGLang server that reduces agent inference costs by editing KV cache visibility.
+
+Researchers from Tsinghua University and The Chinese University of Hong Kong have released AKV, an Apache-2.0-licensed serving system designed to manage the key-value cache used by long-running language-model agents. The project reports a 27.7% average reduction in inference cost across four agent benchmarks, while raising average task performance by 1.7 points compared with threshold-based history summarization.
+
+## A different way to control context
+
+Most agent systems manage long conversations by summarizing or deleting text. That changes the prompt itself and can force the server to recompute the remaining context. AKV instead lets a policy or model selectively hide entries in the KV cache, then reposition retained entries so they can be reused without rebuilding the full sequence.
+
+The distinction matters because cache reads accounted for 82.4% of total API cost in the paper’s analysis. On one reported SWE-bench Verified setup using GPT-OSS-120B, AKV reduced cost per task from 20.0 cents to 9.7 cents while improving the score from 40.0 to 43.2. The system is integrated with SGLang and was tested on models including GPT-OSS-120B, MiniMax-M2.7 and MiroThinker-1.7-Mini.
+
+## Limits and implications
+
+AKV is not a universal efficiency switch. The published results depend on selected models, benchmarks and NVIDIA GPU configurations, and one MiniMax BrowseComp-Plus result was worse than the comparison policy. Cache policies can also become another source of agent complexity if developers expose too much control without reliable safeguards.
+
+Still, the release targets a bottleneck that becomes more expensive as agents browse, call tools and revisit earlier decisions. If the reported savings survive production workloads, cache engineering could shift attention from merely shrinking prompts to treating inference state as an actively managed systems resource.
+
+Chinese title: 清华开源 AKV，降低长程智能体推理成本
+Chinese summary: 清华与香港中文大学团队开源 AKV，通过管理智能体的 KV 缓存可见性，在多项测试中平均降低推理成本 27.7%。
+
+Sources:
+  - Tsinghua AI Open-Sources AKV, a Cache Engineering Server for LLM Agents on SGLang: https://www.marktechpost.com/2026/10/26/tsinghua-akv-kv-cache-engineering-llm-agents/
+  - AKV GitHub repository: https://github.com/thu-nics/AKV
+  - Cache Engineering for Agents: https://arxiv.org/abs/2610.28577
+
 ### Nvidia opens Flora to cut robot-video labeling costs
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html
@@ -985,71 +1048,6 @@ Chinese summary: 一篇最新论文提出“模型即木马”攻击：恶意权
 Sources:
   - Model-as-a-Trojan: Self-Activating Covert DNS Exfiltration Baked Into the Weights of an LLM Agent: https://arxiv.org/abs/2610.22578
 
-### Anthropic Asks Law Firms to Shape Agent Negotiation Rules
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-agent-negotiation-norms.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-agent-negotiation-norms.html
-- Source timestamp: 2026-10-18T09:11:00.000Z
-- Site timestamp: 2026-10-18T13:00:04.616Z
-- Tags: Agents, Policy, Safety
-
-Anthropic is consulting legal experts on how AI agents should negotiate prices, complaints and contracts before wider commercial deployment.
-
-Anthropic is consulting law firms and legal specialists on norms for AI agents that negotiate on behalf of users, according to reporting published on October 18. The discussions reportedly cover practical situations such as bargaining over prices, resolving customer complaints and renegotiating contractual terms.
-
-## From assistants to counterparties
-
-The significance is less about a new Claude feature than about the role Anthropic expects its agents to occupy. A system that drafts a message remains a tool. A system that can make concessions, accept terms or alter a contract becomes a participant in a commercial exchange.
-
-That shift creates questions that conventional model evaluations do not answer. Users need to know what authority they have delegated, which limits the agent must respect and when a human must approve a final commitment. Counterparties also need to know whether they are negotiating with a person, an automated representative or a hybrid process. Liability becomes harder to assign when an agent follows an instruction but interprets it too broadly.
-
-Anthropic is also recruiting lawyers and humanities scholars as “Conceptual Reasoning Fellows,” suggesting that the company sees domain judgment and social norms as part of model development rather than merely compliance work. The move is notable because reliable negotiation data is scarce: real deals contain confidential information, asymmetric incentives and context that cannot easily be reduced to benchmark prompts.
-
-## Why it matters
-
-If agents begin handling purchases, disputes and contract changes at scale, private company guidelines could influence how automated commerce works before formal regulation catches up. The immediate question is whether Anthropic will publish the resulting framework, including disclosure, consent and escalation requirements. Until then, the consultation signals serious preparation, but it does not prove that Claude can safely negotiate consequential agreements in production.
-
-Chinese title: Anthropic 就智能体谈判规则咨询律师事务所
-Chinese summary: Anthropic 正向法律专家咨询，研究智能体如何代表用户议价、处理投诉和重谈合同，为商业化部署制定边界。
-
-Sources:
-  - Anthropic consults law firms to set fair negotiation norms before AI agents start cutting deals: https://the-decoder.com/anthropic-consults-law-firms-to-set-fair-negotiation-norms-before-ai-agents-start-cutting-deals/
-  - Anthropic consults law firms to set AI agent negotiation norms: https://web-production-6801.up.railway.app/story/anthropic-consults-law-firms-to-set-ai-agent-negotiation-norms
-
-### Anthropic Says AI Is Reshaping Its Workforce
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-workforce-shifts-less-junior.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-workforce-shifts-less-junior.html
-- Source timestamp: 2026-10-17T20:21:00.000Z
-- Site timestamp: 2026-10-18T01:00:04.473Z
-- Tags: Industry, Agents
-
-Anthropic says its workforce is becoming less junior and spending more time in meetings, offering a rare glimpse into how AI changes AI labs.
-
-Anthropic says its own workforce is becoming less junior and devoting more time to meetings, a revealing internal signal as the company builds increasingly capable AI systems.
-
-## What changed
-
-The company described the shift in comments reported by TechCrunch on October 17. Anthropic’s workforce is reportedly relying more heavily on AI-assisted work, while junior roles represent a smaller share of the organization than before. At the same time, employees are spending more time in meetings, suggesting that coordination, review and decision-making are expanding even as some execution work becomes easier.
-
-The pattern is important because Anthropic is both an AI developer and an unusually concentrated test case. Its employees work close to the frontier of coding, research and product development, where AI tools should have an early and visible effect. A workforce becoming less junior may indicate that automation is absorbing some entry-level tasks, or that the company is hiring more experienced specialists to manage a faster and more complex development cycle.
-
-## Why meetings matter
-
-More meetings do not necessarily mean AI has failed to improve productivity. They may reflect a reallocation of work: fewer people producing first drafts, and more people checking outputs, setting priorities, handling risk and coordinating across teams. That transition can raise the value of experienced judgment while making the traditional apprenticeship path harder to enter.
-
-The evidence remains qualitative, and Anthropic has not published a complete breakdown of headcount, role mix or productivity. Still, the company’s own labor mix is a more useful indicator than broad claims about AI replacing jobs. It points toward a near-term workplace shaped by fewer routine junior tasks, more oversight and heavier coordination costs.
-
-## Uncle Cat take
-
-Anthropic’s juniorization reversal matters more than the meeting count: if frontier labs need fewer apprentices, the industry may be quietly weakening its own talent pipeline.
-
-Chinese title: Anthropic称自身团队正变得更资深
-Chinese summary: Anthropic表示，公司员工队伍中的初级岗位占比下降、会议时间增加，显示 AI 正在改变前沿实验室的工作结构。
-
-Sources:
-  - Anthropic says its workforce has become less junior and is spending more time in meetings: https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/
-
 ## Recent radar items
 
 ### 2026-10-26
@@ -1069,6 +1067,21 @@ Sources:
 - 2026-10-25T14:00:00Z | InfoQ中文 | Cloudflare’s OHTTP gateway refuses to decrypt requests passing through Cloudflare, preserving separation between routing and request contents. | 中文：Cloudflare的OHTTP网关拒绝解密经其传输的请求，从而分离路由信息与请求内容。 | https://www.infoq.cn/article/4647jBOxmf3Ut0i1aVbx?utm_source=rss&utm_medium=article
 - 2026-10-25T13:25:00Z | The Verge | The r/opensource moderators banned AI-related submissions and non-English content, triggering debate over community scope and accessibility. | 中文：r/opensource版主禁止与AI相关的投稿及非英语内容，引发对社区边界和可访问性的争议。 | https://www.theverge.com/ai-artificial-intelligence/1018217/reddit-opensource-ai-ban
 - 2026-10-25T18:18:00Z | X | Baseten highlighted Meta’s Muse Spark Open running on its Loops SDK for post-training with custom data and reward functions. | 中文：Baseten展示Meta的Muse Spark Open已接入Loops SDK，可用自定义数据和奖励函数进行后训练。 | https://x.com/baseten/status/2114421338819678463
+- 2026-10-26T12:00:00Z | SiliconANGLE | iMerit launched a platform connecting AI developers with specialized domain experts for data and model-development workflows. | 中文：iMerit推出连接人工智能开发者与专业领域专家的平台，服务数据和模型开发流程。 | https://siliconangle.com/2026/10/26/imerit-launches-platform-to-connect-ai-developers-with-specialized-domain-experts/
+- 2026-10-26T11:53:00Z | InfoQ 中文 | QCon Shanghai 2026 highlighted engineering practices for moving AI agents from prototypes into reliable task-delivery systems. | 中文：QCon上海2026聚焦将人工智能代理从原型推进到可靠任务交付系统的工程实践。 | https://www.infoq.cn/article/0C1Wgt7N9NzM6KjHSFeA
+- 2026-10-26T11:07:00Z | InfoQ 中文 | Android Bench 2 added support for long-horizon tasks, intelligent evaluation, and continuous scoring of agent behavior. | 中文：Android Bench 2新增长周期任务、智能评估和对代理行为的连续评分支持。 | https://www.infoq.cn/article/6XMtxZevN1488WVGXdR1
+- 2026-10-26T05:18:00Z | X / Replit | Replit announced that its interface, prompts, and outputs are now fully available in Japanese. | 中文：Replit宣布其界面、提示词和输出现在全部支持日语。 | https://x.com/Replit/status/2114587332137664535
+- 2026-10-26T10:50:00Z | X / MeshyAI | Meshy demonstrated Hermes Agent turning a natural-language request into a textured 3D treasure chest. | 中文：Meshy展示Hermes Agent将自然语言请求转换为带纹理的3D宝箱。 | https://x.com/MeshyAI/status/2114670876201234778
+- 2026-10-26T06:29:00Z | X / Tripo | Tripo showed an agent pipeline using Tripo CLI and Unreal Engine to generate a playable game overnight from an idea. | 中文：Tripo展示了通过Tripo CLI和虚幻引擎，代理可将睡前想法转成可玩的游戏。 | https://x.com/tripoai/status/2114605322971300140
+- 2026-10-26T06:42:00Z | X / Hailuo AI | Hailuo said its H3 ecosystem is expanding with faster generation, stronger control, and support across more environments. | 中文：海螺表示其H3生态正在扩展，带来更快生成、更强控制和更多运行环境支持。 | https://x.com/Hailuo_AI/status/2114608481768702455
+- 2026-10-26T12:37:00Z | X / Sakana AI | Sakana AI’s president called for a shared Japan-US framework to evaluate AI capabilities and societal risks. | 中文：Sakana AI社长呼吁日本与美国建立共同框架，评估人工智能能力及其社会风险。 | https://x.com/SakanaAILabs/status/2114697973963821502
+- 2026-10-26T09:00:00Z | InfoQ 中文 | CircleCI released Machine Runner Orchestrator for coordinating machine-runner infrastructure in continuous integration workflows. | 中文：CircleCI发布Machine Runner Orchestrator，用于协调持续集成流程中的机器运行器基础设施。 | https://www.infoq.cn/article/y7YQmP1p42Uj69H1C6uf
+- 2026-10-26T10:54:00Z | X / Dreamina | Dreamina published a short AI-generated bubble-bath video in which foam dramatically overflows a castle-like setting. | 中文：Dreamina发布了一段人工智能生成的泡澡短片，泡沫戏剧性地溢出城堡般的场景。 | https://x.com/dreamina_ai/status/2114672014854357441
+- 2026-10-26T10:52:00Z | X / Dreamina | Dreamina posted an AI video depicting an invisible motorcycle chase with a deliberately cyberpunk comic tone. | 中文：Dreamina发布了一段描绘隐形摩托车追逐、刻意采用赛博朋克喜剧风格的人工智能视频。 | https://x.com/dreamina_ai/status/2114671608392806874
+- 2026-10-26T06:42:00Z | X / Hailuo AI | Hailuo posted that community contributions are expanding its H3 ecosystem across faster generation, better control, and more runtimes. | 中文：海螺表示社区贡献正推动H3生态扩展至更快生成、更强控制和更多运行时。 | https://x.com/Hailuo_AI/status/2114608481768702455
+- 2026-10-26T11:07:00Z | X / Kling AI | Kling published a live ArtArch showcase associated with Kling 4, extending its creator-facing video promotion. | 中文：可灵发布了与Kling 4相关的ArtArch实况展示，继续推进面向创作者的视频推广。 | https://x.com/Kling_ai/status/2114675297165647943
+- 2026-10-26T12:41:00Z | X / Sakana AI | Sakana AI announced a NeurIPS 2026 dinner meetup in Sydney for researchers and practitioners. | 中文：Sakana AI宣布将在悉尼举办NeurIPS 2026研究者与从业者晚宴。 | https://x.com/SakanaAILabs/status/2114698985416032633
+- 2026-10-26T01:53:00Z | X / Together Compute | Together AI made MiniMax M3.1 Flash available for post-training with custom data, rewards, and environments. | 中文：Together AI宣布MiniMax M3.1 Flash可使用自定义数据、奖励和环境进行后训练。 | https://x.com/togethercompute/status/2114535735562809433
 
 ### 2026-10-25
 

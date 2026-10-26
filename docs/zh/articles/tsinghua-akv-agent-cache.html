@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>清华开源 AKV，降低长程智能体推理成本 — Uncle Cat AI Radar</title>
+<meta name="description" content="清华与香港中文大学团队开源 AKV，通过管理智能体的 KV 缓存可见性，在多项测试中平均降低推理成本 27.7%。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="清华开源 AKV，降低长程智能体推理成本 — Uncle Cat AI Radar">
+<meta property="og:description" content="清华与香港中文大学团队开源 AKV，通过管理智能体的 KV 缓存可见性，在多项测试中平均降低推理成本 27.7%。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="清华开源 AKV，降低长程智能体推理成本 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="清华与香港中文大学团队开源 AKV，通过管理智能体的 KV 缓存可见性，在多项测试中平均降低推理成本 27.7%。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="清华开源 AKV，降低长程智能体推理成本 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"清华开源 AKV，降低长程智能体推理成本","item":"https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html#article","headline":"清华开源 AKV，降低长程智能体推理成本","description":"清华与香港中文大学团队开源 AKV，通过管理智能体的 KV 缓存可见性，在多项测试中平均降低推理成本 27.7%。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html"},"datePublished":"2026-10-26T07:56:00.000Z","dateModified":"2026-10-26T13:00:05.094Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["Agent","开源","产业"],"keywords":"Agent, 开源, 产业","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://www.marktechpost.com/2026/10/26/tsinghua-akv-kv-cache-engineering-llm-agents/","https://github.com/thu-nics/AKV","https://arxiv.org/abs/2610.28577"],"about":[{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"产业"}]}]}</script>
+</head>
+<body data-slug="tsinghua-akv-agent-cache" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-10-26T07:56:00Z">2026年10月26日 15:56</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>清华开源 AKV，降低长程智能体推理成本</h1>
+  <p class="standfirst">清华与香港中文大学团队开源 AKV，通过管理智能体的 KV 缓存可见性，在多项测试中平均降低推理成本 27.7%。</p>
+  <p>清华大学与香港中文大学研究人员开源了 AKV。这是一套采用 Apache-2.0 许可、面向长程大语言模型智能体的服务系统，专门管理推理过程中使用的键值缓存。项目称，在四项智能体基准测试中，AKV平均降低推理成本27.7%，同时相比基于阈值的历史摘要方法，让平均任务得分提高1.7分。</p><h2>不一样的上下文管理方式</h2><p>目前多数智能体系统通过总结或删除历史文本来控制长对话。这样会改变提示词本身，服务器往往需要重新计算剩余上下文。AKV则允许策略模块或模型选择性地隐藏 KV 缓存条目，再重新排列保留内容，从而避免完整重建序列。</p><p>这一点之所以重要，是因为论文分析显示，KV缓存读取占总 API 成本的82.4%。在一个使用 GPT-OSS-120B 的 SWE-bench Verified 测试中，AKV将单任务成本从20美分降至9.7美分，同时把得分从40.0提升到43.2。该系统已集成 SGLang，并在 GPT-OSS-120B、MiniMax-M2.7 和 MiroThinker-1.7-Mini 等模型上进行测试。</p><h2>仍然存在的边界</h2><p>AKV不是普遍适用的降本开关。公开结果依赖特定模型、基准和英伟达 GPU 配置，而且 MiniMax 在 BrowseComp-Plus 的一项结果低于对比策略。如果开发者暴露过多缓存控制、却缺少稳定的策略约束，缓存管理本身也可能增加智能体系统的复杂度。</p><p>不过，它瞄准的是一个会随智能体浏览网页、调用工具和回看历史决策而持续放大的瓶颈。如果这些节省能在生产环境中复现，推理优化的重点就可能从“缩短提示词”进一步转向把模型状态当作可主动管理的系统资源。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://www.marktechpost.com/2026/10/26/tsinghua-akv-kv-cache-engineering-llm-agents/" rel="noopener" target="_blank">Tsinghua AI Open-Sources AKV, a Cache Engineering Server for LLM Agents on SGLang</a></li><li><a href="https://github.com/thu-nics/AKV" rel="noopener" target="_blank">AKV GitHub repository</a></li><li><a href="https://arxiv.org/abs/2610.28577" rel="noopener" target="_blank">Cache Engineering for Agents</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-community-video-audio.html">MiniMax H3社区方案将视频生成推向低步数推理</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html">英伟达开源Flora，机器人视频标注成本降125倍</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cursor-computer-use-desktop-agents.html">Cursor让编程代理接管桌面应用操作</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

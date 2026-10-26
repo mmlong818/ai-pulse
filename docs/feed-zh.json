@@ -53,6 +53,84 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-simulmt-open-source.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-simulmt-open-source.html",
+      "title": "腾讯开源低延迟中英同传模型 Hy-SimulMT",
+      "summary": "腾讯混元开源 Hy-SimulMT，面向中英实时同声传译，主打约三秒延迟和可部署的开放模型能力。",
+      "content_text": "腾讯混元团队开源了 Hy-SimulMT，这是一款面向中英同声传译的模型，目标是在说话者尚未完成整句表达时就开始翻译。腾讯称其延迟约为三秒，应用方向更接近实时会议、活动和跨语言交流，而不是传统的“先转写、再翻译”流程。\n\n## 为什么值得关注\n\n同声传译的难点在于，系统必须判断什么时候已经听到了足够信息：等待更完整的上下文，准确率通常更高，但延迟会让对话变得不自然；过早开口则可能在中文和英文这种语序差异明显的语言之间产生误译。开放模型让开发者可以检查并调整这套延迟与准确率的取舍，而不必完全依赖封闭式接口。\n\n这次发布也显示，腾讯混元正在持续扩展模型、基准和基础设施的开源版图。Hy-SimulMT有望用于在线会议、双语客服、教育和国际活动。不过，目前公布的信息还不足以证明它在口音、噪声环境、多人抢话和专业术语场景中的稳定性。\n\n## 仍待验证的部分\n\n“约三秒延迟”本身并不能说明模型会多频繁地修正或放弃已经输出的译文，也无法回答它需要多少硬件资源，更不能证明多人交谈时仍能保持质量。这些运行细节，才会决定它是可直接使用的工程组件，还是主要服务于研究展示的开源项目。\n\n对开放模型生态而言，方向本身已经值得注意：实时语音系统正从托管式演示，走向可下载、可调优、能够适配不同语言和部署条件的模型组件。",
+      "date_published": "2026-10-26T12:52:00.000Z",
+      "date_modified": "2026-10-26T13:00:05.094Z",
+      "tags": [
+        "模型",
+        "开源",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy-simulmt-open-source.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-simulmt-open-source.html",
+        "source_published_at": "2026-10-26T12:52:00.000Z",
+        "site_published_at": "2026-10-26T13:00:05.094Z",
+        "sources": [
+          {
+            "title": "Tencent Hunyuan Hy-SimulMT GitHub repository",
+            "url": "https://github.com/Tencent-Hunyuan/Hy-SimulMT"
+          },
+          {
+            "title": "Tencent Hunyuan announcement on X",
+            "url": "https://x.com/TencentHunyuan/status/2114701815807947159"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html",
+      "title": "清华开源 AKV，降低长程智能体推理成本",
+      "summary": "清华与香港中文大学团队开源 AKV，通过管理智能体的 KV 缓存可见性，在多项测试中平均降低推理成本 27.7%。",
+      "content_text": "清华大学与香港中文大学研究人员开源了 AKV。这是一套采用 Apache-2.0 许可、面向长程大语言模型智能体的服务系统，专门管理推理过程中使用的键值缓存。项目称，在四项智能体基准测试中，AKV平均降低推理成本27.7%，同时相比基于阈值的历史摘要方法，让平均任务得分提高1.7分。\n\n## 不一样的上下文管理方式\n\n目前多数智能体系统通过总结或删除历史文本来控制长对话。这样会改变提示词本身，服务器往往需要重新计算剩余上下文。AKV则允许策略模块或模型选择性地隐藏 KV 缓存条目，再重新排列保留内容，从而避免完整重建序列。\n\n这一点之所以重要，是因为论文分析显示，KV缓存读取占总 API 成本的82.4%。在一个使用 GPT-OSS-120B 的 SWE-bench Verified 测试中，AKV将单任务成本从20美分降至9.7美分，同时把得分从40.0提升到43.2。该系统已集成 SGLang，并在 GPT-OSS-120B、MiniMax-M2.7 和 MiroThinker-1.7-Mini 等模型上进行测试。\n\n## 仍然存在的边界\n\nAKV不是普遍适用的降本开关。公开结果依赖特定模型、基准和英伟达 GPU 配置，而且 MiniMax 在 BrowseComp-Plus 的一项结果低于对比策略。如果开发者暴露过多缓存控制、却缺少稳定的策略约束，缓存管理本身也可能增加智能体系统的复杂度。\n\n不过，它瞄准的是一个会随智能体浏览网页、调用工具和回看历史决策而持续放大的瓶颈。如果这些节省能在生产环境中复现，推理优化的重点就可能从“缩短提示词”进一步转向把模型状态当作可主动管理的系统资源。",
+      "date_published": "2026-10-26T07:56:00.000Z",
+      "date_modified": "2026-10-26T13:00:05.094Z",
+      "tags": [
+        "Agent",
+        "开源",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html",
+        "source_published_at": "2026-10-26T07:56:00.000Z",
+        "site_published_at": "2026-10-26T13:00:05.094Z",
+        "sources": [
+          {
+            "title": "Tsinghua AI Open-Sources AKV, a Cache Engineering Server for LLM Agents on SGLang",
+            "url": "https://www.marktechpost.com/2026/10/26/tsinghua-akv-kv-cache-engineering-llm-agents/"
+          },
+          {
+            "title": "AKV GitHub repository",
+            "url": "https://github.com/thu-nics/AKV"
+          },
+          {
+            "title": "Cache Engineering for Agents",
+            "url": "https://arxiv.org/abs/2610.28577"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html",
       "title": "英伟达开源Flora，机器人视频标注成本降125倍",
@@ -1814,87 +1892,6 @@
           {
             "title": "Character.AI files for bankruptcy",
             "url": "https://www.theverge.com/ai-artificial-intelligence/1009802/character-ai-files-for-bankruptcy-disney"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-wonder-frontier-agents.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-wonder-frontier-agents.html",
-      "title": "Meta发布Muse Wonder，押注长时运行智能体",
-      "summary": "Meta首次推出面向前沿竞争的Muse Wonder系列，主打持久记忆、电脑操作和复杂编程，个人智能体战略由此进入新阶段。",
-      "content_text": "Meta发布Muse Wonder和Muse Wonder Full，这是公司首次将自研模型明确放在OpenAI、Anthropic和Google等前沿竞争者的同一赛道上。此次发布也是Meta超级智能实验室成立14个月后最重要的阶段性成果。\n\n## 面向持续执行的任务\n\nMeta表示，Muse Wonder已通过Model API和Muse Code提供，Muse Wonder Full则仅面向Muse Code订阅用户。两款模型均支持百万Token上下文，重点能力包括“主动记忆”和“主动专注”：前者可跨对话保留重要信息，后者能在任务受阻时更换路径、恢复执行，并在采取关键操作前请求确认。\n\n目标场景不再只是问答，而是处理保险理赔、理解租约、分析财务资料、开发应用，以及操作浏览器和桌面软件。Meta还强调，模型可以把任务分派给多个子智能体，并连续工作数小时。\n\n## Meta的路线正在改变\n\n这次发布的重要性在于，Meta不再只是把其他实验室的模型分发给用户。Muse Wonder将成为个人智能体Muse的核心模型，同时通过API向开发者开放。TechCrunch报道，Wonder的API价格为每百万输入Token 4美元、每百万输出Token 20美元，已接近高端模型的主流水平。\n\nMeta尚未公布Wonder系列的开放权重，这与公司过去以开放模型著称的路线形成反差。与此同时，Meta表示完整安全评估报告将在稍后发布。对于能够读取消息、日历和文件的个人智能体而言，这仍是一个重要缺口。\n\n这不是一次普通的基准测试发布。Meta试图把前沿模型、长期个人记忆和数十亿用户触点放进同一套产品体系；但用户是否愿意让一个“记得足够多”的智能体代表自己行动，仍未得到验证。",
-      "date_published": "2026-10-12T17:56:00.000Z",
-      "date_modified": "2026-10-13T01:00:04.247Z",
-      "tags": [
-        "模型",
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-wonder-frontier-agents.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-wonder-frontier-agents.html",
-        "source_published_at": "2026-10-12T17:56:00.000Z",
-        "site_published_at": "2026-10-13T01:00:04.247Z",
-        "sources": [
-          {
-            "title": "Introducing Muse Wonder and Muse Wonder Full: Frontier Models for Agents",
-            "url": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
-          },
-          {
-            "title": "Meta releases its first frontier model, Muse Wonder",
-            "url": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/"
-          },
-          {
-            "title": "Muse Wonder | Meta",
-            "url": "https://dev.meta.ai/models/muse-wonder"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-maia-300-multi-gigawatt.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-maia-300-multi-gigawatt.html",
-      "title": "微软计划2027年将Maia 300扩至多吉瓦规模",
-      "summary": "微软公布Maia 300推理系统，计划从2027年起部署多吉瓦规模，云厂商自研芯片对英伟达的替代压力进一步上升。",
-      "content_text": "微软公布Maia 300新一代自研AI加速器，并表示将从2027年起把Azure Maia家族扩展到多吉瓦部署。自研芯片由此不再只是微软的补充方案，而成为其AI基础设施战略的核心组成部分。\n\n## 为推理负载重新设计\n\n微软称，Maia 300采用推理优先架构，面向长上下文推理、低延迟对话和持续运行的智能体任务。完整机架将搭载96颗加速器，功耗上限为167千瓦，提供27.6TB HBM容量和每秒1.7PB的总HBM带宽。\n\n微软宣称，Maia 300每兆瓦可处理的Token数量比主流GPU系统高40%，机架级Token吞吐量最高达到Maia 200的7倍。Maia 200已经服务包括Copilot在内的微软生产业务。微软表示，GitHub Copilot和Microsoft Foundry将在2026年底前跟进，基于Maia的基础设施未来也将支持Dragon Copilot等业务。\n\nMaia 300的重点不仅是计算能力，也包括数据搬运和内存效率。系统采用HBM4、多芯粒设计以及低精度格式，以降低大模型和长上下文任务的带宽与功耗需求。微软预计该系统将在2027年开始生产部署。\n\n## 对产业意味着什么\n\n这并不意味着微软会放弃英伟达。Azure仍会提供多种硬件，而Maia系统将主要服务微软自有业务和部分模型负载。但多吉瓦部署规模意味着，微软可以围绕自家服务共同设计芯片、软件和数据中心，不必完全接受通用GPU基础设施的成本和功耗约束。\n\n真正的考验仍是交付。Maia 300尚未进入生产，性能功耗对比也主要来自微软自身数据，并非独立测试。即便如此，这项计划已经释放出明确信号：对于需要全球规模运行智能体的云厂商，自研推理芯片正在从采购策略升级为竞争壁垒。",
-      "date_published": "2026-10-12T13:00:00.000Z",
-      "date_modified": "2026-10-13T01:00:04.247Z",
-      "tags": [
-        "产业",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/microsoft-maia-300-multi-gigawatt.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-maia-300-multi-gigawatt.html",
-        "source_published_at": "2026-10-12T13:00:00.000Z",
-        "site_published_at": "2026-10-13T01:00:04.247Z",
-        "sources": [
-          {
-            "title": "Microsoft to expand Azure Maia system to multi-gigawatt deployments",
-            "url": "https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/"
-          },
-          {
-            "title": "Microsoft's latest custom chip: Maia 300",
-            "url": "https://news.microsoft.com/maia-2026/"
-          },
-          {
-            "title": "Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs",
-            "url": "https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout"
           }
         ]
       }

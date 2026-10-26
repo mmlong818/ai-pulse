@@ -53,6 +53,84 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy-simulmt-open-source.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy-simulmt-open-source.html",
+      "title": "Tencent Open-Sources Low-Latency Simultaneous Translation Model",
+      "summary": "Tencent has released Hy-SimulMT, an open Chinese-English simultaneous interpretation model designed to deliver accurate speech translation with roughly three seconds of latency.",
+      "content_text": "Tencent’s Hunyuan team has open-sourced Hy-SimulMT, a Chinese-English simultaneous interpretation model intended for conversations where translation must begin before a speaker has finished talking. The company says the system targets roughly three seconds of latency while preserving accuracy, placing it closer to live meeting and event use than conventional speech-to-text translation pipelines.\n\n## Why the release matters\n\nSimultaneous interpretation is difficult because the model must decide when it has heard enough language to translate without waiting for a complete sentence. Waiting improves context but creates uncomfortable delays; speaking too early risks mistranslation, especially in Chinese-English exchanges where sentence structure and meaning can arrive late. An open implementation gives developers a way to inspect, adapt and deploy that trade-off rather than relying entirely on a closed API.\n\nThe release is also notable because it comes from Tencent’s Hunyuan ecosystem, which has increasingly published models, benchmarks and infrastructure across language, multimodal and safety research. Hy-SimulMT could be useful in online meetings, bilingual customer service, education and international events, but the announcement does not yet establish performance across accents, noisy rooms, overlapping speakers or specialist terminology.\n\n## What remains unproven\n\nA latency claim alone does not show how often the system revises or abandons an early translation, how much hardware it needs, or whether its quality holds when speakers interrupt one another. Those operational details will determine whether the model becomes a practical building block or mainly a research release.\n\nFor the wider open-model market, however, the direction is important: real-time speech systems are moving from hosted demonstrations toward downloadable components that regional developers can tune for their own languages and deployment constraints.",
+      "date_published": "2026-10-26T12:52:00.000Z",
+      "date_modified": "2026-10-26T13:00:05.094Z",
+      "tags": [
+        "Models",
+        "Open Source",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy-simulmt-open-source.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-simulmt-open-source.html",
+        "source_published_at": "2026-10-26T12:52:00.000Z",
+        "site_published_at": "2026-10-26T13:00:05.094Z",
+        "sources": [
+          {
+            "title": "Tencent Hunyuan Hy-SimulMT GitHub repository",
+            "url": "https://github.com/Tencent-Hunyuan/Hy-SimulMT"
+          },
+          {
+            "title": "Tencent Hunyuan announcement on X",
+            "url": "https://x.com/TencentHunyuan/status/2114701815807947159"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html",
+      "title": "Tsinghua Open-Sources AKV to Cut Agent Inference Costs",
+      "summary": "Tsinghua and CUHK researchers released AKV, an Apache-licensed SGLang server that reduces agent inference costs by editing KV cache visibility.",
+      "content_text": "Researchers from Tsinghua University and The Chinese University of Hong Kong have released AKV, an Apache-2.0-licensed serving system designed to manage the key-value cache used by long-running language-model agents. The project reports a 27.7% average reduction in inference cost across four agent benchmarks, while raising average task performance by 1.7 points compared with threshold-based history summarization.\n\n## A different way to control context\n\nMost agent systems manage long conversations by summarizing or deleting text. That changes the prompt itself and can force the server to recompute the remaining context. AKV instead lets a policy or model selectively hide entries in the KV cache, then reposition retained entries so they can be reused without rebuilding the full sequence.\n\nThe distinction matters because cache reads accounted for 82.4% of total API cost in the paper’s analysis. On one reported SWE-bench Verified setup using GPT-OSS-120B, AKV reduced cost per task from 20.0 cents to 9.7 cents while improving the score from 40.0 to 43.2. The system is integrated with SGLang and was tested on models including GPT-OSS-120B, MiniMax-M2.7 and MiroThinker-1.7-Mini.\n\n## Limits and implications\n\nAKV is not a universal efficiency switch. The published results depend on selected models, benchmarks and NVIDIA GPU configurations, and one MiniMax BrowseComp-Plus result was worse than the comparison policy. Cache policies can also become another source of agent complexity if developers expose too much control without reliable safeguards.\n\nStill, the release targets a bottleneck that becomes more expensive as agents browse, call tools and revisit earlier decisions. If the reported savings survive production workloads, cache engineering could shift attention from merely shrinking prompts to treating inference state as an actively managed systems resource.",
+      "date_published": "2026-10-26T07:56:00.000Z",
+      "date_modified": "2026-10-26T13:00:05.094Z",
+      "tags": [
+        "Agents",
+        "Open Source",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html",
+        "source_published_at": "2026-10-26T07:56:00.000Z",
+        "site_published_at": "2026-10-26T13:00:05.094Z",
+        "sources": [
+          {
+            "title": "Tsinghua AI Open-Sources AKV, a Cache Engineering Server for LLM Agents on SGLang",
+            "url": "https://www.marktechpost.com/2026/10/26/tsinghua-akv-kv-cache-engineering-llm-agents/"
+          },
+          {
+            "title": "AKV GitHub repository",
+            "url": "https://github.com/thu-nics/AKV"
+          },
+          {
+            "title": "Cache Engineering for Agents",
+            "url": "https://arxiv.org/abs/2610.28577"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html",
       "title": "Nvidia opens Flora to cut robot-video labeling costs",
@@ -1814,87 +1892,6 @@
           {
             "title": "Character.AI files for bankruptcy",
             "url": "https://www.theverge.com/ai-artificial-intelligence/1009802/character-ai-files-for-bankruptcy-disney"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-wonder-frontier-agents.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-wonder-frontier-agents.html",
-      "title": "Meta launches Muse Wonder for long-running AI agents",
-      "summary": "Meta’s first frontier-class models target persistent memory, computer use and complex coding, putting its consumer-agent strategy on a new footing.",
-      "content_text": "Meta has released Muse Wonder and Muse Wonder Full, its first models explicitly positioned as frontier competitors to leading systems from OpenAI, Anthropic and Google. The launch is the clearest result yet of Meta’s 14-month restructuring of its artificial-intelligence effort under Meta Superintelligence Labs.\n\n## Built for work that continues\n\nMeta says Muse Wonder is available through its Model API and Muse Code, while Muse Wonder Full is restricted to Muse Code subscribers. Both models support a one-million-token context window and are designed for long-running, multi-step tasks. The company highlights “Active Memory,” which carries relevant information across conversations, and “Active Focus,” which lets a model change strategy, recover from errors and ask for clarification before taking consequential action.\n\nThe target workloads go beyond chat: navigating insurance claims, understanding leases, handling financial information, building applications and operating browsers or desktop software. Meta’s model page also describes parallel delegation to sub-agents and continued execution over hours.\n\n## A strategic shift for Meta\n\nThe release matters because Meta is no longer presenting itself mainly as the distributor of other laboratories’ advances. Muse Wonder gives the company a proprietary top-tier model to power Muse, its personal-agent product, while the API gives developers an independent route into the stack. TechCrunch reported pricing of $4 per million input tokens and $20 per million output tokens for Wonder, placing it near other premium models.\n\nMeta has not announced open weights for the Wonder family. That leaves a sharp distinction between its frontier research strategy and its earlier open-model identity. The company also says that a fuller safety report will follow, an important gap for systems designed to access messages, calendars, documents and other private data.\n\nThe significance is therefore broader than another benchmark launch: Meta is trying to connect frontier intelligence, persistent personal context and billions of consumer touchpoints in one product strategy. Whether users will trust an agent that remembers enough to be useful remains unresolved.",
-      "date_published": "2026-10-12T17:56:00.000Z",
-      "date_modified": "2026-10-13T01:00:04.247Z",
-      "tags": [
-        "Models",
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-wonder-frontier-agents.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-wonder-frontier-agents.html",
-        "source_published_at": "2026-10-12T17:56:00.000Z",
-        "site_published_at": "2026-10-13T01:00:04.247Z",
-        "sources": [
-          {
-            "title": "Introducing Muse Wonder and Muse Wonder Full: Frontier Models for Agents",
-            "url": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
-          },
-          {
-            "title": "Meta releases its first frontier model, Muse Wonder",
-            "url": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/"
-          },
-          {
-            "title": "Muse Wonder | Meta",
-            "url": "https://dev.meta.ai/models/muse-wonder"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/microsoft-maia-300-multi-gigawatt.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/microsoft-maia-300-multi-gigawatt.html",
-      "title": "Microsoft targets multi-gigawatt scale for Maia 300",
-      "summary": "Microsoft says its Maia 300 inference system will reach multi-gigawatt deployments in 2027, challenging Nvidia’s role in its largest AI workloads.",
-      "content_text": "Microsoft has announced Maia 300, the next generation of its in-house AI accelerator, and said it plans to scale the Azure Maia family to multi-gigawatt deployments beginning in 2027. The announcement turns a custom-chip program into a central part of Microsoft’s infrastructure strategy rather than a limited experiment.\n\n## Designed around inference\n\nMicrosoft describes Maia 300 as an inference-first system for long-context reasoning, latency-sensitive conversations and sustained agentic workloads. A full rack is planned to combine 96 accelerators within a 167-kilowatt power envelope, with 27.6 terabytes of HBM capacity and 1.7 petabytes per second of aggregate HBM bandwidth.\n\nThe company claims Maia 300 will deliver 40% more tokens per megawatt than leading GPU-based systems and up to seven times the rack-scale token throughput of Maia 200. Maia 200 is already serving Microsoft production workloads, including Copilot. Microsoft says GitHub Copilot and Microsoft Foundry will follow by the end of 2026, while Maia-based infrastructure is also intended to support future workloads such as Dragon Copilot.\n\nMicrosoft’s design emphasizes data movement and memory efficiency as much as raw compute. The chip uses HBM4, a multi-chiplet architecture and lower-precision formats intended to reduce bandwidth and power requirements for large models and long context windows. Microsoft says Maia 300 will begin production deployments in 2027.\n\n## What changes for the market\n\nThe announcement does not mean Microsoft is abandoning Nvidia. Azure will continue to offer a broad mixture of hardware, and the Maia system is being built to support Microsoft’s own services and selected model workloads. But the scale is strategically meaningful: multi-gigawatt deployment gives Microsoft a way to optimize cost, power and software behavior around its own services instead of accepting every constraint of general-purpose GPU infrastructure.\n\nThe open question is execution. Maia 300 is still a future production system, and Microsoft’s performance-per-watt comparisons are company claims rather than independent benchmarks. Even so, the plan signals that custom inference silicon is moving from a defensive procurement tactic to a core competitive layer for hyperscalers running agents at global volume.",
-      "date_published": "2026-10-12T13:00:00.000Z",
-      "date_modified": "2026-10-13T01:00:04.247Z",
-      "tags": [
-        "Industry",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/microsoft-maia-300-multi-gigawatt.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/microsoft-maia-300-multi-gigawatt.html",
-        "source_published_at": "2026-10-12T13:00:00.000Z",
-        "site_published_at": "2026-10-13T01:00:04.247Z",
-        "sources": [
-          {
-            "title": "Microsoft to expand Azure Maia system to multi-gigawatt deployments",
-            "url": "https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/"
-          },
-          {
-            "title": "Microsoft's latest custom chip: Maia 300",
-            "url": "https://news.microsoft.com/maia-2026/"
-          },
-          {
-            "title": "Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs",
-            "url": "https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout"
           }
         ]
       }

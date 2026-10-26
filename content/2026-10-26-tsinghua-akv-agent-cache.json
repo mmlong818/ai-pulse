@@ -1,0 +1,36 @@
+{
+  "slug": "tsinghua-akv-agent-cache",
+  "title": "Tsinghua Open-Sources AKV to Cut Agent Inference Costs",
+  "summary": "Tsinghua and CUHK researchers released AKV, an Apache-licensed SGLang server that reduces agent inference costs by editing KV cache visibility.",
+  "body": "Researchers from Tsinghua University and The Chinese University of Hong Kong have released AKV, an Apache-2.0-licensed serving system designed to manage the key-value cache used by long-running language-model agents. The project reports a 27.7% average reduction in inference cost across four agent benchmarks, while raising average task performance by 1.7 points compared with threshold-based history summarization.\n\n## A different way to control context\n\nMost agent systems manage long conversations by summarizing or deleting text. That changes the prompt itself and can force the server to recompute the remaining context. AKV instead lets a policy or model selectively hide entries in the KV cache, then reposition retained entries so they can be reused without rebuilding the full sequence.\n\nThe distinction matters because cache reads accounted for 82.4% of total API cost in the paper’s analysis. On one reported SWE-bench Verified setup using GPT-OSS-120B, AKV reduced cost per task from 20.0 cents to 9.7 cents while improving the score from 40.0 to 43.2. The system is integrated with SGLang and was tested on models including GPT-OSS-120B, MiniMax-M2.7 and MiroThinker-1.7-Mini.\n\n## Limits and implications\n\nAKV is not a universal efficiency switch. The published results depend on selected models, benchmarks and NVIDIA GPU configurations, and one MiniMax BrowseComp-Plus result was worse than the comparison policy. Cache policies can also become another source of agent complexity if developers expose too much control without reliable safeguards.\n\nStill, the release targets a bottleneck that becomes more expensive as agents browse, call tools and revisit earlier decisions. If the reported savings survive production workloads, cache engineering could shift attention from merely shrinking prompts to treating inference state as an actively managed systems resource.",
+  "title_zh": "清华开源 AKV，降低长程智能体推理成本",
+  "summary_zh": "清华与香港中文大学团队开源 AKV，通过管理智能体的 KV 缓存可见性，在多项测试中平均降低推理成本 27.7%。",
+  "body_zh": "清华大学与香港中文大学研究人员开源了 AKV。这是一套采用 Apache-2.0 许可、面向长程大语言模型智能体的服务系统，专门管理推理过程中使用的键值缓存。项目称，在四项智能体基准测试中，AKV平均降低推理成本27.7%，同时相比基于阈值的历史摘要方法，让平均任务得分提高1.7分。\n\n## 不一样的上下文管理方式\n\n目前多数智能体系统通过总结或删除历史文本来控制长对话。这样会改变提示词本身，服务器往往需要重新计算剩余上下文。AKV则允许策略模块或模型选择性地隐藏 KV 缓存条目，再重新排列保留内容，从而避免完整重建序列。\n\n这一点之所以重要，是因为论文分析显示，KV缓存读取占总 API 成本的82.4%。在一个使用 GPT-OSS-120B 的 SWE-bench Verified 测试中，AKV将单任务成本从20美分降至9.7美分，同时把得分从40.0提升到43.2。该系统已集成 SGLang，并在 GPT-OSS-120B、MiniMax-M2.7 和 MiroThinker-1.7-Mini 等模型上进行测试。\n\n## 仍然存在的边界\n\nAKV不是普遍适用的降本开关。公开结果依赖特定模型、基准和英伟达 GPU 配置，而且 MiniMax 在 BrowseComp-Plus 的一项结果低于对比策略。如果开发者暴露过多缓存控制、却缺少稳定的策略约束，缓存管理本身也可能增加智能体系统的复杂度。\n\n不过，它瞄准的是一个会随智能体浏览网页、调用工具和回看历史决策而持续放大的瓶颈。如果这些节省能在生产环境中复现，推理优化的重点就可能从“缩短提示词”进一步转向把模型状态当作可主动管理的系统资源。",
+  "tags": [
+    "Agents",
+    "Open Source",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Tsinghua AI Open-Sources AKV, a Cache Engineering Server for LLM Agents on SGLang",
+      "url": "https://www.marktechpost.com/2026/10/26/tsinghua-akv-kv-cache-engineering-llm-agents/"
+    },
+    {
+      "title": "AKV GitHub repository",
+      "url": "https://github.com/thu-nics/AKV"
+    },
+    {
+      "title": "Cache Engineering for Agents",
+      "url": "https://arxiv.org/abs/2610.28577"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "AKV真正押注的是缓存状态管理，而不是又一套提示词技巧",
+  "cat_take_en": "AKV’s meaningful bet is active cache-state management, not another layer of prompt-engineering advice.",
+  "date": "2026-10-26",
+  "published": "2026-10-26T07:56:00Z",
+  "published_at": "2026-10-26T13:00:05.094Z"
+}
