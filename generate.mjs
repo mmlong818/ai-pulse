@@ -17,6 +17,8 @@ const actualToday = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10
 const forcedEdition = (process.env.AIPULSE_FORCE_EDITION || process.env.AIPULSE_EDITION || '').toLowerCase();
 const forcedEditionDate = process.env.AIPULSE_EDITION_DATE || actualToday;
 const today = forcedEditionDate;
+// 本机一次性补漏标记：只在指定日期的晚班扩展到完整 24 小时，不进入版本库。
+const recoverMorning = existsSync(join(ROOT, '.local', `recover-morning-${today}`));
 // 可选采集截止时间：AIPULSE_CUTOFF（ISO 格式，如 2026-07-22T18:00:00+08:00），只收此前发布的新闻
 const CUTOFF = process.env.AIPULSE_CUTOFF ? new Date(process.env.AIPULSE_CUTOFF) : null;
 const CUTOFF_NOTE = CUTOFF
@@ -41,14 +43,19 @@ const editionEnd = useEditionWindow ? (CUTOFF || new Date(editionPublishedAt)) :
 const editionStart = (() => {
   if (!useEditionWindow) return null;
   const date = forcedEditionDate || today;
-  if (isEvening) return new Date(`${date}T09:00:00+08:00`);
+  if (isEvening) {
+    const morning = new Date(`${date}T09:00:00+08:00`);
+    return recoverMorning ? new Date(morning.getTime() - 12 * 3600000) : morning;
+  }
   return new Date(new Date(`${date}T09:00:00+08:00`).getTime() - 12 * 3600000);
 })();
 const EDITION_WINDOW_NOTE = editionStart
   ? `\nEDITION WINDOW: only include stories whose ORIGINAL publication moment is at or after ${editionStart.toISOString()} and before ${(editionEnd || new Date()).toISOString()}. For deep briefings, date-only sources are not enough — if the exact original publication time cannot be verified, leave it to the radar.`
   : '';
 const EDITION_NOTE = isEvening
-  ? `\nEDITION FOCUS (evening edition): This edition covers Beijing daytime — US overnight and European morning, globally the quietest news half-day. PRIORITIZE fresh stories from the Asian-timezone cycle: Chinese labs (Qwen, DeepSeek, Moonshot, Zhipu, ByteDance, Tencent, StepFun…), Japan/Korea, Asian AI policy and industry, open-source releases and papers that landed during Asian daytime. Do NOT fill the quota by re-picking yesterday's US stories that merely fall inside the ${WINDOW_H}-hour window — the previous edition already covered that cycle.`
+  ? recoverMorning
+    ? `\nRECOVERY EDITION: The morning edition did not run. Cover the entire edition window from the previous evening through this evening, including significant overnight US/European news and Asian daytime news. Do not assume the morning cycle was already published.`
+    : `\nEDITION FOCUS (evening edition): This edition covers Beijing daytime — US overnight and European morning, globally the quietest news half-day. PRIORITIZE fresh stories from the Asian-timezone cycle: Chinese labs (Qwen, DeepSeek, Moonshot, Zhipu, ByteDance, Tencent, StepFun…), Japan/Korea, Asian AI policy and industry, open-source releases and papers that landed during Asian daytime. Do NOT fill the quota by re-picking yesterday's US stories that merely fall inside the ${WINDOW_H}-hour window — the previous edition already covered that cycle.`
   : '';
 
 function findCodexCommand() {
@@ -396,7 +403,7 @@ async function main() {
   }
   const skip = await existingTitles();
   const coverage = await existingCoverage();
-  console.log(`[generate] 深度简报至多 ${COUNT} 篇（${isEvening ? '晚班·亚洲时段方针' : '早班'}）+ 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);
+  console.log(`[generate] 深度简报至多 ${COUNT} 篇（${isEvening ? recoverMorning ? '晚班·补早班全天窗口' : '晚班·亚洲时段方针' : '早班'}）+ 雷达 ${RADAR_COUNT} 条，日期 ${today} …`);
   const [headlines, xItems] = await Promise.all([
     fetchFreshHeadlines({ since: editionStart, until: editionEnd, hours: WINDOW_H, maxPerFeed: WINDOW_H > 48 ? 12 : 8 }),
     fetchXHeadlines({ since: editionStart, until: editionEnd, hours: WINDOW_H, perAccount: WINDOW_H > 48 ? 8 : 5 }).catch((e) => { console.error('[generate] X 直连失败:', e.message); return []; }),

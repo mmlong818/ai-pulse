@@ -6,8 +6,7 @@ echo [%date% %time%] The Attention Post daily run start >> daily.log
 
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\retry-git.ps1" pull >> daily.log 2>&1
 if errorlevel 1 (
-  echo [%date% %time%] git pull FAILED, skip publish >> daily.log
-  exit /b 1
+  echo [%date% %time%] git pull FAILED, continue local generation; push must succeed before publishing >> daily.log
 )
 
 node generate.mjs 6 >> daily.log 2>&1
