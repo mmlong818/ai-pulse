@@ -1,0 +1,35 @@
+{
+  "slug": "genspark-persistent-agent-machines",
+  "title": "Genspark introduces persistent machine environments for agents",
+  "summary": "Genspark says its agents can run inside isolated machines with their own kernels, persistent state, rollback, and usage-based execution.",
+  "body": "Genspark outlined a new execution model for AI agents on October 28: instead of running as short-lived processes inside a shared application, an agent can operate inside an isolated machine environment with its own kernel, filesystem, ports, and development tools.\n\n## From sessions to machines\n\nThe company’s announcement describes a “box” that can be created in under half a second from a Docker image, including packages and warm caches. Agents can keep running for as long as the task requires, whether that means a development server, a crawler, or a multi-day workflow. When inactive, the box freezes and compute billing stops while its disk state remains available.\n\nGenspark also highlighted operational controls that are unusually important for long-running agents. Users can fork an environment, preserve its memory, or roll it back to a previous save point. In effect, the agent’s workspace becomes a recoverable execution artifact rather than a disposable chat session.\n\n## Why it matters\n\nThe product points toward a shift in agent infrastructure. As agents take on software development, research, and automation tasks that exceed a single interaction, the limiting factor is increasingly the environment in which they work: state must persist, failures must be reversible, and background execution must not consume resources continuously. Genspark’s design addresses those constraints directly with isolation, freezing, and rollback.\n\nThe announcement remains a product claim rather than independent evidence of reliability. It does not establish how well the system handles secrets, network abuse, multi-tenant isolation, or recovery from corrupted state. The commercial question is also unresolved: if compute billing is the only active cost while a box runs, long jobs could become expensive quickly. Still, the machine abstraction is more consequential than another agent interface because it treats autonomous work as infrastructure with lifecycle management.",
+  "title_zh": "Genspark推出持久化机器环境，让智能体可长期运行",
+  "summary_zh": "Genspark公布面向智能体的隔离机器环境，支持独立内核、持久状态、回滚和按运行时长计费。",
+  "body_zh": "Genspark于10月28日公布了一套面向AI智能体的新执行模式：智能体不再只是共享应用中的短时进程，而是可以运行在拥有独立内核、文件系统、端口和开发工具的隔离机器环境中。\n\n## 从会话走向机器\n\n公司称，这类“Box”可以基于任意Docker镜像在不到半秒内启动，并保留依赖包和预热缓存。智能体可以按照任务需要持续运行，包括开发服务器、爬虫和持续数日的后台任务。智能体空闲时，Box会冻结，计算费用停止，但磁盘状态仍然保留。\n\nGenspark还强调了对长期运行智能体十分关键的控制能力：用户可以复制一个环境、连同记忆一起保存，或者回滚到此前的保存点。这样一来，智能体工作区就不再是一次性聊天会话，而成为可以恢复和复用的执行成果。\n\n## 为什么重要\n\n这项产品透露出智能体基础设施正在发生变化。当智能体开始承担软件开发、研究和自动化任务，单次对话之外的运行环境就变成瓶颈：状态必须持续保存，失败需要可逆，后台执行也不能无休止地消耗资源。Genspark用隔离、冻结和回滚直接回应了这些问题。\n\n不过，目前公开信息仍主要是产品方描述，尚不足以证明它在密钥保护、网络滥用、多租户隔离和状态损坏恢复方面的可靠性。商业模式同样有待观察：如果活跃运行期间计算费用是主要成本，长时间任务可能迅速变贵。尽管如此，把智能体抽象成带生命周期管理的机器，影响力可能高于又一个聊天式代理界面。",
+  "tags": [
+    "Agents",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Genspark: A real machine, not a process",
+      "url": "https://x.com/genspark_ai/status/2115412502293229757"
+    },
+    {
+      "title": "Genspark: Fork and roll back",
+      "url": "https://x.com/genspark_ai/status/2115412518025957769"
+    },
+    {
+      "title": "Genspark: Runs as long as the task does",
+      "url": "https://x.com/genspark_ai/status/2115412510069403911"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "真正值得关注的是可回滚的工作状态，而不是半秒启动速度",
+  "cat_take_en": "The valuable primitive is recoverable agent state, while the sub-second launch claim is mostly an implementation detail.",
+  "date": "2026-10-28",
+  "published": "2026-10-28T11:56:00Z",
+  "published_at": "2026-10-28T13:00:24.985Z"
+}

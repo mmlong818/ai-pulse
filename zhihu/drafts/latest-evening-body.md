@@ -1,93 +1,100 @@
-这是「猫叔的AI资讯雷达」10月26日晚报。
+这是「猫叔的AI资讯雷达」10月28日晚报。
 
 本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
 
-**今晚重点**：腾讯混元开源 Hy-SimulMT，面向中英实时同声传译，主打约三秒延迟和可部署的开放模型能力。
+**今晚重点**：蚂蚁百灵发布 Ling-3.1 Flash 1019，强化长程推理、工具调用、跨会话记忆和复杂工作流执行能力。
 
 ## 深度简报目录
 
-- 腾讯开源低延迟中英同传模型 Hy-SimulMT
-- 清华开源 AKV，降低长程智能体推理成本
+- 蚂蚁开源 Ling-3.1 Flash，瞄准持续工作的个人智能体
+- Genspark推出持久化机器环境，让智能体可长期运行
 
 ## 快讯预览
 
-- Dreamina发布了一段人工智能生成的泡澡短片，泡沫戏剧性地溢出城堡般的场景。
-- Dreamina发布了一段描绘隐形摩托车追逐、刻意采用赛博朋克喜剧风格的人工智能视频。
-- Meshy展示Hermes Agent将自然语言请求转换为带纹理的3D宝箱。
-- CircleCI发布Machine Runner Orchestrator，用于协调持续集成流程中的机器运行器基础设施。
-- 海螺表示其H3生态正在扩展，带来更快生成、更强控制和更多运行环境支持。
-- 海螺表示社区贡献正推动H3生态扩展至更快生成、更强控制和更多运行时。
-- Tripo展示了通过Tripo CLI和虚幻引擎，代理可将睡前想法转成可玩的游戏。
-- Replit宣布其界面、提示词和输出现在全部支持日语。
-- Together AI宣布MiniMax M3.1 Flash可使用自定义数据、奖励和环境进行后训练。
+- Dreamina 发布网球主题 AI 僵尸短片，并附上教程与提示词供创作者复用。
+- Mistral 称 Voxtral Mini Transcribe 3 在 Voice Arena 的说话人分离与 ASR 榜单上排名第二。
+- OpenAI 介绍 Legora：其法律平台称，内部 NDA 审查占用时间已从约20%降至不到1%。
+- ElevenLabs 与 Asociación ELA 合作，帮助 ALS 患者、教授 Aníbal 重建声音以继续授课。
+- Anthropic 将取消新员工编程面试，更重视实际主动性和创业思维，而非传统履历。
+- Polymathic AI 与普林斯顿研究者发布 FlashMap，据称可让推测式 LLM 解码提速6.14倍。
+- Sakana AI 宣布将在日本 Gartner IT Symposium/Xpo 2026 展示 Marlin、Fugu 与 Namazu。
+- 一篇新论文提出同时衡量节省时间与遗漏缺陷，指出更快产出仍可能增加总工作量。
+- 一篇安全论文发现，事后型 MCP 提示注入在测试模型—服务器组合中的成功率达62.64%至100%。
+- 小米研究者介绍 OmniBrain-0：一种统一操控、导航、进度跟踪与故障恢复的轻量具身智能体。
 
-## 1. 腾讯开源低延迟中英同传模型 Hy-SimulMT
+## 1. 蚂蚁开源 Ling-3.1 Flash，瞄准持续工作的个人智能体
 
-腾讯混元开源 Hy-SimulMT，面向中英实时同声传译，主打约三秒延迟和可部署的开放模型能力。
+蚂蚁百灵发布 Ling-3.1 Flash 1019，强化长程推理、工具调用、跨会话记忆和复杂工作流执行能力。
 
-腾讯混元团队开源了 Hy-SimulMT，这是一款面向中英同声传译的模型，目标是在说话者尚未完成整句表达时就开始翻译。腾讯称其延迟约为三秒，应用方向更接近实时会议、活动和跨语言交流，而不是传统的“先转写、再翻译”流程。
+蚂蚁集团百灵大模型团队于10月28日开源 Ling-3.1-flash-1019，并同步开放 Ling-3.1-flash-base，目标是让个人智能体能够跨会话持续推进任务，而不只是即时回答问题。
 
-### 为什么值得关注
+### 更新了什么
 
-同声传译的难点在于，系统必须判断什么时候已经听到了足够信息：等待更完整的上下文，准确率通常更高，但延迟会让对话变得不自然；过早开口则可能在中文和英文这种语序差异明显的语言之间产生误译。开放模型让开发者可以检查并调整这套延迟与准确率的取舍，而不必完全依赖封闭式接口。
+1019版本重点强化多步骤执行、工具使用和长期任务推进能力。百灵称，该版本在 Artificial Analysis Intelligence Index v4.3.2 中获得44分，比上一版提高3分；在知识工作、流程自动化、科学推理等测试中也有所提升，其中 AutomationBench-AA 从62%升至68%。
 
-这次发布也显示，腾讯混元正在持续扩展模型、基准和基础设施的开源版图。Hy-SimulMT有望用于在线会议、双语客服、教育和国际活动。不过，目前公布的信息还不足以证明它在口音、噪声环境、多人抢话和专业术语场景中的稳定性。
+基础模型采用 MIT 许可证开放，开发者可以继续预训练、适配私有知识和业务流程，或自行开展后训练。百灵披露，Ling-3.1 Flash 总参数量为5600亿，每个Token激活约250亿参数，宣传上下文长度最高达100万Token。其视觉语言版本目前已用于蚂蚁的灵光个人助理，但尚未公开发布。
 
-### 仍待验证的部分
+### 为什么重要
 
-“约三秒延迟”本身并不能说明模型会多频繁地修正或放弃已经输出的译文，也无法回答它需要多少硬件资源，更不能证明多人交谈时仍能保持质量。这些运行细节，才会决定它是可直接使用的工程组件，还是主要服务于研究展示的开源项目。
+这次发布的价值，在于它与一个具体的亚洲产品周期直接相连：灵光近期升级后加入跨会话记忆、后台任务调度和独立云主机。要支撑这些功能，模型必须能够维持目标、处理过程中的失败，并判断何时调用工具。因此，公开权重提供的是持续运行的个人和企业智能体底座，而不只是又一个聊天模型。
 
-对开放模型生态而言，方向本身已经值得注意：实时语音系统正从托管式演示，走向可下载、可调优、能够适配不同语言和部署条件的模型组件。
+需要保留的疑问是可复现性。最亮眼的评测数据来自模型方，1019检查点本身也大到令本地部署门槛不低。它能否真正改变开发者选择，仍取决于推理生态、长时间运行稳定性，以及外部团队能否在百灵应用之外复现这些成绩。
 
 **原始信源**
 
-- [Tencent Hunyuan Hy-SimulMT GitHub repository](https://github.com/Tencent-Hunyuan/Hy-SimulMT)
-- [Tencent Hunyuan announcement on X](https://x.com/TencentHunyuan/status/2114701815807947159)
+- [智能指数得分创新高！蚂蚁百灵开源Ling-3.1-flash-1019](https://www.infoq.cn/article/wIuu0NSaLSaqJJpXVExD)
+- [Ling-3.1-flash-1019 on Hugging Face](https://huggingface.co/inclusionAI/Ling-3.1-flash-1019/tree/main)
+- [Ling-3.1 Flash model card](https://huggingface.co/inclusionAI/Ling-3.1-flash)
 
-原文链接：[腾讯开源低延迟中英同传模型 Hy-SimulMT｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-simulmt-open-source.html)
+原文链接：[蚂蚁开源 Ling-3.1 Flash，瞄准持续工作的个人智能体｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/ant-ling-31-flash-1019-open-source.html)
 
 ---
 
-## 2. 清华开源 AKV，降低长程智能体推理成本
+## 2. Genspark推出持久化机器环境，让智能体可长期运行
 
-清华与香港中文大学团队开源 AKV，通过管理智能体的 KV 缓存可见性，在多项测试中平均降低推理成本 27.7%。
+Genspark公布面向智能体的隔离机器环境，支持独立内核、持久状态、回滚和按运行时长计费。
 
-清华大学与香港中文大学研究人员开源了 AKV。这是一套采用 Apache-2.0 许可、面向长程大语言模型智能体的服务系统，专门管理推理过程中使用的键值缓存。项目称，在四项智能体基准测试中，AKV平均降低推理成本27.7%，同时相比基于阈值的历史摘要方法，让平均任务得分提高1.7分。
+Genspark于10月28日公布了一套面向AI智能体的新执行模式：智能体不再只是共享应用中的短时进程，而是可以运行在拥有独立内核、文件系统、端口和开发工具的隔离机器环境中。
 
-### 不一样的上下文管理方式
+### 从会话走向机器
 
-目前多数智能体系统通过总结或删除历史文本来控制长对话。这样会改变提示词本身，服务器往往需要重新计算剩余上下文。AKV则允许策略模块或模型选择性地隐藏 KV 缓存条目，再重新排列保留内容，从而避免完整重建序列。
+公司称，这类“Box”可以基于任意Docker镜像在不到半秒内启动，并保留依赖包和预热缓存。智能体可以按照任务需要持续运行，包括开发服务器、爬虫和持续数日的后台任务。智能体空闲时，Box会冻结，计算费用停止，但磁盘状态仍然保留。
 
-这一点之所以重要，是因为论文分析显示，KV缓存读取占总 API 成本的82.4%。在一个使用 GPT-OSS-120B 的 SWE-bench Verified 测试中，AKV将单任务成本从20美分降至9.7美分，同时把得分从40.0提升到43.2。该系统已集成 SGLang，并在 GPT-OSS-120B、MiniMax-M2.7 和 MiroThinker-1.7-Mini 等模型上进行测试。
+Genspark还强调了对长期运行智能体十分关键的控制能力：用户可以复制一个环境、连同记忆一起保存，或者回滚到此前的保存点。这样一来，智能体工作区就不再是一次性聊天会话，而成为可以恢复和复用的执行成果。
 
-### 仍然存在的边界
+### 为什么重要
 
-AKV不是普遍适用的降本开关。公开结果依赖特定模型、基准和英伟达 GPU 配置，而且 MiniMax 在 BrowseComp-Plus 的一项结果低于对比策略。如果开发者暴露过多缓存控制、却缺少稳定的策略约束，缓存管理本身也可能增加智能体系统的复杂度。
+这项产品透露出智能体基础设施正在发生变化。当智能体开始承担软件开发、研究和自动化任务，单次对话之外的运行环境就变成瓶颈：状态必须持续保存，失败需要可逆，后台执行也不能无休止地消耗资源。Genspark用隔离、冻结和回滚直接回应了这些问题。
 
-不过，它瞄准的是一个会随智能体浏览网页、调用工具和回看历史决策而持续放大的瓶颈。如果这些节省能在生产环境中复现，推理优化的重点就可能从“缩短提示词”进一步转向把模型状态当作可主动管理的系统资源。
+不过，目前公开信息仍主要是产品方描述，尚不足以证明它在密钥保护、网络滥用、多租户隔离和状态损坏恢复方面的可靠性。商业模式同样有待观察：如果活跃运行期间计算费用是主要成本，长时间任务可能迅速变贵。尽管如此，把智能体抽象成带生命周期管理的机器，影响力可能高于又一个聊天式代理界面。
 
 **原始信源**
 
-- [Tsinghua AI Open-Sources AKV, a Cache Engineering Server for LLM Agents on SGLang](https://www.marktechpost.com/2026/10/26/tsinghua-akv-kv-cache-engineering-llm-agents/)
-- [AKV GitHub repository](https://github.com/thu-nics/AKV)
-- [Cache Engineering for Agents](https://arxiv.org/abs/2610.28577)
+- [Genspark: A real machine, not a process](https://x.com/genspark_ai/status/2115412502293229757)
+- [Genspark: Fork and roll back](https://x.com/genspark_ai/status/2115412518025957769)
+- [Genspark: Runs as long as the task does](https://x.com/genspark_ai/status/2115412510069403911)
 
-原文链接：[清华开源 AKV，降低长程智能体推理成本｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html)
+原文链接：[Genspark推出持久化机器环境，让智能体可长期运行｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/genspark-persistent-agent-machines.html)
 
 ## 一句话快讯
-- Dreamina发布了一段人工智能生成的泡澡短片，泡沫戏剧性地溢出城堡般的场景。（[X / Dreamina](https://x.com/dreamina_ai/status/2114672014854357441)）
-- Dreamina发布了一段描绘隐形摩托车追逐、刻意采用赛博朋克喜剧风格的人工智能视频。（[X / Dreamina](https://x.com/dreamina_ai/status/2114671608392806874)）
-- Meshy展示Hermes Agent将自然语言请求转换为带纹理的3D宝箱。（[X / MeshyAI](https://x.com/MeshyAI/status/2114670876201234778)）
-- CircleCI发布Machine Runner Orchestrator，用于协调持续集成流程中的机器运行器基础设施。（[InfoQ 中文](https://www.infoq.cn/article/y7YQmP1p42Uj69H1C6uf)）
-- 海螺表示其H3生态正在扩展，带来更快生成、更强控制和更多运行环境支持。（[X / Hailuo AI](https://x.com/Hailuo_AI/status/2114608481768702455)）
-- 海螺表示社区贡献正推动H3生态扩展至更快生成、更强控制和更多运行时。（[X / Hailuo AI](https://x.com/Hailuo_AI/status/2114608481768702455)）
-- Tripo展示了通过Tripo CLI和虚幻引擎，代理可将睡前想法转成可玩的游戏。（[X / Tripo](https://x.com/tripoai/status/2114605322971300140)）
-- Replit宣布其界面、提示词和输出现在全部支持日语。（[X / Replit](https://x.com/Replit/status/2114587332137664535)）
-- Together AI宣布MiniMax M3.1 Flash可使用自定义数据、奖励和环境进行后训练。（[X / Together Compute](https://x.com/togethercompute/status/2114535735562809433)）
+- Dreamina 发布网球主题 AI 僵尸短片，并附上教程与提示词供创作者复用。（[X / Dreamina AI](https://x.com/dreamina_ai/status/2115381504209793041)）
+- Mistral 称 Voxtral Mini Transcribe 3 在 Voice Arena 的说话人分离与 ASR 榜单上排名第二。（[X / Mistral AI](https://x.com/MistralAI/status/2115380768394379474)）
+- OpenAI 介绍 Legora：其法律平台称，内部 NDA 审查占用时间已从约20%降至不到1%。（[OpenAI](https://openai.com/index/legora-agentic-operating-system-for-legal-work/)）
+- ElevenLabs 与 Asociación ELA 合作，帮助 ALS 患者、教授 Aníbal 重建声音以继续授课。（[X / ElevenLabs](https://x.com/ElevenLabs/status/2115374286273950186)）
+- Anthropic 将取消新员工编程面试，更重视实际主动性和创业思维，而非传统履历。（[Latent Space](https://latent.space/p/ainews-anthropic-ends-coding-interviews/)）
+- Polymathic AI 与普林斯顿研究者发布 FlashMap，据称可让推测式 LLM 解码提速6.14倍。（[MarkTechPost](https://www.marktechpost.com/2026/10/28/flashmap-flow-map-speculative-decoding/)）
+- Sakana AI 宣布将在日本 Gartner IT Symposium/Xpo 2026 展示 Marlin、Fugu 与 Namazu。（[X / Sakana AI](https://x.com/SakanaAILabs/status/2115349465360126111)）
+- 一篇新论文提出同时衡量节省时间与遗漏缺陷，指出更快产出仍可能增加总工作量。（[arXiv](https://arxiv.org/abs/2610.35942)）
+- 一篇安全论文发现，事后型 MCP 提示注入在测试模型—服务器组合中的成功率达62.64%至100%。（[arXiv](https://arxiv.org/abs/2610.36108)）
+- 小米研究者介绍 OmniBrain-0：一种统一操控、导航、进度跟踪与故障恢复的轻量具身智能体。（[arXiv](https://arxiv.org/abs/2610.36013)）
+- Meshy 展示 Blender MCP：智能体可通过对话生成带材质模型、布置场景并完成渲染。（[X / Meshy AI](https://x.com/MeshyAI/status/2115289899008221243)）
+- Artificial Analysis 发布 Intelligence Index v5，加入更重的知识工作、编码任务及独立进步指数。（[X / Artificial Analysis](https://x.com/ArtificialAnlys/status/2115265198093435022)）
+- 甲骨文引入SambaNova SN50 RDU系统，为客户提供GPU之外更多元的AI算力组合。（[IT之家](https://www.ithome.com/1/018/744.htm)）
+- 甲骨文将谷歌TPU引入云平台，并增加ChatGPT集成，扩展企业AI的跨云选择。（[SiliconANGLE](https://siliconangle.com/2026/10/27/oracle-brings-googles-tpus-to-its-cloud-adds-chatgpt-integrations/)）
 
 ---
 
-完整日报：[10月26日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-10-26.html)
+完整日报：[10月28日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-10-28.html)
 
 历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
 

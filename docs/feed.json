@@ -13,6 +13,87 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/ant-ling-31-flash-1019-open-source.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/ant-ling-31-flash-1019-open-source.html",
+      "title": "Ant Group open-sources Ling-3.1 Flash for persistent agents",
+      "summary": "Ant Group’s Bailing team released Ling-3.1 Flash 1019 with stronger long-horizon reasoning, tool use, memory, and workflow automation.",
+      "content_text": "Ant Group’s Bailing foundation-model team released Ling-3.1-flash-1019 and the companion Ling-3.1-flash-base on October 28, targeting personal agents that can continue working across sessions rather than simply answer prompts.\n\n## What changed\n\nThe 1019 version is a post-trained upgrade focused on multi-step execution, tool use, and sustained task progress. Bailing reports a score of 44 on Artificial Analysis’ Intelligence Index v4.3.2, three points above the previous version. It also reports gains on knowledge-work, automation, scientific reasoning, and coding-related evaluations, including AutomationBench-AA, where the score rose from 62% to 68%.\n\nThe base model is released under the MIT license for developers that want to continue pre-training, adapt the model to private workflows, or perform their own post-training. Bailing says Ling-3.1 Flash has 560 billion total parameters, activates roughly 25 billion per token, and supports a context window advertised at up to one million tokens. A vision-language variant is being used internally in Ant’s Lingguang personal-assistant product but has not yet been released.\n\n## Why it matters\n\nThe release is important because it ties an open-weight model to a concrete Asian product cycle: Lingguang’s recent upgrade added cross-session memory, background task scheduling, and an independent cloud environment. Those features require a model to maintain goals, recover from intermediate failures, and decide when to use tools. The public weights therefore give developers a candidate foundation for persistent personal and business agents, not merely another chat model.\n\nThe main caveat is reproducibility. The strongest benchmark numbers come from the model maker, while the 1019 checkpoint is large enough to make local deployment demanding. Its practical value will depend on inference support, long-running reliability, and whether independent users can reproduce the claimed gains outside Bailing’s own application stack.",
+      "date_published": "2026-10-28T12:13:00.000Z",
+      "date_modified": "2026-10-28T13:00:24.985Z",
+      "tags": [
+        "Models",
+        "Open Source",
+        "Agents"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/ant-ling-31-flash-1019-open-source.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/ant-ling-31-flash-1019-open-source.html",
+        "source_published_at": "2026-10-28T12:13:00.000Z",
+        "site_published_at": "2026-10-28T13:00:24.985Z",
+        "sources": [
+          {
+            "title": "智能指数得分创新高！蚂蚁百灵开源Ling-3.1-flash-1019",
+            "url": "https://www.infoq.cn/article/wIuu0NSaLSaqJJpXVExD"
+          },
+          {
+            "title": "Ling-3.1-flash-1019 on Hugging Face",
+            "url": "https://huggingface.co/inclusionAI/Ling-3.1-flash-1019/tree/main"
+          },
+          {
+            "title": "Ling-3.1 Flash model card",
+            "url": "https://huggingface.co/inclusionAI/Ling-3.1-flash"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/genspark-persistent-agent-machines.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/genspark-persistent-agent-machines.html",
+      "title": "Genspark introduces persistent machine environments for agents",
+      "summary": "Genspark says its agents can run inside isolated machines with their own kernels, persistent state, rollback, and usage-based execution.",
+      "content_text": "Genspark outlined a new execution model for AI agents on October 28: instead of running as short-lived processes inside a shared application, an agent can operate inside an isolated machine environment with its own kernel, filesystem, ports, and development tools.\n\n## From sessions to machines\n\nThe company’s announcement describes a “box” that can be created in under half a second from a Docker image, including packages and warm caches. Agents can keep running for as long as the task requires, whether that means a development server, a crawler, or a multi-day workflow. When inactive, the box freezes and compute billing stops while its disk state remains available.\n\nGenspark also highlighted operational controls that are unusually important for long-running agents. Users can fork an environment, preserve its memory, or roll it back to a previous save point. In effect, the agent’s workspace becomes a recoverable execution artifact rather than a disposable chat session.\n\n## Why it matters\n\nThe product points toward a shift in agent infrastructure. As agents take on software development, research, and automation tasks that exceed a single interaction, the limiting factor is increasingly the environment in which they work: state must persist, failures must be reversible, and background execution must not consume resources continuously. Genspark’s design addresses those constraints directly with isolation, freezing, and rollback.\n\nThe announcement remains a product claim rather than independent evidence of reliability. It does not establish how well the system handles secrets, network abuse, multi-tenant isolation, or recovery from corrupted state. The commercial question is also unresolved: if compute billing is the only active cost while a box runs, long jobs could become expensive quickly. Still, the machine abstraction is more consequential than another agent interface because it treats autonomous work as infrastructure with lifecycle management.",
+      "date_published": "2026-10-28T11:56:00.000Z",
+      "date_modified": "2026-10-28T13:00:24.985Z",
+      "tags": [
+        "Agents",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/genspark-persistent-agent-machines.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/genspark-persistent-agent-machines.html",
+        "source_published_at": "2026-10-28T11:56:00.000Z",
+        "site_published_at": "2026-10-28T13:00:24.985Z",
+        "sources": [
+          {
+            "title": "Genspark: A real machine, not a process",
+            "url": "https://x.com/genspark_ai/status/2115412502293229757"
+          },
+          {
+            "title": "Genspark: Fork and roll back",
+            "url": "https://x.com/genspark_ai/status/2115412518025957769"
+          },
+          {
+            "title": "Genspark: Runs as long as the task does",
+            "url": "https://x.com/genspark_ai/status/2115412510069403911"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/google-genie-4-world-model.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/google-genie-4-world-model.html",
       "title": "Google DeepMind unveils Genie 4 world simulation model",
@@ -87,7 +168,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/articles/liquid-ai-lfm3-open-models.html",
       "title": "Liquid AI releases six open-weight LFM3 models",
       "summary": "Liquid AI’s LFM3 family brings text, vision, audio and decision models to a shared 2B-class backbone designed for local specialization.",
-      "content_text": "## What happened\n\nLiquid AI released LFM3, a family of six open-weight models built around a shared backbone in the roughly 2-billion-parameter class. The initial lineup covers text, vision, audio, omni and decision-oriented models, with base and post-trained versions available through Hugging Face, Liquid AI’s Playground and its API.\n\nThe company says LFM3 was pretrained on 22 trillion tokens, followed by a 3.5-trillion-token mid-training stage, and uses a hybrid architecture intended to deliver more capacity than LFM2 without abandoning the efficiency advantages of smaller models. Liquid AI’s central proposition is specialization: developers can fine-tune the models locally, run them on a wider range of hardware and adapt them to narrow tasks rather than paying for a much larger general-purpose model.\n\nThe release was also made available through Ollama, which lowers the practical barrier for developers who want to test the models on local machines or deploy them in compact environments. The open-weight status matters because users can inspect, modify and post-train the models instead of relying solely on a hosted endpoint.\n\n## Why it matters\n\nLFM3 is not a frontier-scale benchmark event. Its importance lies in the direction of travel: multimodal capability is being packaged into small, composable models intended to live closer to the device, the private data and the application-specific workflow. That could be valuable for offline assistants, embedded systems, voice interfaces and specialized agents where latency, privacy or predictable cost matter more than broad general knowledge.\n\nThe unresolved issue is whether the family’s shared architecture produces meaningful cross-modal advantages in real deployments, or simply a convenient product bundle. Open weights and local fine-tuning create room for experimentation, but they do not by themselves establish that LFM3 can match larger models on difficult reasoning or production reliability.",
+      "content_text": "## What happened\n\nLiquid AI released LFM3, a family of six open-weight models built around a shared backbone in the roughly 2-billion-parameter class. The initial lineup covers text, vision, audio, omni and decision-oriented models, with base and post-trained versions available through Hugging Face, Liquid AI’s Playground and its API.\n\nThe company says LFM3 was pretrained on 22 trillion tokens, followed by a 3.5-trillion-token mid-training stage, and uses a hybrid architecture intended to deliver more capacity than LFM2 without abandoning the efficiency advantages of smaller models. Liquid AI’s central proposition is specialization: developers can fine-tune the models locally, run them on a wider range of hardware and adapt them to narrow tasks rather than paying for a much larger general-purpose model.\n\nThe release is available through Liquid AI’s stated distribution channels, including Hugging Face, Playground and API access. The open-weight status matters because users can inspect, modify and post-train the models instead of relying solely on a hosted endpoint.\n\n## Why it matters\n\nLFM3 is not a frontier-scale benchmark event. Its importance lies in the direction of travel: multimodal capability is being packaged into small, composable models intended to live closer to the device, the private data and the application-specific workflow. That could be valuable for offline assistants, embedded systems, voice interfaces and specialized agents where latency, privacy or predictable cost matter more than broad general knowledge.\n\nThe unresolved issue is whether the family’s shared architecture produces meaningful cross-modal advantages in real deployments, or simply a convenient product bundle. Open weights and local fine-tuning create room for experimentation, but they do not by themselves establish that LFM3 can match larger models on difficult reasoning or production reliability.",
       "date_published": "2026-10-27T17:04:00.000Z",
       "date_modified": "2026-10-28T01:55:56.466Z",
       "tags": [
@@ -1818,80 +1899,6 @@
           {
             "title": "Gemini 4 Argon is now available for developers",
             "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/skywork-matrix-game-4.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/skywork-matrix-game-4.html",
-      "title": "Skywork Releases Open Matrix-Game 4.0 for Real-Time Worlds",
-      "summary": "Skywork says Matrix-Game 4.0 is an open-source video model game that runs in real time on one consumer GPU.",
-      "content_text": "## What happened\n\nSkywork has introduced Matrix-Game 4.0, describing it as an open-source video-model game that can run in real time on a single consumer GPU. The system is positioned as an interactive world model rather than a conventional text-to-video generator: users or agents can act inside a generated environment, with the model producing the next visual state as the interaction unfolds.\n\nThat distinction matters. Standard video models optimize for producing a finished clip, while an interactive model must maintain enough consistency between frames to support movement, decisions and feedback. Running locally on consumer hardware also changes the intended audience. Researchers and developers can inspect the system, experiment with game-like environments and test embodied or agentic behavior without renting a large inference cluster.\n\n## Why it matters\n\nMatrix-Game 4.0 is important as a signal that open video research is moving toward usable interaction loops. A real-time model that fits on one consumer GPU could provide a relatively accessible testbed for world-model research, game prototyping and training agents in simulated environments. It also gives open-source developers a way to explore video generation as an action-conditioned process rather than a passive rendering tool.\n\nThe limitations are substantial. Skywork’s announcement does not by itself establish how long the model can preserve world consistency, how much latency users experience, or whether its environments support meaningful planning beyond short demonstrations. “Runs in real time” is also hardware- and resolution-dependent. Even so, the release deserves attention because the constraint it targets is concrete: bringing interactive generative worlds down from data-center infrastructure to a consumer workstation.",
-      "date_published": "2026-10-15T06:14:00.000Z",
-      "date_modified": "2026-10-15T13:00:04.643Z",
-      "tags": [
-        "AIGC",
-        "Open Source",
-        "Research"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/skywork-matrix-game-4.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/skywork-matrix-game-4.html",
-        "source_published_at": "2026-10-15T06:14:00.000Z",
-        "site_published_at": "2026-10-15T13:00:04.643Z",
-        "sources": [
-          {
-            "title": "Skywork introduces Matrix-Game 4.0",
-            "url": "https://x.com/Skywork_ai/status/2110615377088745817"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/step5-preview-open-weights.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/step5-preview-open-weights.html",
-      "title": "StepFun Opens Step 5 Preview Weights for Long-Horizon Agents",
-      "summary": "StepFun has released Step 5 Preview as open weights, pairing a 600B sparse MoE model with a new harness for sustained agent work.",
-      "content_text": "## What happened\n\nStepFun has released Step 5 Preview as open weights, making BF16 and FP8 versions available through Hugging Face and ModelScope. The company describes the model as a 600-billion-parameter sparse mixture-of-experts system with roughly 27 billion active parameters. It has also published a technical account of the architecture and training process, alongside Step Code 0.1.4, an open-source agent harness designed to maintain goals across long, complex tasks.\n\nThe release includes practical deployment paths rather than only a research announcement. StepFun says users can serve the model through OpenAI-compatible interfaces using vLLM or SGLang, run it offline with Transformers, and adapt it across multiple chip platforms. That combination matters because open weights become strategically useful only when developers can actually obtain, serve and modify them.\n\n## Why it matters\n\nThe most important part of the release is the alignment between the model and the harness. StepFun is presenting long-horizon work as a systems problem: model behavior, memory of the goal, tool execution and deployment hardware must be designed together. The open weights also give Chinese and international developers a new large-scale alternative at a time when access to frontier APIs remains commercially and geopolitically constrained.\n\nThe caveat is equally important. StepFun's headline parameter count does not establish that the model matches the best closed systems, and the company has not yet supplied independent evidence across a broad set of agent benchmarks. Running a 600B-total-parameter model will also remain expensive even with sparse activation. Still, this is a consequential release because it turns StepFun's agent strategy into a downloadable artifact rather than a product promise.",
-      "date_published": "2026-10-15T13:00:00.000Z",
-      "date_modified": "2026-10-15T13:00:04.643Z",
-      "tags": [
-        "Models",
-        "Open Source",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/step5-preview-open-weights.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/step5-preview-open-weights.html",
-        "source_published_at": "2026-10-15T13:00:00.000Z",
-        "site_published_at": "2026-10-15T13:00:04.643Z",
-        "sources": [
-          {
-            "title": "StepFun announces Step 5 Preview open weights",
-            "url": "https://x.com/StepFun_ai/status/2110717330657616092"
-          },
-          {
-            "title": "Inside Step 5 Preview: Architecture and Training for Agentic Work",
-            "url": "https://x.com/StepFun_ai/status/2110717331798454534"
-          },
-          {
-            "title": "Step Code 0.1.4 update",
-            "url": "https://x.com/StepFun_ai/status/2110717332301779186"
           }
         ]
       }

@@ -19,6 +19,70 @@
 
 ## Recent briefings
 
+### Ant Group open-sources Ling-3.1 Flash for persistent agents
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/ant-ling-31-flash-1019-open-source.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/ant-ling-31-flash-1019-open-source.html
+- Source timestamp: 2026-10-28T12:13:00.000Z
+- Site timestamp: 2026-10-28T13:00:24.985Z
+- Tags: Models, Open Source, Agents
+
+Ant Group’s Bailing team released Ling-3.1 Flash 1019 with stronger long-horizon reasoning, tool use, memory, and workflow automation.
+
+Ant Group’s Bailing foundation-model team released Ling-3.1-flash-1019 and the companion Ling-3.1-flash-base on October 28, targeting personal agents that can continue working across sessions rather than simply answer prompts.
+
+## What changed
+
+The 1019 version is a post-trained upgrade focused on multi-step execution, tool use, and sustained task progress. Bailing reports a score of 44 on Artificial Analysis’ Intelligence Index v4.3.2, three points above the previous version. It also reports gains on knowledge-work, automation, scientific reasoning, and coding-related evaluations, including AutomationBench-AA, where the score rose from 62% to 68%.
+
+The base model is released under the MIT license for developers that want to continue pre-training, adapt the model to private workflows, or perform their own post-training. Bailing says Ling-3.1 Flash has 560 billion total parameters, activates roughly 25 billion per token, and supports a context window advertised at up to one million tokens. A vision-language variant is being used internally in Ant’s Lingguang personal-assistant product but has not yet been released.
+
+## Why it matters
+
+The release is important because it ties an open-weight model to a concrete Asian product cycle: Lingguang’s recent upgrade added cross-session memory, background task scheduling, and an independent cloud environment. Those features require a model to maintain goals, recover from intermediate failures, and decide when to use tools. The public weights therefore give developers a candidate foundation for persistent personal and business agents, not merely another chat model.
+
+The main caveat is reproducibility. The strongest benchmark numbers come from the model maker, while the 1019 checkpoint is large enough to make local deployment demanding. Its practical value will depend on inference support, long-running reliability, and whether independent users can reproduce the claimed gains outside Bailing’s own application stack.
+
+Chinese title: 蚂蚁开源 Ling-3.1 Flash，瞄准持续工作的个人智能体
+Chinese summary: 蚂蚁百灵发布 Ling-3.1 Flash 1019，强化长程推理、工具调用、跨会话记忆和复杂工作流执行能力。
+
+Sources:
+  - 智能指数得分创新高！蚂蚁百灵开源Ling-3.1-flash-1019: https://www.infoq.cn/article/wIuu0NSaLSaqJJpXVExD
+  - Ling-3.1-flash-1019 on Hugging Face: https://huggingface.co/inclusionAI/Ling-3.1-flash-1019/tree/main
+  - Ling-3.1 Flash model card: https://huggingface.co/inclusionAI/Ling-3.1-flash
+
+### Genspark introduces persistent machine environments for agents
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/genspark-persistent-agent-machines.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/genspark-persistent-agent-machines.html
+- Source timestamp: 2026-10-28T11:56:00.000Z
+- Site timestamp: 2026-10-28T13:00:24.985Z
+- Tags: Agents, Industry
+
+Genspark says its agents can run inside isolated machines with their own kernels, persistent state, rollback, and usage-based execution.
+
+Genspark outlined a new execution model for AI agents on October 28: instead of running as short-lived processes inside a shared application, an agent can operate inside an isolated machine environment with its own kernel, filesystem, ports, and development tools.
+
+## From sessions to machines
+
+The company’s announcement describes a “box” that can be created in under half a second from a Docker image, including packages and warm caches. Agents can keep running for as long as the task requires, whether that means a development server, a crawler, or a multi-day workflow. When inactive, the box freezes and compute billing stops while its disk state remains available.
+
+Genspark also highlighted operational controls that are unusually important for long-running agents. Users can fork an environment, preserve its memory, or roll it back to a previous save point. In effect, the agent’s workspace becomes a recoverable execution artifact rather than a disposable chat session.
+
+## Why it matters
+
+The product points toward a shift in agent infrastructure. As agents take on software development, research, and automation tasks that exceed a single interaction, the limiting factor is increasingly the environment in which they work: state must persist, failures must be reversible, and background execution must not consume resources continuously. Genspark’s design addresses those constraints directly with isolation, freezing, and rollback.
+
+The announcement remains a product claim rather than independent evidence of reliability. It does not establish how well the system handles secrets, network abuse, multi-tenant isolation, or recovery from corrupted state. The commercial question is also unresolved: if compute billing is the only active cost while a box runs, long jobs could become expensive quickly. Still, the machine abstraction is more consequential than another agent interface because it treats autonomous work as infrastructure with lifecycle management.
+
+Chinese title: Genspark推出持久化机器环境，让智能体可长期运行
+Chinese summary: Genspark公布面向智能体的隔离机器环境，支持独立内核、持久状态、回滚和按运行时长计费。
+
+Sources:
+  - Genspark: A real machine, not a process: https://x.com/genspark_ai/status/2115412502293229757
+  - Genspark: Fork and roll back: https://x.com/genspark_ai/status/2115412518025957769
+  - Genspark: Runs as long as the task does: https://x.com/genspark_ai/status/2115412510069403911
+
 ### Google DeepMind unveils Genie 4 world simulation model
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/google-genie-4-world-model.html
@@ -96,7 +160,7 @@ Liquid AI released LFM3, a family of six open-weight models built around a share
 
 The company says LFM3 was pretrained on 22 trillion tokens, followed by a 3.5-trillion-token mid-training stage, and uses a hybrid architecture intended to deliver more capacity than LFM2 without abandoning the efficiency advantages of smaller models. Liquid AI’s central proposition is specialization: developers can fine-tune the models locally, run them on a wider range of hardware and adapt them to narrow tasks rather than paying for a much larger general-purpose model.
 
-The release was also made available through Ollama, which lowers the practical barrier for developers who want to test the models on local machines or deploy them in compact environments. The open-weight status matters because users can inspect, modify and post-train the models instead of relying solely on a hosted endpoint.
+The release is available through Liquid AI’s stated distribution channels, including Hugging Face, Playground and API access. The open-weight status matters because users can inspect, modify and post-train the models instead of relying solely on a hosted endpoint.
 
 ## Why it matters
 
@@ -979,70 +1043,6 @@ Sources:
   - Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts: https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/
   - OpenCode: https://opencode.ai/
 
-### Tenstorrent raises $1.5 billion for open-model chips
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/tenstorrent-open-weight-chips.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/tenstorrent-open-weight-chips.html
-- Source timestamp: 2026-10-19T18:37:00.000Z
-- Site timestamp: 2026-10-20T01:00:06.421Z
-- Tags: Funding, Industry, Open Source
-
-Tenstorrent reached a $6.2 billion valuation after raising $1.5 billion to scale inference hardware for open-weight models and video generation.
-
-## The financing
-
-AI chip startup Tenstorrent raised $1.5 billion at a $6.2 billion valuation, more than doubling the company’s reported value from late 2024. The round was led by Trace Capital and Innovation X, with participation from new and existing investors including Agostinelli Group, ARK Invest, Brett Barna, Cadence Ventures, Eclipse, Fidelity Management & Research Company, Maverick Silicon, Morgan Stanley, Protagonist, Sandisk, T. Rowe Price, Tether Investments, Troluce Capital, Virtu Financial and XTX Markets.
-
-Tenstorrent is positioning itself as an alternative to Nvidia, with a focus on chips and servers designed for inference. CEO Jim Keller said the company chose to remain independent after demonstrating that its Galaxy server systems could run DeepSeek models. The new capital will support production scale and hardware tailored to serving open-weight models and video-generation workloads.
-
-The company’s timing reflects a shift in the accelerator market. The AI industry is no longer defined only by training the largest closed models; open-weight systems are increasingly being deployed by cloud providers, enterprises and developers who want control over weights, data location and operating costs. That creates demand for hardware optimized around inference economics rather than only peak training performance.
-
-## The constraint
-
-Tenstorrent’s valuation is substantial, but funding does not establish that its products can compete broadly with Nvidia’s software, supply chain or installed base. Its reported DeepSeek demonstration is evidence of capability, not proof of production-scale adoption. The company must still turn architecture and server claims into reliable developer tools, predictable availability and competitive total cost of ownership.
-
-The round nevertheless matters because it gives a non-Nvidia accelerator company enough capital to pursue an integrated hardware and software strategy while open models are expanding the addressable market. If Tenstorrent succeeds, the beneficiaries would include model developers seeking alternatives and customers that need to run large models without committing to one dominant vendor.
-
-**Uncle Cat take:** The $6.2 billion valuation is a bet on inference demand, but Tenstorrent’s real test is whether DeepSeek demos become boring, repeatable production deployments.
-
-Chinese title: Tenstorrent融资15亿美元，押注开放模型推理芯片
-Chinese summary: AI芯片公司Tenstorrent融资15亿美元、估值升至62亿美元，将扩大面向开放权重模型和视频生成的推理硬件。
-
-Sources:
-  - Tenstorrent Series E official announcement: https://tenstorrent.com/newsroom/tenstorrent-announces-series-e
-  - Tenstorrent hits $6.2B valuation to scale open-weight AI chips: https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-valuation-to-scale-open-weight-ai-chips/
-
-### US Orders DeepSeek Removed From Federal Civilian Systems
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/us-orders-deepseek-removal-federal-systems.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/us-orders-deepseek-removal-federal-systems.html
-- Source timestamp: 2026-10-20T11:34:00.000Z
-- Site timestamp: 2026-10-20T13:00:07.876Z
-- Tags: Policy, Safety, Industry
-
-A DHS order bars civilian agencies from buying DeepSeek technology and requires removal of third-party products built on its implementations.
-
-The U.S. Department of Homeland Security has ordered federal civilian agencies to remove DeepSeek products and related implementations from their information-technology systems. The notice also excludes DeepSeek and affiliated products from future civilian-agency procurement, extending the restriction to third-party services developed using DeepSeek technology.
-
-## What the order covers
-
-The action was published through the Federal Register under the Federal Acquisition Security Council framework. It applies to civilian executive-branch agencies rather than the general public, and it is not a blanket prohibition on private companies or consumers using DeepSeek. The order cites supply-chain and national-security concerns, including the possibility of sensitive information being transferred to China and alleged software-security risks.
-
-The wording is broader than a simple ban on visiting DeepSeek’s public chatbot. Agencies must remove DeepSeek products, affiliated offerings and third-party tools that incorporate DeepSeek implementations. That could affect contractors and internal applications even when DeepSeek is not the visible brand presented to employees.
-
-The timing is important. The order itself was issued earlier, but its Federal Register publication makes the restriction part of the government’s formal procurement and technology-removal record during this edition window. China criticized the move, framing it as another escalation in the technology conflict between Washington and Beijing.
-
-## Why it matters
-
-The immediate commercial impact is concentrated in the U.S. federal market, not the global developer community. Its broader significance is precedent: Washington is treating a widely distributed open model as a supply-chain risk and extending restrictions to downstream products built on it. That approach could complicate compliance for contractors and encourage governments to demand provenance records for model weights and inference services. It also creates a sharper split between technical availability and institutional usability: DeepSeek may remain easy to download, while becoming harder to deploy in regulated public-sector environments.
-
-Chinese title: 美国要求联邦民用机构移除深度求索技术
-Chinese summary: 美国国土安全部要求联邦民用机构移除深度求索及其衍生产品，并禁止采购相关技术。
-
-Sources:
-  - Federal Register notice on DeepSeek products: https://www.federalregister.gov/d/2026-21447
-  - Associated Press report on the federal ban: https://apnews.com/article/2bffa5b0131808735280b2c0e6f0d856
-
 ## Recent radar items
 
 ### 2026-10-28
@@ -1065,6 +1065,21 @@ Sources:
 - 2026-10-27T22:08:00Z | X @ArtificialAnlys | Artificial Analysis launched Speech Agent Arena, where users blindly compare live voice agents and select their preferred system. | 中文：Artificial Analysis推出Speech Agent Arena，让用户盲测实时语音智能体并选择更喜欢的系统。 | https://x.com/ArtificialAnlys/status/2115204129824157735
 - 2026-10-27T14:00:00Z | SiliconANGLE | Regal introduced Goal Oriented Agents that assign an actor model and a director model to each customer call. | 中文：Regal推出Goal Oriented Agents，为每通客户电话分别配置演员模型和导演模型。 | https://siliconangle.com/2026/10/27/regal-debuts-goal-oriented-agents-putting-an-actor-and-a-director-model-on-every-call/
 - 2026-10-27T13:00:00Z | SiliconANGLE | Edge Sound raised $2 million to help physical AI systems interpret audio in real-world environments. | 中文：Edge Sound融资200万美元，帮助具身AI系统理解真实环境中的声音。 | https://siliconangle.com/2026/10/27/edge-sound-raises-2m-to-help-physical-ai-make-sense-of-audio/
+- 2026-10-28T12:00:00Z | SiliconANGLE AI | Circuit Mind raised $25 million to deploy AI agents that check electronic circuit-board schematics. | 中文：Circuit Mind 融资2500万美元，用 AI 智能体检查电子电路板原理图。 | https://siliconangle.com/2026/10/28/circuit-mind-lands-25m-and-puts-ai-agents-to-work-checking-circuit-board-schematics/
+- 2026-10-28T11:27:00Z | The Verge | Meta quietly launched Waddle World, an AI pet-journal app that turns owners’ updates into interactive stories. | 中文：Meta 悄然推出 AI 宠物日志应用 Waddle World，把主人记录变成交互式故事。 | https://www.theverge.com/ai-artificial-intelligence/1020410/meta-launched-ai-pet-journal-app-waddle-world
+- 2026-10-28T09:30:00Z | OpenAI | OpenAI profiled Legora, whose legal platform reports cutting internal NDA-review time from roughly 20% of capacity to under 1%. | 中文：OpenAI 介绍 Legora：其法律平台称，内部 NDA 审查占用时间已从约20%降至不到1%。 | https://openai.com/index/legora-agentic-operating-system-for-legal-work/
+- 2026-10-28T08:50:00Z | Latent Space | Anthropic is ending coding interviews for new hires, emphasizing demonstrated initiative and entrepreneurial thinking over conventional credentials. | 中文：Anthropic 将取消新员工编程面试，更重视实际主动性和创业思维，而非传统履历。 | https://latent.space/p/ainews-anthropic-ends-coding-interviews/
+- 2026-10-28T09:50:00Z | X / Mistral AI | Mistral said Voxtral Mini Transcribe 3 ranked second on Voice Arena’s diarization and automatic-speech-recognition leaderboard. | 中文：Mistral 称 Voxtral Mini Transcribe 3 在 Voice Arena 的说话人分离与 ASR 榜单上排名第二。 | https://x.com/MistralAI/status/2115380768394379474
+- 2026-10-28T09:25:00Z | X / ElevenLabs | ElevenLabs is helping an ALS-afflicted professor recreate his voice so he can continue teaching, with support from Asociación ELA. | 中文：ElevenLabs 与 Asociación ELA 合作，帮助 ALS 患者、教授 Aníbal 重建声音以继续授课。 | https://x.com/ElevenLabs/status/2115374286273950186
+- 2026-10-28T08:18:00Z | MarkTechPost | Polymathic AI and Princeton researchers released FlashMap, a flow-map drafter reported to make speculative LLM decoding 6.14 times faster. | 中文：Polymathic AI 与普林斯顿研究者发布 FlashMap，据称可让推测式 LLM 解码提速6.14倍。 | https://www.marktechpost.com/2026/10/28/flashmap-flow-map-speculative-decoding/
+- 2026-10-28T04:00:00Z | arXiv | A new AI paper proposes measuring time saved alongside escaped defects, arguing that faster output can still increase total work. | 中文：一篇新论文提出同时衡量节省时间与遗漏缺陷，指出更快产出仍可能增加总工作量。 | https://arxiv.org/abs/2610.35942
+- 2026-10-28T04:00:00Z | arXiv | A security paper found post-hoc MCP prompt-injection attacks achieved 62.64–100% success across tested model-server pairs. | 中文：一篇安全论文发现，事后型 MCP 提示注入在测试模型—服务器组合中的成功率达62.64%至100%。 | https://arxiv.org/abs/2610.36108
+- 2026-10-28T04:00:00Z | arXiv | Xiaomi researchers described OmniBrain-0, a compact embodied agent unifying manipulation, navigation, progress tracking, and recovery. | 中文：小米研究者介绍 OmniBrain-0：一种统一操控、导航、进度跟踪与故障恢复的轻量具身智能体。 | https://arxiv.org/abs/2610.36013
+- 2026-10-28T09:53:00Z | X / Dreamina AI | Dreamina posted an AI-generated tennis-themed zombie short with tutorials and prompts included for creators. | 中文：Dreamina 发布网球主题 AI 僵尸短片，并附上教程与提示词供创作者复用。 | https://x.com/dreamina_ai/status/2115381504209793041
+- 2026-10-28T03:49:00Z | X / Meshy AI | Meshy demonstrated MCP for Blender, letting agents generate textured models, place them in scenes, and render through conversation. | 中文：Meshy 展示 Blender MCP：智能体可通过对话生成带材质模型、布置场景并完成渲染。 | https://x.com/MeshyAI/status/2115289899008221243
+- 2026-10-28T02:11:00Z | X / Artificial Analysis | Artificial Analysis launched Intelligence Index v5 with heavier knowledge-work and coding tasks plus a separate progress index. | 中文：Artificial Analysis 发布 Intelligence Index v5，加入更重的知识工作、编码任务及独立进步指数。 | https://x.com/ArtificialAnlys/status/2115265198093435022
+- 2026-10-28T07:46:00Z | X / Sakana AI | Sakana AI announced demonstrations of Marlin, Fugu, and Namazu at Gartner IT Symposium/Xpo 2026 in Japan. | 中文：Sakana AI 宣布将在日本 Gartner IT Symposium/Xpo 2026 展示 Marlin、Fugu 与 Namazu。 | https://x.com/SakanaAILabs/status/2115349465360126111
+- 2026-10-28T12:00:00Z | SiliconANGLE AI | Circuit Mind raised $25 million to deploy AI agents that check electronic circuit-board schematics. | 中文：Circuit Mind 融资2500万美元，用 AI 智能体检查电子电路板原理图。 | https://siliconangle.com/2026/10/28/circuit-mind-lands-25m-and-puts-ai-agents-to-work-checking-circuit-board-schematics/
 
 ### 2026-10-26
 
