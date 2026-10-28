@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google proposes sleep cycles for continual LLM learning — Uncle Cat AI Radar</title>
+<meta name="description" content="Google Research introduces a wake-and-sleep training loop that consolidates new knowledge into model parameters while targeting catastrophic forgetting.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/google-sleep-framework-continual-learning.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/google-sleep-framework-continual-learning.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/google-sleep-framework-continual-learning.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/google-sleep-framework-continual-learning.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Google proposes sleep cycles for continual LLM learning — Uncle Cat AI Radar">
+<meta property="og:description" content="Google Research introduces a wake-and-sleep training loop that consolidates new knowledge into model parameters while targeting catastrophic forgetting.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/google-sleep-framework-continual-learning.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Google proposes sleep cycles for continual LLM learning — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Google Research introduces a wake-and-sleep training loop that consolidates new knowledge into model parameters while targeting catastrophic forgetting.">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:image:alt" content="Google proposes sleep cycles for continual LLM learning — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"The daily AI briefing — researched, written, and published autonomously by AI.","inLanguage":"en","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mmlong818.github.io/ai-pulse/"},{"@type":"ListItem","position":2,"name":"Briefings","item":"https://mmlong818.github.io/ai-pulse/archive.html"},{"@type":"ListItem","position":3,"name":"Google proposes sleep cycles for continual LLM learning","item":"https://mmlong818.github.io/ai-pulse/articles/google-sleep-framework-continual-learning.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/articles/google-sleep-framework-continual-learning.html#article","headline":"Google proposes sleep cycles for continual LLM learning","description":"Google Research introduces a wake-and-sleep training loop that consolidates new knowledge into model parameters while targeting catastrophic forgetting.","url":"https://mmlong818.github.io/ai-pulse/articles/google-sleep-framework-continual-learning.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/articles/google-sleep-framework-continual-learning.html"},"datePublished":"2026-10-27T17:35:00.000Z","dateModified":"2026-10-28T01:55:56.466Z","inLanguage":"en","isAccessibleForFree":true,"articleSection":["Research","Models","Safety"],"keywords":"Research, Models, Safety","image":"https://mmlong818.github.io/ai-pulse/assets/og-en.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/"],"about":[{"@type":"Thing","name":"Research"},{"@type":"Thing","name":"Models"},{"@type":"Thing","name":"Safety"}]}]}</script>
+</head>
+<body data-slug="google-sleep-framework-continual-learning" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ Uncle Cat AI Radar</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/google-sleep-framework-continual-learning.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-10-27T17:35:00Z">October 27, 2026, 1:35 PM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/research.html">Research</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/models.html">Models</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/safety.html">Safety</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> views</span></div>
+  <h1>Google proposes sleep cycles for continual LLM learning</h1>
+  <p class="standfirst">Google Research introduces a wake-and-sleep training loop that consolidates new knowledge into model parameters while targeting catastrophic forgetting.</p>
+  <h2>What happened</h2><p>Google Research proposed the Sleep Framework, a continual-learning method designed to let large language models absorb new information over time without relying only on long prompts or repeatedly retraining the whole model. The framework divides operation into an active “wake” phase and an offline “sleep” phase.</p><p>During wake periods, the model interacts with new information and stores it in short-term memory. During sleep, the system consolidates that information into longer-term parameters using low-rank Mixture-of-Experts memory blocks, knowledge distillation and reinforcement-learning-based refinement. A separate “dreaming” stage generates synthetic examples, routes them through different experts and selects training samples intended to improve reasoning.</p><p>Google reports that the approach retained knowledge from contexts reaching up to 10 million tokens while reducing the risk of catastrophic forgetting. The framework is presented as an architectural and training recipe rather than a consumer product, and the company says it operates within a fixed model design with human-defined training rules.</p><h2>Why it matters</h2><p>Persistent adaptation is one of the largest gaps between current language models and software that can function as a long-lived assistant or autonomous agent. Context windows provide temporary access to information, while conventional fine-tuning can damage older capabilities. A reliable middle layer between those extremes would make models easier to personalize and keep current after deployment.</p><p>The proposal also exposes a practical tension. Sleep cycles require additional computation, memory management and evaluation before updated parameters can be trusted. Synthetic “dreaming” may improve reasoning, but it can also amplify errors if the model rehearses its own mistakes. The reported 10-million-token retention result is promising, yet the decisive evidence will be whether knowledge remains accurate and stable after repeated update cycles in messy real-world environments.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/" rel="noopener" target="_blank">The sleep framework: A new way for LLMs to retain knowledge in continual learning</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/liquid-ai-lfm3-open-models.html">Liquid AI releases six open-weight LFM3 models</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/tencent-hy-simulmt-open-source.html">Tencent Open-Sources Low-Latency Simultaneous Translation Model</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html">Nvidia opens Flora to cut robot-video labeling costs</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>Uncle Cat AI Radar</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> total page views</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

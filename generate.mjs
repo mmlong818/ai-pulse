@@ -75,6 +75,7 @@ function findCodexCommand() {
 }
 
 const CODEX = findCodexCommand();
+const EDITOR_MODEL = process.env.AIPULSE_CODEX_MODEL || 'gpt-5.6-luna';
 
 function inEditionWindow(published) {
   if (!editionStart || !published || !published.includes('T')) return !editionStart;
@@ -87,6 +88,7 @@ function inEditionWindow(published) {
 function runEditorOnce(prompt, { timeoutMs = 1200000 } = {}) {
   return new Promise((resolve, reject) => {
     const args = [...CODEX.prefixArgs, '--search', 'exec', '--ephemeral', '--sandbox', 'read-only',
+      '-m', EDITOR_MODEL,
       '--skip-git-repo-check', '--color', 'never', '-'];
     const child = spawn(CODEX.command, args, {
       cwd: ROOT, shell: CODEX.shell, windowsHide: true, timeout: timeoutMs,
@@ -393,7 +395,7 @@ async function recentRadarTexts() {
 }
 
 async function main() {
-  console.log(`[generate] Codex CLI: ${CODEX.command}`);
+  console.log(`[generate] Codex CLI: ${CODEX.command}; model: ${EDITOR_MODEL}`);
   if (process.env.AIPULSE_EDITOR_SMOKE === '1') {
     const raw = await runEditor('Return only this exact JSON and nothing else: {"ok":true}', { timeoutMs: 180000 });
     const result = JSON.parse(extractJson(raw, '{', '}'));

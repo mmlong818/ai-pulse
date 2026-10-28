@@ -30,10 +30,12 @@ function findCodexCommand() {
 }
 
 const CODEX = findCodexCommand();
+const EDITOR_MODEL = process.env.AIPULSE_CODEX_MODEL || 'gpt-5.6-luna';
 
 function runEditor(prompt, { timeoutMs = 1200000 } = {}) {
   return new Promise((resolve, reject) => {
     const args = [...CODEX.prefixArgs, '--search', 'exec', '--ephemeral', '--sandbox', 'read-only',
+      '-m', EDITOR_MODEL,
       '--skip-git-repo-check', '--color', 'never', '-'];
     const child = spawn(CODEX.command, args, {
       cwd: ROOT, shell: CODEX.shell, windowsHide: true, timeout: timeoutMs,
@@ -134,7 +136,7 @@ ${JSON.stringify(items, null, 2)}`;
 }
 
 async function main() {
-  console.log(`[volatile] Codex CLI: ${CODEX.command}`);
+  console.log(`[volatile] Codex CLI: ${CODEX.command}; model: ${EDITOR_MODEL}`);
   const items = await candidates();
   if (!items.length) {
     console.log('[volatile] no recent volatile articles');

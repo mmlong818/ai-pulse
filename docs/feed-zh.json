@@ -13,6 +13,113 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/google-genie-4-world-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/google-genie-4-world-model.html",
+      "title": "谷歌发布Genie 4，推进实时世界模拟",
+      "summary": "Genie 4可生成带原生音频、实时操控和更强物理连续性的互动世界，但目前仍处于受限研究预览阶段。",
+      "content_text": "## 发生了什么\n\n谷歌DeepMind发布Genie 4。这款多模态世界模型生成的不是孤立图片或视频片段，而是可以互动的动态环境。系统能够同时生成环境声音、音乐、对话和场景变化，用户还可以用自然语言实时修改天气、镜头、物体或人物，让世界继续向前运行。\n\n谷歌表示，Genie 4建立在Gemini系列能力之上：Gemini Omni负责现实外观与行为的基础建模，其他Gemini模型则承担推理任务，帮助维持模拟世界的连贯性。谷歌将其应用方向指向机器人和智能体训练、电影制作、游戏设计及互动体验。\n\n这并不是面向所有用户的正式上线。Genie 4目前只向受邀测试者开放，未来计划通过Project Genie向Google AI Ultra订阅者开放，并向部分Gemini API和Google AI Studio合作伙伴提供早期访问。谷歌还表示，生成的音频和视频会使用SynthID水印。\n\n## 为什么重要\n\nGenie 4显示，生成式AI正在从内容制作工具走向持续运行的模拟基础设施。如果这类系统足够可靠，开发者便可用更低成本创建机器人训练环境、测试物理交互，并制作无需手工编写全部资产和规则的可探索媒体。\n\n但它的限制同样关键。谷歌承认，长时间运行时物体可能漂移，复杂物理交互和文字渲染仍不稳定，场景连续性也会下降。短片演示能否转化为可重复的训练和生产流程，才是Genie 4下一阶段真正要回答的问题。",
+      "date_published": "2026-10-27T16:01:00.000Z",
+      "date_modified": "2026-10-28T01:55:56.466Z",
+      "tags": [
+        "模型",
+        "AIGC",
+        "研究"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-genie-4-world-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-genie-4-world-model.html",
+        "source_published_at": "2026-10-27T16:01:00.000Z",
+        "site_published_at": "2026-10-28T01:55:56.466Z",
+        "sources": [
+          {
+            "title": "Genie 4: A new generation of world simulation",
+            "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/"
+          },
+          {
+            "title": "Google’s Genie 4 world model adds audio, more realistic worlds, and real-time steering",
+            "url": "https://techcrunch.com/2026/10/27/googles-genie-4-world-model-adds-audio-more-realistic-worlds-and-real-time-steering/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/google-sleep-framework-continual-learning.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/google-sleep-framework-continual-learning.html",
+      "title": "谷歌提出“睡眠”机制，让大模型持续学习新知识",
+      "summary": "谷歌研究团队提出交替进行唤醒与睡眠训练的框架，试图让大模型持续吸收知识并缓解灾难性遗忘。",
+      "content_text": "## 发生了什么\n\n谷歌研究团队提出Sleep Framework（睡眠框架），目标是让大语言模型持续吸收新信息，而不是只依赖更长提示词，或反复进行完整模型训练。该方法把运行过程划分为“唤醒”和“睡眠”两个阶段。\n\n在唤醒阶段，模型接触新信息，并将其暂存在短期记忆中；进入睡眠阶段后，系统通过低秩专家混合记忆模块、知识蒸馏和基于强化学习的优化，把这些内容巩固到更长期的模型参数中。框架还设置了类似“做梦”的环节：模型生成合成样本，让不同专家参与处理，再筛选可能提升推理能力的训练数据。\n\n谷歌称，该方法能够保留最长达1000万token上下文中的知识，同时降低灾难性遗忘风险。它目前是一套架构和训练方法，并非面向消费者的产品；谷歌强调，系统仍运行在固定模型设计和人工设定的训练规则之内。\n\n## 为什么重要\n\n持续适应能力是当前模型与长期运行的助手、自治智能体之间的重要差距。上下文窗口只能临时提供信息，传统微调又可能损害旧能力。如果两者之间存在可靠的中间方案，模型就更容易在部署后保持更新，并适应个人或组织需求。\n\n但这种方法也带来实际代价。睡眠周期需要额外算力、记忆管理和严格评估，更新后的参数不能自动被视为可信。所谓“做梦”可能提升推理，也可能让模型重复并放大自身错误。1000万token的保留结果值得关注，但真正关键的是，模型在现实环境中经过多轮更新后，能否继续保持准确和稳定。",
+      "date_published": "2026-10-27T17:35:00.000Z",
+      "date_modified": "2026-10-28T01:55:56.466Z",
+      "tags": [
+        "研究",
+        "模型",
+        "安全"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-sleep-framework-continual-learning.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-sleep-framework-continual-learning.html",
+        "source_published_at": "2026-10-27T17:35:00.000Z",
+        "site_published_at": "2026-10-28T01:55:56.466Z",
+        "sources": [
+          {
+            "title": "The sleep framework: A new way for LLMs to retain knowledge in continual learning",
+            "url": "https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/liquid-ai-lfm3-open-models.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/liquid-ai-lfm3-open-models.html",
+      "title": "Liquid AI发布LFM3，推出六款开放权重多模态模型",
+      "summary": "Liquid AI发布LFM3系列，将文本、视觉、音频和决策模型统一到约20亿参数级别的共享骨干上，主打本地微调与端侧运行。",
+      "content_text": "## 发生了什么\n\nLiquid AI发布LFM3系列，首批包含六款围绕共享骨干构建的开放权重模型，整体处于约20亿参数级别。产品覆盖文本、视觉、音频、全模态和决策模型，并同时提供基础版与后训练版本，可通过Hugging Face、Liquid AI Playground和官方API获取。\n\n公司称，LFM3先使用22万亿token进行预训练，随后又进行了约3.5万亿token的中期训练，并采用混合架构，在提升表达能力的同时保留小模型的效率优势。Liquid AI主打的并非通用能力最大化，而是让开发者可以在本地完成微调，把模型部署到更多硬件上，用于特定任务，而不是为所有需求支付大型通用模型的成本。\n\nLFM3也已接入Ollama，开发者可以更方便地在本地设备上测试，或将其部署到资源受限的环境中。开放权重意味着用户可以检查、修改并继续后训练模型，不必完全依赖托管接口。\n\n## 为什么重要\n\nLFM3不是一次前沿模型规模竞赛，它的价值在于代表了另一条路线：把多模态能力封装进更小、更易组合的模型，让模型更靠近设备、私有数据和具体应用流程。对离线助手、嵌入式系统、语音接口以及强调隐私、延迟和成本可控的智能体而言，这一方向具有现实吸引力。\n\n不过，LFM3能否在实际部署中体现共享架构的跨模态优势，仍未得到充分证明。开放权重和本地微调确实降低了试验门槛，但这并不等于它已经在复杂推理或生产稳定性上接近更大型模型。",
+      "date_published": "2026-10-27T17:04:00.000Z",
+      "date_modified": "2026-10-28T01:55:56.466Z",
+      "tags": [
+        "模型",
+        "开源",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/liquid-ai-lfm3-open-models.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/liquid-ai-lfm3-open-models.html",
+        "source_published_at": "2026-10-27T17:04:00.000Z",
+        "site_published_at": "2026-10-28T01:55:56.466Z",
+        "sources": [
+          {
+            "title": "Introducing LFM3: Every Modality for Specialized Intelligence",
+            "url": "https://www.liquid.ai/blog/lfm3"
+          },
+          {
+            "title": "Build specialized multimodal models with LFM3",
+            "url": "https://huggingface.co/blog/LiquidAI/lfm3"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-community-video-audio.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/minimax-h3-community-video-audio.html",
       "title": "MiniMax H3社区方案将视频生成推向低步数推理",
@@ -1785,113 +1892,6 @@
           {
             "title": "Step Code 0.1.4 update",
             "url": "https://x.com/StepFun_ai/status/2110717332301779186"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/google-singapore-on-device-scam-ai.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/google-singapore-on-device-scam-ai.html",
-      "title": "谷歌与新加坡打造端侧诈骗识别模型",
-      "summary": "谷歌DeepMind与新加坡GovTech已完成面向本地诈骗对话的端侧Gemma模型，后续将在应用中分阶段、经用户同意后部署。",
-      "content_text": "## 把反诈骗能力放进手机\n\n谷歌DeepMind与新加坡政府科技局合作开发了一套注重隐私保护的端侧人工智能模型，用于在用户转账或泄露凭据前识别诈骗对话。模型已经使用本地诈骗对话完成微调，覆盖冒充公共机构、银行和本地人物等情形。谷歌DeepMind表示，该模型将在应用内分阶段、与新加坡政府合作推进；目前不应表述为已经完成全国范围部署。\n\n当模型被集成到应用后，它可以直接在设备上分析对话数据；如果发现操纵性话术，就能在手机上实时触发警告。系统的目标是识别冒充身份及其他具有本地特征的社会工程诈骗手法。\n\n## 为什么端侧架构值得关注\n\n模型面向设备本地运行，不依赖持续的云端扫描。在端到端加密消息环境中，平台往往无法在服务器侧读取聊天内容；端侧分析既能缩短响应时间，也能减少敏感数据离开设备的机会。\n\n谷歌DeepMind表示，这种部署方式以隐私保护为设计目标：模型在设备上分析对话，相关材料也表示，谷歌和新加坡政府不会通过该部署获取用户私密聊天内容。双方将该项目定位为政府与模型开发者合作，应对新加坡本地诈骗模式的尝试。\n\n## 为什么重要\n\n这不只是一个新的诈骗分类器，而是在验证小型专用模型能否成为消费设备内置的安全层。它仍面临误报、电量消耗、语言覆盖、应用接入以及更新权归属等问题。若这些限制能够解决，端侧模型有望在不削弱端到端隐私的前提下，为即时通信增加一层防护。",
-      "date_published": "2026-10-14T02:00:00.000Z",
-      "date_modified": "2026-10-14T13:00:05.228Z",
-      "tags": [
-        "安全",
-        "政策",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-singapore-on-device-scam-ai.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-singapore-on-device-scam-ai.html",
-        "source_published_at": "2026-10-14T02:00:00.000Z",
-        "site_published_at": "2026-10-14T13:00:05.228Z",
-        "sources": [
-          {
-            "title": "On-Device AI Against Scams: Google DeepMind & MDDI",
-            "url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/"
-          },
-          {
-            "title": "Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams",
-            "url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/meshy-3d-agent-leaves-beta.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/meshy-3d-agent-leaves-beta.html",
-      "title": "Meshy的3D智能体向免费计划开放",
-      "summary": "Meshy的对话式3D Agent仍标注为测试版，但已向Free计划用户开放；付费计划提供更高额度和高级工具。",
-      "content_text": "## 从一句话走到可用资产\n\nMeshy的3D Agent仍标注为测试版，但现在已经向Meshy Free计划开放，不再仅限于Pro及以上会员。该产品试图整合过去需要多个软件完成的流程：提出创意、生成视觉参考、制作三维模型、持续修改，最后导出到打印或游戏开发工具中。\n\n用户可以用自然语言，也可以上传照片或草图。智能体能够先提出创作方向，再批量生成概念图，把选中的方案转成三维模型，并通过对话继续调整。Meshy称，生成结果支持FBX、OBJ、GLB、USDZ、STL、BLEND、3MF和DXF等格式，覆盖游戏引擎、数字内容工具和3D打印场景。\n\n## 它与普通文生3D有什么区别\n\n真正值得关注的是产品边界发生了变化。早期的生成式3D工具往往只负责一次性生成一个资产，而Meshy的智能体试图连续协调多个步骤，并在步骤之间保留上下文。这使它更接近面向创作者的专业助手，而不是挂在模型前面的提示词输入框。\n\n官方展示的应用范围包括独立游戏、产品概念、可打印物体和批量资产制作。同一套流程还可以从参考图中识别多个对象，并将它们拆分成独立模型，减少小型创作团队在前期整理素材时的手工工作。\n\n## 仍待验证的地方\n\nMeshy当前产品页面仍将3D Agent标注为测试版，但已明确表示Free计划可以使用。用户可免费注册Meshy账号并与智能体对话；实际运行操作会消耗额度，付费计划则提供更高上限和高级工具。测试阶段的真正考验，是对话式编排能否提升生产效率，而不只是让演示更顺滑。模型拓扑、材质准确度、结果稳定性和商业授权，都会影响它进入真实项目。Meshy最重要的主张并不是“能生成模型”，而是能把创意直接连接到可交付资产；这个主张最终要靠成品项目验证。",
-      "date_published": "2026-10-14T08:25:00.000Z",
-      "date_modified": "2026-10-14T13:00:05.228Z",
-      "tags": [
-        "AIGC",
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/meshy-3d-agent-leaves-beta.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/meshy-3d-agent-leaves-beta.html",
-        "source_published_at": "2026-10-14T08:25:00.000Z",
-        "site_published_at": "2026-10-14T13:00:05.228Z",
-        "sources": [
-          {
-            "title": "Meshy AI announcement on 3D Agent availability",
-            "url": "https://x.com/MeshyAI/status/2110285892749541475"
-          },
-          {
-            "title": "Meshy 3D Agent: Conversational 3D Creation",
-            "url": "https://www.meshy.ai/features/3d-agent"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/character-ai-bankruptcy-disney-deal.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/character-ai-bankruptcy-disney-deal.html",
-      "title": "Character.AI申请破产保护，迪士尼交易浮出水面",
-      "summary": "Character.AI在寻求与迪士尼交易之际申请破产保护，暴露出消费级AI平台高成本运营与变现之间的矛盾。",
-      "content_text": "据The Verge报道，Character.AI已申请破产保护，同时推进与迪士尼相关的交易。这个曾凭借角色聊天走红的消费级AI平台，如今进入重组程序，凸显“高频使用”尚未自动转化为可持续商业模式。\n\n## 发生了什么\n\nCharacter.AI由谷歌前研究人员创办，依靠用户自建角色和开放式对话吸引了大批用户。平台鼓励长时间聊天，但这也意味着持续承担推理算力、内容审核、安全运营和产品维护成本。此次申请破产与迪士尼交易讨论同时出现，说明迪士尼可能在评估收购其技术、用户社区、知识产权或部分团队，而不是把Character.AI当作一家普通的软件公司直接投资。\n\n交易的具体结构和条件仍是关键。潜在交易可能只覆盖技术资产、用户生态或核心员工，债务和其他义务则留在破产重组程序中。因此，申请破产并不等于服务马上关闭，但它明确表明公司原有的融资和运营模式承受着严重压力。\n\n## 为什么重要\n\n许多消费级AI产品先凭增长、留存和用户时长获得高估值，却迟迟没有证明稳定的收入能力。Character.AI的困境，正好检验“聊天娱乐”能否覆盖持续模型推理、未成年人保护、内容治理和研发投入。若迪士尼推进交易，它可以获得成熟的角色互动社区和相关技术，但也必须处理未成年人使用、版权角色、内容审核以及模型输出风险。\n\n这起事件的影响不止于一家公司的命运。拥有强社区、但经济模型脆弱的消费级AI平台，可能加速进入并购市场；仍想独立发展的产品，则需要更明确的订阅、广告或授权收入。接下来最值得观察的，不是Character.AI还能保留多少用户，而是买方能否把这些用户转化为成本可控、风险可管理的产品。\n\n## 猫叔判断\n\n迪士尼看中的或许是Character.AI的角色社区，而不是聊天业务利润；这场破产让两者的差距彻底显形。",
-      "date_published": "2026-10-13T10:32:00.000Z",
-      "date_modified": "2026-10-13T13:00:05.790Z",
-      "tags": [
-        "产业",
-        "融资",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/character-ai-bankruptcy-disney-deal.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/character-ai-bankruptcy-disney-deal.html",
-        "source_published_at": "2026-10-13T10:32:00.000Z",
-        "site_published_at": "2026-10-13T13:00:05.790Z",
-        "sources": [
-          {
-            "title": "Character.AI files for bankruptcy",
-            "url": "https://www.theverge.com/ai-artificial-intelligence/1009802/character-ai-files-for-bankruptcy-disney"
           }
         ]
       }

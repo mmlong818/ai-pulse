@@ -13,6 +13,113 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/google-genie-4-world-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/google-genie-4-world-model.html",
+      "title": "Google DeepMind unveils Genie 4 world simulation model",
+      "summary": "Genie 4 generates interactive worlds with native audio, real-time steering and stronger physical continuity, but remains a limited research preview.",
+      "content_text": "## What happened\n\nGoogle DeepMind introduced Genie 4, a multimodal world model that generates interactive environments rather than isolated images or video clips. The system combines visual generation with ambient sound, music, dialogue and dynamic scene behavior. Users can steer the simulation in real time with natural-language instructions, changing weather, camera movement, objects or characters while the environment continues to evolve.\n\nGoogle says Genie 4 builds on the Gemini family. Gemini Omni provides much of the visual grounding, while other Gemini models contribute reasoning intended to preserve coherence across the simulated world. The company positions the system as a platform for robot and agent training, filmmaking, game design and interactive experiences.\n\nThe release is not a general launch. Genie 4 is currently a research preview for trusted testers, with broader access planned for Google AI Ultra subscribers through Project Genie and selected Gemini API and Google AI Studio partners. Google has also applied SynthID watermarking to generated audio and video.\n\n## Why it matters\n\nGenie 4 represents a strategic expansion of generative AI from content production into persistent simulation. If these systems become reliable, developers could create training environments, prototype physical interactions and build explorable media without manually authoring every asset or rule. That would place world models closer to the infrastructure layer for robotics and interactive software.\n\nThe limits are equally important. Google acknowledges that objects can drift, physical interactions may be inaccurate, text rendering remains weak and long sessions can lose continuity. The near-term question is therefore not whether Genie 4 looks convincing in short demonstrations, but whether its internal consistency is strong enough for repeatable training or production workflows.",
+      "date_published": "2026-10-27T16:01:00.000Z",
+      "date_modified": "2026-10-28T01:55:56.466Z",
+      "tags": [
+        "Models",
+        "AIGC",
+        "Research"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-genie-4-world-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-genie-4-world-model.html",
+        "source_published_at": "2026-10-27T16:01:00.000Z",
+        "site_published_at": "2026-10-28T01:55:56.466Z",
+        "sources": [
+          {
+            "title": "Genie 4: A new generation of world simulation",
+            "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/"
+          },
+          {
+            "title": "Google’s Genie 4 world model adds audio, more realistic worlds, and real-time steering",
+            "url": "https://techcrunch.com/2026/10/27/googles-genie-4-world-model-adds-audio-more-realistic-worlds-and-real-time-steering/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/google-sleep-framework-continual-learning.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/google-sleep-framework-continual-learning.html",
+      "title": "Google proposes sleep cycles for continual LLM learning",
+      "summary": "Google Research introduces a wake-and-sleep training loop that consolidates new knowledge into model parameters while targeting catastrophic forgetting.",
+      "content_text": "## What happened\n\nGoogle Research proposed the Sleep Framework, a continual-learning method designed to let large language models absorb new information over time without relying only on long prompts or repeatedly retraining the whole model. The framework divides operation into an active “wake” phase and an offline “sleep” phase.\n\nDuring wake periods, the model interacts with new information and stores it in short-term memory. During sleep, the system consolidates that information into longer-term parameters using low-rank Mixture-of-Experts memory blocks, knowledge distillation and reinforcement-learning-based refinement. A separate “dreaming” stage generates synthetic examples, routes them through different experts and selects training samples intended to improve reasoning.\n\nGoogle reports that the approach retained knowledge from contexts reaching up to 10 million tokens while reducing the risk of catastrophic forgetting. The framework is presented as an architectural and training recipe rather than a consumer product, and the company says it operates within a fixed model design with human-defined training rules.\n\n## Why it matters\n\nPersistent adaptation is one of the largest gaps between current language models and software that can function as a long-lived assistant or autonomous agent. Context windows provide temporary access to information, while conventional fine-tuning can damage older capabilities. A reliable middle layer between those extremes would make models easier to personalize and keep current after deployment.\n\nThe proposal also exposes a practical tension. Sleep cycles require additional computation, memory management and evaluation before updated parameters can be trusted. Synthetic “dreaming” may improve reasoning, but it can also amplify errors if the model rehearses its own mistakes. The reported 10-million-token retention result is promising, yet the decisive evidence will be whether knowledge remains accurate and stable after repeated update cycles in messy real-world environments.",
+      "date_published": "2026-10-27T17:35:00.000Z",
+      "date_modified": "2026-10-28T01:55:56.466Z",
+      "tags": [
+        "Research",
+        "Models",
+        "Safety"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-sleep-framework-continual-learning.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-sleep-framework-continual-learning.html",
+        "source_published_at": "2026-10-27T17:35:00.000Z",
+        "site_published_at": "2026-10-28T01:55:56.466Z",
+        "sources": [
+          {
+            "title": "The sleep framework: A new way for LLMs to retain knowledge in continual learning",
+            "url": "https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/liquid-ai-lfm3-open-models.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/liquid-ai-lfm3-open-models.html",
+      "title": "Liquid AI releases six open-weight LFM3 models",
+      "summary": "Liquid AI’s LFM3 family brings text, vision, audio and decision models to a shared 2B-class backbone designed for local specialization.",
+      "content_text": "## What happened\n\nLiquid AI released LFM3, a family of six open-weight models built around a shared backbone in the roughly 2-billion-parameter class. The initial lineup covers text, vision, audio, omni and decision-oriented models, with base and post-trained versions available through Hugging Face, Liquid AI’s Playground and its API.\n\nThe company says LFM3 was pretrained on 22 trillion tokens, followed by a 3.5-trillion-token mid-training stage, and uses a hybrid architecture intended to deliver more capacity than LFM2 without abandoning the efficiency advantages of smaller models. Liquid AI’s central proposition is specialization: developers can fine-tune the models locally, run them on a wider range of hardware and adapt them to narrow tasks rather than paying for a much larger general-purpose model.\n\nThe release was also made available through Ollama, which lowers the practical barrier for developers who want to test the models on local machines or deploy them in compact environments. The open-weight status matters because users can inspect, modify and post-train the models instead of relying solely on a hosted endpoint.\n\n## Why it matters\n\nLFM3 is not a frontier-scale benchmark event. Its importance lies in the direction of travel: multimodal capability is being packaged into small, composable models intended to live closer to the device, the private data and the application-specific workflow. That could be valuable for offline assistants, embedded systems, voice interfaces and specialized agents where latency, privacy or predictable cost matter more than broad general knowledge.\n\nThe unresolved issue is whether the family’s shared architecture produces meaningful cross-modal advantages in real deployments, or simply a convenient product bundle. Open weights and local fine-tuning create room for experimentation, but they do not by themselves establish that LFM3 can match larger models on difficult reasoning or production reliability.",
+      "date_published": "2026-10-27T17:04:00.000Z",
+      "date_modified": "2026-10-28T01:55:56.466Z",
+      "tags": [
+        "Models",
+        "Open Source",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/liquid-ai-lfm3-open-models.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/liquid-ai-lfm3-open-models.html",
+        "source_published_at": "2026-10-27T17:04:00.000Z",
+        "site_published_at": "2026-10-28T01:55:56.466Z",
+        "sources": [
+          {
+            "title": "Introducing LFM3: Every Modality for Specialized Intelligence",
+            "url": "https://www.liquid.ai/blog/lfm3"
+          },
+          {
+            "title": "Build specialized multimodal models with LFM3",
+            "url": "https://huggingface.co/blog/LiquidAI/lfm3"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/minimax-h3-community-video-audio.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/minimax-h3-community-video-audio.html",
       "title": "MiniMax H3 Community Builds Cut Video Generation Costs",
@@ -1785,113 +1892,6 @@
           {
             "title": "Step Code 0.1.4 update",
             "url": "https://x.com/StepFun_ai/status/2110717332301779186"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/google-singapore-on-device-scam-ai.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/google-singapore-on-device-scam-ai.html",
-      "title": "Google and Singapore Build On-Device Scam Detection Model",
-      "summary": "Google DeepMind and Singapore’s GovTech have built an on-device Gemma-based system for localized scam conversations; its rollout within messaging platforms and applications will be phased and consent-based.",
-      "content_text": "## A local defense against social engineering\n\nGoogle DeepMind and Singapore’s Government Technology Agency have collaborated on a privacy-preserving, on-device AI model designed to detect scam conversations before users transfer money or reveal credentials. The model has been fine-tuned on local scam conversations involving impersonation of public institutions, banks and local figures. Google DeepMind says rollout within applications will be carefully phased and developed with the Singapore Government; this should not be described as a completed nationwide deployment.\n\nWhen integrated into an application, the model can process conversation data directly on the device and trigger a real-time warning when it detects manipulative patterns. The system is intended to identify tactics such as impersonation and other localized social-engineering schemes.\n\n## Why the architecture matters\n\nThe model is designed to operate on-device rather than rely on continuous server-side inspection. That is important in encrypted messaging environments, where platforms may not be able to read conversations in the cloud. Processing locally can also reduce response time and limit the amount of sensitive material leaving the device.\n\nGoogle DeepMind says the deployment is designed to preserve privacy: the model analyzes conversations on the device, while the partners’ materials say the approach does not expose private conversations to Google or the Singapore Government through the deployment. The partners frame the project as a collaboration between government and model developers to improve protection against Singapore-specific scam patterns.\n\n## Why it matters\n\nThis is more than another fraud classifier: it tests whether small, specialized models can become a practical safety layer inside consumer devices. The unresolved questions are false positives, battery use, language coverage, adoption by applications and who controls future updates. If those issues are solved, on-device models could let messaging services add protection without weakening end-to-end privacy.",
-      "date_published": "2026-10-14T02:00:00.000Z",
-      "date_modified": "2026-10-14T13:00:05.228Z",
-      "tags": [
-        "Safety",
-        "Policy",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-singapore-on-device-scam-ai.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-singapore-on-device-scam-ai.html",
-        "source_published_at": "2026-10-14T02:00:00.000Z",
-        "site_published_at": "2026-10-14T13:00:05.228Z",
-        "sources": [
-          {
-            "title": "On-Device AI Against Scams: Google DeepMind & MDDI",
-            "url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/"
-          },
-          {
-            "title": "Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams",
-            "url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/meshy-3d-agent-leaves-beta.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/meshy-3d-agent-leaves-beta.html",
-      "title": "Meshy’s 3D Agent Opens to Free-Plan Users",
-      "summary": "Meshy’s conversational 3D Agent remains labeled beta but is now available on the Free plan, while paid plans unlock higher limits and advanced tools.",
-      "content_text": "## From prompt to production asset\n\nMeshy’s 3D Agent remains labeled beta, but it is now available on Meshy’s Free plan rather than being limited to Pro members and above. The product is aimed at a workflow that has traditionally required several separate tools: developing an idea, generating visual references, producing a 3D asset, refining it and exporting it for printing or game development.\n\nThe agent accepts natural-language instructions as well as photos and sketches. It can propose creative directions, generate batches of concepts, turn selected designs into models and continue refining them through conversation. Meshy says users can export results in formats including FBX, OBJ, GLB, USDZ, STL, BLEND, 3MF and DXF, covering game engines, digital-content tools and 3D-printing workflows.\n\n## Why this is more than another text-to-3D feature\n\nThe significant change is the product boundary. Earlier generative 3D tools typically stopped after producing a single asset. Meshy’s agent is designed to coordinate several steps and preserve context between them. That makes it closer to a specialized creative assistant than a prompt box attached to a model.\n\nThe company’s own product materials describe use cases ranging from indie games and product concepts to printable objects and batch asset creation. The same workflow can also isolate multiple objects from a reference image and prepare them as separate models, reducing some of the manual setup work that slows down small creative teams.\n\n## The open question\n\nMeshy’s current product page labels the 3D Agent as beta and says it is available on the Free plan. Users can create a free Meshy account and chat with the Agent at no cost, while credits are consumed by actions they run and paid plans provide higher limits and advanced tools. The beta will test whether conversational orchestration actually improves production speed rather than simply making demos easier. Quality consistency, topology, material accuracy and licensing remain important once assets enter commercial pipelines. Meshy’s strongest claim is therefore not that it can generate a model, but that it can connect ideation to a usable deliverable. The market will judge that claim in finished projects, not isolated previews.",
-      "date_published": "2026-10-14T08:25:00.000Z",
-      "date_modified": "2026-10-14T13:00:05.228Z",
-      "tags": [
-        "AIGC",
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/meshy-3d-agent-leaves-beta.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/meshy-3d-agent-leaves-beta.html",
-        "source_published_at": "2026-10-14T08:25:00.000Z",
-        "site_published_at": "2026-10-14T13:00:05.228Z",
-        "sources": [
-          {
-            "title": "Meshy AI announcement on 3D Agent availability",
-            "url": "https://x.com/MeshyAI/status/2110285892749541475"
-          },
-          {
-            "title": "Meshy 3D Agent: Conversational 3D Creation",
-            "url": "https://www.meshy.ai/features/3d-agent"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/character-ai-bankruptcy-disney-deal.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/character-ai-bankruptcy-disney-deal.html",
-      "title": "Character.AI Files for Bankruptcy as Disney Deal Emerges",
-      "summary": "Character.AI has filed for bankruptcy while pursuing a Disney transaction, exposing the financial strain facing consumer AI platforms built on costly engagement.",
-      "content_text": "Character.AI has filed for bankruptcy protection while seeking a transaction with Disney, according to The Verge. The development places one of the best-known consumer chatbot companies at the center of a restructuring process and highlights the difficulty of converting viral usage into a durable business.\n\n## What happened\n\nCharacter.AI was founded by former Google researchers and built a large audience around user-created characters and open-ended conversations. Its platform encouraged lengthy sessions, but those interactions also required substantial inference capacity. The company’s bankruptcy filing comes alongside discussions involving Disney, suggesting that the entertainment group may be evaluating a strategic transaction or asset purchase rather than treating Character.AI as a conventional standalone software investment.\n\nThe precise structure and conditions of the proposed deal remain important. A transaction could involve Character.AI’s technology, user community, intellectual property, or selected staff, while leaving creditors and other obligations inside a formal restructuring process. The bankruptcy filing therefore does not by itself mean that the service will disappear, but it does indicate that the company’s existing financing and operating model is under serious pressure.\n\n## Why it matters\n\nConsumer AI services have often been valued on growth, retention, and user attention before demonstrating reliable monetization. Character.AI’s predicament tests whether conversational entertainment can support the cost of always-on model serving, safety operations, moderation, and product development. Disney, if it proceeds, would gain access to a community and technology stack that could strengthen character-based interactive experiences, but it would also inherit difficult questions around minors, copyrighted characters, moderation, and model behavior.\n\nThe case is significant beyond one company because it may accelerate consolidation in consumer AI. Platforms with strong communities but weak economics could become acquisition targets, while independent services may need sharper subscription, advertising, or licensing models to survive. The next decisive fact will be whether a buyer can turn Character.AI’s engagement into a lower-risk, commercially defensible product rather than simply preserve its user numbers.\n\n## Uncle Cat take\n\nDisney may value Character.AI’s character community more than its chatbot margins; the bankruptcy makes that distinction impossible to ignore.",
-      "date_published": "2026-10-13T10:32:00.000Z",
-      "date_modified": "2026-10-13T13:00:05.790Z",
-      "tags": [
-        "Industry",
-        "Funding",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/character-ai-bankruptcy-disney-deal.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/character-ai-bankruptcy-disney-deal.html",
-        "source_published_at": "2026-10-13T10:32:00.000Z",
-        "site_published_at": "2026-10-13T13:00:05.790Z",
-        "sources": [
-          {
-            "title": "Character.AI files for bankruptcy",
-            "url": "https://www.theverge.com/ai-artificial-intelligence/1009802/character-ai-files-for-bankruptcy-disney"
           }
         ]
       }
