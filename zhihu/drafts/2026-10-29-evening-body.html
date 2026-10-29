@@ -1,0 +1,40 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>猫叔的AI资讯雷达｜10月29日晚报：扩散智能发布Clover，扩散模型进入Agent主场</title></head><body><p>这是「猫叔的AI资讯雷达」10月29日晚报。</p>
+<p>本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。</p>
+<p><strong>今晚重点</strong>：扩散智能推出35B级Clover预览版，瞄准代码、工具调用和浏览器Agent，并以并行生成争取更低延迟。</p>
+<h2>深度简报目录</h2>
+<ul><li>扩散智能发布Clover，扩散模型进入Agent主场</li><li>Kimi接入Gmail、Drive和Calendar，扩展工作助手边界</li></ul>
+<h2>快讯预览</h2>
+<ul><li>Infini-AI-Lab 发布开源 Hermit，通过适配器连接 AI 代理与多种执行环境。</li><li>Sakana AI 发布案例研究，利用 AI 分析社交媒体研判 2026 年美国中期选举得州参议院选情。</li><li>Block 发布仅用语音训练的全双工语音模型 Dessa，支持更自然的边听边说。</li><li>AssemblyAI 发布 TTS-1，面向语音代理提供每百万字符 15 美元、低于 100 毫秒延迟的语音合成。</li><li>英伟达发布开源权重 Nemotron 3.5 Transcribe，30B 参数，支持 40 种语言及说话人归属转写。</li><li>Ideogram 预览 Ideogram 4.5 的精准编辑功能，强调对生成图像进行更智能的局部修改。</li><li>由文远知行首位员工带队的景烁科技完成首轮数千万美元融资。</li><li>一款 350 亿参数扩散模型进入代理赛道，开发方称其速度约为 Jev 的两倍。</li><li>Luma 推广可改变广告外观或地点，并将成片适配不同格式与语言的工具。</li><li>Sakana AI 开放 Sakana API Platform 企业早期体验，为模型 API 增加组织管理能力。</li></ul>
+<h2>1. 扩散智能发布Clover，扩散模型进入Agent主场</h2>
+<p>扩散智能推出35B级Clover预览版，瞄准代码、工具调用和浏览器Agent，并以并行生成争取更低延迟。</p>
+<h3>扩散路线开始挑战Agent任务</h3>
+<p>扩散智能发布Clover-35B-A3B-Preview。这是一款总参数量350亿、每个Token激活约30亿参数的混合专家扩散语言模型，面向代码生成、网页构建和工具调用型Agent。与逐Token生成的自回归模型不同，Clover采用块扩散方式，通过多轮去噪并行更新一组Token。</p>
+<p>这次发布的价值在于，团队把扩散语言模型放进了实际Agent任务。演示中，Clover能够生成交互式HTML，通过WebMCP处理浏览器流程，并连续完成多步业务操作。在覆盖49项任务、每项尝试3次的完整评测中，团队称Clover的Agent执行耗时中位数为1.52秒，Gemini 3.6 Flash为8.86秒；WebMCP演示中的六项任务则由两款模型均成功完成。</p>
+<h3>速度之外，关键是能否记住上下文</h3>
+<p>Clover围绕块扩散重构了双向门控Delta网络。团队称，历史上下文会被压缩进递归状态，当前块内的Token则通过双向注意力交互。团队公布的成绩包括τ³ Overall 65.3、BFCL-v4 67.9、SWE-bench Verified 73.6和Terminal-Bench 2.1 51.7。</p>
+<p>不过，这些数据来自发布团队，并依赖特定硬件、提示词、工具和评测设置；模型也仍是Preview版本。长流程稳定性、结果可复现性，以及面对变化中的工具返回值时能否持续纠错，都还没有经过充分独立验证。如果Clover的速度优势能在更广泛测试中成立，扩散模型就可能从研究路线变成低延迟Agent的实际选项。</p>
+<h3>Uncle Cat判断</h3>
+<p>Clover真正值得盯的不是350亿参数，而是它能否连续完成六步工具操作仍不丢上下文；速度结论要等独立测试确认。</p>
+<p><strong>原始信源</strong></p>
+<ul><li><a href="https://diffuspace.ai/blog/clover-35b/">Clover-35B-A3B-Preview · DiffuSpace</a></li><li><a href="https://diffuspace.ai/register">Diffusion Intelligence</a></li></ul>
+<p>原文链接：<a href="https://mmlong818.github.io/ai-pulse/zh/articles/clover-diffusion-agent-model.html">扩散智能发布Clover，扩散模型进入Agent主场｜猫叔的AI资讯雷达</a></p>
+<hr>
+<h2>2. Kimi接入Gmail、Drive和Calendar，扩展工作助手边界</h2>
+<p>月之暗面宣布Kimi接入Gmail、Google Drive和Calendar，可汇总邮件、查找文件并协助安排日程。</p>
+<h3>Kimi开始进入用户的工作信息流</h3>
+<p>月之暗面宣布，Kimi现在可以连接Gmail、Google Drive和Google Calendar。用户可以让Kimi汇总邮件线程、查找云端文件，并结合日历协助规划一天的安排。这是本期亚洲时区窗口内较明确的新产品动作之一。</p>
+<p>这项更新的重要性不只在于新增三个入口，而在于Kimi的价值边界发生变化。独立聊天机器人主要依靠模型能力和对话体验竞争；连接后的助手则要理解邮件、文档、日程和待办事项之间的关系。换句话说，Kimi正在靠近“个人工作层”产品：检索和跨应用协作的重要性，开始接近纯粹的推理能力。</p>
+<h3>真正的门槛是授权和数据边界</h3>
+<p>跨应用上下文可以显著缩短日常工作流程。用户可以让Kimi找到某份项目文件，概括相关邮件，再根据日历冲突提出安排建议。但这种能力也带来更高的权限、隔离和确认要求。目前公布的信息尚未说明完整的授权机制、支持的账户类型、地区开放范围，也没有明确Kimi是能直接修改日程，还是只能给出建议。</p>
+<p>这并非细节问题。邮箱和日历记录着一个人的关系网络、承诺和未完成事项，远不只是普通工具调用。Kimi此次接入值得关注，原因在于它检验了中国AI产品能否围绕第三方服务，建立面向全球用户的生产力生态，而不仅是增加几个连接器。</p>
+<h3>Uncle Cat判断</h3>
+<p>三个连接器只是表面，真正稀缺的是邮箱、文件与时间的组合上下文；月之暗面还需证明这些上下文始终由用户掌控。</p>
+<p><strong>原始信源</strong></p>
+<ul><li><a href="https://x.com/Kimi_Moonshot/status/2115777746639196376">Kimi official announcement</a></li></ul>
+<p>原文链接：<a href="https://mmlong818.github.io/ai-pulse/zh/articles/kimi-workspace-connectors.html">Kimi接入Gmail、Drive和Calendar，扩展工作助手边界｜猫叔的AI资讯雷达</a></p>
+<h2>一句话快讯</h2>
+<ul><li>Infini-AI-Lab 发布开源 Hermit，通过适配器连接 AI 代理与多种执行环境。（<a href="https://www.marktechpost.com/2026/10/29/infini-ai-lab-hermit-harness-adapter-framework/">MarkTechPost</a>）</li><li>Sakana AI 发布案例研究，利用 AI 分析社交媒体研判 2026 年美国中期选举得州参议院选情。（<a href="https://x.com/SakanaAILabs/status/2115720393369473344">X / Sakana AI</a>）</li><li>Block 发布仅用语音训练的全双工语音模型 Dessa，支持更自然的边听边说。（<a href="https://www.marktechpost.com/2026/10/29/block-dessa-full-duplex-speech-model/">MarkTechPost</a>）</li><li>AssemblyAI 发布 TTS-1，面向语音代理提供每百万字符 15 美元、低于 100 毫秒延迟的语音合成。（<a href="https://www.assemblyai.com/blog/text-to-speech-api">AssemblyAI</a>）</li><li>英伟达发布开源权重 Nemotron 3.5 Transcribe，30B 参数，支持 40 种语言及说话人归属转写。（<a href="https://research.nvidia.com/labs/nemotron/NVIDIA-Nemotron-3.5-Transcribe/">NVIDIA Research</a>）</li><li>Ideogram 预览 Ideogram 4.5 的精准编辑功能，强调对生成图像进行更智能的局部修改。（<a href="https://x.com/ideogram_ai/status/2115652703028138063">X / Ideogram</a>）</li><li>由文远知行首位员工带队的景烁科技完成首轮数千万美元融资。（<a href="https://www.qbitai.com/2026/10/506281.html">量子位</a>）</li><li>一款 350 亿参数扩散模型进入代理赛道，开发方称其速度约为 Jev 的两倍。（<a href="https://www.qbitai.com/2026/10/505934.html">量子位</a>）</li><li>Luma 推广可改变广告外观或地点，并将成片适配不同格式与语言的工具。（<a href="https://x.com/LumaLabsAI/status/2115614350148816972">X / Luma AI</a>）</li><li>Sakana AI 开放 Sakana API Platform 企业早期体验，为模型 API 增加组织管理能力。（<a href="https://x.com/SakanaAILabs/status/2115611510051598623">X / Sakana AI</a>）</li></ul>
+<hr>
+<p>完整日报：<a href="https://mmlong818.github.io/ai-pulse/zh/day/2026-10-29.html">10月29日晚报网页</a></p>
+<p>历史存档：<a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">猫叔的AI资讯雷达存档</a></p>
+<p>说明：本文为 AI 自动采编稿，所有事实以文中原始信源为准；如发现时间或事实错误，会在网页版本中优先修正。</p></body></html>

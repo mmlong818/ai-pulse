@@ -1,102 +1,99 @@
-# 猫叔的AI资讯雷达｜10月28日晚报：蚂蚁开源 Ling-3.1 Flash，瞄准持续工作的个人智能体
+# 猫叔的AI资讯雷达｜10月29日晚报：扩散智能发布Clover，扩散模型进入Agent主场
 
-这是「猫叔的AI资讯雷达」10月28日晚报。
+这是「猫叔的AI资讯雷达」10月29日晚报。
 
 本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
 
-**今晚重点**：蚂蚁百灵发布 Ling-3.1 Flash 1019，强化长程推理、工具调用、跨会话记忆和复杂工作流执行能力。
+**今晚重点**：扩散智能推出35B级Clover预览版，瞄准代码、工具调用和浏览器Agent，并以并行生成争取更低延迟。
 
 ## 深度简报目录
 
-- 蚂蚁开源 Ling-3.1 Flash，瞄准持续工作的个人智能体
-- Genspark推出持久化机器环境，让智能体可长期运行
+- 扩散智能发布Clover，扩散模型进入Agent主场
+- Kimi接入Gmail、Drive和Calendar，扩展工作助手边界
 
 ## 快讯预览
 
-- Dreamina 发布网球主题 AI 僵尸短片，并附上教程与提示词供创作者复用。
-- Mistral 称 Voxtral Mini Transcribe 3 在 Voice Arena 的说话人分离与 ASR 榜单上排名第二。
-- OpenAI 介绍 Legora：其法律平台称，内部 NDA 审查占用时间已从约20%降至不到1%。
-- ElevenLabs 与 Asociación ELA 合作，帮助 ALS 患者、教授 Aníbal 重建声音以继续授课。
-- Anthropic 将取消新员工编程面试，更重视实际主动性和创业思维，而非传统履历。
-- Polymathic AI 与普林斯顿研究者发布 FlashMap，据称可让推测式 LLM 解码提速6.14倍。
-- Sakana AI 宣布将在日本 Gartner IT Symposium/Xpo 2026 展示 Marlin、Fugu 与 Namazu。
-- 一篇新论文提出同时衡量节省时间与遗漏缺陷，指出更快产出仍可能增加总工作量。
-- 一篇安全论文发现，事后型 MCP 提示注入在测试模型—服务器组合中的成功率达62.64%至100%。
-- 小米研究者介绍 OmniBrain-0：一种统一操控、导航、进度跟踪与故障恢复的轻量具身智能体。
+- Infini-AI-Lab 发布开源 Hermit，通过适配器连接 AI 代理与多种执行环境。
+- Sakana AI 发布案例研究，利用 AI 分析社交媒体研判 2026 年美国中期选举得州参议院选情。
+- Block 发布仅用语音训练的全双工语音模型 Dessa，支持更自然的边听边说。
+- AssemblyAI 发布 TTS-1，面向语音代理提供每百万字符 15 美元、低于 100 毫秒延迟的语音合成。
+- 英伟达发布开源权重 Nemotron 3.5 Transcribe，30B 参数，支持 40 种语言及说话人归属转写。
+- Ideogram 预览 Ideogram 4.5 的精准编辑功能，强调对生成图像进行更智能的局部修改。
+- 由文远知行首位员工带队的景烁科技完成首轮数千万美元融资。
+- 一款 350 亿参数扩散模型进入代理赛道，开发方称其速度约为 Jev 的两倍。
+- Luma 推广可改变广告外观或地点，并将成片适配不同格式与语言的工具。
+- Sakana AI 开放 Sakana API Platform 企业早期体验，为模型 API 增加组织管理能力。
 
-## 1. 蚂蚁开源 Ling-3.1 Flash，瞄准持续工作的个人智能体
+## 1. 扩散智能发布Clover，扩散模型进入Agent主场
 
-蚂蚁百灵发布 Ling-3.1 Flash 1019，强化长程推理、工具调用、跨会话记忆和复杂工作流执行能力。
+扩散智能推出35B级Clover预览版，瞄准代码、工具调用和浏览器Agent，并以并行生成争取更低延迟。
 
-蚂蚁集团百灵大模型团队于10月28日开源 Ling-3.1-flash-1019，并同步开放 Ling-3.1-flash-base，目标是让个人智能体能够跨会话持续推进任务，而不只是即时回答问题。
+### 扩散路线开始挑战Agent任务
 
-### 更新了什么
+扩散智能发布Clover-35B-A3B-Preview。这是一款总参数量350亿、每个Token激活约30亿参数的混合专家扩散语言模型，面向代码生成、网页构建和工具调用型Agent。与逐Token生成的自回归模型不同，Clover采用块扩散方式，通过多轮去噪并行更新一组Token。
 
-1019版本重点强化多步骤执行、工具使用和长期任务推进能力。百灵称，该版本在 Artificial Analysis Intelligence Index v4.3.2 中获得44分，比上一版提高3分；在知识工作、流程自动化、科学推理等测试中也有所提升，其中 AutomationBench-AA 从62%升至68%。
+这次发布的价值在于，团队把扩散语言模型放进了实际Agent任务。演示中，Clover能够生成交互式HTML，通过WebMCP处理浏览器流程，并连续完成多步业务操作。在覆盖49项任务、每项尝试3次的完整评测中，团队称Clover的Agent执行耗时中位数为1.52秒，Gemini 3.6 Flash为8.86秒；WebMCP演示中的六项任务则由两款模型均成功完成。
 
-基础模型采用 MIT 许可证开放，开发者可以继续预训练、适配私有知识和业务流程，或自行开展后训练。百灵披露，Ling-3.1 Flash 总参数量为5600亿，每个Token激活约250亿参数，宣传上下文长度最高达100万Token。其视觉语言版本目前已用于蚂蚁的灵光个人助理，但尚未公开发布。
+### 速度之外，关键是能否记住上下文
 
-### 为什么重要
+Clover围绕块扩散重构了双向门控Delta网络。团队称，历史上下文会被压缩进递归状态，当前块内的Token则通过双向注意力交互。团队公布的成绩包括τ³ Overall 65.3、BFCL-v4 67.9、SWE-bench Verified 73.6和Terminal-Bench 2.1 51.7。
 
-这次发布的价值，在于它与一个具体的亚洲产品周期直接相连：灵光近期升级后加入跨会话记忆、后台任务调度和独立云主机。要支撑这些功能，模型必须能够维持目标、处理过程中的失败，并判断何时调用工具。因此，公开权重提供的是持续运行的个人和企业智能体底座，而不只是又一个聊天模型。
+不过，这些数据来自发布团队，并依赖特定硬件、提示词、工具和评测设置；模型也仍是Preview版本。长流程稳定性、结果可复现性，以及面对变化中的工具返回值时能否持续纠错，都还没有经过充分独立验证。如果Clover的速度优势能在更广泛测试中成立，扩散模型就可能从研究路线变成低延迟Agent的实际选项。
 
-需要保留的疑问是可复现性。最亮眼的评测数据来自模型方，1019检查点本身也大到令本地部署门槛不低。它能否真正改变开发者选择，仍取决于推理生态、长时间运行稳定性，以及外部团队能否在百灵应用之外复现这些成绩。
+### Uncle Cat判断
+
+Clover真正值得盯的不是350亿参数，而是它能否连续完成六步工具操作仍不丢上下文；速度结论要等独立测试确认。
 
 **原始信源**
 
-- [智能指数得分创新高！蚂蚁百灵开源Ling-3.1-flash-1019](https://www.infoq.cn/article/wIuu0NSaLSaqJJpXVExD)
-- [Ling-3.1-flash-1019 on Hugging Face](https://huggingface.co/inclusionAI/Ling-3.1-flash-1019/tree/main)
-- [Ling-3.1 Flash model card](https://huggingface.co/inclusionAI/Ling-3.1-flash)
+- [Clover-35B-A3B-Preview · DiffuSpace](https://diffuspace.ai/blog/clover-35b/)
+- [Diffusion Intelligence](https://diffuspace.ai/register)
 
-原文链接：[蚂蚁开源 Ling-3.1 Flash，瞄准持续工作的个人智能体｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/ant-ling-31-flash-1019-open-source.html)
+原文链接：[扩散智能发布Clover，扩散模型进入Agent主场｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/clover-diffusion-agent-model.html)
 
 ---
 
-## 2. Genspark推出持久化机器环境，让智能体可长期运行
+## 2. Kimi接入Gmail、Drive和Calendar，扩展工作助手边界
 
-Genspark公布面向智能体的隔离机器环境，支持独立内核、持久状态、回滚和按运行时长计费。
+月之暗面宣布Kimi接入Gmail、Google Drive和Calendar，可汇总邮件、查找文件并协助安排日程。
 
-Genspark于10月28日公布了一套面向AI智能体的新执行模式：智能体不再只是共享应用中的短时进程，而是可以运行在拥有独立内核、文件系统、端口和开发工具的隔离机器环境中。
+### Kimi开始进入用户的工作信息流
 
-### 从会话走向机器
+月之暗面宣布，Kimi现在可以连接Gmail、Google Drive和Google Calendar。用户可以让Kimi汇总邮件线程、查找云端文件，并结合日历协助规划一天的安排。这是本期亚洲时区窗口内较明确的新产品动作之一。
 
-公司称，这类“Box”可以基于任意Docker镜像在不到半秒内启动，并保留依赖包和预热缓存。智能体可以按照任务需要持续运行，包括开发服务器、爬虫和持续数日的后台任务。智能体空闲时，Box会冻结，计算费用停止，但磁盘状态仍然保留。
+这项更新的重要性不只在于新增三个入口，而在于Kimi的价值边界发生变化。独立聊天机器人主要依靠模型能力和对话体验竞争；连接后的助手则要理解邮件、文档、日程和待办事项之间的关系。换句话说，Kimi正在靠近“个人工作层”产品：检索和跨应用协作的重要性，开始接近纯粹的推理能力。
 
-Genspark还强调了对长期运行智能体十分关键的控制能力：用户可以复制一个环境、连同记忆一起保存，或者回滚到此前的保存点。这样一来，智能体工作区就不再是一次性聊天会话，而成为可以恢复和复用的执行成果。
+### 真正的门槛是授权和数据边界
 
-### 为什么重要
+跨应用上下文可以显著缩短日常工作流程。用户可以让Kimi找到某份项目文件，概括相关邮件，再根据日历冲突提出安排建议。但这种能力也带来更高的权限、隔离和确认要求。目前公布的信息尚未说明完整的授权机制、支持的账户类型、地区开放范围，也没有明确Kimi是能直接修改日程，还是只能给出建议。
 
-这项产品透露出智能体基础设施正在发生变化。当智能体开始承担软件开发、研究和自动化任务，单次对话之外的运行环境就变成瓶颈：状态必须持续保存，失败需要可逆，后台执行也不能无休止地消耗资源。Genspark用隔离、冻结和回滚直接回应了这些问题。
+这并非细节问题。邮箱和日历记录着一个人的关系网络、承诺和未完成事项，远不只是普通工具调用。Kimi此次接入值得关注，原因在于它检验了中国AI产品能否围绕第三方服务，建立面向全球用户的生产力生态，而不仅是增加几个连接器。
 
-不过，目前公开信息仍主要是产品方描述，尚不足以证明它在密钥保护、网络滥用、多租户隔离和状态损坏恢复方面的可靠性。商业模式同样有待观察：如果活跃运行期间计算费用是主要成本，长时间任务可能迅速变贵。尽管如此，把智能体抽象成带生命周期管理的机器，影响力可能高于又一个聊天式代理界面。
+### Uncle Cat判断
+
+三个连接器只是表面，真正稀缺的是邮箱、文件与时间的组合上下文；月之暗面还需证明这些上下文始终由用户掌控。
 
 **原始信源**
 
-- [Genspark: A real machine, not a process](https://x.com/genspark_ai/status/2115412502293229757)
-- [Genspark: Fork and roll back](https://x.com/genspark_ai/status/2115412518025957769)
-- [Genspark: Runs as long as the task does](https://x.com/genspark_ai/status/2115412510069403911)
+- [Kimi official announcement](https://x.com/Kimi_Moonshot/status/2115777746639196376)
 
-原文链接：[Genspark推出持久化机器环境，让智能体可长期运行｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/genspark-persistent-agent-machines.html)
+原文链接：[Kimi接入Gmail、Drive和Calendar，扩展工作助手边界｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/kimi-workspace-connectors.html)
 
 ## 一句话快讯
-- Dreamina 发布网球主题 AI 僵尸短片，并附上教程与提示词供创作者复用。（[X / Dreamina AI](https://x.com/dreamina_ai/status/2115381504209793041)）
-- Mistral 称 Voxtral Mini Transcribe 3 在 Voice Arena 的说话人分离与 ASR 榜单上排名第二。（[X / Mistral AI](https://x.com/MistralAI/status/2115380768394379474)）
-- OpenAI 介绍 Legora：其法律平台称，内部 NDA 审查占用时间已从约20%降至不到1%。（[OpenAI](https://openai.com/index/legora-agentic-operating-system-for-legal-work/)）
-- ElevenLabs 与 Asociación ELA 合作，帮助 ALS 患者、教授 Aníbal 重建声音以继续授课。（[X / ElevenLabs](https://x.com/ElevenLabs/status/2115374286273950186)）
-- Anthropic 将取消新员工编程面试，更重视实际主动性和创业思维，而非传统履历。（[Latent Space](https://latent.space/p/ainews-anthropic-ends-coding-interviews/)）
-- Polymathic AI 与普林斯顿研究者发布 FlashMap，据称可让推测式 LLM 解码提速6.14倍。（[MarkTechPost](https://www.marktechpost.com/2026/10/28/flashmap-flow-map-speculative-decoding/)）
-- Sakana AI 宣布将在日本 Gartner IT Symposium/Xpo 2026 展示 Marlin、Fugu 与 Namazu。（[X / Sakana AI](https://x.com/SakanaAILabs/status/2115349465360126111)）
-- 一篇新论文提出同时衡量节省时间与遗漏缺陷，指出更快产出仍可能增加总工作量。（[arXiv](https://arxiv.org/abs/2610.35942)）
-- 一篇安全论文发现，事后型 MCP 提示注入在测试模型—服务器组合中的成功率达62.64%至100%。（[arXiv](https://arxiv.org/abs/2610.36108)）
-- 小米研究者介绍 OmniBrain-0：一种统一操控、导航、进度跟踪与故障恢复的轻量具身智能体。（[arXiv](https://arxiv.org/abs/2610.36013)）
-- Meshy 展示 Blender MCP：智能体可通过对话生成带材质模型、布置场景并完成渲染。（[X / Meshy AI](https://x.com/MeshyAI/status/2115289899008221243)）
-- Artificial Analysis 发布 Intelligence Index v5，加入更重的知识工作、编码任务及独立进步指数。（[X / Artificial Analysis](https://x.com/ArtificialAnlys/status/2115265198093435022)）
-- 甲骨文引入SambaNova SN50 RDU系统，为客户提供GPU之外更多元的AI算力组合。（[IT之家](https://www.ithome.com/1/018/744.htm)）
-- 甲骨文将谷歌TPU引入云平台，并增加ChatGPT集成，扩展企业AI的跨云选择。（[SiliconANGLE](https://siliconangle.com/2026/10/27/oracle-brings-googles-tpus-to-its-cloud-adds-chatgpt-integrations/)）
+- Infini-AI-Lab 发布开源 Hermit，通过适配器连接 AI 代理与多种执行环境。（[MarkTechPost](https://www.marktechpost.com/2026/10/29/infini-ai-lab-hermit-harness-adapter-framework/)）
+- Sakana AI 发布案例研究，利用 AI 分析社交媒体研判 2026 年美国中期选举得州参议院选情。（[X / Sakana AI](https://x.com/SakanaAILabs/status/2115720393369473344)）
+- Block 发布仅用语音训练的全双工语音模型 Dessa，支持更自然的边听边说。（[MarkTechPost](https://www.marktechpost.com/2026/10/29/block-dessa-full-duplex-speech-model/)）
+- AssemblyAI 发布 TTS-1，面向语音代理提供每百万字符 15 美元、低于 100 毫秒延迟的语音合成。（[AssemblyAI](https://www.assemblyai.com/blog/text-to-speech-api)）
+- 英伟达发布开源权重 Nemotron 3.5 Transcribe，30B 参数，支持 40 种语言及说话人归属转写。（[NVIDIA Research](https://research.nvidia.com/labs/nemotron/NVIDIA-Nemotron-3.5-Transcribe/)）
+- Ideogram 预览 Ideogram 4.5 的精准编辑功能，强调对生成图像进行更智能的局部修改。（[X / Ideogram](https://x.com/ideogram_ai/status/2115652703028138063)）
+- 由文远知行首位员工带队的景烁科技完成首轮数千万美元融资。（[量子位](https://www.qbitai.com/2026/10/506281.html)）
+- 一款 350 亿参数扩散模型进入代理赛道，开发方称其速度约为 Jev 的两倍。（[量子位](https://www.qbitai.com/2026/10/505934.html)）
+- Luma 推广可改变广告外观或地点，并将成片适配不同格式与语言的工具。（[X / Luma AI](https://x.com/LumaLabsAI/status/2115614350148816972)）
+- Sakana AI 开放 Sakana API Platform 企业早期体验，为模型 API 增加组织管理能力。（[X / Sakana AI](https://x.com/SakanaAILabs/status/2115611510051598623)）
 
 ---
 
-完整日报：[10月28日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-10-28.html)
+完整日报：[10月29日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-10-29.html)
 
 历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
 

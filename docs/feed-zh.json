@@ -13,6 +13,75 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/clover-diffusion-agent-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/clover-diffusion-agent-model.html",
+      "title": "扩散智能发布Clover，扩散模型进入Agent主场",
+      "summary": "扩散智能推出35B级Clover预览版，瞄准代码、工具调用和浏览器Agent，并以并行生成争取更低延迟。",
+      "content_text": "## 扩散路线开始挑战Agent任务\n\n扩散智能发布Clover-35B-A3B-Preview。这是一款总参数量350亿、每个Token激活约30亿参数的混合专家扩散语言模型，面向代码生成、网页构建和工具调用型Agent。与逐Token生成的自回归模型不同，Clover采用块扩散方式，通过多轮去噪并行更新一组Token。\n\n这次发布的价值在于，团队把扩散语言模型放进了实际Agent任务。演示中，Clover能够生成交互式HTML，通过WebMCP处理浏览器流程，并连续完成多步业务操作。在覆盖49项任务、每项尝试3次的完整评测中，团队称Clover的Agent执行耗时中位数为1.52秒，Gemini 3.6 Flash为8.86秒；WebMCP演示中的六项任务则由两款模型均成功完成。\n\n## 速度之外，关键是能否记住上下文\n\nClover围绕块扩散重构了双向门控Delta网络。团队称，历史上下文会被压缩进递归状态，当前块内的Token则通过双向注意力交互。团队公布的成绩包括τ³ Overall 65.3、BFCL-v4 67.9、SWE-bench Verified 73.6和Terminal-Bench 2.1 51.7。\n\n不过，这些数据来自发布团队，并依赖特定硬件、提示词、工具和评测设置；模型也仍是Preview版本。长流程稳定性、结果可复现性，以及面对变化中的工具返回值时能否持续纠错，都还没有经过充分独立验证。如果Clover的速度优势能在更广泛测试中成立，扩散模型就可能从研究路线变成低延迟Agent的实际选项。\n\n## Uncle Cat判断\n\nClover真正值得盯的不是350亿参数，而是它能否连续完成六步工具操作仍不丢上下文；速度结论要等独立测试确认。",
+      "date_published": "2026-10-29T10:18:28.000Z",
+      "date_modified": "2026-10-29T13:00:05.629Z",
+      "tags": [
+        "模型",
+        "Agent",
+        "研究"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/clover-diffusion-agent-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/clover-diffusion-agent-model.html",
+        "source_published_at": "2026-10-29T10:18:28.000Z",
+        "site_published_at": "2026-10-29T13:00:05.629Z",
+        "sources": [
+          {
+            "title": "Clover-35B-A3B-Preview · DiffuSpace",
+            "url": "https://diffuspace.ai/blog/clover-35b/"
+          },
+          {
+            "title": "Diffusion Intelligence",
+            "url": "https://diffuspace.ai/register"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/kimi-workspace-connectors.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/kimi-workspace-connectors.html",
+      "title": "Kimi接入Gmail、Drive和Calendar，扩展工作助手边界",
+      "summary": "月之暗面宣布Kimi接入Gmail、Google Drive和Calendar，可汇总邮件、查找文件并协助安排日程。",
+      "content_text": "## Kimi开始进入用户的工作信息流\n\n月之暗面宣布，Kimi现在可以连接Gmail、Google Drive和Google Calendar。用户可以让Kimi汇总邮件线程、查找云端文件，并结合日历协助规划一天的安排。这是本期亚洲时区窗口内较明确的新产品动作之一。\n\n这项更新的重要性不只在于新增三个入口，而在于Kimi的价值边界发生变化。独立聊天机器人主要依靠模型能力和对话体验竞争；连接后的助手则要理解邮件、文档、日程和待办事项之间的关系。换句话说，Kimi正在靠近“个人工作层”产品：检索和跨应用协作的重要性，开始接近纯粹的推理能力。\n\n## 真正的门槛是授权和数据边界\n\n跨应用上下文可以显著缩短日常工作流程。用户可以让Kimi找到某份项目文件，概括相关邮件，再根据日历冲突提出安排建议。但这种能力也带来更高的权限、隔离和确认要求。目前公布的信息尚未说明完整的授权机制、支持的账户类型、地区开放范围，也没有明确Kimi是能直接修改日程，还是只能给出建议。\n\n这并非细节问题。邮箱和日历记录着一个人的关系网络、承诺和未完成事项，远不只是普通工具调用。Kimi此次接入值得关注，原因在于它检验了中国AI产品能否围绕第三方服务，建立面向全球用户的生产力生态，而不仅是增加几个连接器。\n\n## Uncle Cat判断\n\n三个连接器只是表面，真正稀缺的是邮箱、文件与时间的组合上下文；月之暗面还需证明这些上下文始终由用户掌控。",
+      "date_published": "2026-10-29T12:08:00.000Z",
+      "date_modified": "2026-10-29T13:00:05.629Z",
+      "tags": [
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/kimi-workspace-connectors.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/kimi-workspace-connectors.html",
+        "source_published_at": "2026-10-29T12:08:00.000Z",
+        "site_published_at": "2026-10-29T13:00:05.629Z",
+        "sources": [
+          {
+            "title": "Kimi official announcement",
+            "url": "https://x.com/Kimi_Moonshot/status/2115777746639196376"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/ant-ling-31-flash-1019-open-source.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/ant-ling-31-flash-1019-open-source.html",
       "title": "蚂蚁开源 Ling-3.1 Flash，瞄准持续工作的个人智能体",
@@ -244,8 +313,8 @@
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-simulmt-open-source.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-simulmt-open-source.html",
       "title": "腾讯开源低延迟中英同传模型 Hy-SimulMT",
-      "summary": "腾讯混元开源 Hy-SimulMT，面向中英实时同声传译，主打约三秒延迟和可部署的开放模型能力。",
-      "content_text": "腾讯混元团队开源了 Hy-SimulMT，这是一款面向中英同声传译的模型，目标是在说话者尚未完成整句表达时就开始翻译。腾讯称其延迟约为三秒，应用方向更接近实时会议、活动和跨语言交流，而不是传统的“先转写、再翻译”流程。\n\n## 为什么值得关注\n\n同声传译的难点在于，系统必须判断什么时候已经听到了足够信息：等待更完整的上下文，准确率通常更高，但延迟会让对话变得不自然；过早开口则可能在中文和英文这种语序差异明显的语言之间产生误译。开放模型让开发者可以检查并调整这套延迟与准确率的取舍，而不必完全依赖封闭式接口。\n\n这次发布也显示，腾讯混元正在持续扩展模型、基准和基础设施的开源版图。Hy-SimulMT有望用于在线会议、双语客服、教育和国际活动。不过，目前公布的信息还不足以证明它在口音、噪声环境、多人抢话和专业术语场景中的稳定性。\n\n## 仍待验证的部分\n\n“约三秒延迟”本身并不能说明模型会多频繁地修正或放弃已经输出的译文，也无法回答它需要多少硬件资源，更不能证明多人交谈时仍能保持质量。这些运行细节，才会决定它是可直接使用的工程组件，还是主要服务于研究展示的开源项目。\n\n对开放模型生态而言，方向本身已经值得注意：实时语音系统正从托管式演示，走向可下载、可调优、能够适配不同语言和部署条件的模型组件。",
+      "summary": "腾讯混元开源 Hy-SimulMT，面向中英实时语音翻译，并在RealSI长音频基准上报告约3秒StreamLAAL。",
+      "content_text": "腾讯混元团队开源了 Hy-SimulMT，这是一款面向中英实时语音翻译的模型，目标是在说话者尚未完成整句表达时就开始翻译。腾讯在RealSI长音频基准上报告了约3秒的StreamLAAL。StreamLAAL衡量的是流式翻译延迟，并不等同于首次语音输出时间。\n\n## 为什么值得关注\n\n同声传译的难点在于，系统必须判断什么时候已经听到了足够信息：等待更完整的上下文，准确率通常更高，但延迟会让对话变得不自然；过早开口则可能在中文和英文这种语序差异明显的语言之间产生误译。开放模型让开发者可以检查并调整这套延迟与准确率的取舍，而不必完全依赖封闭式接口。\n\n根据项目仓库，Hy-SimulMT支持中英双向语音翻译，并提供实时声音克隆能力。它有望用于在线会议、双语客服、教育和国际活动。不过，目前公布的信息还不足以证明它在口音、噪声环境、多人抢话和专业术语场景中的稳定性。\n\n## 仍待验证的部分\n\nStreamLAAL约3秒本身并不能说明模型会多频繁地修正或放弃已经输出的译文，也无法回答它需要多少硬件资源，更不能证明多人交谈时仍能保持质量。项目仓库还特别说明，演示视频的播放时间不能被视为实时延迟测量。这些运行细节，才会决定它是可直接使用的工程组件，还是主要服务于研究展示的开源项目。\n\n对开放模型生态而言，方向本身已经值得注意：实时语音系统正从托管式演示，走向可下载、可调优、能够适配不同语言和部署条件的模型组件。",
       "date_published": "2026-10-26T12:52:00.000Z",
       "date_modified": "2026-10-26T13:00:05.094Z",
       "tags": [
@@ -1822,83 +1891,6 @@
           {
             "title": "Replit’s CEO says the future of work is the ‘self-driving company’",
             "url": "https://techcrunch.com/2026/10/16/replits-ceo-says-the-future-of-work-is-the-self-driving-company/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/amazon-bee-frontier-eclipse.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/amazon-bee-frontier-eclipse.html",
-      "title": "亚马逊推出两款Bee设备，个人AI接入购物场景",
-      "summary": "亚马逊发布Bee Frontier可穿戴设备和Bee Eclipse手机配件，将环境式AI连接到提醒、Alexa+和个性化购物。",
-      "content_text": "## 发生了什么\n\n亚马逊发布Bee Frontier个人AI可穿戴设备，并公布磁吸式手机配件Bee Eclipse，后者将在稍后上市。两款设备都在用户授权后监听对话，将音频处理为摘要、提醒和待办事项，并接入Alexa+，支持免手操作。亚马逊还加入Amazon.com集成，让助手能够根据个人语境提供购物服务。\n\nBee Frontier售价74.99美元，Bee Eclipse起售价99.99美元。配套的Bee Pro订阅每月11.99美元。亚马逊表示，音频会实时处理后删除；文字记录通过由用户设备控制的密钥加密，设备上的指示灯则会提醒用户录音已经开启。由于产品会在他人身边工作，这些隐私设计是其核心卖点。\n\n## 为什么重要\n\n这次发布说明亚马逊希望把环境式AI嵌入自己的零售和助手生态，而不是只做一个独立的录音整理工具。真正的战略变化在于把“记住”与“行动”连接起来：Bee可以记住谈话内容，通过Alexa+提示任务，并可能把一个意图直接转化为Amazon.com上的交易。这为亚马逊打通对话语境和电商提供了入口。\n\n但用户是否愿意接受身边长期存在的麦克风，仍是最大问题。授权提示、删除控制和加密记录可以降低风险，却无法消除社交压力，也不能保证系统不会误解上下文。手机、耳机和软件助手也已经覆盖了其中部分功能。Bee的重要性在于，它正在验证个人AI能否因为嵌入购物和家庭日常而变得更持久。",
-      "date_published": "2026-10-15T12:00:00.000Z",
-      "date_modified": "2026-10-15T13:00:04.643Z",
-      "tags": [
-        "产业",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/amazon-bee-frontier-eclipse.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/amazon-bee-frontier-eclipse.html",
-        "source_published_at": "2026-10-15T12:00:00.000Z",
-        "site_published_at": "2026-10-15T13:00:04.643Z",
-        "sources": [
-          {
-            "title": "Bee Frontier and Bee Eclipse: Introducing new AI wearable and phone attachment",
-            "url": "https://www.aboutamazon.com/news/devices/amazon-personal-ai-bee-frontier-bee-eclipse"
-          },
-          {
-            "title": "Amazon’s Bee launches two new personal AI devices",
-            "url": "https://techcrunch.com/2026/10/15/amazons-bee-launches-two-new-personal-ai-devices-starting-at-75/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-4-argon-global-app-launch.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-4-argon-global-app-launch.html",
-      "title": "谷歌全球开放Gemini 4 Argon，聊天应用转向任务代理",
-      "summary": "Gemini 4 Argon现已面向全球Pro和Ultra订阅者开放，谷歌正把前沿推理模型直接嵌入可委托执行任务的消费级应用。",
-      "content_text": "## 前沿模型进入消费级工作流\n\n谷歌已在全球Gemini应用中向Google AI Pro和Ultra订阅者开放Gemini 4 Argon，意味着这款模型不再只面向开发者和企业客户。此次上线把Argon定位为处理复杂多步骤工作的系统，而不只是回答简短问题的聊天模型。\n\nArgon同时被纳入谷歌的智能体产品路线。Gemini应用现在可以在普通聊天和任务执行之间切换，用户能够把工作交给模型，让它继续操作已连接的谷歌服务及合作伙伴应用。在macOS上，谷歌还把Antigravity的智能体编程界面直接整合进Gemini，缩短了“提出问题”和“委托完成工作”之间的距离。\n\n谷歌的发布材料称，Argon采用原生多模态稀疏混合专家架构，输入和输出合计上下文窗口最高达100万token。公司公布的测试覆盖编程、企业知识工作、科学、长上下文推理和电脑操作等领域。不过，模型卡也显示出能力并不均衡：Argon在部分测试中领先，同时在若干科学、终端操作和电脑使用评测中落后于竞争对手。\n\n因此，这次发布的意义不只是又一场基准测试竞争，而是谷歌的分发选择。谷歌把前沿模型放进一个已经连接搜索、办公软件和第三方服务的消费产品中，为模型能力通向实际操作提供了直接入口；订阅制则让谷歌可以在不向所有用户开放的情况下，管理高强度使用带来的成本和风险。\n\n## 为什么它是今日头条\n\n这是本期最重要的新闻，因为谷歌正把新一代前沿模型变成全球分发的个人代理，而不只是增加一个API接口。\n\n## 猫叔判断\n\n真正的变化在于从聊天转向无人值守任务；Argon能否稳定操作谷歌的40多个集成服务，比它是否横扫所有榜单更关键。",
-      "date_published": "2026-10-14T22:45:00.000Z",
-      "date_modified": "2026-10-15T01:00:05.643Z",
-      "tags": [
-        "模型",
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gemini-4-argon-global-app-launch.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-4-argon-global-app-launch.html",
-        "source_published_at": "2026-10-14T22:45:00.000Z",
-        "site_published_at": "2026-10-15T01:00:05.643Z",
-        "sources": [
-          {
-            "title": "Gemini 4 Argon is now available for everyone",
-            "url": "https://blog.google/intl/en-in/products/introducing-gemini-4-argon/"
-          },
-          {
-            "title": "Gemini 4 Argon — Model Card",
-            "url": "https://deepmind.google/models/model-cards/gemini-4-argon/"
-          },
-          {
-            "title": "Gemini 4 Argon is now available for developers",
-            "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/"
           }
         ]
       }

@@ -19,6 +19,71 @@
 
 ## Recent briefings
 
+### Clover-35B-A3B brings diffusion models into agent work
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/clover-diffusion-agent-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/clover-diffusion-agent-model.html
+- Source timestamp: 2026-10-29T10:18:28.000Z
+- Site timestamp: 2026-10-29T13:00:05.629Z
+- Tags: Models, Agents, Research
+
+Diffusion Intelligence released Clover-35B-A3B, an open preview that targets coding, tool use and browser agents with faster parallel generation.
+
+## A different route to agent speed
+
+Diffusion Intelligence has released Clover-35B-A3B-Preview, a 35-billion-parameter mixture-of-experts diffusion language model designed for coding, webpage generation and tool-using agents. About 3 billion parameters are activated per token. Unlike conventional autoregressive models, Clover uses block diffusion and repeated denoising to update groups of tokens in parallel.
+
+The release matters because the team is testing diffusion language models on practical agent workloads. In demonstrations, Clover generated interactive HTML, handled browser workflows and completed multi-step operations through WebMCP. In the company’s full evaluation of 49 tasks with three attempts per task, Clover’s median agent execution time was 1.52 seconds, compared with 8.86 seconds for Gemini 3.6 Flash. The company also reports that both models completed the six selected WebMCP tasks in the demonstration.
+
+## The unresolved engineering question
+
+Clover’s architecture combines block diffusion with a redesigned bidirectional Gated DeltaNet. The company says historical context is compressed into a recurrent state, while tokens within the current block interact through bidirectional attention. Reported scores include 65.3 on τ³ Overall, 67.9 on BFCL-v4, 73.6 on SWE-bench Verified and 51.7 on Terminal-Bench 2.1.
+
+Those numbers are company-reported and depend on the stated hardware, prompts, tools and evaluation setup. The model is still labeled a preview. Long-horizon reliability, reproducibility and performance under changing tool outputs are not yet independently established. If Clover’s speed survives broader testing, diffusion models could become a credible alternative for latency-sensitive agents rather than a research curiosity.
+
+## Uncle Cat take
+
+Clover’s strongest claim is not 35B parameters; it is finishing six tool steps without losing the thread. That execution stability deserves verification before the speed headline is believed.
+
+Chinese title: 扩散智能发布Clover，扩散模型进入Agent主场
+Chinese summary: 扩散智能推出35B级Clover预览版，瞄准代码、工具调用和浏览器Agent，并以并行生成争取更低延迟。
+
+Sources:
+  - Clover-35B-A3B-Preview · DiffuSpace: https://diffuspace.ai/blog/clover-35b/
+  - Diffusion Intelligence: https://diffuspace.ai/register
+
+### Kimi adds Gmail, Drive and Calendar connectivity
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/kimi-workspace-connectors.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/kimi-workspace-connectors.html
+- Source timestamp: 2026-10-29T12:08:00.000Z
+- Site timestamp: 2026-10-29T13:00:05.629Z
+- Tags: Agents, Industry
+
+Moonshot says Kimi can now work across Gmail, Google Drive and Calendar, turning the assistant from a chat interface into a cross-app work layer.
+
+## Kimi moves into the user’s work graph
+
+Moonshot has announced that Kimi can connect with Gmail, Google Drive and Google Calendar. The assistant can summarize email threads, search files and help plan a user’s day across the three services. The announcement was posted during the Asian daytime cycle, making it one of the clearest fresh product moves in this edition’s regional window.
+
+The feature is strategically important because it changes where Kimi can create value. A standalone chatbot competes mainly on model quality and conversation. A connected assistant competes on whether it can understand the relationships among messages, documents, schedules and pending actions. That puts Kimi closer to the emerging “personal work layer” category, where retrieval and action across applications matter as much as raw reasoning scores.
+
+## Integration is the product, permission is the risk
+
+Cross-application context can make routine tasks substantially shorter. A user could ask Kimi to locate a project document, summarize the related email discussion and identify calendar constraints before proposing a plan. The same workflow also creates a much higher bar for authorization, data isolation and action confirmation. The announcement does not yet establish the full permission model, supported account tiers, regional availability or whether Kimi can make changes directly or only prepare recommendations.
+
+That uncertainty matters. Access to a mailbox and calendar is not merely another tool call; it gives an assistant a live view of a person’s commitments, relationships and unfinished work. Kimi’s move therefore deserves attention less as a feature checklist than as a test of whether Chinese AI products can build globally relevant productivity ecosystems around third-party services.
+
+## Uncle Cat take
+
+The headline is three connectors, but the real asset is the combined context of inbox, files and time. Moonshot’s next challenge is proving that this context stays under user control.
+
+Chinese title: Kimi接入Gmail、Drive和Calendar，扩展工作助手边界
+Chinese summary: 月之暗面宣布Kimi接入Gmail、Google Drive和Calendar，可汇总邮件、查找文件并协助安排日程。
+
+Sources:
+  - Kimi official announcement: https://x.com/Kimi_Moonshot/status/2115777746639196376
+
 ### Ant Group open-sources Ling-3.1 Flash for persistent agents
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/ant-ling-31-flash-1019-open-source.html
@@ -219,24 +284,24 @@ Sources:
 - Site timestamp: 2026-10-26T13:00:05.094Z
 - Tags: Models, Open Source, AIGC
 
-Tencent has released Hy-SimulMT, an open Chinese-English simultaneous interpretation model designed to deliver accurate speech translation with roughly three seconds of latency.
+Tencent has released Hy-SimulMT, an open Chinese-English simultaneous speech translation model that reports roughly three seconds of StreamLAAL on the RealSI long-form benchmark.
 
-Tencent’s Hunyuan team has open-sourced Hy-SimulMT, a Chinese-English simultaneous interpretation model intended for conversations where translation must begin before a speaker has finished talking. The company says the system targets roughly three seconds of latency while preserving accuracy, placing it closer to live meeting and event use than conventional speech-to-text translation pipelines.
+Tencent’s Hunyuan team has open-sourced Hy-SimulMT, a Chinese-English simultaneous speech translation model intended for conversations where translation must begin before a speaker has finished talking. On the RealSI long-form audio benchmark, Tencent reports a StreamLAAL of approximately three seconds. StreamLAAL measures streaming translation lag and is not the same as the time to first speech output.
 
 ## Why the release matters
 
 Simultaneous interpretation is difficult because the model must decide when it has heard enough language to translate without waiting for a complete sentence. Waiting improves context but creates uncomfortable delays; speaking too early risks mistranslation, especially in Chinese-English exchanges where sentence structure and meaning can arrive late. An open implementation gives developers a way to inspect, adapt and deploy that trade-off rather than relying entirely on a closed API.
 
-The release is also notable because it comes from Tencent’s Hunyuan ecosystem, which has increasingly published models, benchmarks and infrastructure across language, multimodal and safety research. Hy-SimulMT could be useful in online meetings, bilingual customer service, education and international events, but the announcement does not yet establish performance across accents, noisy rooms, overlapping speakers or specialist terminology.
+The release supports bidirectional Chinese-English speech translation and includes real-time voice cloning, according to the project repository. Hy-SimulMT could be useful in online meetings, bilingual customer service, education and international events, but the announcement does not yet establish performance across accents, noisy rooms, overlapping speakers or specialist terminology.
 
 ## What remains unproven
 
-A latency claim alone does not show how often the system revises or abandons an early translation, how much hardware it needs, or whether its quality holds when speakers interrupt one another. Those operational details will determine whether the model becomes a practical building block or mainly a research release.
+A StreamLAAL result alone does not show how often the system revises or abandons an early translation, how much hardware it needs, or whether its quality holds when speakers interrupt one another. The repository also notes that demo playback timing should not be interpreted as a live latency measurement. Those operational details will determine whether the model becomes a practical building block or mainly a research release.
 
 For the wider open-model market, however, the direction is important: real-time speech systems are moving from hosted demonstrations toward downloadable components that regional developers can tune for their own languages and deployment constraints.
 
 Chinese title: 腾讯开源低延迟中英同传模型 Hy-SimulMT
-Chinese summary: 腾讯混元开源 Hy-SimulMT，面向中英实时同声传译，主打约三秒延迟和可部署的开放模型能力。
+Chinese summary: 腾讯混元开源 Hy-SimulMT，面向中英实时语音翻译，并在RealSI长音频基准上报告约3秒StreamLAAL。
 
 Sources:
   - Tencent Hunyuan Hy-SimulMT GitHub repository: https://github.com/Tencent-Hunyuan/Hy-SimulMT
@@ -978,72 +1043,27 @@ Sources:
   - Amazon is taking its biggest shot at Nvidia yet with new TorchNeuron dev tool: https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/
   - How Deepgram optimized voice AI at scale with AWS Trainium: https://aws.amazon.com/blogs/machine-learning/how-deepgram-optimized-voice-ai-at-scale-with-aws-trainium/
 
-### DeepSeek Open-Sources the Inference Stack Behind V4.1 Flash
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-opens-deepinfer-inference-stack.html
-- Source timestamp: 2026-10-20T09:30:00.000Z
-- Site timestamp: 2026-10-20T13:00:07.876Z
-- Tags: Open Source, Models, Industry
-
-DeepSeek released DeepInfer and deepseek-recipe, opening the serving software behind its latest model and lowering barriers to large-scale deployment.
-
-DeepSeek has open-sourced DeepInfer, an inference framework it says powers production services for DeepSeek-V4.1-Flash, alongside the supporting deepseek-recipe libraries. The release covers more than a model wrapper: it includes optimized kernels, mixture-of-experts parallelism, speculative decoding, asynchronous scheduling, deterministic sampling and structured-output controls.
-
-## What is included
-
-DeepInfer supports DeepSeek-V4.1-Flash and is designed for large-scale offline inference. Its feature set includes FlashMLA, DeepGEMM, DeepEP, TileKernels and custom TileLang kernels, plus attention data parallelism, context parallelism and expert-parallel load balancing. DeepSeek also exposes confidence-scheduled verification and bounded replay techniques intended to reduce decoding and prefill overhead.
-
-The repository supports NVIDIA SM100 GPUs and Huawei Ascend 950 NPUs. It is released under Apache 2.0, but it is not a complete managed serving platform: DeepSeek lists KV-cache management, full prefill/decode disaggregation and replica-level load balancing as components users still need to supply.
-
-DeepSeek also published a refreshed version of deepseek-recipe, its Rust and Python toolkit for converting common API formats into DeepSeek prompts and responses. The October 20 release adds model-version handling for V4 and V4.1, structured-output support, explicit special-token handling and prefix continuation.
-
-## Why it matters
-
-The move shifts attention from open model weights to the production machinery required to make them economically useful. DeepSeek is exposing implementation details that normally remain inside a lab’s serving stack, giving cloud providers, national-computing centers and self-hosting teams a clearer route to reproduce its throughput-oriented design. The practical limit is hardware and systems expertise: the repository still assumes recent accelerators and leaves several critical service layers outside the release. Even so, opening the stack could accelerate optimization around DeepSeek models and make inference infrastructure itself a more competitive open-source battleground.
-
-Chinese title: 深度求索开源支撑 V4.1 Flash 的推理栈
-Chinese summary: 深度求索开源 DeepInfer 推理框架及 deepseek-recipe，首次把最新模型背后的部分生产级服务技术交给社区。
-
-Sources:
-  - DeepSeek DeepInfer GitHub repository: https://github.com/deepseek-ai/DeepInfer
-  - DeepSeek deepseek-recipe changelog: https://github.com/deepseek-ai/deepseek-recipe/blob/main/CHANGELOG.md
-  - DeepSeek official announcement on X: https://x.com/deepseek_ai/status/2112476496283775135
-
-### OpenCode Console breach exposes AI API keys and costs
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/opencode-console-breach.html
-- Source timestamp: 2026-10-19T19:28:00.000Z
-- Site timestamp: 2026-10-20T01:00:06.421Z
-- Tags: Safety, Agents, Industry
-
-A breach affecting 1.4% of OpenCode Console users triggered unauthorized AI charges and exposed a difficult gap in defensive model access.
-
-## What happened
-
-OpenCode said attackers compromised an older system connected to OpenCode Console, its hosted service for developers who store provider credentials and run coding workflows. The company said 1.4% of Console users were affected and that the open-source OpenCode application and command-line tool were not compromised.
-
-Users reported sudden spending alerts and unauthorized charges across OpenAI, Anthropic and Google accounts. Some losses reached hundreds of dollars, with a few reports exceeding $1,000. Anthropic and Google blocked exposed keys, while OpenAI worked with OpenCode on access restoration and refunds. OpenCode advised affected customers to revoke and replace credentials directly with each provider.
-
-The incident became more complicated because OpenCode initially described it as a large-scale model-distillation attack, while outside observers said the evidence publicly available so far established a credential breach but not the attackers’ ultimate purpose. OpenCode also said the assault continued for roughly 48 hours, forcing its team to keep defensive agents operating around the clock.
-
-## Why it matters
-
-This is a security incident, but its significance extends beyond one developer platform. AI coding tools increasingly sit between users and several model providers, turning stored API keys into a concentrated target. A compromise can therefore create financial exposure across multiple vendors at once, even when the underlying coding tool remains intact.
-
-The episode also exposed a practical safety dilemma: models may refuse to inspect malicious payloads even when an incident-response team is investigating them. OpenCode later obtained access to OpenAI’s Daybreak Blue program, whose vetted models are designed to be more useful for defensive security work. That distinction could become an important operational requirement for companies deploying agentic coding systems.
-
-**Uncle Cat take:** OpenCode’s 1.4% figure understates the systemic risk: one console breach can turn three model providers into a single attacker-controlled billing surface.
-
-Chinese title: OpenCode控制台遭入侵，用户AI账户被刷费
-Chinese summary: 一次影响1.4%控制台用户的入侵导致API密钥暴露和异常账单，也暴露了防御团队调用模型时的现实障碍。
-
-Sources:
-  - Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts: https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/
-  - OpenCode: https://opencode.ai/
-
 ## Recent radar items
+
+### 2026-10-29
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-29.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-29.html
+
+- 2026-10-29T08:24:00Z | MarkTechPost | Infini-AI-Lab released Hermit, an open-source harness adapter framework designed to connect AI agents with diverse execution environments. | 中文：Infini-AI-Lab 发布开源 Hermit，通过适配器连接 AI 代理与多种执行环境。 | https://www.marktechpost.com/2026/10/29/infini-ai-lab-hermit-harness-adapter-framework/
+- 2026-10-29T07:50:00Z | MarkTechPost | Block unveiled Dessa, a full-duplex speech model trained exclusively on speech for more natural simultaneous listening and speaking. | 中文：Block 发布仅用语音训练的全双工语音模型 Dessa，支持更自然的边听边说。 | https://www.marktechpost.com/2026/10/29/block-dessa-full-duplex-speech-model/
+- 2026-10-29T07:28:00Z | AssemblyAI | AssemblyAI launched TTS-1, offering voice-agent speech at $15 per million characters with streaming latency below 100 milliseconds. | 中文：AssemblyAI 发布 TTS-1，面向语音代理提供每百万字符 15 美元、低于 100 毫秒延迟的语音合成。 | https://www.assemblyai.com/blog/text-to-speech-api
+- 2026-10-29T04:41:00Z | NVIDIA Research | NVIDIA released open-weight Nemotron 3.5 Transcribe, a 30-billion-parameter speech model supporting 40 languages and speaker-attributed transcription. | 中文：英伟达发布开源权重 Nemotron 3.5 Transcribe，30B 参数，支持 40 种语言及说话人归属转写。 | https://research.nvidia.com/labs/nemotron/NVIDIA-Nemotron-3.5-Transcribe/
+- 2026-10-29T03:27:00Z | 量子位 | Jishuo Technology, led by WeRide’s first employee, raised tens of millions of dollars in its first financing round. | 中文：由文远知行首位员工带队的景烁科技完成首轮数千万美元融资。 | https://www.qbitai.com/2026/10/506281.html
+- 2026-10-29T02:18:00Z | 量子位 | A 35-billion-parameter diffusion model entered the agent market, with its developers claiming roughly twice the speed of Jev. | 中文：一款 350 亿参数扩散模型进入代理赛道，开发方称其速度约为 Jev 的两倍。 | https://www.qbitai.com/2026/10/505934.html
+- 2026-10-29T01:07:00Z | X / Sakana AI | Sakana AI opened early enterprise access to its Sakana API Platform, adding organizational management around its models. | 中文：Sakana AI 开放 Sakana API Platform 企业早期体验，为模型 API 增加组织管理能力。 | https://x.com/SakanaAILabs/status/2115611510051598623
+- 2026-10-29T03:51:00Z | X / Ideogram | Ideogram previewed precise editing in Ideogram 4.5, emphasizing more intelligent localized changes to generated images. | 中文：Ideogram 预览 Ideogram 4.5 的精准编辑功能，强调对生成图像进行更智能的局部修改。 | https://x.com/ideogram_ai/status/2115652703028138063
+- 2026-10-29T01:19:00Z | X / Luma AI | Luma promoted tools that change an advertisement’s look or location and adapt the result across formats and languages. | 中文：Luma 推广可改变广告外观或地点，并将成片适配不同格式与语言的工具。 | https://x.com/LumaLabsAI/status/2115614350148816972
+- 2026-10-29T12:30:00Z | X / Kling AI | Kling showcased a new collection of action sequences created with Kling 4.0, highlighting movement, rhythm, and shot precision. | 中文：Kling 展示由 Kling 4.0 制作的新动作片段合集，突出运动、节奏与镜头精准度。 | https://x.com/Kling_ai/status/2115783207626891468
+- 2026-10-29T12:00:00Z | SiliconANGLE | Crux Labs raised more than $6 million to improve enterprise agents by incorporating human judgment into their workflows. | 中文：Crux Labs 融资超过 600 万美元，旨在把人类判断更深地嵌入企业代理工作流。 | https://siliconangle.com/2026/10/29/crux-labs-raises-over-6m-to-improve-enterprise-agents-with-human-judgment/
+- 2026-10-29T12:00:00Z | SiliconANGLE | Solink raised more than $100 million to extract business intelligence from security-camera footage with AI. | 中文：Solink 融资超过 1 亿美元，利用 AI 从安防摄像头视频中提取商业洞察。 | https://siliconangle.com/2026/10/29/solink-raises-more-than-100m-to-pull-business-data-from-security-cameras-with-ai/
+- 2026-10-29T08:20:00Z | X / Sakana AI | Sakana AI published a case study using AI analysis of social media to examine the 2026 U.S. midterm Senate race in Texas. | 中文：Sakana AI 发布案例研究，利用 AI 分析社交媒体研判 2026 年美国中期选举得州参议院选情。 | https://x.com/SakanaAILabs/status/2115720393369473344
+- 2026-10-29T12:00:00Z | X / Genspark | Genspark teased SecondBrain VoicePad, a voice-first interface intended to let users operate favorite AI tools through natural speech. | 中文：Genspark 预告 SecondBrain VoicePad，以语音优先方式让用户通过自然表达操作常用 AI 工具。 | https://x.com/genspark_ai/status/2115775667925385599
 
 ### 2026-10-28
 
@@ -1203,38 +1223,3 @@ Sources:
 - 2026-10-24T01:25:00Z | X @FireworksAI_HQ | Fireworks challenged builders to prove specialized open models can beat a closed frontier model on a task they understand best. | 中文：Fireworks挑战开发者证明：在自己最熟悉的任务上，专用开放模型可以击败闭源前沿模型。 | https://x.com/FireworksAI_HQ/status/2113804054841499675
 - 2026-10-24T01:25:00Z | X @FireworksAI_HQ | Fireworks scheduled an in-person November build event requiring teams of at least two participants and offering limited seats. | 中文：Fireworks安排了一场11月线下构建活动，要求至少两人组队，席位有限。 | https://x.com/FireworksAI_HQ/status/2113804061095190874
 - 2026-10-24T08:59:00Z | X @Hailuo_AI | Hailuo’s Chroma Awards call invites entries across film, advertising, music videos, games, and behind-the-scenes production. | 中文：海螺AI的Chroma Awards征集覆盖电影、广告、音乐视频、游戏及幕后制作等五类作品。 | https://x.com/Hailuo_AI/status/2113918379845406894
-
-### 2026-10-23
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-23.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-23.html
-
-- 2026-10-22T22:01:00Z | AnthropicAI on X | Anthropic says Claude can formally verify software at scale, targeting provable bug reduction beyond conventional testing. | 中文：Anthropic称Claude可大规模形式化验证软件，目标是超越传统测试、证明部分缺陷不存在。 | https://x.com/AnthropicAI/status/2113390212911083894
-- 2026-10-22T21:06:00Z | Replit on X | Replit introduced Monitoring Agent, which investigates production alerts, fixes validated issues, and deploys the changes autonomously. | 中文：Replit推出监控代理，可调查生产告警、修复并验证问题，再自主部署变更。 | https://x.com/Replit/status/2113376576230637629
-- 2026-10-22T19:07:00Z | TechCrunch AI | 1Password launched agentic sign-in, letting AI agents authenticate without exposing users’ passwords. | 中文：1Password推出代理登录机制，让AI代理完成身份验证而无需接触用户密码。 | https://techcrunch.com/2026/10/22/1password-launches-a-way-for-ai-agents-to-log-in-on-your-behalf-without-seeing-your-password/
-- 2026-10-22T22:43:00Z | SiliconANGLE AI | The Agentic AI Foundation added four open-source tools to strengthen shared infrastructure for agent developers. | 中文：Agentic AI Foundation新增四个开源工具，进一步扩充代理开发者共享基础设施。 | https://siliconangle.com/2026/10/22/agentic-ai-foundation-adds-four-more-open-source-ai-tools/
-- 2026-10-22T15:57:00Z | OpenAI on X | OpenAI and external researchers published findings from a deep-access pilot evaluating its internal AI monitoring system. | 中文：OpenAI与外部研究者公布内部AI监控系统深度访问试点的研究结果。 | https://x.com/OpenAI/status/2113298833392496746
-- 2026-10-22T18:05:00Z | Figma on X | Figma opened beta access to Code Layers, turning design layers into interactive code layers on the canvas. | 中文：Figma开启Code Layers公测，可把设计图层直接转换为画布上的交互代码图层。 | https://x.com/figma/status/2113330876407054503
-- 2026-10-22T16:03:00Z | Ideogram on X | Ideogram introduced Vector 1.0, generating editable SVGs with typography, shapes, colors, and gradients from prompts. | 中文：Ideogram发布Vector 1.0，可根据提示生成包含文字、形状、颜色和渐变的可编辑SVG。 | https://x.com/ideogram_ai/status/2113300317584720259
-- 2026-10-22T15:00:00Z | TripoAI on X | Tripo rebuilt its rigging and animation workflow with full-body and hand rigging plus engine-ready skeleton presets. | 中文：Tripo重做绑定与动画工作流，加入全身和手部绑定及适配游戏引擎的骨骼预设。 | https://x.com/tripoai/status/2113284253761106159
-- 2026-10-22T16:37:00Z | LlamaIndex on X | LlamaIndex introduced OCRia-1, a document-parsing model designed to improve extraction from complex business documents. | 中文：LlamaIndex推出OCRia-1文档解析模型，瞄准复杂商业文档的信息提取。 | https://x.com/llama_index/status/2113308699779633501
-- 2026-10-22T17:45:00Z | HeyGen on X | HeyGen said Video 1 ranked first in a blind Artificial Analysis test for text-to-video among evaluated general-purpose models. | 中文：HeyGen称Video 1在Artificial Analysis盲测中，跻身通用文生视频模型文本生成视频第一名。 | https://x.com/HeyGen/status/2113325916181102761
-- 2026-10-22T14:30:00Z | Google DeepMind | Google DeepMind released ForTy, a 10-meter map classifying natural, planted, and farmed forests over time. | 中文：Google DeepMind发布ForTy，以10米分辨率长期区分天然林、人工林和农场林。 | https://deepmind.google/blog/beyond-tree-cover-mapping-the-worlds-forest-types/
-- 2026-10-22T18:06:00Z | AWS Machine Learning | Amazon Polly announced a major upgrade to its generative text-to-speech engine. | 中文：Amazon Polly宣布对生成式文本转语音引擎进行重大升级。 | https://aws.amazon.com/blogs/machine-learning/amazon-polly-delivers-a-major-upgrade-to-its-generative-engine/
-- 2026-10-22T19:46:00Z | Cognition on X | Cognition open-sourced an agent plugin that helps secure systems against recent cybersecurity threats. | 中文：Cognition开源一个代理插件，帮助系统应对近期网络安全威胁。 | https://x.com/cognition/status/2113356319751119359
-- 2026-10-23T00:17:00Z | Artificial Analysis on X | Artificial Analysis released Coding Agent Index v2.0 with revised evaluations, new FrontierCode coverage, cost, and token-use metrics. | 中文：Artificial Analysis发布Coding Agent Index 2.0，更新评测、加入FrontierCode，并纳入成本与用量指标。 | https://x.com/ArtificialAnlys/status/2113424551396934134
-- 2026-10-23T02:06:00Z | X / MiniMax AI | MiniMax released M3.1 Flash weights, a 428B-parameter MoE model with 23B active parameters and a one-million-token context window. | 中文：MiniMax 开放 M3.1 Flash 权重：总参数4280亿、激活参数230亿，支持百万级上下文。 | https://x.com/MiniMax_AI/status/2113452026902589732
-- 2026-10-23T06:29:00Z | X / Hailuo AI | Hailuo launched MiniMax Design MCP, synchronizing creations into Design Canvas inside Codex and other agent environments. | 中文：海螺上线 MiniMax Design MCP，可在 Codex 等智能体环境中创作并自动同步到 Design Canvas。 | https://x.com/Hailuo_AI/status/2113518150440595501
-- 2026-10-23T06:05:00Z | Google Cloud Blog | Google Cloud introduced Agent Compute Engine, giving each AI agent an isolated microVM with integrated identity, governance, and auditability. | 中文：Google Cloud 推出 Agent Compute Engine，为每个 AI 智能体提供隔离微型虚拟机及身份、治理和审计能力。 | https://cloud.google.com/blog/topics/ai-infrastructure/introducing-agent-compute-engine-and-expanded-agent-governance
-- 2026-10-23T05:28:00Z | MarkTechPost | You.com launched an inference router covering 12 open-weight models with a claimed 99.9% uptime service-level agreement. | 中文：You.com 推出推理路由器，覆盖12个开放权重模型，并承诺99.9%正常运行时间。 | https://www.marktechpost.com/2026/10/22/you-com-launches-inference-router-open-weight-models-uptime-sla/
-- 2026-10-23T11:15:00Z | InfoQ 中文 | Gremlin made Foresight AI generally available, using supervised agents to predict failures, run reliability tests, propose fixes, and verify remediation. | 中文：Gremlin 正式推出 Foresight AI，以受监督智能体预测故障、执行可靠性测试、提出修复并验证结果。 | https://www.infoq.cn/article/2bKQkdiAcGEycHJLYPv5
-- 2026-10-23T08:58:00Z | MarkTechPost | TinyFish detailed a production agentic-search architecture built around planning, adaptive retrieval, evidence validation, observability, and explicit cost budgets. | 中文：TinyFish 详解生产级智能体搜索架构，强调规划、自适应检索、证据校验、可观测性和明确成本预算。 | https://www.marktechpost.com/2026/10/23/tinyfish-agentic-search-architecture-deep-research/
-- 2026-10-23T12:00:00Z | X / Kling AI | Kling highlighted creator workflows built with Kling 4.0, emphasizing cinematic detail, lifelike motion, and emotional everyday scenes. | 中文：可灵展示 Kling 4.0 创作者案例，突出电影级细节、逼真运动和日常场景中的情绪表现。 | https://x.com/Kling_ai/status/2113601348881002731
-- 2026-10-23T10:30:00Z | X / Meshy AI | Meshy showcased six creator-built worlds spanning survival islands, enchanted forests, yokai villages, fogbound towns, and AI classrooms. | 中文：Meshy 展示六个创作者生成世界，涵盖生存岛、魔法森林、妖怪村落、雾城和 AI 教室。 | https://x.com/MeshyAI/status/2113578682942120387
-- 2026-10-23T10:25:00Z | X / Recraft AI | Recraft demonstrated a workflow combining Recraft V4.1 image generation with Seedance 2.5 video animation for Halloween-themed product visuals. | 中文：Recraft 展示将 Recraft V4.1 图像生成与 Seedance 2.5 视频动画结合的万圣节产品视觉工作流。 | https://x.com/recraftai/status/2113577509644313081
-- 2026-10-23T08:46:00Z | X / Sakana AI Labs | Sakana AI presented its defense division’s role in dual-use security, focusing on Japan’s strengths, deployment challenges, and international policy analysis. | 中文：Sakana AI 介绍其防务部门在军民两用安全中的角色，聚焦日本优势、落地难题和国际政策分析。 | https://x.com/SakanaAILabs/status/2113552660100174172
-- 2026-10-23T11:39:00Z | InfoQ 中文 | iFlytek reported a new end-to-end interaction model, saying voice-model usage rose twentyfold and on-device capability reached about 70% of cloud performance. | 中文：科大讯飞发布新一代端到端交互模型，称语音大模型调用量增长20倍，端侧能力约达云端70%。 | https://www.infoq.cn/article/Md0kdMxGI6flIbZXH1yg
-- 2026-10-23T04:00:00Z | TechCrunch | inDrive plans 2027 robotaxi tests in Central Asia with Pony.ai and Nvidia, extending autonomous-vehicle pilots beyond major global markets. | 中文：网约车平台 inDrive 计划2027年与小马智行、英伟达在中亚测试自动驾驶出租车。 | https://techcrunch.com/2026/10/22/uber-rival-indrive-eyes-2027-robotaxi-tests-in-central-asia-with-pony-ai-and-nvidia/
-- 2026-10-23T02:01:00Z | SiliconANGLE | Zoom is repositioning from a video-conferencing company toward an AI data platform, according to a new strategy report. | 中文：Zoom 正从视频会议公司转向 AI 数据平台，最新战略报道披露了这一方向。 | https://siliconangle.com/2026/10/22/zooms-next-act-from-video-company-to-ai-data-platform/
-- 2026-10-23T09:05:00Z | InfoQ 中文 | A new context language-model report proposes autonomous context management to improve performance while reducing computation costs. | 中文：一项新研究提出上下文语言模型，通过自主管理上下文提升性能并降低计算成本。 | https://www.infoq.cn/article/Pwu4FNskSB2cbKV9BZKq
-- 2026-10-23T04:00:00Z | arXiv | Researchers released eight new robotics and agent papers, including work on future video representations, fault injection, memory placement, and embodied planning. | 中文：研究者集中发布多篇机器人与智能体论文，涵盖未来视频表征、故障注入、记忆位置和具身规划。 | https://arxiv.org/list/cs.RO/recent
