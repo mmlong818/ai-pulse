@@ -12,6 +12,7 @@ const COUNT = Number(process.argv[2] || 6);
 const RADAR_COUNT = Number(process.env.AIPULSE_RADAR_COUNT || 14);
 const WINDOW_H = Number(process.env.AIPULSE_WINDOW_HOURS || 24); // 采集时间窗（小时），与站点「过去 24 小时」口径一致
 const SKIP_RADAR = process.env.AIPULSE_SKIP_RADAR === '1';
+const SKIP_BRIEFINGS = process.env.AIPULSE_SKIP_BRIEFINGS === '1';
 // 按北京日期归档：早班（9:00）与晚班（21:00）落到同一天的文件里；补跑时服从指定刊期。
 const actualToday = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
 const forcedEdition = (process.env.AIPULSE_FORCE_EDITION || process.env.AIPULSE_EDITION || '').toLowerCase();
@@ -346,7 +347,7 @@ OUTPUT: ONLY a JSON object (no fence, no commentary):
   ]
 }`;
   const radar = await parseJson(await runEditor(prompt), '{', '}', 'radar');
-  const cutoff = new Date(Date.now() - Math.ceil(WINDOW_H / 24) * 86400000).toISOString().slice(0, 10);
+  const cutoff = new Date((editionEnd || new Date()).getTime() - Math.ceil(WINDOW_H / 24) * 86400000).toISOString().slice(0, 10);
   radar.items = (radar.items || []).filter((i) => i.text && i.url)
     .filter((i) => {
       if (i.published && i.published.slice(0, 10) < cutoff) { console.log(`  - 过滤旧闻(${i.published}): ${i.text_zh || i.text}`); return false; }
@@ -414,7 +415,7 @@ async function main() {
   headlines.sort((a, b) => b.date - a.date);
   console.log(`[generate] 一级信源候选 ${headlines.length} 条（含官方 X ${xItems.length} 条）${CUTOFF ? `（截止 ${process.env.AIPULSE_CUTOFF}）` : ''}`);
   const digest = digestOf(headlines) || '(feeds unavailable this run — rely on web search, verify dates strictly)';
-  const newTitles = await generateBriefings(skip, digest, coverage);
+  const newTitles = SKIP_BRIEFINGS ? [] : await generateBriefings(skip, digest, coverage);
   if (SKIP_RADAR) { console.log('[generate] 跳过雷达'); return console.log('[generate] 完成'); }
   try {
     await generateRadar([...skip.slice(-15), ...newTitles, ...(await recentRadarTexts())], digest);
