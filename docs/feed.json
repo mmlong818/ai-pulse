@@ -46,6 +46,43 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/deepseek-proactive-coding-agent.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/deepseek-proactive-coding-agent.html",
+      "title": "DeepSeek Open-Sources a Proactive Coding Agent Prototype",
+      "summary": "DeepSeek has released an MIT-licensed prototype that watches a repository, executes authorized coding tasks, and returns pull requests with limited human oversight.",
+      "content_text": "DeepSeek has open-sourced dsh-superagent, a research prototype designed to perform coding work proactively inside a single GitHub repository. Published as a plugin bundle for DeepSeek Harness, the system can monitor GitHub and optionally Feishu, accept requests from authorized users, create an isolated work item, run an agent session, and report the result back to the original conversation.\n\n## Attention is treated as a scarce resource\n\nThe project’s documentation frames the central problem differently from many coding-agent launches. Its goal is not simply to maximize tool calls or autonomous activity, but to reduce the amount of human attention required to supervise work. The agent is expected to stay quiet unless a rule or request gives it permission to act, and to involve a person when a decision or review is needed.\n\nThe prototype uses a dedicated working directory and a separate GitHub account for agent-authored branches and pull requests. Its deployment guide also emphasizes allowlists, explicit authorization, process isolation, and operational limits. That makes the repository useful as an inspectable reference for agent governance, even though DeepSeek warns that it is not production-ready and does not fully represent the company’s internal system.\n\n## A narrow release with broader implications\n\nThe published code is deliberately scoped to one repository rather than presented as a general-purpose autonomous engineer. It is also tied to DeepSeek Harness, so adoption requires a relatively involved setup, including Node.js, pnpm, GitHub CLI, tmux, Python, and a compatible model provider.\n\nThat constraint matters. The release is less significant as a turnkey product than as a public statement about how a major Chinese model lab thinks persistent coding agents should be authorized, isolated, and evaluated. If similar designs become common, the competitive boundary will move from chat-based code generation toward long-running software operations in which permission management and attention budgeting are core product features.\n\n**Uncle Cat take:** DeepSeek’s most consequential choice is the dedicated agent account and allowlist; autonomy without an identity boundary would be an operational liability, not a breakthrough.",
+      "date_published": "2026-11-01T07:47:00.000Z",
+      "date_modified": "2026-11-01T13:00:05.214Z",
+      "tags": [
+        "Agents",
+        "Open Source",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-proactive-coding-agent.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-proactive-coding-agent.html",
+        "source_published_at": "2026-11-01T07:47:00.000Z",
+        "site_published_at": "2026-11-01T13:00:05.214Z",
+        "sources": [
+          {
+            "title": "DeepSeek dsh-superagent prototype repository",
+            "url": "https://github.com/DeepSeek-ai/dsh-superagent-prototype"
+          },
+          {
+            "title": "dsh-superagent deployment guide",
+            "url": "https://github.com/DeepSeek-ai/dsh-superagent-prototype/blob/main/docs/006-deployment.md"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/openai-daybreak-training-data.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/openai-daybreak-training-data.html",
       "title": "OpenAI reverses course after Daybreak data-training backlash",
@@ -118,6 +155,46 @@
           {
             "title": "OpenAI working on new $30B raise at $1.25T valuation ahead of IPO",
             "url": "https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1.25t-valuation-ahead-of-ipo/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-algebraic-world-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-algebraic-world-model.html",
+      "title": "Tsinghua Researchers Build an Algebraic World Model",
+      "summary": "A Tsinghua team proposes turning observations into formal algebraic models, helping agents explain impossible tasks instead of relying only on trial and error.",
+      "content_text": "Researchers led by Yao Qizhi and Yuan Yang at Tsinghua University have introduced an Algebraic World Model, or AWM, aimed at helping AI move from recording observations to constructing and proving rules about an unfamiliar environment.\n\nThe work targets a recurring weakness in interactive agents. In benchmark environments with hidden rules, a model may collect accurate descriptions of what happened without identifying the underlying structure. That becomes especially problematic when the correct answer is that a task cannot be completed under the current conditions: a system may confidently reject the task while giving an incorrect explanation.\n\n## From exploration to formal structure\n\nAWM represents objects, relationships, and constraints in an algebraic form. The system first explores an environment, proposes hypotheses, and tests them through interaction. It then uses categorical constructions, including limits and colimits, to consolidate separate observations into a more coherent formal model. That model can be used to reason about consequences and produce proofs within the part of the environment it has observed.\n\nIn the reported experiments, an AWM built around an advanced language model identified an unsolvable game level after two attempts and established that adding one move would make it solvable. The team also reports a 99.9% score on the ARC-AGI-3 evaluation, completing 183 levels with an average action count equal to 43% of the human baseline.\n\n## What the result does not prove\n\nThe strongest limitation is also central to the method: a proof is only as reliable as the world model built from exploration. If important rules remain unseen, the system may produce a formally consistent but incomplete account of reality. The reported results therefore show a promising route toward structured reasoning, not autonomous scientific discovery in the broad sense.\n\nThe research matters because it addresses a practical failure mode for agents: confidently explaining the wrong reason for failure. A system that can identify missing conditions and prove local impossibility could be more useful in planning, robotics, and scientific experimentation than one that merely performs more trials.\n\n**Uncle Cat take:** AWM’s strongest result is not its 99.9% score; it is proving that one extra move changes an impossible level into a solvable one, if that generalizes beyond toy worlds.",
+      "date_published": "2026-11-01T08:02:00.000Z",
+      "date_modified": "2026-11-01T13:00:05.214Z",
+      "tags": [
+        "Research",
+        "Models"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-algebraic-world-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-algebraic-world-model.html",
+        "source_published_at": "2026-11-01T08:02:00.000Z",
+        "site_published_at": "2026-11-01T13:00:05.214Z",
+        "sources": [
+          {
+            "title": "QbitAI report on Tsinghua’s Algebraic World Model",
+            "url": "https://www.qbitai.com/2026/11/507031.html"
+          },
+          {
+            "title": "Algebraic World Model project page",
+            "url": "https://ephemeral6.github.io/awm-site/"
+          },
+          {
+            "title": "Algebraic World Model paper",
+            "url": "https://arxiv.org/abs/2610.40503"
           }
         ]
       }
@@ -201,9 +278,9 @@
     {
       "id": "https://mmlong818.github.io/ai-pulse/articles/claude-ultra-removes-five-hour-limit.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/claude-ultra-removes-five-hour-limit.html",
-      "title": "Anthropic removes Claude Ultra’s five-hour usage limit",
-      "summary": "Anthropic renames its highest Claude tier Ultra and removes the five-hour cap for verified users, while retaining weekly limits.",
-      "content_text": "## What happened\nAnthropic renamed its $100 Max 5x plan to Max and its $200 Max 20x plan to Ultra. The company also removed the five-hour session limit for verified Ultra accounts, beginning with most existing subscribers. Newer accounts may retain a temporary restriction until verification is complete.\n\nAnthropic’s current plan information says Ultra still has a weekly usage allowance and that usage across Claude, Claude Code and Claude Desktop counts toward applicable limits. The change therefore removes a rolling session barrier rather than creating unlimited access.\n\n## Why it matters\nThe five-hour cap had become a defining constraint for heavy Claude and Claude Code users, especially developers running long tasks. Removing it from the top tier changes the product from a burst-limited subscription into a service designed for sustained work, while preserving a weekly ceiling that protects capacity and economics.\n\nThe restructuring also sharpens Anthropic’s price ladder. Max remains a $100 plan with five-times Pro usage, while Ultra costs $200, offers ten-times Pro usage each week, and includes larger monthly API credits. That makes the most expensive consumer tier more clearly aimed at professional users who value continuity over a lower monthly bill.\n\nThe unresolved issue is demand management. If heavy users consume more of their weekly allowance in long-running coding sessions, Anthropic may face stronger pressure on inference capacity even without changing headline prices. The policy also makes verification and quota accounting central parts of the customer experience.\n\n## Uncle Cat take\nRemoving the timer is meaningful for sustained coding, but the unchanged weekly ceiling shows Anthropic is selling continuity, not infinite compute.",
+      "title": "Anthropic’s Claude Max plans still use five-hour usage limits",
+      "summary": "Anthropic当前官方资料仍将最高档套餐列为Max 5x和Max 20x，并说明Claude与Claude Code共享五小时用量限制；额外的周度或其他限制仍可能适用。",
+      "content_text": "## 当前公开状态\nAnthropic当前官方套餐说明仍将100美元方案列为Max 5x，将200美元方案列为Max 20x，并未显示最高档套餐已改名为Ultra。官方帮助文档仍以五小时窗口描述Max用户的用量限制，同时说明Claude与Claude Code的活动会共享适用额度。\n\n这意味着，至少从Anthropic目前公开的计划和帮助页面看，五小时用量窗口仍是Max用户需要考虑的产品约束。公开资料没有确认所谓“Ultra”改名或已验证账户取消五小时限制的普遍政策。\n\n## 为什么重要\n五小时限制仍是高频Claude和Claude Code用户体验中的核心变量，尤其会影响长时间运行的编码任务。即使Anthropic提高了某些产品或账户的额度，额度提升也不等于取消滚动窗口，更不等于无限使用。\n\n用户还需要区分不同产品的限制：Claude、Claude Code和桌面端活动可能计入共享或适用额度，而具体上限会随套餐、模型、工具使用、消息长度和系统负载变化。官方页面因此更适合作为当前状态的依据，第三方重置时间表不能单独证明套餐名称或限制已经改变。\n\n## Uncle Cat take\n截至目前，Anthropic公开资料支持的是Max 5x和Max 20x及五小时用量窗口，而不是“Ultra取消五小时限制”；连续编码体验是否改善，仍应以账户实际显示和官方更新为准。",
       "date_published": "2026-10-31T05:05:00.000Z",
       "date_modified": "2026-10-31T13:00:00.000Z",
       "tags": [
@@ -224,16 +301,16 @@
         "site_published_at": "2026-10-31T13:00:00.000Z",
         "sources": [
           {
+            "title": "Choosing a Claude Plan",
+            "url": "https://support.anthropic.com/en/articles/11049762-choosing-a-claude-ai-plan"
+          },
+          {
+            "title": "Using Claude Code with your Pro or Max plan",
+            "url": "https://support.anthropic.com/en/articles/11145838-using-claude-code-with-your-max-plan"
+          },
+          {
             "title": "Claude pricing and plans",
             "url": "https://claude.com/"
-          },
-          {
-            "title": "How do usage and length limits work?",
-            "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work"
-          },
-          {
-            "title": "Claude Max plans renamed Ultra, 5-hour limit removed",
-            "url": "https://limitdigest.com/resets/claude/"
           }
         ]
       }
@@ -1818,83 +1895,6 @@
           {
             "title": "Anthropic says its workforce has become less junior and is spending more time in meetings",
             "url": "https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/mit-ai-crystal-materials.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/mit-ai-crystal-materials.html",
-      "title": "MIT Model Links Crystal Structures With Materials Language",
-      "summary": "MIT researchers built a multimodal model that connects 3D atomic structures with language to identify promising materials for energy applications.",
-      "content_text": "MIT researchers have developed a multimodal AI model that combines three-dimensional atomic structures with natural-language descriptions of materials, according to a report published on October 18. The system is designed to connect how a crystal is arranged with what it does and where it could be used.\n\n## Giving materials models a geometric view\n\nMany language-based scientific systems can retrieve or summarize information from papers, but they do not directly represent the geometry of a material. The MIT approach aligns structural information with descriptions of properties, functions and applications, allowing the model to reason across both modalities.\n\nThe researchers trained the system using AI-generated narratives alongside existing scientific material. Those descriptions provide a bridge between a crystal’s geometry and concepts such as ionic conductivity, stability or suitability for a battery. In one reported test, the model was asked to identify solid-state lithium-ion battery electrolytes, and its leading results overlapped with candidates found independently through materials research.\n\nThe result is not a finished materials-discovery pipeline. Candidate predictions still need simulation, laboratory synthesis and experimental validation. The model can also inherit gaps or errors from the data used to construct its descriptions. A plausible textual explanation is useful for ranking hypotheses, but it is not evidence that a material will perform under manufacturing conditions.\n\n## Why it matters\n\nThe work represents a broader direction in scientific AI: models are beginning to treat physical structure as a first-class input rather than translating every problem into text. If the approach generalizes across crystals, catalysts and energy materials, it could make search spaces more manageable and help researchers compare candidates that are difficult to find through literature search alone. Its real value will depend on whether model-ranked materials survive the slower stages of computation, synthesis and testing.",
-      "date_published": "2026-10-18T05:01:00.000Z",
-      "date_modified": "2026-10-18T13:00:04.616Z",
-      "tags": [
-        "Research",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/mit-ai-crystal-materials.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/mit-ai-crystal-materials.html",
-        "source_published_at": "2026-10-18T05:01:00.000Z",
-        "site_published_at": "2026-10-18T13:00:04.616Z",
-        "sources": [
-          {
-            "title": "AI model gains 3D crystal understanding for materials discovery",
-            "url": "https://www.newsminimalist.com/articles/ai-model-gains-3d-crystal-understanding-for-materials-discovery-17be7a7b"
-          },
-          {
-            "title": "MIT News",
-            "url": "https://news.mit.edu/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/deepseek-v41-flash-1017.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/deepseek-v41-flash-1017.html",
-      "title": "DeepSeek Releases V4.1 Flash-1017 With Open Weights",
-      "summary": "DeepSeek has released a refreshed open-weight model and opened its search and fetch APIs, extending its push into low-cost agent infrastructure.",
-      "content_text": "## What happened\n\nDeepSeek released DeepSeek-V4.1-Flash-1017 on October 17, updating the company’s website and app models at the same time. The checkpoint is available through Hugging Face and ModelScope under the MIT license, making this a public weight release rather than an API-only refresh.\n\nThe model card describes the update as a targeted improvement over the earlier V4.1 Flash. DeepSeek reports gains across reasoning, coding, agentic workloads and visual benchmarks, while also claiming shorter outputs and faster task completion. Reported results include 42.3 on Terminal-Bench 4.0, 77.0 on DeepSWE v1.1, 68.2 on NL2Repo-Bench and 60.5 on Automation-Bench. The model retains a one-million-token context window and supports multimodal inputs.\n\n## Why the release matters\n\nThe release is strategically important because it combines three layers that are often announced separately: a frontier-scale model update, downloadable weights and an operational search stack. The model card lists roughly 763 billion total parameters, with the architecture designed to activate only a small fraction during token generation. That makes the system expensive to host, but its MIT licensing and local inference instructions give providers, researchers and large enterprises a path outside DeepSeek’s hosted service.\n\nDeepSeek also announced that its in-house Search and Fetch APIs are open to everyone. The company says its search engine handles hundreds of millions of requests daily and is designed to filter SEO spam, manipulated content and low-quality synthetic pages. The announcement does not independently verify those claims, and the practical quality of the service will depend on latency, regional availability and ranking accuracy.\n\nFor the open-model market, the key development is not a single benchmark jump. It is DeepSeek linking model weights, agent-oriented evaluation and first-party retrieval into one deployable stack. That could pressure providers that compete mainly on model access or inference pricing, although the 763-billion-parameter footprint leaves serious hardware and serving constraints unresolved.\n\n## Uncle Cat take\n\nDeepSeek’s strongest move is pairing MIT weights with Search and Fetch; the unresolved weakness is whether anyone outside hyperscale operators can serve a 763B checkpoint economically.",
-      "date_published": "2026-10-17T08:35:00.000Z",
-      "date_modified": "2026-10-17T13:00:04.453Z",
-      "tags": [
-        "Models",
-        "Open Source",
-        "Agents"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-v41-flash-1017.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v41-flash-1017.html",
-        "source_published_at": "2026-10-17T08:35:00.000Z",
-        "site_published_at": "2026-10-17T13:00:04.453Z",
-        "sources": [
-          {
-            "title": "DeepSeek API Docs Change Log",
-            "url": "https://api-docs.deepseek.com/updates/"
-          },
-          {
-            "title": "DeepSeek-V4.1-Flash-1017 Model Card",
-            "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
-          },
-          {
-            "title": "DeepSeek-V4.1-Flash-1017 Repository",
-            "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017/tree/main"
           }
         ]
       }

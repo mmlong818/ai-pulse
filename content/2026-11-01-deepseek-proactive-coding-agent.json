@@ -1,0 +1,32 @@
+{
+  "slug": "deepseek-proactive-coding-agent",
+  "title": "DeepSeek Open-Sources a Proactive Coding Agent Prototype",
+  "summary": "DeepSeek has released an MIT-licensed prototype that watches a repository, executes authorized coding tasks, and returns pull requests with limited human oversight.",
+  "body": "DeepSeek has open-sourced dsh-superagent, a research prototype designed to perform coding work proactively inside a single GitHub repository. Published as a plugin bundle for DeepSeek Harness, the system can monitor GitHub and optionally Feishu, accept requests from authorized users, create an isolated work item, run an agent session, and report the result back to the original conversation.\n\n## Attention is treated as a scarce resource\n\nThe project’s documentation frames the central problem differently from many coding-agent launches. Its goal is not simply to maximize tool calls or autonomous activity, but to reduce the amount of human attention required to supervise work. The agent is expected to stay quiet unless a rule or request gives it permission to act, and to involve a person when a decision or review is needed.\n\nThe prototype uses a dedicated working directory and a separate GitHub account for agent-authored branches and pull requests. Its deployment guide also emphasizes allowlists, explicit authorization, process isolation, and operational limits. That makes the repository useful as an inspectable reference for agent governance, even though DeepSeek warns that it is not production-ready and does not fully represent the company’s internal system.\n\n## A narrow release with broader implications\n\nThe published code is deliberately scoped to one repository rather than presented as a general-purpose autonomous engineer. It is also tied to DeepSeek Harness, so adoption requires a relatively involved setup, including Node.js, pnpm, GitHub CLI, tmux, Python, and a compatible model provider.\n\nThat constraint matters. The release is less significant as a turnkey product than as a public statement about how a major Chinese model lab thinks persistent coding agents should be authorized, isolated, and evaluated. If similar designs become common, the competitive boundary will move from chat-based code generation toward long-running software operations in which permission management and attention budgeting are core product features.\n\n**Uncle Cat take:** DeepSeek’s most consequential choice is the dedicated agent account and allowlist; autonomy without an identity boundary would be an operational liability, not a breakthrough.",
+  "title_zh": "DeepSeek开源主动编码智能体原型",
+  "summary_zh": "DeepSeek发布MIT许可的主动编码智能体原型，可监听代码仓库、执行授权任务，并在隔离环境中提交结果。",
+  "body_zh": "DeepSeek开源了主动编码智能体 dsh-superagent。这是一套面向单个 GitHub 仓库的研究原型，以插件形式运行在 DeepSeek Harness 中，可监听 GitHub，也可选接入飞书；获得授权后，它会创建工作项，在独立环境中执行编码任务，再把结果返回原始对话，通常以拉取请求形式交付。\n\n## 把人的注意力当作稀缺资源\n\n项目文档没有把重点放在尽可能多地调用工具或持续制造动作上，而是强调减少人工监督所需的注意力。智能体只有在规则或明确请求允许时才主动工作，涉及决策或审核时才打扰人类。\n\n原型要求使用独立工作目录和专用 GitHub 账号来创建分支、提交代码和发起拉取请求。部署文档还强调允许名单、明确授权、进程隔离与执行限制。虽然 DeepSeek 明确表示它不是可直接用于生产的产品，也不完全等同于内部系统，但这套代码仍提供了一个可检查的智能体治理样本。\n\n## 范围很窄，影响可能更大\n\n目前的发布版本只针对一个代码仓库，并未包装成通用自主程序员。同时，它与 DeepSeek Harness 紧密绑定，部署需要 Node.js、pnpm、GitHub CLI、tmux、Python 以及兼容的模型服务，使用门槛并不低。\n\n因此，它的意义不在于今天是否能成为现成产品，而在于一家主要模型实验室公开展示了如何设计长期运行的编码智能体：谁可以发起任务、智能体用什么身份行动、代码在哪个环境执行，以及何时必须让人介入。随着这类系统进入真实团队，竞争焦点可能从聊天式代码生成转向持续的软件运维能力。\n\n**猫叔判断：** 专用账号和授权名单比“主动写代码”更关键；没有身份边界的自治，只会把效率变成运维风险。",
+  "tags": [
+    "Agents",
+    "Open Source",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "DeepSeek dsh-superagent prototype repository",
+      "url": "https://github.com/DeepSeek-ai/dsh-superagent-prototype"
+    },
+    {
+      "title": "dsh-superagent deployment guide",
+      "url": "https://github.com/DeepSeek-ai/dsh-superagent-prototype/blob/main/docs/006-deployment.md"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "It is the clearest consequential release in this quiet Asian-cycle window because it exposes a major lab’s operating model for persistent coding agents.",
+  "featured_reason_zh": "在本期偏静的亚洲时段，它最值得关注，因为它公开了头部实验室对长期运行编码智能体的实际治理思路。",
+  "cat_take_zh": "专用账号和授权名单比主动写代码更关键",
+  "cat_take_en": "The dedicated identity and allowlist matter more than the agent’s ability to write code proactively.",
+  "date": "2026-11-01",
+  "published": "2026-11-01T07:47:00Z",
+  "published_at": "2026-11-01T13:00:05.214Z"
+}

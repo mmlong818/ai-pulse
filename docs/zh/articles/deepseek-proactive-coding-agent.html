@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepSeek开源主动编码智能体原型 — Uncle Cat AI Radar</title>
+<meta name="description" content="DeepSeek发布MIT许可的主动编码智能体原型，可监听代码仓库、执行授权任务，并在隔离环境中提交结果。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-proactive-coding-agent.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/deepseek-proactive-coding-agent.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-proactive-coding-agent.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/deepseek-proactive-coding-agent.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="DeepSeek开源主动编码智能体原型 — Uncle Cat AI Radar">
+<meta property="og:description" content="DeepSeek发布MIT许可的主动编码智能体原型，可监听代码仓库、执行授权任务，并在隔离环境中提交结果。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-proactive-coding-agent.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepSeek开源主动编码智能体原型 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="DeepSeek发布MIT许可的主动编码智能体原型，可监听代码仓库、执行授权任务，并在隔离环境中提交结果。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="DeepSeek开源主动编码智能体原型 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"DeepSeek开源主动编码智能体原型","item":"https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-proactive-coding-agent.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-proactive-coding-agent.html#article","headline":"DeepSeek开源主动编码智能体原型","description":"DeepSeek发布MIT许可的主动编码智能体原型，可监听代码仓库、执行授权任务，并在隔离环境中提交结果。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-proactive-coding-agent.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-proactive-coding-agent.html"},"datePublished":"2026-11-01T07:47:00.000Z","dateModified":"2026-11-01T13:00:05.214Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["Agent","开源","产业"],"keywords":"Agent, 开源, 产业","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://github.com/DeepSeek-ai/dsh-superagent-prototype","https://github.com/DeepSeek-ai/dsh-superagent-prototype/blob/main/docs/006-deployment.md"],"about":[{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"产业"}]}]}</script>
+</head>
+<body data-slug="deepseek-proactive-coding-agent" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/deepseek-proactive-coding-agent.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-11-01T07:47:00Z">2026年11月1日 15:47</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>DeepSeek开源主动编码智能体原型</h1>
+  <p class="standfirst">DeepSeek发布MIT许可的主动编码智能体原型，可监听代码仓库、执行授权任务，并在隔离环境中提交结果。</p>
+  <p>DeepSeek开源了主动编码智能体 dsh-superagent。这是一套面向单个 GitHub 仓库的研究原型，以插件形式运行在 DeepSeek Harness 中，可监听 GitHub，也可选接入飞书；获得授权后，它会创建工作项，在独立环境中执行编码任务，再把结果返回原始对话，通常以拉取请求形式交付。</p><h2>把人的注意力当作稀缺资源</h2><p>项目文档没有把重点放在尽可能多地调用工具或持续制造动作上，而是强调减少人工监督所需的注意力。智能体只有在规则或明确请求允许时才主动工作，涉及决策或审核时才打扰人类。</p><p>原型要求使用独立工作目录和专用 GitHub 账号来创建分支、提交代码和发起拉取请求。部署文档还强调允许名单、明确授权、进程隔离与执行限制。虽然 DeepSeek 明确表示它不是可直接用于生产的产品，也不完全等同于内部系统，但这套代码仍提供了一个可检查的智能体治理样本。</p><h2>范围很窄，影响可能更大</h2><p>目前的发布版本只针对一个代码仓库，并未包装成通用自主程序员。同时，它与 DeepSeek Harness 紧密绑定，部署需要 Node.js、pnpm、GitHub CLI、tmux、Python 以及兼容的模型服务，使用门槛并不低。</p><p>因此，它的意义不在于今天是否能成为现成产品，而在于一家主要模型实验室公开展示了如何设计长期运行的编码智能体：谁可以发起任务、智能体用什么身份行动、代码在哪个环境执行，以及何时必须让人介入。随着这类系统进入真实团队，竞争焦点可能从聊天式代码生成转向持续的软件运维能力。</p><p><strong>猫叔判断：</strong> 专用账号和授权名单比“主动写代码”更关键；没有身份边界的自治，只会把效率变成运维风险。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://github.com/DeepSeek-ai/dsh-superagent-prototype" rel="noopener" target="_blank">DeepSeek dsh-superagent prototype repository</a></li><li><a href="https://github.com/DeepSeek-ai/dsh-superagent-prototype/blob/main/docs/006-deployment.md" rel="noopener" target="_blank">dsh-superagent deployment guide</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-funding-target-cut.html">投资人趋于谨慎，OpenAI据报下调融资目标</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/ai-training-opt-out-gets-shared-robots-txt-signal.html">Google支持统一的robots.txt训练退出信号</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/claude-ultra-removes-five-hour-limit.html">Anthropic公开资料仍显示Claude Max存在五小时用量限制</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

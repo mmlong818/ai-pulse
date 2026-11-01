@@ -46,6 +46,43 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-proactive-coding-agent.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-proactive-coding-agent.html",
+      "title": "DeepSeek开源主动编码智能体原型",
+      "summary": "DeepSeek发布MIT许可的主动编码智能体原型，可监听代码仓库、执行授权任务，并在隔离环境中提交结果。",
+      "content_text": "DeepSeek开源了主动编码智能体 dsh-superagent。这是一套面向单个 GitHub 仓库的研究原型，以插件形式运行在 DeepSeek Harness 中，可监听 GitHub，也可选接入飞书；获得授权后，它会创建工作项，在独立环境中执行编码任务，再把结果返回原始对话，通常以拉取请求形式交付。\n\n## 把人的注意力当作稀缺资源\n\n项目文档没有把重点放在尽可能多地调用工具或持续制造动作上，而是强调减少人工监督所需的注意力。智能体只有在规则或明确请求允许时才主动工作，涉及决策或审核时才打扰人类。\n\n原型要求使用独立工作目录和专用 GitHub 账号来创建分支、提交代码和发起拉取请求。部署文档还强调允许名单、明确授权、进程隔离与执行限制。虽然 DeepSeek 明确表示它不是可直接用于生产的产品，也不完全等同于内部系统，但这套代码仍提供了一个可检查的智能体治理样本。\n\n## 范围很窄，影响可能更大\n\n目前的发布版本只针对一个代码仓库，并未包装成通用自主程序员。同时，它与 DeepSeek Harness 紧密绑定，部署需要 Node.js、pnpm、GitHub CLI、tmux、Python 以及兼容的模型服务，使用门槛并不低。\n\n因此，它的意义不在于今天是否能成为现成产品，而在于一家主要模型实验室公开展示了如何设计长期运行的编码智能体：谁可以发起任务、智能体用什么身份行动、代码在哪个环境执行，以及何时必须让人介入。随着这类系统进入真实团队，竞争焦点可能从聊天式代码生成转向持续的软件运维能力。\n\n**猫叔判断：** 专用账号和授权名单比“主动写代码”更关键；没有身份边界的自治，只会把效率变成运维风险。",
+      "date_published": "2026-11-01T07:47:00.000Z",
+      "date_modified": "2026-11-01T13:00:05.214Z",
+      "tags": [
+        "Agent",
+        "开源",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-proactive-coding-agent.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-proactive-coding-agent.html",
+        "source_published_at": "2026-11-01T07:47:00.000Z",
+        "site_published_at": "2026-11-01T13:00:05.214Z",
+        "sources": [
+          {
+            "title": "DeepSeek dsh-superagent prototype repository",
+            "url": "https://github.com/DeepSeek-ai/dsh-superagent-prototype"
+          },
+          {
+            "title": "dsh-superagent deployment guide",
+            "url": "https://github.com/DeepSeek-ai/dsh-superagent-prototype/blob/main/docs/006-deployment.md"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-daybreak-training-data.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-daybreak-training-data.html",
       "title": "OpenAI拟将Daybreak安全会话用于训练，用户要求单独退出",
@@ -118,6 +155,46 @@
           {
             "title": "OpenAI working on new $30B raise at $1.25T valuation ahead of IPO",
             "url": "https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1.25t-valuation-ahead-of-ipo/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-algebraic-world-model.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-algebraic-world-model.html",
+      "title": "清华团队提出代数世界模型，让智能体从探索走向证明",
+      "summary": "清华团队提出代数世界模型，让AI把观察结果抽象成可推理结构，并判断任务为何无解，而不只依赖试错。",
+      "content_text": "清华大学姚期智、袁洋团队提出“代数世界模型”（Algebraic World Model，AWM），试图让 AI 从记录现象进一步走向建立规则、解释因果和形式化证明。\n\n这项研究针对交互式智能体的一类常见缺陷：面对规则未知的环境，模型可能准确描述发生了什么，却没有真正理解背后的结构。尤其在任务本身无法完成时，系统可能一边自信地拒绝任务，一边给出错误的原因。\n\n## 从探索转向形式化结构\n\nAWM把环境中的对象、关系和约束转换为代数表达。系统先通过交互进行探索，提出假设并反复验证，再借助范畴论中的极限、余极限等结构，把零散观察整合成更一致的形式模型。随后，它可以在已观察到的世界范围内推演结果，并给出证明。\n\n论文报告称，基于高级语言模型构建的 AWM 在一个无解关卡中只尝试两次，就判断出当前步数无法完成，并证明只要增加一步即可通关。在 ARC-AGI-3 测试中，系统完成了 183 个关卡，得分 99.9%，平均动作数约为人类基准的 43%。\n\n## 仍不能等同于自主科学发现\n\n这套方法最大的边界也很明确：证明的可靠性取决于探索形成的世界模型。如果关键规则没有被观察到，系统依然可能得到一套内部自洽、但并不完整的解释。因此，现阶段结果更像是结构化推理的一条有前景路径，而不是广义上的自主科学发现。\n\n它的现实价值在于处理智能体的失败解释问题。能够指出缺少什么条件、并证明局部无解，或许比单纯增加试错次数更适合规划、机器人和科学实验场景。\n\n**猫叔判断：** AWM最有价值的不是99.9%分数，而是证明“多一步就能成功”；关键要看它能否离开玩具世界仍然成立。",
+      "date_published": "2026-11-01T08:02:00.000Z",
+      "date_modified": "2026-11-01T13:00:05.214Z",
+      "tags": [
+        "研究",
+        "模型"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-algebraic-world-model.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-algebraic-world-model.html",
+        "source_published_at": "2026-11-01T08:02:00.000Z",
+        "site_published_at": "2026-11-01T13:00:05.214Z",
+        "sources": [
+          {
+            "title": "QbitAI report on Tsinghua’s Algebraic World Model",
+            "url": "https://www.qbitai.com/2026/11/507031.html"
+          },
+          {
+            "title": "Algebraic World Model project page",
+            "url": "https://ephemeral6.github.io/awm-site/"
+          },
+          {
+            "title": "Algebraic World Model paper",
+            "url": "https://arxiv.org/abs/2610.40503"
           }
         ]
       }
@@ -201,9 +278,9 @@
     {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-ultra-removes-five-hour-limit.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/claude-ultra-removes-five-hour-limit.html",
-      "title": "Anthropic取消Claude Ultra五小时使用上限",
-      "summary": "Anthropic将最高档Claude套餐改名为Ultra，并为已验证用户取消五小时限制，但仍保留每周用量上限。",
-      "content_text": "## 发生了什么\nAnthropic将每月100美元的Max 5x改名为Max，将200美元的Max 20x改名为Ultra。同时，公司取消了已验证Ultra账户的五小时会话限制，大多数现有订阅者从当天开始获得这一变化。新账户在完成验证前可能仍有临时限制。\n\nAnthropic当前的套餐说明显示，Ultra仍受每周用量约束，而且Claude、Claude Code和Claude Desktop的使用量会计入适用额度。因此，变化取消的是滚动会话门槛，并不是无限使用。\n\n## 为什么重要\n五小时限制已经成为高频Claude和Claude Code用户的核心痛点，尤其影响需要连续运行较长任务的开发者。顶级套餐取消这一门槛后，更像是为持续工作设计的服务；同时保留每周上限，也让Anthropic能控制算力消耗和成本。\n\n套餐重构还拉开了价格梯度。Max仍为每月100美元、提供约五倍Pro用量；Ultra为200美元，每周用量达到约十倍Pro，并包含更高的月度API额度。最高档产品因此更明确地面向重视连续性而非低月费的专业用户。\n\n尚未解决的是需求管理。如果重度用户把更多额度集中在长时间编码任务上，Anthropic即使不调整标价，也可能承受更大的推理容量压力。验证流程和额度计算也会成为用户体验的重要部分。\n\n## Uncle Cat判断\n取消计时器确实利好连续编码，但每周上限没有变化，说明Anthropic卖的是不中断，不是无限算力。",
+      "title": "Anthropic公开资料仍显示Claude Max存在五小时用量限制",
+      "summary": "Anthropic当前官方资料仍将最高档套餐列为Max 5x和Max 20x，并说明Claude与Claude Code共享五小时用量限制；其他额外限制仍可能适用。",
+      "content_text": "## 当前公开状态\nAnthropic当前官方套餐说明仍将每月100美元方案列为Max 5x，将每月200美元方案列为Max 20x，并未显示最高档套餐已经改名为Ultra。官方帮助文档仍以五小时窗口描述Max用户的用量限制，同时说明Claude与Claude Code的活动会共享适用额度。\n\n因此，至少根据Anthropic目前公开的套餐和帮助页面，五小时用量窗口仍是Max用户需要考虑的产品约束。公开资料没有确认所谓“Ultra”改名，或已验证账户普遍取消五小时限制。\n\n## 为什么重要\n五小时限制仍是高频Claude和Claude Code用户体验中的核心变量，尤其会影响长时间运行的编码任务。即使Anthropic提高了某些产品或账户的额度，额度提升也不等于取消滚动窗口，更不等于无限使用。\n\n用户还需要区分不同产品的限制：Claude、Claude Code和桌面端活动可能计入共享或适用额度，而具体上限会随套餐、模型、工具使用、消息长度和系统负载变化。因此，官方页面比第三方重置时间表更适合作为当前状态依据。\n\n## Uncle Cat判断\n截至目前，Anthropic公开资料支持的是Max 5x、Max 20x和五小时用量窗口，而不是“Ultra取消五小时限制”；连续编码体验是否改善，仍应以账户实际显示和官方更新为准。",
       "date_published": "2026-10-31T05:05:00.000Z",
       "date_modified": "2026-10-31T13:00:00.000Z",
       "tags": [
@@ -224,16 +301,16 @@
         "site_published_at": "2026-10-31T13:00:00.000Z",
         "sources": [
           {
+            "title": "Choosing a Claude Plan",
+            "url": "https://support.anthropic.com/en/articles/11049762-choosing-a-claude-ai-plan"
+          },
+          {
+            "title": "Using Claude Code with your Pro or Max plan",
+            "url": "https://support.anthropic.com/en/articles/11145838-using-claude-code-with-your-max-plan"
+          },
+          {
             "title": "Claude pricing and plans",
             "url": "https://claude.com/"
-          },
-          {
-            "title": "How do usage and length limits work?",
-            "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work"
-          },
-          {
-            "title": "Claude Max plans renamed Ultra, 5-hour limit removed",
-            "url": "https://limitdigest.com/resets/claude/"
           }
         ]
       }
@@ -1818,83 +1895,6 @@
           {
             "title": "Anthropic says its workforce has become less junior and is spending more time in meetings",
             "url": "https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/mit-ai-crystal-materials.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/mit-ai-crystal-materials.html",
-      "title": "MIT 用多模态模型连接晶体结构与材料语言",
-      "summary": "MIT 研究人员打造连接三维原子结构与自然语言的多模态模型，用于筛选电池等能源领域的潜在材料。",
-      "content_text": "据10月18日发布的报道，MIT 研究人员开发了一种多模态人工智能模型，将材料的三维原子结构与自然语言描述结合起来，试图把晶体如何排列、具有什么性质以及适合哪些应用联系起来。\n\n## 让材料模型真正理解几何结构\n\n许多基于语言的科学模型能够检索或总结论文，却不能直接表示材料的空间几何。MIT 的方法将结构信息与材料性质、功能和用途的文字描述对齐，使模型能够同时处理两种模态。\n\n研究团队把人工智能生成的材料叙述与现有科学资料结合起来训练模型。这些叙述在晶体几何与离子导电性、稳定性、电池适用性等概念之间搭起了桥梁。在一项测试中，研究人员要求模型寻找固态锂离子电池电解质，模型排在前列的结果与独立材料研究发现的候选物出现重合。\n\n这还不是一条可以自动产出新材料的完整流水线。模型提出的候选仍要经过计算模拟、实验合成和性能验证；用于生成描述的数据也可能带来遗漏和错误。一个听起来合理的解释可以帮助研究人员排序假设，却不能证明材料在真实制造条件下有效。\n\n## 为什么重要\n\n这项工作代表了科学人工智能的一条重要方向：模型开始把物理结构作为第一类输入，而不是把所有问题先翻译成文本。如果这种方法能够推广到晶体、催化剂和能源材料，它或许能缩小搜索范围，帮助研究人员发现仅靠文献检索难以找到的候选。最终价值仍取决于这些候选能否通过计算、合成和实验测试的层层筛选。",
-      "date_published": "2026-10-18T05:01:00.000Z",
-      "date_modified": "2026-10-18T13:00:04.616Z",
-      "tags": [
-        "研究",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/mit-ai-crystal-materials.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/mit-ai-crystal-materials.html",
-        "source_published_at": "2026-10-18T05:01:00.000Z",
-        "site_published_at": "2026-10-18T13:00:04.616Z",
-        "sources": [
-          {
-            "title": "AI model gains 3D crystal understanding for materials discovery",
-            "url": "https://www.newsminimalist.com/articles/ai-model-gains-3d-crystal-understanding-for-materials-discovery-17be7a7b"
-          },
-          {
-            "title": "MIT News",
-            "url": "https://news.mit.edu/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v41-flash-1017.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v41-flash-1017.html",
-      "title": "DeepSeek发布V4.1 Flash-1017并开放模型权重",
-      "summary": "DeepSeek上线V4.1 Flash-1017开放权重版本，同时开放搜索与抓取API，把模型升级延伸到智能体基础设施。",
-      "content_text": "## 发生了什么\n\nDeepSeek于10月17日发布DeepSeek-V4.1-Flash-1017，并同步更新官网和App中的模型。新版本已在Hugging Face和ModelScope开放下载，采用MIT许可证，性质上是一次公开权重发布，而不只是API服务端更新。\n\n模型卡显示，这是一轮针对V4.1 Flash的定向升级。DeepSeek称，新模型在推理、编程、智能体任务和视觉基准上均有提升，同时减少输出长度、缩短任务完成时间。其公布的成绩包括Terminal-Bench 4.0的42.3分、DeepSWE v1.1的77.0分、NL2Repo-Bench的68.2分，以及Automation-Bench的60.5分。模型继续支持百万上下文和多模态输入。\n\n## 为什么值得关注\n\n这次发布的战略意义在于，DeepSeek把通常分开宣布的三层能力放到了一起：大规模模型升级、可下载权重，以及自有搜索基础设施。模型卡显示，该模型总参数规模约7630亿，但架构只在生成过程中激活其中一小部分。部署它仍然需要很强的硬件条件，不过MIT许可证和本地推理说明，为模型服务商、研究机构和大型企业提供了绕开DeepSeek托管服务的选择。\n\nDeepSeek还宣布向所有用户开放自研Search与Fetch API。公司称，其搜索引擎每天处理数亿次请求，并通过机制过滤SEO垃圾、搜索操纵和低质量生成内容。不过，这些规模和质量说法尚缺乏独立验证，服务的实际价值仍取决于延迟、地区可用性和排序准确率。\n\n对开放模型市场而言，真正重要的并非某一个基准分数的上涨，而是DeepSeek把模型权重、面向智能体的评测，以及第一方检索能力连接成了一套可部署方案。这可能进一步压低只靠模型访问或推理价格竞争的服务商空间；但7630亿参数的体量，也意味着经济可行的部署仍可能集中在超大规模算力运营者手中。\n\n## 猫叔判断\n\nDeepSeek把MIT权重和Search、Fetch放进同一套产品里，棋下得很重；但7630亿参数能否被大规模经济部署，仍是硬门槛。",
-      "date_published": "2026-10-17T08:35:00.000Z",
-      "date_modified": "2026-10-17T13:00:04.453Z",
-      "tags": [
-        "模型",
-        "开源",
-        "Agent"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-v41-flash-1017.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-v41-flash-1017.html",
-        "source_published_at": "2026-10-17T08:35:00.000Z",
-        "site_published_at": "2026-10-17T13:00:04.453Z",
-        "sources": [
-          {
-            "title": "DeepSeek API Docs Change Log",
-            "url": "https://api-docs.deepseek.com/updates/"
-          },
-          {
-            "title": "DeepSeek-V4.1-Flash-1017 Model Card",
-            "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
-          },
-          {
-            "title": "DeepSeek-V4.1-Flash-1017 Repository",
-            "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017/tree/main"
           }
         ]
       }
