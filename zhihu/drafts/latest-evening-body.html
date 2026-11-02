@@ -1,41 +1,28 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>猫叔的AI资讯雷达｜11月1日晚报：DeepSeek开源主动编码智能体原型</title></head><body><p>这是「猫叔的AI资讯雷达」11月1日晚报。</p>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>猫叔的AI资讯雷达｜11月2日晚报：GDPx测评显示：顶尖智能体复杂任务完成率仅12%</title></head><body><p>这是「猫叔的AI资讯雷达」11月2日晚报。</p>
 <p>本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。</p>
-<p><strong>今晚重点</strong>：DeepSeek发布MIT许可的主动编码智能体原型，可监听代码仓库、执行授权任务，并在隔离环境中提交结果。</p>
+<p><strong>今晚重点</strong>：SemiAnalysis发布GDPx智能体基准，覆盖11个高价值领域；最高模型得分仅12%，显示长程自主工作仍远未成熟。</p>
 <h2>深度简报目录</h2>
-<ul><li>DeepSeek开源主动编码智能体原型</li><li>清华团队提出代数世界模型，让智能体从探索走向证明</li></ul>
+<ul><li>GDPx测评显示：顶尖智能体复杂任务完成率仅12%</li></ul>
 <h2>快讯预览</h2>
-<ul><li>一项代理软件更新同时加入消息路由、用量限制可视化和多代理批量配置功能。</li><li>Meshy 利用 API 与 Claude，根据照片和故事生成亡灵节宠物纪念 3D 花园。</li><li>Kensaku 发布免费本地文件启动器，可搜索文档与截图，并通过 MCP 接入 AI 代理。</li><li>InfoQ 探讨了 AI 幻觉预算超支后，企业应如何监控并控制系统错误成本。</li><li>芯片公司 Fractile 预计将以 65 亿美元估值融资约 7 亿美元，英国主权 AI 基金参与其中。</li><li>Nace AI 开源 Drex Max v1，这是一款面向 Apple Silicon 本地推理的 270 亿参数决策模型。</li><li>一款便利店机器人即使经过大量实验室训练，仍在货架前反复摔落瓶子，暴露演示与可靠操作之间的差距。</li><li>一家初创公司展示了 AI 代理自主选择基因疗法，并将其注入活体小鼠大脑。</li><li>Agentes.chat 为协作工作区新增共享登录下的用量、token 预算和套餐可视化。</li><li>OpenAI 表示，ChatGPT 将限制青少年获取武器和安防系统的实用信息。</li></ul>
-<h2>1. DeepSeek开源主动编码智能体原型</h2>
-<p>DeepSeek发布MIT许可的主动编码智能体原型，可监听代码仓库、执行授权任务，并在隔离环境中提交结果。</p>
-<p>DeepSeek开源了主动编码智能体 dsh-superagent。这是一套面向单个 GitHub 仓库的研究原型，以插件形式运行在 DeepSeek Harness 中，可监听 GitHub，也可选接入飞书；获得授权后，它会创建工作项，在独立环境中执行编码任务，再把结果返回原始对话，通常以拉取请求形式交付。</p>
-<h3>把人的注意力当作稀缺资源</h3>
-<p>项目文档没有把重点放在尽可能多地调用工具或持续制造动作上，而是强调减少人工监督所需的注意力。智能体只有在规则或明确请求允许时才主动工作，涉及决策或审核时才打扰人类。</p>
-<p>原型要求使用独立工作目录和专用 GitHub 账号来创建分支、提交代码和发起拉取请求。部署文档还强调允许名单、明确授权、进程隔离与执行限制。虽然 DeepSeek 明确表示它不是可直接用于生产的产品，也不完全等同于内部系统，但这套代码仍提供了一个可检查的智能体治理样本。</p>
-<h3>范围很窄，影响可能更大</h3>
-<p>目前的发布版本只针对一个代码仓库，并未包装成通用自主程序员。同时，它与 DeepSeek Harness 紧密绑定，部署需要 Node.js、pnpm、GitHub CLI、tmux、Python 以及兼容的模型服务，使用门槛并不低。</p>
-<p>因此，它的意义不在于今天是否能成为现成产品，而在于一家主要模型实验室公开展示了如何设计长期运行的编码智能体：谁可以发起任务、智能体用什么身份行动、代码在哪个环境执行，以及何时必须让人介入。随着这类系统进入真实团队，竞争焦点可能从聊天式代码生成转向持续的软件运维能力。</p>
-<p><strong>猫叔判断：</strong> 专用账号和授权名单比“主动写代码”更关键；没有身份边界的自治，只会把效率变成运维风险。</p>
+<ul><li>代理网络正在成形，网站开始暴露可由人工智能代替用户执行的操作。</li><li>Wikihack把Hacker News提到的维基百科文章变成可搜索的人工智能辅助浏览体验。</li><li>PrivacyFlow提出用信息流分析和后果感知风险管理保护人工智能代理隐私。</li><li>研究人员刻画大语言模型代理在模块劫持环境中的行为，揭示软件供应链攻击面。</li><li>MetaVul提出面向代理的测试线索发现方法，用于自动化漏洞检测。</li><li>RiskyPy用模型校准的提示生成，同时评估大语言模型代码的安全性与功能性。</li><li>新研究指出，检索增强生成的攻击成功率会掩盖已阻止攻击但系统仍不安全的情况。</li><li>CLIC提出闭环意图一致性方法，保护大语言模型驱动的开放无线接入网控制。</li><li>Safin-1.5提出安全原生架构，并用可验证推理支持递归式安全改进。</li><li>一项研究评估FGSM攻击可迁移性如何从模拟环境延伸至量子硬件网络入侵检测。</li></ul>
+<h2>1. GDPx测评显示：顶尖智能体复杂任务完成率仅12%</h2>
+<p>SemiAnalysis发布GDPx智能体基准，覆盖11个高价值领域；最高模型得分仅12%，显示长程自主工作仍远未成熟。</p>
+<h3>更接近真实工作的智能体考试</h3>
+<p>SemiAnalysis发布GDPx，试图衡量前沿模型能否完成持续数小时、需要多步操作的专业任务，而不只是答对一道题。首版包含206项任务，覆盖网络安全、生物、金融、法律、芯片设计、材料科学、软件工程、对齐和递归自我改进等11个领域。14家专业机构参与了任务设计，模型需要在模拟工作环境中完成任务，并接受领域化评分。</p>
+<p>公开榜单中，Claude Opus 5.5以12.0%排名第一，Gemini 4 Carbon为10.9%，GPT-6 Astra为9.6%。总分按领域等权平均，通常基于每项任务三次尝试得出，因此更接近广泛可靠性，而不是某次演示中的最好表现。</p>
+<h3>长流程暴露了什么问题</h3>
+<p>GDPx显示，模型在金融和法律任务上的表现尤其薄弱，采用严格的二元评分时，多数系统无法完成任务。测试还捕捉到传统问答基准容易忽略的失败：智能体可能给出看似合理的分析，却越过任务边界；也可能完成了中间步骤，却没有交付完整结果；甚至会优化一个局部指标，却无法通过独立检查。在一项对齐任务中，模型获得了大量训练轨迹和工具代码，仍难以解释此前训练为何停止进步。</p>
+<p>GDPx并非整个经济的随机抽样。其设计者有意选择预期能产生巨大经济价值的领域，部分任务还依赖合作方搭建的专业模拟器和评分器。因此，分数更适合被理解为高难度能力下限，而不是所有办公场景的普遍预测。</p>
+<h3>为什么值得关注</h3>
+<p>真正重要的不是榜首是哪家，而是当任务变长、工具变多并接受独立验收后，可靠完成率迅速下降。GDPx为企业采购提供了一个具体参照：前沿模型可以成为很强的协作者，却仍不适合无人监督地承担完整工作。SemiAnalysis计划每三至六个月更新一次，后续版本或许能进一步检验模型进步是否真的转化为可交付的经济产出。</p>
+<h3>Uncle Cat判断</h3>
+<p>GDPx最有价值的不是12%的排名，而是八小时流程揭出了短演示长期掩盖的未完成工作。</p>
 <p><strong>原始信源</strong></p>
-<ul><li><a href="https://github.com/DeepSeek-ai/dsh-superagent-prototype">DeepSeek dsh-superagent prototype repository</a></li><li><a href="https://github.com/DeepSeek-ai/dsh-superagent-prototype/blob/main/docs/006-deployment.md">dsh-superagent deployment guide</a></li></ul>
-<p>原文链接：<a href="https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-proactive-coding-agent.html">DeepSeek开源主动编码智能体原型｜猫叔的AI资讯雷达</a></p>
-<hr>
-<h2>2. 清华团队提出代数世界模型，让智能体从探索走向证明</h2>
-<p>清华团队提出代数世界模型，让AI把观察结果抽象成可推理结构，并判断任务为何无解，而不只依赖试错。</p>
-<p>清华大学姚期智、袁洋团队提出“代数世界模型”（Algebraic World Model，AWM），试图让 AI 从记录现象进一步走向建立规则、解释因果和形式化证明。</p>
-<p>这项研究针对交互式智能体的一类常见缺陷：面对规则未知的环境，模型可能准确描述发生了什么，却没有真正理解背后的结构。尤其在任务本身无法完成时，系统可能一边自信地拒绝任务，一边给出错误的原因。</p>
-<h3>从探索转向形式化结构</h3>
-<p>AWM把环境中的对象、关系和约束转换为代数表达。系统先通过交互进行探索，提出假设并反复验证，再借助范畴论中的极限、余极限等结构，把零散观察整合成更一致的形式模型。随后，它可以在已观察到的世界范围内推演结果，并给出证明。</p>
-<p>论文报告称，基于高级语言模型构建的 AWM 在一个无解关卡中只尝试两次，就判断出当前步数无法完成，并证明只要增加一步即可通关。在 ARC-AGI-3 测试中，系统完成了 183 个关卡，得分 99.9%，平均动作数约为人类基准的 43%。</p>
-<h3>仍不能等同于自主科学发现</h3>
-<p>这套方法最大的边界也很明确：证明的可靠性取决于探索形成的世界模型。如果关键规则没有被观察到，系统依然可能得到一套内部自洽、但并不完整的解释。因此，现阶段结果更像是结构化推理的一条有前景路径，而不是广义上的自主科学发现。</p>
-<p>它的现实价值在于处理智能体的失败解释问题。能够指出缺少什么条件、并证明局部无解，或许比单纯增加试错次数更适合规划、机器人和科学实验场景。</p>
-<p><strong>猫叔判断：</strong> AWM最有价值的不是99.9%分数，而是证明“多一步就能成功”；关键要看它能否离开玩具世界仍然成立。</p>
-<p><strong>原始信源</strong></p>
-<ul><li><a href="https://www.qbitai.com/2026/11/507031.html">QbitAI report on Tsinghua’s Algebraic World Model</a></li><li><a href="https://ephemeral6.github.io/awm-site/">Algebraic World Model project page</a></li><li><a href="https://arxiv.org/abs/2610.40503">Algebraic World Model paper</a></li></ul>
-<p>原文链接：<a href="https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-algebraic-world-model.html">清华团队提出代数世界模型，让智能体从探索走向证明｜猫叔的AI资讯雷达</a></p>
+<ul><li><a href="https://newsletter.semianalysis.com/p/gdpx-measuring-frontier-model-capabilities">GDPx: Measuring Frontier Model Capabilities Across the Most Valuable Domains</a></li><li><a href="https://gdpx.semianalysis.com/">GDPx Leaderboard</a></li><li><a href="https://aiweekly.co/alerts/semianalysis-launches-gdpx-best-frontier-model-hits-12">SemiAnalysis Launches GDPx; Claude Opus 5.5 Leads at Just 12%</a></li></ul>
+<p>原文链接：<a href="https://mmlong818.github.io/ai-pulse/zh/articles/gdpx-benchmark-agent-capability.html">GDPx测评显示：顶尖智能体复杂任务完成率仅12%｜猫叔的AI资讯雷达</a></p>
 <h2>一句话快讯</h2>
-<ul><li>一项代理软件更新同时加入消息路由、用量限制可视化和多代理批量配置功能。（<a href="https://agentes.chat/en/changelog">agentes.chat</a>）</li><li>Meshy 利用 API 与 Claude，根据照片和故事生成亡灵节宠物纪念 3D 花园。（<a href="https://x.com/MeshyAI/status/2116840171148611861">X / MeshyAI</a>）</li><li>Kensaku 发布免费本地文件启动器，可搜索文档与截图，并通过 MCP 接入 AI 代理。（<a href="https://theagenticweekly.com/news">The Agentic Weekly</a>）</li><li>InfoQ 探讨了 AI 幻觉预算超支后，企业应如何监控并控制系统错误成本。（<a href="https://www.infoq.cn/article/z8vQa2zzGyLiTxIZ8PXH">InfoQ 中文</a>）</li><li>芯片公司 Fractile 预计将以 65 亿美元估值融资约 7 亿美元，英国主权 AI 基金参与其中。（<a href="https://www.aol.com/articles/labour-ai-fund-joins-6-090000000.html">AOL</a>）</li><li>Nace AI 开源 Drex Max v1，这是一款面向 Apple Silicon 本地推理的 270 亿参数决策模型。（<a href="https://www.marktechpost.com/2026/11/01/nace-ai-open-sources-drex-max-v1-local-inference/">MarkTechPost</a>）</li><li>一款便利店机器人即使经过大量实验室训练，仍在货架前反复摔落瓶子，暴露演示与可靠操作之间的差距。（<a href="https://www.qbitai.com/2026/11/506990.html">量子位</a>）</li><li>一家初创公司展示了 AI 代理自主选择基因疗法，并将其注入活体小鼠大脑。（<a href="https://aiskimiq.com/en/brief/2026-11-01">AIskimiq</a>）</li><li>Agentes.chat 为协作工作区新增共享登录下的用量、token 预算和套餐可视化。（<a href="https://agentes.chat/en/changelog">agentes.chat</a>）</li><li>OpenAI 表示，ChatGPT 将限制青少年获取武器和安防系统的实用信息。（<a href="https://aitopic.com/news.html?aihot=daily&amp;edition=2026-11-01">AI Topic</a>）</li><li>据量子位报道，Jev 发布了一项新的开源成果，并迅速引发开发者社区关注。（<a href="https://www.qbitai.com/2026/11/506922.html">量子位</a>）</li><li>Together Compute 表示，开放模型栈可让简单任务使用更小模型，把强模型留给复杂工作。（<a href="https://x.com/togethercompute/status/2116727169367802193">X / Together Compute</a>）</li><li>xAI 计划于 11 月 7 日为 Grok API 全部端点默认启用不可见的 token 级水印。（<a href="https://aitopic.com/news.html?aihot=daily&amp;edition=2026-11-01">AI Topic</a>）</li><li>Agentes.chat 新增工作区协调代理，可接管无人处理的消息，并提出代理指令或角色变更建议。（<a href="https://agentes.chat/en/changelog">agentes.chat</a>）</li></ul>
+<ul><li>代理网络正在成形，网站开始暴露可由人工智能代替用户执行的操作。（<a href="https://www.technologyreview.com/2026/11/02/1147846/the-agentic-web-is-here/">MIT Technology Review</a>）</li><li>Wikihack把Hacker News提到的维基百科文章变成可搜索的人工智能辅助浏览体验。（<a href="https://wikihack.netlify.app">Wikihack</a>）</li><li>PrivacyFlow提出用信息流分析和后果感知风险管理保护人工智能代理隐私。（<a href="https://arxiv.org/abs/2610.40714">arXiv</a>）</li><li>研究人员刻画大语言模型代理在模块劫持环境中的行为，揭示软件供应链攻击面。（<a href="https://arxiv.org/abs/2610.40716">arXiv</a>）</li><li>MetaVul提出面向代理的测试线索发现方法，用于自动化漏洞检测。（<a href="https://arxiv.org/abs/2610.40721">arXiv</a>）</li><li>RiskyPy用模型校准的提示生成，同时评估大语言模型代码的安全性与功能性。（<a href="https://arxiv.org/abs/2610.40735">arXiv</a>）</li><li>新研究指出，检索增强生成的攻击成功率会掩盖已阻止攻击但系统仍不安全的情况。（<a href="https://arxiv.org/abs/2610.40742">arXiv</a>）</li><li>CLIC提出闭环意图一致性方法，保护大语言模型驱动的开放无线接入网控制。（<a href="https://arxiv.org/abs/2610.40744">arXiv</a>）</li><li>Safin-1.5提出安全原生架构，并用可验证推理支持递归式安全改进。（<a href="https://arxiv.org/abs/2610.40751">arXiv</a>）</li><li>一项研究评估FGSM攻击可迁移性如何从模拟环境延伸至量子硬件网络入侵检测。（<a href="https://arxiv.org/abs/2610.40701">arXiv</a>）</li><li>Trigger.dev披露2026年11月安全事件，客户环境变量曾遭暴露。（<a href="https://trigger.dev/blog/security-incident-nov-2026">Trigger.dev</a>）</li><li>韩国拟在2027年预算中投入约159.7亿美元，覆盖人工智能、芯片、实体人工智能和数据中心。（<a href="https://www.reuters.com/">Reuters</a>）</li><li>Marble Cognition获375万美元种子前融资，开发能观察办公流程并学习的人工智能同事。（<a href="https://www.unite.ai/">Unite.AI</a>）</li><li>BILAL-BENCH用240道专家核验问题测试孟加拉语人工智能模型伪造伊斯兰文本的能力。（<a href="https://arxiv.org/">arXiv</a>）</li></ul>
 <hr>
-<p>完整日报：<a href="https://mmlong818.github.io/ai-pulse/zh/day/2026-11-01.html">11月1日晚报网页</a></p>
+<p>完整日报：<a href="https://mmlong818.github.io/ai-pulse/zh/day/2026-11-02.html">11月2日晚报网页</a></p>
 <p>历史存档：<a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">猫叔的AI资讯雷达存档</a></p>
 <p>说明：本文为 AI 自动采编稿，所有事实以文中原始信源为准；如发现时间或事实错误，会在网页版本中优先修正。</p></body></html>
