@@ -19,6 +19,68 @@
 
 ## Recent briefings
 
+### MiniMax Quantizes Its 428B M3.1 Flash for Local Deployment
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/minimax-m31-flash-quantization.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/minimax-m31-flash-quantization.html
+- Source timestamp: 2026-11-01T20:49:00.000Z
+- Site timestamp: 2026-11-02T01:00:05.188Z
+- Tags: Models, Open Source
+
+MiniMax says a quantized version of its 428-billion-parameter M3.1 Flash can run on more local hardware, widening access to a large open model.
+
+MiniMax has released a quantized version of M3.1 Flash, saying the lower-bit weights make the 428-billion-parameter model practical on a wider range of hardware. The announcement was made by MiniMax on X on November 1.
+
+## Shrinking the memory bill
+
+Quantization reduces the numerical precision used to store model weights. That generally lowers memory requirements and can make inference faster, although it may introduce quality loss depending on the method and workload. For a model with 428 billion total parameters, that trade-off is unusually consequential: the uncompressed model is far beyond the reach of ordinary local machines, while a sufficiently aggressive quantized build can move it toward multi-GPU workstations and high-memory servers.
+
+MiniMax positions M3.1 Flash as a large open model suited to coding and agentic workloads. The company’s announcement focuses on access rather than a new training run or a new capability benchmark. It does not establish that the quantized model matches the original weights on every task, nor that consumer hardware can run it comfortably. Hardware configuration, quantization level, context length, and throughput will determine who can actually use it.
+
+## Why local access is strategic
+
+The release reflects a broader shift in open-model competition. Parameter count alone no longer determines practical availability; packaging, quantization, inference software, and memory efficiency increasingly decide whether a model can leave a hosted API and enter developer infrastructure. A 428B model that can be adapted to local deployment gives researchers and companies more control over data, latency, and serving costs.
+
+The catch is that “more hardware” still does not mean commodity hardware. Large-memory systems remain expensive, and lower-bit inference can create unacceptable degradation for some reasoning or multimodal tasks. Still, MiniMax is making the size of the model less decisive by attacking its memory footprint. That matters because open-weight access becomes meaningful only when the surrounding tools make the weights usable outside a vendor’s cloud.
+
+Chinese title: MiniMax为4280亿参数M3.1 Flash推出量化版本
+Chinese summary: MiniMax宣布对4280亿参数的M3.1 Flash进行低比特量化，称其可在更多本地硬件上运行，扩大大模型开放权重的可用范围。
+
+Sources:
+  - MiniMax announcement on M3.1 Flash quantization: https://x.com/MiniMax_AI/status/2116996123164569606
+  - MiniMax-M3.1-Flash model repository: https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash
+
+### OpenAI Plans to Rebrand Data Centers as AI Compute Campuses
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-ai-compute-campuses.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-ai-compute-campuses.html
+- Source timestamp: 2026-11-01T21:55:00.000Z
+- Site timestamp: 2026-11-02T01:00:05.188Z
+- Tags: Industry, Policy
+
+OpenAI is preparing a post-election campaign to recast massive data-center projects as community-facing AI compute campuses.
+
+OpenAI is preparing a policy and public-relations campaign that would describe its planned data centers as “AI compute campuses,” according to Axios. The proposed terminology is intended to frame large infrastructure projects as local economic and technological assets rather than conventional data centers.
+
+## Infrastructure becomes political messaging
+
+The campaign is expected to begin after the November 3 U.S. midterm elections. Axios reports that OpenAI wants to influence the next phase of Washington’s AI debate, as the political environment around frontier-model companies, energy use, employment, and public subsidies becomes less predictable.
+
+The naming change is not a new compute product or a confirmed construction announcement. It is a communications and policy strategy around the physical infrastructure required to train and serve increasingly capable models. OpenAI has already committed to building and securing enormous amounts of computing capacity through data-center projects and supply agreements, making local acceptance and government coordination increasingly important to its expansion plans.
+
+## Why the wording matters
+
+Calling a site a campus suggests a broader institution: jobs, research, training, suppliers, and community investment. That framing may help OpenAI negotiate with host regions and answer criticism over electricity demand, water use, land, and public support. It also places compute infrastructure closer to the political language traditionally used for universities, laboratories, and industrial development.
+
+The unresolved question is whether the label will be matched by measurable local benefits. If “AI compute campus” becomes a template for securing approvals and incentives without transparent reporting on power, employment, and public cost, it will look like branding rather than a new infrastructure model. The story matters because the next phase of frontier AI competition will be shaped not only by model quality, but by which companies can make hyperscale compute politically and economically buildable.
+
+Chinese title: OpenAI拟将数据中心改称“AI算力园区”
+Chinese summary: OpenAI正准备在美国中期选举后推动公共事务攻势，试图把超大规模数据中心包装成面向社区的AI算力园区。
+
+Sources:
+  - Behind the Curtain: OpenAI's post-election power play: https://www.axios.com/2026/11/01/scoop-openai-post-midterm-policy
+  - Axios AM: Post-election AI blitz: https://www.axios.com/newsletters/axios-am-c36b525d-34d3-426e-8b48-156dc3db6173
+
 ### Anthropic finds harmless-looking data can train sabotage
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-sabotage-training-risk.html
@@ -950,83 +1012,28 @@ Sources:
   - OpenAI working on new $30B raise at $1.25T valuation: https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo/
   - Report: OpenAI closing on $30B bridge funding round: https://siliconangle.com/2026/10/22/report-openai-closing-on-30b-bridge-funding-round-to-tide-it-over-before-ipo/
 
-### OpenAI Makes Decisions API Generally Available for Agents
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-decisions-api-general-availability.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-decisions-api-general-availability.html
-- Source timestamp: 2026-10-22T19:00:00.000Z
-- Site timestamp: 2026-10-23T01:00:04.834Z
-- Tags: Agents, Industry
-
-OpenAI has released a low-cost endpoint for bounded choices, aiming to make real-time routing and agent control faster and cheaper.
-
-OpenAI has made its Decisions API generally available, introducing a dedicated endpoint for applications that need fast, bounded judgments rather than open-ended text generation.
-
-## A narrower model interface
-
-The service is powered by GPT-6 Luna and accepts text, images and structured JSON. Developers define the possible decision space, then request one of three outputs: a probability, a choice from a supplied list, or a scored assessment. OpenAI says the endpoint can operate up to 10 times faster than using GPT-6 Luna through the general Responses API.
-
-The release adds native integration with GPT-Live, allowing voice applications to decide whether to clarify, escalate or take an action while a conversation is in progress. It also supports prompt caching, US and EU inference residency, native JSON inputs and batches of up to 400 questions.
-
-## Economics matter more than the demo
-
-OpenAI prices the service at $0.10 per million input tokens, with cached input at $0.01 per million. There is no output-token charge. Those economics target the large number of small classifications that sit inside production systems: document routing, transaction categorisation, quality checks, moderation decisions and tool selection.
-
-The deeper move is architectural. OpenAI is separating deliberative generation from repetitive control logic, giving developers a cheaper primitive for the decisions that determine whether an agent continues, retries, asks for help or stops.
-
-## Why it matters
-
-Agent deployments often fail economically because every minor branch invokes a full language-model response. A typed decision endpoint could reduce that overhead and make voice, customer-service and workflow agents more responsive. The unresolved question is calibration: a fast probability or choice is useful only when teams can measure its error costs and build reliable escalation paths around it.
-
-**Uncle Cat take:** OpenAI is pricing the control plane, not just the conversation; $0.10 per million input tokens could make tiny agent decisions economically invisible.
-
-Chinese title: OpenAI正式开放决策API，瞄准实时代理控制
-Chinese summary: OpenAI推出面向有限选项判断的低价API，让代理路由、分类和实时语音控制更快、更便宜。
-
-Sources:
-  - Build more responsive apps with the Decisions API: https://openai.com/index/decisions-api/
-  - OpenAI API Changelog: https://developers.openai.com/api/docs/changelog
-
-### Sakana AI Unveils Aquarium for Organizational Agents
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/sakana-aquarium-agent-platform.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/sakana-aquarium-agent-platform.html
-- Source timestamp: 2026-10-23T00:59:00.000Z
-- Site timestamp: 2026-10-23T01:00:04.834Z
-- Tags: Agents, Industry
-
-Sakana AI has introduced Aquarium, an ontology-based platform designed to connect organizational knowledge with agent decisions and execution.
-
-Japan’s Sakana AI has announced Aquarium, a platform for building, operating and managing agents that support organizational decisions and carry them into execution.
-
-## Turning institutional knowledge into agent structure
-
-Aquarium is built around an ontology: a shared representation of the entities, relationships and definitions that make sense inside a particular organization. Sakana says the platform is intended to organize scattered information into common terms before agents inspect evidence, make judgments and perform actions.
-
-That approach addresses a problem that is often obscured by agent demos. A general model may understand language, but a company’s decisions depend on local definitions, approval rules, exceptions and evidence standards. An agent that does not share those premises can produce fluent answers while applying the wrong policy.
-
-Sakana describes Aquarium as covering the full operating loop: constructing agents for a given organization, deploying them safely and continuing to manage them. The announcement is positioned as a product platform rather than a single model release, and the company has not disclosed broad customer numbers or independent performance results.
-
-## From research identity to deployment layer
-
-Sakana has built its reputation around collective intelligence, evolutionary methods and autonomous research systems. Aquarium extends that identity into enterprise infrastructure, where the challenge is less generating an impressive response than keeping decisions traceable and aligned with a company’s operating model.
-
-The ontology-first design could help reduce ambiguity between agents and business systems, but it also creates a heavy setup requirement. Organizations must agree on definitions and maintain them as products, regulations and responsibilities change. A poorly maintained ontology could turn into a new source of institutional drift.
-
-## Why it matters
-
-If Aquarium works as described, it places Sakana in the growing contest to define the control layer for enterprise agents. That layer may become more durable than any individual model because it governs how information is interpreted, which evidence is accepted and when an action is authorized.
-
-**Uncle Cat take:** Aquarium’s ontology is its moat and its maintenance bill; Sakana must prove that shared definitions stay current after the pilot team leaves.
-
-Chinese title: Sakana AI发布Aquarium，用本体驱动企业代理决策
-Chinese summary: Sakana AI推出Aquarium平台，以组织本体统一分散信息，连接证据核验、决策判断与实际执行。
-
-Sources:
-  - Sakana Aquarium announcement: https://secret-test-staging.sakana.ai/aquarium-release/
-  - Sakana AI announces Aquarium on X: https://x.com/SakanaAILabs/status/2113435148792598986
-
 ## Recent radar items
+
+### 2026-11-02
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-11-02.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-11-02.html
+
+- 2026-11-01T21:01:00Z | X | Lovart showcased DreemWorldAI, which uses generated characters and brand assets to produce AI short dramas. | 中文：Lovart展示DreemWorldAI：用生成角色与品牌素材制作AI短剧。 | https://x.com/lovart_ai/status/2116999057683923256
+- 2026-11-01T20:57:00Z | TechCrunch | A TechCrunch analysis argued that AI currently makes technology executives’ work easier while leaving broader workplace gains uncertain. | 中文：TechCrunch分析称，AI目前更先让科技高管受益，普通员工的收益仍不确定。 | https://techcrunch.com/2026/11/01/ai-can-make-tech-ceos-lives-easier-what-about-everyone-else/
+- 2026-11-01T18:24:00Z | InfoQ 中文 | Snowflake’s CoCo workflow lets teams share and govern reusable AI skills across an organization. | 中文：Snowflake的CoCo工作流让团队能够共享并治理可复用的AI技能。 | https://www.infoq.cn/article/0ap8HB0DwK6Xa1lBSNVy
+- 2026-11-01T18:03:00Z | X | Together Compute said aligned training and generation stacks help reward signals survive deployment instead of drifting at inference time. | 中文：Together Compute称，训练与生成栈保持一致，能减少奖励信号在部署推理时发生偏移。 | https://x.com/togethercompute/status/2116954280544329898
+- 2026-11-01T17:00:00Z | InfoQ 中文 | An InfoQ report examined how AI systems can read binary software, raising questions about the durability of closed-source advantages. | 中文：InfoQ报道了AI读懂二进制软件的实践，引发对闭源软件护城河持久性的讨论。 | https://www.infoq.cn/article/8mCjWWFLdjDA2vb51QZs
+- 2026-11-01T15:45:00Z | X | Databricks’ October Lakeflow roundup added more ways to build, validate, and manage data-preparation workflows. | 中文：Databricks十月更新增加了构建、验证和管理Lakeflow数据准备流程的方式。 | https://x.com/databricks/status/2116919466470560018
+- 2026-11-01T13:28:00Z | 量子位 | West Lake University announced a new center after three years of preparation, signaling deeper Chinese investment in AI research infrastructure. | 中文：西湖大学宣布成立新中心，三年布局后进一步加码中国AI科研基础设施。 | https://www.qbitai.com/2026/11/507076.html
+- 2026-11-01T13:09:00Z | 量子位 | Claude halted a harness behavior after reports that its coding environment could be used to reverse-engineer game mechanics. | 中文：据报道，Claude暂停了一项Harness行为，因其编码环境可能被用于逆向分析游戏机制。 | https://www.qbitai.com/2026/11/507038.html
+- 2026-11-01T23:37:00Z | X | Vercel congratulated Kimi Antonelli after he became the youngest Formula One world champion in history in a partnership-linked post. | 中文：Vercel在一则合作相关帖子中祝贺基米·安东内利成为F1历史最年轻世界冠军。 | https://x.com/vercel/status/2117038247549231138
+- 2026-11-01T21:38:00Z | X | GitHub opened Game Off 2026 with the theme “SHIFT,” inviting developers to build games around changing perspectives and reality. | 中文：GitHub启动Game Off 2026，主题为“SHIFT”，邀请开发者围绕视角与现实变化制作游戏。 | https://x.com/github/status/2117008341327307200
+- 2026-11-01T18:44:00Z | X | GitHub promoted a 3D Maze app and other additions that developers can attach to their GitHub Universe badges. | 中文：GitHub推广3D迷宫应用等可添加到GitHub Universe徽章中的互动项目。 | https://x.com/github/status/2116964547005231588
+- 2026-11-01T15:45:00Z | X | A Databricks roundup highlighted new guardrails for Lakeflow data-preparation workflows. | 中文：Databricks更新重点介绍了Lakeflow数据准备流程的新防护机制。 | https://x.com/databricks/status/2116919466470560018
+- 2026-11-01T19:12:00Z | InfoQ 中文 | InfoQ described an incremental-refresh approach that reuses existing computation to reduce latency and cost in dynamic tables. | 中文：InfoQ介绍了复用既有计算结果的动态表增量刷新方案，以降低延迟与成本。 | https://www.infoq.cn/article/xCFDK8KZvvDY5V1R0fqM
+- 2026-11-01T18:58:00Z | InfoQ 中文 | InfoQ reported a SQL optimization method that reduced a query from nearly two hours to about 30 seconds. | 中文：InfoQ报道一种SQL优化方法，将查询时间从近两小时缩短至约30秒。 | https://www.infoq.cn/article/adFNTX7Qiy7yYIGEmTlk
+- 2026-11-01T21:55:00Z | TechCrunch | OpenAI was reportedly considering calling its data centers “AI compute campuses,” emphasizing infrastructure rather than conventional facilities. | 中文：据报道，OpenAI考虑将数据中心称为“AI算力园区”，突出基础设施属性。 | https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/
 
 ### 2026-11-01
 
@@ -1130,39 +1137,3 @@ Sources:
 - 2026-10-29T12:00:00Z | SiliconANGLE | Solink raised more than $100 million to extract business intelligence from security-camera footage with AI. | 中文：Solink 融资超过 1 亿美元，利用 AI 从安防摄像头视频中提取商业洞察。 | https://siliconangle.com/2026/10/29/solink-raises-more-than-100m-to-pull-business-data-from-security-cameras-with-ai/
 - 2026-10-29T08:20:00Z | X / Sakana AI | Sakana AI published a case study using AI analysis of social media to examine the 2026 U.S. midterm Senate race in Texas. | 中文：Sakana AI 发布案例研究，利用 AI 分析社交媒体研判 2026 年美国中期选举得州参议院选情。 | https://x.com/SakanaAILabs/status/2115720393369473344
 - 2026-10-29T12:00:00Z | X / Genspark | Genspark teased SecondBrain VoicePad, a voice-first interface intended to let users operate favorite AI tools through natural speech. | 中文：Genspark 预告 SecondBrain VoicePad，以语音优先方式让用户通过自然表达操作常用 AI 工具。 | https://x.com/genspark_ai/status/2115775667925385599
-
-### 2026-10-28
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-28.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-28.html
-
-- 2026-10-27T20:50:00Z | Anthropic | Anthropic says Claude is supporting six drug-development partnerships, but most work remains preclinical and human researchers still choose which experiments matter. | 中文：Anthropic称Claude已支持六项药物研发合作，但多数仍处于临床前阶段，实验取舍仍依赖人类研究员。 | https://www.anthropic.com/research/early-progress-drug-development
-- 2026-10-28T01:25:00Z | IT之家 | Oracle is adding SambaNova SN50 RDU systems to offer customers a more varied AI-compute portfolio beyond GPUs. | 中文：甲骨文引入SambaNova SN50 RDU系统，为客户提供GPU之外更多元的AI算力组合。 | https://www.ithome.com/1/018/744.htm
-- 2026-10-27T23:33:00Z | SiliconANGLE | Oracle is bringing Google TPUs to its cloud and adding ChatGPT integrations, expanding cross-cloud options for enterprise AI users. | 中文：甲骨文将谷歌TPU引入云平台，并增加ChatGPT集成，扩展企业AI的跨云选择。 | https://siliconangle.com/2026/10/27/oracle-brings-googles-tpus-to-its-cloud-adds-chatgpt-integrations/
-- 2026-10-27T21:54:00Z | MarkTechPost | LEANN is an open-source vector index that reportedly compresses a 60-million-chunk RAG index from 201 GB to 6 GB. | 中文：开源向量索引LEANN据称将6000万块RAG索引从201GB压缩至6GB。 | https://www.marktechpost.com/2026/10/27/leann-vector-index-mlsys-2026/
-- 2026-10-27T21:50:00Z | Ars Technica | A Delaware proposal would allow AI agents to run companies with no human at the helm, raising unresolved governance questions. | 中文：特拉华州一项方案拟允许AI智能体在无人类掌舵时运营公司，引发治理问题。 | https://arstechnica.com/tech-policy/2026/10/no-human-at-the-helm-delaware-plan-would-let-ai-agents-run-entire-businesses/
-- 2026-10-27T19:45:00Z | The Decoder | Researchers found Alibaba’s latest Qwen models routed some requests through company servers, raising privacy questions for local deployments. | 中文：研究人员发现，阿里巴巴最新Qwen模型会将部分请求转经公司服务器，引发本地部署隐私疑问。 | https://the-decoder.com/alibabas-latest-qwen-models-routed-some-requests-through-company-servers-researchers-find/
-- 2026-10-27T19:11:00Z | X @cursor_ai | Cursor added Annotate to Design Mode, letting users draw on webpages and give visual instructions to coding agents. | 中文：Cursor在设计模式中加入Annotate，用户可直接在网页上标注并向编码智能体提供视觉指令。 | https://x.com/cursor_ai/status/2115159585548021814
-- 2026-10-27T18:32:00Z | X @runwayml | Runway Ads turns a written creative brief into branded video advertisements and learns which variants perform best across platforms. | 中文：Runway Ads可将文字创意简报转成品牌视频广告，并学习不同平台上表现更好的版本。 | https://x.com/runwayml/status/2115149695878402126
-- 2026-10-27T14:35:00Z | X @runwayml | Runway launched App Studio, which converts plain-language descriptions into working creative applications powered by its models. | 中文：Runway推出App Studio，可把自然语言描述转换为由其模型驱动的可用创意应用。 | https://x.com/runwayml/status/2115089891889713482
-- 2026-10-27T15:53:00Z | X @Replit | Replit says Cloud Agents can turn employee ideas into tested pull requests with video evidence for engineering review. | 中文：Replit称Cloud Agents能把员工想法转成带视频证据、供工程师审核的测试通过拉取请求。 | https://x.com/Replit/status/2115109663993966737
-- 2026-10-27T15:55:00Z | X @ManusAI | Manus now lets every generated website install as a desktop app directly from Chrome without an app store. | 中文：Manus现在允许所有生成的网站直接从Chrome安装为桌面应用，无需应用商店。 | https://x.com/ManusAI/status/2115110045977583909
-- 2026-10-27T15:42:00Z | X @MicrosoftAI | Microsoft made MAI-Image-2.6 and MAI-Image-2.6-Flash generally available in Microsoft Foundry. | 中文：微软宣布MAI-Image-2.6和MAI-Image-2.6-Flash在Microsoft Foundry正式可用。 | https://x.com/MicrosoftAI/status/2115106982730342888
-- 2026-10-27T22:08:00Z | X @ArtificialAnlys | Artificial Analysis launched Speech Agent Arena, where users blindly compare live voice agents and select their preferred system. | 中文：Artificial Analysis推出Speech Agent Arena，让用户盲测实时语音智能体并选择更喜欢的系统。 | https://x.com/ArtificialAnlys/status/2115204129824157735
-- 2026-10-27T14:00:00Z | SiliconANGLE | Regal introduced Goal Oriented Agents that assign an actor model and a director model to each customer call. | 中文：Regal推出Goal Oriented Agents，为每通客户电话分别配置演员模型和导演模型。 | https://siliconangle.com/2026/10/27/regal-debuts-goal-oriented-agents-putting-an-actor-and-a-director-model-on-every-call/
-- 2026-10-27T13:00:00Z | SiliconANGLE | Edge Sound raised $2 million to help physical AI systems interpret audio in real-world environments. | 中文：Edge Sound融资200万美元，帮助具身AI系统理解真实环境中的声音。 | https://siliconangle.com/2026/10/27/edge-sound-raises-2m-to-help-physical-ai-make-sense-of-audio/
-- 2026-10-28T12:00:00Z | SiliconANGLE AI | Circuit Mind raised $25 million to deploy AI agents that check electronic circuit-board schematics. | 中文：Circuit Mind 融资2500万美元，用 AI 智能体检查电子电路板原理图。 | https://siliconangle.com/2026/10/28/circuit-mind-lands-25m-and-puts-ai-agents-to-work-checking-circuit-board-schematics/
-- 2026-10-28T11:27:00Z | The Verge | Meta quietly launched Waddle World, an AI pet-journal app that turns owners’ updates into interactive stories. | 中文：Meta 悄然推出 AI 宠物日志应用 Waddle World，把主人记录变成交互式故事。 | https://www.theverge.com/ai-artificial-intelligence/1020410/meta-launched-ai-pet-journal-app-waddle-world
-- 2026-10-28T09:30:00Z | OpenAI | OpenAI profiled Legora, whose legal platform reports cutting internal NDA-review time from roughly 20% of capacity to under 1%. | 中文：OpenAI 介绍 Legora：其法律平台称，内部 NDA 审查占用时间已从约20%降至不到1%。 | https://openai.com/index/legora-agentic-operating-system-for-legal-work/
-- 2026-10-28T08:50:00Z | Latent Space | Anthropic is ending coding interviews for new hires, emphasizing demonstrated initiative and entrepreneurial thinking over conventional credentials. | 中文：Anthropic 将取消新员工编程面试，更重视实际主动性和创业思维，而非传统履历。 | https://latent.space/p/ainews-anthropic-ends-coding-interviews/
-- 2026-10-28T09:50:00Z | X / Mistral AI | Mistral said Voxtral Mini Transcribe 3 ranked second on Voice Arena’s diarization and automatic-speech-recognition leaderboard. | 中文：Mistral 称 Voxtral Mini Transcribe 3 在 Voice Arena 的说话人分离与 ASR 榜单上排名第二。 | https://x.com/MistralAI/status/2115380768394379474
-- 2026-10-28T09:25:00Z | X / ElevenLabs | ElevenLabs is helping an ALS-afflicted professor recreate his voice so he can continue teaching, with support from Asociación ELA. | 中文：ElevenLabs 与 Asociación ELA 合作，帮助 ALS 患者、教授 Aníbal 重建声音以继续授课。 | https://x.com/ElevenLabs/status/2115374286273950186
-- 2026-10-28T08:18:00Z | MarkTechPost | Polymathic AI and Princeton researchers released FlashMap, a flow-map drafter reported to make speculative LLM decoding 6.14 times faster. | 中文：Polymathic AI 与普林斯顿研究者发布 FlashMap，据称可让推测式 LLM 解码提速6.14倍。 | https://www.marktechpost.com/2026/10/28/flashmap-flow-map-speculative-decoding/
-- 2026-10-28T04:00:00Z | arXiv | A new AI paper proposes measuring time saved alongside escaped defects, arguing that faster output can still increase total work. | 中文：一篇新论文提出同时衡量节省时间与遗漏缺陷，指出更快产出仍可能增加总工作量。 | https://arxiv.org/abs/2610.35942
-- 2026-10-28T04:00:00Z | arXiv | A security paper found post-hoc MCP prompt-injection attacks achieved 62.64–100% success across tested model-server pairs. | 中文：一篇安全论文发现，事后型 MCP 提示注入在测试模型—服务器组合中的成功率达62.64%至100%。 | https://arxiv.org/abs/2610.36108
-- 2026-10-28T04:00:00Z | arXiv | Xiaomi researchers described OmniBrain-0, a compact embodied agent unifying manipulation, navigation, progress tracking, and recovery. | 中文：小米研究者介绍 OmniBrain-0：一种统一操控、导航、进度跟踪与故障恢复的轻量具身智能体。 | https://arxiv.org/abs/2610.36013
-- 2026-10-28T09:53:00Z | X / Dreamina AI | Dreamina posted an AI-generated tennis-themed zombie short with tutorials and prompts included for creators. | 中文：Dreamina 发布网球主题 AI 僵尸短片，并附上教程与提示词供创作者复用。 | https://x.com/dreamina_ai/status/2115381504209793041
-- 2026-10-28T03:49:00Z | X / Meshy AI | Meshy demonstrated MCP for Blender, letting agents generate textured models, place them in scenes, and render through conversation. | 中文：Meshy 展示 Blender MCP：智能体可通过对话生成带材质模型、布置场景并完成渲染。 | https://x.com/MeshyAI/status/2115289899008221243
-- 2026-10-28T02:11:00Z | X / Artificial Analysis | Artificial Analysis launched Intelligence Index v5 with heavier knowledge-work and coding tasks plus a separate progress index. | 中文：Artificial Analysis 发布 Intelligence Index v5，加入更重的知识工作、编码任务及独立进步指数。 | https://x.com/ArtificialAnlys/status/2115265198093435022
-- 2026-10-28T07:46:00Z | X / Sakana AI | Sakana AI announced demonstrations of Marlin, Fugu, and Namazu at Gartner IT Symposium/Xpo 2026 in Japan. | 中文：Sakana AI 宣布将在日本 Gartner IT Symposium/Xpo 2026 展示 Marlin、Fugu 与 Namazu。 | https://x.com/SakanaAILabs/status/2115349465360126111
-- 2026-10-28T12:00:00Z | SiliconANGLE AI | Circuit Mind raised $25 million to deploy AI agents that check electronic circuit-board schematics. | 中文：Circuit Mind 融资2500万美元，用 AI 智能体检查电子电路板原理图。 | https://siliconangle.com/2026/10/28/circuit-mind-lands-25m-and-puts-ai-agents-to-work-checking-circuit-board-schematics/
