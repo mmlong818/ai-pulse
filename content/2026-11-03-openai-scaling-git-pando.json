@@ -1,0 +1,27 @@
+{
+  "slug": "openai-scaling-git-pando",
+  "title": "OpenAI Builds Pando to Scale Git for Agents",
+  "summary": "OpenAI built a new Git backend for its monorepo, targeting the parallel pushes, fetches, and recovery needs created by engineers and coding agents.",
+  "body": "## A Git backend for a different workload\n\nOpenAI has built Pando, a new backend for Git designed to support the company’s monorepo as both human engineers and software agents generate more concurrent activity. The project was disclosed in an engineering post published on November 2.\n\nPando preserves the familiar Git client workflow while changing how repository data is stored and transferred. When a client fetches updates, Pando identifies the missing commit range and returns links to packfiles that cover the gap. When multiple engineers or agents push to different branches, the system can process those updates in parallel. Updates targeting the same branch remain ordered.\n\nThe design also addresses failure recovery. OpenAI says it contributed fixes upstream to Git for cleanup after interrupted packfile downloads, suggesting that the work exposed edge cases relevant beyond its own infrastructure. The company describes late-push latency as falling substantially after the migration, though the post does not provide a full independent benchmark or disclose the total size of the repository.\n\nThe significance is less about Git itself than about the software-production environment OpenAI is building around it. Coding agents create bursts of automated commits, branch operations, and repository reads that conventional developer tooling was not designed to absorb efficiently. A backend that can parallelize traffic without forcing engineers to adopt a new interface could become an important layer in agent-heavy development organizations.\n\n## Why it matters\n\nThe post offers a concrete infrastructure signal: agents are changing the shape of routine software operations before they replace the operations themselves. If Pando’s approach generalizes, repository systems may increasingly be optimized for machine-generated concurrency rather than only for human collaboration.\n\n## Uncle Cat take\n\nPando’s upstream Git fixes are more revealing than its branding: interrupted downloads became a product problem because agents keep the pipeline busy.\n\nSources: [Scaling Git at OpenAI](https://openai.com/index/scaling-git-at-openai/).",
+  "title_zh": "OpenAI为人机并行开发打造Git后端Pando",
+  "summary_zh": "OpenAI为自家单体代码库开发Pando后端，重点解决工程师与编码Agent并发推送、拉取和故障恢复问题。",
+  "body_zh": "## 为另一种工作负载重做Git后端\n\nOpenAI在11月2日发布的工程文章中披露，公司已经开发出新的Git后端Pando，用于支撑其单体代码库中不断增加的人类工程师与软件Agent并发操作。\n\nPando保留了开发者熟悉的Git客户端工作方式，但改变了仓库数据的存储和传输方式。当客户端拉取更新时，系统会识别缺失的提交范围，并返回覆盖这段差距的packfile链接。当多名工程师或Agent分别向不同分支推送时，Pando可以并行处理；如果更新针对同一分支，则仍按顺序写入。\n\n系统也针对失败恢复进行了设计。OpenAI表示，公司已将“packfile下载中断后的清理”相关修复贡献回Git项目。这说明Pando遇到的问题并非单纯的内部性能调优，而是自动化、高并发开发环境正在暴露传统工具的新边界。OpenAI称迁移后推送延迟明显下降，但文章没有给出完整的独立基准，也没有披露代码库的具体规模。\n\nPando的意义不在于Git本身，而在于它反映了OpenAI正在构建怎样的软件生产环境。编码Agent会制造突发性的自动提交、分支操作和仓库读取请求，而传统开发工具主要围绕人类协作设计。若能在不改变开发者接口的前提下并行处理这些流量，仓库后端将成为Agent密集型组织的重要基础设施。\n\n## 为什么重要\n\n这篇文章提供了一个具体信号：在Agent真正接管软件开发之前，它们已经先改变了日常工程操作的并发形态。未来代码托管系统可能首先为机器生成的高并发优化，而不只是为人类协作优化。\n\n## 猫叔判断\n\n比Pando这个名字更重要的是Git修复：下载中断之所以成了产品问题，是因为Agent让流水线几乎不停机。\n\n来源：[Scaling Git at OpenAI](https://openai.com/index/scaling-git-at-openai/)。",
+  "tags": [
+    "Agents",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Scaling Git at OpenAI",
+      "url": "https://openai.com/index/scaling-git-at-openai/"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "Pando的价值不在新名字，而在Agent高并发终于逼出了Git的基础设施改造",
+  "cat_take_en": "Pando matters because agent concurrency turned interrupted Git downloads into an infrastructure priority.",
+  "date": "2026-11-03",
+  "published": "2026-11-02T15:30:00Z",
+  "published_at": "2026-11-03T01:00:11.051Z"
+}

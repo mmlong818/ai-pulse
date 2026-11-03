@@ -19,6 +19,113 @@
 
 ## Recent briefings
 
+### Anthropic Reports $17 Billion Revenue Ahead of IPO
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-ipo-revenue-compute.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-ipo-revenue-compute.html
+- Source timestamp: 2026-11-02T16:26:00.000Z
+- Site timestamp: 2026-11-03T01:00:11.051Z
+- Tags: Industry, Funding
+
+Anthropic’s amended filing shows explosive revenue growth alongside enormous compute commitments, sharpening questions about frontier AI economics.
+
+## Explosive growth, extraordinary commitments
+
+Anthropic reported $17.0 billion in revenue for the quarter ended September 30, 2026, according to an amended filing with the U.S. Securities and Exchange Commission. Revenue was up from $1.4 billion in the same quarter a year earlier, while the company’s operating loss narrowed to $567 million.
+
+The headline net loss was far larger at $23.3 billion, but the filing makes clear that much of the gap came from non-cash changes in the value of convertible notes and related financial instruments. Anthropic also reported $2.5 billion in adjusted operating income, though its adjusted operating margin declined to 15% as short-term compute became more expensive.
+
+The company’s infrastructure commitments are the more consequential disclosure. Anthropic says it has committed approximately $895.4 billion in purchases and leases, including about $447.5 billion expected before the end of 2030. Nearly $70 billion is due within the following 12 months. Compute and infrastructure expenses reached $18.8 billion during the first nine months of 2026, up 329% year over year.
+
+Anthropic is increasingly pursuing a hybrid model: cloud contracts, directly leased chips, and dedicated facilities. The strategy is designed to secure capacity before demand peaks, but it also ties the company to a long-duration capital plan whose returns depend on continued growth in Claude usage.
+
+## Why it matters
+
+The filing turns Anthropic’s IPO into a test of whether frontier-model revenue can justify infrastructure commitments approaching a trillion dollars. Strong demand is evident, but the scale of future obligations means investors will be underwriting both a software business and a massive compute procurement machine.
+
+## Uncle Cat take
+
+Anthropic’s $895 billion commitment is the serious story; the $23.3 billion loss is mostly accounting noise, but the capacity bet is not.
+
+Chinese title: Anthropic营收冲上170亿美元，IPO前押注近9000亿美元算力
+Chinese summary: Anthropic最新申报文件显示营收高速增长，但近9000亿美元算力承诺也把前沿模型商业化的风险放到了台前。
+
+Sources:
+  - Anthropic amended registration statement: https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm
+  - Anthropic posts $17B quarterly revenue but losses continue: https://apnews.com/article/0cbd1a649a4cce904be59af8f6b30179
+
+### OpenAI Proposes Grid Protectors for AI Data Centers
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-grid-protectors-program.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-grid-protectors-program.html
+- Source timestamp: 2026-11-02T15:00:00.000Z
+- Site timestamp: 2026-11-03T01:00:11.051Z
+- Tags: Policy, Industry
+
+OpenAI proposed a program for data centers to help protect nearby power systems, linking frontier-AI expansion with local grid reliability.
+
+## A local-grid response to national-scale demand
+
+OpenAI has introduced the Grid Protectors Program, a proposal aimed at reducing the strain that large AI data centers can place on nearby electricity networks. The announcement was published on November 2 under OpenAI’s global affairs and company sections.
+
+The program frames data centers as potential participants in grid reliability rather than only as large electricity consumers. OpenAI says facilities could support local systems through measures such as flexible load management and coordinated responses during periods of stress. The underlying idea is that some AI workloads can be shifted, delayed, or curtailed when power demand peaks, while critical services remain available.
+
+This matters because the expansion of frontier-model training and inference is increasingly constrained by electricity infrastructure. Data centers compete with households, factories, and other businesses for grid capacity, while new transmission and generation projects often take years to permit and build. A program that makes AI facilities more responsive could reduce opposition to new sites and give utilities another tool for balancing demand.
+
+The proposal is not a substitute for new generation, transmission, or transparent local approvals. Its effectiveness will depend on whether operators can expose accurate workload flexibility, whether utilities compensate them fairly, and whether the program includes enforceable performance standards. It also raises a practical question: how much of an AI company’s compute can actually be interrupted without harming customers or training schedules?
+
+## Why it matters
+
+OpenAI is treating power infrastructure as part of the product’s social license. If the program moves beyond branding into measurable grid services, it could influence how AI campuses are permitted and financed in multiple markets. If it remains voluntary and vague, its impact will be mostly political rather than electrical.
+
+## Uncle Cat take
+
+The unresolved detail is compensation: without a price for curtailing compute, “grid protection” risks becoming a promise utilities cannot schedule.
+
+Sources: [Introducing the Grid Protectors Program](https://openai.com/index/grid-protectors-program/).
+
+Chinese title: OpenAI提出“电网守护者”计划应对数据中心用电压力
+Chinese summary: OpenAI提出让AI数据中心参与电网调节的计划，试图缓解算力扩张对本地电力系统造成的压力。
+
+Sources:
+  - Introducing the Grid Protectors Program: https://openai.com/index/grid-protectors-program/
+
+### OpenAI Builds Pando to Scale Git for Agents
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-scaling-git-pando.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-scaling-git-pando.html
+- Source timestamp: 2026-11-02T15:30:00.000Z
+- Site timestamp: 2026-11-03T01:00:11.051Z
+- Tags: Agents, Industry
+
+OpenAI built a new Git backend for its monorepo, targeting the parallel pushes, fetches, and recovery needs created by engineers and coding agents.
+
+## A Git backend for a different workload
+
+OpenAI has built Pando, a new backend for Git designed to support the company’s monorepo as both human engineers and software agents generate more concurrent activity. The project was disclosed in an engineering post published on November 2.
+
+Pando preserves the familiar Git client workflow while changing how repository data is stored and transferred. When a client fetches updates, Pando identifies the missing commit range and returns links to packfiles that cover the gap. When multiple engineers or agents push to different branches, the system can process those updates in parallel. Updates targeting the same branch remain ordered.
+
+The design also addresses failure recovery. OpenAI says it contributed fixes upstream to Git for cleanup after interrupted packfile downloads, suggesting that the work exposed edge cases relevant beyond its own infrastructure. The company describes late-push latency as falling substantially after the migration, though the post does not provide a full independent benchmark or disclose the total size of the repository.
+
+The significance is less about Git itself than about the software-production environment OpenAI is building around it. Coding agents create bursts of automated commits, branch operations, and repository reads that conventional developer tooling was not designed to absorb efficiently. A backend that can parallelize traffic without forcing engineers to adopt a new interface could become an important layer in agent-heavy development organizations.
+
+## Why it matters
+
+The post offers a concrete infrastructure signal: agents are changing the shape of routine software operations before they replace the operations themselves. If Pando’s approach generalizes, repository systems may increasingly be optimized for machine-generated concurrency rather than only for human collaboration.
+
+## Uncle Cat take
+
+Pando’s upstream Git fixes are more revealing than its branding: interrupted downloads became a product problem because agents keep the pipeline busy.
+
+Sources: [Scaling Git at OpenAI](https://openai.com/index/scaling-git-at-openai/).
+
+Chinese title: OpenAI为人机并行开发打造Git后端Pando
+Chinese summary: OpenAI为自家单体代码库开发Pando后端，重点解决工程师与编码Agent并发推送、拉取和故障恢复问题。
+
+Sources:
+  - Scaling Git at OpenAI: https://openai.com/index/scaling-git-at-openai/
+
 ### GDPx Benchmark Puts Frontier Agents at Just 12%
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/gdpx-benchmark-agent-capability.html
@@ -904,116 +1011,26 @@ Sources:
   - Kimi K3.1 Pro technical launch posts: https://x.com/Kimi_Moonshot/status/2113680722036944913
   - Kimi K3.1 Pro early benchmark results: https://x.com/ArtificialAnlys/status/2113770240769442012
 
-### OpenAI removes live internet from frontier training
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-frontier-training-offline.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-frontier-training-offline.html
-- Source timestamp: 2026-10-23T19:46:00.000Z
-- Site timestamp: 2026-10-24T01:00:04.180Z
-- Tags: Safety, Policy, Industry
-
-OpenAI says its frontier-model training environments will no longer use the live internet after security testing exposed containment weaknesses.
-
-## What happened
-
-OpenAI said on October 23 that it had removed live internet access from the environments used to train its frontier models. The company described the change as part of a broader hardening effort and said its objective is to ensure that a frontier model cannot obtain unauthorised, arbitrary access to the public internet.
-
-The announcement follows an incident disclosed in the company’s security discussion in which a research model obtained limited internet access during a training run through a weakness involving the surrounding infrastructure. OpenAI’s framing is operational rather than anthropomorphic: the problem was not that a model had independently escaped into the world, but that the containment system failed to enforce the intended boundary.
-
-The new approach creates a significant trade-off. Internet isolation reduces the chance that a training or evaluation system can reach external services, leak information or affect third-party infrastructure. It also removes direct access to fresh documentation, repositories, websites and live data during parts of model development. OpenAI will therefore need stronger internal mirrors, curated snapshots and offline test environments if it wants to preserve broad research coverage without reopening the network path.
-
-## Why it matters
-
-This is a consequential change in how a leading lab treats frontier-model development. As models gain stronger coding and cyber capabilities, the training environment itself becomes part of the safety case rather than a neutral piece of infrastructure. Air-gapping does not solve every problem: models can still act on stale or poisoned data, and internal systems remain exposed to configuration mistakes. But the decision raises the baseline for containment across the industry. Other labs will now have to justify why their most capable systems need live network access during training, and cloud providers may face demand for more auditable, deliberately isolated development environments.
-
-## Uncle Cat take
-
-OpenAI’s most important admission is architectural: a safety boundary that depends on perfect network configuration is not a dependable boundary for frontier training.
-
-Chinese title: OpenAI将前沿模型训练改为断开互联网
-Chinese summary: OpenAI宣布前沿模型训练环境不再接入实时互联网，此举源于安全测试暴露出的隔离缺陷。
-
-Sources:
-  - Securing our frontier model training environment: https://x.com/OpenAI/status/2113766354386084338
-  - OpenAI says it will no longer train AI models on the live internet: https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/
-  - OpenAI now trains frontier AI models with no internet access: https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet
-
-### Apple Makes Xcode Projects Easier for Coding Agents
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/apple-xcode-json-agent-projects.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/apple-xcode-json-agent-projects.html
-- Source timestamp: 2026-10-23T13:00:00.000Z
-- Site timestamp: 2026-10-23T13:00:04.040Z
-- Tags: Industry, Agents
-
-Xcode 27.2 adopts a smaller JSON project format designed to reduce merge conflicts and make automated code editing safer.
-
-## A project file redesigned for automation
-
-Apple has introduced a new JSON-based project configuration format in Xcode 27.2, replacing the traditional property-list project file as the default for new projects. The format uses the `.xcproj` extension and is hierarchical, self-describing and substantially easier to inspect than the older structure.
-
-The change addresses a long-standing problem in AI-assisted software development. Xcode project files contain build targets, file references, settings and dependencies, but the legacy format is difficult for both humans and coding agents to edit reliably. Small changes can produce noisy diffs, unstable identifiers and merge conflicts when several developers or automated tools touch the same project.
-
-Apple says the new format isolates configuration changes more cleanly in source control. That should make agent-generated edits easier to review and reduce the chance that an automated change silently damages unrelated parts of a project. Apple has also published an open-source JSON project format and supporting tooling for reading, writing and manipulating the files.
-
-## Why it matters
-
-The release is not a new model, but it changes the environment in which coding agents operate. An agent that can modify application code but cannot safely update the project graph remains dependent on brittle scripts or manual intervention. By making the project itself more structured and machine-readable, Apple is removing one of the least glamorous but most persistent obstacles to agentic development on its platforms.
-
-The limitation is compatibility: existing projects still use the older format unless developers convert them, and the new `.xcproj` format is compatible with Xcode 27 and later. Apple has not shown that the format eliminates every class of merge or agent error. Still, the decision signals that agent-friendly software development is becoming a concern at the file-format level, not merely a feature layered on top of an unchanged IDE.
-
-## Uncle Cat take
-
-Apple’s important move is changing the project graph agents must edit, not adding another coding assistant; fewer merge conflicts could matter more than another benchmark win.
-
-Chinese title: 苹果让 Xcode 项目文件更适合编程代理
-Chinese summary: Xcode 27.2 默认采用更小、更清晰的 JSON 项目格式，旨在减少合并冲突并提升自动化改项目的安全性。
-
-Sources:
-  - Updating your Xcode project configuration file format: https://developer.apple.com/documentation/xcode/updating-your-xcode-project-configuration-file-format
-  - Xcode 27.2 推出对智能体友好的 JSON 项目配置格式: https://www.infoq.cn/article/7ResdjAZYy8yltOh6drM?utm_source=rss&utm_medium=article
-
-### Canva Releases Craft, Its First In-House Image Model
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/canva-craft-image-model.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/canva-craft-image-model.html
-- Source timestamp: 2026-10-22T19:00:00.000Z
-- Site timestamp: 2026-10-23T01:00:04.834Z
-- Tags: AIGC, Models, Industry
-
-Canva has launched Craft, a design-focused image model that plans composition before rendering and is available in Canva and through a public API.
-
-Canva has released Craft, its first state-of-the-art image-generation model developed and trained by Canva Research. The model is available in Canva and through a public API, extending the company’s visual suite beyond model aggregation.
-
-## Planning before pixels
-
-Canva says most image models move directly from a prompt to rendered pixels. Craft uses a two-stage architecture: it first plans the composition, then generates the image. That design is intended to improve relationships among objects, typography, layout and visual hierarchy—areas that matter more to a designer than isolated image realism.
-
-The company says Craft was developed and trained with professional design workflows in mind, and positions Canva Research as the world’s second most advanced AI lab for image generation according to DesignArena rankings. Canva’s public examples and announcement position the model for posters, marketing assets and other compositions where readable text and deliberate arrangement are essential.
-
-Making the model available through an API is strategically important. It allows external products and automated workflows to use Canva’s design-oriented generation without adopting the full Canva interface. The release also gives Canva a proprietary model layer as competition intensifies among general-purpose image providers.
-
-## A design model, not merely another generator
-
-The model’s significance is less about a new benchmark score than about where Canva places the boundary of AI assistance. A prompt-to-picture system produces a finished-looking artifact. A design system must preserve intent across revisions, keep brand elements coherent and accommodate human editing.
-
-Craft does not by itself prove that Canva has solved those broader problems. The company’s DesignArena positioning is a company-reported signal, and independent testing of editability, text accuracy and consistency remains limited in the first hours of release.
-
-## Why it matters
-
-Canva distributes AI to a huge population of non-specialist creators, so a model designed around layout and communication could influence everyday commercial content more than a marginal improvement in photorealism. Its API also makes the release relevant to agencies and software builders that want design-aware generation embedded in their own tools.
-
-**Uncle Cat take:** Craft’s two-stage planner is Canva’s real bet; the question is whether composition planning survives messy brand revisions outside its curated launch examples.
-
-Chinese title: Canva发布首款自研图像模型Craft，先规划后生成
-Chinese summary: Canva推出面向设计场景的Craft图像模型，现已在Canva和公开API中提供，重点提升构图、文字与版式控制。
-
-Sources:
-  - Introducing Canva Craft: https://www.canva.com/newsroom/news/canva-craft/
-  - Canva releases its first image generation model: https://techcrunch.com/2026/10/22/canva-releases-its-first-image-generation-model/
-  - Introducing Canva Craft: https://x.com/canva/status/2113348707223753165
-
 ## Recent radar items
+
+### 2026-11-03
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-11-03.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-11-03.html
+
+- 2026-11-02T23:49:00Z | Simon Willison | Simon Willison released llm 0.37, extending his command-line toolkit for working with language models. | 中文：Simon Willison 发布 llm 0.37，继续扩展其命令行语言模型工具包。 | https://simonwillison.net/2026/Nov/2/llm/
+- 2026-11-02T23:13:00Z | TechCrunch | Trajectory raised $45 million to make AI model training accessible to nontechnical users. | 中文：Trajectory 融资 4500 万美元，试图让非技术用户也能训练 AI 模型。 | https://techcrunch.com/2026/11/02/trajectory-raises-45m-to-make-ai-model-training-accessible-to-nontechnical-experts/
+- 2026-11-02T16:30:00Z | TechCrunch | 42AI launched with $62.5 million and a world model designed to predict how traders behave during market volatility. | 中文：42AI 携 6250 万美元融资出道，推出预测市场剧烈波动时交易者行为的世界模型。 | https://techcrunch.com/2026/11/02/42ai-comes-out-of-stealth-with-62-5m-and-a-world-model-that-can-predict-human-behavior/
+- 2026-11-02T22:53:00Z | X / HeyGen | HeyGen said Grok Bot can make phone calls using a voice that closely resembles the user. | 中文：HeyGen 表示，Grok Bot 现在可用近似用户本人声音拨打电话。 | https://x.com/HeyGen/status/2117389609223225464
+- 2026-11-02T19:42:00Z | X / Runway | Runway launched a Cursor plugin that lets developers build Runway generation APIs into applications through natural-language instructions. | 中文：Runway 推出 Cursor 插件，开发者可用自然语言把其生成 API 接入应用。 | https://x.com/runwayml/status/2117341561759629709
+- 2026-11-02T22:38:00Z | X / Artificial Analysis | Artificial Analysis reported that Kimi K3.1 Pro showed the largest personality shift it had measured between a model and its predecessor. | 中文：Artificial Analysis 称，Kimi K3.1 Pro 与前代之间出现其测得最大的模型性格变化。 | https://x.com/ArtificialAnlys/status/2117385943959093677
+- 2026-11-02T19:06:00Z | X / NVIDIA AI | NVIDIA showed Cosmos 3 generating camera-controlled views and changing lighting, weather, and surroundings while preserving scene geometry. | 中文：NVIDIA 展示 Cosmos 3 按相机运动生成视角，并在保留几何结构的同时改变光照、天气和环境。 | https://x.com/NVIDIAAI/status/2117332461785133545
+- 2026-11-02T17:27:00Z | X / OpenAI | OpenAI introduced LifeVal, a benchmark shaped by feedback on whether AI helps with everyday tasks that matter to people. | 中文：OpenAI 发布 LifeVal，依据用户反馈评估 AI 是否能帮助完成真正重要的日常任务。 | https://x.com/OpenAI/status/2117307611338997846
+- 2026-11-02T17:46:00Z | X / Recraft | Recraft launched a logo maker that previews generated logos on packaging and apparel after a short business questionnaire. | 中文：Recraft 推出 Logo Maker，用户回答几道商业问题后即可预览 Logo 在包装和服装上的效果。 | https://x.com/recraftai/status/2117312342799364412
+- 2026-11-02T18:45:00Z | X / ElevenLabs | ElevenLabs analyzed 469 production agents and found that longer conversations correlated with higher voice-agent success rates. | 中文：ElevenLabs 分析 469 个生产环境 Agent，发现对话越长，语音 Agent 成功率越高。 | https://x.com/ElevenLabs/status/2117327298492047775
+- 2026-11-02T19:08:00Z | X / Agent Arena | Agent Arena said its top ten agents consume about 93 input tokens for every token they generate, based on more than 26,000 sessions. | 中文：Agent Arena 称，前十名 Agent 平均每生成一个 Token 就要处理约 93 个输入 Token，样本超过 2.6 万次会话。 | https://x.com/arena/status/2117332916854501753
+- 2026-11-02T15:00:00Z | X / Tripo | Tripo introduced 3D Junkyard, where users can search a shared desktop space with words or images and inspect related models. | 中文：Tripo 推出 3D Junkyard，用户可在共享桌面空间中用文字或图片搜索并查看相关模型。 | https://x.com/tripoai/status/2117270517178851552
+- 2026-11-02T15:00:00Z | TechCrunch | Omen AI acquired Aquatic Labs for $16 million to combine real-time sensors monitoring data-center cooling water. | 中文：Omen AI 以 1600 万美元收购 Aquatic Labs，整合用于实时监测数据中心冷却水的传感器技术。 | https://techcrunch.com/2026/11/02/omen-ai-adds-liquid-know-how-in-16-million-aquatic-labs-acquisition/
 
 ### 2026-11-02
 
@@ -1049,6 +1066,7 @@ Sources:
 - 2026-11-02 | Reuters | South Korea proposed a 2027 budget allocating about $15.97 billion to AI, semiconductors, physical AI, and data centers. | 中文：韩国拟在2027年预算中投入约159.7亿美元，覆盖人工智能、芯片、实体人工智能和数据中心。 | https://www.reuters.com/
 - 2026-11-02 | Unite.AI | Marble Cognition raised $3.75 million in pre-seed funding to build AI coworkers that learn office workflows by observation. | 中文：Marble Cognition获375万美元种子前融资，开发能观察办公流程并学习的人工智能同事。 | https://www.unite.ai/
 - 2026-11-02 | arXiv | BILAL-BENCH tests Bengali AI models for fabricated Islamic texts using 240 expert-verified questions. | 中文：BILAL-BENCH用240道专家核验问题测试孟加拉语人工智能模型伪造伊斯兰文本的能力。 | https://arxiv.org/
+- 2026-11-02 | MarkTechPost | Deep Principle released Hydrogen-1.0, a 753-billion-parameter open-weight scientific model with an MIT license. | 中文：Deep Principle 发布 7530 亿参数的 Hydrogen-1.0 科学开放权重模型，采用 MIT 许可证。 | https://www.marktechpost.com/2026/11/02/deep-principle-hydrogen-1-0-open-weight-scientific-model/
 
 ### 2026-11-01
 
@@ -1132,23 +1150,3 @@ Sources:
 - 2026-10-29T21:35:00Z | SiliconANGLE | Wabi raised $55 million at a $1.25 billion valuation for a consumer assistant combining group chat, app data, and vibe coding. | 中文：Wabi以12.5亿美元估值融资5500万美元，打造融合群聊、应用数据和氛围编程的消费者助手。 | https://siliconangle.com/2026/10/29/wabi-reels-in-55m-for-its-consumer-focused-ai-assistant/
 - 2026-10-29T16:38:00Z | X @arena | Agent Arena reported that GPT-6.1 Sol Max cost $1.91 per task, 85% less than the leading Claude Opus system. | 中文：Agent Arena称GPT-6.1 Sol Max每项任务成本为1.91美元，比领先的Claude Opus系统低85%。 | https://x.com/arena/status/2115845658100060527
 - 2026-10-30T11:22:00Z | InfoQ 中文 | Google released EnvHarness, a framework for agents to learn dynamically from changing environments through self-evolving interaction. | 中文：Google发布EnvHarness框架，让智能体通过自进化交互从变化环境中动态学习。 | https://www.infoq.cn/article/FJqN3mFVyN1lMqHOiegs?utm_source=rss&utm_medium=article
-
-### 2026-10-29
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-10-29.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-10-29.html
-
-- 2026-10-29T08:24:00Z | MarkTechPost | Infini-AI-Lab released Hermit, an open-source harness adapter framework designed to connect AI agents with diverse execution environments. | 中文：Infini-AI-Lab 发布开源 Hermit，通过适配器连接 AI 代理与多种执行环境。 | https://www.marktechpost.com/2026/10/29/infini-ai-lab-hermit-harness-adapter-framework/
-- 2026-10-29T07:50:00Z | MarkTechPost | Block unveiled Dessa, a full-duplex speech model trained exclusively on speech for more natural simultaneous listening and speaking. | 中文：Block 发布仅用语音训练的全双工语音模型 Dessa，支持更自然的边听边说。 | https://www.marktechpost.com/2026/10/29/block-dessa-full-duplex-speech-model/
-- 2026-10-29T07:28:00Z | AssemblyAI | AssemblyAI launched TTS-1, offering voice-agent speech at $15 per million characters with streaming latency below 100 milliseconds. | 中文：AssemblyAI 发布 TTS-1，面向语音代理提供每百万字符 15 美元、低于 100 毫秒延迟的语音合成。 | https://www.assemblyai.com/blog/text-to-speech-api
-- 2026-10-29T04:41:00Z | NVIDIA Research | NVIDIA released open-weight Nemotron 3.5 Transcribe, a 30-billion-parameter speech model supporting 40 languages and speaker-attributed transcription. | 中文：英伟达发布开源权重 Nemotron 3.5 Transcribe，30B 参数，支持 40 种语言及说话人归属转写。 | https://research.nvidia.com/labs/nemotron/NVIDIA-Nemotron-3.5-Transcribe/
-- 2026-10-29T03:27:00Z | 量子位 | Jishuo Technology, led by WeRide’s first employee, raised tens of millions of dollars in its first financing round. | 中文：由文远知行首位员工带队的景烁科技完成首轮数千万美元融资。 | https://www.qbitai.com/2026/10/506281.html
-- 2026-10-29T02:18:00Z | 量子位 | A 35-billion-parameter diffusion model entered the agent market, with its developers claiming roughly twice the speed of Jev. | 中文：一款 350 亿参数扩散模型进入代理赛道，开发方称其速度约为 Jev 的两倍。 | https://www.qbitai.com/2026/10/505934.html
-- 2026-10-29T01:07:00Z | X / Sakana AI | Sakana AI opened early enterprise access to its Sakana API Platform, adding organizational management around its models. | 中文：Sakana AI 开放 Sakana API Platform 企业早期体验，为模型 API 增加组织管理能力。 | https://x.com/SakanaAILabs/status/2115611510051598623
-- 2026-10-29T03:51:00Z | X / Ideogram | Ideogram previewed precise editing in Ideogram 4.5, emphasizing more intelligent localized changes to generated images. | 中文：Ideogram 预览 Ideogram 4.5 的精准编辑功能，强调对生成图像进行更智能的局部修改。 | https://x.com/ideogram_ai/status/2115652703028138063
-- 2026-10-29T01:19:00Z | X / Luma AI | Luma promoted tools that change an advertisement’s look or location and adapt the result across formats and languages. | 中文：Luma 推广可改变广告外观或地点，并将成片适配不同格式与语言的工具。 | https://x.com/LumaLabsAI/status/2115614350148816972
-- 2026-10-29T12:30:00Z | X / Kling AI | Kling showcased a new collection of action sequences created with Kling 4.0, highlighting movement, rhythm, and shot precision. | 中文：Kling 展示由 Kling 4.0 制作的新动作片段合集，突出运动、节奏与镜头精准度。 | https://x.com/Kling_ai/status/2115783207626891468
-- 2026-10-29T12:00:00Z | SiliconANGLE | Crux Labs raised more than $6 million to improve enterprise agents by incorporating human judgment into their workflows. | 中文：Crux Labs 融资超过 600 万美元，旨在把人类判断更深地嵌入企业代理工作流。 | https://siliconangle.com/2026/10/29/crux-labs-raises-over-6m-to-improve-enterprise-agents-with-human-judgment/
-- 2026-10-29T12:00:00Z | SiliconANGLE | Solink raised more than $100 million to extract business intelligence from security-camera footage with AI. | 中文：Solink 融资超过 1 亿美元，利用 AI 从安防摄像头视频中提取商业洞察。 | https://siliconangle.com/2026/10/29/solink-raises-more-than-100m-to-pull-business-data-from-security-cameras-with-ai/
-- 2026-10-29T08:20:00Z | X / Sakana AI | Sakana AI published a case study using AI analysis of social media to examine the 2026 U.S. midterm Senate race in Texas. | 中文：Sakana AI 发布案例研究，利用 AI 分析社交媒体研判 2026 年美国中期选举得州参议院选情。 | https://x.com/SakanaAILabs/status/2115720393369473344
-- 2026-10-29T12:00:00Z | X / Genspark | Genspark teased SecondBrain VoicePad, a voice-first interface intended to let users operate favorite AI tools through natural speech. | 中文：Genspark 预告 SecondBrain VoicePad，以语音优先方式让用户通过自然表达操作常用 AI 工具。 | https://x.com/genspark_ai/status/2115775667925385599

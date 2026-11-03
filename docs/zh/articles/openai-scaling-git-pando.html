@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAI为人机并行开发打造Git后端Pando — Uncle Cat AI Radar</title>
+<meta name="description" content="OpenAI为自家单体代码库开发Pando后端，重点解决工程师与编码Agent并发推送、拉取和故障恢复问题。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-scaling-git-pando.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/openai-scaling-git-pando.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-scaling-git-pando.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/openai-scaling-git-pando.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="OpenAI为人机并行开发打造Git后端Pando — Uncle Cat AI Radar">
+<meta property="og:description" content="OpenAI为自家单体代码库开发Pando后端，重点解决工程师与编码Agent并发推送、拉取和故障恢复问题。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/openai-scaling-git-pando.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenAI为人机并行开发打造Git后端Pando — Uncle Cat AI Radar">
+<meta name="twitter:description" content="OpenAI为自家单体代码库开发Pando后端，重点解决工程师与编码Agent并发推送、拉取和故障恢复问题。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="OpenAI为人机并行开发打造Git后端Pando — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"OpenAI为人机并行开发打造Git后端Pando","item":"https://mmlong818.github.io/ai-pulse/zh/articles/openai-scaling-git-pando.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/openai-scaling-git-pando.html#article","headline":"OpenAI为人机并行开发打造Git后端Pando","description":"OpenAI为自家单体代码库开发Pando后端，重点解决工程师与编码Agent并发推送、拉取和故障恢复问题。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/openai-scaling-git-pando.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/openai-scaling-git-pando.html"},"datePublished":"2026-11-02T15:30:00.000Z","dateModified":"2026-11-03T01:00:11.051Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["Agent","产业"],"keywords":"Agent, 产业","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://openai.com/index/scaling-git-at-openai/"],"about":[{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"产业"}]}]}</script>
+</head>
+<body data-slug="openai-scaling-git-pando" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/openai-scaling-git-pando.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-11-02T15:30:00Z">2026年11月2日 23:30</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>OpenAI为人机并行开发打造Git后端Pando</h1>
+  <p class="standfirst">OpenAI为自家单体代码库开发Pando后端，重点解决工程师与编码Agent并发推送、拉取和故障恢复问题。</p>
+  <h2>为另一种工作负载重做Git后端</h2><p>OpenAI在11月2日发布的工程文章中披露，公司已经开发出新的Git后端Pando，用于支撑其单体代码库中不断增加的人类工程师与软件Agent并发操作。</p><p>Pando保留了开发者熟悉的Git客户端工作方式，但改变了仓库数据的存储和传输方式。当客户端拉取更新时，系统会识别缺失的提交范围，并返回覆盖这段差距的packfile链接。当多名工程师或Agent分别向不同分支推送时，Pando可以并行处理；如果更新针对同一分支，则仍按顺序写入。</p><p>系统也针对失败恢复进行了设计。OpenAI表示，公司已将“packfile下载中断后的清理”相关修复贡献回Git项目。这说明Pando遇到的问题并非单纯的内部性能调优，而是自动化、高并发开发环境正在暴露传统工具的新边界。OpenAI称迁移后推送延迟明显下降，但文章没有给出完整的独立基准，也没有披露代码库的具体规模。</p><p>Pando的意义不在于Git本身，而在于它反映了OpenAI正在构建怎样的软件生产环境。编码Agent会制造突发性的自动提交、分支操作和仓库读取请求，而传统开发工具主要围绕人类协作设计。若能在不改变开发者接口的前提下并行处理这些流量，仓库后端将成为Agent密集型组织的重要基础设施。</p><h2>为什么重要</h2><p>这篇文章提供了一个具体信号：在Agent真正接管软件开发之前，它们已经先改变了日常工程操作的并发形态。未来代码托管系统可能首先为机器生成的高并发优化，而不只是为人类协作优化。</p><h2>猫叔判断</h2><p>比Pando这个名字更重要的是Git修复：下载中断之所以成了产品问题，是因为Agent让流水线几乎不停机。</p><p>来源：<a href="https://openai.com/index/scaling-git-at-openai/" rel="noopener" target="_blank">Scaling Git at OpenAI</a>。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://openai.com/index/scaling-git-at-openai/" rel="noopener" target="_blank">Scaling Git at OpenAI</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-grid-protectors-program.html">OpenAI提出“电网守护者”计划应对数据中心用电压力</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/gdpx-benchmark-agent-capability.html">GDPx测评显示：顶尖智能体复杂任务完成率仅12%</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-ai-compute-campuses.html">OpenAI拟将数据中心改称“AI算力园区”</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
