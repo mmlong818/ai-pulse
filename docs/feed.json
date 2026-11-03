@@ -49,6 +49,114 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/anthropic-message-threads.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/anthropic-message-threads.html",
+      "title": "Anthropic Cuts Long-Context Agent Startup Delays",
+      "summary": "Anthropic’s message-thread API sends only new context on each turn, cutting median first-token latency by about 35% in huge requests.",
+      "content_text": "Anthropic has introduced message threads for Claude-powered applications, a platform change designed to reduce the repeated transfer of long conversation histories. With the feature enabled, an application creates a thread once and sends only the new material on subsequent turns. Anthropic temporarily stores the thread server-side, but the application remains the source of truth and must retain its own conversation copy.\n\nAnthropic says the change is especially useful for long-running agents and Claude Code workflows. For requests containing roughly 500,000 to one million tokens, the company reports a median reduction of about 35% in time to first token. Message threads are available in beta on Anthropic’s native platform and through its managed Claude offerings on AWS, Microsoft Foundry, and Google Cloud.\n\nThe improvement is primarily an infrastructure optimization rather than a new model capability. It does not make a model reason better or expand its formal context limit. Instead, it reduces the amount of repeated input that must be transmitted and processed for every turn. That distinction matters for agents, which may repeatedly inspect files, tool results, and prior decisions over hours of work.\n\nThe trade-offs are operational. Thread state becomes part of the application’s dependency on Anthropic’s platform, but threads are best-effort: they expire five minutes after the last request and are deleted no more than one hour after last use. Developers must also understand which parameters remain fixed across a thread. The documentation specifies restrictions around model, tool, thinking, context-management, and other configuration changes. Teams building portable multi-provider systems may therefore need an additional abstraction layer.\n\nWhy it matters: long-context agents are often limited by waiting, bandwidth, and token-processing overhead rather than by the model’s raw intelligence. A 35% latency improvement at million-token scale can make iterative coding and research workflows feel substantially more responsive, although Anthropic has not published a full cost comparison or independent benchmark.",
+      "date_published": "2026-11-03T12:35:00.000Z",
+      "date_modified": "2026-11-03T13:00:05.172Z",
+      "tags": [
+        "Agents",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-message-threads.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-message-threads.html",
+        "source_published_at": "2026-11-03T12:35:00.000Z",
+        "site_published_at": "2026-11-03T13:00:05.172Z",
+        "sources": [
+          {
+            "title": "Make long-running agents faster with message threads",
+            "url": "https://claude.com/resources/articles/message-threads"
+          },
+          {
+            "title": "Message threads - Claude Platform Docs",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/message-threads"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/huawei-hbm-procurement-crunch.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/huawei-hbm-procurement-crunch.html",
+      "title": "Huawei Customers Told to Source HBM for AI Chips",
+      "summary": "Huawei is reportedly asking some buyers to procure high-bandwidth memory themselves, exposing a severe constraint in China’s AI-chip supply chain.",
+      "content_text": "Huawei has reportedly told some customers ordering its AI chips to source their own high-bandwidth memory, or HBM, according to reporting from The Decoder and South Korea’s Herald Business. The unusual instruction reflects a supply-chain bottleneck: Chinese companies face difficulty obtaining advanced HBM directly from Korean memory suppliers, while domestic alternatives remain constrained in availability and performance.\n\nHBM is not a peripheral component. It sits close to the accelerator and feeds data to the compute cores at very high bandwidth, making it central to training and inference performance. A chip design can be competitive on paper yet remain difficult to deploy at scale if the surrounding memory supply is insufficient.\n\nThe reported arrangement effectively shifts procurement risk from Huawei to buyers. Customers may need to locate compatible memory through their own channels before Huawei can complete a system. That raises questions about qualification, packaging, warranty responsibility, and the ability to build repeatable server configurations. It also creates incentives for intermediaries and gray-market procurement, precisely the kind of opaque supply chain that export controls seek to disrupt.\n\nThe reports cite memory costs of roughly $24,000 to $32,000 per package in the Chinese market before adding the accelerator, server, or electricity. Those figures should be treated cautiously because the underlying supply contracts and configurations are not public. Huawei has not, in the cited coverage, publicly confirmed a universal requirement applying to all customers or products.\n\nWhy it matters: China’s AI hardware challenge is becoming less about designing a substitute accelerator and more about assembling an entire reliable system around it. If buyers must independently secure HBM, scale-up becomes slower, more expensive, and harder to standardize. The development also shows why memory suppliers, packaging capacity, and procurement controls can matter as much as the headline chip itself.",
+      "date_published": "2026-11-03T11:47:00.000Z",
+      "date_modified": "2026-11-03T13:00:05.172Z",
+      "tags": [
+        "Industry",
+        "Policy"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/huawei-hbm-procurement-crunch.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/huawei-hbm-procurement-crunch.html",
+        "source_published_at": "2026-11-03T11:47:00.000Z",
+        "site_published_at": "2026-11-03T13:00:05.172Z",
+        "sources": [
+          {
+            "title": "Huawei tells customers to find their own AI chip memory",
+            "url": "https://the-decoder.com/huawei-tells-customers-to-find-their-own-ai-chip-memory-effectively-outsourcing-procurement-to-the-black-market/"
+          },
+          {
+            "title": "No Korean HBM, no Chinese AI chips — and smugglers are getting creative",
+            "url": "https://biz.heraldcorp.com/article/10924542"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/nvidia-cloud-china-exposure.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/nvidia-cloud-china-exposure.html",
+      "title": "Nvidia Urges Cloud Partners to Limit China Exposure",
+      "summary": "Nvidia is asking cloud customers to diversify away from Chinese clients, tightening a remote-access loophole in US AI-chip controls.",
+      "content_text": "Nvidia has begun urging some cloud-computing customers to reduce their commercial exposure to Chinese companies, according to reporting by The Information and the Financial Times. The guidance reportedly applies to future business and asks providers to identify the end users of Nvidia-powered capacity. It has been communicated through sales and regional teams and, so far, is described as non-mandatory rather than a formal contract prohibition.\n\nThe move targets an important gap in US export controls. While Washington restricts the shipment of advanced AI accelerators to China, overseas cloud providers can often rent access to those chips remotely. That arrangement has allowed Chinese developers to obtain compute without physically importing restricted hardware. The new pressure would make that route harder by encouraging Nvidia-backed neoclouds and other infrastructure operators to build a broader customer mix.\n\nThe commercial consequences are not yet clear. A reported 51-percent non-Chinese customer threshold would be materially stricter than ordinary compliance screening, but the available reporting does not establish that Nvidia has imposed a universal rule or that every cloud partner has accepted it. Existing leasing agreements also appear to be treated differently from new contracts.\n\nWhy it matters: this is a shift from regulating chips at the border to influencing who is allowed to consume them in the cloud. If enforced broadly, it could raise compute costs for Chinese AI labs, complicate access for international neoclouds, and push more demand toward domestic accelerators. It also places Nvidia in a difficult position: the company must protect access to its hardware while asking customers to walk away from a potentially significant market.",
+      "date_published": "2026-11-03T12:22:00.000Z",
+      "date_modified": "2026-11-03T13:00:05.172Z",
+      "tags": [
+        "Policy",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/nvidia-cloud-china-exposure.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-cloud-china-exposure.html",
+        "source_published_at": "2026-11-03T12:22:00.000Z",
+        "site_published_at": "2026-11-03T13:00:05.172Z",
+        "sources": [
+          {
+            "title": "Nvidia Tells Cloud Clients to Take on Less China Business",
+            "url": "https://www.theinformation.com/briefings/nvidia-tells-cloud-clients-take-less-china-business"
+          },
+          {
+            "title": "Nvidia orders data centre clients to reduce China exposure, FT reports",
+            "url": "https://new.streetinsider.com/Reuters/Nvidia%2Borders%2Bdata%2Bcentre%2Bclients%2Bto%2Breduce%2BChina%2Bexposure%2C%2BFT%2Breports/27275695.html"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/openai-grid-protectors-program.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/openai-grid-protectors-program.html",
       "title": "OpenAI Proposes Grid Protectors for AI Data Centers",
@@ -1774,121 +1882,6 @@
           {
             "title": "How Deepgram optimized voice AI at scale with AWS Trainium",
             "url": "https://aws.amazon.com/blogs/machine-learning/how-deepgram-optimized-voice-ai-at-scale-with-aws-trainium/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html",
-      "title": "DeepSeek Open-Sources the Inference Stack Behind V4.1 Flash",
-      "summary": "DeepSeek released DeepInfer and deepseek-recipe, opening the serving software behind its latest model and lowering barriers to large-scale deployment.",
-      "content_text": "DeepSeek has open-sourced DeepInfer, an inference framework it says powers production services for DeepSeek-V4.1-Flash, alongside the supporting deepseek-recipe libraries. The release covers more than a model wrapper: it includes optimized kernels, mixture-of-experts parallelism, speculative decoding, asynchronous scheduling, deterministic sampling and structured-output controls.\n\n## What is included\n\nDeepInfer supports DeepSeek-V4.1-Flash and is designed for large-scale offline inference. Its feature set includes FlashMLA, DeepGEMM, DeepEP, TileKernels and custom TileLang kernels, plus attention data parallelism, context parallelism and expert-parallel load balancing. DeepSeek also exposes confidence-scheduled verification and bounded replay techniques intended to reduce decoding and prefill overhead.\n\nThe repository supports NVIDIA SM100 GPUs and Huawei Ascend 950 NPUs. It is released under Apache 2.0, but it is not a complete managed serving platform: DeepSeek lists KV-cache management, full prefill/decode disaggregation and replica-level load balancing as components users still need to supply.\n\nDeepSeek also published a refreshed version of deepseek-recipe, its Rust and Python toolkit for converting common API formats into DeepSeek prompts and responses. The October 20 release adds model-version handling for V4 and V4.1, structured-output support, explicit special-token handling and prefix continuation.\n\n## Why it matters\n\nThe move shifts attention from open model weights to the production machinery required to make them economically useful. DeepSeek is exposing implementation details that normally remain inside a lab’s serving stack, giving cloud providers, national-computing centers and self-hosting teams a clearer route to reproduce its throughput-oriented design. The practical limit is hardware and systems expertise: the repository still assumes recent accelerators and leaves several critical service layers outside the release. Even so, opening the stack could accelerate optimization around DeepSeek models and make inference infrastructure itself a more competitive open-source battleground.",
-      "date_published": "2026-10-20T09:30:00.000Z",
-      "date_modified": "2026-10-20T13:00:07.876Z",
-      "tags": [
-        "Open Source",
-        "Models",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-opens-deepinfer-inference-stack.html",
-        "source_published_at": "2026-10-20T09:30:00.000Z",
-        "site_published_at": "2026-10-20T13:00:07.876Z",
-        "sources": [
-          {
-            "title": "DeepSeek DeepInfer GitHub repository",
-            "url": "https://github.com/deepseek-ai/DeepInfer"
-          },
-          {
-            "title": "DeepSeek deepseek-recipe changelog",
-            "url": "https://github.com/deepseek-ai/deepseek-recipe/blob/main/CHANGELOG.md"
-          },
-          {
-            "title": "DeepSeek official announcement on X",
-            "url": "https://x.com/deepseek_ai/status/2112476496283775135"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html",
-      "title": "OpenCode Console breach exposes AI API keys and costs",
-      "summary": "A breach affecting 1.4% of OpenCode Console users triggered unauthorized AI charges and exposed a difficult gap in defensive model access.",
-      "content_text": "## What happened\n\nOpenCode said attackers compromised an older system connected to OpenCode Console, its hosted service for developers who store provider credentials and run coding workflows. The company said 1.4% of Console users were affected and that the open-source OpenCode application and command-line tool were not compromised.\n\nUsers reported sudden spending alerts and unauthorized charges across OpenAI, Anthropic and Google accounts. Some losses reached hundreds of dollars, with a few reports exceeding $1,000. Anthropic and Google blocked exposed keys, while OpenAI worked with OpenCode on access restoration and refunds. OpenCode advised affected customers to revoke and replace credentials directly with each provider.\n\nThe incident became more complicated because OpenCode initially described it as a large-scale model-distillation attack, while outside observers said the evidence publicly available so far established a credential breach but not the attackers’ ultimate purpose. OpenCode also said the assault continued for roughly 48 hours, forcing its team to keep defensive agents operating around the clock.\n\n## Why it matters\n\nThis is a security incident, but its significance extends beyond one developer platform. AI coding tools increasingly sit between users and several model providers, turning stored API keys into a concentrated target. A compromise can therefore create financial exposure across multiple vendors at once, even when the underlying coding tool remains intact.\n\nThe episode also exposed a practical safety dilemma: models may refuse to inspect malicious payloads even when an incident-response team is investigating them. OpenCode later obtained access to OpenAI’s Daybreak Blue program, whose vetted models are designed to be more useful for defensive security work. That distinction could become an important operational requirement for companies deploying agentic coding systems.\n\n**Uncle Cat take:** OpenCode’s 1.4% figure understates the systemic risk: one console breach can turn three model providers into a single attacker-controlled billing surface.",
-      "date_published": "2026-10-19T19:28:00.000Z",
-      "date_modified": "2026-10-20T01:00:06.421Z",
-      "tags": [
-        "Safety",
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/opencode-console-breach.html",
-        "source_published_at": "2026-10-19T19:28:00.000Z",
-        "site_published_at": "2026-10-20T01:00:06.421Z",
-        "sources": [
-          {
-            "title": "Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts",
-            "url": "https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/"
-          },
-          {
-            "title": "OpenCode",
-            "url": "https://opencode.ai/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/tenstorrent-open-weight-chips.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/tenstorrent-open-weight-chips.html",
-      "title": "Tenstorrent raises $1.5 billion for open-model chips",
-      "summary": "Tenstorrent reached a $6.2 billion valuation after raising $1.5 billion to scale inference hardware for open-weight models and video generation.",
-      "content_text": "## The financing\n\nAI chip startup Tenstorrent raised $1.5 billion at a $6.2 billion valuation, more than doubling the company’s reported value from late 2024. The round was led by Trace Capital and Innovation X, with participation from new and existing investors including Agostinelli Group, ARK Invest, Brett Barna, Cadence Ventures, Eclipse, Fidelity Management & Research Company, Maverick Silicon, Morgan Stanley, Protagonist, Sandisk, T. Rowe Price, Tether Investments, Troluce Capital, Virtu Financial and XTX Markets.\n\nTenstorrent is positioning itself as an alternative to Nvidia, with a focus on chips and servers designed for inference. CEO Jim Keller said the company chose to remain independent after demonstrating that its Galaxy server systems could run DeepSeek models. The new capital will support production scale and hardware tailored to serving open-weight models and video-generation workloads.\n\nThe company’s timing reflects a shift in the accelerator market. The AI industry is no longer defined only by training the largest closed models; open-weight systems are increasingly being deployed by cloud providers, enterprises and developers who want control over weights, data location and operating costs. That creates demand for hardware optimized around inference economics rather than only peak training performance.\n\n## The constraint\n\nTenstorrent’s valuation is substantial, but funding does not establish that its products can compete broadly with Nvidia’s software, supply chain or installed base. Its reported DeepSeek demonstration is evidence of capability, not proof of production-scale adoption. The company must still turn architecture and server claims into reliable developer tools, predictable availability and competitive total cost of ownership.\n\nThe round nevertheless matters because it gives a non-Nvidia accelerator company enough capital to pursue an integrated hardware and software strategy while open models are expanding the addressable market. If Tenstorrent succeeds, the beneficiaries would include model developers seeking alternatives and customers that need to run large models without committing to one dominant vendor.\n\n**Uncle Cat take:** The $6.2 billion valuation is a bet on inference demand, but Tenstorrent’s real test is whether DeepSeek demos become boring, repeatable production deployments.",
-      "date_published": "2026-10-19T18:37:00.000Z",
-      "date_modified": "2026-10-20T01:00:06.421Z",
-      "tags": [
-        "Funding",
-        "Industry",
-        "Open Source"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tenstorrent-open-weight-chips.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tenstorrent-open-weight-chips.html",
-        "source_published_at": "2026-10-19T18:37:00.000Z",
-        "site_published_at": "2026-10-20T01:00:06.421Z",
-        "sources": [
-          {
-            "title": "Tenstorrent Series E official announcement",
-            "url": "https://tenstorrent.com/newsroom/tenstorrent-announces-series-e"
-          },
-          {
-            "title": "Tenstorrent hits $6.2B valuation to scale open-weight AI chips",
-            "url": "https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-valuation-to-scale-open-weight-ai-chips/"
           }
         ]
       }

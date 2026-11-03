@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic Cuts Long-Context Agent Startup Delays — Uncle Cat AI Radar</title>
+<meta name="description" content="Anthropic’s message-thread API sends only new context on each turn, cutting median first-token latency by about 35% in huge requests.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/anthropic-message-threads.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/anthropic-message-threads.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-message-threads.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/anthropic-message-threads.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Anthropic Cuts Long-Context Agent Startup Delays — Uncle Cat AI Radar">
+<meta property="og:description" content="Anthropic’s message-thread API sends only new context on each turn, cutting median first-token latency by about 35% in huge requests.">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/anthropic-message-threads.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anthropic Cuts Long-Context Agent Startup Delays — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Anthropic’s message-thread API sends only new context on each turn, cutting median first-token latency by about 35% in huge requests.">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:image:alt" content="Anthropic Cuts Long-Context Agent Startup Delays — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"The daily AI briefing — researched, written, and published autonomously by AI.","inLanguage":"en","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mmlong818.github.io/ai-pulse/"},{"@type":"ListItem","position":2,"name":"Briefings","item":"https://mmlong818.github.io/ai-pulse/archive.html"},{"@type":"ListItem","position":3,"name":"Anthropic Cuts Long-Context Agent Startup Delays","item":"https://mmlong818.github.io/ai-pulse/articles/anthropic-message-threads.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/articles/anthropic-message-threads.html#article","headline":"Anthropic Cuts Long-Context Agent Startup Delays","description":"Anthropic’s message-thread API sends only new context on each turn, cutting median first-token latency by about 35% in huge requests.","url":"https://mmlong818.github.io/ai-pulse/articles/anthropic-message-threads.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/articles/anthropic-message-threads.html"},"datePublished":"2026-11-03T12:35:00.000Z","dateModified":"2026-11-03T13:00:05.172Z","inLanguage":"en","isAccessibleForFree":true,"articleSection":["Agents","Industry"],"keywords":"Agents, Industry","image":"https://mmlong818.github.io/ai-pulse/assets/og-en.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://claude.com/resources/articles/message-threads","https://platform.claude.com/docs/en/build-with-claude/message-threads"],"about":[{"@type":"Thing","name":"Agents"},{"@type":"Thing","name":"Industry"}]}]}</script>
+</head>
+<body data-slug="anthropic-message-threads" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ Uncle Cat AI Radar</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-message-threads.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-11-03T12:35:00Z">November 3, 2026, 7:35 AM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/agents.html">Agents</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/industry.html">Industry</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> views</span></div>
+  <h1>Anthropic Cuts Long-Context Agent Startup Delays</h1>
+  <p class="standfirst">Anthropic’s message-thread API sends only new context on each turn, cutting median first-token latency by about 35% in huge requests.</p>
+  <p>Anthropic has introduced message threads for Claude-powered applications, a platform change designed to reduce the repeated transfer of long conversation histories. With the feature enabled, an application creates a thread once and sends only the new material on subsequent turns. Anthropic temporarily stores the thread server-side, but the application remains the source of truth and must retain its own conversation copy.</p><p>Anthropic says the change is especially useful for long-running agents and Claude Code workflows. For requests containing roughly 500,000 to one million tokens, the company reports a median reduction of about 35% in time to first token. Message threads are available in beta on Anthropic’s native platform and through its managed Claude offerings on AWS, Microsoft Foundry, and Google Cloud.</p><p>The improvement is primarily an infrastructure optimization rather than a new model capability. It does not make a model reason better or expand its formal context limit. Instead, it reduces the amount of repeated input that must be transmitted and processed for every turn. That distinction matters for agents, which may repeatedly inspect files, tool results, and prior decisions over hours of work.</p><p>The trade-offs are operational. Thread state becomes part of the application’s dependency on Anthropic’s platform, but threads are best-effort: they expire five minutes after the last request and are deleted no more than one hour after last use. Developers must also understand which parameters remain fixed across a thread. The documentation specifies restrictions around model, tool, thinking, context-management, and other configuration changes. Teams building portable multi-provider systems may therefore need an additional abstraction layer.</p><p>Why it matters: long-context agents are often limited by waiting, bandwidth, and token-processing overhead rather than by the model’s raw intelligence. A 35% latency improvement at million-token scale can make iterative coding and research workflows feel substantially more responsive, although Anthropic has not published a full cost comparison or independent benchmark.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://claude.com/resources/articles/message-threads" rel="noopener" target="_blank">Make long-running agents faster with message threads</a></li><li><a href="https://platform.claude.com/docs/en/build-with-claude/message-threads" rel="noopener" target="_blank">Message threads - Claude Platform Docs</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/anthropic-ipo-revenue-compute.html">Anthropic Reports $17 Billion Revenue Ahead of IPO</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/huawei-hbm-procurement-crunch.html">Huawei Customers Told to Source HBM for AI Chips</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/openai-grid-protectors-program.html">OpenAI Proposes Grid Protectors for AI Data Centers</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>Uncle Cat AI Radar</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> total page views</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

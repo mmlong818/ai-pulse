@@ -1,0 +1,114 @@
+这是「猫叔的AI资讯雷达」11月3日晚报。
+
+本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
+
+**今晚重点**：英伟达正要求部分云客户减少中国业务，试图收紧美国芯片管制留下的远程算力通道。
+
+## 深度简报目录
+
+- 英伟达要求云服务伙伴降低对中国客户敞口
+- Anthropic用消息线程降低长上下文Agent等待时间
+- 华为据报要求部分客户自行采购AI芯片HBM
+
+## 快讯预览
+
+- 《麻省理工科技评论》介绍了“反向博弈论”，将其作为约束AI智能体安全行为的机制设计方法。
+- Kling邀请八位创作者分享Kling 4.0的真实工作流、作品和能力体验。
+- 据TechCrunch报道，Apple Watch用于回放和总结对话的AI功能开始测试。
+- 英伟达开源Auto Ontology，这是一个用于语义图推理、确定性查询生成和可解释智能体检索的Python框架。
+- 量子位报道，一款纯语音Personal Agent展示了无需屏幕或文字输入、接近Siri愿景的助手形态。
+- Google将Dreambeans扩展到印度，支持13种本地语言，并利用关联Google服务生成个性化插画故事。
+- Pika通过API示例展示H3 Flex，可生成一镜到底的武打、雨中短片和复古科幻场景。
+- Meshy在网页端和API上线N1 Texture，称其接缝与投影瑕疵更少，速度约为Meshy 7的三倍。
+- Luma新增Expression Sheet，让创作者先探索角色的表演范围，再确定最终方向。
+- OpenAI更新漏洞奖励计划，并表示过去30天内符合条件的报告将按新标准补发差额。
+
+## 1. 英伟达要求云服务伙伴降低对中国客户敞口
+
+英伟达正要求部分云客户减少中国业务，试图收紧美国芯片管制留下的远程算力通道。
+
+据《The Information》和《金融时报》报道，英伟达近期开始要求部分云计算客户降低对中国企业的业务敞口。相关要求据称主要针对未来业务，并要求云服务商提交芯片最终使用者身份。消息人士称，这些要求目前通过销售团队和地区团队口头传达，尚未成为强制性的统一合同条款。
+
+这项动作针对的是美国出口管制中的一个关键缺口。华盛顿限制先进AI加速器直接运往中国，但海外云服务商通常仍能远程出租这些芯片的计算能力。中国开发者因此可以不实际进口硬件，就获得受限制芯片的使用权。英伟达如今向旗下支持的“新云”及其他基础设施运营商施压，要求其扩大客户来源，实际上是在压缩这条通道。
+
+商业影响仍有待观察。有报道称，英伟达希望云服务商至少将51%的服务销售给非中国企业，但目前无法确认这是否已经成为普遍规则，也无法确认所有合作伙伴都已接受。现有租赁合同与新签合同似乎也会受到不同对待。
+
+为什么重要：这标志着AI芯片管制可能从“谁能进口硬件”延伸到“谁能消费算力”。若要求被广泛执行，中国AI实验室的算力成本和海外取算难度都可能上升，国际新云服务商也会被迫重新安排客户结构。英伟达则面临两难：既要守住硬件供应链，又要主动劝客户放弃一个潜在的大市场。
+
+**原始信源**
+
+- [Nvidia Tells Cloud Clients to Take on Less China Business](https://www.theinformation.com/briefings/nvidia-tells-cloud-clients-take-less-china-business)
+- [Nvidia orders data centre clients to reduce China exposure, FT reports](https://new.streetinsider.com/Reuters/Nvidia%2Borders%2Bdata%2Bcentre%2Bclients%2Bto%2Breduce%2BChina%2Bexposure%2C%2BFT%2Breports/27275695.html)
+
+原文链接：[英伟达要求云服务伙伴降低对中国客户敞口｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-cloud-china-exposure.html)
+
+---
+
+## 2. Anthropic用消息线程降低长上下文Agent等待时间
+
+Anthropic推出消息线程，让每轮请求只发送新增内容，超长请求首个Token延迟中位数下降约35%。
+
+Anthropic推出了面向Claude应用的消息线程功能，目标是减少长对话历史在每轮请求中的重复传输。开发者可以先创建一个线程，之后只提交新增内容。Anthropic会在服务器端短期保存线程，但应用本身仍是会话的真实来源，必须自行保留完整对话副本。
+
+Anthropic表示，这一功能尤其适合长期运行的Agent和Claude Code工作流。对于包含约50万至100万Token的请求，公司称首个Token延迟中位数可下降约35%。消息线程目前已在Anthropic原生平台进入测试，也可用于AWS、Microsoft Foundry和Google Cloud上的托管Claude服务。
+
+这项改进本质上是基础设施优化，而不是模型能力升级。它不会让模型更擅长推理，也不会直接扩大模型的正式上下文上限；它做的是减少每轮请求中需要重复上传和处理的旧内容。对于连续数小时运行的Agent来说，文件、工具结果和历史决策会不断累积，减少这些重复开销可能显著改善交互节奏。
+
+代价也很明确：线程状态会成为应用对Anthropic平台的依赖，而且线程是尽力而为的临时机制——最后一次请求后5分钟会过期，最后使用后最迟1小时会被删除。开发者还需要理解哪些参数在同一线程中必须保持不变。文档对模型、工具、思考模式、上下文管理和其他配置都有约束。要构建跨供应商运行的系统，团队可能仍需额外设计一层兼容接口。
+
+为什么重要：长上下文Agent的瓶颈往往不是模型智力，而是等待、带宽和重复处理Token的开销。百万Token规模下，延迟降低35%可能让编程和研究流程明显更顺畅。不过，Anthropic尚未公布完整的成本对比，也缺少独立基准验证。
+
+**原始信源**
+
+- [Make long-running agents faster with message threads](https://claude.com/resources/articles/message-threads)
+- [Message threads - Claude Platform Docs](https://platform.claude.com/docs/en/build-with-claude/message-threads)
+
+原文链接：[Anthropic用消息线程降低长上下文Agent等待时间｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-message-threads.html)
+
+---
+
+## 3. 华为据报要求部分客户自行采购AI芯片HBM
+
+报道称，华为要求部分AI芯片客户自行寻找高带宽内存，凸显中国AI硬件供应链的关键瓶颈。
+
+据The Decoder和韩国《先驱商业报》报道，华为已要求部分订购AI芯片的客户自行采购高带宽内存（HBM）。这一罕见安排反映出供应链瓶颈：中国企业难以直接从韩国存储器厂商获得先进HBM，而国内替代品在供应量和性能上都受到限制。
+
+HBM并不是普通配件。它紧邻加速器，通过极高带宽向计算核心供给数据，直接影响训练和推理性能。一款芯片即使在纸面指标上具备竞争力，如果配套内存无法稳定获得，最终也很难大规模部署。
+
+据报道，这种安排实际上把采购风险从华为转移给客户。客户可能需要先自行找到兼容内存，华为才能完成整机或系统交付。这会进一步引出适配验证、封装、保修责任和服务器配置可复制性等问题，也可能刺激中间商和灰色采购渠道。对试图阻断受限硬件流通的出口管制而言，供应链越不透明，监管就越困难。
+
+相关报道提到，中国市场上的单套内存成本约为2.4万至3.2万美元，还不包括AI芯片、服务器和电力成本。由于具体合同和配置尚未公开，这一价格应谨慎看待。现有报道也没有证明华为已对所有客户或所有产品施加统一要求。
+
+为什么重要：中国AI硬件的难题正在从“能否设计替代加速器”转向“能否围绕它稳定组装完整系统”。如果客户必须自行解决HBM，规模化部署会更慢、更贵，也更难标准化。这一事件说明，存储器、先进封装和采购渠道，可能与芯片本身一样决定AI基础设施的实际供给能力。
+
+**原始信源**
+
+- [Huawei tells customers to find their own AI chip memory](https://the-decoder.com/huawei-tells-customers-to-find-their-own-ai-chip-memory-effectively-outsourcing-procurement-to-the-black-market/)
+- [No Korean HBM, no Chinese AI chips — and smugglers are getting creative](https://biz.heraldcorp.com/article/10924542)
+
+原文链接：[华为据报要求部分客户自行采购AI芯片HBM｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/huawei-hbm-procurement-crunch.html)
+
+## 一句话快讯
+- 《麻省理工科技评论》介绍了“反向博弈论”，将其作为约束AI智能体安全行为的机制设计方法。（[MIT Technology Review](https://www.technologyreview.com/2026/11/03/1147934/reverse-game-theory-mechanism-design-ai-alignment/)）
+- Kling邀请八位创作者分享Kling 4.0的真实工作流、作品和能力体验。（[X @Kling_ai](https://x.com/Kling_ai/status/2117540047809602044)）
+- 据TechCrunch报道，Apple Watch用于回放和总结对话的AI功能开始测试。（[TechCrunch AI](https://techcrunch.com/2026/11/02/apple-watchs-ai-features-for-rewinding-and-recapping-conversations-begin-beta-testing/)）
+- 英伟达开源Auto Ontology，这是一个用于语义图推理、确定性查询生成和可解释智能体检索的Python框架。（[GitHub](https://github.com/NVIDIA/auto-ontology)）
+- 量子位报道，一款纯语音Personal Agent展示了无需屏幕或文字输入、接近Siri愿景的助手形态。（[量子位](https://www.qbitai.com/2026/11/507419.html)）
+- Google将Dreambeans扩展到印度，支持13种本地语言，并利用关联Google服务生成个性化插画故事。（[TechCrunch AI](https://techcrunch.com/2026/11/02/google-takes-dreambeans-to-india-in-bid-to-bring-ai-generated-personal-stories-to-the-masses/)）
+- Pika通过API示例展示H3 Flex，可生成一镜到底的武打、雨中短片和复古科幻场景。（[X @pika_labs](https://x.com/pika_labs/status/2117448666604785909)）
+- Meshy在网页端和API上线N1 Texture，称其接缝与投影瑕疵更少，速度约为Meshy 7的三倍。（[X @MeshyAI](https://x.com/MeshyAI/status/2117446343350489392)）
+- Luma新增Expression Sheet，让创作者先探索角色的表演范围，再确定最终方向。（[X @LumaLabsAI](https://x.com/LumaLabsAI/status/2117445978320163139)）
+- OpenAI更新漏洞奖励计划，并表示过去30天内符合条件的报告将按新标准补发差额。（[X @OpenAI](https://x.com/OpenAI/status/2117444049900654743)）
+- Larridin获3000万美元融资，目标是帮助企业证明AI部署是否带来可量化的财务价值。（[SiliconANGLE](https://siliconangle.com/2026/11/02/vcs-bet-30m-on-larridins-ability-to-help-enterprises-demonstrate-ais-value-for-money/)）
+- Simon Willison 发布 llm 0.37，继续扩展其命令行语言模型工具包。（[Simon Willison](https://simonwillison.net/2026/Nov/2/llm/)）
+- Trajectory 融资 4500 万美元，试图让非技术用户也能训练 AI 模型。（[TechCrunch](https://techcrunch.com/2026/11/02/trajectory-raises-45m-to-make-ai-model-training-accessible-to-nontechnical-experts/)）
+
+---
+
+完整日报：[11月3日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-03.html)
+
+历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
+
+
+
+说明：本文为 AI 自动采编稿，所有事实以文中原始信源为准；如发现时间或事实错误，会在网页版本中优先修正。

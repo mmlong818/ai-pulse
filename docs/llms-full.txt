@@ -54,6 +54,85 @@ Sources:
   - Anthropic amended registration statement: https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm
   - Anthropic posts $17B quarterly revenue but losses continue: https://apnews.com/article/0cbd1a649a4cce904be59af8f6b30179
 
+### Anthropic Cuts Long-Context Agent Startup Delays
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-message-threads.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-message-threads.html
+- Source timestamp: 2026-11-03T12:35:00.000Z
+- Site timestamp: 2026-11-03T13:00:05.172Z
+- Tags: Agents, Industry
+
+Anthropic’s message-thread API sends only new context on each turn, cutting median first-token latency by about 35% in huge requests.
+
+Anthropic has introduced message threads for Claude-powered applications, a platform change designed to reduce the repeated transfer of long conversation histories. With the feature enabled, an application creates a thread once and sends only the new material on subsequent turns. Anthropic temporarily stores the thread server-side, but the application remains the source of truth and must retain its own conversation copy.
+
+Anthropic says the change is especially useful for long-running agents and Claude Code workflows. For requests containing roughly 500,000 to one million tokens, the company reports a median reduction of about 35% in time to first token. Message threads are available in beta on Anthropic’s native platform and through its managed Claude offerings on AWS, Microsoft Foundry, and Google Cloud.
+
+The improvement is primarily an infrastructure optimization rather than a new model capability. It does not make a model reason better or expand its formal context limit. Instead, it reduces the amount of repeated input that must be transmitted and processed for every turn. That distinction matters for agents, which may repeatedly inspect files, tool results, and prior decisions over hours of work.
+
+The trade-offs are operational. Thread state becomes part of the application’s dependency on Anthropic’s platform, but threads are best-effort: they expire five minutes after the last request and are deleted no more than one hour after last use. Developers must also understand which parameters remain fixed across a thread. The documentation specifies restrictions around model, tool, thinking, context-management, and other configuration changes. Teams building portable multi-provider systems may therefore need an additional abstraction layer.
+
+Why it matters: long-context agents are often limited by waiting, bandwidth, and token-processing overhead rather than by the model’s raw intelligence. A 35% latency improvement at million-token scale can make iterative coding and research workflows feel substantially more responsive, although Anthropic has not published a full cost comparison or independent benchmark.
+
+Chinese title: Anthropic用消息线程降低长上下文Agent等待时间
+Chinese summary: Anthropic推出消息线程，让每轮请求只发送新增内容，超长请求首个Token延迟中位数下降约35%。
+
+Sources:
+  - Make long-running agents faster with message threads: https://claude.com/resources/articles/message-threads
+  - Message threads - Claude Platform Docs: https://platform.claude.com/docs/en/build-with-claude/message-threads
+
+### Huawei Customers Told to Source HBM for AI Chips
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/huawei-hbm-procurement-crunch.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/huawei-hbm-procurement-crunch.html
+- Source timestamp: 2026-11-03T11:47:00.000Z
+- Site timestamp: 2026-11-03T13:00:05.172Z
+- Tags: Industry, Policy
+
+Huawei is reportedly asking some buyers to procure high-bandwidth memory themselves, exposing a severe constraint in China’s AI-chip supply chain.
+
+Huawei has reportedly told some customers ordering its AI chips to source their own high-bandwidth memory, or HBM, according to reporting from The Decoder and South Korea’s Herald Business. The unusual instruction reflects a supply-chain bottleneck: Chinese companies face difficulty obtaining advanced HBM directly from Korean memory suppliers, while domestic alternatives remain constrained in availability and performance.
+
+HBM is not a peripheral component. It sits close to the accelerator and feeds data to the compute cores at very high bandwidth, making it central to training and inference performance. A chip design can be competitive on paper yet remain difficult to deploy at scale if the surrounding memory supply is insufficient.
+
+The reported arrangement effectively shifts procurement risk from Huawei to buyers. Customers may need to locate compatible memory through their own channels before Huawei can complete a system. That raises questions about qualification, packaging, warranty responsibility, and the ability to build repeatable server configurations. It also creates incentives for intermediaries and gray-market procurement, precisely the kind of opaque supply chain that export controls seek to disrupt.
+
+The reports cite memory costs of roughly $24,000 to $32,000 per package in the Chinese market before adding the accelerator, server, or electricity. Those figures should be treated cautiously because the underlying supply contracts and configurations are not public. Huawei has not, in the cited coverage, publicly confirmed a universal requirement applying to all customers or products.
+
+Why it matters: China’s AI hardware challenge is becoming less about designing a substitute accelerator and more about assembling an entire reliable system around it. If buyers must independently secure HBM, scale-up becomes slower, more expensive, and harder to standardize. The development also shows why memory suppliers, packaging capacity, and procurement controls can matter as much as the headline chip itself.
+
+Chinese title: 华为据报要求部分客户自行采购AI芯片HBM
+Chinese summary: 报道称，华为要求部分AI芯片客户自行寻找高带宽内存，凸显中国AI硬件供应链的关键瓶颈。
+
+Sources:
+  - Huawei tells customers to find their own AI chip memory: https://the-decoder.com/huawei-tells-customers-to-find-their-own-ai-chip-memory-effectively-outsourcing-procurement-to-the-black-market/
+  - No Korean HBM, no Chinese AI chips — and smugglers are getting creative: https://biz.heraldcorp.com/article/10924542
+
+### Nvidia Urges Cloud Partners to Limit China Exposure
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-cloud-china-exposure.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-cloud-china-exposure.html
+- Source timestamp: 2026-11-03T12:22:00.000Z
+- Site timestamp: 2026-11-03T13:00:05.172Z
+- Tags: Policy, Industry
+
+Nvidia is asking cloud customers to diversify away from Chinese clients, tightening a remote-access loophole in US AI-chip controls.
+
+Nvidia has begun urging some cloud-computing customers to reduce their commercial exposure to Chinese companies, according to reporting by The Information and the Financial Times. The guidance reportedly applies to future business and asks providers to identify the end users of Nvidia-powered capacity. It has been communicated through sales and regional teams and, so far, is described as non-mandatory rather than a formal contract prohibition.
+
+The move targets an important gap in US export controls. While Washington restricts the shipment of advanced AI accelerators to China, overseas cloud providers can often rent access to those chips remotely. That arrangement has allowed Chinese developers to obtain compute without physically importing restricted hardware. The new pressure would make that route harder by encouraging Nvidia-backed neoclouds and other infrastructure operators to build a broader customer mix.
+
+The commercial consequences are not yet clear. A reported 51-percent non-Chinese customer threshold would be materially stricter than ordinary compliance screening, but the available reporting does not establish that Nvidia has imposed a universal rule or that every cloud partner has accepted it. Existing leasing agreements also appear to be treated differently from new contracts.
+
+Why it matters: this is a shift from regulating chips at the border to influencing who is allowed to consume them in the cloud. If enforced broadly, it could raise compute costs for Chinese AI labs, complicate access for international neoclouds, and push more demand toward domestic accelerators. It also places Nvidia in a difficult position: the company must protect access to its hardware while asking customers to walk away from a potentially significant market.
+
+Chinese title: 英伟达要求云服务伙伴降低对中国客户敞口
+Chinese summary: 英伟达正要求部分云客户减少中国业务，试图收紧美国芯片管制留下的远程算力通道。
+
+Sources:
+  - Nvidia Tells Cloud Clients to Take on Less China Business: https://www.theinformation.com/briefings/nvidia-tells-cloud-clients-take-less-china-business
+  - Nvidia orders data centre clients to reduce China exposure, FT reports: https://new.streetinsider.com/Reuters/Nvidia%2Borders%2Bdata%2Bcentre%2Bclients%2Bto%2Breduce%2BChina%2Bexposure%2C%2BFT%2Breports/27275695.html
+
 ### OpenAI Proposes Grid Protectors for AI Data Centers
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-grid-protectors-program.html
@@ -909,108 +988,6 @@ Sources:
   - AKV GitHub repository: https://github.com/thu-nics/AKV
   - Cache Engineering for Agents: https://arxiv.org/abs/2610.28577
 
-### Nvidia opens Flora to cut robot-video labeling costs
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html
-- Source timestamp: 2026-10-25T10:08:00.000Z
-- Site timestamp: 2026-10-25T13:00:04.886Z
-- Tags: Research, Open Source, Industry
-
-Nvidia has open-sourced Flora, a robotics data engine that labels 200,000 hours daily and claims a 125-fold cost advantage over GPT-6 Astra.
-
-## What happened
-
-Nvidia has released Flora, an open robotics data engine designed to turn long robot and human-demonstration videos into structured training data. The system combines temporal segmentation, captioning and reward-oriented labeling, allowing researchers to identify actions, sub-tasks and outcomes inside video rather than treating each clip as an undifferentiated sequence.
-
-Nvidia says Flora was used in the data pipeline for its GR00T robotics models and can process about 200,000 hours of data per day on 512 GB300 GPUs. On Nvidia’s internal comparisons, it is competitive with GPT-6 Astra on several annotation tasks while costing roughly $0.72 to label an hour of robot video, versus about $88 through the proprietary alternative.
-
-## Why it matters
-
-Robotics development is constrained less by the supply of raw video than by the expense of converting that video into reliable action labels. A cheaper annotation layer could make it practical for universities, smaller robotics companies and open research groups to build specialized datasets instead of depending on a few large labs’ curated collections.
-
-The release also shifts competition toward the data-engineering layer. Flora is not a robot controller, and its outputs still require validation before being used for safety-critical training. Its licensing terms and the quality of labels on unfamiliar embodiments may limit commercial adoption. Even so, publishing the pipeline gives researchers a reproducible starting point for physical-AI data work and could lower one of the least visible costs in robot learning.
-
-## Uncle Cat take
-
-Nvidia’s headline number is less important than the 200,000-hour production scale: if outside labs can reproduce even a fraction of it, robotics data stops being a boutique resource.
-
-Chinese title: 英伟达开源Flora，机器人视频标注成本降125倍
-Chinese summary: 英伟达开源机器人数据引擎Flora，称其每天可处理20万小时数据，标注成本约为GPT-6 Astra的八分之一百二十五，即约低125倍。
-
-Sources:
-  - Flora: An Open Model Suite for Scaling Robotics Data Engines: https://research.nvidia.com/labs/gear/flora/
-  - nvidia/Flora-TempSeg model card: https://huggingface.co/nvidia/Flora-TempSeg
-  - Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra: https://the-decoder.com/nvidia-open-sources-flora-to-make-robot-video-labeling-125x-cheaper-than-gpt-6-astra/
-
-### Cursor gives coding agents control of desktop apps
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/cursor-computer-use-desktop-agents.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cursor-computer-use-desktop-agents.html
-- Source timestamp: 2026-10-23T15:59:00.000Z
-- Site timestamp: 2026-10-24T01:00:04.180Z
-- Tags: Agents, Industry
-
-Cursor’s new Computer Use feature lets coding agents click and type across desktop software, including simulators used to test mobile apps.
-
-## What happened
-
-Cursor introduced Computer Use on October 23, extending its coding agents beyond browser-based workflows. The company said agents can click and type across applications on a user’s computer, and demonstrated the capability with the iOS Simulator. An agent can therefore build software, launch a local development tool, inspect the result and interact with the interface it has created.
-
-Cursor’s documentation describes the feature as an explicit opt-in for self-hosted workers on macOS and Linux. The worker uses a helper application or a desktop display to capture the screen and send input events. Users must grant the required operating-system permissions, and desktop sharing can be enabled separately so an authorised person can watch or take control of the agent’s session.
-
-That design is materially different from a browser agent. Browsers offer relatively constrained pages, predictable controls and clearer permission boundaries. Desktop software can expose local files, credentials, development environments and irreversible actions. Computer Use therefore turns the agent from a code-generation assistant into an operator of the machine where the code runs.
-
-## Why it matters
-
-The feature points toward a more integrated coding loop: agents can test graphical interfaces, drive simulators, operate legacy tools and complete tasks that have no convenient API. This could reduce the gap between generating code and verifying whether a product actually works for a human user. It also raises the cost of mistakes. A misdirected click in a browser is inconvenient; the same action in a desktop environment could delete files, alter settings or expose private data. Cursor’s opt-in controls and human takeover path are important, but they do not yet establish how reliably agents identify risky actions or recover from visual ambiguity. The competitive question is whether desktop control becomes a dependable testing layer or remains an impressive but fragile demo.
-
-## Uncle Cat take
-
-The iOS Simulator example is the substance here: Cursor is attacking the last mile between writing an app and proving its interface works, where ordinary code agents still stop short.
-
-Chinese title: Cursor让编程代理接管桌面应用操作
-Chinese summary: Cursor推出Computer Use，让编程代理可点击和输入桌面软件，并操作iOS模拟器测试刚生成的功能。
-
-Sources:
-  - Cursor can now control your computer: https://x.com/cursor_ai/status/2113661506634305834
-  - Computer Use lets agents drive any app: https://x.com/cursor_ai/status/2113661518780998003
-  - Computer use and desktop sharing: https://cursor.com/docs/cloud-agent/self-hosted/computer-use
-
-### Moonshot launches Kimi K3.1 Pro with 3T-class scale
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/kimi-k31-pro-launches.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/kimi-k31-pro-launches.html
-- Source timestamp: 2026-10-23T17:20:00.000Z
-- Site timestamp: 2026-10-24T01:00:04.180Z
-- Tags: Models, Open Source, Agents
-
-Moonshot’s new Kimi K3.1 Pro combines a 1M-token context window, tool use and multimodal workflows with immediate API access.
-
-## What happened
-
-Moonshot AI introduced Kimi K3.1 Pro on October 23, describing it as a 3T-class flagship model and making both the API and a faster K3.1 Pro Highspeed variant available immediately. The company’s launch posts position the model for long-context reasoning, coding, financial analysis and 3D workflows rather than as a narrow chatbot upgrade.
-
-The model supports a context window of up to one million tokens. Moonshot says it can work directly with Blender, Unreal Engine, Godot and CAD tools, extending the model’s role from text generation into structured design and engineering tasks. The company also reported a 64.4 score on OfficeQA Pro v2 and internal gains over Kimi K3 in financial modelling and financial research.
-
-Early third-party signals are notable but should be read carefully. Artificial Analysis placed K3.1 Pro among the stronger systems for agentic knowledge work and coding, while Arena reported a median task cost of $1.23 for the Max offering and a price of $2 per million input tokens and $10 per million output tokens. Those figures describe selected evaluations and workloads, not a universal cost advantage.
-
-## Why it matters
-
-K3.1 Pro matters because Moonshot is packaging a very large open-model-style architecture around practical tool use and a relatively transparent API price, while targeting work that usually requires premium proprietary systems. The combination could intensify competition in long-context agents, software development and technical design. The unresolved question is whether its reported breadth survives independent testing on reliability, latency and sustained multi-step execution. If it does, the strategic shift is larger than another leaderboard launch: Chinese model providers would be competing directly for global professional workflows, not only for consumer chat traffic.
-
-## Uncle Cat take
-
-A million-token window is attention-grabbing, but the decisive detail is K3.1 Pro’s direct integration with Blender, Unreal, Godot and CAD: Moonshot is pricing a model as a workbench, not merely a narrator.
-
-Chinese title: 月之暗面发布3T级旗舰模型Kimi K3.1 Pro
-Chinese summary: 月之暗面推出Kimi K3.1 Pro，支持百万级上下文、工具调用和多模态工作流，并同步开放API。
-
-Sources:
-  - Meet Kimi K3.1 Pro: https://x.com/Kimi_Moonshot/status/2113681863109939271
-  - Kimi K3.1 Pro technical launch posts: https://x.com/Kimi_Moonshot/status/2113680722036944913
-  - Kimi K3.1 Pro early benchmark results: https://x.com/ArtificialAnlys/status/2113770240769442012
-
 ## Recent radar items
 
 ### 2026-11-03
@@ -1031,6 +1008,22 @@ Sources:
 - 2026-11-02T19:08:00Z | X / Agent Arena | Agent Arena said its top ten agents consume about 93 input tokens for every token they generate, based on more than 26,000 sessions. | 中文：Agent Arena 称，前十名 Agent 平均每生成一个 Token 就要处理约 93 个输入 Token，样本超过 2.6 万次会话。 | https://x.com/arena/status/2117332916854501753
 - 2026-11-02T15:00:00Z | X / Tripo | Tripo introduced 3D Junkyard, where users can search a shared desktop space with words or images and inspect related models. | 中文：Tripo 推出 3D Junkyard，用户可在共享桌面空间中用文字或图片搜索并查看相关模型。 | https://x.com/tripoai/status/2117270517178851552
 - 2026-11-02T15:00:00Z | TechCrunch | Omen AI acquired Aquatic Labs for $16 million to combine real-time sensors monitoring data-center cooling water. | 中文：Omen AI 以 1600 万美元收购 Aquatic Labs，整合用于实时监测数据中心冷却水的传感器技术。 | https://techcrunch.com/2026/11/02/omen-ai-adds-liquid-know-how-in-16-million-aquatic-labs-acquisition/
+- 2026-11-03T12:51:00Z | InfoQ 中文 | Anthropic engineers with no Rust experience used Claude to rewrite a core API across languages, cutting CPU use 40% and latency 20%. | 中文：没有Rust经验的Anthropic工程师借助Claude完成核心API跨语言重构，CPU占用降40%，延迟降20%。 | https://www.infoq.cn/article/IMWM7ZXDi99sMiUVZBIF?utm_source=rss&utm_medium=article
+- 2026-11-03T12:49:00Z | InfoQ 中文 | Claude Cowork’s engineering lead said deleting some Skills can improve results, warning against carrying 2024-era prompting habits into agent workflows. | 中文：Claude Cowork工程负责人称，删掉部分Skill反而能提升效果，并警告不要把2024年的提示词习惯带入智能体工作流。 | https://www.infoq.cn/article/xaWSKT3MlZjbuJw16Vem?utm_source=rss&utm_medium=article
+- 2026-11-03T12:35:00Z | The Decoder | Anthropic’s Message Threads reportedly cut time to first token by 35% for long conversations by restructuring message context. | 中文：据报道，Anthropic的Message Threads通过重构消息上下文，将长对话首个Token等待时间降低35%。 | https://the-decoder.com/anthropics-message-threads-cut-time-to-first-token-by-35-percent-for-long-conversations/
+- 2026-11-03T10:43:00Z | MIT Technology Review | MIT Technology Review described reverse game theory as a mechanism-design approach for making AI agents easier to keep within safe behavior. | 中文：《麻省理工科技评论》介绍了“反向博弈论”，将其作为约束AI智能体安全行为的机制设计方法。 | https://www.technologyreview.com/2026/11/03/1147934/reverse-game-theory-mechanism-design-ai-alignment/
+- 2026-11-03T07:04:00Z | GitHub | NVIDIA open-sourced Auto Ontology, a Python framework for semantic graph reasoning, deterministic query generation, and explainable retrieval for agents. | 中文：英伟达开源Auto Ontology，这是一个用于语义图推理、确定性查询生成和可解释智能体检索的Python框架。 | https://github.com/NVIDIA/auto-ontology
+- 2026-11-03T06:55:00Z | 量子位 | A new voice-only personal agent highlighted by QbitAI suggests Siri-like assistants may operate without screens or text input. | 中文：量子位报道，一款纯语音Personal Agent展示了无需屏幕或文字输入、接近Siri愿景的助手形态。 | https://www.qbitai.com/2026/11/507419.html
+- 2026-11-03T02:47:00Z | X @pika_labs | Pika promoted H3 Flex through API examples including one-take martial-arts scenes, rain vlogs, and stylized retro science fiction. | 中文：Pika通过API示例展示H3 Flex，可生成一镜到底的武打、雨中短片和复古科幻场景。 | https://x.com/pika_labs/status/2117448666604785909
+- 2026-11-03T02:38:00Z | X @MeshyAI | Meshy launched N1 Texture for its web app and API, claiming fewer seams and projection artifacts and roughly three-times-faster texturing than Meshy 7. | 中文：Meshy在网页端和API上线N1 Texture，称其接缝与投影瑕疵更少，速度约为Meshy 7的三倍。 | https://x.com/MeshyAI/status/2117446343350489392
+- 2026-11-03T02:37:00Z | X @LumaLabsAI | Luma added Expression Sheet, letting creators explore a character’s performance range before choosing a final direction. | 中文：Luma新增Expression Sheet，让创作者先探索角色的表演范围，再确定最终方向。 | https://x.com/LumaLabsAI/status/2117445978320163139
+- 2026-11-03T02:29:00Z | X @OpenAI | OpenAI updated its bug bounty program and said qualifying reports from the previous 30 days would receive the difference under higher rewards. | 中文：OpenAI更新漏洞奖励计划，并表示过去30天内符合条件的报告将按新标准补发差额。 | https://x.com/OpenAI/status/2117444049900654743
+- 2026-11-03T02:12:00Z | SiliconANGLE | Larridin raised $30 million to help enterprises demonstrate whether AI deployments deliver measurable financial value. | 中文：Larridin获3000万美元融资，目标是帮助企业证明AI部署是否带来可量化的财务价值。 | https://siliconangle.com/2026/11/02/vcs-bet-30m-on-larridins-ability-to-help-enterprises-demonstrate-ais-value-for-money/
+- 2026-11-03T03:30:00Z | TechCrunch AI | Google expanded its Dreambeans AI storytelling app to India with 13 local languages, using connected Google services to personalize illustrated stories. | 中文：Google将Dreambeans扩展到印度，支持13种本地语言，并利用关联Google服务生成个性化插画故事。 | https://techcrunch.com/2026/11/02/google-takes-dreambeans-to-india-in-bid-to-bring-ai-generated-personal-stories-to-the-masses/
+- 2026-11-03T11:47:00Z | X @recraftai | Recraft showcased V4.1 through character illustrations featuring exaggerated proportions, unexpected outfits, and distinctive personalities. | 中文：Recraft通过V4.1展示角色插画，突出夸张比例、意外服装和鲜明个性。 | https://x.com/recraftai/status/2117584379639918961
+- 2026-11-03T08:51:00Z | X @Kling_ai | Kling highlighted creator experiences with Kling 4.0, asking eight users to discuss real workflows and demonstrate its capabilities. | 中文：Kling邀请八位创作者分享Kling 4.0的真实工作流、作品和能力体验。 | https://x.com/Kling_ai/status/2117540047809602044
+- 2026-11-03T11:08:00Z | X @MistralAI | Alibaba’s Qwen team used Mistral Large 4 to build a real-time 3D tracker for roughly 19,000 satellites and debris fragments orbiting Earth. | 中文：Mistral称Large 4构建了实时3D追踪器，可跟踪约1.9万个绕地球运行的卫星和碎片目标。 | https://x.com/MistralAI/status/2117574509179900410
+- 2026-11-03T07:20:00Z | TechCrunch AI | Apple’s AI features for rewinding and recapping conversations on Apple Watch began beta testing, according to TechCrunch. | 中文：据TechCrunch报道，Apple Watch用于回放和总结对话的AI功能开始测试。 | https://techcrunch.com/2026/11/02/apple-watchs-ai-features-for-rewinding-and-recapping-conversations-begin-beta-testing/
 
 ### 2026-11-02
 

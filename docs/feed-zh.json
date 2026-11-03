@@ -49,6 +49,114 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-message-threads.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-message-threads.html",
+      "title": "Anthropic用消息线程降低长上下文Agent等待时间",
+      "summary": "Anthropic推出消息线程，让每轮请求只发送新增内容，超长请求首个Token延迟中位数下降约35%。",
+      "content_text": "Anthropic推出了面向Claude应用的消息线程功能，目标是减少长对话历史在每轮请求中的重复传输。开发者可以先创建一个线程，之后只提交新增内容。Anthropic会在服务器端短期保存线程，但应用本身仍是会话的真实来源，必须自行保留完整对话副本。\n\nAnthropic表示，这一功能尤其适合长期运行的Agent和Claude Code工作流。对于包含约50万至100万Token的请求，公司称首个Token延迟中位数可下降约35%。消息线程目前已在Anthropic原生平台进入测试，也可用于AWS、Microsoft Foundry和Google Cloud上的托管Claude服务。\n\n这项改进本质上是基础设施优化，而不是模型能力升级。它不会让模型更擅长推理，也不会直接扩大模型的正式上下文上限；它做的是减少每轮请求中需要重复上传和处理的旧内容。对于连续数小时运行的Agent来说，文件、工具结果和历史决策会不断累积，减少这些重复开销可能显著改善交互节奏。\n\n代价也很明确：线程状态会成为应用对Anthropic平台的依赖，而且线程是尽力而为的临时机制——最后一次请求后5分钟会过期，最后使用后最迟1小时会被删除。开发者还需要理解哪些参数在同一线程中必须保持不变。文档对模型、工具、思考模式、上下文管理和其他配置都有约束。要构建跨供应商运行的系统，团队可能仍需额外设计一层兼容接口。\n\n为什么重要：长上下文Agent的瓶颈往往不是模型智力，而是等待、带宽和重复处理Token的开销。百万Token规模下，延迟降低35%可能让编程和研究流程明显更顺畅。不过，Anthropic尚未公布完整的成本对比，也缺少独立基准验证。",
+      "date_published": "2026-11-03T12:35:00.000Z",
+      "date_modified": "2026-11-03T13:00:05.172Z",
+      "tags": [
+        "Agent",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-message-threads.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-message-threads.html",
+        "source_published_at": "2026-11-03T12:35:00.000Z",
+        "site_published_at": "2026-11-03T13:00:05.172Z",
+        "sources": [
+          {
+            "title": "Make long-running agents faster with message threads",
+            "url": "https://claude.com/resources/articles/message-threads"
+          },
+          {
+            "title": "Message threads - Claude Platform Docs",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/message-threads"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/huawei-hbm-procurement-crunch.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/huawei-hbm-procurement-crunch.html",
+      "title": "华为据报要求部分客户自行采购AI芯片HBM",
+      "summary": "报道称，华为要求部分AI芯片客户自行寻找高带宽内存，凸显中国AI硬件供应链的关键瓶颈。",
+      "content_text": "据The Decoder和韩国《先驱商业报》报道，华为已要求部分订购AI芯片的客户自行采购高带宽内存（HBM）。这一罕见安排反映出供应链瓶颈：中国企业难以直接从韩国存储器厂商获得先进HBM，而国内替代品在供应量和性能上都受到限制。\n\nHBM并不是普通配件。它紧邻加速器，通过极高带宽向计算核心供给数据，直接影响训练和推理性能。一款芯片即使在纸面指标上具备竞争力，如果配套内存无法稳定获得，最终也很难大规模部署。\n\n据报道，这种安排实际上把采购风险从华为转移给客户。客户可能需要先自行找到兼容内存，华为才能完成整机或系统交付。这会进一步引出适配验证、封装、保修责任和服务器配置可复制性等问题，也可能刺激中间商和灰色采购渠道。对试图阻断受限硬件流通的出口管制而言，供应链越不透明，监管就越困难。\n\n相关报道提到，中国市场上的单套内存成本约为2.4万至3.2万美元，还不包括AI芯片、服务器和电力成本。由于具体合同和配置尚未公开，这一价格应谨慎看待。现有报道也没有证明华为已对所有客户或所有产品施加统一要求。\n\n为什么重要：中国AI硬件的难题正在从“能否设计替代加速器”转向“能否围绕它稳定组装完整系统”。如果客户必须自行解决HBM，规模化部署会更慢、更贵，也更难标准化。这一事件说明，存储器、先进封装和采购渠道，可能与芯片本身一样决定AI基础设施的实际供给能力。",
+      "date_published": "2026-11-03T11:47:00.000Z",
+      "date_modified": "2026-11-03T13:00:05.172Z",
+      "tags": [
+        "产业",
+        "政策"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/huawei-hbm-procurement-crunch.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/huawei-hbm-procurement-crunch.html",
+        "source_published_at": "2026-11-03T11:47:00.000Z",
+        "site_published_at": "2026-11-03T13:00:05.172Z",
+        "sources": [
+          {
+            "title": "Huawei tells customers to find their own AI chip memory",
+            "url": "https://the-decoder.com/huawei-tells-customers-to-find-their-own-ai-chip-memory-effectively-outsourcing-procurement-to-the-black-market/"
+          },
+          {
+            "title": "No Korean HBM, no Chinese AI chips — and smugglers are getting creative",
+            "url": "https://biz.heraldcorp.com/article/10924542"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-cloud-china-exposure.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-cloud-china-exposure.html",
+      "title": "英伟达要求云服务伙伴降低对中国客户敞口",
+      "summary": "英伟达正要求部分云客户减少中国业务，试图收紧美国芯片管制留下的远程算力通道。",
+      "content_text": "据《The Information》和《金融时报》报道，英伟达近期开始要求部分云计算客户降低对中国企业的业务敞口。相关要求据称主要针对未来业务，并要求云服务商提交芯片最终使用者身份。消息人士称，这些要求目前通过销售团队和地区团队口头传达，尚未成为强制性的统一合同条款。\n\n这项动作针对的是美国出口管制中的一个关键缺口。华盛顿限制先进AI加速器直接运往中国，但海外云服务商通常仍能远程出租这些芯片的计算能力。中国开发者因此可以不实际进口硬件，就获得受限制芯片的使用权。英伟达如今向旗下支持的“新云”及其他基础设施运营商施压，要求其扩大客户来源，实际上是在压缩这条通道。\n\n商业影响仍有待观察。有报道称，英伟达希望云服务商至少将51%的服务销售给非中国企业，但目前无法确认这是否已经成为普遍规则，也无法确认所有合作伙伴都已接受。现有租赁合同与新签合同似乎也会受到不同对待。\n\n为什么重要：这标志着AI芯片管制可能从“谁能进口硬件”延伸到“谁能消费算力”。若要求被广泛执行，中国AI实验室的算力成本和海外取算难度都可能上升，国际新云服务商也会被迫重新安排客户结构。英伟达则面临两难：既要守住硬件供应链，又要主动劝客户放弃一个潜在的大市场。",
+      "date_published": "2026-11-03T12:22:00.000Z",
+      "date_modified": "2026-11-03T13:00:05.172Z",
+      "tags": [
+        "政策",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/nvidia-cloud-china-exposure.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-cloud-china-exposure.html",
+        "source_published_at": "2026-11-03T12:22:00.000Z",
+        "site_published_at": "2026-11-03T13:00:05.172Z",
+        "sources": [
+          {
+            "title": "Nvidia Tells Cloud Clients to Take on Less China Business",
+            "url": "https://www.theinformation.com/briefings/nvidia-tells-cloud-clients-take-less-china-business"
+          },
+          {
+            "title": "Nvidia orders data centre clients to reduce China exposure, FT reports",
+            "url": "https://new.streetinsider.com/Reuters/Nvidia%2Borders%2Bdata%2Bcentre%2Bclients%2Bto%2Breduce%2BChina%2Bexposure%2C%2BFT%2Breports/27275695.html"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-grid-protectors-program.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-grid-protectors-program.html",
       "title": "OpenAI提出“电网守护者”计划应对数据中心用电压力",
@@ -1774,121 +1882,6 @@
           {
             "title": "How Deepgram optimized voice AI at scale with AWS Trainium",
             "url": "https://aws.amazon.com/blogs/machine-learning/how-deepgram-optimized-voice-ai-at-scale-with-aws-trainium/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-opens-deepinfer-inference-stack.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-opens-deepinfer-inference-stack.html",
-      "title": "深度求索开源支撑 V4.1 Flash 的推理栈",
-      "summary": "深度求索开源 DeepInfer 推理框架及 deepseek-recipe，首次把最新模型背后的部分生产级服务技术交给社区。",
-      "content_text": "深度求索开源了 DeepInfer 推理框架，并同步更新 deepseek-recipe。公司称，DeepInfer 正是支撑 DeepSeek-V4.1-Flash 生产服务的核心软件之一。此次开放的不只是一个模型适配器，还包括优化内核、混合专家并行、推测解码、异步调度、确定性采样和结构化输出等能力。\n\n## 开放了什么\n\nDeepInfer 面向 DeepSeek-V4.1-Flash 的大规模离线推理，集成 FlashMLA、DeepGEMM、DeepEP、TileKernels 和定制 TileLang 内核，同时支持注意力数据并行、上下文并行及专家并行负载均衡。项目还提供基于置信度的验证调度和有界重放机制，用于减少解码与预填充开销。\n\n目前支持 NVIDIA SM100 GPU 和华为昇腾 950 NPU，采用 Apache 2.0 许可证。不过它还不是完整的托管服务平台：KV 缓存管理、完整的预填充/解码分离，以及多副本之间的负载均衡，仍需要用户自行补齐。\n\n同步更新的 deepseek-recipe 是一套 Rust 与 Python 工具，用于把常见 API 请求转换为 DeepSeek 所需的提示和响应格式。10 月 20 日版本新增 V4、V4.1 模型版本识别、结构化输出、显式特殊 token 处理和前缀续写支持。\n\n## 为什么重要\n\n这次发布把竞争焦点从“谁开放了模型权重”进一步推向“谁能把模型稳定、低成本地跑起来”。深度求索公开了通常藏在内部的生产推理细节，为云厂商、国家级算力中心和自部署团队复现其吞吐设计提供了更直接的起点。限制也很明确：项目依赖新一代加速器和较强的系统工程能力，关键服务层并未全部包含。但它仍可能推动 DeepSeek 生态的性能优化，并让推理基础设施本身成为开源竞争的新战场。",
-      "date_published": "2026-10-20T09:30:00.000Z",
-      "date_modified": "2026-10-20T13:00:07.876Z",
-      "tags": [
-        "开源",
-        "模型",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/deepseek-opens-deepinfer-inference-stack.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/deepseek-opens-deepinfer-inference-stack.html",
-        "source_published_at": "2026-10-20T09:30:00.000Z",
-        "site_published_at": "2026-10-20T13:00:07.876Z",
-        "sources": [
-          {
-            "title": "DeepSeek DeepInfer GitHub repository",
-            "url": "https://github.com/deepseek-ai/DeepInfer"
-          },
-          {
-            "title": "DeepSeek deepseek-recipe changelog",
-            "url": "https://github.com/deepseek-ai/deepseek-recipe/blob/main/CHANGELOG.md"
-          },
-          {
-            "title": "DeepSeek official announcement on X",
-            "url": "https://x.com/deepseek_ai/status/2112476496283775135"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/opencode-console-breach.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/opencode-console-breach.html",
-      "title": "OpenCode控制台遭入侵，用户AI账户被刷费",
-      "summary": "一次影响1.4%控制台用户的入侵导致API密钥暴露和异常账单，也暴露了防御团队调用模型时的现实障碍。",
-      "content_text": "## 发生了什么\n\nOpenCode表示，攻击者入侵了与OpenCode Console相关的一套旧系统。Console是面向开发者的托管服务，用户可以在其中保存模型服务商凭证并运行编码工作流。公司称，受影响的是1.4%的Console用户，开源版OpenCode应用和命令行工具本身没有被攻破。\n\n多名用户报告OpenAI、Anthropic和Google账户突然触发消费预警，并出现未经授权的调用费用。部分损失达到数百美元，少数用户称金额超过1000美元。Anthropic和Google已封禁疑似暴露的密钥，OpenAI则与OpenCode合作恢复访问并处理退款。OpenCode建议受影响用户直接在各模型服务商处撤销并更换凭证。\n\n这起事件的性质仍存在争议。OpenCode最初将其描述为大规模模型蒸馏攻击，但外部观察者指出，目前公开证据能够确认的是凭证泄露，尚不足以证明攻击者的最终目的。OpenCode还称，攻击持续了约48小时，团队不得不让防御代理持续运行以分析入侵。\n\n## 为什么重要\n\n这不只是一个开发者平台的安全事故。随着AI编码工具成为用户与多个模型服务商之间的中间层，存储在其中的API密钥也变成了集中式攻击目标。一次平台入侵，可能同时造成多家模型公司的费用和访问风险。\n\n事件还暴露出一个实际的安全矛盾：模型在分析恶意载荷时可能触发安全拒答，即便操作者是在进行应急响应。OpenCode后来获得了OpenAI Daybreak Blue项目的访问权限，该项目提供更适合防御性安全工作的模型。对使用代理式编码系统的企业来说，这种经过审核的应急访问机制可能会成为基础设施的一部分。\n\n**猫叔判断：**1.4%的受影响用户并不能代表风险大小；一个控制台漏洞，就能把三家模型商的账单入口交给同一批攻击者。",
-      "date_published": "2026-10-19T19:28:00.000Z",
-      "date_modified": "2026-10-20T01:00:06.421Z",
-      "tags": [
-        "安全",
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/opencode-console-breach.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/opencode-console-breach.html",
-        "source_published_at": "2026-10-19T19:28:00.000Z",
-        "site_published_at": "2026-10-20T01:00:06.421Z",
-        "sources": [
-          {
-            "title": "Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts",
-            "url": "https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/"
-          },
-          {
-            "title": "OpenCode",
-            "url": "https://opencode.ai/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tenstorrent-open-weight-chips.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tenstorrent-open-weight-chips.html",
-      "title": "Tenstorrent融资15亿美元，押注开放模型推理芯片",
-      "summary": "AI芯片公司Tenstorrent融资15亿美元、估值升至62亿美元，将扩大面向开放权重模型和视频生成的推理硬件。",
-      "content_text": "## 融资情况\n\nAI芯片初创公司Tenstorrent完成15亿美元融资，估值达到62亿美元，相比2024年底披露的26亿美元估值增长一倍以上。本轮由Trace Capital和Innovation X领投，Agostinelli Group、ARK Invest、Brett Barna、Cadence Ventures、Eclipse、富达投资管理公司、Maverick Silicon、Morgan Stanley、Protagonist、SanDisk、T. Rowe Price、Tether Investments、Troluce Capital、Virtu Financial以及XTX Markets等新老投资者参与。\n\nTenstorrent希望成为英伟达之外的选择，重点开发面向推理的芯片和服务器。CEO吉姆·凯勒表示，公司在证明Galaxy服务器能够运行DeepSeek模型后，决定继续保持独立。新资金将用于扩大生产，并开发更适合开放权重模型和视频生成任务的硬件。\n\n这笔融资反映出加速器市场正在变化。AI行业的竞争不再只围绕训练最大规模的闭源模型展开，开放权重系统也在被云厂商、企业和开发者部署。它们更在意模型权重、数据位置和运营成本的控制，因此对推理经济性更好的专用硬件产生了新需求。\n\n## 仍然存在的限制\n\nTenstorrent获得高估值，并不意味着它已经具备与英伟达匹敌的软件生态、供应链和装机基础。公司展示DeepSeek模型的演示证明了可行性，却不能替代生产环境的大规模采用。接下来，它仍需把芯片架构和服务器能力转化为稳定的开发工具、可预测的供货能力和有竞争力的总体拥有成本。\n\n但这轮融资仍然重要：它让一家非英伟达加速器公司拥有足够资金，同时推进硬件和软件布局，而开放模型正在扩大潜在市场。如果Tenstorrent成功，模型开发者和不愿长期绑定单一供应商的客户都将获得更多选择。\n\n**猫叔判断：**62亿美元估值押注的是推理需求，但Tenstorrent真正要证明的，是DeepSeek演示能否变成可重复的生产部署。",
-      "date_published": "2026-10-19T18:37:00.000Z",
-      "date_modified": "2026-10-20T01:00:06.421Z",
-      "tags": [
-        "融资",
-        "产业",
-        "开源"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tenstorrent-open-weight-chips.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tenstorrent-open-weight-chips.html",
-        "source_published_at": "2026-10-19T18:37:00.000Z",
-        "site_published_at": "2026-10-20T01:00:06.421Z",
-        "sources": [
-          {
-            "title": "Tenstorrent Series E official announcement",
-            "url": "https://tenstorrent.com/newsroom/tenstorrent-announces-series-e"
-          },
-          {
-            "title": "Tenstorrent hits $6.2B valuation to scale open-weight AI chips",
-            "url": "https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-valuation-to-scale-open-weight-ai-chips/"
           }
         ]
       }
