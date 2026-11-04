@@ -86,6 +86,60 @@ Sources:
   - Investing in fal: the generative media company: https://www.bvp.com/news/investing-in-fal-the-generative-media-company
   - fal Series E & F: https://fal.ai/blog/series-e-f
 
+### Lion-ER-35B-A3B targets efficient embodied reasoning
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/lion-er-embodied-reasoning.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/lion-er-embodied-reasoning.html
+- Source timestamp: 2026-11-04T10:08:00.000Z
+- Site timestamp: 2026-11-04T13:00:05.507Z
+- Tags: Models, Research, Agents
+
+China’s Lion Mountain Lab has released Lion-ER-35B-A3B, emphasizing capability-driven data design for robots rather than simply scaling training volume.
+
+Lion Mountain Artificial Intelligence Laboratory has introduced Lion-ER-35B-A3B, an embodied-reasoning model designed to help robots interpret and act in the physical world. The model was presented as an alternative to the prevailing strategy of accumulating ever larger volumes of generic training data.
+
+The laboratory says Lion-ER is built around a capability-driven data engine. Instead of collecting data without a precise target, the system identifies the abilities a robot must acquire, evaluates where the model fails and then generates or selects additional data to close those gaps. The approach creates a feedback loop between evaluation and training rather than treating dataset size as the main proxy for progress.
+
+The model name indicates a 35-billion-parameter total architecture with roughly 3 billion active parameters, suggesting a mixture-of-experts design intended to reduce per-token computation while retaining a larger capacity. The reported demonstrations focus on physical-world reasoning and task completion, including cases where the model correctly determined that an action sequence was still incomplete after repeated attempts.
+
+That distinction is important for embodied AI. A language model can produce a plausible description of an action without tracking whether the action actually succeeded. Robots need the opposite behavior: they must recognize missing steps, detect failure and continue only when the state of the environment supports it. A model that says “not finished” at the right time may be more useful than one that produces fluent instructions but prematurely declares success.
+
+Lion-ER is not yet a decisive benchmark result. The public material provides limited detail on hardware, datasets, deployment latency and comparisons with leading embodied models. Its more consequential contribution may be methodological: if capability-oriented data engines outperform brute-force collection, smaller active models could become easier to deploy across Chinese robotic platforms. The field will need reproducible evaluations to determine whether that promise holds outside the lab.
+
+Chinese title: 狮子山实验室发布 Lion-ER，聚焦具身推理效率
+Chinese summary: 招商局狮子山人工智能实验室推出 Lion-ER-35B-A3B，强调围绕机器人能力缺口设计数据，而非单纯扩大训练规模。
+
+Sources:
+  - 不靠堆砌数据，让机器人看懂真实物理世界: https://www.qbitai.com/2026/11/507586.html
+  - Lion-ER-35B-A3B具身推理模型介绍: https://www.m.aitntnews.com/newDetail.html?newId=30923
+
+### MoWorld 2.0 brings physics-aware 4D scene generation
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/moworld-2-4d-world-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/moworld-2-4d-world-model.html
+- Source timestamp: 2026-11-04T12:53:00.000Z
+- Site timestamp: 2026-11-04T13:00:05.507Z
+- Tags: Research, Industry, AIGC
+
+MoWorld 2.0 claims deeper handling of physical forces and reusable 4D Gaussian assets, targeting interactive simulation beyond static video generation.
+
+Chinese startup Moxin Technology has unveiled MoWorld 2.0, a 4D world model built natively for Huawei Ascend hardware. The release was announced at a World Internet Conference forum focused on AI applications and industrial productivity.
+
+The company says the model can represent and generate scenes involving gravity, elasticity, buoyancy, lighting, soft bodies, fluids, rigid bodies, heat and other physical factors. Its output is described as reusable 4D Gaussian assets that can be simulated, rendered in real time and called repeatedly inside downstream applications.
+
+That design places MoWorld in a different category from systems that primarily generate visually convincing clips. A world model must preserve relationships across time and support interaction: an object should respond coherently when pushed, lifted, illuminated or placed in a changing environment. Moxin says MoWorld 2.0 improves dynamic-scene understanding, physical interaction, real-time inference and spatial-asset generation, although the company has not yet published enough standardized results to establish how broadly those claims generalize.
+
+The Ascend-native positioning is also notable. It suggests that China’s world-model ecosystem is being designed around domestic acceleration infrastructure rather than treating hardware compatibility as a later porting exercise. That could matter for robotics, cultural tourism, geospatial visualization and simulation-heavy industrial applications.
+
+MoWorld 2.0 is therefore an important signal, but not yet proof of a general-purpose simulator. The critical evidence will be public demonstrations with repeatable physics, latency figures, model access and comparisons against established world-model systems. For now, its strongest significance is strategic: Chinese teams are moving from video generation toward interactive, editable environments that can serve as assets for robots and software agents.
+
+Chinese title: 魔芯发布 MoWorld 2.0，推进可交互四维世界模型
+Chinese summary: 魔芯科技推出基于昇腾原生的 MoWorld 2.0，试图把物理规律、实时渲染和可复用四维资产结合起来。
+
+Sources:
+  - 让AI深度理解多种物理要素：魔芯科技4D世界模型MoWorld 2.0乌镇首发: https://www.36kr.com/p/4055132476232838
+  - 魔芯科技发布基于华为昇腾原生的4D世界模型 MoWorld 2.0: https://www.ithome.com/1/022/424.htm
+
 ### OpenAI pushes AI agents deeper into physical engineering
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-ai-engineering-physical-products.html
@@ -117,6 +171,34 @@ Chinese summary: OpenAI称GPT-6 Astra与Codex已支持CAD、仿真和制造流�
 
 Sources:
   - Accelerating engineering for the physical world: https://openai.com/index/accelerating-engineering-for-the-physical-world/
+
+### Tencent launches Hy4 with vision and agent upgrades
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/tencent-hy4-visual-open-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-visual-open-model.html
+- Source timestamp: 2026-11-04T06:43:00.000Z
+- Site timestamp: 2026-11-04T13:00:05.507Z
+- Tags: Models, Open Source, Agents
+
+Tencent has launched Hy4 with visual understanding, stronger long-context reasoning and agent capabilities, while promising open weights in the coming days.
+
+Tencent has launched Hy4, a new generation of its Hunyuan model, positioning it as a stronger general-purpose system for coding, office work, research and long-running agent tasks.
+
+The release adds visual understanding to the Hy line for the first time. Tencent says Hy4 can process images, analyze complex charts and support mathematical reasoning that depends on visual information. The company also points to improvements in instruction following, long-context comprehension, tool use and multi-step work.
+
+The timing matters because Hy4 is being introduced as a product model before its final open release. Tencent said model weights and system cards will arrive in the coming days, meaning today’s launch expands access through Tencent products and cloud services but does not yet constitute a new open-weight release under a strict definition.
+
+Hy4 also arrives with a distribution advantage. Tencent is making it available across products including WorkBuddy and CodeBuddy, and is offering discounted access through Tencent Cloud TokenHub. That gives the model an immediate path into workplace software rather than leaving it as a benchmark entry or developer preview.
+
+The main unresolved question is how much of the claimed progress survives independent testing. Tencent’s previous Hy4 preview already had a large mixture-of-experts design and a very long context window, so the significance of this release will depend less on headline scale than on measured reliability in visual tasks and sustained agent workflows. If the weights and system card arrive as promised, Hy4 could become one of the most consequential Chinese open-model releases of the current cycle.
+
+Chinese title: 腾讯发布混元 Hy4，首次加入视觉理解能力
+Chinese summary: 腾讯正式推出混元 Hy4，强化视觉理解、长上下文和多步智能体任务，并计划在近日公开模型权重与系统卡。
+
+Sources:
+  - Tencent Launches Hy4, Joining the Ranks of the World's Leading Open-Source AI Models: https://en.prnasia.com/releases/apac/tencent-launches-hy4-joining-the-ranks-of-the-world-s-leading-open-source-ai-models-554689.shtml
+  - Tencent Launches Hy4: https://www.tencent.com.cn/zh-hk/newsroom/
+  - Tencent Releases and Open-Sources Tencent Hy4 preview: https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/
 
 ### Anthropic Reports $17 Billion Revenue Ahead of IPO
 
@@ -896,98 +978,6 @@ Sources:
   - Genspark: Fork and roll back: https://x.com/genspark_ai/status/2115412518025957769
   - Genspark: Runs as long as the task does: https://x.com/genspark_ai/status/2115412510069403911
 
-### Google DeepMind unveils Genie 4 world simulation model
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/google-genie-4-world-model.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/google-genie-4-world-model.html
-- Source timestamp: 2026-10-27T16:01:00.000Z
-- Site timestamp: 2026-10-28T01:55:56.466Z
-- Tags: Models, AIGC, Research
-
-Genie 4 generates interactive worlds with native audio, real-time steering and stronger physical continuity, but remains a limited research preview.
-
-## What happened
-
-Google DeepMind introduced Genie 4, a multimodal world model that generates interactive environments rather than isolated images or video clips. The system combines visual generation with ambient sound, music, dialogue and dynamic scene behavior. Users can steer the simulation in real time with natural-language instructions, changing weather, camera movement, objects or characters while the environment continues to evolve.
-
-Google says Genie 4 builds on the Gemini family. Gemini Omni provides much of the visual grounding, while other Gemini models contribute reasoning intended to preserve coherence across the simulated world. The company positions the system as a platform for robot and agent training, filmmaking, game design and interactive experiences.
-
-The release is not a general launch. Genie 4 is currently a research preview for trusted testers, with broader access planned for Google AI Ultra subscribers through Project Genie and selected Gemini API and Google AI Studio partners. Google has also applied SynthID watermarking to generated audio and video.
-
-## Why it matters
-
-Genie 4 represents a strategic expansion of generative AI from content production into persistent simulation. If these systems become reliable, developers could create training environments, prototype physical interactions and build explorable media without manually authoring every asset or rule. That would place world models closer to the infrastructure layer for robotics and interactive software.
-
-The limits are equally important. Google acknowledges that objects can drift, physical interactions may be inaccurate, text rendering remains weak and long sessions can lose continuity. The near-term question is therefore not whether Genie 4 looks convincing in short demonstrations, but whether its internal consistency is strong enough for repeatable training or production workflows.
-
-Chinese title: 谷歌发布Genie 4，推进实时世界模拟
-Chinese summary: Genie 4可生成带原生音频、实时操控和更强物理连续性的互动世界，但目前仍处于受限研究预览阶段。
-
-Sources:
-  - Genie 4: A new generation of world simulation: https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/
-  - Google’s Genie 4 world model adds audio, more realistic worlds, and real-time steering: https://techcrunch.com/2026/10/27/googles-genie-4-world-model-adds-audio-more-realistic-worlds-and-real-time-steering/
-
-### Google proposes sleep cycles for continual LLM learning
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/google-sleep-framework-continual-learning.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/google-sleep-framework-continual-learning.html
-- Source timestamp: 2026-10-27T17:35:00.000Z
-- Site timestamp: 2026-10-28T01:55:56.466Z
-- Tags: Research, Models, Safety
-
-Google Research introduces a wake-and-sleep training loop that consolidates new knowledge into model parameters while targeting catastrophic forgetting.
-
-## What happened
-
-Google Research proposed the Sleep Framework, a continual-learning method designed to let large language models absorb new information over time without relying only on long prompts or repeatedly retraining the whole model. The framework divides operation into an active “wake” phase and an offline “sleep” phase.
-
-During wake periods, the model interacts with new information and stores it in short-term memory. During sleep, the system consolidates that information into longer-term parameters using low-rank Mixture-of-Experts memory blocks, knowledge distillation and reinforcement-learning-based refinement. A separate “dreaming” stage generates synthetic examples, routes them through different experts and selects training samples intended to improve reasoning.
-
-Google reports that the approach retained knowledge from contexts reaching up to 10 million tokens while reducing the risk of catastrophic forgetting. The framework is presented as an architectural and training recipe rather than a consumer product, and the company says it operates within a fixed model design with human-defined training rules.
-
-## Why it matters
-
-Persistent adaptation is one of the largest gaps between current language models and software that can function as a long-lived assistant or autonomous agent. Context windows provide temporary access to information, while conventional fine-tuning can damage older capabilities. A reliable middle layer between those extremes would make models easier to personalize and keep current after deployment.
-
-The proposal also exposes a practical tension. Sleep cycles require additional computation, memory management and evaluation before updated parameters can be trusted. Synthetic “dreaming” may improve reasoning, but it can also amplify errors if the model rehearses its own mistakes. The reported 10-million-token retention result is promising, yet the decisive evidence will be whether knowledge remains accurate and stable after repeated update cycles in messy real-world environments.
-
-Chinese title: 谷歌提出“睡眠”机制，让大模型持续学习新知识
-Chinese summary: 谷歌研究团队提出交替进行唤醒与睡眠训练的框架，试图让大模型持续吸收知识并缓解灾难性遗忘。
-
-Sources:
-  - The sleep framework: A new way for LLMs to retain knowledge in continual learning: https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/
-
-### Liquid AI releases six open-weight LFM3 models
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/liquid-ai-lfm3-open-models.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/liquid-ai-lfm3-open-models.html
-- Source timestamp: 2026-10-27T17:04:00.000Z
-- Site timestamp: 2026-10-28T01:55:56.466Z
-- Tags: Models, Open Source, AIGC
-
-Liquid AI’s LFM3 family brings text, vision, audio and decision models to a shared 2B-class backbone designed for local specialization.
-
-## What happened
-
-Liquid AI released LFM3, a family of six open-weight models built around a shared backbone in the roughly 2-billion-parameter class. The initial lineup covers text, vision, audio, omni and decision-oriented models, with base and post-trained versions available through Hugging Face, Liquid AI’s Playground and its API.
-
-The company says LFM3 was pretrained on 22 trillion tokens, followed by a 3.5-trillion-token mid-training stage, and uses a hybrid architecture intended to deliver more capacity than LFM2 without abandoning the efficiency advantages of smaller models. Liquid AI’s central proposition is specialization: developers can fine-tune the models locally, run them on a wider range of hardware and adapt them to narrow tasks rather than paying for a much larger general-purpose model.
-
-The release is available through Liquid AI’s stated distribution channels, including Hugging Face, Playground and API access. The open-weight status matters because users can inspect, modify and post-train the models instead of relying solely on a hosted endpoint.
-
-## Why it matters
-
-LFM3 is not a frontier-scale benchmark event. Its importance lies in the direction of travel: multimodal capability is being packaged into small, composable models intended to live closer to the device, the private data and the application-specific workflow. That could be valuable for offline assistants, embedded systems, voice interfaces and specialized agents where latency, privacy or predictable cost matter more than broad general knowledge.
-
-The unresolved issue is whether the family’s shared architecture produces meaningful cross-modal advantages in real deployments, or simply a convenient product bundle. Open weights and local fine-tuning create room for experimentation, but they do not by themselves establish that LFM3 can match larger models on difficult reasoning or production reliability.
-
-Chinese title: Liquid AI发布LFM3，推出六款开放权重多模态模型
-Chinese summary: Liquid AI发布LFM3系列，将文本、视觉、音频和决策模型统一到约20亿参数级别的共享骨干上，主打本地微调与端侧运行。
-
-Sources:
-  - Introducing LFM3: Every Modality for Specialized Intelligence: https://www.liquid.ai/blog/lfm3
-  - Build specialized multimodal models with LFM3: https://huggingface.co/blog/LiquidAI/lfm3
-
 ## Recent radar items
 
 ### 2026-11-04
@@ -1009,6 +999,21 @@ Sources:
 - 2026-11-03T20:00:00Z | X / Google Cloud | Google Cloud demonstrated building an autonomous multimodal video studio from scratch with its Agent Development Kit. | 中文：Google Cloud 展示了使用 Agent Development Kit 从零构建自主多模态视频工作室。 | https://x.com/GoogleCloudTech/status/2117708410313711727
 - 2026-11-03T13:00:00Z | X / MongoDB | MongoDB added SessionStore support for Claude Agents through a Claude SDK session adapter that persists conversations and action history. | 中文：MongoDB 为 Claude Agents 增加 SessionStore 支持，通过 SDK 适配器持久化对话与行动历史。 | https://x.com/MongoDB/status/2117602696077169001
 - 2026-11-03T21:31:00Z | X / Artificial Analysis | Artificial Analysis said its CritPt v2 grading server will become available to the community through its API. | 中文：Artificial Analysis 表示，CritPt v2 评分服务器将通过 API 向社区开放。 | https://x.com/ArtificialAnlys/status/2117731452951384073
+- 2026-11-04T12:53:00Z | X / AI21 Labs | AI21 Labs says DPO in NVIDIA’s NeMo Megatron Bridge now trains like SFT, using one model with unchanged GPU memory and step time. | 中文：AI21 Labs称，NVIDIA NeMo Megatron Bridge中的DPO训练已像SFT一样运行，显存与单步耗时均不变。 | https://x.com/AI21Labs/status/2117963321429156006
+- 2026-11-04T12:53:00Z | X / AI21 Labs | AI21 Labs reports identical scores across 8,320 pairs when changing pipeline-parallel GPU layout from one stage to two. | 中文：AI21 Labs报告称，在8320组样本上，将流水线并行从1路改为2路，参考分数完全一致。 | https://x.com/AI21Labs/status/2117963322100240733
+- 2026-11-04T10:24:00Z | X / Mistral AI | Mistral says 133 agents mapped Django code, found a recent vulnerability, tested an exploit, and produced a fix with Mistral Large 4. | 中文：Mistral称，133个智能体使用Mistral Large 4完成Django代码测绘、漏洞发现、攻击测试和修复。 | https://x.com/MistralAI/status/2117925908572991748
+- 2026-11-04T06:19:00Z | X / Hailuo AI | Hailuo says H3 achieved perfect scores on its language test for both speaking and writing. | 中文：海螺AI称，H3在语言测试中口语与写作两项均取得满分。 | https://x.com/Hailuo_AI/status/2117864294041944152
+- 2026-11-04T06:14:00Z | X / Meshy AI | Meshy published the full technical report for Meshy N1, detailing the system behind its latest 3D-generation model. | 中文：Meshy发布Meshy N1完整技术报告，披露其最新3D生成模型背后的系统设计。 | https://x.com/MeshyAI/status/2117862960978948143
+- 2026-11-04T05:40:00Z | X / Deemos Technology | Deemos demonstrated Blender running on an iPhone Duo, paired with Hyper3D WorldGen to turn one image into an editable 3D scene. | 中文：Deemos展示Blender在iPhone Duo上运行，并结合Hyper3D WorldGen将单张图片转换为可编辑3D场景。 | https://x.com/DeemosTech/status/2117854419803140446
+- 2026-11-04T04:39:00Z | MarkTechPost | Tencent’s WeVisOne-VL combines detection, OCR, segmentation, and matting in one vision-language model. | 中文：腾讯WeVisOne-VL将目标检测、OCR、分割和抠图整合进一个视觉语言模型。 | https://www.marktechpost.com/2026/11/03/tencent-wevisone-vl-vision-language-model/
+- 2026-11-04T02:09:00Z | X / Luma Labs AI | Luma introduced Character Sheet, which turns reference images into consistent character sheets for exploring multiple views and designs. | 中文：Luma推出Character Sheet，可将参考图生成保持一致性的角色表，用于探索不同视角与设计。 | https://x.com/LumaLabsAI/status/2117801252918632787
+- 2026-11-04T03:08:00Z | X / Pinecone | Pinecone joined Fireworks AI’s Frontier Ecosystem with Pinecone Nexus for open-model retrieval and compiled knowledge workflows. | 中文：Pinecone加入Fireworks AI Frontier Ecosystem，以Pinecone Nexus支持开放模型检索与编译知识工作流。 | https://x.com/pinecone/status/2117816247371055202
+- 2026-11-04T02:49:00Z | 量子位 | OpenJiuwen Agent-Memory adds audiovisual memory so agents can retrieve key events from long videos without missing important moments. | 中文：openJiuwen Agent-Memory加入视听双流记忆，让智能体从长视频中检索关键事件并减少遗漏。 | https://www.qbitai.com/2026/11/507533.html
+- 2026-11-04T01:13:00Z | X / Artificial Analysis | Artificial Analysis released personality rankings showing proprietary models averaging higher than open-weight models on truthfulness, pragmatism, and structure. | 中文：Artificial Analysis发布人格排名，显示专有模型在真实性、实用性和结构性上平均高于开放权重模型。 | https://x.com/ArtificialAnlys/status/2117787343667040279
+- 2026-11-04T01:11:00Z | X / Artificial Analysis | Artificial Analysis opened AA-Robotics coverage, adding a dedicated view for evaluating robotics-oriented AI systems. | 中文：Artificial Analysis上线AA-Robotics专门页面，用于评估面向机器人的人工智能系统。 | https://x.com/ArtificialAnlys/status/2117786855634870688
+- 2026-11-04T12:42:00Z | IT之家 | NIO’s William Li said smart electric vehicles are currently the most widely deployed embodied-intelligence agents. | 中文：蔚来李斌称，当前出货量最多的具身智能体就是智能电动汽车。 | https://www.ithome.com/1/022/423.htm
+- 2026-11-04T08:49:00Z | 量子位 | WhaleSharp AI launched a video platform claiming more than 30% lower per-minute production costs for entertainment companies. | 中文：虎鲸文娱上线鲸锐AI平台，宣称可将娱乐行业AI视频单分钟制作成本降低30%以上。 | https://www.qbitai.com/2026/11/507567.html
+- 2026-11-04T02:29:00Z | X / Sakana AI | Sakana AI showcased its Marlin, Fugu, and Namazu demonstrations at Gartner IT Symposium/Xpo 2026. | 中文：Sakana AI在Gartner IT Symposium/Xpo 2026现场展示Marlin、Fugu和Namazu项目。 | https://x.com/SakanaAILabs/status/2117806486172860793
 
 ### 2026-11-03
 
