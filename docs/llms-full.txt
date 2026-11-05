@@ -19,6 +19,38 @@
 
 ## Recent briefings
 
+### Baidu open-sources 280B-parameter ERNIE 5.5 Flash Base
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/baidu-ernie-55-flash-base.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html
+- Source timestamp: 2026-11-05T07:15:00.000Z
+- Site timestamp: 2026-11-05T13:00:14.227Z
+- Tags: Models, Open Source
+
+Baidu has released ERNIE 5.5 Flash Base as open weights, bringing a large sparse model and long-context training recipe into China’s open-model race.
+
+## What happened
+
+Baidu has released ERNIE 5.5 Flash Base as an open-weight model during the Beijing daytime cycle. The model is reported to contain 280 billion total parameters, with about 14 billion activated per token. Its training used 33.5 trillion tokens, with a 128K training context and support for up to a one-million-token context during fine-tuning and inference.
+
+The release matters because Baidu is making a large, current-generation base model available outside its hosted API stack. Developers can inspect the weights, adapt the model, and evaluate it against other Chinese and international open models. The sparse architecture also makes the headline parameter count less useful as a direct estimate of serving cost: only a fraction of the network is active for each token, but deployment still requires substantial memory and engineering capacity.
+
+## Why it matters
+
+Baidu’s move adds another major Chinese model family to the open-weight market at a time when developers are increasingly choosing models based on controllability, local deployment, and fine-tuning flexibility. It also gives researchers a new test of whether a large mixture-of-experts design can translate scale into practical gains without making inference inaccessible.
+
+The important caveat is licensing and reproducibility. Open weights do not automatically mean unrestricted commercial use, and benchmark claims need independent testing across reasoning, coding, multilingual performance, and long-context retrieval. The model’s real influence will depend on whether Chinese cloud platforms, inference vendors, and developer communities make it easy to run.
+
+Baidu is therefore competing on more than model quality: it is trying to turn ERNIE into infrastructure that other builders can depend on.
+
+Chinese title: 百度开源2800亿参数文心5.5 Flash Base
+Chinese summary: 百度开源文心5.5 Flash Base，采用稀疏架构与超长上下文，为中国开放权重模型竞争加入新的大规模选手。
+
+Sources:
+  - 百度开源文心5.5 Flash Base，多基准测试刷新同尺寸模型SOTA: https://www.qbitai.com/2026/11/507787.html
+  - ERNIE 5.5 Flash Base release page: https://ernie.baidu.com/release/ernie-5-5-flash-base/
+  - ERNIE 5.5 Flash Base technical details: https://www.orcarouter.ai/ko/blog/ernie-5-5-flash-base-open-weights-license
+
 ### Meta acquires Conductor to coordinate coding agents
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-acquires-conductor-agent-orchestration.html
@@ -947,39 +979,6 @@ Sources:
   - Mistral Large 4 (Le Chonk) is now open weight: https://mistral.ai/news/mistral-large-4-oss/
   - Mistral latest news: https://mistral.ai/news/
 
-### Clover-35B-A3B brings diffusion models into agent work
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/clover-diffusion-agent-model.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/clover-diffusion-agent-model.html
-- Source timestamp: 2026-10-29T10:18:28.000Z
-- Site timestamp: 2026-10-29T13:00:05.629Z
-- Tags: Models, Agents, Research
-
-Diffusion Intelligence released Clover-35B-A3B, an open preview that targets coding, tool use and browser agents with faster parallel generation.
-
-## A different route to agent speed
-
-Diffusion Intelligence has released Clover-35B-A3B-Preview, a 35-billion-parameter mixture-of-experts diffusion language model designed for coding, webpage generation and tool-using agents. About 3 billion parameters are activated per token. Unlike conventional autoregressive models, Clover uses block diffusion and repeated denoising to update groups of tokens in parallel.
-
-The release matters because the team is testing diffusion language models on practical agent workloads. In demonstrations, Clover generated interactive HTML, handled browser workflows and completed multi-step operations through WebMCP. In the company’s full evaluation of 49 tasks with three attempts per task, Clover’s median agent execution time was 1.52 seconds, compared with 8.86 seconds for Gemini 3.6 Flash. The company also reports that both models completed the six selected WebMCP tasks in the demonstration.
-
-## The unresolved engineering question
-
-Clover’s architecture combines block diffusion with a redesigned bidirectional Gated DeltaNet. The company says historical context is compressed into a recurrent state, while tokens within the current block interact through bidirectional attention. Reported scores include 65.3 on τ³ Overall, 67.9 on BFCL-v4, 73.6 on SWE-bench Verified and 51.7 on Terminal-Bench 2.1.
-
-Those numbers are company-reported and depend on the stated hardware, prompts, tools and evaluation setup. The model is still labeled a preview. Long-horizon reliability, reproducibility and performance under changing tool outputs are not yet independently established. If Clover’s speed survives broader testing, diffusion models could become a credible alternative for latency-sensitive agents rather than a research curiosity.
-
-## Uncle Cat take
-
-Clover’s strongest claim is not 35B parameters; it is finishing six tool steps without losing the thread. That execution stability deserves verification before the speed headline is believed.
-
-Chinese title: 扩散智能发布Clover，扩散模型进入Agent主场
-Chinese summary: 扩散智能推出35B级Clover预览版，瞄准代码、工具调用和浏览器Agent，并以并行生成争取更低延迟。
-
-Sources:
-  - Clover-35B-A3B-Preview · DiffuSpace: https://diffuspace.ai/blog/clover-35b/
-  - Diffusion Intelligence: https://diffuspace.ai/register
-
 ## Recent radar items
 
 ### 2026-11-05
@@ -1001,6 +1000,20 @@ Sources:
 - 2026-11-04T15:03:00Z | X / Cohere | Cohere released Embed 5 and Rerank 5 on OpenRouter, offering two embedding models in one shared space and a new reranker. | 中文：Cohere 将 Embed 5 与 Rerank 5 上架 OpenRouter，提供共享向量空间的两款嵌入模型及新重排模型。 | https://x.com/cohere/status/2117996129958949206
 - 2026-11-04T15:35:00Z | X / Sourcegraph | Sourcegraph added MCP connectors to Agentic Batch Changes, linking coding agents with Linear, Confluence, Buildkite, and other tools. | 中文：Sourcegraph 为 Agentic Batch Changes 增加 MCP 连接器，让编码代理接入 Linear、Confluence、Buildkite 等工具。 | https://x.com/Sourcegraph/status/2118004188764647832
 - 2026-11-04T18:00:00Z | InfoQ 中文 | Vercel Labs open-sourced fx, a Zig-based coding agent designed for embedded applications. | 中文：Vercel Labs 开源 fx，一款基于 Zig、面向嵌入式应用设计的编程代理。 | https://www.infoq.cn/article/cNO8PCwQoZMRHhIyVDrB
+- 2026-11-05T13:00:00Z | InfoQ 中文 | Google released ML Drift, a toolkit for accelerating on-device AI inference across GPUs. | 中文：谷歌发布 ML Drift，旨在为多类 GPU 加速端侧 AI 推理。 | https://www.infoq.cn/article/hHzARIJTeqoqYpjNKEuq?utm_source=rss&utm_medium=article
+- 2026-11-05T11:00:00Z | InfoQ 中文 | Google reportedly used Gemini 4 Argon overnight to optimize 200,000 lines of its ADK codebase. | 中文：据报道，谷歌用 Gemini 4 Argon 一夜优化了 ADK 代码库的 20 万行代码。 | https://www.infoq.cn/article/u4fAoAH5vZPCV4TVqAcO?utm_source=rss&utm_medium=article
+- 2026-11-05T12:00:00Z | Ars Technica | Agility Robotics began trading on Nasdaq, becoming the first pure-play humanoid robot company listed in the United States. | 中文：Agility Robotics 登陆纳斯达克，成为美国首家上市的纯人形机器人公司。 | https://arstechnica.com/ai/2026/11/agility-robotics-nasdaq-debut-invites-scrutiny-of-humanoid-robot-market/
+- 2026-11-05T05:25:00Z | 量子位 | XROGO announced a robot deployment plan at CeMAT ASIA focused on testing robots in real workplace operations. | 中文：XROGO 在 CeMAT ASIA 发布机器人到岗计划，重点检验机器人在真实工作场景中的价值。 | https://www.qbitai.com/2026/11/507767.html
+- 2026-11-05T03:23:00Z | X / Meshy | Meshy introduced a workflow that turns ordinary photographs into editable low-relief or high-relief 3D assets. | 中文：Meshy 推出新流程，可将普通照片转换为可编辑的低浮雕或高浮雕 3D 资产。 | https://x.com/MeshyAI/status/2118182479630856194
+- 2026-11-05T02:00:00Z | X / Luma AI | Luma launched Photo Reframe, expanding an image into new aspect ratios for posters, storefronts, and social formats. | 中文：Luma 推出 Photo Reframe，可将图片扩展到海报、店铺页面和社交媒体所需的不同画幅。 | https://x.com/LumaLabsAI/status/2118161379731677274
+- 2026-11-05T11:00:00Z | X / Dreamina | Dreamina Originals announced the premiere date for its AI-generated film project Beautiful Malice. | 中文：Dreamina Originals 宣布 AI 电影项目《Beautiful Malice》的首映日期。 | https://x.com/dreamina_ai/status/2118297272601793010
+- 2026-11-05T01:54:00Z | 量子位 | OpenAI said researchers found 948 Linux kernel vulnerabilities using an AI-assisted security effort funded with $1.2 million. | 中文：OpenAI 表示，研究人员借助一项投入 120 万美元的 AI 安全行动，发现 Linux 内核 948 个漏洞。 | https://www.qbitai.com/2026/11/507697.html
+- 2026-11-05T01:26:00Z | TechCrunch | Apple reportedly reduced budgets for employees’ internal AI usage as it tightened spending on experimentation. | 中文：据报道，苹果削减员工内部 AI 使用预算，以收紧实验性支出。 | https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/
+- 2026-11-05T02:00:00Z | OpenAI | OpenAI published a community compact and policy blueprint covering energy, water, hiring, and accountability for future compute campuses. | 中文：OpenAI 发布社区协议与政策蓝图，涉及未来算力园区的能源、用水、招聘和问责。 | https://openai.com/index/setting-new-standard-responsible-ai-infrastructure
+- 2026-11-05T05:42:00Z | MarkTechPost | Google AI Research released Agile Deliberation, a framework for handling ambiguity in subjective image classification. | 中文：Google AI Research 发布 Agile Deliberation，用于处理主观图像分类中的模糊判断。 | https://www.marktechpost.com/2026/11/04/google-agile-deliberation-subjective-image-classifiers/
+- 2026-11-05T10:00:00Z | InfoQ 中文 | An AICon Beijing session outlined incremental risk controls for coding agents using skill gates and harness-based safeguards. | 中文：AICon 北京专题介绍了利用 Skill 门禁与 Harness 防护，对 AI 编程代理实施增量风险管控。 | https://www.infoq.cn/article/XieGrL5pws7jG1zxKPle?utm_source=rss&utm_medium=article
+- 2026-11-05T12:10:00Z | IT之家 | Huawei Cloud reportedly plans to add openPangu-2.1-Pro to its model platform on November 15. | 中文：消息称，华为云 MaaS 平台计划于 11 月 15 日上线 openPangu-2.1-Pro。 | https://www.ithome.com/1/022/974.htm
+- 2026-11-05T13:00:00Z | TechCrunch | A YC startup committed $1 million to five unsolved materials-science problems where AI could accelerate discovery. | 中文：一家 YC 初创公司投入 100 万美元，支持五个 AI 可加速解决的未解材料科学问题。 | https://techcrunch.com/2026/11/05/a-yc-startup-is-putting-1m-behind-five-unsolved-materials-science-problems-for-ai/
 
 ### 2026-11-04
 

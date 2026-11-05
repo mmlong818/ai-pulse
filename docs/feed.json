@@ -13,6 +13,46 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/baidu-ernie-55-flash-base.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/baidu-ernie-55-flash-base.html",
+      "title": "Baidu open-sources 280B-parameter ERNIE 5.5 Flash Base",
+      "summary": "Baidu has released ERNIE 5.5 Flash Base as open weights, bringing a large sparse model and long-context training recipe into China’s open-model race.",
+      "content_text": "## What happened\n\nBaidu has released ERNIE 5.5 Flash Base as an open-weight model during the Beijing daytime cycle. The model is reported to contain 280 billion total parameters, with about 14 billion activated per token. Its training used 33.5 trillion tokens, with a 128K training context and support for up to a one-million-token context during fine-tuning and inference.\n\nThe release matters because Baidu is making a large, current-generation base model available outside its hosted API stack. Developers can inspect the weights, adapt the model, and evaluate it against other Chinese and international open models. The sparse architecture also makes the headline parameter count less useful as a direct estimate of serving cost: only a fraction of the network is active for each token, but deployment still requires substantial memory and engineering capacity.\n\n## Why it matters\n\nBaidu’s move adds another major Chinese model family to the open-weight market at a time when developers are increasingly choosing models based on controllability, local deployment, and fine-tuning flexibility. It also gives researchers a new test of whether a large mixture-of-experts design can translate scale into practical gains without making inference inaccessible.\n\nThe important caveat is licensing and reproducibility. Open weights do not automatically mean unrestricted commercial use, and benchmark claims need independent testing across reasoning, coding, multilingual performance, and long-context retrieval. The model’s real influence will depend on whether Chinese cloud platforms, inference vendors, and developer communities make it easy to run.\n\nBaidu is therefore competing on more than model quality: it is trying to turn ERNIE into infrastructure that other builders can depend on.",
+      "date_published": "2026-11-05T07:15:00.000Z",
+      "date_modified": "2026-11-05T13:00:14.227Z",
+      "tags": [
+        "Models",
+        "Open Source"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/baidu-ernie-55-flash-base.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html",
+        "source_published_at": "2026-11-05T07:15:00.000Z",
+        "site_published_at": "2026-11-05T13:00:14.227Z",
+        "sources": [
+          {
+            "title": "百度开源文心5.5 Flash Base，多基准测试刷新同尺寸模型SOTA",
+            "url": "https://www.qbitai.com/2026/11/507787.html"
+          },
+          {
+            "title": "ERNIE 5.5 Flash Base release page",
+            "url": "https://ernie.baidu.com/release/ernie-5-5-flash-base/"
+          },
+          {
+            "title": "ERNIE 5.5 Flash Base technical details",
+            "url": "https://www.orcarouter.ai/ko/blog/ernie-5-5-flash-base-open-weights-license"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/meta-acquires-conductor-agent-orchestration.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/meta-acquires-conductor-agent-orchestration.html",
       "title": "Meta acquires Conductor to coordinate coding agents",
@@ -1847,47 +1887,6 @@
           {
             "title": "StartLux-Decision: AutoThink Decision Models with Reinforcement Learning",
             "url": "https://arxiv.org/abs/2610.17309"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/anthropic-claude-duet-agent.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/anthropic-claude-duet-agent.html",
-      "title": "Anthropic Opens Claude Duet as a Proactive AI Agent",
-      "summary": "Anthropic is testing Claude Duet, an agent that monitors priorities, completes tasks and asks for approval before sensitive actions.",
-      "content_text": "Anthropic has opened a research preview of Claude Duet, a proactive agent designed to work across a user’s digital tasks rather than wait for individual prompts. The service is available through a US waitlist for Pro and Max subscribers.\n\nAnthropic describes Duet as an application built around Claude Opus 5.5. It can identify work that may need attention, complete tasks in the background and return to the user when a decision or approval is required. Duet carries over a user’s Claude memory, skills and connected apps, and can use more than 6,000 connectors and plugins available through the Claude Marketplace.\n\nThe product’s design reflects a shift from conversational assistants to systems that maintain an operating view of a user’s work. That creates a more useful workflow for software teams and knowledge workers: the agent can collect context, inspect connected sources and carry out a sequence of actions instead of producing a single answer. It also creates a harder safety problem, because mistakes can occur between the initial instruction and the eventual action.\n\nAnthropic says Duet does not directly see users’ passwords or sign-in tokens and uses dedicated safeguards to guard against attempts to share highly sensitive information. The company also acknowledges that the system can misjudge what is urgent. Those limits matter because proactive behavior turns ambiguity into an operational decision: waiting may be wrong, but acting too early may be worse.\n\nThe early research-preview status and US-only availability make this a controlled experiment rather than a mass-market launch. Its significance lies in the product direction. Anthropic is testing whether a model can become a persistent work partner while remaining interruptible, permission-aware and bounded by security controls. If the approach works, agent products will compete less on chat quality and more on judgment under incomplete information.\n\n## Uncle Cat take\n\nClaude Duet’s defining risk is not access to connected apps; it is deciding which unfinished task deserves interruption, a judgment Anthropic admits remains imperfect.",
-      "date_published": "2026-10-21T19:09:00.000Z",
-      "date_modified": "2026-10-22T01:00:06.705Z",
-      "tags": [
-        "Agents",
-        "Safety",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-claude-duet-agent.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-claude-duet-agent.html",
-        "source_published_at": "2026-10-21T19:09:00.000Z",
-        "site_published_at": "2026-10-22T01:00:06.705Z",
-        "sources": [
-          {
-            "title": "Claude Duet research preview announcement",
-            "url": "https://x.com/claudeai/status/2112984664256241837"
-          },
-          {
-            "title": "Anthropic News",
-            "url": "https://www.anthropic.com/news?cam=claude"
-          },
-          {
-            "title": "Anthropic takes on Muse with Claude Duet",
-            "url": "https://www.theverge.com/ai-artificial-intelligence/1015843/anthropic-claude-duet-ai-agent"
           }
         ]
       }

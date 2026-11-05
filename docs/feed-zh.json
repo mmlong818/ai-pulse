@@ -13,6 +13,46 @@
   ],
   "items": [
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html",
+      "title": "百度开源2800亿参数文心5.5 Flash Base",
+      "summary": "百度开源文心5.5 Flash Base，采用稀疏架构与超长上下文，为中国开放权重模型竞争加入新的大规模选手。",
+      "content_text": "## 发生了什么\n\n百度在北京白天时段发布了开放权重模型文心5.5 Flash Base。该模型总参数量据报道达到2800亿，每个Token约激活140亿参数；预训练使用了3.35万亿Token，训练上下文长度为128K，微调和推理阶段支持最长100万Token上下文。\n\n这次发布的关键，不只是参数规模，而是百度把新一代基础模型从托管API体系中拿出来，交给外部开发者和研究者使用。开发者可以研究权重、进行适配和微调，并将其与其他中国及海外开放模型直接比较。稀疏架构意味着总参数量不能简单等同于单次推理成本，但部署仍然需要较大的显存规模和工程投入。\n\n## 为什么重要\n\n随着开发者越来越重视可控部署、本地化运行和微调自由度，百度的动作让中国开放权重模型市场又多了一个重要来源。它也给研究界提供了一个新样本，用来检验大规模混合专家架构能否在保持实际可部署性的同时，把规模优势转化为能力优势。\n\n需要保留的疑问是许可证和可复现性。开放权重不等于可以无条件商用，榜单成绩也需要围绕推理、代码、多语言和长上下文检索进行独立验证。它最终能否产生广泛影响，还取决于中国云平台、推理服务商和开发者社区是否能降低部署门槛。\n\n因此，百度争夺的不只是模型分数，也是在争取让文心成为其他团队可以长期依赖的基础设施。",
+      "date_published": "2026-11-05T07:15:00.000Z",
+      "date_modified": "2026-11-05T13:00:14.227Z",
+      "tags": [
+        "模型",
+        "开源"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/baidu-ernie-55-flash-base.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html",
+        "source_published_at": "2026-11-05T07:15:00.000Z",
+        "site_published_at": "2026-11-05T13:00:14.227Z",
+        "sources": [
+          {
+            "title": "百度开源文心5.5 Flash Base，多基准测试刷新同尺寸模型SOTA",
+            "url": "https://www.qbitai.com/2026/11/507787.html"
+          },
+          {
+            "title": "ERNIE 5.5 Flash Base release page",
+            "url": "https://ernie.baidu.com/release/ernie-5-5-flash-base/"
+          },
+          {
+            "title": "ERNIE 5.5 Flash Base technical details",
+            "url": "https://www.orcarouter.ai/ko/blog/ernie-5-5-flash-base-open-weights-license"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-acquires-conductor-agent-orchestration.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-acquires-conductor-agent-orchestration.html",
       "title": "Meta收购Conductor，押注多智能体编程协作",
@@ -1847,47 +1887,6 @@
           {
             "title": "StartLux-Decision: AutoThink Decision Models with Reinforcement Learning",
             "url": "https://arxiv.org/abs/2610.17309"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-claude-duet-agent.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-claude-duet-agent.html",
-      "title": "Anthropic开放Claude Duet主动式代理研究预览",
-      "summary": "Anthropic开始测试Claude Duet，让代理主动发现待办、执行任务，并在敏感操作前请求用户批准。",
-      "content_text": "Anthropic开放了Claude Duet的研究预览。这是一款主动式代理，不再只等待用户逐条提问，而是持续处理用户的数字工作。当前产品通过候补名单向美国的Pro和Max订阅用户开放。\n\nAnthropic表示，Duet建立在Claude Opus 5.5之上，可以识别可能需要关注的工作，在后台完成任务，并在需要决策或批准时返回用户。Duet会继承用户 Claude 账户中的记忆、技能和已连接应用，并可使用 Claude Marketplace 中超过 6000 个连接器和插件。\n\n产品设计体现了助手从“回答问题”向“观察工作状态”的转变。对软件团队和知识工作者而言，代理可以收集上下文、检查多个连接来源并连续执行一组动作，而不只是生成一次性答案。但与此同时，安全难题也更复杂：错误可能发生在初始指令之后、最终行动之前的任何环节。\n\nAnthropic称，Duet不会直接看到用户密码或登录令牌，并通过专门的安全机制阻止高度敏感信息被分享。公司也承认，系统可能误判哪些事情紧急。主动式产品尤其需要面对这一点：等待可能错过窗口，过早行动又可能造成更大问题。\n\n目前的研究预览和美国限定范围，说明这仍是一场受控实验，而不是全面商业发布。它的重要性在于产品方向：Anthropic正在验证，一个模型能否成为持续工作的伙伴，同时保持可打断、懂权限并受安全边界约束。如果这一模式成立，代理产品的竞争重点将从聊天质量转向信息不完整时的判断能力。\n\n## 猫叔判断\n\nClaude Duet最关键的风险不是能否访问连接应用，而是能否判断何时打断用户；Anthropic已承认这项判断仍不稳定。",
-      "date_published": "2026-10-21T19:09:00.000Z",
-      "date_modified": "2026-10-22T01:00:06.705Z",
-      "tags": [
-        "Agent",
-        "安全",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-claude-duet-agent.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-claude-duet-agent.html",
-        "source_published_at": "2026-10-21T19:09:00.000Z",
-        "site_published_at": "2026-10-22T01:00:06.705Z",
-        "sources": [
-          {
-            "title": "Claude Duet research preview announcement",
-            "url": "https://x.com/claudeai/status/2112984664256241837"
-          },
-          {
-            "title": "Anthropic News",
-            "url": "https://www.anthropic.com/news?cam=claude"
-          },
-          {
-            "title": "Anthropic takes on Muse with Claude Duet",
-            "url": "https://www.theverge.com/ai-artificial-intelligence/1015843/anthropic-claude-duet-ai-agent"
           }
         ]
       }

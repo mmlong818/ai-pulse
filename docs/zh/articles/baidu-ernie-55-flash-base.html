@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>百度开源2800亿参数文心5.5 Flash Base — Uncle Cat AI Radar</title>
+<meta name="description" content="百度开源文心5.5 Flash Base，采用稀疏架构与超长上下文，为中国开放权重模型竞争加入新的大规模选手。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/baidu-ernie-55-flash-base.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/baidu-ernie-55-flash-base.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="百度开源2800亿参数文心5.5 Flash Base — Uncle Cat AI Radar">
+<meta property="og:description" content="百度开源文心5.5 Flash Base，采用稀疏架构与超长上下文，为中国开放权重模型竞争加入新的大规模选手。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="百度开源2800亿参数文心5.5 Flash Base — Uncle Cat AI Radar">
+<meta name="twitter:description" content="百度开源文心5.5 Flash Base，采用稀疏架构与超长上下文，为中国开放权重模型竞争加入新的大规模选手。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="百度开源2800亿参数文心5.5 Flash Base — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"百度开源2800亿参数文心5.5 Flash Base","item":"https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html#article","headline":"百度开源2800亿参数文心5.5 Flash Base","description":"百度开源文心5.5 Flash Base，采用稀疏架构与超长上下文，为中国开放权重模型竞争加入新的大规模选手。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html"},"datePublished":"2026-11-05T07:15:00.000Z","dateModified":"2026-11-05T13:00:14.227Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["模型","开源"],"keywords":"模型, 开源","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://www.qbitai.com/2026/11/507787.html","https://ernie.baidu.com/release/ernie-5-5-flash-base/","https://www.orcarouter.ai/ko/blog/ernie-5-5-flash-base-open-weights-license"],"about":[{"@type":"Thing","name":"模型"},{"@type":"Thing","name":"开源"}]}]}</script>
+</head>
+<body data-slug="baidu-ernie-55-flash-base" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/baidu-ernie-55-flash-base.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-11-05T07:15:00Z">2026年11月5日 15:15</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>百度开源2800亿参数文心5.5 Flash Base</h1>
+  <p class="standfirst">百度开源文心5.5 Flash Base，采用稀疏架构与超长上下文，为中国开放权重模型竞争加入新的大规模选手。</p>
+  <h2>发生了什么</h2><p>百度在北京白天时段发布了开放权重模型文心5.5 Flash Base。该模型总参数量据报道达到2800亿，每个Token约激活140亿参数；预训练使用了3.35万亿Token，训练上下文长度为128K，微调和推理阶段支持最长100万Token上下文。</p><p>这次发布的关键，不只是参数规模，而是百度把新一代基础模型从托管API体系中拿出来，交给外部开发者和研究者使用。开发者可以研究权重、进行适配和微调，并将其与其他中国及海外开放模型直接比较。稀疏架构意味着总参数量不能简单等同于单次推理成本，但部署仍然需要较大的显存规模和工程投入。</p><h2>为什么重要</h2><p>随着开发者越来越重视可控部署、本地化运行和微调自由度，百度的动作让中国开放权重模型市场又多了一个重要来源。它也给研究界提供了一个新样本，用来检验大规模混合专家架构能否在保持实际可部署性的同时，把规模优势转化为能力优势。</p><p>需要保留的疑问是许可证和可复现性。开放权重不等于可以无条件商用，榜单成绩也需要围绕推理、代码、多语言和长上下文检索进行独立验证。它最终能否产生广泛影响，还取决于中国云平台、推理服务商和开发者社区是否能降低部署门槛。</p><p>因此，百度争夺的不只是模型分数，也是在争取让文心成为其他团队可以长期依赖的基础设施。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://www.qbitai.com/2026/11/507787.html" rel="noopener" target="_blank">百度开源文心5.5 Flash Base，多基准测试刷新同尺寸模型SOTA</a></li><li><a href="https://ernie.baidu.com/release/ernie-5-5-flash-base/" rel="noopener" target="_blank">ERNIE 5.5 Flash Base release page</a></li><li><a href="https://www.orcarouter.ai/ko/blog/ernie-5-5-flash-base-open-weights-license" rel="noopener" target="_blank">ERNIE 5.5 Flash Base technical details</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-images-2-6-gif-generation.html">OpenAI发布Images 2.6，支持生成GIF并提速</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-pierre-codex-git-workflows.html">OpenAI拟收购Pierre，强化Codex代码协作链</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/lion-er-embodied-reasoning.html">狮子山实验室发布 Lion-ER，聚焦具身推理效率</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
