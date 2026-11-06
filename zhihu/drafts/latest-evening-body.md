@@ -1,71 +1,102 @@
-这是「猫叔的AI资讯雷达」11月5日晚报。
+这是「猫叔的AI资讯雷达」11月6日晚报。
 
 本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
 
-**今晚重点**：百度开源文心5.5 Flash Base，采用稀疏架构与超长上下文，为中国开放权重模型竞争加入新的大规模选手。
+**今晚重点**：中国芯片公司墨芯完成近十亿元C+轮融资，试图把DeepSeek带动的稀疏计算从模型技巧变成可规模部署的推理硬件。
 
 ## 深度简报目录
 
-- 百度开源2800亿参数文心5.5 Flash Base
+- 墨芯近十亿元融资，稀疏推理芯片走向商业化
+- Physicl获1000万美元，押注机器人可用的数字世界
 
 ## 快讯预览
 
-- 据报道，谷歌用 Gemini 4 Argon 一夜优化了 ADK 代码库的 20 万行代码。
-- Dreamina Originals 宣布 AI 电影项目《Beautiful Malice》的首映日期。
-- AICon 北京专题介绍了利用 Skill 门禁与 Harness 防护，对 AI 编程代理实施增量风险管控。
-- Google AI Research 发布 Agile Deliberation，用于处理主观图像分类中的模糊判断。
-- XROGO 在 CeMAT ASIA 发布机器人到岗计划，重点检验机器人在真实工作场景中的价值。
-- Meshy 推出新流程，可将普通照片转换为可编辑的低浮雕或高浮雕 3D 资产。
-- Luma 推出 Photo Reframe，可将图片扩展到海报、店铺页面和社交媒体所需的不同画幅。
-- OpenAI 发布社区协议与政策蓝图，涉及未来算力园区的能源、用水、招聘和问责。
-- OpenAI 表示，研究人员借助一项投入 120 万美元的 AI 安全行动，发现 Linux 内核 948 个漏洞。
-- 据报道，苹果削减员工内部 AI 使用预算，以收紧实验性支出。
+- 可灵发布由 Kling 4.0 驱动的赛车短片《Redline》，测试高难度运动影像生成。
+- Genspark 展示 CRUSH，称其 Media Studio 仅凭剧本和视觉设定便生成完整视频。
+- 开源平台 LoopForge 面向由 Coding Agent 驱动的自进化研发流程。
+- AI 短剧工作室瞄准双十一电商，通过低成本制作和自动化剧本分镜流程争夺销售转化。
+- Replit 称，三井住友金融租赁把原需六人六个月的开发流程缩短至一人一周。
+- Thinking Machines 发布 Inkling 2 Small，采用 5940 亿参数 MoE 架构，每次激活 170 亿参数。
+- GitHub 推出 Copilot Verified Proficiency，持续评估开发者在真实工作中展现的 Copilot 能力。
+- Artificial Analysis 发布 Endpoint Accuracy Index 1.1，扩大对 GLM-5.3 Flash 与 Muse Spark Open 的覆盖。
+- 英伟达介绍 Visa Trusted Agent Protocol，用于证明购物智能体获得用户授权。
+- Krea 上线 Gemini Omni 1.2 Flash，支持 15 秒视频、更强电影化控制和多轮编辑。
 
-## 1. 百度开源2800亿参数文心5.5 Flash Base
+## 1. 墨芯近十亿元融资，稀疏推理芯片走向商业化
 
-百度开源文心5.5 Flash Base，采用稀疏架构与超长上下文，为中国开放权重模型竞争加入新的大规模选手。
+中国芯片公司墨芯完成近十亿元C+轮融资，试图把DeepSeek带动的稀疏计算从模型技巧变成可规模部署的推理硬件。
 
-### 发生了什么
+### 融资与技术路线
 
-百度在北京白天时段发布了开放权重模型文心5.5 Flash Base。该模型总参数量据报道达到2800亿，每个Token约激活140亿参数；预训练使用了3.35万亿Token，训练上下文长度为128K，微调和推理阶段支持最长100万Token上下文。
+据量子位报道，国产AI芯片公司墨芯人工智能完成近十亿元人民币C+轮融资，距离上一轮近十亿元融资仅过去约五个月。公司还称，第三季度营收实现数倍增长。
 
-这次发布的关键，不只是参数规模，而是百度把新一代基础模型从托管API体系中拿出来，交给外部开发者和研究者使用。开发者可以研究权重、进行适配和微调，并将其与其他中国及海外开放模型直接比较。稀疏架构意味着总参数量不能简单等同于单次推理成本，但部署仍然需要较大的显存规模和工程投入。
+墨芯布局的是覆盖算法、编译器和加速卡的全栈稀疏推理平台。其核心方案同时利用权重稀疏和激活稀疏，尽量跳过对当前输出贡献有限的参数与计算路径。随着混合专家模型在DeepSeek之后成为效率竞争的重要方向，这类条件计算也从模型结构问题，逐渐变成芯片设计问题。
+
+### 从跑分走向部署
+
+墨芯称，其产品已连续三届在MLPerf Inference多个任务类别中取得领先；在遥感影像场景中，公司披露的结果包括推理吞吐提升2.88倍、模型压缩7.64倍。这些数字目前主要来自公司口径，尚不能视为独立验证，但它们体现出一个更值得关注的变化：稀疏加速正在被包装成从模型到硬件的完整商业方案，而不只是软件层优化。
+
+公司已参与上海算力项目，并计划推出新一代SP200板卡和SECA软件栈。接下来真正需要观察的是，这些收益能否离开特定测试和遥感场景，在更多模型与客户环境中稳定复现。
 
 ### 为什么重要
 
-随着开发者越来越重视可控部署、本地化运行和微调自由度，百度的动作让中国开放权重模型市场又多了一个重要来源。它也给研究界提供了一个新样本，用来检验大规模混合专家架构能否在保持实际可部署性的同时，把规模优势转化为能力优势。
+这轮融资的意义，在于中国加速器公司正获得足够资本，把稀疏计算从研究热点推进到产品化阶段。若墨芯能把稀疏带来的效率转化为可预测的推理成本优势，国产芯片替代路线将获得更具体的抓手；若收益高度依赖单一工作负载，这笔融资仍只是一场架构押注，而非新品类已经成立的证明。
 
-需要保留的疑问是许可证和可复现性。开放权重不等于可以无条件商用，榜单成绩也需要围绕推理、代码、多语言和长上下文检索进行独立验证。它最终能否产生广泛影响，还取决于中国云平台、推理服务商和开发者社区是否能降低部署门槛。
-
-因此，百度争夺的不只是模型分数，也是在争取让文心成为其他团队可以长期依赖的基础设施。
+**猫叔判断：**近十亿元续融资值得重视，但墨芯能否走出遥感场景、让SP200稳定出货，才决定这不是又一轮跑分叙事。
 
 **原始信源**
 
-- [百度开源文心5.5 Flash Base，多基准测试刷新同尺寸模型SOTA](https://www.qbitai.com/2026/11/507787.html)
-- [ERNIE 5.5 Flash Base release page](https://ernie.baidu.com/release/ernie-5-5-flash-base/)
-- [ERNIE 5.5 Flash Base technical details](https://www.orcarouter.ai/ko/blog/ernie-5-5-flash-base-open-weights-license)
+- [DeepSeek带火稀疏计算，国产芯片公司加速突围：这家公司又融近10亿](https://www.qbitai.com/2026/11/508155.html)
+- [Moxin raises nearly 1 billion yuan in C+ financing](https://aimap.page/zh-hans/news/2026-11-06/moxin-raises-1b-c-round-in-sparse-inference-chips/)
 
-原文链接：[百度开源2800亿参数文心5.5 Flash Base｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html)
-
-## 一句话快讯
-- 据报道，谷歌用 Gemini 4 Argon 一夜优化了 ADK 代码库的 20 万行代码。（[InfoQ 中文](https://www.infoq.cn/article/u4fAoAH5vZPCV4TVqAcO?utm_source=rss&utm_medium=article)）
-- Dreamina Originals 宣布 AI 电影项目《Beautiful Malice》的首映日期。（[X / Dreamina](https://x.com/dreamina_ai/status/2118297272601793010)）
-- AICon 北京专题介绍了利用 Skill 门禁与 Harness 防护，对 AI 编程代理实施增量风险管控。（[InfoQ 中文](https://www.infoq.cn/article/XieGrL5pws7jG1zxKPle?utm_source=rss&utm_medium=article)）
-- Google AI Research 发布 Agile Deliberation，用于处理主观图像分类中的模糊判断。（[MarkTechPost](https://www.marktechpost.com/2026/11/04/google-agile-deliberation-subjective-image-classifiers/)）
-- XROGO 在 CeMAT ASIA 发布机器人到岗计划，重点检验机器人在真实工作场景中的价值。（[量子位](https://www.qbitai.com/2026/11/507767.html)）
-- Meshy 推出新流程，可将普通照片转换为可编辑的低浮雕或高浮雕 3D 资产。（[X / Meshy](https://x.com/MeshyAI/status/2118182479630856194)）
-- Luma 推出 Photo Reframe，可将图片扩展到海报、店铺页面和社交媒体所需的不同画幅。（[X / Luma AI](https://x.com/LumaLabsAI/status/2118161379731677274)）
-- OpenAI 发布社区协议与政策蓝图，涉及未来算力园区的能源、用水、招聘和问责。（[OpenAI](https://openai.com/index/setting-new-standard-responsible-ai-infrastructure)）
-- OpenAI 表示，研究人员借助一项投入 120 万美元的 AI 安全行动，发现 Linux 内核 948 个漏洞。（[量子位](https://www.qbitai.com/2026/11/507697.html)）
-- 据报道，苹果削减员工内部 AI 使用预算，以收紧实验性支出。（[TechCrunch](https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/)）
-- Nothing CEO 裴宇称，公司首款无屏 AI 设备将于 12 月发布。（[IT之家](https://www.ithome.com/1/022/507.htm)）
-- 华为宣布昇腾已实现 0 Day 支持，可部署月之暗面 2.8 万亿参数 Kimi K3.1 Pro。（[IT之家](https://www.ithome.com/1/022/502.htm)）
-- Anthropic 协助研究人员建立包含 96 个细菌蛋白副本的三维库，以加快实验研究。（[IT之家](https://www.ithome.com/1/022/501.htm)）
-- Baseten 发布 Router，称其编码成本较 Opus 5.5 低 72%，且各阈值均优于随机路由。（[X / Baseten](https://x.com/baseten/status/2118124250770911432)）
+原文链接：[墨芯近十亿元融资，稀疏推理芯片走向商业化｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/moxin-raises-sparse-inference.html)
 
 ---
 
-完整日报：[11月5日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-05.html)
+## 2. Physicl获1000万美元，押注机器人可用的数字世界
+
+Physicl完成1000万美元融资并推出Studio，试图用具备真实物理属性的合成环境，补上通用机器人训练的数据缺口。
+
+### 押注训练环境
+
+Physicl宣布完成1000万美元融资，由Inovia Capital领投，US Venture Partners等参与；公司同时推出首款应用Studio，用于构建物理智能训练环境。它的方向不是单纯生成看起来逼真的三维画面，而是制作能够帮助机器人学习动作的合成数据、世界模型和策略训练工具。
+
+这一区别很关键。传统三维资产库通常提供几何形状和外观，却未必包含决定机器人能否抓取、推动、碰撞或绕行的物理属性。Physicl的产品定位集中在物理准确、可直接进入仿真的场景，以及用于训练机器人策略的真实标注和基准数据。
+
+### 补上长尾场景
+
+公司认为，物理智能系统最容易在罕见条件下失败：不常见的房间布局、物体摆放、光照变化、杂乱环境，以及难以在真实世界安全采集的交互。合成环境可以批量生成这些边缘案例，但前提是材质、碰撞和物体行为足够接近现实，否则机器人只是在仿真里学会了错误规律。
+
+Studio目前仍处于私测阶段，因此这笔融资不能证明其生成的世界已经提升真实机器人的成功率。Physicl公开材料更多展示了产品方向，尚缺少可由外部复现的大规模落地结果。客户最终关心的也不是画面有多逼真，而是仿真经验能否减少昂贵的实体数据采集，并缩短机器人策略迭代周期。
+
+### 为什么重要
+
+这轮融资值得关注，是因为它押注了人形机器人热潮中容易被忽略的基础设施层。模型能力再强，也无法长期弥补交互数据不足。若Physicl能把具备物理属性的资产、合成长尾案例和真实硬件迁移效果连接起来，它可能成为多家机器人公司的底层数据供应商。现阶段，1000万美元只能说明资本认可这一方向，不能说明仿真到现实的鸿沟已经被填平。
+
+**猫叔判断：**Physicl做的是材质、碰撞和真值这些笨功夫，但Studio仍在私测，真实机器人迁移效果还没有交卷。
+
+**原始信源**
+
+- [Physicl raises $10M and launches Studio](https://techcrunch.com/2026/11/06/physicl-raises-10m-to-make-the-digital-world-real-enough-for-robots/)
+- [Physicl Insights: Physical AI training data](https://www.physicl.ai/insights)
+
+原文链接：[Physicl获1000万美元，押注机器人可用的数字世界｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/physicl-raises-robot-worlds.html)
+
+## 一句话快讯
+- 可灵发布由 Kling 4.0 驱动的赛车短片《Redline》，测试高难度运动影像生成。（[X / Kling AI](https://x.com/Kling_ai/status/2118656417255321616)）
+- Genspark 展示 CRUSH，称其 Media Studio 仅凭剧本和视觉设定便生成完整视频。（[X / Genspark](https://x.com/genspark_ai/status/2118627703473729818)）
+- 开源平台 LoopForge 面向由 Coding Agent 驱动的自进化研发流程。（[InfoQ 中文](https://www.infoq.cn/article/QGaIWSgd9uwx2WGw0yFv)）
+- AI 短剧工作室瞄准双十一电商，通过低成本制作和自动化剧本分镜流程争夺销售转化。（[量子位](https://www.qbitai.com/2026/11/508118.html)）
+- Replit 称，三井住友金融租赁把原需六人六个月的开发流程缩短至一人一周。（[X / Replit](https://x.com/Replit/status/2118584165423796415)）
+- Thinking Machines 发布 Inkling 2 Small，采用 5940 亿参数 MoE 架构，每次激活 170 亿参数。（[MarkTechPost](https://www.marktechpost.com/2026/11/05/thinking-machines-inkling-2-small-release/)）
+- GitHub 推出 Copilot Verified Proficiency，持续评估开发者在真实工作中展现的 Copilot 能力。（[X / GitHub](https://x.com/github/status/2118545162670383517)）
+- Artificial Analysis 发布 Endpoint Accuracy Index 1.1，扩大对 GLM-5.3 Flash 与 Muse Spark Open 的覆盖。（[X / Artificial Analysis](https://x.com/ArtificialAnlys/status/2118534967387185476)）
+- 英伟达介绍 Visa Trusted Agent Protocol，用于证明购物智能体获得用户授权。（[X / NVIDIA AI](https://x.com/NVIDIAAI/status/2118512045201211620)）
+- Krea 上线 Gemini Omni 1.2 Flash，支持 15 秒视频、更强电影化控制和多轮编辑。（[X / Krea](https://x.com/krea_ai/status/2118508716261810321)）
+
+---
+
+完整日报：[11月6日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-06.html)
 
 历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
 
