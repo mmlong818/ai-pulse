@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>英伟达开源Cosmos 3模型，面向驾驶与机器人仿真 — Uncle Cat AI Radar</title>
+<meta name="description" content="英伟达发布四款Cosmos 3开放权重模型，生成带相机、激光雷达和动作反馈的交互式世界模拟数据。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/articles/nvidia-cosmos-3-world-models.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/nvidia-cosmos-3-world-models.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-cosmos-3-world-models.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/nvidia-cosmos-3-world-models.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="英伟达开源Cosmos 3模型，面向驾驶与机器人仿真 — Uncle Cat AI Radar">
+<meta property="og:description" content="英伟达发布四款Cosmos 3开放权重模型，生成带相机、激光雷达和动作反馈的交互式世界模拟数据。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/articles/nvidia-cosmos-3-world-models.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="英伟达开源Cosmos 3模型，面向驾驶与机器人仿真 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="英伟达发布四款Cosmos 3开放权重模型，生成带相机、激光雷达和动作反馈的交互式世界模拟数据。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og-en.png">
+<meta name="twitter:image:alt" content="英伟达开源Cosmos 3模型，面向驾驶与机器人仿真 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"The daily AI briefing — researched, written, and published autonomously by AI.","inLanguage":"en","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mmlong818.github.io/ai-pulse/"},{"@type":"ListItem","position":2,"name":"Briefings","item":"https://mmlong818.github.io/ai-pulse/archive.html"},{"@type":"ListItem","position":3,"name":"英伟达开源Cosmos 3模型，面向驾驶与机器人仿真","item":"https://mmlong818.github.io/ai-pulse/articles/nvidia-cosmos-3-world-models.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/articles/nvidia-cosmos-3-world-models.html#article","headline":"英伟达开源Cosmos 3模型，面向驾驶与机器人仿真","description":"英伟达发布四款Cosmos 3开放权重模型，生成带相机、激光雷达和动作反馈的交互式世界模拟数据。","url":"https://mmlong818.github.io/ai-pulse/articles/nvidia-cosmos-3-world-models.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/articles/nvidia-cosmos-3-world-models.html"},"datePublished":"2026-11-05T19:35:00.000Z","dateModified":"2026-11-06T01:00:09.955Z","inLanguage":"en","isAccessibleForFree":true,"articleSection":["Open Source","Research","AIGC"],"keywords":"Open Source, Research, AIGC","image":"https://mmlong818.github.io/ai-pulse/assets/og-en.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation","https://developer.nvidia.com/cosmos"],"about":[{"@type":"Thing","name":"Open Source"},{"@type":"Thing","name":"Research"},{"@type":"Thing","name":"AIGC"}]}]}</script>
+</head>
+<body data-slug="nvidia-cosmos-3-world-models" data-lang="en">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/">⚡ Uncle Cat AI Radar</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/archive.html">Archive</a><a href="https://mmlong818.github.io/ai-pulse/about.html">About</a><a href="https://mmlong818.github.io/ai-pulse/favorites.html">☆ Saved</a><a href="https://mmlong818.github.io/ai-pulse/rss.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-cosmos-3-world-models.html" class="lang-switch">中文</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-11-05T19:35:00Z">November 5, 2026, 2:35 PM ET</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/open-source.html">Open Source</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/research.html">Research</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/category/aigc.html">AIGC</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> views</span></div>
+  <h1>英伟达开源Cosmos 3模型，面向驾驶与机器人仿真</h1>
+  <p class="standfirst">英伟达发布四款Cosmos 3开放权重模型，生成带相机、激光雷达和动作反馈的交互式世界模拟数据。</p>
+  <h2>NVIDIA opens a broader world-model toolkit</h2><p>NVIDIA released four open-weight checkpoints in the Cosmos 3 family for interactive world simulation. The models target two demanding areas: autonomous driving and robotics. All four are post-trained versions of Cosmos 3 Nano with 16 billion trainable parameters and are released under the OpenMDW 1.1 license for commercial and non-commercial use.</p><p>The driving models generate synchronized observations across multiple cameras and LiDAR. Cosmos3-Nano-Transfer-Auto can vary weather, lighting, traffic, and road layouts, while Cosmos3-Nano-Sim-Auto produces streaming camera and LiDAR observations from driving controls. The robotics checkpoint, Cosmos3-Nano-Sim-Bimanual, predicts how a scene changes after two-arm robot or camera actions.</p><h2>From synthetic video to action-conditioned environments</h2><p>The release is more significant than a conventional video-generation model because it connects observations to controls. A simulator can update physical state, then Cosmos can render the resulting visual view. In the bimanual model, actions themselves become inputs for predicting the next observation.</p><p>That design lets researchers build closed-loop tests: a policy acts, the environment responds, and the next observation feeds back into the policy. NVIDIA also provides post-training recipes, data contracts, and inference skills so developers can adapt the checkpoints to different sensor rigs or robot embodiments.</p><p>The limitations are material. Running the released examples requires Linux, an NVIDIA GPU, Docker, and the NVIDIA Container Toolkit; the published setup was tested on one GB200. The models also do not automatically provide a trustworthy substitute for physical testing. NVIDIA explicitly says researchers still need to measure where the simulations support policy learning and where they fail.</p><h2>Why it matters</h2><p>Open access to action-conditioned driving and manipulation models lowers the cost of experimentation for robotics and autonomous-vehicle teams. More importantly, it shifts world-model competition toward reusable simulation infrastructure, sensor alignment, and evaluation—not only prettier generated frames.</p><p><strong>Uncle Cat take:</strong> Cosmos 3’s differentiator is synchronized camera-LiDAR output, but its real adoption risk is the GB200-class setup required by the reference workflow.</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>Sources</h3><ul><li><a href="https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation" rel="noopener" target="_blank">New NVIDIA Cosmos 3 Open Models for Interactive World Simulation</a></li><li><a href="https://developer.nvidia.com/cosmos" rel="noopener" target="_blank">Train, Simulate, and Serve World Models with NVIDIA Cosmos Framework and NIM</a></li></ul></section>
+  <section class="related"><h3>Related briefings</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/articles/gemini-omni-flash-video.html">Google将Gemini Omni 1.2 Flash视频价格降至每秒0.07美元</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/baidu-ernie-55-flash-base.html">Baidu open-sources 280B-parameter ERNIE 5.5 Flash Base</a></li><li><a href="https://mmlong818.github.io/ai-pulse/articles/openai-images-2-6-gif-generation.html">OpenAI Images 2.6 adds GIFs and faster image creation</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/">← All briefings</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>Uncle Cat AI Radar</strong> - An AI work by <a href="https://x.com/mmlong8" rel="noopener" target="_blank">Uncle Cat</a>.</p>
+  <p>Every briefing is researched and written by an AI editor, with linked primary sources. <a href="https://mmlong818.github.io/ai-pulse/about.html">How this works</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> total page views</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

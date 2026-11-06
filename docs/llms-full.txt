@@ -19,6 +19,116 @@
 
 ## Recent briefings
 
+### Google将Gemini Omni 1.2 Flash视频价格降至每秒0.07美元
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-omni-flash-video.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gemini-omni-flash-video.html
+- Source timestamp: 2026-11-05T17:00:00.000Z
+- Site timestamp: 2026-11-06T01:00:09.955Z
+- Tags: AIGC, Models, Industry
+
+Google推出Gemini Omni 1.2 Flash，支持15秒视频和多轮对话编辑，并将720p视频价格下调约30%。
+
+## Google lowers the cost of iterative video generation
+
+Google released Gemini Omni 1.2 Flash with native video generation and editing up to 15 seconds. The model accepts combinations of text, images, short video references, and audio cues, then produces video with synchronized sound.
+
+The headline commercial change is pricing. Google says 720p output costs $0.07 per second, about 30% less than Gemini Omni 1.1. The model is available through the Gemini API and Google’s business offerings, with rollout across products including Flow, Google Vids, the Gemini app, and Google Ads.
+
+## Editing becomes part of the generation loop
+
+Omni 1.2 Flash is designed around conversational revision rather than one-shot generation. Users can ask for a change to a detail and continue from an existing clip instead of regenerating the entire sequence. Google also says the model can preserve faces, clothing, packaging text, and brand colors more consistently across camera movement and edits.
+
+The pricing matters because video generation is often constrained by iteration cost. A creator or marketing team may need many failed drafts before approving one shot. Lower per-second pricing, shorter draft modes, and targeted edits could make model-generated footage more practical for routine advertising and product content.
+
+Google still lists weaknesses in fast sports action, rapid script changes, and complex physics. The launch therefore improves the economics of production more clearly than it settles the quality ceiling. SynthID watermarking is also included, while speech modification remains restricted as Google studies safer deployment.
+
+## Why it matters
+
+This release pushes generative video toward a production workflow: reference assets, editable shots, pricing for repeated attempts, and distribution through business software. Its impact will depend less on a single impressive clip than on whether teams can keep characters, products, and audio coherent over a complete campaign.
+
+**Uncle Cat take:** The meaningful number is $0.07 per second: Google is attacking the revision bill that has kept AI video closer to sampling than production.
+
+Chinese title: Gemini Omni 1.2 Flash上线，720p视频价格降至每秒0.07美元
+Chinese summary: Google发布Gemini Omni 1.2 Flash，支持最长15秒视频、多轮对话编辑，并将720p生成价格下调约30%。
+
+Sources:
+  - Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips: https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/
+  - Gemini Omni Flash Model Card: https://deepmind.google/models/model-cards/gemini-omni-1-2-flash/
+
+### 英伟达开源Cosmos 3模型，面向驾驶与机器人仿真
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-cosmos-3-world-models.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-cosmos-3-world-models.html
+- Source timestamp: 2026-11-05T19:35:00.000Z
+- Site timestamp: 2026-11-06T01:00:09.955Z
+- Tags: Open Source, Research, AIGC
+
+英伟达发布四款Cosmos 3开放权重模型，生成带相机、激光雷达和动作反馈的交互式世界模拟数据。
+
+## NVIDIA opens a broader world-model toolkit
+
+NVIDIA released four open-weight checkpoints in the Cosmos 3 family for interactive world simulation. The models target two demanding areas: autonomous driving and robotics. All four are post-trained versions of Cosmos 3 Nano with 16 billion trainable parameters and are released under the OpenMDW 1.1 license for commercial and non-commercial use.
+
+The driving models generate synchronized observations across multiple cameras and LiDAR. Cosmos3-Nano-Transfer-Auto can vary weather, lighting, traffic, and road layouts, while Cosmos3-Nano-Sim-Auto produces streaming camera and LiDAR observations from driving controls. The robotics checkpoint, Cosmos3-Nano-Sim-Bimanual, predicts how a scene changes after two-arm robot or camera actions.
+
+## From synthetic video to action-conditioned environments
+
+The release is more significant than a conventional video-generation model because it connects observations to controls. A simulator can update physical state, then Cosmos can render the resulting visual view. In the bimanual model, actions themselves become inputs for predicting the next observation.
+
+That design lets researchers build closed-loop tests: a policy acts, the environment responds, and the next observation feeds back into the policy. NVIDIA also provides post-training recipes, data contracts, and inference skills so developers can adapt the checkpoints to different sensor rigs or robot embodiments.
+
+The limitations are material. Running the released examples requires Linux, an NVIDIA GPU, Docker, and the NVIDIA Container Toolkit; the published setup was tested on one GB200. The models also do not automatically provide a trustworthy substitute for physical testing. NVIDIA explicitly says researchers still need to measure where the simulations support policy learning and where they fail.
+
+## Why it matters
+
+Open access to action-conditioned driving and manipulation models lowers the cost of experimentation for robotics and autonomous-vehicle teams. More importantly, it shifts world-model competition toward reusable simulation infrastructure, sensor alignment, and evaluation—not only prettier generated frames.
+
+**Uncle Cat take:** Cosmos 3’s differentiator is synchronized camera-LiDAR output, but its real adoption risk is the GB200-class setup required by the reference workflow.
+
+Chinese title: 英伟达开源Cosmos 3四款模型，推进驾驶与机器人世界模拟
+Chinese summary: 英伟达开放Cosmos 3四款模型，支持多摄像头、激光雷达和机器人动作反馈，用于交互式驾驶与机器人仿真。
+
+Sources:
+  - New NVIDIA Cosmos 3 Open Models for Interactive World Simulation: https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation
+  - Train, Simulate, and Serve World Models with NVIDIA Cosmos Framework and NIM: https://developer.nvidia.com/cosmos
+
+### OpenAI发布GPT-6 Cyber，扩大防御者专属访问
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-gpt-6-cyber-daybreak.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-6-cyber-daybreak.html
+- Source timestamp: 2026-11-05T17:09:00.000Z
+- Site timestamp: 2026-11-06T01:00:09.955Z
+- Tags: Models, Safety, Industry
+
+OpenAI推出GPT-6 Cyber并扩展Daybreak计划，试图把更强的漏洞研究能力优先交给防守方。
+
+## OpenAI把网络安全模型推向更高能力区间
+
+OpenAI announced GPT-6 Cyber as a model designed for advanced defensive security research. The company said the model powered work that identified vulnerabilities in the Linux kernel, while pairing stronger cyber capabilities with additional safeguards intended to reduce misuse.
+
+The launch is tied to OpenAI’s Daybreak program. Approved organizations can request different access levels, with GPT-6 Cyber requiring the highest tier and additional model-specific approval. OpenAI also said it wants to expand Daybreak access to organizations of different sizes, independent researchers, and open-source maintainers.
+
+## Access is the product boundary
+
+The important detail is not simply the model name. OpenAI is separating capability from availability: GPT-6 Cyber is not presented as a generally accessible assistant, but as a controlled system for vulnerability research, exploit validation, and defensive testing. Organizations must use approved projects, identity controls, and in some cases network allowlisting.
+
+That structure reflects a difficult trade-off. A model capable of finding real vulnerabilities can shorten the time defenders need to patch systems, but the same capability can lower the cost of offensive research. OpenAI’s answer is to put approval, monitoring, and organizational controls around the model instead of shipping it as a normal API option.
+
+## Why it matters
+
+This is the edition’s most consequential story because it turns advanced cyber capability into a gated commercial product category. The unresolved question is whether OpenAI’s access controls can scale as widely as the defensive demand it describes, without creating a privileged bottleneck for smaller researchers.
+
+**Uncle Cat take:** GPT-6 Cyber’s significance lies in its approval gate: OpenAI is pricing access to vulnerability research as a security-control problem, not merely a model launch.
+
+Chinese title: OpenAI推出GPT-6 Cyber，网络防御能力进入分级访问时代
+Chinese summary: OpenAI发布GPT-6 Cyber，并通过Daybreak向获批机构开放，强化模型能力与网络安全访问控制的绑定。
+
+Sources:
+  - OpenAI introduces GPT-6 Cyber: https://x.com/OpenAI/status/2118390190246879554
+  - Use Daybreak in the Responses API: https://developers.openai.com/api/docs/guides/daybreak
+  - OpenAI says its new cybersecurity model is better at not hacking other companies: https://www.theverge.com/ai-artificial-intelligence/1027599/openai-gpt-6-cyber-launch
+
 ### Baidu open-sources 280B-parameter ERNIE 5.5 Flash Base
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/baidu-ernie-55-flash-base.html
@@ -874,112 +984,27 @@ Sources:
   - Using Claude Code with your Pro or Max plan: https://support.anthropic.com/en/articles/11145838-using-claude-code-with-your-max-plan
   - Claude pricing and plans: https://claude.com/
 
-### Canva launches Brush for precise design editing
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/canva-brush-design-model.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/canva-brush-design-model.html
-- Source timestamp: 2026-10-29T19:17:00.000Z
-- Site timestamp: 2026-10-30T13:00:00.000Z
-- Tags: AIGC, Models, Industry
-
-Canva has launched Brush, a vision-language model that edits layouts and multi-page designs, cutting reported task time by 69%.
-
-## What happened
-
-Canva launched Brush, its first vision-language model built specifically for design editing. The model can inspect a design’s layout, layers and visual style, then apply instructions ranging from changing a single line of copy to revising an entire multi-page presentation.
-
-Brush is available first to Canva Pro subscribers for supported edits in Canva AI. Users can ask it to restyle an image, apply a change across multiple pages or adapt an existing design to another format. Canva says Brush was built from a leading open-weights model and then post-trained on design tasks using professional design expertise, anonymized opt-in usage data and simulated interactions.
-
-The company reports that Brush is up to 69% faster on general design-editing tasks and 46% cheaper per edit than its previous design agent. Canva says the model matched or exceeded the earlier system on most internal editing evaluations, particularly when restyling designs or adapting them for different channels. The first release does not yet support every planned workflow; brand-kit integration, attachments and stronger handling of image-heavy layouts are still in development.
-
-## Why it matters
-
-Brush shows where application companies may gain leverage in generative AI: not by training the largest general model, but by optimizing a model around a structured professional workflow. Design files contain layers, constraints, reusable assets and formatting rules that ordinary image generators do not fully understand. A model that edits those objects directly can save users from rebuilding work after each generation.
-
-The economics are also material. Canva serves hundreds of millions of users, so a 46% reduction in per-edit cost could affect whether advanced editing features are offered widely or restricted to premium tiers. The open question is how well Brush handles messy real-world documents, brand consistency and human review once usage expands beyond Canva’s internal tests.
-
-## Uncle Cat take
-
-Brush’s 69% speed gain matters because Canva edits structured, multi-page work; its biggest risk is not image quality but breaking the design system users already rely on.
-
-Chinese title: Canva发布Brush设计模型，编辑任务速度提升69%
-Chinese summary: Canva推出首款面向设计编辑的视觉语言模型Brush，可理解布局与图层，并把多页设计修改速度提高至多69%。
-
-Sources:
-  - Introducing Canva Brush, a vision-language model for design: https://www.canva.com/newsroom/news/canva-brush/
-  - Canva Research: https://www.canva.com/ai-research/
-
-### Cohere targets C$7 billion in landmark Series E
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/cohere-seven-billion-series-e.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cohere-seven-billion-series-e.html
-- Source timestamp: 2026-10-29T15:49:00.000Z
-- Site timestamp: 2026-10-30T13:00:00.000Z
-- Tags: Funding, Industry, Models
-
-Cohere says its Series E could reach C$7 billion at a C$35.7 billion valuation, making enterprise and sovereign AI a major capital bet.
-
-## What happened
-
-Cohere announced the initial close of a Series E that targets as much as C$7 billion at a C$35.7 billion valuation. The company framed the round as the largest private financing in Canadian history and said it would support continued development and deployment of enterprise-focused AI.
-
-Unlike consumer chatbot companies that compete primarily on usage volume, Cohere sells language models and retrieval systems to enterprises and governments. Its products are designed for organizations that want private deployments, stronger control over data and integration with existing business systems. The company has also emphasized its Canadian identity while operating internationally, making the financing part of a broader sovereign-AI narrative.
-
-The announcement arrives as AI capital is becoming more concentrated. Frontier labs and infrastructure suppliers are raising enormous sums to fund training, inference and data-center commitments. A C$7 billion target would place Cohere among the best-capitalized private AI companies, even though the final size, investor composition and use of proceeds remain important details to watch.
-
-## Why it matters
-
-The round is significant because it signals that enterprise AI is attracting capital at frontier-lab scale. Cohere does not need to win the consumer-assistant market to matter; it needs to become a trusted layer inside regulated companies and public institutions, where contracts are slower but potentially more durable.
-
-The valuation also creates a demanding test. Enterprise buyers care about reliability, security, deployment flexibility and measurable productivity, not just model benchmarks. Cohere will need to turn capital into models and products that can survive procurement cycles and operate under jurisdictional constraints. If it succeeds, the financing could validate a durable alternative to consumer-led AI economics. If not, it will look like another example of private-market expectations outrunning enterprise adoption.
-
-## Uncle Cat take
-
-A C$35.7 billion valuation says investors are pricing Cohere as infrastructure for sovereign enterprise AI; the unresolved issue is whether procurement teams will sign fast enough to justify it.
-
-Chinese title: Cohere拟筹资70亿加元，估值升至357亿加元
-Chinese summary: Cohere宣布启动最高70亿加元的E轮融资，目标估值357亿加元，企业级与主权AI成为这笔巨额资本的核心押注。
-
-Sources:
-  - Cohere announces initial close of Series E: https://x.com/cohere/status/2115833490126336507
-  - Cohere: https://cohere.com/
-
-### Mistral releases one-trillion-parameter Le Chonk weights
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/mistral-le-chonk-open-weights.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/mistral-le-chonk-open-weights.html
-- Source timestamp: 2026-10-29T14:21:00.000Z
-- Site timestamp: 2026-10-30T13:00:00.000Z
-- Tags: Models, Open Source, Agents, Safety
-
-Mistral has released the weights of its one-trillion-parameter Le Chonk, targeting open agentic coding, cybersecurity and sovereign deployment.
-
-## What happened
-
-Mistral released the weights of Le Chonk, the company’s one-trillion-parameter, natively multimodal model, after introducing it in public preview earlier this month. The release places the model’s parameters in developers’ hands for self-hosted use, fine-tuning and independent evaluation rather than limiting access to a hosted API.
-
-Mistral positions Le Chonk around agentic coding and cybersecurity. The model uses a mixture-of-experts design with roughly 52 billion active parameters, allowing inference to use only a fraction of its total capacity on each token. The company says reinforcement-learning work after the preview improved coding and defensive-security performance, while retaining several reasoning modes for different speed and cost targets.
-
-The model was trained in Mistral’s own European data centers and is being presented as an option for organizations that need control over data location, model behavior and deployment infrastructure. That positioning matters beyond Europe: sovereign-AI buyers in regulated industries increasingly want open weights without giving up access to frontier-scale systems.
-
-## Why it matters
-
-The release expands the practical ceiling of open-weight models. A trillion-parameter multimodal system is expensive to serve, so “open” does not mean cheap or easy to run. But access to the weights changes who can inspect, adapt and optimize the model, and gives cloud providers and hardware vendors a large new target for specialized inference.
-
-It also raises the stakes in open cyber capability. Mistral is deliberately marketing the model to defenders, while the same coding and systems skills can be repurposed by attackers. The important question is not only whether Le Chonk wins benchmark tables, but whether its weights accelerate useful private deployments faster than safeguards and evaluation methods can keep up.
-
-## Uncle Cat take
-
-Mistral’s real strategic move is making a trillion-parameter European model inspectable and adaptable; the unresolved cost of running it will decide whether sovereignty becomes practical or merely prestigious.
-
-Chinese title: Mistral开放万亿参数Le Chonk权重，瞄准编码与网络安全
-Chinese summary: Mistral正式开放万亿参数Le Chonk权重，主攻智能体编程与网络安全，也为欧洲主权AI提供可自托管的前沿模型。
-
-Sources:
-  - Mistral Large 4 (Le Chonk) is now open weight: https://mistral.ai/news/mistral-large-4-oss/
-  - Mistral latest news: https://mistral.ai/news/
-
 ## Recent radar items
+
+### 2026-11-06
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-11-06.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-11-06.html
+
+- 2026-11-05T18:00:00Z | Claude AI | Claude Personal Finance beta lets US users connect accounts, analyze spending, track bills, and ask money questions in everyday language. | 中文：Claude个人理财测试版允许美国用户连接账户、分析消费、追踪账单，并用日常语言提问财务问题。 | https://x.com/claudeai/status/2118403114890137895
+- 2026-11-05T22:40:00Z | TechCrunch | Airbnb says it will launch an AI travel agent in the first half of 2027 to help users plan and book trips. | 中文：Airbnb表示将在2027年上半年推出AI旅行代理，帮助用户规划并预订行程。 | https://techcrunch.com/2026/11/05/airbnb-says-its-launching-an-ai-travel-agent-in-the-first-half-of-2027/
+- 2026-11-05T17:05:00Z | Perplexity AI | Perplexity introduced Teammates, proactive agents that collaborate using Computer tasks, projects, skills, memory, and tools. | 中文：Perplexity推出Teammates，让多个主动代理利用Computer任务、项目、技能、记忆和工具协作。 | https://x.com/perplexity_ai/status/2118389326459670825
+- 2026-11-05T17:11:00Z | Cognition | Cognition released Devin Review 2.0 with Autofix, claiming fivefold lower cost, 1.5-times faster reviews, and availability across Cloud and Desktop. | 中文：Cognition发布Devin Review 2.0，加入Autofix，称成本降低五倍、审查提速1.5倍，并登陆云端和桌面端。 | https://x.com/cognition/status/2118390707228745948
+- 2026-11-05T15:50:00Z | Mistral AI | Mistral made Apps and Managed Agents public previews while moving Workflows to general availability across cloud and private deployments. | 中文：Mistral将Apps和Managed Agents开放预览，同时让Workflows在云端与私有部署中正式可用。 | https://x.com/MistralAI/status/2118370261657383184
+- 2026-11-05T21:22:00Z | AWS | Amazon made Web Answer generally available in Bedrock AgentCore, returning synthesized, cited answers through one managed tool call. | 中文：亚马逊在Bedrock AgentCore中正式推出Web Answer，通过一次托管工具调用返回综合且带引用的答案。 | https://aws.amazon.com/about-aws/whats-new/2026/11/web-answer-amazon-bedrock/
+- 2026-11-05T15:00:00Z | Tripo AI | Tripo launched Agentic Canvas, an agent that plans, connects, and executes 3D workflows including modeling and rigging. | 中文：Tripo推出Agentic Canvas，可规划、连接并执行建模、绑定等三维工作流。 | https://x.com/tripoai/status/2118357683476562022
+- 2026-11-05T14:53:00Z | Manus AI | Manus Studio now exports AI-created video projects to Premiere Pro, DaVinci Resolve, CapCut, and Final Cut Pro. | 中文：Manus Studio现可将AI生成的视频项目导出到Premiere Pro、DaVinci Resolve、CapCut和Final Cut Pro。 | https://x.com/ManusAI/status/2118356148919402537
+- 2026-11-05T19:48:00Z | TechCrunch | Meta opened US video chats with Muse AI avatars, extending its realtime avatar technology beyond text and voice interactions. | 中文：Meta向美国用户开放与Muse AI头像的视频聊天，将实时头像从文字和语音互动扩展到视频。 | https://techcrunch.com/2026/11/05/meta-says-us-users-can-now-video-chat-with-their-muse-ai-avatar/
+- 2026-11-05T15:19:00Z | TechCrunch | Dropbox agreed to acquire Tigris Data for $350 million to strengthen infrastructure for AI workloads. | 中文：Dropbox同意以3.5亿美元收购Tigris Data，以强化AI工作负载基础设施。 | https://techcrunch.com/2026/11/05/dropbox-acquires-tigris-data-for-350m-to-bolster-its-ai-iinfrastructure/
+- 2026-11-05T21:23:00Z | Krea AI | Krea introduced Krea Video, offering browser-based video generation with cinematic camera controls and more than 100 styles. | 中文：Krea推出Krea Video，在浏览器中提供带电影级镜头控制和100多种风格的视频生成。 | https://x.com/krea_ai/status/2118454268365857266
+- 2026-11-05T17:53:00Z | Pika | Pika highlighted H3 Flex for visual consistency, instruction following, crisp on-screen text, and motion-graphics generation. | 中文：Pika重点展示H3 Flex的视觉一致性、指令遵循、清晰屏幕文字和动态图形生成能力。 | https://x.com/pika_labs/status/2118401334689055097
+- 2026-11-05T19:25:00Z | World Labs | World Labs released Frameboy, a fast Atlas variant integrated into Viewfinder for frame-by-frame interactive 3D scene building. | 中文：World Labs发布Frameboy，将更快的Atlas变体集成进Viewfinder，支持逐帧交互式构建三维场景。 | https://x.com/theworldlabs/status/2118424455873741028
+- 2026-11-05T16:08:00Z | Figma | Figma introduced an agent that turns ideas into editable, organized vectors ready for animation in Figma Motion. | 中文：Figma推出可将想法转成可编辑、有组织矢量图的代理，并可直接用于Figma Motion动画。 | https://x.com/figma/status/2118374824250884595
 
 ### 2026-11-05
 
@@ -1121,39 +1146,3 @@ Sources:
 - 2026-11-02 | Unite.AI | Marble Cognition raised $3.75 million in pre-seed funding to build AI coworkers that learn office workflows by observation. | 中文：Marble Cognition获375万美元种子前融资，开发能观察办公流程并学习的人工智能同事。 | https://www.unite.ai/
 - 2026-11-02 | arXiv | BILAL-BENCH tests Bengali AI models for fabricated Islamic texts using 240 expert-verified questions. | 中文：BILAL-BENCH用240道专家核验问题测试孟加拉语人工智能模型伪造伊斯兰文本的能力。 | https://arxiv.org/
 - 2026-11-02 | MarkTechPost | Deep Principle released Hydrogen-1.0, a 753-billion-parameter open-weight scientific model with an MIT license. | 中文：Deep Principle 发布 7530 亿参数的 Hydrogen-1.0 科学开放权重模型，采用 MIT 许可证。 | https://www.marktechpost.com/2026/11/02/deep-principle-hydrogen-1-0-open-weight-scientific-model/
-
-### 2026-11-01
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-11-01.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-11-01.html
-
-- 2026-10-31T23:15:00Z | Simon Willison | Parameter Labs found a ChatGPT HTML-preview exploit that could exfiltrate private data; OpenAI patched it and paid a $5,000 bounty. | 中文：Parameter Labs发现ChatGPT HTML预览漏洞，可窃取私密数据；OpenAI已修复并支付5000美元赏金。 | https://simonwillison.net/2026/Oct/31/how-we-took-over-chatgpt-accounts/
-- 2026-10-31T22:10:00Z | Simon Willison | Simon Willison released datasette-llm 0.1a9, extending his lightweight toolkit for running and integrating language models with Datasette. | 中文：Simon Willison发布datasette-llm 0.1a9，继续扩展Datasette中的轻量级语言模型集成工具。 | https://simonwillison.net/2026/Oct/31/datasette-llm/
-- 2026-10-31T21:41:00Z | TechCrunch | Apple CEO Tim Cook said the company does not want to ship AI merely for its own sake, emphasizing usefulness over headline features. | 中文：苹果CEO蒂姆·库克表示，公司不想为了AI而发布AI，重点仍是实际用途而非噱头功能。 | https://techcrunch.com/2026/10/31/apple-ceo-says-the-company-doesnt-want-to-ship-ai-for-ais-sake/
-- 2026-10-31T20:43:00Z | InfoQ 中文 | An AI programming tutor was demonstrated running Python and SQL directly in a browser on a low-end Android phone without a server. | 中文：一款AI编程导师在低端安卓手机上演示了无服务器运行，可直接在浏览器执行Python和SQL。 | https://www.infoq.cn/article/HHgKMMKa8BNZYQuMFSMS
-- 2026-10-31T19:20:00Z | The Decoder | Anthropic is watermarking four Claude models, but users can bypass the watermark on Opus 4.6 and Sonnet 4.6 by changing sampling settings. | 中文：Anthropic为四个Claude模型加入水印，但修改采样参数即可绕过Opus 4.6与Sonnet 4.6的水印。 | https://the-decoder.com/anthropics-watermark-rollout-leaves-a-loophole-on-two-older-claude-models/
-- 2026-10-31T20:00:00Z | X / Lovart | Lovart highlighted Clyq, a shared 3D space where fashion teams can style, shoot, and plan runway concepts before production. | 中文：Lovart展示Clyq共享3D空间，时尚团队可在制作前完成造型、拍摄和秀场方案规划。 | https://x.com/lovart_ai/status/2116621468385575395
-- 2026-10-31T14:57:00Z | X / DeemosTech | Deemos said its HYPER3D Agentic Mode can reconstruct a mechanical robotic hand’s structure and movements from complex figures. | 中文：Deemos称其HYPER3D Agentic Mode可依据复杂图像重建机械手的结构与运动方式。 | https://x.com/DeemosTech/status/2116545062041727048
-- 2026-10-31T15:57:00Z | X / NVIDIA AI | NVIDIA said AI agents are steering the Allen Telescope Array to search for possible extraterrestrial signals in Northern California. | 中文：NVIDIA表示，AI代理正操控北加州Allen射电望远镜阵列，搜索可能存在的外星信号。 | https://x.com/NVIDIAAI/status/2116560120457142451
-- 2026-10-31T15:34:00Z | X / Databricks | Databricks demonstrated agents querying enterprise data through Genie Ontology, Genie One, MCP, and Unity Gateway. | 中文：Databricks演示代理通过Genie Ontology、Genie One、MCP和Unity Gateway查询企业数据。 | https://x.com/databricks/status/2116554322372593591
-- 2026-10-31T13:33:00Z | X / Google DeepMind | Google DeepMind said PlanAssist uses Gemini to help UK planning officers accelerate building and renovation decisions. | 中文：Google DeepMind表示，PlanAssist利用Gemini帮助英国规划官员加快建筑和翻修审批。 | https://x.com/GoogleDeepMind/status/2116524000977285321
-- 2026-10-31T20:25:00Z | X / Fireworks AI | Fireworks AI promoted Nexus as a way to combine specialized models instead of relying on one model that is merely adequate at everything. | 中文：Fireworks AI推广Nexus，主张组合专业模型，而不是依赖一个什么都只做到尚可的模型。 | https://x.com/FireworksAI_HQ/status/2116627530123772047
-- 2026-11-01T00:00:00Z | X / Dreamina | Dreamina published a Seedance 2.5 Halloween campaign showing prompt-driven video remixing and offering credits for creator submissions. | 中文：Dreamina发布基于Seedance 2.5的万圣节营销活动，展示提示词视频混剪并奖励创作者投稿。 | https://x.com/dreamina_ai/status/2116681629389430915
-- 2026-10-31T23:47:00Z | X / Luma Labs | Luma shared a Halloween short made in its platform, using a comedic story about a character who dislikes raisins. | 中文：Luma分享了一支用其平台制作的万圣节短片，围绕一个讨厌葡萄干的角色展开喜剧故事。 | https://x.com/LumaLabsAI/status/2116678393110708474
-- 2026-10-31T16:05:00Z | Latent Space | Latent Space profiled Arca, an agent system designed to perform long-horizon financial work with iterative planning and tool use. | 中文：Latent Space介绍Arca，一套面向长期金融工作的代理系统，采用迭代规划与工具调用。 | https://latent.space/p/arca/
-- 2026-10-31T16:05:00Z | X / World Labs | World Labs posted a Halloween scene featuring its world-generation technology in a playful fantasy battle. | 中文：World Labs发布了一段万圣节奇幻战斗场景，展示其世界生成技术的娱乐化表达。 | https://x.com/theworldlabs/status/2116562180439237098
-- 2026-11-01T10:30:00Z | X / MeshyAI | Meshy built a Día de Muertos 3D pet memorial garden using its API and Claude from a photo and story. | 中文：Meshy 利用 API 与 Claude，根据照片和故事生成亡灵节宠物纪念 3D 花园。 | https://x.com/MeshyAI/status/2116840171148611861
-- 2026-11-01T08:10:00Z | MarkTechPost | Nace AI open-sourced Drex Max v1, a 27B decision model designed for local inference on Apple Silicon. | 中文：Nace AI 开源 Drex Max v1，这是一款面向 Apple Silicon 本地推理的 270 亿参数决策模型。 | https://www.marktechpost.com/2026/11/01/nace-ai-open-sources-drex-max-v1-local-inference/
-- 2026-11-01T07:50:00Z | 量子位 | A convenience-store robot repeatedly dropped bottles despite extensive laboratory training, exposing the gap between demos and robust manipulation. | 中文：一款便利店机器人即使经过大量实验室训练，仍在货架前反复摔落瓶子，暴露演示与可靠操作之间的差距。 | https://www.qbitai.com/2026/11/506990.html
-- 2026-11-01T04:18:00Z | 量子位 | Jev released a new open-source result that quickly attracted broad developer attention, according to QbitAI. | 中文：据量子位报道，Jev 发布了一项新的开源成果，并迅速引发开发者社区关注。 | https://www.qbitai.com/2026/11/506922.html
-- 2026-11-01T03:00:00Z | X / Together Compute | Together Compute argued that open-model stacks let simple tasks use smaller models while reserving stronger models for difficult work. | 中文：Together Compute 表示，开放模型栈可让简单任务使用更小模型，把强模型留给复杂工作。 | https://x.com/togethercompute/status/2116727169367802193
-- 2026-11-01T10:00:00Z | InfoQ 中文 | InfoQ examined how AI hallucination budgets might be monitored and controlled after systems exceed their planned error allowance. | 中文：InfoQ 探讨了 AI 幻觉预算超支后，企业应如何监控并控制系统错误成本。 | https://www.infoq.cn/article/z8vQa2zzGyLiTxIZ8PXH
-- 2026-11-01T10:02:00Z | The Agentic Weekly | Kensaku launched a free local file launcher that searches documents and screenshots and exposes an MCP interface for agents. | 中文：Kensaku 发布免费本地文件启动器，可搜索文档与截图，并通过 MCP 接入 AI 代理。 | https://theagenticweekly.com/news
-- 2026-11-01T05:00:00Z | AI Topic | OpenAI said ChatGPT will restrict teenagers’ practical questions about weapons and security systems under a broader safety report. | 中文：OpenAI 表示，ChatGPT 将限制青少年获取武器和安防系统的实用信息。 | https://aitopic.com/news.html?aihot=daily&edition=2026-11-01
-- 2026-11-01T01:43:00Z | AI Topic | xAI plans to enable invisible token-level watermarking by default across Grok API endpoints on November 7. | 中文：xAI 计划于 11 月 7 日为 Grok API 全部端点默认启用不可见的 token 级水印。 | https://aitopic.com/news.html?aihot=daily&edition=2026-11-01
-- 2026-11-01T09:00:00Z | AOL | Fractile is expected to raise about $700 million at a $6.5 billion valuation with participation from the UK Sovereign AI Fund. | 中文：芯片公司 Fractile 预计将以 65 亿美元估值融资约 7 亿美元，英国主权 AI 基金参与其中。 | https://www.aol.com/articles/labour-ai-fund-joins-6-090000000.html
-- 2026-11-01T01:26:00Z | agentes.chat | Agentes.chat added workspace coordinators that route unclaimed messages and let agents propose instruction or role changes. | 中文：Agentes.chat 新增工作区协调代理，可接管无人处理的消息，并提出代理指令或角色变更建议。 | https://agentes.chat/en/changelog
-- 2026-11-01T05:32:00Z | agentes.chat | Agentes.chat added shared-sign-in usage limits, token budgets, and plan visibility for agents in collaborative workspaces. | 中文：Agentes.chat 为协作工作区新增共享登录下的用量、token 预算和套餐可视化。 | https://agentes.chat/en/changelog
-- 2026-11-01T01:26:00Z | agentes.chat | Agentes.chat introduced an agent-per-workspace coordinator and loop detection that stops agents before they continue wasting steps. | 中文：Agentes.chat 引入每个工作区一个协调代理，并新增循环检测，可在代理反复执行前停止任务。 | https://agentes.chat/en/changelog
-- 2026-11-01T06:08:00Z | AIskimiq | A startup demonstrated an AI agent independently selecting gene therapy and injecting it into a live mouse brain. | 中文：一家初创公司展示了 AI 代理自主选择基因疗法，并将其注入活体小鼠大脑。 | https://aiskimiq.com/en/brief/2026-11-01
-- 2026-11-01T10:52:00Z | agentes.chat | A new agent software update added message routing, usage-limit visibility, and multi-agent setup controls in one release. | 中文：一项代理软件更新同时加入消息路由、用量限制可视化和多代理批量配置功能。 | https://agentes.chat/en/changelog
