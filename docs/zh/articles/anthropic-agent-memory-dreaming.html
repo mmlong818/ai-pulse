@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic披露Claude如何整理长期记忆 — Uncle Cat AI Radar</title>
+<meta name="description" content="Anthropic介绍Claude的“梦境”机制：通过回顾经历整理记忆、修正错误，并决定哪些信息值得长期保留。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-agent-memory-dreaming.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/anthropic-agent-memory-dreaming.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-agent-memory-dreaming.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/anthropic-agent-memory-dreaming.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Anthropic披露Claude如何整理长期记忆 — Uncle Cat AI Radar">
+<meta property="og:description" content="Anthropic介绍Claude的“梦境”机制：通过回顾经历整理记忆、修正错误，并决定哪些信息值得长期保留。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-agent-memory-dreaming.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anthropic披露Claude如何整理长期记忆 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Anthropic介绍Claude的“梦境”机制：通过回顾经历整理记忆、修正错误，并决定哪些信息值得长期保留。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="Anthropic披露Claude如何整理长期记忆 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"Anthropic披露Claude如何整理长期记忆","item":"https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-agent-memory-dreaming.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-agent-memory-dreaming.html#article","headline":"Anthropic披露Claude如何整理长期记忆","description":"Anthropic介绍Claude的“梦境”机制：通过回顾经历整理记忆、修正错误，并决定哪些信息值得长期保留。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-agent-memory-dreaming.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-agent-memory-dreaming.html"},"datePublished":"2026-11-06T21:16:00.000Z","dateModified":"2026-11-07T01:00:24.142Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["Agent","研究","安全"],"keywords":"Agent, 研究, 安全","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://www.anthropic.com/engineering/the-components-of-agent-memory","https://www.anthropic.com/engineering"],"about":[{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"研究"},{"@type":"Thing","name":"安全"}]}]}</script>
+</head>
+<body data-slug="anthropic-agent-memory-dreaming" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/anthropic-agent-memory-dreaming.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-11-06T21:16:00Z">2026年11月7日 05:16</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/research.html">研究</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/safety.html">安全</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>Anthropic披露Claude如何整理长期记忆</h1>
+  <p class="standfirst">Anthropic介绍Claude的“梦境”机制：通过回顾经历整理记忆、修正错误，并决定哪些信息值得长期保留。</p>
+  <h2>发生了什么</h2><p>Anthropic于11月6日发布工程文章，介绍Claude智能体记忆系统的组成，并解释了一种被称为“dreaming”的处理过程。系统会回顾此前的交互，整理信息、发现错误，并为后续任务生成更有用的记忆。</p><p>这套设计试图解决长期运行代理的核心限制：模型不可能把每一次工具调用和每一轮对话都保留在当前上下文中，因此必须有额外机制决定哪些内容需要持久化、如何组织，以及什么时候修正旧信息。</p><h2>为什么重要</h2><p>对跨会话工作的编程代理、研究助手和业务系统而言，记忆已经成为实际瓶颈。把所有内容都保存下来会引入噪音、过时假设和隐私风险；Anthropic的思路说明，记忆并不只是数据库功能，而是会主动影响代理“认为自己学到了什么”的推理过程。</p><p>这也意味着，代理能力的提升未必只靠更长上下文，还可能依赖更好的外部状态管理、周期性反思和旧结论修订机制。它能减少重复劳动，却同时带来新的错误传播风险：一条错误摘要或过度自信的记忆，可能影响之后很多次任务。</p><p>Anthropic尚未证明该方法在独立评测和真实工作流中都能稳定提升表现。接下来更重要的问题是，用户能否查看记忆、判断其是否准确，并在历史经验开始误导代理时及时删除。</p><h2>猫叔判断</h2><p>Anthropic真正面对的是记忆放大风险：一次错误“梦境”可能影响所有后续任务，除非用户能看见并删除它。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://www.anthropic.com/engineering/the-components-of-agent-memory" rel="noopener" target="_blank">The components of agent memory</a></li><li><a href="https://www.anthropic.com/engineering" rel="noopener" target="_blank">Anthropic Engineering</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-custom-spaces.html">Meta为Muse推出Spaces，让用户定制专属AI工作区</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-cosmos-3-world-models.html">英伟达开源Cosmos 3四款模型，推进驾驶与机器人世界模拟</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt-6-cyber-daybreak.html">OpenAI推出GPT-6 Cyber，网络防御能力进入分级访问时代</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>
