@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buoyant开源Kinference，统一管理Kubernetes上的vLLM集群 — Uncle Cat AI Radar</title>
+<meta name="description" content="Kinference在vLLM之上加入路由、限流、KV缓存感知负载均衡和租户指标，瞄准多模型企业部署。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/kinference-open-source-vllm-control-plane.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/kinference-open-source-vllm-control-plane.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/kinference-open-source-vllm-control-plane.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/kinference-open-source-vllm-control-plane.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="Buoyant开源Kinference，统一管理Kubernetes上的vLLM集群 — Uncle Cat AI Radar">
+<meta property="og:description" content="Kinference在vLLM之上加入路由、限流、KV缓存感知负载均衡和租户指标，瞄准多模型企业部署。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/kinference-open-source-vllm-control-plane.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Buoyant开源Kinference，统一管理Kubernetes上的vLLM集群 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Kinference在vLLM之上加入路由、限流、KV缓存感知负载均衡和租户指标，瞄准多模型企业部署。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="Buoyant开源Kinference，统一管理Kubernetes上的vLLM集群 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"Buoyant开源Kinference，统一管理Kubernetes上的vLLM集群","item":"https://mmlong818.github.io/ai-pulse/zh/articles/kinference-open-source-vllm-control-plane.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/kinference-open-source-vllm-control-plane.html#article","headline":"Buoyant开源Kinference，统一管理Kubernetes上的vLLM集群","description":"Kinference在vLLM之上加入路由、限流、KV缓存感知负载均衡和租户指标，瞄准多模型企业部署。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/kinference-open-source-vllm-control-plane.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/kinference-open-source-vllm-control-plane.html"},"datePublished":"2026-11-07T08:16:00.000Z","dateModified":"2026-11-07T13:00:13.067Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["开源","产业"],"keywords":"开源, 产业","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://www.marktechpost.com/2026/11/07/buoyant-kinference-open-source-inference-control-plane-kubernetes-vllm/"],"about":[{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"产业"}]}]}</script>
+</head>
+<body data-slug="kinference-open-source-vllm-control-plane" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/kinference-open-source-vllm-control-plane.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-11-07T08:16:00Z">2026年11月7日 16:16</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>Buoyant开源Kinference，统一管理Kubernetes上的vLLM集群</h1>
+  <p class="standfirst">Kinference在vLLM之上加入路由、限流、KV缓存感知负载均衡和租户指标，瞄准多模型企业部署。</p>
+  <h2>新项目做什么</h2><p>Linkerd背后的Buoyant发布了Kinference。这是一个采用Apache 2.0许可证的开源推理控制平面，面向Kubernetes上的推理工作负载。它位于vLLM工作节点之前，负责把请求分发到模型服务器集群。当前版本为v0.1.0-alpha.7，使用Rust编写。</p><p>Kinference把几项运营能力集中在同一层：基于策略的路由、Token速率限制、感知KV缓存的负载均衡，以及按租户统计指标。项目通过五种Kubernetes自定义资源进行配置，平台团队可以用集群原生的方式描述推理行为，不必为每个模型端点单独开发调度器。</p><h2>为什么基础设施值得看</h2><p>它没有发布新模型，却切中了开放权重部署正在出现的瓶颈。企业往往会根据延迟、隐私和成本需求同时运行多个模型。当这些模型共享GPU、服务不同内部客户后，真正棘手的问题变成：请求应该交给哪个工作节点、每个租户能消耗多少上下文，以及怎样让注意力缓存继续发挥作用。</p><p>这正是Kinference试图解决的范围。由于聚焦vLLM，它对希望自行掌控模型服务、而不是把全部推理交给专有云API的团队尤其 relevant。Apache许可证降低了采用门槛，但项目仍处于alpha阶段，生产稳定性、故障处理和高压性能都需要外部验证。</p><p>Kinference短期内不会改变模型排行榜。它的意义在于架构层面：把推理视为集群管理问题，而不是一组互相孤立的端点。如果项目成熟，统一控制层可能让开放模型更容易进入企业规模部署，并进一步压低推理运营成本。</p><h2>Uncle Cat判断</h2><p>Kinference最有价值的是感知KV缓存的路由，而不是又一个Kubernetes封装；但alpha版本仍把生产风险留给了采用者。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://www.marktechpost.com/2026/11/07/buoyant-kinference-open-source-inference-control-plane-kubernetes-vllm/" rel="noopener" target="_blank">Buoyant Releases Kinference: An Open Source Inference Control Plane for Kubernetes and vLLM</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-custom-spaces.html">Meta为Muse推出Spaces，让用户定制专属AI工作区</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-11-billion-round.html">OpenAI完成110亿美元首笔融资，估值达1.25万亿美元</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/gemini-omni-flash-video.html">Gemini Omni 1.2 Flash上线，720p视频价格降至每秒0.07美元</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

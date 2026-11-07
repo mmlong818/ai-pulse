@@ -50,6 +50,75 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/anthropic-measures-ai-rd-automation.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/anthropic-measures-ai-rd-automation.html",
+      "title": "Anthropic measures how Claude is automating AI R&D",
+      "summary": "Anthropic says roughly 30,000 internal agents now support research and engineering, while warning that measuring automation remains incomplete.",
+      "content_text": "## What Anthropic measured\nAnthropic has published a framework for estimating how much of its own artificial-intelligence research and development is performed with Claude. The company says roughly 30,000 agents were conducting research and engineering work at any one time in its most-used internal platform as of August 2026. The figure counts agent activity, not 30,000 independent models or fully autonomous researchers.\n\nThe company combined accelerator-usage records, workload metadata, sampled training runs, code inspection and agent-session transcripts. A classifier separated safety work from other AI R&D, with the company deliberately using a conservative definition: work that advances both safety and capability was generally counted as R&D. Anthropic says human reviewers and its classifier usually came within one or two percentage points of each other on classification tasks.\n\n## Why the measurement matters\nThe post is notable because it moves the debate from anecdotes about coding assistants to an internal operating metric. Anthropic also describes an agent setup in which every worker has a persistent identity and communicates through an auditable shared message system. That design lets the company trace decisions, compare agents’ claims and preserve records across model upgrades.\n\nThe company is explicit about the limits. The estimate covers only one week, relies partly on best-effort labels and does not prove that the same level of automation applies across other frontier labs. Compute share is also not the same as scientific impact: a cheaper safety classifier could reduce the measured safety portion without reducing safety work.\n\nStill, the publication gives regulators, researchers and competitors a concrete vocabulary for discussing AI-assisted AI development. If frontier labs increasingly use their own systems to improve models, evaluation and infrastructure, the speed of capability progress may depend not only on larger training runs but also on how reliably labs can monitor the agents inside the loop.\n\n## Uncle Cat take\nAnthropic’s 30,000-agent figure is important as an operating disclosure, but the one-week snapshot cannot yet support claims of a permanent acceleration curve.",
+      "date_published": "2026-11-07T12:30:00.000Z",
+      "date_modified": "2026-11-07T13:00:13.067Z",
+      "tags": [
+        "Research",
+        "Safety",
+        "Agents"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-measures-ai-rd-automation.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-measures-ai-rd-automation.html",
+        "source_published_at": "2026-11-07T12:30:00.000Z",
+        "site_published_at": "2026-11-07T13:00:13.067Z",
+        "sources": [
+          {
+            "title": "Measurements for understanding the pace of AI development inside frontier labs",
+            "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development"
+          },
+          {
+            "title": "Why a new report on Anthropic automating AI development is alarming researchers",
+            "url": "https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/kinference-open-source-vllm-control-plane.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/kinference-open-source-vllm-control-plane.html",
+      "title": "Buoyant open-sources a control plane for vLLM fleets",
+      "summary": "Kinference adds routing, rate limits, KV-cache awareness and tenant metrics above vLLM, targeting teams running many open models on Kubernetes.",
+      "content_text": "## The release\nBuoyant, the company behind the Linkerd service mesh, has released Kinference, an Apache 2.0-licensed open-source control plane for inference workloads on Kubernetes. The project sits in front of vLLM workers and manages how requests are distributed across a fleet of model servers. Its initial release is v0.1.0-alpha.7 and is written in Rust.\n\nKinference brings several operational functions into one layer: policy-based routing, token-rate limits, KV-cache-aware load balancing and per-tenant metrics. It is configured through five Kubernetes custom resources, allowing platform teams to describe inference behavior in cluster-native terms rather than building a separate scheduler around every model endpoint.\n\n## Why the infrastructure layer matters\nThe release does not introduce a new model, but it addresses a growing bottleneck for open-weight deployment. Organizations increasingly run multiple models for different latency, privacy and cost requirements. Once those models share GPUs and serve different internal customers, the difficult problem becomes deciding which worker should receive each request, how much context a tenant can consume and how to keep cached attention states useful.\n\nThat is the territory Kinference is targeting. Its vLLM focus also makes the project relevant to teams that want to retain control over model serving instead of moving all inference to a proprietary cloud API. The Apache license lowers adoption friction, although the alpha status means production reliability, integrations and performance under failure still need independent validation.\n\nKinference is unlikely to change model rankings this week. Its significance is architectural: it treats inference as a fleet-management problem rather than a collection of isolated endpoints. If the project matures, a common control layer could make open models easier to operate at enterprise scale and intensify competition on deployment economics.\n\n## Uncle Cat take\nKinference’s strongest fact is its KV-cache-aware routing; that is more consequential for crowded vLLM fleets than another generic Kubernetes wrapper, but alpha software still carries the operational risk.",
+      "date_published": "2026-11-07T08:16:00.000Z",
+      "date_modified": "2026-11-07T13:00:13.067Z",
+      "tags": [
+        "Open Source",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/kinference-open-source-vllm-control-plane.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/kinference-open-source-vllm-control-plane.html",
+        "source_published_at": "2026-11-07T08:16:00.000Z",
+        "site_published_at": "2026-11-07T13:00:13.067Z",
+        "sources": [
+          {
+            "title": "Buoyant Releases Kinference: An Open Source Inference Control Plane for Kubernetes and vLLM",
+            "url": "https://www.marktechpost.com/2026/11/07/buoyant-kinference-open-source-inference-control-plane-kubernetes-vllm/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-custom-spaces.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/meta-muse-custom-spaces.html",
       "title": "Meta adds customizable Spaces to its Muse AI agent",
@@ -117,6 +186,46 @@
           {
             "title": "OpenAI valued at $1.25 trillion, as rival Anthropic nears its IPO",
             "url": "https://www.theverge.com/ai-artificial-intelligence/1029380/openai-1-25-trillion-investment-valuation"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/tts-accent-gap-controlled-voice-arena.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/tts-accent-gap-controlled-voice-arena.html",
+      "title": "Controlled voice tests expose a sharp accent gap",
+      "summary": "Artificial Analysis finds that 12 of 49 speech models perform significantly differently across US and UK English using identical cloned voices.",
+      "content_text": "## The benchmark\nArtificial Analysis has introduced a Controlled Voice Arena that evaluates speech models with the same eight cloned reference voices: four from the United States and four from the United Kingdom. The design is intended to isolate model quality from the familiar problem that one provider’s default voice may simply be more appealing than another’s.\n\nThe initial results show that accent changes can materially alter rankings. Artificial Analysis says 12 of 49 tested models have statistically significant performance differences between US and UK English, with non-overlapping confidence intervals. Qwen-Audio-3.1-TTS-Plus leads the US-English comparison, while HeyGen Voice performs better in UK English and leads the overall table. The result is not a universal victory for either system; it is a reminder that speech quality is partly regional.\n\n## Why it matters for voice agents\nVoice systems are increasingly used for customer service, education, accessibility and entertainment, where an accent mismatch can affect comprehension and perceived trust. A model that sounds excellent to American listeners may be less convincing to British listeners even when it receives the same text, prompt and reference voice. That makes a single global leaderboard a poor proxy for deployment quality.\n\nThe controlled setup is a useful methodological step because it separates the voice being cloned from the model generating the performance. It also gives buyers a more realistic question to ask: how does this system behave for the actual accents, markets and users it will serve?\n\nThe benchmark remains limited. Eight English voices cannot represent the world’s linguistic diversity, and preference-based Elo scores capture listener judgments rather than every production concern such as latency, pronunciation consistency, safety controls or licensing. Still, the release pushes accent coverage toward a first-class procurement metric. For companies building voice agents across regions, “best voice model” is becoming an incomplete question.\n\n## Uncle Cat take\nQwen’s US lead and HeyGen’s UK advantage show that accent robustness is not a cosmetic detail; vendors selling one global quality score are hiding deployment variance.",
+      "date_published": "2026-11-07T01:01:00.000Z",
+      "date_modified": "2026-11-07T13:00:13.067Z",
+      "tags": [
+        "Research",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tts-accent-gap-controlled-voice-arena.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tts-accent-gap-controlled-voice-arena.html",
+        "source_published_at": "2026-11-07T01:01:00.000Z",
+        "site_published_at": "2026-11-07T13:00:13.067Z",
+        "sources": [
+          {
+            "title": "Controlled Voice Leaderboard",
+            "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice"
+          },
+          {
+            "title": "Artificial Analysis announcement on the Controlled Voice Arena",
+            "url": "https://x.com/ArtificialAnlys/status/2118871352367341712"
+          },
+          {
+            "title": "Artificial Analysis announcement on accent differences",
+            "url": "https://x.com/ArtificialAnlys/status/2118871347409678535"
           }
         ]
       }
@@ -1754,128 +1863,6 @@
           {
             "title": "Tencent Hunyuan announcement on X",
             "url": "https://x.com/TencentHunyuan/status/2114701815807947159"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html",
-      "title": "Tsinghua Open-Sources AKV to Cut Agent Inference Costs",
-      "summary": "Tsinghua and CUHK researchers released AKV, an Apache-licensed SGLang server that reduces agent inference costs by editing KV cache visibility.",
-      "content_text": "Researchers from Tsinghua University and The Chinese University of Hong Kong have released AKV, an Apache-2.0-licensed serving system designed to manage the key-value cache used by long-running language-model agents. The project reports a 27.7% average reduction in inference cost across four agent benchmarks, while raising average task performance by 1.7 points compared with threshold-based history summarization.\n\n## A different way to control context\n\nMost agent systems manage long conversations by summarizing or deleting text. That changes the prompt itself and can force the server to recompute the remaining context. AKV instead lets a policy or model selectively hide entries in the KV cache, then reposition retained entries so they can be reused without rebuilding the full sequence.\n\nThe distinction matters because cache reads accounted for 82.4% of total API cost in the paper’s analysis. On one reported SWE-bench Verified setup using GPT-OSS-120B, AKV reduced cost per task from 20.0 cents to 9.7 cents while improving the score from 40.0 to 43.2. The system is integrated with SGLang and was tested on models including GPT-OSS-120B, MiniMax-M2.7 and MiroThinker-1.7-Mini.\n\n## Limits and implications\n\nAKV is not a universal efficiency switch. The published results depend on selected models, benchmarks and NVIDIA GPU configurations, and one MiniMax BrowseComp-Plus result was worse than the comparison policy. Cache policies can also become another source of agent complexity if developers expose too much control without reliable safeguards.\n\nStill, the release targets a bottleneck that becomes more expensive as agents browse, call tools and revisit earlier decisions. If the reported savings survive production workloads, cache engineering could shift attention from merely shrinking prompts to treating inference state as an actively managed systems resource.",
-      "date_published": "2026-10-26T07:56:00.000Z",
-      "date_modified": "2026-10-26T13:00:05.094Z",
-      "tags": [
-        "Agents",
-        "Open Source",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html",
-        "source_published_at": "2026-10-26T07:56:00.000Z",
-        "site_published_at": "2026-10-26T13:00:05.094Z",
-        "sources": [
-          {
-            "title": "Tsinghua AI Open-Sources AKV, a Cache Engineering Server for LLM Agents on SGLang",
-            "url": "https://www.marktechpost.com/2026/10/26/tsinghua-akv-kv-cache-engineering-llm-agents/"
-          },
-          {
-            "title": "AKV GitHub repository",
-            "url": "https://github.com/thu-nics/AKV"
-          },
-          {
-            "title": "Cache Engineering for Agents",
-            "url": "https://arxiv.org/abs/2610.28577"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html",
-      "title": "Nvidia opens Flora to cut robot-video labeling costs",
-      "summary": "Nvidia has open-sourced Flora, a robotics data engine that labels 200,000 hours daily and claims a 125-fold cost advantage over GPT-6 Astra.",
-      "content_text": "## What happened\n\nNvidia has released Flora, an open robotics data engine designed to turn long robot and human-demonstration videos into structured training data. The system combines temporal segmentation, captioning and reward-oriented labeling, allowing researchers to identify actions, sub-tasks and outcomes inside video rather than treating each clip as an undifferentiated sequence.\n\nNvidia says Flora was used in the data pipeline for its GR00T robotics models and can process about 200,000 hours of data per day on 512 GB300 GPUs. On Nvidia’s internal comparisons, it is competitive with GPT-6 Astra on several annotation tasks while costing roughly $0.72 to label an hour of robot video, versus about $88 through the proprietary alternative.\n\n## Why it matters\n\nRobotics development is constrained less by the supply of raw video than by the expense of converting that video into reliable action labels. A cheaper annotation layer could make it practical for universities, smaller robotics companies and open research groups to build specialized datasets instead of depending on a few large labs’ curated collections.\n\nThe release also shifts competition toward the data-engineering layer. Flora is not a robot controller, and its outputs still require validation before being used for safety-critical training. Its licensing terms and the quality of labels on unfamiliar embodiments may limit commercial adoption. Even so, publishing the pipeline gives researchers a reproducible starting point for physical-AI data work and could lower one of the least visible costs in robot learning.\n\n## Uncle Cat take\n\nNvidia’s headline number is less important than the 200,000-hour production scale: if outside labs can reproduce even a fraction of it, robotics data stops being a boutique resource.",
-      "date_published": "2026-10-25T10:08:00.000Z",
-      "date_modified": "2026-10-25T13:00:04.886Z",
-      "tags": [
-        "Research",
-        "Open Source",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html",
-        "source_published_at": "2026-10-25T10:08:00.000Z",
-        "site_published_at": "2026-10-25T13:00:04.886Z",
-        "sources": [
-          {
-            "title": "Flora: An Open Model Suite for Scaling Robotics Data Engines",
-            "url": "https://research.nvidia.com/labs/gear/flora/"
-          },
-          {
-            "title": "nvidia/Flora-TempSeg model card",
-            "url": "https://huggingface.co/nvidia/Flora-TempSeg"
-          },
-          {
-            "title": "Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra",
-            "url": "https://the-decoder.com/nvidia-open-sources-flora-to-make-robot-video-labeling-125x-cheaper-than-gpt-6-astra/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/cursor-computer-use-desktop-agents.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/cursor-computer-use-desktop-agents.html",
-      "title": "Cursor gives coding agents control of desktop apps",
-      "summary": "Cursor’s new Computer Use feature lets coding agents click and type across desktop software, including simulators used to test mobile apps.",
-      "content_text": "## What happened\n\nCursor introduced Computer Use on October 23, extending its coding agents beyond browser-based workflows. The company said agents can click and type across applications on a user’s computer, and demonstrated the capability with the iOS Simulator. An agent can therefore build software, launch a local development tool, inspect the result and interact with the interface it has created.\n\nCursor’s documentation describes the feature as an explicit opt-in for self-hosted workers on macOS and Linux. The worker uses a helper application or a desktop display to capture the screen and send input events. Users must grant the required operating-system permissions, and desktop sharing can be enabled separately so an authorised person can watch or take control of the agent’s session.\n\nThat design is materially different from a browser agent. Browsers offer relatively constrained pages, predictable controls and clearer permission boundaries. Desktop software can expose local files, credentials, development environments and irreversible actions. Computer Use therefore turns the agent from a code-generation assistant into an operator of the machine where the code runs.\n\n## Why it matters\n\nThe feature points toward a more integrated coding loop: agents can test graphical interfaces, drive simulators, operate legacy tools and complete tasks that have no convenient API. This could reduce the gap between generating code and verifying whether a product actually works for a human user. It also raises the cost of mistakes. A misdirected click in a browser is inconvenient; the same action in a desktop environment could delete files, alter settings or expose private data. Cursor’s opt-in controls and human takeover path are important, but they do not yet establish how reliably agents identify risky actions or recover from visual ambiguity. The competitive question is whether desktop control becomes a dependable testing layer or remains an impressive but fragile demo.\n\n## Uncle Cat take\n\nThe iOS Simulator example is the substance here: Cursor is attacking the last mile between writing an app and proving its interface works, where ordinary code agents still stop short.",
-      "date_published": "2026-10-23T15:59:00.000Z",
-      "date_modified": "2026-10-24T01:00:04.180Z",
-      "tags": [
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cursor-computer-use-desktop-agents.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-computer-use-desktop-agents.html",
-        "source_published_at": "2026-10-23T15:59:00.000Z",
-        "site_published_at": "2026-10-24T01:00:04.180Z",
-        "sources": [
-          {
-            "title": "Cursor can now control your computer",
-            "url": "https://x.com/cursor_ai/status/2113661506634305834"
-          },
-          {
-            "title": "Computer Use lets agents drive any app",
-            "url": "https://x.com/cursor_ai/status/2113661518780998003"
-          },
-          {
-            "title": "Computer use and desktop sharing",
-            "url": "https://cursor.com/docs/cloud-agent/self-hosted/computer-use"
           }
         ]
       }

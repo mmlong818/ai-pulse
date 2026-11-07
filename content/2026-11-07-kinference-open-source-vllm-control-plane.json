@@ -1,0 +1,27 @@
+{
+  "slug": "kinference-open-source-vllm-control-plane",
+  "title": "Buoyant open-sources a control plane for vLLM fleets",
+  "summary": "Kinference adds routing, rate limits, KV-cache awareness and tenant metrics above vLLM, targeting teams running many open models on Kubernetes.",
+  "body": "## The release\nBuoyant, the company behind the Linkerd service mesh, has released Kinference, an Apache 2.0-licensed open-source control plane for inference workloads on Kubernetes. The project sits in front of vLLM workers and manages how requests are distributed across a fleet of model servers. Its initial release is v0.1.0-alpha.7 and is written in Rust.\n\nKinference brings several operational functions into one layer: policy-based routing, token-rate limits, KV-cache-aware load balancing and per-tenant metrics. It is configured through five Kubernetes custom resources, allowing platform teams to describe inference behavior in cluster-native terms rather than building a separate scheduler around every model endpoint.\n\n## Why the infrastructure layer matters\nThe release does not introduce a new model, but it addresses a growing bottleneck for open-weight deployment. Organizations increasingly run multiple models for different latency, privacy and cost requirements. Once those models share GPUs and serve different internal customers, the difficult problem becomes deciding which worker should receive each request, how much context a tenant can consume and how to keep cached attention states useful.\n\nThat is the territory Kinference is targeting. Its vLLM focus also makes the project relevant to teams that want to retain control over model serving instead of moving all inference to a proprietary cloud API. The Apache license lowers adoption friction, although the alpha status means production reliability, integrations and performance under failure still need independent validation.\n\nKinference is unlikely to change model rankings this week. Its significance is architectural: it treats inference as a fleet-management problem rather than a collection of isolated endpoints. If the project matures, a common control layer could make open models easier to operate at enterprise scale and intensify competition on deployment economics.\n\n## Uncle Cat take\nKinference’s strongest fact is its KV-cache-aware routing; that is more consequential for crowded vLLM fleets than another generic Kubernetes wrapper, but alpha software still carries the operational risk.",
+  "title_zh": "Buoyant开源Kinference，统一管理Kubernetes上的vLLM集群",
+  "summary_zh": "Kinference在vLLM之上加入路由、限流、KV缓存感知负载均衡和租户指标，瞄准多模型企业部署。",
+  "body_zh": "## 新项目做什么\nLinkerd背后的Buoyant发布了Kinference。这是一个采用Apache 2.0许可证的开源推理控制平面，面向Kubernetes上的推理工作负载。它位于vLLM工作节点之前，负责把请求分发到模型服务器集群。当前版本为v0.1.0-alpha.7，使用Rust编写。\n\nKinference把几项运营能力集中在同一层：基于策略的路由、Token速率限制、感知KV缓存的负载均衡，以及按租户统计指标。项目通过五种Kubernetes自定义资源进行配置，平台团队可以用集群原生的方式描述推理行为，不必为每个模型端点单独开发调度器。\n\n## 为什么基础设施值得看\n它没有发布新模型，却切中了开放权重部署正在出现的瓶颈。企业往往会根据延迟、隐私和成本需求同时运行多个模型。当这些模型共享GPU、服务不同内部客户后，真正棘手的问题变成：请求应该交给哪个工作节点、每个租户能消耗多少上下文，以及怎样让注意力缓存继续发挥作用。\n\n这正是Kinference试图解决的范围。由于聚焦vLLM，它对希望自行掌控模型服务、而不是把全部推理交给专有云API的团队尤其 relevant。Apache许可证降低了采用门槛，但项目仍处于alpha阶段，生产稳定性、故障处理和高压性能都需要外部验证。\n\nKinference短期内不会改变模型排行榜。它的意义在于架构层面：把推理视为集群管理问题，而不是一组互相孤立的端点。如果项目成熟，统一控制层可能让开放模型更容易进入企业规模部署，并进一步压低推理运营成本。\n\n## Uncle Cat判断\nKinference最有价值的是感知KV缓存的路由，而不是又一个Kubernetes封装；但alpha版本仍把生产风险留给了采用者。",
+  "tags": [
+    "Open Source",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Buoyant Releases Kinference: An Open Source Inference Control Plane for Kubernetes and vLLM",
+      "url": "https://www.marktechpost.com/2026/11/07/buoyant-kinference-open-source-inference-control-plane-kubernetes-vllm/"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "KV缓存感知路由有实用价值，但alpha版本仍把生产风险交给用户",
+  "cat_take_en": "KV-cache-aware routing is genuinely useful, but the alpha release leaves production risk with adopters.",
+  "date": "2026-11-07",
+  "published": "2026-11-07T08:16:00Z",
+  "published_at": "2026-11-07T13:00:13.067Z"
+}

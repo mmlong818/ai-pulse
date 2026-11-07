@@ -50,6 +50,75 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-measures-ai-rd-automation.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-measures-ai-rd-automation.html",
+      "title": "Anthropic公布Claude参与AI研发的测量框架",
+      "summary": "Anthropic称内部平台同时运行约3万名研发代理，但也承认现有方法仍难完整衡量AI对自身研发的自动化程度。",
+      "content_text": "## 测量了什么\nAnthropic公布了一套估算方法，用来衡量Claude参与公司自身人工智能研发的程度。公司称，截至2026年8月，其最常用的内部平台上，任一时刻约有3万名代理参与研究和工程工作。这个数字指的是代理活动规模，并不等于3万个独立模型，也不意味着3万名代理都能完全自主完成研发。\n\nAnthropic将加速器使用记录、工作负载元数据、抽样训练任务、代码检查和代理会话记录结合起来，再把任务分成安全研究与其他AI研发。公司采用了偏保守的口径：同时提升安全性和能力的工作，通常计入研发而不是安全工作。Anthropic表示，在分类测试中，机器分类器与人工复核结果通常只相差一到两个百分点。\n\n## 为什么值得关注\n这篇文章的价值在于，它把行业对“AI帮助研发AI”的讨论，从零散案例推进到内部运营指标。Anthropic还介绍了自己的代理协作方式：每个代理都有持续身份，并在可审计的共享消息系统中交流。这样一来，团队可以追踪决策、核对不同代理的判断，并在模型升级后保留行为记录。\n\n公司也明确列出了局限。数据只覆盖一周，部分标签依赖自动规则或员工填写，不能证明其他前沿实验室也达到了类似水平。算力占比同样不等于科研影响力：如果安全分类器变得更高效，安全工作的算力占比可能下降，但实际工作量未必减少。\n\n即便如此，这仍为监管者、研究人员和竞争对手提供了一套可比较的语言。若前沿实验室越来越多地用自己的系统改进模型、评测和基础设施，能力进展速度就不只取决于训练规模，也取决于实验室能否可靠地监控研发环节中的代理。\n\n## Uncle Cat判断\nAnthropic披露的3万名代理是重要的运营信号，但一周样本还不足以证明研发速度已形成持续加速曲线。",
+      "date_published": "2026-11-07T12:30:00.000Z",
+      "date_modified": "2026-11-07T13:00:13.067Z",
+      "tags": [
+        "研究",
+        "安全",
+        "Agent"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/anthropic-measures-ai-rd-automation.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-measures-ai-rd-automation.html",
+        "source_published_at": "2026-11-07T12:30:00.000Z",
+        "site_published_at": "2026-11-07T13:00:13.067Z",
+        "sources": [
+          {
+            "title": "Measurements for understanding the pace of AI development inside frontier labs",
+            "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development"
+          },
+          {
+            "title": "Why a new report on Anthropic automating AI development is alarming researchers",
+            "url": "https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/kinference-open-source-vllm-control-plane.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/kinference-open-source-vllm-control-plane.html",
+      "title": "Buoyant开源Kinference，统一管理Kubernetes上的vLLM集群",
+      "summary": "Kinference在vLLM之上加入路由、限流、KV缓存感知负载均衡和租户指标，瞄准多模型企业部署。",
+      "content_text": "## 新项目做什么\nLinkerd背后的Buoyant发布了Kinference。这是一个采用Apache 2.0许可证的开源推理控制平面，面向Kubernetes上的推理工作负载。它位于vLLM工作节点之前，负责把请求分发到模型服务器集群。当前版本为v0.1.0-alpha.7，使用Rust编写。\n\nKinference把几项运营能力集中在同一层：基于策略的路由、Token速率限制、感知KV缓存的负载均衡，以及按租户统计指标。项目通过五种Kubernetes自定义资源进行配置，平台团队可以用集群原生的方式描述推理行为，不必为每个模型端点单独开发调度器。\n\n## 为什么基础设施值得看\n它没有发布新模型，却切中了开放权重部署正在出现的瓶颈。企业往往会根据延迟、隐私和成本需求同时运行多个模型。当这些模型共享GPU、服务不同内部客户后，真正棘手的问题变成：请求应该交给哪个工作节点、每个租户能消耗多少上下文，以及怎样让注意力缓存继续发挥作用。\n\n这正是Kinference试图解决的范围。由于聚焦vLLM，它对希望自行掌控模型服务、而不是把全部推理交给专有云API的团队尤其 relevant。Apache许可证降低了采用门槛，但项目仍处于alpha阶段，生产稳定性、故障处理和高压性能都需要外部验证。\n\nKinference短期内不会改变模型排行榜。它的意义在于架构层面：把推理视为集群管理问题，而不是一组互相孤立的端点。如果项目成熟，统一控制层可能让开放模型更容易进入企业规模部署，并进一步压低推理运营成本。\n\n## Uncle Cat判断\nKinference最有价值的是感知KV缓存的路由，而不是又一个Kubernetes封装；但alpha版本仍把生产风险留给了采用者。",
+      "date_published": "2026-11-07T08:16:00.000Z",
+      "date_modified": "2026-11-07T13:00:13.067Z",
+      "tags": [
+        "开源",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/kinference-open-source-vllm-control-plane.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/kinference-open-source-vllm-control-plane.html",
+        "source_published_at": "2026-11-07T08:16:00.000Z",
+        "site_published_at": "2026-11-07T13:00:13.067Z",
+        "sources": [
+          {
+            "title": "Buoyant Releases Kinference: An Open Source Inference Control Plane for Kubernetes and vLLM",
+            "url": "https://www.marktechpost.com/2026/11/07/buoyant-kinference-open-source-inference-control-plane-kubernetes-vllm/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-custom-spaces.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-custom-spaces.html",
       "title": "Meta为Muse推出Spaces，让用户定制专属AI工作区",
@@ -117,6 +186,46 @@
           {
             "title": "OpenAI valued at $1.25 trillion, as rival Anthropic nears its IPO",
             "url": "https://www.theverge.com/ai-artificial-intelligence/1029380/openai-1-25-trillion-investment-valuation"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tts-accent-gap-controlled-voice-arena.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tts-accent-gap-controlled-voice-arena.html",
+      "title": "统一克隆音色测试显示语音模型存在明显口音差异",
+      "summary": "Artificial Analysis用同一组英美克隆音色测试49个模型，发现12个模型在美式和英式英语上的表现差异达到统计显著。",
+      "content_text": "## 测试如何进行\nArtificial Analysis推出Controlled Voice Arena，用同一组八个克隆参考音色评估语音模型，其中四个来自美国、四个来自英国。这个设计试图排除一个常见干扰：不同厂商的默认音色本身可能更讨喜，从而掩盖了模型能力差异。\n\n初步结果显示，口音变化足以明显改变模型排名。Artificial Analysis称，49个参测模型中有12个在美式和英式英语上的表现差异达到统计显著，置信区间也没有重叠。Qwen-Audio-3.1-TTS-Plus在美式英语比较中领先；HeyGen Voice在英式英语中表现更好，并位列综合榜首。这并不是某一家模型赢得所有场景，而是说明语音质量具有明显的地域属性。\n\n## 为什么语音代理会受影响\n语音系统正被用于客服、教育、无障碍服务和娱乐等场景。口音不匹配可能同时影响理解效率和用户信任。一个让美国听众觉得自然的模型，在英国听众那里未必同样顺耳，即使输入文本、提示词和参考音色完全相同。这意味着单一的全球排行榜并不能很好代表真实部署质量。\n\n统一测试音色的价值在于，它把“被克隆的声音”和“负责生成表现的模型”拆开了。对采购者而言，更实际的问题也随之出现：系统面对目标市场的真实口音、用户和业务场景时，表现到底如何？\n\n当然，这项测试仍有局限。八个英语音色无法覆盖全球语言多样性，基于听众偏好的Elo分数也不能替代延迟、发音稳定性、安全控制和授权状况等生产指标。但它至少把口音覆盖推到了采购标准的核心位置。对跨地区部署语音代理的公司来说，“哪个模型最好”已经不是完整问题。\n\n## Uncle Cat判断\nQwen在美式英语领先、HeyGen在英式英语占优，说明口音鲁棒性并非装饰指标，单一全球分数会掩盖部署差异。",
+      "date_published": "2026-11-07T01:01:00.000Z",
+      "date_modified": "2026-11-07T13:00:13.067Z",
+      "tags": [
+        "研究",
+        "AIGC"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tts-accent-gap-controlled-voice-arena.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tts-accent-gap-controlled-voice-arena.html",
+        "source_published_at": "2026-11-07T01:01:00.000Z",
+        "site_published_at": "2026-11-07T13:00:13.067Z",
+        "sources": [
+          {
+            "title": "Controlled Voice Leaderboard",
+            "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice"
+          },
+          {
+            "title": "Artificial Analysis announcement on the Controlled Voice Arena",
+            "url": "https://x.com/ArtificialAnlys/status/2118871352367341712"
+          },
+          {
+            "title": "Artificial Analysis announcement on accent differences",
+            "url": "https://x.com/ArtificialAnlys/status/2118871347409678535"
           }
         ]
       }
@@ -1754,128 +1863,6 @@
           {
             "title": "Tencent Hunyuan announcement on X",
             "url": "https://x.com/TencentHunyuan/status/2114701815807947159"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html",
-      "title": "清华开源 AKV，降低长程智能体推理成本",
-      "summary": "清华与香港中文大学团队开源 AKV，通过管理智能体的 KV 缓存可见性，在多项测试中平均降低推理成本 27.7%。",
-      "content_text": "清华大学与香港中文大学研究人员开源了 AKV。这是一套采用 Apache-2.0 许可、面向长程大语言模型智能体的服务系统，专门管理推理过程中使用的键值缓存。项目称，在四项智能体基准测试中，AKV平均降低推理成本27.7%，同时相比基于阈值的历史摘要方法，让平均任务得分提高1.7分。\n\n## 不一样的上下文管理方式\n\n目前多数智能体系统通过总结或删除历史文本来控制长对话。这样会改变提示词本身，服务器往往需要重新计算剩余上下文。AKV则允许策略模块或模型选择性地隐藏 KV 缓存条目，再重新排列保留内容，从而避免完整重建序列。\n\n这一点之所以重要，是因为论文分析显示，KV缓存读取占总 API 成本的82.4%。在一个使用 GPT-OSS-120B 的 SWE-bench Verified 测试中，AKV将单任务成本从20美分降至9.7美分，同时把得分从40.0提升到43.2。该系统已集成 SGLang，并在 GPT-OSS-120B、MiniMax-M2.7 和 MiroThinker-1.7-Mini 等模型上进行测试。\n\n## 仍然存在的边界\n\nAKV不是普遍适用的降本开关。公开结果依赖特定模型、基准和英伟达 GPU 配置，而且 MiniMax 在 BrowseComp-Plus 的一项结果低于对比策略。如果开发者暴露过多缓存控制、却缺少稳定的策略约束，缓存管理本身也可能增加智能体系统的复杂度。\n\n不过，它瞄准的是一个会随智能体浏览网页、调用工具和回看历史决策而持续放大的瓶颈。如果这些节省能在生产环境中复现，推理优化的重点就可能从“缩短提示词”进一步转向把模型状态当作可主动管理的系统资源。",
-      "date_published": "2026-10-26T07:56:00.000Z",
-      "date_modified": "2026-10-26T13:00:05.094Z",
-      "tags": [
-        "Agent",
-        "开源",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-akv-agent-cache.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-akv-agent-cache.html",
-        "source_published_at": "2026-10-26T07:56:00.000Z",
-        "site_published_at": "2026-10-26T13:00:05.094Z",
-        "sources": [
-          {
-            "title": "Tsinghua AI Open-Sources AKV, a Cache Engineering Server for LLM Agents on SGLang",
-            "url": "https://www.marktechpost.com/2026/10/26/tsinghua-akv-kv-cache-engineering-llm-agents/"
-          },
-          {
-            "title": "AKV GitHub repository",
-            "url": "https://github.com/thu-nics/AKV"
-          },
-          {
-            "title": "Cache Engineering for Agents",
-            "url": "https://arxiv.org/abs/2610.28577"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html",
-      "title": "英伟达开源Flora，机器人视频标注成本降125倍",
-      "summary": "英伟达开源机器人数据引擎Flora，称其每天可处理20万小时数据，标注成本约为GPT-6 Astra的八分之一百二十五，即约低125倍。",
-      "content_text": "## 发生了什么\n\n英伟达发布了Flora，一套面向机器人训练的数据引擎，目标是把机器人和人类示范视频转换为结构化训练数据。系统结合时间片段切分、视频描述和奖励标注，能够从长视频中识别动作、子任务与结果，而不是把整段素材当作无法拆分的序列。\n\n英伟达称，Flora已用于GR00T机器人模型的数据流程，并在512块GB300 GPU上达到每天处理约20万小时数据的规模。按照英伟达内部对比，Flora在多项标注任务上接近GPT-6 Astra，同时每小时机器人视频的标注成本约为0.72美元，而后者约为88美元。\n\n## 为什么重要\n\n机器人研发真正稀缺的并不只是原始视频，而是把视频转换成可靠动作标签的能力。更低的标注成本，可能让高校、中小型机器人公司和开放研究团队构建自己的专用数据集，不再完全依赖少数大模型实验室整理的数据。\n\n这次发布也把竞争推向了数据工程层。Flora并不是机器人控制器，输出用于安全关键训练前仍需人工或程序校验。它的许可证限制，以及在陌生机器人形态上的标注质量，也可能影响商业部署。不过，英伟达公开这套流程，为物理人工智能研究提供了可复现的起点，并可能降低机器人学习中长期被忽视的一项成本。\n\n## 猫叔判断\n\n比125倍便宜更值得关注的是每天20万小时的生产规模；若外部团队能复现其中一部分，机器人数据就不再只是大厂资源。\n",
-      "date_published": "2026-10-25T10:08:00.000Z",
-      "date_modified": "2026-10-25T13:00:04.886Z",
-      "tags": [
-        "研究",
-        "开源",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/nvidia-flora-robot-data-engine.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-flora-robot-data-engine.html",
-        "source_published_at": "2026-10-25T10:08:00.000Z",
-        "site_published_at": "2026-10-25T13:00:04.886Z",
-        "sources": [
-          {
-            "title": "Flora: An Open Model Suite for Scaling Robotics Data Engines",
-            "url": "https://research.nvidia.com/labs/gear/flora/"
-          },
-          {
-            "title": "nvidia/Flora-TempSeg model card",
-            "url": "https://huggingface.co/nvidia/Flora-TempSeg"
-          },
-          {
-            "title": "Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra",
-            "url": "https://the-decoder.com/nvidia-open-sources-flora-to-make-robot-video-labeling-125x-cheaper-than-gpt-6-astra/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-computer-use-desktop-agents.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-computer-use-desktop-agents.html",
-      "title": "Cursor让编程代理接管桌面应用操作",
-      "summary": "Cursor推出Computer Use，让编程代理可点击和输入桌面软件，并操作iOS模拟器测试刚生成的功能。",
-      "content_text": "## 发生了什么\n\nCursor 10月23日推出Computer Use，把编程代理从浏览器工作流扩展到桌面应用。公司表示，代理现在可以在电脑上的应用中点击和输入，并展示了使用iOS模拟器的案例。代理因此能够编写软件、启动本地开发工具、查看结果，再操作自己刚刚构建出来的界面。\n\nCursor文档显示，该功能目前是macOS和Linux自托管工作节点上的主动选择项。工作节点通过辅助应用或桌面显示捕获画面并发送输入事件，用户需要授予相应的系统权限；桌面共享则可以单独开启，让获授权的人观察或接管代理会话。\n\n这与浏览器代理有实质区别。浏览器页面通常控件更规则、权限边界更清楚，而桌面软件可能暴露本地文件、凭据、开发环境和不可逆操作。Computer Use因此把代理从“生成代码的助手”推向了真正操作代码运行环境的执行者。\n\n## 为什么重要\n\n这项功能指向更完整的编程闭环：代理可以测试图形界面、驱动模拟器、操作遗留软件，并完成没有便捷API的任务。它有望缩短“写出代码”和“证明产品对人真的可用”之间的距离，但错误代价也同步上升。浏览器里点错一步通常只是麻烦；在桌面环境中，同样的动作可能删除文件、修改设置或暴露私密数据。Cursor提供了主动授权和人工接管机制，这是必要的安全起点，但代理能否稳定识别高风险动作、处理视觉歧义并从错误中恢复，仍待验证。竞争关键在于，桌面控制最终会成为可靠的测试层，还是停留在易碎的演示功能。\n\n## Uncle Cat观点\n\n真正有分量的是iOS模拟器案例：Cursor正在补上从写应用到证明界面可用之间的最后一公里，而普通编程代理还停在那里。",
-      "date_published": "2026-10-23T15:59:00.000Z",
-      "date_modified": "2026-10-24T01:00:04.180Z",
-      "tags": [
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cursor-computer-use-desktop-agents.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cursor-computer-use-desktop-agents.html",
-        "source_published_at": "2026-10-23T15:59:00.000Z",
-        "site_published_at": "2026-10-24T01:00:04.180Z",
-        "sources": [
-          {
-            "title": "Cursor can now control your computer",
-            "url": "https://x.com/cursor_ai/status/2113661506634305834"
-          },
-          {
-            "title": "Computer Use lets agents drive any app",
-            "url": "https://x.com/cursor_ai/status/2113661518780998003"
-          },
-          {
-            "title": "Computer use and desktop sharing",
-            "url": "https://cursor.com/docs/cloud-agent/self-hosted/computer-use"
           }
         ]
       }
