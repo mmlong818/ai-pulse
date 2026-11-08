@@ -1,0 +1,42 @@
+这是「猫叔的AI资讯雷达」11月8日晚报。
+
+本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
+
+## 快讯预览
+
+- 美方AI安全机构无正式负责人且停止发布研究，AP称。
+- Lovart接入GPT Image 2.6，支持单行编辑并提供最长31天不限量生成。
+- 索尼发布基于视觉语言模型的驾驶接管危险预警系统，为驾驶员提供分级提示。
+- Thinking Machines发布5940亿参数多模态MoE模型Inkling 2 Small，激活参数170亿，现可通过Tinker使用。
+- Cashfree推出Checkout for Agents，称基于WebMCP的支付流程可减少逾40%的令牌消耗。
+- Fireworks AI建议企业优先采用托管推理，而非自行运营本地GPU集群。
+- 一场黑客松发现，代理集群在交换不可信指令时会泄露令牌并执行脚本。
+- Meta推出Muse Spaces，让用户围绕Muse代理组织按主题划分的协作体验。
+- 开源项目dabingfy-dot发布solo-to-team-skills仓库，迅速获得141个GitHub星标。
+- Hugging Face推荐一篇提出“认知共生体”的论文，主张通过持续人机互动增强人类智能。
+
+## 一句话快讯
+- 美方AI安全机构无正式负责人且停止发布研究，AP称。（[AP News](https://apnews.com/article/d3318eb2cf011df53e9ddb3e03d25f13)）
+- Lovart接入GPT Image 2.6，支持单行编辑并提供最长31天不限量生成。（[X / Lovart AI](https://x.com/lovart_ai/status/2119222930336883024)）
+- 索尼发布基于视觉语言模型的驾驶接管危险预警系统，为驾驶员提供分级提示。（[IT之家](https://www.ithome.com/1/023/849.htm)）
+- Thinking Machines发布5940亿参数多模态MoE模型Inkling 2 Small，激活参数170亿，现可通过Tinker使用。（[Deltaday](https://www.readdeltaday.com/news/2026-11-08)）
+- Cashfree推出Checkout for Agents，称基于WebMCP的支付流程可减少逾40%的令牌消耗。（[Deltaday](https://www.readdeltaday.com/news/2026-11-08)）
+- Fireworks AI建议企业优先采用托管推理，而非自行运营本地GPU集群。（[Deltaday](https://www.readdeltaday.com/news/2026-11-08)）
+- 一场黑客松发现，代理集群在交换不可信指令时会泄露令牌并执行脚本。（[Deltaday](https://www.readdeltaday.com/news/2026-11-08)）
+- Meta推出Muse Spaces，让用户围绕Muse代理组织按主题划分的协作体验。（[TechCrunch](https://techcrunch.com/2026/11/06/meta-introduces-spaces-a-new-way-to-collaborate-with-your-muse-agent/)）
+- 开源项目dabingfy-dot发布solo-to-team-skills仓库，迅速获得141个GitHub星标。（[Deltaday](https://www.readdeltaday.com/news/2026-11-08)）
+- Hugging Face推荐一篇提出“认知共生体”的论文，主张通过持续人机互动增强人类智能。（[Hugging Face Papers](https://www.readdeltaday.com/news/2026-11-08)）
+- 微信发布WeLM-Image，参数量317亿，面向单GPU图像生成与编辑。（[Deltaday](https://www.readdeltaday.com/news/2026-11-08)）
+- TailSteer提出末阶段训练方法，旨在减少多轮图像编辑中的内容漂移。（[Hugging Face Papers](https://www.readdeltaday.com/news/2026-11-08)）
+- Physical Superintelligence称其内部系统找到了自2008年悬而未决的Aaronson–Ambainis猜想证明。（[AGI Hunt](https://agihunt.info/en/daily/2026-11-08)）
+- Ant Ling发布Ling-3.2-Flash，多模态模型总参量5600亿、激活参数250亿，面向长程代理与3D任务。（[AGI Hunt](https://agihunt.info/en/daily/2026-11-08)）
+
+---
+
+完整日报：[11月8日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-08.html)
+
+历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
+
+
+
+说明：本文为 AI 自动采编稿，所有事实以文中原始信源为准；如发现时间或事实错误，会在网页版本中优先修正。
