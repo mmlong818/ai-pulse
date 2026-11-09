@@ -51,6 +51,108 @@ Sources:
   - Siri AI, a profoundly more capable and personal assistant, is here: https://www.apple.com/newsroom/2026/09/siri-ai-a-profoundly-more-capable-and-personal-assistant-is-here/
   - John Ternus talks plans to improve Siri AI: https://9to5mac.com/2026/11/03/john-ternus-talks-plans-to-improve-siri-ai/
 
+### NVIDIA brings Korean open models to production with Dynamo
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-korea-open-model-inference.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-korea-open-model-inference.html
+- Source timestamp: 2026-11-09T05:45:00.000Z
+- Site timestamp: 2026-11-09T13:00:13.820Z
+- Tags: Industry, Open Source, Models
+
+NVIDIA released deployment recipes for four Korean open models, aiming to make multi-node inference faster and easier to operationalize.
+
+## What launched
+
+NVIDIA released Dynamo-optimized deployment recipes for four Korean open models during its AI Day Seoul cycle: SK Telecom’s A.X K2, LG AI Research’s K-EXAONE 2.0, Upstage’s Solar Open 2 and Motif Technologies’ Motif-3. The recipes are intended to help operators run models across multiple GPUs and nodes without building the serving stack from scratch.
+
+Dynamo is NVIDIA’s open-source distributed inference framework. Its role is to coordinate request routing and inter-GPU communication when models exceed the capacity of one accelerator. NVIDIA says the new recipes are optimized for B200 systems and can deliver up to twice the performance out of the box, although the company did not present a neutral comparison covering different workloads, hardware configurations or serving costs.
+
+The announcement is part of a broader Korean push for sovereign AI. South Korea is investing in domestic foundation models, local infrastructure and public-facing AI services, while its technology companies seek to compete beyond the home market. By publishing deployment templates for local models, NVIDIA is positioning its software layer as the bridge between national model programs and production-scale infrastructure.
+
+## Why it matters
+
+This is more consequential than a routine model partnership because the bottleneck is increasingly deployment. A strong regional model still has limited impact if enterprises cannot serve it efficiently, scale it across nodes or integrate it into production systems. The recipes also give NVIDIA influence over the operational layer surrounding models that it did not create. That can strengthen its ecosystem position even when governments and companies want local model ownership.
+
+The unresolved question is portability. If the recipes are tightly optimized around NVIDIA B200 hardware, they may accelerate Korean models while reinforcing dependence on one accelerator stack. Their long-term value will be clearer when the same models run competitively on Korean and alternative hardware.
+
+## Uncle Cat take
+
+The four named Korean models matter less than Dynamo’s attempt to become the default production bridge between sovereign models and NVIDIA infrastructure.
+
+Chinese title: 英伟达发布 Dynamo 配方，加速韩国开源模型落地
+Chinese summary: 英伟达为韩国四款开放模型发布 Dynamo 部署配方，目标是降低多节点推理的工程门槛并提升生产性能。
+
+Sources:
+  - NVIDIA AI Day Seoul Highlights Korea’s Advances: https://blogs.nvidia.com/ai-day-seoul-2026/
+  - NVIDIA Dynamo Recipes Bring Korea’s Leading Open Models to Production: https://blogs.nvidia.com/blog/nvidia-dynamo-korea-open-models/
+  - 새로운 NVIDIA Dynamo 레시피로 한국의 주요 오픈 모델 최적화하기: https://developer.nvidia.com/ko-kr/blog/optimizing-koreas-leading-open-models-with-new-nvidia-dynamo-recipes/
+
+### Qwen Office 2.0 adds multi-user Team Agent workflows
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/qwen-office-team-agent.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/qwen-office-team-agent.html
+- Source timestamp: 2026-11-09T08:34:00.000Z
+- Site timestamp: 2026-11-09T13:00:13.820Z
+- Tags: Agents, Industry
+
+Alibaba’s Qwen Office 2.0 introduces a Team Agent designed to coordinate people and agents inside shared workplace tasks.
+
+## What changed
+
+Alibaba’s Qwen team released Qwen Office 2.0 on November 9, adding what it describes as a Team Agent for multi-user collaboration. The product expands the office assistant from an individual chat interface into a shared workspace where several people and software agents can contribute to the same task.
+
+The launch comes as enterprise AI products increasingly compete on workflow coordination rather than isolated question answering. A team assistant must track the work context, divide responsibilities, incorporate feedback and return an artifact that can be reviewed by humans. Qwen’s announcement positions Team Agent around that collaborative loop, although the public release materials do not yet disclose a full technical specification, model choice or independent benchmark suite.
+
+The timing is significant in China’s office-AI market. Alibaba is simultaneously building a broad Qwen ecosystem spanning general models, coding tools and workplace applications. Embedding multi-user agent behavior in an office product gives Qwen a direct route to observe how agents handle permissions, conflicting instructions and handoffs between employees. Those operational details are often harder than generating a document or summarizing a meeting.
+
+## Why it matters
+
+The product’s significance depends on whether “team collaboration” means real shared state and accountable task ownership, rather than several users taking turns in a chat window. If Qwen can connect conversations, documents and agent actions without losing provenance, it could make workplace agents more useful for planning, research and document production. If it only adds a group interface, the feature will be easier for competitors to copy and less consequential than the launch language suggests.
+
+## Uncle Cat take
+
+Team Agent is strategically valuable because it puts Qwen inside permission and handoff problems, but Alibaba has not yet shown enough evidence that the collaboration layer is genuinely native.
+
+Chinese title: 通义办公 2.0 上线 Team Agent，支持多人协作
+Chinese summary: 阿里通义办公 2.0 推出 Team Agent，试图把办公助手从个人对话扩展为多人和智能体共同执行任务的平台。
+
+Sources:
+  - 千问办公2.0发布，首个支持多人与Agent协作的Team Agent来了: https://www.qbitai.com/2026/11/508694.html
+  - Qwen Office 2.0 Launches Team Agent for Multi-User Collaboration: https://www.todayforai.com/en/items/art-75f3e2c5-f2f
+
+### ByteDance’s Seedream 5.5 targets reliable image editing
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/seedream-5-5-stable-editing.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/seedream-5-5-stable-editing.html
+- Source timestamp: 2026-11-09T11:18:00.000Z
+- Site timestamp: 2026-11-09T13:00:13.820Z
+- Tags: AIGC, Models
+
+ByteDance’s new image model promises pixel-stable edits across 100 rounds, native transparency, and stronger text rendering for production workflows.
+
+## What launched
+
+ByteDance introduced Seedream 5.5, the latest version of its image-generation and editing model, during the Asian daytime cycle on November 9. The release emphasizes production reliability rather than a simple jump in single-image aesthetics.
+
+The model is designed to preserve untouched regions at pixel level through repeated edits, with ByteDance claiming coherent results across as many as 100 rounds. It also adds native RGBA output, allowing creators to generate transparent and semi-transparent assets directly instead of removing backgrounds afterward. That matters for advertising, e-commerce, game production and compositing pipelines, where an image is often an intermediate asset rather than a finished poster.
+
+ByteDance says Seedream 5.5 was evaluated across e-commerce, marketing, film and television, gaming, office productivity and fashion design. Compared with Seedream 5.0 Pro, it reported higher quality and usability across all six categories, with usability in film, television and office work more than doubling. In separate comparisons, the company reported a 0.4% severe text-corruption rate and a 1.7% minor-corruption rate for Chinese- and English-language text.
+
+## Why it matters
+
+The important shift is from visual novelty to edit persistence. A model that can maintain layout, lighting and identity over many revisions is more useful to professional teams than one that produces an impressive first frame but breaks after the third change. ByteDance’s own benchmarks remain vendor-controlled, and the promised 100-round stability still needs independent testing. But native transparency and multi-turn consistency place Seedream 5.5 directly against the workflow bottlenecks that have kept generative imagery out of repeatable production.
+
+## Uncle Cat take
+
+Seedream 5.5’s 100-round editing claim is more strategically important than another realism score, but independent workflow tests will decide whether it survives real art direction.
+
+Chinese title: 字节发布 Seedream 5.5，主攻长链路稳定编辑
+Chinese summary: 字节跳动推出 Seedream 5.5，支持最多 100 轮连续编辑、原生透明图层，并强化中英文文字生成能力。
+
+Sources:
+  - More Realistic Images, More Stable Editing Across 100 Rounds | Seed News: https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5
+  - Seedream 5.5: https://seed.bytedance.com/en/seedream5_5
+
 ### AI auditors catch agent abuse but overwhelm human reviewers
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/ai-auditors-false-alarms.html
@@ -250,25 +352,25 @@ Sources:
 - Site timestamp: 2026-11-07T01:00:24.142Z
 - Tags: Funding, Industry
 
-OpenAI据报已在一轮尚未完成的融资中筹得110亿美元，估值约为1.25万亿美元；Anthropic的潜在IPO仍处于市场预期阶段，并非已提交申请。
+OpenAI据报已在一轮尚未完成的融资中完成约110亿美元首轮融资，估值约为1.25万亿美元；Anthropic已提交IPO文件，但上市时间和最终安排仍未确定。
 
 ## What happened
-OpenAI据报已在一轮尚未完成的新融资中筹得约110亿美元，估值约为1.25万亿美元。相关报道援引知情人士称，这笔资金属于更大融资计划的一部分，整轮融资预计将在未来数周完成，规模可能达到约200亿美元。
+OpenAI据报已在一轮尚未完成的新融资中完成约110亿美元首轮融资，估值约为1.25万亿美元。相关报道援引知情人士称，这笔资金属于更大融资计划的一部分，整轮融资预计将在未来数周完成，规模可能达到约200亿美元。
 
-此前市场曾传出OpenAI计划融资约300亿美元，因此目前已筹金额明显低于早期目标。由于完整交易尚未结束，最终金额、投资者名单和交易结构仍可能变化。
+此前市场曾传出OpenAI计划融资约300亿美元，因此目前已完成的首轮金额明显低于早期目标。由于完整交易尚未结束，最终金额、投资者名单和交易结构仍可能变化。
 
 ## Why it matters
 这笔融资显示，投资者仍愿意为前沿AI公司的算力、能源和基础设施投入巨额资本，但融资规模与早期目标之间的差距，也说明资本市场正在更严格地评估执行风险和商业化前景。
 
-Anthropic的情况也需要谨慎表述。市场报道称，潜在投资者正在评估Anthropic未来IPO的估值，但公司此前已推迟原先关于今年上市的计划，当前并不能表述为已经提交IPO申请。
+Anthropic的情况需要更新表述。公司已提交与潜在IPO相关的文件，但提交文件不等于已经完成上市，也不代表上市时间、估值或交易结构已经确定。相关安排仍可能随着市场条件变化。
 
 如果OpenAI最终完成更大规模融资，资金将为其采购算力、扩展消费级和企业级产品提供空间；但在交易正式完成前，任何最终投资者名单或总额都应视为暂定信息。
 
 ## Uncle Cat take
-真正值得关注的不是1.25万亿美元估值，而是约300亿美元的早期融资目标与目前约110亿美元已筹金额之间的差距：资本仍追逐前沿AI，但对兑现能力的要求明显提高。
+真正值得关注的不是1.25万亿美元估值，而是约300亿美元的早期融资目标与目前约110亿美元已完成首轮金额之间的差距：资本仍追逐前沿AI，但对兑现能力的要求明显提高。
 
 Chinese title: OpenAI据报已筹得110亿美元，估值达1.25万亿美元
-Chinese summary: OpenAI据报已在一轮尚未完成的融资中筹得110亿美元，估值约为1.25万亿美元；Anthropic的潜在IPO仍处于市场预期阶段，并非已提交申请。
+Chinese summary: OpenAI据报已在一轮尚未完成的融资中完成约110亿美元首轮融资，估值约为1.25万亿美元；Anthropic已提交IPO文件，但上市时间和最终安排仍未确定。
 
 Sources:
   - OpenAI reportedly raises an additional $11 billion at a $1.25 trillion valuation: https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/
@@ -887,103 +989,6 @@ Sources:
   - Huawei tells customers to find their own AI chip memory: https://the-decoder.com/huawei-tells-customers-to-find-their-own-ai-chip-memory-effectively-outsourcing-procurement-to-the-black-market/
   - No Korean HBM, no Chinese AI chips — and smugglers are getting creative: https://biz.heraldcorp.com/article/10924542
 
-### Nvidia Urges Cloud Partners to Limit China Exposure
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/nvidia-cloud-china-exposure.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-cloud-china-exposure.html
-- Source timestamp: 2026-11-03T12:22:00.000Z
-- Site timestamp: 2026-11-03T13:00:05.172Z
-- Tags: Policy, Industry
-
-Nvidia is asking cloud customers to diversify away from Chinese clients, tightening a remote-access loophole in US AI-chip controls.
-
-Nvidia has begun urging some cloud-computing customers to reduce their commercial exposure to Chinese companies, according to reporting by The Information and the Financial Times. The guidance reportedly applies to future business and asks providers to identify the end users of Nvidia-powered capacity. It has been communicated through sales and regional teams and, so far, is described as non-mandatory rather than a formal contract prohibition.
-
-The move targets an important gap in US export controls. While Washington restricts the shipment of advanced AI accelerators to China, overseas cloud providers can often rent access to those chips remotely. That arrangement has allowed Chinese developers to obtain compute without physically importing restricted hardware. The new pressure would make that route harder by encouraging Nvidia-backed neoclouds and other infrastructure operators to build a broader customer mix.
-
-The commercial consequences are not yet clear. A reported 51-percent non-Chinese customer threshold would be materially stricter than ordinary compliance screening, but the available reporting does not establish that Nvidia has imposed a universal rule or that every cloud partner has accepted it. Existing leasing agreements also appear to be treated differently from new contracts.
-
-Why it matters: this is a shift from regulating chips at the border to influencing who is allowed to consume them in the cloud. If enforced broadly, it could raise compute costs for Chinese AI labs, complicate access for international neoclouds, and push more demand toward domestic accelerators. It also places Nvidia in a difficult position: the company must protect access to its hardware while asking customers to walk away from a potentially significant market.
-
-Chinese title: 英伟达要求云服务伙伴降低对中国客户敞口
-Chinese summary: 英伟达正要求部分云客户减少中国业务，试图收紧美国芯片管制留下的远程算力通道。
-
-Sources:
-  - Nvidia Tells Cloud Clients to Take on Less China Business: https://www.theinformation.com/briefings/nvidia-tells-cloud-clients-take-less-china-business
-  - Nvidia orders data centre clients to reduce China exposure, FT reports: https://new.streetinsider.com/Reuters/Nvidia%2Borders%2Bdata%2Bcentre%2Bclients%2Bto%2Breduce%2BChina%2Bexposure%2C%2BFT%2Breports/27275695.html
-
-### OpenAI Proposes Grid Protectors for AI Data Centers
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-grid-protectors-program.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-grid-protectors-program.html
-- Source timestamp: 2026-11-02T15:00:00.000Z
-- Site timestamp: 2026-11-03T01:00:11.051Z
-- Tags: Policy, Industry
-
-OpenAI proposed a program for data centers to help protect nearby power systems, linking frontier-AI expansion with local grid reliability.
-
-## A local-grid response to national-scale demand
-
-OpenAI has introduced the Grid Protectors Program, a proposal aimed at reducing the strain that large AI data centers can place on nearby electricity networks. The announcement was published on November 2 under OpenAI’s global affairs and company sections.
-
-The program frames data centers as potential participants in grid reliability rather than only as large electricity consumers. OpenAI says facilities could support local systems through measures such as flexible load management and coordinated responses during periods of stress. The underlying idea is that some AI workloads can be shifted, delayed, or curtailed when power demand peaks, while critical services remain available.
-
-This matters because the expansion of frontier-model training and inference is increasingly constrained by electricity infrastructure. Data centers compete with households, factories, and other businesses for grid capacity, while new transmission and generation projects often take years to permit and build. A program that makes AI facilities more responsive could reduce opposition to new sites and give utilities another tool for balancing demand.
-
-The proposal is not a substitute for new generation, transmission, or transparent local approvals. Its effectiveness will depend on whether operators can expose accurate workload flexibility, whether utilities compensate them fairly, and whether the program includes enforceable performance standards. It also raises a practical question: how much of an AI company’s compute can actually be interrupted without harming customers or training schedules?
-
-## Why it matters
-
-OpenAI is treating power infrastructure as part of the product’s social license. If the program moves beyond branding into measurable grid services, it could influence how AI campuses are permitted and financed in multiple markets. If it remains voluntary and vague, its impact will be mostly political rather than electrical.
-
-## Uncle Cat take
-
-The unresolved detail is compensation: without a price for curtailing compute, “grid protection” risks becoming a promise utilities cannot schedule.
-
-Sources: [Introducing the Grid Protectors Program](https://openai.com/index/grid-protectors-program/).
-
-Chinese title: OpenAI提出“电网守护者”计划应对数据中心用电压力
-Chinese summary: OpenAI提出让AI数据中心参与电网调节的计划，试图缓解算力扩张对本地电力系统造成的压力。
-
-Sources:
-  - Introducing the Grid Protectors Program: https://openai.com/index/grid-protectors-program/
-
-### OpenAI Builds Pando to Scale Git for Agents
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-scaling-git-pando.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-scaling-git-pando.html
-- Source timestamp: 2026-11-02T15:30:00.000Z
-- Site timestamp: 2026-11-03T01:00:11.051Z
-- Tags: Agents, Industry
-
-OpenAI built a new Git backend for its monorepo, targeting the parallel pushes, fetches, and recovery needs created by engineers and coding agents.
-
-## A Git backend for a different workload
-
-OpenAI has built Pando, a new backend for Git designed to support the company’s monorepo as both human engineers and software agents generate more concurrent activity. The project was disclosed in an engineering post published on November 2.
-
-Pando preserves the familiar Git client workflow while changing how repository data is stored and transferred. When a client fetches updates, Pando identifies the missing commit range and returns links to packfiles that cover the gap. When multiple engineers or agents push to different branches, the system can process those updates in parallel. Updates targeting the same branch remain ordered.
-
-The design also addresses failure recovery. OpenAI says it contributed fixes upstream to Git for cleanup after interrupted packfile downloads, suggesting that the work exposed edge cases relevant beyond its own infrastructure. The company describes late-push latency as falling substantially after the migration, though the post does not provide a full independent benchmark or disclose the total size of the repository.
-
-The significance is less about Git itself than about the software-production environment OpenAI is building around it. Coding agents create bursts of automated commits, branch operations, and repository reads that conventional developer tooling was not designed to absorb efficiently. A backend that can parallelize traffic without forcing engineers to adopt a new interface could become an important layer in agent-heavy development organizations.
-
-## Why it matters
-
-The post offers a concrete infrastructure signal: agents are changing the shape of routine software operations before they replace the operations themselves. If Pando’s approach generalizes, repository systems may increasingly be optimized for machine-generated concurrency rather than only for human collaboration.
-
-## Uncle Cat take
-
-Pando’s upstream Git fixes are more revealing than its branding: interrupted downloads became a product problem because agents keep the pipeline busy.
-
-Sources: [Scaling Git at OpenAI](https://openai.com/index/scaling-git-at-openai/).
-
-Chinese title: OpenAI为人机并行开发打造Git后端Pando
-Chinese summary: OpenAI为自家单体代码库开发Pando后端，重点解决工程师与编码Agent并发推送、拉取和故障恢复问题。
-
-Sources:
-  - Scaling Git at OpenAI: https://openai.com/index/scaling-git-at-openai/
-
 ## Recent radar items
 
 ### 2026-11-09
@@ -1003,6 +1008,21 @@ Sources:
 - 2026-11-08T15:00:00Z | X / Tripo | Tripo showcased Bluestone Lane, an interactive 3D story built with its API around cinematic environments and a small robot. | 中文：Tripo展示了用其API制作的互动3D故事Bluestone Lane，围绕电影化场景和小机器人展开。 | https://x.com/tripoai/status/2119444837061562810
 - 2026-11-08T23:51:00Z | X / Artificial Analysis | Artificial Analysis reported that Celeris-1.1 Decision achieved the lowest task latency at 56 milliseconds in its decision-model comparison. | 中文：Artificial Analysis称，Celeris-1.1 Decision在其决策模型比较中以56毫秒取得最低任务延迟。 | https://x.com/ArtificialAnlys/status/2119578485698281664
 - 2026-11-08T23:51:00Z | X / Artificial Analysis | Artificial Analysis said decision-model prices ranged from $14 to $859 per million tasks, revealing a wide cost spread. | 中文：Artificial Analysis称，决策模型每百万任务成本从14美元到859美元不等，价格差距极大。 | https://x.com/ArtificialAnlys/status/2119578482829352960
+- 2026-11-09T13:00:00Z | X / Sakana AI | Sakana AI said it has no near-term IPO plans and will focus on becoming Japan’s national AI champion. | 中文：Sakana AI称近期无上市计划，将专注成为日本的国家级AI代表企业。 | https://x.com/SakanaAILabs/status/2119777030233260471
+- 2026-11-09T13:00:00Z | InfoQ 中文 | OpenTofu is adding built-in code checking, bringing security validation directly into infrastructure-as-code workflows. | 中文：OpenTofu开始内置代码检查，把安全验证直接带入基础设施即代码流程。 | https://www.infoq.cn/article/jXBV6ib9g8g2Gw6kDaYh?utm_source=rss&utm_medium=article
+- 2026-11-09T13:00:00Z | X / MongoDB | MongoDB promoted an AI gateway that gives applications one API for chat, speech, embeddings, and reranking models. | 中文：MongoDB推广AI网关，用一个API统一接入聊天、语音、嵌入和重排模型。 | https://x.com/MongoDB/status/2119777022448666682
+- 2026-11-09T12:55:00Z | IT之家 | Google is reportedly developing a redesigned YouTube app for Meta’s VR glasses, with browsing while watching. | 中文：代码显示谷歌正为Meta VR眼镜开发新版YouTube，支持观看时继续浏览。 | https://www.ithome.com/1/024/531.htm
+- 2026-11-09T12:43:00Z | IT之家 | Google expanded its TPU lineup with the 8tx and 8i Max, signaling a broader challenge to Nvidia’s accelerator dominance. | 中文：谷歌扩充TPU阵容，推出8tx与8i Max，进一步挑战英伟达加速器主导地位。 | https://www.ithome.com/1/024/525.htm
+- 2026-11-09T12:34:00Z | Hugging Face | Hugging Face described higher-order pruning that removes expert partners while preserving useful mixture-of-experts structure. | 中文：Hugging Face介绍高阶剪枝方法，可移除专家伙伴同时保留混合专家结构的有效性。 | https://huggingface.co/blog/amazon/higher-order-pruning-experts
+- 2026-11-09T10:44:00Z | InfoQ 中文 | An InfoQ analysis argued that agent-native databases are needed even when conventional harnesses already perform well. | 中文：InfoQ分析称，即使传统Harness表现良好，Agent原生数据库仍有存在必要。 | https://www.infoq.cn/article/49JGp1l7v97riBlPpZ1q
+- 2026-11-09T10:00:00Z | MIT Technology Review | MIT Technology Review questioned whether AI has yet made a convincing climate case despite its efficiency and discovery claims. | 中文：MIT科技评论质疑，尽管AI宣称能提升效率和发现能力，其气候价值仍未被证明。 | https://www.technologyreview.com/2026/11/09/1148166/the-climate-case-for-ai-has-not-been-made/
+- 2026-11-09T10:00:00Z | InfoQ 中文 | Tencent presented LoopForge as a lightweight-cloud workflow for coordinating multiple agents from code generation through delivery. | 中文：腾讯展示轻量云LoopForge，用多Agent编排覆盖从写代码到交付的完整流程。 | https://www.infoq.cn/article/wUArox9MHiAoyWPgRxpp
+- 2026-11-09T05:47:00Z | 量子位 | A Chinese report said AI has taken over routine work at an open-source company with more than 80,000 GitHub stars. | 中文：报道称，AI已接管一家拥有超过8万GitHub Star的开源公司日常工作。 | https://www.qbitai.com/2026/11/508607.html
+- 2026-11-09T05:09:00Z | 量子位 | NeoHorse-1.5-Flash Preview was released as a new iteration of the company’s agent model, entering a second RSI cycle. | 中文：基元律动发布NeoHorse-1.5-Flash Preview，标志其Agent模型进入第二轮RSI迭代。 | https://www.qbitai.com/2026/11/508603.html
+- 2026-11-09T05:39:00Z | X / Hyper3D | Hyper3D made its Rigging API generally available, opening automated character setup to all users. | 中文：Hyper3D宣布Rigging API全面开放，让所有用户都能使用自动角色绑定能力。 | https://x.com/DeemosTech/status/2119666275920290269
+- 2026-11-09T04:40:00Z | X / Mistral AI | Mistral used Voxtral 3 Transcribe to capture every main-stage talk in real time at AI Engineer Paris. | 中文：Mistral在巴黎AI Engineer大会用Voxtral 3 Transcribe实时记录全部主舞台演讲。 | https://x.com/MistralAI/status/2119651192737259701
+- 2026-11-09T02:20:00Z | X / Sakana AI | Sakana AI opened beta testing for its first mobile app, seeking user feedback before broader release. | 中文：Sakana AI为首款移动应用招募测试者，希望在正式发布前收集用户反馈。 | https://x.com/SakanaAILabs/status/2119615974848762111
+- 2026-11-09T07:02:00Z | 量子位 | Mercedes-Benz and BMW reportedly backed away from Level 3 autonomy after finding Level 2 systems more practical. | 中文：报道称，奔驰和宝马退出L3自动驾驶探索，认为L2系统目前更实用。 | https://www.qbitai.com/2026/11/508629.html
 
 ### 2026-11-08
 
