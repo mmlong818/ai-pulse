@@ -1,133 +1,74 @@
-这是「猫叔的AI资讯雷达」11月9日晚报。
+这是「猫叔的AI资讯雷达」11月10日晚报。
 
 本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
 
-**今晚重点**：字节跳动推出 Seedream 5.5，支持最多 100 轮连续编辑、原生透明图层，并强化中英文文字生成能力。
+**今晚重点**：谷歌DeepMind称，AlphaProof Code已对Signal协议关键代码完成形式化验证，并向社区开放证明材料。
 
 ## 深度简报目录
 
-- 字节发布 Seedream 5.5，主攻长链路稳定编辑
-- 通义办公 2.0 上线 Team Agent，支持多人协作
-- 英伟达发布 Dynamo 配方，加速韩国开源模型落地
+- AlphaProof Code完成Signal加密实现形式化验证
 
 ## 快讯预览
 
-- InfoQ分析称，即使传统Harness表现良好，Agent原生数据库仍有存在必要。
-- MIT科技评论质疑，尽管AI宣称能提升效率和发现能力，其气候价值仍未被证明。
-- 腾讯展示轻量云LoopForge，用多Agent编排覆盖从写代码到交付的完整流程。
-- 报道称，奔驰和宝马退出L3自动驾驶探索，认为L2系统目前更实用。
-- 报道称，AI已接管一家拥有超过8万GitHub Star的开源公司日常工作。
-- Hyper3D宣布Rigging API全面开放，让所有用户都能使用自动角色绑定能力。
-- 基元律动发布NeoHorse-1.5-Flash Preview，标志其Agent模型进入第二轮RSI迭代。
-- Mistral在巴黎AI Engineer大会用Voxtral 3 Transcribe实时记录全部主舞台演讲。
-- Sakana AI为首款移动应用招募测试者，希望在正式发布前收集用户反馈。
-- Artificial Analysis推出决策模型基准，覆盖速度、成本、一致性与文档判断任务。
+- Meshy展示 Agent Skill，可把粗略草图转成完成度更高的风格化3D角色。
+- Airbnb借助 Chronon 将推荐延迟从两天缩短至数秒。
+- 蚂蚁灵波开源 LingBot-Touch 通用触觉基础模型，推进机器人感知触感。
+- openJiuwen发布 TTSE 经验学习框架，推动智能体持续自我演进。
+- 成立四个月后，物原科技 TensorWorld 融资过亿美元，押注物理真实生成世界。
+- Otter AI新增跨30多种语言持续跟踪对话的能力。
+- 亚马逊称，Strands Decider替代部分 Sonnet 4.6 工作负载后节省了数百万美元。
+- 可灵AI以预告片宣布 Kling 4 视频模型新动态，并称旅程即将开始。
+- AWS推广 Quick AI助手，强调通过技能与智能体协同完成专业任务。
+- Pika称社区贡献者已让 Pika H3 Flex 推理支持 AMD GPU。
 
-## 1. 字节发布 Seedream 5.5，主攻长链路稳定编辑
+## 1. AlphaProof Code完成Signal加密实现形式化验证
 
-字节跳动推出 Seedream 5.5，支持最多 100 轮连续编辑、原生透明图层，并强化中英文文字生成能力。
+谷歌DeepMind称，AlphaProof Code已对Signal协议关键代码完成形式化验证，并向社区开放证明材料。
 
-### 发布内容
+### 发生了什么
 
-字节跳动在 11 月 9 日亚洲时段发布图像生成与编辑模型 Seedream 5.5。此次升级的重点不是单张图片更“惊艳”，而是让模型更适合进入专业生产流程。
+谷歌DeepMind发布AlphaProof Code，一套面向深层形式化验证的智能体框架，并用它验证了Signal即时通信协议底层实现中的关键安全属性。此次对象不是停留在抽象层面的协议描述，而是广泛部署的真实加密代码。研究团队称，这是人工智能首次在如此深度上验证广泛使用的密码协议实现。
 
-Seedream 5.5 主打多轮编辑稳定性。官方称，模型能够在连续修改中以像素级方式保留未编辑区域，并支持在同一作品上持续创作最多 100 轮。模型还原生支持 RGBA 输出，可直接生成透明或半透明素材，减少后期抠图，适用于广告、电商、影视、游戏和设计制作。
+这套系统由人工专家与多个AI智能体协同完成，后者由Gemini Carbon驱动。研究人员先把Signal的安全目标转化为Lean形式化规范，再让智能体生成超过600万行Lean证明代码。最终结论并不由模型自行裁定，而是必须通过Lean的机器检查。
 
-字节方面表示，Seedream 5.5 已在电商、营销、影视、游戏、办公和时尚设计六类场景中进行评测。相较 Seedream 5.0 Pro，新模型在六项场景的质量与可用性均有提升，其中影视和办公场景的可用率超过翻倍。另一组中英文文字测试显示，其严重文字错误率为 0.4%，轻微错误率为 1.7%。
+为检验系统能否识别真实缺陷，团队还在Signal代码的隔离版本中重新植入两处已修复漏洞。AlphaProof Code均判断对应实现不安全，说明它不只是生成看似合理的证明，而是能够区分正确与错误代码。
 
-### 行业意义
+### 为什么重要
 
-真正值得关注的是模型从“一次生成”转向“持续修改”。专业团队更需要模型在改版过程中维持布局、光照和主体一致性，而不是只在首轮输出一张漂亮图片。字节公布的指标仍属于厂商自测，100 轮稳定编辑也有待外部复现。不过，原生透明输出和多轮一致性，确实击中了生成图像进入商业流程时最常见的返工问题。
+形式化验证被视为安全关键软件最严格的保障手段，但长期以来成本高、专业门槛高，通常只能覆盖较小的软件组件。AlphaProof Code显示，智能体或许能把定理证明扩展到规模更大的生产代码库。未来，医疗设备、工业控制系统和关键基础设施软件都可能成为受益对象。
 
-### Uncle Cat 观点
+当然，这一成果仍有边界。安全规范由人类专家制定并审核，论文验证的也是Signal实现中的特定范围，而非整个应用的所有属性。即便如此，真实协议、机器可检验证明以及开源材料的组合，使它明显超越了普通基准测试演示。
 
-100 轮编辑稳定性比又一个“更逼真”分数更关键；Seedream 5.5 能否经得起真实美术指导流程，仍要看独立测试。
+### 猫叔判断
 
-**原始信源**
-
-- [More Realistic Images, More Stable Editing Across 100 Rounds | Seed News](https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5)
-- [Seedream 5.5](https://seed.bytedance.com/en/seedream5_5)
-
-原文链接：[字节发布 Seedream 5.5，主攻长链路稳定编辑｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/seedream-5-5-stable-editing.html)
-
----
-
-## 2. 通义办公 2.0 上线 Team Agent，支持多人协作
-
-阿里通义办公 2.0 推出 Team Agent，试图把办公助手从个人对话扩展为多人和智能体共同执行任务的平台。
-
-### 更新内容
-
-阿里通义团队在 11 月 9 日发布通义办公 2.0，并加入面向多人协作的 Team Agent。产品不再只服务于单个用户的问答，而是试图让多名员工与多个软件智能体共同参与同一项工作。
-
-此次发布正值企业 AI 竞争从“回答问题”转向“协调流程”。一个真正的团队助手需要理解共同上下文、拆分任务、吸收成员反馈，并最终交付可供人审阅的成果。通义方面将 Team Agent 定位在这一协作闭环上，但目前公开材料尚未披露完整技术规格、具体模型构成或独立基准测试。
-
-这对中国办公 AI 市场尤其值得关注。阿里正在构建覆盖通用模型、代码工具和办公应用的通义生态。把多人智能体能力放进办公产品，可以让 Qwen 直接面对权限管理、意见冲突、任务交接和责任追踪等现实问题。这些问题往往比生成一份文档或总结一场会议更难解决。
-
-### 行业意义
-
-Team Agent 的价值取决于“多人协作”是否意味着真正的共享状态和可追责的任务归属，而不是把多人拉进同一个聊天窗口。如果通义能够把对话、文档和智能体操作连起来，并保留清晰的过程记录，它可能成为规划、研究和文档生产的实用入口。若只是增加群聊式界面，竞争对手很容易复制，实际影响也会低于发布口径。
-
-### Uncle Cat 观点
-
-Team Agent把通义带进权限与交接这两个硬问题，但阿里目前还没有证明协作层是真正原生的。
+600万行Lean证明很亮眼，但真正昂贵的环节仍是定义“安全”本身；AI能加速证明，却还替不了规范审查。
 
 **原始信源**
 
-- [千问办公2.0发布，首个支持多人与Agent协作的Team Agent来了](https://www.qbitai.com/2026/11/508694.html)
-- [Qwen Office 2.0 Launches Team Agent for Multi-User Collaboration](https://www.todayforai.com/en/items/art-75f3e2c5-f2f)
+- [Introducing AlphaProof Code: a breakthrough in verifying complex software at depth](https://deepmind.google/blog/introducing-alphaproof-code/)
+- [Signal Protocol](https://signal.org/docs/)
 
-原文链接：[通义办公 2.0 上线 Team Agent，支持多人协作｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/qwen-office-team-agent.html)
-
----
-
-## 3. 英伟达发布 Dynamo 配方，加速韩国开源模型落地
-
-英伟达为韩国四款开放模型发布 Dynamo 部署配方，目标是降低多节点推理的工程门槛并提升生产性能。
-
-### 发布内容
-
-英伟达在 AI Day Seoul 期间发布了面向四款韩国开放模型的 Dynamo 优化部署配方，覆盖 SK 电讯 A.X K2、LG AI Research 的 K-EXAONE 2.0、Upstage 的 Solar Open 2，以及 Motif Technologies 的 Motif-3。相关配方旨在帮助运营方把模型部署到多 GPU、多节点环境，无需从零搭建推理服务栈。
-
-Dynamo 是英伟达的开源分布式推理框架。当模型规模超过单张加速卡容量时，它负责协调请求路由与 GPU 间通信。英伟达称，新配方针对 B200 系统优化，开箱性能最高可提升两倍。不过，公司尚未公布覆盖不同负载、硬件配置和服务成本的中立对照测试。
-
-这项发布属于韩国发展主权 AI 的更大计划。韩国正在同步投入本土基础模型、国产基础设施和面向公众的 AI 服务，本土科技公司也希望把能力推向海外。通过发布本地模型的部署模板，英伟达试图成为连接国家模型项目与生产级基础设施的软件桥梁。
-
-### 行业意义
-
-这并不是普通的模型合作，因为行业瓶颈正逐渐从“模型够不够强”转向“能否稳定部署”。一个区域模型如果无法高效服务、跨节点扩展并接入生产系统，影响就很有限。英伟达发布这些配方，也是在争夺模型周边的运行层，即使模型本身并非由英伟达开发。
-
-真正未解的问题是硬件可迁移性。如果配方高度绑定英伟达 B200，它们可能一边加速韩国模型，一边强化韩国对单一加速器生态的依赖。只有当这些模型也能在韩国及其他替代硬件上保持竞争力，配方的长期价值才会更清楚。
-
-### Uncle Cat 观点
-
-四款韩国模型只是表面，Dynamo真正争夺的是主权模型接入英伟达生产基础设施时的默认位置。
-
-**原始信源**
-
-- [NVIDIA AI Day Seoul Highlights Korea’s Advances](https://blogs.nvidia.com/ai-day-seoul-2026/)
-- [NVIDIA Dynamo Recipes Bring Korea’s Leading Open Models to Production](https://blogs.nvidia.com/blog/nvidia-dynamo-korea-open-models/)
-- [새로운 NVIDIA Dynamo 레시피로 한국의 주요 오픈 모델 최적화하기](https://developer.nvidia.com/ko-kr/blog/optimizing-koreas-leading-open-models-with-new-nvidia-dynamo-recipes/)
-
-原文链接：[英伟达发布 Dynamo 配方，加速韩国开源模型落地｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-korea-open-model-inference.html)
+原文链接：[AlphaProof Code完成Signal加密实现形式化验证｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/alphaproof-code-verifies-signal.html)
 
 ## 一句话快讯
-- InfoQ分析称，即使传统Harness表现良好，Agent原生数据库仍有存在必要。（[InfoQ 中文](https://www.infoq.cn/article/49JGp1l7v97riBlPpZ1q)）
-- MIT科技评论质疑，尽管AI宣称能提升效率和发现能力，其气候价值仍未被证明。（[MIT Technology Review](https://www.technologyreview.com/2026/11/09/1148166/the-climate-case-for-ai-has-not-been-made/)）
-- 腾讯展示轻量云LoopForge，用多Agent编排覆盖从写代码到交付的完整流程。（[InfoQ 中文](https://www.infoq.cn/article/wUArox9MHiAoyWPgRxpp)）
-- 报道称，奔驰和宝马退出L3自动驾驶探索，认为L2系统目前更实用。（[量子位](https://www.qbitai.com/2026/11/508629.html)）
-- 报道称，AI已接管一家拥有超过8万GitHub Star的开源公司日常工作。（[量子位](https://www.qbitai.com/2026/11/508607.html)）
-- Hyper3D宣布Rigging API全面开放，让所有用户都能使用自动角色绑定能力。（[X / Hyper3D](https://x.com/DeemosTech/status/2119666275920290269)）
-- 基元律动发布NeoHorse-1.5-Flash Preview，标志其Agent模型进入第二轮RSI迭代。（[量子位](https://www.qbitai.com/2026/11/508603.html)）
-- Mistral在巴黎AI Engineer大会用Voxtral 3 Transcribe实时记录全部主舞台演讲。（[X / Mistral AI](https://x.com/MistralAI/status/2119651192737259701)）
-- Sakana AI为首款移动应用招募测试者，希望在正式发布前收集用户反馈。（[X / Sakana AI](https://x.com/SakanaAILabs/status/2119615974848762111)）
-- Artificial Analysis推出决策模型基准，覆盖速度、成本、一致性与文档判断任务。（[X / Artificial Analysis](https://x.com/ArtificialAnlys/status/2119578487837327492)）
-- Artificial Analysis称，Celeris-1.1 Decision在其决策模型比较中以56毫秒取得最低任务延迟。（[X / Artificial Analysis](https://x.com/ArtificialAnlys/status/2119578485698281664)）
-- Artificial Analysis称，决策模型每百万任务成本从14美元到859美元不等，价格差距极大。（[X / Artificial Analysis](https://x.com/ArtificialAnlys/status/2119578482829352960)）
+- Meshy展示 Agent Skill，可把粗略草图转成完成度更高的风格化3D角色。（[X / MeshyAI](https://x.com/MeshyAI/status/2120101665705529734)）
+- Airbnb借助 Chronon 将推荐延迟从两天缩短至数秒。（[InfoQ 中文](https://www.infoq.cn/article/yuRNB72KsEbjGYSkV7FY?utm_source=rss&utm_medium=article)）
+- 蚂蚁灵波开源 LingBot-Touch 通用触觉基础模型，推进机器人感知触感。（[量子位](https://www.qbitai.com/2026/11/508996.html)）
+- openJiuwen发布 TTSE 经验学习框架，推动智能体持续自我演进。（[量子位](https://www.qbitai.com/2026/11/508998.html)）
+- 成立四个月后，物原科技 TensorWorld 融资过亿美元，押注物理真实生成世界。（[量子位](https://www.qbitai.com/2026/11/508991.html)）
+- Otter AI新增跨30多种语言持续跟踪对话的能力。（[TechCrunch](https://techcrunch.com/2026/11/09/otter-ai-can-now-follow-conversations-across-30-languages/)）
+- 亚马逊称，Strands Decider替代部分 Sonnet 4.6 工作负载后节省了数百万美元。（[Strands Agents](https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/)）
+- 可灵AI以预告片宣布 Kling 4 视频模型新动态，并称旅程即将开始。（[X / Kling AI](https://x.com/Kling_ai/status/2120002095105376400)）
+- AWS推广 Quick AI助手，强调通过技能与智能体协同完成专业任务。（[X / AWS](https://x.com/awscloud/status/2120000119676309558)）
+- Pika称社区贡献者已让 Pika H3 Flex 推理支持 AMD GPU。（[X / Pika](https://x.com/pika_labs/status/2119983824503456008)）
+- Sakana AI宣布签署法国发起的人工智能安全与安保巴黎倡议。（[X / Sakana AI](https://x.com/SakanaAILabs/status/2120081508857598158)）
+- Sakana AI 表示，其首席科学顾问接受日经采访，讨论当前大模型局限及发展更广泛能力的必要性。（[Sakana AI](https://x.com/SakanaAILabs/status/2119951821968151012)）
+- AWS 推出面向专业工作的 AI 助手 AWS Quick，支持通过技能与智能体协同执行任务。（[AWS Machine Learning](https://aws.amazon.com/blogs/machine-learning/how-skills-and-agents-work-in-aws-quick/)）
+- Together Computer 称，在 NVIDIA B200 与 B300 上，其编译器相较部分 InferenceX 配置可实现最高 2.7 倍吞吐。（[Together AI](https://x.com/togethercompute/status/2119948311474077846)）
 
 ---
 
-完整日报：[11月9日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-09.html)
+完整日报：[11月10日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-10.html)
 
 历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
 

@@ -1,0 +1,32 @@
+{
+  "slug": "alphaproof-code-verifies-signal",
+  "title": "AlphaProof Code verifies Signal’s cryptographic implementation",
+  "summary": "Google DeepMind says its agentic framework formally verified key security properties in Signal’s deployed code and released the proof artifacts.",
+  "body": "## What happened\n\nGoogle DeepMind introduced AlphaProof Code, an agentic framework that formally verified key security properties in the code underlying the Signal messaging protocol. The work covers production cryptographic implementation rather than only an abstract protocol specification, and the researchers describe it as the first verification of a widely deployed protocol at this depth.\n\nThe system combines human-designed specifications with multiple AI agents powered by Gemini Carbon. Researchers translated Signal’s security goals into Lean, then used agents to generate more than six million lines of proof code. Lean, rather than the language model, served as the final checker: every accepted result had to satisfy machine-verified mathematical constraints.\n\nThe team also inserted two previously fixed vulnerabilities into an isolated version of Signal’s code. AlphaProof Code identified both as insecure, providing a test that the framework could distinguish a valid implementation from one that merely looked plausible.\n\n## Why it matters\n\nFormal verification has long offered the strongest available assurance for security-critical software, but its cost and specialist demands have limited its use to relatively small components. AlphaProof Code suggests that agentic systems may expand the practical scope of theorem proving into large, actively deployed codebases. That matters well beyond messaging: the same workflow could eventually be applied to medical devices, industrial control systems and infrastructure software.\n\nThe claim remains bounded. Human experts still chose and reviewed the specifications, and the published result concerns a defined portion of Signal’s implementation rather than every possible property of the entire application. Even so, the combination of open-sourced artifacts and a real security protocol makes this more consequential than a benchmark demonstration.\n\n## Uncle Cat take\n\nSix million Lean lines are impressive, but the strategic prize is specification review: AI can accelerate proofs only after humans decide what “secure” actually means.",
+  "title_zh": "AlphaProof Code完成Signal加密实现形式化验证",
+  "summary_zh": "谷歌DeepMind称，AlphaProof Code已对Signal协议关键代码完成形式化验证，并向社区开放证明材料。",
+  "body_zh": "## 发生了什么\n\n谷歌DeepMind发布AlphaProof Code，一套面向深层形式化验证的智能体框架，并用它验证了Signal即时通信协议底层实现中的关键安全属性。此次对象不是停留在抽象层面的协议描述，而是广泛部署的真实加密代码。研究团队称，这是人工智能首次在如此深度上验证广泛使用的密码协议实现。\n\n这套系统由人工专家与多个AI智能体协同完成，后者由Gemini Carbon驱动。研究人员先把Signal的安全目标转化为Lean形式化规范，再让智能体生成超过600万行Lean证明代码。最终结论并不由模型自行裁定，而是必须通过Lean的机器检查。\n\n为检验系统能否识别真实缺陷，团队还在Signal代码的隔离版本中重新植入两处已修复漏洞。AlphaProof Code均判断对应实现不安全，说明它不只是生成看似合理的证明，而是能够区分正确与错误代码。\n\n## 为什么重要\n\n形式化验证被视为安全关键软件最严格的保障手段，但长期以来成本高、专业门槛高，通常只能覆盖较小的软件组件。AlphaProof Code显示，智能体或许能把定理证明扩展到规模更大的生产代码库。未来，医疗设备、工业控制系统和关键基础设施软件都可能成为受益对象。\n\n当然，这一成果仍有边界。安全规范由人类专家制定并审核，论文验证的也是Signal实现中的特定范围，而非整个应用的所有属性。即便如此，真实协议、机器可检验证明以及开源材料的组合，使它明显超越了普通基准测试演示。\n\n## 猫叔判断\n\n600万行Lean证明很亮眼，但真正昂贵的环节仍是定义“安全”本身；AI能加速证明，却还替不了规范审查。",
+  "tags": [
+    "Research",
+    "Agents",
+    "Safety"
+  ],
+  "sources": [
+    {
+      "title": "Introducing AlphaProof Code: a breakthrough in verifying complex software at depth",
+      "url": "https://deepmind.google/blog/introducing-alphaproof-code/"
+    },
+    {
+      "title": "Signal Protocol",
+      "url": "https://signal.org/docs/"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "It is the edition’s clearest demonstration that AI agents are moving from generating code toward mathematically proving security properties in deployed systems.",
+  "featured_reason_zh": "这是本期最具分量的进展：AI智能体开始从生成代码走向为真实部署系统的安全属性提供数学证明。",
+  "cat_take_zh": "600万行证明很亮眼，但定义安全仍离不开人类规范审查",
+  "cat_take_en": "Six million proof lines impress, but humans still control the most consequential step: defining what secure means.",
+  "date": "2026-11-10",
+  "published": "2026-11-10T12:02:00Z",
+  "published_at": "2026-11-10T13:00:05.676Z"
+}

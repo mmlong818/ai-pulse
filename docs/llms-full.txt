@@ -19,6 +19,41 @@
 
 ## Recent briefings
 
+### AlphaProof Code verifies Signal’s cryptographic implementation
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/alphaproof-code-verifies-signal.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/alphaproof-code-verifies-signal.html
+- Source timestamp: 2026-11-10T12:02:00.000Z
+- Site timestamp: 2026-11-10T13:00:05.676Z
+- Tags: Research, Agents, Safety
+
+Google DeepMind says its agentic framework formally verified key security properties in Signal’s deployed code and released the proof artifacts.
+
+## What happened
+
+Google DeepMind introduced AlphaProof Code, an agentic framework that formally verified key security properties in the code underlying the Signal messaging protocol. The work covers production cryptographic implementation rather than only an abstract protocol specification, and the researchers describe it as the first verification of a widely deployed protocol at this depth.
+
+The system combines human-designed specifications with multiple AI agents powered by Gemini Carbon. Researchers translated Signal’s security goals into Lean, then used agents to generate more than six million lines of proof code. Lean, rather than the language model, served as the final checker: every accepted result had to satisfy machine-verified mathematical constraints.
+
+The team also inserted two previously fixed vulnerabilities into an isolated version of Signal’s code. AlphaProof Code identified both as insecure, providing a test that the framework could distinguish a valid implementation from one that merely looked plausible.
+
+## Why it matters
+
+Formal verification has long offered the strongest available assurance for security-critical software, but its cost and specialist demands have limited its use to relatively small components. AlphaProof Code suggests that agentic systems may expand the practical scope of theorem proving into large, actively deployed codebases. That matters well beyond messaging: the same workflow could eventually be applied to medical devices, industrial control systems and infrastructure software.
+
+The claim remains bounded. Human experts still chose and reviewed the specifications, and the published result concerns a defined portion of Signal’s implementation rather than every possible property of the entire application. Even so, the combination of open-sourced artifacts and a real security protocol makes this more consequential than a benchmark demonstration.
+
+## Uncle Cat take
+
+Six million Lean lines are impressive, but the strategic prize is specification review: AI can accelerate proofs only after humans decide what “secure” actually means.
+
+Chinese title: AlphaProof Code完成Signal加密实现形式化验证
+Chinese summary: 谷歌DeepMind称，AlphaProof Code已对Signal协议关键代码完成形式化验证，并向社区开放证明材料。
+
+Sources:
+  - Introducing AlphaProof Code: a breakthrough in verifying complex software at depth: https://deepmind.google/blog/introducing-alphaproof-code/
+  - Signal Protocol: https://signal.org/docs/
+
 ### Anthropic releases Fable 5.2 and Mythos 5.2 models
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-fable-mythos-52.html
@@ -475,7 +510,7 @@ Sources:
 - Site timestamp: 2026-11-07T01:00:24.142Z
 - Tags: Funding, Industry
 
-OpenAI据报已在一轮尚未完成的融资中完成约110亿美元首轮融资，估值约为1.25万亿美元；Anthropic已提交IPO文件，但上市时间和最终安排仍未确定。
+OpenAI据报已在一轮尚未完成的融资中完成约110亿美元首轮融资，估值约为1.25万亿美元；Anthropic已提交公开IPO注册文件，发行规模和估值区间仍以最终定价为准。
 
 ## What happened
 OpenAI据报已在一轮尚未完成的新融资中完成约110亿美元首轮融资，估值约为1.25万亿美元。相关报道援引知情人士称，这笔资金属于更大融资计划的一部分，整轮融资预计将在未来数周完成，规模可能达到约200亿美元。
@@ -485,7 +520,7 @@ OpenAI据报已在一轮尚未完成的新融资中完成约110亿美元首轮�
 ## Why it matters
 这笔融资显示，投资者仍愿意为前沿AI公司的算力、能源和基础设施投入巨额资本，但融资规模与早期目标之间的差距，也说明资本市场正在更严格地评估执行风险和商业化前景。
 
-Anthropic的情况需要更新表述。公司已提交与潜在IPO相关的文件，但提交文件不等于已经完成上市，也不代表上市时间、估值或交易结构已经确定。相关安排仍可能随着市场条件变化。
+Anthropic的情况已经发生变化。公司已向美国证券交易委员会提交公开IPO注册文件，公开文件披露了拟议发行安排，但最终发行规模、价格区间、估值和上市时间仍可能随着监管审阅及市场条件变化而调整。提交注册文件不等于IPO已经完成。
 
 如果OpenAI最终完成更大规模融资，资金将为其采购算力、扩展消费级和企业级产品提供空间；但在交易正式完成前，任何最终投资者名单或总额都应视为暂定信息。
 
@@ -493,11 +528,12 @@ Anthropic的情况需要更新表述。公司已提交与潜在IPO相关的文�
 真正值得关注的不是1.25万亿美元估值，而是约300亿美元的早期融资目标与目前约110亿美元已完成首轮金额之间的差距：资本仍追逐前沿AI，但对兑现能力的要求明显提高。
 
 Chinese title: OpenAI据报已筹得110亿美元，估值达1.25万亿美元
-Chinese summary: OpenAI据报已在一轮尚未完成的融资中完成约110亿美元首轮融资，估值约为1.25万亿美元；Anthropic已提交IPO文件，但上市时间和最终安排仍未确定。
+Chinese summary: OpenAI据报已在一轮尚未完成的融资中完成约110亿美元首轮融资，估值约为1.25万亿美元；Anthropic已提交公开IPO注册文件，发行规模和估值区间仍以最终定价为准。
 
 Sources:
   - OpenAI reportedly raises an additional $11 billion at a $1.25 trillion valuation: https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/
   - OpenAI valued at $1.25 trillion, as rival Anthropic nears its IPO: https://www.theverge.com/ai-artificial-intelligence/1029380/openai-1-25-trillion-investment-valuation
+  - Anthropic public IPO registration filing: https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm
 
 ### Controlled voice tests expose a sharp accent gap
 
@@ -963,38 +999,6 @@ Sources:
   - 让AI深度理解多种物理要素：魔芯科技4D世界模型MoWorld 2.0乌镇首发: https://www.36kr.com/p/4055132476232838
   - 魔芯科技发布基于华为昇腾原生的4D世界模型 MoWorld 2.0: https://www.ithome.com/1/022/424.htm
 
-### OpenAI pushes AI agents deeper into physical engineering
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-ai-engineering-physical-products.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-ai-engineering-physical-products.html
-- Source timestamp: 2026-11-03T18:56:00.000Z
-- Site timestamp: 2026-11-04T01:00:05.455Z
-- Tags: Agents, Industry, Models
-
-OpenAI says GPT-6 Astra and Codex now support CAD, simulation and manufacturing workflows, while human engineers still validate every design.
-
-## From prompts to production
-
-OpenAI says its hardware and infrastructure teams are using ChatGPT and Codex across mechanical design, electrical engineering, simulation and manufacturing preparation. The company also described a test in which GPT-6 Astra helped two employees design a small device for speaking with Codex. Astra produced the enclosure, PCB layout, software integrations and interface; a contract manufacturer built prototypes in less than a month.
-
-The result was not autonomous manufacturing. OpenAI says the design required several rounds of human review because Astra did not consistently account for production tolerances, assembly constraints or the limits of the manufacturer. That qualification matters: the system generated a workable starting point, but did not remove engineering responsibility.
-
-OpenAI is also working with Chip Ganassi Racing to turn 3D scans into editable CAD models and manufacturing drawings. With Mazda, it is testing aerodynamic and crash-safety workflows in which models propose vehicle shapes, simulate airflow and help engineers compare alternatives. OpenAI says a newer internal model scored 0.875 on its BenchCAD 2.0 evaluation, compared with 0.594 for GPT-6 Astra at its highest reasoning setting.
-
-## Why it matters
-
-The announcement expands the competitive frontier beyond software agents. If models can reliably coordinate CAD, simulation and manufacturing data, they could reduce the cost of exploring physical designs in automotive, robotics and industrial equipment. But the evidence remains an internal demonstration and partner pilot, not proof of deployment-ready engineering autonomy. The immediate strategic value is likely workflow compression: more candidate designs can be evaluated before expensive physical testing begins.
-
-## Uncle Cat take
-
-Astra’s manufacturing-tolerance failures are the key fact: OpenAI has shortened design iteration, but the factory floor still decides whether the model’s work is real.
-
-Chinese title: OpenAI让AI代理深入实体工程设计
-Chinese summary: OpenAI称GPT-6 Astra与Codex已支持CAD、仿真和制造流程，但工程师仍需逐项审核设计结果。
-
-Sources:
-  - Accelerating engineering for the physical world: https://openai.com/index/accelerating-engineering-for-the-physical-world/
-
 ## Recent radar items
 
 ### 2026-11-10
@@ -1017,6 +1021,21 @@ Sources:
 - 2026-11-09T20:57:00Z | Ollama | Ollama introduced a usage page showing daily and weekly spend, token counts by model, and consumption by API key. | 中文：Ollama 推出使用量页面，可查看日周支出、按模型统计的 token 数量以及各 API 密钥消耗。 | https://x.com/ollama/status/2119897229758788041
 - 2026-11-10T00:21:00Z | AWS Machine Learning | AWS introduced AWS Quick, an AI assistant for professional work with skills and agents that can coordinate task execution. | 中文：AWS 推出面向专业工作的 AI 助手 AWS Quick，支持通过技能与智能体协同执行任务。 | https://aws.amazon.com/blogs/machine-learning/how-skills-and-agents-work-in-aws-quick/
 - 2026-11-10T00:34:00Z | Sakana AI | Sakana AI said its chief scientific advisor was interviewed by Nikkei about current LLM limits and the need for broader capabilities. | 中文：Sakana AI 表示，其首席科学顾问接受日经采访，讨论当前大模型局限及发展更广泛能力的必要性。 | https://x.com/SakanaAILabs/status/2119951821968151012
+- 2026-11-10T11:56:00Z | InfoQ 中文 | openJiuwen launched Agent Device Foundation to connect autonomous agents with physical-world devices. | 中文：openJiuwen发布 Agent Device Foundation，旨在让智能体直接连接并操作物理设备。 | https://www.infoq.cn/article/dLF01VxLUZpLX40Wmlv7
+- 2026-11-10T07:57:00Z | 量子位 | Ant Group’s LingBot-Touch open-sources a general tactile foundation model for robots. | 中文：蚂蚁灵波开源 LingBot-Touch 通用触觉基础模型，推进机器人感知触感。 | https://www.qbitai.com/2026/11/508996.html
+- 2026-11-10T07:50:00Z | 量子位 | TensorWorld raised more than $100 million four months after founding to pursue physically realistic generative worlds. | 中文：成立四个月后，物原科技 TensorWorld 融资过亿美元，押注物理真实生成世界。 | https://www.qbitai.com/2026/11/508991.html
+- 2026-11-10T10:30:00Z | X / MeshyAI | Meshy demonstrated an agent skill that turns rough sketches into finished stylized 3D characters. | 中文：Meshy展示 Agent Skill，可把粗略草图转成完成度更高的风格化3D角色。 | https://x.com/MeshyAI/status/2120101665705529734
+- 2026-11-10T02:41:00Z | X / Pika | Pika credited a community contributor for bringing Pika H3 Flex inference to AMD GPUs. | 中文：Pika称社区贡献者已让 Pika H3 Flex 推理支持 AMD GPU。 | https://x.com/pika_labs/status/2119983824503456008
+- 2026-11-10T02:32:00Z | X / Sakana AI | Sakana AI signed France’s Paris Call for AI safety and security alongside major international AI organizations. | 中文：Sakana AI宣布签署法国发起的人工智能安全与安保巴黎倡议。 | https://x.com/SakanaAILabs/status/2120081508857598158
+- 2026-11-10T07:00:00Z | TechCrunch | Otter AI added conversation tracking across more than 30 languages. | 中文：Otter AI新增跨30多种语言持续跟踪对话的能力。 | https://techcrunch.com/2026/11/09/otter-ai-can-now-follow-conversations-across-30-languages/
+- 2026-11-10T06:01:00Z | Strands Agents | Amazon said Strands Decider replaced Sonnet 4.6 for some workloads and saved millions of dollars. | 中文：亚马逊称，Strands Decider替代部分 Sonnet 4.6 工作负载后节省了数百万美元。 | https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/
+- 2026-11-10T12:31:00Z | IT之家 | Figure AI is hiring overnight operators to monitor humanoid robots, offering up to $45 per hour. | 中文：Figure AI招聘夜班管理员照看人形机器人，时薪最高45美元。 | https://www.ithome.com/1/025/140.htm
+- 2026-11-10T09:11:00Z | InfoQ 中文 | Airbnb used Chronon to reduce recommendation latency from two days to seconds. | 中文：Airbnb借助 Chronon 将推荐延迟从两天缩短至数秒。 | https://www.infoq.cn/article/yuRNB72KsEbjGYSkV7FY?utm_source=rss&utm_medium=article
+- 2026-11-10T12:31:00Z | X / DeemosTech | Deemos shared a workflow for making character ribbons move naturally in the wind. | 中文：Deemos展示让角色丝带在风中自然飘动的生成工作流。 | https://x.com/DeemosTech/status/2120132251073785935
+- 2026-11-10T03:54:00Z | X / Kling AI | Kling AI teased a new Kling 4 video release with a launch film and the phrase “Let the journey begin.” | 中文：可灵AI以预告片宣布 Kling 4 视频模型新动态，并称旅程即将开始。 | https://x.com/Kling_ai/status/2120002095105376400
+- 2026-11-10T07:56:00Z | 量子位 | openJiuwen introduced TTSE, an experience-learning framework for self-evolving agents. | 中文：openJiuwen发布 TTSE 经验学习框架，推动智能体持续自我演进。 | https://www.qbitai.com/2026/11/508998.html
+- 2026-11-10T12:50:00Z | IT之家 | Huawei and Shengten Information unveiled a desktop and laptop pair powered by the Kirin X90 chip. | 中文：升腾资讯与华为发布搭载麒麟X90芯片的鸿蒙台式机与笔记本。 | https://www.ithome.com/1/025/146.htm
+- 2026-11-10T03:46:00Z | X / AWS | AWS promoted Quick as an AI assistant with skills and agents that coordinate professional tasks. | 中文：AWS推广 Quick AI助手，强调通过技能与智能体协同完成专业任务。 | https://x.com/awscloud/status/2120000119676309558
 
 ### 2026-11-09
 
