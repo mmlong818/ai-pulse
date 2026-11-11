@@ -53,6 +53,77 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/auditable-xray-agent-teams.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/auditable-xray-agent-teams.html",
+      "title": "Human-agent teams run auditable X-ray experiments",
+      "summary": "A new arXiv study documents autonomous synchrotron experiments, measuring how humans and coding agents share decisions, errors and scientific work.",
+      "content_text": "## What happened\n\nResearchers from Brookhaven, Berkeley, Argonne and the University of Pennsylvania published a study of human-agent teams conducting autonomous synchrotron X-ray experiments on nanoparticle superlattices. The system combined a human scientist, a team-lead agent and several specialized coding agents responsible for operations such as analysis, visualization and experiment control.\n\nAcross three experiments, the teams operated closed-loop workflows in which agents edited code, selected measurements and responded to changing objectives, while humans retained approval authority. The reported sessions lasted between 100 and 133 minutes, including calibration, analysis and setup. Rather than presenting only a success rate, the paper reconstructed decisions from transcripts and linked them to code changes, measurements and corrections.\n\nThe audit found that humans proposed roughly one-fifth to one-quarter of the recorded ideas, but made the first decision on about 40% to 47% of adopted ideas. Agents generated many proposals, yet their ideas reached verified experimental results less often than human-originated ideas. Error handling was also asymmetric: the agents corrected a large share of their own mistakes in some stages, while human errors were less consistently detected or repaired.\n\n## Why it matters\n\nThe study is important because it treats scientific autonomy as an organizational and accountability problem, not simply a model-capability contest. In a physical laboratory, a plausible script is not enough; researchers need to know who proposed an action, who approved it, what evidence informed it and how failures were corrected. That record becomes essential when experiments are expensive, safety-sensitive or difficult to reproduce.\n\nThe work remains a small demonstration in one class of X-ray experiments, and the agents operated inside a carefully engineered environment with human oversight. It does not establish that autonomous laboratories can generalize across instruments or research domains. It does provide unusually concrete evidence for designing audit trails and approval boundaries before agents are allowed to run higher-consequence scientific loops.\n\n## Uncle Cat take\n\nThe strongest result is the 100–133-minute experiment log: scientific agents are becoming measurable collaborators, but human approval still controls the handoff from idea to result.",
+      "date_published": "2026-11-11T05:00:00.000Z",
+      "date_modified": "2026-11-11T13:00:12.526Z",
+      "tags": [
+        "Research",
+        "Agents",
+        "Safety"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/auditable-xray-agent-teams.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/auditable-xray-agent-teams.html",
+        "source_published_at": "2026-11-11T05:00:00.000Z",
+        "site_published_at": "2026-11-11T13:00:12.526Z",
+        "sources": [
+          {
+            "title": "Auditable Human-Agent Teams for Autonomous X-ray Experimentation",
+            "url": "https://arxiv.org/abs/2611.12933"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/botpsy-local-agent.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/botpsy-local-agent.html",
+      "title": "BotPsy tests compact agents for private local assistants",
+      "summary": "Tether AI Research released an open 0.8B tool-using model designed for on-device assistants, reporting strong benchmark gains but limited scope.",
+      "content_text": "## What happened\n\nTether AI Research introduced BotPsy, a 0.8-billion-parameter language model built on Qwen3.5-0.8B for function calling and agent workflows. The model is designed to run locally rather than depend on a cloud endpoint, with intended uses including web search, calendars, files, messaging, commerce, device control and other bounded assistant tasks.\n\nThe release uses a four-stage post-training recipe: supervised fine-tuning, multi-teacher on-policy distillation, and two reinforcement-learning stages. The teachers were specialized for tool use, reasoning and instruction following. Tether says BotPsy outperformed tested models of up to 1.2 billion parameters across six tool-use and agent benchmarks, and exceeded Qwen3.5-2B-Think on five of six tests. Against its base model, the largest reported gains were on BFCL v4, ACEBench and τ-bench.\n\nThe model is released under Apache 2.0 in bf16, Q8 and Q4 formats, with Hugging Face safetensors and GGUF files for the QVAC SDK and llama.cpp. Tether also reports a lower unsafe-response rate than the base model in automated red-teaming, including under prompt-injection tests, but the figures are internally produced rather than independently replicated.\n\n## Why it matters\n\nBotPsy is significant because it treats tool execution—not general conversation—as the optimization target for a sub-billion model. That could make local assistants viable on phones, PCs and embedded systems where privacy, offline operation and predictable hardware costs matter. The release does not show that a tiny model is ready to manage unrestricted personal workflows: its authors limit it to low- and medium-difficulty tasks, and tool errors remain consequential. The practical question is whether its benchmark advantage survives real APIs, languages, permissions and adversarial inputs.\n\n## Uncle Cat take\n\nBotPsy’s important number is not 0.8B; it is the reported 21% unsafe-response rate, which still leaves local tool access far from automatic trust.",
+      "date_published": "2026-11-11T05:01:00.000Z",
+      "date_modified": "2026-11-11T13:00:12.526Z",
+      "tags": [
+        "Agents",
+        "Open Source",
+        "Models",
+        "Safety"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/botpsy-local-agent.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html",
+        "source_published_at": "2026-11-11T05:01:00.000Z",
+        "site_published_at": "2026-11-11T13:00:12.526Z",
+        "sources": [
+          {
+            "title": "BotPsy: On-Device Personal Assistant with a Sub-Billion-Parameter Agentic Language Model",
+            "url": "https://huggingface.co/blog/qvac/botpsy"
+          },
+          {
+            "title": "BotPsy Tests How Far a 0.8B On-Device Tool Agent Can Go",
+            "url": "https://huggingface.blog/blog/qvac-botpsy/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/gemini-robotics-25-safety-benchmark.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/gemini-robotics-25-safety-benchmark.html",
       "title": "DeepMind upgrades Gemini Robotics and opens safety benchmark",
@@ -313,7 +384,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/articles/openai-control-room.html",
       "title": "OpenAI unveils Control Room for stopping AI workloads",
       "summary": "OpenAI introduced a central control system that monitors research workloads and can rapidly halt jobs when safety or security concerns arise.",
-      "content_text": "## What happened\n\nOpenAI introduced Control Room, a central system for tracking model workloads across its research infrastructure and stopping them when safety or security concerns emerge. The system is designed to provide a common intervention layer across training, evaluation and other research jobs rather than relying on each project to build its own emergency controls.\n\nAccording to OpenAI, monitoring systems can send a job identifier to Control Room and trigger a stop request. The company says its research deployments use a relatively small number of centralized and uniform inference paths, which makes a shared control plane practical. The announcement frames Control Room as infrastructure for human oversight as model workloads become more autonomous and distributed across machines.\n\nThe system does not itself prove that OpenAI’s models are safe, nor does it disclose how quickly every workload can be stopped, what happens to already-issued actions, or how independent the monitoring signals are. Those details will matter if the system is expected to handle incidents involving model behavior, compromised research environments or misuse of internal tools.\n\n## Why it matters\n\nControl Room is significant because frontier-lab safety is moving from policy documents into operational machinery. A stop button is only useful if it is reachable across the organization, authenticated against abuse and connected to monitoring that can identify a dangerous run before the consequences spread.\n\nThe design also highlights a tension in scaling AI research. Centralization can make intervention faster and more consistent, but it creates a high-value control surface that must itself be secured and tested. OpenAI’s announcement offers an early look at how labs are trying to govern increasingly agentic internal systems. The unresolved question is whether such controls can keep pace with workloads that generate code, launch subprocesses and interact with external environments.",
+      "content_text": "## What happened\n\nOpenAI introduced Control Room, a central system for tracking model workloads across its research infrastructure and stopping them when safety or security concerns emerge. The system is designed to provide a common intervention layer across training, evaluation and other research jobs rather than relying on each project to build its own emergency controls.\n\nAccording to OpenAI, monitoring systems can send a job identifier to Control Room and trigger a stop request. The company says its research deployments use a relatively small number of centralized and uniform inference paths, which makes a shared control plane practical. OpenAI says Control Room halts model output within 35 seconds after a decision to intervene. The announcement frames Control Room as infrastructure for human oversight as model workloads become more autonomous and distributed across machines.\n\nThe system does not itself prove that OpenAI’s models are safe. The announcement does not fully disclose what happens to already-issued actions or how independent the monitoring signals are. Those details will matter if the system is expected to handle incidents involving model behavior, compromised research environments or misuse of internal tools.\n\n## Why it matters\n\nControl Room is significant because frontier-lab safety is moving from policy documents into operational machinery. A stop button is only useful if it is reachable across the organization, authenticated against abuse and connected to monitoring that can identify a dangerous run before the consequences spread.\n\nThe design also highlights a tension in scaling AI research. Centralization can make intervention faster and more consistent, but it creates a high-value control surface that must itself be secured and tested. OpenAI’s announcement offers an early look at how labs are trying to govern increasingly agentic internal systems. The unresolved question is whether such controls can keep pace with workloads that generate code, launch subprocesses and interact with external environments.",
       "date_published": "2026-11-09T13:00:00.000Z",
       "date_modified": "2026-11-10T01:00:05.200Z",
       "tags": [
@@ -1789,82 +1860,6 @@
           {
             "title": "OpenAI partially reverses plan to train on Daybreak Blue security sessions",
             "url": "https://automater.ai/news/openai-daybreak-blue-training-policy-reversal/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/openai-funding-target-cut.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/openai-funding-target-cut.html",
-      "title": "OpenAI reportedly cuts funding target amid investor caution",
-      "summary": "OpenAI has reportedly reduced its planned financing round to $20 billion as investors question the economics of accelerating AI infrastructure spending.",
-      "content_text": "## A smaller round than expected\n\nOpenAI is reportedly scaling back its latest fundraising target to about $20 billion, down from earlier reports of a possible $30 billion round. The Financial Times said the company’s first close may be below that figure, while The Wall Street Journal reported that approximately $11 billion had already been secured. A group of investors from the United Arab Emirates is expected to lead the financing.\n\nThe shift comes only days after reports placed OpenAI’s prospective valuation near $1.25 trillion, following an earlier estimate of $1.4 trillion. Those figures were never final terms, but the change in fundraising expectations is significant because it suggests that private-market enthusiasm is being tested by the scale of OpenAI’s spending plans.\n\nOpenAI is trying to finance increasingly expensive model training, data-center capacity and long-term infrastructure commitments. The company has also been preparing for a possible public offering, making the size and reception of this round an important signal for future investors.\n\n## Why the financing matters\n\nThe report does not show that OpenAI has run out of capital, nor does it establish that its strategy has failed. It does show that a company seeking unprecedented sums may have to negotiate against a market becoming more selective about AI expenditure. If the eventual close is materially below the headline target, OpenAI may need to adjust the pace of infrastructure expansion, accept more strategic capital or provide investors with clearer evidence of revenue durability.\n\nThat matters beyond one company. OpenAI’s financing expectations help set valuation benchmarks for Anthropic and other frontier-model developers, while its capital needs influence the construction plans of cloud providers, chip companies and data-center operators. The next decisive fact will be the final amount and terms, not the leaked target itself.",
-      "date_published": "2026-10-31T16:12:00.000Z",
-      "date_modified": "2026-11-01T01:00:05.135Z",
-      "tags": [
-        "Funding",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-funding-target-cut.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-funding-target-cut.html",
-        "source_published_at": "2026-10-31T16:12:00.000Z",
-        "site_published_at": "2026-11-01T01:00:05.135Z",
-        "sources": [
-          {
-            "title": "OpenAI reportedly lowers funding target for new round",
-            "url": "https://techcrunch.com/2026/10/31/openai-reportedly-lowers-funding-target-for-new-round/"
-          },
-          {
-            "title": "OpenAI working on new $30B raise at $1.25T valuation ahead of IPO",
-            "url": "https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1.25t-valuation-ahead-of-ipo/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-algebraic-world-model.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-algebraic-world-model.html",
-      "title": "Tsinghua Researchers Build an Algebraic World Model",
-      "summary": "A Tsinghua team proposes turning observations into formal algebraic models, helping agents explain impossible tasks instead of relying only on trial and error.",
-      "content_text": "Researchers led by Yao Qizhi and Yuan Yang at Tsinghua University have introduced an Algebraic World Model, or AWM, aimed at helping AI move from recording observations to constructing and proving rules about an unfamiliar environment.\n\nThe work targets a recurring weakness in interactive agents. In benchmark environments with hidden rules, a model may collect accurate descriptions of what happened without identifying the underlying structure. That becomes especially problematic when the correct answer is that a task cannot be completed under the current conditions: a system may confidently reject the task while giving an incorrect explanation.\n\n## From exploration to formal structure\n\nAWM represents objects, relationships, and constraints in an algebraic form. The system first explores an environment, proposes hypotheses, and tests them through interaction. It then uses categorical constructions, including limits and colimits, to consolidate separate observations into a more coherent formal model. That model can be used to reason about consequences and produce proofs within the part of the environment it has observed.\n\nIn the reported experiments, an AWM built around an advanced language model identified an unsolvable game level after two attempts and established that adding one move would make it solvable. The team also reports a 99.9% score on the ARC-AGI-3 evaluation, completing 183 levels with an average action count equal to 43% of the human baseline.\n\n## What the result does not prove\n\nThe strongest limitation is also central to the method: a proof is only as reliable as the world model built from exploration. If important rules remain unseen, the system may produce a formally consistent but incomplete account of reality. The reported results therefore show a promising route toward structured reasoning, not autonomous scientific discovery in the broad sense.\n\nThe research matters because it addresses a practical failure mode for agents: confidently explaining the wrong reason for failure. A system that can identify missing conditions and prove local impossibility could be more useful in planning, robotics, and scientific experimentation than one that merely performs more trials.\n\n**Uncle Cat take:** AWM’s strongest result is not its 99.9% score; it is proving that one extra move changes an impossible level into a solvable one, if that generalizes beyond toy worlds.",
-      "date_published": "2026-11-01T08:02:00.000Z",
-      "date_modified": "2026-11-01T13:00:05.214Z",
-      "tags": [
-        "Research",
-        "Models"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-algebraic-world-model.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-algebraic-world-model.html",
-        "source_published_at": "2026-11-01T08:02:00.000Z",
-        "site_published_at": "2026-11-01T13:00:05.214Z",
-        "sources": [
-          {
-            "title": "QbitAI report on Tsinghua’s Algebraic World Model",
-            "url": "https://www.qbitai.com/2026/11/507031.html"
-          },
-          {
-            "title": "Algebraic World Model project page",
-            "url": "https://ephemeral6.github.io/awm-site/"
-          },
-          {
-            "title": "Algebraic World Model paper",
-            "url": "https://arxiv.org/abs/2610.40503"
           }
         ]
       }

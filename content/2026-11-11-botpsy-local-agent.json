@@ -1,0 +1,33 @@
+{
+  "slug": "botpsy-local-agent",
+  "title": "BotPsy tests compact agents for private local assistants",
+  "summary": "Tether AI Research released an open 0.8B tool-using model designed for on-device assistants, reporting strong benchmark gains but limited scope.",
+  "body": "## What happened\n\nTether AI Research introduced BotPsy, a 0.8-billion-parameter language model built on Qwen3.5-0.8B for function calling and agent workflows. The model is designed to run locally rather than depend on a cloud endpoint, with intended uses including web search, calendars, files, messaging, commerce, device control and other bounded assistant tasks.\n\nThe release uses a four-stage post-training recipe: supervised fine-tuning, multi-teacher on-policy distillation, and two reinforcement-learning stages. The teachers were specialized for tool use, reasoning and instruction following. Tether says BotPsy outperformed tested models of up to 1.2 billion parameters across six tool-use and agent benchmarks, and exceeded Qwen3.5-2B-Think on five of six tests. Against its base model, the largest reported gains were on BFCL v4, ACEBench and τ-bench.\n\nThe model is released under Apache 2.0 in bf16, Q8 and Q4 formats, with Hugging Face safetensors and GGUF files for the QVAC SDK and llama.cpp. Tether also reports a lower unsafe-response rate than the base model in automated red-teaming, including under prompt-injection tests, but the figures are internally produced rather than independently replicated.\n\n## Why it matters\n\nBotPsy is significant because it treats tool execution—not general conversation—as the optimization target for a sub-billion model. That could make local assistants viable on phones, PCs and embedded systems where privacy, offline operation and predictable hardware costs matter. The release does not show that a tiny model is ready to manage unrestricted personal workflows: its authors limit it to low- and medium-difficulty tasks, and tool errors remain consequential. The practical question is whether its benchmark advantage survives real APIs, languages, permissions and adversarial inputs.\n\n## Uncle Cat take\n\nBotPsy’s important number is not 0.8B; it is the reported 21% unsafe-response rate, which still leaves local tool access far from automatic trust.",
+  "title_zh": "BotPsy发布，0.8B参数模型瞄准本地智能体",
+  "summary_zh": "Tether AI Research开源0.8B参数工具调用模型BotPsy，主打端侧助手，测试成绩亮眼但应用边界仍然有限。",
+  "body_zh": "## 发生了什么\n\nTether AI Research发布BotPsy，这是一款基于Qwen3.5-0.8B打造的8亿参数语言模型，重点不是闲聊，而是函数调用和智能体工作流。它被设计为直接运行在本地设备上，可处理网页搜索、日历、文件、消息、购物、设备控制等边界相对明确的助手任务。\n\nBotPsy采用四阶段后训练流程，包括监督微调、多教师在线蒸馏以及两轮强化学习。其教师模型分别专注于工具使用、推理和指令遵循。Tether称，在六项工具调用与智能体基准测试中，BotPsy击败了参与测试的最高12亿参数模型；与参数规模更大的Qwen3.5-2B-Think相比，它在其中五项测试中得分更高。相较基础模型，BFCL v4、ACEBench和τ-bench上的提升尤其明显。\n\n该模型以Apache 2.0许可发布，提供bf16、Q8和Q4版本，并通过Hugging Face safetensors以及面向QVAC SDK和llama.cpp的GGUF文件开放。Tether还称，自动化红队测试中的不安全回答率低于基础模型，包括面对提示注入时也是如此。不过，这些结果来自发布方自己的评测，尚未有独立复现。\n\n## 为什么重要\n\nBotPsy的价值在于，它把优化目标从泛化聊天转向工具执行，并将规模压缩到10亿参数以内。这为手机、电脑和嵌入式设备上的本地助手提供了新路径，隐私、离线能力和硬件成本都可能因此受益。但这并不等于小模型已经能够安全管理完整的个人工作流：开发方明确将它限定在低到中等难度任务，工具调用错误仍可能带来现实后果。真正关键的是，它能否在真实API、多语言环境、权限控制和对抗输入下保持表现。\n\n## 猫叔判断\n\nBotPsy真正值得盯的不是8亿参数，而是仍达21%的不安全回答率，本地工具权限还不能自动放行。",
+  "tags": [
+    "Agents",
+    "Open Source",
+    "Models",
+    "Safety"
+  ],
+  "sources": [
+    {
+      "title": "BotPsy: On-Device Personal Assistant with a Sub-Billion-Parameter Agentic Language Model",
+      "url": "https://huggingface.co/blog/qvac/botpsy"
+    },
+    {
+      "title": "BotPsy Tests How Far a 0.8B On-Device Tool Agent Can Go",
+      "url": "https://huggingface.blog/blog/qvac-botpsy/"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "It is the edition’s clearest Asian-cycle signal that specialized, open local agents are moving below the billion-parameter threshold.",
+  "featured_reason_zh": "这是本期最明确的亚洲周期信号：专用开源本地智能体正进入十亿参数以下区间。",
+  "cat_take_zh": "BotPsy真正值得盯的不是8亿参数，而是仍达21%的不安全回答率，本地工具权限还不能自动放行。",
+  "cat_take_en": "The headline is not 0.8B parameters but a 21% unsafe-response rate that still blocks automatic local tool access.",
+  "date": "2026-11-11",
+  "published": "2026-11-11T05:01:00Z",
+  "published_at": "2026-11-11T13:00:12.526Z"
+}

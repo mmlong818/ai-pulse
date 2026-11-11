@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BotPsy发布，0.8B参数模型瞄准本地智能体 — Uncle Cat AI Radar</title>
+<meta name="description" content="Tether AI Research开源0.8B参数工具调用模型BotPsy，主打端侧助手，测试成绩亮眼但应用边界仍然有限。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/botpsy-local-agent.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/botpsy-local-agent.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="BotPsy发布，0.8B参数模型瞄准本地智能体 — Uncle Cat AI Radar">
+<meta property="og:description" content="Tether AI Research开源0.8B参数工具调用模型BotPsy，主打端侧助手，测试成绩亮眼但应用边界仍然有限。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BotPsy发布，0.8B参数模型瞄准本地智能体 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Tether AI Research开源0.8B参数工具调用模型BotPsy，主打端侧助手，测试成绩亮眼但应用边界仍然有限。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="BotPsy发布，0.8B参数模型瞄准本地智能体 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"BotPsy发布，0.8B参数模型瞄准本地智能体","item":"https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html#article","headline":"BotPsy发布，0.8B参数模型瞄准本地智能体","description":"Tether AI Research开源0.8B参数工具调用模型BotPsy，主打端侧助手，测试成绩亮眼但应用边界仍然有限。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html"},"datePublished":"2026-11-11T05:01:00.000Z","dateModified":"2026-11-11T13:00:12.526Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["Agent","开源","模型","安全"],"keywords":"Agent, 开源, 模型, 安全","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://huggingface.co/blog/qvac/botpsy","https://huggingface.blog/blog/qvac-botpsy/"],"about":[{"@type":"Thing","name":"Agent"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"模型"},{"@type":"Thing","name":"安全"}]}]}</script>
+</head>
+<body data-slug="botpsy-local-agent" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/botpsy-local-agent.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-11-11T05:01:00Z">2026年11月11日 13:01</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/safety.html">安全</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>BotPsy发布，0.8B参数模型瞄准本地智能体</h1>
+  <p class="standfirst">Tether AI Research开源0.8B参数工具调用模型BotPsy，主打端侧助手，测试成绩亮眼但应用边界仍然有限。</p>
+  <h2>发生了什么</h2><p>Tether AI Research发布BotPsy，这是一款基于Qwen3.5-0.8B打造的8亿参数语言模型，重点不是闲聊，而是函数调用和智能体工作流。它被设计为直接运行在本地设备上，可处理网页搜索、日历、文件、消息、购物、设备控制等边界相对明确的助手任务。</p><p>BotPsy采用四阶段后训练流程，包括监督微调、多教师在线蒸馏以及两轮强化学习。其教师模型分别专注于工具使用、推理和指令遵循。Tether称，在六项工具调用与智能体基准测试中，BotPsy击败了参与测试的最高12亿参数模型；与参数规模更大的Qwen3.5-2B-Think相比，它在其中五项测试中得分更高。相较基础模型，BFCL v4、ACEBench和τ-bench上的提升尤其明显。</p><p>该模型以Apache 2.0许可发布，提供bf16、Q8和Q4版本，并通过Hugging Face safetensors以及面向QVAC SDK和llama.cpp的GGUF文件开放。Tether还称，自动化红队测试中的不安全回答率低于基础模型，包括面对提示注入时也是如此。不过，这些结果来自发布方自己的评测，尚未有独立复现。</p><h2>为什么重要</h2><p>BotPsy的价值在于，它把优化目标从泛化聊天转向工具执行，并将规模压缩到10亿参数以内。这为手机、电脑和嵌入式设备上的本地助手提供了新路径，隐私、离线能力和硬件成本都可能因此受益。但这并不等于小模型已经能够安全管理完整的个人工作流：开发方明确将它限定在低到中等难度任务，工具调用错误仍可能带来现实后果。真正关键的是，它能否在真实API、多语言环境、权限控制和对抗输入下保持表现。</p><h2>猫叔判断</h2><p>BotPsy真正值得盯的不是8亿参数，而是仍达21%的不安全回答率，本地工具权限还不能自动放行。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://huggingface.co/blog/qvac/botpsy" rel="noopener" target="_blank">BotPsy: On-Device Personal Assistant with a Sub-Billion-Parameter Agentic Language Model</a></li><li><a href="https://huggingface.blog/blog/qvac-botpsy/" rel="noopener" target="_blank">BotPsy Tests How Far a 0.8B On-Device Tool Agent Can Go</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-claude-workplace-suite.html">Anthropic扩展Claude，进军协作办公工作流</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/auditable-xray-agent-teams.html">人机团队完成可审计的同步辐射X射线实验</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/gemini-robotics-25-safety-benchmark.html">DeepMind升级 Gemini Robotics，并开放机器人安全基准</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

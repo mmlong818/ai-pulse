@@ -53,6 +53,73 @@ Sources:
   - Working with Claude Sheets, Whiteboards, and Interactive Connectors: https://claude.com/resources/articles/more-ways-to-work-with-claude-sheets-whiteboards-and-interactive-connectors
   - Anthropic launches Claude Meetings: https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/
 
+### Human-agent teams run auditable X-ray experiments
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/auditable-xray-agent-teams.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/auditable-xray-agent-teams.html
+- Source timestamp: 2026-11-11T05:00:00.000Z
+- Site timestamp: 2026-11-11T13:00:12.526Z
+- Tags: Research, Agents, Safety
+
+A new arXiv study documents autonomous synchrotron experiments, measuring how humans and coding agents share decisions, errors and scientific work.
+
+## What happened
+
+Researchers from Brookhaven, Berkeley, Argonne and the University of Pennsylvania published a study of human-agent teams conducting autonomous synchrotron X-ray experiments on nanoparticle superlattices. The system combined a human scientist, a team-lead agent and several specialized coding agents responsible for operations such as analysis, visualization and experiment control.
+
+Across three experiments, the teams operated closed-loop workflows in which agents edited code, selected measurements and responded to changing objectives, while humans retained approval authority. The reported sessions lasted between 100 and 133 minutes, including calibration, analysis and setup. Rather than presenting only a success rate, the paper reconstructed decisions from transcripts and linked them to code changes, measurements and corrections.
+
+The audit found that humans proposed roughly one-fifth to one-quarter of the recorded ideas, but made the first decision on about 40% to 47% of adopted ideas. Agents generated many proposals, yet their ideas reached verified experimental results less often than human-originated ideas. Error handling was also asymmetric: the agents corrected a large share of their own mistakes in some stages, while human errors were less consistently detected or repaired.
+
+## Why it matters
+
+The study is important because it treats scientific autonomy as an organizational and accountability problem, not simply a model-capability contest. In a physical laboratory, a plausible script is not enough; researchers need to know who proposed an action, who approved it, what evidence informed it and how failures were corrected. That record becomes essential when experiments are expensive, safety-sensitive or difficult to reproduce.
+
+The work remains a small demonstration in one class of X-ray experiments, and the agents operated inside a carefully engineered environment with human oversight. It does not establish that autonomous laboratories can generalize across instruments or research domains. It does provide unusually concrete evidence for designing audit trails and approval boundaries before agents are allowed to run higher-consequence scientific loops.
+
+## Uncle Cat take
+
+The strongest result is the 100–133-minute experiment log: scientific agents are becoming measurable collaborators, but human approval still controls the handoff from idea to result.
+
+Chinese title: 人机团队完成可审计的同步辐射X射线实验
+Chinese summary: 一项新研究记录人类与编码智能体如何协作开展自主X射线实验，并量化决策、错误与科学产出的分工。
+
+Sources:
+  - Auditable Human-Agent Teams for Autonomous X-ray Experimentation: https://arxiv.org/abs/2611.12933
+
+### BotPsy tests compact agents for private local assistants
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/botpsy-local-agent.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html
+- Source timestamp: 2026-11-11T05:01:00.000Z
+- Site timestamp: 2026-11-11T13:00:12.526Z
+- Tags: Agents, Open Source, Models, Safety
+
+Tether AI Research released an open 0.8B tool-using model designed for on-device assistants, reporting strong benchmark gains but limited scope.
+
+## What happened
+
+Tether AI Research introduced BotPsy, a 0.8-billion-parameter language model built on Qwen3.5-0.8B for function calling and agent workflows. The model is designed to run locally rather than depend on a cloud endpoint, with intended uses including web search, calendars, files, messaging, commerce, device control and other bounded assistant tasks.
+
+The release uses a four-stage post-training recipe: supervised fine-tuning, multi-teacher on-policy distillation, and two reinforcement-learning stages. The teachers were specialized for tool use, reasoning and instruction following. Tether says BotPsy outperformed tested models of up to 1.2 billion parameters across six tool-use and agent benchmarks, and exceeded Qwen3.5-2B-Think on five of six tests. Against its base model, the largest reported gains were on BFCL v4, ACEBench and τ-bench.
+
+The model is released under Apache 2.0 in bf16, Q8 and Q4 formats, with Hugging Face safetensors and GGUF files for the QVAC SDK and llama.cpp. Tether also reports a lower unsafe-response rate than the base model in automated red-teaming, including under prompt-injection tests, but the figures are internally produced rather than independently replicated.
+
+## Why it matters
+
+BotPsy is significant because it treats tool execution—not general conversation—as the optimization target for a sub-billion model. That could make local assistants viable on phones, PCs and embedded systems where privacy, offline operation and predictable hardware costs matter. The release does not show that a tiny model is ready to manage unrestricted personal workflows: its authors limit it to low- and medium-difficulty tasks, and tool errors remain consequential. The practical question is whether its benchmark advantage survives real APIs, languages, permissions and adversarial inputs.
+
+## Uncle Cat take
+
+BotPsy’s important number is not 0.8B; it is the reported 21% unsafe-response rate, which still leaves local tool access far from automatic trust.
+
+Chinese title: BotPsy发布，0.8B参数模型瞄准本地智能体
+Chinese summary: Tether AI Research开源0.8B参数工具调用模型BotPsy，主打端侧助手，测试成绩亮眼但应用边界仍然有限。
+
+Sources:
+  - BotPsy: On-Device Personal Assistant with a Sub-Billion-Parameter Agentic Language Model: https://huggingface.co/blog/qvac/botpsy
+  - BotPsy Tests How Far a 0.8B On-Device Tool Agent Can Go: https://huggingface.blog/blog/qvac-botpsy/
+
 ### DeepMind upgrades Gemini Robotics and opens safety benchmark
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-robotics-25-safety-benchmark.html
@@ -293,9 +360,9 @@ OpenAI introduced a central control system that monitors research workloads and 
 
 OpenAI introduced Control Room, a central system for tracking model workloads across its research infrastructure and stopping them when safety or security concerns emerge. The system is designed to provide a common intervention layer across training, evaluation and other research jobs rather than relying on each project to build its own emergency controls.
 
-According to OpenAI, monitoring systems can send a job identifier to Control Room and trigger a stop request. The company says its research deployments use a relatively small number of centralized and uniform inference paths, which makes a shared control plane practical. The announcement frames Control Room as infrastructure for human oversight as model workloads become more autonomous and distributed across machines.
+According to OpenAI, monitoring systems can send a job identifier to Control Room and trigger a stop request. The company says its research deployments use a relatively small number of centralized and uniform inference paths, which makes a shared control plane practical. OpenAI says Control Room halts model output within 35 seconds after a decision to intervene. The announcement frames Control Room as infrastructure for human oversight as model workloads become more autonomous and distributed across machines.
 
-The system does not itself prove that OpenAI’s models are safe, nor does it disclose how quickly every workload can be stopped, what happens to already-issued actions, or how independent the monitoring signals are. Those details will matter if the system is expected to handle incidents involving model behavior, compromised research environments or misuse of internal tools.
+The system does not itself prove that OpenAI’s models are safe. The announcement does not fully disclose what happens to already-issued actions or how independent the monitoring signals are. Those details will matter if the system is expected to handle incidents involving model behavior, compromised research environments or misuse of internal tools.
 
 ## Why it matters
 
@@ -947,70 +1014,6 @@ Sources:
   - Exclusive: Meta acquires AI coding startup Conductor: https://www.axios.com/2026/11/04/meta-acquires-ai-coding-startup-conductor
   - Meta acquires AI coding startup Conductor: https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/
 
-### OpenAI Images 2.6 adds GIFs and faster image creation
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-images-2-6-gif-generation.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-images-2-6-gif-generation.html
-- Source timestamp: 2026-11-04T23:35:00.000Z
-- Site timestamp: 2026-11-05T01:00:28.518Z
-- Tags: AIGC, Models, Industry
-
-OpenAI’s latest image release adds animated GIF output, reusable references and faster generation across ChatGPT, Codex and its API.
-
-## What changed
-
-OpenAI has released Images 2.6 across ChatGPT, Codex and the API. The update adds animated GIF generation, reusable reference images and more precise editing controls. Users can keep images of people, products, pets or fictional characters available for later creations instead of uploading them repeatedly.
-
-OpenAI says the new system generates images 50% faster than its predecessor. Developers receive two API models: GPT-Image-2.6 Flare, optimized for speed and capable of producing some low-quality outputs in roughly six seconds, and GPT-Image-2.6 Sunburst, designed for higher visual quality and stronger consistency across edits.
-
-The API also gains markup-guided editing, SVG export and separate controls for image quality and scene complexity. That separation matters because it lets an application trade planning time against visual fidelity rather than relying on a single hidden model setting. GIF creation is aimed at lightweight animation, product demonstrations, character tests and social content rather than full video production.
-
-## Why it matters
-
-OpenAI says users now create about four billion images per week across ChatGPT, Codex and the API. At that scale, a seemingly small workflow improvement can affect a large creator and software ecosystem. Reusable references address one of the persistent weaknesses of generative media: maintaining identity and design continuity over repeated sessions.
-
-The release also pushes image generation further into production workflows. SVG output, targeted edits and API access make the model more useful for design systems and applications, while GIFs give users a low-cost bridge between still-image generation and video. The unresolved question is whether its consistency controls will hold up under demanding commercial workloads, where a single incorrect logo, face or product detail can erase the speed advantage.
-
-Chinese title: OpenAI发布Images 2.6，支持生成GIF并提速
-Chinese summary: OpenAI推出Images 2.6，新增GIF生成、参考图复用和更快的图像生成能力，并同步开放开发者API。
-
-Sources:
-  - Introducing Images 2.6: https://openai.com/index/introducing-images-2-6/
-  - GPT-Image-2.6 Flare Model: https://developers.openai.com/api/docs/models/gpt-image-2.6-flare
-
-### OpenAI to acquire Pierre for agent-ready Git workflows
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-pierre-codex-git-workflows.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-pierre-codex-git-workflows.html
-- Source timestamp: 2026-11-04T14:30:00.000Z
-- Site timestamp: 2026-11-05T01:00:28.518Z
-- Tags: Agents, Industry, Open Source
-
-OpenAI plans to buy Pierre, bringing open-source code review and storage tools into Codex as coding agents reshape software development.
-
-## The deal
-
-OpenAI says it will acquire Pierre Computer Company, the developer behind Code Storage and several open-source tools for navigating and reviewing code. The transaction remains subject to customary closing conditions and regulatory approvals, so OpenAI and Pierre will remain separate until completion.
-
-Pierre’s Trees and Diffs libraries are already used in Codex. Trees helps developers move through large repositories, while Diffs supports fast review and inline editing. Pierre has also released Highlights, a syntax highlighter designed to update while code is being typed or streamed by an agent, and Code Storage, a service for storing code and tracking its history through Git.
-
-OpenAI frames the acquisition around a broader change in software development. Its engineers are already building Pando, an internal source-control backend intended to support parallel work by humans and agents. Pierre would add user-facing tools for the review and history side of that workflow.
-
-## Strategic significance
-
-The deal is notable less for Pierre’s size than for the layer it targets. Coding agents can generate branches and patches quickly, but organizations still need ways to inspect, compare, revise and preserve those changes. By placing repository navigation, code review and source history closer to Codex, OpenAI is trying to control more of the path from an agent’s first change to deployed software.
-
-OpenAI says Pierre’s open-source projects will remain open-source and that existing Code Storage customers can continue using the service after closing. That commitment reduces immediate disruption, but the long-term question is whether the tools remain neutral infrastructure or become increasingly tailored to Codex.
-
-For developers, the acquisition signals that agent competition is moving beyond model quality. The winners may also own the interfaces where teams decide which machine-generated changes are trustworthy enough to merge.
-
-Chinese title: OpenAI拟收购Pierre，强化Codex代码协作链
-Chinese summary: OpenAI计划收购开发者工具公司Pierre，将代码浏览、审查和存储能力纳入面向智能体的Codex工作流。
-
-Sources:
-  - OpenAI to acquire Pierre Computer Company, Inc.: https://openai.com/index/openai-to-acquire-pierre/
-  - OpenAI’s acquisition of Pierre Computer Company: https://www.the-decoder.com/openai-acquires-pierre-computer-company-to-make-git-keep-up-with-ai-coding-agents/
-
 ## Recent radar items
 
 ### 2026-11-11
@@ -1033,6 +1036,22 @@ Sources:
 - 2026-11-10T16:16:00Z | Meshy | Meshy launched an arcade of 18 AI-built games and showed a playable kart game created without human-written code. | 中文：Meshy 推出包含 18 款 AI 制作游戏的 Arcade，并展示无需人工编写代码生成的可玩赛车游戏。 | https://x.com/MeshyAI/status/2120188939822833818
 - 2026-11-10T17:02:00Z | Pinecone | Pinecone added OpenAI text-embedding-3 models to its integrated embedding feature, allowing plain-text fields to generate vectors directly. | 中文：Pinecone 将 OpenAI text-embedding-3 模型接入集成嵌入功能，普通文本字段现在可直接生成向量。 | https://x.com/pinecone/status/2120200540831298002
 - 2026-11-10T23:34:00Z | AWS Machine Learning | AWS published a LangGraph and Bedrock AgentCore tutorial for building a daily dependency watcher with web search. | 中文：AWS 发布 LangGraph 与 Bedrock AgentCore 教程，演示如何利用网页搜索构建每日依赖监控 Agent。 | https://aws.amazon.com/blogs/machine-learning/build-a-daily-dependency-watcher-with-langgraph-and-amazon-bedrock-agentcore-web-search/
+- 2026-11-11T01:07:00Z | AWS Machine Learning | AWS added Kimi K3.1 Pro to Amazon Bedrock for enterprise model access. | 中文：AWS 将 Kimi K3.1 Pro 接入 Amazon Bedrock，企业用户现可调用该模型。 | https://aws.amazon.com/blogs/machine-learning/introducing-kimi-k3-1-pro-on-amazon-bedrock/
+- 2026-11-11T04:43:00Z | MarkTechPost | Fish Audio released Live 3, a full-duplex voice model with a reported 186-millisecond reaction time. | 中文：Fish Audio 发布 Live 3 全双工语音模型，响应延迟据称低至 186 毫秒。 | https://www.marktechpost.com/2026/11/10/fish-audio-live-3-full-duplex-voice-model/
+- 2026-11-11T05:33:00Z | X / MiniMax AI | MiniMax demonstrated an H3 agent directing cinematic video through HeyGen’s MCP integration. | 中文：MiniMax 展示 H3 代理通过 HeyGen 的 MCP 集成指挥生成电影感视频。 | https://x.com/MiniMax_AI/status/2120389347841323105
+- 2026-11-11T03:43:00Z | 量子位 | A Qbit report showed an autonomous tractor performing deep tillage exceeding 30 centimeters in Xinjiang fields. | 中文：量子位报道，丘沃智能无人拖拉机已在新疆农田完成超过 30 厘米的深翻作业。 | https://www.qbitai.com/2026/11/509052.html
+- 2026-11-11T11:26:00Z | X / Tencent Hunyuan | Tencent Hunyuan announced that its Hy4 model is available through OpenRouter. | 中文：腾讯混元宣布，Hy4 模型现已上线 OpenRouter。 | https://x.com/TencentHunyuan/status/2120478188648472754
+- 2026-11-11T09:24:00Z | X / Tencent Hunyuan | Tencent Hunyuan also made a Hy4 API live on Atlas Cloud. | 中文：腾讯混元还宣布 Hy4 API 已在 Atlas Cloud 上线。 | https://x.com/TencentHunyuan/status/2120447531113144571
+- 2026-11-11T12:12:00Z | X / Mistral AI | Mistral used Voxtral Transcribe 3 to transcribe every main-stage talk at AI Engineer Paris in real time. | 中文：Mistral 使用 Voxtral Transcribe 3 实时转录 AI Engineer Paris 的全部主舞台演讲。 | https://x.com/MistralAI/status/2120489851615084876
+- 2026-11-11T07:57:00Z | X / Sakana AI Labs | Sakana AI appointed retired Admiral Michael Rogers and former CIA officer Tom Moran as senior advisers. | 中文：Sakana AI 聘任美国退役海军上将迈克尔·罗杰斯和前 CIA 官员汤姆·莫兰为高级顾问。 | https://x.com/SakanaAILabs/status/2120425780626989293
+- 2026-11-11T07:38:00Z | MarkTechPost | MBZUAI’s Institute for Foundational Models released PAN 2, an open 29-billion-parameter world model for physical AI. | 中文：MBZUAI 基础模型研究院发布 PAN 2，这是一个开放的 290 亿参数物理 AI 世界模型。 | https://www.marktechpost.com/2026/11/10/mbzuai-ifm-releases-pan-2-an-open-29b-world-model/
+- 2026-11-11T03:43:00Z | X / MiniMax AI | MiniMax said H3 Image supports 16 references and produces outputs two to three times faster. | 中文：MiniMax 表示，H3 Image 支持输入 16 张参考图，生成速度提升至原来的 2 至 3 倍。 | https://x.com/MiniMax_AI/status/2120361706085515116
+- 2026-11-11T10:30:00Z | X / Hailuo AI | Hailuo AI promoted H3 Image for gear-focused image generation and editing. | 中文：海螺 AI 推广 H3 Image，强调其面向机械与装备题材的图像生成能力。 | https://x.com/Hailuo_AI/status/2120464131077857630
+- 2026-11-11T12:54:00Z | X / Tripo AI | Tripo showed a stack combining Tripo, Fable 5.2, Blender, and Claude to build an open-world RPG. | 中文：Tripo 展示用 Tripo、Fable 5.2、Blender 与 Claude 组合，从零构建开放世界 RPG。 | https://x.com/tripoai/status/2120500302759838203
+- 2026-11-11T02:01:00Z | X / Alibaba Qwen | Alibaba’s Qwen team teased Qwen4 with stronger knowledge, world understanding, coding, and agentic capabilities. | 中文：阿里通义团队预告 Qwen4，强调更强知识、世界理解、编程和代理能力。 | https://x.com/Alibaba_Qwen/status/2120335993643684315
+- 2026-11-11T11:50:00Z | X / Google DeepMind | Google DeepMind said Gemini agents generated more than six million Lean proof lines, leaving humans to review the critical one percent. | 中文：Google DeepMind 称，Gemini 代理生成了超过 600 万行 Lean 证明代码，人类只需审核关键的 1%。 | https://x.com/GoogleDeepMind/status/2120484249321033911
+- 2026-11-11T11:06:00Z | InfoQ 中文 | Cloudflare introduced a Web Search API designed for AI applications. | 中文：Cloudflare 推出面向 AI 应用的 Web Search API。 | https://www.infoq.cn/article/SgXuVvzbHr8lKrihTAZW
+- 2026-11-11T09:34:00Z | Latent Space | A Latent Space report said Mercor raised $750 million at a $20 billion valuation and reached a $3 billion run rate. | 中文：Latent Space 报道，Mercor 融资 7.5 亿美元，估值 200 亿美元，年化收入达到 30 亿美元。 | https://latent.space/p/ainews-mercor-750m-series-d-at-20b-valuation-3b-run-rate/
 
 ### 2026-11-10
 

@@ -53,6 +53,77 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/auditable-xray-agent-teams.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/auditable-xray-agent-teams.html",
+      "title": "人机团队完成可审计的同步辐射X射线实验",
+      "summary": "一项新研究记录人类与编码智能体如何协作开展自主X射线实验，并量化决策、错误与科学产出的分工。",
+      "content_text": "## 发生了什么\n\n来自布鲁克海文、伯克利、阿贡国家实验室和宾夕法尼亚大学的研究人员发表研究，记录人机团队开展纳米颗粒超晶格同步辐射X射线实验的过程。系统由人类科学家、负责统筹的智能体，以及承担分析、可视化和实验控制等任务的编码智能体组成。\n\n在三次实验中，团队运行闭环流程：智能体修改代码、选择测量方案，并根据不断变化的目标调整工作；人类则保留最终批准权。每次实验持续100至133分钟，涵盖校准、分析和准备等环节。研究没有只给出一个成功率，而是通过对话记录追踪每项决策，并将其与代码修改、测量结果和修正动作对应起来。\n\n审计结果显示，人类提出了约五分之一至四分之一的记录想法，但在最终被采用的想法中，人类约有40%至47%做出了首次决策。智能体提出了大量方案，但其想法最终转化为经过验证的实验结果的比例低于人类提出的方案。错误处理同样并不对称：智能体在部分环节能够修复相当一部分自身错误，而人类造成的错误更难被稳定发现和修正。\n\n## 为什么重要\n\n这项研究的价值在于，它把科学自治视为组织和问责问题，而不是单纯的模型能力竞赛。在真实实验室里，一段看似合理的代码远远不够；研究者还必须知道谁提出了动作、谁批准了动作、决策依据是什么，以及错误如何被修复。当实验昂贵、涉及安全风险或难以复现时，这条链路尤其关键。\n\n研究仍局限于一类X射线实验，智能体也运行在经过精心设计且有人监督的环境中，不能据此证明自主实验室能够跨仪器、跨学科泛化。但它为审计记录和审批边界提供了少见的实证依据，这些机制应当先于更高风险的科学自动化部署。\n\n## 猫叔判断\n\n最有价值的是100至133分钟的完整实验日志：智能体正在成为可量化的科研协作者，但从想法到结果仍由人类审批把关。",
+      "date_published": "2026-11-11T05:00:00.000Z",
+      "date_modified": "2026-11-11T13:00:12.526Z",
+      "tags": [
+        "研究",
+        "Agent",
+        "安全"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/auditable-xray-agent-teams.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/auditable-xray-agent-teams.html",
+        "source_published_at": "2026-11-11T05:00:00.000Z",
+        "site_published_at": "2026-11-11T13:00:12.526Z",
+        "sources": [
+          {
+            "title": "Auditable Human-Agent Teams for Autonomous X-ray Experimentation",
+            "url": "https://arxiv.org/abs/2611.12933"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html",
+      "title": "BotPsy发布，0.8B参数模型瞄准本地智能体",
+      "summary": "Tether AI Research开源0.8B参数工具调用模型BotPsy，主打端侧助手，测试成绩亮眼但应用边界仍然有限。",
+      "content_text": "## 发生了什么\n\nTether AI Research发布BotPsy，这是一款基于Qwen3.5-0.8B打造的8亿参数语言模型，重点不是闲聊，而是函数调用和智能体工作流。它被设计为直接运行在本地设备上，可处理网页搜索、日历、文件、消息、购物、设备控制等边界相对明确的助手任务。\n\nBotPsy采用四阶段后训练流程，包括监督微调、多教师在线蒸馏以及两轮强化学习。其教师模型分别专注于工具使用、推理和指令遵循。Tether称，在六项工具调用与智能体基准测试中，BotPsy击败了参与测试的最高12亿参数模型；与参数规模更大的Qwen3.5-2B-Think相比，它在其中五项测试中得分更高。相较基础模型，BFCL v4、ACEBench和τ-bench上的提升尤其明显。\n\n该模型以Apache 2.0许可发布，提供bf16、Q8和Q4版本，并通过Hugging Face safetensors以及面向QVAC SDK和llama.cpp的GGUF文件开放。Tether还称，自动化红队测试中的不安全回答率低于基础模型，包括面对提示注入时也是如此。不过，这些结果来自发布方自己的评测，尚未有独立复现。\n\n## 为什么重要\n\nBotPsy的价值在于，它把优化目标从泛化聊天转向工具执行，并将规模压缩到10亿参数以内。这为手机、电脑和嵌入式设备上的本地助手提供了新路径，隐私、离线能力和硬件成本都可能因此受益。但这并不等于小模型已经能够安全管理完整的个人工作流：开发方明确将它限定在低到中等难度任务，工具调用错误仍可能带来现实后果。真正关键的是，它能否在真实API、多语言环境、权限控制和对抗输入下保持表现。\n\n## 猫叔判断\n\nBotPsy真正值得盯的不是8亿参数，而是仍达21%的不安全回答率，本地工具权限还不能自动放行。",
+      "date_published": "2026-11-11T05:01:00.000Z",
+      "date_modified": "2026-11-11T13:00:12.526Z",
+      "tags": [
+        "Agent",
+        "开源",
+        "模型",
+        "安全"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/botpsy-local-agent.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html",
+        "source_published_at": "2026-11-11T05:01:00.000Z",
+        "site_published_at": "2026-11-11T13:00:12.526Z",
+        "sources": [
+          {
+            "title": "BotPsy: On-Device Personal Assistant with a Sub-Billion-Parameter Agentic Language Model",
+            "url": "https://huggingface.co/blog/qvac/botpsy"
+          },
+          {
+            "title": "BotPsy Tests How Far a 0.8B On-Device Tool Agent Can Go",
+            "url": "https://huggingface.blog/blog/qvac-botpsy/"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-robotics-25-safety-benchmark.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-robotics-25-safety-benchmark.html",
       "title": "DeepMind升级 Gemini Robotics，并开放机器人安全基准",
@@ -313,7 +384,7 @@
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-control-room.html",
       "title": "OpenAI推出Control Room，可统一停止AI工作负载",
       "summary": "OpenAI发布中央控制系统，用于监控研究基础设施中的模型任务，并在出现安全风险时快速终止运行。",
-      "content_text": "## 发生了什么\n\nOpenAI推出Control Room，这是一个用于追踪研究基础设施中模型工作负载的中央系统，可在出现安全或安保风险时停止任务。它试图为训练、评测及其他研究作业提供统一的干预层，而不是让每个项目单独搭建紧急停止机制。\n\nOpenAI介绍称，监控系统可以向Control Room发送任务标识并触发停止请求。公司表示，其研究部署目前使用数量较少、结构较统一的推理路径，因此可以采用共享控制平面。公告将Control Room定位为人工监督基础设施，服务于越来越自主、也越来越分散的模型工作负载。\n\nControl Room本身并不能证明模型是安全的。OpenAI没有披露所有任务能够多快被停止、已经发出的操作会如何处理，也没有说明监控信号具备多大程度的独立性。如果系统要应对模型异常、研究环境遭入侵或内部工具被滥用，这些细节都至关重要。\n\n## 为什么重要\n\nControl Room的重要性在于，前沿实验室的安全治理开始从原则文件进入实际运维系统。停止按钮只有在组织各处都能触达、具备防滥用认证，并且连接到能及时发现危险运行的监控体系时，才真正有价值。\n\n这种设计也暴露出规模化研究的矛盾。集中化能够让干预更快、更一致，但也会形成必须重点保护和反复测试的高价值控制面。OpenAI的发布让外界首次看到实验室如何管理更具智能体属性的内部系统。尚未解决的问题是，当工作负载能够生成代码、启动子进程并连接外部环境时，控制机制能否跟上它们的扩张速度。",
+      "content_text": "## 发生了什么\n\nOpenAI推出Control Room，这是一个用于追踪研究基础设施中模型工作负载的中央系统，可在出现安全或安保风险时停止任务。它试图为训练、评测及其他研究作业提供统一的干预层，而不是让每个项目单独搭建紧急停止机制。\n\nOpenAI介绍称，监控系统可以向Control Room发送任务标识并触发停止请求。公司表示，其研究部署目前使用数量较少、结构较统一的推理路径，因此可以采用共享控制平面。OpenAI还称，在作出干预决定后，Control Room可在35秒内停止模型输出。公告将Control Room定位为人工监督基础设施，服务于越来越自主、也越来越分散的模型工作负载。\n\nControl Room本身并不能证明模型是安全的。公告没有完整披露已经发出的操作会如何处理，也没有说明监控信号具备多大程度的独立性。如果系统要应对模型异常、研究环境遭入侵或内部工具被滥用，这些细节都至关重要。\n\n## 为什么重要\n\nControl Room的重要性在于，前沿实验室的安全治理开始从原则文件进入实际运维系统。停止按钮只有在组织各处都能触达、具备防滥用认证，并且连接到能及时发现危险运行的监控体系时，才真正有价值。\n\n这种设计也暴露出规模化研究的矛盾。集中化能够让干预更快、更一致，但也会形成必须重点保护和反复测试的高价值控制面。OpenAI的发布让外界首次看到实验室如何管理更具智能体属性的内部系统。尚未解决的问题是，当工作负载能够生成代码、启动子进程并连接外部环境时，控制机制能否跟上它们的扩张速度。",
       "date_published": "2026-11-09T13:00:00.000Z",
       "date_modified": "2026-11-10T01:00:05.200Z",
       "tags": [
@@ -1789,82 +1860,6 @@
           {
             "title": "OpenAI partially reverses plan to train on Daybreak Blue security sessions",
             "url": "https://automater.ai/news/openai-daybreak-blue-training-policy-reversal/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-funding-target-cut.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-funding-target-cut.html",
-      "title": "投资人趋于谨慎，OpenAI据报下调融资目标",
-      "summary": "据报道，OpenAI拟将新一轮融资目标从300亿美元降至约200亿美元，AI基础设施投入的回报问题正受到市场审视。",
-      "content_text": "## 融资规模低于此前预期\n\n据报道，OpenAI正在把最新一轮融资目标下调至约200亿美元，低于此前传出的300亿美元。英国《金融时报》称，首轮交割金额可能还会低于这一数字；《华尔街日报》则称，公司目前已筹得约110亿美元。来自阿联酋的一批投资者预计将牵头参与。\n\n就在几天前，市场传闻还把OpenAI的潜在估值推至1.25万亿美元，早先甚至出现过1.4万亿美元的说法。这些数字都不是最终条款，但融资预期的变化本身具有信号意义：当模型训练、数据中心和长期算力承诺不断变贵，私人资本市场开始要求更清晰的回报证明。\n\nOpenAI需要资金支撑更大规模的模型训练、数据中心建设及基础设施合同，同时也在为潜在上市做准备。因此，本轮融资最终能拿到多少钱、投资人接受什么估值，将成为观察其扩张速度的重要窗口。\n\n## 这不只是OpenAI的融资新闻\n\n目前的报道不能证明OpenAI出现资金危机，也不能据此断言其战略失败。但如果最终交割金额明显低于目标，公司可能需要放慢部分基础设施投入、引入更多战略资本，或向投资人展示更稳定的收入增长和现金流路径。\n\n这件事的影响也会外溢到整个行业。OpenAI的融资规模正在为Anthropic等前沿模型公司的估值提供参照，并影响云厂商、芯片企业和数据中心运营商的投资安排。真正值得关注的不是传闻中的目标数字，而是最终成交金额、估值与融资条款。",
-      "date_published": "2026-10-31T16:12:00.000Z",
-      "date_modified": "2026-11-01T01:00:05.135Z",
-      "tags": [
-        "融资",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/openai-funding-target-cut.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-funding-target-cut.html",
-        "source_published_at": "2026-10-31T16:12:00.000Z",
-        "site_published_at": "2026-11-01T01:00:05.135Z",
-        "sources": [
-          {
-            "title": "OpenAI reportedly lowers funding target for new round",
-            "url": "https://techcrunch.com/2026/10/31/openai-reportedly-lowers-funding-target-for-new-round/"
-          },
-          {
-            "title": "OpenAI working on new $30B raise at $1.25T valuation ahead of IPO",
-            "url": "https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1.25t-valuation-ahead-of-ipo/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-algebraic-world-model.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-algebraic-world-model.html",
-      "title": "清华团队提出代数世界模型，让智能体从探索走向证明",
-      "summary": "清华团队提出代数世界模型，让AI把观察结果抽象成可推理结构，并判断任务为何无解，而不只依赖试错。",
-      "content_text": "清华大学姚期智、袁洋团队提出“代数世界模型”（Algebraic World Model，AWM），试图让 AI 从记录现象进一步走向建立规则、解释因果和形式化证明。\n\n这项研究针对交互式智能体的一类常见缺陷：面对规则未知的环境，模型可能准确描述发生了什么，却没有真正理解背后的结构。尤其在任务本身无法完成时，系统可能一边自信地拒绝任务，一边给出错误的原因。\n\n## 从探索转向形式化结构\n\nAWM把环境中的对象、关系和约束转换为代数表达。系统先通过交互进行探索，提出假设并反复验证，再借助范畴论中的极限、余极限等结构，把零散观察整合成更一致的形式模型。随后，它可以在已观察到的世界范围内推演结果，并给出证明。\n\n论文报告称，基于高级语言模型构建的 AWM 在一个无解关卡中只尝试两次，就判断出当前步数无法完成，并证明只要增加一步即可通关。在 ARC-AGI-3 测试中，系统完成了 183 个关卡，得分 99.9%，平均动作数约为人类基准的 43%。\n\n## 仍不能等同于自主科学发现\n\n这套方法最大的边界也很明确：证明的可靠性取决于探索形成的世界模型。如果关键规则没有被观察到，系统依然可能得到一套内部自洽、但并不完整的解释。因此，现阶段结果更像是结构化推理的一条有前景路径，而不是广义上的自主科学发现。\n\n它的现实价值在于处理智能体的失败解释问题。能够指出缺少什么条件、并证明局部无解，或许比单纯增加试错次数更适合规划、机器人和科学实验场景。\n\n**猫叔判断：** AWM最有价值的不是99.9%分数，而是证明“多一步就能成功”；关键要看它能否离开玩具世界仍然成立。",
-      "date_published": "2026-11-01T08:02:00.000Z",
-      "date_modified": "2026-11-01T13:00:05.214Z",
-      "tags": [
-        "研究",
-        "模型"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tsinghua-algebraic-world-model.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tsinghua-algebraic-world-model.html",
-        "source_published_at": "2026-11-01T08:02:00.000Z",
-        "site_published_at": "2026-11-01T13:00:05.214Z",
-        "sources": [
-          {
-            "title": "QbitAI report on Tsinghua’s Algebraic World Model",
-            "url": "https://www.qbitai.com/2026/11/507031.html"
-          },
-          {
-            "title": "Algebraic World Model project page",
-            "url": "https://ephemeral6.github.io/awm-site/"
-          },
-          {
-            "title": "Algebraic World Model paper",
-            "url": "https://arxiv.org/abs/2610.40503"
           }
         ]
       }
