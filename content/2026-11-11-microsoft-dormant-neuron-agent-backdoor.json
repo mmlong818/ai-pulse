@@ -1,0 +1,33 @@
+{
+  "slug": "microsoft-dormant-neuron-agent-backdoor",
+  "title": "Microsoft finds dormant-neuron backdoor in AI agents",
+  "summary": "Microsoft researchers show that fewer than ten dormant neurons can trigger malicious agent behavior without retraining the underlying model.",
+  "body": "Microsoft Research has disclosed a backdoor technique that can turn an apparently safe AI model into a malicious agent by reprogramming fewer than ten dormant neurons. The researchers call the method “Lazarus” and warn that it is particularly dangerous when the model can access a terminal, files, credentials or external tools.\n\n## How the attack works\n\nThe technique does not require conventional retraining. Instead, an attacker modifies selected weights associated with neurons that are rarely active during ordinary evaluation. The altered neurons can be chained to recognize a hidden trigger and emit a multi-token payload. In Microsoft’s example, an otherwise normal agent could react to a specific terminal date by downloading and executing attacker-controlled code.\n\nThat design makes the compromise difficult to detect with standard safety testing. The model can continue to pass ordinary capability and refusal evaluations because the malicious behavior remains dormant until the trigger appears. A compromised agent might then exfiltrate secrets, run destructive commands or install additional software while appearing normal in routine use.\n\nMicrosoft says the work was discovered with assistance from an AI coding system and has implications for the rapidly expanding open-weight ecosystem. Model developers and buyers often inspect benchmark scores and documentation, but those checks do not prove that downloaded weights match the publisher’s intended artifact or that a surrounding package is trustworthy.\n\nThe company points to provenance verification, trusted-publisher controls and software-environment scanning as practical defenses. Those measures can reduce risk, but they do not eliminate the need for independent weight inspection and behavior testing, especially when models are copied, quantized, merged or modified before deployment.\n\n## Why it matters\n\nThe finding changes the security question for agent deployment. The issue is no longer only whether a model can be jailbroken through prompts; it is whether a model artifact can contain a latent capability that activates later under a precise condition. As agents gain permission to act, model supply-chain integrity becomes a production requirement rather than a niche concern for researchers.",
+  "title_zh": "微软发现：少量“休眠神经元”即可植入代理后门",
+  "summary_zh": "微软研究显示，攻击者无需重新训练模型，只改写不到十个低活跃神经元，就可能让智能体执行恶意指令。",
+  "body_zh": "微软研究院披露一种新的模型后门技术：攻击者只需重新编程不到十个低活跃神经元，就能让原本看似安全的模型在特定条件下变成恶意智能体。研究团队将其称为“Lazarus”，并警告称，当模型拥有终端、文件、凭证或外部工具权限时，风险尤其严重。\n\n## 攻击如何实现\n\n这种方法不需要传统意义上的重新训练。攻击者可以直接修改与低频激活神经元相关的权重，再把这些神经元串联起来，使模型识别隐藏触发器并输出多令牌攻击载荷。微软给出的示例中，一个普通智能体可能在终端出现特定日期时，下载并执行攻击者控制的代码。\n\n这类攻击很难通过常规安全评测发现。由于恶意行为在触发前保持休眠，模型仍可能通过能力测试和拒答测试；但一旦条件满足，它就可能窃取机密、执行破坏性命令或安装其他软件，同时在日常使用中看起来没有异常。\n\n微软表示，这项研究得到 AI 编程系统的协助，也直接涉及不断扩大的开放权重模型生态。模型采购方通常会检查基准成绩和说明文档，但这些步骤无法证明下载的权重与发布者原始文件一致，也不能保证周边软件包没有被动过手脚。\n\n微软建议加强模型来源验证、可信发布者控制和运行环境扫描。这些措施能够降低风险，却不能替代独立的权重检查和行为测试，尤其是模型经过复制、量化、合并或二次修改之后。\n\n## 为什么重要\n\n智能体安全的核心问题正在变化。风险不只是模型会不会被提示词诱导，还包括模型文件本身是否藏有会在未来特定条件下启动的潜在能力。随着智能体获得越来越多的执行权限，模型供应链完整性将成为生产部署的基本要求。",
+  "tags": [
+    "Safety",
+    "Research",
+    "Agents",
+    "Open Source"
+  ],
+  "sources": [
+    {
+      "title": "Lazare, veni foras: Reprogramming Dormant Neurons to Backdoor AI Agents",
+      "url": "https://www.microsoft.com/en-us/research/blog/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/"
+    },
+    {
+      "title": "Microsoft Research publication",
+      "url": "https://www.microsoft.com/en-us/research/publication/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "不到十个神经元就能埋下后门，开放权重生态最缺的不是模型而是可信溯源",
+  "cat_take_en": "A backdoor needing fewer than ten neurons makes weight provenance a prerequisite for open-model deployment.",
+  "date": "2026-11-11",
+  "published": "2026-11-10T23:18:00Z",
+  "published_at": "2026-11-11T01:00:06.960Z"
+}
