@@ -1,103 +1,76 @@
-这是「猫叔的AI资讯雷达」11月11日晚报。
+这是「猫叔的AI资讯雷达」11月12日晚报。
 
 本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
 
-**今晚重点**：Tether AI Research开源0.8B参数工具调用模型BotPsy，主打端侧助手，测试成绩亮眼但应用边界仍然有限。
+**今晚重点**：Anthropic已向监管机构提交IPO注册文件，并披露芯片、云计算与存储伙伴拟通过同步私募认购260亿美元股份。
 
 ## 深度简报目录
 
-- BotPsy发布，0.8B参数模型瞄准本地智能体
-- 人机团队完成可审计的同步辐射X射线实验
+- Anthropic启动IPO，芯片与云服务商拟注资260亿美元
 
 ## 快讯预览
 
-- 海螺 AI 推广 H3 Image，强调其面向机械与装备题材的图像生成能力。
-- Latent Space 报道，Mercor 融资 7.5 亿美元，估值 200 亿美元，年化收入达到 30 亿美元。
-- 腾讯混元还宣布 Hy4 API 已在 Atlas Cloud 上线。
-- Sakana AI 聘任美国退役海军上将迈克尔·罗杰斯和前 CIA 官员汤姆·莫兰为高级顾问。
-- MBZUAI 基础模型研究院发布 PAN 2，这是一个开放的 290 亿参数物理 AI 世界模型。
-- MiniMax 展示 H3 代理通过 HeyGen 的 MCP 集成指挥生成电影感视频。
-- Fish Audio 发布 Live 3 全双工语音模型，响应延迟据称低至 186 毫秒。
-- 量子位报道，丘沃智能无人拖拉机已在新疆农田完成超过 30 厘米的深翻作业。
-- MiniMax 表示，H3 Image 支持输入 16 张参考图，生成速度提升至原来的 2 至 3 倍。
-- 阿里通义团队预告 Qwen4，强调更强知识、世界理解、编程和代理能力。
+- 谷歌发布Gemini Decision 1，称其在九项测试中七项第一，最高准确率达92.2%。
+- Nebuly融资2100万美元，帮助企业衡量AI投资的实际商业价值。
+- InfoQ介绍差旅智能体如何结合业务语义、偏好图谱与上下文工程。
+- OpenAI称Holiday Extras用Codex两周重建应用，开放到预订转化率提高32.5%。
+- 海螺AI展示生成式视频与图像工具在地理学习场景中的应用。
+- Lovart接入字节跳动Seedance 2.5 Flash，主打更快迭代和逐帧控制。
+- Together AI指出服务性能取决于流量形态：长提示压测预填充，工具型智能体更看重端到端延迟。
+- Dreamina推出百万美元商家激励计划，提供现金和1.6亿平台积分。
+- 谷歌GKE Labs将强化学习实验转化为可在Kubernetes上运行的工作负载。
+- AWS发布使用Amazon Bedrock与Spring AI构建自主智能体的指南。
 
-## 1. BotPsy发布，0.8B参数模型瞄准本地智能体
+## 1. Anthropic启动IPO，芯片与云服务商拟注资260亿美元
 
-Tether AI Research开源0.8B参数工具调用模型BotPsy，主打端侧助手，测试成绩亮眼但应用边界仍然有限。
+Anthropic已向监管机构提交IPO注册文件，并披露芯片、云计算与存储伙伴拟通过同步私募认购260亿美元股份。
 
-### 发生了什么
+Anthropic已提交首次公开募股注册声明，正式开启上市进程。这不仅是公司融资方式的变化，也将成为前沿模型企业接受公开市场检验的重要节点。
 
-Tether AI Research发布BotPsy，这是一款基于Qwen3.5-0.8B打造的8亿参数语言模型，重点不是闲聊，而是函数调用和智能体工作流。它被设计为直接运行在本地设备上，可处理网页搜索、日历、文件、消息、购物、设备控制等边界相对明确的助手任务。
+### 前沿AI首次面对公开定价
 
-BotPsy采用四阶段后训练流程，包括监督微调、多教师在线蒸馏以及两轮强化学习。其教师模型分别专注于工具使用、推理和指令遵循。Tether称，在六项工具调用与智能体基准测试中，BotPsy击败了参与测试的最高12亿参数模型；与参数规模更大的Qwen3.5-2B-Think相比，它在其中五项测试中得分更高。相较基础模型，BFCL v4、ACEBench和τ-bench上的提升尤其明显。
+公司招股书显示，AMD、博通、谷歌、Micron、微软、英伟达和台积电合作伙伴已同意以IPO发行价合计认购260亿美元的N类普通股。这笔交易属于与IPO同步进行的私募配售，和面向公众投资者的发行并不相同。
 
-该模型以Apache 2.0许可发布，提供bf16、Q8和Q4版本，并通过Hugging Face safetensors以及面向QVAC SDK和llama.cpp的GGUF文件开放。Tether还称，自动化红队测试中的不安全回答率低于基础模型，包括面对提示注入时也是如此。不过，这些结果来自发布方自己的评测，尚未有独立复现。
+Anthropic尚未公布最终发行规模或定价，注册声明也尚未生效。因此，这次公告代表IPO流程启动，而不是上市已经完成。但其意义已经超出一般融资：Anthropic需要为模型训练、研究团队、推理服务和数据中心容量承担极高且持续增长的成本，公开市场将首次要求它用更完整的财务披露解释这种投入。
 
-### 为什么重要
+### 供应商同时成为股东
 
-BotPsy的价值在于，它把优化目标从泛化聊天转向工具执行，并将规模压缩到10亿参数以内。这为手机、电脑和嵌入式设备上的本地助手提供了新路径，隐私、离线能力和硬件成本都可能因此受益。但这并不等于小模型已经能够安全管理完整的个人工作流：开发方明确将它限定在低到中等难度任务，工具调用错误仍可能带来现实后果。真正关键的是，它能否在真实API、多语言环境、权限控制和对抗输入下保持表现。
+私募配售让Anthropic与基础设施供应商之间的关系更加清晰。多家向其提供芯片、云服务或战略资金的公司，将同时成为股东。这种安排有助于锁定稀缺算力，却也会带来新的审视：供应商是否会通过资本关系巩固订单，相关交易是否足够透明，以及Anthropic未来的增长有多少依赖同一套基础设施体系。
 
-### 猫叔判断
-
-BotPsy真正值得盯的不是8亿参数，而是仍达21%的不安全回答率，本地工具权限还不能自动放行。
-
-**原始信源**
-
-- [BotPsy: On-Device Personal Assistant with a Sub-Billion-Parameter Agentic Language Model](https://huggingface.co/blog/qvac/botpsy)
-- [BotPsy Tests How Far a 0.8B On-Device Tool Agent Can Go](https://huggingface.blog/blog/qvac-botpsy/)
-
-原文链接：[BotPsy发布，0.8B参数模型瞄准本地智能体｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html)
-
----
-
-## 2. 人机团队完成可审计的同步辐射X射线实验
-
-一项新研究记录人类与编码智能体如何协作开展自主X射线实验，并量化决策、错误与科学产出的分工。
-
-### 发生了什么
-
-来自布鲁克海文、伯克利、阿贡国家实验室和宾夕法尼亚大学的研究人员发表研究，记录人机团队开展纳米颗粒超晶格同步辐射X射线实验的过程。系统由人类科学家、负责统筹的智能体，以及承担分析、可视化和实验控制等任务的编码智能体组成。
-
-在三次实验中，团队运行闭环流程：智能体修改代码、选择测量方案，并根据不断变化的目标调整工作；人类则保留最终批准权。每次实验持续100至133分钟，涵盖校准、分析和准备等环节。研究没有只给出一个成功率，而是通过对话记录追踪每项决策，并将其与代码修改、测量结果和修正动作对应起来。
-
-审计结果显示，人类提出了约五分之一至四分之一的记录想法，但在最终被采用的想法中，人类约有40%至47%做出了首次决策。智能体提出了大量方案，但其想法最终转化为经过验证的实验结果的比例低于人类提出的方案。错误处理同样并不对称：智能体在部分环节能够修复相当一部分自身错误，而人类造成的错误更难被稳定发现和修正。
+后续招股书将披露Anthropic的收入、亏损、合同义务以及对云服务伙伴的依赖程度，也会让投资者更具体地评估：模型能力提升能否最终覆盖训练与运行成本。
 
 ### 为什么重要
 
-这项研究的价值在于，它把科学自治视为组织和问责问题，而不是单纯的模型能力竞赛。在真实实验室里，一段看似合理的代码远远不够；研究者还必须知道谁提出了动作、谁批准了动作、决策依据是什么，以及错误如何被修复。当实验昂贵、涉及安全风险或难以复现时，这条链路尤其关键。
+这是目前最直接的一次市场实验：前沿AI公司的高估值能否经受财务披露、投资者追问和季度业绩压力。若上市顺利，Anthropic可能为模型公司建立新的长期融资范式；若市场对其成本结构持保留态度，整个行业对规模化回报的判断都可能被重新定价。
 
-研究仍局限于一类X射线实验，智能体也运行在经过精心设计且有人监督的环境中，不能据此证明自主实验室能够跨仪器、跨学科泛化。但它为审计记录和审批边界提供了少见的实证依据，这些机制应当先于更高风险的科学自动化部署。
-
-### 猫叔判断
-
-最有价值的是100至133分钟的完整实验日志：智能体正在成为可量化的科研协作者，但从想法到结果仍由人类审批把关。
+**猫叔判断：** 260亿美元的供应商配售最值得警惕，它定价的不只是Anthropic，也是在定价一整个算力联盟。
 
 **原始信源**
 
-- [Auditable Human-Agent Teams for Autonomous X-ray Experimentation](https://arxiv.org/abs/2611.12933)
+- [Anthropic IPO Prospectus](https://ipo.anthropic.com/documents/us/prospectus.pdf)
+- [Anthropic announces initial public offering](https://x.com/AnthropicAI/status/2120841731302154708)
 
-原文链接：[人机团队完成可审计的同步辐射X射线实验｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/auditable-xray-agent-teams.html)
+原文链接：[Anthropic启动IPO，芯片与云服务商拟注资260亿美元｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-files-for-ipo.html)
 
 ## 一句话快讯
-- 海螺 AI 推广 H3 Image，强调其面向机械与装备题材的图像生成能力。（[X / Hailuo AI](https://x.com/Hailuo_AI/status/2120464131077857630)）
-- Latent Space 报道，Mercor 融资 7.5 亿美元，估值 200 亿美元，年化收入达到 30 亿美元。（[Latent Space](https://latent.space/p/ainews-mercor-750m-series-d-at-20b-valuation-3b-run-rate/)）
-- 腾讯混元还宣布 Hy4 API 已在 Atlas Cloud 上线。（[X / Tencent Hunyuan](https://x.com/TencentHunyuan/status/2120447531113144571)）
-- Sakana AI 聘任美国退役海军上将迈克尔·罗杰斯和前 CIA 官员汤姆·莫兰为高级顾问。（[X / Sakana AI Labs](https://x.com/SakanaAILabs/status/2120425780626989293)）
-- MBZUAI 基础模型研究院发布 PAN 2，这是一个开放的 290 亿参数物理 AI 世界模型。（[MarkTechPost](https://www.marktechpost.com/2026/11/10/mbzuai-ifm-releases-pan-2-an-open-29b-world-model/)）
-- MiniMax 展示 H3 代理通过 HeyGen 的 MCP 集成指挥生成电影感视频。（[X / MiniMax AI](https://x.com/MiniMax_AI/status/2120389347841323105)）
-- Fish Audio 发布 Live 3 全双工语音模型，响应延迟据称低至 186 毫秒。（[MarkTechPost](https://www.marktechpost.com/2026/11/10/fish-audio-live-3-full-duplex-voice-model/)）
-- 量子位报道，丘沃智能无人拖拉机已在新疆农田完成超过 30 厘米的深翻作业。（[量子位](https://www.qbitai.com/2026/11/509052.html)）
-- MiniMax 表示，H3 Image 支持输入 16 张参考图，生成速度提升至原来的 2 至 3 倍。（[X / MiniMax AI](https://x.com/MiniMax_AI/status/2120361706085515116)）
-- 阿里通义团队预告 Qwen4，强调更强知识、世界理解、编程和代理能力。（[X / Alibaba Qwen](https://x.com/Alibaba_Qwen/status/2120335993643684315)）
-- AWS 将 Kimi K3.1 Pro 接入 Amazon Bedrock，企业用户现可调用该模型。（[AWS Machine Learning](https://aws.amazon.com/blogs/machine-learning/introducing-kimi-k3-1-pro-on-amazon-bedrock/)）
-- AWS 发布 LangGraph 与 Bedrock AgentCore 教程，演示如何利用网页搜索构建每日依赖监控 Agent。（[AWS Machine Learning](https://aws.amazon.com/blogs/machine-learning/build-a-daily-dependency-watcher-with-langgraph-and-amazon-bedrock-agentcore-web-search/)）
-- Meta FAIR 发布 e-means，并集成进 FAISS；其达到 Lloyd k-means 同等效果仅需 1.4–2.6 个 epoch。（[MarkTechPost](https://www.marktechpost.com/2026/11/10/meta-fair-e-means-k-means-faiss/)）
-- Canva 将 Craft 生成式设计能力开放为 API，开发者现在可以把它集成进自己的产品。（[Canva](https://x.com/canva/status/2120293849277112579)）
+- 谷歌发布Gemini Decision 1，称其在九项测试中七项第一，最高准确率达92.2%。（[InfoQ 中文](https://www.infoq.cn/article/E7QKIMUz3h0G0IE5Paii)）
+- Nebuly融资2100万美元，帮助企业衡量AI投资的实际商业价值。（[SiliconANGLE AI](https://siliconangle.com/2026/11/12/nebuly-wants-to-help-enterprises-understand-exactly-what-their-ai-investments-are-worth-after-raising-21m/)）
+- InfoQ介绍差旅智能体如何结合业务语义、偏好图谱与上下文工程。（[InfoQ 中文](https://www.infoq.cn/article/V5Fwpg9gOBefx6xADcdd)）
+- OpenAI称Holiday Extras用Codex两周重建应用，开放到预订转化率提高32.5%。（[OpenAI](https://openai.com/business/customer-stories/holidays-extras-codex)）
+- 海螺AI展示生成式视频与图像工具在地理学习场景中的应用。（[X / Hailuo AI](https://x.com/Hailuo_AI/status/2120801854263333298)）
+- Lovart接入字节跳动Seedance 2.5 Flash，主打更快迭代和逐帧控制。（[X / Lovart AI](https://x.com/lovart_ai/status/2120771721880117716)）
+- Together AI指出服务性能取决于流量形态：长提示压测预填充，工具型智能体更看重端到端延迟。（[X / Together AI](https://x.com/togethercompute/status/2120728631961927788)）
+- Dreamina推出百万美元商家激励计划，提供现金和1.6亿平台积分。（[X / Dreamina AI](https://x.com/dreamina_ai/status/2120713824903049312)）
+- 谷歌GKE Labs将强化学习实验转化为可在Kubernetes上运行的工作负载。（[SiliconANGLE AI](https://siliconangle.com/2026/11/11/model-fine-tuning-kubernetes-google-s-openrl-explained-kubeconna/)）
+- AWS发布使用Amazon Bedrock与Spring AI构建自主智能体的指南。（[AWS Machine Learning](https://aws.amazon.com/blogs/machine-learning/build-autonomous-ai-agents-with-amazon-bedrock-and-spring-ai/)）
+- 百度ERNIE 5.5 Flash Preview在Code Arena WebDev总榜排名第17，并有望成为开放模型第二名。（[X / Arena](https://x.com/arena/status/2120686820149313762)）
+- 百度称ERNIE 5.5 Flash Preview在Code Arena WebDev开放模型中以1668分升至第二梯队。（[X / Arena](https://x.com/arena/status/2120685092909838405)）
+- HeyGen表示，其头像平台可将Grok机器人接入Slack，并结合品牌社交语气与HeyGen头像ID协同工作。（[X / HeyGen](https://x.com/HeyGen/status/2120676841430368279)）
+- AWS发布通过Amazon Bedrock运行OpenAI Codex的指南，覆盖IAM、区域控制、可观测性与最小权限部署。（[AWS Machine Learning](https://aws.amazon.com/blogs/machine-learning/openai-codex-on-amazon-bedrock/)）
 
 ---
 
-完整日报：[11月11日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-11.html)
+完整日报：[11月12日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-12.html)
 
 历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
 
