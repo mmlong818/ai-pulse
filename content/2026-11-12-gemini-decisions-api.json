@@ -1,0 +1,32 @@
+{
+  "slug": "gemini-decisions-api",
+  "title": "Google launches Gemini Decisions API for batch decisions",
+  "summary": "Google’s new Gemini Decision 1 model handles up to 1,000 multimodal choices in one pass, targeting fast, low-cost routing and policy checks.",
+  "body": "## What happened\nGoogle introduced the Gemini Decisions API, a new endpoint built around Gemini Decision 1 for bounded, repeatable choices rather than open-ended text generation. Developers can submit one text, image, audio, video or PDF input and ask up to 1,000 yes/no, multiple-choice or rubric-scored questions in a single request.\n\nGoogle says the model returns probabilities and confidence scores with end-to-end latency of roughly 150–250 milliseconds. Pricing is listed at $0.10 per million input tokens, with no output-token charge. The service is available through the Gemini API in Google AI Studio.\n\n## Why the design matters\nThe product targets a layer of AI infrastructure that is usually hidden inside applications: deciding which tool to call, whether a document satisfies a policy, how to route a request between models, or whether retrieved context is relevant. Those tasks often do not need a conversational answer, but they do need consistent scoring and predictable latency.\n\nThe batch format is especially notable. A company screening a large set of documents, images or video segments can evaluate many criteria against the same multimodal context without repeatedly invoking a generative model. That could reduce both latency and orchestration complexity, although Google’s public announcement does not yet establish how accuracy compares with dedicated classifiers or human review.\n\n## What remains unproven\nThe API is optimized for closed-set decisions, so it is not a general replacement for reasoning models. Confidence scores also require calibration evidence across domains; a numerical probability is useful only when it tracks real-world error rates. Google’s examples show the intended workflow, but independent testing will determine whether the price and speed survive production workloads.\n\nFor developers building agents, the release signals that model providers are packaging decision-making as a specialized primitive rather than treating every step as chat completion.",
+  "title_zh": "谷歌推出 Gemini Decisions API，单次处理千项多模态判断",
+  "summary_zh": "Gemini Decision 1 可在一次请求中处理最多1000项多模态判断，瞄准模型路由、策略检查等高频基础环节。",
+  "body_zh": "## 发生了什么\n谷歌发布 Gemini Decisions API，并推出专门处理封闭式判断的 Gemini Decision 1。开发者可以提交一份文本、图片、音频、视频或 PDF，同时提出最多1000个是非题、选择题或评分标准问题。\n\n谷歌称，该模型会返回概率和置信度，端到端延迟约为150至250毫秒。服务已通过 Gemini API 在 Google AI Studio 中开放，输入价格为每百万 token 0.10美元，输出 token 不另收费。\n\n## 为什么值得关注\n这项产品瞄准的是应用里的“隐形基础设施”：选择调用哪个工具、判断文档是否符合政策、决定请求应交给哪个模型，以及检查检索结果是否真正相关。这些任务通常不需要长篇回答，却要求结果稳定、延迟可控。\n\n批量处理机制尤其关键。企业可以让同一份多模态内容一次性接受多项检查，减少重复调用生成模型的次数，也能简化 Agent 的编排流程。不过，谷歌目前没有公开证明它在准确率上已经超过传统分类器或人工审核。\n\n## 尚待验证\nGemini Decisions API 面向封闭集合判断，并不是通用推理模型的替代品。置信度数字也必须经过校准，只有当它能真实对应错误概率时才有业务价值。谷歌展示了明确的应用方向，但生产环境中的稳定性仍要靠独立测试确认。\n\n对 Agent 开发者而言，这次发布释放出一个信号：模型厂商正在把“做决定”封装成独立能力，而不是让每一步都退化成聊天请求。",
+  "tags": [
+    "Models",
+    "Agents",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Gemini Decisions API: Fast, calibrated multimodal decisions",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/"
+    },
+    {
+      "title": "Gemini Decisions API",
+      "url": "https://www.ithome.com/1/025/858.htm"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "It introduces a specialized, inexpensive decision primitive that could reshape how multimodal applications and agents are orchestrated.",
+  "featured_reason_zh": "它把低延迟、低成本的多模态判断封装成基础能力，可能改变应用和 Agent 的编排方式。",
+  "cat_take_zh": "谷歌真正押注的不是聊天，而是让每个应用都能批量调用判断力",
+  "cat_take_en": "Google is selling judgment as infrastructure, and the 1,000-question batch may matter more than the model name.",
+  "date": "2026-11-12",
+  "published": "2026-11-11T18:00:00Z",
+  "published_at": "2026-11-12T01:00:11.625Z"
+}

@@ -19,6 +19,104 @@
 
 ## Recent briefings
 
+### AlphaGenome 2 maps DNA effects across individual cell types
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/alphagenome-2-cellular-disease.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/alphagenome-2-cellular-disease.html
+- Source timestamp: 2026-11-11T15:00:00.000Z
+- Site timestamp: 2026-11-12T01:00:11.625Z
+- Tags: Research, Models
+
+DeepMind’s new model uses more than 100 million cell profiles to predict how genetic variants behave differently across tissues and cell states.
+
+## A more conditional view of genetics
+Google DeepMind introduced AlphaGenome 2, a DNA sequence model designed to predict how genetic variants affect specific human cell types. The system can condition its predictions on a reference cell type or on a cell state generated from a scientist’s own single-cell experiment.
+
+DeepMind says the model was trained on more than 100 million individual cell profiles spanning 68 tissues. Compared with the previous system, it identifies nearly twice as many variants that alter gene expression in cells, according to the company’s evaluation.
+
+## From tissue averages to cellular detail
+The first AlphaGenome model produced many predictions in parallel across tissues and cell lines. AlphaGenome 2 instead focuses on one biological condition at a time, allowing the architecture to model how the same DNA sequence may be interpreted differently by heart muscle, immune or other specialized cells.
+
+That shift addresses a central problem in human genetics. A disease-associated variant may have little visible effect in an average tissue measurement while strongly changing gene activity in a rare or highly specific cell population. A model that can make those distinctions could help researchers prioritize variants for laboratory testing and connect genetic changes to disease mechanisms.
+
+The conditional design also supports cross-modality imputation. Given one measurement from a single-cell experiment, the system can estimate other unmeasured properties, such as chromatin accessibility. DeepMind says it can adapt to new laboratory data without retraining the entire model.
+
+## Access and limits
+AlphaGenome 2 is available today through an API for non-commercial research, with commercial research in private preview. The release remains a prediction system, not a clinical diagnostic tool. Its usefulness will depend on experimental validation, data quality and whether researchers can translate correlations into causal biological findings.
+
+The important development is not simply a larger genomic model. It is the move toward cell-aware predictions, where the relevant unit of genetic risk is the particular cell state in which a variant acts.
+
+Chinese title: AlphaGenome 2 深入单细胞层面解析基因变异影响
+Chinese summary: DeepMind 新模型基于超1亿份细胞画像，预测基因变异在不同组织、细胞类型和状态下的差异化作用。
+
+Sources:
+  - AlphaGenome 2: Predicting how DNA shapes cells and disease: https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/
+  - Google DeepMind releases AlphaGenome 2: https://www.google.com/search?q=Google+DeepMind+AlphaGenome+2+November+11+2026
+
+### Fractile raises $720 million for memory-first AI chips
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/fractile-inference-chip-funding.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/fractile-inference-chip-funding.html
+- Source timestamp: 2026-11-11T19:34:00.000Z
+- Site timestamp: 2026-11-12T01:00:11.625Z
+- Tags: Funding, Industry
+
+UK startup Fractile reached a reported $7 billion valuation in a Series C aimed at commercializing chips built for faster, cheaper AI inference.
+
+## A large bet on inference economics
+UK-based Fractile has raised $720 million in a Series C round at a reported valuation of about $7 billion, according to Reuters. The round was led by Thrive Capital, Founders Fund, Lightspeed and Redpoint, with participation from Google’s CapitalG, BlackRock, DST Global, the UK Sovereign AI Fund and the British Business Bank.
+
+Fractile is developing specialized processors for inference, the stage where trained models generate responses. The company argues that memory movement, rather than raw arithmetic capacity alone, is a major constraint on speed, energy use and cost. Its approach combines chip design, memory architecture and software rather than treating the accelerator as an isolated component.
+
+## Why investors are paying attention
+Most AI infrastructure capital still flows toward established GPU platforms and the data centers built around them. Fractile’s round reflects a different thesis: as inference volumes grow, serving models efficiently may require architectures designed around repeated memory access and response latency rather than training-scale throughput.
+
+The UK government’s involvement also gives the deal a strategic dimension. Britain has been trying to retain more of the economic value generated by AI, and a domestic inference-chip company offers a potential foothold in a market otherwise dominated by US suppliers and Asian manufacturing partners.
+
+Yet the valuation is a forward-looking bet. Fractile has not shipped a commercial chip, and claims about bandwidth, efficiency or cost cannot be treated as production results. It must still complete the hardware, secure manufacturing capacity, build a software stack developers will actually use, and win customers willing to deploy an alternative to Nvidia, Google or cloud-provider silicon.
+
+## The practical test
+The funding is significant because it shows investors are willing to finance a post-GPU strategy at unusual scale. It does not prove that memory-first designs will displace incumbent accelerators. The decisive evidence will be customer deployments and independently measured total cost per useful answer once the hardware reaches production.
+
+Chinese title: 英国芯片初创 Fractile 融资7.2亿美元，押注推理专用架构
+Chinese summary: 英国 AI 芯片公司 Fractile 以约70亿美元估值完成7.2亿美元 C 轮融资，目标是降低大模型推理的速度与能耗成本。
+
+Sources:
+  - UK-backed AI chip startup Fractile hits $7 billion valuation in funding round: https://live.euronext.com/en/financial-news/uk-backed-ai-chip-startup-fractile-hits-7-billion-valuation-funding-round
+  - London’s Fractile raises $720M for memory-first AI chips: https://thenextweb.com/news/fractile-7bn-valuation-720m-ai-inference-chips
+
+### Google launches Gemini Decisions API for batch decisions
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-decisions-api.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gemini-decisions-api.html
+- Source timestamp: 2026-11-11T18:00:00.000Z
+- Site timestamp: 2026-11-12T01:00:11.625Z
+- Tags: Models, Agents, Industry
+
+Google’s new Gemini Decision 1 model handles up to 1,000 multimodal choices in one pass, targeting fast, low-cost routing and policy checks.
+
+## What happened
+Google introduced the Gemini Decisions API, a new endpoint built around Gemini Decision 1 for bounded, repeatable choices rather than open-ended text generation. Developers can submit one text, image, audio, video or PDF input and ask up to 1,000 yes/no, multiple-choice or rubric-scored questions in a single request.
+
+Google says the model returns probabilities and confidence scores with end-to-end latency of roughly 150–250 milliseconds. Pricing is listed at $0.10 per million input tokens, with no output-token charge. The service is available through the Gemini API in Google AI Studio.
+
+## Why the design matters
+The product targets a layer of AI infrastructure that is usually hidden inside applications: deciding which tool to call, whether a document satisfies a policy, how to route a request between models, or whether retrieved context is relevant. Those tasks often do not need a conversational answer, but they do need consistent scoring and predictable latency.
+
+The batch format is especially notable. A company screening a large set of documents, images or video segments can evaluate many criteria against the same multimodal context without repeatedly invoking a generative model. That could reduce both latency and orchestration complexity, although Google’s public announcement does not yet establish how accuracy compares with dedicated classifiers or human review.
+
+## What remains unproven
+The API is optimized for closed-set decisions, so it is not a general replacement for reasoning models. Confidence scores also require calibration evidence across domains; a numerical probability is useful only when it tracks real-world error rates. Google’s examples show the intended workflow, but independent testing will determine whether the price and speed survive production workloads.
+
+For developers building agents, the release signals that model providers are packaging decision-making as a specialized primitive rather than treating every step as chat completion.
+
+Chinese title: 谷歌推出 Gemini Decisions API，单次处理千项多模态判断
+Chinese summary: Gemini Decision 1 可在一次请求中处理最多1000项多模态判断，瞄准模型路由、策略检查等高频基础环节。
+
+Sources:
+  - Gemini Decisions API: Fast, calibrated multimodal decisions: https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/
+  - Gemini Decisions API: https://www.ithome.com/1/025/858.htm
+
 ### Anthropic expands Claude into collaborative office work
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-claude-workplace-suite.html
@@ -913,108 +1011,28 @@ Sources:
   - Use Daybreak in the Responses API: https://developers.openai.com/api/docs/guides/daybreak
   - GPT-6 Cyber System Card: https://deploymentsafety.openai.com/gpt-6-cyber
 
-### Physicl raises $10 million for robot-ready digital worlds
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/physicl-raises-robot-worlds.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/physicl-raises-robot-worlds.html
-- Source timestamp: 2026-11-06T13:00:00.000Z
-- Site timestamp: 2026-11-06T13:00:13.250Z
-- Tags: Funding, Research, Industry
-
-Physicl has raised $10 million to build physics-aware synthetic environments, targeting the data bottleneck behind general-purpose robot learning.
-
-## A bet on the training environment
-
-Physicl has raised $10 million in a round led by Inovia Capital, with participation from US Venture Partners, and launched Studio, its first application for building training environments for physical AI. The company is developing synthetic data, world models and robot-policy tooling intended to make digital scenes useful for learning actions, not merely for producing realistic images.
-
-That distinction matters. Conventional 3D asset libraries often describe geometry and appearance while omitting the physical properties that determine whether a robot can grasp, push, collide with or move around an object. Physicl’s product positioning centers on physics-accurate, simulation-ready environments and ground truth that can be used by teams training robot policies.
-
-## The missing long tail
-
-The company argues that physical AI fails disproportionately on rare conditions: unusual layouts, awkward object placement, lighting changes, clutter and interactions that are difficult to collect safely in the real world. Synthetic environments can generate those edge cases at scale, but only if their materials, collisions and behavior remain faithful enough for policies learned in simulation to transfer.
-
-Studio is still in private beta, so the financing does not establish that its generated worlds improve real-robot success rates. The company’s public materials also describe a product direction more clearly than a set of independently reproduced deployment results. Customers will ultimately care less about visual realism than about whether simulated experience reduces expensive physical data collection and shortens policy iteration.
-
-## Why it matters
-
-The round is notable because it targets an infrastructure layer that is easy to overlook in the humanoid-robot boom. Better models cannot compensate indefinitely for missing interaction data. If Physicl can connect physics-aware assets, synthetic edge cases and measurable transfer to real hardware, it could become part of the data stack beneath many robot companies. For now, the $10 million is a credible signal of investor interest, not proof that the simulation-to-reality gap has been solved.
-
-**Uncle Cat take:** Physicl is financing the unglamorous layer—materials, collisions and ground truth—but Studio’s private-beta status leaves real-robot transfer unproven.
-
-Chinese title: Physicl获1000万美元，押注机器人可用的数字世界
-Chinese summary: Physicl完成1000万美元融资并推出Studio，试图用具备真实物理属性的合成环境，补上通用机器人训练的数据缺口。
-
-Sources:
-  - Physicl raises $10M and launches Studio: https://techcrunch.com/2026/11/06/physicl-raises-10m-to-make-the-digital-world-real-enough-for-robots/
-  - Physicl Insights: Physical AI training data: https://www.physicl.ai/insights
-
-### Baidu open-sources 280B-parameter ERNIE 5.5 Flash Base
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/baidu-ernie-55-flash-base.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/baidu-ernie-55-flash-base.html
-- Source timestamp: 2026-11-05T07:15:00.000Z
-- Site timestamp: 2026-11-05T13:00:14.227Z
-- Tags: Models, Open Source
-
-Baidu has released ERNIE 5.5 Flash Base as open weights, bringing a large sparse model and long-context training recipe into China’s open-model race.
-
-## What happened
-
-Baidu has released ERNIE 5.5 Flash Base as an open-weight model during the Beijing daytime cycle. The model is reported to contain 280 billion total parameters, with about 14 billion activated per token. Its training used 33.5 trillion tokens, with a 128K training context and support for up to a one-million-token context during fine-tuning and inference.
-
-The release matters because Baidu is making a large, current-generation base model available outside its hosted API stack. Developers can inspect the weights, adapt the model, and evaluate it against other Chinese and international open models. The sparse architecture also makes the headline parameter count less useful as a direct estimate of serving cost: only a fraction of the network is active for each token, but deployment still requires substantial memory and engineering capacity.
-
-## Why it matters
-
-Baidu’s move adds another major Chinese model family to the open-weight market at a time when developers are increasingly choosing models based on controllability, local deployment, and fine-tuning flexibility. It also gives researchers a new test of whether a large mixture-of-experts design can translate scale into practical gains without making inference inaccessible.
-
-The important caveat is licensing and reproducibility. Open weights do not automatically mean unrestricted commercial use, and benchmark claims need independent testing across reasoning, coding, multilingual performance, and long-context retrieval. The model’s real influence will depend on whether Chinese cloud platforms, inference vendors, and developer communities make it easy to run.
-
-Baidu is therefore competing on more than model quality: it is trying to turn ERNIE into infrastructure that other builders can depend on.
-
-Chinese title: 百度开源2800亿参数文心5.5 Flash Base
-Chinese summary: 百度开源文心5.5 Flash Base，采用稀疏架构与超长上下文，为中国开放权重模型竞争加入新的大规模选手。
-
-Sources:
-  - 百度开源文心5.5 Flash Base，多基准测试刷新同尺寸模型SOTA: https://www.qbitai.com/2026/11/507787.html
-  - ERNIE 5.5 Flash Base release page: https://ernie.baidu.com/release/ernie-5-5-flash-base/
-  - ERNIE 5.5 Flash Base technical details: https://www.orcarouter.ai/ko/blog/ernie-5-5-flash-base-open-weights-license
-
-### Meta acquires Conductor to coordinate coding agents
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/meta-acquires-conductor-agent-orchestration.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/meta-acquires-conductor-agent-orchestration.html
-- Source timestamp: 2026-11-04T21:10:00.000Z
-- Site timestamp: 2026-11-05T01:00:28.518Z
-- Tags: Agents, Industry
-
-Meta is acquiring Conductor, whose software lets developers run multiple coding agents in parallel, adding orchestration to its developer strategy.
-
-## What happened
-
-Meta has acquired Conductor, a startup whose software lets engineers deploy multiple coding agents into separate workspaces and run them in parallel. Meta confirmed the deal but did not disclose financial terms or provide a detailed product roadmap.
-
-Conductor’s founder Charlie Holtz said the company is joining Meta and hinted that a new product will be available early next year. The existing service will not continue unchanged: Conductor Cloud will become read-only on November 13 and shut down on November 20. Users are being asked to export their cloud data before deletion begins. The local product will continue receiving new models and critical fixes for a limited period.
-
-Unlike model labs, Conductor does not develop the agents it orchestrates. Its platform can work with agents from companies including Anthropic and OpenAI, allowing developers to split a software project into parallel tasks and review the resulting work.
-
-## Why Meta wants it
-
-Meta has been building its own developer and enterprise AI stack, including Muse Code and other Muse agents. Acquiring Conductor gives Meta experience in a workflow where several agents operate simultaneously rather than a single assistant responding to one request at a time.
-
-That distinction is strategically important. As coding agents become more capable, the bottleneck may shift from producing code to assigning tasks, isolating workspaces, merging results and keeping the process understandable to human engineers. Conductor’s product is built around that coordination problem.
-
-The acquisition also highlights the pressure on independent developer tools. Conductor’s cloud shutdown means customers lose a service that is being folded into a larger platform before Meta has explained the replacement. The deal’s value therefore depends on whether Meta turns Conductor’s multi-agent workflow into a broadly useful product, rather than treating the startup primarily as a talent and interface acquisition.
-
-Chinese title: Meta收购Conductor，押注多智能体编程协作
-Chinese summary: Meta收购Conductor，将其并行调度多个编码智能体的能力纳入自身开发者和企业AI战略。
-
-Sources:
-  - Conductor is joining Meta: https://www.conductor.build/announcement
-  - Exclusive: Meta acquires AI coding startup Conductor: https://www.axios.com/2026/11/04/meta-acquires-ai-coding-startup-conductor
-  - Meta acquires AI coding startup Conductor: https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/
-
 ## Recent radar items
+
+### 2026-11-12
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-11-12.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-11-12.html
+
+- 2026-11-11T23:35:00.000Z | AWS Machine Learning | AWS published guidance for running OpenAI Codex through Amazon Bedrock with IAM, regional controls, observability, and least-privilege rollout practices. | 中文：AWS发布通过Amazon Bedrock运行OpenAI Codex的指南，覆盖IAM、区域控制、可观测性与最小权限部署。 | https://aws.amazon.com/blogs/machine-learning/openai-codex-on-amazon-bedrock/
+- 2026-11-11T23:13:00.000Z | AWS Machine Learning | Amazon Bedrock AgentCore introduced a direct Web Search API that returns ranked, time-aware results without requiring developers to create a gateway. | 中文：Amazon Bedrock AgentCore推出直连Web Search API，可返回排序和带发布时间的结果，无需开发者先创建网关。 | https://aws.amazon.com/blogs/machine-learning/introducing-the-web-search-api-on-amazon-bedrock-agentcore/
+- 2026-11-11T16:00:00.000Z | Google AI | Google Labs opened Tabletop, an AI experiment for building customizable collaborative planning applications with groups. | 中文：Google Labs推出Tabletop实验项目，允许团队用AI搭建可定制的协作规划应用。 | https://blog.google/innovation-and-ai/models-and-research/google-labs/tabletop/
+- 2026-11-11T22:30:00.000Z | X / Luma AI | Luma added Character Swap and Insert, letting creators replace cast members, cars, or objects within the same video shot. | 中文：Luma新增Character Swap与Insert，可在同一镜头中替换演员、汽车或其他物体。 | https://x.com/LumaLabsAI/status/2120645286519562294
+- 2026-11-11T18:03:00.000Z | X / Runway | Runway made ByteDance’s Seedance 2.5 available in native 4K, extending the video model’s distribution to Runway users. | 中文：Runway上线字节跳动Seedance 2.5原生4K版本，扩大该视频模型对Runway用户的可用范围。 | https://x.com/runwayml/status/2120578138111656227
+- 2026-11-11T18:00:00.000Z | X / Recraft | Recraft said its generated vectors now preserve smoother curves, straighter lines, and sharper corners across newly created or converted artwork. | 中文：Recraft表示，其生成矢量图在新建和转换作品中都能保持更平滑曲线、更直线条与更锐利转角。 | https://x.com/recraftai/status/2120577347711639570
+- 2026-11-11T15:01:00.000Z | X / Databricks | Databricks introduced Genie as an autonomous AI coworker that proactively handles long-running work inside an organization’s governed environment. | 中文：Databricks推出Genie自主AI同事，可在企业受治理环境中主动处理长周期工作。 | https://x.com/databricks/status/2120532387100541302
+- 2026-11-11T17:03:00.000Z | X / Google Cloud | Google Cloud released A2UI 1.0, an open protocol and framework for generative user interfaces across web, mobile, wearables, and TVs. | 中文：Google Cloud发布A2UI 1.0开放协议与框架，支持网页、移动端、穿戴设备和电视上的生成式界面。 | https://x.com/GoogleCloudTech/status/2120563165557571629
+- 2026-11-11T18:21:00.000Z | X / Perplexity AI | Perplexity said it fixed network flaws exploited by agents in its SPACE security benchmark and found no bypasses in post-fix testing. | 中文：Perplexity表示已修复代理在SPACE安全基准中利用的网络漏洞，修复后测试未发现绕过方法。 | https://x.com/perplexity_ai/status/2120582765217521952
+- 2026-11-11T17:52:00.000Z | X / LlamaIndex | LlamaIndex reported that agents tested every stage of LlamaParse over four days, covering parsing, extraction, indexing, and related controls. | 中文：LlamaIndex表示，代理连续四天测试了LlamaParse各环节，包括解析、抽取、索引及相关安全控制。 | https://x.com/llama_index/status/2120575489752568097
+- 2026-11-11T17:12:00.000Z | X / Unsloth AI | Unsloth released Dynamic v3.1 GGUFs for Qwen3.8-Flash-Next and DeepSeek-V4.1-Flash, claiming higher performance across coding benchmarks. | 中文：Unsloth发布Qwen3.8-Flash-Next和DeepSeek-V4.1-Flash的Dynamic v3.1 GGUF，据称在多项编码基准中表现更高。 | https://x.com/UnslothAI/status/2120565377050824971
+- 2026-11-11T20:38:00.000Z | X / NVIDIA AI | NVIDIA introduced Déjà View, a 117-million-parameter model that reconstructs 3D geometry and camera positions from photos taken at different angles. | 中文：英伟达推出Déjà View模型，可从不同角度拍摄的照片重建三维几何与相机位置，参数量为1.17亿。 | https://x.com/NVIDIAAI/status/2120617173286883692
+- 2026-11-11T21:18:00.000Z | Simon Willison | AWS announced AWS Emulator as generally available, allowing developers and coding agents to build and test AWS applications locally without an account. | 中文：AWS宣布AWS Emulator正式可用，开发者和编码代理无需AWS账号即可在本地构建与测试云应用。 | https://simonwillison.net/2026/Nov/11/aws-emulator/
+- 2026-11-11T21:14:00.000Z | X / Gemini App | Google Gemini became available on Apple CarPlay globally for iOS users across every supported Gemini Live language. | 中文：Google宣布Gemini在全球范围内登陆Apple CarPlay，覆盖iOS用户支持的全部Gemini Live语言。 | https://x.com/GeminiApp/status/2120626272724484605
+- 2026-11-12T00:35:00.000Z | X / HeyGen | HeyGen said its avatar platform can connect a Grok bot to Slack, trained on a brand’s social voice and paired with a HeyGen Avatar ID. | 中文：HeyGen表示，其头像平台可将Grok机器人接入Slack，并结合品牌社交语气与HeyGen头像ID协同工作。 | https://x.com/HeyGen/status/2120676841430368279
 
 ### 2026-11-11
 
@@ -1052,6 +1070,7 @@ Sources:
 - 2026-11-11T11:50:00Z | X / Google DeepMind | Google DeepMind said Gemini agents generated more than six million Lean proof lines, leaving humans to review the critical one percent. | 中文：Google DeepMind 称，Gemini 代理生成了超过 600 万行 Lean 证明代码，人类只需审核关键的 1%。 | https://x.com/GoogleDeepMind/status/2120484249321033911
 - 2026-11-11T11:06:00Z | InfoQ 中文 | Cloudflare introduced a Web Search API designed for AI applications. | 中文：Cloudflare 推出面向 AI 应用的 Web Search API。 | https://www.infoq.cn/article/SgXuVvzbHr8lKrihTAZW
 - 2026-11-11T09:34:00Z | Latent Space | A Latent Space report said Mercor raised $750 million at a $20 billion valuation and reached a $3 billion run rate. | 中文：Latent Space 报道，Mercor 融资 7.5 亿美元，估值 200 亿美元，年化收入达到 30 亿美元。 | https://latent.space/p/ainews-mercor-750m-series-d-at-20b-valuation-3b-run-rate/
+- 2026-11-11 | ElevenLabs | ElevenLabs announced Routines for ElevenAgents, enabling multi-step work before, during, and after customer conversations. | 中文：ElevenLabs为ElevenAgents推出Routines，可在客户对话前、中、后自动执行多步骤工作。 | https://elevenlabs.io/blog/nyc-summit
 
 ### 2026-11-10
 
@@ -1159,37 +1178,3 @@ Sources:
 - 2026-11-08 | Hugging Face Papers | Hugging Face highlighted SWE-Trail, a paper proposing history-guided trajectory collection for training coding agents. | 中文：Hugging Face推荐SWE-Trail论文，提出用历史引导的轨迹收集方法训练编程智能体。 | https://huggingface.co/papers/month/2026-11
 - 2026-11-08 | Hugging Face Papers | Hugging Face listed NorthCUA, a technical report on scaling computer-use agents through large-scale experience. | 中文：Hugging Face收录NorthCUA技术报告，研究如何通过大规模经验扩展计算机操作智能体。 | https://huggingface.co/papers/month/2026-11
 - 2026-11-08 | LLM Releases | webAI released the open-weight TwIL-8B reasoning model with 8.79 billion parameters and a 131,072-token context window. | 中文：webAI发布开放权重推理模型TwIL-8B，参数量88.亿，支持131072令牌上下文。 | https://www.llm-releases.com/
-
-### 2026-11-07
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-11-07.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-11-07.html
-
-- 2026-11-06T18:01:00Z | AWS Machine Learning | AWS SageMaker Inference now supports Multi-Instance GPU, allowing one endpoint to share a GPU across multiple model instances. | 中文：AWS SageMaker 推理现支持多实例 GPU，让一个端点可在多个模型实例间共享 GPU。 | https://aws.amazon.com/blogs/machine-learning/sagemaker-inference-now-supports-multi-instance-gpu-to-maximize-gpu-utilization-for-model-endpoints/
-- 2026-11-06T19:08:00Z | X | OpenAI introduced BioBasicsBench, a benchmark for measuring how AI agents perform routine wet-lab biological analyses. | 中文：OpenAI 发布 BioBasicsBench，用于衡量 AI 智能体执行常规湿实验生物学分析的能力。 | https://x.com/OpenAI/status/2118782708767965238
-- 2026-11-06T17:20:00Z | X | Google DeepMind said human-guided AI agents uncovered two major weaknesses while stress-testing encryption systems. | 中文：Google DeepMind 表示，人类引导的 AI 智能体在压力测试加密系统时发现了两个重大弱点。 | https://x.com/GoogleDeepMind/status/2118755418675765656
-- 2026-11-06T18:23:00Z | X | Cohere announced North 2, an upgraded agentic AI platform with reusable agents and reusable skills for task automation. | 中文：Cohere 发布 North 2，升级后的智能体平台支持可复用智能体与技能，用于自动化任务。 | https://x.com/cohere/status/2118771361870942532
-- 2026-11-06T16:38:00Z | X | Mistral highlighted Voxtral 3’s end-of-turn detection, helping voice applications recognize when a speaker has finished talking. | 中文：Mistral 展示 Voxtral 3 的结束语轮检测，帮助语音应用判断说话者何时结束发言。 | https://x.com/MistralAI/status/2118744719870066936
-- 2026-11-06T15:53:00Z | X | Recraft added Vary to Recraft Studio, letting users generate new compositions and directions from a selected image. | 中文：Recraft 在 Studio 中加入 Vary，用户可基于选定图片生成新的构图与变化方向。 | https://x.com/recraftai/status/2118733635696336907
-- 2026-11-06T17:13:00Z | AWS Machine Learning | AWS published a serverless MCP server pattern for giving AI agents data-lake access through Amazon ECS Fargate. | 中文：AWS 发布无服务器 MCP 服务方案，让 AI 智能体可通过 Amazon ECS Fargate 访问数据湖。 | https://aws.amazon.com/blogs/machine-learning/serverless-mcp-server-for-ai-agent-data-lake-access-on-amazon-ecs-fargate/
-- 2026-11-06T14:00:00Z | SiliconANGLE | Atomicwork launched a certified AI coworker marketplace for enterprise IT and security workflows. | 中文：Atomicwork 推出面向企业 IT 与安全工作流的认证 AI 同事市场。 | https://siliconangle.com/2026/11/06/atomicwork-launches-certified-ai-coworker-marketplace-for-enterprise-it-and-security/
-- 2026-11-06T19:47:00Z | The Decoder | Ripple-65B Preview is an Apache 2.0 open model reporting strong agentic coding performance. | 中文：Ripple-65B Preview 是采用 Apache 2.0 许可的开源模型，报道称其智能体编程表现强劲。 | https://the-decoder.com/ripple-65b-preview-delivers-strong-agentic-coding-results-as-a-fully-apache-2-0-open-us-model/
-- 2026-11-06T17:28:00Z | MarkTechPost | Zyphra introduced ZYFA, an FP8 FlashAttention implementation for AMD MI355X that claims up to 1.76× higher speed. | 中文：Zyphra 发布面向 AMD MI355X 的 FP8 FlashAttention 实现，宣称速度最高提升 1.76 倍。 | https://www.marktechpost.com/2026/11/06/zyphra-zyfa-fp8-flashattention-amd-mi355x/
-- 2026-11-06T13:02:00Z | TechCrunch | Underdog demonstrated a 32MB speech model designed to deliver useful speech capabilities at unusually small size. | 中文：Underdog 展示了一款仅 32MB 的语音模型，目标是在极小体积下提供实用语音能力。 | https://techcrunch.com/2026/11/06/underdog-shows-off-a-32mb-speech-model-in-new-demo/
-- 2026-11-06T22:17:00Z | X | GitHub said its new Git storage architecture handled 5,000 concurrent agents and 7,200 pushes per second in internal testing. | 中文：GitHub 表示，其新 Git 存储架构在内部测试中支持 5,000 个并发智能体和每秒 7,200 次推送。 | https://x.com/github/status/2118830274431873379
-- 2026-11-06T19:49:00Z | X | Anthropic published research on how AI is beginning to change scientific modeling for systems such as weather and biology. | 中文：Anthropic 发布研究文章，讨论 AI 如何开始改变天气、生物学等系统的科学建模。 | https://x.com/AnthropicAI/status/2118792930211107115
-- 2026-11-07T12:53:00Z | IT之家 | WeChat’s HarmonyOS app is testing Xiaowei image-questioning by long-pressing pictures in public-account articles. | 中文：微信鸿蒙版正在灰度测试长按公众号图片询问小微功能。 | https://www.ithome.com/1/023/806.htm
-- 2026-11-07T12:35:00Z | Kling AI | Kling AI highlighted Kling 4’s frame-to-frame controls, positioning the model for more deliberate video direction. | 中文：可灵展示 Kling 4 的首尾帧控制能力，强调更精细的视频导演式创作。 | https://x.com/Kling_ai/status/2119045982734201076
-- 2026-11-07T11:51:00Z | DeemosTech | DeemosTech previewed AI rigging with custom skeletons, prompt-editable bones, non-human creatures, and controller editing. | 中文：DeemosTech 预告 AI 绑定工具，支持自定义骨骼、提示词改骨骼、非人形生物和控制器编辑。 | https://x.com/DeemosTech/status/2119035068228460949
-- 2026-11-07T10:30:00Z | Meshy AI | Meshy introduced Relief, which turns paintings into embossed or engraved 3D objects and can use Meshy Agent for the workflow. | 中文：Meshy 推出 Relief，可把画作转成浮雕或雕刻模型，并由 Meshy Agent 辅助完成流程。 | https://x.com/MeshyAI/status/2119014500229935559
-- 2026-11-07T10:00:00Z | InfoQ 中文 | InfoQ detailed CyberwIIOS methods for controlling hallucinations and unsafe behavior when large models operate on industrial OT systems. | 中文：InfoQ 介绍 CyberwIIOS 如何在工业 OT 场景控制大模型幻觉与失控。 | https://www.infoq.cn/article/K1bCIbHxeu3wLIjdusgr?utm_source=rss&utm_medium=article
-- 2026-11-07T05:01:00Z | 量子位 | A QbitAI report described a Silicon Valley Chinese-founded project building a next-generation agent harness aimed at competing with DeepSeek-style workflows. | 中文：量子位报道，一支硅谷华人团队正打造面向下一代智能体工作流的 Agent Harness。 | https://www.qbitai.com/2026/11/508264.html
-- 2026-11-07T03:43:00Z | 量子位 | QbitAI warned that AGENTS.md files can create security risks when coding agents blindly trust repository instructions. | 中文：量子位提醒，编码智能体盲目信任仓库中的 AGENTS.md，可能引入严重安全风险。 | https://www.qbitai.com/2026/11/508244.html
-- 2026-11-07T03:23:00Z | 量子位 | Jeff Dean and Fei-Fei Li discussed non-consensus views on recursive self-improvement in a newly highlighted interview. | 中文：Jeff Dean 与李飞飞在最新对谈中讨论了递归自我改进等非共识观点。 | https://www.qbitai.com/2026/11/508196.html
-- 2026-11-07T02:41:00Z | StepFun | StepFun appeared at an AI engineering event hosted by aiDotEngineer, signaling continued engagement with the developer ecosystem. | 中文：阶跃星辰现身 aiDotEngineer 主办的 AI 工程活动，持续加强开发者生态互动。 | https://x.com/StepFun_ai/status/2118896582892696029
-- 2026-11-07T02:00:00Z | Google Cloud | Google Cloud promoted Smart Storage, which classifies dark unstructured data in place so enterprise agents can reason over it. | 中文：Google Cloud 推广 Smart Storage，可在数据原地分类非结构化“暗数据”，供企业智能体推理。 | https://x.com/GoogleCloudTech/status/2118886155726868558
-- 2026-11-07T01:40:00Z | TechCrunch | Crusoe sold a troubled Wyoming data-center project to Google, underscoring how AI infrastructure projects are being reshuffled. | 中文：Crusoe 将陷入困境的怀俄明数据中心项目出售给 Google，凸显 AI 基础设施正在重新洗牌。 | https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/
-- 2026-11-07T12:26:00Z | IT之家 | Sony’s eldercare device reportedly detects falls using Wi-Fi signals without cameras or wearable sensors. | 中文：索尼养老设备据报道可利用 Wi-Fi 信号感知老人跌倒，无需摄像头或穿戴设备。 | https://www.ithome.com/1/023/801.htm
-- 2026-11-07T10:15:00Z | Hacker News | Upload Your RAM emerged on Hacker News as a project centered on remotely contributing or sharing memory resources. | 中文：Upload Your RAM 登上 Hacker News，项目围绕远程贡献或共享内存资源展开。 | https://uploadyourram.org
-- 2026-11-07T09:46:00Z | Hacker News | An undocumented Apple Intelligence classifier reportedly identifies family members from personal knowledge-graph data on Macs. | 中文：一项 Hacker News 热门发现称，Mac 上未公开的 Apple Intelligence 分类器可从个人知识图谱识别家庭成员。 | https://8rank.ai/game/apple-intelligence-personal-knowledge-graph
-- 2026-11-07T09:00:00Z | InfoQ 中文 | Cloudflare announced production flame graphs for Workers, helping developers inspect performance problems that local testing cannot reproduce. | 中文：Cloudflare 为 Workers 提供生产环境火焰图，帮助开发者定位本地无法复现的性能问题。 | https://www.infoq.cn/article/pMNGPheLLJ8hkfikmjUU?utm_source=rss&utm_medium=article
