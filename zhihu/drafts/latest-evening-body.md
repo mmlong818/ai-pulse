@@ -1,76 +1,100 @@
-这是「猫叔的AI资讯雷达」11月12日晚报。
+这是「猫叔的AI资讯雷达」11月13日晚报。
 
 本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
 
-**今晚重点**：Anthropic已向监管机构提交IPO注册文件，并披露芯片、云计算与存储伙伴拟通过同步私募认购260亿美元股份。
+**今晚重点**：Runway接入字节跳动Seedance 2.5 Flash，为全球创作者提供更快、更便宜的视频生成选择。
 
 ## 深度简报目录
 
-- Anthropic启动IPO，芯片与云服务商拟注资260亿美元
+- Runway上线Seedance 2.5 Flash，视频生成提速降本
+- ArtCraft扩大AI构建的开源软件套件版图
 
 ## 快讯预览
 
-- 谷歌发布Gemini Decision 1，称其在九项测试中七项第一，最高准确率达92.2%。
-- Nebuly融资2100万美元，帮助企业衡量AI投资的实际商业价值。
-- InfoQ介绍差旅智能体如何结合业务语义、偏好图谱与上下文工程。
-- OpenAI称Holiday Extras用Codex两周重建应用，开放到预订转化率提高32.5%。
-- 海螺AI展示生成式视频与图像工具在地理学习场景中的应用。
-- Lovart接入字节跳动Seedance 2.5 Flash，主打更快迭代和逐帧控制。
-- Together AI指出服务性能取决于流量形态：长提示压测预填充，工具型智能体更看重端到端延迟。
-- Dreamina推出百万美元商家激励计划，提供现金和1.6亿平台积分。
-- 谷歌GKE Labs将强化学习实验转化为可在Kubernetes上运行的工作负载。
-- AWS发布使用Amazon Bedrock与Spring AI构建自主智能体的指南。
+- Docker呼吁通过隔离与治理，为智能体自主执行软件建立更安全的基础。
+- 谷歌发布TPU Sync开源库，用于在TPU推理服务环境之间传输KV缓存。
+- Meshy公布100次真实打印测试，覆盖四种AI 3D工作流，Meshy 7与Make Printable表现领先。
+- InfoQ介绍GFlow，一种在AICon北京分享的游戏设计多智能体协作与验证架构。
+- 谷歌推出LiteRT Tensor API，用于跨CPU、GPU和NPU构建、定制与优化端侧机器学习模型。
+- 腾讯混元在Artificial Analysis Cyber Index排名第三，并在CWE-Bench-AA排名第一。
+- Artificial Analysis报告称，Hy4在CWE-Bench-AA以76%领先，比DeepSeek V4.1 Flash 1017高六个百分点。
+- Sakana AI为其首款移动应用招募测试者，报名截止至11月15日。
+- Sakana AI表示正在开发首款移动应用，让普通用户体验多模型协作技术。
+- Sakana AI表示将推进大语言模型预训练，同时认为协同的小模型可能比单一巨型模型更具经济性。
 
-## 1. Anthropic启动IPO，芯片与云服务商拟注资260亿美元
+## 1. Runway上线Seedance 2.5 Flash，视频生成提速降本
 
-Anthropic已向监管机构提交IPO注册文件，并披露芯片、云计算与存储伙伴拟通过同步私募认购260亿美元股份。
+Runway接入字节跳动Seedance 2.5 Flash，为全球创作者提供更快、更便宜的视频生成选择。
 
-Anthropic已提交首次公开募股注册声明，正式开启上市进程。这不仅是公司融资方式的变化，也将成为前沿模型企业接受公开市场检验的重要节点。
+### 发生了什么
 
-### 前沿AI首次面对公开定价
+Runway于11月13日宣布，字节跳动的Seedance 2.5 Flash已在其平台上线。官方将其定位为更快、成本更低的视频生成选项，意味着Seedance系列不再只通过字节跳动自有渠道触达用户，而是进入了全球创作者熟悉的工作流。
 
-公司招股书显示，AMD、博通、谷歌、Micron、微软、英伟达和台积电合作伙伴已同意以IPO发行价合计认购260亿美元的N类普通股。这笔交易属于与IPO同步进行的私募配售，和面向公众投资者的发行并不相同。
+这件事的价值，首先在于分发。已经使用Runway的用户无需切换到中国本土服务、重新适应界面或管理新的账户，就能调用字节跳动的视频模型。对Runway而言，引入竞争对手的模型，也是在把平台从单一模型工作室变成更开放的生成模型入口。
 
-Anthropic尚未公布最终发行规模或定价，注册声明也尚未生效。因此，这次公告代表IPO流程启动，而不是上市已经完成。但其意义已经超出一般融资：Anthropic需要为模型训练、研究团队、推理服务和数据中心容量承担极高且持续增长的成本，公开市场将首次要求它用更完整的财务披露解释这种投入。
+### 为什么值得关注
 
-### 供应商同时成为股东
+视频生成产品的竞争，正在从单次演示转向迭代速度、成片稳定性和试错成本。Flash版本的意义正在于此：创作者可以用更低成本反复测试提示词、修改镜头，再把更昂贵或更慢的模型留给最终渲染。
 
-私募配售让Anthropic与基础设施供应商之间的关系更加清晰。多家向其提供芯片、云服务或战略资金的公司，将同时成为股东。这种安排有助于锁定稀缺算力，却也会带来新的审视：供应商是否会通过资本关系巩固订单，相关交易是否足够透明，以及Anthropic未来的增长有多少依赖同一套基础设施体系。
-
-后续招股书将披露Anthropic的收入、亏损、合同义务以及对云服务伙伴的依赖程度，也会让投资者更具体地评估：模型能力提升能否最终覆盖训练与运行成本。
+不过，Runway暂未公布具体速度、价格和套餐范围，因此“更快、更便宜”还不能直接换算成可比较的性能优势。它也没有说明Flash究竟是全新模型，还是围绕Seedance 2.5设计的服务与成本档位。可以确认的是，字节跳动的视频技术又获得了一个国际分发渠道，而Runway也愿意把竞争对手的模型纳入自身产品价值。
 
 ### 为什么重要
 
-这是目前最直接的一次市场实验：前沿AI公司的高估值能否经受财务披露、投资者追问和季度业绩压力。若上市顺利，Anthropic可能为模型公司建立新的长期融资范式；若市场对其成本结构持保留态度，整个行业对规模化回报的判断都可能被重新定价。
-
-**猫叔判断：** 260亿美元的供应商配售最值得警惕，它定价的不只是Anthropic，也是在定价一整个算力联盟。
+这不是普通的模型下拉菜单更新。它降低了中国视频模型进入全球创作市场的门槛，也让高频试错型视频工作流更容易成立。如果Flash在质量上接近完整版本，依赖高价生成维持收入的供应商都将面临更直接的价格压力。
 
 **原始信源**
 
-- [Anthropic IPO Prospectus](https://ipo.anthropic.com/documents/us/prospectus.pdf)
-- [Anthropic announces initial public offering](https://x.com/AnthropicAI/status/2120841731302154708)
+- [Seedance 2.5 Flash is now available on Runway](https://x.com/runwayml/status/2121051193921118712)
+- [Creating with Seedance 2.5](https://help.runwayml.com/hc/en-us/articles/53542207042323-Creating-with-Seedance-2-5)
 
-原文链接：[Anthropic启动IPO，芯片与云服务商拟注资260亿美元｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-files-for-ipo.html)
-
-## 一句话快讯
-- 谷歌发布Gemini Decision 1，称其在九项测试中七项第一，最高准确率达92.2%。（[InfoQ 中文](https://www.infoq.cn/article/E7QKIMUz3h0G0IE5Paii)）
-- Nebuly融资2100万美元，帮助企业衡量AI投资的实际商业价值。（[SiliconANGLE AI](https://siliconangle.com/2026/11/12/nebuly-wants-to-help-enterprises-understand-exactly-what-their-ai-investments-are-worth-after-raising-21m/)）
-- InfoQ介绍差旅智能体如何结合业务语义、偏好图谱与上下文工程。（[InfoQ 中文](https://www.infoq.cn/article/V5Fwpg9gOBefx6xADcdd)）
-- OpenAI称Holiday Extras用Codex两周重建应用，开放到预订转化率提高32.5%。（[OpenAI](https://openai.com/business/customer-stories/holidays-extras-codex)）
-- 海螺AI展示生成式视频与图像工具在地理学习场景中的应用。（[X / Hailuo AI](https://x.com/Hailuo_AI/status/2120801854263333298)）
-- Lovart接入字节跳动Seedance 2.5 Flash，主打更快迭代和逐帧控制。（[X / Lovart AI](https://x.com/lovart_ai/status/2120771721880117716)）
-- Together AI指出服务性能取决于流量形态：长提示压测预填充，工具型智能体更看重端到端延迟。（[X / Together AI](https://x.com/togethercompute/status/2120728631961927788)）
-- Dreamina推出百万美元商家激励计划，提供现金和1.6亿平台积分。（[X / Dreamina AI](https://x.com/dreamina_ai/status/2120713824903049312)）
-- 谷歌GKE Labs将强化学习实验转化为可在Kubernetes上运行的工作负载。（[SiliconANGLE AI](https://siliconangle.com/2026/11/11/model-fine-tuning-kubernetes-google-s-openrl-explained-kubeconna/)）
-- AWS发布使用Amazon Bedrock与Spring AI构建自主智能体的指南。（[AWS Machine Learning](https://aws.amazon.com/blogs/machine-learning/build-autonomous-ai-agents-with-amazon-bedrock-and-spring-ai/)）
-- 百度ERNIE 5.5 Flash Preview在Code Arena WebDev总榜排名第17，并有望成为开放模型第二名。（[X / Arena](https://x.com/arena/status/2120686820149313762)）
-- 百度称ERNIE 5.5 Flash Preview在Code Arena WebDev开放模型中以1668分升至第二梯队。（[X / Arena](https://x.com/arena/status/2120685092909838405)）
-- HeyGen表示，其头像平台可将Grok机器人接入Slack，并结合品牌社交语气与HeyGen头像ID协同工作。（[X / HeyGen](https://x.com/HeyGen/status/2120676841430368279)）
-- AWS发布通过Amazon Bedrock运行OpenAI Codex的指南，覆盖IAM、区域控制、可观测性与最小权限部署。（[AWS Machine Learning](https://aws.amazon.com/blogs/machine-learning/openai-codex-on-amazon-bedrock/)）
+原文链接：[Runway上线Seedance 2.5 Flash，视频生成提速降本｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/runway-adds-seedance-flash.html)
 
 ---
 
-完整日报：[11月12日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-12.html)
+## 2. ArtCraft扩大AI构建的开源软件套件版图
+
+ArtCraft正用编码智能体以Rust重建熟悉的创意工具，把软件克隆从演示项目推向开源产品战略。
+
+### 发生了什么
+
+ArtCraft创始人Brandon Thomas在11月13日的演讲中，进一步扩大了项目目标：不只是制作类似Photoshop的应用，而是借助AI辅助开发，重建更广泛的创意软件。项目目前已发布17款开源工具，包括PhotoCraft和PdfCraft，并将这一过程描述为对成熟软件类别的系统性重做。
+
+真正值得注意的，并不是AI能够模仿熟悉界面，而是这些应用采用Rust从头编写，并以可检查的开源代码发布。这让ArtCraft更像一种新的软件生产方式：小团队可以快速覆盖多个品类，但也必须面对专业文件兼容、插件生态、稳定性和大量边缘场景带来的长期工程负担。
+
+### 难点在于补齐差距
+
+项目的公开进展不等于已经达到替代专业软件的程度。类似Photoshop的界面能让用户迅速理解产品，但专业工作依赖许多演示中看不见的能力，包括稳定的文档处理、色彩管理、自动化、扩展支持、大文件性能，以及多年形成的工作习惯。
+
+不过，ArtCraft的开源路线确实改变了竞争方式。开发者可以检查代码、补齐功能，并针对本地或垂直场景进行改造。编码智能体可能让产品最初的80%变得极其便宜，尤其是目标行为已经被用户熟知时；真正决定成败的，往往是剩下那部分不显眼却最难维护的工程。
+
+### 为什么重要
+
+这是一次早期测试：智能体辅助开发能否真正冲击成熟应用类别，而不只是制造轻量级原型。Adobe不会因为一个早期克隆项目就失去专业客户，但传统软件商可能面对越来越多公开迭代、低成本分发的替代品。法律风险、安全维护，以及社区能否补上最难的10%功能，仍是ArtCraft尚未证明的部分。
+
+**原始信源**
+
+- [AI Ambition: ArtCraft Cloned Photoshop and Now Wants to Rebuild Everything](https://latent.space/p/artcraft/)
+- [AI Ambition: ArtCraft Cloned Photoshop and Now Wants to Rebuild Everything](https://aivexanews.com/news/68811c4e6ccf667ccec984e2/ai-ambition-artcraft-cloned-photoshop-and-now-wants-to-rebuild-everything)
+- [PhotoCraft: visual study guide for Claude Code and MCP](https://deepneuro.ai/study-guides/ArtCraft/photocraft-guide.pdf)
+
+原文链接：[ArtCraft扩大AI构建的开源软件套件版图｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/artcraft-rebuilds-open-source-tools.html)
+
+## 一句话快讯
+- Docker呼吁通过隔离与治理，为智能体自主执行软件建立更安全的基础。（[InfoQ 中文](https://www.infoq.cn/article/1pCuIRtm5HYwTyR4fIhA)）
+- 谷歌发布TPU Sync开源库，用于在TPU推理服务环境之间传输KV缓存。（[MarkTechPost](https://www.marktechpost.com/2026/11/13/google-tpu-sync-open-source-kv-cache-transfer-library/)）
+- Meshy公布100次真实打印测试，覆盖四种AI 3D工作流，Meshy 7与Make Printable表现领先。（[X](https://x.com/MeshyAI/status/2121181278024413536)）
+- InfoQ介绍GFlow，一种在AICon北京分享的游戏设计多智能体协作与验证架构。（[InfoQ 中文](https://www.infoq.cn/article/dkQAAL0SSdhIq1h61eKx)）
+- 谷歌推出LiteRT Tensor API，用于跨CPU、GPU和NPU构建、定制与优化端侧机器学习模型。（[Google Developers Blog](https://developers.googleblog.com/en/native-model-authoring-for-edge-with-litert-tensor-api/)）
+- 腾讯混元在Artificial Analysis Cyber Index排名第三，并在CWE-Bench-AA排名第一。（[X](https://x.com/TencentHunyuan/status/2121161030751694873)）
+- Artificial Analysis报告称，Hy4在CWE-Bench-AA以76%领先，比DeepSeek V4.1 Flash 1017高六个百分点。（[X](https://x.com/ArtificialAnlys/status/2121137665626231053)）
+- Sakana AI为其首款移动应用招募测试者，报名截止至11月15日。（[X](https://x.com/SakanaAILabs/status/2121072695228223752)）
+- Sakana AI表示正在开发首款移动应用，让普通用户体验多模型协作技术。（[X](https://x.com/SakanaAILabs/status/2121072599329546326)）
+- Sakana AI表示将推进大语言模型预训练，同时认为协同的小模型可能比单一巨型模型更具经济性。（[X](https://x.com/SakanaAILabs/status/2121072254880743810)）
+- Thinking Machines 开源 Inkling 2 Small，在 Agent Arena 美国开源模型榜升至第一。（[X / Arena](https://x.com/arena/status/2121018024610455580)）
+
+---
+
+完整日报：[11月13日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-13.html)
 
 历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
 
