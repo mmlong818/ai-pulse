@@ -1,100 +1,75 @@
-这是「猫叔的AI资讯雷达」11月13日晚报。
+这是「猫叔的AI资讯雷达」11月18日晚报。
 
 本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
 
-**今晚重点**：Runway接入字节跳动Seedance 2.5 Flash，为全球创作者提供更快、更便宜的视频生成选择。
+**今晚重点**：可灵推出 Kling Image 4.0，加入原生 8K、长文本渲染和批量出图，瞄准广告与专业视觉生产流程。
 
 ## 深度简报目录
 
-- Runway上线Seedance 2.5 Flash，视频生成提速降本
-- ArtCraft扩大AI构建的开源软件套件版图
+- 可灵 Kling Image 4.0 上线，主打原生 8K 生图
 
 ## 快讯预览
 
-- Docker呼吁通过隔离与治理，为智能体自主执行软件建立更安全的基础。
-- 谷歌发布TPU Sync开源库，用于在TPU推理服务环境之间传输KV缓存。
-- Meshy公布100次真实打印测试，覆盖四种AI 3D工作流，Meshy 7与Make Printable表现领先。
-- InfoQ介绍GFlow，一种在AICon北京分享的游戏设计多智能体协作与验证架构。
-- 谷歌推出LiteRT Tensor API，用于跨CPU、GPU和NPU构建、定制与优化端侧机器学习模型。
-- 腾讯混元在Artificial Analysis Cyber Index排名第三，并在CWE-Bench-AA排名第一。
-- Artificial Analysis报告称，Hy4在CWE-Bench-AA以76%领先，比DeepSeek V4.1 Flash 1017高六个百分点。
-- Sakana AI为其首款移动应用招募测试者，报名截止至11月15日。
-- Sakana AI表示正在开发首款移动应用，让普通用户体验多模型协作技术。
-- Sakana AI表示将推进大语言模型预训练，同时认为协同的小模型可能比单一巨型模型更具经济性。
+- 谷歌公布AI安全代理PageBreak，已发现超过500个跨站脚本漏洞。
+- Osmo称其AI嗅觉系统的气味识别能力已接近人类水平。
+- Qdrant介绍社区项目，解决印地语提问对应英文政府文档的跨语言检索问题。
+- Manus成为Godot基金会白金赞助商，支持这一开源游戏引擎。
+- SID AI 发布 SID-2 智能搜索模型，其协同代理 Swarm 模式据称达到 0.720 NDCG。
+- Meshy 发起 Z-Axis Awards，提供 30 万美元奖金，并推出面向 3D 创作者的百万美元基金。
+- Anthropic 为 Claude Code 加入 Code Mode，可用 JavaScript 串联工具调用，提升多步骤编程效率。
+- 微软在Ignite 2026上将Copilot定位为企业工作的自主执行引擎。
+- 思维链研究代表人物Jason Wei据报道在Meta工作约一年后离职。
+- 腾讯开源 Hy4 Flash：2240亿参数、多模态、每次激活120亿参数，支持百万上下文。
 
-## 1. Runway上线Seedance 2.5 Flash，视频生成提速降本
+## 1. 可灵 Kling Image 4.0 上线，主打原生 8K 生图
 
-Runway接入字节跳动Seedance 2.5 Flash，为全球创作者提供更快、更便宜的视频生成选择。
-
-### 发生了什么
-
-Runway于11月13日宣布，字节跳动的Seedance 2.5 Flash已在其平台上线。官方将其定位为更快、成本更低的视频生成选项，意味着Seedance系列不再只通过字节跳动自有渠道触达用户，而是进入了全球创作者熟悉的工作流。
-
-这件事的价值，首先在于分发。已经使用Runway的用户无需切换到中国本土服务、重新适应界面或管理新的账户，就能调用字节跳动的视频模型。对Runway而言，引入竞争对手的模型，也是在把平台从单一模型工作室变成更开放的生成模型入口。
-
-### 为什么值得关注
-
-视频生成产品的竞争，正在从单次演示转向迭代速度、成片稳定性和试错成本。Flash版本的意义正在于此：创作者可以用更低成本反复测试提示词、修改镜头，再把更昂贵或更慢的模型留给最终渲染。
-
-不过，Runway暂未公布具体速度、价格和套餐范围，因此“更快、更便宜”还不能直接换算成可比较的性能优势。它也没有说明Flash究竟是全新模型，还是围绕Seedance 2.5设计的服务与成本档位。可以确认的是，字节跳动的视频技术又获得了一个国际分发渠道，而Runway也愿意把竞争对手的模型纳入自身产品价值。
-
-### 为什么重要
-
-这不是普通的模型下拉菜单更新。它降低了中国视频模型进入全球创作市场的门槛，也让高频试错型视频工作流更容易成立。如果Flash在质量上接近完整版本，依赖高价生成维持收入的供应商都将面临更直接的价格压力。
-
-**原始信源**
-
-- [Seedance 2.5 Flash is now available on Runway](https://x.com/runwayml/status/2121051193921118712)
-- [Creating with Seedance 2.5](https://help.runwayml.com/hc/en-us/articles/53542207042323-Creating-with-Seedance-2-5)
-
-原文链接：[Runway上线Seedance 2.5 Flash，视频生成提速降本｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/runway-adds-seedance-flash.html)
-
----
-
-## 2. ArtCraft扩大AI构建的开源软件套件版图
-
-ArtCraft正用编码智能体以Rust重建熟悉的创意工具，把软件克隆从演示项目推向开源产品战略。
+可灵推出 Kling Image 4.0，加入原生 8K、长文本渲染和批量出图，瞄准广告与专业视觉生产流程。
 
 ### 发生了什么
 
-ArtCraft创始人Brandon Thomas在11月13日的演讲中，进一步扩大了项目目标：不只是制作类似Photoshop的应用，而是借助AI辅助开发，重建更广泛的创意软件。项目目前已发布17款开源工具，包括PhotoCraft和PdfCraft，并将这一过程描述为对成熟软件类别的系统性重做。
+可灵在 11 月 18 日 10:33 UTC 宣布 Kling Image 4.0 正式上线，新增原生 8K 生图、更长文本渲染和批量生成等面向生产的能力。该模型已在可灵平台提供，并通过合作产品扩展分发。
 
-真正值得注意的，并不是AI能够模仿熟悉界面，而是这些应用采用Rust从头编写，并以可检查的开源代码发布。这让ArtCraft更像一种新的软件生产方式：小团队可以快速覆盖多个品类，但也必须面对专业文件兼容、插件生态、稳定性和大量边缘场景带来的长期工程负担。
+官方重点强调三项能力：不依赖简单放大的原生高分辨率输出、在画面中生成更长文本，以及一次批量生成多张图像。可灵还将 Kling Image 4.0 定位为参考驱动的创作工具，试图让角色、风格和视觉方向在一组图像中保持一致，而不是只生成单张漂亮图片。
 
-### 难点在于补齐差距
-
-项目的公开进展不等于已经达到替代专业软件的程度。类似Photoshop的界面能让用户迅速理解产品，但专业工作依赖许多演示中看不见的能力，包括稳定的文档处理、色彩管理、自动化、扩展支持、大文件性能，以及多年形成的工作习惯。
-
-不过，ArtCraft的开源路线确实改变了竞争方式。开发者可以检查代码、补齐功能，并针对本地或垂直场景进行改造。编码智能体可能让产品最初的80%变得极其便宜，尤其是目标行为已经被用户熟知时；真正决定成败的，往往是剩下那部分不显眼却最难维护的工程。
+原生 8K 的意义，并不只是消费级规格，而是减少海报、广告版式、商品视觉等素材在裁切和大尺寸交付时的返工。文本渲染同样直接影响商业可用性：本地化营销、包装设计和界面草图都需要更可靠的字体表现。不过，这些能力目前仍主要来自厂商说明，尚待更大范围的独立测试。
 
 ### 为什么重要
 
-这是一次早期测试：智能体辅助开发能否真正冲击成熟应用类别，而不只是制造轻量级原型。Adobe不会因为一个早期克隆项目就失去专业客户，但传统软件商可能面对越来越多公开迭代、低成本分发的替代品。法律风险、安全维护，以及社区能否补上最难的10%功能，仍是ArtCraft尚未证明的部分。
+这次发布说明图像生成市场正在从“提示词出奇迹”转向可控性和生产效率竞争。可灵争夺的并非只有逼真样片，也包括能否进入设计团队的日常流程。通过第三方创意平台分发，也可能让它触达更多中国以外的专业用户。
+
+真正未解的是一致性。原生分辨率和长文本并不能保证批量输出中的人物、Logo 或版式稳定不变。在独立用户验证这些失败场景前，Kling Image 4.0 更适合被看作一次有潜力的生产升级，而不是设计软件的替代品。
+
+### Uncle Cat 判断
+
+可灵真正押注的是批量一致性和可用字体；如果 Logo 每张都变，8K 也救不了工作流。
 
 **原始信源**
 
-- [AI Ambition: ArtCraft Cloned Photoshop and Now Wants to Rebuild Everything](https://latent.space/p/artcraft/)
-- [AI Ambition: ArtCraft Cloned Photoshop and Now Wants to Rebuild Everything](https://aivexanews.com/news/68811c4e6ccf667ccec984e2/ai-ambition-artcraft-cloned-photoshop-and-now-wants-to-rebuild-everything)
-- [PhotoCraft: visual study guide for Claude Code and MCP](https://deepneuro.ai/study-guides/ArtCraft/photocraft-guide.pdf)
+- [Kling AI official release notes](https://kling.ai/release-note/release-notes/Kling_Image_4)
+- [Kling AI official announcement on X](https://x.com/Kling_ai/status/2123001746373099899)
+- [Kling AI API updates](https://kling.ai/document-api/updates/api)
 
-原文链接：[ArtCraft扩大AI构建的开源软件套件版图｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/artcraft-rebuilds-open-source-tools.html)
+原文链接：[可灵 Kling Image 4.0 上线，主打原生 8K 生图｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/kling-image-4-native-8k.html)
 
 ## 一句话快讯
-- Docker呼吁通过隔离与治理，为智能体自主执行软件建立更安全的基础。（[InfoQ 中文](https://www.infoq.cn/article/1pCuIRtm5HYwTyR4fIhA)）
-- 谷歌发布TPU Sync开源库，用于在TPU推理服务环境之间传输KV缓存。（[MarkTechPost](https://www.marktechpost.com/2026/11/13/google-tpu-sync-open-source-kv-cache-transfer-library/)）
-- Meshy公布100次真实打印测试，覆盖四种AI 3D工作流，Meshy 7与Make Printable表现领先。（[X](https://x.com/MeshyAI/status/2121181278024413536)）
-- InfoQ介绍GFlow，一种在AICon北京分享的游戏设计多智能体协作与验证架构。（[InfoQ 中文](https://www.infoq.cn/article/dkQAAL0SSdhIq1h61eKx)）
-- 谷歌推出LiteRT Tensor API，用于跨CPU、GPU和NPU构建、定制与优化端侧机器学习模型。（[Google Developers Blog](https://developers.googleblog.com/en/native-model-authoring-for-edge-with-litert-tensor-api/)）
-- 腾讯混元在Artificial Analysis Cyber Index排名第三，并在CWE-Bench-AA排名第一。（[X](https://x.com/TencentHunyuan/status/2121161030751694873)）
-- Artificial Analysis报告称，Hy4在CWE-Bench-AA以76%领先，比DeepSeek V4.1 Flash 1017高六个百分点。（[X](https://x.com/ArtificialAnlys/status/2121137665626231053)）
-- Sakana AI为其首款移动应用招募测试者，报名截止至11月15日。（[X](https://x.com/SakanaAILabs/status/2121072695228223752)）
-- Sakana AI表示正在开发首款移动应用，让普通用户体验多模型协作技术。（[X](https://x.com/SakanaAILabs/status/2121072599329546326)）
-- Sakana AI表示将推进大语言模型预训练，同时认为协同的小模型可能比单一巨型模型更具经济性。（[X](https://x.com/SakanaAILabs/status/2121072254880743810)）
-- Thinking Machines 开源 Inkling 2 Small，在 Agent Arena 美国开源模型榜升至第一。（[X / Arena](https://x.com/arena/status/2121018024610455580)）
+- 谷歌公布AI安全代理PageBreak，已发现超过500个跨站脚本漏洞。（[InfoQ 中文](https://www.infoq.cn/article/uGTol3TSzOV72NSrcBrB?utm_source=rss&utm_medium=article)）
+- Osmo称其AI嗅觉系统的气味识别能力已接近人类水平。（[MIT Technology Review](https://www.technologyreview.com/2026/11/18/1148816/smell-startup-osmo-ai-nose-good-as-humans/)）
+- Qdrant介绍社区项目，解决印地语提问对应英文政府文档的跨语言检索问题。（[X / Qdrant](https://x.com/qdrant_engine/status/2122989112890478818)）
+- Manus成为Godot基金会白金赞助商，支持这一开源游戏引擎。（[X / ManusAI](https://x.com/ManusAI/status/2122967543191335231)）
+- SID AI 发布 SID-2 智能搜索模型，其协同代理 Swarm 模式据称达到 0.720 NDCG。（[MarkTechPost](https://www.marktechpost.com/2026/11/17/sid-ai-sid-2-agentic-search-swarm/)）
+- Meshy 发起 Z-Axis Awards，提供 30 万美元奖金，并推出面向 3D 创作者的百万美元基金。（[X / Meshy AI](https://x.com/MeshyAI/status/2122952958919311546)）
+- Anthropic 为 Claude Code 加入 Code Mode，可用 JavaScript 串联工具调用，提升多步骤编程效率。（[MarkTechPost](https://www.marktechpost.com/2026/11/17/anthropic-claude-code-code-mode-javascript-tool-calls/)）
+- 微软在Ignite 2026上将Copilot定位为企业工作的自主执行引擎。（[SiliconANGLE](https://siliconangle.com/2026/11/18/at-ignite-2026-microsoft-reinvents-copilot-as-the-autonomous-engine-of-enterprise-work/)）
+- 思维链研究代表人物Jason Wei据报道在Meta工作约一年后离职。（[量子位](https://www.qbitai.com/2026/11/510811.html)）
+- 腾讯开源 Hy4 Flash：2240亿参数、多模态、每次激活120亿参数，支持百万上下文。（[X / Tencent Hunyuan](https://x.com/TencentHunyuan/status/2122912575302119554)）
+- Genesis完成A轮融资，据报道估值超过230亿美元，英伟达与AMD首次共同押注。（[量子位](https://www.qbitai.com/2026/11/510821.html)）
+- Together AI开放DeepSeek V4.1 Flash 1017的后训练能力，支持自定义数据、奖励与环境。（[X / Together AI](https://x.com/togethercompute/status/2122902661133431212)）
+- 阿里通义宣布 Qwen4-Max 登陆 Runware，通过第三方生成媒体平台扩大模型可用性。（[X / Alibaba Qwen](https://x.com/Alibaba_Qwen/status/2122888191950901534)）
+- Canva开始在澳大利亚的Muse中提供设计工具、模板及创作功能。（[X / Canva](https://x.com/canva/status/2122878614328983577)）
 
 ---
 
-完整日报：[11月13日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-13.html)
+完整日报：[11月18日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-18.html)
 
 历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
 
