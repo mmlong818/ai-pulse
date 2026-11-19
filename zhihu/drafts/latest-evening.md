@@ -1,77 +1,109 @@
-# 猫叔的AI资讯雷达｜11月18日晚报：可灵 Kling Image 4.0 上线，主打原生 8K 生图
+# 猫叔的AI资讯雷达｜11月19日晚报：Canva上线AI关闭选项，把生成式功能选择权交还用户
 
-这是「猫叔的AI资讯雷达」11月18日晚报。
+这是「猫叔的AI资讯雷达」11月19日晚报。
 
 本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
 
-**今晚重点**：可灵推出 Kling Image 4.0，加入原生 8K、长文本渲染和批量出图，瞄准广告与专业视觉生产流程。
+**今晚重点**：Canva新增AI控制项，允许用户关闭生成式功能并限制AI参与程度，让“是否使用AI”成为明确的产品设置。
 
 ## 深度简报目录
 
-- 可灵 Kling Image 4.0 上线，主打原生 8K 生图
+- Canva上线AI关闭选项，把生成式功能选择权交还用户
+- 面壁智能称MiniCPM全球下载量突破7000万次
 
 ## 快讯预览
 
-- 谷歌公布AI安全代理PageBreak，已发现超过500个跨站脚本漏洞。
-- Osmo称其AI嗅觉系统的气味识别能力已接近人类水平。
-- Qdrant介绍社区项目，解决印地语提问对应英文政府文档的跨语言检索问题。
-- Manus成为Godot基金会白金赞助商，支持这一开源游戏引擎。
-- SID AI 发布 SID-2 智能搜索模型，其协同代理 Swarm 模式据称达到 0.720 NDCG。
-- Meshy 发起 Z-Axis Awards，提供 30 万美元奖金，并推出面向 3D 创作者的百万美元基金。
-- Anthropic 为 Claude Code 加入 Code Mode，可用 JavaScript 串联工具调用，提升多步骤编程效率。
-- 微软在Ignite 2026上将Copilot定位为企业工作的自主执行引擎。
-- 思维链研究代表人物Jason Wei据报道在Meta工作约一年后离职。
-- 腾讯开源 Hy4 Flash：2240亿参数、多模态、每次激活120亿参数，支持百万上下文。
+- Bug0 发布 QA Agent，利用缓存的 Playwright 回放自动化执行回归测试。
+- Recraft 展示了利用 V4 Styles 工作流、围绕单一参考图生成多种视觉方向的能力。
+- Mistral 与 ClickHouse 宣布在巴黎举办一日黑客松，参与技术包括 Le Chonk、Timestral 和 Langfuse。
+- Deemos 展示了将图片转换为具备艺术家风格、适合游戏使用拓扑结构的低模 3D 模型。
+- 新论文发现，提高思维链可控性可能反而降低对其过程的可监测性。
+- 新论文报告称，大语言模型可在一种提出的训练流程下重写自身权重。
+- FieldGuide 提出面向智能体文档探索的语料地图，目标是降低令牌消耗。
+- ACaM 提出用自动化能力建模来评估和保护智能体人工智能系统。
+- CrisisBench 推出危机咨询 AI 评测套件，用于测试相关系统的安全与能力表现。
+- Nutrient 数据提取 API 可按用户模式返回 JSON，并为每个字段提供引用和置信度。
 
-## 1. 可灵 Kling Image 4.0 上线，主打原生 8K 生图
+## 1. Canva上线AI关闭选项，把生成式功能选择权交还用户
 
-可灵推出 Kling Image 4.0，加入原生 8K、长文本渲染和批量出图，瞄准广告与专业视觉生产流程。
+Canva新增AI控制项，允许用户关闭生成式功能并限制AI参与程度，让“是否使用AI”成为明确的产品设置。
 
-### 发生了什么
+### 从默认嵌入到明确选择
 
-可灵在 11 月 18 日 10:33 UTC 宣布 Kling Image 4.0 正式上线，新增原生 8K 生图、更长文本渲染和批量生成等面向生产的能力。该模型已在可灵平台提供，并通过合作产品扩展分发。
+Canva 11月19日宣布推出新的 AI 控制项，用户可以关闭生成式 AI 功能，也可以限制 AI 在创作流程中的参与程度。公司将其描述为一种可调节的选择：用户可以完全使用 AI 辅助，也可以只启用部分功能，或回到更传统的手工设计方式。
 
-官方重点强调三项能力：不依赖简单放大的原生高分辨率输出、在画面中生成更长文本，以及一次批量生成多张图像。可灵还将 Kling Image 4.0 定位为参考驱动的创作工具，试图让角色、风格和视觉方向在一组图像中保持一致，而不是只生成单张漂亮图片。
+这并不意味着 Canva 正在放弃 AI。过去一年，Canva 的产品方向明显转向对话式设计、自动排版、图像生成、品牌智能和代理式工作流。此次变化的关键，是把这些能力的“可用性”与平台本身的基础设计工具分开。
 
-原生 8K 的意义，并不只是消费级规格，而是减少海报、广告版式、商品视觉等素材在裁切和大尺寸交付时的返工。文本渲染同样直接影响商业可用性：本地化营销、包装设计和界面草图都需要更可靠的字体表现。不过，这些能力目前仍主要来自厂商说明，尚待更大范围的独立测试。
+对于学校、受监管行业、品牌团队和内容创作者来说，这一调整具有实际意义。同一个组织可能希望用 AI 加快内部草稿制作，却不愿让 AI 介入客户交付或敏感项目。控制项也让一个长期被隐藏在隐私设置中的问题变得更直接：什么时候 AI 会被调用，用户能控制到什么程度？
+
+不过，关闭生成式功能并不自动解决所有数据问题。设置是否覆盖历史内容、协作项目、模板和关联产品，仍取决于 Canva 的具体实现。用户还需要看到更清晰的说明，了解内容如何存储、审核，以及是否会被用于未来模型改进。
 
 ### 为什么重要
 
-这次发布说明图像生成市场正在从“提示词出奇迹”转向可控性和生产效率竞争。可灵争夺的并非只有逼真样片，也包括能否进入设计团队的日常流程。通过第三方创意平台分发，也可能让它触达更多中国以外的专业用户。
+Canva 正在把 AI 同意机制变成可见的产品能力。随着创意软件越来越像代理，能否轻松拒绝自动化，可能成为平台信任和企业采购的重要标准。
 
-真正未解的是一致性。原生分辨率和长文本并不能保证批量输出中的人物、Logo 或版式稳定不变。在独立用户验证这些失败场景前，Kling Image 4.0 更适合被看作一次有潜力的生产升级，而不是设计软件的替代品。
+### 猫叔判断
 
-### Uncle Cat 判断
-
-可灵真正押注的是批量一致性和可用字体；如果 Logo 每张都变，8K 也救不了工作流。
+真正重要的不是多了一个开关，而是Canva承认“默认使用AI”也应当允许用户撤回。
 
 **原始信源**
 
-- [Kling AI official release notes](https://kling.ai/release-note/release-notes/Kling_Image_4)
-- [Kling AI official announcement on X](https://x.com/Kling_ai/status/2123001746373099899)
-- [Kling AI API updates](https://kling.ai/document-api/updates/api)
+- [Canva: Your creativity, your call — introducing AI Controls](https://x.com/canva/status/2123393385461432339)
+- [The Verge: Canva adds an AI ‘off’ button](https://www.theverge.com/ai-artificial-intelligence/1037126/canva-ai-features-off-button)
 
-原文链接：[可灵 Kling Image 4.0 上线，主打原生 8K 生图｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/kling-image-4-native-8k.html)
-
-## 一句话快讯
-- 谷歌公布AI安全代理PageBreak，已发现超过500个跨站脚本漏洞。（[InfoQ 中文](https://www.infoq.cn/article/uGTol3TSzOV72NSrcBrB?utm_source=rss&utm_medium=article)）
-- Osmo称其AI嗅觉系统的气味识别能力已接近人类水平。（[MIT Technology Review](https://www.technologyreview.com/2026/11/18/1148816/smell-startup-osmo-ai-nose-good-as-humans/)）
-- Qdrant介绍社区项目，解决印地语提问对应英文政府文档的跨语言检索问题。（[X / Qdrant](https://x.com/qdrant_engine/status/2122989112890478818)）
-- Manus成为Godot基金会白金赞助商，支持这一开源游戏引擎。（[X / ManusAI](https://x.com/ManusAI/status/2122967543191335231)）
-- SID AI 发布 SID-2 智能搜索模型，其协同代理 Swarm 模式据称达到 0.720 NDCG。（[MarkTechPost](https://www.marktechpost.com/2026/11/17/sid-ai-sid-2-agentic-search-swarm/)）
-- Meshy 发起 Z-Axis Awards，提供 30 万美元奖金，并推出面向 3D 创作者的百万美元基金。（[X / Meshy AI](https://x.com/MeshyAI/status/2122952958919311546)）
-- Anthropic 为 Claude Code 加入 Code Mode，可用 JavaScript 串联工具调用，提升多步骤编程效率。（[MarkTechPost](https://www.marktechpost.com/2026/11/17/anthropic-claude-code-code-mode-javascript-tool-calls/)）
-- 微软在Ignite 2026上将Copilot定位为企业工作的自主执行引擎。（[SiliconANGLE](https://siliconangle.com/2026/11/18/at-ignite-2026-microsoft-reinvents-copilot-as-the-autonomous-engine-of-enterprise-work/)）
-- 思维链研究代表人物Jason Wei据报道在Meta工作约一年后离职。（[量子位](https://www.qbitai.com/2026/11/510811.html)）
-- 腾讯开源 Hy4 Flash：2240亿参数、多模态、每次激活120亿参数，支持百万上下文。（[X / Tencent Hunyuan](https://x.com/TencentHunyuan/status/2122912575302119554)）
-- Genesis完成A轮融资，据报道估值超过230亿美元，英伟达与AMD首次共同押注。（[量子位](https://www.qbitai.com/2026/11/510821.html)）
-- Together AI开放DeepSeek V4.1 Flash 1017的后训练能力，支持自定义数据、奖励与环境。（[X / Together AI](https://x.com/togethercompute/status/2122902661133431212)）
-- 阿里通义宣布 Qwen4-Max 登陆 Runware，通过第三方生成媒体平台扩大模型可用性。（[X / Alibaba Qwen](https://x.com/Alibaba_Qwen/status/2122888191950901534)）
-- Canva开始在澳大利亚的Muse中提供设计工具、模板及创作功能。（[X / Canva](https://x.com/canva/status/2122878614328983577)）
+原文链接：[Canva上线AI关闭选项，把生成式功能选择权交还用户｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/canva-adds-ai-controls.html)
 
 ---
 
-完整日报：[11月18日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-18.html)
+## 2. 面壁智能称MiniCPM全球下载量突破7000万次
+
+面壁智能披露MiniCPM系列全球下载量超过7000万次，并公布其在政务、银行、语音交互和离线应用中的落地案例。
+
+### 小模型开始按部署范围竞争
+
+面壁智能11月19日披露，截至2026年11月，MiniCPM系列开源模型全球累计下载量已超过7000万次。公司同时公布了一批来自老挝、马来西亚、肯尼亚、法国和美国的应用案例。
+
+这些案例的共同点，不是追求云端旗舰模型的最高分，而是强调模型能否在本地运行。面壁智能称，基于高效模型架构的助手已接入老挝国家政务通讯系统；马来西亚企业将 VoxCPM2 语音模型用于多语种实时交互；肯尼亚一家银行则在本地数据湖中结合端侧模型和智能体框架完成信贷风控流程。此外，还有法国开发者用 MiniCPM5-1B 制作离线步行助手，美国开发者将 MiniCPM-o-4.5 与 VoxCPM2 结合，用于浏览器内的互动故事应用。
+
+需要注意的是，7000万是公司披露的下载量，并不等于活跃用户、生产流量或实际部署数量。下载统计可能包含重复拉取、镜像、测试和未继续使用的项目。涉及国家政务系统和银行的案例，也需要相关机构进一步确认，才能视为经过审计的生产案例。
+
+即便如此，这条消息仍反映出一个重要变化：小型多模态模型的竞争标准，正从公开榜单成绩扩展到手机、汽车、私有服务器和弱连接环境中的实际可用性。内存占用、量化、延迟和多语言能力，正在变成与参数规模同等重要的指标。
+
+### 为什么重要
+
+如果这些部署能够持续运行，MiniCPM说明开源高效模型可以进入云端API难以覆盖的地区和行业。真正需要观察的，是下载热度能否转化为长期本地运营。
+
+### 猫叔判断
+
+7000万下载尚未经过独立审计，但老挝政务和肯尼亚银行案例说明，小模型的部署限制正可能变成竞争壁垒。
+
+**原始信源**
+
+- [ModelBest official statement on MiniCPM downloads and deployments](https://weibo.com/2/detail/5367041642204826)
+- [OpenBMB: MiniCPM ecosystem and download figures](https://openbmb.cn/blog/gotc-2026)
+- [OpenBMB MiniCPM repository changelog](https://github.com/OpenBMB/MiniCPM-V/blob/main/docs/changelog_en.md)
+
+原文链接：[面壁智能称MiniCPM全球下载量突破7000万次｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/minicpm-reaches-70-million-downloads.html)
+
+## 一句话快讯
+- Bug0 发布 QA Agent，利用缓存的 Playwright 回放自动化执行回归测试。（[InfoQ 中文](https://www.infoq.cn/article/eO0w7sdaGClvppFqwt5j)）
+- Recraft 展示了利用 V4 Styles 工作流、围绕单一参考图生成多种视觉方向的能力。（[X / Recraft](https://x.com/recraftai/status/2123370766905344441)）
+- Mistral 与 ClickHouse 宣布在巴黎举办一日黑客松，参与技术包括 Le Chonk、Timestral 和 Langfuse。（[X / Mistral AI](https://x.com/MistralAI/status/2123339999244636509)）
+- Deemos 展示了将图片转换为具备艺术家风格、适合游戏使用拓扑结构的低模 3D 模型。（[X / DeemosTech](https://x.com/DeemosTech/status/2123318964965294527)）
+- 新论文发现，提高思维链可控性可能反而降低对其过程的可监测性。（[arXiv](https://arxiv.org/abs/2611.21799)）
+- 新论文报告称，大语言模型可在一种提出的训练流程下重写自身权重。（[arXiv](https://arxiv.org/abs/2611.21885)）
+- FieldGuide 提出面向智能体文档探索的语料地图，目标是降低令牌消耗。（[arXiv](https://arxiv.org/abs/2611.21647)）
+- ACaM 提出用自动化能力建模来评估和保护智能体人工智能系统。（[arXiv](https://arxiv.org/abs/2611.23507)）
+- CrisisBench 推出危机咨询 AI 评测套件，用于测试相关系统的安全与能力表现。（[arXiv](https://arxiv.org/abs/2611.21622)）
+- Nutrient 数据提取 API 可按用户模式返回 JSON，并为每个字段提供引用和置信度。（[MarkTechPost](https://www.marktechpost.com/2026/11/18/nutrient-data-extraction-api-citations-confidence/)）
+- Google Cloud 称，AlphaEvolve 与 Gemini 4 让一项调优后的编码技能在未见任务上提升 5%。（[X / Google Cloud](https://x.com/GoogleCloudTech/status/2123234809354846702)）
+- Vercel 推出 Board，为人类与智能体共享任务、协作构建软件工厂提供安全消息板。（[X / Vercel](https://x.com/vercel/status/2123234769236619673)）
+- Tripo 为 Apple Vision Pro 项目提供空间资产，把二维照片转换成沉浸式三维场景。（[X / Tripo](https://x.com/tripoai/status/2123227692208476515)）
+- GitHub推出公开预览连接器，让Copilot一次接入经验证的MCP服务并跨客户端复用。（[X / GitHub](https://x.com/github/status/2123217310752342095)）
+
+---
+
+完整日报：[11月19日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-19.html)
 
 历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
 
