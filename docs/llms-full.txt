@@ -19,6 +19,110 @@
 
 ## Recent briefings
 
+### Google brings autonomous business calls into Gemini Tasks
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/google-duplex-gemini-business-calls.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/google-duplex-gemini-business-calls.html
+- Source timestamp: 2026-11-20T23:30:00.000Z
+- Site timestamp: 2026-11-21T01:00:04.795Z
+- Tags: Agents, Industry
+
+Google says Duplex now powers Gemini Tasks, letting the assistant call businesses and handle real-world requests through a unified Gemini stack.
+
+## What happened
+
+Google Research detailed how Duplex evolved from a narrow system for scripted business calls into a broader voice-agent layer inside Gemini Tasks. The company says the feature can call businesses on a user’s behalf to handle practical requests such as checking availability, confirming prices or arranging appointments.
+
+The system must manage fast, irregular conversations in which people interrupt, revise answers and use tone to signal turn-taking. Google describes the current architecture as a unified stack built with Gemini foundation models, rather than the earlier collection of closed-domain models used for specific call types.
+
+Duplex has also been used behind Google Search and Maps. Google says business information gathered through its calls has appeared in Search and Maps more than one trillion times, a scale that illustrates why automated calling is not only a consumer convenience but also a data-collection channel. Earlier Duplex capabilities also contributed to Pixel features such as Call Screen and Hold for Me.
+
+## From demo to infrastructure
+
+The announcement is less about a single new model than about productizing a difficult interface: an AI system that must negotiate with people who did not initiate a conversation with a machine. That requires low-latency speech recognition, contextual reasoning, natural synthesis and safeguards around disclosure and consent.
+
+Google says foundation models have enabled Duplex to expand from tightly bounded reservations into more varied tasks across Search, Maps and Gemini. The practical question is how reliably the system handles exceptions, business-specific policies and requests that need confirmation before an action is taken.
+
+## Why it matters
+
+Voice agents become consequential when they can complete errands rather than merely answer questions. By moving Duplex into Gemini Tasks, Google is turning a decade of calling research into a general-purpose action layer tied to its maps and merchant data. That could give Gemini a useful advantage in real-world coordination, but it also increases the importance of accurate disclosure, call records and clear boundaries around decisions made for users.
+
+Chinese title: 谷歌将 Duplex 自动电话能力接入 Gemini Tasks
+Chinese summary: 谷歌介绍 Duplex 的新架构：Gemini Tasks 可代用户致电商家，处理预约、价格和服务可用性等现实事务。
+
+Sources:
+  - How Google Duplex evolved to also call businesses for you in Gemini: https://www.research.google/blog/how-google-duplex-evolved-to-also-call-businesses-for-you-in-gemini/
+  - Google Duplex: https://research.google/teams/brain/duplex/
+
+### OpenAI introduces benchmark for medicinal chemistry reasoning
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-medchembench-drug-reasoning.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-medchembench-drug-reasoning.html
+- Source timestamp: 2026-11-20T19:09:00.000Z
+- Site timestamp: 2026-11-21T01:00:04.795Z
+- Tags: Research, Models
+
+OpenAI introduced MedChemBench to test whether AI systems can interpret molecular evidence and choose promising compounds for follow-up experiments.
+
+## What happened
+
+OpenAI introduced MedChemBench, a benchmark for evaluating AI systems on practical medicinal-chemistry reasoning. The tasks ask models to read molecular structures, interpret experimental results, compare related compounds and decide which candidate should be tested next.
+
+The benchmark is designed around a central difficulty in drug discovery: improving one property often damages another. A molecule may bind strongly to a disease-related target yet be poorly absorbed, unstable in the body or difficult to manufacture. MedChemBench therefore tests connected decisions rather than isolated question answering.
+
+OpenAI says the evaluation includes multimodal inputs such as chemical drawings and experimental evidence. Models must reconstruct structural information, explain why compounds performed differently and reason about properties relevant to downstream development. The accompanying paper describes the benchmark as a way to measure whether frontier models can support scientists beyond literature summarization or generic molecule generation.
+
+## What remains unproven
+
+A benchmark score does not establish that a model can design a safe drug or replace a medicinal chemist. Real programs involve noisy assays, proprietary datasets, synthesis constraints, regulatory requirements and repeated laboratory feedback. MedChemBench can measure whether a system understands selected reasoning problems, but it cannot by itself demonstrate biological validity or clinical usefulness.
+
+The benchmark is nevertheless important because it moves evaluation toward the decision points that determine research productivity. Choosing the next compound is often more valuable than proposing a large list of plausible structures. A system that can connect structure, evidence and trade-offs may help researchers prioritize experiments, provided its recommendations are independently checked.
+
+## Why it matters
+
+AI drug discovery has accumulated many claims based on generated molecules and retrospective validation. MedChemBench offers a more demanding test of whether models can read the same evidence scientists use and make a defensible next-step recommendation. Its influence will depend on external adoption, data leakage controls and whether performance predicts results in live laboratory programs.
+
+Chinese title: OpenAI 推出评测药物化学推理能力的 MedChemBench
+Chinese summary: OpenAI 发布 MedChemBench，测试 AI 能否理解分子证据、比较候选物并决定下一步应验证哪些化合物。
+
+Sources:
+  - Can AI help scientists identify promising drug candidates?: https://openai.com/index/introducing-medchembench/
+  - MedChemBench: Evaluating complex multimodal reasoning in medicinal chemistry: https://cdn.openai.com/pdf/09c4ec60-a32e-4652-837b-1811368a3bb0/medchembench-paper.pdf
+
+### Thinking Machines releases 26B open-weight looped model
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/thinking-machines-inkling-2-mini.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/thinking-machines-inkling-2-mini.html
+- Source timestamp: 2026-11-20T20:12:00.000Z
+- Site timestamp: 2026-11-21T01:00:04.795Z
+- Tags: Models, Open Source, Agents, Safety
+
+Thinking Machines released Inkling 2 Mini, a 26.4B open-weight model that loops internal layers to improve agentic coding on local hardware.
+
+## What happened
+
+Thinking Machines Lab released Inkling 2 Mini, a 26.4-billion-parameter mixture-of-experts model with 3.4 billion active parameters and an Apache 2.0 license. Unlike a conventional transformer, its middle layers are run three times for each token, allowing the model to perform more serial computation without producing a long visible chain of thought.
+
+The company says the model is available with full weights on Hugging Face and can run locally through Ollama, llama.cpp, Unsloth and other inference stacks. Its approximate 20GB memory footprint puts it within reach of laptops and desktop systems with at least 32GB of memory. Thinking Machines also released a variable-loop research model so researchers can study how additional passes affect reasoning and oversight.
+
+## Why the numbers matter
+
+On the lab’s reported evaluations, Inkling 2 Mini reached 48.2% on DeepSWE v1.1, 77.9% on SWE-bench Pro v2, 79.0% on BrowseComp and 85.3% on DeepSearchQA. Those comparisons are supplied by the developer and use different harnesses across models, so they should not be treated as a universal ranking. The important result is the efficiency profile: the model claims competitive agentic performance while using far fewer active parameters than similarly scoring dense models.
+
+Looping also creates a safety question. In the company’s experiments, chain-of-thought became shorter as passes increased but remained readable at this scale. A weaker monitor missed between 1.0% and 5.0% of simulated side-task attacks across different loop counts, while tool-only monitoring missed substantially more behavior.
+
+## Why it matters
+
+Inkling 2 Mini is significant because it couples an unusual reasoning architecture with genuinely accessible weights. If the results transfer beyond the lab’s benchmarks, developers may get stronger local coding and tool-use models without buying frontier-scale infrastructure. The unresolved issue is whether internal computation remains reliably inspectable as looping depth and model capability grow.
+
+Chinese title: Thinking Machines 发布 26B 开源循环架构模型
+Chinese summary: Thinking Machines Lab 发布 Inkling 2 Mini，以循环执行中间层提升智能体编程能力，并可在本地设备运行。
+
+Sources:
+  - Introducing Inkling 2 Mini: https://thinkingmachines.ai/news/inkling-2-mini/
+  - Inkling 2 Mini Model Card: https://thinkingmachines.ai/model-card/inkling-2-mini/
+  - Inkling 2 Mini on Hugging Face: https://huggingface.co/collections/thinkymachines/inkling-2-mini
+
 ### Anthropic begins Nasdaq trading in landmark AI IPO
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-nasdaq-debut.html
@@ -946,108 +1050,27 @@ Sources:
   - Gemini Decisions API: Fast, calibrated multimodal decisions: https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/
   - Gemini Decisions API: https://www.ithome.com/1/025/858.htm
 
-### Anthropic expands Claude into collaborative office work
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/anthropic-claude-workplace-suite.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/anthropic-claude-workplace-suite.html
-- Source timestamp: 2026-11-10T17:26:00.000Z
-- Site timestamp: 2026-11-11T01:00:06.960Z
-- Tags: Agents, Industry
-
-Claude gains Whiteboards, Sheets and Data tools, while Claude Meetings begins beta rollout as Anthropic pushes beyond coding into shared planning, analysis and workplace execution.
-
-Anthropic has expanded Claude with a set of workplace features that turn the assistant into a more persistent collaborative workspace. The company launched Claude Whiteboards and Claude Sheets in beta, made Claude Data generally available, and has begun rolling out Claude Meetings in beta as a feature that can participate in calls and convert discussions into follow-up work.
-
-## A broader working surface
-
-Whiteboards lets users talk through an unfinished idea and have Claude organize it into a visual plan with timelines, owners and deadlines. Sheets allows the assistant to create and edit trackers, budgets and other structured workbooks. Claude Data, formerly called Dashboards, adds certified queries, data stories and narrated presentations built from a team’s metrics.
-
-Anthropic is also expanding interactive connectors. Users can open fuller versions of connected tools from inside a Claude conversation, including integrations involving Adobe, Atlassian and Box. The aim is to keep context from being scattered across email, documents, spreadsheets and specialist applications.
-
-Claude Meetings is now in beta rollout for Team and Enterprise plans, rather than being only an announced future feature. Anthropic’s help documentation says users can add Claude as a visible participant to a Google Meet call, where it can take notes, answer questions and build artifacts such as documents, whiteboards and slides during the call. Availability is still limited for some organizations, and consent for transcription, recording, access permissions and automatically generated tasks remains important.
-
-The rollout of Whiteboards, Sheets and Data is available across paid plans, although enterprise administrators can control some features. Whiteboards and Sheets are off by default for Enterprise, while Claude Data is scheduled to turn on by default for those customers on November 19.
-
-## Why it matters
-
-Anthropic is competing for the layer where work is organized, not only the layer where text is generated. The company’s advantage may come from adapting Claude Code’s context-and-artifact workflow to nontechnical teams. Its unresolved challenge is governance: a board, spreadsheet or meeting transcript can become an action system, and mistakes in ownership, permissions or data interpretation may travel directly into business operations.
-
-Chinese title: Anthropic扩展Claude，进军协作办公工作流
-Chinese summary: Claude新增白板、表格和数据工具，Claude Meetings也开始向团队和企业用户进行测试版 rollout，Anthropic正把产品从编程助手扩展为协作办公平台。
-
-Sources:
-  - Claude Whiteboards, Claude Sheets, and Claude Data: https://claude.com/resources/articles/sheets-whiteboards-data
-  - Working with Claude Sheets, Whiteboards, and Interactive Connectors: https://claude.com/resources/articles/more-ways-to-work-with-claude-sheets-whiteboards-and-interactive-connectors
-  - Use Claude Meetings: https://support.claude.com/en/articles/18325154-use-claude-meetings
-
-### Human-agent teams run auditable X-ray experiments
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/auditable-xray-agent-teams.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/auditable-xray-agent-teams.html
-- Source timestamp: 2026-11-11T05:00:00.000Z
-- Site timestamp: 2026-11-11T13:00:12.526Z
-- Tags: Research, Agents, Safety
-
-A new arXiv study documents autonomous synchrotron experiments, measuring how humans and coding agents share decisions, errors and scientific work.
-
-## What happened
-
-Researchers from Brookhaven, Berkeley, Argonne and the University of Pennsylvania published a study of human-agent teams conducting autonomous synchrotron X-ray experiments on nanoparticle superlattices. The system combined a human scientist, a team-lead agent and several specialized coding agents responsible for operations such as analysis, visualization and experiment control.
-
-Across three experiments, the teams operated closed-loop workflows in which agents edited code, selected measurements and responded to changing objectives, while humans retained approval authority. The reported sessions lasted between 100 and 133 minutes, including calibration, analysis and setup. Rather than presenting only a success rate, the paper reconstructed decisions from transcripts and linked them to code changes, measurements and corrections.
-
-The audit found that humans proposed roughly one-fifth to one-quarter of the recorded ideas, but made the first decision on about 40% to 47% of adopted ideas. Agents generated many proposals, yet their ideas reached verified experimental results less often than human-originated ideas. Error handling was also asymmetric: the agents corrected a large share of their own mistakes in some stages, while human errors were less consistently detected or repaired.
-
-## Why it matters
-
-The study is important because it treats scientific autonomy as an organizational and accountability problem, not simply a model-capability contest. In a physical laboratory, a plausible script is not enough; researchers need to know who proposed an action, who approved it, what evidence informed it and how failures were corrected. That record becomes essential when experiments are expensive, safety-sensitive or difficult to reproduce.
-
-The work remains a small demonstration in one class of X-ray experiments, and the agents operated inside a carefully engineered environment with human oversight. It does not establish that autonomous laboratories can generalize across instruments or research domains. It does provide unusually concrete evidence for designing audit trails and approval boundaries before agents are allowed to run higher-consequence scientific loops.
-
-## Uncle Cat take
-
-The strongest result is the 100–133-minute experiment log: scientific agents are becoming measurable collaborators, but human approval still controls the handoff from idea to result.
-
-Chinese title: 人机团队完成可审计的同步辐射X射线实验
-Chinese summary: 一项新研究记录人类与编码智能体如何协作开展自主X射线实验，并量化决策、错误与科学产出的分工。
-
-Sources:
-  - Auditable Human-Agent Teams for Autonomous X-ray Experimentation: https://arxiv.org/abs/2611.12933
-
-### BotPsy tests compact agents for private local assistants
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/botpsy-local-agent.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/botpsy-local-agent.html
-- Source timestamp: 2026-11-11T05:01:00.000Z
-- Site timestamp: 2026-11-11T13:00:12.526Z
-- Tags: Agents, Open Source, Models, Safety
-
-Tether AI Research released an open 0.8B tool-using model designed for on-device assistants, reporting strong benchmark gains but limited scope.
-
-## What happened
-
-Tether AI Research introduced BotPsy, a 0.8-billion-parameter language model built on Qwen3.5-0.8B for function calling and agent workflows. The model is designed to run locally rather than depend on a cloud endpoint, with intended uses including web search, calendars, files, messaging, commerce, device control and other bounded assistant tasks.
-
-The release uses a four-stage post-training recipe: supervised fine-tuning, multi-teacher on-policy distillation, and two reinforcement-learning stages. The teachers were specialized for tool use, reasoning and instruction following. Tether says BotPsy outperformed tested models of up to 1.2 billion parameters across six tool-use and agent benchmarks, and exceeded Qwen3.5-2B-Think on five of six tests. Against its base model, the largest reported gains were on BFCL v4, ACEBench and τ-bench.
-
-The model is released under Apache 2.0 in bf16, Q8 and Q4 formats, with Hugging Face safetensors and GGUF files for the QVAC SDK and llama.cpp. Tether also reports a lower unsafe-response rate than the base model in automated red-teaming, including under prompt-injection tests, but the figures are internally produced rather than independently replicated.
-
-## Why it matters
-
-BotPsy is significant because it treats tool execution—not general conversation—as the optimization target for a sub-billion model. That could make local assistants viable on phones, PCs and embedded systems where privacy, offline operation and predictable hardware costs matter. The release does not show that a tiny model is ready to manage unrestricted personal workflows: its authors limit it to low- and medium-difficulty tasks, and tool errors remain consequential. The practical question is whether its benchmark advantage survives real APIs, languages, permissions and adversarial inputs.
-
-## Uncle Cat take
-
-BotPsy’s important number is not 0.8B; it is the reported 21% unsafe-response rate, which still leaves local tool access far from automatic trust.
-
-Chinese title: BotPsy发布，0.8B参数模型瞄准本地智能体
-Chinese summary: Tether AI Research开源0.8B参数工具调用模型BotPsy，主打端侧助手，测试成绩亮眼但应用边界仍然有限。
-
-Sources:
-  - BotPsy: On-Device Personal Assistant with a Sub-Billion-Parameter Agentic Language Model: https://huggingface.co/blog/qvac/botpsy
-  - BotPsy Tests How Far a 0.8B On-Device Tool Agent Can Go: https://huggingface.blog/blog/qvac-botpsy/
-
 ## Recent radar items
+
+### 2026-11-21
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-11-21.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-11-21.html
+
+- 2026-11-21T00:14:00Z | AWS Machine Learning | AWS introduced a distributed KV-caching agent skill that reduces self-hosted LLM latency and cost by sharing reusable key-value states across nodes. | 中文：AWS 推出分布式 KV 缓存代理技能，通过跨节点共享可复用状态，降低自托管大模型的延迟与成本。 | https://aws.amazon.com/blogs/machine-learning/cut-self-hosted-llm-cost-and-latency-with-the-distributed-kv-caching-agent-skill/
+- 2026-11-20T23:00:00Z | X @Replit | Replit Desktop lets its Agent work with local files and tools, extending cloud-based coding assistance into users’ existing desktop workflows. | 中文：Replit Desktop 让 Agent 直接使用本地文件和工具，把云端编程助手延伸到用户现有的桌面工作流。 | https://x.com/Replit/status/2123894296673304790
+- 2026-11-20T21:47:00Z | X @perplexity_ai | Perplexity Computer now operates inside Chromium through an extension, allowing users to hand off browser tasks from a persistent side panel. | 中文：Perplexity Computer 现可通过扩展直接运行在 Chromium 中，用户能从常驻侧栏交接浏览器任务。 | https://x.com/perplexity_ai/status/2123896048510996827
+- 2026-11-20T22:12:00Z | X @StepFun_ai | StepFun previewed Step 5 at a San Francisco agent event, focusing on agents that run longer, fail less often, and cost less. | 中文：阶跃星辰在旧金山代理活动上预告 Step 5，重点是让代理运行更久、失败更少、成本更低。 | https://x.com/StepFun_ai/status/2123902251983110204
+- 2026-11-20T20:11:00Z | X @baseten | Baseten released bison-1, which it says ranks first among 19 decision models on Artificial Analysis Decision Index v2.1 with a score of 76. | 中文：Baseten 发布 bison-1，并称其在 Artificial Analysis Decision Index v2.1 的 19 个决策模型中以 76 分排名第一。 | https://x.com/baseten/status/2123871990771806559
+- 2026-11-20T20:27:00Z | X @runwayml | Runway said agents have written nearly every pull request merged into Runway App Studio since October, according to its engineering update. | 中文：Runway 表示，自 10 月以来，App Studio 合并的几乎每个拉取请求都由代理编写。 | https://x.com/runwayml/status/2123875791566168423
+- 2026-11-20T19:00:00Z | X @dreamina_ai | Dreamina announced Seedream 5.5 with more realistic portraits, more precise image editing, and substantially improved text rendering. | 中文：Dreamina 发布 Seedream 5.5，主打更逼真的人像、更精准的图像编辑，以及显著提升的文字渲染能力。 | https://x.com/dreamina_ai/status/2123853885198536899
+- 2026-11-20T17:59:00Z | X @pika_labs | Pika added Seedance 2.5 Flash for high-volume video creation, supporting clips up to 30 seconds for advertising and rapid iteration. | 中文：Pika 接入 Seedance 2.5 Flash，面向广告和快速迭代提供高频视频生成，最长支持 30 秒片段。 | https://x.com/pika_labs/status/2123838678271172693
+- 2026-11-20T17:02:00Z | X @togethercompute | Together AI made Qwen3 TTS available with nine voices, instruction-controlled speaking styles, and voice consistency across ten languages. | 中文：Together AI 上线 Qwen3 TTS，提供九种声音、自然语言控制的表达风格，以及十种语言的一致音色。 | https://x.com/togethercompute/status/2123824286242586641
+- 2026-11-20T18:53:00Z | X @vercel | Vercel became ISO/IEC 42001:2023 certified, covering how organizations build, manage, and govern artificial-intelligence systems. | 中文：Vercel 获得 ISO/IEC 42001:2023 认证，覆盖组织构建、管理和治理人工智能系统的方式。 | https://x.com/vercel/status/2123852179345969470
+- 2026-11-20T19:33:00Z | X @OpenAI | OpenAI published research on combating capability distillation, warning that powerful behaviors can be reproduced without the original model’s safeguards. | 中文：OpenAI 发布防范能力蒸馏的研究，警告强大能力可能在缺少原模型安全机制的情况下被复制。 | https://x.com/OpenAI/status/2123862344422088794
+- 2026-11-20T20:00:00Z | X @MicrosoftAI | Microsoft said Ignite launched MAI Code 2, MAI Code 2 Flash, MAI Cyber 2 Flash, MAI Image 2.7, and MAI Realtime 1. | 中文：微软表示，Ignite 发布了 MAI Code 2、MAI Code 2 Flash、MAI Cyber 2 Flash、MAI Image 2.7 和 MAI Realtime 1。 | https://x.com/MicrosoftAI/status/2123868987666674069
+- 2026-11-20T18:06:00Z | X @GoogleAIStudio | Google AI Studio shipped improvements for building Android apps, expanding its role from prompt experimentation toward app-development workflows. | 中文：Google AI Studio 推出 Android 应用开发体验改进，角色从提示词试验平台进一步靠近应用开发工作流。 | https://x.com/GoogleAIStudio/status/2123840416277512391
+- 2026-11-20T21:21:00Z | X @ollama | Ollama added Thinking Machines’ Inkling 2 Mini to a pre-release build, enabling the 26B model to run locally on Macs with at least 32GB memory. | 中文：Ollama 在预发布版本中加入 Thinking Machines 的 Inkling 2 Mini，让这款 260 亿参数模型可在至少 32GB 内存的 Mac 本地运行。 | https://x.com/ollama/status/2123889582303281557
 
 ### 2026-11-20
 
@@ -1086,6 +1109,7 @@ Sources:
 - 2026-11-20T05:00:00Z | arXiv | MAWAM introduces a multi-agent world-action model for coordinated manipulation. | 中文：MAWAM 提出用于协同操作的多 Agent 世界—动作模型。 | https://arxiv.org/abs/2611.25105
 - 2026-11-20T05:00:00Z | arXiv | A paper reports that old-school planners sometimes outperform learned planners in driving tasks. | 中文：一篇论文报告，传统规划器在部分驾驶任务中有时优于学习型规划器。 | https://arxiv.org/abs/2611.25138
 - 2026-11-20T05:00:00Z | arXiv | Reject and Report proposes forgery-evident, undetectable watermarks for generative image models. | 中文：Reject and Report 提出适用于生成图像模型、可证明伪造且难以察觉的水印方案。 | https://arxiv.org/abs/2611.25226
+- 2026-11-20 | MarkTechPost | RadixArk released DaisyRose-27B, an Apache-2.0 agentic coding model trained with reinforcement learning only, raising Terminal Bench 4.1 pass@1 from 5.6 to 12.0. | 中文：RadixArk 发布 Apache-2.0 许可的 DaisyRose-27B 代理编程模型，仅用强化学习训练，使 Terminal Bench 4.1 pass@1 从 5.6 提升至 12.0。 | https://www.marktechpost.com/2026/11/20/radixark-daisyrose-27b-agentic-model/
 
 ### 2026-11-19
 
@@ -1164,40 +1188,3 @@ Sources:
 - Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-11-17.html
 
 - 2026-11-17 | MongoDB | MongoDB acquired Firebolt to add a high-performance real-time analytics engine to its operational data and AI platform. | 中文：MongoDB 收购 Firebolt，将高性能实时分析引擎纳入其运营数据与 AI 平台。 | https://www.mongodb.com/company/blog/news/mongodb-acquires-firebolt?locale_fallback=de-de
-
-### 2026-11-13
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-11-13.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-11-13.html
-
-- 2026-11-12T23:11:00Z | X / Arena | Thinking Machines released Inkling 2 Small as open source, reaching first among U.S. open models in Agent Arena. | 中文：Thinking Machines 开源 Inkling 2 Small，在 Agent Arena 美国开源模型榜升至第一。 | https://x.com/arena/status/2121018024610455580
-- 2026-11-12T22:43:00Z | MarkTechPost | Liquid AI released LiquidCodec, a 74-million-parameter streaming audio codec designed for efficient real-time generation. | 中文：Liquid AI 发布 7400 万参数的 LiquidCodec 流式音频编解码器，面向高效实时生成。 | https://www.marktechpost.com/2026/11/12/liquid-ai-liquidcodec-streaming-audio-codec/
-- 2026-11-12T21:45:00Z | MarkTechPost | CopilotKit released OpenBot 1.0, an MIT-licensed, self-hostable AI coworker with built-in governance controls. | 中文：CopilotKit 发布 OpenBot 1.0：采用 MIT 许可、支持自托管，并内置治理控制的 AI 同事。 | https://www.marktechpost.com/2026/11/12/copilotkit-openbot-1-0-open-source-ai-coworker/
-- 2026-11-12T22:21:00Z | X / Microsoft AI | Microsoft made MAI-Transcribe-2 generally available in Foundry for production transcription workloads. | 中文：微软宣布 MAI-Transcribe-2 在 Foundry 正式可用于生产级转写工作负载。 | https://x.com/MicrosoftAI/status/2121005429744447647
-- 2026-11-12T17:08:00Z | Figma | Figma added native 3D transforms, letting users rotate layers across three axes and send the resulting designs directly to coding agents. | 中文：Figma 加入原生 3D 变换，支持三轴旋转，并可将设计直接交给编码智能体。 | https://www.figma.com/release-notes/
-- 2026-11-12T16:30:00Z | X / Krea | Krea introduced Krea Bots, creative agents that take on entire projects and adapt to a team’s preferences during collaboration. | 中文：Krea 推出 Krea Bots，可承担完整创意项目，并在团队协作中适应用户偏好。 | https://x.com/krea_ai/status/2120917039435198863
-- 2026-11-12T14:15:00Z | X / Runway | Runway added text-to-3D and image-to-3D generation through Tripo H3.1, with models viewable from any angle in its workflow. | 中文：Runway 接入 Tripo H3.1，支持文生 3D 和图生 3D，并可在工作流中自由查看模型角度。 | https://x.com/runwayml/status/2120883301833400668
-- 2026-11-12T14:27:00Z | X / ElevenLabs | ElevenLabs opened a Marketplace connecting enterprises with partner-built voice agents and applications for regulated industries. | 中文：ElevenLabs 开放 Marketplace，连接企业与面向受监管行业的合作伙伴语音智能体和应用。 | https://x.com/ElevenLabs/status/2120886297820819938
-- 2026-11-12T21:06:00Z | X / Gradio | Gradio 6.32.0 now requires login for authenticated MCP servers and supports queued authenticated MCP calls. | 中文：Gradio 6.32.0 为带认证应用的 MCP 服务器增加登录要求，并支持排队的认证 MCP 调用。 | https://x.com/Gradio/status/2120986536426569983
-- 2026-11-12T21:32:00Z | X / HeyGen | HeyGen integrated Gemini Omni Flash 1.2 for text-to-video and image-to-video clips with generated audio and multi-turn editing. | 中文：HeyGen 接入 Gemini Omni Flash 1.2，支持带生成音频和多轮编辑的文生视频、图生视频片段。 | https://x.com/HeyGen/status/2120993197656826229
-- 2026-11-12T17:58:00Z | X / Replit | Replit Agent can now purchase items for businesses using product context, budgets, and user approval. | 中文：Replit Agent 现在可基于产品背景和预算，在用户批准后为企业购买商品。 | https://x.com/Replit/status/2120939267908342029
-- 2026-11-12T17:03:00Z | X / Pinecone | Pinecone added Google’s Gemini Embedding 2 to integrated embedding, allowing plain-text fields to produce vectors directly. | 中文：Pinecone 将 Google Gemini Embedding 2 加入集成嵌入，纯文本字段现在可直接生成向量。 | https://x.com/pinecone/status/2120925385240060128
-- 2026-11-12T19:07:00Z | Hugging Face | Hugging Face and IBM introduced LLMON, an LLM-native markup language now integrated into Granite 4.1 models. | 中文：Hugging Face 与 IBM 推出 LLMON，一种已集成进 Granite 4.1 模型的 LLM 原生标记语言。 | https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite
-- 2026-11-12T17:59:00Z | AWS Machine Learning | AWS announced a next-generation AgentCore runtime promising faster startup, more compute scaling, and higher efficiency for agent sessions. | 中文：AWS 宣布新一代 AgentCore 运行时，主打更快启动、更高计算扩展能力和更高智能体会话效率。 | https://aws.amazon.com/blogs/machine-learning/run-agents-securely-and-efficiently-with-the-next-generation-agentcore-runtime/
-- 2026-11-12T22:28:00Z | Ars Technica | The FAA expanded AI-based advice for managing air-traffic congestion across the entire United States airspace. | 中文：美国 FAA 将基于 AI 的空域拥堵管理建议扩大至全美空域。 | https://arstechnica.com/ai/2026/11/faa-expands-ai-advice-to-manage-air-traffic-congestion-across-entire-us-airspace/
-- 2026-11-12T20:00:00Z | OpenAI | OpenAI described Amplitude’s Wave agent using product data and coding agents to ship improvements in one to two days. | 中文：OpenAI 介绍 Amplitude 的 Wave 智能体如何结合产品数据与编码智能体，在一至两天内交付改进。 | https://openai.com/business/customer-stories/amplitude
-- 2026-11-13T12:30:00Z | X | Meshy released a free Unreal skill for Claude Code, Cursor, and Codex, enabling coding agents to generate 3D assets inside Unreal workflows. | 中文：Meshy发布免费的Unreal技能，支持Claude Code、Cursor和Codex在虚幻工作流中生成3D资产。 | https://x.com/MeshyAI/status/2121219028383367548
-- 2026-11-13T10:00:00Z | X | Meshy reported 100 real-print tests across four AI 3D workflows, with Meshy 7 and Make Printable leading performance. | 中文：Meshy公布100次真实打印测试，覆盖四种AI 3D工作流，Meshy 7与Make Printable表现领先。 | https://x.com/MeshyAI/status/2121181278024413536
-- 2026-11-13T08:39:00Z | X | Tencent Hunyuan ranked third on the Artificial Analysis Cyber Index and first on CWE-Bench-AA. | 中文：腾讯混元在Artificial Analysis Cyber Index排名第三，并在CWE-Bench-AA排名第一。 | https://x.com/TencentHunyuan/status/2121161030751694873
-- 2026-11-13T02:46:00Z | X | Sakana AI said it is pursuing large-language-model pretraining while arguing that coordinated smaller models may be economically superior to one giant model. | 中文：Sakana AI表示将推进大语言模型预训练，同时认为协同的小模型可能比单一巨型模型更具经济性。 | https://x.com/SakanaAILabs/status/2121072254880743810
-- 2026-11-13T02:48:00Z | X | Sakana AI is recruiting beta testers for its first mobile application through November 15. | 中文：Sakana AI为其首款移动应用招募测试者，报名截止至11月15日。 | https://x.com/SakanaAILabs/status/2121072695228223752
-- 2026-11-13T12:04:00Z | IT之家 | Google released WeatherNext 3 datasets including SatWeave satellite mosaics and PARDIG global precipitation information. | 中文：谷歌开源WeatherNext 3所用数据集，包括SatWeave卫星影像拼接数据和PARDIG全球降水信息。 | https://www.ithome.com/1/026/939.htm
-- 2026-11-13T09:17:00Z | Google Developers Blog | Google introduced LiteRT Tensor API for authoring, customizing, and optimizing edge machine-learning models across CPU, GPU, and NPU backends. | 中文：谷歌推出LiteRT Tensor API，用于跨CPU、GPU和NPU构建、定制与优化端侧机器学习模型。 | https://developers.googleblog.com/en/native-model-authoring-for-edge-with-litert-tensor-api/
-- 2026-11-13T10:32:00Z | MarkTechPost | Google released TPU Sync, an open-source library for transferring KV caches across TPU serving environments. | 中文：谷歌发布TPU Sync开源库，用于在TPU推理服务环境之间传输KV缓存。 | https://www.marktechpost.com/2026/11/13/google-tpu-sync-open-source-kv-cache-transfer-library/
-- 2026-11-13T11:00:00Z | InfoQ 中文 | Docker called for isolating and governing AI agents as a foundation for safer autonomous software execution. | 中文：Docker呼吁通过隔离与治理，为智能体自主执行软件建立更安全的基础。 | https://www.infoq.cn/article/1pCuIRtm5HYwTyR4fIhA
-- 2026-11-13T10:00:00Z | InfoQ 中文 | InfoQ described GFlow, a multi-agent collaboration and verification architecture for game design presented at AICon Beijing. | 中文：InfoQ介绍GFlow，一种在AICon北京分享的游戏设计多智能体协作与验证架构。 | https://www.infoq.cn/article/dkQAAL0SSdhIq1h61eKx
-- 2026-11-13T11:50:00Z | IT之家 | JD launched a semiconductor logistics solution claiming fully automated handling from wafer completion through packaging. | 中文：京东推出半导体智能物流方案，宣称实现从晶圆下线到包装的全流程自动化。 | https://www.ithome.com/1/026/936.htm
-- 2026-11-13T12:52:00Z | TechCrunch | Israeli venture capitalists said Nvidia’s turmoil could create openings for challengers in AI chips and infrastructure. | 中文：以色列风险投资人表示，英伟达动荡可能为AI芯片和基础设施挑战者创造机会。 | https://techcrunch.com/2026/11/13/israels-vcs-see-opportunity-for-challengers-in-nvidias-turmoil/
-- 2026-11-13T12:28:00Z | TechCrunch | A report said Jensen Huang did not show confidence in Nvidia’s successor, intensifying questions about leadership succession. | 中文：报道称黄仁勋未表现出对英伟达继任者的信心，加剧外界对领导层接班的疑问。 | https://techcrunch.com/2026/11/13/jensen-huang-didnt-show-confidence-in-his-successor-report-says/
-- 2026-11-13T07:06:00Z | X | Artificial Analysis reported Hy4 led CWE-Bench-AA at 76%, six points ahead of DeepSeek V4.1 Flash 1017. | 中文：Artificial Analysis报告称，Hy4在CWE-Bench-AA以76%领先，比DeepSeek V4.1 Flash 1017高六个百分点。 | https://x.com/ArtificialAnlys/status/2121137665626231053
-- 2026-11-13T02:48:00Z | X | Sakana AI said it is developing a mobile app to make multi-model collaboration technology accessible to everyday users. | 中文：Sakana AI表示正在开发首款移动应用，让普通用户体验多模型协作技术。 | https://x.com/SakanaAILabs/status/2121072599329546326
