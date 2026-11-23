@@ -1,0 +1,139 @@
+这是「猫叔的AI资讯雷达」11月23日晚报。
+
+本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
+
+**今晚重点**：智谱推出 7500 亿参数旗舰模型 GLM-5.4，以循环 Transformer 加深推理，覆盖编程、网络安全、3D 与物理控制任务。
+
+## 深度简报目录
+
+- 智谱发布 GLM-5.4，循环架构瞄准长程编程
+- 沃尔玛接入 Meta Muse，AI 智能体可代购黑五商品
+- 蚂蚁开源百灵医疗模型家族，覆盖推理与风险预测
+
+## 快讯预览
+
+- Architect Labs发布Frostbite交互网CPU架构，称其由AI智能体设计并完成流片前仿真。
+- XROGO郑随兵表示，机器人不能只停留在视频里，最终必须进入工厂真正干活。
+- Meta TLX将warp-group GPU控制能力带入Triton，并支持Hopper、Blackwell与AMD硬件。
+- 一项涵盖168名参与者的头脑风暴研究发现，两个AI伙伴增加了想法数量，却明显减少了人类原创贡献。
+- SkillPrivus审计了726个公开智能体技能，发现307个存在潜在隐私违规，包括敏感推断和意外披露。
+- 研究人员发现，即使监督微调数据严重损坏，强化学习仍能恢复推理能力，并从极少错误轨迹达到69.30%准确率。
+- 搜索原生预训练让14亿参数的QueryLM在知识密集任务上达到或超过同等计算量的33亿参数基线。
+- FORTH将触觉感知与前向控制配对，在三个LIBERO套件中平均成功率达97.6%，峰值内存降低7.12倍。
+- Skill-JEPA通过让世界模型动作空间匹配规划器采样，将长时程目标成功率从42%提升至62%。
+- GeoCloak通过局部语义图像编辑降低多模态模型的地理定位准确率，同时比像素扰动更好地保留画质。
+
+## 1. 智谱发布 GLM-5.4，循环架构瞄准长程编程
+
+智谱推出 7500 亿参数旗舰模型 GLM-5.4，以循环 Transformer 加深推理，覆盖编程、网络安全、3D 与物理控制任务。
+
+### 用循环计算换取更深推理
+
+智谱发布 GLM-5.4。这款 7500 亿参数旗舰模型采用智谱所称的 Loop Transformer：同一组 28 层网络运行两轮，让第二轮根据第一轮形成的中间表示继续修正结果，而不是为每一步推理堆叠全新的参数。
+
+智谱表示，这种设计可以在不同比例增加完整内存负担的情况下提高模型能力。模型通过混合 KV Cache 复用大部分上下文，只为新一轮计算保留局部滑动窗口；稀疏注意力索引也会直接复用。对于百万 token 上下文，官方称额外部署成本明显低于简单复制一份完整缓存的方案。
+
+### 从写代码扩展到工程任务
+
+GLM-5.4 的定位并不只是编程模型升级。智谱将其概括为“广义编程”：让软件生成能力进一步延伸到视频制作、游戏开发、3D 场景、机械设计和网络安全。官方展示包括自动制作带旁白的音乐视频、在 FreeCAD 中设计六轴机械臂、从零构建完整游戏，以及用 GLSL 着色器生成可交互的 3D 场景。
+
+智谱称，模型在低峰期最高可达每秒 200 token，高峰期维持每秒 70 至 80 token。部分评测中，模型的显式思考链反而缩短，原因是部分计算被转移到循环结构内部。
+
+### 为什么重要
+
+GLM-5.4 已接入智谱的编程产品，API 尚未开放，权重也没有公开，因此它目前仍是商业模型发布，而不是开源权重事件。真正值得观察的是：循环加深能否在复杂工程任务上持续带来收益，同时避免推理成本失控或模型陷入过度思考。智谱已承认，模型仍可能出现“马拉松式思考”。
+
+**猫叔判断：** GLM-5.4 把赌注押在 28 层循环复用上，但 API 和权重尚未开放，效率优势仍缺乏外部验证。
+
+**原始信源**
+
+- [GLM-5.4: Toward Generalized Coding with Our First Loop Transformer](https://z.ai/blog/glm-5.4)
+- [Meet GLM-5.4 in AutoClaw](https://autoclaw.z.ai/en/blog/model/GLM-5.4/)
+
+原文链接：[智谱发布 GLM-5.4，循环架构瞄准长程编程｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-glm-5-4-loop-transformer.html)
+
+---
+
+## 2. 沃尔玛接入 Meta Muse，AI 智能体可代购黑五商品
+
+沃尔玛上线 Agent Gateway，允许 Meta Muse 搜索商品、组建购物车并在用户设定的额度内完成结账。
+
+### 给智能体开一条受控结账通道
+
+沃尔玛已启用 Agent Gateway，并接入 Meta 的 Muse。用户可以让 Muse 搜索沃尔玛商品、组建购物车，并代为购买黑色星期五促销商品。这使沃尔玛此前公布的智能体商业接口，在 holiday 购物季开始时进入实际零售流程。
+
+系统通过沃尔玛账户中的 Agent Profiles 划定智能体权限边界。用户可以设定消费上限、要求逐笔批准，并查看 Muse 买了什么。结账使用用户已经保存在沃尔玛账户中的支付卡。沃尔玛称，智能体无需读取用户完整的历史购买记录，代理下单也适用与普通订单相同的价格和退货政策。
+
+这套方案并不是把浏览器完全交给机器人。Muse 通过沃尔玛批准的接口获取商品信息并执行操作，减少依赖页面抓取带来的不稳定，也让沃尔玛能够明确规定外部智能体可以做什么、不能做什么。
+
+### 一次平台路线选择
+
+沃尔玛表示，Muse 只是首个获得支持的智能体，未来还会接入更多购物体验。因此，这次发布的意义不止是黑五促销：它为零售商提供了一种开放库存和结账、同时保留身份、支付和交易记录控制权的模板。
+
+它也暴露出电商平台正在分化。沃尔玛选择为外部智能体建设受控入口，而亚马逊等平台对 Muse 采取更防御性的态度。接下来仍要观察转化质量、欺诈、退货、广告排序，以及零售商能否避免把商品发现变成一种不透明的新广告机制。
+
+**猫叔判断：** Agent Profiles 和消费上限才是这次真正的产品，沃尔玛在验证受控结账能否带来需求，同时不把客户关系交给 Muse。
+
+**原始信源**
+
+- [Meta Muse can now do your Black Friday shopping at Walmart](https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday)
+- [Walmart Opens Its Site to Meta’s Muse AI Agent for Black Friday Shopping](https://www.reddit.com/r/epyhia/comments/1y3gsx7/walmart_opens_its_site_to_metas_muse_ai_agent_for/)
+- [Walmart Agent Gateway earnings transcript](https://stock.walmart.com/_assets/_a429a6fd7bf3707385113782a959bcea/walmart/db/938/10001/transcript_management_call/Earnings_Transcript_%28FY27_Q3%29.pdf)
+
+原文链接：[沃尔玛接入 Meta Muse，AI 智能体可代购黑五商品｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-walmart-agent-gateway.html)
+
+---
+
+## 3. 蚂蚁开源百灵医疗模型家族，覆盖推理与风险预测
+
+蚂蚁发布并开源百灵医疗模型家族，覆盖多模态理解、医学推理、疾病风险预测和医疗安全防护。
+
+### 四款模型拆分不同医疗任务
+
+蚂蚁集团在 2026 蚂蚁阿福医疗健康生态大会上宣布开源百灵医疗健康大模型家族。该家族没有把所有任务压进一个通用助手，而是分别覆盖多模态健康理解、长上下文医学推理、疾病风险预测和医疗安全防护。
+
+其中，LingSante-3.1-air-VL 是轻量级视觉语言模型，支持文字、图片和视频输入。蚂蚁称，它可以综合分析皮肤照片、饮食图片和检查报告，并支持在笔记本电脑等本地设备上部署。LingSante-3.1-flash 面向更大规模任务，总参数量 5600 亿，上下文窗口最长 100 万 token，并支持检索、多轮证据核验和工具调用。
+
+另外两款模型承担专门任务。LingSante Pulse 主打未来六年 150 多种疾病的风险预测；LingSante MedGuard 则结合患者上下文，识别医疗安全、合规和伦理风险，试图把防护能力作为模型家族的一部分交付。
+
+### 开源不等于获得临床许可
+
+这次发布的重要之处，在于它把专业能力和安全防护同时纳入产品组合，而不是只给通用模型附上一份安全说明。它也折射出亚洲医疗 AI 的一个现实方向：对医院和本地机构而言，数据留在本地、能否使用私有硬件，往往与评测分数同样重要。
+
+但现有公开信息仍不足以支撑更强结论。训练数据、许可证、独立验证和监管资质都缺乏细节。模型能够解读报告或估算风险，并不意味着它可以独立诊断或开药。最终价值取决于医院和开发者能否审计模型、复现实验结果，并持续保留人工复核。
+
+**猫叔判断：** MedGuard 与 Pulse 同步开源比单独发布聊天模型更有分量，但没有临床独立验证，六年风险预测仍只是目标而非医疗成熟度证明。
+
+**原始信源**
+
+- [蚂蚁阿福同款大模型宣布开源](https://www.qbitai.com/2026/11/511998.html)
+- [蚂蚁百灵医疗健康大模型宣布开源](https://www.xueqiu.com/3338215700/418132523)
+- [蚂蚁百灵大模型](https://www.ant-ling.com/)
+
+原文链接：[蚂蚁开源百灵医疗模型家族，覆盖推理与风险预测｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/ant-ling-medical-models-open-source.html)
+
+## 一句话快讯
+- Architect Labs发布Frostbite交互网CPU架构，称其由AI智能体设计并完成流片前仿真。（[MarkTechPost](https://www.marktechpost.com/2026/11/23/architect-labs-frostbite-ai-designed-cpu-interaction-nets/)）
+- XROGO郑随兵表示，机器人不能只停留在视频里，最终必须进入工厂真正干活。（[量子位](https://www.qbitai.com/2026/11/512179.html)）
+- Meta TLX将warp-group GPU控制能力带入Triton，并支持Hopper、Blackwell与AMD硬件。（[MarkTechPost](https://www.marktechpost.com/2026/11/23/meta-tlx-triton-low-level-extensions/)）
+- 一项涵盖168名参与者的头脑风暴研究发现，两个AI伙伴增加了想法数量，却明显减少了人类原创贡献。（[arXiv](https://arxiv.org/abs/2611.26663)）
+- SkillPrivus审计了726个公开智能体技能，发现307个存在潜在隐私违规，包括敏感推断和意外披露。（[arXiv](https://arxiv.org/abs/2611.26747)）
+- 研究人员发现，即使监督微调数据严重损坏，强化学习仍能恢复推理能力，并从极少错误轨迹达到69.30%准确率。（[arXiv](https://arxiv.org/abs/2611.26756)）
+- 搜索原生预训练让14亿参数的QueryLM在知识密集任务上达到或超过同等计算量的33亿参数基线。（[arXiv](https://arxiv.org/abs/2611.26809)）
+- FORTH将触觉感知与前向控制配对，在三个LIBERO套件中平均成功率达97.6%，峰值内存降低7.12倍。（[arXiv](https://arxiv.org/abs/2611.26744)）
+- Skill-JEPA通过让世界模型动作空间匹配规划器采样，将长时程目标成功率从42%提升至62%。（[arXiv](https://arxiv.org/abs/2611.26825)）
+- GeoCloak通过局部语义图像编辑降低多模态模型的地理定位准确率，同时比像素扰动更好地保留画质。（[arXiv](https://arxiv.org/abs/2611.26987)）
+- GRAFT生成的对抗性MCP工具描述在五种防御下同时取得更高攻击成功率和更低检测率。（[arXiv](https://arxiv.org/abs/2611.27041)）
+- Sakana AI表示，面向智能体的全新Sawara语言模型正在开发中，小型模型计划明年春季开放权重。（[X / SakanaAILabs](https://x.com/SakanaAILabs/status/2124708268740346143)）
+- RoboChallenge Zero发布首期评测，将大模型与真实机器人任务连接起来进行测试。（[量子位](https://www.qbitai.com/2026/11/511978.html)）
+- 豆包新增21个专业工作台，试图让用户把日常职场任务直接交给AI处理。（[量子位](https://www.qbitai.com/2026/11/511933.html)）
+
+---
+
+完整日报：[11月23日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-23.html)
+
+历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
+
+
+
+说明：本文为 AI 自动采编稿，所有事实以文中原始信源为准；如发现时间或事实错误，会在网页版本中优先修正。
