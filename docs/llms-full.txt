@@ -19,6 +19,37 @@
 
 ## Recent briefings
 
+### X Square releases WALL-OSS-1.0 for zero-shot robot control
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/wall-oss-1-0-embodied-foundation-model.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/wall-oss-1-0-embodied-foundation-model.html
+- Source timestamp: 2026-11-23T06:06:00.000Z
+- Site timestamp: 2026-11-23T01:00:00.000Z
+- Tags: Models, Open Source, Research
+
+X Square’s new embodied model unifies language, vision and action during pretraining, reporting 55.1% zero-shot success across real-robot tests.
+
+X Square Robot has released WALL-OSS-1.0, an embodied foundation model that puts robot-action data into the pretraining process alongside language and visual data. The company says the model is designed to follow open-ended instructions and operate unfamiliar objects, layouts and tools without task-specific demonstrations or fine-tuning.
+
+## A unified training recipe
+
+WALL-OSS-1.0 starts from Qwen3.5 and represents language, images, robot states and actions in a shared autoregressive framework. Continuous robot trajectories are converted into discrete action tokens, allowing data from different embodiments—including single arms, dual arms and mobile platforms—to contribute to one training mixture. X Square says the system uses more than hundreds of thousands of hours of interaction trajectories and millions of operation records, with a large share collected through operator-worn UMI devices.
+
+The model family also includes Lite and Nano variants for lower-cost adaptation and deployment, plus Gen, which learns from egocentric human video through generative supervision when precise robot action labels are unavailable. X Square says Nano can support 18 robots on one consumer Blackwell GPU in production-style scenarios.
+
+## Results and limits
+
+The company reports a 55.1% zero-shot success rate across real-robot tests and says WALL-OSS-1.0 leads or ties on 14 of 15 listed manipulation tasks without post-pretraining fine-tuning. It also reports a 79.2% average on eight general-capability benchmarks, close to 79.4% for the original base model, suggesting that adding action training did not materially erase broad multimodal ability.
+
+Those figures remain company-reported results, and the breadth of the test environments, hardware, task definitions and failure costs will determine how far they generalize. Still, the release matters because it makes embodied pretraining—not merely downstream robot fine-tuning—the central product and research claim. If the weights and tooling are usable outside X Square’s own hardware stack, WALL-OSS-1.0 could give open robotics developers a more credible starting point for cross-embodiment control.
+
+Chinese title: 自变量发布WALL-OSS 1.0，主打零样本机器人控制
+Chinese summary: 自变量发布WALL-OSS 1.0，将语言、视觉与动作纳入统一预训练，并称其在真实机器人测试中的零样本成功率达55.1%。
+
+Sources:
+  - WALL-OSS-1.0: Understand More, Act Better: https://x2robot.com/en/blog/wall-oss-1
+  - 自变量发布具身基础模型 WALL-OSS-1.0: https://www.ithome.com/1/030/890.htm
+
 ### DeepSeek V1 Author Reveals Open-Source Local Agent
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/deepseek-author-linger-local-agent.html
@@ -168,9 +199,9 @@ Sources:
 - Site timestamp: 2026-11-20T01:00:13.439Z
 - Tags: Funding, Industry, Safety
 
-Anthropic’s public debut turns frontier-model development into a public-market test of safety promises, spending needs, and investor appetite. The offering priced at $83 a share and ultimately comprised 1.127 billion shares, including the fully exercised over-allotment option; shares closed their first trading day at $97.17, roughly 17% above the IPO price.
+Anthropic’s public debut turns frontier-model development into a public-market test of safety promises, spending needs, and investor appetite. The offering priced at $83 a share and, after the fully exercised over-allotment option, comprised 1.127 billion Class A shares, including 1,103,351,354 sold by Anthropic and 23,648,646 sold by existing stockholders. Shares closed their first trading day at $97.17, roughly 17% above the IPO price.
 
-Anthropic began trading on Nasdaq on Nov. 19 under the symbol ANT, completing one of the most consequential public-market events in the AI industry. The company priced its initial offering at $83 a share. After the underwriters fully exercised their option to purchase an additional 147 million shares, the offering comprised 1.127 billion shares: Anthropic sold 1,103,351,354 shares and certain existing holders sold another 23,648,646. At the IPO price, the total offering represented about $93.54 billion in gross proceeds, of which about $91.58 billion went to Anthropic before underwriting discounts and expenses. Contemporary reports put Anthropic’s valuation at roughly $1.5 trillion at the offering price. Shares opened at $111.50 and closed the first trading session at $97.17, about 17% above the IPO price, giving the company a market value of roughly $1.25 trillion at the close.
+Anthropic began trading on Nasdaq on Nov. 19 under the symbol ANT, completing one of the most consequential public-market events in the AI industry. The company priced its initial offering at $83 a share. After the underwriters fully exercised their option to purchase an additional 147 million shares from Anthropic, the offering comprised 1.127 billion Class A shares: Anthropic sold 1,103,351,354 shares and certain existing holders sold another 23,648,646. At the IPO price, the total public offering represented about $93.5 billion in gross proceeds, of which about $91.6 billion went to Anthropic before underwriting discounts and expenses. Anthropic also closed a concurrent private placement of about $26 billion in Class N shares to AMD, Broadcom, Google, Micron, Microsoft, NVIDIA and TSMC Partners. Shares opened at $111.50 and closed the first trading session at $97.17, about 17% above the IPO price.
 
 ## A new financing regime for frontier labs
 
@@ -184,14 +215,14 @@ Anthropic is the first major frontier-model lab of this wave to face the public 
 
 ## Uncle Cat take
 
-A roughly $1.25 trillion closing market value—after pricing at an implied valuation of about $1.5 trillion—makes Anthropic’s governance model measurable: safety language now has to survive quarterly capital-market pressure.
+Anthropic’s first-day close below its opening price but well above the $83 IPO price makes its governance model measurable: safety language now has to survive quarterly capital-market pressure.
 
 Chinese title: Anthropic登陆纳斯达克，前沿模型实验进入公开市场
-Chinese summary: Anthropic完成纳斯达克上市，把前沿模型公司的安全承诺、算力开支和商业回报交给公开市场检验；发行价为每股83美元，承销商全额行使超额配售权后总发行量为11.27亿股，首个交易日收于97.17美元，较发行价上涨约17%。
+Chinese summary: Anthropic完成纳斯达克上市，把前沿模型公司的安全承诺、算力开支和商业回报交给公开市场检验；发行价为每股83美元，承销商全额行使超额配售权后总发行量为11.27亿股，其中公司出售1,103,351,354股，部分现有股东出售23,648,646股。股票首个交易日收于97.17美元，较发行价上涨约17%。
 
 Sources:
-  - Anthropic’s Nasdaq debut: https://www.reuters.com/business/finance/anthropics-historic-debut-put-ais-promise-peril-wall-street-2026-11-19/
   - Anthropic announces closing of initial public offering: https://www.anthropic.com/news/ipo-close
+  - Anthropic’s Nasdaq debut: https://www.reuters.com/business/finance/anthropics-historic-debut-put-ais-promise-peril-wall-street-2026-11-19/
   - Anthropic Investor Relations SEC filings: https://investor.anthropic.com/sec-filings/default.aspx
 
 ### Google gives Gemini control of Mac apps and websites
@@ -1023,39 +1054,28 @@ Sources:
   - Anthropic IPO Prospectus: https://ipo.anthropic.com/documents/us/prospectus.pdf
   - Anthropic announces initial public offering: https://x.com/AnthropicAI/status/2120841731302154708
 
-### Fractile raises $720 million for memory-first AI chips
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/fractile-inference-chip-funding.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/fractile-inference-chip-funding.html
-- Source timestamp: 2026-11-11T19:34:00.000Z
-- Site timestamp: 2026-11-12T01:00:11.625Z
-- Tags: Funding, Industry
-
-UK startup Fractile reached a reported $7 billion valuation in a Series C aimed at commercializing chips built for faster, cheaper AI inference.
-
-## A large bet on inference economics
-UK-based Fractile has raised $720 million in a Series C round at a reported valuation of about $7 billion, according to Reuters. The round was led by Thrive Capital, Founders Fund, Lightspeed and Redpoint, with participation from Google’s CapitalG, BlackRock, DST Global, the UK Sovereign AI Fund and the British Business Bank.
-
-Fractile is developing specialized processors for inference, the stage where trained models generate responses. The company argues that memory movement, rather than raw arithmetic capacity alone, is a major constraint on speed, energy use and cost. Its approach combines chip design, memory architecture and software rather than treating the accelerator as an isolated component.
-
-## Why investors are paying attention
-Most AI infrastructure capital still flows toward established GPU platforms and the data centers built around them. Fractile’s round reflects a different thesis: as inference volumes grow, serving models efficiently may require architectures designed around repeated memory access and response latency rather than training-scale throughput.
-
-The UK government’s involvement also gives the deal a strategic dimension. Britain has been trying to retain more of the economic value generated by AI, and a domestic inference-chip company offers a potential foothold in a market otherwise dominated by US suppliers and Asian manufacturing partners.
-
-Yet the valuation is a forward-looking bet. Fractile has not shipped a commercial chip, and claims about bandwidth, efficiency or cost cannot be treated as production results. It must still complete the hardware, secure manufacturing capacity, build a software stack developers will actually use, and win customers willing to deploy an alternative to Nvidia, Google or cloud-provider silicon.
-
-## The practical test
-The funding is significant because it shows investors are willing to finance a post-GPU strategy at unusual scale. It does not prove that memory-first designs will displace incumbent accelerators. The decisive evidence will be customer deployments and independently measured total cost per useful answer once the hardware reaches production.
-
-Chinese title: 英国芯片初创 Fractile 融资7.2亿美元，押注推理专用架构
-Chinese summary: 英国 AI 芯片公司 Fractile 以约70亿美元估值完成7.2亿美元 C 轮融资，目标是降低大模型推理的速度与能耗成本。
-
-Sources:
-  - UK-backed AI chip startup Fractile hits $7 billion valuation in funding round: https://live.euronext.com/en/financial-news/uk-backed-ai-chip-startup-fractile-hits-7-billion-valuation-funding-round
-  - London’s Fractile raises $720M for memory-first AI chips: https://thenextweb.com/news/fractile-7bn-valuation-720m-ai-inference-chips
-
 ## Recent radar items
+
+### 2026-11-23
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-11-23.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-11-23.html
+
+- 2026-11-22T14:20:00Z | The Decoder | Perplexity introduced Monitor API, turning web search into a continuously running watchdog for recurring information needs. | 中文：Perplexity推出Monitor API，把一次性网页搜索变成持续运行的信息监测器。 | https://the-decoder.com/perplexitys-new-monitor-api-turns-web-search-from-a-one-off-query-into-a-nonstop-watchdog/
+- 2026-11-22T18:37:00Z | MarkTechPost | NVIDIA released Alpamayo 2 Edge, a 2B reasoning vision-language-action model designed for DRIVE Thor automotive computers. | 中文：英伟达发布Alpamayo 2 Edge，一款面向DRIVE Thor车载计算机的20亿参数推理视觉语言动作模型。 | https://www.marktechpost.com/2026/11/22/nvidia-releases-alpamayo-2-edge-2b-reasoning-vla-drive-thor/
+- 2026-11-22T15:15:00Z | The Decoder | A simulated workplace study found leading coding agents completed fewer than one in ten multi-step software tasks despite strong isolated benchmark scores. | 中文：一项模拟职场研究发现，顶尖编程智能体尽管单项基准表现强劲，仍完成不了十分之一的多步骤软件任务。 | https://the-decoder.com/ai-coding-agents-ace-isolated-tests-but-complete-fewer-than-one-in-ten-tasks-in-a-simulated-workplace/
+- 2026-11-22T21:14:00Z | TechCrunch | OpenAI chief scientist Jakub Pachocki proposed perplexity as a possible metric for measuring and limiting the speed of AI development. | 中文：OpenAI首席科学家雅各布·帕乔茨基提出，可用困惑度作为衡量并限制AI发展速度的指标。 | https://techcrunch.com/2026/11/22/openais-chief-scientist-has-thoughts-on-how-to-limit-ai-development/
+- 2026-11-23T05:00:00Z | arXiv | A study of 168 brainstorming participants found two AI partners increased idea volume but substantially reduced human-authored contributions. | 中文：一项涵盖168名参与者的头脑风暴研究发现，两个AI伙伴增加了想法数量，却明显减少了人类原创贡献。 | https://arxiv.org/abs/2611.26663
+- 2026-11-23T05:00:00Z | arXiv | SkillPrivus audited 726 public agent skills and flagged potential privacy violations in 307, including sensitive inference and unexpected disclosure. | 中文：SkillPrivus审计了726个公开智能体技能，发现307个存在潜在隐私违规，包括敏感推断和意外披露。 | https://arxiv.org/abs/2611.26747
+- 2026-11-23T05:00:00Z | arXiv | Researchers found reinforcement learning restored reasoning accuracy after severely corrupted supervised fine-tuning, reaching 69.30% from minimal incorrect traces. | 中文：研究人员发现，即使监督微调数据严重损坏，强化学习仍能恢复推理能力，并从极少错误轨迹达到69.30%准确率。 | https://arxiv.org/abs/2611.26756
+- 2026-11-23T05:00:00Z | arXiv | Search-native pretraining produced a 1.4B QueryLM that matched or beat a FLOP-matched 3.3B baseline on knowledge-intensive tasks. | 中文：搜索原生预训练让14亿参数的QueryLM在知识密集任务上达到或超过同等计算量的33亿参数基线。 | https://arxiv.org/abs/2611.26809
+- 2026-11-23T05:00:00Z | arXiv | FORTH paired tactile sensing with forward-only control and reached 97.6% average success across three LIBERO suites while cutting peak memory 7.12-fold. | 中文：FORTH将触觉感知与前向控制配对，在三个LIBERO套件中平均成功率达97.6%，峰值内存降低7.12倍。 | https://arxiv.org/abs/2611.26744
+- 2026-11-23T05:00:00Z | arXiv | Skill-JEPA raised long-horizon goal success from 42% to 62% by aligning world-model action spaces with planner sampling. | 中文：Skill-JEPA通过让世界模型动作空间匹配规划器采样，将长时程目标成功率从42%提升至62%。 | https://arxiv.org/abs/2611.26825
+- 2026-11-23T05:00:00Z | arXiv | GeoCloak uses localized semantic image edits to reduce multimodal geolocation accuracy while preserving perceptual quality better than pixel perturbations. | 中文：GeoCloak通过局部语义图像编辑降低多模态模型的地理定位准确率，同时比像素扰动更好地保留画质。 | https://arxiv.org/abs/2611.26987
+- 2026-11-23T05:00:00Z | arXiv | GRAFT generated adversarial MCP tool descriptions that achieved higher attack success and lower detection across five defenses. | 中文：GRAFT生成的对抗性MCP工具描述在五种防御下同时取得更高攻击成功率和更低检测率。 | https://arxiv.org/abs/2611.27041
+- 2026-11-23T03:35:00Z | X / SakanaAILabs | Sakana AI said its new Sawara language model is being developed for agent use, with a small model targeted for open weights next spring. | 中文：Sakana AI表示，面向智能体的全新Sawara语言模型正在开发中，小型模型计划明年春季开放权重。 | https://x.com/SakanaAILabs/status/2124708268740346143
+- 2026-11-22T20:37:00Z | X / GitHub | GitHub said Copilot Fusion can automatically decide whether to route a prompt to one model instead of requiring manual model selection. | 中文：GitHub表示，Copilot Fusion可自动决定是否将提示路由给单一模型，用户无需手动选择模型。 | https://x.com/github/status/2124603184186380598
+- 2026-11-22T17:01:00Z | X / Together AI | Together AI showcased Qwen3 TTS controls that change delivery style while preserving the same voice and spoken words. | 中文：Together AI展示了Qwen3 TTS的表达控制功能，可在保持音色和台词不变的情况下改变说话方式。 | https://x.com/togethercompute/status/2124548888434511907
 
 ### 2026-11-21
 
@@ -1200,10 +1220,3 @@ Sources:
 - 2026-11-18T04:00:00Z | X / Together AI | Together AI made DeepSeek V4.1 Flash 1017 available for post-training with custom data, rewards, and environments. | 中文：Together AI开放DeepSeek V4.1 Flash 1017的后训练能力，支持自定义数据、奖励与环境。 | https://x.com/togethercompute/status/2122902661133431212
 - 2026-11-18T13:00:00Z | TechCrunch | Nvidia said it will clarify when it will continue financing neocloud companies and when it will stop. | 中文：英伟达将明确何时继续、何时停止为新型云服务商提供融资。 | https://techcrunch.com/2026/11/18/nvidia-clarifies-when-it-will-and-wont-keep-financing-neoclouds/
 - 2026-11-18T13:00:00Z | X / AI21 Labs | AI21 co-founder Yoav Shoham joined Lightricks and Deel leaders on stage for an AI-focused discussion with Nas Daily. | 中文：AI21联合创始人Yoav Shoham与Lightricks、Deel高管及Nas Daily共同参与AI主题讨论。 | https://x.com/AI21Labs/status/2123038526564696441
-
-### 2026-11-17
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-11-17.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-11-17.html
-
-- 2026-11-17 | MongoDB | MongoDB acquired Firebolt to add a high-performance real-time analytics engine to its operational data and AI platform. | 中文：MongoDB 收购 Firebolt，将高性能实时分析引擎纳入其运营数据与 AI 平台。 | https://www.mongodb.com/company/blog/news/mongodb-acquires-firebolt?locale_fallback=de-de
