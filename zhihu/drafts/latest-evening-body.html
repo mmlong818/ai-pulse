@@ -1,55 +1,48 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>猫叔的AI资讯雷达｜11月23日晚报：智谱发布 GLM-5.4，循环架构瞄准长程编程</title></head><body><p>这是「猫叔的AI资讯雷达」11月23日晚报。</p>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>猫叔的AI资讯雷达｜11月24日晚报：百度开源文心5.5 Flash，2800亿参数模型向全球开放</title></head><body><p>这是「猫叔的AI资讯雷达」11月24日晚报。</p>
 <p>本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。</p>
-<p><strong>今晚重点</strong>：智谱推出 7500 亿参数旗舰模型 GLM-5.4，以循环 Transformer 加深推理，覆盖编程、网络安全、3D 与物理控制任务。</p>
+<p><strong>今晚重点</strong>：百度以 Apache 2.0 协议发布文心5.5 Flash Preview 权重，支持百万上下文，为全球开发者提供新的高性能开源基线。</p>
 <h2>深度简报目录</h2>
-<ul><li>智谱发布 GLM-5.4，循环架构瞄准长程编程</li><li>沃尔玛接入 Meta Muse，AI 智能体可代购黑五商品</li><li>蚂蚁开源百灵医疗模型家族，覆盖推理与风险预测</li></ul>
+<ul><li>百度开源文心5.5 Flash，2800亿参数模型向全球开放</li><li>腾讯混元发布第三代开源机器翻译模型 Hy-MT3</li><li>Sakana AI成立应用研究实验室，首攻金融经济复杂系统</li></ul>
 <h2>快讯预览</h2>
-<ul><li>Architect Labs发布Frostbite交互网CPU架构，称其由AI智能体设计并完成流片前仿真。</li><li>XROGO郑随兵表示，机器人不能只停留在视频里，最终必须进入工厂真正干活。</li><li>Meta TLX将warp-group GPU控制能力带入Triton，并支持Hopper、Blackwell与AMD硬件。</li><li>一项涵盖168名参与者的头脑风暴研究发现，两个AI伙伴增加了想法数量，却明显减少了人类原创贡献。</li><li>SkillPrivus审计了726个公开智能体技能，发现307个存在潜在隐私违规，包括敏感推断和意外披露。</li><li>研究人员发现，即使监督微调数据严重损坏，强化学习仍能恢复推理能力，并从极少错误轨迹达到69.30%准确率。</li><li>搜索原生预训练让14亿参数的QueryLM在知识密集任务上达到或超过同等计算量的33亿参数基线。</li><li>FORTH将触觉感知与前向控制配对，在三个LIBERO套件中平均成功率达97.6%，峰值内存降低7.12倍。</li><li>Skill-JEPA通过让世界模型动作空间匹配规划器采样，将长时程目标成功率从42%提升至62%。</li><li>GeoCloak通过局部语义图像编辑降低多模态模型的地理定位准确率，同时比像素扰动更好地保留画质。</li></ul>
-<h2>1. 智谱发布 GLM-5.4，循环架构瞄准长程编程</h2>
-<p>智谱推出 7500 亿参数旗舰模型 GLM-5.4，以循环 Transformer 加深推理，覆盖编程、网络安全、3D 与物理控制任务。</p>
-<h3>用循环计算换取更深推理</h3>
-<p>智谱发布 GLM-5.4。这款 7500 亿参数旗舰模型采用智谱所称的 Loop Transformer：同一组 28 层网络运行两轮，让第二轮根据第一轮形成的中间表示继续修正结果，而不是为每一步推理堆叠全新的参数。</p>
-<p>智谱表示，这种设计可以在不同比例增加完整内存负担的情况下提高模型能力。模型通过混合 KV Cache 复用大部分上下文，只为新一轮计算保留局部滑动窗口；稀疏注意力索引也会直接复用。对于百万 token 上下文，官方称额外部署成本明显低于简单复制一份完整缓存的方案。</p>
-<h3>从写代码扩展到工程任务</h3>
-<p>GLM-5.4 的定位并不只是编程模型升级。智谱将其概括为“广义编程”：让软件生成能力进一步延伸到视频制作、游戏开发、3D 场景、机械设计和网络安全。官方展示包括自动制作带旁白的音乐视频、在 FreeCAD 中设计六轴机械臂、从零构建完整游戏，以及用 GLSL 着色器生成可交互的 3D 场景。</p>
-<p>智谱称，模型在低峰期最高可达每秒 200 token，高峰期维持每秒 70 至 80 token。部分评测中，模型的显式思考链反而缩短，原因是部分计算被转移到循环结构内部。</p>
+<ul><li>Pinterest 用大模型替代多阶段聚类，最大提速来自减少推理调用次数。</li><li>Dreamina 公布 AI Motion Studio 活动获奖者，显示其继续押注创作者驱动的短视频生成。</li><li>Meshy 开放 Liquid 测试版，并与 VITURE 合作，将生成式 3D 资产带入扩展现实体验。</li><li>Qwen 展示 Qwen4 Max 与 Pendev 的整合，将设计系统工作流与生成式创作辅助结合。</li><li>Amazon Bedrock 发布 Trusted Access API，并预览 Anthropic 的企业安全监控与数据控制方案。</li><li>Simon Willison 发布 datasette-agent 0.7a1，让大模型智能体能够查询并操作 Datasette 数据库。</li><li>Artificial Analysis 发布智能体框架对比，显示编码模型在不同环境中的工具调用和 token 消耗差异显著。</li><li>蚂蚁集团开源 OceanLake 核心引擎，打造融合数据湖与数仓架构的 AI 数据平台。</li><li>Deemos 宣布可通过 fal.ai 使用图像、文本和网格输入生成低多边形资产。</li><li>Besimple 在 Baseten Training 上微调 Nemotron 3.5 Transcribe，在 MedDictate 医学术语测试中达到 0.87% 错误率。</li></ul>
+<h2>1. 百度开源文心5.5 Flash，2800亿参数模型向全球开放</h2>
+<p>百度以 Apache 2.0 协议发布文心5.5 Flash Preview 权重，支持百万上下文，为全球开发者提供新的高性能开源基线。</p>
+<h3>发生了什么</h3>
+<p>百度正式开源文心5.5 Flash Preview，采用 Apache 2.0 协议，并在 Hugging Face、ModelScope 提供模型权重及配套资源。模型支持 vLLM、SGLang 等主流推理框架。此次事件的关键不只是“发布预览版”，而是权重和下载渠道已经公开，开发者可以自行部署、微调和适配。</p>
+<p>据百度及量子位披露，该模型总参数量达到 2800 亿，采用混合专家架构，每个 Token 激活约 140 亿参数，上下文长度最高可达 100 万 Token。它面向编程、3D 建模、知识工作和内容创作等场景。在 CodeArena WebDev 榜单中，文心5.5 Flash Preview 以 1668 分位列开源模型第二。</p>
 <h3>为什么重要</h3>
-<p>GLM-5.4 已接入智谱的编程产品，API 尚未开放，权重也没有公开，因此它目前仍是商业模型发布，而不是开源权重事件。真正值得观察的是：循环加深能否在复杂工程任务上持续带来收益，同时避免推理成本失控或模型陷入过度思考。智谱已承认，模型仍可能出现“马拉松式思考”。</p>
-<p><strong>猫叔判断：</strong> GLM-5.4 把赌注押在 28 层循环复用上，但 API 和权重尚未开放，效率优势仍缺乏外部验证。</p>
+<p>这次发布把一款来自中国实验室的大型模型加入全球可获得的开放权重供给。大总参数量、较低激活规模、超长上下文和宽松许可证的组合，为研究人员提供了本地部署和行业微调的空间，也减少了对封闭 API 使用规则的依赖。</p>
+<p>不过，榜单成绩仍需要更多独立复测。“Preview”意味着稳定性、服务成本、多语言表现以及非定向评测中的可靠性尚未完全明确。即便采用稀疏架构，部署所需硬件也不会轻松。真正提升其行业分量的，是权重和许可证同时开放：在模型获取权与部署自主性日益重要的当下，它为全球开源社区增加了一条来自中国的高能力基线。</p>
 <p><strong>原始信源</strong></p>
-<ul><li><a href="https://z.ai/blog/glm-5.4">GLM-5.4: Toward Generalized Coding with Our First Loop Transformer</a></li><li><a href="https://autoclaw.z.ai/en/blog/model/GLM-5.4/">Meet GLM-5.4 in AutoClaw</a></li></ul>
-<p>原文链接：<a href="https://mmlong818.github.io/ai-pulse/zh/articles/zhipu-glm-5-4-loop-transformer.html">智谱发布 GLM-5.4，循环架构瞄准长程编程｜猫叔的AI资讯雷达</a></p>
+<ul><li><a href="https://www.qbitai.com/2026/11/512354.html">文心 5.5 Flash Preview正式开源，采用 Apache 2.0 协议</a></li><li><a href="https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview">ERNIE 5.5 Flash Preview on Hugging Face</a></li></ul>
+<p>原文链接：<a href="https://mmlong818.github.io/ai-pulse/zh/articles/ernie-55-flash-open-weights.html">百度开源文心5.5 Flash，2800亿参数模型向全球开放｜猫叔的AI资讯雷达</a></p>
 <hr>
-<h2>2. 沃尔玛接入 Meta Muse，AI 智能体可代购黑五商品</h2>
-<p>沃尔玛上线 Agent Gateway，允许 Meta Muse 搜索商品、组建购物车并在用户设定的额度内完成结账。</p>
-<h3>给智能体开一条受控结账通道</h3>
-<p>沃尔玛已启用 Agent Gateway，并接入 Meta 的 Muse。用户可以让 Muse 搜索沃尔玛商品、组建购物车，并代为购买黑色星期五促销商品。这使沃尔玛此前公布的智能体商业接口，在 holiday 购物季开始时进入实际零售流程。</p>
-<p>系统通过沃尔玛账户中的 Agent Profiles 划定智能体权限边界。用户可以设定消费上限、要求逐笔批准，并查看 Muse 买了什么。结账使用用户已经保存在沃尔玛账户中的支付卡。沃尔玛称，智能体无需读取用户完整的历史购买记录，代理下单也适用与普通订单相同的价格和退货政策。</p>
-<p>这套方案并不是把浏览器完全交给机器人。Muse 通过沃尔玛批准的接口获取商品信息并执行操作，减少依赖页面抓取带来的不稳定，也让沃尔玛能够明确规定外部智能体可以做什么、不能做什么。</p>
-<h3>一次平台路线选择</h3>
-<p>沃尔玛表示，Muse 只是首个获得支持的智能体，未来还会接入更多购物体验。因此，这次发布的意义不止是黑五促销：它为零售商提供了一种开放库存和结账、同时保留身份、支付和交易记录控制权的模板。</p>
-<p>它也暴露出电商平台正在分化。沃尔玛选择为外部智能体建设受控入口，而亚马逊等平台对 Muse 采取更防御性的态度。接下来仍要观察转化质量、欺诈、退货、广告排序，以及零售商能否避免把商品发现变成一种不透明的新广告机制。</p>
-<p><strong>猫叔判断：</strong> Agent Profiles 和消费上限才是这次真正的产品，沃尔玛在验证受控结账能否带来需求，同时不把客户关系交给 Muse。</p>
+<h2>2. 腾讯混元发布第三代开源机器翻译模型 Hy-MT3</h2>
+<p>腾讯混元推出第三代开源翻译模型 Hy-MT3，重点提升准确性、完整性、指令遵循和多语言覆盖范围。</p>
+<h3>发生了什么</h3>
+<p>腾讯混元宣布推出第三代开源机器翻译模型 Hy-MT3。官方信息显示，新一代模型重点改善翻译准确性和完整性，并提升对用户指令的遵循能力，同时扩大语言覆盖范围。</p>
+<p>这次消息由腾讯混元官方账号在北京时间白天发布，属于本期选题窗口。需要注意的是，目前公开信息仍然有限，尚未完整披露参数规模、系统化评测结果以及与上一代模型的许可证差异，因此不能仅凭公告对其性能做过度推断。</p>
+<h3>为什么重要</h3>
+<p>翻译是 AI 基础设施中影响广泛、却经常被低估的一层。更强的开放模型可以降低开发者对少数闭源服务商的依赖，让多语言功能更便宜，也便于围绕行业术语、隐私要求和离线部署进行适配。Hy-MT3 强调指令遵循，也意味着它的目标可能不止是逐句翻译，还包括受控改写、格式保留和接入业务工作流。</p>
+<p>它的价值更偏向生态基础设施，而不是单纯争夺榜单名次。开放翻译模型可以服务客服、搜索、文档、教育，以及需要跨语言运行的智能体。最终表现仍取决于语言对覆盖、推理延迟、许可证，以及法律、医疗和低资源语言等复杂场景的实测。在更多技术细节公开前，Hy-MT3 是一项值得关注的开放发布，但还不能据此断言翻译质量差距已经被填平。</p>
 <p><strong>原始信源</strong></p>
-<ul><li><a href="https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday">Meta Muse can now do your Black Friday shopping at Walmart</a></li><li><a href="https://www.reddit.com/r/epyhia/comments/1y3gsx7/walmart_opens_its_site_to_metas_muse_ai_agent_for/">Walmart Opens Its Site to Meta’s Muse AI Agent for Black Friday Shopping</a></li><li><a href="https://stock.walmart.com/_assets/_a429a6fd7bf3707385113782a959bcea/walmart/db/938/10001/transcript_management_call/Earnings_Transcript_%28FY27_Q3%29.pdf">Walmart Agent Gateway earnings transcript</a></li></ul>
-<p>原文链接：<a href="https://mmlong818.github.io/ai-pulse/zh/articles/meta-muse-walmart-agent-gateway.html">沃尔玛接入 Meta Muse，AI 智能体可代购黑五商品｜猫叔的AI资讯雷达</a></p>
+<ul><li><a href="https://x.com/TencentHunyuan/status/2125170622049485093">Tencent Hunyuan official Hy-MT3 announcement</a></li></ul>
+<p>原文链接：<a href="https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-mt3-translation.html">腾讯混元发布第三代开源机器翻译模型 Hy-MT3｜猫叔的AI资讯雷达</a></p>
 <hr>
-<h2>3. 蚂蚁开源百灵医疗模型家族，覆盖推理与风险预测</h2>
-<p>蚂蚁发布并开源百灵医疗模型家族，覆盖多模态理解、医学推理、疾病风险预测和医疗安全防护。</p>
-<h3>四款模型拆分不同医疗任务</h3>
-<p>蚂蚁集团在 2026 蚂蚁阿福医疗健康生态大会上宣布开源百灵医疗健康大模型家族。该家族没有把所有任务压进一个通用助手，而是分别覆盖多模态健康理解、长上下文医学推理、疾病风险预测和医疗安全防护。</p>
-<p>其中，LingSante-3.1-air-VL 是轻量级视觉语言模型，支持文字、图片和视频输入。蚂蚁称，它可以综合分析皮肤照片、饮食图片和检查报告，并支持在笔记本电脑等本地设备上部署。LingSante-3.1-flash 面向更大规模任务，总参数量 5600 亿，上下文窗口最长 100 万 token，并支持检索、多轮证据核验和工具调用。</p>
-<p>另外两款模型承担专门任务。LingSante Pulse 主打未来六年 150 多种疾病的风险预测；LingSante MedGuard 则结合患者上下文，识别医疗安全、合规和伦理风险，试图把防护能力作为模型家族的一部分交付。</p>
-<h3>开源不等于获得临床许可</h3>
-<p>这次发布的重要之处，在于它把专业能力和安全防护同时纳入产品组合，而不是只给通用模型附上一份安全说明。它也折射出亚洲医疗 AI 的一个现实方向：对医院和本地机构而言，数据留在本地、能否使用私有硬件，往往与评测分数同样重要。</p>
-<p>但现有公开信息仍不足以支撑更强结论。训练数据、许可证、独立验证和监管资质都缺乏细节。模型能够解读报告或估算风险，并不意味着它可以独立诊断或开药。最终价值取决于医院和开发者能否审计模型、复现实验结果，并持续保留人工复核。</p>
-<p><strong>猫叔判断：</strong> MedGuard 与 Pulse 同步开源比单独发布聊天模型更有分量，但没有临床独立验证，六年风险预测仍只是目标而非医疗成熟度证明。</p>
+<h2>3. Sakana AI成立应用研究实验室，首攻金融经济复杂系统</h2>
+<p>日本 Sakana AI 成立应用研究实验室，计划用智能体系统建模金融和经济等复杂现实环境，首个项目聚焦金融领域。</p>
+<h3>发生了什么</h3>
+<p>日本 Sakana AI 宣布成立 Applied Research Lab，专门把公司的研究成果应用于大型、复杂的现实系统。实验室的首个项目聚焦金融与经济，公司表示未来还可能扩展到其他领域。</p>
+<p>Sakana 的出发点并不是把一个语言模型智能体当成万能解题器。公司认为，市场和经济必须被表示为由多个单元、关系及相互影响组成的系统。人类专家负责提出真正重要的问题并判断结果，智能体则负责以更大规模实施、测试和迭代模型，把原本需要大量人工完成的工作加速起来。</p>
+<h3>为什么重要</h3>
+<p>这不是新一代前沿模型，也不是面向大众的产品发布。它的重要性在于一种部署思路：Sakana 试图把智能体从孤立的任务执行，推进到对复杂环境进行结构化建模。金融是一个高难度起点，因为模型即使技术上精巧，也可能在历史关系失效时给出经济含义错误的结论。</p>
+<p>这项计划同时暴露了尚未解决的瓶颈。智能体可以生成并测试大量假设，却不会自动知道哪些变量值得关注、哪些关系具有因果性，也无法保证模型表现不是数据造成的假象。Sakana 明确保留专家对问题选择和结果判断的参与，这比“智能体自主预测经济”更可信，但也意味着短期产品更可能是专家增强工具，而非替代专家。它最终是否重要，要看能否在真实决策中持续带来可复现的改进，而不是制造更多模拟结果。</p>
 <p><strong>原始信源</strong></p>
-<ul><li><a href="https://www.qbitai.com/2026/11/511998.html">蚂蚁阿福同款大模型宣布开源</a></li><li><a href="https://www.xueqiu.com/3338215700/418132523">蚂蚁百灵医疗健康大模型宣布开源</a></li><li><a href="https://www.ant-ling.com/">蚂蚁百灵大模型</a></li></ul>
-<p>原文链接：<a href="https://mmlong818.github.io/ai-pulse/zh/articles/ant-ling-medical-models-open-source.html">蚂蚁开源百灵医疗模型家族，覆盖推理与风险预测｜猫叔的AI资讯雷达</a></p>
+<ul><li><a href="https://sakana.ai/applied-research-lab/">Introducing the Sakana AI Applied Research Lab</a></li><li><a href="https://x.com/SakanaAILabs/status/2125046221631086970">Sakana AI official announcement</a></li></ul>
+<p>原文链接：<a href="https://mmlong818.github.io/ai-pulse/zh/articles/sakana-applied-research-lab.html">Sakana AI成立应用研究实验室，首攻金融经济复杂系统｜猫叔的AI资讯雷达</a></p>
 <h2>一句话快讯</h2>
-<ul><li>Architect Labs发布Frostbite交互网CPU架构，称其由AI智能体设计并完成流片前仿真。（<a href="https://www.marktechpost.com/2026/11/23/architect-labs-frostbite-ai-designed-cpu-interaction-nets/">MarkTechPost</a>）</li><li>XROGO郑随兵表示，机器人不能只停留在视频里，最终必须进入工厂真正干活。（<a href="https://www.qbitai.com/2026/11/512179.html">量子位</a>）</li><li>Meta TLX将warp-group GPU控制能力带入Triton，并支持Hopper、Blackwell与AMD硬件。（<a href="https://www.marktechpost.com/2026/11/23/meta-tlx-triton-low-level-extensions/">MarkTechPost</a>）</li><li>一项涵盖168名参与者的头脑风暴研究发现，两个AI伙伴增加了想法数量，却明显减少了人类原创贡献。（<a href="https://arxiv.org/abs/2611.26663">arXiv</a>）</li><li>SkillPrivus审计了726个公开智能体技能，发现307个存在潜在隐私违规，包括敏感推断和意外披露。（<a href="https://arxiv.org/abs/2611.26747">arXiv</a>）</li><li>研究人员发现，即使监督微调数据严重损坏，强化学习仍能恢复推理能力，并从极少错误轨迹达到69.30%准确率。（<a href="https://arxiv.org/abs/2611.26756">arXiv</a>）</li><li>搜索原生预训练让14亿参数的QueryLM在知识密集任务上达到或超过同等计算量的33亿参数基线。（<a href="https://arxiv.org/abs/2611.26809">arXiv</a>）</li><li>FORTH将触觉感知与前向控制配对，在三个LIBERO套件中平均成功率达97.6%，峰值内存降低7.12倍。（<a href="https://arxiv.org/abs/2611.26744">arXiv</a>）</li><li>Skill-JEPA通过让世界模型动作空间匹配规划器采样，将长时程目标成功率从42%提升至62%。（<a href="https://arxiv.org/abs/2611.26825">arXiv</a>）</li><li>GeoCloak通过局部语义图像编辑降低多模态模型的地理定位准确率，同时比像素扰动更好地保留画质。（<a href="https://arxiv.org/abs/2611.26987">arXiv</a>）</li><li>GRAFT生成的对抗性MCP工具描述在五种防御下同时取得更高攻击成功率和更低检测率。（<a href="https://arxiv.org/abs/2611.27041">arXiv</a>）</li><li>Sakana AI表示，面向智能体的全新Sawara语言模型正在开发中，小型模型计划明年春季开放权重。（<a href="https://x.com/SakanaAILabs/status/2124708268740346143">X / SakanaAILabs</a>）</li><li>RoboChallenge Zero发布首期评测，将大模型与真实机器人任务连接起来进行测试。（<a href="https://www.qbitai.com/2026/11/511978.html">量子位</a>）</li><li>豆包新增21个专业工作台，试图让用户把日常职场任务直接交给AI处理。（<a href="https://www.qbitai.com/2026/11/511933.html">量子位</a>）</li></ul>
+<ul><li>Pinterest 用大模型替代多阶段聚类，最大提速来自减少推理调用次数。（<a href="https://www.infoq.cn/article/vaEUVvWD9AIaFXZhzSMH">InfoQ 中文</a>）</li><li>Dreamina 公布 AI Motion Studio 活动获奖者，显示其继续押注创作者驱动的短视频生成。（<a href="https://x.com/dreamina_ai/status/2125152415381139524">X / Dreamina AI</a>）</li><li>Meshy 开放 Liquid 测试版，并与 VITURE 合作，将生成式 3D 资产带入扩展现实体验。（<a href="https://x.com/MeshyAI/status/2125144895509934486">X / MeshyAI</a>）</li><li>Qwen 展示 Qwen4 Max 与 Pendev 的整合，将设计系统工作流与生成式创作辅助结合。（<a href="https://x.com/Alibaba_Qwen/status/2125121515465461969">X / Alibaba Qwen</a>）</li><li>Amazon Bedrock 发布 Trusted Access API，并预览 Anthropic 的企业安全监控与数据控制方案。（<a href="https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls/">AWS Machine Learning Blog</a>）</li><li>Simon Willison 发布 datasette-agent 0.7a1，让大模型智能体能够查询并操作 Datasette 数据库。（<a href="https://simonwillison.net/2026/Nov/24/datasette-agent/">Simon Willison</a>）</li><li>Artificial Analysis 发布智能体框架对比，显示编码模型在不同环境中的工具调用和 token 消耗差异显著。（<a href="https://x.com/ArtificialAnlys/status/2125069750414045505">X / Artificial Analysis</a>）</li><li>蚂蚁集团开源 OceanLake 核心引擎，打造融合数据湖与数仓架构的 AI 数据平台。（<a href="https://www.qbitai.com/2026/11/512330.html">量子位</a>）</li><li>Deemos 宣布可通过 fal.ai 使用图像、文本和网格输入生成低多边形资产。（<a href="https://x.com/DeemosTech/status/2125041613970055521">X / DeemosTech</a>）</li><li>Besimple 在 Baseten Training 上微调 Nemotron 3.5 Transcribe，在 MedDictate 医学术语测试中达到 0.87% 错误率。（<a href="https://x.com/baseten/status/2125028331821404646">X / Baseten</a>）</li><li>Together AI 上线 DeepSeek V4.1 Flash，面向编码代理，输入百万 token 0.60 美元、输出 2.40 美元。（<a href="https://x.com/togethercompute/status/2125027182313672761">X / Together AI</a>）</li><li>AWS 展示 Strands Decider v2 31B，在六项公开文本基准平均得分 82.1，图像任务得分 90.1。（<a href="https://x.com/awsdevelopers/status/2125015675382985077">X / AWS Developers</a>）</li><li>Sierra 完成 17.5 亿美元 F 轮融资，年化收入已超过 4 亿美元，客户覆盖半数《财富》50 强。（<a href="https://siliconangle.com/2026/11/23/ai-agent-provider-sierra-closes-1-75b-investment-amid-rapid-revenue-growth/">SiliconANGLE</a>）</li><li>OpenAI 表示，GPT-6 Cyber 协助验证了 948 个可能授予本地 root 权限的 Linux 内核漏洞，并生成待审查补丁。（<a href="https://x.com/OpenAI/status/2125007927098699827">X / OpenAI</a>）</li></ul>
 <hr>
-<p>完整日报：<a href="https://mmlong818.github.io/ai-pulse/zh/day/2026-11-23.html">11月23日晚报网页</a></p>
+<p>完整日报：<a href="https://mmlong818.github.io/ai-pulse/zh/day/2026-11-24.html">11月24日晚报网页</a></p>
 <p>历史存档：<a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">猫叔的AI资讯雷达存档</a></p>
 <p>说明：本文为 AI 自动采编稿，所有事实以文中原始信源为准；如发现时间或事实错误，会在网页版本中优先修正。</p></body></html>
