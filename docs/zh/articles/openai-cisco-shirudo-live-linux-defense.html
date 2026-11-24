@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAI与思科开源Shirudo，实时保护运行中的Linux — Uncle Cat AI Radar</title>
+<meta name="description" content="Shirudo利用AI生成的eBPF防护规则，在不重启服务的情况下拦截漏洞利用，为补丁部署争取时间。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-cisco-shirudo-live-linux-defense.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/openai-cisco-shirudo-live-linux-defense.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-cisco-shirudo-live-linux-defense.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/openai-cisco-shirudo-live-linux-defense.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="OpenAI与思科开源Shirudo，实时保护运行中的Linux — Uncle Cat AI Radar">
+<meta property="og:description" content="Shirudo利用AI生成的eBPF防护规则，在不重启服务的情况下拦截漏洞利用，为补丁部署争取时间。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/openai-cisco-shirudo-live-linux-defense.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenAI与思科开源Shirudo，实时保护运行中的Linux — Uncle Cat AI Radar">
+<meta name="twitter:description" content="Shirudo利用AI生成的eBPF防护规则，在不重启服务的情况下拦截漏洞利用，为补丁部署争取时间。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="OpenAI与思科开源Shirudo，实时保护运行中的Linux — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"OpenAI与思科开源Shirudo，实时保护运行中的Linux","item":"https://mmlong818.github.io/ai-pulse/zh/articles/openai-cisco-shirudo-live-linux-defense.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/openai-cisco-shirudo-live-linux-defense.html#article","headline":"OpenAI与思科开源Shirudo，实时保护运行中的Linux","description":"Shirudo利用AI生成的eBPF防护规则，在不重启服务的情况下拦截漏洞利用，为补丁部署争取时间。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/openai-cisco-shirudo-live-linux-defense.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/openai-cisco-shirudo-live-linux-defense.html"},"datePublished":"2026-11-23T21:20:00.000Z","dateModified":"2026-11-24T01:00:05.614Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["安全","开源","Agent"],"keywords":"安全, 开源, Agent","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://openai.com/index/introducing-shirudo/","https://openai.com/news/?topics=security"],"about":[{"@type":"Thing","name":"安全"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"Agent"}]}]}</script>
+</head>
+<body data-slug="openai-cisco-shirudo-live-linux-defense" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/openai-cisco-shirudo-live-linux-defense.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-11-23T21:20:00Z">2026年11月24日 05:20</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/safety.html">安全</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/agents.html">Agent</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>OpenAI与思科开源Shirudo，实时保护运行中的Linux</h1>
+  <p class="standfirst">Shirudo利用AI生成的eBPF防护规则，在不重启服务的情况下拦截漏洞利用，为补丁部署争取时间。</p>
+  <h2>在补丁之前先挡住攻击</h2><p>OpenAI与思科推出开源Linux运行时Shirudo，目标是在永久补丁准备和部署期间保护正在运行的系统。项目利用eBPF技术，让小型程序能够在操作系统特定位置观察和控制行为，而无需替换正在运行的应用。</p><p>安全团队经常面临一个时间差：漏洞披露可能是即时的，但测试和上线补丁需要数天甚至数周。直接禁用整类系统调用或关闭服务，确实可以阻断攻击，却也可能切断正常请求。Shirudo希望生成更窄的临时防护，只拦截暴露漏洞的路径。</p><h2>代理生成临时防线</h2><p>在OpenAI给出的示例中，Codex为影响Elasticsearch服务的Java漏洞生成eBPF防护规则。规则向正在运行的Java进程加入输入检查，拒绝恶意数据，同时保持Elasticsearch继续提供服务。这个案例属于受控测试，并不等于该方法已经适用于所有生产事故。</p><p>Shirudo把代理辅助调查和防护生成，与多重部署安全措施结合起来。防护规则可以先在正常工作负载下测试，再决定是否强制执行；规则需要加密签名，并通过eBPF验证器检查，同时利用可信平台模块记录已加载或移除的保护。最终部署仍由运维人员批准。</p><h2>开源带来的现实价值</h2><p>OpenAI和思科以宽松许可证发布运行时，并邀请安全研究者与基础设施团队检查和扩展代码。这种做法有实际意义：如果临时防护能和漏洞披露一起共享，运营商就不必各自重复构建同一套应急措施。</p><p>真正的难题，是企业是否敢在攻击发生时信任AI生成的内核控制。一条错误规则可能造成停机、误伤正常行为，甚至制造新的权限边界问题。因此，Shirudo当前更像一种值得验证的运行模式：AI可以快速起草防御，但签名、验证、测试和人工授权必须留在同一条责任链上。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://openai.com/index/introducing-shirudo/" rel="noopener" target="_blank">OpenAI and Cisco introduce Shirudo</a></li><li><a href="https://openai.com/news/?topics=security" rel="noopener" target="_blank">OpenAI News: Introducing Shirudo</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/claude-ship-autonomous-pr-review.html">Anthropic推出Claude Ship，让代理审查并批准代码变更</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-verified-quantum-algorithms.html">DeepMind用智能体发现并形式化验证更快的量子算法</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/ant-ling-medical-models-open-source.html">蚂蚁启动百灵医疗模型分阶段开放权重</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

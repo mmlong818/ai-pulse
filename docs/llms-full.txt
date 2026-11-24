@@ -19,7 +19,150 @@
 
 ## Recent briefings
 
-### Ant Group open-sources a four-model medical AI family
+### Amazon Agrees to Buy Decart Software to Challenge Nvidia’s Lead
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/amazon-decart-trainium-optimization.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/amazon-decart-trainium-optimization.html
+- Source timestamp: 2026-11-23T17:14:00.000Z
+- Site timestamp: 2026-11-24T01:00:05.614Z
+- Tags: Industry, Funding
+
+Amazon’s reported $7.5 billion Decart deal targets the software layer that could make Trainium chips more competitive with Nvidia, but the transaction remains subject to closing conditions.
+
+## The deal
+
+Amazon has signed an agreement to purchase the proprietary technology behind Decart’s AI optimization stack and bring Decart’s three co-founders and AI research and engineering team to Amazon. The transaction has been reported at $7.5 billion, although Amazon’s announcement does not state a purchase price and says completion remains subject to customary closing conditions, including regulatory clearance.
+
+The purchase centers on Decart Optimization Stack, software designed to improve how AI workloads run across hardware platforms. Amazon says Decart’s full-stack approach can help optimize inference and custom-silicon performance, including Trainium.
+
+Decart became known publicly for interactive world models and real-time video generation, but Amazon is acquiring a less visible capability: the ability to extract more useful work from each accelerator. Amazon says the technology could support faster training, reinforcement learning and inference across its custom silicon portfolio.
+
+## Why Trainium matters
+
+Amazon has developed Trainium as part of its custom-silicon portfolio and delivers access to it through AWS. It is continuing to expand the availability of its custom chips to customers, putting pressure on Nvidia’s dominant position in AI infrastructure. Hardware alone is not enough to shift workloads. Customers also need compilers, kernels, scheduling, profiling and optimization tools that make a new accelerator predictable to use.
+
+That is where Decart fits. Amazon says the two companies have worked together since 2025 and achieved performance results on Trainium through a full-stack software-and-hardware approach. The agreement would also bring Amazon a specialized team with experience optimizing demanding generative workloads.
+
+## What remains unproven
+
+The proposed transaction is not a guarantee that Trainium will become a credible Nvidia substitute. Amazon still has to close the deal, integrate Decart’s technology into AWS and its custom-silicon efforts, maintain compatibility with changing model architectures and persuade customers that performance gains are repeatable outside internal tests. Regulatory review, team retention and integration risks remain material.
+
+Still, the strategic signal is unusually clear. A reported $7.5 billion valuation would represent a platform-scale bet, but the final price and completion status should not be treated as settled until Amazon closes the transaction. The company is treating software efficiency as the decisive battleground for its chip business—and as the bridge between owning silicon and selling an ecosystem.
+
+Chinese title: 亚马逊同意收购Decart软件，补强Trainium芯片生态
+Chinese summary: 亚马逊已签署协议，拟购买Decart Optimization Stack及引入其核心团队；媒体称交易价值75亿美元，但交易仍待监管和其他交割条件完成。
+
+Sources:
+  - Amazon to purchase Decart's AI optimization technology: https://www.aboutamazon.com/news/company-news/amazon-decart-ai-optimization
+  - Amazon snaps up Decart's AI optimization tech for $7.5B: https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/
+
+### Anthropic Launches Claude Ship for Automated PR Approval
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/claude-ship-autonomous-pr-review.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/claude-ship-autonomous-pr-review.html
+- Source timestamp: 2026-11-23T20:05:00.000Z
+- Site timestamp: 2026-11-24T01:00:05.614Z
+- Tags: Agents, Industry
+
+Claude Ship lets coding agents review pull requests, repair defects and approve changes under team-defined policies in beta.
+
+## From review to release
+
+Anthropic has launched Claude Ship, a beta workflow that lets Claude Code handle more of the path from a pull request to a merge decision. Developers can invoke the `/ship` command, after which the agent reviews the proposed changes, responds to feedback, makes fixes and determines whether the pull request meets the team’s approval rules.
+
+The important shift is operational rather than cosmetic. Earlier coding assistants primarily generated patches or commented on code. Claude Ship treats the pull request as a managed process with explicit policies, rather than as a single request for code generation.
+
+## Policies become the control surface
+
+Teams can define what Claude is allowed to approve and what requires human review. That distinction matters because code review contains more than bug detection: it involves repository conventions, test evidence, security considerations and risk tolerance. Anthropic’s design places those decisions in policy files and approval gates instead of leaving them to an informal chat with the model.
+
+Anthropic says its own Claude Code team more than doubled the number of merged pull requests between June and September, while reverted changes fell by more than 40 percent. Those figures are company-reported and do not establish that Claude Ship will produce the same results for customers, but they explain the product direction.
+
+## The unresolved boundary
+
+Automating review and approval raises a sharper question than whether a model can write code: which changes should an organization never allow an agent to approve on its own? A policy engine can constrain file paths, tests and required reviewers, but it cannot eliminate ambiguity in unfamiliar systems or guarantee that a passing test captures the real business risk.
+
+Claude Ship nevertheless marks a meaningful product boundary. If it works reliably, coding agents become participants in software governance, not merely fast contributors. That could reduce review bottlenecks for routine changes while making policy quality—and the audit trail around exceptions—the new source of engineering leverage.
+
+Chinese title: Anthropic推出Claude Ship，让代理审查并批准代码变更
+Chinese summary: Claude Ship进入测试阶段，可按团队规则审查拉取请求、修复问题，并决定哪些代码变更可以合并。
+
+Sources:
+  - Introducing Claude Ship: https://claude.com/resources/articles/introducing-claude-ship
+  - Anthropic launches Claude Ship to review and approve PRs: https://www.testingcatalog.com/anthropic-launches-claude-ship-to-review-and-approve-prs/
+  - Anthropic launches Claude Ship to help developers ship code faster: https://www.investing.com/news/stock-market-news/anthropic-launches-claude-ship-to-help-developers-ship-code-faster-5046300
+
+### DeepMind Agents Find Faster, Verified Quantum Algorithms
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/deepmind-verified-quantum-algorithms.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/deepmind-verified-quantum-algorithms.html
+- Source timestamp: 2026-11-23T16:59:00.000Z
+- Site timestamp: 2026-11-24T01:00:05.614Z
+- Tags: Research, Agents
+
+Google DeepMind says agent teams found cheaper quantum routines and used Lean formalization to verify their mathematical correctness.
+
+## Agents search, Lean checks
+
+Google DeepMind and Google Quantum AI report that teams of AI agents discovered improved quantum algorithms for problems connected to chemistry, fusion and drug discovery. The agents searched through candidate programs, shared intermediate results and refined approaches, while the Lean proof assistant formally checked whether the proposed transformations were correct.
+
+The work is notable because it combines two capabilities that are often separated. Generative models can explore a large design space quickly, but their outputs may contain subtle errors. Formal verification can establish correctness, but traditionally requires experts to specify and prove each step manually. DeepMind’s workflow uses agents for discovery and Lean for certification.
+
+## The reported gains
+
+DeepMind says one algorithm for simulating a light-sensitive molecule became eight times cheaper by simplifying how it tracks particle positions and electric forces. The project also reports a 2.57-fold speedup for one implementation of Grover’s algorithm and a much larger improvement for an arcsin routine used to load numbers into quantum states.
+
+Those figures describe algorithmic cost in the studied settings, not an immediate acceleration on a fault-tolerant quantum computer. The research still depends on human researchers to define useful problems, select formal specifications and judge whether an optimization is physically meaningful.
+
+## Why this is more than a benchmark
+
+Quantum computing has a hardware bottleneck, but algorithms are another limiting factor. A more capable processor cannot compensate for routines that require excessive circuit depth, memory or error correction. If agentic search can repeatedly find lower-cost constructions and prove that they preserve the intended computation, it could improve the return on future quantum hardware investment.
+
+The near-term significance is methodological. The result suggests a template for scientific AI in which models are allowed to be inventive but not trusted as final authorities. The unresolved issue is throughput: a few impressive reductions do not yet show that agents can systematically replace expert algorithm designers. For now, the strongest claim is that formal verification gives exploratory AI a credible route into technical research where plausible answers are not enough.
+
+Chinese title: DeepMind用智能体发现并形式化验证更快的量子算法
+Chinese summary: 谷歌DeepMind称，AI智能体团队找到了更低成本的量子算法，并借助Lean形式化证明检验其数学正确性。
+
+Sources:
+  - Finding faster quantum algorithms with agents and formal verification: https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/
+  - Finding faster quantum algorithms with agents and formal verification: https://x.com/GoogleDeepMind/status/2124911075875258776
+
+### OpenAI and Cisco Open-Source Shirudo for Live Linux Defense
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-cisco-shirudo-live-linux-defense.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/openai-cisco-shirudo-live-linux-defense.html
+- Source timestamp: 2026-11-23T21:20:00.000Z
+- Site timestamp: 2026-11-24T01:00:05.614Z
+- Tags: Safety, Open Source, Agents
+
+Shirudo uses AI-generated eBPF shields to block exploit paths on running Linux services without waiting for patches or restarts.
+
+## A shield before the patch
+
+OpenAI and Cisco have introduced Shirudo, an open-source Linux runtime designed to protect live systems while operators prepare permanent fixes. The project uses eBPF, which allows small programs to observe and control selected behavior inside the operating system without replacing the running application.
+
+The central problem is familiar to security teams: a vulnerability may be disclosed immediately, while testing and deploying a patch takes days or weeks. Blocking an entire system call or shutting down the service can stop the exploit, but it can also break legitimate traffic. Shirudo aims to create narrower protections that target the vulnerable path.
+
+## AI writes the temporary control
+
+In OpenAI’s example, Codex generated an eBPF shield for a Java vulnerability affecting an Elasticsearch service. The shield added an input check to a running Java process and rejected malicious data while Elasticsearch continued operating. The project describes this as a controlled test, not proof that the method can safely handle every production incident.
+
+Shirudo combines agent-assisted investigation and shield generation with several deployment safeguards. Proposed protections can be tested against normal workloads before enforcement. Shields are cryptographically signed, checked by the eBPF verifier and supported by hardware-backed records through a Trusted Platform Module. Operators remain responsible for approving deployment.
+
+## Why openness matters
+
+OpenAI and Cisco are releasing the runtime under a permissive license and inviting security researchers and infrastructure teams to inspect and extend it. That choice is practical: temporary protections are more valuable when they can be shared alongside vulnerability disclosures instead of being rebuilt independently by every operator.
+
+The harder question is whether organizations will trust AI-generated kernel controls during a live attack. A bad shield could cause an outage, hide a legitimate behavior or create a new privilege boundary failure. Shirudo therefore matters less as an autonomous defender today than as a proposed operating model: AI can draft machine-speed defenses, but signing, verification, testing and human authorization must remain part of the chain.
+
+Chinese title: OpenAI与思科开源Shirudo，实时保护运行中的Linux
+Chinese summary: Shirudo利用AI生成的eBPF防护规则，在不重启服务的情况下拦截漏洞利用，为补丁部署争取时间。
+
+Sources:
+  - OpenAI and Cisco introduce Shirudo: https://openai.com/index/introducing-shirudo/
+  - OpenAI News: Introducing Shirudo: https://openai.com/news/?topics=security
+
+### Ant Group begins phased open-weight release of LingSante medical AI models
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/ant-ling-medical-models-open-source.html
 - Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/ant-ling-medical-models-open-source.html
@@ -27,30 +170,30 @@
 - Site timestamp: 2026-11-23T13:00:07.044Z
 - Tags: Models, Open Source, Safety, Research
 
-Ant’s LingSante family covers multimodal health understanding, medical reasoning, six-year risk prediction and safety safeguards for local deployment.
+Ant’s LingSante family covers multimodal health understanding, medical reasoning, six-year risk prediction and safety safeguards; the initial open-weight release includes two core models.
 
 ## Four models for different clinical bottlenecks
 
-Ant Group has announced the open release of its LingSante medical AI family at the 2026 Ant Afu healthcare ecosystem conference. The family separates tasks that are often bundled into one general assistant: multimodal health understanding, long-context medical reasoning, disease-risk prediction and medical safety protection.
+Ant Group has announced the LingSante medical AI family through its Afu healthcare platform. The family separates tasks that are often bundled into one general assistant: multimodal health understanding, long-context medical reasoning, disease-risk prediction and medical safety protection.
 
-The lineup includes LingSante-3.1-air-VL, a lightweight vision-language model designed to combine text, images and video. Ant says it can analyze inputs such as skin photographs, food images and examination reports, with deployment possible on a laptop. LingSante-3.1-flash is positioned for larger workloads, with 560 billion total parameters, a 1-million-token context window, retrieval and evidence-checking workflows, and tool use.
+The initial open-weight release includes two core models. LingSante-3.1-air-VL is a lightweight native multimodal model with 124 billion total parameters and 5.5 billion active parameters per token. It supports text, image and video inputs and is positioned for localized or on-device health applications. LingSante-3.1-flash is designed for larger workloads, with 560 billion total parameters, about 25 billion active parameters per token and a context window of up to 1 million tokens. Ant says it supports evidence-based retrieval and long-horizon healthcare workflows.
 
-Two specialized models complete the release. LingSante Pulse is described as predicting the future six-year risk of more than 150 diseases. LingSante MedGuard focuses on medical safety, compliance and ethical risks while using patient context to identify potentially dangerous outputs or situations.
+Two specialized models complete the announced family. LingSante-Pulse is described as assessing the future six-year risk of more than 150 conditions. LingSante-MedGuard focuses on medical safety, regulatory compliance and bioethical risks. Ant’s announcement says the model weights will be released in phases, beginning with the two core models; it does not establish that Pulse and MedGuard are already publicly available under the same release.
 
-## Open release, but not a clinical license
+## Open weights, but not a clinical license
 
 The announcement is significant because it packages capability and guardrails together rather than treating safety as a documentation layer around a general model. It also reflects a broader Asian push to make domain models deployable inside local institutions, where data residency and private hardware can matter as much as benchmark scores.
 
 The claims should still be read carefully. Public reporting gives limited detail on training data, licensing terms, independent validation and regulatory clearance. A model that can interpret a report or estimate risk is not automatically authorized to diagnose or prescribe. The value of the release will depend on whether hospitals and developers can audit the models, reproduce the reported behavior and maintain human review.
 
-**Uncle Cat take:** The notable move is MedGuard shipping beside Pulse and the language models; without independent clinical validation, the six-year risk forecast is an ambition, not evidence of medical readiness.
+**Uncle Cat take:** The notable move is that MedGuard and Pulse are part of the announced family, while the initial open-weight release begins with the two core language and multimodal models. Without independent clinical validation, the six-year risk forecast is an ambition, not evidence of medical readiness.
 
-Chinese title: 蚂蚁开源百灵医疗模型家族，覆盖推理与风险预测
-Chinese summary: 蚂蚁发布并开源百灵医疗模型家族，覆盖多模态理解、医学推理、疾病风险预测和医疗安全防护。
+Chinese title: 蚂蚁启动百灵医疗模型分阶段开放权重
+Chinese summary: 蚂蚁发布百灵医疗模型家族，覆盖多模态理解、医学推理、疾病风险预测和医疗安全；首批开放权重的是两款核心模型。
 
 Sources:
-  - 蚂蚁阿福同款大模型宣布开源: https://www.qbitai.com/2026/11/511998.html
-  - 蚂蚁百灵医疗健康大模型宣布开源: https://www.xueqiu.com/3338215700/418132523
+  - Ant Group’s AI App Afu Open Sources Medical and Health AI Model Family: https://www.antgroup.com/en/news-media/press-releases/1795402800000
+  - LingSante medical model releases: https://developer.ant-ling.com/en/blogs
   - 蚂蚁百灵大模型: https://www.ant-ling.com/
 
 ### Walmart lets Meta Muse complete Black Friday purchases
@@ -907,149 +1050,28 @@ Sources:
   - AI Ambition: ArtCraft Cloned Photoshop and Now Wants to Rebuild Everything: https://aivexanews.com/news/68811c4e6ccf667ccec984e2/ai-ambition-artcraft-cloned-photoshop-and-now-wants-to-rebuild-everything
   - PhotoCraft: visual study guide for Claude Code and MCP: https://deepneuro.ai/study-guides/ArtCraft/photocraft-guide.pdf
 
-### Anthropic brings Claude into live meetings and shared work
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/claude-meetings-builds-artifacts-live.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/claude-meetings-builds-artifacts-live.html
-- Source timestamp: 2026-11-12T20:16:00.000Z
-- Site timestamp: 2026-11-13T01:00:06.777Z
-- Tags: Agents, Industry
-
-Claude Meetings joins Google Meet calls as a visible participant, turning spoken discussion into transcripts, action items and shared artifacts.
-
-## From meeting recorder to participant
-
-Anthropic has introduced Claude Meetings, a feature that places Claude directly inside a team’s video call. The launch begins with Google Meet, with support for additional conferencing platforms planned later.
-
-Unlike a passive transcription service, Claude appears as a visible participant. People can ask it questions verbally or through chat while the meeting is in progress, and can ask it to begin creating a document, whiteboard or other artifact during the discussion.
-
-After the call, Claude provides a meeting page containing notes, action items, the transcript and anything it created. That structure turns the meeting record into a working space rather than a file that is merely archived.
-
-## A stronger test for agent usefulness
-
-The product is significant because it moves Claude into a high-frequency coordination setting where context changes quickly and mistakes are socially visible. A meeting agent must identify decisions, separate tentative ideas from commitments and preserve ownership across several speakers. It also has to remain useful without interrupting the conversation or producing a second stream of work that nobody maintains.
-
-Anthropic’s choice to make Claude a visible participant matters for trust. Colleagues can see when it is present, question its output and correct artifacts while the discussion is still happening. That is a different product posture from silently recording a call and delivering an opaque summary afterward.
-
-## Why it matters
-
-The launch extends Claude from an individual assistant into a collaborative interface for teams. If the generated artifacts remain accurate and editable, meetings could become an entry point for delegated work rather than the end of a conversation. The open risks are familiar but amplified: consent, confidential discussion, speaker attribution and the cost of correcting a polished but wrong action list.
-
-**Uncle Cat take:** The visible-participant design is the important constraint here; Anthropic is making correction part of the workflow instead of hiding the agent behind a transcript.
-
-Chinese title: Anthropic推出 Claude Meetings，让智能体参与实时会议
-Chinese summary: Claude Meetings 首先接入 Google Meet，以可见参会者身份记录讨论、整理行动项，并在会议进行时生成文档和白板。
-
-Sources:
-  - Introducing Claude Meetings: https://x.com/claudeai/status/2120973994191094179
-  - Claude Meetings notes and artifacts: https://x.com/claudeai/status/2120973999295643679
-
-### Google rolls out Gemini 4 Hydrogen for faster agent work
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/gemini-4-hydrogen-goes-global.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/gemini-4-hydrogen-goes-global.html
-- Source timestamp: 2026-11-12T18:00:00.000Z
-- Site timestamp: 2026-11-13T01:00:06.777Z
-- Tags: Models, Agents, Industry
-
-Google’s new Gemini 4 Hydrogen model targets rapid coding and agent execution, combining lower cost, broad access and multi-model orchestration.
-
-## A faster Gemini tier
-
-Google has introduced Gemini 4 Hydrogen, a model positioned between everyday assistant use and the company’s heavier reasoning systems, Gemini 4 Carbon and Argon. Hydrogen is available immediately across the Gemini app, Google Search, AI Studio, the Gemini API, enterprise products and selected developer tools.
-
-Google says Hydrogen surpasses Argon on the Artificial Analysis Intelligence Index at its default high-thinking setting, scoring 51 against 50, while completing many tasks faster. Its pricing is set at $1.50 per million input tokens and $7.50 per million output tokens across a one-million-token context window.
-
-## Designed as an execution layer
-
-The more consequential announcement is Google’s Orchestrator in Antigravity. It can shift work between models within one session: a stronger model can plan or coordinate, while Hydrogen handles coding, testing and verification. Google reports that this setup reached near-Carbon success rates on Terminal-Bench 4.0 while using 24% less quota and finishing 19% faster.
-
-Hydrogen is also being marketed as a practical agent component rather than only a chat model. Google highlights tool use, computer use, coding and resistance to indirect prompt injection, claiming more than twice the resilience of an earlier baseline on its Gray Swan benchmark.
-
-## Why it matters
-
-This release broadens Gemini 4 from a frontier-model family into a deployment stack. Google is putting a relatively capable model inside Search and consumer products while making it cheap enough to serve as the worker model in larger agent systems. The unresolved question is whether Google’s internal benchmarks translate into reliable production behavior when agents are allowed to act across real software, files and business tools.
-
-**Uncle Cat take:** Hydrogen’s important number is the 24% quota reduction in Orchestrator, because Google is selling coordination economics, not merely another leaderboard score.
-
-Chinese title: 谷歌推出 Gemini 4 Hydrogen，主攻高速智能体执行
-Chinese summary: 谷歌将 Gemini 4 Hydrogen 推向全球用户，主打更快的编程与智能体执行，并以较低价格覆盖开发者、企业和消费者。
-
-Sources:
-  - Introducing Gemini 4 Hydrogen: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/
-  - Google Search gets a major upgrade with Gemini 4 Hydrogen: https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/
-
-### LangChain raises $300 million at a $3 billion valuation
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/langchain-raises-300-million.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/langchain-raises-300-million.html
-- Source timestamp: 2026-11-12T23:24:00.000Z
-- Site timestamp: 2026-11-13T01:00:06.777Z
-- Tags: Funding, Agents, Industry
-
-LangChain has raised $300 million to expand LangSmith and sell a broader enterprise platform for building, evaluating and deploying AI agents.
-
-## Funding shifts toward agent infrastructure
-
-LangChain has raised $300 million at a reported $3 billion valuation in a round led by CapitalG, Alphabet’s growth investment arm. Existing backers IVP and Sapphire Ventures and new investors including GIC and DFJ Growth also participated, according to reporting cited by SiliconANGLE and Dealroom.
-
-The financing more than doubles LangChain’s reported $1.25 billion valuation from its 2025 Series B. The company plans to use the capital to expand LangSmith, its platform for monitoring, evaluating and deploying AI applications and agents, while growing engineering, marketing and sales teams.
-
-## From popular framework to operating layer
-
-LangChain became widely known through its open-source libraries for connecting language models to tools, data and application logic. Its current business pitch is broader: enterprises need systems that can observe agent behavior, test quality, manage deployments and keep long-running workflows under control.
-
-That positioning reflects a change in where the commercial bottleneck is forming. Model access is increasingly abundant, but companies still struggle to prove that an agent completed the right task, used the right data and behaved safely across many runs. LangSmith is intended to provide that operational layer around the open-source ecosystem.
-
-The valuation also creates pressure. A $3 billion price assumes that agent development will become a durable software category rather than a temporary integration wave. LangChain must compete with cloud providers, model vendors and independent observability platforms that are all moving into the same control plane.
-
-## Why it matters
-
-This is one of the clearest funding signals that investors expect agent infrastructure to consolidate around platforms, not only models. LangChain’s open-source distribution gives it reach, but the next phase depends on whether enterprises will pay for governance and reliability once agents move beyond prototypes.
-
-**Uncle Cat take:** The $3 billion valuation is a bet on LangSmith becoming the system of record for agent behavior; framework popularity alone cannot justify it.
-
-Chinese title: LangChain融资3亿美元，估值升至30亿美元
-Chinese summary: LangChain完成3亿美元融资，计划扩张 LangSmith 企业平台，用于构建、评估、监控和部署 AI 智能体。
-
-Sources:
-  - AI agent tooling provider LangChain secures $300M investment: https://siliconangle.com/2026/11/12/ai-agent-tooling-provider-langchain-secures-300m-investment/
-  - LangChain raises $300M, tripling its valuation to $3B: https://dealroom.co/news/172300-langchain-raises-300m-tripling-its-valuation-to-3b/
-
-### Runway adds Seedance 2.5 Flash for faster video
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/runway-adds-seedance-flash.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/runway-adds-seedance-flash.html
-- Source timestamp: 2026-11-13T01:23:00.000Z
-- Site timestamp: 2026-11-13T13:00:06.467Z
-- Tags: AIGC, Industry
-
-Runway has added ByteDance’s Seedance 2.5 Flash, giving creators a faster, lower-cost route into one of Asia’s strongest video models.
-
-## What happened
-
-Runway said on November 13 that Seedance 2.5 Flash is now available on its platform. The announcement describes the model as a faster and lower-cost option for video generation, extending ByteDance’s Seedance family beyond its flagship experience and placing it inside a global creator workflow.
-
-The move matters because distribution is often as important as model quality in generative video. Users who already work in Runway can now access a ByteDance model without switching to a separate Chinese service, learning a new interface, or managing another account. For Runway, the addition also turns its product into a more neutral marketplace for competing video engines rather than a single-model studio.
-
-## Why the timing matters
-
-The release arrives during a period when video-generation companies are competing on iteration speed, output quality, and the cost of failed experiments. A “Flash” variant is designed for that practical loop: creators can test more prompts, revise scenes more often, and reserve slower or more expensive models for final renders.
-
-Runway did not publish detailed speed, pricing, or plan information in the announcement. That limits how far the performance claim can be taken. It also leaves open whether Flash is a materially different model or primarily a serving and cost tier around Seedance 2.5. The broader strategic fact is clearer: ByteDance’s video technology is gaining another international distribution channel, while Runway is willing to make a rival’s model part of its own value proposition.
-
-## Why it matters
-
-This is not merely another model dropdown. It lowers the friction between Chinese model development and global creative adoption, and gives creators a cheaper way to explore high-volume video workflows. If the quality gap with the full Seedance 2.5 remains modest, Flash could put pressure on every provider whose economics depend on premium generations rather than rapid iteration.
-
-Chinese title: Runway上线Seedance 2.5 Flash，视频生成提速降本
-Chinese summary: Runway接入字节跳动Seedance 2.5 Flash，为全球创作者提供更快、更便宜的视频生成选择。
-
-Sources:
-  - Seedance 2.5 Flash is now available on Runway: https://x.com/runwayml/status/2121051193921118712
-  - Creating with Seedance 2.5: https://help.runwayml.com/hc/en-us/articles/53542207042323-Creating-with-Seedance-2-5
-
 ## Recent radar items
+
+### 2026-11-24
+
+- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-11-24.html
+- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-11-24.html
+
+- 2026-11-24T00:46:00Z | X / Baseten | Besimple fine-tuned Nemotron 3.5 Transcribe on Baseten Training, achieving a 0.87% medical-term error rate on MedDictate. | 中文：Besimple 在 Baseten Training 上微调 Nemotron 3.5 Transcribe，在 MedDictate 医学术语测试中达到 0.87% 错误率。 | https://x.com/baseten/status/2125028331821404646
+- 2026-11-24T00:42:00Z | X / Together AI | Together AI made DeepSeek V4.1 Flash available for coding agents at $0.60 per million input tokens and $2.40 per million output tokens. | 中文：Together AI 上线 DeepSeek V4.1 Flash，面向编码代理，输入百万 token 0.60 美元、输出 2.40 美元。 | https://x.com/togethercompute/status/2125027182313672761
+- 2026-11-23T23:49:00Z | SiliconANGLE | Sierra closed a $1.75 billion Series F after reporting more than $400 million in annualized revenue and customers including half the Fortune 50. | 中文：Sierra 完成 17.5 亿美元 F 轮融资，年化收入已超过 4 亿美元，客户覆盖半数《财富》50 强。 | https://siliconangle.com/2026/11/23/ai-agent-provider-sierra-closes-1-75b-investment-amid-rapid-revenue-growth/
+- 2026-11-23T23:56:00Z | X / AWS Developers | AWS showcased Strands Decider v2 31B, which averaged 82.1 across six public text benchmarks and scored 90.1 on image tasks. | 中文：AWS 展示 Strands Decider v2 31B，在六项公开文本基准平均得分 82.1，图像任务得分 90.1。 | https://x.com/awsdevelopers/status/2125015675382985077
+- 2026-11-23T23:25:00Z | X / OpenAI | OpenAI said GPT-6 Cyber helped validate 948 Linux kernel bugs that could grant local root access and generated patches for review. | 中文：OpenAI 表示，GPT-6 Cyber 协助验证了 948 个可能授予本地 root 权限的 Linux 内核漏洞，并生成待审查补丁。 | https://x.com/OpenAI/status/2125007927098699827
+- 2026-11-23T22:56:00Z | X / Databricks | Databricks described branchable agent sandboxes that preserve an agent’s environment, notes, plans, and scripts across parallel workstreams. | 中文：Databricks 介绍可分支的代理沙盒，可在并行工作流中保留代理的环境、笔记、计划与脚本。 | https://x.com/databricks/status/2125000465431629905
+- 2026-11-23T20:56:00Z | X / Claude | Claude introduced plugins that combine tool connectors and reusable skills, with availability across Free, Pro, Max, and business plans. | 中文：Claude 推出将工具连接器与可复用技能合并的插件，覆盖 Free、Pro、Max 及企业计划。 | https://x.com/claudeai/status/2124970294523945328
+- 2026-11-23T19:46:00Z | X / LlamaIndex | LlamaIndex released OCRia-nano-1, an 8.1-million-parameter open-weight model that reads text and reconstructs tables. | 中文：LlamaIndex 发布 OCRia-nano-1，这是一个 810 万参数的开放权重模型，可识别文字并重建表格。 | https://x.com/llama_index/status/2124952874316632394
+- 2026-11-23T19:30:00Z | X / Replit | Replit said Resonate is joining the company to help agents choose and execute work toward user-defined goals. | 中文：Replit 宣布 Resonate 加入公司，用于帮助代理围绕用户设定的目标选择并执行工作。 | https://x.com/Replit/status/2124948680465961345
+- 2026-11-23T17:21:00Z | Google Research | Google Research introduced a method for supercharging Transformer residual connections, reporting improved training behavior without changing the core architecture. | 中文：Google Research 提出增强 Transformer 残差连接的方法，称无需改变核心架构即可改善训练表现。 | https://research.google/blog/supercharging-transformer-residual-connections/
+- 2026-11-23T17:20:00Z | Hugging Face | Hugging Face published RoboTrack, a point-tracking system designed for real-world robotic manipulation. | 中文：Hugging Face 发布 RoboTrack，一套面向真实机器人操作的点跟踪系统。 | https://huggingface.co/blog/allenai/robotrack
+- 2026-11-23T18:01:00Z | X / Canva | Canva made its MCP integration generally available, letting agents create editable designs, images, and videos through Canva’s design engine. | 中文：Canva 正式开放 MCP 集成，让代理能够调用 Canva 设计引擎创建可编辑设计、图片与视频。 | https://x.com/canva/status/2124926205313081394
+- 2026-11-23T15:33:00Z | X / Recraft | Recraft added support for attaching an exact font to image generations, improving control over typography in generated visuals. | 中文：Recraft 支持在生成图片时指定精确字体，提升生成视觉内容中的字体控制能力。 | https://x.com/recraftai/status/2124889201602707476
+- 2026-11-23T17:30:00Z | X / Artificial Analysis | Artificial Analysis reported that Phonic 1.1 High retained a $4.20-per-input-audio-hour price while improving its speech-agent positioning. | 中文：Artificial Analysis 报告称，Phonic 1.1 High 保持每小时输入音频 4.20 美元的价格，并强化语音代理定位。 | https://x.com/ArtificialAnlys/status/2124918506731057612
+- 2026-11-23T18:21:00Z | X / AWS Developers | AWS introduced Strands Box, which restricts a coding agent’s access to files, credentials, and services without requiring containers or virtual machines. | 中文：AWS 推出 Strands Box，可在无需容器或虚拟机的情况下限制编码代理访问文件、凭据与服务。 | https://x.com/awsdevelopers/status/2124931386805002393
 
 ### 2026-11-23
 
@@ -1195,37 +1217,3 @@ Sources:
 - 2026-11-19T03:23:00Z | MarkTechPost | A Nutrient Data Extraction API returns schema-matched JSON with per-field citations and confidence scores. | 中文：Nutrient 数据提取 API 可按用户模式返回 JSON，并为每个字段提供引用和置信度。 | https://www.marktechpost.com/2026/11/18/nutrient-data-extraction-api-citations-confidence/
 - 2026-11-19T08:58:00Z | X / Mistral AI | Mistral and ClickHouse announced a one-day Paris hackathon featuring Le Chonk, Timestral, ClickHouse, and Langfuse. | 中文：Mistral 与 ClickHouse 宣布在巴黎举办一日黑客松，参与技术包括 Le Chonk、Timestral 和 Langfuse。 | https://x.com/MistralAI/status/2123339999244636509
 - 2026-11-19T05:00:00Z | arXiv | CrisisBench introduces an evaluation suite for testing AI systems used in crisis counseling. | 中文：CrisisBench 推出危机咨询 AI 评测套件，用于测试相关系统的安全与能力表现。 | https://arxiv.org/abs/2611.21622
-
-### 2026-11-18
-
-- English radar: https://mmlong818.github.io/ai-pulse/radar/2026-11-18.html
-- Chinese radar: https://mmlong818.github.io/ai-pulse/zh/radar/2026-11-18.html
-
-- 2026-11-18T04:39:00Z | X / Tencent Hunyuan | Tencent open-weighted Hy4 Flash, a 224B-parameter multimodal model with 12B active parameters and a one-million-token context window. | 中文：腾讯开源 Hy4 Flash：2240亿参数、多模态、每次激活120亿参数，支持百万上下文。 | https://x.com/TencentHunyuan/status/2122912575302119554
-- 2026-11-18T07:10:00Z | MarkTechPost | SID AI released SID-2, an agentic search model whose swarm mode reportedly reached 0.720 NDCG through coordinated retrieval agents. | 中文：SID AI 发布 SID-2 智能搜索模型，其协同代理 Swarm 模式据称达到 0.720 NDCG。 | https://www.marktechpost.com/2026/11/17/sid-ai-sid-2-agentic-search-swarm/
-- 2026-11-18T06:53:00Z | MarkTechPost | Anthropic added Code Mode to Claude Code, allowing JavaScript to chain tool calls for more efficient multi-step coding workflows. | 中文：Anthropic 为 Claude Code 加入 Code Mode，可用 JavaScript 串联工具调用，提升多步骤编程效率。 | https://www.marktechpost.com/2026/11/17/anthropic-claude-code-code-mode-javascript-tool-calls/
-- 2026-11-17T22:20:00Z | X / Microsoft AI | Microsoft introduced MAI Licensed Weights, letting selected enterprises customize Microsoft AI models with proprietary data while keeping deployment inside Azure. | 中文：微软推出 MAI Licensed Weights，允许企业用专有数据定制模型，并将部署限制在 Azure 内。 | https://x.com/MicrosoftAI/status/2122817057746002253
-- 2026-11-17T20:13:00Z | X / Perplexity AI | Perplexity launched Orchestrator API preview, automatically routing requests across more than 45 models from multiple providers. | 中文：Perplexity 预览 Orchestrator API，可在多家供应商的 45 个以上模型之间自动路由请求。 | https://x.com/perplexity_ai/status/2122785189562925190
-- 2026-11-17T17:03:00Z | X / Cognition | Cognition introduced Devin Bots, collaborative software-engineering agents that divide planning, coding, testing, and review across specialized bots. | 中文：Cognition 推出 Devin Bots，由多个专业代理分工完成规划、编码、测试和审查。 | https://x.com/cognition/status/2122737515631423840
-- 2026-11-17T15:04:00Z | X / Kling AI | Kling Image 4.0 launched with native 8K generation, long text rendering, and batch image creation for professional visual workflows. | 中文：可灵 Kling Image 4.0 发布，支持原生 8K、长文本渲染和批量出图，面向专业视觉创作。 | https://x.com/Kling_ai/status/2122707362603794601
-- 2026-11-17T18:16:00Z | X / Krea AI | Krea launched Video Swap, a workflow for changing characters, products, and backgrounds in existing footage with precise control. | 中文：Krea 推出 Video Swap，可在现有视频中精准替换角色、产品和背景。 | https://x.com/krea_ai/status/2122755814041735473
-- 2026-11-17T18:01:00Z | ElevenLabs | ElevenLabs released Scribe v3 Live Medical, a real-time transcription model reporting 12.8% word error rate on medical benchmarks. | 中文：ElevenLabs 发布 Scribe v3 Live Medical，实时医疗转录模型在医疗基准上的词错误率为 12.8%。 | https://elevenlabs.io/blog/scribe-v3-live-medical
-- 2026-11-18T06:55:00Z | X / Meshy AI | Meshy launched the Z-Axis Awards, backed by $300,000 in prizes, and introduced a million-dollar fund for 3D creators. | 中文：Meshy 发起 Z-Axis Awards，提供 30 万美元奖金，并推出面向 3D 创作者的百万美元基金。 | https://x.com/MeshyAI/status/2122952958919311546
-- 2026-11-17T20:57:00Z | X / Replit | Replit Desktop lets Devin Agent work with files in shared local folders, build tools, and turn local data into shareable reports. | 中文：Replit Desktop 允许 Agent 操作共享本地文件夹、构建工具，并将本地数据转成可分享报告。 | https://x.com/Replit/status/2122796245316149493
-- 2026-11-18T03:02:00Z | X / Alibaba Qwen | Alibaba Qwen announced Qwen4-Max availability on Runware, extending access to the model through a third-party generative media platform. | 中文：阿里通义宣布 Qwen4-Max 登陆 Runware，通过第三方生成媒体平台扩大模型可用性。 | https://x.com/Alibaba_Qwen/status/2122888191950901534
-- 2026-11-17T17:07:00Z | X / HeyGen | HeyGen introduced Avatar 6, which it said 84% of test viewers failed to distinguish from real people in its avatar evaluation. | 中文：HeyGen 推出 Avatar 6，称在其评测中，84% 的测试观众未能分辨其与真人的差异。 | https://x.com/HeyGen/status/2122738284405117217
-- 2026-11-18T12:33:00Z | IT之家 | DeepSeek stopped charging separately for server-side search and web scraping, billing only model-token usage. | 中文：DeepSeek取消服务端搜索和网页抓取的额外费用，仅按模型Token用量计费。 | https://www.ithome.com/1/029/058.htm
-- 2026-11-18T12:30:00Z | SiliconANGLE | Humyn Labs raised $47 million to provide real-world robotics training data to U.S. developers. | 中文：Humyn Labs融资4700万美元，为美国机器人开发商提供真实世界训练数据。 | https://siliconangle.com/2026/11/18/humyn-labs-raises-47m-to-bridge-the-gap-between-ai-training-and-real-world-robotics/
-- 2026-11-18T12:00:00Z | TechCrunch | Unsiloed AI raised $7.5 million to make enterprise documents usable by AI agents. | 中文：Unsiloed AI融资750万美元，帮助AI代理理解和使用企业文档。 | https://techcrunch.com/2026/11/18/felicis-leads-7-5m-bet-on-unsiloed-ai-to-make-enterprise-documents-usable-by-ai-agents/
-- 2026-11-18T11:16:00Z | The Verge | Suno introduced AI-generated visuals that turn its AI music into accompanying videos and images. | 中文：Suno推出AI视觉功能，可把AI音乐转化为配套视频和图片。 | https://www.theverge.com/ai-artificial-intelligence/1036415/suno-visuals-ai-generated-video-images-feature
-- 2026-11-18T11:00:00Z | InfoQ 中文 | Google disclosed PageBreak, an AI security agent that has found more than 500 XSS vulnerabilities. | 中文：谷歌公布AI安全代理PageBreak，已发现超过500个跨站脚本漏洞。 | https://www.infoq.cn/article/uGTol3TSzOV72NSrcBrB?utm_source=rss&utm_medium=article
-- 2026-11-18T10:20:00Z | MIT Technology Review | Osmo says its AI nose can identify smells at roughly human-level performance. | 中文：Osmo称其AI嗅觉系统的气味识别能力已接近人类水平。 | https://www.technologyreview.com/2026/11/18/1148816/smell-startup-osmo-ai-nose-good-as-humans/
-- 2026-11-18T04:49:00Z | 量子位 | Jason Wei, a co-author of influential chain-of-thought work, reportedly left Meta after about a year. | 中文：思维链研究代表人物Jason Wei据报道在Meta工作约一年后离职。 | https://www.qbitai.com/2026/11/510811.html
-- 2026-11-18T04:28:00Z | 量子位 | Genesis completed a Series A round reportedly valuing the company above $23 billion, backed jointly by Nvidia and AMD. | 中文：Genesis完成A轮融资，据报道估值超过230亿美元，英伟达与AMD首次共同押注。 | https://www.qbitai.com/2026/11/510821.html
-- 2026-11-18T05:13:00Z | SiliconANGLE | Microsoft presented Copilot as an autonomous enterprise-work engine at Ignite 2026. | 中文：微软在Ignite 2026上将Copilot定位为企业工作的自主执行引擎。 | https://siliconangle.com/2026/11/18/at-ignite-2026-microsoft-reinvents-copilot-as-the-autonomous-engine-of-enterprise-work/
-- 2026-11-18T08:17:00Z | X / ManusAI | Manus became a Platinum Sponsor of the Godot Foundation, supporting the open-source game engine. | 中文：Manus成为Godot基金会白金赞助商，支持这一开源游戏引擎。 | https://x.com/ManusAI/status/2122967543191335231
-- 2026-11-18T09:43:00Z | X / Qdrant | Qdrant highlighted a community project addressing Hindi queries whose answers reside in English government documents. | 中文：Qdrant介绍社区项目，解决印地语提问对应英文政府文档的跨语言检索问题。 | https://x.com/qdrant_engine/status/2122989112890478818
-- 2026-11-18T02:24:00Z | X / Canva | Canva began offering its design tools inside Muse in Australia, including templates and creative features. | 中文：Canva开始在澳大利亚的Muse中提供设计工具、模板及创作功能。 | https://x.com/canva/status/2122878614328983577
-- 2026-11-18T04:00:00Z | X / Together AI | Together AI made DeepSeek V4.1 Flash 1017 available for post-training with custom data, rewards, and environments. | 中文：Together AI开放DeepSeek V4.1 Flash 1017的后训练能力，支持自定义数据、奖励与环境。 | https://x.com/togethercompute/status/2122902661133431212
-- 2026-11-18T13:00:00Z | TechCrunch | Nvidia said it will clarify when it will continue financing neocloud companies and when it will stop. | 中文：英伟达将明确何时继续、何时停止为新型云服务商提供融资。 | https://techcrunch.com/2026/11/18/nvidia-clarifies-when-it-will-and-wont-keep-financing-neoclouds/
-- 2026-11-18T13:00:00Z | X / AI21 Labs | AI21 co-founder Yoav Shoham joined Lightricks and Deel leaders on stage for an AI-focused discussion with Nas Daily. | 中文：AI21联合创始人Yoav Shoham与Lightricks、Deel高管及Nas Daily共同参与AI主题讨论。 | https://x.com/AI21Labs/status/2123038526564696441

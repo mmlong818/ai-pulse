@@ -1,0 +1,32 @@
+{
+  "slug": "openai-cisco-shirudo-live-linux-defense",
+  "title": "OpenAI and Cisco Open-Source Shirudo for Live Linux Defense",
+  "summary": "Shirudo uses AI-generated eBPF shields to block exploit paths on running Linux services without waiting for patches or restarts.",
+  "body": "## A shield before the patch\n\nOpenAI and Cisco have introduced Shirudo, an open-source Linux runtime designed to protect live systems while operators prepare permanent fixes. The project uses eBPF, which allows small programs to observe and control selected behavior inside the operating system without replacing the running application.\n\nThe central problem is familiar to security teams: a vulnerability may be disclosed immediately, while testing and deploying a patch takes days or weeks. Blocking an entire system call or shutting down the service can stop the exploit, but it can also break legitimate traffic. Shirudo aims to create narrower protections that target the vulnerable path.\n\n## AI writes the temporary control\n\nIn OpenAI’s example, Codex generated an eBPF shield for a Java vulnerability affecting an Elasticsearch service. The shield added an input check to a running Java process and rejected malicious data while Elasticsearch continued operating. The project describes this as a controlled test, not proof that the method can safely handle every production incident.\n\nShirudo combines agent-assisted investigation and shield generation with several deployment safeguards. Proposed protections can be tested against normal workloads before enforcement. Shields are cryptographically signed, checked by the eBPF verifier and supported by hardware-backed records through a Trusted Platform Module. Operators remain responsible for approving deployment.\n\n## Why openness matters\n\nOpenAI and Cisco are releasing the runtime under a permissive license and inviting security researchers and infrastructure teams to inspect and extend it. That choice is practical: temporary protections are more valuable when they can be shared alongside vulnerability disclosures instead of being rebuilt independently by every operator.\n\nThe harder question is whether organizations will trust AI-generated kernel controls during a live attack. A bad shield could cause an outage, hide a legitimate behavior or create a new privilege boundary failure. Shirudo therefore matters less as an autonomous defender today than as a proposed operating model: AI can draft machine-speed defenses, but signing, verification, testing and human authorization must remain part of the chain.",
+  "title_zh": "OpenAI与思科开源Shirudo，实时保护运行中的Linux",
+  "summary_zh": "Shirudo利用AI生成的eBPF防护规则，在不重启服务的情况下拦截漏洞利用，为补丁部署争取时间。",
+  "body_zh": "## 在补丁之前先挡住攻击\n\nOpenAI与思科推出开源Linux运行时Shirudo，目标是在永久补丁准备和部署期间保护正在运行的系统。项目利用eBPF技术，让小型程序能够在操作系统特定位置观察和控制行为，而无需替换正在运行的应用。\n\n安全团队经常面临一个时间差：漏洞披露可能是即时的，但测试和上线补丁需要数天甚至数周。直接禁用整类系统调用或关闭服务，确实可以阻断攻击，却也可能切断正常请求。Shirudo希望生成更窄的临时防护，只拦截暴露漏洞的路径。\n\n## 代理生成临时防线\n\n在OpenAI给出的示例中，Codex为影响Elasticsearch服务的Java漏洞生成eBPF防护规则。规则向正在运行的Java进程加入输入检查，拒绝恶意数据，同时保持Elasticsearch继续提供服务。这个案例属于受控测试，并不等于该方法已经适用于所有生产事故。\n\nShirudo把代理辅助调查和防护生成，与多重部署安全措施结合起来。防护规则可以先在正常工作负载下测试，再决定是否强制执行；规则需要加密签名，并通过eBPF验证器检查，同时利用可信平台模块记录已加载或移除的保护。最终部署仍由运维人员批准。\n\n## 开源带来的现实价值\n\nOpenAI和思科以宽松许可证发布运行时，并邀请安全研究者与基础设施团队检查和扩展代码。这种做法有实际意义：如果临时防护能和漏洞披露一起共享，运营商就不必各自重复构建同一套应急措施。\n\n真正的难题，是企业是否敢在攻击发生时信任AI生成的内核控制。一条错误规则可能造成停机、误伤正常行为，甚至制造新的权限边界问题。因此，Shirudo当前更像一种值得验证的运行模式：AI可以快速起草防御，但签名、验证、测试和人工授权必须留在同一条责任链上。",
+  "tags": [
+    "Safety",
+    "Open Source",
+    "Agents"
+  ],
+  "sources": [
+    {
+      "title": "OpenAI and Cisco introduce Shirudo",
+      "url": "https://openai.com/index/introducing-shirudo/"
+    },
+    {
+      "title": "OpenAI News: Introducing Shirudo",
+      "url": "https://openai.com/news/?topics=security"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "Shirudo最有价值的约束不是AI写规则，而是规则必须签名、验证后才能进内核。",
+  "cat_take_en": "Shirudo’s strongest idea is not AI-written rules, but forcing every rule through signing and kernel verification.",
+  "date": "2026-11-24",
+  "published": "2026-11-23T21:20:00Z",
+  "published_at": "2026-11-24T01:00:05.614Z"
+}
