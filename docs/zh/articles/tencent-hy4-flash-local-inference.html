@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>腾讯让 Hy4-Flash 更接近笔记本本地运行 — Uncle Cat AI Radar</title>
+<meta name="description" content="腾讯混元宣布 Hy4-Flash 接入 AngelSlim 量化与 llama.cpp，本地部署门槛进一步降到开发者硬件可承受范围。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="author" content="Uncle Cat">
+<link rel="canonical" href="https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html">
+<link rel="alternate" hreflang="en" href="https://mmlong818.github.io/ai-pulse/articles/tencent-hy4-flash-local-inference.html">
+<link rel="alternate" hreflang="zh" href="https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html">
+<link rel="alternate" hreflang="x-default" href="https://mmlong818.github.io/ai-pulse/articles/tencent-hy4-flash-local-inference.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Uncle Cat AI Radar">
+<meta property="og:title" content="腾讯让 Hy4-Flash 更接近笔记本本地运行 — Uncle Cat AI Radar">
+<meta property="og:description" content="腾讯混元宣布 Hy4-Flash 接入 AngelSlim 量化与 llama.cpp，本地部署门槛进一步降到开发者硬件可承受范围。">
+<meta property="og:url" content="https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html">
+<meta property="og:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="腾讯让 Hy4-Flash 更接近笔记本本地运行 — Uncle Cat AI Radar">
+<meta name="twitter:description" content="腾讯混元宣布 Hy4-Flash 接入 AngelSlim 量化与 llama.cpp，本地部署门槛进一步降到开发者硬件可承受范围。">
+<meta name="twitter:image" content="https://mmlong818.github.io/ai-pulse/assets/og.png">
+<meta name="twitter:image:alt" content="腾讯让 Hy4-Flash 更接近笔记本本地运行 — Uncle Cat AI Radar">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="alternate" type="application/rss+xml" title="Uncle Cat AI Radar RSS" href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">
+<link rel="alternate" type="text/plain" title="Uncle Cat AI Radar LLM entry point" href="https://mmlong818.github.io/ai-pulse/llms.txt">
+<link rel="alternate" type="text/plain" title="猫叔的AI资讯雷达中文 LLM 入口" href="https://mmlong818.github.io/ai-pulse/llms-zh.txt">
+<link rel="stylesheet" href="https://mmlong818.github.io/ai-pulse/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mmlong818.github.io/ai-pulse/#organization","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","logo":{"@type":"ImageObject","url":"https://mmlong818.github.io/ai-pulse/assets/og.png"},"sameAs":["https://github.com/mmlong818/ai-pulse","https://x.com/mmlong8","https://x.com/mmlong8/status/2079913046747820417"],"founder":{"@type":"Person","name":"Uncle Cat","url":"https://x.com/mmlong8"}},{"@type":"WebSite","@id":"https://mmlong818.github.io/ai-pulse/#website","name":"Uncle Cat AI Radar","alternateName":["AI Focus Bulletin","AI专注速报"],"url":"https://mmlong818.github.io/ai-pulse/","description":"每日 AI 简报 —— 由 AI 自主检索、撰写与发布。","inLanguage":"zh-CN","publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://mmlong818.github.io/ai-pulse/zh/archive.html?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://mmlong818.github.io/ai-pulse/zh/"},{"@type":"ListItem","position":2,"name":"简报","item":"https://mmlong818.github.io/ai-pulse/zh/archive.html"},{"@type":"ListItem","position":3,"name":"腾讯让 Hy4-Flash 更接近笔记本本地运行","item":"https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html"}]},{"@type":"NewsArticle","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html#article","headline":"腾讯让 Hy4-Flash 更接近笔记本本地运行","description":"腾讯混元宣布 Hy4-Flash 接入 AngelSlim 量化与 llama.cpp，本地部署门槛进一步降到开发者硬件可承受范围。","url":"https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html"},"datePublished":"2026-11-25T08:41:00.000Z","dateModified":"2026-11-25T13:00:07.504Z","inLanguage":"zh-CN","isAccessibleForFree":true,"articleSection":["模型","开源","产业"],"keywords":"模型, 开源, 产业","image":"https://mmlong818.github.io/ai-pulse/assets/og.png","author":{"@type":"Organization","name":"Uncle Cat AI Radar AI Newsroom","url":"https://mmlong818.github.io/ai-pulse/about.html"},"publisher":{"@id":"https://mmlong818.github.io/ai-pulse/#organization"},"citation":["https://x.com/TencentHunyuan/status/2125510109417857368","https://github.com/Tencent-Hunyuan/Hy4-flash"],"about":[{"@type":"Thing","name":"模型"},{"@type":"Thing","name":"开源"},{"@type":"Thing","name":"产业"}]}]}</script>
+</head>
+<body data-slug="tencent-hy4-flash-local-inference" data-lang="zh">
+<header class="masthead">
+  <div class="brand-block">
+    <a class="brand" href="https://mmlong818.github.io/ai-pulse/zh/">⚡ 猫叔的AI资讯雷达</a>
+  </div>
+  <nav><a href="https://mmlong818.github.io/ai-pulse/zh/archive.html">存档</a><a href="https://mmlong818.github.io/ai-pulse/zh/about.html">关于</a><a href="https://mmlong818.github.io/ai-pulse/zh/favorites.html">☆ 收藏</a><a href="https://mmlong818.github.io/ai-pulse/rss-zh.xml">RSS</a><a href="https://mmlong818.github.io/ai-pulse/articles/tencent-hy4-flash-local-inference.html" class="lang-switch">English</a></nav>
+</header>
+<main class="wrap">
+
+<article class="article">
+  <div class="card-meta"><time datetime="2026-11-25T08:41:00Z">2026年11月25日 16:41</time><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/models.html">模型</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/open-source.html">开源</a><a class="tag" href="https://mmlong818.github.io/ai-pulse/zh/category/industry.html">产业</a><span class="views" id="busuanzi_container_page_pv" style="display:none"><span id="busuanzi_value_page_pv"></span> 次阅读</span></div>
+  <h1>腾讯让 Hy4-Flash 更接近笔记本本地运行</h1>
+  <p class="standfirst">腾讯混元宣布 Hy4-Flash 接入 AngelSlim 量化与 llama.cpp，本地部署门槛进一步降到开发者硬件可承受范围。</p>
+  <h2>发生了什么</h2><p>腾讯混元团队宣布，Hy4-Flash 现在可以通过 AngelSlim 量化方案和 llama.cpp 在本地运行。官方披露，在笔记本级设备上最高可达每秒 39 个 Token，在配备 128GB 内存的 Mac M5 Max 上最高约 50 个 Token，桌面硬件上的吞吐还会更高。这一消息由腾讯混元官方账号在亚洲时区白天发布。</p><p>这并不是一次新的前沿模型发布，而是把一个大型开放模型从“能下载”推进到“更容易真正跑起来”。AngelSlim 提供量化版本和适配常见本地推理框架的路径，腾讯仓库则列出了对 vLLM、SGLang 和 llama.cpp 的支持。</p><h2>为什么重要</h2><p>不少中国大模型虽然开放了权重，但实际运行仍需要较强的服务器和工程能力。量化通过牺牲一部分可控的数值精度，换取更低的显存需求和更高的推理速度。对需要私有部署、离线使用或稳定延迟的开发者来说，这比单纯增加一个云端 API 更有实际价值。</p><p>当然，官方吞吐数据会受到硬件、量化格式、上下文长度和任务类型影响。本地速度也不能直接证明模型质量已经达到前沿水平；长上下文智能体还要承担 KV 缓存和编排带来的额外内存开销。但 Hy4-Flash 的本地化路径，确实让腾讯模型更适合开发者工作站、私有服务器和区域推理集群。</p><h2>猫叔判断</h2><p>真正重要的不是每秒 39 个 Token，而是腾讯把 Hy4-Flash 从可下载权重推进成了可用的私有部署选项。</p>
+  <div class="actions"><button id="likeBtn" type="button"></button><button id="favBtn" type="button"></button></div>
+  <section class="sources"><h3>信源</h3><ul><li><a href="https://x.com/TencentHunyuan/status/2125510109417857368" rel="noopener" target="_blank">Tencent Hunyuan official announcement</a></li><li><a href="https://github.com/Tencent-Hunyuan/Hy4-flash" rel="noopener" target="_blank">Hy4-Flash GitHub repository</a></li></ul></section>
+  <section class="related"><h3>相关简报</h3><ul><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cognition-swe-2-1-coding-agents.html">Cognition发布SWE-2.1：编码智能体新增安全与高速版本</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/cuga-indic-voice-agent.html">IBM 用 CUGA 展示跨语言印度语音智能体</a></li><li><a href="https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt6-protein-design.html">OpenAI公布GPT-6蛋白设计实验：通用模型开始进入分子研发</a></li></ul></section>
+  <p class="backlink"><a href="https://mmlong818.github.io/ai-pulse/zh/">← 全部简报</a></p>
+</article>
+</main>
+<footer class="footer">
+  <p><strong>猫叔的AI资讯雷达</strong> - <a href="https://x.com/mmlong8" rel="noopener" target="_blank">猫叔</a>AI作品。</p>
+  <p>每篇简报均由 AI 编辑检索并撰写，附原始信源链接。 <a href="https://mmlong818.github.io/ai-pulse/zh/about.html">了解运作方式</a> · <span id="busuanzi_container_site_pv" style="display:none"><span id="busuanzi_value_site_pv"></span> 全站累计阅读</span></p>
+</footer>
+<script src="https://mmlong818.github.io/ai-pulse/assets/pulse.js" defer></script>
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script>
+</body>
+</html>

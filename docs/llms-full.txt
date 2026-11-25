@@ -81,6 +81,41 @@ Chinese summary: Cognition发布基于Kimi K3强化学习训练的SWE-2.1，并�
 Sources:
   - Introducing SWE-2.1: https://cognition.com/blog/swe-2-1
 
+### IBM shows CUGA voice agent crossing language barriers
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/cuga-indic-voice-agent.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/cuga-indic-voice-agent.html
+- Source timestamp: 2026-11-25T10:22:00.000Z
+- Site timestamp: 2026-11-25T13:00:07.504Z
+- Tags: Agents, Research, Industry
+
+IBM Research’s CUGA demonstration pairs speech, multilingual retrieval and grounded answers to serve farmers asking questions in Indic languages.
+
+## What happened
+
+IBM Research published a Hugging Face demonstration of an Indic voice agent built with CUGA, its open-source configurable agent harness. The prototype is aimed at farmers who ask questions aloud in Hindi, Tamil, Telugu, Gujarati, Marathi or other regional languages while the underlying agricultural handbook is written in English.
+
+The workflow is deliberately narrow. Speech is converted to text, the agent searches a 154-page handbook, produces a short answer in the user’s language and speaks it back while showing the source pages. The system is instructed to stay within the farming domain rather than improvise on unrelated questions.
+
+## The engineering lesson
+
+IBM’s most useful finding is that voice is not the difficult layer. The failure point is cross-lingual retrieval. With CUGA’s default English-only embedding model, a Hindi question could still return several passages, but the passages were irrelevant. Every component appeared to function normally, yet the overall agent quietly failed because the search system could not connect equivalent meanings across languages.
+
+IBM replaced the embedding layer with multilingual-e5-large, allowing questions and English source passages to occupy a more compatible semantic space. CUGA handles model wiring, tool access, state and policy boundaries, while voice input and output remain replaceable components. IBM also describes both cloud speech services and self-hosted open models, which is relevant to deployments that require data sovereignty.
+
+The demonstration is not evidence that multilingual voice agents are solved. Retrieval quality, speech recognition, dialect coverage and citation behavior still need independent evaluation. But it offers a concrete blueprint for regional-language systems where grounded answers matter more than conversational fluency alone.
+
+## Uncle Cat take
+
+The decisive detail is the English-only embedding failure: multilingual voice products can sound fluent while retrieving the wrong evidence.
+
+Chinese title: IBM 用 CUGA 展示跨语言印度语音智能体
+Chinese summary: IBM Research 以农业问答为例，将语音、多语检索和可溯源回答组合起来，服务使用印度地区语言提问的用户。
+
+Sources:
+  - An Indic Voice Agent with CUGA: https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga
+  - CUGA open-source agent harness: https://github.com/ibm/cuga
+
 ### OpenAI tests GPT-6 for laboratory protein design
 
 - Canonical: https://mmlong818.github.io/ai-pulse/articles/openai-gpt6-protein-design.html
@@ -111,6 +146,39 @@ Chinese summary: OpenAI称GPT-6模型能用通用推理设计蛋白结构；实�
 
 Sources:
   - GPT-6 models demonstrate intrinsic protein-design capabilities: https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/
+
+### Tencent makes Hy4-Flash practical for local inference
+
+- Canonical: https://mmlong818.github.io/ai-pulse/articles/tencent-hy4-flash-local-inference.html
+- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html
+- Source timestamp: 2026-11-25T08:41:00.000Z
+- Site timestamp: 2026-11-25T13:00:07.504Z
+- Tags: Models, Open Source, Industry
+
+Tencent’s Hy4-Flash is now paired with AngelSlim quantization and llama.cpp, bringing a large Chinese model closer to laptop-scale deployment.
+
+## What happened
+
+Tencent’s Hunyuan team said Hy4-Flash can now run locally through AngelSlim quantization and llama.cpp. The team reported speeds of up to 39 tokens per second on a laptop-class system, 50 tokens per second on a 128GB Mac M5 Max, and higher throughput on desktop hardware. The announcement was made through Tencent Hunyuan’s official account during the Asian daytime cycle.
+
+The important change is not a new frontier model release. It is the reduction of the practical barrier between a large open model and an individual developer’s machine. AngelSlim provides quantized variants and an inference path compatible with common local runtimes, while Tencent’s repository documents support for vLLM, SGLang and llama.cpp deployments.
+
+## Why it matters
+
+Large Chinese models have often been available as weights but remained difficult to operate outside a well-funded serving environment. Quantization changes that equation by trading a controlled amount of numerical precision for lower memory demand and faster inference. The result is especially relevant for developers who need private deployment, offline access or predictable latency rather than a cloud API.
+
+The caveat is that the reported throughput depends on hardware, quantization format, context length and workload. Local speed does not automatically establish frontier-level quality, and the full cost of running a long-context agent includes memory for the KV cache and orchestration overhead. Still, Hy4-Flash’s new local path makes Tencent’s model more usable in the environments where open weights matter most: developer workstations, private servers and regional inference clusters.
+
+## Uncle Cat take
+
+The meaningful number is not 39 tokens per second; it is Tencent turning Hy4-Flash from downloadable weights into a credible private deployment option.
+
+Chinese title: 腾讯让 Hy4-Flash 更接近笔记本本地运行
+Chinese summary: 腾讯混元宣布 Hy4-Flash 接入 AngelSlim 量化与 llama.cpp，本地部署门槛进一步降到开发者硬件可承受范围。
+
+Sources:
+  - Tencent Hunyuan official announcement: https://x.com/TencentHunyuan/status/2125510109417857368
+  - Hy4-Flash GitHub repository: https://github.com/Tencent-Hunyuan/Hy4-flash
 
 ### Amazon Agrees to Buy Decart Software to Challenge Nvidia’s Lead
 
@@ -349,15 +417,15 @@ Sources:
 - Site timestamp: 2026-11-23T13:00:07.044Z
 - Tags: Models, Open Source, Safety, Research
 
-Ant’s LingSante family covers multimodal health understanding, medical reasoning, six-year risk prediction, medical safety and real-time video consultation; the initial open-weight release includes two core models.
+Ant’s LingSante family covers multimodal health understanding, medical reasoning, health-risk prediction, medical safety and real-time video consultation; the initial open-weight release includes two core models.
 
 ## Five models for different clinical bottlenecks
 
-Ant Group has announced the LingSante medical AI family through its Afu healthcare platform. The family separates tasks that are often bundled into one general assistant: multimodal health understanding, long-context medical reasoning, disease-risk prediction, medical safety protection and real-time video consultation.
+Ant Group has announced the LingSante medical AI family through its Afu healthcare platform. The family separates tasks that are often bundled into one general assistant: multimodal health understanding, long-context medical reasoning, health-risk prediction, medical safety protection and real-time video consultation.
 
 The initial open-weight release includes two core models. LingSante-3.1-air-VL is a lightweight native multimodal model with 124 billion total parameters and 5.5 billion active parameters per token. It supports text, image and video inputs and is positioned for localized or on-device health applications. LingSante-3.1-flash is designed for larger workloads, with 560 billion total parameters, about 25 billion active parameters per token and a context window of up to 1 million tokens. Ant says it supports evidence-based retrieval and long-horizon healthcare workflows.
 
-Three specialized or application-oriented models complete the announced family. LingSante-Pulse is described as assessing the future six-year risk of more than 150 conditions. LingSante-MedGuard focuses on medical safety, regulatory compliance and bioethical risks. LingSante-Live is a real-time multimodal agent integrated into the Afu app for video consultations and guidance. Ant’s announcement says the model weights will be released in phases, beginning with the two core models; it does not establish that Pulse, MedGuard or Live are already publicly downloadable as open-weight models.
+Three specialized or application-oriented models complete the announced family. LingSante-Pulse is described as a health-prediction model that assesses risk for more than 150 conditions by integrating diverse health signals. LingSante-MedGuard focuses on medical safety, regulatory compliance and bioethical risks. LingSante-Live is a real-time multimodal agent integrated into the Afu app for video consultations and guidance. Ant’s announcement says the model weights will be released in phases, beginning with the two core models; it does not establish that Pulse, MedGuard or Live are already publicly downloadable as open-weight models.
 
 ## Open weights, but not a clinical license
 
@@ -365,10 +433,10 @@ The announcement is significant because it packages capability and guardrails to
 
 The claims should still be read carefully. Public reporting gives limited detail on training data, licensing terms, independent validation and regulatory clearance. A model that can interpret a report, estimate risk or support a video consultation is not automatically authorized to diagnose or prescribe. The value of the release will depend on whether hospitals and developers can audit the models, reproduce the reported behavior and maintain human review.
 
-**Uncle Cat take:** The initial open-weight release covers the two core models, while Pulse, MedGuard and Live are separate parts of the announced family and application ecosystem. Without independent clinical validation, the six-year risk forecast remains an ambition, not evidence of medical readiness.
+**Uncle Cat take:** The initial open-weight release covers the two core models, while Pulse, MedGuard and Live are separate parts of the announced family and application ecosystem. Without independent clinical validation, the health-risk forecast remains an ambition, not evidence of medical readiness.
 
 Chinese title: 蚂蚁启动百灵医疗模型分阶段开放权重
-Chinese summary: 蚂蚁发布百灵医疗模型家族，覆盖多模态理解、医学推理、疾病风险预测、医疗安全和实时视频问诊；首批开放权重的是两款核心模型。
+Chinese summary: 蚂蚁发布百灵医疗模型家族，覆盖多模态理解、医学推理、健康风险预测、医疗安全和实时视频问诊；首批开放权重的是两款核心模型。
 
 Sources:
   - Ant Group’s AI App Afu Open Sources Medical and Health AI Model Family: https://www.antgroup.com/en/news-media/press-releases/1795402800000
@@ -950,76 +1018,6 @@ Sources:
   - Gemini 4 Neon availability announcement: https://x.com/GoogleAI/status/2123168244861141164
   - Artificial Analysis Gemini 4 Neon evaluation: https://x.com/ArtificialAnlys/status/2123170655424450840
 
-### Google opens Genie 4 for interactive world simulation
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/genie-4-interactive-worlds.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/genie-4-interactive-worlds.html
-- Source timestamp: 2026-11-18T18:13:00.000Z
-- Site timestamp: 2026-11-19T01:00:15.535Z
-- Tags: AIGC, Research, Models
-
-Google DeepMind has made Genie 4 available in Project Genie to eligible Google AI Ultra subscribers and lists Gemini API and Google AI Studio as available entry points, while its launch announcement described the developer rollout as early access for trusted partners.
-
-## A world model becomes a product
-Google DeepMind has made Genie 4 available in Project Genie to eligible Google AI Ultra subscribers. The model generates interactive environments that users can navigate and modify in real time with keyboard controls and natural-language prompts.
-
-Genie 4 combines Gemini-family capabilities with a world simulator designed to preserve scene continuity as events unfold. Google says it can generate photorealistic environments, fluid movement and native audio. Users can change weather, move the camera or introduce people and objects while the system adapts the scene between interactions.
-
-The release also points toward robotics. DeepMind says it is exploring Genie 4 with Gemini Robotics: Gemini 4 Argon can create multi-step plans whose captions are passed into Genie 4, turning the simulator into an experimental environment for robotics research. Generated video and audio carry SynthID watermarking.
-
-## Still a controlled preview
-The launch is narrower than a general-purpose game engine. Google lists visual drift, weak object permanence, complex physical interactions, inaccurate real-world locations, poor text rendering, audio-accuracy issues and limited interaction duration as current constraints. Continuous interaction is presently around one minute. Genie 4 began as a research preview for trusted testers. Google’s current product page lists Project Genie availability for eligible Google AI Ultra subscribers and also lists the Gemini API and Google AI Studio; the launch announcement described the developer rollout as early access for trusted partners.
-
-## Why it matters
-Genie 4 moves world models from research demonstrations toward a user-facing platform. If the system can become more persistent and physically consistent, it could provide cheaper synthetic environments for robotics, agent evaluation and interactive entertainment. For now, the one-minute horizon and scene drift mean the product is best understood as an early simulation layer, not a dependable replacement for a game engine or physical training environment.
-
-**Uncle Cat take:** SynthID is a meaningful deployment choice, but Genie 4’s one-minute interaction ceiling remains the hard limit on its current robotics promise.
-
-Chinese title: 谷歌开放 Genie 4，实时生成可交互虚拟世界
-Chinese summary: 谷歌 DeepMind 已在 Project Genie 向符合条件的 Google AI Ultra 订阅用户开放 Genie 4，当前产品页也列出 Gemini API 和 Google AI Studio 为可用入口；但发布公告曾将开发者端描述为面向可信合作伙伴的早期访问。
-
-Sources:
-  - Genie 4 is now available: https://deepmind.google/blog/genie-4-is-now-available/
-  - Genie 4 model page: https://deepmind.google/models/genie/
-  - Genie 4: A new generation of world simulation: https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/
-
-### MiniCPM reports 70 million downloads across global deployments
-
-- Canonical: https://mmlong818.github.io/ai-pulse/articles/minicpm-reaches-70-million-downloads.html
-- Chinese: https://mmlong818.github.io/ai-pulse/zh/articles/minicpm-reaches-70-million-downloads.html
-- Source timestamp: 2026-11-19T12:50:00.000Z
-- Site timestamp: 2026-11-19T13:00:16.561Z
-- Tags: Open Source, Industry, Models
-
-ModelBest says its MiniCPM family has surpassed 70 million downloads, with compact models appearing in public services, banking, vehicles, and offline apps.
-
-## Adoption beyond benchmark headlines
-
-ModelBest, the company behind the MiniCPM family, said on November 19 that its open models had exceeded 70 million global downloads as of November. The company also highlighted deployments and developer projects spanning Laos, Malaysia, Kenya, France, and the United States.
-
-The examples are notable because they center on compact, locally deployable models rather than frontier systems hosted in large cloud environments. ModelBest said a MiniCPM-based assistant had been integrated into Laos’s government communications system, while a Malaysian business was using its VoxCPM2 speech model for multilingual real-time interaction. In Kenya, a bank reportedly used an on-device model and agent framework for a credit-risk workflow inside a local data lake. Other examples included an offline walking assistant in France and a browser-based interactive story application in the United States.
-
-The 70-million figure is a company-reported download count, not a measure of active users, production traffic, or independent quality. Downloads can include repeated pulls, experiments, mirrors, and abandoned deployments. The claims about national or enterprise use also need verification from the named institutions before they can be treated as audited case studies.
-
-Even with those caveats, the announcement points to a strategically important pattern. Smaller multimodal models are increasingly being evaluated by where they can run—phones, vehicles, private servers, and constrained enterprise environments—rather than only by their position on public leaderboards. That favors teams able to optimize memory use, quantization, latency, and multilingual performance.
-
-## Why it matters
-
-If the deployments hold up, MiniCPM illustrates how open, efficient models can travel through regions and sectors where cloud dependence, data residency, or connectivity make frontier APIs impractical. The more important question is whether download momentum converts into durable local operations.
-
-## Uncle Cat take
-
-The 70-million number is unaudited, but the Laos and Kenya examples reveal the sharper signal: deployment constraints are becoming a competitive advantage for small models.
-
-
-Chinese title: 面壁智能称MiniCPM全球下载量突破7000万次
-Chinese summary: 面壁智能披露MiniCPM系列全球下载量超过7000万次，并公布其在政务、银行、语音交互和离线应用中的落地案例。
-
-Sources:
-  - ModelBest official statement on MiniCPM downloads and deployments: https://weibo.com/2/detail/5367041642204826
-  - OpenBMB: MiniCPM ecosystem and download figures: https://openbmb.cn/blog/gotc-2026
-  - OpenBMB MiniCPM repository changelog: https://github.com/OpenBMB/MiniCPM-V/blob/main/docs/changelog_en.md
-
 ## Recent radar items
 
 ### 2026-11-25
@@ -1040,6 +1038,20 @@ Sources:
 - 2026-11-24T17:51:00Z | Goodfire AI on X | NVIDIA open-sourced BioReason-Pro 2, an open model that predicted protein functions and produced hypotheses validated in wet-lab experiments. | 中文：NVIDIA开源BioReason-Pro 2，用于预测蛋白质功能，并产出经湿实验验证的研究假设。 | https://x.com/GoodfireAI/status/2125286194355552432
 - 2026-11-24T14:05:00Z | Cohere on X | Cohere refreshed its partner program with broader eligibility, revised tiers, and a new commercial structure. | 中文：Cohere更新合作伙伴计划，扩大准入范围、调整合作等级，并推出新的商业结构。 | https://x.com/cohere/status/2125229306003521978
 - 2026-11-24T19:25:00Z | Replit on X | Replit said its integration with Microsoft 365 Copilot will let users build and deploy apps without leaving Microsoft’s productivity environment. | 中文：Replit表示，其与Microsoft 365 Copilot的整合将让用户无需离开微软办公环境即可构建和部署应用。 | https://x.com/Replit/status/2125309882794696849
+- 2026-11-25T13:00:00Z | InfoQ 中文 | Google open-sourced AQuA, an agent that diagnoses recurring production failures by analyzing telemetry, validating patterns, and tracing problems to deployed code. | 中文：谷歌开源 AQuA，通过分析遥测、验证故障模式并追溯已部署代码，诊断生产环境智能体的反复故障。 | https://www.infoq.cn/article/YAc2TqCHc09kAFF1A7BS
+- 2026-11-25T12:00:00Z | Ars Technica | AI may soon change theoretical physics as models automate calculations, leaving researchers to focus more heavily on choosing questions and interpreting results. | 中文：随着模型自动完成计算，理论物理学家可能转向更专注于选择问题和解释结果。 | https://arstechnica.com/ai/2026/11/ai-can-do-the-calculations-physicists-are-figuring-out-what-comes-next/
+- 2026-11-25T10:47:00Z | The Decoder | MIT researchers found that extreme synthetic climate scenarios can train AI predictors with one simulation run while improving performance on unfamiliar conditions. | 中文：麻省理工研究人员发现，极端合成气候情景可让预测模型只需一次模拟训练，并提升对陌生条件的表现。 | https://the-decoder.com/mit-team-discovers-that-unrealistic-training-data-makes-ai-climate-predictions-more-reliable/
+- 2026-11-25T10:30:00Z | InfoQ 中文 | Octop demonstrated a hosted CodeBuddy setup designed to keep an AI programmer online continuously for seven days a week. | 中文：Octop 展示了托管 CodeBuddy 的方案，目标是让 AI 程序员每周七天持续在线工作。 | https://www.infoq.cn/article/cgiP7vstrXKH94L1zj76
+- 2026-11-25T10:00:00Z | MIT Technology Review | AI-generated records requests are straining U.S. open-records systems by increasing request volume and complicating agencies’ review workload. | 中文：AI 生成的大量信息公开申请正在挤压美国公开记录系统，并增加机构审核负担。 | https://www.technologyreview.com/2026/11/25/1149702/ai-is-straining-americas-open-records-systems/
+- 2026-11-25T09:00:00Z | X @SakanaAILabs | Sakana AI was ranked first in Forbes Japan’s 2027 entrepreneur ranking, highlighting investor and media attention around its research-driven commercialization strategy. | 中文：Sakana AI 入选《福布斯日本》2027 创业者榜首，显示其研究商业化战略获得广泛关注。 | https://x.com/SakanaAILabs/status/2125515053869023284
+- 2026-11-25T08:17:00Z | X @qdrant_engine | Qdrant introduced turbo4, a datatype that reduces vector storage eightfold while retaining 99.6% of baseline retrieval quality for compressed ColBERT search. | 中文：Qdrant 推出 turbo4 数据类型，让压缩 ColBERT 搜索的向量存储减少八倍，同时保留基线检索质量的 99.6%。 | https://x.com/qdrant_engine/status/2125504129242124593
+- 2026-11-25T05:42:00Z | MarkTechPost | ByteDance Seed researchers open-sourced Laminar, an asynchronous reinforcement-learning framework reporting up to 5.48× throughput and 52.2% SWE-bench Verified. | 中文：字节跳动 Seed 研究人员开源 Laminar 异步强化学习框架，报告最高 5.48 倍吞吐和 52.2% 的 SWE-bench Verified 成绩。 | https://www.marktechpost.com/2026/11/24/bytedance-seed-laminar-async-rl-post-training-framework/
+- 2026-11-25T01:30:00Z | SiliconANGLE | Epochal, founded by former xAI members, launched a time-travel web environment for training forecasting agents and reportedly raised $100 million. | 中文：由前 xAI 成员创办的 Epochal 推出用于训练预测智能体的历史网页环境，并据报道融资 1 亿美元。 | https://www.siliconangle.com/2026/11/24/epochal-launches-100m-help-developers-train-predictive-ai-models/
+- 2026-11-25T03:59:00Z | X @ArtificialAnlys | Artificial Analysis reported that Octen Search answered queries in about 0.17 seconds, with 13.3-second end-to-end task time and an 82 score. | 中文：Artificial Analysis 称 Octen Search 平均约 0.17 秒返回搜索结果，端到端任务耗时 13.3 秒，评分达到 82。 | https://x.com/ArtificialAnlys/status/2125439213944664531
+- 2026-11-25T07:46:00Z | 量子位 | A report said Tibo, an executive associated with Anthropic, is joining OpenAI ahead of its expected public listing. | 中文：报道称，与 Anthropic 相关的高管 Tibo 将在 OpenAI 预计上市前加入该公司。 | https://www.qbitai.com/2026/11/512515.html
+- 2026-11-25T06:49:00Z | 量子位 | A veteran Chinese computer-vision researcher left Apple to launch a company focused on spatial intelligence and physical AI. | 中文：一位华人计算机视觉专家离开苹果创业，专注空间智能与物理人工智能。 | https://www.qbitai.com/2026/11/512498.html
+- 2026-11-25T02:36:00Z | SiliconANGLE | Anthropic is developing Claude-generated desktop applications that could replace some traditional software workflows through natural-language interaction. | 中文：Anthropic 正开发由 Claude 生成的桌面应用，试图用自然语言交互替代部分传统软件流程。 | https://siliconangle.com/2026/11/24/anthropic-is-trying-to-kill-traditional-desktop-apps-with-claude-generated-desktop-apps/
+- 2026-11-25T02:43:00Z | 量子位 | Early testing of Claude Opus 5.6 reportedly showed stronger performance, although the model remained available only to a limited group. | 中文：Claude Opus 5.6 的早期测试据称表现更强，但该模型仍仅向有限用户开放。 | https://www.qbitai.com/2026/11/512478.html
 
 ### 2026-11-24
 

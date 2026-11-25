@@ -1,0 +1,32 @@
+{
+  "slug": "tencent-hy4-flash-local-inference",
+  "title": "Tencent makes Hy4-Flash practical for local inference",
+  "summary": "Tencent’s Hy4-Flash is now paired with AngelSlim quantization and llama.cpp, bringing a large Chinese model closer to laptop-scale deployment.",
+  "body": "## What happened\n\nTencent’s Hunyuan team said Hy4-Flash can now run locally through AngelSlim quantization and llama.cpp. The team reported speeds of up to 39 tokens per second on a laptop-class system, 50 tokens per second on a 128GB Mac M5 Max, and higher throughput on desktop hardware. The announcement was made through Tencent Hunyuan’s official account during the Asian daytime cycle.\n\nThe important change is not a new frontier model release. It is the reduction of the practical barrier between a large open model and an individual developer’s machine. AngelSlim provides quantized variants and an inference path compatible with common local runtimes, while Tencent’s repository documents support for vLLM, SGLang and llama.cpp deployments.\n\n## Why it matters\n\nLarge Chinese models have often been available as weights but remained difficult to operate outside a well-funded serving environment. Quantization changes that equation by trading a controlled amount of numerical precision for lower memory demand and faster inference. The result is especially relevant for developers who need private deployment, offline access or predictable latency rather than a cloud API.\n\nThe caveat is that the reported throughput depends on hardware, quantization format, context length and workload. Local speed does not automatically establish frontier-level quality, and the full cost of running a long-context agent includes memory for the KV cache and orchestration overhead. Still, Hy4-Flash’s new local path makes Tencent’s model more usable in the environments where open weights matter most: developer workstations, private servers and regional inference clusters.\n\n## Uncle Cat take\n\nThe meaningful number is not 39 tokens per second; it is Tencent turning Hy4-Flash from downloadable weights into a credible private deployment option.",
+  "title_zh": "腾讯让 Hy4-Flash 更接近笔记本本地运行",
+  "summary_zh": "腾讯混元宣布 Hy4-Flash 接入 AngelSlim 量化与 llama.cpp，本地部署门槛进一步降到开发者硬件可承受范围。",
+  "body_zh": "## 发生了什么\n\n腾讯混元团队宣布，Hy4-Flash 现在可以通过 AngelSlim 量化方案和 llama.cpp 在本地运行。官方披露，在笔记本级设备上最高可达每秒 39 个 Token，在配备 128GB 内存的 Mac M5 Max 上最高约 50 个 Token，桌面硬件上的吞吐还会更高。这一消息由腾讯混元官方账号在亚洲时区白天发布。\n\n这并不是一次新的前沿模型发布，而是把一个大型开放模型从“能下载”推进到“更容易真正跑起来”。AngelSlim 提供量化版本和适配常见本地推理框架的路径，腾讯仓库则列出了对 vLLM、SGLang 和 llama.cpp 的支持。\n\n## 为什么重要\n\n不少中国大模型虽然开放了权重，但实际运行仍需要较强的服务器和工程能力。量化通过牺牲一部分可控的数值精度，换取更低的显存需求和更高的推理速度。对需要私有部署、离线使用或稳定延迟的开发者来说，这比单纯增加一个云端 API 更有实际价值。\n\n当然，官方吞吐数据会受到硬件、量化格式、上下文长度和任务类型影响。本地速度也不能直接证明模型质量已经达到前沿水平；长上下文智能体还要承担 KV 缓存和编排带来的额外内存开销。但 Hy4-Flash 的本地化路径，确实让腾讯模型更适合开发者工作站、私有服务器和区域推理集群。\n\n## 猫叔判断\n\n真正重要的不是每秒 39 个 Token，而是腾讯把 Hy4-Flash 从可下载权重推进成了可用的私有部署选项。",
+  "tags": [
+    "Models",
+    "Open Source",
+    "Industry"
+  ],
+  "sources": [
+    {
+      "title": "Tencent Hunyuan official announcement",
+      "url": "https://x.com/TencentHunyuan/status/2125510109417857368"
+    },
+    {
+      "title": "Hy4-Flash GitHub repository",
+      "url": "https://github.com/Tencent-Hunyuan/Hy4-flash"
+    }
+  ],
+  "featured": true,
+  "featured_reason": "It is the clearest Asian-cycle story today about turning a large Chinese model into a practical local deployment.",
+  "featured_reason_zh": "这是本时段最清晰的亚洲 AI 新闻：大型国产模型正从开放权重走向真正可用的本地部署。",
+  "cat_take_zh": "Hy4-Flash的关键突破，是把开放权重变成了可落地的私有部署选项",
+  "cat_take_en": "Hy4-Flash matters because Tencent is making open weights usable for private deployment, not merely downloadable.",
+  "date": "2026-11-25",
+  "published": "2026-11-25T08:41:00Z",
+  "published_at": "2026-11-25T13:00:07.504Z"
+}

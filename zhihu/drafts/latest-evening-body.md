@@ -1,119 +1,104 @@
-这是「猫叔的AI资讯雷达」11月24日晚报。
+这是「猫叔的AI资讯雷达」11月25日晚报。
 
 本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
 
-**今晚重点**：百度以 Apache 2.0 协议发布文心5.5 Flash Preview 权重，支持百万上下文，为全球开发者提供新的高性能开源基线。
+**今晚重点**：腾讯混元宣布 Hy4-Flash 接入 AngelSlim 量化与 llama.cpp，本地部署门槛进一步降到开发者硬件可承受范围。
 
 ## 深度简报目录
 
-- 百度开源文心5.5 Flash，2800亿参数模型向全球开放
-- 腾讯混元发布第三代开源机器翻译模型 Hy-MT3
-- Sakana AI成立应用研究实验室，首攻金融经济复杂系统
+- 腾讯让 Hy4-Flash 更接近笔记本本地运行
+- IBM 用 CUGA 展示跨语言印度语音智能体
 
 ## 快讯预览
 
-- Pinterest 用大模型替代多阶段聚类，最大提速来自减少推理调用次数。
-- Dreamina 公布 AI Motion Studio 活动获奖者，显示其继续押注创作者驱动的短视频生成。
-- Meshy 开放 Liquid 测试版，并与 VITURE 合作，将生成式 3D 资产带入扩展现实体验。
-- Qwen 展示 Qwen4 Max 与 Pendev 的整合，将设计系统工作流与生成式创作辅助结合。
-- Amazon Bedrock 发布 Trusted Access API，并预览 Anthropic 的企业安全监控与数据控制方案。
-- Simon Willison 发布 datasette-agent 0.7a1，让大模型智能体能够查询并操作 Datasette 数据库。
-- Artificial Analysis 发布智能体框架对比，显示编码模型在不同环境中的工具调用和 token 消耗差异显著。
-- 蚂蚁集团开源 OceanLake 核心引擎，打造融合数据湖与数仓架构的 AI 数据平台。
-- Deemos 宣布可通过 fal.ai 使用图像、文本和网格输入生成低多边形资产。
-- Besimple 在 Baseten Training 上微调 Nemotron 3.5 Transcribe，在 MedDictate 医学术语测试中达到 0.87% 错误率。
+- 麻省理工研究人员发现，极端合成气候情景可让预测模型只需一次模拟训练，并提升对陌生条件的表现。
+- Octop 展示了托管 CodeBuddy 的方案，目标是让 AI 程序员每周七天持续在线工作。
+- AI 生成的大量信息公开申请正在挤压美国公开记录系统，并增加机构审核负担。
+- Sakana AI 入选《福布斯日本》2027 创业者榜首，显示其研究商业化战略获得广泛关注。
+- Qdrant 推出 turbo4 数据类型，让压缩 ColBERT 搜索的向量存储减少八倍，同时保留基线检索质量的 99.6%。
+- 报道称，与 Anthropic 相关的高管 Tibo 将在 OpenAI 预计上市前加入该公司。
+- 一位华人计算机视觉专家离开苹果创业，专注空间智能与物理人工智能。
+- 字节跳动 Seed 研究人员开源 Laminar 异步强化学习框架，报告最高 5.48 倍吞吐和 52.2% 的 SWE-bench Verified 成绩。
+- Artificial Analysis 称 Octen Search 平均约 0.17 秒返回搜索结果，端到端任务耗时 13.3 秒，评分达到 82。
+- Claude Opus 5.6 的早期测试据称表现更强，但该模型仍仅向有限用户开放。
 
-## 1. 百度开源文心5.5 Flash，2800亿参数模型向全球开放
+## 1. 腾讯让 Hy4-Flash 更接近笔记本本地运行
 
-百度以 Apache 2.0 协议发布文心5.5 Flash Preview 权重，支持百万上下文，为全球开发者提供新的高性能开源基线。
+腾讯混元宣布 Hy4-Flash 接入 AngelSlim 量化与 llama.cpp，本地部署门槛进一步降到开发者硬件可承受范围。
 
 ### 发生了什么
 
-百度正式开源文心5.5 Flash Preview，采用 Apache 2.0 协议，并在 Hugging Face、ModelScope 提供模型权重及配套资源。模型支持 vLLM、SGLang 等主流推理框架。此次事件的关键不只是“发布预览版”，而是权重和下载渠道已经公开，开发者可以自行部署、微调和适配。
+腾讯混元团队宣布，Hy4-Flash 现在可以通过 AngelSlim 量化方案和 llama.cpp 在本地运行。官方披露，在笔记本级设备上最高可达每秒 39 个 Token，在配备 128GB 内存的 Mac M5 Max 上最高约 50 个 Token，桌面硬件上的吞吐还会更高。这一消息由腾讯混元官方账号在亚洲时区白天发布。
 
-据百度及量子位披露，该模型总参数量达到 2800 亿，采用混合专家架构，每个 Token 激活约 140 亿参数，上下文长度最高可达 100 万 Token。它面向编程、3D 建模、知识工作和内容创作等场景。在 CodeArena WebDev 榜单中，文心5.5 Flash Preview 以 1668 分位列开源模型第二。
+这并不是一次新的前沿模型发布，而是把一个大型开放模型从“能下载”推进到“更容易真正跑起来”。AngelSlim 提供量化版本和适配常见本地推理框架的路径，腾讯仓库则列出了对 vLLM、SGLang 和 llama.cpp 的支持。
 
 ### 为什么重要
 
-这次发布把一款来自中国实验室的大型模型加入全球可获得的开放权重供给。大总参数量、较低激活规模、超长上下文和宽松许可证的组合，为研究人员提供了本地部署和行业微调的空间，也减少了对封闭 API 使用规则的依赖。
+不少中国大模型虽然开放了权重，但实际运行仍需要较强的服务器和工程能力。量化通过牺牲一部分可控的数值精度，换取更低的显存需求和更高的推理速度。对需要私有部署、离线使用或稳定延迟的开发者来说，这比单纯增加一个云端 API 更有实际价值。
 
-不过，榜单成绩仍需要更多独立复测。“Preview”意味着稳定性、服务成本、多语言表现以及非定向评测中的可靠性尚未完全明确。即便采用稀疏架构，部署所需硬件也不会轻松。真正提升其行业分量的，是权重和许可证同时开放：在模型获取权与部署自主性日益重要的当下，它为全球开源社区增加了一条来自中国的高能力基线。
+当然，官方吞吐数据会受到硬件、量化格式、上下文长度和任务类型影响。本地速度也不能直接证明模型质量已经达到前沿水平；长上下文智能体还要承担 KV 缓存和编排带来的额外内存开销。但 Hy4-Flash 的本地化路径，确实让腾讯模型更适合开发者工作站、私有服务器和区域推理集群。
+
+### 猫叔判断
+
+真正重要的不是每秒 39 个 Token，而是腾讯把 Hy4-Flash 从可下载权重推进成了可用的私有部署选项。
 
 **原始信源**
 
-- [文心 5.5 Flash Preview正式开源，采用 Apache 2.0 协议](https://www.qbitai.com/2026/11/512354.html)
-- [ERNIE 5.5 Flash Preview on Hugging Face](https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview)
+- [Tencent Hunyuan official announcement](https://x.com/TencentHunyuan/status/2125510109417857368)
+- [Hy4-Flash GitHub repository](https://github.com/Tencent-Hunyuan/Hy4-flash)
 
-原文链接：[百度开源文心5.5 Flash，2800亿参数模型向全球开放｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/ernie-55-flash-open-weights.html)
+原文链接：[腾讯让 Hy4-Flash 更接近笔记本本地运行｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html)
 
 ---
 
-## 2. 腾讯混元发布第三代开源机器翻译模型 Hy-MT3
+## 2. IBM 用 CUGA 展示跨语言印度语音智能体
 
-腾讯混元推出第三代开源翻译模型 Hy-MT3，重点提升准确性、完整性、指令遵循和多语言覆盖范围。
-
-### 发生了什么
-
-腾讯混元宣布推出第三代开源机器翻译模型 Hy-MT3。官方信息显示，新一代模型重点改善翻译准确性和完整性，并提升对用户指令的遵循能力，同时扩大语言覆盖范围。
-
-这次消息由腾讯混元官方账号在北京时间白天发布，属于本期选题窗口。需要注意的是，目前公开信息仍然有限，尚未完整披露参数规模、系统化评测结果以及与上一代模型的许可证差异，因此不能仅凭公告对其性能做过度推断。
-
-### 为什么重要
-
-翻译是 AI 基础设施中影响广泛、却经常被低估的一层。更强的开放模型可以降低开发者对少数闭源服务商的依赖，让多语言功能更便宜，也便于围绕行业术语、隐私要求和离线部署进行适配。Hy-MT3 强调指令遵循，也意味着它的目标可能不止是逐句翻译，还包括受控改写、格式保留和接入业务工作流。
-
-它的价值更偏向生态基础设施，而不是单纯争夺榜单名次。开放翻译模型可以服务客服、搜索、文档、教育，以及需要跨语言运行的智能体。最终表现仍取决于语言对覆盖、推理延迟、许可证，以及法律、医疗和低资源语言等复杂场景的实测。在更多技术细节公开前，Hy-MT3 是一项值得关注的开放发布，但还不能据此断言翻译质量差距已经被填平。
-
-**原始信源**
-
-- [Tencent Hunyuan official Hy-MT3 announcement](https://x.com/TencentHunyuan/status/2125170622049485093)
-
-原文链接：[腾讯混元发布第三代开源机器翻译模型 Hy-MT3｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy-mt3-translation.html)
-
----
-
-## 3. Sakana AI成立应用研究实验室，首攻金融经济复杂系统
-
-日本 Sakana AI 成立应用研究实验室，计划用智能体系统建模金融和经济等复杂现实环境，首个项目聚焦金融领域。
+IBM Research 以农业问答为例，将语音、多语检索和可溯源回答组合起来，服务使用印度地区语言提问的用户。
 
 ### 发生了什么
 
-日本 Sakana AI 宣布成立 Applied Research Lab，专门把公司的研究成果应用于大型、复杂的现实系统。实验室的首个项目聚焦金融与经济，公司表示未来还可能扩展到其他领域。
+IBM Research 在 Hugging Face 发布了一个基于 CUGA 的印度语音智能体演示。CUGA 是 IBM 开源的可配置智能体框架，演示面向用印地语、泰米尔语、泰卢固语、古吉拉特语、马拉地语等地区语言提问的农民，而底层农业手册使用英语编写。
 
-Sakana 的出发点并不是把一个语言模型智能体当成万能解题器。公司认为，市场和经济必须被表示为由多个单元、关系及相互影响组成的系统。人类专家负责提出真正重要的问题并判断结果，智能体则负责以更大规模实施、测试和迭代模型，把原本需要大量人工完成的工作加速起来。
+这个系统的流程非常明确：先把语音转成文字，再搜索一份 154 页的农业手册，用用户提问的语言生成简短回答并朗读出来，同时展示对应来源页面。它被限制在农业领域内工作，遇到板球或编程问题时会主动拒答，而不是自由发挥。
 
-### 为什么重要
+### 真正的工程难点
 
-这不是新一代前沿模型，也不是面向大众的产品发布。它的重要性在于一种部署思路：Sakana 试图把智能体从孤立的任务执行，推进到对复杂环境进行结构化建模。金融是一个高难度起点，因为模型即使技术上精巧，也可能在历史关系失效时给出经济含义错误的结论。
+IBM 最有价值的观察是，语音并不是最难的部分，跨语言检索才是故障核心。使用 CUGA 默认的纯英语向量模型时，印地语问题依然能够检索出若干段落，但这些段落往往与问题无关。各个模块表面上都正常运行，整体系统却因为无法把不同语言中的相同含义匹配起来而悄悄失效。
 
-这项计划同时暴露了尚未解决的瓶颈。智能体可以生成并测试大量假设，却不会自动知道哪些变量值得关注、哪些关系具有因果性，也无法保证模型表现不是数据造成的假象。Sakana 明确保留专家对问题选择和结果判断的参与，这比“智能体自主预测经济”更可信，但也意味着短期产品更可能是专家增强工具，而非替代专家。它最终是否重要，要看能否在真实决策中持续带来可复现的改进，而不是制造更多模拟结果。
+IBM 改用 multilingual-e5-large，让用户问题与英语资料进入更兼容的语义空间。CUGA 负责模型连接、工具调用、状态管理和策略边界，语音输入输出则可以替换。IBM 同时展示了云端语音服务和自托管开源模型，这对需要数据主权的政府、农业和企业场景尤其重要。
+
+这项演示并不意味着多语种语音智能体已经成熟。检索质量、语音识别、方言覆盖和引用行为仍需分别评测。但它给出了一个清晰方向：在地区语言服务中，能否找到正确证据比能否流畅聊天更重要。
+
+### 猫叔判断
+
+最值得警惕的是纯英语向量模型的失效：多语语音产品可能听起来很流畅，却一直在检索错误证据。
 
 **原始信源**
 
-- [Introducing the Sakana AI Applied Research Lab](https://sakana.ai/applied-research-lab/)
-- [Sakana AI official announcement](https://x.com/SakanaAILabs/status/2125046221631086970)
+- [An Indic Voice Agent with CUGA](https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga)
+- [CUGA open-source agent harness](https://github.com/ibm/cuga)
 
-原文链接：[Sakana AI成立应用研究实验室，首攻金融经济复杂系统｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/sakana-applied-research-lab.html)
+原文链接：[IBM 用 CUGA 展示跨语言印度语音智能体｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/cuga-indic-voice-agent.html)
 
 ## 一句话快讯
-- Pinterest 用大模型替代多阶段聚类，最大提速来自减少推理调用次数。（[InfoQ 中文](https://www.infoq.cn/article/vaEUVvWD9AIaFXZhzSMH)）
-- Dreamina 公布 AI Motion Studio 活动获奖者，显示其继续押注创作者驱动的短视频生成。（[X / Dreamina AI](https://x.com/dreamina_ai/status/2125152415381139524)）
-- Meshy 开放 Liquid 测试版，并与 VITURE 合作，将生成式 3D 资产带入扩展现实体验。（[X / MeshyAI](https://x.com/MeshyAI/status/2125144895509934486)）
-- Qwen 展示 Qwen4 Max 与 Pendev 的整合，将设计系统工作流与生成式创作辅助结合。（[X / Alibaba Qwen](https://x.com/Alibaba_Qwen/status/2125121515465461969)）
-- Amazon Bedrock 发布 Trusted Access API，并预览 Anthropic 的企业安全监控与数据控制方案。（[AWS Machine Learning Blog](https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls/)）
-- Simon Willison 发布 datasette-agent 0.7a1，让大模型智能体能够查询并操作 Datasette 数据库。（[Simon Willison](https://simonwillison.net/2026/Nov/24/datasette-agent/)）
-- Artificial Analysis 发布智能体框架对比，显示编码模型在不同环境中的工具调用和 token 消耗差异显著。（[X / Artificial Analysis](https://x.com/ArtificialAnlys/status/2125069750414045505)）
-- 蚂蚁集团开源 OceanLake 核心引擎，打造融合数据湖与数仓架构的 AI 数据平台。（[量子位](https://www.qbitai.com/2026/11/512330.html)）
-- Deemos 宣布可通过 fal.ai 使用图像、文本和网格输入生成低多边形资产。（[X / DeemosTech](https://x.com/DeemosTech/status/2125041613970055521)）
-- Besimple 在 Baseten Training 上微调 Nemotron 3.5 Transcribe，在 MedDictate 医学术语测试中达到 0.87% 错误率。（[X / Baseten](https://x.com/baseten/status/2125028331821404646)）
-- Together AI 上线 DeepSeek V4.1 Flash，面向编码代理，输入百万 token 0.60 美元、输出 2.40 美元。（[X / Together AI](https://x.com/togethercompute/status/2125027182313672761)）
-- AWS 展示 Strands Decider v2 31B，在六项公开文本基准平均得分 82.1，图像任务得分 90.1。（[X / AWS Developers](https://x.com/awsdevelopers/status/2125015675382985077)）
-- Sierra 完成 17.5 亿美元 F 轮融资，年化收入已超过 4 亿美元，客户覆盖半数《财富》50 强。（[SiliconANGLE](https://siliconangle.com/2026/11/23/ai-agent-provider-sierra-closes-1-75b-investment-amid-rapid-revenue-growth/)）
-- OpenAI 表示，GPT-6 Cyber 协助验证了 948 个可能授予本地 root 权限的 Linux 内核漏洞，并生成待审查补丁。（[X / OpenAI](https://x.com/OpenAI/status/2125007927098699827)）
+- 麻省理工研究人员发现，极端合成气候情景可让预测模型只需一次模拟训练，并提升对陌生条件的表现。（[The Decoder](https://the-decoder.com/mit-team-discovers-that-unrealistic-training-data-makes-ai-climate-predictions-more-reliable/)）
+- Octop 展示了托管 CodeBuddy 的方案，目标是让 AI 程序员每周七天持续在线工作。（[InfoQ 中文](https://www.infoq.cn/article/cgiP7vstrXKH94L1zj76)）
+- AI 生成的大量信息公开申请正在挤压美国公开记录系统，并增加机构审核负担。（[MIT Technology Review](https://www.technologyreview.com/2026/11/25/1149702/ai-is-straining-americas-open-records-systems/)）
+- Sakana AI 入选《福布斯日本》2027 创业者榜首，显示其研究商业化战略获得广泛关注。（[X @SakanaAILabs](https://x.com/SakanaAILabs/status/2125515053869023284)）
+- Qdrant 推出 turbo4 数据类型，让压缩 ColBERT 搜索的向量存储减少八倍，同时保留基线检索质量的 99.6%。（[X @qdrant_engine](https://x.com/qdrant_engine/status/2125504129242124593)）
+- 报道称，与 Anthropic 相关的高管 Tibo 将在 OpenAI 预计上市前加入该公司。（[量子位](https://www.qbitai.com/2026/11/512515.html)）
+- 一位华人计算机视觉专家离开苹果创业，专注空间智能与物理人工智能。（[量子位](https://www.qbitai.com/2026/11/512498.html)）
+- 字节跳动 Seed 研究人员开源 Laminar 异步强化学习框架，报告最高 5.48 倍吞吐和 52.2% 的 SWE-bench Verified 成绩。（[MarkTechPost](https://www.marktechpost.com/2026/11/24/bytedance-seed-laminar-async-rl-post-training-framework/)）
+- Artificial Analysis 称 Octen Search 平均约 0.17 秒返回搜索结果，端到端任务耗时 13.3 秒，评分达到 82。（[X @ArtificialAnlys](https://x.com/ArtificialAnlys/status/2125439213944664531)）
+- Claude Opus 5.6 的早期测试据称表现更强，但该模型仍仅向有限用户开放。（[量子位](https://www.qbitai.com/2026/11/512478.html)）
+- Anthropic 正开发由 Claude 生成的桌面应用，试图用自然语言交互替代部分传统软件流程。（[SiliconANGLE](https://siliconangle.com/2026/11/24/anthropic-is-trying-to-kill-traditional-desktop-apps-with-claude-generated-desktop-apps/)）
+- 由前 xAI 成员创办的 Epochal 推出用于训练预测智能体的历史网页环境，并据报道融资 1 亿美元。（[SiliconANGLE](https://www.siliconangle.com/2026/11/24/epochal-launches-100m-help-developers-train-predictive-ai-models/)）
+- Sakana AI发布30B模型Namazu Small，称其在25项基准测试平均成绩上超过120B模型。（[Sakana AI on X](https://x.com/SakanaAILabs/status/2125389733048291698)）
+- Google DeepMind展示Gemini 4 Hydrogen，将实时闪电数据映射到3D地球并生成环境音乐。（[Google DeepMind on X](https://x.com/GoogleDeepMind/status/2125371062880022536)）
 
 ---
 
-完整日报：[11月24日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-24.html)
+完整日报：[11月25日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-25.html)
 
 历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
 

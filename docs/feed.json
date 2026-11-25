@@ -83,6 +83,43 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/cuga-indic-voice-agent.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/cuga-indic-voice-agent.html",
+      "title": "IBM shows CUGA voice agent crossing language barriers",
+      "summary": "IBM Research’s CUGA demonstration pairs speech, multilingual retrieval and grounded answers to serve farmers asking questions in Indic languages.",
+      "content_text": "## What happened\n\nIBM Research published a Hugging Face demonstration of an Indic voice agent built with CUGA, its open-source configurable agent harness. The prototype is aimed at farmers who ask questions aloud in Hindi, Tamil, Telugu, Gujarati, Marathi or other regional languages while the underlying agricultural handbook is written in English.\n\nThe workflow is deliberately narrow. Speech is converted to text, the agent searches a 154-page handbook, produces a short answer in the user’s language and speaks it back while showing the source pages. The system is instructed to stay within the farming domain rather than improvise on unrelated questions.\n\n## The engineering lesson\n\nIBM’s most useful finding is that voice is not the difficult layer. The failure point is cross-lingual retrieval. With CUGA’s default English-only embedding model, a Hindi question could still return several passages, but the passages were irrelevant. Every component appeared to function normally, yet the overall agent quietly failed because the search system could not connect equivalent meanings across languages.\n\nIBM replaced the embedding layer with multilingual-e5-large, allowing questions and English source passages to occupy a more compatible semantic space. CUGA handles model wiring, tool access, state and policy boundaries, while voice input and output remain replaceable components. IBM also describes both cloud speech services and self-hosted open models, which is relevant to deployments that require data sovereignty.\n\nThe demonstration is not evidence that multilingual voice agents are solved. Retrieval quality, speech recognition, dialect coverage and citation behavior still need independent evaluation. But it offers a concrete blueprint for regional-language systems where grounded answers matter more than conversational fluency alone.\n\n## Uncle Cat take\n\nThe decisive detail is the English-only embedding failure: multilingual voice products can sound fluent while retrieving the wrong evidence.",
+      "date_published": "2026-11-25T10:22:00.000Z",
+      "date_modified": "2026-11-25T13:00:07.504Z",
+      "tags": [
+        "Agents",
+        "Research",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cuga-indic-voice-agent.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cuga-indic-voice-agent.html",
+        "source_published_at": "2026-11-25T10:22:00.000Z",
+        "site_published_at": "2026-11-25T13:00:07.504Z",
+        "sources": [
+          {
+            "title": "An Indic Voice Agent with CUGA",
+            "url": "https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga"
+          },
+          {
+            "title": "CUGA open-source agent harness",
+            "url": "https://github.com/ibm/cuga"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt6-protein-design.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/openai-gpt6-protein-design.html",
       "title": "OpenAI tests GPT-6 for laboratory protein design",
@@ -111,6 +148,43 @@
           {
             "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
             "url": "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy4-flash-local-inference.html",
+      "url": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy4-flash-local-inference.html",
+      "title": "Tencent makes Hy4-Flash practical for local inference",
+      "summary": "Tencent’s Hy4-Flash is now paired with AngelSlim quantization and llama.cpp, bringing a large Chinese model closer to laptop-scale deployment.",
+      "content_text": "## What happened\n\nTencent’s Hunyuan team said Hy4-Flash can now run locally through AngelSlim quantization and llama.cpp. The team reported speeds of up to 39 tokens per second on a laptop-class system, 50 tokens per second on a 128GB Mac M5 Max, and higher throughput on desktop hardware. The announcement was made through Tencent Hunyuan’s official account during the Asian daytime cycle.\n\nThe important change is not a new frontier model release. It is the reduction of the practical barrier between a large open model and an individual developer’s machine. AngelSlim provides quantized variants and an inference path compatible with common local runtimes, while Tencent’s repository documents support for vLLM, SGLang and llama.cpp deployments.\n\n## Why it matters\n\nLarge Chinese models have often been available as weights but remained difficult to operate outside a well-funded serving environment. Quantization changes that equation by trading a controlled amount of numerical precision for lower memory demand and faster inference. The result is especially relevant for developers who need private deployment, offline access or predictable latency rather than a cloud API.\n\nThe caveat is that the reported throughput depends on hardware, quantization format, context length and workload. Local speed does not automatically establish frontier-level quality, and the full cost of running a long-context agent includes memory for the KV cache and orchestration overhead. Still, Hy4-Flash’s new local path makes Tencent’s model more usable in the environments where open weights matter most: developer workstations, private servers and regional inference clusters.\n\n## Uncle Cat take\n\nThe meaningful number is not 39 tokens per second; it is Tencent turning Hy4-Flash from downloadable weights into a credible private deployment option.",
+      "date_published": "2026-11-25T08:41:00.000Z",
+      "date_modified": "2026-11-25T13:00:07.504Z",
+      "tags": [
+        "Models",
+        "Open Source",
+        "Industry"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "en",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy4-flash-local-inference.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html",
+        "source_published_at": "2026-11-25T08:41:00.000Z",
+        "site_published_at": "2026-11-25T13:00:07.504Z",
+        "sources": [
+          {
+            "title": "Tencent Hunyuan official announcement",
+            "url": "https://x.com/TencentHunyuan/status/2125510109417857368"
+          },
+          {
+            "title": "Hy4-Flash GitHub repository",
+            "url": "https://github.com/Tencent-Hunyuan/Hy4-flash"
           }
         ]
       }
@@ -375,8 +449,8 @@
       "id": "https://mmlong818.github.io/ai-pulse/articles/ant-ling-medical-models-open-source.html",
       "url": "https://mmlong818.github.io/ai-pulse/articles/ant-ling-medical-models-open-source.html",
       "title": "Ant Group begins phased open-weight release of LingSante medical AI models",
-      "summary": "Ant’s LingSante family covers multimodal health understanding, medical reasoning, six-year risk prediction, medical safety and real-time video consultation; the initial open-weight release includes two core models.",
-      "content_text": "## Five models for different clinical bottlenecks\n\nAnt Group has announced the LingSante medical AI family through its Afu healthcare platform. The family separates tasks that are often bundled into one general assistant: multimodal health understanding, long-context medical reasoning, disease-risk prediction, medical safety protection and real-time video consultation.\n\nThe initial open-weight release includes two core models. LingSante-3.1-air-VL is a lightweight native multimodal model with 124 billion total parameters and 5.5 billion active parameters per token. It supports text, image and video inputs and is positioned for localized or on-device health applications. LingSante-3.1-flash is designed for larger workloads, with 560 billion total parameters, about 25 billion active parameters per token and a context window of up to 1 million tokens. Ant says it supports evidence-based retrieval and long-horizon healthcare workflows.\n\nThree specialized or application-oriented models complete the announced family. LingSante-Pulse is described as assessing the future six-year risk of more than 150 conditions. LingSante-MedGuard focuses on medical safety, regulatory compliance and bioethical risks. LingSante-Live is a real-time multimodal agent integrated into the Afu app for video consultations and guidance. Ant’s announcement says the model weights will be released in phases, beginning with the two core models; it does not establish that Pulse, MedGuard or Live are already publicly downloadable as open-weight models.\n\n## Open weights, but not a clinical license\n\nThe announcement is significant because it packages capability and guardrails together rather than treating safety as a documentation layer around a general model. It also reflects a broader Asian push to make domain models deployable inside local institutions, where data residency and private hardware can matter as much as benchmark scores.\n\nThe claims should still be read carefully. Public reporting gives limited detail on training data, licensing terms, independent validation and regulatory clearance. A model that can interpret a report, estimate risk or support a video consultation is not automatically authorized to diagnose or prescribe. The value of the release will depend on whether hospitals and developers can audit the models, reproduce the reported behavior and maintain human review.\n\n**Uncle Cat take:** The initial open-weight release covers the two core models, while Pulse, MedGuard and Live are separate parts of the announced family and application ecosystem. Without independent clinical validation, the six-year risk forecast remains an ambition, not evidence of medical readiness.",
+      "summary": "Ant’s LingSante family covers multimodal health understanding, medical reasoning, health-risk prediction, medical safety and real-time video consultation; the initial open-weight release includes two core models.",
+      "content_text": "## Five models for different clinical bottlenecks\n\nAnt Group has announced the LingSante medical AI family through its Afu healthcare platform. The family separates tasks that are often bundled into one general assistant: multimodal health understanding, long-context medical reasoning, health-risk prediction, medical safety protection and real-time video consultation.\n\nThe initial open-weight release includes two core models. LingSante-3.1-air-VL is a lightweight native multimodal model with 124 billion total parameters and 5.5 billion active parameters per token. It supports text, image and video inputs and is positioned for localized or on-device health applications. LingSante-3.1-flash is designed for larger workloads, with 560 billion total parameters, about 25 billion active parameters per token and a context window of up to 1 million tokens. Ant says it supports evidence-based retrieval and long-horizon healthcare workflows.\n\nThree specialized or application-oriented models complete the announced family. LingSante-Pulse is described as a health-prediction model that assesses risk for more than 150 conditions by integrating diverse health signals. LingSante-MedGuard focuses on medical safety, regulatory compliance and bioethical risks. LingSante-Live is a real-time multimodal agent integrated into the Afu app for video consultations and guidance. Ant’s announcement says the model weights will be released in phases, beginning with the two core models; it does not establish that Pulse, MedGuard or Live are already publicly downloadable as open-weight models.\n\n## Open weights, but not a clinical license\n\nThe announcement is significant because it packages capability and guardrails together rather than treating safety as a documentation layer around a general model. It also reflects a broader Asian push to make domain models deployable inside local institutions, where data residency and private hardware can matter as much as benchmark scores.\n\nThe claims should still be read carefully. Public reporting gives limited detail on training data, licensing terms, independent validation and regulatory clearance. A model that can interpret a report, estimate risk or support a video consultation is not automatically authorized to diagnose or prescribe. The value of the release will depend on whether hospitals and developers can audit the models, reproduce the reported behavior and maintain human review.\n\n**Uncle Cat take:** The initial open-weight release covers the two core models, while Pulse, MedGuard and Live are separate parts of the announced family and application ecosystem. Without independent clinical validation, the health-risk forecast remains an ambition, not evidence of medical readiness.",
       "date_published": "2026-11-23T03:56:00.000Z",
       "date_modified": "2026-11-23T13:00:07.044Z",
       "tags": [
@@ -1820,80 +1894,6 @@
           {
             "title": "BotPsy Tests How Far a 0.8B On-Device Tool Agent Can Go",
             "url": "https://huggingface.blog/blog/qvac-botpsy/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/gemini-robotics-25-safety-benchmark.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/gemini-robotics-25-safety-benchmark.html",
-      "title": "DeepMind upgrades Gemini Robotics and opens safety benchmark",
-      "summary": "Gemini Robotics 2.5 expands robot dexterity while DeepMind releases ASIMOV-Jailbreak to test unsafe instructions across varied physical scenes.",
-      "content_text": "Google DeepMind has introduced Gemini Robotics 2.5, a vision-language-action model designed to help robots acquire a broader range of physical skills and adapt faster outside controlled demonstrations. The release covers both manipulation capability and safety evaluation, including a new open benchmark called ASIMOV-Jailbreak.\n\n## From demonstrations to broader skills\n\nDeepMind says the model improves the breadth of tasks robots can learn, the speed of skill acquisition and reliability in less structured environments. In a proof of concept with Apptronik and Mercedes-Benz, Gemini Robotics 2.5 helped an Apollo 2 humanoid robot pick and organize vehicle parts with a reported 96% success rate. Demonstrations also include fine manipulation of deformable objects, including tying a bow.\n\nThe model is intended for settings ranging from everyday assistance to factory work. That does not mean a general-purpose humanoid is ready for unsupervised deployment. Physical environments introduce failure modes that are absent from text systems: a small perception error can damage equipment, injure a person or create a cascading interruption in a production line.\n\n## Safety becomes an evaluation problem\n\nASIMOV-Jailbreak is an open-source benchmark containing hundreds of prompts that disguise unsafe requests across dozens of scenes. DeepMind reports that Gemini 4 Argon achieved a 99.5% jailbreak-resistance rate, compared with 82% for the previous Gemini Robotics ER 2 baseline. That result is a safety evaluation of Argon, not a reported safety score for Gemini Robotics 2.5 itself.\n\nPublishing the benchmark gives other researchers and robot makers a common way to probe semantic safety, rather than relying only on collision avoidance or fixed motion constraints. The results remain company-reported and cover a limited set of evaluated interactions.\n\n## Why it matters\n\nThe release links robot capability to a more mature safety regime. If the benchmark gains adoption, future robotics claims may be judged not only by task success but also by how reliably a system refuses dangerous instructions in context. That is a meaningful shift for industrial deployment, where safe failure is often more valuable than a spectacular demonstration.",
-      "date_published": "2026-11-10T15:00:00.000Z",
-      "date_modified": "2026-11-11T01:00:06.960Z",
-      "tags": [
-        "Models",
-        "Safety",
-        "Research"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gemini-robotics-25-safety-benchmark.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-robotics-25-safety-benchmark.html",
-        "source_published_at": "2026-11-10T15:00:00.000Z",
-        "site_published_at": "2026-11-11T01:00:06.960Z",
-        "sources": [
-          {
-            "title": "Gemini Robotics 2.5: Accelerating Physical Intelligence",
-            "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/"
-          },
-          {
-            "title": "DeepMind reveals Gemini Robotics 2.5 and ASIMOV-Jailbreak",
-            "url": "https://arstechnica.com/google/2026/11/deepmind-reveals-gemini-robotics-2-5-and-open-safety-benchmark-asimov-jailbreak/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/articles/google-gemini-4-carbon-agent-model.html",
-      "url": "https://mmlong818.github.io/ai-pulse/articles/google-gemini-4-carbon-agent-model.html",
-      "title": "Google releases Gemini 4 Carbon for long-horizon agents",
-      "summary": "Google’s new frontier model targets extended coding, scientific, cybersecurity and knowledge-work tasks with a 1-million-token context.",
-      "content_text": "Google DeepMind has released Gemini 4 Carbon, a frontier model aimed at tasks that require sustained planning, tool use and verification rather than a single answer. The model is available through Google’s consumer and developer channels, and has also begun appearing in products including GitHub Copilot, Cursor, Devin, Perplexity and Databricks.\n\n## What changed\n\nDeepMind describes Carbon as its strongest model for long-horizon agentic work across complex knowledge tasks, software engineering, cybersecurity and scientific reasoning. Its model card lists text, image, audio and video inputs, with a combined input-output context window of up to one million tokens. That capacity is intended for large codebases, lengthy technical files and multi-stage investigations that would otherwise require repeated context handoffs.\n\nGoogle is also emphasizing extended verification. The company says Carbon can spend longer exploring a problem, construct intermediate artifacts and check its work before returning a result. Early third-party distribution suggests the launch is as much about becoming the default reasoning layer inside developer and enterprise tools as it is about winning a standalone chatbot benchmark.\n\nThe rollout is unusually broad for a new frontier model. Availability through coding environments and agent products gives developers immediate ways to compare its performance against existing models, while discounted introductory pricing in some tools lowers the cost of experimentation. Those integrations may matter more than launch-day leaderboard positions because they expose Carbon to real workflows with persistent state and external actions.\n\n## Why it matters\n\nThe release moves competition toward models that can remain useful across long tasks, not merely answer difficult prompts. It also raises the operational bar: a one-million-token context window is valuable only if agents can retrieve the right material, control costs and avoid compounding small errors over hours of work. Carbon’s real significance will be measured by whether developers keep it in production after the promotional pricing ends and whether its claimed long-horizon strengths survive messy, tool-connected environments.",
-      "date_published": "2026-11-10T16:03:00.000Z",
-      "date_modified": "2026-11-11T01:00:06.960Z",
-      "tags": [
-        "Models",
-        "Agents",
-        "Industry"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "en",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-gemini-4-carbon-agent-model.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-gemini-4-carbon-agent-model.html",
-        "source_published_at": "2026-11-10T16:03:00.000Z",
-        "site_published_at": "2026-11-11T01:00:06.960Z",
-        "sources": [
-          {
-            "title": "Gemini 4 Carbon — Model Card",
-            "url": "https://deepmind.google/models/model-cards/gemini-4-carbon/"
-          },
-          {
-            "title": "Gemini 4 Carbon is now available",
-            "url": "https://deepmind.google/blog/gemini-4-carbon-is-now-available/"
           }
         ]
       }

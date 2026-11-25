@@ -83,6 +83,43 @@
       }
     },
     {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/cuga-indic-voice-agent.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/cuga-indic-voice-agent.html",
+      "title": "IBM 用 CUGA 展示跨语言印度语音智能体",
+      "summary": "IBM Research 以农业问答为例，将语音、多语检索和可溯源回答组合起来，服务使用印度地区语言提问的用户。",
+      "content_text": "## 发生了什么\n\nIBM Research 在 Hugging Face 发布了一个基于 CUGA 的印度语音智能体演示。CUGA 是 IBM 开源的可配置智能体框架，演示面向用印地语、泰米尔语、泰卢固语、古吉拉特语、马拉地语等地区语言提问的农民，而底层农业手册使用英语编写。\n\n这个系统的流程非常明确：先把语音转成文字，再搜索一份 154 页的农业手册，用用户提问的语言生成简短回答并朗读出来，同时展示对应来源页面。它被限制在农业领域内工作，遇到板球或编程问题时会主动拒答，而不是自由发挥。\n\n## 真正的工程难点\n\nIBM 最有价值的观察是，语音并不是最难的部分，跨语言检索才是故障核心。使用 CUGA 默认的纯英语向量模型时，印地语问题依然能够检索出若干段落，但这些段落往往与问题无关。各个模块表面上都正常运行，整体系统却因为无法把不同语言中的相同含义匹配起来而悄悄失效。\n\nIBM 改用 multilingual-e5-large，让用户问题与英语资料进入更兼容的语义空间。CUGA 负责模型连接、工具调用、状态管理和策略边界，语音输入输出则可以替换。IBM 同时展示了云端语音服务和自托管开源模型，这对需要数据主权的政府、农业和企业场景尤其重要。\n\n这项演示并不意味着多语种语音智能体已经成熟。检索质量、语音识别、方言覆盖和引用行为仍需分别评测。但它给出了一个清晰方向：在地区语言服务中，能否找到正确证据比能否流畅聊天更重要。\n\n## 猫叔判断\n\n最值得警惕的是纯英语向量模型的失效：多语语音产品可能听起来很流畅，却一直在检索错误证据。",
+      "date_published": "2026-11-25T10:22:00.000Z",
+      "date_modified": "2026-11-25T13:00:07.504Z",
+      "tags": [
+        "Agent",
+        "研究",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/cuga-indic-voice-agent.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/cuga-indic-voice-agent.html",
+        "source_published_at": "2026-11-25T10:22:00.000Z",
+        "site_published_at": "2026-11-25T13:00:07.504Z",
+        "sources": [
+          {
+            "title": "An Indic Voice Agent with CUGA",
+            "url": "https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga"
+          },
+          {
+            "title": "CUGA open-source agent harness",
+            "url": "https://github.com/ibm/cuga"
+          }
+        ]
+      }
+    },
+    {
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt6-protein-design.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/openai-gpt6-protein-design.html",
       "title": "OpenAI公布GPT-6蛋白设计实验：通用模型开始进入分子研发",
@@ -111,6 +148,43 @@
           {
             "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
             "url": "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html",
+      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html",
+      "title": "腾讯让 Hy4-Flash 更接近笔记本本地运行",
+      "summary": "腾讯混元宣布 Hy4-Flash 接入 AngelSlim 量化与 llama.cpp，本地部署门槛进一步降到开发者硬件可承受范围。",
+      "content_text": "## 发生了什么\n\n腾讯混元团队宣布，Hy4-Flash 现在可以通过 AngelSlim 量化方案和 llama.cpp 在本地运行。官方披露，在笔记本级设备上最高可达每秒 39 个 Token，在配备 128GB 内存的 Mac M5 Max 上最高约 50 个 Token，桌面硬件上的吞吐还会更高。这一消息由腾讯混元官方账号在亚洲时区白天发布。\n\n这并不是一次新的前沿模型发布，而是把一个大型开放模型从“能下载”推进到“更容易真正跑起来”。AngelSlim 提供量化版本和适配常见本地推理框架的路径，腾讯仓库则列出了对 vLLM、SGLang 和 llama.cpp 的支持。\n\n## 为什么重要\n\n不少中国大模型虽然开放了权重，但实际运行仍需要较强的服务器和工程能力。量化通过牺牲一部分可控的数值精度，换取更低的显存需求和更高的推理速度。对需要私有部署、离线使用或稳定延迟的开发者来说，这比单纯增加一个云端 API 更有实际价值。\n\n当然，官方吞吐数据会受到硬件、量化格式、上下文长度和任务类型影响。本地速度也不能直接证明模型质量已经达到前沿水平；长上下文智能体还要承担 KV 缓存和编排带来的额外内存开销。但 Hy4-Flash 的本地化路径，确实让腾讯模型更适合开发者工作站、私有服务器和区域推理集群。\n\n## 猫叔判断\n\n真正重要的不是每秒 39 个 Token，而是腾讯把 Hy4-Flash 从可下载权重推进成了可用的私有部署选项。",
+      "date_published": "2026-11-25T08:41:00.000Z",
+      "date_modified": "2026-11-25T13:00:07.504Z",
+      "tags": [
+        "模型",
+        "开源",
+        "产业"
+      ],
+      "authors": [
+        {
+          "name": "Uncle Cat AI Radar AI Newsroom",
+          "url": "https://mmlong818.github.io/ai-pulse/about.html"
+        }
+      ],
+      "language": "zh-CN",
+      "_ai_pulse": {
+        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/tencent-hy4-flash-local-inference.html",
+        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html",
+        "source_published_at": "2026-11-25T08:41:00.000Z",
+        "site_published_at": "2026-11-25T13:00:07.504Z",
+        "sources": [
+          {
+            "title": "Tencent Hunyuan official announcement",
+            "url": "https://x.com/TencentHunyuan/status/2125510109417857368"
+          },
+          {
+            "title": "Hy4-Flash GitHub repository",
+            "url": "https://github.com/Tencent-Hunyuan/Hy4-flash"
           }
         ]
       }
@@ -375,8 +449,8 @@
       "id": "https://mmlong818.github.io/ai-pulse/zh/articles/ant-ling-medical-models-open-source.html",
       "url": "https://mmlong818.github.io/ai-pulse/zh/articles/ant-ling-medical-models-open-source.html",
       "title": "蚂蚁启动百灵医疗模型分阶段开放权重",
-      "summary": "蚂蚁发布百灵医疗模型家族，覆盖多模态理解、医学推理、疾病风险预测、医疗安全和实时视频问诊；首批开放权重的是两款核心模型。",
-      "content_text": "## 五款模型拆分不同医疗任务\n\n蚂蚁集团通过蚂蚁阿福医疗健康平台发布百灵医疗健康大模型家族。该家族没有把所有任务压进一个通用助手，而是分别覆盖多模态健康理解、长上下文医学推理、疾病风险预测、医疗安全防护和实时视频问诊。\n\n首批开放权重的是两款核心模型。LingSante-3.1-air-VL 是轻量级原生多模态模型，总参数量1240亿，每个token激活约55亿参数，支持文字、图片和视频输入，面向本地化或端侧健康应用。LingSante-3.1-flash 面向更大规模任务，总参数量5600亿，每个token激活约250亿参数，上下文窗口最长100万token。蚂蚁称，它支持基于证据的检索和长流程医疗工作流。\n\n另外三款专业或应用型模型构成已公布的完整家族。LingSante-Pulse 主打评估未来六年150多种疾病或健康状况的风险；LingSante-MedGuard 则关注医疗安全、监管合规和生物伦理风险；LingSante-Live 是已接入蚂蚁阿福的实时多模态视频问诊与指导智能体。蚂蚁公告表示，模型权重将分阶段开放，首批从两款核心模型开始；这并不能证明Pulse、MedGuard或Live已经作为开放权重模型公开下载。\n\n## 开放权重不等于获得临床许可\n\n这次发布的重要之处，在于它把专业能力和安全防护同时纳入产品组合，而不是只给通用模型附上一份安全说明。它也折射出亚洲医疗 AI 的一个现实方向：对医院和本地机构而言，数据留在本地、能否使用私有硬件，往往与评测分数同样重要。\n\n但现有公开信息仍不足以支撑更强结论。训练数据、许可证、独立验证和监管资质都缺乏细节。模型能够解读报告、估算风险或辅助视频问诊，并不意味着它可以独立诊断或开药。最终价值取决于医院和开发者能否审计模型、复现实验结果，并持续保留人工复核。\n\n**猫叔判断：** 首批开放权重的是两款核心模型；Pulse、MedGuard与Live属于已公布的模型家族和应用生态，不能与已确认公开下载的模型混为一谈。没有临床独立验证，六年风险预测仍只是目标，而非医疗成熟度证明。",
+      "summary": "蚂蚁发布百灵医疗模型家族，覆盖多模态理解、医学推理、健康风险预测、医疗安全和实时视频问诊；首批开放权重的是两款核心模型。",
+      "content_text": "## 五款模型拆分不同医疗任务\n\n蚂蚁集团通过蚂蚁阿福医疗健康平台发布百灵医疗健康大模型家族。该家族没有把所有任务压进一个通用助手，而是分别覆盖多模态健康理解、长上下文医学推理、健康风险预测、医疗安全防护和实时视频问诊。\n\n首批开放权重的是两款核心模型。LingSante-3.1-air-VL 是轻量级原生多模态模型，总参数量1240亿，每个token激活约55亿参数，支持文字、图片和视频输入，面向本地化或端侧健康应用。LingSante-3.1-flash 面向更大规模任务，总参数量5600亿，每个token激活约250亿参数，上下文窗口最长100万token。蚂蚁称，它支持基于证据的检索和长流程医疗工作流。\n\n另外三款专业或应用型模型构成已公布的完整家族。LingSante-Pulse 是健康预测模型，结合多种健康信号，评估150多种状况的风险；LingSante-MedGuard 则关注医疗安全、监管合规和生物伦理风险；LingSante-Live 是已接入蚂蚁阿福的实时多模态视频问诊与指导智能体。蚂蚁公告表示，模型权重将分阶段开放，首批从两款核心模型开始；这并不能证明Pulse、MedGuard或Live已经作为开放权重模型公开下载。\n\n## 开放权重不等于获得临床许可\n\n这次发布的重要之处，在于它把专业能力和安全防护同时纳入产品组合，而不是只给通用模型附上一份安全说明。它也折射出亚洲医疗 AI 的一个现实方向：对医院和本地机构而言，数据留在本地、能否使用私有硬件，往往与评测分数同样重要。\n\n但现有公开信息仍不足以支撑更强结论。训练数据、许可证、独立验证和监管资质都缺乏细节。模型能够解读报告、估算风险或辅助视频问诊，并不意味着它可以独立诊断或开药。最终价值取决于医院和开发者能否审计模型、复现实验结果，并持续保留人工复核。\n\n**猫叔判断：** 首批开放权重的是两款核心模型；Pulse、MedGuard与Live属于已公布的模型家族和应用生态，不能与已确认公开下载的模型混为一谈。没有临床独立验证，健康风险预测仍只是目标，而非医疗成熟度证明。",
       "date_published": "2026-11-23T03:56:00.000Z",
       "date_modified": "2026-11-23T13:00:07.044Z",
       "tags": [
@@ -1820,80 +1894,6 @@
           {
             "title": "BotPsy Tests How Far a 0.8B On-Device Tool Agent Can Go",
             "url": "https://huggingface.blog/blog/qvac-botpsy/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-robotics-25-safety-benchmark.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-robotics-25-safety-benchmark.html",
-      "title": "DeepMind升级 Gemini Robotics，并开放机器人安全基准",
-      "summary": "Gemini Robotics 2.5提升机器人操作能力，同时发布 ASIMOV-Jailbreak，测试模型在复杂场景下拒绝危险指令的能力。",
-      "content_text": "谷歌 DeepMind 发布 Gemini Robotics 2.5，这是一款视觉—语言—动作模型，目标是让机器人掌握更广泛的物理技能，并更快适应受控演示之外的环境。此次更新同时覆盖操作能力和安全评测，后者包括一个新的开放基准 ASIMOV-Jailbreak。\n\n## 从演示动作走向更广技能\n\nDeepMind 称，新模型提升了机器人可学习任务的范围、技能获取速度，以及在非结构化环境中的可靠性。在与 Apptronik 和梅赛德斯-奔驰的概念验证中，Gemini Robotics 2.5 帮助 Apollo 2 人形机器人分拣和整理汽车零部件，官方报告成功率达到 96%。演示还包含给蝴蝶结打结等柔性物体操作任务。\n\n模型面向日常辅助和工厂作业等场景。但这并不意味着通用人形机器人已经可以无人监管地工作。物理环境有文本系统不存在的失败模式：一次轻微的视觉判断错误，就可能损坏设备、伤及人员，或让生产线出现连锁中断。\n\n## 安全成为新的评测问题\n\nASIMOV-Jailbreak 是一个开源基准，包含数百条在数十种场景中伪装危险请求的提示词。DeepMind 称，Gemini 4 Argon 在该测试中的抗越狱率为 99.5%，上一代 Gemini Robotics ER 2 基线为 82%。这一结果针对的是 Argon 的安全评测，并不是 Gemini Robotics 2.5 本身的安全得分。\n\n开放这一基准，有助于研究者和机器人厂商共同测试语义安全，而不只是检查碰撞规避或固定动作限制。不过，这些结果仍来自公司自测，覆盖的交互范围有限。\n\n## 为什么重要\n\n这次发布把机器人能力和安全制度更紧密地绑在一起。若 ASIMOV-Jailbreak 被广泛采用，未来的机器人评测就不只看任务完成率，还要看系统能否在具体环境中稳定拒绝危险指令。对于工业部署而言，这种“安全失败”能力往往比一次惊艳演示更重要。",
-      "date_published": "2026-11-10T15:00:00.000Z",
-      "date_modified": "2026-11-11T01:00:06.960Z",
-      "tags": [
-        "模型",
-        "安全",
-        "研究"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/gemini-robotics-25-safety-benchmark.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/gemini-robotics-25-safety-benchmark.html",
-        "source_published_at": "2026-11-10T15:00:00.000Z",
-        "site_published_at": "2026-11-11T01:00:06.960Z",
-        "sources": [
-          {
-            "title": "Gemini Robotics 2.5: Accelerating Physical Intelligence",
-            "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/"
-          },
-          {
-            "title": "DeepMind reveals Gemini Robotics 2.5 and ASIMOV-Jailbreak",
-            "url": "https://arstechnica.com/google/2026/11/deepmind-reveals-gemini-robotics-2-5-and-open-safety-benchmark-asimov-jailbreak/"
-          }
-        ]
-      }
-    },
-    {
-      "id": "https://mmlong818.github.io/ai-pulse/zh/articles/google-gemini-4-carbon-agent-model.html",
-      "url": "https://mmlong818.github.io/ai-pulse/zh/articles/google-gemini-4-carbon-agent-model.html",
-      "title": "谷歌发布 Gemini 4 Carbon，主攻长程智能体任务",
-      "summary": "谷歌推出面向长程编程、科研与网络安全任务的前沿模型，支持百万令牌上下文，并快速接入多款开发者工具。",
-      "content_text": "谷歌 DeepMind 发布 Gemini 4 Carbon，定位不是只回答单个问题的聊天模型，而是能够持续规划、调用工具并反复验证的前沿模型。该模型已通过谷歌的消费端和开发者渠道开放，并陆续接入 GitHub Copilot、Cursor、Devin、Perplexity 和 Databricks 等产品。\n\n## 这次发布了什么\n\nDeepMind 称，Carbon 是其目前最强的长程智能体模型，面向复杂知识工作、软件工程、网络安全和科学推理。模型卡显示，它支持文本、图像、音频和视频输入，输入输出合计上下文窗口最高可达 100 万令牌。对于大型代码库、长篇技术资料和多阶段研究任务，这意味着智能体不必频繁切换上下文。\n\n谷歌同时强调了更长时间的探索与验证能力。公司称，Carbon 可以围绕问题展开更多搜索，生成中间产物，并在交付前检查结果。它很快进入多个开发和企业产品，说明这次发布的目标不只是争夺独立聊天产品的榜单，也是在争夺开发者和企业工作流中的默认推理层。\n\n这次发布的渠道覆盖尤其广。新模型直接进入编码环境和智能体产品，开发者可以很快拿它与现有模型比较；部分工具提供的限时优惠，也降低了试用成本。相比发布当天的基准排名，这些集成更值得关注，因为它们把模型放进了有持久状态、外部工具和真实约束的工作流。\n\n## 为什么重要\n\nAI 模型竞争正在从“能否回答难题”转向“能否把长任务持续做完”。但百万令牌上下文只有在检索准确、成本可控、错误不会逐步累积时才真正有价值。Carbon 的长期意义，取决于开发者在优惠结束后是否仍把它留在生产环境，以及它在复杂工具链中能否兑现长程能力的承诺。",
-      "date_published": "2026-11-10T16:03:00.000Z",
-      "date_modified": "2026-11-11T01:00:06.960Z",
-      "tags": [
-        "模型",
-        "Agent",
-        "产业"
-      ],
-      "authors": [
-        {
-          "name": "Uncle Cat AI Radar AI Newsroom",
-          "url": "https://mmlong818.github.io/ai-pulse/about.html"
-        }
-      ],
-      "language": "zh-CN",
-      "_ai_pulse": {
-        "canonical_en": "https://mmlong818.github.io/ai-pulse/articles/google-gemini-4-carbon-agent-model.html",
-        "canonical_zh": "https://mmlong818.github.io/ai-pulse/zh/articles/google-gemini-4-carbon-agent-model.html",
-        "source_published_at": "2026-11-10T16:03:00.000Z",
-        "site_published_at": "2026-11-11T01:00:06.960Z",
-        "sources": [
-          {
-            "title": "Gemini 4 Carbon — Model Card",
-            "url": "https://deepmind.google/models/model-cards/gemini-4-carbon/"
-          },
-          {
-            "title": "Gemini 4 Carbon is now available",
-            "url": "https://deepmind.google/blog/gemini-4-carbon-is-now-available/"
           }
         ]
       }
