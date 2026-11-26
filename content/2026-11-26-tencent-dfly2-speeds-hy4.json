@@ -1,0 +1,32 @@
+{
+  "slug": "tencent-dfly2-speeds-hy4",
+  "title": "Tencent Open-Sources DFly2 to Speed Up Hy4 Inference",
+  "summary": "Tencent has released DFly2, a speculative-decoding drafter for Hy4 flash that claims up to 4.2× faster inference on long-context and agent workloads.",
+  "body": "Tencent’s Hunyuan team has open-sourced DFly2, a speculative-decoding drafter designed to accelerate inference for its Hy4 flash model. In a post published on November 26, the team said the system can deliver up to a 4.2× speedup for long-context and agentic workloads.\n\n## The bottleneck it targets\n\nSpeculative decoding uses a smaller draft model to propose several next tokens before a larger model verifies them. When the draft is accurate, the main model can accept multiple tokens in one pass, reducing the number of expensive sequential decoding steps. DFly2 is intended to make that process more effective for Hy4 flash, particularly when prompts are long or an agent repeatedly calls the model while using tools.\n\nTencent also said Hy4 flash had gone live on Fireworks AI, giving developers access to production inference infrastructure. The model was additionally promoted as free on OpenCode for a limited period, suggesting that Tencent is using distribution and developer experimentation to increase usage alongside the open release.\n\nThe 4.2× figure is a peak claim, not a universal guarantee. Actual gains depend on draft acceptance rates, prompt structure, output length, hardware, batching and the surrounding agent framework. Long-context applications can also be limited by memory bandwidth and tool latency rather than token generation alone.\n\n## Why it matters\n\nThe release highlights a shift in open-model competition. The important asset is no longer only the model checkpoint; it is the inference stack that determines whether a large model can be used economically in real products. A faster drafter can reduce serving cost without retraining the flagship model, provided its predictions remain accurate enough to be accepted.\n\nFor agent developers, this matters because multi-step workflows amplify every generation delay. If DFly2 performs close to Tencent’s best-case numbers outside controlled tests, Hy4 flash could become more competitive in coding, research and tool-use workloads. The unresolved question is whether the speedup survives diverse prompts and production traffic rather than benchmark-style traces.",
+  "title_zh": "腾讯开源DFly2，最高可让Hy4推理提速4.2倍",
+  "summary_zh": "腾讯混元开源Hy4 flash的推测解码草稿模型DFly2，称在长上下文和智能体任务中最高可带来4.2倍推理加速。",
+  "body_zh": "腾讯混元团队开源了DFly2，这是一套为Hy4 flash设计的推测解码草稿模型。团队在11月26日发布的信息中称，DFly2面向长上下文和智能体任务，最高可实现4.2倍推理加速。\n\n## 它解决的是什么瓶颈\n\n推测解码会先让一个更小的草稿模型预测多个后续Token，再由大模型一次性验证。如果草稿足够准确，大模型就能一轮接受多个Token，从而减少成本较高的串行解码步骤。DFly2的目标，就是让Hy4 flash在长提示词、反复调用工具的智能体工作流中更高效。\n\n腾讯同时宣布，Hy4 flash已经上线Fireworks AI，由后者提供生产级推理基础设施。Hy4 flash还在OpenCode上限时免费开放，显示腾讯正把模型分发、开发者试用和推理优化放在同一套推广策略中。\n\n4.2倍是峰值数据，并不代表所有场景都能达到同样效果。实际收益取决于草稿接受率、提示词结构、输出长度、硬件、批处理方式以及外围智能体框架。长上下文应用还可能受内存带宽和工具调用延迟限制，而不只是生成速度。\n\n## 为什么重要\n\n这次发布说明，开放模型的竞争重点正在从单一权重扩展到完整推理栈。决定一个大模型能否进入真实产品的，不只是模型本身，也包括它在服务器上的运行成本。只要草稿预测足够准确，推测解码就能在不重新训练主模型的情况下压低服务费用。\n\n对智能体开发者而言，这一点尤其关键，因为多步骤工作流会放大每一次生成延迟。如果DFly2在真实流量和多样提示词下仍能接近最佳结果，Hy4 flash在编程、研究和工具调用任务中的竞争力可能明显提升。现在尚未确定的是，这种加速能否脱离受控测试，稳定延续到生产环境。",
+  "tags": [
+    "Open Source",
+    "Models",
+    "Agents"
+  ],
+  "sources": [
+    {
+      "title": "Tencent Hunyuan announces DFly2 speculative decoding drafter",
+      "url": "https://x.com/TencentHunyuan/status/2125928146113585468"
+    },
+    {
+      "title": "Hy4 flash is now live on Fireworks AI",
+      "url": "https://x.com/TencentHunyuan/status/2125828452519739677"
+    }
+  ],
+  "featured": false,
+  "featured_reason": "",
+  "featured_reason_zh": "",
+  "cat_take_zh": "DFly2的价值不在4.2倍峰值，而在腾讯开始把推理优化当作开放模型的核心产品。",
+  "cat_take_en": "DFly2 matters because Tencent is treating inference optimization as a first-class product around an open model.",
+  "date": "2026-11-26",
+  "published": "2026-11-26T12:22:00Z",
+  "published_at": "2026-11-26T13:00:07.085Z"
+}

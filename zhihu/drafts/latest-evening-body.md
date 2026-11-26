@@ -1,104 +1,127 @@
-这是「猫叔的AI资讯雷达」11月25日晚报。
+这是「猫叔的AI资讯雷达」11月26日晚报。
 
 本期由 AI 自动检索、筛选、撰写并附原始信源；时间口径按北京时间晚报窗口归档。
 
-**今晚重点**：腾讯混元宣布 Hy4-Flash 接入 AngelSlim 量化与 llama.cpp，本地部署门槛进一步降到开发者硬件可承受范围。
+**今晚重点**：据报道，英伟达要求合作伙伴暂停向四个东南亚国家发运搭载其芯片的AI服务器，美国对华算力管制正延伸至海外数据中心。
 
 ## 深度简报目录
 
-- 腾讯让 Hy4-Flash 更接近笔记本本地运行
-- IBM 用 CUGA 展示跨语言印度语音智能体
+- 英伟达暂停向四个东南亚国家发运AI服务器
+- 腾讯开源DFly2，最高可让Hy4推理提速4.2倍
+- Sakana AI为研究智能体Marlin新增两种深度模式
 
 ## 快讯预览
 
-- 麻省理工研究人员发现，极端合成气候情景可让预测模型只需一次模拟训练，并提升对陌生条件的表现。
-- Octop 展示了托管 CodeBuddy 的方案，目标是让 AI 程序员每周七天持续在线工作。
-- AI 生成的大量信息公开申请正在挤压美国公开记录系统，并增加机构审核负担。
-- Sakana AI 入选《福布斯日本》2027 创业者榜首，显示其研究商业化战略获得广泛关注。
-- Qdrant 推出 turbo4 数据类型，让压缩 ColBERT 搜索的向量存储减少八倍，同时保留基线检索质量的 99.6%。
-- 报道称，与 Anthropic 相关的高管 Tibo 将在 OpenAI 预计上市前加入该公司。
-- 一位华人计算机视觉专家离开苹果创业，专注空间智能与物理人工智能。
-- 字节跳动 Seed 研究人员开源 Laminar 异步强化学习框架，报告最高 5.48 倍吞吐和 52.2% 的 SWE-bench Verified 成绩。
-- Artificial Analysis 称 Octen Search 平均约 0.17 秒返回搜索结果，端到端任务耗时 13.3 秒，评分达到 82。
-- Claude Opus 5.6 的早期测试据称表现更强，但该模型仍仅向有限用户开放。
+- 讯飞介绍其语音大模型如何从语音基座延伸至实际语音应用和服务。
+- 具微科技展示潘多拉支撑机器人，可在90秒内自动换装并完成补能。
+- 美国42名州检察长正试图阻止Character.AI出售用户聊天数据。
+- Qwen宣布Qwen-Audio-3.1新增多语种能力，重点增强对中文方言的支持。
+- Fireworks上线Thinking Machines的Inkling 2 Small微调支持，并称其BrowseComp得分达90.2%。
+- 据报道，语音AI公司ElevenLabs正寻求新一轮融资，估值目标达330亿美元。
+- Together Link展示Claude Code分流GitHub问题，并启动三个子智能体执行修复。
+- Artificial Analysis将Sand AI的4800亿参数MAGI-2列为图生视频第一，与Dreamina Seedance 2.5统计持平。
+- GitHub 宣布 Copilot Day 将于 12 月 15 日回归，活动包含 Copilot 构建者和开发者的分享。
 
-## 1. 腾讯让 Hy4-Flash 更接近笔记本本地运行
+## 1. 英伟达暂停向四个东南亚国家发运AI服务器
 
-腾讯混元宣布 Hy4-Flash 接入 AngelSlim 量化与 llama.cpp，本地部署门槛进一步降到开发者硬件可承受范围。
+据报道，英伟达要求合作伙伴暂停向四个东南亚国家发运搭载其芯片的AI服务器，美国对华算力管制正延伸至海外数据中心。
 
-### 发生了什么
+据《金融时报》和路透报道，英伟达已要求制造合作伙伴暂停向马来西亚、新加坡、泰国和印度尼西亚发运搭载其处理器的AI服务器。此举发生在美国收紧先进AI芯片出口规则之后，相关国家被华盛顿视为可能向中国转运芯片的节点。
 
-腾讯混元团队宣布，Hy4-Flash 现在可以通过 AngelSlim 量化方案和 llama.cpp 在本地运行。官方披露，在笔记本级设备上最高可达每秒 39 个 Token，在配备 128GB 内存的 Mac M5 Max 上最高约 50 个 Token，桌面硬件上的吞吐还会更高。这一消息由腾讯混元官方账号在亚洲时区白天发布。
+### 管制开始覆盖算力落点
 
-这并不是一次新的前沿模型发布，而是把一个大型开放模型从“能下载”推进到“更容易真正跑起来”。AngelSlim 提供量化版本和适配常见本地推理框架的路径，腾讯仓库则列出了对 vLLM、SGLang 和 llama.cpp 的支持。
+此次影响的不是单独出售的加速卡，而是戴尔、超微等厂商组装的完整服务器系统。据报道，四国部分客户已收到通知，待发订单暂时不能离厂，英伟达及合作伙伴正在重新核对合规要求。
+
+新措施针对的是此前管制留下的一条现实通道。中国企业无法直接购买受限芯片后，可以转而租用东南亚数据中心的算力；而新加坡、马来西亚、泰国和印度尼西亚凭借网络连接、电力条件及地理位置，已经成为区域云计算基础设施的重要落点。
+
+目前尚不清楚暂停会持续多久。它可能只是企业为适应新规而采取的临时措施，但影响已经出现：当地云服务商和AI开发者面临扩容、交付以及高端训练算力供应的不确定性。据报道，一个与字节跳动有关的新加坡云项目已经受到干扰。
 
 ### 为什么重要
 
-不少中国大模型虽然开放了权重，但实际运行仍需要较强的服务器和工程能力。量化通过牺牲一部分可控的数值精度，换取更低的显存需求和更高的推理速度。对需要私有部署、离线使用或稳定延迟的开发者来说，这比单纯增加一个云端 API 更有实际价值。
+这并不只是一次物流延迟，而是出口管制从“禁止卖给谁”进一步转向“算力部署在哪里、由谁租用、服务器之后流向何处”。这会提高东南亚数据中心的合规成本，也迫使英伟达更直接地管理过去支撑区域增长的销售渠道。
 
-当然，官方吞吐数据会受到硬件、量化格式、上下文长度和任务类型影响。本地速度也不能直接证明模型质量已经达到前沿水平；长上下文智能体还要承担 KV 缓存和编排带来的额外内存开销。但 Hy4-Flash 的本地化路径，确实让腾讯模型更适合开发者工作站、私有服务器和区域推理集群。
-
-### 猫叔判断
-
-真正重要的不是每秒 39 个 Token，而是腾讯把 Hy4-Flash 从可下载权重推进成了可用的私有部署选项。
+如果限制长期存在，中国开发者可能加快国产加速器、非美国供应链和高效模型架构的投入。对整个行业而言，这释放出一个明确信号：一座位于中国境外的AI集群，也可能被纳入对华技术管制的实际范围。
 
 **原始信源**
 
-- [Tencent Hunyuan official announcement](https://x.com/TencentHunyuan/status/2125510109417857368)
-- [Hy4-Flash GitHub repository](https://github.com/Tencent-Hunyuan/Hy4-flash)
+- [Nvidia halts server shipments to four Southeast Asian countries, FT reports](https://www.investing.com/news/stock-market-news/nvidia-halts-server-shipments-to-four-southeast-asian-countries-ft-reports-5052112)
+- [Nvidia halts server shipments to Malaysia, Singapore, Thailand, and Indonesia after tighter US export controls](https://the-decoder.com/nvidia-halts-server-shipments-to-malaysia-singapore-thailand-and-indonesia-after-tighter-us-export-controls/)
+- [Changes to § 742.6 Regional Stability](https://public-inspection.federalregister.gov/2026-23529.pdf)
 
-原文链接：[腾讯让 Hy4-Flash 更接近笔记本本地运行｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/tencent-hy4-flash-local-inference.html)
+原文链接：[英伟达暂停向四个东南亚国家发运AI服务器｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/nvidia-southeast-asia-server-halt.html)
 
 ---
 
-## 2. IBM 用 CUGA 展示跨语言印度语音智能体
+## 2. 腾讯开源DFly2，最高可让Hy4推理提速4.2倍
 
-IBM Research 以农业问答为例，将语音、多语检索和可溯源回答组合起来，服务使用印度地区语言提问的用户。
+腾讯混元开源Hy4 flash的推测解码草稿模型DFly2，称在长上下文和智能体任务中最高可带来4.2倍推理加速。
 
-### 发生了什么
+腾讯混元团队开源了DFly2，这是一套为Hy4 flash设计的推测解码草稿模型。团队在11月26日发布的信息中称，DFly2面向长上下文和智能体任务，最高可实现4.2倍推理加速。
 
-IBM Research 在 Hugging Face 发布了一个基于 CUGA 的印度语音智能体演示。CUGA 是 IBM 开源的可配置智能体框架，演示面向用印地语、泰米尔语、泰卢固语、古吉拉特语、马拉地语等地区语言提问的农民，而底层农业手册使用英语编写。
+### 它解决的是什么瓶颈
 
-这个系统的流程非常明确：先把语音转成文字，再搜索一份 154 页的农业手册，用用户提问的语言生成简短回答并朗读出来，同时展示对应来源页面。它被限制在农业领域内工作，遇到板球或编程问题时会主动拒答，而不是自由发挥。
+推测解码会先让一个更小的草稿模型预测多个后续Token，再由大模型一次性验证。如果草稿足够准确，大模型就能一轮接受多个Token，从而减少成本较高的串行解码步骤。DFly2的目标，就是让Hy4 flash在长提示词、反复调用工具的智能体工作流中更高效。
 
-### 真正的工程难点
+腾讯同时宣布，Hy4 flash已经上线Fireworks AI，由后者提供生产级推理基础设施。Hy4 flash还在OpenCode上限时免费开放，显示腾讯正把模型分发、开发者试用和推理优化放在同一套推广策略中。
 
-IBM 最有价值的观察是，语音并不是最难的部分，跨语言检索才是故障核心。使用 CUGA 默认的纯英语向量模型时，印地语问题依然能够检索出若干段落，但这些段落往往与问题无关。各个模块表面上都正常运行，整体系统却因为无法把不同语言中的相同含义匹配起来而悄悄失效。
+4.2倍是峰值数据，并不代表所有场景都能达到同样效果。实际收益取决于草稿接受率、提示词结构、输出长度、硬件、批处理方式以及外围智能体框架。长上下文应用还可能受内存带宽和工具调用延迟限制，而不只是生成速度。
 
-IBM 改用 multilingual-e5-large，让用户问题与英语资料进入更兼容的语义空间。CUGA 负责模型连接、工具调用、状态管理和策略边界，语音输入输出则可以替换。IBM 同时展示了云端语音服务和自托管开源模型，这对需要数据主权的政府、农业和企业场景尤其重要。
+### 为什么重要
 
-这项演示并不意味着多语种语音智能体已经成熟。检索质量、语音识别、方言覆盖和引用行为仍需分别评测。但它给出了一个清晰方向：在地区语言服务中，能否找到正确证据比能否流畅聊天更重要。
+这次发布说明，开放模型的竞争重点正在从单一权重扩展到完整推理栈。决定一个大模型能否进入真实产品的，不只是模型本身，也包括它在服务器上的运行成本。只要草稿预测足够准确，推测解码就能在不重新训练主模型的情况下压低服务费用。
 
-### 猫叔判断
-
-最值得警惕的是纯英语向量模型的失效：多语语音产品可能听起来很流畅，却一直在检索错误证据。
+对智能体开发者而言，这一点尤其关键，因为多步骤工作流会放大每一次生成延迟。如果DFly2在真实流量和多样提示词下仍能接近最佳结果，Hy4 flash在编程、研究和工具调用任务中的竞争力可能明显提升。现在尚未确定的是，这种加速能否脱离受控测试，稳定延续到生产环境。
 
 **原始信源**
 
-- [An Indic Voice Agent with CUGA](https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga)
-- [CUGA open-source agent harness](https://github.com/ibm/cuga)
+- [Tencent Hunyuan announces DFly2 speculative decoding drafter](https://x.com/TencentHunyuan/status/2125928146113585468)
+- [Hy4 flash is now live on Fireworks AI](https://x.com/TencentHunyuan/status/2125828452519739677)
 
-原文链接：[IBM 用 CUGA 展示跨语言印度语音智能体｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/cuga-indic-voice-agent.html)
+原文链接：[腾讯开源DFly2，最高可让Hy4推理提速4.2倍｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/tencent-dfly2-speeds-hy4.html)
+
+---
+
+## 3. Sakana AI为研究智能体Marlin新增两种深度模式
+
+Sakana AI升级战略研究智能体Marlin，加入更快的多角度分析、广域探索模式，并重做PowerPoint导出能力。
+
+Sakana AI更新了战略研究智能体Marlin，新增Twilight 2.0和Midnight 2.0两种模式。公司称，Twilight 2.0面向更快速的多角度分析，Midnight 2.0则用于扩大检索范围、寻找不易被发现的新线索；此次更新还大幅改进了Microsoft PowerPoint导出效果。
+
+### 从回答问题转向完成研究流程
+
+Marlin原有的Sunlight模式仍作为轻量选项保留。新的模式结构让用户可以在速度、广度和深度之间做选择，而不是把研究简化成一次通用的“提问—回答”。Sakana用海洋的不同深度来命名这些模式，表达逐步深入调查的产品思路。
+
+PowerPoint能力的变化同样值得关注。研究智能体往往能找到有价值的材料，却在最后一步失分：结果无法整理成高管、客户或同事可以直接审阅的文档。更成熟的幻灯片导出能力，意味着Marlin正在从对话式研究界面转向以具体业务交付物为终点的工作流工具。
+
+不过，公告没有提供标准化基准、价格对比，也没有详细说明不同模式背后的模型和工具。因此，目前还难以判断改进主要来自搜索质量、执行时间、任务编排，还是展示层工程。
+
+### 为什么重要
+
+Sakana正把Marlin放在研究自动化场景中竞争，而不是只和通用聊天机器人比较。这使它更贴近咨询、分析和战略团队的实际需求：先完成有来源的探索，再交付一份可以展示的材料。
+
+真正需要观察的是，新模式能否缩短研究时间，同时不增加无依据结论和冗长内容。更好的幻灯片生成会提高采用率，但也可能让薄弱判断更容易被传播。Marlin最终的价值，不取决于模式名称是否新颖，而取决于用户能否检查证据、追踪智能体过程，并清楚区分“发现线索”和“完成验证”。
+
+**原始信源**
+
+- [Sakana Marlin Update: Twilight 2.0 and Midnight 2.0](https://sakana.ai/marlin-update-2/)
+- [Sakana AI adds Twilight 2.0 and Midnight 2.0 research modes to Marlin](https://dailyai.report/story/911eec1f-d2ea-4407-bd8d-9dbd8c7afb54)
+
+原文链接：[Sakana AI为研究智能体Marlin新增两种深度模式｜猫叔的AI资讯雷达](https://mmlong818.github.io/ai-pulse/zh/articles/sakana-marlin-research-modes.html)
 
 ## 一句话快讯
-- 麻省理工研究人员发现，极端合成气候情景可让预测模型只需一次模拟训练，并提升对陌生条件的表现。（[The Decoder](https://the-decoder.com/mit-team-discovers-that-unrealistic-training-data-makes-ai-climate-predictions-more-reliable/)）
-- Octop 展示了托管 CodeBuddy 的方案，目标是让 AI 程序员每周七天持续在线工作。（[InfoQ 中文](https://www.infoq.cn/article/cgiP7vstrXKH94L1zj76)）
-- AI 生成的大量信息公开申请正在挤压美国公开记录系统，并增加机构审核负担。（[MIT Technology Review](https://www.technologyreview.com/2026/11/25/1149702/ai-is-straining-americas-open-records-systems/)）
-- Sakana AI 入选《福布斯日本》2027 创业者榜首，显示其研究商业化战略获得广泛关注。（[X @SakanaAILabs](https://x.com/SakanaAILabs/status/2125515053869023284)）
-- Qdrant 推出 turbo4 数据类型，让压缩 ColBERT 搜索的向量存储减少八倍，同时保留基线检索质量的 99.6%。（[X @qdrant_engine](https://x.com/qdrant_engine/status/2125504129242124593)）
-- 报道称，与 Anthropic 相关的高管 Tibo 将在 OpenAI 预计上市前加入该公司。（[量子位](https://www.qbitai.com/2026/11/512515.html)）
-- 一位华人计算机视觉专家离开苹果创业，专注空间智能与物理人工智能。（[量子位](https://www.qbitai.com/2026/11/512498.html)）
-- 字节跳动 Seed 研究人员开源 Laminar 异步强化学习框架，报告最高 5.48 倍吞吐和 52.2% 的 SWE-bench Verified 成绩。（[MarkTechPost](https://www.marktechpost.com/2026/11/24/bytedance-seed-laminar-async-rl-post-training-framework/)）
-- Artificial Analysis 称 Octen Search 平均约 0.17 秒返回搜索结果，端到端任务耗时 13.3 秒，评分达到 82。（[X @ArtificialAnlys](https://x.com/ArtificialAnlys/status/2125439213944664531)）
-- Claude Opus 5.6 的早期测试据称表现更强，但该模型仍仅向有限用户开放。（[量子位](https://www.qbitai.com/2026/11/512478.html)）
-- Anthropic 正开发由 Claude 生成的桌面应用，试图用自然语言交互替代部分传统软件流程。（[SiliconANGLE](https://siliconangle.com/2026/11/24/anthropic-is-trying-to-kill-traditional-desktop-apps-with-claude-generated-desktop-apps/)）
-- 由前 xAI 成员创办的 Epochal 推出用于训练预测智能体的历史网页环境，并据报道融资 1 亿美元。（[SiliconANGLE](https://www.siliconangle.com/2026/11/24/epochal-launches-100m-help-developers-train-predictive-ai-models/)）
-- Sakana AI发布30B模型Namazu Small，称其在25项基准测试平均成绩上超过120B模型。（[Sakana AI on X](https://x.com/SakanaAILabs/status/2125389733048291698)）
-- Google DeepMind展示Gemini 4 Hydrogen，将实时闪电数据映射到3D地球并生成环境音乐。（[Google DeepMind on X](https://x.com/GoogleDeepMind/status/2125371062880022536)）
+- 讯飞介绍其语音大模型如何从语音基座延伸至实际语音应用和服务。（[InfoQ 中文](https://www.infoq.cn/minibook/h1BlHGoTKyeLgs0KmAhe?utm_source=rss&utm_medium=article)）
+- 具微科技展示潘多拉支撑机器人，可在90秒内自动换装并完成补能。（[量子位](https://www.qbitai.com/2026/11/512972.html)）
+- 美国42名州检察长正试图阻止Character.AI出售用户聊天数据。（[The Verge](https://www.theverge.com/policy/1042620/character-ai-sale-state-ags-block-selling-users-chats)）
+- Qwen宣布Qwen-Audio-3.1新增多语种能力，重点增强对中文方言的支持。（[X / Alibaba Qwen](https://x.com/Alibaba_Qwen/status/2125798914490249411)）
+- Fireworks上线Thinking Machines的Inkling 2 Small微调支持，并称其BrowseComp得分达90.2%。（[X / Fireworks AI](https://x.com/FireworksAI_HQ/status/2125787413784174730)）
+- 据报道，语音AI公司ElevenLabs正寻求新一轮融资，估值目标达330亿美元。（[SiliconANGLE](https://siliconangle.com/2026/11/25/voice-ai-startup-elevenlabs-reportedly-seeking-new-funding-at-33b-valuation/)）
+- Together Link展示Claude Code分流GitHub问题，并启动三个子智能体执行修复。（[X / Together Compute](https://x.com/togethercompute/status/2125760937156399484)）
+- Artificial Analysis将Sand AI的4800亿参数MAGI-2列为图生视频第一，与Dreamina Seedance 2.5统计持平。（[X / Artificial Analysis](https://x.com/ArtificialAnlys/status/2125759745655210113)）
+- GitHub 宣布 Copilot Day 将于 12 月 15 日回归，活动包含 Copilot 构建者和开发者的分享。（[X / GitHub](https://x.com/github/status/2125754695679344797)）
 
 ---
 
-完整日报：[11月25日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-25.html)
+完整日报：[11月26日晚报网页](https://mmlong818.github.io/ai-pulse/zh/day/2026-11-26.html)
 
 历史存档：[猫叔的AI资讯雷达存档](https://mmlong818.github.io/ai-pulse/zh/archive.html)
 
